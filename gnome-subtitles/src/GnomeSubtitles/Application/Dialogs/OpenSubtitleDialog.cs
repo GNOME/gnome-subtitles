@@ -22,31 +22,34 @@ using System;
 
 namespace GnomeSubtitles {
 
-public class SaveSubtitleDialog : GladeWidget {
-	private const string widgetName = "saveSubtitleDialog";
-	private FileChooserDialog widget = null;
+public class OpenSubtitleDialog : GladeWidget {
+	private FileChooserDialog dialog = null;
 
-	public SaveSubtitleDialog(GUI gui, Window parent) : base(gui, widgetName){
-		widget = (FileChooserDialog)GetWidget(widgetName);
-		widget.TransientFor = parent;
-		//TODO: add file filter
+	public OpenSubtitleDialog (GUI gui) : base(gui, WidgetNames.OpenSubtitleDialog){
+		dialog = (FileChooserDialog)GetWidget(WidgetNames.OpenSubtitleDialog);
+		dialog.TransientFor = gui.Window;
 	}
 	
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
-	private void CloseWidget() {
-		widget.Destroy();
+	private void CloseDialog() {
+		dialog.Destroy();
 	}
 	
     private void OnDelete (object o, DeleteEventArgs args) {
-    		CloseWidget();
+    		CloseDialog();
     }
     
     private void OnCancel (object o, EventArgs args) {
-    		CloseWidget();
+    		CloseDialog();
     }
-
+    
+    private void OnOpen (object o, EventArgs args) {
+     	string fileName = dialog.Filename;
+		GUI.Open(fileName);
+		CloseDialog();    		
+    }
 
 }
 

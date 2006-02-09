@@ -17,24 +17,59 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gnome;
+using Gtk;
 using System;
+using SubLib.Domain;
 
 namespace GnomeSubtitles {
 
-public class AboutDialog : GladeWidget {
-	private const string widgetName = "aboutDialog";
+public class EventHandlers {
+	private GUI gui = null;
 
-	public AboutDialog(GUI gui, Gtk.Window parent) : base(gui, widgetName){
-		Gtk.AboutDialog widget = (Gtk.AboutDialog)GetWidget(widgetName);
-		widget.TransientFor = parent;
-		widget.Version = gui.Core.ExecutionInfo.Version;
-	}
+	public EventHandlers(GUI gui) {
+		this.gui = gui;
+    }
     
-
+    
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
-    private void OnClose (object o, EventArgs args) {
+	
+	private void OnNew (object o, EventArgs args) {
+		gui.New();
+	}
+	
+	private void OnOpen (object o, EventArgs args) {
+		new OpenSubtitleDialog(gui);
+	}
+	
+	private void OnSaveAs (object o, EventArgs args) {
+		new SaveSubtitleDialog(gui);
+	}
+	    
+    private void OnQuit (object o, EventArgs args) {
+		gui.Close();
+	}
+	
+	private void OnTimes (object o, EventArgs args) {
+		if ((o as RadioMenuItem).Active)
+			gui.SetTimingMode(TimingMode.Times);
+	}
+
+	private void OnFrames (object o, EventArgs args) {
+		if ((o as RadioMenuItem).Active)
+			gui.SetTimingMode(TimingMode.Frames);
+	}
+	
+	private void OnAbout (object o, EventArgs args) {
+		new AboutDialog(gui);
+	}
+	
+	private void OnDelete (object o, DeleteEventArgs args) {
+    		gui.Close();
     }
+	
+	
 
 }
 

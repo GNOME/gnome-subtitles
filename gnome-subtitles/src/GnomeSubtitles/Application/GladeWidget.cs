@@ -21,35 +21,68 @@ using Gtk;
 
 namespace GnomeSubtitles {
 
+public class GladeMainWidget {
+	private Glade.XML glade = null;
+
+	protected GladeMainWidget () {}
+
+	protected void Init (string gladeMasterFileName, string widgetName) {
+		glade = new Glade.XML (gladeMasterFileName, widgetName);
+	}
+	
+	protected GladeMainWidget (Glade.XML glade) {
+		this.glade = glade;
+	}
+
+	
+	protected Glade.XML Glade {
+		get { return glade; }
+		set { glade = value; } //DELETE
+	}
+	
+	
+	protected Widget GetWidget(string widgetName) {
+		return glade.GetWidget(widgetName);
+	}
+
+}
+
+
 public class GladeWidget {
 	private Glade.XML glade = null;
 	private GUI gui = null;
 	
+	protected GladeWidget () {}
 	
 	protected GladeWidget (GUI gui, string widgetName) {
 		this.gui = gui;
-		Glade.XML glade = new Glade.XML (gui.Core.ExecutionInfo.GladeMasterFileName, widgetName);
-		glade.Autoconnect(this);
+		Init(gui.Core.ExecutionInfo.GladeMasterFileName, widgetName, this);
+	}
+
+	protected GladeWidget (GUI gui, Glade.XML glade) {
+		this.gui = gui;
 		this.glade = glade;
 	}
 	
-	protected GladeWidget (GUI gui, Glade.XML glade) {
-		this.gui = gui;
-		this.glade = glade;	
+	
+	protected Glade.XML Glade {
+		get { return glade; }
 	}
 	
 	protected GUI GUI {
 		get { return gui; }
 	}
 	
-	protected Glade.XML Glade {
-		get { return glade; }
+	
+	protected void Init (string gladeMasterFileName, string widgetName, object handler) {
+		glade = new Glade.XML (gladeMasterFileName, widgetName);
+		glade.Autoconnect(handler);
 	}
 	
 	protected Widget GetWidget(string widgetName) {
 		return glade.GetWidget(widgetName);
 	}
-
+	
 
 }
 

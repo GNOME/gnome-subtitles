@@ -17,40 +17,22 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gtk;
 using System;
 
 namespace GnomeSubtitles {
 
-public class OpenSubtitleDialog : GladeWidget {
-	private const string widgetName = "openSubtitleDialog";
-	private FileChooserDialog widget = null;
+public class AboutDialog : GladeWidget {
 
-	public OpenSubtitleDialog(GUI gui, Window parent) : base(gui, widgetName){
-		widget = (FileChooserDialog)GetWidget(widgetName);
-		widget.TransientFor = parent;
-		//TODO: add file filter
+	public AboutDialog (GUI gui) : base(gui, WidgetNames.AboutDialog){
+		Gtk.AboutDialog dialog = (Gtk.AboutDialog)GetWidget(WidgetNames.AboutDialog);
+		dialog.TransientFor = gui.Window;
+		dialog.Version = gui.Core.ExecutionInfo.Version;
 	}
-	
+    
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
-	private void CloseWidget() {
-		widget.Destroy();
-	}
-	
-    private void OnDelete (object o, DeleteEventArgs args) {
-    		CloseWidget();
-    }
-    
-    private void OnCancel (object o, EventArgs args) {
-    		CloseWidget();
-    }
-    
-    private void OnOpen (object o, EventArgs args) {
-     	string fileName = widget.Filename;
-		GUI.Open(fileName);
-		CloseWidget();    		
+    private void OnClose (object o, EventArgs args) {
     }
 
 }

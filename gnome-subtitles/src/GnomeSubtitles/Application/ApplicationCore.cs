@@ -24,18 +24,31 @@ namespace GnomeSubtitles {
 
 public class ApplicationCore {
 	private ExecutionInfo executionInfo = null;
+	private Gnome.Program program = null;
 	private Subtitles subtitles = null;
+	private WidgetNames widgetNames = null;
 	
-	public ApplicationCore (ExecutionInfo newExecutionInfo) {
-		executionInfo = newExecutionInfo;
+	public ApplicationCore (ExecutionInfo executionInfo) {
+		this.executionInfo = executionInfo;
+		program = new Gnome.Program(executionInfo.ApplicationID,
+			executionInfo.Version, Gnome.Modules.UI, executionInfo.Args);
+		widgetNames = new WidgetNames();
 	}
 
 	public ExecutionInfo ExecutionInfo {
 		get { return executionInfo; }
 	}
 	
+	public Gnome.Program Program {
+		get { return program; }
+	}
+	
 	public Subtitles Subtitles {
 		get { return subtitles; }
+	}
+	
+	public WidgetNames WidgetNames {
+		get { return widgetNames; }
 	}
 	
 	
@@ -57,6 +70,20 @@ public class ApplicationCore {
 	}
 	
 	
+}
+
+public class WidgetNames {
+	public const string MainWindow = "mainWindow";
+	public const string SubtitleView = "subtitleListView";
+	
+	public const string TimesMenuItem = "timesMenuItem";
+	public const string FramesMenuItem = "framesMenuItem";
+	
+	public const string AboutDialog = "aboutDialog";
+	public const string OpenSubtitleDialog = "openSubtitleDialog";
+	public const string SaveSubtitleDialog = "saveSubtitleDialog";
+	
+
 }
 
 }

@@ -59,6 +59,7 @@ public class CellRendererSpinButton : CellRendererText {
 		base.GetSize(widget, ref cellArea, out xOffset, out yOffset, out width, out height);
 		width += 20;	 //allow space for the spinbuttons
 		height += 4;
+		//Console.WriteLine("Width: " + width);
 	}
 	
 	public override CellEditable StartEditing (Gdk.Event evnt, Widget widget, string path,

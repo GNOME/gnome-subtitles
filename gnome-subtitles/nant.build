@@ -60,7 +60,7 @@
 	<target name="test" depends="build">
 		<exec workingdir="${build.dir}" program="mono">
 			<arg value="${executable.name}" />
-			<arg value="../etc/samples/MicroDVD.sub" />
+			<arg value="../../samples/MicroDVD.sub" />
 		</exec>
 	</target>
 	

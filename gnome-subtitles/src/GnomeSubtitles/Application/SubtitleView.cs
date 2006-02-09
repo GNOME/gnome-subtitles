@@ -25,9 +25,8 @@ using SubLib.Domain;
 namespace GnomeSubtitles {
 
 public class SubtitleView : GladeWidget {
-	private const string widgetName = "subtitleListView";
-	private TreeView widget = null;
 	private Widget scrollArea = null;
+	private TreeView treeView = null;
 	
 	private Subtitles subtitles = null;
 	private TreeViewColumn numberCol = new TreeViewColumn();
@@ -38,8 +37,8 @@ public class SubtitleView : GladeWidget {
 
 	
 	public SubtitleView(GUI gui, Glade.XML glade) : base(gui, glade){
-		widget = (TreeView)GetWidget(widgetName);
-		scrollArea = widget.Parent;
+		treeView = (TreeView)GetWidget(WidgetNames.SubtitleView);
+		scrollArea = treeView.Parent;
 		CreateColumns();
     }
     
@@ -48,6 +47,25 @@ public class SubtitleView : GladeWidget {
     		get { return numberCol.Width + startCol.Width + endCol.Width + durationCol.Width + textCol.Width; }
     }
     
+  
+    public void NewDocument () {
+	    	subtitles = GUI.Core.Subtitles;
+	    treeView.Model = subtitles.Model;
+	    scrollArea.Sensitive = true;
+	    scrollArea.Visible = true;	
+	    UpdateTimingMode();
+    }
+    
+    public void UpdateTimingMode () {
+	    TimingMode timingMode = GUI.Core.Subtitles.Properties.TimingMode;
+	    (startCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
+	    (endCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
+	    (durationCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
+	    treeView.ColumnsAutosize();
+    }
+ 
+ 
+ 	
     private void CreateColumns() {
     		CellRendererText numberCell = new CellRendererText();
     		numberCell.Xalign = 0.5f;
@@ -89,34 +107,12 @@ public class SubtitleView : GladeWidget {
     		textCol.PackStart(textCell, true);
     		textCol.SetCellDataFunc(textCell, RenderTextCell);
     		
-    		widget.AppendColumn(numberCol);
-    		widget.AppendColumn(startCol);
-    		widget.AppendColumn(endCol);
-    		widget.AppendColumn(durationCol);
-    		widget.AppendColumn(textCol);
+    		treeView.AppendColumn(numberCol);
+    		treeView.AppendColumn(startCol);
+    		treeView.AppendColumn(endCol);
+    		treeView.AppendColumn(durationCol);
+    		treeView.AppendColumn(textCol);
     }
-
-  
-    public void NewDocument () {
-	    	subtitles = GUI.Core.Subtitles;
-	    widget.Model = subtitles.Model;
-	    scrollArea.Sensitive = true;
-	    scrollArea.Visible = true;	
-	    UpdateTimingMode();
-    }
-    
-    public void UpdateTimingMode () {
-	    TimingMode timingMode = GUI.Core.Subtitles.Properties.TimingMode;
-	    (startCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    (endCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    (durationCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    Refresh();
-    }
-    
-    public void Refresh () {
-    		widget.QueueDraw();
-    }
-
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	

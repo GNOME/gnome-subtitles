@@ -17,23 +17,34 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gnome;
 using Gtk;
 using System;
 
 namespace GnomeSubtitles {
 
-public class MainStatusBar {
-	private AppBar widget = null;
+public class SaveSubtitleDialog : GladeWidget {
+	private FileChooserDialog dialog = null;
+
+	public SaveSubtitleDialog(GUI gui) : base(gui,WidgetNames.SaveSubtitleDialog) {
+		dialog = (FileChooserDialog)GetWidget(WidgetNames.SaveSubtitleDialog);
+		dialog.TransientFor = gui.Window;
+	}
 	
+
+	#pragma warning disable 169		//Disables warning about handlers not being used
 	
-	public MainStatusBar(AppBar statusBar) {
-		widget = statusBar;
+	private void CloseDialog() {
+		dialog.Destroy();
+	}
+	
+    private void OnDelete (object o, DeleteEventArgs args) {
+    		CloseDialog();
     }
     
-    public AppBar Widget {
-    		get { return widget; }
+    private void OnCancel (object o, EventArgs args) {
+    		CloseDialog();
     }
+
 
 }
 

@@ -17,43 +17,74 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gnome;
 using Gtk;
+using System;
+using SubLib.Domain;
 
 namespace GnomeSubtitles {
 
-public class GUI {
-	private Gnome.Program gnomeApplication = null;
-	private MainWindow mainWindow = null;
+public class GUI : GladeWidget {
 	private ApplicationCore core = null;
-
+	private App window = null;
+	private SubtitleView subtitleView = null;	
+	
 	public GUI(ExecutionInfo executionInfo) {
 		core = new ApplicationCore(executionInfo);
-		gnomeApplication = new Gnome.Program(executionInfo.ApplicationID,
-			executionInfo.Version, Gnome.Modules.UI, executionInfo.Args);
-		mainWindow = new MainWindow(this);
+		Init(executionInfo.GladeMasterFileName, WidgetNames.MainWindow, new EventHandlers(this));
+		window = (App)GetWidget(WidgetNames.MainWindow);
+		subtitleView = new SubtitleView(this, this.Glade);
 		if (executionInfo.Args.Length > 0)
 			Open(executionInfo.Args[0]);
-		gnomeApplication.Run();
+		core.Program.Run();
     }
-    
+      
 	public ApplicationCore Core {
 		get { return core; }
 	}
-
+	
+	public App Window {
+		get { return window; }
+	}
+    
+    
     
     public void Close() {
-    		gnomeApplication.Quit();
+    		core.Program.Quit();
     }
 
     public void New () {
     		core.New();
-    		mainWindow.NewDocument();
+    		NewDocument();
     }
     
     public void Open (string fileName) {
 		core.Open(fileName);
-    		mainWindow.NewDocument();
+    		NewDocument();
     }
+    
+	
+	public void SetTimingMode (TimingMode mode) {
+		core.Subtitles.Properties.TimingMode = mode;
+		subtitleView.UpdateTimingMode();
+	}
+
+
+    
+	private void NewDocument () {
+		RadioMenuItem timesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.TimesMenuItem);
+		RadioMenuItem framesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.FramesMenuItem);
+		timesMenuItem.Sensitive = true;
+		framesMenuItem.Sensitive = true;
+		if (core.Subtitles.Properties.OriginalTimingMode == TimingMode.Frames)
+	    		framesMenuItem.Active = true;
+	    	else
+	    		timesMenuItem.Active = true;
+
+		subtitleView.NewDocument();
+		window.Title = core.Subtitles.Properties.FileName + " - " + core.ExecutionInfo.Name;
+	}
+
 
 }
 
