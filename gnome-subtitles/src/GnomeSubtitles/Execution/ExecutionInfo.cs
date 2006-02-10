@@ -22,6 +22,7 @@ namespace GnomeSubtitles {
 public class ExecutionInfo {
 	private const string name = "Gnome Subtitles";
 	private const string applicationID = "GnomeSubtitles";
+	private const string executable = "gnome-subtitles";
 	private const string version = "@GS-VERSION@";
 	private const string gladeMasterFileName = "gnome-subtitles.glade";
 	
@@ -39,6 +40,10 @@ public class ExecutionInfo {
 	
 	public string ApplicationID {
 		get { return applicationID; }
+	}
+	
+	public string Executable {
+		get { return executable; }
 	}
 	
 	public string Version {

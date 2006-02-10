@@ -17,19 +17,32 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gtk;
 using System;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace GnomeSubtitles {
 
 public class Executable {
 
-	public static void Main (string[] args) {
-		ExecutionInfo executionInfo = new ExecutionInfo(args);
-    		new GUI(executionInfo);
+	[DllImport("libc")]
+	private static extern int prctl(int option, byte [] arg2, ulong arg3,
+    		ulong arg4, ulong arg5);
+    		
+    public static void SetProcessName(string name) {
+   		if(prctl(15 /* PR_SET_NAME */, Encoding.ASCII.GetBytes(name + "\0"), 0, 0, 0) != 0) {
+        		throw new ApplicationException("Error setting process name: " +
+        			Mono.Unix.Native.Stdlib.GetLastError());
+        	}
     }
 
+	public static void Main (string[] args) {
+		ExecutionInfo executionInfo = new ExecutionInfo(args);
 
+		SetProcessName(executionInfo.Executable);	
+
+    		new GUI(executionInfo);
+    }
 
 }
 
