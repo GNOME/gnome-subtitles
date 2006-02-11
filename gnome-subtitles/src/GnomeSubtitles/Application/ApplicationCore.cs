@@ -26,13 +26,11 @@ public class ApplicationCore {
 	private ExecutionInfo executionInfo = null;
 	private Gnome.Program program = null;
 	private Subtitles subtitles = null;
-	private WidgetNames widgetNames = null;
 	
 	public ApplicationCore (ExecutionInfo executionInfo) {
 		this.executionInfo = executionInfo;
 		program = new Gnome.Program(executionInfo.ApplicationID,
 			executionInfo.Version, Gnome.Modules.UI, executionInfo.Args);
-		widgetNames = new WidgetNames();
 	}
 
 	public ExecutionInfo ExecutionInfo {
@@ -47,10 +45,10 @@ public class ApplicationCore {
 		get { return subtitles; }
 	}
 	
-	public WidgetNames WidgetNames {
-		get { return widgetNames; }
+	public bool IsLoaded {
+		get { return subtitles != null; }
 	}
-	
+
 	
 	public void New () {
 		SubtitleFactory factory = new SubtitleFactory();
