@@ -42,11 +42,9 @@ public class SubtitleView : GladeWidget {
 		CreateColumns();
     }
     
-    //NOT WORKING
-    public int Width {
-    		get { return numberCol.Width + startCol.Width + endCol.Width + durationCol.Width + textCol.Width; }
+    public TreeView Widget {
+    		get { return treeView; }
     }
-    
   
     public void NewDocument () {
 	    	subtitles = GUI.Core.Subtitles;
@@ -61,7 +59,14 @@ public class SubtitleView : GladeWidget {
 	    (startCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
 	    (endCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
 	    (durationCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    treeView.ColumnsAutosize();
+	    if (timingMode == TimingMode.Frames) {
+	    		startCol.FixedWidth = endCol.FixedWidth = 75;
+	    		durationCol.FixedWidth = 55;
+	    }
+	    else {
+	    		startCol.FixedWidth = endCol.FixedWidth = durationCol.FixedWidth = 110;
+	    }
+	    treeView.QueueDraw();
     }
  
  
@@ -69,8 +74,11 @@ public class SubtitleView : GladeWidget {
     private void CreateColumns() {
     		CellRendererText numberCell = new CellRendererText();
     		numberCell.Xalign = 0.5f;
-    		numberCol.Title = "Num.";
+    		numberCol.Title = "No.";
     		numberCol.Alignment = 0.5f;
+    		numberCol.FixedWidth = 35;
+    		numberCol.Sizing = TreeViewColumnSizing.Fixed;
+    		numberCol.Resizable = true;
     		numberCol.PackStart(numberCell, true);
     		numberCol.SetCellDataFunc(numberCell, RenderNumberCell);
     		
@@ -80,6 +88,9 @@ public class SubtitleView : GladeWidget {
     		startCell.Edited = OnStartCellEdited;
     		startCol.Title = "From";
     		startCol.Alignment = 0.5f;
+    		startCol.FixedWidth = 100;
+    		startCol.Sizing = TreeViewColumnSizing.Fixed;
+    		startCol.Resizable = true;
     		startCol.PackStart(startCell, true);
     		startCol.SetCellDataFunc(startCell, RenderStartCell);
 
@@ -89,6 +100,9 @@ public class SubtitleView : GladeWidget {
     		endCell.Edited = OnEndCellEdited;
     		endCol.Title = "To";
     		endCol.Alignment = 0.5f;
+    		endCol.FixedWidth = 100;
+    		endCol.Sizing = TreeViewColumnSizing.Fixed;
+    		endCol.Resizable = true;
     		endCol.PackStart(endCell, true);
     		endCol.SetCellDataFunc(endCell, RenderEndCell);
     		
@@ -98,6 +112,9 @@ public class SubtitleView : GladeWidget {
     		durationCell.Edited = OnDurationCellEdited;
     		durationCol.Title = "During";
     		durationCol.Alignment = 0.5f;
+    		durationCol.FixedWidth = 100;
+    		durationCol.Sizing = TreeViewColumnSizing.Fixed;
+    		durationCol.Resizable = true;
     		durationCol.PackStart(durationCell, true);
     		durationCol.SetCellDataFunc(durationCell, RenderDurationCell);
 
@@ -185,6 +202,7 @@ public class SubtitleView : GladeWidget {
 		else
 			subtitles.GetSubtitle(args.Path).Times.Duration = TimeSpan.Parse(args.NewText);
     }
+
     
 }
 
