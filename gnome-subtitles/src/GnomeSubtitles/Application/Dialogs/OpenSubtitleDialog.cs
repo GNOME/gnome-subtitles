@@ -28,28 +28,30 @@ public class OpenSubtitleDialog : GladeWidget {
 	public OpenSubtitleDialog (GUI gui) : base(gui, WidgetNames.OpenSubtitleDialog){
 		dialog = (FileChooserDialog)GetWidget(WidgetNames.OpenSubtitleDialog);
 		dialog.TransientFor = gui.Window;
+		if (gui.Core.IsLoaded && gui.Core.Subtitles.Properties.IsFilePathRooted) {
+			dialog.SetCurrentFolder(gui.Core.Subtitles.Properties.FileDirectory);
+		}
+		else {
+			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));		
+		}
 	}
-	
+
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
+	
+	private void OnResponse (object o, ResponseArgs args) {
+		if (args.ResponseId == ResponseType.Ok) {
+			GUI.Open(dialog.Filename);
+			CloseDialog(); 
+		}
+		else if (args.ResponseId == ResponseType.Cancel) {
+			CloseDialog();
+		}
+	}
 	
 	private void CloseDialog() {
 		dialog.Destroy();
 	}
-	
-    private void OnDelete (object o, DeleteEventArgs args) {
-    		CloseDialog();
-    }
-    
-    private void OnCancel (object o, EventArgs args) {
-    		CloseDialog();
-    }
-    
-    private void OnOpen (object o, EventArgs args) {
-     	string fileName = dialog.Filename;
-		GUI.Open(fileName);
-		CloseDialog();    		
-    }
 
 }
 
