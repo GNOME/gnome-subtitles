@@ -28,12 +28,6 @@ public class AboutDialog : GladeWidget {
 		dialog.TransientFor = gui.Window;
 		dialog.Version = gui.Core.ExecutionInfo.Version;
 	}
-    
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-    private void OnClose (object o, EventArgs args) {
-    }
 
 }
 
