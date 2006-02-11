@@ -26,9 +26,9 @@ namespace GnomeSubtitles {
 
 /* Renders a spin button which can hold a number (frames) or text (time) */
 public class CellRendererSpinButton : CellRendererText {
-	private string path = String.Empty;
 	private TimingMode timingMode = TimingMode.Times;
-	private event EditedHandler edited;	
+	private string path = String.Empty;
+	private event EditedHandler edited;
 
 	public CellRendererSpinButton (TimingMode timingMode) : base() {
 		this.timingMode = timingMode;
@@ -38,7 +38,7 @@ public class CellRendererSpinButton : CellRendererText {
 		get { return edited; }
 		set { edited = value; }	
 	}
-	
+
 	public TimingMode TimingMode {
 		get { return timingMode; }
 		set { timingMode = value; }
@@ -52,14 +52,13 @@ public class CellRendererSpinButton : CellRendererText {
 		this.Text = frames.ToString();
 	}
 	
-	 
+	
 	public override void GetSize (Widget widget, ref Rectangle cellArea, out int xOffset,
 			out int yOffset, out int width, out int height) {
 		
 		base.GetSize(widget, ref cellArea, out xOffset, out yOffset, out width, out height);
 		width += 20;	 //allow space for the spinbuttons
 		height += 4;
-		//Console.WriteLine("Width: " + width);
 	}
 	
 	public override CellEditable StartEditing (Gdk.Event evnt, Widget widget, string path,
@@ -85,8 +84,6 @@ public class CellRendererSpinButton : CellRendererText {
 		spinButton.ShowAll();
 		return spinButton;
 	}
-	
-
 	
 	private void OnEditingDone (object o, EventArgs args) {
 		EditedArgs editedArgs = new EditedArgs();
@@ -124,10 +121,8 @@ public class CellRendererSpinButton : CellRendererText {
 		return time.Hours.ToString("D2") + ":" + time.Minutes.ToString("D2") +
 				":" + time.Seconds.ToString("D2") + "." + time.Milliseconds.ToString("D3");
 	}
-	
-	
-	
-}
 
+
+}
 
 }

@@ -68,8 +68,7 @@ public class EventHandlers {
 	private void OnDelete (object o, DeleteEventArgs args) {
     		gui.Close();
     }
-	
-	
+
 
 }
 
