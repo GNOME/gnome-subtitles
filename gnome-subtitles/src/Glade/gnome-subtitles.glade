@@ -11,8 +11,8 @@
   <property name="type">GTK_WINDOW_TOPLEVEL</property>
   <property name="window_position">GTK_WIN_POS_NONE</property>
   <property name="modal">False</property>
-  <property name="default_width">500</property>
-  <property name="default_height">400</property>
+  <property name="default_width">680</property>
+  <property name="default_height">500</property>
   <property name="resizable">True</property>
   <property name="destroy_with_parent">False</property>
   <property name="decorated">True</property>
@@ -418,7 +418,7 @@
   <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
-  <signal name="delete_event" handler="OnDelete" last_modification_time="Sun, 15 Jan 2006 02:56:18 GMT"/>
+  <signal name="response" handler="OnResponse" last_modification_time="Sat, 11 Feb 2006 00:54:24 GMT"/>
 
   <child internal-child="vbox">
     <widget class="GtkVBox" id="dialogVBox">
@@ -441,7 +441,6 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <property name="response_id">-6</property>
-	      <signal name="clicked" handler="OnCancel" last_modification_time="Sun, 15 Jan 2006 02:56:28 GMT"/>
 	    </widget>
 	  </child>
 
@@ -456,7 +455,6 @@
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <property name="response_id">-5</property>
-	      <signal name="clicked" handler="OnOpen" last_modification_time="Sun, 15 Jan 2006 02:56:40 GMT"/>
 	    </widget>
 	  </child>
 	</widget>
@@ -563,7 +561,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</prop
   <property name="website_label"></property>
   <property name="authors">Pedro Castro &lt;noup@users.sourceforge.net&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
-  <signal name="close" handler="OnClose" last_modification_time="Mon, 06 Feb 2006 05:01:33 GMT"/>
 </widget>
 
 </glade-interface>

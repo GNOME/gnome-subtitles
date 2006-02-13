@@ -29,11 +29,11 @@ public class SubtitleView : GladeWidget {
 	private TreeView treeView = null;
 	
 	private Subtitles subtitles = null;
-	private TreeViewColumn numberCol = new TreeViewColumn();
-	private TreeViewColumn startCol = new TreeViewColumn();
-	private TreeViewColumn endCol = new TreeViewColumn();
-	private TreeViewColumn durationCol = new TreeViewColumn();
-	private TreeViewColumn textCol = new TreeViewColumn();
+	private TreeViewColumn numberCol = null;
+	private TreeViewColumn startCol = null;
+	private TreeViewColumn endCol = null;
+	private TreeViewColumn durationCol = null;
+	private TreeViewColumn textCol = null;
 
 	
 	public SubtitleView(GUI gui, Glade.XML glade) : base(gui, glade){
@@ -55,81 +55,55 @@ public class SubtitleView : GladeWidget {
     }
     
     public void UpdateTimingMode () {
-	    TimingMode timingMode = GUI.Core.Subtitles.Properties.TimingMode;
-	    (startCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    (endCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    (durationCol.CellRenderers[0] as CellRendererSpinButton).TimingMode = timingMode;
-	    if (timingMode == TimingMode.Frames) {
-	    		startCol.FixedWidth = endCol.FixedWidth = 75;
-	    		durationCol.FixedWidth = 55;
-	    }
-	    else {
-	    		startCol.FixedWidth = endCol.FixedWidth = durationCol.FixedWidth = 110;
-	    }
 	    treeView.QueueDraw();
     }
  
- 
+
+	private TreeViewColumn CreateColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
+		cell.Xalign = 0.5f;
+		cell.Yalign = 0;
+		TreeViewColumn column = new TreeViewColumn();
+		column.Alignment = 0.5f;
+		column.Title = title;
+		column.FixedWidth = width;
+		column.Sizing = TreeViewColumnSizing.Fixed;
+		column.Resizable = true;
+		column.PackStart(cell, true);
+		column.SetCellDataFunc(cell, dataFunction);
+		return column;
+	}
  	
     private void CreateColumns() {
-    		CellRendererText numberCell = new CellRendererText();
-    		numberCell.Xalign = 0.5f;
-    		numberCol.Title = "No.";
-    		numberCol.Alignment = 0.5f;
-    		numberCol.FixedWidth = 35;
-    		numberCol.Sizing = TreeViewColumnSizing.Fixed;
-    		numberCol.Resizable = true;
-    		numberCol.PackStart(numberCell, true);
-    		numberCol.SetCellDataFunc(numberCell, RenderNumberCell);
+    		numberCol = CreateColumn("No.", TextWidth("000"), new CellRendererText(), RenderNumberCell);
     		
-    		CellRendererSpinButton startCell = new CellRendererSpinButton(TimingMode.Times);
-    		startCell.Xalign = 0.5f;
-    		startCell.Editable = true;
-    		startCell.Edited = OnStartCellEdited;
-    		startCol.Title = "From";
-    		startCol.Alignment = 0.5f;
-    		startCol.FixedWidth = 100;
-    		startCol.Sizing = TreeViewColumnSizing.Fixed;
-    		startCol.Resizable = true;
-    		startCol.PackStart(startCell, true);
-    		startCol.SetCellDataFunc(startCell, RenderStartCell);
-
-    		CellRendererSpinButton endCell = new CellRendererSpinButton(TimingMode.Times);
-    		endCell.Xalign = 0.5f;
-    		endCell.Editable = true;
-    		endCell.Edited = OnEndCellEdited;
-    		endCol.Title = "To";
-    		endCol.Alignment = 0.5f;
-    		endCol.FixedWidth = 100;
-    		endCol.Sizing = TreeViewColumnSizing.Fixed;
-    		endCol.Resizable = true;
-    		endCol.PackStart(endCell, true);
-    		endCol.SetCellDataFunc(endCell, RenderEndCell);
+    		int timeWidth = TextWidth("00:00:00.000");
+    		startCol = CreateColumn("From", timeWidth, new CellRendererText(), RenderStartCell);
+    		endCol = CreateColumn("To", timeWidth, new CellRendererText(), RenderEndCell);
+    		durationCol = CreateColumn("During", timeWidth, new CellRendererText(), RenderDurationCell);
     		
-    		CellRendererSpinButton durationCell = new CellRendererSpinButton(TimingMode.Times);
-    		durationCell.Xalign = 0.5f;
-    		durationCell.Editable = true;
-    		durationCell.Edited = OnDurationCellEdited;
-    		durationCol.Title = "During";
-    		durationCol.Alignment = 0.5f;
-    		durationCol.FixedWidth = 100;
-    		durationCol.Sizing = TreeViewColumnSizing.Fixed;
-    		durationCol.Resizable = true;
-    		durationCol.PackStart(durationCell, true);
-    		durationCol.SetCellDataFunc(durationCell, RenderDurationCell);
-
-    		CellRendererText textCell = new CellRendererText();
-    		textCell.Editable = true;
-    		textCol.Title = "Text";
-    		textCol.PackStart(textCell, true);
-    		textCol.SetCellDataFunc(textCell, RenderTextCell);
-    		
+    		int textWidth = TextWidth("0123456789012345678901234567890123456789");
+    		textCol = CreateColumn("Text", textWidth, new CellRendererCenteredText(), RenderTextCell);
+    		    		
     		treeView.AppendColumn(numberCol);
     		treeView.AppendColumn(startCol);
     		treeView.AppendColumn(endCol);
     		treeView.AppendColumn(durationCol);
     		treeView.AppendColumn(textCol);
+    		treeView.AppendColumn(new TreeViewColumn());
     }
+    
+    
+    private int TextWidth(string text) {
+    		Pango.Layout layout = treeView.CreatePangoLayout(text);
+    		int margins = 10, width, height;
+    		layout.GetPixelSize(out width, out height);
+    		return width + margins;
+    }
+    
+	private string TimeSpanToText (TimeSpan time) {
+		return time.Hours.ToString("D2") + ":" + time.Minutes.ToString("D2") +
+				":" + time.Seconds.ToString("D2") + "." + time.Milliseconds.ToString("D3");
+	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
@@ -137,28 +111,28 @@ public class SubtitleView : GladeWidget {
 		(cell as CellRendererText).Text = (treeModel.GetPath(iter).Indices[0] + 1).ToString();
 	}
 
-	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
-		CellRendererSpinButton cellRenderer = (CellRendererSpinButton)cell;
-		if (cellRenderer.TimingMode == TimingMode.Frames)
-			cellRenderer.SetText(subtitles.GetSubtitle(iter).Frames.Start);
+	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+		CellRendererText cellRenderer = (CellRendererText)cell;
+		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.Start.ToString();
 		else
-			cellRenderer.SetText(subtitles.GetSubtitle(iter).Times.Start);
-	}	
-	
-	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
-		CellRendererSpinButton cellRenderer = (CellRendererSpinButton)cell;
-		if (cellRenderer.TimingMode == TimingMode.Frames)
-			cellRenderer.SetText(subtitles.GetSubtitle(iter).Frames.End);
-		else
-			cellRenderer.SetText(subtitles.GetSubtitle(iter).Times.End);
+			cellRenderer.Text = TimeSpanToText(subtitles.GetSubtitle(iter).Times.Start);
 	}
 	
-	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
-		CellRendererSpinButton cellRenderer = (CellRendererSpinButton)cell;
-		if (cellRenderer.TimingMode == TimingMode.Frames)
-			cellRenderer.SetText(subtitles.GetSubtitle(iter).Frames.Duration);
+	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+		CellRendererText cellRenderer = (CellRendererText)cell;
+		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.End.ToString();
 		else
-			cellRenderer.SetText(subtitles.GetSubtitle(iter).Times.Duration);
+			cellRenderer.Text = TimeSpanToText(subtitles.GetSubtitle(iter).Times.End);
+	}
+	
+	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+		CellRendererText cellRenderer = (CellRendererText)cell;
+		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.Duration.ToString();
+		else
+			cellRenderer.Text = TimeSpanToText(subtitles.GetSubtitle(iter).Times.Duration);
 	}
 	
 	private void RenderTextCell (TreeViewColumn column, CellRenderer cellRenderer, TreeModel treeModel, TreeIter iter) {
@@ -181,29 +155,45 @@ public class SubtitleView : GladeWidget {
 		else
 			cell.Underline = Pango.Underline.None;
 	}
-	
-	private void OnStartCellEdited (object o, EditedArgs args) {
-		if ((o as CellRendererSpinButton).TimingMode == TimingMode.Frames)
-			subtitles.GetSubtitle(args.Path).Frames.Start = Convert.ToInt32(args.NewText);
-		else
-			subtitles.GetSubtitle(args.Path).Times.Start = TimeSpan.Parse(args.NewText);
-    }
-    
-    private void OnEndCellEdited (object o, EditedArgs args) {
-		if ((o as CellRendererSpinButton).TimingMode == TimingMode.Frames)
-			subtitles.GetSubtitle(args.Path).Frames.End = Convert.ToInt32(args.NewText);
-		else
-			subtitles.GetSubtitle(args.Path).Times.End = TimeSpan.Parse(args.NewText);
-    }
-    
-     private void OnDurationCellEdited (object o, EditedArgs args) {
-		if ((o as CellRendererSpinButton).TimingMode == TimingMode.Frames)
-			subtitles.GetSubtitle(args.Path).Frames.Duration = Convert.ToInt32(args.NewText);
-		else
-			subtitles.GetSubtitle(args.Path).Times.Duration = TimeSpan.Parse(args.NewText);
-    }
-
-    
+	   
 }
+
+
+public class CellRendererCenteredText : CellRendererText {
+
+	protected override void Render (Drawable window, Widget widget, Rectangle backgroundArea,
+			Rectangle cellArea, Rectangle exposeArea, CellRendererState flags) {
+
+		int xOffset, yOffset, width, height;
+		GetSize(widget, ref cellArea, out xOffset, out yOffset, out width, out height);
+
+		StateType state;
+		if (!this.Sensitive)
+			state = StateType.Insensitive;
+		else if ((flags & CellRendererState.Selected) == CellRendererState.Selected)
+			state = (widget.HasFocus ? StateType.Selected : StateType.Active);
+		else if (((flags & CellRendererState.Prelit) == CellRendererState.Prelit) && (widget.State == StateType.Prelight))
+			state = StateType.Prelight;
+		else
+			state = (widget.State == StateType.Insensitive ? StateType.Insensitive : StateType.Normal);
+		
+		Pango.Layout layout = widget.CreatePangoLayout(null);
+		layout.Alignment = Pango.Alignment.Center;
+		Pango.FontDescription fontDescription = new Pango.FontDescription();
+		fontDescription.Style = Style;
+		fontDescription.Weight = (Pango.Weight)Weight;
+		layout.FontDescription = fontDescription;
+		
+		if (Underline != Pango.Underline.None)
+			layout.SetMarkup("<u>" + Text + "</u>");
+		else
+			layout.SetText(Text);
+
+		Gtk.Style.PaintLayout(widget.Style, window, state, true, cellArea, widget,
+			"cellrenderertext", cellArea.X + xOffset, cellArea.Y + yOffset, layout);			
+	}
+
+}
+
 
 }
