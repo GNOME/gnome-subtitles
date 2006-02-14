@@ -28,12 +28,15 @@ public class GUI : GladeWidget {
 	private ApplicationCore core = null;
 	private App window = null;
 	private SubtitleView subtitleView = null;	
+	private SubtitleEdit subtitleEdit = null;
 	
 	public GUI(ExecutionInfo executionInfo) {
 		core = new ApplicationCore(executionInfo);
 		Init(executionInfo.GladeMasterFileName, WidgetNames.MainWindow, new EventHandlers(this));
 		window = (App)GetWidget(WidgetNames.MainWindow);
 		subtitleView = new SubtitleView(this, this.Glade);
+		subtitleEdit = new SubtitleEdit(this, this.Glade);
+		
 		if (executionInfo.Args.Length > 0)
 			Open(executionInfo.Args[0]);
 		core.Program.Run();
@@ -45,6 +48,10 @@ public class GUI : GladeWidget {
 	
 	public App Window {
 		get { return window; }
+	}
+	
+	public SubtitleEdit SubtitleEdit {
+		get { return subtitleEdit; }
 	}
     
     
@@ -67,6 +74,7 @@ public class GUI : GladeWidget {
 	public void SetTimingMode (TimingMode mode) {
 		core.Subtitles.Properties.TimingMode = mode;
 		subtitleView.UpdateTimingMode();
+		subtitleEdit.UpdateTimingMode();
 	}
 
 
@@ -82,6 +90,7 @@ public class GUI : GladeWidget {
 	    		timesMenuItem.Active = true;
 
 		subtitleView.NewDocument();
+		subtitleEdit.NewDocument();
 		window.Title = core.Subtitles.Properties.FileName + " - " + core.ExecutionInfo.Name;
 	}
 
