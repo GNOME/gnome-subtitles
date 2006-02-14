@@ -25,7 +25,6 @@ using SubLib.Domain;
 namespace GnomeSubtitles {
 
 public class SubtitleView : GladeWidget {
-	private Widget scrollArea = null;
 	private TreeView treeView = null;
 	
 	private Subtitles subtitles = null;
@@ -38,10 +37,9 @@ public class SubtitleView : GladeWidget {
 	
 	public SubtitleView(GUI gui, Glade.XML glade) : base(gui, glade){
 		treeView = (TreeView)GetWidget(WidgetNames.SubtitleView);
-		scrollArea = treeView.Parent;
 		CreateColumns();
     }
-    
+
     public TreeView Widget {
     		get { return treeView; }
     }
@@ -49,9 +47,12 @@ public class SubtitleView : GladeWidget {
     public void NewDocument () {
 	    	subtitles = GUI.Core.Subtitles;
 	    treeView.Model = subtitles.Model;
+	    ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
 	    scrollArea.Sensitive = true;
-	    scrollArea.Visible = true;	
+	    scrollArea.Visible = true;
+	    scrollArea.ShadowType = ShadowType.In;	
 	    UpdateTimingMode();
+	    treeView.Selection.Changed += OnSelected;
     }
     
     public void UpdateTimingMode () {
@@ -74,14 +75,14 @@ public class SubtitleView : GladeWidget {
 	}
  	
     private void CreateColumns() {
-    		numberCol = CreateColumn("No.", TextWidth("000"), new CellRendererText(), RenderNumberCell);
+    		numberCol = CreateColumn("No.", ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
     		
-    		int timeWidth = TextWidth("00:00:00.000");
+    		int timeWidth = ColumnWidth("00:00:00.000");
     		startCol = CreateColumn("From", timeWidth, new CellRendererText(), RenderStartCell);
     		endCol = CreateColumn("To", timeWidth, new CellRendererText(), RenderEndCell);
     		durationCol = CreateColumn("During", timeWidth, new CellRendererText(), RenderDurationCell);
     		
-    		int textWidth = TextWidth("0123456789012345678901234567890123456789");
+    		int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
     		textCol = CreateColumn("Text", textWidth, new CellRendererCenteredText(), RenderTextCell);
     		    		
     		treeView.AppendColumn(numberCol);
@@ -91,22 +92,19 @@ public class SubtitleView : GladeWidget {
     		treeView.AppendColumn(textCol);
     		treeView.AppendColumn(new TreeViewColumn());
     }
-    
-    
-    private int TextWidth(string text) {
-    		Pango.Layout layout = treeView.CreatePangoLayout(text);
-    		int margins = 10, width, height;
-    		layout.GetPixelSize(out width, out height);
-    		return width + margins;
-    }
-    
-	private string TimeSpanToText (TimeSpan time) {
-		return time.Hours.ToString("D2") + ":" + time.Minutes.ToString("D2") +
-				":" + time.Seconds.ToString("D2") + "." + time.Milliseconds.ToString("D3");
+
+	private int ColumnWidth (string text) {
+		const int margins = 10;
+		return Utility.TextWidth(treeView, text, margins);
+	}
+	
+	private void OnSelected (object o, EventArgs args) {
+		TreeIter iter;
+		(o as TreeSelection).GetSelected(out iter);
+		Subtitle subtitle = subtitles.GetSubtitle(iter);
+		GUI.SubtitleEdit.ShowSubtitle(subtitle);
 	}
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
-	
 	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
 		(cell as CellRendererText).Text = (treeModel.GetPath(iter).Indices[0] + 1).ToString();
 	}
@@ -116,7 +114,7 @@ public class SubtitleView : GladeWidget {
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
 			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.Start.ToString();
 		else
-			cellRenderer.Text = TimeSpanToText(subtitles.GetSubtitle(iter).Times.Start);
+			cellRenderer.Text = Utility.TimeSpanToText(subtitles.GetSubtitle(iter).Times.Start);
 	}
 	
 	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
@@ -124,7 +122,7 @@ public class SubtitleView : GladeWidget {
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
 			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.End.ToString();
 		else
-			cellRenderer.Text = TimeSpanToText(subtitles.GetSubtitle(iter).Times.End);
+			cellRenderer.Text = Utility.TimeSpanToText(subtitles.GetSubtitle(iter).Times.End);
 	}
 	
 	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
@@ -132,7 +130,7 @@ public class SubtitleView : GladeWidget {
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
 			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.Duration.ToString();
 		else
-			cellRenderer.Text = TimeSpanToText(subtitles.GetSubtitle(iter).Times.Duration);
+			cellRenderer.Text = Utility.TimeSpanToText(subtitles.GetSubtitle(iter).Times.Duration);
 	}
 	
 	private void RenderTextCell (TreeViewColumn column, CellRenderer cellRenderer, TreeModel treeModel, TreeIter iter) {
@@ -155,7 +153,7 @@ public class SubtitleView : GladeWidget {
 		else
 			cell.Underline = Pango.Underline.None;
 	}
-	   
+		
 }
 
 
