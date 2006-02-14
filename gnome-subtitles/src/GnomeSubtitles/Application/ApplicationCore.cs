@@ -81,6 +81,12 @@ public class WidgetNames {
 	public const string OpenSubtitleDialog = "openSubtitleDialog";
 	public const string SaveSubtitleDialog = "saveSubtitleDialog";
 	
+	public const string SubtitleEditHBox = "editAreaHBox";
+	public const string StartSpinButton = "startSpinButton";
+	public const string EndSpinButton = "endSpinButton";
+	public const string DurationSpinButton = "durationSpinButton";
+	public const string SubtitleTextView = "subtitleTextView";
+	
 
 }
 
