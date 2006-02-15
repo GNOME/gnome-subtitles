@@ -89,8 +89,8 @@ public class GUI : GladeWidget {
 	    	else
 	    		timesMenuItem.Active = true;
 
-		subtitleView.NewDocument();
-		subtitleEdit.NewDocument();
+		subtitleView.Show();
+		subtitleEdit.Show();
 		window.Title = core.Subtitles.Properties.FileName + " - " + core.ExecutionInfo.Name;
 	}
 
