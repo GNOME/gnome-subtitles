@@ -44,7 +44,7 @@ public class SubtitleView : GladeWidget {
     		get { return treeView; }
     }
   
-    public void NewDocument () {
+    public void Show () {
 	    	subtitles = GUI.Core.Subtitles;
 	    treeView.Model = subtitles.Model;
 	    ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
@@ -53,6 +53,8 @@ public class SubtitleView : GladeWidget {
 	    scrollArea.ShadowType = ShadowType.In;	
 	    UpdateTimingMode();
 	    treeView.Selection.Changed += OnSelected;
+	    treeView.Selection.SelectPath(TreePath.NewFirst());
+	    treeView.GrabFocus();
     }
     
     public void UpdateTimingMode () {
@@ -136,6 +138,10 @@ public class SubtitleView : GladeWidget {
 	private void RenderTextCell (TreeViewColumn column, CellRenderer cellRenderer, TreeModel treeModel, TreeIter iter) {
 		CellRendererText cell = (CellRendererText)cellRenderer;
 		Subtitle subtitle = subtitles.GetSubtitle(iter);
+		if (subtitle.Text.IsEmpty) {
+			cell.Text = " ";
+			return;
+		}
 		cell.Text = subtitle.Text.Get();
 		
 		if (subtitle.Style.Italic)
