@@ -44,6 +44,16 @@ public class Subtitles : SubLib.Domain.Subtitles {
     		model.GetIter(out iter, new TreePath(path));
     		return GetSubtitle(iter);	
 	}
+	
+	public void Add (Subtitle subtitle) {
+		Collection.Add(subtitle);
+		model.AppendValues(subtitle);
+	}
+	
+	public void Add (Subtitle subtitle, int index) {
+		Collection.Add(subtitle, index);
+		model.SetValue(model.Insert(index), 0, subtitle);
+	}
 
 	
 	public void ReLoad () {
