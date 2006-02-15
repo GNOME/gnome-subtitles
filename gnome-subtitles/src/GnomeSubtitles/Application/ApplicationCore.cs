@@ -17,8 +17,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using System;
 using System.IO;
 using SubLib.Application;
+using SubLib.Domain;
 
 namespace GnomeSubtitles {
 
@@ -52,7 +54,8 @@ public class ApplicationCore {
 	
 	public void New () {
 		SubtitleFactory factory = new SubtitleFactory();
-		subtitles = new Subtitles(factory.NewWithName("Unsaved Subtitles"));	
+		subtitles = new Subtitles(factory.NewWithName("Unsaved Subtitles"));
+		CheckSubtitleCount();	
 	}
 	
 	public void Open (string fileName) {
@@ -65,8 +68,16 @@ public class ApplicationCore {
 			openedSubtitles = factory.New(fileName);		
 		}
 		subtitles = new Subtitles(openedSubtitles);
+		CheckSubtitleCount();
 	}
 	
+	
+	private void CheckSubtitleCount () {
+		if (subtitles.Collection.Count == 0){
+			Subtitle subtitle = new Subtitle(subtitles.Properties, TimeSpan.Zero, TimeSpan.FromSeconds(3.5));
+			subtitles.Add(subtitle);
+		}
+	}
 	
 }
 
