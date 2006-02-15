@@ -56,7 +56,7 @@ public class SubtitleEdit : GladeWidget {
     }
     
     
-    public void NewDocument () {
+    public void Show () {
 		Widget hBox = GetWidget(WidgetNames.SubtitleEditHBox);
     		hBox.Sensitive = true;
     		hBox.Visible = true;
@@ -164,22 +164,3 @@ public class SubtitleEdit : GladeWidget {
 }
 
 }
-
-
-/*
-
-
-    		TextView text = (TextView)GetWidget("textview1");
-		text.PixelsAboveLines = 10;
-
-
-	    	TextTag tag = new TextTag("big");
-    		//tag.Justification = Justification.Left;
-		tag.Scale = Pango.Scale.XXLarge;
-    		text.Buffer.TagTable.Add(tag);
-	    text.Buffer.Text = "0123456789012345678901234567890123456789\n0123456789012345678901234567890123456789";
-    		
-    		text.Buffer.ApplyTag(tag, text.Buffer.StartIter, text.Buffer.EndIter);
-
-
-*/
