@@ -50,6 +50,10 @@ public class GUI : GladeWidget {
 		get { return window; }
 	}
 	
+	public SubtitleView SubtitleView {
+		get { return subtitleView; }
+	}
+	
 	public SubtitleEdit SubtitleEdit {
 		get { return subtitleEdit; }
 	}
