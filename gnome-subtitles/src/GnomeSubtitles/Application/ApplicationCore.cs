@@ -60,6 +60,7 @@ public class ApplicationCore {
 	
 	public void Open (string fileName) {
 		SubtitleFactory factory = new SubtitleFactory();
+		factory.BeVerbose = true;
 		SubLib.Domain.Subtitles openedSubtitles;
 		try {
 			openedSubtitles = factory.Open(fileName);
