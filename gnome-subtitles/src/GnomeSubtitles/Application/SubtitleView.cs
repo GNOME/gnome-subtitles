@@ -58,7 +58,17 @@ public class SubtitleView : GladeWidget {
     }
     
     public void UpdateTimingMode () {
+	    Refresh();
+    }
+    
+    public void Refresh () {
 	    treeView.QueueDraw();
+    }
+    
+    public void UpdateSelectedRow () {
+    		TreeIter iter;
+    		treeView.Selection.GetSelected(out iter);
+    		subtitles.UpdateSubtitle(iter);
     }
  
 

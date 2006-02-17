@@ -79,8 +79,11 @@ public class SubtitleEdit : GladeWidget {
 
     public void ShowSubtitle (Subtitle subtitle) {
     		this.subtitle = subtitle;
+
+   		textView.Buffer.Changed -= OnBufferChanged;
     		ShowTimings();
     		ShowText();
+    		textView.Buffer.Changed += OnBufferChanged;
     }
     
     private void ShowTimings () {
@@ -159,6 +162,12 @@ public class SubtitleEdit : GladeWidget {
 		spinButton.Text = MillisecondsToTimeText((int)spinButton.Value);
 		spinButton.Numeric = true;
 		args.RetVal = 1;
+	}
+	
+	private void OnBufferChanged (object o, EventArgs args) {
+		ApplyTags();
+		subtitle.Text.Set((o as TextBuffer).Text);
+		GUI.SubtitleView.UpdateSelectedRow();
 	}
 
 }
