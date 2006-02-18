@@ -37,7 +37,6 @@ public class GladeMainWidget {
 	
 	protected Glade.XML Glade {
 		get { return glade; }
-		set { glade = value; } //DELETE
 	}
 	
 	
