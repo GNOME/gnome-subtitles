@@ -305,10 +305,12 @@
 	      <child>
 		<widget class="GtkToolButton" id="toolbuttonUndo">
 		  <property name="visible">True</property>
+		  <property name="sensitive">False</property>
 		  <property name="stock_id">gtk-undo</property>
 		  <property name="visible_horizontal">True</property>
 		  <property name="visible_vertical">True</property>
 		  <property name="is_important">False</property>
+		  <signal name="clicked" handler="OnUndo" last_modification_time="Sat, 18 Feb 2006 20:58:38 GMT"/>
 		</widget>
 		<packing>
 		  <property name="expand">False</property>
@@ -319,10 +321,12 @@
 	      <child>
 		<widget class="GtkToolButton" id="toolbuttonRedo">
 		  <property name="visible">True</property>
+		  <property name="sensitive">False</property>
 		  <property name="stock_id">gtk-redo</property>
 		  <property name="visible_horizontal">True</property>
 		  <property name="visible_vertical">True</property>
 		  <property name="is_important">False</property>
+		  <signal name="clicked" handler="OnRedo" last_modification_time="Sat, 18 Feb 2006 20:58:48 GMT"/>
 		</widget>
 		<packing>
 		  <property name="expand">False</property>
