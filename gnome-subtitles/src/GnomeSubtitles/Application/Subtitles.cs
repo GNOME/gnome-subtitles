@@ -38,10 +38,10 @@ public class Subtitles : SubLib.Domain.Subtitles {
 	public Subtitle GetSubtitle (TreeIter iter) {
 		return (Subtitle)model.GetValue(iter, 0);
 	}
-	
-	public Subtitle GetSubtitle (string path) {
+
+	public Subtitle GetSubtitle (TreePath path) {
 		TreeIter iter;
-    		model.GetIter(out iter, new TreePath(path));
+    		model.GetIter(out iter, path);
     		return GetSubtitle(iter);	
 	}
 	
