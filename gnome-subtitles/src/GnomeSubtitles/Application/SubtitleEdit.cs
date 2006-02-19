@@ -89,7 +89,8 @@ public class SubtitleEdit : GladeWidget {
     private void ShowTimings () {
     		if (subtitle == null)
     			return;
-
+    			
+		DisconnectSpinButtonsChangedSignals();
     		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
 			startSpinButton.Value = subtitle.Frames.Start;
 			endSpinButton.Value = subtitle.Frames.End;
@@ -100,6 +101,7 @@ public class SubtitleEdit : GladeWidget {
 			endSpinButton.Value = subtitle.Times.End.TotalMilliseconds;
 			durationSpinButton.Value = subtitle.Times.Duration.TotalMilliseconds;
 		}
+		ConnectSpinButtonsChangedSignals();
     }
     
     private void ShowText () {
@@ -114,6 +116,18 @@ public class SubtitleEdit : GladeWidget {
     		textView.Buffer.Text = subtitle.Text.Get();    		
 		ApplyTags();    
     }
+    
+    private void ConnectSpinButtonsChangedSignals () {
+    		startSpinButton.ValueChanged += OnStartValueChanged;
+    		endSpinButton.ValueChanged += OnEndValueChanged;
+    		durationSpinButton.ValueChanged += OnDurationValueChanged;
+    	}
+    
+    private void DisconnectSpinButtonsChangedSignals () {
+    		startSpinButton.ValueChanged -= OnStartValueChanged;
+   		endSpinButton.ValueChanged -= OnEndValueChanged;
+   		durationSpinButton.ValueChanged -= OnDurationValueChanged;
+    	}
     
     private void ApplyTags () {
     		TextBuffer buffer = textView.Buffer;
@@ -168,6 +182,27 @@ public class SubtitleEdit : GladeWidget {
 		ApplyTags();
 		subtitle.Text.Set((o as TextBuffer).Text);
 		GUI.SubtitleView.UpdateSelectedRow();
+	}
+	
+	private void OnStartValueChanged (object o, EventArgs args) {
+		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+			GUI.Core.CommandManager.Execute(new ChangeStartCommand(GUI, subtitle, (int)startSpinButton.Value));
+		else
+			GUI.Core.CommandManager.Execute(new ChangeStartCommand(GUI, subtitle, TimeSpan.FromMilliseconds(startSpinButton.Value)));
+	}
+	
+	private void OnEndValueChanged (object o, EventArgs args) {
+		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+			GUI.Core.CommandManager.Execute(new ChangeEndCommand(GUI, subtitle, (int)endSpinButton.Value));
+		else
+			GUI.Core.CommandManager.Execute(new ChangeEndCommand(GUI, subtitle, TimeSpan.FromMilliseconds(endSpinButton.Value)));
+	}
+	
+	private void OnDurationValueChanged (object o, EventArgs args) {
+		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+			GUI.Core.CommandManager.Execute(new ChangeDurationCommand(GUI, subtitle, (int)durationSpinButton.Value));
+		else
+			GUI.Core.CommandManager.Execute(new ChangeDurationCommand(GUI, subtitle, TimeSpan.FromMilliseconds(durationSpinButton.Value)));
 	}
 
 }

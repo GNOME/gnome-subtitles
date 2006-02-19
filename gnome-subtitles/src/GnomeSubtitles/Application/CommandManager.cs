@@ -17,21 +17,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gtk;
+using System;
 using System.Collections;
+using SubLib.Domain;
 
 namespace GnomeSubtitles {
 
 public class CommandManager {
 	private int limit = 25;
 	private Command[] commands = null;
+
 	
 	private int undoCount = 0;
 	private int redoCount = 0;
 	private int iterator = 0;
 	
-	public CommandManager (int undoLimit) {
+	public event EventHandler UndoToggled;
+	public event EventHandler RedoToggled;
+
+	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled) {
 		limit = undoLimit;
-		commands = new Command[undoLimit];	
+		commands = new Command[undoLimit];
+		UndoToggled += onUndoToggled;
+		RedoToggled += onRedoToggled;
 	}
 	
 	public bool CanUndo {
@@ -41,7 +50,7 @@ public class CommandManager {
 	public bool CanRedo {
 		get { return redoCount > 0; }
 	}
-
+	
 	public void Execute (Command command) {
 		command.Execute();
 		ProcessExecute(command);
@@ -50,7 +59,7 @@ public class CommandManager {
 	public void Undo () {
 		if (!CanUndo)
 			return;
-			
+		
 		ProcessUndo();	
 		GetCommand().UnExecute();
 	}
@@ -62,26 +71,70 @@ public class CommandManager {
 		GetCommand().Execute();
 		ProcessRedo();	
 	}
-	
-	
+
 
 	private void ProcessExecute (Command command) {
-		commands[iterator] = command;
-		Next();
-		undoCount = IncrementCount(undoCount);
+		bool couldUndoBefore = CanUndo;
+		bool couldRedoBefore = CanRedo;
+		
+		bool canGroup = false;
+		if (CanUndo && (command is GroupableCommand)) {
+			Command lastCommand = commands[iterator - 1];
+			if ((lastCommand.GetType() == command.GetType()) && (lastCommand as GroupableCommand).CanGroupWith(command))
+				canGroup = true;
+		}
+		
+		if (!canGroup) {
+			commands[iterator] = command;
+			Next();
+			undoCount = IncrementCount(undoCount);
+		}
+		
 		ClearRedo();
+		
+		if (!couldUndoBefore)
+			EmitUndoToggled();
+			
+		if (couldRedoBefore)
+			EmitRedoToggled();
 	}
 	
 	private void ProcessUndo () {
+		bool couldRedoBefore = CanRedo;
+	
 		Previous();
 		undoCount = DecrementCount(undoCount);
 		redoCount = IncrementCount(redoCount);
+		
+		if (!CanUndo)
+			EmitUndoToggled();
+		
+		if (!couldRedoBefore)
+			EmitRedoToggled();
 	}
 	
 	private void ProcessRedo () {
+		bool couldUndoBefore = CanUndo;
+	
 		Next();
 		undoCount = IncrementCount(undoCount);
 		redoCount = DecrementCount(redoCount);	
+		
+		if (!CanRedo)
+			EmitRedoToggled();
+			
+		if (!couldUndoBefore)
+			EmitUndoToggled();
+	}
+	
+	private void EmitUndoToggled() {
+		if (UndoToggled != null)
+			UndoToggled(this, EventArgs.Empty);
+	}
+	
+	private void EmitRedoToggled() {
+		if (RedoToggled != null)
+			RedoToggled(this, EventArgs.Empty);
 	}
 	
 	private Command GetCommand () {
@@ -117,39 +170,155 @@ public class CommandManager {
 		redoCount = 0;
 	}
 
-
 }
 
 public abstract class Command {
+	private GUI gui = null;
 
-	
+	public Command (GUI gui) {
+		this.gui = gui;
+	}
+
+	protected GUI GUI {
+		get { return gui; }
+	}
+
 	public abstract void Execute ();
 	public abstract void UnExecute ();
-	
-	
-	
-	//SubCommands inside Command
+}
+
+public abstract class GroupableCommand : Command {
+
+	public GroupableCommand (GUI gui) : base(gui) {
+	}
+
+	public abstract bool CanGroupWith (Command command);
 
 }
 
-public class DisplayCommand : Command {
-	string todo = null;
-	string undo = null;
+public abstract class ChangeTimingCommand : GroupableCommand {
+	private TreePath path;
+	private Subtitle subtitle;
+	private TimeSpan storedTime;
+	private int storedFrames = -1;
 
-	public DisplayCommand (int num) {
-		todo = "I have executed " + num;	
-		undo = "I have Unexecuted " + num;	
+	
+	public ChangeTimingCommand (GUI gui, Subtitle subtitle, int frames): base(gui) {
+		this.path = GUI.SubtitleView.Widget.Selection.GetSelectedRows()[0];
+		this.subtitle = subtitle;
+		this.storedFrames = frames;
+	}
+	
+	public ChangeTimingCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui) {
+		this.path = GUI.SubtitleView.Widget.Selection.GetSelectedRows()[0];
+		this.subtitle = subtitle;
+		this.storedTime = time;
+	}
+	
+	protected Subtitle Subtitle {
+		get { return subtitle; }
+	}
+	
+	public TreePath Path {
+		get { return path; }
+	}
+	
+	public override bool CanGroupWith (Command command) {
+		return (path.Compare((command as ChangeTimingCommand).Path) == 0);	
 	}
 
 	public override void Execute () {
-		System.Console.WriteLine(todo);	
+		TimeSpan previousTime = GetPreviousTime();
+		if (storedFrames == -1)
+			SetTime(storedTime);
+		else {
+			SetFrames(storedFrames);
+			storedFrames = -1;
+		}
+			
+		storedTime = previousTime;
+		SubtitleView subtitleView = GUI.SubtitleView;
+		TreeSelection selection = subtitleView.Widget.Selection;
+		if (!selection.PathIsSelected(path))
+			selection.SelectPath(path);
+		else
+			subtitleView.Refresh();
 	}
 	
 	public override void UnExecute () {
-		System.Console.WriteLine(undo);
+		Execute();		
+	}
+	
+	protected abstract TimeSpan GetPreviousTime ();
+	protected abstract void SetTime (TimeSpan storedTime);
+	protected abstract void SetFrames (int storedFrames);
+	
+}
+
+public class ChangeStartCommand : ChangeTimingCommand {
+
+	public ChangeStartCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames) {
+	}
+	
+	public ChangeStartCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time) {
+	}
+
+	protected override TimeSpan GetPreviousTime () {
+		return Subtitle.Times.Start;
+	}
+	
+	protected override void SetTime (TimeSpan storedTime) {
+		Subtitle.Times.Start = storedTime;
+	}
+	
+	protected override void SetFrames (int storedFrames) {
+		Subtitle.Frames.Start = storedFrames;
 	}
 
 }
 
+public class ChangeEndCommand : ChangeTimingCommand {
+
+	public ChangeEndCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames) {
+	}
+	
+	public ChangeEndCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time) {
+	}
+
+	protected override TimeSpan GetPreviousTime () {
+		return Subtitle.Times.End;
+	}
+	
+	protected override void SetTime (TimeSpan storedTime) {
+		Subtitle.Times.End = storedTime;
+	}
+	
+	protected override void SetFrames (int storedFrames) {
+		Subtitle.Frames.End = storedFrames;
+	}
+
+}
+
+public class ChangeDurationCommand : ChangeTimingCommand {
+
+	public ChangeDurationCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames) {
+	}
+	
+	public ChangeDurationCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time) {
+	}
+
+	protected override TimeSpan GetPreviousTime () {
+		return Subtitle.Times.Duration;
+	}
+	
+	protected override void SetTime (TimeSpan storedTime) {
+		Subtitle.Times.Duration = storedTime;
+	}
+	
+	protected override void SetFrames (int storedFrames) {
+		Subtitle.Frames.Duration = storedFrames;
+	}
+
+}
 
 }

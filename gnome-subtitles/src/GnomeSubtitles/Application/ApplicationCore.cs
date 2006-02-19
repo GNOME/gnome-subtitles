@@ -28,11 +28,15 @@ public class ApplicationCore {
 	private ExecutionInfo executionInfo = null;
 	private Gnome.Program program = null;
 	private Subtitles subtitles = null;
+	private EventHandlers handlers = null;
+	private CommandManager commandManager = null;
 	
-	public ApplicationCore (ExecutionInfo executionInfo) {
+	public ApplicationCore (ExecutionInfo executionInfo, GUI gui) {
 		this.executionInfo = executionInfo;
 		program = new Gnome.Program(executionInfo.ApplicationID,
 			executionInfo.Version, Gnome.Modules.UI, executionInfo.Args);
+		handlers = new EventHandlers(gui);
+		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled);
 	}
 
 	public ExecutionInfo ExecutionInfo {
@@ -45,6 +49,15 @@ public class ApplicationCore {
 	
 	public Subtitles Subtitles {
 		get { return subtitles; }
+	}
+	
+	public EventHandlers Handlers {
+		get { return handlers; }
+		set { handlers = value; }
+	}
+	
+	public CommandManager CommandManager {
+		get { return commandManager; }
 	}
 	
 	public bool IsLoaded {
@@ -88,6 +101,9 @@ public class WidgetNames {
 	
 	public const string TimesMenuItem = "timesMenuItem";
 	public const string FramesMenuItem = "framesMenuItem";
+	
+	public const string UndoButton = "toolbuttonUndo";
+	public const string RedoButton = "toolbuttonRedo";
 	
 	public const string AboutDialog = "aboutDialog";
 	public const string OpenSubtitleDialog = "openSubtitleDialog";
