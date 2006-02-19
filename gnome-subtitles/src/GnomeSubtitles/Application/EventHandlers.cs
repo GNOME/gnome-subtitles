@@ -26,14 +26,30 @@ namespace GnomeSubtitles {
 
 public class EventHandlers {
 	private GUI gui = null;
+	private Glade.XML glade = null;
 
-	public EventHandlers(GUI gui) {
+	public EventHandlers(GUI gui){
 		this.gui = gui;
     }
     
+    public void Init (Glade.XML glade) {
+	    	this.glade = glade;
+    }
+    
+    
+    public void OnUndoToggled (object o, EventArgs args) {
+    		ToolButton button = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
+		button.Sensitive = !button.Sensitive;
+    }
+    
+    public void OnRedoToggled (object o, EventArgs args) {
+    		ToolButton button = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
+		button.Sensitive = !button.Sensitive;
+    }
     
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
+	/*	File Menu	*/
 	
 	private void OnNew (object o, EventArgs args) {
 		gui.New();
@@ -51,6 +67,20 @@ public class EventHandlers {
 		gui.Close();
 	}
 	
+	
+	/*	Edit Menu	*/
+	
+	private void OnUndo (object o, EventArgs args) {
+		gui.Core.CommandManager.Undo();
+	}
+	
+	private void OnRedo (object o, EventArgs args) {
+		gui.Core.CommandManager.Redo();
+	}
+	
+	
+	/*	View Menu	*/
+	
 	private void OnTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
 			gui.SetTimingMode(TimingMode.Times);
@@ -61,9 +91,15 @@ public class EventHandlers {
 			gui.SetTimingMode(TimingMode.Frames);
 	}
 	
+	
+	/*	Help Menu	*/
+	
 	private void OnAbout (object o, EventArgs args) {
 		new AboutDialog(gui);
 	}
+	
+	
+	/*	Window	*/
 	
 	private void OnDelete (object o, DeleteEventArgs args) {
     		gui.Close();
