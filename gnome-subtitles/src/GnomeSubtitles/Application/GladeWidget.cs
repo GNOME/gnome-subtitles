@@ -21,31 +21,6 @@ using Gtk;
 
 namespace GnomeSubtitles {
 
-public class GladeMainWidget {
-	private Glade.XML glade = null;
-
-	protected GladeMainWidget () {}
-
-	protected void Init (string gladeMasterFileName, string widgetName) {
-		glade = new Glade.XML (gladeMasterFileName, widgetName);
-	}
-	
-	protected GladeMainWidget (Glade.XML glade) {
-		this.glade = glade;
-	}
-
-	
-	protected Glade.XML Glade {
-		get { return glade; }
-	}
-	
-	
-	protected Widget GetWidget(string widgetName) {
-		return glade.GetWidget(widgetName);
-	}
-
-}
-
 
 public class GladeWidget {
 	private Glade.XML glade = null;
@@ -77,7 +52,7 @@ public class GladeWidget {
 		glade = new Glade.XML (gladeMasterFileName, widgetName);
 		glade.Autoconnect(handler);
 	}
-	
+
 	protected Widget GetWidget(string widgetName) {
 		return glade.GetWidget(widgetName);
 	}
