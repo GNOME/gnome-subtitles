@@ -31,8 +31,10 @@ public class GUI : GladeWidget {
 	private SubtitleEdit subtitleEdit = null;
 	
 	public GUI(ExecutionInfo executionInfo) {
-		core = new ApplicationCore(executionInfo);
-		Init(executionInfo.GladeMasterFileName, WidgetNames.MainWindow, new EventHandlers(this));
+		core = new ApplicationCore(executionInfo, this);
+		Init(executionInfo.GladeMasterFileName, WidgetNames.MainWindow, core.Handlers);
+		core.Handlers.Init(this.Glade);
+		
 		window = (App)GetWidget(WidgetNames.MainWindow);
 		subtitleView = new SubtitleView(this, this.Glade);
 		subtitleEdit = new SubtitleEdit(this, this.Glade);
@@ -80,8 +82,6 @@ public class GUI : GladeWidget {
 		subtitleView.UpdateTimingMode();
 		subtitleEdit.UpdateTimingMode();
 	}
-
-
     
 	private void NewDocument () {
 		RadioMenuItem timesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.TimesMenuItem);
