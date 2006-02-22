@@ -20,7 +20,7 @@
 using Gnome;
 using Gtk;
 using System;
-using SubLib.Domain;
+using SubLib;
 
 namespace GnomeSubtitles {
 

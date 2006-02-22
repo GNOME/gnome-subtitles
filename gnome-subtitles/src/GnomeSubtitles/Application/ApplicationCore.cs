@@ -19,8 +19,7 @@
 
 using System;
 using System.IO;
-using SubLib.Application;
-using SubLib.Domain;
+using SubLib;
 
 namespace GnomeSubtitles {
 
@@ -74,7 +73,7 @@ public class ApplicationCore {
 	public void Open (string fileName) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.BeVerbose = true;
-		SubLib.Domain.Subtitles openedSubtitles;
+		SubLib.Subtitles openedSubtitles;
 		try {
 			openedSubtitles = factory.Open(fileName);
 		}

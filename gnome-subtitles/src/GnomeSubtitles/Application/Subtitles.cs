@@ -19,15 +19,15 @@
 
 using Gtk;
 using System;
-using SubLib.Domain;
+using SubLib;
 
 namespace GnomeSubtitles {
 
-public class Subtitles : SubLib.Domain.Subtitles {
+public class Subtitles : SubLib.Subtitles {
 	private ListStore model = new ListStore(typeof(Subtitle));
 
 	
-	public Subtitles (SubLib.Domain.Subtitles subtitles) : base(subtitles.Collection, subtitles.Properties) {
+	public Subtitles (SubLib.Subtitles subtitles) : base(subtitles.Collection, subtitles.Properties) {
 		ReLoad();
 	}
 	
