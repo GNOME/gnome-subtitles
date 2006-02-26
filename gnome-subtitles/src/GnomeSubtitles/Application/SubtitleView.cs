@@ -68,7 +68,7 @@ public class SubtitleView : GladeWidget {
     public void UpdateSelectedRow () {
     		TreeIter iter;
     		treeView.Selection.GetSelected(out iter);
-    		subtitles.UpdateSubtitle(iter);
+    		subtitles.EmitSubtitleChanged(iter);
     }
  
 

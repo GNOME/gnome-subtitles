@@ -183,10 +183,9 @@ public class SubtitleEdit : GladeWidget {
 	
 	private void OnBufferChanged (object o, EventArgs args) {
 		ApplyTags();
-		subtitle.Text.Set((o as TextBuffer).Text);
-		GUI.SubtitleView.UpdateSelectedRow();
+		GUI.Core.CommandManager.Execute(new ChangeTextCommand(GUI, subtitle, (o as TextBuffer).Text));
 	}
-	
+
 	private void OnStartValueChanged (object o, EventArgs args) {
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
 			GUI.Core.CommandManager.Execute(new ChangeStartCommand(GUI, subtitle, (int)startSpinButton.Value));

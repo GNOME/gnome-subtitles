@@ -55,7 +55,7 @@ public class Subtitles : SubLib.Subtitles {
 		model.SetValue(model.Insert(index), 0, subtitle);
 	}
 	
-	public void UpdateSubtitle (TreeIter iter) {
+	public void EmitSubtitleChanged (TreeIter iter) {
 		TreePath path = model.GetPath(iter);
 		model.EmitRowChanged(path, iter);	
 	}
