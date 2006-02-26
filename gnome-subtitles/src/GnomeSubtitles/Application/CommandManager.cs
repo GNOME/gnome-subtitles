@@ -35,12 +35,14 @@ public class CommandManager {
 	
 	public event EventHandler UndoToggled;
 	public event EventHandler RedoToggled;
+	public event EventHandler CommandActivated;
 
-	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled) {
+	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled, EventHandler onCommandActivated) {
 		limit = undoLimit;
 		commands = new Command[undoLimit];
 		UndoToggled += onUndoToggled;
 		RedoToggled += onRedoToggled;
+		CommandActivated += onCommandActivated;
 	}
 	
 	public bool CanUndo {
@@ -51,25 +53,41 @@ public class CommandManager {
 		get { return redoCount > 0; }
 	}
 	
+	public string UndoDescription {
+		get {
+			if (CanUndo)
+				return "Undo " + PreviousCommand().Description;
+			else
+				return String.Empty;
+		}
+	}
+	
+	public string RedoDescription {
+		get {
+			if (CanRedo)
+				return "Redo " + NextCommand().Description;
+			else
+				return String.Empty;
+		}
+	}
+	
 	public void Execute (Command command) {
 		command.Execute();
 		ProcessExecute(command);
 	}
 	
 	public void Undo () {
-		if (!CanUndo)
-			return;
-		
-		ProcessUndo();	
-		GetCommand().UnExecute();
+		if (CanUndo) {
+			PreviousCommand().UnExecute();
+			ProcessUndo();	
+		}
 	}
 	
 	public void Redo () {
-		if (!CanRedo)
-			return;
-			
-		GetCommand().Execute();
-		ProcessRedo();	
+		if (CanRedo) {
+			NextCommand().Execute();
+			ProcessRedo();
+		}
 	}
 
 
@@ -77,9 +95,11 @@ public class CommandManager {
 		bool couldUndoBefore = CanUndo;
 		bool couldRedoBefore = CanRedo;
 		
+		ClearRedo();
+		
 		bool canGroup = false;
 		if (CanUndo && (command is GroupableCommand)) {
-			Command lastCommand = commands[iterator - 1];
+			Command lastCommand = PreviousCommand();
 			if ((lastCommand.GetType() == command.GetType()) && (lastCommand as GroupableCommand).CanGroupWith(command))
 				canGroup = true;
 		}
@@ -88,15 +108,15 @@ public class CommandManager {
 			commands[iterator] = command;
 			Next();
 			undoCount = IncrementCount(undoCount);
+			EmitCommandActivated();
 		}
-		
-		ClearRedo();
-		
+
 		if (!couldUndoBefore)
 			EmitUndoToggled();
 			
 		if (couldRedoBefore)
 			EmitRedoToggled();
+
 	}
 	
 	private void ProcessUndo () {
@@ -111,6 +131,8 @@ public class CommandManager {
 		
 		if (!couldRedoBefore)
 			EmitRedoToggled();
+			
+		EmitCommandActivated();
 	}
 	
 	private void ProcessRedo () {
@@ -125,20 +147,30 @@ public class CommandManager {
 			
 		if (!couldUndoBefore)
 			EmitUndoToggled();
+		
+		EmitCommandActivated();
 	}
 	
-	private void EmitUndoToggled() {
+	private void EmitUndoToggled () {
 		if (UndoToggled != null)
 			UndoToggled(this, EventArgs.Empty);
 	}
 	
-	private void EmitRedoToggled() {
+	private void EmitRedoToggled () {
 		if (RedoToggled != null)
 			RedoToggled(this, EventArgs.Empty);
 	}
 	
-	private Command GetCommand () {
+	private void EmitCommandActivated () {
+		CommandActivated(this, EventArgs.Empty);
+	}
+	
+	private Command NextCommand () {
 		return commands[iterator];
+	}
+	
+	private Command PreviousCommand () {
+		return commands[iterator - 1];
 	}
 	
 	private void Next () {
