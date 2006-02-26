@@ -174,9 +174,15 @@ public class CommandManager {
 
 public abstract class Command {
 	private GUI gui = null;
+	private string description;
 
-	public Command (GUI gui) {
+	public Command (GUI gui, string description) {
 		this.gui = gui;
+		this.description = description;
+	}
+	
+	public string Description {
+		get { return description; }
 	}
 
 	protected GUI GUI {
@@ -189,7 +195,7 @@ public abstract class Command {
 
 public abstract class GroupableCommand : Command {
 
-	public GroupableCommand (GUI gui) : base(gui) {
+	public GroupableCommand (GUI gui, string description) : base(gui, description) {
 	}
 
 	public abstract bool CanGroupWith (Command command);
@@ -203,13 +209,13 @@ public abstract class ChangeTimingCommand : GroupableCommand {
 	private int storedFrames = -1;
 
 	
-	public ChangeTimingCommand (GUI gui, Subtitle subtitle, int frames): base(gui) {
+	public ChangeTimingCommand (GUI gui, Subtitle subtitle, int frames, string description): base(gui, description) {
 		this.path = GUI.SubtitleView.Widget.Selection.GetSelectedRows()[0];
 		this.subtitle = subtitle;
 		this.storedFrames = frames;
 	}
 	
-	public ChangeTimingCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui) {
+	public ChangeTimingCommand (GUI gui, Subtitle subtitle, TimeSpan time, string description): base(gui, description) {
 		this.path = GUI.SubtitleView.Widget.Selection.GetSelectedRows()[0];
 		this.subtitle = subtitle;
 		this.storedTime = time;
@@ -256,11 +262,12 @@ public abstract class ChangeTimingCommand : GroupableCommand {
 }
 
 public class ChangeStartCommand : ChangeTimingCommand {
+	private static string description = "Change From";
 
-	public ChangeStartCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames) {
+	public ChangeStartCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
 	}
 	
-	public ChangeStartCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time) {
+	public ChangeStartCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time, description) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
@@ -278,11 +285,12 @@ public class ChangeStartCommand : ChangeTimingCommand {
 }
 
 public class ChangeEndCommand : ChangeTimingCommand {
+	private static string description = "Change To";
 
-	public ChangeEndCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames) {
+	public ChangeEndCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
 	}
 	
-	public ChangeEndCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time) {
+	public ChangeEndCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time, description) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
@@ -300,11 +308,12 @@ public class ChangeEndCommand : ChangeTimingCommand {
 }
 
 public class ChangeDurationCommand : ChangeTimingCommand {
+	private static string description = "Change During";
 
-	public ChangeDurationCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames) {
+	public ChangeDurationCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
 	}
 	
-	public ChangeDurationCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time) {
+	public ChangeDurationCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time, description) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
