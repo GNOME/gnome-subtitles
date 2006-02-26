@@ -27,9 +27,12 @@ namespace GnomeSubtitles {
 public class EventHandlers {
 	private GUI gui = null;
 	private Glade.XML glade = null;
+	
+	Tooltips tooltips = new Tooltips();
 
 	public EventHandlers(GUI gui){
 		this.gui = gui;
+		tooltips.Enable();
     }
     
     public void Init (Glade.XML glade) {
@@ -45,6 +48,20 @@ public class EventHandlers {
     public void OnRedoToggled (object o, EventArgs args) {
     		ToolButton button = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
 		button.Sensitive = !button.Sensitive;
+    }
+    
+    public void OnCommandActivated (object o, EventArgs args) {
+    		CommandManager commandManager = gui.Core.CommandManager;
+    		if (commandManager.CanUndo) {
+    			ToolButton undoButton = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
+    			Console.WriteLine(undoButton.Sensitive);
+    			undoButton.SetTooltip(tooltips, commandManager.UndoDescription, null);
+    		}
+    		if (commandManager.CanRedo) {
+    			ToolButton redoButton = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
+    			Console.WriteLine(redoButton.Sensitive);
+    			redoButton.SetTooltip(tooltips, commandManager.RedoDescription, null);
+    		}
     }
     
 	#pragma warning disable 169		//Disables warning about handlers not being used
