@@ -54,12 +54,10 @@ public class EventHandlers {
     		CommandManager commandManager = gui.Core.CommandManager;
     		if (commandManager.CanUndo) {
     			ToolButton undoButton = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
-    			Console.WriteLine(undoButton.Sensitive);
     			undoButton.SetTooltip(tooltips, commandManager.UndoDescription, null);
     		}
     		if (commandManager.CanRedo) {
     			ToolButton redoButton = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
-    			Console.WriteLine(redoButton.Sensitive);
     			redoButton.SetTooltip(tooltips, commandManager.RedoDescription, null);
     		}
     }

@@ -279,8 +279,10 @@ public abstract class ChangeTimingCommand : GroupableCommand {
 		TreeSelection selection = subtitleView.Widget.Selection;
 		if (!selection.PathIsSelected(path))
 			selection.SelectPath(path);
-		else
+		else {
 			subtitleView.Refresh();
+			GUI.SubtitleEdit.ShowTimings();
+		}
 	}
 	
 	public override void UnExecute () {

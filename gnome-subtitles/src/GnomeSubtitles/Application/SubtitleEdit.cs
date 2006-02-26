@@ -80,13 +80,14 @@ public class SubtitleEdit : GladeWidget {
     public void ShowSubtitle (Subtitle subtitle) {
     		this.subtitle = subtitle;
 
-   		textView.Buffer.Changed -= OnBufferChanged;
-    		ShowTimings();
+		ShowTimings();
+
+  		textView.Buffer.Changed -= OnBufferChanged;    		
     		ShowText();
     		textView.Buffer.Changed += OnBufferChanged;
     }
     
-    private void ShowTimings () {
+    public void ShowTimings () {
     		if (subtitle == null)
     			return;
     			
