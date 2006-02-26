@@ -62,46 +62,48 @@ public class EventHandlers {
     		}
     }
     
-	#pragma warning disable 169		//Disables warning about handlers not being used
+    public void OnRowActivated (object o, RowActivatedArgs args) {
+    		gui.SubtitleEdit.TextGrabFocus();
+    }
 	
 	/*	File Menu	*/
 	
-	private void OnNew (object o, EventArgs args) {
+	public void OnNew (object o, EventArgs args) {
 		gui.New();
 	}
 	
-	private void OnOpen (object o, EventArgs args) {
+	public void OnOpen (object o, EventArgs args) {
 		new OpenSubtitleDialog(gui);
 	}
 	
-	private void OnSaveAs (object o, EventArgs args) {
+	public void OnSaveAs (object o, EventArgs args) {
 		new SaveSubtitleDialog(gui);
 	}
 	    
-    private void OnQuit (object o, EventArgs args) {
+    public void OnQuit (object o, EventArgs args) {
 		gui.Close();
 	}
 	
 	
 	/*	Edit Menu	*/
 	
-	private void OnUndo (object o, EventArgs args) {
+	public void OnUndo (object o, EventArgs args) {
 		gui.Core.CommandManager.Undo();
 	}
 	
-	private void OnRedo (object o, EventArgs args) {
+	public void OnRedo (object o, EventArgs args) {
 		gui.Core.CommandManager.Redo();
 	}
 	
 	
 	/*	View Menu	*/
 	
-	private void OnTimes (object o, EventArgs args) {
+	public void OnTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
 			gui.SetTimingMode(TimingMode.Times);
 	}
 
-	private void OnFrames (object o, EventArgs args) {
+	public void OnFrames (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
 			gui.SetTimingMode(TimingMode.Frames);
 	}
@@ -109,14 +111,14 @@ public class EventHandlers {
 	
 	/*	Help Menu	*/
 	
-	private void OnAbout (object o, EventArgs args) {
+	public void OnAbout (object o, EventArgs args) {
 		new AboutDialog(gui);
 	}
 	
 	
 	/*	Window	*/
 	
-	private void OnDelete (object o, DeleteEventArgs args) {
+	public void OnDelete (object o, DeleteEventArgs args) {
     		gui.Close();
     }
 

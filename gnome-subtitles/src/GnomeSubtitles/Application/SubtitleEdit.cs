@@ -79,12 +79,8 @@ public class SubtitleEdit : GladeWidget {
 
     public void ShowSubtitle (Subtitle subtitle) {
     		this.subtitle = subtitle;
-
 		ShowTimings();
-
-  		textView.Buffer.Changed -= OnBufferChanged;    		
     		ShowText();
-    		textView.Buffer.Changed += OnBufferChanged;
     }
     
     public void ShowTimings () {
@@ -105,7 +101,8 @@ public class SubtitleEdit : GladeWidget {
 		ConnectSpinButtonsChangedSignals();
     }
     
-    private void ShowText () {
+    public void ShowText () {
+    		textView.Buffer.Changed -= OnBufferChanged; 
     		subtitleTags.Clear();
     		if (subtitle.Style.Bold)
     			subtitleTags.Add(boldTag);
@@ -115,7 +112,12 @@ public class SubtitleEdit : GladeWidget {
     			subtitleTags.Add(underlineTag);
 
     		textView.Buffer.Text = subtitle.Text.Get();    		
-		ApplyTags();    
+		ApplyTags();   
+		textView.Buffer.Changed += OnBufferChanged; 
+    }
+    
+    public void TextGrabFocus () {
+    		textView.GrabFocus();
     }
     
     private void ConnectSpinButtonsChangedSignals () {
