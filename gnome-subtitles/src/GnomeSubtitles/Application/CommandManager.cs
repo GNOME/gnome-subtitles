@@ -271,17 +271,12 @@ public class ChangeTextCommand : GroupableCommand {
 	
 	public override void Undo () {
 		Execute();
-		Console.WriteLine("HEY");
 		
 		TreeSelection selection = GUI.SubtitleView.Widget.Selection;
-		if (!selection.PathIsSelected(path)) {
-			Console.WriteLine("Wasn't selected");
+		if (!selection.PathIsSelected(path))
 			selection.SelectPath(path);
-		}
-		else {
-			Console.WriteLine("Was selected");
+		else
 			GUI.SubtitleEdit.ShowText();
-		}
 	}
 }
 
