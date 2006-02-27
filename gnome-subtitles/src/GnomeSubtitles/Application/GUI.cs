@@ -42,7 +42,7 @@ public class GUI : GladeWidget {
 		if (executionInfo.Args.Length > 0)
 			Open(executionInfo.Args[0]);
 		else
-			SetDefaultInsensitiveItems();
+			SetStartUpSensitivity();
 			
 		core.Program.Run();
     }
@@ -85,36 +85,62 @@ public class GUI : GladeWidget {
 		subtitleView.UpdateTimingMode();
 		subtitleEdit.UpdateTimingMode();
 	}
-	
-	private void SetDefaultInsensitiveItems () {
-		GetWidget(WidgetNames.UndoMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.RedoMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.CutMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.CopyMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.PasteMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.ClearMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.PropertiesMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.SaveMenuItem).Sensitive = false;
-		GetWidget(WidgetNames.SaveAsMenuItem).Sensitive = false;
-		
-		GetWidget(WidgetNames.SaveButton).Sensitive = false;
-	}
     
 	private void NewDocument () {
-		SetDefaultInsensitiveItems();
-	
-		RadioMenuItem timesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.TimesMenuItem);
-		RadioMenuItem framesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.FramesMenuItem);
-		timesMenuItem.Sensitive = true;
-		framesMenuItem.Sensitive = true;
-		if (core.Subtitles.Properties.OriginalTimingMode == TimingMode.Frames)
-	    		framesMenuItem.Active = true;
-	    	else
-	    		timesMenuItem.Active = true;
+		SetNewDocumentSensitivity();
+		SetActiveTimingMode();
+		SetWindowTitle();
 
 		subtitleView.Show();
-		subtitleEdit.Show();
+		subtitleEdit.Show();	
+	}
+	
+	/* Only necessary because it isn't working in .glade */
+	private void SetStartUpSensitivity () {
+		SetUndoRedoSensitivity(false);
+		SetGlobalSensitivity(false);
+	}
+	
+	private void SetNewDocumentSensitivity () {
+		SetUndoRedoSensitivity(false);
+		SetGlobalSensitivity(true);
+	}
+	
+	private void SetActiveTimingMode () {
+		if (core.Subtitles.Properties.OriginalTimingMode == TimingMode.Frames)
+	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
+	    	else
+	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
+	}
+	
+	private void SetWindowTitle () {
 		window.Title = core.Subtitles.Properties.FileName + " - " + core.ExecutionInfo.Name;
+	}
+	
+	private void SetUndoRedoSensitivity (bool sensitivity) {
+		/* Edit Menu */
+		GetWidget(WidgetNames.UndoMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.RedoMenuItem).Sensitive = sensitivity;
+		
+		/* Toolbar */
+		GetWidget(WidgetNames.UndoButton).Sensitive = sensitivity;
+		GetWidget(WidgetNames.RedoButton).Sensitive = sensitivity;
+	}
+	
+	private void SetGlobalSensitivity (bool sensitivity) {
+		/* File Menu */
+		GetWidget(WidgetNames.SaveMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.SaveAsMenuItem).Sensitive = sensitivity;
+		/* Edit Menu */
+		GetWidget(WidgetNames.CutMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.CopyMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.PasteMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.ClearMenuItem).Sensitive = sensitivity;
+		/* View Menu */
+		GetWidget(WidgetNames.TimesMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.FramesMenuItem).Sensitive = sensitivity;
+		/* Toolbar */
+		GetWidget(WidgetNames.SaveButton).Sensitive = sensitivity;
 	}
 
 
