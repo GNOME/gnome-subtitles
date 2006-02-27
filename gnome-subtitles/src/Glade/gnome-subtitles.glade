@@ -44,7 +44,7 @@
 		  <property name="stock_item">GNOMEUIINFO_MENU_FILE_TREE</property>
 
 		  <child>
-		    <widget class="GtkMenu" id="menubarFileMenu">
+		    <widget class="GtkMenu" id="menubarFile_menu">
 
 		      <child>
 			<widget class="GtkImageMenuItem" id="newMenuItem">
@@ -103,11 +103,36 @@
 		  <property name="stock_item">GNOMEUIINFO_MENU_EDIT_TREE</property>
 
 		  <child>
-		    <widget class="GtkMenu" id="menubarEditMenu">
+		    <widget class="GtkMenu" id="menubarEdit_menu">
+
+		      <child>
+			<widget class="GtkImageMenuItem" id="undoMenuItem">
+			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
+			  <property name="stock_item">GNOMEUIINFO_MENU_UNDO_ITEM</property>
+			  <signal name="activate" handler="OnUndo" last_modification_time="Mon, 27 Feb 2006 00:26:44 GMT"/>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkImageMenuItem" id="redoMenuItem">
+			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
+			  <property name="stock_item">GNOMEUIINFO_MENU_REDO_ITEM</property>
+			  <signal name="activate" handler="OnRedo" last_modification_time="Mon, 27 Feb 2006 00:26:44 GMT"/>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkSeparatorMenuItem" id="separator1">
+			  <property name="visible">True</property>
+			</widget>
+		      </child>
 
 		      <child>
 			<widget class="GtkImageMenuItem" id="cutMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_CUT_ITEM</property>
 			</widget>
 		      </child>
@@ -142,6 +167,7 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="propertiesMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_PROPERTIES_ITEM</property>
 			</widget>
 		      </child>
@@ -169,7 +195,7 @@
 		  <property name="stock_item">GNOMEUIINFO_MENU_VIEW_TREE</property>
 
 		  <child>
-		    <widget class="GtkMenu" id="menubarViewMenu">
+		    <widget class="GtkMenu" id="menubarView_menu">
 
 		      <child>
 			<widget class="GtkRadioMenuItem" id="framesMenuItem">
@@ -204,7 +230,7 @@
 		  <property name="stock_item">GNOMEUIINFO_MENU_HELP_TREE</property>
 
 		  <child>
-		    <widget class="GtkMenu" id="menubarHelpMenu">
+		    <widget class="GtkMenu" id="menubarHelp_menu">
 
 		      <child>
 			<widget class="GtkImageMenuItem" id="aboutMenuItem">

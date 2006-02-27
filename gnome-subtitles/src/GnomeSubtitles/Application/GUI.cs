@@ -41,6 +41,9 @@ public class GUI : GladeWidget {
 		
 		if (executionInfo.Args.Length > 0)
 			Open(executionInfo.Args[0]);
+		else
+			SetDefaultInsensitiveItems();
+			
 		core.Program.Run();
     }
       
@@ -82,8 +85,24 @@ public class GUI : GladeWidget {
 		subtitleView.UpdateTimingMode();
 		subtitleEdit.UpdateTimingMode();
 	}
+	
+	private void SetDefaultInsensitiveItems () {
+		GetWidget(WidgetNames.UndoMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.RedoMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.CutMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.CopyMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.PasteMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.ClearMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.PropertiesMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.SaveMenuItem).Sensitive = false;
+		GetWidget(WidgetNames.SaveAsMenuItem).Sensitive = false;
+		
+		GetWidget(WidgetNames.SaveButton).Sensitive = false;
+	}
     
 	private void NewDocument () {
+		SetDefaultInsensitiveItems();
+	
 		RadioMenuItem timesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.TimesMenuItem);
 		RadioMenuItem framesMenuItem = (RadioMenuItem)GetWidget(WidgetNames.FramesMenuItem);
 		timesMenuItem.Sensitive = true;

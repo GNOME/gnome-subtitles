@@ -241,45 +241,6 @@ public abstract class GroupableCommand : Command {
 
 }
 
-public class ChangeTextCommand : GroupableCommand {
-	private static string description = "typing";
-	private TreePath path;
-	private Subtitle subtitle;
-	string storedText;
-
-	public ChangeTextCommand (GUI gui, Subtitle subtitle, string text) : base(gui, description) {
-		this.path = GUI.SubtitleView.Widget.Selection.GetSelectedRows()[0];
-		this.subtitle = subtitle;
-		this.storedText = text;	
-	}
-	
-	public TreePath Path {
-		get { return path; }
-	}
-	
-	//TODO: only group when it's text of the same word
-	public override bool CanGroupWith (Command command) {
-		return (path.Compare((command as ChangeTextCommand).Path) == 0);	
-	}
-	
-	public override void Execute () {
-		string previousText = subtitle.Text.Get();
-		subtitle.Text.Set(storedText);
-		storedText = previousText;
-		GUI.SubtitleView.UpdateSelectedRow();
-	}
-	
-	public override void Undo () {
-		Execute();
-		
-		TreeSelection selection = GUI.SubtitleView.Widget.Selection;
-		if (!selection.PathIsSelected(path))
-			selection.SelectPath(path);
-		else
-			GUI.SubtitleEdit.ShowText();
-	}
-}
-
 public abstract class ChangeTimingCommand : GroupableCommand {
 	private TreePath path;
 	private Subtitle subtitle;
@@ -338,7 +299,7 @@ public abstract class ChangeTimingCommand : GroupableCommand {
 }
 
 public class ChangeStartCommand : ChangeTimingCommand {
-	private static string description = "changing From";
+	private static string description = "Editing From";
 
 	public ChangeStartCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
 	}
@@ -361,7 +322,7 @@ public class ChangeStartCommand : ChangeTimingCommand {
 }
 
 public class ChangeEndCommand : ChangeTimingCommand {
-	private static string description = "changing To";
+	private static string description = "Editing To";
 
 	public ChangeEndCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
 	}
@@ -384,7 +345,7 @@ public class ChangeEndCommand : ChangeTimingCommand {
 }
 
 public class ChangeDurationCommand : ChangeTimingCommand {
-	private static string description = "changing During";
+	private static string description = "Editing During";
 
 	public ChangeDurationCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
 	}
@@ -404,6 +365,46 @@ public class ChangeDurationCommand : ChangeTimingCommand {
 		Subtitle.Frames.Duration = storedFrames;
 	}
 
+}
+
+
+public class ChangeTextCommand : GroupableCommand {
+	private static string description = "Editing Text";
+	private TreePath path;
+	private Subtitle subtitle;
+	string storedText;
+
+	public ChangeTextCommand (GUI gui, Subtitle subtitle, string text) : base(gui, description) {
+		this.path = GUI.SubtitleView.Widget.Selection.GetSelectedRows()[0];
+		this.subtitle = subtitle;
+		this.storedText = text;	
+	}
+	
+	public TreePath Path {
+		get { return path; }
+	}
+	
+	//TODO: only group when it's text of the same word
+	public override bool CanGroupWith (Command command) {
+		return (path.Compare((command as ChangeTextCommand).Path) == 0);	
+	}
+	
+	public override void Execute () {
+		string previousText = subtitle.Text.Get();
+		subtitle.Text.Set(storedText);
+		storedText = previousText;
+		GUI.SubtitleView.UpdateSelectedRow();
+	}
+	
+	public override void Undo () {
+		Execute();
+		
+		TreeSelection selection = GUI.SubtitleView.Widget.Selection;
+		if (!selection.PathIsSelected(path))
+			selection.SelectPath(path);
+		else
+			GUI.SubtitleEdit.ShowText();
+	}
 }
 
 }

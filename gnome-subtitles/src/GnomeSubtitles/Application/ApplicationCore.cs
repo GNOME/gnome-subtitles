@@ -98,9 +98,24 @@ public class WidgetNames {
 	public const string MainWindow = "mainWindow";
 	public const string SubtitleView = "subtitleListView";
 	
+	/*	File Menu	*/
+	public const string SaveMenuItem = "saveMenuItem";
+	public const string SaveAsMenuItem = "saveAsMenuItem";
+	
+	/*	Edit Menu	*/
+	public const string UndoMenuItem = "undoMenuItem";
+	public const string RedoMenuItem = "redoMenuItem";
+	public const string CutMenuItem = "cutMenuItem";
+	public const string CopyMenuItem = "copyMenuItem";
+	public const string PasteMenuItem = "pasteMenuItem";
+	public const string ClearMenuItem = "clearMenuItem";
+	public const string PropertiesMenuItem = "propertiesMenuItem";
+	
 	public const string TimesMenuItem = "timesMenuItem";
 	public const string FramesMenuItem = "framesMenuItem";
 	
+	/*	Toolbar	*/	
+	public const string SaveButton = "toolbuttonSave";
 	public const string UndoButton = "toolbuttonUndo";
 	public const string RedoButton = "toolbuttonRedo";
 	
@@ -114,7 +129,6 @@ public class WidgetNames {
 	public const string DurationSpinButton = "durationSpinButton";
 	public const string SubtitleTextView = "subtitleTextView";
 	
-
 }
 
 }

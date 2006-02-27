@@ -41,24 +41,40 @@ public class EventHandlers {
     
     
     public void OnUndoToggled (object o, EventArgs args) {
-    		ToolButton button = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
-		button.Sensitive = !button.Sensitive;
+    		Widget button = glade.GetWidget(WidgetNames.UndoButton);
+    		button.Sensitive = !button.Sensitive;
+    		
+		MenuItem menuItem = (MenuItem)glade.GetWidget(WidgetNames.UndoMenuItem);
+		menuItem.Sensitive = !menuItem.Sensitive;
+		if (!menuItem.Sensitive)
+			(menuItem.Child as Label).Text = "Undo";
     }
     
-    public void OnRedoToggled (object o, EventArgs args) {
-    		ToolButton button = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
-		button.Sensitive = !button.Sensitive;
+     public void OnRedoToggled (object o, EventArgs args) {
+    		Widget button = glade.GetWidget(WidgetNames.RedoButton);
+    		button.Sensitive = !button.Sensitive;
+    		
+		MenuItem menuItem = (MenuItem)glade.GetWidget(WidgetNames.RedoMenuItem);
+    		menuItem.Sensitive = !menuItem.Sensitive;
+    		if (!menuItem.Sensitive)
+			(menuItem.Child as Label).Text = "Redo";
     }
     
     public void OnCommandActivated (object o, EventArgs args) {
     		CommandManager commandManager = gui.Core.CommandManager;
     		if (commandManager.CanUndo) {
+    			string undoDescription = commandManager.UndoDescription;
     			ToolButton undoButton = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
-    			undoButton.SetTooltip(tooltips, commandManager.UndoDescription, null);
+    			undoButton.SetTooltip(tooltips, undoDescription, null);
+    			MenuItem undoMenuItem = (MenuItem)(glade.GetWidget(WidgetNames.UndoMenuItem));
+    			(undoMenuItem.Child as Label).Text = undoDescription;
     		}
     		if (commandManager.CanRedo) {
+	    		string redoDescription = commandManager.RedoDescription;
     			ToolButton redoButton = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
-    			redoButton.SetTooltip(tooltips, commandManager.RedoDescription, null);
+    			redoButton.SetTooltip(tooltips, redoDescription, null);
+    			MenuItem redoMenuItem = (MenuItem)(glade.GetWidget(WidgetNames.RedoMenuItem));
+    			(redoMenuItem.Child as Label).Text = redoDescription;
     		}
     }
     
