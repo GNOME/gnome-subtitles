@@ -27,6 +27,7 @@ namespace GnomeSubtitles {
 public class CommandManager {
 	private int limit = 25;
 	private Command[] commands = null;
+	private bool wasModified = false;
 
 	
 	private int undoCount = 0;
@@ -36,13 +37,16 @@ public class CommandManager {
 	public event EventHandler UndoToggled;
 	public event EventHandler RedoToggled;
 	public event EventHandler CommandActivated;
+	public event EventHandler Modified;
 
-	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled, EventHandler onCommandActivated) {
+	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled,
+			EventHandler onCommandActivated, EventHandler onModified) {
 		limit = undoLimit;
 		commands = new Command[undoLimit];
 		UndoToggled += onUndoToggled;
 		RedoToggled += onRedoToggled;
 		CommandActivated += onCommandActivated;
+		Modified += onModified;
 	}
 	
 	public bool CanUndo {
@@ -71,15 +75,22 @@ public class CommandManager {
 		}
 	}
 	
+	public bool WasModified {
+		get { return wasModified; }
+		set { wasModified = value; }	
+	}
+	
 	public void Execute (Command command) {
 		command.Execute();
 		ProcessExecute(command);
+		SetModified();
 	}
 	
 	public void Undo () {
 		if (CanUndo) {
 			PreviousCommand().Undo();
 			ProcessUndo();	
+			SetModified();
 		}
 	}
 	
@@ -87,6 +98,7 @@ public class CommandManager {
 		if (CanRedo) {
 			NextCommand().Redo();
 			ProcessRedo();
+			SetModified();
 		}
 	}
 
@@ -163,6 +175,13 @@ public class CommandManager {
 	
 	private void EmitCommandActivated () {
 		CommandActivated(this, EventArgs.Empty);
+	}
+	
+	private void SetModified () {
+		if (!wasModified) { //wasModified isn't set
+			wasModified = true;
+			Modified(this, EventArgs.Empty);		
+		}
 	}
 	
 	private Command NextCommand () {
