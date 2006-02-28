@@ -79,17 +79,37 @@ public class GUI : GladeWidget {
     		NewDocument();
     }
     
+    public void Save () {
+    		core.Subtitles.Save();
+    		core.CommandManager.WasModified = false;
+    		SetWindowTitle(false);
+    }
+    
+    public void SaveAs (string filePath, SubtitleType subtitleType) {
+    		Console.WriteLine("Saving as " + filePath + " " + subtitleType);
+    
+    
+    }
 	
 	public void SetTimingMode (TimingMode mode) {
 		core.Subtitles.Properties.TimingMode = mode;
 		subtitleView.UpdateTimingMode();
 		subtitleEdit.UpdateTimingMode();
 	}
+	
+	public void SetWindowTitle (bool modified) {
+		string prefix = (modified ? "*" : String.Empty);
+		window.Title = prefix + core.Subtitles.Properties.FileName +
+			" - " + core.ExecutionInfo.Name;
+	}
+    
+    
+    /* Private methods */
     
 	private void NewDocument () {
 		SetNewDocumentSensitivity();
 		SetActiveTimingMode();
-		SetWindowTitle();
+		SetWindowTitle(false);
 
 		subtitleView.Show();
 		subtitleEdit.Show();	
@@ -111,10 +131,6 @@ public class GUI : GladeWidget {
 	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
 	    	else
 	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
-	}
-	
-	private void SetWindowTitle () {
-		window.Title = core.Subtitles.Properties.FileName + " - " + core.ExecutionInfo.Name;
 	}
 	
 	private void SetUndoRedoSensitivity (bool sensitivity) {
