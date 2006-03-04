@@ -47,7 +47,7 @@ public class EventHandlers {
 	}
 	
 	public void OnOpen (object o, EventArgs args) {
-		new OpenSubtitleDialog(gui);
+		new OpenDialog(gui);
 	}
 	
 	public void OnSave (object o, EventArgs args) {
@@ -157,7 +157,7 @@ public class EventHandlers {
 
 	/***** Private methods *****/
 	private void SaveAs () {
-		new SaveSubtitleDialog(gui);
+		new SaveAsDialog(gui);
 	}
 
 }
