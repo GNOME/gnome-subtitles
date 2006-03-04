@@ -73,7 +73,7 @@ public class ApplicationCore {
 	
 	public void Open (string fileName) {
 		SubtitleFactory factory = new SubtitleFactory();
-		factory.BeVerbose = true;
+		factory.Verbose = true;
 		SubLib.Subtitles openedSubtitles;
 		try {
 			openedSubtitles = factory.Open(fileName);
@@ -92,47 +92,6 @@ public class ApplicationCore {
 			subtitles.Add(subtitle);
 		}
 	}
-	
-}
-
-public class WidgetNames {
-	public const string MainWindow = "mainWindow";
-	
-	/* File Menu */
-	public const string SaveMenuItem = "saveMenuItem";
-	public const string SaveAsMenuItem = "saveAsMenuItem";
-	
-	/* Edit Menu */
-	public const string UndoMenuItem = "undoMenuItem";
-	public const string RedoMenuItem = "redoMenuItem";
-	public const string CutMenuItem = "cutMenuItem";
-	public const string CopyMenuItem = "copyMenuItem";
-	public const string PasteMenuItem = "pasteMenuItem";
-	public const string ClearMenuItem = "clearMenuItem";
-	public const string PropertiesMenuItem = "propertiesMenuItem";
-	
-	public const string TimesMenuItem = "timesMenuItem";
-	public const string FramesMenuItem = "framesMenuItem";
-	
-	/* Toolbar */	
-	public const string SaveButton = "toolbuttonSave";
-	public const string UndoButton = "toolbuttonUndo";
-	public const string RedoButton = "toolbuttonRedo";
-	
-	/* Dialogs */
-	public const string AboutDialog = "aboutDialog";
-	public const string OpenSubtitleDialog = "openSubtitleDialog";
-	public const string SaveAsSubtitleDialog = "saveAsSubtitleDialog";
-	
-	/* Subtitle View */
-	public const string SubtitleView = "subtitleListView";
-	
-	/* Subtitle Edit */
-	public const string SubtitleEditHBox = "editAreaHBox";
-	public const string StartSpinButton = "startSpinButton";
-	public const string EndSpinButton = "endSpinButton";
-	public const string DurationSpinButton = "durationSpinButton";
-	public const string SubtitleTextView = "subtitleTextView";
 	
 }
 
