@@ -629,7 +629,7 @@
   </child>
 </widget>
 
-<widget class="GtkFileChooserDialog" id="openSubtitleDialog">
+<widget class="GtkFileChooserDialog" id="openDialog">
   <property name="visible">True</property>
   <property name="action">GTK_FILE_CHOOSER_ACTION_OPEN</property>
   <property name="local_only">True</property>
@@ -698,7 +698,7 @@
   </child>
 </widget>
 
-<widget class="GtkFileChooserDialog" id="saveAsSubtitleDialog">
+<widget class="GtkFileChooserDialog" id="saveAsDialog">
   <property name="visible">True</property>
   <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
   <property name="local_only">True</property>
@@ -771,7 +771,7 @@
 	  <property name="n_columns">2</property>
 	  <property name="homogeneous">False</property>
 	  <property name="row_spacing">10</property>
-	  <property name="column_spacing">15</property>
+	  <property name="column_spacing">10</property>
 
 	  <child>
 	    <widget class="GtkLabel" id="subtitleFormatLabel">
@@ -848,10 +848,7 @@
 	  <child>
 	    <widget class="GtkComboBox" id="encodingComboBox">
 	      <property name="visible">True</property>
-	      <property name="items" translatable="yes">lala
-lele
-lili
-lolo</property>
+	      <property name="items" translatable="yes"></property>
 	      <property name="add_tearoffs">False</property>
 	      <property name="focus_on_click">True</property>
 	    </widget>
