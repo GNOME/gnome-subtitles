@@ -20,6 +20,7 @@
 using Gnome;
 using Gtk;
 using System;
+using System.Text;
 using SubLib;
 
 namespace GnomeSubtitles {
@@ -85,10 +86,9 @@ public class GUI : GladeWidget {
     		SetWindowTitle(false);
     }
     
-    public void SaveAs (string filePath, SubtitleType subtitleType) {
-    		Console.WriteLine("Saving as " + filePath + " " + subtitleType);
-    
-    
+    public void SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
+		core.Subtitles.SaveAs(filePath, subtitleType, encoding);
+		SetWindowTitle(false);
     }
 	
 	public void SetTimingMode (TimingMode mode) {
