@@ -88,6 +88,7 @@ public class GUI : GladeWidget {
     
     public void SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
 		core.Subtitles.SaveAs(filePath, subtitleType, encoding);
+		SetActiveTimingMode();
 		SetWindowTitle(false);
     }
 	
@@ -127,7 +128,7 @@ public class GUI : GladeWidget {
 	}
 	
 	private void SetActiveTimingMode () {
-		if (core.Subtitles.Properties.OriginalTimingMode == TimingMode.Frames)
+		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames)
 	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
 	    	else
 	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
