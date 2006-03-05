@@ -19,6 +19,7 @@
 
 using System;
 using System.IO;
+using System.Text;
 using SubLib;
 
 namespace GnomeSubtitles {
@@ -72,9 +73,16 @@ public class ApplicationCore {
 	}
 	
 	public void Open (string fileName) {
+		Open(fileName, null);
+	}
+	
+	public void Open (string fileName, Encoding encoding) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
-		SubLib.Subtitles openedSubtitles;
+		if (encoding != null)
+			factory.Encoding = encoding;
+
+		SubLib.Subtitles openedSubtitles = null;
 		try {
 			openedSubtitles = factory.Open(fileName);
 		}
@@ -84,8 +92,8 @@ public class ApplicationCore {
 		subtitles = new Subtitles(openedSubtitles);
 		CheckSubtitleCount();
 	}
-	
-	
+
+
 	private void CheckSubtitleCount () {
 		if (subtitles.Collection.Count == 0){
 			Subtitle subtitle = new Subtitle(subtitles.Properties, TimeSpan.Zero, TimeSpan.FromSeconds(3.5));
