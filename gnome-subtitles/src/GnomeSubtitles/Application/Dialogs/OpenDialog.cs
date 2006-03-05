@@ -19,12 +19,20 @@
 
 using Gtk;
 using System;
+using System.Text;
 
 namespace GnomeSubtitles {
 
 public class OpenDialog : SubtitleFileChooserDialog {
+	private ComboBox encodingComboBox = null;
 
 	public OpenDialog (GUI gui) : base(gui, WidgetNames.OpenDialog){
+		encodingComboBox = (ComboBox)GetWidget(WidgetNames.OpenDialogEncodingComboBox);
+		FillEncodingComboBox(encodingComboBox);
+		encodingComboBox.PrependText("-");
+		encodingComboBox.PrependText("Auto Detected");
+		encodingComboBox.Active = 0;
+	
 		if (gui.Core.IsLoaded && gui.Core.Subtitles.Properties.IsFilePathRooted) {
 			Dialog.SetCurrentFolder(gui.Core.Subtitles.Properties.FileDirectory);
 		}
@@ -38,7 +46,14 @@ public class OpenDialog : SubtitleFileChooserDialog {
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
-			GUI.Open(Dialog.Filename);
+			Console.WriteLine();
+			if (encodingComboBox.Active == 0)
+				GUI.Open(Dialog.Filename);
+			else {
+				int encodingIndex = encodingComboBox.Active - 2;
+				Encoding encoding = Encoding.GetEncoding(Encodings[encodingIndex].CodePage);
+				GUI.Open(Dialog.Filename, encoding);
+			}
 			CloseDialog(); 
 		}
 		else if (args.ResponseId == ResponseType.Cancel) {
