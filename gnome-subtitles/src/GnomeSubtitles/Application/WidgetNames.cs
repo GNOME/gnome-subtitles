@@ -46,6 +46,7 @@ public class WidgetNames {
 	/* Dialogs */
 	public const string AboutDialog = "aboutDialog";
 	public const string OpenDialog = "openDialog";
+	public const string OpenDialogEncodingComboBox = "encodingComboBox";
 	public const string SaveAsDialog = "saveAsDialog";
 	public const string SaveAsDialogFormatComboBox = "formatComboBox";
 	public const string SaveAsDialogEncodingComboBox = "encodingComboBox";
