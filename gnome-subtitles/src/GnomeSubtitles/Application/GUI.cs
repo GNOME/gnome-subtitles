@@ -76,7 +76,12 @@ public class GUI : GladeWidget {
     }
     
     public void Open (string fileName) {
-		core.Open(fileName);
+   	 	core.Open(fileName);
+    		NewDocument();
+    }
+    
+    public void Open (string fileName, Encoding encoding) {
+		core.Open(fileName, encoding);
     		NewDocument();
     }
     
