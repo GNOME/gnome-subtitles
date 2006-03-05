@@ -57,7 +57,8 @@ public class SubtitleFileChooserDialog : GladeWidget {
 	
 		
 	protected bool SeparatorFunc (TreeModel model, TreeIter iter) {
-		return ((model.GetValue(iter, 0) as string).CompareTo("-") == 0);
+		string text = (string)model.GetValue(iter, 0);
+		return ((text != null) && (text.CompareTo("-") == 0));
 	}
 
 }
