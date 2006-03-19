@@ -90,6 +90,21 @@ public class EventHandlers {
 	}
 	
 	
+	/*	Format Menu	 */
+	
+	public void OnBold (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new ChangeBoldStyleCommand(gui, gui.SubtitleView.Selected));
+	}
+	
+	public void OnItalic (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new ChangeItalicStyleCommand(gui, gui.SubtitleView.Selected));
+	}
+	
+	public void OnUnderline (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, gui.SubtitleView.Selected));
+	}
+	
+	
 	/*	Help Menu	*/
 	
 	public void OnAbout (object o, EventArgs args) {
