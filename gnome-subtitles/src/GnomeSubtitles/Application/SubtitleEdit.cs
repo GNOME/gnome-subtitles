@@ -33,7 +33,7 @@ public class SubtitleEdit : GladeWidget {
 	private TextTag boldTag = new TextTag("bold");
 	private TextTag italicTag = new TextTag("italic");
 	private TextTag underlineTag = new TextTag("underline");
-	private ArrayList subtitleTags = new ArrayList(4); //4 not to resize when full
+	private ArrayList subtitleTags = new ArrayList(4); //4 not to resize with 3 items
 	private Subtitle subtitle = null;
 
 	public SubtitleEdit(GUI gui, Glade.XML glade) : base(gui, glade){
@@ -115,6 +115,15 @@ public class SubtitleEdit : GladeWidget {
 		ApplyTags();   
 		textView.Buffer.Changed += OnBufferChanged; 
     }
+        
+    public void ApplyTags () {
+    		TextBuffer buffer = textView.Buffer;
+    		TextIter start = buffer.StartIter;
+    		TextIter end = buffer.EndIter;
+    		buffer.ApplyTag(scaleTag, start, end);
+    		foreach (TextTag tag in subtitleTags)
+    			buffer.ApplyTag(tag, start, end);
+    }
     
     public void TextGrabFocus () {
     		textView.GrabFocus();
@@ -131,15 +140,6 @@ public class SubtitleEdit : GladeWidget {
    		endSpinButton.ValueChanged -= OnEndValueChanged;
    		durationSpinButton.ValueChanged -= OnDurationValueChanged;
     	}
-    
-    private void ApplyTags () {
-    		TextBuffer buffer = textView.Buffer;
-    		TextIter start = buffer.StartIter;
-    		TextIter end = buffer.EndIter;
-    		buffer.ApplyTag(scaleTag, start, end);
-    		foreach (TextTag tag in subtitleTags)
-    			buffer.ApplyTag(tag, start, end);
-    }
 
     private int SpinButtonWidth () {
     		const int margins = 25;
@@ -182,7 +182,6 @@ public class SubtitleEdit : GladeWidget {
 	}
 	
 	private void OnBufferChanged (object o, EventArgs args) {
-		ApplyTags();
 		GUI.Core.CommandManager.Execute(new ChangeTextCommand(GUI, subtitle, (o as TextBuffer).Text));
 	}
 
