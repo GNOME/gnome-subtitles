@@ -199,6 +199,187 @@
 	      </child>
 
 	      <child>
+		<widget class="GtkMenuItem" id="menubarFormat">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes">_Format</property>
+		  <property name="use_underline">True</property>
+
+		  <child>
+		    <widget class="GtkMenu" id="menubarFormat_menu">
+
+		      <child>
+			<widget class="GtkCheckMenuItem" id="boldMenuItem">
+			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
+			  <property name="label" translatable="yes">_Bold</property>
+			  <property name="use_underline">True</property>
+			  <property name="active">False</property>
+			  <signal name="toggled" handler="OnBold" last_modification_time="Sat, 18 Mar 2006 00:36:07 GMT"/>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkCheckMenuItem" id="italicMenuItem">
+			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
+			  <property name="label" translatable="yes">_Italic</property>
+			  <property name="use_underline">True</property>
+			  <property name="active">False</property>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkCheckMenuItem" id="underlineMenuItem">
+			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
+			  <property name="label" translatable="yes">_Underline</property>
+			  <property name="use_underline">True</property>
+			  <property name="active">False</property>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+
+	      <child>
+		<widget class="GtkMenuItem" id="menubarTiming">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes">_Timing</property>
+		  <property name="use_underline">True</property>
+
+		  <child>
+		    <widget class="GtkMenu" id="menubarTiming_menu">
+
+		      <child>
+			<widget class="GtkMenuItem" id="input_frame_rate1">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">_Input Frame Rate</property>
+			  <property name="use_underline">True</property>
+
+			  <child>
+			    <widget class="GtkMenu" id="input_frame_rate1_menu">
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="inputFPS23MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">23.976</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="inputFPS24MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">24</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				  <property name="group">inputFPS23MenuItem</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="inputFPS25MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">25</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">True</property>
+				  <property name="group">inputFPS23MenuItem</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="inputFPS29MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">29.97</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				  <property name="group">inputFPS23MenuItem</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="inputFPS30MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">30</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				  <property name="group">inputFPS23MenuItem</property>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkMenuItem" id="movie_frame_rate1">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">_Movie Frame Rate</property>
+			  <property name="use_underline">True</property>
+
+			  <child>
+			    <widget class="GtkMenu" id="movie_frame_rate1_menu">
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="currentFPS23MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">23.976</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="currentFPS24MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">24</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				  <property name="group">currentFPS23MenuItem</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="currentFPS25MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">25</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">True</property>
+				  <property name="group">currentFPS23MenuItem</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="currentFPS29MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">29.97</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				  <property name="group">currentFPS23MenuItem</property>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkRadioMenuItem" id="currentFPS30MenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">30</property>
+				  <property name="use_underline">True</property>
+				  <property name="active">False</property>
+				  <property name="group">currentFPS23MenuItem</property>
+				</widget>
+			      </child>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+
+	      <child>
 		<widget class="GtkMenuItem" id="menubarHelp">
 		  <property name="visible">True</property>
 		  <property name="stock_item">GNOMEUIINFO_MENU_HELP_TREE</property>
