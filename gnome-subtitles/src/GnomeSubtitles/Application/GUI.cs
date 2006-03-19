@@ -108,6 +108,11 @@ public class GUI : GladeWidget {
 		window.Title = prefix + core.Subtitles.Properties.FileName +
 			" - " + core.ExecutionInfo.Name;
 	}
+	
+	public void SubtitleSelected (Subtitle subtitle) {
+		UpdateStyle(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
+		subtitleEdit.ShowSubtitle(subtitle);
+	}
     
     
     /* Private methods */
@@ -161,8 +166,25 @@ public class GUI : GladeWidget {
 		/* View Menu */
 		GetWidget(WidgetNames.TimesMenuItem).Sensitive = sensitivity;
 		GetWidget(WidgetNames.FramesMenuItem).Sensitive = sensitivity;
+		/* Format Menu */
+		GetWidget(WidgetNames.BoldMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.ItalicMenuItem).Sensitive = sensitivity;
+		GetWidget(WidgetNames.UnderlineMenuItem).Sensitive = sensitivity;
 		/* Toolbar */
 		GetWidget(WidgetNames.SaveButton).Sensitive = sensitivity;
+	}
+	
+	private void UpdateStyle (bool bold, bool italic, bool underline) {
+		UpdateStylePart(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
+		UpdateStylePart(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
+		UpdateStylePart(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
+	}
+	
+	private void UpdateStylePart (string menuItemName, bool active, EventHandler handler) {
+		CheckMenuItem menuItem = (GetWidget(menuItemName) as CheckMenuItem);
+		menuItem.Toggled -= handler;
+		menuItem.Active = active;
+		menuItem.Toggled += handler;		
 	}
 
 
