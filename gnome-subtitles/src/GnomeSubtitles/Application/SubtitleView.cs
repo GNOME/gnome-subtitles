@@ -43,6 +43,14 @@ public class SubtitleView : GladeWidget {
     public TreeView Widget {
     		get { return treeView; }
     }
+    
+    public Subtitle Selected {
+    		get {
+    			TreeIter iter;
+    			treeView.Selection.GetSelected(out iter);
+			return subtitles.GetSubtitle(iter);
+		}
+    }
   
     public void Show () {
 	    	subtitles = GUI.Core.Subtitles;
@@ -111,10 +119,7 @@ public class SubtitleView : GladeWidget {
 	}
 	
 	private void OnSelected (object o, EventArgs args) {
-		TreeIter iter;
-		(o as TreeSelection).GetSelected(out iter);
-		Subtitle subtitle = subtitles.GetSubtitle(iter);
-		GUI.SubtitleEdit.ShowSubtitle(subtitle);
+		GUI.SubtitleSelected(this.Selected);
 	}
 
 	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
