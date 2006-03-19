@@ -35,8 +35,15 @@ public class WidgetNames {
 	public const string ClearMenuItem = "clearMenuItem";
 	public const string PropertiesMenuItem = "propertiesMenuItem";
 	
+	
+	/* View Menu */
 	public const string TimesMenuItem = "timesMenuItem";
 	public const string FramesMenuItem = "framesMenuItem";
+	
+	/* Format Menu */
+	public const string BoldMenuItem = "boldMenuItem";
+	public const string ItalicMenuItem = "italicMenuItem";
+	public const string UnderlineMenuItem = "underlineMenuItem";
 	
 	/* Toolbar */	
 	public const string SaveButton = "toolbuttonSave";
