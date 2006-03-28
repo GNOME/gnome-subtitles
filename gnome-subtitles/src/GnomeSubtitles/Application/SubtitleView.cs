@@ -54,6 +54,7 @@ public class SubtitleView : GladeWidget {
   
     public void Show () {
 	    	subtitles = GUI.Core.Subtitles;
+	    	treeView.Selection.Changed -= OnSelected;
 	    treeView.Model = subtitles.Model;
 	    ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
 	    scrollArea.Sensitive = true;
