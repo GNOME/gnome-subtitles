@@ -26,8 +26,8 @@ namespace GnomeSubtitles {
 
 public class SubtitleView : GladeWidget {
 	private TreeView treeView = null;
-	
 	private Subtitles subtitles = null;
+	
 	private TreeViewColumn numberCol = null;
 	private TreeViewColumn startCol = null;
 	private TreeViewColumn endCol = null;
@@ -44,25 +44,32 @@ public class SubtitleView : GladeWidget {
     		get { return treeView; }
     }
     
-    public Subtitle Selected {
+    public Subtitle SelectedSubtitle {
     		get {
     			TreeIter iter;
     			treeView.Selection.GetSelected(out iter);
 			return subtitles.GetSubtitle(iter);
 		}
     }
-  
-    public void Show () {
-	    	subtitles = GUI.Core.Subtitles;
-	    	treeView.Selection.Changed -= OnSelected;
-	    treeView.Model = subtitles.Model;
-	    ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
+    
+    public void SetUp () {
+    		ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
 	    scrollArea.Sensitive = true;
 	    scrollArea.Visible = true;
-	    scrollArea.ShadowType = ShadowType.In;	
-	    UpdateTimingMode();
-	    treeView.Selection.Changed += OnSelected;
-	    treeView.Selection.SelectPath(TreePath.NewFirst());
+	    scrollArea.ShadowType = ShadowType.In;    
+    }
+    
+    public void Load (Subtitles subtitles) {
+    		treeView.Selection.Changed -= OnSelectionChanged;
+    		this.subtitles = subtitles;
+    		treeView.Model = subtitles.Model;
+    		treeView.Selection.Changed += OnSelectionChanged;
+    		
+    		Refresh();
+    }
+    
+    public void SelectFirst () {
+    		treeView.Selection.SelectPath(TreePath.NewFirst());
 	    treeView.GrabFocus();
     }
     
@@ -74,27 +81,13 @@ public class SubtitleView : GladeWidget {
 	    treeView.QueueDraw();
     }
     
-    public void UpdateSelectedRow () {
+    public void RedrawSelectedRow () {
     		TreeIter iter;
     		treeView.Selection.GetSelected(out iter);
     		subtitles.EmitSubtitleChanged(iter);
     }
  
-
-	private TreeViewColumn CreateColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
-		cell.Xalign = 0.5f;
-		cell.Yalign = 0;
-		TreeViewColumn column = new TreeViewColumn();
-		column.Alignment = 0.5f;
-		column.Title = title;
-		column.FixedWidth = width;
-		column.Sizing = TreeViewColumnSizing.Fixed;
-		column.Resizable = true;
-		column.PackStart(cell, true);
-		column.SetCellDataFunc(cell, dataFunction);
-		return column;
-	}
- 	
+	
     private void CreateColumns() {
     		numberCol = CreateColumn("No.", ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
     		
@@ -114,13 +107,27 @@ public class SubtitleView : GladeWidget {
     		treeView.AppendColumn(new TreeViewColumn());
     }
 
+	private TreeViewColumn CreateColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
+		cell.Xalign = 0.5f;
+		cell.Yalign = 0;
+		TreeViewColumn column = new TreeViewColumn();
+		column.Alignment = 0.5f;
+		column.Title = title;
+		column.FixedWidth = width;
+		column.Sizing = TreeViewColumnSizing.Fixed;
+		column.Resizable = true;
+		column.PackStart(cell, true);
+		column.SetCellDataFunc(cell, dataFunction);
+		return column;
+	}
+
 	private int ColumnWidth (string text) {
 		const int margins = 10;
 		return Utility.TextWidth(treeView, text, margins);
 	}
 	
-	private void OnSelected (object o, EventArgs args) {
-		GUI.SubtitleSelected(this.Selected);
+	private void OnSelectionChanged (object o, EventArgs args) {
+		GUI.SubtitleSelected(this.SelectedSubtitle);
 	}
 
 	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {

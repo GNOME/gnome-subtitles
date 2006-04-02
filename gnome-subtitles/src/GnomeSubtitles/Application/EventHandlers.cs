@@ -93,15 +93,15 @@ public class EventHandlers {
 	/*	Format Menu	 */
 	
 	public void OnBold (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new ChangeBoldStyleCommand(gui, gui.SubtitleView.Selected));
+		gui.Core.CommandManager.Execute(new ChangeBoldStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
 	}
 	
 	public void OnItalic (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new ChangeItalicStyleCommand(gui, gui.SubtitleView.Selected));
+		gui.Core.CommandManager.Execute(new ChangeItalicStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
 	}
 	
 	public void OnUnderline (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, gui.SubtitleView.Selected));
+		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
 	}
 	
 	

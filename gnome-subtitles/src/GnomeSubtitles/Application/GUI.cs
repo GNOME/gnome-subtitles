@@ -110,8 +110,8 @@ public class GUI : GladeWidget {
 	}
 	
 	public void SubtitleSelected (Subtitle subtitle) {
-		UpdateStyle(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
-		subtitleEdit.ShowSubtitle(subtitle);
+		SetActiveStyles(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
+		subtitleEdit.LoadSubtitle(subtitle);
 	}
     
     
@@ -122,8 +122,31 @@ public class GUI : GladeWidget {
 		SetActiveTimingMode();
 		SetWindowTitle(false);
 
-		subtitleView.Show();
-		subtitleEdit.Show();	
+		subtitleView.SetUp();
+		subtitleView.Load(core.Subtitles);
+		subtitleEdit.SetUp();
+		
+		subtitleView.SelectFirst();
+	}
+	
+	private void SetActiveTimingMode () {
+		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
+	    	else
+	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
+	}
+	
+	private void SetActiveStyles (bool bold, bool italic, bool underline) {
+		SetActiveStyle(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
+		SetActiveStyle(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
+		SetActiveStyle(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
+	}
+	
+	private void SetActiveStyle (string menuItemName, bool active, EventHandler handler) {
+		CheckMenuItem menuItem = (GetWidget(menuItemName) as CheckMenuItem);
+		menuItem.Toggled -= handler;
+		menuItem.Active = active;
+		menuItem.Toggled += handler;		
 	}
 	
 	/* Only necessary because it isn't working in .glade */
@@ -135,13 +158,6 @@ public class GUI : GladeWidget {
 	private void SetNewDocumentSensitivity () {
 		SetUndoRedoSensitivity(false);
 		SetGlobalSensitivity(true);
-	}
-	
-	private void SetActiveTimingMode () {
-		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
-	    	else
-	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
 	}
 	
 	private void SetUndoRedoSensitivity (bool sensitivity) {
@@ -174,18 +190,7 @@ public class GUI : GladeWidget {
 		GetWidget(WidgetNames.SaveButton).Sensitive = sensitivity;
 	}
 	
-	private void UpdateStyle (bool bold, bool italic, bool underline) {
-		UpdateStylePart(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
-		UpdateStylePart(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
-		UpdateStylePart(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
-	}
-	
-	private void UpdateStylePart (string menuItemName, bool active, EventHandler handler) {
-		CheckMenuItem menuItem = (GetWidget(menuItemName) as CheckMenuItem);
-		menuItem.Toggled -= handler;
-		menuItem.Active = active;
-		menuItem.Toggled += handler;		
-	}
+
 
 
 }

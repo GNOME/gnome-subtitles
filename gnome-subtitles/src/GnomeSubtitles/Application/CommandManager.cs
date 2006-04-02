@@ -331,7 +331,7 @@ public abstract class ChangeTimingCommand : GroupableCommand {
 	protected override void OnSelected (bool wasSelected) {
 		if (wasSelected) {
 			GUI.SubtitleView.Refresh();
-			GUI.SubtitleEdit.ShowTimings();
+			GUI.SubtitleEdit.LoadTimings();
 		}
 	}
 
@@ -427,14 +427,14 @@ public class ChangeTextCommand : GroupableCommand {
 	
 	public override void Execute () {
 		ChangeValues();
-		GUI.SubtitleView.UpdateSelectedRow();
-		GUI.SubtitleEdit.ApplyTags();
+		GUI.SubtitleView.RedrawSelectedRow();
+		GUI.SubtitleEdit.ApplyLoadedTags();
 	}
 	
 	protected override void OnSelected (bool wasSelected) {
-		GUI.SubtitleView.UpdateSelectedRow();
+		GUI.SubtitleView.RedrawSelectedRow();
 		if (wasSelected) {
-			GUI.SubtitleEdit.ShowText();	
+			GUI.SubtitleEdit.LoadText();	
 		}
 	}
 	
@@ -461,11 +461,12 @@ public abstract class ChangeStyleCommand : SelectionCommand {
 	protected override void OnSelected (bool wasSelected) {
 		if (wasSelected) {
 			GUI.SubtitleView.Refresh();
-			GUI.SubtitleEdit.ShowText();
+			SetTag(subtitle);
 		}
 	}
 	
 	protected abstract void ToggleStyle (Subtitle subtitle);
+	protected abstract void SetTag (Subtitle subtitle);
 }
 
 public class ChangeBoldStyleCommand : ChangeStyleCommand {
@@ -477,6 +478,10 @@ public class ChangeBoldStyleCommand : ChangeStyleCommand {
 	protected override void ToggleStyle (Subtitle subtitle) {
 		bool currentValue = subtitle.Style.Bold;
 		subtitle.Style.Bold = !currentValue;	
+	}
+	
+	protected override void SetTag (Subtitle subtitle) {
+		GUI.SubtitleEdit.SetBoldTag(subtitle.Style.Bold);
 	}
 }
 
@@ -490,6 +495,10 @@ public class ChangeItalicStyleCommand : ChangeStyleCommand {
 		bool currentValue = subtitle.Style.Italic;
 		subtitle.Style.Italic = !currentValue;	
 	}
+	
+	protected override void SetTag (Subtitle subtitle) {
+		GUI.SubtitleEdit.SetItalicTag(subtitle.Style.Italic);
+	}
 }
 
 public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
@@ -501,6 +510,10 @@ public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
 	protected override void ToggleStyle (Subtitle subtitle) {
 		bool currentValue = subtitle.Style.Underline;
 		subtitle.Style.Underline = !currentValue;	
+	}
+	
+	protected override void SetTag (Subtitle subtitle) {
+		GUI.SubtitleEdit.SetUnderlineTag(subtitle.Style.Underline);
 	}
 }
 
