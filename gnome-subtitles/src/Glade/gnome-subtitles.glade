@@ -81,7 +81,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkSeparatorMenuItem" id="separator1MenuItem">
+			<widget class="GtkSeparatorMenuItem" id="separator1FileMenuItem">
 			  <property name="visible">True</property>
 			</widget>
 		      </child>
@@ -125,7 +125,7 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkSeparatorMenuItem" id="separator1">
+			<widget class="GtkSeparatorMenuItem" id="separator1EditMenuItem">
 			  <property name="visible">True</property>
 			</widget>
 		      </child>
@@ -177,7 +177,7 @@
 			  <property name="sensitive">False</property>
 			  <property name="label" translatable="yes">_Frames</property>
 			  <property name="use_underline">True</property>
-			  <property name="active">False</property>
+			  <property name="active">True</property>
 			  <signal name="toggled" handler="OnFrames" last_modification_time="Mon, 06 Feb 2006 01:38:51 GMT"/>
 			</widget>
 		      </child>
@@ -265,7 +265,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">23.976</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				</widget>
 			      </child>
 
@@ -274,7 +274,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">24</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				</widget>
 			      </child>
@@ -294,7 +294,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">29.97</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				</widget>
 			      </child>
@@ -304,7 +304,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">30</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				</widget>
 			      </child>
@@ -327,7 +327,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">23.976</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				</widget>
 			      </child>
 
@@ -336,7 +336,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">24</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">currentFPS23MenuItem</property>
 				</widget>
 			      </child>
@@ -356,7 +356,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">29.97</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">currentFPS23MenuItem</property>
 				</widget>
 			      </child>
@@ -366,7 +366,7 @@
 				  <property name="visible">True</property>
 				  <property name="label" translatable="yes">30</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">currentFPS23MenuItem</property>
 				</widget>
 			      </child>
@@ -386,6 +386,33 @@
 
 		  <child>
 		    <widget class="GtkMenu" id="menubarHelp_menu">
+
+		      <child>
+			<widget class="GtkImageMenuItem" id="reportBugMenuItem">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">_Report a Bug</property>
+			  <property name="use_underline">True</property>
+			  <signal name="activate" handler="OnReportBug" last_modification_time="Wed, 05 Apr 2006 23:03:43 GMT"/>
+
+			  <child internal-child="image">
+			    <widget class="GtkImage" id="image1">
+			      <property name="visible">True</property>
+			      <property name="stock">gtk-dialog-warning</property>
+			      <property name="icon_size">1</property>
+			      <property name="xalign">0.5</property>
+			      <property name="yalign">0.5</property>
+			      <property name="xpad">0</property>
+			      <property name="ypad">0</property>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkSeparatorMenuItem" id="separator1HelpMenuItem">
+			  <property name="visible">True</property>
+			</widget>
+		      </child>
 
 		      <child>
 			<widget class="GtkImageMenuItem" id="aboutMenuItem">
@@ -1124,7 +1151,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</property>
   <property name="website">http://gsubtitles.sourceforge.net</property>
-  <property name="website_label"></property>
+  <property name="website_label">Gnome Subtitles</property>
   <property name="authors">Pedro Castro &lt;noup@users.sourceforge.net&gt;</property>
   <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
 </widget>

@@ -107,6 +107,10 @@ public class EventHandlers {
 	
 	/*	Help Menu	*/
 	
+	public void OnReportBug (object o, EventArgs args) {
+		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716496");
+	}
+	
 	public void OnAbout (object o, EventArgs args) {
 		new AboutDialog(gui);
 	}
