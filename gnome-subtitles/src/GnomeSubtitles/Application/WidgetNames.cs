@@ -35,7 +35,6 @@ public class WidgetNames {
 	public const string ClearMenuItem = "clearMenuItem";
 	public const string PropertiesMenuItem = "propertiesMenuItem";
 	
-	
 	/* View Menu */
 	public const string TimesMenuItem = "timesMenuItem";
 	public const string FramesMenuItem = "framesMenuItem";
@@ -44,6 +43,12 @@ public class WidgetNames {
 	public const string BoldMenuItem = "boldMenuItem";
 	public const string ItalicMenuItem = "italicMenuItem";
 	public const string UnderlineMenuItem = "underlineMenuItem";
+
+	/* Timing Menu */
+	public const string InputFrameRateMenuItem = "inputFrameRateMenuItem";
+	public const string InputFrameRateMenuItem25 = "inputFPS25MenuItem";
+	public const string MovieFrameRateMenuItem = "movieFrameRateMenuItem";
+	public const string MovieFrameRateMenuItem25 = "movieFPS25MenuItem";
 	
 	/* Toolbar */	
 	public const string SaveButton = "toolbuttonSave";
