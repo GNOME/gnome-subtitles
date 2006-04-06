@@ -104,6 +104,24 @@ public class EventHandlers {
 		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
 	}
 	
+	/*	Timing Menu	 */
+	
+	public void OnInputFrameRate (object o, EventArgs args) {
+		RadioMenuItem menuItem = o as RadioMenuItem;
+		if (menuItem.Active) {
+			float frameRate = GUI.FrameRateFromMenuItem((menuItem.Child as Label).Text);
+			gui.Core.CommandManager.Execute(new ChangeInputFrameRateCommand(gui, frameRate));
+		}
+	}
+	
+	public void OnMovieFrameRate (object o, EventArgs args) {
+		RadioMenuItem menuItem = o as RadioMenuItem;
+		if (menuItem.Active) {
+			float frameRate = GUI.FrameRateFromMenuItem((menuItem.Child as Label).Text);
+			gui.Core.CommandManager.Execute(new ChangeMovieFrameRateCommand(gui, frameRate));
+		}
+	}
+	
 	
 	/*	Help Menu	*/
 	
