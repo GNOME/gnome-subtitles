@@ -79,6 +79,10 @@ public class SubtitleEdit : GladeWidget {
     		LoadText();
     }
     
+    public void ReLoadSubtitle () {
+    		LoadSubtitle(subtitle);
+    }
+    
     public void LoadTimings () {
     		if (subtitle == null)
     			return;
