@@ -517,4 +517,53 @@ public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
 	}
 }
 
+public abstract class ChangeFrameRateCommand : Command {
+	private float storedFrameRate = 0;
+
+	public ChangeFrameRateCommand (GUI gui, string description, float frameRate) : base(gui, description) {
+		this.storedFrameRate = frameRate;
+	}
+	
+	public override void Execute () {
+		float previousFrameRate = GetFrameRate();
+		SetFrameRate(storedFrameRate);
+		storedFrameRate = previousFrameRate;
+		
+		GUI.RefreshViewAndEdit();
+	}
+	
+	protected abstract float GetFrameRate ();
+	protected abstract void SetFrameRate (float frameRate);
+}
+
+public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
+	private	static string description = "Changing Input Frame Rate";
+
+	public ChangeInputFrameRateCommand (GUI gui, float frameRate) : base(gui, description, frameRate) {
+	}
+	
+	protected override float GetFrameRate () {
+		return GUI.Core.Subtitles.Properties.OriginalFrameRate;
+	}
+	
+	protected override void SetFrameRate (float frameRate) {
+		GUI.Core.Subtitles.ChangeOriginalFrameRate(frameRate);
+	}
+}
+
+public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
+	private	static string description = "Changing Movie Frame Rate";
+
+	public ChangeMovieFrameRateCommand (GUI gui, float frameRate) : base(gui, description, frameRate) {
+	}
+	
+	protected override float GetFrameRate () {
+		return GUI.Core.Subtitles.Properties.CurrentFrameRate;
+	}
+	
+	protected override void SetFrameRate (float frameRate) {
+		GUI.Core.Subtitles.ChangeFrameRate(frameRate);
+	}
+}
+
 }
