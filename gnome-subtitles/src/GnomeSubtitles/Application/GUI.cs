@@ -113,6 +113,15 @@ public class GUI : GladeWidget {
 		SetActiveStyles(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
 		subtitleEdit.LoadSubtitle(subtitle);
 	}
+	
+	public void RefreshViewAndEdit () {
+		subtitleView.Refresh();
+		subtitleEdit.ReLoadSubtitle();
+	}
+	
+	static public float FrameRateFromMenuItem (string menuItem) {
+		return (float)Convert.ToDouble(menuItem.Split(' ')[0]);
+	}
     
     
     /* Private methods */
@@ -120,6 +129,7 @@ public class GUI : GladeWidget {
 	private void NewDocument () {
 		SetNewDocumentSensitivity();
 		SetActiveTimingMode();
+		SetFrameRateMenus();
 		SetWindowTitle(false);
 
 		subtitleView.SetUp();
@@ -134,6 +144,23 @@ public class GUI : GladeWidget {
 	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
 	    	else
 	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
+	}
+	
+	private void SetFrameRateMenus () {
+		MenuItem inputFrameRateMenuItem = GetWidget(WidgetNames.InputFrameRateMenuItem) as MenuItem;
+		MenuItem movieFrameRateMenuItem = GetWidget(WidgetNames.MovieFrameRateMenuItem) as MenuItem;
+		
+		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
+			SetMenuItemsSensitivity(inputFrameRateMenuItem.Submenu as Menu, true);
+			SetMenuItemsSensitivity(movieFrameRateMenuItem.Submenu as Menu, true);
+		}
+		else {
+			SetMenuItemsSensitivity(inputFrameRateMenuItem.Submenu as Menu, false);
+			SetMenuItemsSensitivity(movieFrameRateMenuItem.Submenu as Menu, true);
+		}
+		
+		(GetWidget(WidgetNames.InputFrameRateMenuItem25) as RadioMenuItem).Active = true;
+		(GetWidget(WidgetNames.MovieFrameRateMenuItem25) as RadioMenuItem).Active = true;
 	}
 	
 	private void SetActiveStyles (bool bold, bool italic, bool underline) {
@@ -188,6 +215,11 @@ public class GUI : GladeWidget {
 		GetWidget(WidgetNames.UnderlineMenuItem).Sensitive = sensitivity;
 		/* Toolbar */
 		GetWidget(WidgetNames.SaveButton).Sensitive = sensitivity;
+	}
+	
+	private void SetMenuItemsSensitivity (Menu menu, bool sensitivity) {
+		foreach (Widget widget in menu)
+			widget.Sensitive = sensitivity;	
 	}
 	
 
