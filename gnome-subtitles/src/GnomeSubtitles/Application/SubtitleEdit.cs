@@ -29,6 +29,7 @@ public class SubtitleEdit : GladeWidget {
 	private SpinButton endSpinButton = null;
 	private SpinButton durationSpinButton = null;
 	private TextView textView = null;
+	private Widget subtitleEditHBox = null;
 	
 	private TextTag scaleTag = new TextTag("scale");
 	private TextTag boldTag = new TextTag("bold");
@@ -43,52 +44,63 @@ public class SubtitleEdit : GladeWidget {
 		endSpinButton = (SpinButton)GetWidget(WidgetNames.EndSpinButton);
 		durationSpinButton = (SpinButton)GetWidget(WidgetNames.DurationSpinButton);
 		textView = (TextView)GetWidget(WidgetNames.SubtitleTextView);
+		subtitleEditHBox = GetWidget(WidgetNames.SubtitleEditHBox);
 		
-    		startSpinButton.WidthRequest = SpinButtonWidth();
-    		startSpinButton.Alignment = 0.5f;
-    		endSpinButton.Alignment = 0.5f;
-    		durationSpinButton.Alignment = 0.5f;   
+   		startSpinButton.WidthRequest = SpinButtonWidth();
+   		startSpinButton.Alignment = 0.5f;
+   		endSpinButton.Alignment = 0.5f;
+   		durationSpinButton.Alignment = 0.5f;   
     		 	
-    		scaleTag.Scale = Pango.Scale.XLarge;
-    		boldTag.Weight = Pango.Weight.Bold;
-    		italicTag.Style = Pango.Style.Italic;
-    		underlineTag.Underline = Pango.Underline.Single;
-    		textView.Buffer.TagTable.Add(scaleTag);
-    		textView.Buffer.TagTable.Add(boldTag);
-    		textView.Buffer.TagTable.Add(italicTag);
-    		textView.Buffer.TagTable.Add(underlineTag);
+   		scaleTag.Scale = Pango.Scale.XLarge;
+   		boldTag.Weight = Pango.Weight.Bold;
+   		italicTag.Style = Pango.Style.Italic;
+   		underlineTag.Underline = Pango.Underline.Single;
+   		textView.Buffer.TagTable.Add(scaleTag);
+   		textView.Buffer.TagTable.Add(boldTag);
+   		textView.Buffer.TagTable.Add(italicTag);
+   		textView.Buffer.TagTable.Add(underlineTag);
     }
     
     
+	public bool Sensitive {
+    	get { return subtitleEditHBox.Sensitive; }
+    	set {
+    		subtitleEditHBox.Sensitive = value;
+    		if (value == false) {
+				SetTextWithoutBufferChanged(String.Empty);
+				ClearSpinButtonsValue();
+			}
+    	}
+    }
+    
     public void SetUp () {
-		Widget hBox = GetWidget(WidgetNames.SubtitleEditHBox);
-    		hBox.Sensitive = true;
-    		hBox.Visible = true;
-    		SetTimingMode();
+    	subtitleEditHBox.Sensitive = true;
+    	subtitleEditHBox.Visible = true;
+    	SetTimingMode();
     }
     
     public void UpdateTimingMode () {
-    		SetTimingMode();
-	    	LoadTimings();
+    	SetTimingMode();
+	   	LoadTimings();
     }
 
     public void LoadSubtitle (Subtitle subtitle) {
-    		this.subtitle = subtitle;
+    	this.subtitle = subtitle;
 		LoadTimings();
 		LoadTags();
-    		LoadText();
+    	LoadText();
     }
     
     public void ReLoadSubtitle () {
-    		LoadSubtitle(subtitle);
+    	LoadSubtitle(subtitle);
     }
     
     public void LoadTimings () {
-    		if (subtitle == null)
-    			return;
+    	if (subtitle == null)
+    		return;
     			
 		DisconnectSpinButtonsChangedSignals();
-    		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
+    	if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
 			startSpinButton.Value = subtitle.Frames.Start;
 			endSpinButton.Value = subtitle.Frames.End;
 			durationSpinButton.Value = subtitle.Frames.Duration;
@@ -102,98 +114,116 @@ public class SubtitleEdit : GladeWidget {
     }
     
     public void LoadText () {
-    		textView.Buffer.Changed -= OnBufferChanged; 
-    		textView.Buffer.Text = subtitle.Text.Get();    		
-		ApplyLoadedTags();   
-		textView.Buffer.Changed += OnBufferChanged; 
+    	SetTextWithoutBufferChanged(subtitle.Text.Get());
     }
     
     public void LoadTags () {
-    		subtitleTags.Clear();
-    		if (subtitle.Style.Bold)
-    			subtitleTags.Add(boldTag);
-    		if (subtitle.Style.Italic)
-    			subtitleTags.Add(italicTag);
-    		if (subtitle.Style.Underline)
-    			subtitleTags.Add(underlineTag);
-    }
-    
+    	subtitleTags.Clear();
+    	if (subtitle.Style.Bold)
+    		subtitleTags.Add(boldTag);
+    	if (subtitle.Style.Italic)
+    		subtitleTags.Add(italicTag);
+    	if (subtitle.Style.Underline)
+    		subtitleTags.Add(underlineTag);
+    }    
     public void ApplyLoadedTags () {
-    		TextBuffer buffer = textView.Buffer;
-    		TextIter start = buffer.StartIter;
-    		TextIter end = buffer.EndIter;
-    		buffer.ApplyTag(scaleTag, start, end);
-    		foreach (TextTag tag in subtitleTags)
-			SetTag(tag, start, end, true);
+    	TextBuffer buffer = textView.Buffer;
+    	TextIter start = buffer.StartIter;
+    	TextIter end = buffer.EndIter;
+    	buffer.ApplyTag(scaleTag, start, end);
+    	foreach (TextTag tag in subtitleTags)
+		SetTag(tag, start, end, true);
     }
     
     public void SetBoldTag (bool activate) {
-    		SetTag(boldTag, textView.Buffer.StartIter, textView.Buffer.EndIter, activate);
+    	SetTag(boldTag, textView.Buffer.StartIter, textView.Buffer.EndIter, activate);
     }
     
     public void SetItalicTag (bool activate) {
-    		SetTag(italicTag, textView.Buffer.StartIter, textView.Buffer.EndIter, activate);
+    	SetTag(italicTag, textView.Buffer.StartIter, textView.Buffer.EndIter, activate);
     }
     
     public void SetUnderlineTag (bool activate) {
-    		SetTag(underlineTag, textView.Buffer.StartIter, textView.Buffer.EndIter, activate);
+    	SetTag(underlineTag, textView.Buffer.StartIter, textView.Buffer.EndIter, activate);
     }
     
     public void TextGrabFocus () {
-    		textView.GrabFocus();
+    	textView.GrabFocus();
     }
     
     public void StartSpinButtonGrabFocus () {
-    		startSpinButton.GrabFocus();
+    	startSpinButton.GrabFocus();
     }
     
     public void EndSpinButtonGrabFocus () {
-    		endSpinButton.GrabFocus();
+    	endSpinButton.GrabFocus();
     }
     
     public void DurationSpinButtonGrabFocus () {
-    		durationSpinButton.GrabFocus();
+    	durationSpinButton.GrabFocus();
     }
     
     
+    /* Private Methods */    
+    
 	private void SetTag (TextTag tag, TextIter start, TextIter end, bool activate) {
-    		if (activate)
-	    		textView.Buffer.ApplyTag(tag, start, end);
-	    	else
-	    		textView.Buffer.RemoveTag(tag, start, end);
+    	if (activate)
+	   		textView.Buffer.ApplyTag(tag, start, end);
+	   	else
+	   		textView.Buffer.RemoveTag(tag, start, end);
     }
     
     private void SetTimingMode () {
-    		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
-	    		SetFramesMode(startSpinButton);
-	    		SetFramesMode(endSpinButton);
-	    		SetFramesMode(durationSpinButton);
-	    	}
-	    	else {
-	    		SetTimesMode(startSpinButton);
-	    		SetTimesMode(endSpinButton);
-	    		SetTimesMode(durationSpinButton);
-	    	}
+    	if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
+	   		SetFramesMode(startSpinButton);
+	   		SetFramesMode(endSpinButton);
+	   		SetFramesMode(durationSpinButton);
+	   	}
+	   	else {
+	   		SetTimesMode(startSpinButton);
+	   		SetTimesMode(endSpinButton);
+	   		SetTimesMode(durationSpinButton);
+	   	}
+    }
+    
+    private void SetTextWithoutBufferChanged (string text) {
+    	TextBuffer buffer = textView.Buffer;
+    	buffer.Changed -= OnBufferChanged; 
+    	if (text == String.Empty)
+    		buffer.Clear();
+    	else {
+    		buffer.Text = text;
+    		ApplyLoadedTags();  	
+    	}
+	    buffer.Changed += OnBufferChanged; 
+    }
+    
+    private void ClearSpinButtonsValue () {
+    	DisconnectSpinButtonsChangedSignals();
+    	startSpinButton.Text = String.Empty;
+    	endSpinButton.Text = String.Empty;
+    	durationSpinButton.Text = String.Empty;
+    	ConnectSpinButtonsChangedSignals();
     }
     
     private void ConnectSpinButtonsChangedSignals () {
-    		startSpinButton.ValueChanged += OnStartValueChanged;
-    		endSpinButton.ValueChanged += OnEndValueChanged;
-    		durationSpinButton.ValueChanged += OnDurationValueChanged;
-    	}
+    	startSpinButton.ValueChanged += OnStartValueChanged;
+    	endSpinButton.ValueChanged += OnEndValueChanged;
+    	durationSpinButton.ValueChanged += OnDurationValueChanged;
+    }
     
     private void DisconnectSpinButtonsChangedSignals () {
-    		startSpinButton.ValueChanged -= OnStartValueChanged;
+    	startSpinButton.ValueChanged -= OnStartValueChanged;
    		endSpinButton.ValueChanged -= OnEndValueChanged;
    		durationSpinButton.ValueChanged -= OnDurationValueChanged;
-    	}
+    }
 
     private int SpinButtonWidth () {
-    		const int margins = 25;
+    	const int margins = 25;
 		return Utility.TextWidth(startSpinButton, "00:00:00,000", margins);
     }
     
-    	private int TimeTextToMilliseconds (string text) {
+    private int TimeTextToMilliseconds (string text) {
 		return (int)TimeSpan.Parse(text).TotalMilliseconds;	
 	}
 	
@@ -202,17 +232,17 @@ public class SubtitleEdit : GladeWidget {
 	}
     
     private void SetTimesMode (SpinButton spinButton) {
-    		spinButton.Input += OnInput;
+    	spinButton.Input += OnInput;
 		spinButton.Output += OnOutput;
 		spinButton.Adjustment.StepIncrement = 100;
 		spinButton.Adjustment.Upper = 86399999;
 	}
 	
 	private void SetFramesMode (SpinButton spinButton) {
-    		spinButton.Input -= OnInput;
-    		spinButton.Output -= OnOutput;
-    		spinButton.Adjustment.StepIncrement = 1;
-    		spinButton.Adjustment.Upper = 3000000;
+    	spinButton.Input -= OnInput;
+    	spinButton.Output -= OnOutput;
+    	spinButton.Adjustment.StepIncrement = 1;
+    	spinButton.Adjustment.Upper = 3000000;
 	}
     
 	private void OnInput (object o, InputArgs args) {
