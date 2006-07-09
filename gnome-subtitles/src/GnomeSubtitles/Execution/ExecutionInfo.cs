@@ -16,46 +16,42 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+using System.Reflection;
 
 namespace GnomeSubtitles {
 
 public class ExecutionInfo {
-	private const string name = "Gnome Subtitles";
+	private const string applicationName = "Gnome Subtitles";
 	private const string applicationID = "GnomeSubtitles";
-	private const string executable = "gnome-subtitles";
-	private const string version = "@GS-VERSION@";
+	private const string executableName = "gnome-subtitles";
 	private const string gladeMasterFileName = "gnome-subtitles.glade";
 	
-	private string[] args = null;
+	private static string[] args = null;
 	
-
-	public ExecutionInfo(string[] programArgs) {
-		args = programArgs;
+	
+	public static string ApplicationName {
+		get { return applicationName; }
 	}
 	
-	
-	public string Name {
-		get { return name; }
-	}
-	
-	public string ApplicationID {
+	public static string ApplicationID {
 		get { return applicationID; }
 	}
 	
-	public string Executable {
-		get { return executable; }
+	public static string ExecutableName {
+		get { return executableName; }
 	}
 	
-	public string Version {
-		get { return version; }
+	public static string Version {
+		get { return Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
 	}
 	
-	public string GladeMasterFileName {
+	public static string GladeMasterFileName {
 		get { return gladeMasterFileName; }
 	}
 
-	public string[] Args {
+	public static string[] Args {
 		get { return args; }
+		set { args = value; }
 	}
 	
 
