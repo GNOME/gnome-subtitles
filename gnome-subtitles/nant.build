@@ -6,8 +6,8 @@
 	
 	<target name="prepare" description="prepares to build">
 		<mkdir dir="${build.dir}" />
-		<copy file="${sublib.dll.build.path}" todir="${build.dir}" failonerror="false" />
-		<fail message="SubLib.dll not found in the ${build.dir} dir!" if="${not file::exists('build/SubLib.dll')}" />
+		<copy file="${sublib.dll.path}" todir="${build.dir}" failonerror="false" />
+		<fail message="sublib.dll not found in the ${build.dir} dir!" if="${not file::exists('build/sublib.dll')}" />
 	</target>
 		
 	<target name="clean" description="cleans the generated files">
@@ -15,26 +15,26 @@
 	</target>
 	
 	<target name="replace" description="replaces tokens in some files">
-		<loadfile file="${execinfo.file}" property="execinfo-file">
+		<loadfile file="${assemblyinfo.file}" property="assemblyinfo-file">
 			<filterchain>
 				 <replacetokens>
 				 	<token key="${program.version.token}" value="${program.version}" />
 				 </replacetokens>
 			</filterchain>
 		</loadfile>
-		<echo message="${execinfo-file}" file="${execinfo.file.replaced}" />
+		<echo message="${assemblyinfo-file}" file="${assemblyinfo.file.replaced}" />
 	</target>
 	
 	<target name="post-build" description="actions after building">
-		<delete file="${execinfo.file.replaced}" failonerror="false" />
+		<delete file="${assemblyinfo.file.replaced}" failonerror="false" />
 	</target>
 	
 	<target name="build" depends="prepare,replace">
 		<csc target="exe" output="${executable.build.path}">
 			<sources>
 				<include name="${gnome-subtitles.src.dir}/**/*.cs" />
-				<exclude name="${execinfo.file}" />
-				<include name="${execinfo.file.replaced}" />
+				<exclude name="${assemblyinfo.file}" />
+				<include name="${assemblyinfo.file.replaced}" />
 			</sources>
 		 	<references>
 	 			<include name="${sublib.dll.path}" />
@@ -61,7 +61,7 @@
 	<target name="test" depends="build">
 		<exec workingdir="${build.dir}" program="mono">
 			<arg value="${executable.name}" />
-			<arg value="../../samples/MicroDVD.sub" />
+			<arg value="../etc/samples/sample.srt" />
 		</exec>
 	</target>
 	
