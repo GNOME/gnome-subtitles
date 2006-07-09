@@ -31,17 +31,17 @@ public class GUI : GladeWidget {
 	private SubtitleView subtitleView = null;	
 	private SubtitleEdit subtitleEdit = null;
 	
-	public GUI(ExecutionInfo executionInfo) {
-		core = new ApplicationCore(executionInfo, this);
-		Init(executionInfo.GladeMasterFileName, WidgetNames.MainWindow, core.Handlers);
+	public GUI () {
+		core = new ApplicationCore(this);
+		Init(ExecutionInfo.GladeMasterFileName, WidgetNames.MainWindow, core.Handlers);
 		core.Handlers.Init(this.Glade);
 		
 		window = (App)GetWidget(WidgetNames.MainWindow);
 		subtitleView = new SubtitleView(this, this.Glade);
 		subtitleEdit = new SubtitleEdit(this, this.Glade);
 		
-		if (executionInfo.Args.Length > 0)
-			Open(executionInfo.Args[0]);
+		if (ExecutionInfo.Args.Length > 0)
+			Open(ExecutionInfo.Args[0]);
 		else
 			SetStartUpSensitivity();
 			
@@ -106,17 +106,24 @@ public class GUI : GladeWidget {
 	public void SetWindowTitle (bool modified) {
 		string prefix = (modified ? "*" : String.Empty);
 		window.Title = prefix + core.Subtitles.Properties.FileName +
-			" - " + core.ExecutionInfo.Name;
+			" - " + ExecutionInfo.ApplicationName;
 	}
 	
-	public void SubtitleSelected (Subtitle subtitle) {
+	public void OnSubtitleSelection (Subtitle subtitle) {
 		SetActiveStyles(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
 		subtitleEdit.LoadSubtitle(subtitle);
 	}
 	
-	public void RefreshViewAndEdit () {
+	public void OnSubtitleSelection (TreePath[] paths) {
+		bool bold, italic, underline;
+		GetGlobalStyles(paths, out bold, out italic, out underline);
+		SetActiveStyles(bold, italic, underline);
+		subtitleEdit.Sensitive = false;
+	}
+	
+	public void RefreshAndReselect () {
 		subtitleView.Refresh();
-		subtitleEdit.ReLoadSubtitle();
+		subtitleView.Reselect();
 	}
 	
 	static public float FrameRateFromMenuItem (string menuItem) {
@@ -174,6 +181,22 @@ public class GUI : GladeWidget {
 		menuItem.Toggled -= handler;
 		menuItem.Active = active;
 		menuItem.Toggled += handler;		
+	}
+	
+	private void GetGlobalStyles (TreePath[] paths, out bool bold, out bool italic, out bool underline) {
+		Subtitles subtitles = core.Subtitles;
+		bold = true;
+		italic = true;
+		underline = true;
+		foreach (TreePath path in paths) {
+			Subtitle subtitle = subtitles.Get(path);
+			if ((bold == true) && !subtitle.Style.Bold) //bold hasn't been unset
+				bold = false;
+			if ((italic == true) && !subtitle.Style.Italic)
+				italic = false;
+			if ((underline == true) && !subtitle.Style.Underline)
+				underline = false;
+		}		
 	}
 	
 	/* Only necessary because it isn't working in .glade */

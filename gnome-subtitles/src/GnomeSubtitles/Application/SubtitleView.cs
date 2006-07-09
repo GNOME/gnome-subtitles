@@ -37,7 +37,9 @@ public class SubtitleView : GladeWidget {
 	
 	public SubtitleView(GUI gui, Glade.XML glade) : base(gui, glade){
 		treeView = (TreeView)GetWidget(WidgetNames.SubtitleView);
-		CreateColumns();
+    		treeView.Selection.Mode = SelectionMode.Multiple;
+    		
+		CreateColumns();		
     }
 
     public TreeView Widget {
@@ -45,11 +47,15 @@ public class SubtitleView : GladeWidget {
     }
     
     public Subtitle SelectedSubtitle {
-    		get {
-    			TreeIter iter;
-    			treeView.Selection.GetSelected(out iter);
-			return subtitles.GetSubtitle(iter);
-		}
+    		get { return subtitles.Get(SelectedPath); }
+    }
+    
+    public TreePath[] SelectedPaths {
+    		get { return treeView.Selection.GetSelectedRows(); }
+    }
+    
+    public TreePath SelectedPath {
+    		get { return SelectedPaths[0]; }
     }
     
     public void SetUp () {
@@ -60,10 +66,10 @@ public class SubtitleView : GladeWidget {
     }
     
     public void Load (Subtitles subtitles) {
-    		treeView.Selection.Changed -= OnSelectionChanged;
+    		DisconnectSelectionChangedSignals();
     		this.subtitles = subtitles;
     		treeView.Model = subtitles.Model;
-    		treeView.Selection.Changed += OnSelectionChanged;
+    		ConnectSelectionChangedSignals();
     		
     		Refresh();
     }
@@ -82,11 +88,31 @@ public class SubtitleView : GladeWidget {
     }
     
     public void RedrawSelectedRow () {
-    		TreeIter iter;
-    		treeView.Selection.GetSelected(out iter);
-    		subtitles.EmitSubtitleChanged(iter);
+    		subtitles.EmitSubtitleChanged(SelectedPath);
     }
- 
+    
+    public void ScrollToPath (TreePath path) {
+    		treeView.ScrollToCell(path, null, true, 0, 0);
+    }
+    
+    public void Reselect () {
+    		Refresh();
+    		OnSelectionChanged(treeView.Selection, EventArgs.Empty);
+    }
+    
+    public void UnselectAll () {
+    		treeView.Selection.UnselectAll();
+    }
+    
+    public void ConnectSelectionChangedSignals () {
+    		treeView.Selection.Changed += OnSelectionChanged;
+    }
+    
+    public void DisconnectSelectionChangedSignals () {
+    		treeView.Selection.Changed -= OnSelectionChanged;
+    }
+    
+    /* Private Methods */ 
 	
     private void CreateColumns() {
     		numberCol = CreateColumn("No.", ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
@@ -126,9 +152,17 @@ public class SubtitleView : GladeWidget {
 		return Utility.TextWidth(treeView, text, margins);
 	}
 	
+	/* Event Handlers */
+	
 	private void OnSelectionChanged (object o, EventArgs args) {
-		GUI.SubtitleSelected(this.SelectedSubtitle);
+		int selectedRowsCount = treeView.Selection.CountSelectedRows();
+		if (selectedRowsCount == 1)
+			GUI.OnSubtitleSelection(this.SelectedSubtitle);
+		else
+			GUI.OnSubtitleSelection(this.SelectedPaths);
 	}
+	
+	/* Cell Renderers */
 
 	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
 		(cell as CellRendererText).Text = (treeModel.GetPath(iter).Indices[0] + 1).ToString();
@@ -137,35 +171,36 @@ public class SubtitleView : GladeWidget {
 	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText cellRenderer = (CellRendererText)cell;
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.Start.ToString();
+			cellRenderer.Text = subtitles.Get(iter).Frames.Start.ToString();
 		else
-			cellRenderer.Text = Utility.TimeSpanToText(subtitles.GetSubtitle(iter).Times.Start);
+			cellRenderer.Text = Utility.TimeSpanToText(subtitles.Get(iter).Times.Start);
 	}
 	
 	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText cellRenderer = (CellRendererText)cell;
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.End.ToString();
+			cellRenderer.Text = subtitles.Get(iter).Frames.End.ToString();
 		else
-			cellRenderer.Text = Utility.TimeSpanToText(subtitles.GetSubtitle(iter).Times.End);
+			cellRenderer.Text = Utility.TimeSpanToText(subtitles.Get(iter).Times.End);
 	}
 	
 	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText cellRenderer = (CellRendererText)cell;
 		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-			cellRenderer.Text = subtitles.GetSubtitle(iter).Frames.Duration.ToString();
+			cellRenderer.Text = subtitles.Get(iter).Frames.Duration.ToString();
 		else
-			cellRenderer.Text = Utility.TimeSpanToText(subtitles.GetSubtitle(iter).Times.Duration);
+			cellRenderer.Text = Utility.TimeSpanToText(subtitles.Get(iter).Times.Duration);
 	}
 	
 	private void RenderTextCell (TreeViewColumn column, CellRenderer cellRenderer, TreeModel treeModel, TreeIter iter) {
 		CellRendererText cell = (CellRendererText)cellRenderer;
-		Subtitle subtitle = subtitles.GetSubtitle(iter);
+		Subtitle subtitle = subtitles.Get(iter);
 		if (subtitle.Text.IsEmpty) {
 			cell.Text = " ";
 			return;
 		}
-		cell.Text = subtitle.Text.Get();
+		
+		cell.Text = subtitle.Text.GetReplaceEmptyLines(" ");;
 		
 		if (subtitle.Style.Italic)
 			cell.Style = Pango.Style.Italic;
@@ -210,14 +245,15 @@ public class CellRendererCenteredText : CellRendererText {
 		fontDescription.Style = Style;
 		fontDescription.Weight = (Pango.Weight)Weight;
 		layout.FontDescription = fontDescription;
-		
+
 		if (Underline != Pango.Underline.None)
 			layout.SetMarkup("<u>" + Text + "</u>");
 		else
 			layout.SetText(Text);
 
 		Gtk.Style.PaintLayout(widget.Style, window, state, true, cellArea, widget,
-			"cellrenderertext", cellArea.X + xOffset, cellArea.Y + yOffset, layout);			
+			"cellrenderertext", cellArea.X + xOffset, cellArea.Y + yOffset, layout);
+			
 	}
 
 }

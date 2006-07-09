@@ -25,23 +25,17 @@ using SubLib;
 namespace GnomeSubtitles {
 
 public class ApplicationCore {
-	private ExecutionInfo executionInfo = null;
 	private Gnome.Program program = null;
 	private Subtitles subtitles = null;
 	private EventHandlers handlers = null;
 	private CommandManager commandManager = null;
 	
-	public ApplicationCore (ExecutionInfo executionInfo, GUI gui) {
-		this.executionInfo = executionInfo;
-		program = new Gnome.Program(executionInfo.ApplicationID,
-			executionInfo.Version, Gnome.Modules.UI, executionInfo.Args);
+	public ApplicationCore (GUI gui) {
+		program = new Gnome.Program(ExecutionInfo.ApplicationID,
+			ExecutionInfo.Version, Gnome.Modules.UI, ExecutionInfo.Args);
 		handlers = new EventHandlers(gui);
 		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled,
 			handlers.OnCommandActivated, handlers.OnModified);
-	}
-
-	public ExecutionInfo ExecutionInfo {
-		get { return executionInfo; }
 	}
 	
 	public Gnome.Program Program {

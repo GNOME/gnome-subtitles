@@ -30,7 +30,7 @@ public class GladeWidget {
 	
 	protected GladeWidget (GUI gui, string widgetName) {
 		this.gui = gui;
-		Init(gui.Core.ExecutionInfo.GladeMasterFileName, widgetName, this);
+		Init(ExecutionInfo.GladeMasterFileName, widgetName, this);
 	}
 
 	protected GladeWidget (GUI gui, Glade.XML glade) {

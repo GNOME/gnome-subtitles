@@ -110,9 +110,9 @@ public class CommandManager {
 		ClearRedo();
 		
 		bool canGroup = false;
-		if (CanUndo && (command is GroupableCommand)) {
+		if (CanUndo && command.CanGroup) {
 			Command lastCommand = PreviousCommand();
-			if ((lastCommand.GetType() == command.GetType()) && (lastCommand as GroupableCommand).CanGroupWith(command))
+			if ((lastCommand.GetType() == command.GetType()) && (lastCommand.CanGroupWith(command)))
 				canGroup = true;
 		}
 		
@@ -224,16 +224,22 @@ public class CommandManager {
 }
 
 public abstract class Command {
-	private GUI gui = null;
+	private GUI gui;
 	private string description;
+	private bool canGroup;
 
-	public Command (GUI gui, string description) {
+	public Command (GUI gui, string description, bool canGroup) {
 		this.gui = gui;
 		this.description = description;
+		this.canGroup = canGroup;
 	}
 	
 	public string Description {
 		get { return description; }
+	}
+	
+	public bool CanGroup {
+		get { return canGroup; }
 	}
 
 	protected GUI GUI {
@@ -249,13 +255,87 @@ public abstract class Command {
 	public virtual void Redo () {
 		Undo();
 	}
+	
+	public virtual bool CanGroupWith (Command command) {
+		return false;
+	}
 }
 
-public abstract class SelectionCommand : Command {
-	private TreePath path;
+public abstract class MultipleSelectionCommand : Command {
+	private TreePath[] paths = null;
 	
-	public SelectionCommand (GUI gui, string description) : base(gui, description) {
-		this.path = gui.SubtitleView.Widget.Selection.GetSelectedRows()[0];	
+	public MultipleSelectionCommand (GUI gui, string description, bool canGroup) : base(gui, description, canGroup) {
+		this.paths = gui.SubtitleView.SelectedPaths;
+	}
+	
+	protected TreePath[] Paths {
+		get { return paths; }
+	}
+	
+	public override void Execute () {
+		ChangeValues();
+		GUI.RefreshAndReselect();
+		AfterSelected();
+	}
+	
+	public override void Undo () {
+		ChangeValues();
+		SelectPaths();
+		ScrollToSelection();
+		AfterSelected();
+	}
+	
+	protected virtual void AfterSelected () {
+		return;
+	}
+
+	/* Methods to be extended */
+	
+	protected abstract void ChangeValues ();
+	
+	/* Private methods */
+	
+	private void SelectPaths () {
+		if (paths.Length == 0)
+			return;
+			
+		SubtitleView subtitleView = GUI.SubtitleView;
+		subtitleView.DisconnectSelectionChangedSignals();
+
+		subtitleView.UnselectAll();
+		TreeSelection selection = subtitleView.Widget.Selection;
+		foreach (TreePath path in paths)
+			selection.SelectPath(path);
+
+		subtitleView.ConnectSelectionChangedSignals();
+		subtitleView.Reselect();
+	 }
+	 
+	private void ScrollToSelection() {
+		if (paths.Length == 0)
+			return;
+
+		TreePath startPath, endPath;
+		GUI.SubtitleView.Widget.GetVisibleRange(out startPath, out endPath);
+		int startIndice = startPath.Indices[0];
+		int endIndice = endPath.Indices[0];
+		
+		//Check if there is a subtitle currently visible
+		foreach (TreePath path in paths) {
+			int pathIndice = path.Indices[0];
+			if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
+				return;
+		}
+		GUI.SubtitleView.ScrollToPath(paths[0]);
+	}
+
+}
+
+public abstract class SingleSelectionCommand : Command {
+	private TreePath path = null;
+	
+	public SingleSelectionCommand (GUI gui, string description, bool canGroup) : base(gui, description, canGroup) {
+		this.path = gui.SubtitleView.SelectedPath;
 	}
 	
 	protected TreePath Path {
@@ -264,306 +344,58 @@ public abstract class SelectionCommand : Command {
 	
 	public override void Execute () {
 		ChangeValues();
-		OnSelected(true);	
+		GUI.SubtitleView.Refresh();
+		AfterSelected();
 	}
 	
 	public override void Undo () {
 		ChangeValues();
-		TreeSelection selection = GUI.SubtitleView.Widget.Selection;
-		if (!selection.PathIsSelected(path)) {
-			selection.SelectPath(path);
-			OnSelected(false);
-		}
+		
+		if (PathMatchesCurrentSelection)
+			GUI.SubtitleView.Reselect();
 		else
-			OnSelected(true);
+			SelectPath();
+			
+		ScrollToSelection();
+		AfterSelected();
 	}
+	
+	protected virtual void AfterSelected () {
+		return;
+	}
+	
+	/* Methods to be extended */
 	
 	protected abstract void ChangeValues ();
-	protected abstract void OnSelected (bool wasSelected);
-
-}
-
-public abstract class GroupableCommand : SelectionCommand {
-
-	public GroupableCommand (GUI gui, string description) : base(gui, description) {
-	}
-
-	public abstract bool CanGroupWith (Command command);
-
-}
-
-public abstract class ChangeTimingCommand : GroupableCommand {
-	private Subtitle subtitle;
-	private TimeSpan storedTime;
-	private int storedFrames = -1;
-
 	
-	public ChangeTimingCommand (GUI gui, Subtitle subtitle, int frames, string description): base(gui, description) {
-		this.subtitle = subtitle;
-		this.storedFrames = frames;
-	}
+	/* Private methods */
 	
-	public ChangeTimingCommand (GUI gui, Subtitle subtitle, TimeSpan time, string description): base(gui, description) {
-		this.subtitle = subtitle;
-		this.storedTime = time;
-	}
-	
-	protected Subtitle Subtitle {
-		get { return subtitle; }
+	private void SelectPath () {
+		GUI.SubtitleView.UnselectAll();
+		GUI.SubtitleView.Widget.Selection.SelectPath(Path);
 	}
 
-	public override bool CanGroupWith (Command command) {
-		return (Path.Compare((command as ChangeTimingCommand).Path) == 0);	
-	}
-
-	protected override void ChangeValues () {
-		TimeSpan previousTime = GetPreviousTime();
-		if (storedFrames == -1)
-			SetTime(storedTime);
-		else {
-			SetFrames(storedFrames);
-			storedFrames = -1;
-		}
-			
-		storedTime = previousTime;	
-	}
-	
-	protected override void OnSelected (bool wasSelected) {
-		if (wasSelected) {
-			GUI.SubtitleView.Refresh();
-			GUI.SubtitleEdit.LoadTimings();
-		}
-	}
-
-	protected abstract TimeSpan GetPreviousTime ();
-	protected abstract void SetTime (TimeSpan storedTime);
-	protected abstract void SetFrames (int storedFrames);
-}
-
-public class ChangeStartCommand : ChangeTimingCommand {
-	private static string description = "Editing From";
-
-	public ChangeStartCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
-	}
-	
-	public ChangeStartCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time, description) {
-	}
-
-	protected override TimeSpan GetPreviousTime () {
-		return Subtitle.Times.Start;
-	}
-	
-	protected override void SetTime (TimeSpan storedTime) {
-		Subtitle.Times.Start = storedTime;
-	}
-	
-	protected override void SetFrames (int storedFrames) {
-		Subtitle.Frames.Start = storedFrames;
-	}
-
-}
-
-public class ChangeEndCommand : ChangeTimingCommand {
-	private static string description = "Editing To";
-
-	public ChangeEndCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
-	}
-	
-	public ChangeEndCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time, description) {
-	}
-
-	protected override TimeSpan GetPreviousTime () {
-		return Subtitle.Times.End;
-	}
-	
-	protected override void SetTime (TimeSpan storedTime) {
-		Subtitle.Times.End = storedTime;
-	}
-	
-	protected override void SetFrames (int storedFrames) {
-		Subtitle.Frames.End = storedFrames;
-	}
-
-}
-
-public class ChangeDurationCommand : ChangeTimingCommand {
-	private static string description = "Editing During";
-
-	public ChangeDurationCommand (GUI gui, Subtitle subtitle, int frames): base(gui, subtitle, frames, description) {
-	}
-	
-	public ChangeDurationCommand (GUI gui, Subtitle subtitle, TimeSpan time): base(gui, subtitle, time, description) {
-	}
-
-	protected override TimeSpan GetPreviousTime () {
-		return Subtitle.Times.Duration;
-	}
-	
-	protected override void SetTime (TimeSpan storedTime) {
-		Subtitle.Times.Duration = storedTime;
-	}
-	
-	protected override void SetFrames (int storedFrames) {
-		Subtitle.Frames.Duration = storedFrames;
-	}
-
-}
-
-
-public class ChangeTextCommand : GroupableCommand {
-	private static string description = "Editing Text";
-	private Subtitle subtitle;
-	string storedText;
-
-	public ChangeTextCommand (GUI gui, Subtitle subtitle, string text) : base(gui, description) {
-		this.subtitle = subtitle;
-		this.storedText = text;	
-	}
-	
-	//TODO: only group when it's text of the same word
-	public override bool CanGroupWith (Command command) {
-		return (Path.Compare((command as ChangeTextCommand).Path) == 0);	
-	}
-	
-	public override void Execute () {
-		ChangeValues();
-		GUI.SubtitleView.RedrawSelectedRow();
-		GUI.SubtitleEdit.ApplyLoadedTags();
-	}
-	
-	protected override void OnSelected (bool wasSelected) {
-		GUI.SubtitleView.RedrawSelectedRow();
-		if (wasSelected) {
-			GUI.SubtitleEdit.LoadText();	
-		}
-	}
-	
-	protected override void ChangeValues () {
-		string previousText = subtitle.Text.Get();
-		subtitle.Text.Set(storedText);
-		storedText = previousText;		
-	}
-
-}
-
-public abstract class ChangeStyleCommand : SelectionCommand {
-	private Subtitle subtitle;
-
-	public ChangeStyleCommand (GUI gui, string description, Subtitle subtitle) : base(gui, description) {
-		this.subtitle = subtitle;
-	}
-
-	
-	protected override void ChangeValues () {
-		ToggleStyle(subtitle);
-	}
-	
-	protected override void OnSelected (bool wasSelected) {
-		if (wasSelected) {
-			GUI.SubtitleView.Refresh();
-			SetTag(subtitle);
-		}
-	}
-	
-	protected abstract void ToggleStyle (Subtitle subtitle);
-	protected abstract void SetTag (Subtitle subtitle);
-}
-
-public class ChangeBoldStyleCommand : ChangeStyleCommand {
-	private static string description = "Toggling Bold";
-
-	public ChangeBoldStyleCommand (GUI gui, Subtitle subtitle) : base(gui, description, subtitle) {
-	}
-
-	protected override void ToggleStyle (Subtitle subtitle) {
-		bool currentValue = subtitle.Style.Bold;
-		subtitle.Style.Bold = !currentValue;	
-	}
-	
-	protected override void SetTag (Subtitle subtitle) {
-		GUI.SubtitleEdit.SetBoldTag(subtitle.Style.Bold);
-	}
-}
-
-public class ChangeItalicStyleCommand : ChangeStyleCommand {
-	private static string description = "Toggling Italic";
-
-	public ChangeItalicStyleCommand (GUI gui, Subtitle subtitle) : base(gui, description, subtitle) {
-	}
-
-	protected override void ToggleStyle (Subtitle subtitle) {
-		bool currentValue = subtitle.Style.Italic;
-		subtitle.Style.Italic = !currentValue;	
-	}
-	
-	protected override void SetTag (Subtitle subtitle) {
-		GUI.SubtitleEdit.SetItalicTag(subtitle.Style.Italic);
-	}
-}
-
-public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
-	private static string description = "Toggling Underline";
-
-	public ChangeUnderlineStyleCommand (GUI gui, Subtitle subtitle) : base(gui, description, subtitle) {
-	}
-
-	protected override void ToggleStyle (Subtitle subtitle) {
-		bool currentValue = subtitle.Style.Underline;
-		subtitle.Style.Underline = !currentValue;	
-	}
-	
-	protected override void SetTag (Subtitle subtitle) {
-		GUI.SubtitleEdit.SetUnderlineTag(subtitle.Style.Underline);
-	}
-}
-
-public abstract class ChangeFrameRateCommand : Command {
-	private float storedFrameRate = 0;
-
-	public ChangeFrameRateCommand (GUI gui, string description, float frameRate) : base(gui, description) {
-		this.storedFrameRate = frameRate;
-	}
-	
-	public override void Execute () {
-		float previousFrameRate = GetFrameRate();
-		SetFrameRate(storedFrameRate);
-		storedFrameRate = previousFrameRate;
+	private void ScrollToSelection () {
+		TreePath startPath, endPath;
+		GUI.SubtitleView.Widget.GetVisibleRange(out startPath, out endPath);
+		int startIndice = startPath.Indices[0];
+		int endIndice = endPath.Indices[0];
 		
-		GUI.RefreshViewAndEdit();
-	}
-	
-	protected abstract float GetFrameRate ();
-	protected abstract void SetFrameRate (float frameRate);
-}
+		int pathIndice = path.Indices[0];
+		if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
+			return;
 
-public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = "Changing Input Frame Rate";
+		GUI.SubtitleView.ScrollToPath(path);
+	}
+	
+	private bool PathMatchesCurrentSelection {
+		get {
+			TreeSelection selection = GUI.SubtitleView.Widget.Selection;
+			return (selection.CountSelectedRows() == 1)
+				&& (selection.PathIsSelected(path));
+		}
+	}
 
-	public ChangeInputFrameRateCommand (GUI gui, float frameRate) : base(gui, description, frameRate) {
-	}
-	
-	protected override float GetFrameRate () {
-		return GUI.Core.Subtitles.Properties.OriginalFrameRate;
-	}
-	
-	protected override void SetFrameRate (float frameRate) {
-		GUI.Core.Subtitles.ChangeOriginalFrameRate(frameRate);
-	}
-}
-
-public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = "Changing Movie Frame Rate";
-
-	public ChangeMovieFrameRateCommand (GUI gui, float frameRate) : base(gui, description, frameRate) {
-	}
-	
-	protected override float GetFrameRate () {
-		return GUI.Core.Subtitles.Properties.CurrentFrameRate;
-	}
-	
-	protected override void SetFrameRate (float frameRate) {
-		GUI.Core.Subtitles.ChangeFrameRate(frameRate);
-	}
 }
 
 }

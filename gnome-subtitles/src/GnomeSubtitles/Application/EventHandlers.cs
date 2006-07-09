@@ -93,15 +93,18 @@ public class EventHandlers {
 	/*	Format Menu	 */
 	
 	public void OnBold (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new ChangeBoldStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
+		bool newBoldValue = (o as CheckMenuItem).Active;
+		gui.Core.CommandManager.Execute(new ChangeBoldStyleCommand(gui, newBoldValue));
 	}
 	
 	public void OnItalic (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new ChangeItalicStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
+		bool newItalicValue = (o as CheckMenuItem).Active;
+		gui.Core.CommandManager.Execute(new ChangeItalicStyleCommand(gui, newItalicValue));
 	}
 	
 	public void OnUnderline (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, gui.SubtitleView.SelectedSubtitle));
+		bool newUnderlineValue = (o as CheckMenuItem).Active;
+		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, newUnderlineValue));
 	}
 	
 	/*	Timing Menu	 */
@@ -190,6 +193,14 @@ public class EventHandlers {
     public void OnRowActivated (object o, RowActivatedArgs args) {
     		gui.SubtitleEdit.TextGrabFocus();
     }
+    
+    public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
+    		if (args.Event.Key == Gdk.Key.Delete) {
+			//gui.Core.CommandManager.Execute(new DeleteSubtitleCommand(gui, gui.SubtitleView.SelectedSubtitleIndex));
+    		}
+    }
+    
+    
 
 
 	/***** Private methods *****/

@@ -35,15 +35,18 @@ public class Subtitles : SubLib.Subtitles {
 		get { return model; }
 	}
 	
-	public Subtitle GetSubtitle (TreeIter iter) {
+	public Subtitle Get (TreeIter iter) {
 		return (Subtitle)model.GetValue(iter, 0);
 	}
 
-	public Subtitle GetSubtitle (TreePath path) {
-		TreeIter iter;
-    		model.GetIter(out iter, path);
-    		return GetSubtitle(iter);	
+	public Subtitle Get (TreePath path) {
+    		return Get(path.Indices[0]);	
 	}
+	
+	public Subtitle Get (int index) {
+		return Collection.Get(index);
+	}
+
 	
 	public void Add (Subtitle subtitle) {
 		Collection.Add(subtitle);
@@ -55,9 +58,16 @@ public class Subtitles : SubLib.Subtitles {
 		model.SetValue(model.Insert(index), 0, subtitle);
 	}
 	
-	public void EmitSubtitleChanged (TreeIter iter) {
-		TreePath path = model.GetPath(iter);
-		model.EmitRowChanged(path, iter);	
+	public void Remove (int index) {
+		Collection.Remove(index);
+		
+		TreeIter iter;
+		model.GetIterFromString(out iter, index.ToString());
+		model.Remove(ref iter);
+	}
+	
+	public void EmitSubtitleChanged (TreePath path) {
+		model.EmitRowChanged(path, TreeIter.Zero);	
 	}
 
 	
