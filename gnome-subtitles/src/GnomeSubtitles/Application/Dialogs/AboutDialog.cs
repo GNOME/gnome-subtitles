@@ -26,7 +26,7 @@ public class AboutDialog : GladeWidget {
 	public AboutDialog (GUI gui) : base(gui, WidgetNames.AboutDialog){
 		Gtk.AboutDialog dialog = (Gtk.AboutDialog)GetWidget(WidgetNames.AboutDialog);
 		dialog.TransientFor = gui.Window;
-		dialog.Version = gui.Core.ExecutionInfo.Version;
+		dialog.Version = ExecutionInfo.Version;
 	}
 
 }
