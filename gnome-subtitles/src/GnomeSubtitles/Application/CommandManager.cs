@@ -189,7 +189,10 @@ public class CommandManager {
 	}
 	
 	private Command PreviousCommand () {
-		return commands[iterator - 1];
+		if (iterator == 0)
+			return commands[limit - 1];
+		else
+			return commands[iterator - 1];
 	}
 	
 	private void Next () {
@@ -285,17 +288,19 @@ public abstract class MultipleSelectionCommand : Command {
 		AfterSelected();
 	}
 	
+	/* Methods to be extended */
+	
 	protected virtual void AfterSelected () {
 		return;
 	}
-
-	/* Methods to be extended */
 	
-	protected abstract void ChangeValues ();
+	protected virtual void ChangeValues () {
+		return;
+	}
 	
 	/* Private methods */
 	
-	private void SelectPaths () {
+	protected void SelectPaths () {
 		if (paths.Length == 0)
 			return;
 			
@@ -311,7 +316,7 @@ public abstract class MultipleSelectionCommand : Command {
 		subtitleView.Reselect();
 	 }
 	 
-	private void ScrollToSelection() {
+	protected void ScrollToSelection () {
 		if (paths.Length == 0)
 			return;
 
@@ -326,7 +331,7 @@ public abstract class MultipleSelectionCommand : Command {
 			if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
 				return;
 		}
-		GUI.SubtitleView.ScrollToPath(paths[0]);
+		GUI.SubtitleView.ScrollToPath(paths[0], true);
 	}
 
 }
@@ -340,6 +345,11 @@ public abstract class SingleSelectionCommand : Command {
 	
 	protected TreePath Path {
 		get { return path; }
+		set { path = value; }
+	}
+	
+	protected int PathIndex {
+		get { return path.Indices[0]; }
 	}
 	
 	public override void Execute () {
@@ -360,33 +370,29 @@ public abstract class SingleSelectionCommand : Command {
 		AfterSelected();
 	}
 	
+	/* Methods to be extended */
+	
+	protected virtual void ChangeValues () {
+		return;
+	}
+	
 	protected virtual void AfterSelected () {
 		return;
 	}
 	
-	/* Methods to be extended */
+	/* Protected methods */
 	
-	protected abstract void ChangeValues ();
+	protected void ScrollToSelection () {
+		GUI.SubtitleView.ScrollToPath(path);
+	}
 	
-	/* Private methods */
-	
-	private void SelectPath () {
+	protected void SelectPath () {
 		GUI.SubtitleView.UnselectAll();
 		GUI.SubtitleView.Widget.Selection.SelectPath(Path);
 	}
+	
 
-	private void ScrollToSelection () {
-		TreePath startPath, endPath;
-		GUI.SubtitleView.Widget.GetVisibleRange(out startPath, out endPath);
-		int startIndice = startPath.Indices[0];
-		int endIndice = endPath.Indices[0];
-		
-		int pathIndice = path.Indices[0];
-		if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
-			return;
-
-		GUI.SubtitleView.ScrollToPath(path);
-	}
+	/* Private methods */
 	
 	private bool PathMatchesCurrentSelection {
 		get {
