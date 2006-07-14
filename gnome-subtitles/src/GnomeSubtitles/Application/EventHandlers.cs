@@ -76,6 +76,14 @@ public class EventHandlers {
 		gui.Core.CommandManager.Redo();
 	}
 	
+	public void OnInsertSubtitle (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new InsertSubtitleCommand(gui));
+	}
+	
+	public void OnDeleteSubtitles (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new DeleteSubtitlesCommand(gui));
+	}
+	
 	
 	/*	View Menu	*/
 	
@@ -129,7 +137,7 @@ public class EventHandlers {
 	/*	Help Menu	*/
 	
 	public void OnReportBug (object o, EventArgs args) {
-		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716496");
+		Gnome.Url.Show("http://sourceforge.net/tracker/?func=browse&group_id=129996&atid=716496");
 	}
 	
 	public void OnAbout (object o, EventArgs args) {
@@ -140,15 +148,15 @@ public class EventHandlers {
 	/*	Window	*/
 	
 	public void OnDelete (object o, DeleteEventArgs args) {
-    		gui.Close();
+    	gui.Close();
     }
     
     
     /* CommandManager related */
     
     public void OnUndoToggled (object o, EventArgs args) {
-    		Widget button = glade.GetWidget(WidgetNames.UndoButton);
-    		button.Sensitive = !button.Sensitive;
+    	Widget button = glade.GetWidget(WidgetNames.UndoButton);
+    	button.Sensitive = !button.Sensitive;
     		
 		MenuItem menuItem = (MenuItem)glade.GetWidget(WidgetNames.UndoMenuItem);
 		menuItem.Sensitive = !menuItem.Sensitive;
@@ -167,21 +175,21 @@ public class EventHandlers {
     }
     
     public void OnCommandActivated (object o, EventArgs args) {
-    		CommandManager commandManager = gui.Core.CommandManager;
-    		if (commandManager.CanUndo) {
-    			string undoDescription = commandManager.UndoDescription;
-    			ToolButton undoButton = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
-    			undoButton.SetTooltip(tooltips, undoDescription, null);
-    			MenuItem undoMenuItem = (MenuItem)(glade.GetWidget(WidgetNames.UndoMenuItem));
-    			(undoMenuItem.Child as Label).Text = undoDescription;
-    		}
-    		if (commandManager.CanRedo) {
-	    		string redoDescription = commandManager.RedoDescription;
-    			ToolButton redoButton = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
-    			redoButton.SetTooltip(tooltips, redoDescription, null);
-    			MenuItem redoMenuItem = (MenuItem)(glade.GetWidget(WidgetNames.RedoMenuItem));
-    			(redoMenuItem.Child as Label).Text = redoDescription;
-    		}
+    	CommandManager commandManager = gui.Core.CommandManager;
+    	if (commandManager.CanUndo) {
+    		string undoDescription = commandManager.UndoDescription;
+    		ToolButton undoButton = (ToolButton)(glade.GetWidget(WidgetNames.UndoButton));
+    		undoButton.SetTooltip(tooltips, undoDescription, null);
+    		MenuItem undoMenuItem = (MenuItem)(glade.GetWidget(WidgetNames.UndoMenuItem));
+    		(undoMenuItem.Child as Label).Text = undoDescription;
+    	}
+    	if (commandManager.CanRedo) {
+	    	string redoDescription = commandManager.RedoDescription;
+    		ToolButton redoButton = (ToolButton)(glade.GetWidget(WidgetNames.RedoButton));
+    		redoButton.SetTooltip(tooltips, redoDescription, null);
+    		MenuItem redoMenuItem = (MenuItem)(glade.GetWidget(WidgetNames.RedoMenuItem));
+    		(redoMenuItem.Child as Label).Text = redoDescription;
+    	}
     }
     
     public void OnModified (object o, EventArgs args) {
@@ -191,13 +199,15 @@ public class EventHandlers {
     /*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
-    		gui.SubtitleEdit.TextGrabFocus();
+    	gui.SubtitleEdit.TextGrabFocus();
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
-    		if (args.Event.Key == Gdk.Key.Delete) {
-			//gui.Core.CommandManager.Execute(new DeleteSubtitleCommand(gui, gui.SubtitleView.SelectedSubtitleIndex));
-    		}
+    	if (args.Event.Key == Gdk.Key.Delete) {
+			gui.Core.CommandManager.Execute(new DeleteSubtitlesCommand(gui));
+		}
+		else if (args.Event.Key == Gdk.Key.Insert)
+			gui.Core.CommandManager.Execute(new InsertSubtitleCommand(gui));
     }
     
     
