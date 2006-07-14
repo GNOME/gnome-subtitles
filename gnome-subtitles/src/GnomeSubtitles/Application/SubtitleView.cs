@@ -43,19 +43,26 @@ public class SubtitleView : GladeWidget {
     }
 
     public TreeView Widget {
-    		get { return treeView; }
+    	get { return treeView; }
     }
     
     public Subtitle SelectedSubtitle {
-    		get { return subtitles.Get(SelectedPath); }
+    	get { return subtitles.Get(SelectedPath); }
     }
     
     public TreePath[] SelectedPaths {
-    		get { return treeView.Selection.GetSelectedRows(); }
+    	get { return treeView.Selection.GetSelectedRows(); }
     }
     
     public TreePath SelectedPath {
-    		get { return SelectedPaths[0]; }
+    	get { return SelectedPaths[0]; }
+    }
+    
+    public TreePath LastSelectedPath {
+    	get {
+    		TreePath[] selectedPaths = SelectedPaths;
+    		return selectedPaths[selectedPaths.Length - 1];
+    	}
     }
     
     public void SetUp () {
@@ -66,16 +73,16 @@ public class SubtitleView : GladeWidget {
     }
     
     public void Load (Subtitles subtitles) {
-    		DisconnectSelectionChangedSignals();
-    		this.subtitles = subtitles;
-    		treeView.Model = subtitles.Model;
-    		ConnectSelectionChangedSignals();
+   		DisconnectSelectionChangedSignals();
+   		this.subtitles = subtitles;
+   		treeView.Model = subtitles.Model;
+    	ConnectSelectionChangedSignals();
     		
-    		Refresh();
+    	Refresh();
     }
     
     public void SelectFirst () {
-    		treeView.Selection.SelectPath(TreePath.NewFirst());
+    	treeView.Selection.SelectPath(TreePath.NewFirst());
 	    treeView.GrabFocus();
     }
     
@@ -88,15 +95,47 @@ public class SubtitleView : GladeWidget {
     }
     
     public void RedrawSelectedRow () {
-    		subtitles.EmitSubtitleChanged(SelectedPath);
+    	subtitles.EmitSubtitleChanged(SelectedPath);
+    }
+
+    /// <summary>Scrolls to the specified path, in case it isn't currently visible.</summary>
+    /// <param name="path">The path to scroll to.</param>
+    public void ScrollToPath (TreePath path) {
+    	Gdk.Rectangle visible = treeView.VisibleRect;
+    	int x, top, bottom;
+    	treeView.TreeToWidgetCoords(0, visible.Top, out x, out top);
+    	treeView.TreeToWidgetCoords(0, visible.Bottom, out x, out bottom);
+    		
+    	TreePath startPath, endPath;
+    	bool isEndPathValid = treeView.GetPathAtPos(0, bottom, out endPath);
+    	if (!isEndPathValid) {
+    		ScrollToPath(path, true);
+    		return;
+    	}
+    	
+    	bool isStartPathValid = treeView.GetPathAtPos(0, top, out startPath);
+    	if (!isStartPathValid) {
+    		ScrollToPath(path, true);
+    		return;
+    	}
+    	
+		int startIndice = startPath.Indices[0];
+		int endIndice = endPath.Indices[0];
+		int pathIndice = path.Indices[0];
+		if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
+			return;
+		else
+			ScrollToPath(path, true);
     }
     
-    public void ScrollToPath (TreePath path) {
-    		treeView.ScrollToCell(path, null, true, 0, 0);
+    /// <summary>Scrolls to the specified path and optionally aligns it to the center.</summary>
+    /// <param name="path">The path to scroll to.</param>
+    /// <param name="toAlign">Whether to align the path to the center.</param>
+    public void ScrollToPath (TreePath path, bool toAlign) {
+    		treeView.ScrollToCell(path, null, toAlign, 0.5f, 0.5f);
     }
     
     public void Reselect () {
-    		Refresh();
     		OnSelectionChanged(treeView.Selection, EventArgs.Empty);
     }
     
@@ -115,22 +154,22 @@ public class SubtitleView : GladeWidget {
     /* Private Methods */ 
 	
     private void CreateColumns() {
-    		numberCol = CreateColumn("No.", ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
+    	numberCol = CreateColumn("No.", ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
     		
-    		int timeWidth = ColumnWidth("00:00:00.000");
-    		startCol = CreateColumn("From", timeWidth, new CellRendererText(), RenderStartCell);
-    		endCol = CreateColumn("To", timeWidth, new CellRendererText(), RenderEndCell);
-    		durationCol = CreateColumn("During", timeWidth, new CellRendererText(), RenderDurationCell);
-    		
-    		int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
-    		textCol = CreateColumn("Text", textWidth, new CellRendererCenteredText(), RenderTextCell);
-    		    		
-    		treeView.AppendColumn(numberCol);
-    		treeView.AppendColumn(startCol);
-    		treeView.AppendColumn(endCol);
-    		treeView.AppendColumn(durationCol);
-    		treeView.AppendColumn(textCol);
-    		treeView.AppendColumn(new TreeViewColumn());
+    	int timeWidth = ColumnWidth("00:00:00.000");
+    	startCol = CreateColumn("From", timeWidth, new CellRendererText(), RenderStartCell);
+    	endCol = CreateColumn("To", timeWidth, new CellRendererText(), RenderEndCell);
+    	durationCol = CreateColumn("During", timeWidth, new CellRendererText(), RenderDurationCell);
+    	
+    	int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
+    	textCol = CreateColumn("Text", textWidth, new CellRendererCenteredText(), RenderTextCell);
+    	    		
+    	treeView.AppendColumn(numberCol);
+    	treeView.AppendColumn(startCol);
+    	treeView.AppendColumn(endCol);
+    	treeView.AppendColumn(durationCol);
+    	treeView.AppendColumn(textCol);
+    	treeView.AppendColumn(new TreeViewColumn());
     }
 
 	private TreeViewColumn CreateColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
@@ -161,7 +200,7 @@ public class SubtitleView : GladeWidget {
 		else
 			GUI.OnSubtitleSelection(this.SelectedPaths);
 	}
-	
+
 	/* Cell Renderers */
 
 	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
