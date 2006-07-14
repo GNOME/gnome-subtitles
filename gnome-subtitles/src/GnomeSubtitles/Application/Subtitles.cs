@@ -35,6 +35,10 @@ public class Subtitles : SubLib.Subtitles {
 		get { return model; }
 	}
 	
+	public int Count {
+		get { return Collection.Count; }
+	}
+	
 	public Subtitle Get (TreeIter iter) {
 		return (Subtitle)model.GetValue(iter, 0);
 	}
@@ -58,12 +62,37 @@ public class Subtitles : SubLib.Subtitles {
 		model.SetValue(model.Insert(index), 0, subtitle);
 	}
 	
-	public void Remove (int index) {
-		Collection.Remove(index);
+	public void AddAfter (int index) {
+		Subtitle existing = Get(index);
+		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(0.25);
+		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(3.5);
+		Subtitle subtitle = new Subtitle(Properties, subtitleStart, subtitleEnd);
+		Add(subtitle, index + 1);	
+	}
+	
+	public bool Remove (TreePath path) {
+		int index = path.Indices[0];
+		if ((index < 0) || (index >= Collection.Count))
+			return false;
+			
+		TreeIter iter;
+		model.GetIter(out iter, path);
 		
+		Collection.Remove(index);
+		model.Remove(ref iter);
+		return true;
+	}
+
+	public bool Remove (int index) {
+		if ((index < 0) || (index >= Collection.Count))
+			return false;
+	
 		TreeIter iter;
 		model.GetIterFromString(out iter, index.ToString());
+
+		Collection.Remove(index);
 		model.Remove(ref iter);
+		return true;
 	}
 	
 	public void EmitSubtitleChanged (TreePath path) {
