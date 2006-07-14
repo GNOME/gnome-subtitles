@@ -73,22 +73,6 @@ public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
 		GUI.Core.Subtitles.ChangeFrameRate(frameRate);
 	}
 }
-/*
-public class DeleteSubtitleCommand : Command {
-	private static string description = "Deleting Subtitle";
-	private int index = 0;
-	private Subtitle subtitle = null;
-	
-	public DeleteSubtitleCommand (GUI gui, int index) : base(gui, description, false) {
-		this.index = index;
-	}
-	
-	public override void Execute () {
-		Console.WriteLine("Deleting subtitle at " + index);
-		this.subtitle = GUI.Core.Subtitles.Get(index);
-		GUI.Core.Subtitles.Remove(index);
-	}
-}*/
 
 /* Commands that use Single Selection */
 
@@ -247,6 +231,46 @@ public class ChangeTextCommand : SingleSelectionCommand {
 
 }
 
+public class InsertSubtitleCommand : SingleSelectionCommand {
+	private static string description = "Inserting Subtitle";
+	private Subtitle subtitle = null;
+	
+	public InsertSubtitleCommand (GUI gui) : base(gui, description, false) {
+		TreePath lastPath = gui.SubtitleView.LastSelectedPath;
+		int pathIndex = lastPath.Indices[0] + 1;
+		Path = new TreePath(pathIndex.ToString());
+	}
+
+	public override void Execute () {
+		SubtitleView subtitleView = GUI.SubtitleView;
+		subtitleView.UnselectAll();
+
+		if (subtitle == null)
+			GUI.Core.Subtitles.AddAfter(PathIndex - 1);
+		else
+			GUI.Core.Subtitles.Add(subtitle, PathIndex);
+
+		SelectPath();
+		ScrollToSelection();
+	}
+
+	public override void Undo () {
+		SubtitleView subtitleView = GUI.SubtitleView;
+		subtitleView.UnselectAll();
+		Subtitles subtitles = GUI.Core.Subtitles; 
+		subtitle = subtitles.Get(PathIndex);
+		subtitles.Remove(Path);
+		SelectPath();
+		ScrollToSelection();
+	}
+	
+	public override void Redo () {
+		Execute();
+	}
+
+}
+
+
 /* Commands that use Multiple Selection */
 
 public abstract class ChangeStyleCommand : MultipleSelectionCommand {
@@ -302,6 +326,72 @@ public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
 
 	protected override void SetStyle (Subtitle subtitle, bool styleValue) {
 		subtitle.Style.Underline = styleValue;
+	}
+}
+
+public class DeleteSubtitlesCommand : MultipleSelectionCommand {
+	private static string description = "Deleting Subtitles";
+	private Subtitle[] deletedSubtitles = null;
+	
+	public DeleteSubtitlesCommand (GUI gui) : base(gui, description, false) {
+		deletedSubtitles = new Subtitle[Paths.Length];
+	}
+	
+	public override void Execute () {
+		DeleteSubtitles(true);
+	}
+	
+	public override void Undo () {
+		SubtitleView subtitleView = GUI.SubtitleView;
+		subtitleView.DisconnectSelectionChangedSignals();
+		subtitleView.UnselectAll();
+		for (int pathIndex = 0 ; pathIndex < Paths.Length ; pathIndex++) {
+			Subtitle subtitle = deletedSubtitles[pathIndex];
+			int index = Paths[pathIndex].Indices[0];
+			GUI.Core.Subtitles.Add(subtitle, index);
+		}
+		subtitleView.ConnectSelectionChangedSignals();
+		SelectPaths();
+		ScrollToSelection();
+	}
+	
+	public override void Redo () {
+		DeleteSubtitles(false);
+	}
+	
+	private void DeleteSubtitles (bool toStoreSubtitles) {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		GUI.SubtitleView.DisconnectSelectionChangedSignals();
+		for (int pathIndex = 0 ; pathIndex < Paths.Length ; pathIndex++) {
+			TreePath path = Paths[pathIndex];
+			
+			//Subtract pathIndex because indexes decrement as subtitles are removed. Paths must be sorted.
+			int index = path.Indices[0] - pathIndex; 
+			
+			Subtitle subtitle = subtitles.Get(index);
+
+			if (toStoreSubtitles)
+				deletedSubtitles[pathIndex] = subtitle;
+
+			subtitles.Remove(index);
+		}
+		GUI.SubtitleView.ConnectSelectionChangedSignals();
+		SelectSubtitleAferDeletion();
+	}
+	
+	private void SelectSubtitleAferDeletion () {
+		TreePath firstDeleted = Paths[0];
+		int firstIndex = firstDeleted.Indices[0];
+		int subtitleCount = GUI.Core.Subtitles.Count;
+		if (subtitleCount == 0) {
+			GUI.SubtitleView.Reselect();
+			return;
+		}
+		int indexToSelect = Math.Min(firstIndex, subtitleCount - 1);
+		TreePath pathToSelect = new TreePath(indexToSelect.ToString());
+		GUI.SubtitleView.Widget.Selection.SelectPath(pathToSelect);
+		GUI.SubtitleView.Refresh();
+		GUI.SubtitleView.ScrollToPath(pathToSelect);		
 	}
 }
 
