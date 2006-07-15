@@ -64,8 +64,8 @@ public class Subtitles : SubLib.Subtitles {
 	
 	public void AddAfter (int index) {
 		Subtitle existing = Get(index);
-		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(0.25);
-		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(3.5);
+		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(SubtitleConstants.MinTimeBetweenSubtitles);
+		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
 		Subtitle subtitle = new Subtitle(Properties, subtitleStart, subtitleEnd);
 		Add(subtitle, index + 1);	
 	}

@@ -90,7 +90,7 @@ public class ApplicationCore {
 
 	private void CheckSubtitleCount () {
 		if (subtitles.Collection.Count == 0){
-			Subtitle subtitle = new Subtitle(subtitles.Properties, TimeSpan.Zero, TimeSpan.FromSeconds(3.5));
+			Subtitle subtitle = new Subtitle(subtitles.Properties, TimeSpan.Zero, TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration));
 			subtitles.Add(subtitle);
 		}
 	}
