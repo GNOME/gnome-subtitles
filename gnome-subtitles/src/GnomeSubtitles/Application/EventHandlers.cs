@@ -28,7 +28,7 @@ public class EventHandlers {
 	private GUI gui = null;
 	private Glade.XML glade = null;
 	
-	Tooltips tooltips = new Tooltips();
+	private Tooltips tooltips = new Tooltips();
 
 	public EventHandlers(GUI gui){
 		this.gui = gui;
@@ -120,7 +120,7 @@ public class EventHandlers {
 	public void OnInputFrameRate (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
-			float frameRate = GUI.FrameRateFromMenuItem((menuItem.Child as Label).Text);
+			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
 			gui.Core.CommandManager.Execute(new ChangeInputFrameRateCommand(gui, frameRate));
 		}
 	}
@@ -128,7 +128,7 @@ public class EventHandlers {
 	public void OnMovieFrameRate (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
-			float frameRate = GUI.FrameRateFromMenuItem((menuItem.Child as Label).Text);
+			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
 			gui.Core.CommandManager.Execute(new ChangeMovieFrameRateCommand(gui, frameRate));
 		}
 	}

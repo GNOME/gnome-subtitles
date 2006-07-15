@@ -28,6 +28,7 @@ namespace GnomeSubtitles {
 public class GUI : GladeWidget {
 	private ApplicationCore core = null;
 	private App window = null;
+	private Menus menus = null;
 	private SubtitleView subtitleView = null;	
 	private SubtitleEdit subtitleEdit = null;
 	
@@ -39,11 +40,12 @@ public class GUI : GladeWidget {
 		window = (App)GetWidget(WidgetNames.MainWindow);
 		subtitleView = new SubtitleView(this, this.Glade);
 		subtitleEdit = new SubtitleEdit(this, this.Glade);
+		menus = new Menus(this, this.Glade);
 		
 		if (ExecutionInfo.Args.Length > 0)
 			Open(ExecutionInfo.Args[0]);
 		else
-			SetStartUpSensitivity();
+			menus.SetStartUpSensitivity();
 			
 		core.Program.Run();
     }
@@ -54,6 +56,10 @@ public class GUI : GladeWidget {
 	
 	public App Window {
 		get { return window; }
+	}
+
+	public Menus Menus {
+		get { return menus; }
 	}
 	
 	public SubtitleView SubtitleView {
@@ -67,33 +73,33 @@ public class GUI : GladeWidget {
     
     
     public void Close() {
-    		core.Program.Quit();
+    	core.Program.Quit();
     }
 
     public void New () {
-    		core.New();
-    		NewDocument();
+    	core.New();
+    	NewDocument();
     }
     
     public void Open (string fileName) {
    	 	core.Open(fileName);
-    		NewDocument();
+    	NewDocument();
     }
     
     public void Open (string fileName, Encoding encoding) {
 		core.Open(fileName, encoding);
-    		NewDocument();
+    	NewDocument();
     }
     
     public void Save () {
-    		core.Subtitles.Save();
-    		core.CommandManager.WasModified = false;
-    		SetWindowTitle(false);
+    	core.Subtitles.Save();
+    	core.CommandManager.WasModified = false;
+    	SetWindowTitle(false);
     }
     
     public void SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
 		core.Subtitles.SaveAs(filePath, subtitleType, encoding);
-		SetActiveTimingMode();
+		menus.SetActiveTimingMode();
 		SetWindowTitle(false);
     }
 	
@@ -110,14 +116,14 @@ public class GUI : GladeWidget {
 	}
 	
 	public void OnSubtitleSelection (Subtitle subtitle) {
-		SetActiveStyles(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
+		menus.SetActiveStyles(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
 		subtitleEdit.LoadSubtitle(subtitle);
 	}
 	
 	public void OnSubtitleSelection (TreePath[] paths) {
 		bool bold, italic, underline;
 		GetGlobalStyles(paths, out bold, out italic, out underline);
-		SetActiveStyles(bold, italic, underline);
+		menus.SetActiveStyles(bold, italic, underline);
 		subtitleEdit.Sensitive = false;
 	}
 	
@@ -125,18 +131,14 @@ public class GUI : GladeWidget {
 		subtitleView.Refresh();
 		subtitleView.Reselect();
 	}
-	
-	static public float FrameRateFromMenuItem (string menuItem) {
-		return (float)Convert.ToDouble(menuItem.Split(' ')[0]);
-	}
     
     
     /* Private methods */
     
 	private void NewDocument () {
-		SetNewDocumentSensitivity();
-		SetActiveTimingMode();
-		SetFrameRateMenus();
+		menus.SetNewDocumentSensitivity();
+		menus.SetActiveTimingMode();
+		menus.SetFrameRateMenus();
 		SetWindowTitle(false);
 
 		subtitleView.SetUp();
@@ -146,42 +148,6 @@ public class GUI : GladeWidget {
 		subtitleView.SelectFirst();
 	}
 	
-	private void SetActiveTimingMode () {
-		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-	    		(GetWidget(WidgetNames.FramesMenuItem) as RadioMenuItem).Active = true;
-	    	else
-	    		(GetWidget(WidgetNames.TimesMenuItem) as RadioMenuItem).Active = true;
-	}
-	
-	private void SetFrameRateMenus () {
-		MenuItem inputFrameRateMenuItem = GetWidget(WidgetNames.InputFrameRateMenuItem) as MenuItem;
-		MenuItem movieFrameRateMenuItem = GetWidget(WidgetNames.MovieFrameRateMenuItem) as MenuItem;
-		
-		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
-			SetMenuItemsSensitivity(inputFrameRateMenuItem.Submenu as Menu, true);
-			SetMenuItemsSensitivity(movieFrameRateMenuItem.Submenu as Menu, true);
-		}
-		else {
-			SetMenuItemsSensitivity(inputFrameRateMenuItem.Submenu as Menu, false);
-			SetMenuItemsSensitivity(movieFrameRateMenuItem.Submenu as Menu, true);
-		}
-		
-		(GetWidget(WidgetNames.InputFrameRateMenuItem25) as RadioMenuItem).Active = true;
-		(GetWidget(WidgetNames.MovieFrameRateMenuItem25) as RadioMenuItem).Active = true;
-	}
-	
-	private void SetActiveStyles (bool bold, bool italic, bool underline) {
-		SetActiveStyle(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
-		SetActiveStyle(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
-		SetActiveStyle(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
-	}
-	
-	private void SetActiveStyle (string menuItemName, bool active, EventHandler handler) {
-		CheckMenuItem menuItem = (GetWidget(menuItemName) as CheckMenuItem);
-		menuItem.Toggled -= handler;
-		menuItem.Active = active;
-		menuItem.Toggled += handler;		
-	}
 	
 	private void GetGlobalStyles (TreePath[] paths, out bool bold, out bool italic, out bool underline) {
 		Subtitles subtitles = core.Subtitles;
@@ -199,51 +165,7 @@ public class GUI : GladeWidget {
 		}		
 	}
 	
-	/* Only necessary because it isn't working in .glade */
-	private void SetStartUpSensitivity () {
-		SetUndoRedoSensitivity(false);
-		SetGlobalSensitivity(false);
-	}
-	
-	private void SetNewDocumentSensitivity () {
-		SetUndoRedoSensitivity(false);
-		SetGlobalSensitivity(true);
-	}
-	
-	private void SetUndoRedoSensitivity (bool sensitivity) {
-		/* Edit Menu */
-		GetWidget(WidgetNames.UndoMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.RedoMenuItem).Sensitive = sensitivity;
-		
-		/* Toolbar */
-		GetWidget(WidgetNames.UndoButton).Sensitive = sensitivity;
-		GetWidget(WidgetNames.RedoButton).Sensitive = sensitivity;
-	}
-	
-	private void SetGlobalSensitivity (bool sensitivity) {
-		/* File Menu */
-		GetWidget(WidgetNames.SaveMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.SaveAsMenuItem).Sensitive = sensitivity;
-		/* Edit Menu */
-		GetWidget(WidgetNames.CutMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.CopyMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.PasteMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.ClearMenuItem).Sensitive = sensitivity;
-		/* View Menu */
-		GetWidget(WidgetNames.TimesMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.FramesMenuItem).Sensitive = sensitivity;
-		/* Format Menu */
-		GetWidget(WidgetNames.BoldMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.ItalicMenuItem).Sensitive = sensitivity;
-		GetWidget(WidgetNames.UnderlineMenuItem).Sensitive = sensitivity;
-		/* Toolbar */
-		GetWidget(WidgetNames.SaveButton).Sensitive = sensitivity;
-	}
-	
-	private void SetMenuItemsSensitivity (Menu menu, bool sensitivity) {
-		foreach (Widget widget in menu)
-			widget.Sensitive = sensitivity;	
-	}
+
 	
 
 
