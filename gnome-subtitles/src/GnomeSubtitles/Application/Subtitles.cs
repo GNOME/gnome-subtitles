@@ -62,12 +62,17 @@ public class Subtitles : SubLib.Subtitles {
 		model.SetValue(model.Insert(index), 0, subtitle);
 	}
 	
-	public void AddAfter (int index) {
-		Subtitle existing = Get(index);
-		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(SubtitleConstants.MinTimeBetweenSubtitles);
-		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
-		Subtitle subtitle = new Subtitle(Properties, subtitleStart, subtitleEnd);
-		Add(subtitle, index + 1);	
+	public void AddNewAt (int index) {
+		Subtitle subtitle = null;
+		if (index == 0)
+			subtitle = new Subtitle(Properties, TimeSpan.Zero, TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration));
+		else {
+			Subtitle existing = Get(index - 1);
+			TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(SubtitleConstants.MinTimeBetweenSubtitles);
+			TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
+			subtitle = new Subtitle(Properties, subtitleStart, subtitleEnd);
+		}
+		Add(subtitle, index);	
 	}
 	
 	public bool Remove (TreePath path) {

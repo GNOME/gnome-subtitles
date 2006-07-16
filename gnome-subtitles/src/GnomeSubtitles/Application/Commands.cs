@@ -237,7 +237,10 @@ public class InsertSubtitleCommand : SingleSelectionCommand {
 	
 	public InsertSubtitleCommand (GUI gui) : base(gui, description, false) {
 		TreePath lastPath = gui.SubtitleView.LastSelectedPath;
-		int pathIndex = lastPath.Indices[0] + 1;
+		int pathIndex = 0;
+		if (lastPath != null)
+			pathIndex = lastPath.Indices[0] + 1;
+
 		Path = new TreePath(pathIndex.ToString());
 	}
 
@@ -246,7 +249,7 @@ public class InsertSubtitleCommand : SingleSelectionCommand {
 		subtitleView.UnselectAll();
 
 		if (subtitle == null)
-			GUI.Core.Subtitles.AddAfter(PathIndex - 1);
+			GUI.Core.Subtitles.AddNewAt(PathIndex);
 		else
 			GUI.Core.Subtitles.Add(subtitle, PathIndex);
 

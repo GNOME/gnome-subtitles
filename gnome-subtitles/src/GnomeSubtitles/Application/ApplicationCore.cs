@@ -62,8 +62,10 @@ public class ApplicationCore {
 	
 	public void New () {
 		SubtitleFactory factory = new SubtitleFactory();
+		factory.Verbose = true;
 		subtitles = new Subtitles(factory.NewWithName("Unsaved Subtitles"));
-		CheckSubtitleCount();	
+		
+		NewDocument();
 	}
 	
 	public void Open (string fileName) {
@@ -84,14 +86,23 @@ public class ApplicationCore {
 			openedSubtitles = factory.New(fileName);		
 		}
 		subtitles = new Subtitles(openedSubtitles);
+		
+		NewDocument();
+	}
+	
+	/* Private members */
+	
+	private void NewDocument () {
+		if (commandManager != null)
+			commandManager.Clear();
+			
 		CheckSubtitleCount();
 	}
 
 
 	private void CheckSubtitleCount () {
 		if (subtitles.Collection.Count == 0){
-			Subtitle subtitle = new Subtitle(subtitles.Properties, TimeSpan.Zero, TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration));
-			subtitles.Add(subtitle);
+			subtitles.AddNewAt(0);
 		}
 	}
 	

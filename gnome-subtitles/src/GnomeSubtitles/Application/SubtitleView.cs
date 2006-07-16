@@ -55,18 +55,34 @@ public class SubtitleView : GladeWidget {
     }
     
     public TreePath SelectedPath {
-    	get { return SelectedPaths[0]; }
+    	get {
+    		TreePath[] paths = SelectedPaths;
+    		if (paths.Length == 0)
+    			return null;
+    		else 
+    			return paths[0];
+    	}
     }
     
     public TreePath LastSelectedPath {
     	get {
     		TreePath[] selectedPaths = SelectedPaths;
-    		return selectedPaths[selectedPaths.Length - 1];
+			int pathCount = selectedPaths.Length;
+			if (pathCount == 0)
+				return null;
+			else if (pathCount == 1)
+				return selectedPaths[0];
+			else
+    			return selectedPaths[pathCount - 1];
     	}
     }
     
+    public int SelectedPathCount {
+    	get { return treeView.Selection.CountSelectedRows(); }
+    }
+    
     public void SetUp () {
-    		ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
+    	ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
 	    scrollArea.Sensitive = true;
 	    scrollArea.Visible = true;
 	    scrollArea.ShadowType = ShadowType.In;    
@@ -101,24 +117,16 @@ public class SubtitleView : GladeWidget {
     /// <summary>Scrolls to the specified path, in case it isn't currently visible.</summary>
     /// <param name="path">The path to scroll to.</param>
     public void ScrollToPath (TreePath path) {
-    	Gdk.Rectangle visible = treeView.VisibleRect;
-    	int x, top, bottom;
-    	treeView.TreeToWidgetCoords(0, visible.Top, out x, out top);
-    	treeView.TreeToWidgetCoords(0, visible.Bottom, out x, out bottom);
-    		
     	TreePath startPath, endPath;
-    	bool isEndPathValid = treeView.GetPathAtPos(0, bottom, out endPath);
-    	if (!isEndPathValid) {
+    	bool hasEmptySpace;
+    	bool arePathsValid = GetVisibleRange(out startPath, out endPath, out hasEmptySpace);
+    	if (!arePathsValid)
+    		return;
+    	else if (hasEmptySpace) {
     		ScrollToPath(path, true);
     		return;
     	}
-    	
-    	bool isStartPathValid = treeView.GetPathAtPos(0, top, out startPath);
-    	if (!isStartPathValid) {
-    		ScrollToPath(path, true);
-    		return;
-    	}
-    	
+
 		int startIndice = startPath.Indices[0];
 		int endIndice = endPath.Indices[0];
 		int pathIndice = path.Indices[0];
@@ -126,6 +134,68 @@ public class SubtitleView : GladeWidget {
 			return;
 		else
 			ScrollToPath(path, true);
+    }
+
+	public void ScrollToFirstPath (TreePath[] paths) {
+		if (paths.Length == 0)
+			return; 
+		else if (paths.Length == 1) {
+			ScrollToPath(paths[0]);
+			return;
+		}
+		
+		TreePath startPath, endPath;
+		bool hasEmptySpace;
+		bool arePathsValid = GetVisibleRange(out startPath, out endPath, out hasEmptySpace);
+		if (!arePathsValid)
+			return;
+		else if (hasEmptySpace) {
+			ScrollToPath(paths[0], true);
+			return;
+		}
+
+		int startIndice = startPath.Indices[0];
+		int endIndice = endPath.Indices[0];
+		
+		//Check if there is a subtitle currently visible
+		foreach (TreePath path in paths) {
+			int pathIndice = path.Indices[0];
+			if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
+				return;
+		}
+		ScrollToPath(paths[0], true);
+	}
+    
+    public bool GetVisibleRange (out TreePath start, out TreePath end, out bool hasEmptySpace) {
+    	start = null;
+    	end = null;
+    	hasEmptySpace = false;
+    
+    	Gdk.Rectangle visible = treeView.VisibleRect;
+    	int x, top, bottom;
+    	treeView.TreeToWidgetCoords(0, visible.Top, out x, out top);
+    	treeView.TreeToWidgetCoords(0, visible.Bottom, out x, out bottom);
+
+    	TreePath startPath, endPath;
+    	bool isStartPathValid = treeView.GetPathAtPos(0, top, out startPath);
+    	bool isEndPathValid = treeView.GetPathAtPos(0, bottom, out endPath);
+    	
+    	if (!isEndPathValid) {
+    		hasEmptySpace = true;
+    		if (isStartPathValid) {
+    			int lastPath = subtitles.Count - 1;
+    			endPath = new TreePath(lastPath.ToString());
+    		}
+    		else
+    			return false;
+    	}
+    	else if (!isStartPathValid) {
+    		hasEmptySpace = true;
+    		startPath = new TreePath("0");
+    	}
+    	start = startPath;
+   		end = endPath;
+   		return true;
     }
     
     /// <summary>Scrolls to the specified path and optionally aligns it to the center.</summary>

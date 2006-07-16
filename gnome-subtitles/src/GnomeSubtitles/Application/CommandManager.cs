@@ -49,6 +49,14 @@ public class CommandManager {
 		Modified += onModified;
 	}
 	
+	public void Clear () {
+		commands = new Command[limit];
+		undoCount = 0;
+		redoCount = 0;
+		iterator = 0;
+		wasModified = false;
+	}
+	
 	public bool CanUndo {
 		get { return undoCount > 0; }
 	}
@@ -317,21 +325,7 @@ public abstract class MultipleSelectionCommand : Command {
 	 }
 	 
 	protected void ScrollToSelection () {
-		if (paths.Length == 0)
-			return;
-
-		TreePath startPath, endPath;
-		GUI.SubtitleView.Widget.GetVisibleRange(out startPath, out endPath);
-		int startIndice = startPath.Indices[0];
-		int endIndice = endPath.Indices[0];
-		
-		//Check if there is a subtitle currently visible
-		foreach (TreePath path in paths) {
-			int pathIndice = path.Indices[0];
-			if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
-				return;
-		}
-		GUI.SubtitleView.ScrollToPath(paths[0], true);
+		GUI.SubtitleView.ScrollToFirstPath(paths);
 	}
 
 }

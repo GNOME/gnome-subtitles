@@ -81,7 +81,8 @@ public class EventHandlers {
 	}
 	
 	public void OnDeleteSubtitles (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new DeleteSubtitlesCommand(gui));
+		if (gui.SubtitleView.SelectedPathCount > 0)
+			gui.Core.CommandManager.Execute(new DeleteSubtitlesCommand(gui));
 	}
 	
 	
@@ -203,11 +204,10 @@ public class EventHandlers {
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
-    	if (args.Event.Key == Gdk.Key.Delete) {
-			gui.Core.CommandManager.Execute(new DeleteSubtitlesCommand(gui));
-		}
+    	if (args.Event.Key == Gdk.Key.Delete)
+    		OnDeleteSubtitles(o, EventArgs.Empty);
 		else if (args.Event.Key == Gdk.Key.Insert)
-			gui.Core.CommandManager.Execute(new InsertSubtitleCommand(gui));
+			OnInsertSubtitle(o, EventArgs.Empty);
     }
     
     
