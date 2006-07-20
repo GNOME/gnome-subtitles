@@ -45,7 +45,7 @@ public class GUI : GladeWidget {
 		if (ExecutionInfo.Args.Length > 0)
 			Open(ExecutionInfo.Args[0]);
 		else
-			menus.SetStartUpSensitivity();
+			BlankStartUp();
 			
 		core.Program.Run();
     }
@@ -77,18 +77,21 @@ public class GUI : GladeWidget {
     }
 
     public void New () {
+    	bool wasLoaded = core.IsLoaded;
     	core.New();
-    	NewDocument();
+    	NewDocument(wasLoaded);
     }
     
     public void Open (string fileName) {
+    	bool wasLoaded = core.IsLoaded;
    	 	core.Open(fileName);
-    	NewDocument();
+    	NewDocument(wasLoaded);
     }
     
     public void Open (string fileName, Encoding encoding) {
+    	bool wasLoaded = core.IsLoaded;
 		core.Open(fileName, encoding);
-    	NewDocument();
+    	NewDocument(wasLoaded);
     }
     
     public void Save () {
@@ -135,15 +138,18 @@ public class GUI : GladeWidget {
     
     /* Private methods */
     
-	private void NewDocument () {
-		menus.SetNewDocumentSensitivity();
-		menus.SetActiveTimingMode();
-		menus.SetFrameRateMenus();
+    private void BlankStartUp () {
+    	menus.BlankStartUp();
+    	subtitleView.BlankStartUp();
+    	subtitleEdit.BlankStartUp();
+    }
+    
+	private void NewDocument (bool wasLoaded) {
 		SetWindowTitle(false);
 
-		subtitleView.SetUp();
-		subtitleView.Load(core.Subtitles);
-		subtitleEdit.SetUp();
+		menus.NewDocument(wasLoaded);
+		subtitleView.NewDocument(wasLoaded, core.Subtitles);
+		subtitleEdit.NewDocument(wasLoaded);
 		
 		subtitleView.SelectFirst();
 	}
