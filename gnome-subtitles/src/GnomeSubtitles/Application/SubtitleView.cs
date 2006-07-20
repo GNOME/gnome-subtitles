@@ -37,9 +37,9 @@ public class SubtitleView : GladeWidget {
 	
 	public SubtitleView(GUI gui, Glade.XML glade) : base(gui, glade){
 		treeView = (TreeView)GetWidget(WidgetNames.SubtitleView);
-    		treeView.Selection.Mode = SelectionMode.Multiple;
+    	treeView.Selection.Mode = SelectionMode.Multiple;
     		
-		CreateColumns();		
+		CreateColumns();
     }
 
     public TreeView Widget {
@@ -54,7 +54,7 @@ public class SubtitleView : GladeWidget {
     	get { return treeView.Selection.GetSelectedRows(); }
     }
     
-    public TreePath SelectedPath {
+    public TreePath FirstSelectedPath {
     	get {
     		TreePath[] paths = SelectedPaths;
     		if (paths.Length == 0)
@@ -62,6 +62,10 @@ public class SubtitleView : GladeWidget {
     		else 
     			return paths[0];
     	}
+    }
+    
+    public TreePath SelectedPath {
+    	get { return FirstSelectedPath; }
     }
     
     public TreePath LastSelectedPath {
@@ -81,11 +85,16 @@ public class SubtitleView : GladeWidget {
     	get { return treeView.Selection.CountSelectedRows(); }
     }
     
-    public void SetUp () {
-    	ScrolledWindow scrollArea = (ScrolledWindow)treeView.Parent;
-	    scrollArea.Sensitive = true;
-	    scrollArea.Visible = true;
-	    scrollArea.ShadowType = ShadowType.In;    
+    public void BlankStartUp () {
+    	treeView.Model = new ListStore(typeof(Subtitle));
+    }
+
+	
+    public void NewDocument (bool wasLoaded, Subtitles subtitles) {
+    	if (!wasLoaded) {
+    		treeView.Sensitive = true;
+    	}
+    	Load(subtitles);
     }
     
     public void Load (Subtitles subtitles) {
