@@ -76,8 +76,12 @@ public class EventHandlers {
 		gui.Core.CommandManager.Redo();
 	}
 	
-	public void OnInsertSubtitle (object o, EventArgs args) {
-		gui.Core.CommandManager.Execute(new InsertSubtitleCommand(gui));
+	public void OnInsertSubtitleBeforeSelection (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new InsertSubtitleCommand(gui, false));
+	}
+	
+	public void OnInsertSubtitleAfterSelection (object o, EventArgs args) {
+		gui.Core.CommandManager.Execute(new InsertSubtitleCommand(gui, true));
 	}
 	
 	public void OnDeleteSubtitles (object o, EventArgs args) {
@@ -207,7 +211,7 @@ public class EventHandlers {
     	if (args.Event.Key == Gdk.Key.Delete)
     		OnDeleteSubtitles(o, EventArgs.Empty);
 		else if (args.Event.Key == Gdk.Key.Insert)
-			OnInsertSubtitle(o, EventArgs.Empty);
+			OnInsertSubtitleAfterSelection(o, EventArgs.Empty);
     }
     
     
