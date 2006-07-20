@@ -234,13 +234,12 @@ public class ChangeTextCommand : SingleSelectionCommand {
 public class InsertSubtitleCommand : SingleSelectionCommand {
 	private static string description = "Inserting Subtitle";
 	private Subtitle subtitle = null;
+	private bool toInsertAfter;
 	
-	public InsertSubtitleCommand (GUI gui) : base(gui, description, false) {
-		TreePath lastPath = gui.SubtitleView.LastSelectedPath;
-		int pathIndex = 0;
-		if (lastPath != null)
-			pathIndex = lastPath.Indices[0] + 1;
-
+	public InsertSubtitleCommand (GUI gui, bool toInsertAfter) : base(gui, description, false) {
+		this.toInsertAfter = toInsertAfter;
+	
+		int pathIndex = GetPathIndex(toInsertAfter);
 		Path = new TreePath(pathIndex.ToString());
 	}
 
@@ -249,7 +248,7 @@ public class InsertSubtitleCommand : SingleSelectionCommand {
 		subtitleView.UnselectAll();
 
 		if (subtitle == null)
-			GUI.Core.Subtitles.AddNewAt(PathIndex);
+			AddNewAt(PathIndex);
 		else
 			GUI.Core.Subtitles.Add(subtitle, PathIndex);
 
@@ -269,6 +268,31 @@ public class InsertSubtitleCommand : SingleSelectionCommand {
 	
 	public override void Redo () {
 		Execute();
+	}
+	
+	private int GetPathIndex (bool toInsertAfter) {
+		int pathIndex = 0;
+		if (toInsertAfter) {
+			TreePath lastPath = GUI.SubtitleView.LastSelectedPath;
+			if (lastPath != null)
+				pathIndex = lastPath.Indices[0] + 1;
+		}
+		else {
+			TreePath firstPath = GUI.SubtitleView.FirstSelectedPath;
+			if (firstPath != null)
+				pathIndex = firstPath.Indices[0];
+		}
+		return pathIndex;	
+	}
+	
+	private void AddNewAt (int index) {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		if (subtitles.Count == 0)
+			subtitles.AddNewAt(0);
+		else if (toInsertAfter)
+			subtitles.AddNewAfter(index - 1);
+		else
+			subtitles.AddNewBefore(index);
 	}
 
 }
