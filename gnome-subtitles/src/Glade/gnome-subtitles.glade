@@ -27,7 +27,7 @@
   <child internal-child="dock">
     <widget class="BonoboDock" id="bonoboDock">
       <property name="visible">True</property>
-      <property name="allow_floating">True</property>
+      <property name="allow_floating">False</property>
 
       <child>
 	<widget class="BonoboDockItem" id="bonoboDockMenubar">
@@ -153,34 +153,61 @@
 		      </child>
 
 		      <child>
-			<widget class="GtkImageMenuItem" id="clearMenuItem">
-			  <property name="visible">True</property>
-			  <property name="stock_item">GNOMEUIINFO_MENU_CLEAR_ITEM</property>
-			</widget>
-		      </child>
-
-		      <child>
 			<widget class="GtkSeparatorMenuItem" id="separator2EditMenuItem">
 			  <property name="visible">True</property>
 			</widget>
 		      </child>
 
 		      <child>
-			<widget class="GtkImageMenuItem" id="insertSubtitleMenuItem">
+			<widget class="GtkMenuItem" id="insertSubtitleMenuItem">
 			  <property name="visible">True</property>
 			  <property name="label" translatable="yes">_Insert Subtitle</property>
 			  <property name="use_underline">True</property>
-			  <signal name="activate" handler="OnInsertSubtitle" last_modification_time="Thu, 13 Jul 2006 21:29:51 GMT"/>
 
-			  <child internal-child="image">
-			    <widget class="GtkImage" id="image9">
-			      <property name="visible">True</property>
-			      <property name="stock">gtk-add</property>
-			      <property name="icon_size">1</property>
-			      <property name="xalign">0.5</property>
-			      <property name="yalign">0.5</property>
-			      <property name="xpad">0</property>
-			      <property name="ypad">0</property>
+			  <child>
+			    <widget class="GtkMenu" id="insertSubtitleMenuItem_menu">
+
+			      <child>
+				<widget class="GtkImageMenuItem" id="insertSubtitleBeforeMenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">_Before</property>
+				  <property name="use_underline">True</property>
+				  <signal name="activate" handler="OnInsertSubtitleBeforeSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
+
+				  <child internal-child="image">
+				    <widget class="GtkImage" id="image28">
+				      <property name="visible">True</property>
+				      <property name="stock">gtk-go-up</property>
+				      <property name="icon_size">1</property>
+				      <property name="xalign">0.5</property>
+				      <property name="yalign">0.5</property>
+				      <property name="xpad">0</property>
+				      <property name="ypad">0</property>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
+
+			      <child>
+				<widget class="GtkImageMenuItem" id="insertSubtitleAfterMenuItem">
+				  <property name="visible">True</property>
+				  <property name="label" translatable="yes">_After</property>
+				  <property name="use_underline">True</property>
+				  <signal name="activate" handler="OnInsertSubtitleAfterSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
+
+				  <child internal-child="image">
+				    <widget class="GtkImage" id="image29">
+				      <property name="visible">True</property>
+				      <property name="stock">gtk-go-down</property>
+				      <property name="icon_size">1</property>
+				      <property name="xalign">0.5</property>
+				      <property name="yalign">0.5</property>
+				      <property name="xpad">0</property>
+				      <property name="ypad">0</property>
+				    </widget>
+				  </child>
+				</widget>
+			      </child>
 			    </widget>
 			  </child>
 			</widget>
@@ -194,9 +221,9 @@
 			  <signal name="activate" handler="OnDeleteSubtitles" last_modification_time="Thu, 13 Jul 2006 21:12:41 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image10">
+			    <widget class="GtkImage" id="image30">
 			      <property name="visible">True</property>
-			      <property name="stock">gtk-remove</property>
+			      <property name="stock">gtk-delete</property>
 			      <property name="icon_size">1</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
@@ -463,7 +490,7 @@
 			  <signal name="activate" handler="OnReportBug" last_modification_time="Wed, 05 Apr 2006 23:03:43 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image11">
+			    <widget class="GtkImage" id="image31">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-warning</property>
 			      <property name="icon_size">1</property>
@@ -631,18 +658,19 @@
 	  <property name="band">1</property>
 	  <property name="position">0</property>
 	  <property name="offset">0</property>
-	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE</property>
+	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE|BONOBO_DOCK_ITEM_BEH_NEVER_FLOATING|BONOBO_DOCK_ITEM_BEH_NEVER_VERTICAL|BONOBO_DOCK_ITEM_BEH_LOCKED</property>
 	</packing>
       </child>
 
       <child>
 	<widget class="BonoboDockItem" id="bonoboDockEditArea">
-	  <property name="border_width">4</property>
+	  <property name="border_width">5</property>
 	  <property name="visible">True</property>
 	  <property name="shadow_type">GTK_SHADOW_NONE</property>
 
 	  <child>
 	    <widget class="GtkHBox" id="editAreaHBox">
+	      <property name="visible">True</property>
 	      <property name="sensitive">False</property>
 	      <property name="homogeneous">False</property>
 	      <property name="spacing">4</property>
@@ -750,7 +778,7 @@
 		      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 		      <property name="snap_to_ticks">False</property>
 		      <property name="wrap">False</property>
-		      <property name="adjustment">1 0 100 1 10 10</property>
+		      <property name="adjustment">0 0 100 1 10 10</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -771,7 +799,7 @@
 		      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 		      <property name="snap_to_ticks">False</property>
 		      <property name="wrap">False</property>
-		      <property name="adjustment">1 0 100 1 10 10</property>
+		      <property name="adjustment">0 0 100 1 10 10</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -792,7 +820,7 @@
 		      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 		      <property name="snap_to_ticks">False</property>
 		      <property name="wrap">False</property>
-		      <property name="adjustment">1 0 100 1 10 10</property>
+		      <property name="adjustment">0 0 100 1 10 10</property>
 		    </widget>
 		    <packing>
 		      <property name="left_attach">1</property>
@@ -853,23 +881,24 @@
 	  <property name="band">0</property>
 	  <property name="position">0</property>
 	  <property name="offset">0</property>
-	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE|BONOBO_DOCK_ITEM_BEH_NEVER_VERTICAL|BONOBO_DOCK_ITEM_BEH_LOCKED</property>
+	  <property name="behavior">BONOBO_DOCK_ITEM_BEH_EXCLUSIVE|BONOBO_DOCK_ITEM_BEH_NEVER_FLOATING|BONOBO_DOCK_ITEM_BEH_NEVER_VERTICAL|BONOBO_DOCK_ITEM_BEH_LOCKED</property>
 	</packing>
       </child>
 
       <child>
 	<widget class="GtkScrolledWindow" id="scrolledWindow">
-	  <property name="border_width">1</property>
-	  <property name="sensitive">False</property>
+	  <property name="visible">True</property>
 	  <property name="can_focus">True</property>
 	  <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
 	  <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-	  <property name="shadow_type">GTK_SHADOW_NONE</property>
+	  <property name="shadow_type">GTK_SHADOW_OUT</property>
 	  <property name="window_placement">GTK_CORNER_TOP_LEFT</property>
 
 	  <child>
 	    <widget class="GtkTreeView" id="subtitleListView">
+	      <property name="border_width">1</property>
 	      <property name="visible">True</property>
+	      <property name="sensitive">False</property>
 	      <property name="can_focus">True</property>
 	      <property name="headers_visible">True</property>
 	      <property name="rules_hint">True</property>
@@ -884,19 +913,6 @@
 	  </child>
 	</widget>
       </child>
-    </widget>
-    <packing>
-      <property name="padding">0</property>
-      <property name="expand">True</property>
-      <property name="fill">True</property>
-    </packing>
-  </child>
-
-  <child internal-child="appbar">
-    <widget class="GnomeAppBar" id="statusBar">
-      <property name="visible">True</property>
-      <property name="has_progress">False</property>
-      <property name="has_status">True</property>
     </widget>
     <packing>
       <property name="padding">0</property>
