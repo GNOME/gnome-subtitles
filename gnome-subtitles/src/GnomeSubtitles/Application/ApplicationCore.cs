@@ -82,7 +82,7 @@ public class ApplicationCore {
 		try {
 			openedSubtitles = factory.Open(fileName);
 		}
-		catch (FileNotFoundException exception) {
+		catch (FileNotFoundException) {
 			openedSubtitles = factory.New(fileName);		
 		}
 		subtitles = new Subtitles(openedSubtitles);
