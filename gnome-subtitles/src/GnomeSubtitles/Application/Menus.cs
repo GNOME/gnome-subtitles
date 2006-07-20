@@ -30,15 +30,10 @@ public class Menus : GladeWidget {
 		core = gui.Core;
 	}
 
-	/* Only necessary because it isn't working in .glade */
-	public void SetStartUpSensitivity () {
-		SetUndoRedoSensitivity(false);
-		SetGlobalSensitivity(false);
-	}
-	
-	public void SetNewDocumentSensitivity () {
-		SetUndoRedoSensitivity(false);
-		SetGlobalSensitivity(true);
+	public void NewDocument (bool wasLoaded) {
+		SetNewDocumentSensitivity();
+		SetActiveTimingMode();
+		SetFrameRateMenus();	
 	}
 	
 	public void SetActiveTimingMode () {
@@ -47,19 +42,11 @@ public class Menus : GladeWidget {
 	    else
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
 	}
-	
-	public void SetFrameRateMenus () {
-		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
-			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
-			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
-		}
-		else {
-			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
-			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
-		}
-		
-		SetActivity(WidgetNames.InputFrameRateMenuItem25, true, core.Handlers.OnInputFrameRate);
-		SetActivity(WidgetNames.MovieFrameRateMenuItem25, true, core.Handlers.OnMovieFrameRate);
+
+	/* Only necessary because it isn't working in .glade */
+	public void BlankStartUp () {
+		SetUndoRedoSensitivity(false);
+		SetGlobalSensitivity(false);
 	}
 	
 	public void SetActiveStyles (bool bold, bool italic, bool underline) {
@@ -76,6 +63,25 @@ public class Menus : GladeWidget {
 
 	/* Private members */
 	
+	private void SetNewDocumentSensitivity () {
+		SetUndoRedoSensitivity(false);
+		SetGlobalSensitivity(true);
+	}
+	
+	private void SetFrameRateMenus () {
+		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
+			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
+			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
+		}
+		else {
+			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
+			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
+		}
+		
+		SetActivity(WidgetNames.InputFrameRateMenuItem25, true, core.Handlers.OnInputFrameRate);
+		SetActivity(WidgetNames.MovieFrameRateMenuItem25, true, core.Handlers.OnMovieFrameRate);
+	}
+	
 	private void SetGlobalSensitivity (bool sensitivity) {
 		/* File Menu */
 		SetSensitivity(WidgetNames.SaveMenuItem, sensitivity);
@@ -84,7 +90,6 @@ public class Menus : GladeWidget {
 		SetSensitivity(WidgetNames.CutMenuItem, sensitivity);
 		SetSensitivity(WidgetNames.CopyMenuItem, sensitivity);
 		SetSensitivity(WidgetNames.PasteMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.ClearMenuItem, sensitivity);
 		/* View Menu */
 		SetSensitivity(WidgetNames.TimesMenuItem, sensitivity);
 		SetSensitivity(WidgetNames.FramesMenuItem, sensitivity);
