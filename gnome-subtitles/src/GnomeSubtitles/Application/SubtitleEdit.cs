@@ -62,10 +62,15 @@ public class SubtitleEdit : GladeWidget {
     }
     
     
-    public void SetUp () {
+    public void NewDocument (bool wasLoaded) {
+    	if (!wasLoaded) {
     		hBox.Sensitive = true;
-    		hBox.Visible = true;
-    		SetTimingMode();
+    	}
+    	SetTimingMode();
+    }
+    
+    public void BlankStartUp () {
+    	ClearFields();
     }
     
     public bool Sensitive {
