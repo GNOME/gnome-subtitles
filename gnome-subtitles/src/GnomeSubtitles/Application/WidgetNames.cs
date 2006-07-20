@@ -32,8 +32,6 @@ public class WidgetNames {
 	public const string CutMenuItem = "cutMenuItem";
 	public const string CopyMenuItem = "copyMenuItem";
 	public const string PasteMenuItem = "pasteMenuItem";
-	public const string ClearMenuItem = "clearMenuItem";
-	public const string PropertiesMenuItem = "propertiesMenuItem";
 	
 	/* View Menu */
 	public const string TimesMenuItem = "timesMenuItem";
