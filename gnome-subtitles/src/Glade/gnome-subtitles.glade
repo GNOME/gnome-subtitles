@@ -67,6 +67,7 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="saveMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_SAVE_ITEM</property>
 			  <signal name="activate" handler="OnSave" last_modification_time="Mon, 27 Feb 2006 19:39:23 GMT"/>
 			</widget>
@@ -75,6 +76,7 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="saveAsMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_SAVE_AS_ITEM</property>
 			  <signal name="activate" handler="OnSaveAs" last_modification_time="Mon, 06 Feb 2006 05:35:22 GMT"/>
 			</widget>
@@ -141,6 +143,7 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="copyMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_COPY_ITEM</property>
 			</widget>
 		      </child>
@@ -148,6 +151,7 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="pasteMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_PASTE_ITEM</property>
 			</widget>
 		      </child>
@@ -170,6 +174,7 @@
 			      <child>
 				<widget class="GtkImageMenuItem" id="insertSubtitleBeforeMenuItem">
 				  <property name="visible">True</property>
+				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">_Before</property>
 				  <property name="use_underline">True</property>
 				  <signal name="activate" handler="OnInsertSubtitleBeforeSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
@@ -191,6 +196,7 @@
 			      <child>
 				<widget class="GtkImageMenuItem" id="insertSubtitleAfterMenuItem">
 				  <property name="visible">True</property>
+				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">_After</property>
 				  <property name="use_underline">True</property>
 				  <signal name="activate" handler="OnInsertSubtitleAfterSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
@@ -216,6 +222,7 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="deleteSubtitlesMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="label" translatable="yes">_Delete Subtitles</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="OnDeleteSubtitles" last_modification_time="Thu, 13 Jul 2006 21:12:41 GMT"/>
@@ -580,6 +587,7 @@
 	      <child>
 		<widget class="GtkToolButton" id="toolbuttonSave">
 		  <property name="visible">True</property>
+		  <property name="sensitive">False</property>
 		  <property name="tooltip" translatable="yes">Save File</property>
 		  <property name="stock_id">gtk-save</property>
 		  <property name="visible_horizontal">True</property>

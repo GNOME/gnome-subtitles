@@ -29,9 +29,13 @@ public class Menus : GladeWidget {
 	public Menus (GUI gui, Glade.XML glade) : base(gui, glade) {
 		core = gui.Core;
 	}
+	
+	public void BlankStartUp () {
+		SetBlankSensitivity();
+	}
 
 	public void NewDocument (bool wasLoaded) {
-		SetNewDocumentSensitivity();
+		SetNewDocumentSensitivity(wasLoaded);
 		SetActiveTimingMode();
 		SetFrameRateMenus();	
 	}
@@ -41,12 +45,6 @@ public class Menus : GladeWidget {
 	    	SetActivity(WidgetNames.FramesMenuItem, true);
 	    else
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
-	}
-
-	/* Only necessary because it isn't working in .glade */
-	public void BlankStartUp () {
-		SetUndoRedoSensitivity(false);
-		SetGlobalSensitivity(false);
 	}
 	
 	public void SetActiveStyles (bool bold, bool italic, bool underline) {
@@ -63,9 +61,47 @@ public class Menus : GladeWidget {
 
 	/* Private members */
 	
-	private void SetNewDocumentSensitivity () {
-		SetUndoRedoSensitivity(false);
-		SetGlobalSensitivity(true);
+	private void SetBlankSensitivity () {
+		/* File Menu */
+		SetSensitivity(WidgetNames.SaveMenuItem, false);
+		SetSensitivity(WidgetNames.SaveAsMenuItem, false);
+		/* Edit Menu */
+		SetSensitivity(WidgetNames.UndoMenuItem, false);
+		SetSensitivity(WidgetNames.RedoMenuItem, false);	
+		SetSensitivity(WidgetNames.CutMenuItem, false);
+		SetSensitivity(WidgetNames.CopyMenuItem, false);
+		SetSensitivity(WidgetNames.PasteMenuItem, false);
+	}
+	
+	private void SetNewDocumentSensitivity (bool wasLoaded) {
+		if (!wasLoaded) {	
+			/* File Menu */
+			SetSensitivity(WidgetNames.SaveMenuItem, true);
+			SetSensitivity(WidgetNames.SaveAsMenuItem, true);
+			/* Edit Menu */
+			SetSensitivity(WidgetNames.CutMenuItem, true);
+			SetSensitivity(WidgetNames.CopyMenuItem, true);
+			SetSensitivity(WidgetNames.PasteMenuItem, true);
+			SetMenuSensitivity(WidgetNames.InsertSubtitleMenuItem, true);
+			SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, true);
+			/* View Menu */
+			SetSensitivity(WidgetNames.TimesMenuItem, true);
+			SetSensitivity(WidgetNames.FramesMenuItem, true);
+			/* Format Menu */
+			SetSensitivity(WidgetNames.BoldMenuItem, true);
+			SetSensitivity(WidgetNames.ItalicMenuItem, true);
+			SetSensitivity(WidgetNames.UnderlineMenuItem, true);
+			/* Toolbar */
+			SetSensitivity(WidgetNames.SaveButton, true);
+		}
+		else {
+			/* Edit Menu */
+			SetSensitivity(WidgetNames.UndoMenuItem, false);
+			SetSensitivity(WidgetNames.RedoMenuItem, false);
+			/* Toolbar */
+			SetSensitivity(WidgetNames.UndoButton, false);
+			SetSensitivity(WidgetNames.RedoButton, false);
+		}	
 	}
 	
 	private void SetFrameRateMenus () {
@@ -80,35 +116,6 @@ public class Menus : GladeWidget {
 		
 		SetActivity(WidgetNames.InputFrameRateMenuItem25, true, core.Handlers.OnInputFrameRate);
 		SetActivity(WidgetNames.MovieFrameRateMenuItem25, true, core.Handlers.OnMovieFrameRate);
-	}
-	
-	private void SetGlobalSensitivity (bool sensitivity) {
-		/* File Menu */
-		SetSensitivity(WidgetNames.SaveMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.SaveAsMenuItem, sensitivity);
-		/* Edit Menu */
-		SetSensitivity(WidgetNames.CutMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.CopyMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.PasteMenuItem, sensitivity);
-		/* View Menu */
-		SetSensitivity(WidgetNames.TimesMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.FramesMenuItem, sensitivity);
-		/* Format Menu */
-		SetSensitivity(WidgetNames.BoldMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.ItalicMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.UnderlineMenuItem, sensitivity);
-		
-		/* Toolbar */
-		SetSensitivity(WidgetNames.SaveButton, sensitivity);
-	}
-	
-	private void SetUndoRedoSensitivity (bool sensitivity) {
-		/* Edit Menu */
-		SetSensitivity(WidgetNames.UndoMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.RedoMenuItem, sensitivity);		
-		/* Toolbar */
-		SetSensitivity(WidgetNames.UndoButton, sensitivity);
-		SetSensitivity(WidgetNames.RedoButton, sensitivity);
 	}
 	
 	private void SetActivity (string menuItemName, bool isActive) {
