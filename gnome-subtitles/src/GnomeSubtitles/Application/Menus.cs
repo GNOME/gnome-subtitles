@@ -40,17 +40,23 @@ public class Menus : GladeWidget {
 		SetFrameRateMenus();	
 	}
 	
+	public void OnSubtitleSelection (Subtitle subtitle) {
+		SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
+		SetSelectionDependentSensitivity(true);
+	}
+	
+	public void OnSubtitleSelection (TreePath[] paths) {
+		if (paths.Length == 0)
+			OnNoSubtitlesSelected();
+		else //length > 1
+			OnSubtitlesSelected(paths);
+	}
+	
 	public void SetActiveTimingMode () {
 		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames)
 	    	SetActivity(WidgetNames.FramesMenuItem, true);
 	    else
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
-	}
-	
-	public void SetActiveStyles (bool bold, bool italic, bool underline) {
-		SetActivity(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
-		SetActivity(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
-		SetActivity(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
 	}
 	
 	/* Static members */
@@ -60,6 +66,23 @@ public class Menus : GladeWidget {
 	}
 
 	/* Private members */
+	
+	private void OnNoSubtitlesSelected () {
+		SetSelectionDependentSensitivity(false);
+		SetStylesActivity(false, false, false);
+	}
+	
+	private void OnSubtitlesSelected (TreePath[] paths) {
+		SetSelectionDependentSensitivity(true);
+		bool bold, italic, underline;
+		GetGlobalStyles(paths, out bold, out italic, out underline);
+		SetStylesActivity(bold, italic, underline);		
+	}
+	
+	private void SetSelectionDependentSensitivity (bool sensitivity) {
+		SetStylesSensitivity(sensitivity);
+		SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, sensitivity);	
+	}
 	
 	private void SetBlankSensitivity () {
 		/* File Menu */
@@ -88,9 +111,7 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.TimesMenuItem, true);
 			SetSensitivity(WidgetNames.FramesMenuItem, true);
 			/* Format Menu */
-			SetSensitivity(WidgetNames.BoldMenuItem, true);
-			SetSensitivity(WidgetNames.ItalicMenuItem, true);
-			SetSensitivity(WidgetNames.UnderlineMenuItem, true);
+			SetStylesSensitivity(true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
 		}
@@ -104,6 +125,20 @@ public class Menus : GladeWidget {
 		}	
 	}
 	
+	private void SetStylesActivity (bool bold, bool italic, bool underline) {
+		SetActivity(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
+		SetActivity(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
+		SetActivity(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
+	}
+	
+	private void SetStylesSensitivity (bool sensitivity) {
+		if (GetWidget(WidgetNames.BoldMenuItem).Sensitive != sensitivity) {
+			SetSensitivity(WidgetNames.BoldMenuItem, sensitivity);
+			SetSensitivity(WidgetNames.ItalicMenuItem, sensitivity);
+			SetSensitivity(WidgetNames.UnderlineMenuItem, sensitivity);		
+		}	
+	}
+	
 	private void SetFrameRateMenus () {
 		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
 			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
@@ -113,7 +148,6 @@ public class Menus : GladeWidget {
 			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
 			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
 		}
-		
 		SetActivity(WidgetNames.InputFrameRateMenuItem25, true, core.Handlers.OnInputFrameRate);
 		SetActivity(WidgetNames.MovieFrameRateMenuItem25, true, core.Handlers.OnMovieFrameRate);
 	}
@@ -138,6 +172,22 @@ public class Menus : GladeWidget {
 		Menu menu = menuItem.Submenu as Menu;
 		foreach (Widget widget in menu)
 			widget.Sensitive = sensitivity;	
+	}
+		
+	private void GetGlobalStyles (TreePath[] paths, out bool bold, out bool italic, out bool underline) {
+		Subtitles subtitles = core.Subtitles;
+		bold = true;
+		italic = true;
+		underline = true;
+		foreach (TreePath path in paths) {
+			Subtitle subtitle = subtitles.Get(path);
+			if ((bold == true) && !subtitle.Style.Bold) //bold hasn't been unset
+				bold = false;
+			if ((italic == true) && !subtitle.Style.Italic)
+				italic = false;
+			if ((underline == true) && !subtitle.Style.Underline)
+				underline = false;
+		}		
 	}
 
 

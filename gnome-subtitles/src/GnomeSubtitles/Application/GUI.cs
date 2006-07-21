@@ -119,14 +119,12 @@ public class GUI : GladeWidget {
 	}
 	
 	public void OnSubtitleSelection (Subtitle subtitle) {
-		menus.SetActiveStyles(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
+		menus.OnSubtitleSelection(subtitle);
 		subtitleEdit.LoadSubtitle(subtitle);
 	}
 	
 	public void OnSubtitleSelection (TreePath[] paths) {
-		bool bold, italic, underline;
-		GetGlobalStyles(paths, out bold, out italic, out underline);
-		menus.SetActiveStyles(bold, italic, underline);
+		menus.OnSubtitleSelection(paths);
 		subtitleEdit.Sensitive = false;
 	}
 	
@@ -153,27 +151,6 @@ public class GUI : GladeWidget {
 		
 		subtitleView.SelectFirst();
 	}
-	
-	
-	private void GetGlobalStyles (TreePath[] paths, out bool bold, out bool italic, out bool underline) {
-		Subtitles subtitles = core.Subtitles;
-		bold = true;
-		italic = true;
-		underline = true;
-		foreach (TreePath path in paths) {
-			Subtitle subtitle = subtitles.Get(path);
-			if ((bold == true) && !subtitle.Style.Bold) //bold hasn't been unset
-				bold = false;
-			if ((italic == true) && !subtitle.Style.Italic)
-				italic = false;
-			if ((underline == true) && !subtitle.Style.Underline)
-				underline = false;
-		}		
-	}
-	
-
-	
-
 
 
 }
