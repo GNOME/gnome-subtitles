@@ -216,8 +216,8 @@ public class EventHandlers {
     
     
 
-
-	/***** Private methods *****/
+	/* Private members */
+	
 	private void SaveAs () {
 		new SaveAsDialog(gui);
 	}
