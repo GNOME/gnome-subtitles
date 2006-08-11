@@ -38,10 +38,10 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 		FillEncodingComboBox(encodingComboBox);
 		
 		if (gui.Core.Subtitles.Properties.IsFilePathRooted)
-			Dialog.SetFilename(gui.Core.Subtitles.Properties.FilePath);
+			dialog.SetFilename(gui.Core.Subtitles.Properties.FilePath);
 		else {
-			Dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-			Dialog.CurrentName = gui.Core.Subtitles.Properties.FileName;
+			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+			dialog.CurrentName = gui.Core.Subtitles.Properties.FileName;
 		}
 	}
 	
@@ -59,10 +59,10 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		SubtitleType type = subtitleTypes[formatComboBox.Active].Type;
-		Encoding encoding = Encoding.GetEncoding(Encodings[encodingComboBox.Active].CodePage);
+		Encoding encoding = Encoding.GetEncoding(encodings[encodingComboBox.Active].CodePage);
 		
 		if (args.ResponseId == ResponseType.Ok) {
-			GUI.SaveAs(Dialog.Filename, type, encoding);
+			GUI.SaveAs(dialog.Filename, type, encoding);
 			CloseDialog(); 
 		}
 		else if (args.ResponseId == ResponseType.Cancel) {

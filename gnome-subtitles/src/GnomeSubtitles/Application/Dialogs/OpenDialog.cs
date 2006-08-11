@@ -34,10 +34,10 @@ public class OpenDialog : SubtitleFileChooserDialog {
 		encodingComboBox.Active = 0;
 	
 		if (gui.Core.IsLoaded && gui.Core.Subtitles.Properties.IsFilePathRooted) {
-			Dialog.SetCurrentFolder(gui.Core.Subtitles.Properties.FileDirectory);
+			dialog.SetCurrentFolder(gui.Core.Subtitles.Properties.FileDirectory);
 		}
 		else {
-			Dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));		
+			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));		
 		}
 	}
 
@@ -48,11 +48,11 @@ public class OpenDialog : SubtitleFileChooserDialog {
 		if (args.ResponseId == ResponseType.Ok) {
 			Console.WriteLine();
 			if (encodingComboBox.Active == 0)
-				GUI.Open(Dialog.Filename);
+				GUI.Open(dialog.Filename);
 			else {
 				int encodingIndex = encodingComboBox.Active - 2;
-				Encoding encoding = Encoding.GetEncoding(Encodings[encodingIndex].CodePage);
-				GUI.Open(Dialog.Filename, encoding);
+				Encoding encoding = Encoding.GetEncoding(encodings[encodingIndex].CodePage);
+				GUI.Open(dialog.Filename, encoding);
 			}
 			CloseDialog(); 
 		}

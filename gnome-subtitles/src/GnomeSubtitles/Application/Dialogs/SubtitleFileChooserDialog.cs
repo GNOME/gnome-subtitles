@@ -22,31 +22,19 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public class SubtitleFileChooserDialog : GladeWidget {
-	private FileChooserDialog dialog = null;
-	private FileEncoding[] encodings = {
+public class SubtitleFileChooserDialog : GladeDialog {
+	protected new FileChooserDialog dialog = null;
+	protected FileEncoding[] encodings = {
 		new FileEncoding(65001, "Unicode", "UTF-8"),
 		new FileEncoding(28605, "Western", "ISO-8859-15"),
 		new FileEncoding("Current Locale")
 	};
 
 	public SubtitleFileChooserDialog (GUI gui, string widgetName) : base(gui, widgetName) {
-		dialog = (FileChooserDialog)GetWidget(widgetName);
-		dialog.TransientFor = gui.Window;
+		dialog = base.dialog as FileChooserDialog;
 	}
 	
-	protected FileChooserDialog Dialog {
-		get { return dialog; }
-	}
 	
-	protected FileEncoding[] Encodings {
-		get { return encodings; }
-	}
-	
-	protected void CloseDialog() {
-		dialog.Destroy();
-	}
-
 	protected void FillEncodingComboBox (ComboBox comboBox) {
 		foreach (FileEncoding encoding in encodings)
 			comboBox.AppendText(encoding.Description + " (" + encoding.Name + ")");

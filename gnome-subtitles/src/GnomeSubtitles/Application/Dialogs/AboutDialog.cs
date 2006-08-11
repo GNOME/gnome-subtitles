@@ -21,12 +21,10 @@ using System;
 
 namespace GnomeSubtitles {
 
-public class AboutDialog : GladeWidget {
+public class AboutDialog : GladeDialog {
 
 	public AboutDialog (GUI gui) : base(gui, WidgetNames.AboutDialog){
-		Gtk.AboutDialog dialog = (Gtk.AboutDialog)GetWidget(WidgetNames.AboutDialog);
-		dialog.TransientFor = gui.Window;
-		dialog.Version = ExecutionInfo.Version;
+		(dialog as Gtk.AboutDialog).Version = ExecutionInfo.Version;
 	}
 
 }
