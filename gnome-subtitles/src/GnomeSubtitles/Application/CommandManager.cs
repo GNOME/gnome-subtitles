@@ -309,8 +309,10 @@ public abstract class MultipleSelectionCommand : Command {
 	/* Private methods */
 	
 	protected void SelectPaths () {
-		if (paths.Length == 0)
+		if (paths == null || paths.Length == 0) {
+			GUI.RefreshAndReselect();	
 			return;
+		}
 			
 		SubtitleView subtitleView = GUI.SubtitleView;
 		subtitleView.DisconnectSelectionChangedSignals();
@@ -325,7 +327,14 @@ public abstract class MultipleSelectionCommand : Command {
 	 }
 	 
 	protected void ScrollToSelection () {
+		if (paths == null || paths.Length == 0)
+			return;
+
 		GUI.SubtitleView.ScrollToFirstPath(paths);
+	}
+	
+	protected void DisableSelectionUsage () {
+		paths = null;
 	}
 
 }
@@ -356,7 +365,7 @@ public abstract class SingleSelectionCommand : Command {
 		ChangeValues();
 		
 		if (PathMatchesCurrentSelection)
-			GUI.SubtitleView.Reselect();
+			GUI.RefreshAndReselect();
 		else
 			SelectPath();
 			
