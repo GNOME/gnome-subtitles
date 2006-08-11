@@ -185,6 +185,11 @@ public class SubtitleEdit : GladeWidget {
     	durationSpinButton.GrabFocus();
     }
     
+	public int SpinButtonWidth () {
+    	const int margins = 25;
+		return Utility.TextWidth(startSpinButton, "00:00:00,000", margins);
+    }
+    
     /* Private Methods */
     
     private void ClearFields () {
@@ -237,19 +242,8 @@ public class SubtitleEdit : GladeWidget {
    		endSpinButton.ValueChanged -= OnEndValueChanged;
    		durationSpinButton.ValueChanged -= OnDurationValueChanged;
    	}
-
-    private int SpinButtonWidth () {
-    	const int margins = 25;
-		return Utility.TextWidth(startSpinButton, "00:00:00,000", margins);
-    }
     
-    private int TimeTextToMilliseconds (string text) {
-		return (int)TimeSpan.Parse(text).TotalMilliseconds;	
-	}
-	
-	private string MillisecondsToTimeText (int milliseconds) {
-		return Utility.TimeSpanToText(TimeSpan.FromMilliseconds(milliseconds));
-	}
+
     
     private void SetTimesMode (SpinButton spinButton) {
     	spinButton.Input += OnTimeInput;
@@ -270,7 +264,7 @@ public class SubtitleEdit : GladeWidget {
 	private void OnTimeInput (object o, InputArgs args) {
 		SpinButton spinButton = o as SpinButton;
 		try {
-			args.NewValue = TimeTextToMilliseconds(spinButton.Text);
+			args.NewValue = Utility.TimeTextToMilliseconds(spinButton.Text);
 		}
 		catch (Exception) {
 			args.NewValue = spinButton.Value;
@@ -281,7 +275,7 @@ public class SubtitleEdit : GladeWidget {
 	private void OnTimeOutput (object o, OutputArgs args) {
 		SpinButton spinButton = o as SpinButton;
 		spinButton.Numeric = false;
-		spinButton.Text = MillisecondsToTimeText((int)spinButton.Value);
+		spinButton.Text = Utility.MillisecondsToTimeText((int)spinButton.Value);
 		spinButton.Numeric = true;
 		args.RetVal = 1;
 	}
