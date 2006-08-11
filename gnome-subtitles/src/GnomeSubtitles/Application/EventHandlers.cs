@@ -40,7 +40,7 @@ public class EventHandlers {
     }
     
 	
-	/*	File Menu	*/
+	/* File Menu */
 	
 	public void OnNew (object o, EventArgs args) {
 		gui.New();
@@ -66,7 +66,7 @@ public class EventHandlers {
 	}
 	
 	
-	/*	Edit Menu	*/
+	/* Edit Menu */
 	
 	public void OnUndo (object o, EventArgs args) {
 		gui.Core.CommandManager.Undo();
@@ -90,7 +90,7 @@ public class EventHandlers {
 	}
 	
 	
-	/*	View Menu	*/
+	/* View Menu */
 	
 	public void OnTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
@@ -103,7 +103,7 @@ public class EventHandlers {
 	}
 	
 	
-	/*	Format Menu	 */
+	/* Format Menu */
 	
 	public void OnBold (object o, EventArgs args) {
 		bool newBoldValue = (o as CheckMenuItem).Active;
@@ -120,7 +120,7 @@ public class EventHandlers {
 		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, newUnderlineValue));
 	}
 	
-	/*	Timing Menu	 */
+	/*	Timings Menu */
 	
 	public void OnInputFrameRate (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
@@ -138,8 +138,12 @@ public class EventHandlers {
 		}
 	}
 	
+	public void OnShift (object o, EventArgs args) {
+		new ShiftDialog(gui);	
+	}
 	
-	/*	Help Menu	*/
+	
+	/*	Help Menu */
 	
 	public void OnReportBug (object o, EventArgs args) {
 		Gnome.Url.Show("http://sourceforge.net/tracker/?func=browse&group_id=129996&atid=716496");
