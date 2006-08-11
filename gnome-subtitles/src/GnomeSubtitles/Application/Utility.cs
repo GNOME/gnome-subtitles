@@ -24,16 +24,30 @@ namespace GnomeSubtitles {
 
 public class Utility {
   
-    static public int TextWidth(Widget widget, string text, int margins) {
-    		Pango.Layout layout = widget.CreatePangoLayout(text);
-    		int width, height;
-    		layout.GetPixelSize(out width, out height);
-    		return width + margins;
+    static public int TextWidth (Widget widget, string text, int margins) {
+    	Pango.Layout layout = widget.CreatePangoLayout(text);
+    	int width, height;
+    	layout.GetPixelSize(out width, out height);
+    	return width + margins;
     }
     
-    	static public string TimeSpanToText (TimeSpan time) {
-		return time.Hours.ToString("D2") + ":" + time.Minutes.ToString("D2") +
-				":" + time.Seconds.ToString("D2") + "." + time.Milliseconds.ToString("D3");
+    /// <summary>Converts a timespan to a text representation.</summary>
+    /// <remarks>The resulting string is in the format [-]hh:mm:ss.fff. This format is accepted by
+    /// <see cref="TimeSpan.Parse" />.</remarks>
+    /// <param name="time">The time to convert to text.</param>
+    /// <returns>The text representation of the specified time.</returns>
+    static public string TimeSpanToText (TimeSpan time) {
+		return (time.TotalMilliseconds < 0 ? "-" : String.Empty) +
+			time.Hours.ToString("00;00") + ":" + time.Minutes.ToString("00;00") +
+			":" + time.Seconds.ToString("00;00") + "." + time.Milliseconds.ToString("000;000");
+	}
+	
+	static public string MillisecondsToTimeText (int milliseconds) {
+		return TimeSpanToText(TimeSpan.FromMilliseconds(milliseconds));
+	}
+	
+	static public int TimeTextToMilliseconds (string text) {
+		return (int)TimeSpan.Parse(text).TotalMilliseconds;	
 	}
 
 
