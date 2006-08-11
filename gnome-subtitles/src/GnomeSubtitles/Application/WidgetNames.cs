@@ -44,24 +44,17 @@ public class WidgetNames {
 	public const string ItalicMenuItem = "italicMenuItem";
 	public const string UnderlineMenuItem = "underlineMenuItem";
 
-	/* Timing Menu */
+	/* Timings Menu */
 	public const string InputFrameRateMenuItem = "inputFrameRateMenuItem";
 	public const string InputFrameRateMenuItem25 = "inputFPS25MenuItem";
 	public const string MovieFrameRateMenuItem = "movieFrameRateMenuItem";
 	public const string MovieFrameRateMenuItem25 = "movieFPS25MenuItem";
+	public const string ShiftMenuItem = "shiftMenuItem";
 	
 	/* Toolbar */	
 	public const string SaveButton = "toolbuttonSave";
 	public const string UndoButton = "toolbuttonUndo";
 	public const string RedoButton = "toolbuttonRedo";
-	
-	/* Dialogs */
-	public const string AboutDialog = "aboutDialog";
-	public const string OpenDialog = "openDialog";
-	public const string OpenDialogEncodingComboBox = "encodingComboBox";
-	public const string SaveAsDialog = "saveAsDialog";
-	public const string SaveAsDialogFormatComboBox = "formatComboBox";
-	public const string SaveAsDialogEncodingComboBox = "encodingComboBox";
 	
 	/* Subtitle View */
 	public const string SubtitleView = "subtitleListView";
@@ -72,6 +65,18 @@ public class WidgetNames {
 	public const string EndSpinButton = "endSpinButton";
 	public const string DurationSpinButton = "durationSpinButton";
 	public const string SubtitleTextView = "subtitleTextView";
+
+	/* Dialogs */
+	public const string AboutDialog = "aboutDialog";
+	public const string OpenDialog = "openDialog";
+	public const string OpenDialogEncodingComboBox = "encodingComboBox";
+	public const string SaveAsDialog = "saveAsDialog";
+	public const string SaveAsDialogFormatComboBox = "formatComboBox";
+	public const string SaveAsDialogEncodingComboBox = "encodingComboBox";
+	public const string ShiftDialog = "shiftDialog";
+	public const string ShiftDialogSpinButton = "spinButton";
+	public const string ShiftDialogAllSubtitlesRadioButton = "allSubtitlesRadioButton";
+	
 	
 }
 
