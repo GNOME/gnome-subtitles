@@ -422,4 +422,76 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	}
 }
 
+public class ShiftTimingsCommand : MultipleSelectionCommand {
+	private static string description = "Shifting timings";
+	private TimeSpan time;
+	private int frames;
+	private bool toUseTimes = true;
+
+	public ShiftTimingsCommand (GUI gui, TimeSpan time, bool applyToAll) : base(gui, description, false) {
+		this.time = time;
+		toUseTimes = true;
+		if (applyToAll)
+			DisableSelectionUsage();
+	}
+	
+	public ShiftTimingsCommand (GUI gui, int frames, bool applyToAll) : base(gui, description, false) {
+		this.frames = frames;
+		toUseTimes = false;
+		if (applyToAll)
+			DisableSelectionUsage();
+	}
+
+	protected override void ChangeValues () {
+		if (toUseTimes) {
+			if (Paths == null) //Apply to all subtitles
+				ShiftAllSubtitlesTime();
+			else
+				ShiftSubtitlesTime();	
+		}
+		else {
+			if (Paths == null) //Apply to all subtitles
+				ShiftAllSubtitlesFrames();
+			else
+				ShiftSubtitlesFrames();
+		}
+	}
+
+
+	private void ShiftAllSubtitlesTime () {
+		foreach (Subtitle subtitle in GUI.Core.Subtitles.Collection) {
+			subtitle.Times.Shift(time);
+		}
+		time = time.Negate();
+	}
+	
+	private void ShiftAllSubtitlesFrames () {
+		foreach (Subtitle subtitle in GUI.Core.Subtitles.Collection) {
+			subtitle.Frames.Shift(frames);
+		}
+		frames = -frames;
+	}
+	
+	private void ShiftSubtitlesTime () {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		foreach (TreePath path in Paths) {
+			Subtitle subtitle = subtitles.Get(path);
+			subtitle.Times.Shift(time);
+		}
+		time = time.Negate();	
+	}
+	
+	private void ShiftSubtitlesFrames () {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		foreach (TreePath path in Paths) {
+			Subtitle subtitle = subtitles.Get(path);
+			subtitle.Frames.Shift(frames);
+		}
+		frames = -frames;
+	}
+
+
+
+}
+
 }
