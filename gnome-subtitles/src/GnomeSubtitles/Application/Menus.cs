@@ -112,6 +112,8 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.FramesMenuItem, true);
 			/* Format Menu */
 			SetStylesSensitivity(true);
+			/* Timings Menu */
+			SetSensitivity(WidgetNames.ShiftMenuItem, true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
 		}
