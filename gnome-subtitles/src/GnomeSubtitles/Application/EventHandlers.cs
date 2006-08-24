@@ -30,10 +30,11 @@ public class EventHandlers {
 	
 	private Tooltips tooltips = new Tooltips();
 
-	public EventHandlers(GUI gui){
+	public EventHandlers (GUI gui){
 		this.gui = gui;
 		tooltips.Enable();
     }
+    
     
     public void Init (Glade.XML glade) {
 	    	this.glade = glade;
@@ -74,6 +75,18 @@ public class EventHandlers {
 	
 	public void OnRedo (object o, EventArgs args) {
 		gui.Core.CommandManager.Redo();
+	}
+	
+	public void OnCopy (object o, EventArgs args) {
+		gui.Core.Clipboards.Copy();
+	}
+	
+	public void OnCut (object o, EventArgs args) {
+		gui.Core.Clipboards.Cut();
+	}
+	
+	public void OnPaste (object o, EventArgs args) {
+		gui.Core.Clipboards.Paste();
 	}
 	
 	public void OnInsertSubtitleBeforeSelection (object o, EventArgs args) {
@@ -146,7 +159,11 @@ public class EventHandlers {
 	/*	Help Menu */
 	
 	public void OnReportBug (object o, EventArgs args) {
-		Gnome.Url.Show("http://sourceforge.net/tracker/?func=browse&group_id=129996&atid=716496");
+		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716496");
+	}
+	
+	public void OnRequestFeature (object o, EventArgs args) {
+		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716499");
 	}
 	
 	public void OnAbout (object o, EventArgs args) {
