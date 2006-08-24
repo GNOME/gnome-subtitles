@@ -61,6 +61,15 @@ public class SubtitleEdit : GladeWidget {
     	textView.Buffer.TagTable.Add(underlineTag);
     }
     
+    public void GetEditableWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton,
+    		out SpinButton durationSpinButton, out TextView textView) {
+    	
+    	startSpinButton = this.startSpinButton;
+    	endSpinButton = this.endSpinButton;
+    	durationSpinButton = this.durationSpinButton;
+    	textView = this.textView;   	
+    }
+    
     public void NewDocument (bool wasLoaded) {
     	if (!wasLoaded) {
     		hBox.Sensitive = true;
