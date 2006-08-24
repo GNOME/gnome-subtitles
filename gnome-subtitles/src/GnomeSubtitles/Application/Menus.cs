@@ -59,6 +59,11 @@ public class Menus : GladeWidget {
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
 	}
 	
+	public void SetCopyCutSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.CopyMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.CutMenuItem, sensitivity);
+	}
+	
 	/* Static members */
 	
 	static public float FrameRateFromMenuItem (string menuItem) {
