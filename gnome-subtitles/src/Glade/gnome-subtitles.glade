@@ -137,6 +137,7 @@
 			  <property name="visible">True</property>
 			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_CUT_ITEM</property>
+			  <signal name="activate" handler="OnCut" last_modification_time="Thu, 24 Aug 2006 19:01:19 GMT"/>
 			</widget>
 		      </child>
 
@@ -145,6 +146,7 @@
 			  <property name="visible">True</property>
 			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_COPY_ITEM</property>
+			  <signal name="activate" handler="OnCopy" last_modification_time="Mon, 21 Aug 2006 14:32:38 GMT"/>
 			</widget>
 		      </child>
 
@@ -153,6 +155,7 @@
 			  <property name="visible">True</property>
 			  <property name="sensitive">False</property>
 			  <property name="stock_item">GNOMEUIINFO_MENU_PASTE_ITEM</property>
+			  <signal name="activate" handler="OnPaste" last_modification_time="Thu, 24 Aug 2006 19:04:05 GMT"/>
 			</widget>
 		      </child>
 
@@ -180,7 +183,7 @@
 				  <signal name="activate" handler="OnInsertSubtitleBeforeSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
 
 				  <child internal-child="image">
-				    <widget class="GtkImage" id="image52">
+				    <widget class="GtkImage" id="image55">
 				      <property name="visible">True</property>
 				      <property name="stock">gtk-go-up</property>
 				      <property name="icon_size">1</property>
@@ -202,7 +205,7 @@
 				  <signal name="activate" handler="OnInsertSubtitleAfterSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
 
 				  <child internal-child="image">
-				    <widget class="GtkImage" id="image53">
+				    <widget class="GtkImage" id="image56">
 				      <property name="visible">True</property>
 				      <property name="stock">gtk-go-down</property>
 				      <property name="icon_size">1</property>
@@ -228,7 +231,7 @@
 			  <signal name="activate" handler="OnDeleteSubtitles" last_modification_time="Thu, 13 Jul 2006 21:12:41 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image54">
+			    <widget class="GtkImage" id="image57">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-delete</property>
 			      <property name="icon_size">1</property>
@@ -259,7 +262,7 @@
 			  <property name="sensitive">False</property>
 			  <property name="label" translatable="yes">_Frames</property>
 			  <property name="use_underline">True</property>
-			  <property name="active">False</property>
+			  <property name="active">True</property>
 			  <signal name="toggled" handler="OnFrames" last_modification_time="Mon, 06 Feb 2006 01:38:51 GMT"/>
 			</widget>
 		      </child>
@@ -348,7 +351,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">23.976</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:56:37 GMT"/>
 				</widget>
 			      </child>
@@ -359,7 +362,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">24</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:56:44 GMT"/>
 				</widget>
@@ -371,7 +374,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">25 (PAL)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:58:01 GMT"/>
 				</widget>
@@ -383,7 +386,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">29.97 (NTSC)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:57:08 GMT"/>
 				</widget>
@@ -420,7 +423,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">23.976</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:35 GMT"/>
 				</widget>
 			      </child>
@@ -431,7 +434,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">24</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:39 GMT"/>
 				</widget>
@@ -443,7 +446,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">25 (PAL)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:43 GMT"/>
 				</widget>
@@ -455,7 +458,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">29.97 (NTSC)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:47 GMT"/>
 				</widget>
@@ -508,14 +511,35 @@
 		      <child>
 			<widget class="GtkImageMenuItem" id="reportBugMenuItem">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">_Report a Bug</property>
+			  <property name="label" translatable="yes">Report a _Bug</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="OnReportBug" last_modification_time="Wed, 05 Apr 2006 23:03:43 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image55">
+			    <widget class="GtkImage" id="image58">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-warning</property>
+			      <property name="icon_size">1</property>
+			      <property name="xalign">0.5</property>
+			      <property name="yalign">0.5</property>
+			      <property name="xpad">0</property>
+			      <property name="ypad">0</property>
+			    </widget>
+			  </child>
+			</widget>
+		      </child>
+
+		      <child>
+			<widget class="GtkImageMenuItem" id="requestFeatureMenuItem">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Request a _Feature</property>
+			  <property name="use_underline">True</property>
+			  <signal name="activate" handler="OnRequestFeature" last_modification_time="Wed, 23 Aug 2006 00:20:48 GMT"/>
+
+			  <child internal-child="image">
+			    <widget class="GtkImage" id="image59">
+			      <property name="visible">True</property>
+			      <property name="stock">gtk-dialog-info</property>
 			      <property name="icon_size">1</property>
 			      <property name="xalign">0.5</property>
 			      <property name="yalign">0.5</property>
@@ -585,14 +609,14 @@
 	      </child>
 
 	      <child>
-		<widget class="GtkMenuToolButton" id="toolbuttonOpen">
+		<widget class="GtkToolButton" id="toolbuttonOpen">
 		  <property name="visible">True</property>
 		  <property name="tooltip" translatable="yes">Open File</property>
 		  <property name="stock_id">gtk-open</property>
 		  <property name="visible_horizontal">True</property>
 		  <property name="visible_vertical">True</property>
 		  <property name="is_important">False</property>
-		  <signal name="clicked" handler="OnOpen" last_modification_time="Tue, 31 Jan 2006 02:22:30 GMT"/>
+		  <signal name="clicked" handler="OnOpen" last_modification_time="Wed, 23 Aug 2006 00:17:07 GMT"/>
 		</widget>
 		<packing>
 		  <property name="expand">False</property>
