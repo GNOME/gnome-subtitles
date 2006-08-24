@@ -29,6 +29,7 @@ public class ApplicationCore {
 	private Subtitles subtitles = null;
 	private EventHandlers handlers = null;
 	private CommandManager commandManager = null;
+	private Clipboards clipboards = null;
 	
 	public ApplicationCore (GUI gui) {
 		program = new Gnome.Program(ExecutionInfo.ApplicationID,
@@ -36,6 +37,8 @@ public class ApplicationCore {
 		handlers = new EventHandlers(gui);
 		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled,
 			handlers.OnCommandActivated, handlers.OnModified);
+		
+		clipboards = new Clipboards(gui);
 	}
 	
 	public Gnome.Program Program {
@@ -53,6 +56,10 @@ public class ApplicationCore {
 	
 	public CommandManager CommandManager {
 		get { return commandManager; }
+	}
+	
+	public Clipboards Clipboards {
+		get { return clipboards; }
 	}
 	
 	public bool IsLoaded {
