@@ -1,9 +1,10 @@
 AC_INIT(README)
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(gsubtitles, 0.1)
+AM_INIT_AUTOMAKE(gnome-subtitles, 0.1)
 AM_MAINTAINER_MODE
 
 AC_PROG_INSTALL
+AC_PREFIX_PROGRAM(mono)
 
 dnl pkg-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
@@ -39,6 +40,9 @@ AC_SUBST(MCS)
 
 AC_OUTPUT([
 Makefile
+data/Makefile
+data/gnome-subtitles.desktop
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
+src/GnomeSubtitles/Execution/gnome-subtitles
 ])
