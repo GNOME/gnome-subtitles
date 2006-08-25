@@ -49,7 +49,7 @@ public class GladeWidget {
 	
 	
 	protected void Init (string gladeMasterFileName, string widgetName, object handler) {
-		glade = new Glade.XML (gladeMasterFileName, widgetName);
+		glade = new Glade.XML(gladeMasterFileName, widgetName);
 		glade.Autoconnect(handler);
 	}
 
