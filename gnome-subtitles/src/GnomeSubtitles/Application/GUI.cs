@@ -38,6 +38,8 @@ public class GUI : GladeWidget {
 		core.Handlers.Init(this.Glade);
 		
 		window = (App)GetWidget(WidgetNames.MainWindow);
+		window.Icon = new Gdk.Pixbuf(null, "gnome-subtitles.svg");
+		
 		subtitleView = new SubtitleView(this, this.Glade);
 		subtitleEdit = new SubtitleEdit(this, this.Glade);
 		menus = new Menus(this, this.Glade);
