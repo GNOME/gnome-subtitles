@@ -1,20 +1,29 @@
-gsubtitlesdir=$(pkglibdir)
-gsubtitles_SCRIPTS = gnome-subtitles.exe
-EXTRA_DIST = $(gsubtitles_sources) $(gsubtitles_sources_in)
-CLEANFILES = gnome-subtitles.exe
+gnomesubtitlesdir = $(pkglibdir)
+gnomesubtitles_DATA = $(ASSEMBLY) $(SUBLIB)
+GS_BUILDDIR = $(srcdir)/../build
+GS_DATADIR = $(srcdir)/../data
 
-gsubtitles_builddir = $(srcdir)/../build
+ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
+SUBLIB = $(GS_BUILDDIR)/sublib.dll
 
-gsubtitles_sources = GnomeSubtitles/Application/*.cs GnomeSubtitles/Application/Dialogs/*.cs GnomeSubtitles/Execution/*.cs
+GS_SOURCES = \
+	$(srcdir)/GnomeSubtitles/Application/*.cs \
+	$(srcdir)/GnomeSubtitles/Application/Dialogs/*.cs \
+	$(srcdir)/GnomeSubtitles/Execution/*.cs
 
-gsubtitles_build_sources = $(addprefix $(srcdir)/, $(gsubtitles_sources))
-gsubtitles_build_sources += $(gsubtitles_generated_sources)
-resources = $(srcdir)/Glade/gnome-subtitles.glade
+GS_RESOURCES = \
+	$(srcdir)/Glade/gnome-subtitles.glade
 
-embedded= $(foreach res,$(resources), $(addprefix -resource:,$(res)),$(notdir $(res)))
+GS_SYSTEM_REFERENCES = \
+	$(SUBLIB) \
+	Mono.Posix.dll
 
-gsubtitles_references = -r:$(gsubtitles_builddir)/sublib.dll -r:Mono.Posix.dll
+GS_ICON = $(GS_DATADIR)/gnome-subtitles.svg
 
-gnome-subtitles.exe: $(gsubtitles_build_sources) $(resources)
-	$(MCS) $(GTKSHARP_LIBS) $(gsubtitles_references) $(embedded) -out:$(gsubtitles_builddir)/$@ $(gsubtitles_build_sources) 
+$(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
+	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(GS_RESOURCES:%=-resource:%) -resource:$(GS_ICON) $(GS_SOURCES)
 
+bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
+
+CLEANFILES = $(bin_SCRIPTS) $(ASSEMBLY) $(ASSEMBLY).mdb
+EXTRA_DIST = $(GS_SOURCES) $(GS_RESOURCES)
