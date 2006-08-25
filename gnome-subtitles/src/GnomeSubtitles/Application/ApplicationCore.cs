@@ -34,6 +34,7 @@ public class ApplicationCore {
 	public ApplicationCore (GUI gui) {
 		program = new Gnome.Program(ExecutionInfo.ApplicationID,
 			ExecutionInfo.Version, Gnome.Modules.UI, ExecutionInfo.Args);
+			
 		handlers = new EventHandlers(gui);
 		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled,
 			handlers.OnCommandActivated, handlers.OnModified);
