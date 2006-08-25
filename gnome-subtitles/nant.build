@@ -47,6 +47,7 @@
 	 		</pkg-references>
 			<resources>
 				<include name="${glade.src.dir}/*.glade" />
+				<include name="${data.dir}/${program.icon}" />
 			</resources>
 		</csc>
 		<call target="post-build" />
