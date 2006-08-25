@@ -40,7 +40,7 @@ public class Executable {
 		ExecutionInfo.Args = args;
 		SetProcessName(ExecutionInfo.ExecutableName);
 		new GUI();
-    }
+	}
 
 }
 
