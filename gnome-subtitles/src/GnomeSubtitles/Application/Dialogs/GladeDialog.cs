@@ -28,6 +28,7 @@ public class GladeDialog : GladeWidget {
 	public GladeDialog (GUI gui, string dialogName) : base(gui, dialogName){
 		dialog = GetWidget(dialogName) as Dialog;
 		dialog.TransientFor = gui.Window;
+		dialog.Icon = gui.Window.Icon;
 	}
 	
 	protected void CloseDialog() {
