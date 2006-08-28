@@ -31,6 +31,11 @@ public class GladeDialog : GladeWidget {
 		dialog.Icon = gui.Window.Icon;
 	}
 	
+	/// <summary>To use when the window is not valid, so there is no GUI.</summary>
+	public GladeDialog (string dialogName) : base(null, dialogName) {
+		dialog = GetWidget(dialogName) as Dialog;
+	}
+	
 	protected void CloseDialog() {
 		dialog.Destroy();
 	}
