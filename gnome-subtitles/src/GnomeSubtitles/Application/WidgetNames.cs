@@ -77,6 +77,9 @@ public class WidgetNames {
 	public const string ShiftDialogSpinButton = "spinButton";
 	public const string ShiftDialogAllSubtitlesRadioButton = "allSubtitlesRadioButton";
 	
+	/* Windows */
+	public const string BugReportWindow = "bugReportWindow";
+	public const string BugReportWindowTextView = "bugTextView";
 	
 }
 
