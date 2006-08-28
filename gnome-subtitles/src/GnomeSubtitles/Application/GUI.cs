@@ -48,8 +48,20 @@ public class GUI : GladeWidget {
 			Open(ExecutionInfo.Args[0]);
 		else
 			BlankStartUp();
-			
-		core.Program.Run();
+		
+		try {
+			core.Program.Run();
+		}
+		catch (Exception exception) {
+			ForceTerminate();
+			throw exception;
+		}
+    }
+    
+    private void ForceTerminate () {
+    	core.Clipboards.WatchPrimaryChanges = false;
+    	core.Program.Quit();
+		window.Destroy();
     }
       
 	public ApplicationCore Core {
