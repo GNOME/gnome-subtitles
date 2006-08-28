@@ -39,7 +39,12 @@ public class Executable {
 	public static void Main (string[] args) {
 		ExecutionInfo.Args = args;
 		SetProcessName(ExecutionInfo.ExecutableName);
-		new GUI();
+		try {
+			new GUI();
+		}
+		catch (Exception exception) {
+			new BugReportWindow(exception);
+		}
 	}
 
 }
