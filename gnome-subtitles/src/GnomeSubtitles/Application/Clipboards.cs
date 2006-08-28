@@ -28,13 +28,28 @@ public class Clipboards {
 	
 	private Clipboard clipboard = null;
 	private Clipboard primary = null;
+	private bool watchPrimaryChanges = false;
 	
 	public Clipboards (GUI gui) {
 		this.gui = gui;
 		
-		clipboard = Gtk.Clipboard.Get(Gdk.Selection.Clipboard);
-		primary = Gtk.Clipboard.Get(Gdk.Selection.Primary);
-		primary.OwnerChange += OnOwnerChange;
+		clipboard = Clipboard.Get(Gdk.Selection.Clipboard);
+		primary = Clipboard.Get(Gdk.Selection.Primary);
+		
+		WatchPrimaryChanges = true;
+	}
+	
+	public bool WatchPrimaryChanges {
+		set {
+			if (value && (!watchPrimaryChanges)) {
+				primary.OwnerChange += OnOwnerChange;
+				watchPrimaryChanges = true;
+			}
+			else if ((!value) && watchPrimaryChanges) {
+				primary.OwnerChange -= OnOwnerChange;
+				watchPrimaryChanges = false;
+			}
+		}	
 	}
 
 	public void OnOwnerChange (object o, OwnerChangeArgs args) {
