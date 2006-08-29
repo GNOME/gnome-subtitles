@@ -31,6 +31,8 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 	private SubtitleTypeInfo[] subtitleTypes = null;
 
 	public SaveAsDialog(GUI gui) : base(gui, WidgetNames.SaveAsDialog) {
+		dialog.DoOverwriteConfirmation = true;
+	
 		formatComboBox = (ComboBox)GetWidget(WidgetNames.SaveAsDialogFormatComboBox);
 		encodingComboBox = (ComboBox)GetWidget(WidgetNames.SaveAsDialogEncodingComboBox);
 		
@@ -63,11 +65,10 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 		
 		if (args.ResponseId == ResponseType.Ok) {
 			GUI.SaveAs(dialog.Filename, type, encoding);
-			CloseDialog(); 
+			actionDone = true;
 		}
-		else if (args.ResponseId == ResponseType.Cancel) {
-			CloseDialog();
-		}
+		
+		CloseDialog();
 	}
 
 }
