@@ -183,7 +183,7 @@
 				  <signal name="activate" handler="OnInsertSubtitleBeforeSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
 
 				  <child internal-child="image">
-				    <widget class="GtkImage" id="image55">
+				    <widget class="GtkImage" id="image62">
 				      <property name="visible">True</property>
 				      <property name="stock">gtk-go-up</property>
 				      <property name="icon_size">1</property>
@@ -205,7 +205,7 @@
 				  <signal name="activate" handler="OnInsertSubtitleAfterSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
 
 				  <child internal-child="image">
-				    <widget class="GtkImage" id="image56">
+				    <widget class="GtkImage" id="image63">
 				      <property name="visible">True</property>
 				      <property name="stock">gtk-go-down</property>
 				      <property name="icon_size">1</property>
@@ -231,7 +231,7 @@
 			  <signal name="activate" handler="OnDeleteSubtitles" last_modification_time="Thu, 13 Jul 2006 21:12:41 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image57">
+			    <widget class="GtkImage" id="image64">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-delete</property>
 			      <property name="icon_size">1</property>
@@ -262,7 +262,7 @@
 			  <property name="sensitive">False</property>
 			  <property name="label" translatable="yes">_Frames</property>
 			  <property name="use_underline">True</property>
-			  <property name="active">True</property>
+			  <property name="active">False</property>
 			  <signal name="toggled" handler="OnFrames" last_modification_time="Mon, 06 Feb 2006 01:38:51 GMT"/>
 			</widget>
 		      </child>
@@ -351,7 +351,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">23.976</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:56:37 GMT"/>
 				</widget>
 			      </child>
@@ -362,7 +362,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">24</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:56:44 GMT"/>
 				</widget>
@@ -386,7 +386,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">29.97 (NTSC)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:57:08 GMT"/>
 				</widget>
@@ -398,7 +398,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">30</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:57:01 GMT"/>
 				</widget>
@@ -423,7 +423,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">23.976</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:35 GMT"/>
 				</widget>
 			      </child>
@@ -434,7 +434,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">24</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:39 GMT"/>
 				</widget>
@@ -458,7 +458,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">29.97 (NTSC)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:47 GMT"/>
 				</widget>
@@ -470,7 +470,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">30 </property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:51 GMT"/>
 				</widget>
@@ -516,7 +516,7 @@
 			  <signal name="activate" handler="OnReportBug" last_modification_time="Wed, 05 Apr 2006 23:03:43 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image58">
+			    <widget class="GtkImage" id="image65">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-warning</property>
 			      <property name="icon_size">1</property>
@@ -537,7 +537,7 @@
 			  <signal name="activate" handler="OnRequestFeature" last_modification_time="Wed, 23 Aug 2006 00:20:48 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image59">
+			    <widget class="GtkImage" id="image66">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-info</property>
 			      <property name="icon_size">1</property>
@@ -1609,27 +1609,71 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</prop
       <property name="spacing">4</property>
 
       <child>
-	<widget class="GtkLabel" id="label">
+	<widget class="GtkHBox" id="hBoxMessage">
 	  <property name="visible">True</property>
-	  <property name="label" translatable="yes">&lt;b&gt;An Error has occured.&lt;/b&gt;
+	  <property name="homogeneous">False</property>
+	  <property name="spacing">0</property>
+
+	  <child>
+	    <widget class="GtkImage" id="errorImage">
+	      <property name="visible">True</property>
+	      <property name="stock">gtk-dialog-error</property>
+	      <property name="icon_size">6</property>
+	      <property name="xalign">0</property>
+	      <property name="yalign">0</property>
+	      <property name="xpad">12</property>
+	      <property name="ypad">0</property>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkVBox" id="vBoxMessage">
+	      <property name="visible">True</property>
+	      <property name="homogeneous">False</property>
+	      <property name="spacing">0</property>
+
+	      <child>
+		<widget class="GtkLabel" id="label">
+		  <property name="visible">True</property>
+		  <property name="can_focus">True</property>
+		  <property name="label" translatable="yes">An Error has occured.
 
 To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the following &lt;b&gt;log&lt;/b&gt; in the bug description.</property>
-	  <property name="use_underline">False</property>
-	  <property name="use_markup">True</property>
-	  <property name="justify">GTK_JUSTIFY_LEFT</property>
-	  <property name="wrap">True</property>
-	  <property name="selectable">False</property>
-	  <property name="xalign">0</property>
-	  <property name="yalign">0</property>
-	  <property name="xpad">0</property>
-	  <property name="ypad">0</property>
-	  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-	  <property name="width_chars">-1</property>
-	  <property name="single_line_mode">False</property>
-	  <property name="angle">0</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">True</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">True</property>
+		  <property name="selectable">True</property>
+		  <property name="xalign">0</property>
+		  <property name="yalign">0</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">False</property>
+		  <property name="fill">False</property>
+		</packing>
+	      </child>
+	    </widget>
+	    <packing>
+	      <property name="padding">0</property>
+	      <property name="expand">False</property>
+	      <property name="fill">False</property>
+	    </packing>
+	  </child>
 	</widget>
 	<packing>
-	  <property name="padding">0</property>
+	  <property name="padding">12</property>
 	  <property name="expand">False</property>
 	  <property name="fill">False</property>
 	</packing>
@@ -1761,74 +1805,11 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 	      <property name="visible">True</property>
 	      <property name="can_focus">True</property>
 	      <property name="has_focus">True</property>
+	      <property name="label" translatable="yes">Open Web Form</property>
+	      <property name="use_underline">True</property>
 	      <property name="relief">GTK_RELIEF_NORMAL</property>
 	      <property name="focus_on_click">True</property>
 	      <signal name="clicked" handler="OnOpenWebForm" last_modification_time="Mon, 28 Aug 2006 17:16:21 GMT"/>
-
-	      <child>
-		<widget class="GtkAlignment" id="alignment1">
-		  <property name="visible">True</property>
-		  <property name="xalign">0.5</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xscale">0</property>
-		  <property name="yscale">0</property>
-		  <property name="top_padding">0</property>
-		  <property name="bottom_padding">0</property>
-		  <property name="left_padding">0</property>
-		  <property name="right_padding">0</property>
-
-		  <child>
-		    <widget class="GtkHBox" id="hbox5">
-		      <property name="visible">True</property>
-		      <property name="homogeneous">False</property>
-		      <property name="spacing">2</property>
-
-		      <child>
-			<widget class="GtkImage" id="image60">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-dialog-warning</property>
-			  <property name="icon_size">4</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-			<packing>
-			  <property name="padding">0</property>
-			  <property name="expand">False</property>
-			  <property name="fill">False</property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="GtkLabel" id="label7">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Open Web Form</property>
-			  <property name="use_underline">True</property>
-			  <property name="use_markup">False</property>
-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
-			  <property name="wrap">False</property>
-			  <property name="selectable">False</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			  <property name="width_chars">-1</property>
-			  <property name="single_line_mode">False</property>
-			  <property name="angle">0</property>
-			  <signal name="activate" handler="OnOpenWebForm" last_modification_time="Sun, 27 Aug 2006 02:41:10 GMT"/>
-			</widget>
-			<packing>
-			  <property name="padding">0</property>
-			  <property name="expand">False</property>
-			  <property name="fill">False</property>
-			</packing>
-		      </child>
-		    </widget>
-		  </child>
-		</widget>
-	      </child>
 	    </widget>
 	    <packing>
 	      <property name="padding">0</property>
