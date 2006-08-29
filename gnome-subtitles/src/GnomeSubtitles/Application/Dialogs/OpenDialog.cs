@@ -25,6 +25,9 @@ namespace GnomeSubtitles {
 
 public class OpenDialog : SubtitleFileChooserDialog {
 	private ComboBox encodingComboBox = null;
+	
+	private string fileName = String.Empty;
+	private Encoding encoding = null;
 
 	public OpenDialog (GUI gui) : base(gui, WidgetNames.OpenDialog){
 		encodingComboBox = (ComboBox)GetWidget(WidgetNames.OpenDialogEncodingComboBox);
@@ -40,25 +43,31 @@ public class OpenDialog : SubtitleFileChooserDialog {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));		
 		}
 	}
-
+	
+	public string FileName {
+		get { return fileName; }
+	}
+	
+	public Encoding Encoding {
+		get { return encoding; }
+	}
+	
+	public bool HasEncoding {
+		get { return encoding != null; }
+	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
-			Console.WriteLine();
-			if (encodingComboBox.Active == 0)
-				GUI.Open(dialog.Filename);
-			else {
+			fileName = dialog.Filename;
+			if (encodingComboBox.Active != 0) {
 				int encodingIndex = encodingComboBox.Active - 2;
-				Encoding encoding = Encoding.GetEncoding(encodings[encodingIndex].CodePage);
-				GUI.Open(dialog.Filename, encoding);
+				encoding = Encoding.GetEncoding(encodings[encodingIndex].CodePage);
 			}
-			CloseDialog(); 
+			actionDone = true;
 		}
-		else if (args.ResponseId == ResponseType.Cancel) {
-			CloseDialog();
-		}
+		CloseDialog();
 	}
 	
 }
