@@ -171,7 +171,9 @@ public class Menus : GladeWidget {
 	}
 	
 	private void SetSensitivity (string widgetName, bool isSensitive) {
-		GetWidget(widgetName).Sensitive = isSensitive;
+		Widget widget = GetWidget(widgetName);
+		if (widget != null)
+			widget.Sensitive = isSensitive;
 	}
 	
 	private void SetMenuSensitivity (string menuItemName, bool sensitivity) {
