@@ -48,18 +48,15 @@ public class EventHandlers {
 	}
 	
 	public void OnOpen (object o, EventArgs args) {
-		new OpenDialog(gui);
+		gui.Open();
 	}
 	
 	public void OnSave (object o, EventArgs args) {
-		if (gui.Core.Subtitles.CanSave)
-			gui.Save();
-		else	 //Unsaved Document
-			SaveAs();
+		gui.Save();
 	}
 	
 	public void OnSaveAs (object o, EventArgs args) {
-		SaveAs();
+		gui.SaveAs();
 	}
 	    
     public void OnQuit (object o, EventArgs args) {
@@ -175,6 +172,7 @@ public class EventHandlers {
 	
 	public void OnDelete (object o, DeleteEventArgs args) {
     	gui.Close();
+    	args.RetVal = true;
     }
     
     
@@ -234,14 +232,6 @@ public class EventHandlers {
 		else if (args.Event.Key == Gdk.Key.Insert)
 			OnInsertSubtitleAfterSelection(o, EventArgs.Empty);
     }
-    
-    
-
-	/* Private members */
-	
-	private void SaveAs () {
-		new SaveAsDialog(gui);
-	}
 
 }
 
