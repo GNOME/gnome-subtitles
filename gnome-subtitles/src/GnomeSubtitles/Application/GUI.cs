@@ -84,16 +84,32 @@ public class GUI : GladeWidget {
 		get { return subtitleEdit; }
 	}
     
-    
-    
     public void Close() {
-    	core.Program.Quit();
+		if (ToCloseAfterWarning) {
+			core.Program.Quit();
+		}
     }
 
     public void New () {
-    	bool wasLoaded = core.IsLoaded;
-    	core.New();
-    	NewDocument(wasLoaded);
+    	if (ToNewAfterWarning) {
+    		bool wasLoaded = core.IsLoaded;
+    		core.New();
+    		NewDocument(wasLoaded);
+    	}
+    }
+    
+    public void Open () {
+    	OpenDialog dialog = new OpenDialog(this);
+    	bool toOpen = dialog.WaitForResponse();
+    	if (toOpen && ToOpenAfterWarning) {
+    		string fileName = dialog.FileName;
+    		if (dialog.HasEncoding) {
+    			Encoding encoding = dialog.Encoding;
+    			Open(fileName, encoding);    		
+    		}
+    		else
+    			Open(fileName);
+    	}
     }
     
     public void Open (string fileName) {
@@ -108,16 +124,27 @@ public class GUI : GladeWidget {
     	NewDocument(wasLoaded);
     }
     
-    public void Save () {
-    	core.Subtitles.Save();
-    	core.CommandManager.WasModified = false;
-    	SetWindowTitle(false);
+    public bool Save () {
+    	if (core.Subtitles.CanSave) {
+			core.Subtitles.Save();
+	    	core.CommandManager.WasModified = false;
+    		SetWindowTitle(false);
+    		return true;
+		}
+		else	 //Unsaved Document
+			return SaveAs();
     }
     
-    public void SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
+   	public bool SaveAs () {
+		SaveAsDialog dialog = new SaveAsDialog(this);
+		return dialog.WaitForResponse();
+	}
+    
+    public bool SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
 		core.Subtitles.SaveAs(filePath, subtitleType, encoding);
 		menus.SetActiveTimingMode();
 		SetWindowTitle(false);
+		return true;
     }
 	
 	public void SetTimingMode (TimingMode mode) {
@@ -147,7 +174,6 @@ public class GUI : GladeWidget {
 		subtitleView.Reselect();
 	}
     
-    
     /* Private methods */
     
     private void BlankStartUp () {
@@ -165,7 +191,43 @@ public class GUI : GladeWidget {
 		
 		subtitleView.SelectFirst();
 	}
+	
+	private bool ExistUnsavedChanges {
+		get { return core.CommandManager.WasModified; }
+	}
 
+    private bool ToCloseAfterWarning {
+    	get {
+    		if (ExistUnsavedChanges) {
+	    		ConfirmationDialog dialog = new CloseConfirmationDialog(this);
+    			return dialog.WaitForResponse();
+    		}
+    		else
+	    		return true; 
+		}
+	}
+    
+    private bool ToNewAfterWarning {
+    	get {
+    		if (ExistUnsavedChanges) {
+	    		ConfirmationDialog dialog = new NewConfirmationDialog(this);
+    			return dialog.WaitForResponse();
+    		}
+    		else
+	    		return true; 
+		}
+	}
+	
+	private bool ToOpenAfterWarning {
+    	get {
+    		if (ExistUnsavedChanges) {
+	    		ConfirmationDialog dialog = new OpenConfirmationDialog(this);
+    			return dialog.WaitForResponse();
+    		}
+    		else
+	    		return true; 
+		}
+	}
 
 }
 
