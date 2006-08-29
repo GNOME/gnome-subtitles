@@ -85,11 +85,8 @@ public class ShiftDialog : GladeDialog {
 				int frames = (int)spinButton.Value;
 				GUI.Core.CommandManager.Execute(new ShiftTimingsCommand(GUI, frames, applyToAll));
 			}
-			CloseDialog(); 
 		}
-		else if (args.ResponseId == ResponseType.Cancel) {
-			CloseDialog();
-		}
+		CloseDialog();
 	}
 
 }
