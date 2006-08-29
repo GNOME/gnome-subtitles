@@ -1,2 +1,6 @@
 - Pass GUI directly to the command manager, instead of on each Command Creation
-- Move time constants to SubLib, used in SubtitleCore (subtitle creation) and Subtitles.AddAfter
+- Put each glade widget in a separate file.
+- Move widget names to each widget class.
+- Refactor GladeWidget inheritance.
+- Clipboard should be able to copy entire subtitles too (from treeview selection)
+- Main SpinButtons's text entry needs better cursor handling.
