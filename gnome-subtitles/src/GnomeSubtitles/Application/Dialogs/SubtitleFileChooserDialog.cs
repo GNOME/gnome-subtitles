@@ -34,7 +34,6 @@ public class SubtitleFileChooserDialog : GladeDialog {
 		dialog = base.dialog as FileChooserDialog;
 	}
 	
-	
 	protected void FillEncodingComboBox (ComboBox comboBox) {
 		foreach (FileEncoding encoding in encodings)
 			comboBox.AppendText(encoding.Description + " (" + encoding.Name + ")");
@@ -42,7 +41,6 @@ public class SubtitleFileChooserDialog : GladeDialog {
 		comboBox.RowSeparatorFunc = SeparatorFunc;		
 		comboBox.Active = 0;
 	}
-	
 		
 	protected bool SeparatorFunc (TreeModel model, TreeIter iter) {
 		string text = (string)model.GetValue(iter, 0);
