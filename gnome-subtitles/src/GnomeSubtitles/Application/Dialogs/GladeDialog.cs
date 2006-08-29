@@ -24,6 +24,7 @@ namespace GnomeSubtitles {
 
 public class GladeDialog : GladeWidget {
 	protected Dialog dialog = null;
+	protected bool actionDone = false;
 
 	public GladeDialog (GUI gui, string dialogName) : base(gui, dialogName){
 		dialog = GetWidget(dialogName) as Dialog;
@@ -36,11 +37,14 @@ public class GladeDialog : GladeWidget {
 		dialog = GetWidget(dialogName) as Dialog;
 	}
 	
+	public bool WaitForResponse () {
+		dialog.Run();
+		return actionDone;
+	}
+	
 	protected void CloseDialog() {
 		dialog.Destroy();
 	}
-	
-	
 
 }
 
