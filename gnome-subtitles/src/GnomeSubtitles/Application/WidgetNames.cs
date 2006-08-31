@@ -74,6 +74,7 @@ public class WidgetNames {
 	public const string SaveAsDialogFormatComboBox = "formatComboBox";
 	public const string SaveAsDialogEncodingComboBox = "encodingComboBox";
 	public const string ShiftDialog = "shiftDialog";
+	public const string ShiftDialogLabel = "timingModeLabel";
 	public const string ShiftDialogSpinButton = "spinButton";
 	public const string ShiftDialogAllSubtitlesRadioButton = "allSubtitlesRadioButton";
 	

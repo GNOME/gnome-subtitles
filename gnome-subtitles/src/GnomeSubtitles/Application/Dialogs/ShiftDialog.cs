@@ -26,13 +26,14 @@ namespace GnomeSubtitles {
 
 public class ShiftDialog : GladeDialog {
 	private SpinButton spinButton = null;
+	private Label label = null;
 	private TimingMode timingMode;
 
 	public ShiftDialog (GUI gui) : base(gui, WidgetNames.ShiftDialog){
 		spinButton = GetWidget(WidgetNames.ShiftDialogSpinButton) as SpinButton;
 		spinButton.WidthRequest = gui.SubtitleEdit.SpinButtonWidth();
 		spinButton.Alignment = 0.5f;
-		
+		label = GetWidget(WidgetNames.ShiftDialogLabel) as Label;
 		timingMode = gui.Core.Subtitles.Properties.TimingMode;
 		UpdateSpinButton(timingMode);
 	}
@@ -44,6 +45,7 @@ public class ShiftDialog : GladeDialog {
     		spinButton.Adjustment.Lower = -3000000;
 		}
 		else {
+			label.Markup = "<b>Time</b>";
 			spinButton.Input += OnTimeInput;
 			spinButton.Output += OnTimeOutput;
 			spinButton.Value = 0;
