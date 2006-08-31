@@ -55,9 +55,9 @@ public class Clipboards {
 	public void OnOwnerChange (object o, OwnerChangeArgs args) {
     	Window window = gui.Window;
     	if ((!window.IsActive) || (args.Event.Owner == 0) || (!ValidWidgetHasFocus()))
-    		gui.Menus.SetCopyCutSensitivity(false);
+    		gui.Menus.SetCutCopySensitivity(false);
     	else {
-    		gui.Menus.SetCopyCutSensitivity(true);    	
+    		gui.Menus.SetCutCopySensitivity(true);    	
     	}
     }
     
