@@ -59,9 +59,16 @@ public class Menus : GladeWidget {
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
 	}
 	
-	public void SetCopyCutSensitivity (bool sensitivity) {
-		SetSensitivity(WidgetNames.CopyMenuItem, sensitivity);
+	public void SetCutCopySensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.CutMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.CopyMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.CutButton, sensitivity);
+		SetSensitivity(WidgetNames.CopyButton, sensitivity);		
+	}
+	
+	public void SetPasteSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.PasteMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.PasteButton, sensitivity);
 	}
 	
 	/* Static members */
@@ -99,6 +106,13 @@ public class Menus : GladeWidget {
 		SetSensitivity(WidgetNames.CutMenuItem, false);
 		SetSensitivity(WidgetNames.CopyMenuItem, false);
 		SetSensitivity(WidgetNames.PasteMenuItem, false);
+		/* Toolbar */
+		SetSensitivity(WidgetNames.SaveButton, false);
+		SetSensitivity(WidgetNames.UndoButton, false);
+		SetSensitivity(WidgetNames.RedoButton, false);
+		SetSensitivity(WidgetNames.CutButton, false);
+		SetSensitivity(WidgetNames.CopyButton, false);
+		SetSensitivity(WidgetNames.PasteButton, false);
 	}
 	
 	private void SetNewDocumentSensitivity (bool wasLoaded) {
@@ -107,9 +121,6 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.SaveMenuItem, true);
 			SetSensitivity(WidgetNames.SaveAsMenuItem, true);
 			/* Edit Menu */
-			SetSensitivity(WidgetNames.CutMenuItem, true);
-			SetSensitivity(WidgetNames.CopyMenuItem, true);
-			SetSensitivity(WidgetNames.PasteMenuItem, true);
 			SetMenuSensitivity(WidgetNames.InsertSubtitleMenuItem, true);
 			SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, true);
 			/* View Menu */
@@ -126,9 +137,15 @@ public class Menus : GladeWidget {
 			/* Edit Menu */
 			SetSensitivity(WidgetNames.UndoMenuItem, false);
 			SetSensitivity(WidgetNames.RedoMenuItem, false);
+			SetSensitivity(WidgetNames.CutMenuItem, false);
+			SetSensitivity(WidgetNames.CopyMenuItem, false);
+			SetSensitivity(WidgetNames.PasteMenuItem, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
+			SetSensitivity(WidgetNames.CutButton, false);
+			SetSensitivity(WidgetNames.CopyButton, false);
+			SetSensitivity(WidgetNames.PasteButton, false);
 		}	
 	}
 	
