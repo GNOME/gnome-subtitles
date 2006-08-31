@@ -232,6 +232,16 @@ public class EventHandlers {
 		else if (args.Event.Key == Gdk.Key.Insert)
 			OnInsertSubtitleAfterSelection(o, EventArgs.Empty);
     }
+    
+    /*	Subtitle Edit	*/
+    
+    public void OnFocusInSubtitleEdit (object o, EventArgs args) {
+    	gui.Menus.SetPasteSensitivity(true);
+    }
+    
+    public void OnFocusOutSubtitleEdit (object o, EventArgs args) {
+    	gui.Menus.SetPasteSensitivity(false);
+    }
 
 }
 
