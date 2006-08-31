@@ -55,6 +55,9 @@ public class WidgetNames {
 	public const string SaveButton = "toolbuttonSave";
 	public const string UndoButton = "toolbuttonUndo";
 	public const string RedoButton = "toolbuttonRedo";
+	public const string CutButton = "toolbuttonCut";
+	public const string CopyButton = "toolbuttonCopy";
+	public const string PasteButton = "toolbuttonPaste";
 	
 	/* Subtitle View */
 	public const string SubtitleView = "subtitleListView";
