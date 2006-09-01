@@ -34,8 +34,7 @@ public class ShiftDialog : GladeDialog {
 		spinButton.WidthRequest = gui.SubtitleEdit.SpinButtonWidth();
 		spinButton.Alignment = 0.5f;
 		label = GetWidget(WidgetNames.ShiftDialogLabel) as Label;
-		timingMode = gui.Core.Subtitles.Properties.TimingMode;
-		UpdateSpinButton(timingMode);
+		UpdateSpinButton(gui.Core.TimingMode);
 	}
 
 	private void UpdateSpinButton (TimingMode timingMode) {

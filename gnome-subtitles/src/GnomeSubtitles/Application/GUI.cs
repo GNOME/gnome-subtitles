@@ -126,8 +126,7 @@ public class GUI : GladeWidget {
     
     public bool Save () {
     	if (core.Subtitles.CanSave) {
-			core.Subtitles.Save();
-	    	core.CommandManager.WasModified = false;
+			core.Save();
     		SetWindowTitle(false);
     		return true;
 		}
@@ -135,28 +134,28 @@ public class GUI : GladeWidget {
 			return SaveAs();
     }
     
-   	public bool SaveAs () {
-		SaveAsDialog dialog = new SaveAsDialog(this);
-		return dialog.WaitForResponse();
-	}
-    
     public bool SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
-		core.Subtitles.SaveAs(filePath, subtitleType, encoding);
+		core.SaveAs(filePath, subtitleType, encoding);
 		menus.SetActiveTimingMode();
 		SetWindowTitle(false);
 		return true;
     }
-	
-	public void SetTimingMode (TimingMode mode) {
-		core.Subtitles.Properties.TimingMode = mode;
-		subtitleView.UpdateTimingMode();
-		subtitleEdit.UpdateTimingMode();
+    
+	public bool SaveAs () {
+		SaveAsDialog dialog = new SaveAsDialog(this);
+		return dialog.WaitForResponse();
 	}
 	
 	public void SetWindowTitle (bool modified) {
 		string prefix = (modified ? "*" : String.Empty);
 		window.Title = prefix + core.Subtitles.Properties.FileName +
 			" - " + ExecutionInfo.ApplicationName;
+	}
+	
+	public void OnToggleTimingMode (TimingMode newMode) {
+		core.TimingMode = newMode;
+		subtitleView.ToggleTimingMode(newMode);
+		subtitleEdit.ToggleTimingMode(newMode);
 	}
 	
 	public void OnSubtitleSelection (Subtitle subtitle) {

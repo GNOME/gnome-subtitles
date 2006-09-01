@@ -111,7 +111,7 @@ public class SubtitleView : GladeWidget {
 	    treeView.GrabFocus();
     }
     
-    public void UpdateTimingMode () {
+    public void ToggleTimingMode (TimingMode mode) {
 	    Refresh();
     }
     
@@ -288,7 +288,7 @@ public class SubtitleView : GladeWidget {
 
 	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText cellRenderer = (CellRendererText)cell;
-		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 			cellRenderer.Text = subtitles.Get(iter).Frames.Start.ToString();
 		else
 			cellRenderer.Text = Utility.TimeSpanToText(subtitles.Get(iter).Times.Start);
@@ -296,7 +296,7 @@ public class SubtitleView : GladeWidget {
 	
 	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText cellRenderer = (CellRendererText)cell;
-		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 			cellRenderer.Text = subtitles.Get(iter).Frames.End.ToString();
 		else
 			cellRenderer.Text = Utility.TimeSpanToText(subtitles.Get(iter).Times.End);
@@ -304,7 +304,7 @@ public class SubtitleView : GladeWidget {
 	
 	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText cellRenderer = (CellRendererText)cell;
-		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 			cellRenderer.Text = subtitles.Get(iter).Frames.Duration.ToString();
 		else
 			cellRenderer.Text = Utility.TimeSpanToText(subtitles.Get(iter).Times.Duration);

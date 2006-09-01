@@ -53,7 +53,7 @@ public class Menus : GladeWidget {
 	}
 	
 	public void SetActiveTimingMode () {
-		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 	    	SetActivity(WidgetNames.FramesMenuItem, true);
 	    else
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
@@ -164,7 +164,7 @@ public class Menus : GladeWidget {
 	}
 	
 	private void SetFrameRateMenus () {
-		if (core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
+		if (GUI.Core.TimingModeIsFrames) {
 			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
 			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
 		}

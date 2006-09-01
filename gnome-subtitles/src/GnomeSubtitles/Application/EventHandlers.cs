@@ -104,12 +104,12 @@ public class EventHandlers {
 	
 	public void OnTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			gui.SetTimingMode(TimingMode.Times);
+			gui.OnToggleTimingMode(TimingMode.Times);
 	}
 
 	public void OnFrames (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			gui.SetTimingMode(TimingMode.Frames);
+			gui.OnToggleTimingMode(TimingMode.Frames);
 	}
 	
 	

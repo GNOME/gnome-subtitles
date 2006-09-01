@@ -30,6 +30,7 @@ public class ApplicationCore {
 	private EventHandlers handlers = null;
 	private CommandManager commandManager = null;
 	private Clipboards clipboards = null;
+	private TimingMode timingMode = TimingMode.Times;
 	
 	public ApplicationCore (GUI gui) {
 		program = new Gnome.Program(ExecutionInfo.ApplicationID,
@@ -63,16 +64,29 @@ public class ApplicationCore {
 		get { return clipboards; }
 	}
 	
+	public TimingMode TimingMode {
+		get { return timingMode; }
+		set { timingMode = value; }
+	}
+	
+	public bool TimingModeIsFrames {
+		get { return timingMode == TimingMode.Frames; }
+	}
+	
+	public bool TimingModeIsTimes {
+		get { return timingMode == TimingMode.Times; }
+	}
+	
 	public bool IsLoaded {
 		get { return subtitles != null; }
 	}
 
-	
 	public void New () {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		subtitles = new Subtitles(factory.NewWithName("Unsaved Subtitles"));
 		
+		timingMode = TimingMode.Times;
 		NewDocument();
 	}
 	
@@ -95,7 +109,19 @@ public class ApplicationCore {
 		}
 		subtitles = new Subtitles(openedSubtitles);
 		
+		timingMode = subtitles.Properties.TimingMode;
 		NewDocument();
+	}
+	
+	public void Save () {
+		subtitles.Save();
+	    commandManager.WasModified = false;
+	}
+	
+	public void SaveAs (string filePath, SubtitleType subtitleType, Encoding encoding) {
+		subtitles.SaveAs(filePath, subtitleType, encoding);
+		commandManager.WasModified = false;
+		timingMode = subtitles.Properties.TimingMode;
 	}
 	
 	/* Private members */

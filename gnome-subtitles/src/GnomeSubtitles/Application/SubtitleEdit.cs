@@ -59,6 +59,8 @@ public class SubtitleEdit : GladeWidget {
     	textView.Buffer.TagTable.Add(boldTag);
     	textView.Buffer.TagTable.Add(italicTag);
     	textView.Buffer.TagTable.Add(underlineTag);
+    	
+    	SetTimesMode(); //Initial timing mode is Times
     }
     
     public void GetEditableWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton,
@@ -71,10 +73,8 @@ public class SubtitleEdit : GladeWidget {
     }
     
     public void NewDocument (bool wasLoaded) {
-    	if (!wasLoaded) {
+    	if (!wasLoaded)
     		hBox.Sensitive = true;
-    	}
-    	SetTimingMode();
     }
     
     public void BlankStartUp () {
@@ -93,64 +93,34 @@ public class SubtitleEdit : GladeWidget {
     	}
     }
     
-    public void UpdateTimingMode () {
-    	SetTimingMode();
-	   	LoadTimings();
+    public void ToggleTimingMode (TimingMode mode) { 	
+    	SetTimingMode(mode);
+	   	LoadTimings(mode);
     }
 
     public void LoadSubtitle (Subtitle subtitle) {
 	   	this.Sensitive = true;
     	this.subtitle = subtitle;
-		LoadTimings();
+		LoadTimings(GUI.Core.TimingMode);
 		LoadTags();
     	LoadText();
     }
     
-    public void ReLoadSubtitle () {
+    public void ReloadSubtitle () {
     	LoadSubtitle(subtitle);
     }
-    
-    public void LoadTimings () {
-    	if (subtitle == null)
-    		return;
-    			
-		LoadStartTiming();
-		LoadEndTiming();
-		LoadDurationTiming();
-    }
-    
-    public void LoadStartTiming () {
-    	startSpinButton.ValueChanged -= OnStartValueChanged;
-    		
-    	if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-    		startSpinButton.Value = subtitle.Frames.Start;
-    	else
-    		startSpinButton.Value = subtitle.Times.Start.TotalMilliseconds;
 
-   		startSpinButton.ValueChanged += OnStartValueChanged;
-    }
+   	public void LoadStartTiming () {
+   		LoadStartTiming(GUI.Core.TimingMode);
+   	}
     
-    public void LoadEndTiming () {
-   		endSpinButton.ValueChanged -= OnEndValueChanged;
-    		
-    	if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-    		endSpinButton.Value = subtitle.Frames.End;
-    	else
-    		endSpinButton.Value = subtitle.Times.End.TotalMilliseconds;
-
-   		endSpinButton.ValueChanged += OnEndValueChanged;
-   }
+	public void LoadEndTiming () {
+   		LoadEndTiming(GUI.Core.TimingMode);
+   	}
     
     public void LoadDurationTiming () {
-    	durationSpinButton.ValueChanged -= OnDurationValueChanged;
-
-    	if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
-    		durationSpinButton.Value = subtitle.Frames.Duration;
-    	else
-    		durationSpinButton.Value = subtitle.Times.Duration.TotalMilliseconds;
-
-    	durationSpinButton.ValueChanged += OnDurationValueChanged;
-    }
+   		LoadDurationTiming(GUI.Core.TimingMode);
+   	}
     
     public void LoadText () {
     	textView.Buffer.Changed -= OnBufferChanged; 
@@ -205,6 +175,7 @@ public class SubtitleEdit : GladeWidget {
    		DisconnectTextBufferChangedSignal();
     	textView.Buffer.Text = String.Empty;
     	ConnectTextBufferChangedSignal();
+    	
     	DisconnectSpinButtonsChangedSignals();
 		startSpinButton.Text = String.Empty;
 		endSpinButton.Text = String.Empty;
@@ -217,19 +188,6 @@ public class SubtitleEdit : GladeWidget {
 	    		textView.Buffer.ApplyTag(tag, start, end);
 	    	else
 	    		textView.Buffer.RemoveTag(tag, start, end);
-    }
-    
-    private void SetTimingMode () {
-    	if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames) {
-	    	SetFramesMode(startSpinButton);
-	    	SetFramesMode(endSpinButton);
-	    	SetFramesMode(durationSpinButton);
-	    }
-	    else {
-	    	SetTimesMode(startSpinButton);
-	    	SetTimesMode(endSpinButton);
-	    	SetTimesMode(durationSpinButton);
-	    }
     }
     
     private void ConnectTextBufferChangedSignal () {
@@ -251,8 +209,25 @@ public class SubtitleEdit : GladeWidget {
    		endSpinButton.ValueChanged -= OnEndValueChanged;
    		durationSpinButton.ValueChanged -= OnDurationValueChanged;
    	}
+   	
+   	private void SetTimingMode(TimingMode mode) {
+   		if (mode == TimingMode.Frames)
+   			SetFramesMode();
+   		else
+   			SetTimesMode();
+   	}
     
-
+	private void SetFramesMode () {
+		SetFramesMode(startSpinButton);
+	    SetFramesMode(endSpinButton);
+	    SetFramesMode(durationSpinButton);
+	}
+	
+	private void SetTimesMode () {
+	    SetTimesMode(startSpinButton);
+	    SetTimesMode(endSpinButton);
+	    SetTimesMode(durationSpinButton);
+	}
     
     private void SetTimesMode (SpinButton spinButton) {
     	spinButton.Input += OnTimeInput;
@@ -262,11 +237,53 @@ public class SubtitleEdit : GladeWidget {
 	}
 	
 	private void SetFramesMode (SpinButton spinButton) {
-    	spinButton.Input -= OnTimeInput;
+		spinButton.Input -= OnTimeInput;
     	spinButton.Output -= OnTimeOutput;
     	spinButton.Adjustment.StepIncrement = 1;
     	spinButton.Adjustment.Upper = 3000000;
 	}
+	
+	private void LoadTimings (TimingMode mode) {
+    	if (subtitle == null)
+    		return;
+    			
+		LoadStartTiming(mode);
+		LoadEndTiming(mode);
+		LoadDurationTiming(mode);
+    }
+	
+	private void LoadStartTiming (TimingMode mode) {
+    	startSpinButton.ValueChanged -= OnStartValueChanged;
+    		
+    	if (mode == TimingMode.Frames)
+    		startSpinButton.Value = subtitle.Frames.Start;
+    	else
+    		startSpinButton.Value = subtitle.Times.Start.TotalMilliseconds;
+
+   		startSpinButton.ValueChanged += OnStartValueChanged;
+   	}
+   	
+	private void LoadEndTiming (TimingMode mode) {
+   		endSpinButton.ValueChanged -= OnEndValueChanged;
+    		
+    	if (mode == TimingMode.Frames)
+    		endSpinButton.Value = subtitle.Frames.End;
+    	else
+    		endSpinButton.Value = subtitle.Times.End.TotalMilliseconds;
+
+   		endSpinButton.ValueChanged += OnEndValueChanged;
+	}
+	
+	private void LoadDurationTiming (TimingMode mode) {
+    	durationSpinButton.ValueChanged -= OnDurationValueChanged;
+
+    	if (mode == TimingMode.Frames)
+    		durationSpinButton.Value = subtitle.Frames.Duration;
+    	else
+    		durationSpinButton.Value = subtitle.Times.Duration.TotalMilliseconds;
+
+    	durationSpinButton.ValueChanged += OnDurationValueChanged;
+    }
 	
 	/* Event Handlers */
     
@@ -295,21 +312,21 @@ public class SubtitleEdit : GladeWidget {
 	}
 
 	private void OnStartValueChanged (object o, EventArgs args) {
-		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 			GUI.Core.CommandManager.Execute(new ChangeStartCommand(GUI, (int)startSpinButton.Value));
 		else
 			GUI.Core.CommandManager.Execute(new ChangeStartCommand(GUI, TimeSpan.FromMilliseconds(startSpinButton.Value)));
 	}
 	
 	private void OnEndValueChanged (object o, EventArgs args) {
-		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 			GUI.Core.CommandManager.Execute(new ChangeEndCommand(GUI, (int)endSpinButton.Value));
 		else
 			GUI.Core.CommandManager.Execute(new ChangeEndCommand(GUI, TimeSpan.FromMilliseconds(endSpinButton.Value)));
 	}
 	
 	private void OnDurationValueChanged (object o, EventArgs args) {
-		if (GUI.Core.Subtitles.Properties.TimingMode == TimingMode.Frames)
+		if (GUI.Core.TimingModeIsFrames)
 			GUI.Core.CommandManager.Execute(new ChangeDurationCommand(GUI, (int)durationSpinButton.Value));
 		else
 			GUI.Core.CommandManager.Execute(new ChangeDurationCommand(GUI, TimeSpan.FromMilliseconds(durationSpinButton.Value)));
