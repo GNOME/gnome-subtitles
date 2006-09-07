@@ -235,11 +235,11 @@ public class EventHandlers {
     
     /*	Subtitle Edit	*/
     
-    public void OnFocusInSubtitleEdit (object o, EventArgs args) {
+    public void OnFocusInSubtitleEdit (object o, FocusInEventArgs args) {
     	gui.Menus.SetPasteSensitivity(true);
     }
     
-    public void OnFocusOutSubtitleEdit (object o, EventArgs args) {
+    public void OnFocusOutSubtitleEdit (object o, FocusOutEventArgs args) {
     	gui.Menus.SetPasteSensitivity(false);
     }
 
