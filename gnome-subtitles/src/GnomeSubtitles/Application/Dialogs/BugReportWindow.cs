@@ -28,8 +28,7 @@ public class BugReportWindow : GladeWidget {
 	Clipboard clipboard = null;
 
 	public BugReportWindow (Exception exception) {
-		System.Console.Error.WriteLine(exception);
-		
+	
 		Application.Init();		
 		Init(ExecutionInfo.GladeMasterFileName, WidgetNames.BugReportWindow, this);
 		
