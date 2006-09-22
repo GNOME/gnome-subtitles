@@ -28,6 +28,7 @@ public class Menus : GladeWidget {
 
 	public Menus (GUI gui, Glade.XML glade) : base(gui, glade) {
 		core = gui.Core;
+		(GetWidget(WidgetNames.Toolbar) as Toolbar).UnsetStyle();
 	}
 	
 	public void BlankStartUp () {
@@ -172,8 +173,12 @@ public class Menus : GladeWidget {
 			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
 			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
 		}
-		SetActivity(WidgetNames.InputFrameRateMenuItem25, true, core.Handlers.OnInputFrameRate);
-		SetActivity(WidgetNames.MovieFrameRateMenuItem25, true, core.Handlers.OnMovieFrameRate);
+		 
+		float inputFrameRate = core.Subtitles.Properties.OriginalFrameRate;
+		float movieFrameRate = core.Subtitles.Properties.CurrentFrameRate;
+		
+		SetActivity(InputFrameRateMenuItem(inputFrameRate), true, core.Handlers.OnInputFrameRate);
+		SetActivity(MovieFrameRateMenuItem(movieFrameRate), true, core.Handlers.OnMovieFrameRate);
 	}
 	
 	private void SetActivity (string menuItemName, bool isActive) {
@@ -215,8 +220,30 @@ public class Menus : GladeWidget {
 				underline = false;
 		}		
 	}
-
-
+	
+	private string InputFrameRateMenuItem (float frameRate) {
+		return FrameRateToMenuItem(frameRate, "input");
+	}
+	
+	private string MovieFrameRateMenuItem (float frameRate) {
+		return FrameRateToMenuItem(frameRate, "movie");
+	}
+	
+	private string FrameRateToMenuItem (float frameRate, string prefix) {
+		int rate = 0;
+		if (frameRate >= 30)
+			rate = 30;
+		else if (frameRate >= 27)
+			rate = 29;
+		else if (frameRate >= 25)
+			rate = 25;
+		else if (frameRate >= 24)
+			rate = 24;
+		else
+			rate = 23;
+		
+		return prefix + "FPS" + rate + "MenuItem";
+	}
 
 }
 
