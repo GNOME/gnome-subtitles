@@ -41,7 +41,7 @@ public class Menus : GladeWidget {
 		SetFrameRateMenus();	
 	}
 	
-	public void OnSubtitleSelection (Subtitle subtitle) {
+	public void OnSubtitleSelection (Subtitle subtitle) { 
 		SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
 		SetSelectionDependentSensitivity(true);
 	}
