@@ -46,12 +46,11 @@ public class WidgetNames {
 
 	/* Timings Menu */
 	public const string InputFrameRateMenuItem = "inputFrameRateMenuItem";
-	public const string InputFrameRateMenuItem25 = "inputFPS25MenuItem";
 	public const string MovieFrameRateMenuItem = "movieFrameRateMenuItem";
-	public const string MovieFrameRateMenuItem25 = "movieFPS25MenuItem";
 	public const string ShiftMenuItem = "shiftMenuItem";
 	
-	/* Toolbar */	
+	/* Toolbar */
+	public const string Toolbar = "toolbar";
 	public const string SaveButton = "toolbuttonSave";
 	public const string UndoButton = "toolbuttonUndo";
 	public const string RedoButton = "toolbuttonRedo";
