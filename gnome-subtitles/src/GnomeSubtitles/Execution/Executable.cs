@@ -43,6 +43,7 @@ public class Executable {
 			new GUI();
 		}
 		catch (Exception exception) {
+			System.Console.Error.WriteLine(exception);
 			new BugReportWindow(exception);
 		}
 	}
