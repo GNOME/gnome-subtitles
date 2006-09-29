@@ -58,6 +58,10 @@ public class EventHandlers {
 	public void OnSaveAs (object o, EventArgs args) {
 		gui.SaveAs();
 	}
+	
+	public void OnHeaders (object o, EventArgs args) {
+		new HeadersDialog(gui);
+	}
 	    
     public void OnQuit (object o, EventArgs args) {
 		gui.Close();
