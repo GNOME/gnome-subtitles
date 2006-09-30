@@ -91,6 +91,7 @@
 		      <child>
 			<widget class="GtkMenuItem" id="headersMenuItem">
 			  <property name="visible">True</property>
+			  <property name="sensitive">False</property>
 			  <property name="label" translatable="yes">_Headers...</property>
 			  <property name="use_underline">True</property>
 			  <signal name="activate" handler="OnHeaders" last_modification_time="Fri, 22 Sep 2006 23:23:47 GMT"/>
@@ -198,7 +199,7 @@
 				  <signal name="activate" handler="OnInsertSubtitleBeforeSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
 
 				  <child internal-child="image">
-				    <widget class="GtkImage" id="image74">
+				    <widget class="GtkImage" id="image78">
 				      <property name="visible">True</property>
 				      <property name="stock">gtk-go-up</property>
 				      <property name="icon_size">1</property>
@@ -220,7 +221,7 @@
 				  <signal name="activate" handler="OnInsertSubtitleAfterSelection" last_modification_time="Thu, 20 Jul 2006 18:10:26 GMT"/>
 
 				  <child internal-child="image">
-				    <widget class="GtkImage" id="image75">
+				    <widget class="GtkImage" id="image79">
 				      <property name="visible">True</property>
 				      <property name="stock">gtk-go-down</property>
 				      <property name="icon_size">1</property>
@@ -246,7 +247,7 @@
 			  <signal name="activate" handler="OnDeleteSubtitles" last_modification_time="Thu, 13 Jul 2006 21:12:41 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image76">
+			    <widget class="GtkImage" id="image80">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-delete</property>
 			      <property name="icon_size">1</property>
@@ -389,7 +390,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">25 (PAL)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:58:01 GMT"/>
 				</widget>
@@ -413,7 +414,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">30</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">inputFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnInputFrameRate" last_modification_time="Thu, 06 Apr 2006 11:57:01 GMT"/>
 				</widget>
@@ -461,7 +462,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">25 (PAL)</property>
 				  <property name="use_underline">True</property>
-				  <property name="active">False</property>
+				  <property name="active">True</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:43 GMT"/>
 				</widget>
@@ -485,7 +486,7 @@
 				  <property name="sensitive">False</property>
 				  <property name="label" translatable="yes">30 </property>
 				  <property name="use_underline">True</property>
-				  <property name="active">True</property>
+				  <property name="active">False</property>
 				  <property name="group">movieFPS23MenuItem</property>
 				  <signal name="toggled" handler="OnMovieFrameRate" last_modification_time="Thu, 06 Apr 2006 11:59:51 GMT"/>
 				</widget>
@@ -531,7 +532,7 @@
 			  <signal name="activate" handler="OnReportBug" last_modification_time="Wed, 05 Apr 2006 23:03:43 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image77">
+			    <widget class="GtkImage" id="image81">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-warning</property>
 			      <property name="icon_size">1</property>
@@ -552,7 +553,7 @@
 			  <signal name="activate" handler="OnRequestFeature" last_modification_time="Wed, 23 Aug 2006 00:20:48 GMT"/>
 
 			  <child internal-child="image">
-			    <widget class="GtkImage" id="image78">
+			    <widget class="GtkImage" id="image82">
 			      <property name="visible">True</property>
 			      <property name="stock">gtk-dialog-info</property>
 			      <property name="icon_size">1</property>
@@ -2111,62 +2112,6 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 	      </child>
 
 	      <child>
-		<widget class="GtkLabel" id="labelType">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Type:</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">0</property>
-		  <property name="right_attach">1</property>
-		  <property name="top_attach">3</property>
-		  <property name="bottom_attach">4</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
-		<widget class="GtkLabel" id="labelNote">
-		  <property name="visible">True</property>
-		  <property name="label" translatable="yes">Note:</property>
-		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
-		  <property name="justify">GTK_JUSTIFY_LEFT</property>
-		  <property name="wrap">False</property>
-		  <property name="selectable">False</property>
-		  <property name="xalign">0</property>
-		  <property name="yalign">0.5</property>
-		  <property name="xpad">0</property>
-		  <property name="ypad">0</property>
-		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-		  <property name="width_chars">-1</property>
-		  <property name="single_line_mode">False</property>
-		  <property name="angle">0</property>
-		</widget>
-		<packing>
-		  <property name="left_attach">0</property>
-		  <property name="right_attach">1</property>
-		  <property name="top_attach">4</property>
-		  <property name="bottom_attach">5</property>
-		  <property name="x_options">fill</property>
-		  <property name="y_options"></property>
-		</packing>
-	      </child>
-
-	      <child>
 		<widget class="GtkEntry" id="entryMPSubTitle">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
@@ -2231,7 +2176,7 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="entryMPSubType">
+		<widget class="GtkEntry" id="entryMPSubNote">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="editable">True</property>
@@ -2252,23 +2197,90 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 	      </child>
 
 	      <child>
-		<widget class="GtkEntry" id="entryMPSubNote">
+		<widget class="GtkLabel" id="labelNote">
 		  <property name="visible">True</property>
-		  <property name="can_focus">True</property>
-		  <property name="editable">True</property>
-		  <property name="visibility">True</property>
-		  <property name="max_length">0</property>
-		  <property name="text" translatable="yes"></property>
-		  <property name="has_frame">True</property>
-		  <property name="invisible_char">*</property>
-		  <property name="activates_default">False</property>
+		  <property name="label" translatable="yes">Note:</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">False</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">False</property>
+		  <property name="selectable">False</property>
+		  <property name="xalign">0</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">3</property>
+		  <property name="bottom_attach">4</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkLabel" id="labelType">
+		  <property name="visible">True</property>
+		  <property name="label" translatable="yes">Type:</property>
+		  <property name="use_underline">False</property>
+		  <property name="use_markup">False</property>
+		  <property name="justify">GTK_JUSTIFY_LEFT</property>
+		  <property name="wrap">False</property>
+		  <property name="selectable">False</property>
+		  <property name="xalign">0</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xpad">0</property>
+		  <property name="ypad">0</property>
+		  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+		  <property name="width_chars">-1</property>
+		  <property name="single_line_mode">False</property>
+		  <property name="angle">0</property>
+		</widget>
+		<packing>
+		  <property name="left_attach">0</property>
+		  <property name="right_attach">1</property>
+		  <property name="top_attach">4</property>
+		  <property name="bottom_attach">5</property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options"></property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkAlignment" id="typeAlignment">
+		  <property name="visible">True</property>
+		  <property name="xalign">0</property>
+		  <property name="yalign">0.5</property>
+		  <property name="xscale">0</property>
+		  <property name="yscale">1</property>
+		  <property name="top_padding">0</property>
+		  <property name="bottom_padding">0</property>
+		  <property name="left_padding">0</property>
+		  <property name="right_padding">0</property>
+
+		  <child>
+		    <widget class="GtkComboBox" id="comboBoxMPSubType">
+		      <property name="visible">True</property>
+		      <property name="items" translatable="yes">AUDIO
+VIDEO</property>
+		      <property name="add_tearoffs">False</property>
+		      <property name="focus_on_click">True</property>
+		    </widget>
+		  </child>
 		</widget>
 		<packing>
 		  <property name="left_attach">1</property>
 		  <property name="right_attach">2</property>
 		  <property name="top_attach">4</property>
 		  <property name="bottom_attach">5</property>
-		  <property name="y_options"></property>
+		  <property name="x_options">fill</property>
+		  <property name="y_options">fill</property>
 		</packing>
 	      </child>
 	    </widget>
@@ -2356,7 +2368,7 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      <child>
 			<widget class="GtkLabel" id="labelOriginalScript">
 			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">OriginalScript:</property>
+			  <property name="label" translatable="yes">Original Script:</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2570,8 +2582,8 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<packing>
 			  <property name="left_attach">0</property>
 			  <property name="right_attach">1</property>
-			  <property name="top_attach">8</property>
-			  <property name="bottom_attach">9</property>
+			  <property name="top_attach">9</property>
+			  <property name="bottom_attach">10</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
@@ -2598,8 +2610,8 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<packing>
 			  <property name="left_attach">0</property>
 			  <property name="right_attach">1</property>
-			  <property name="top_attach">9</property>
-			  <property name="bottom_attach">10</property>
+			  <property name="top_attach">10</property>
+			  <property name="bottom_attach">11</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
@@ -2609,34 +2621,6 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<widget class="GtkLabel" id="labelPlayDepth">
 			  <property name="visible">True</property>
 			  <property name="label" translatable="yes">PlayDepth:</property>
-			  <property name="use_underline">False</property>
-			  <property name="use_markup">False</property>
-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
-			  <property name="wrap">False</property>
-			  <property name="selectable">False</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			  <property name="width_chars">-1</property>
-			  <property name="single_line_mode">False</property>
-			  <property name="angle">0</property>
-			</widget>
-			<packing>
-			  <property name="left_attach">0</property>
-			  <property name="right_attach">1</property>
-			  <property name="top_attach">10</property>
-			  <property name="bottom_attach">11</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options"></property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="GtkLabel" id="labelTimer">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Timer:</property>
 			  <property name="use_underline">False</property>
 			  <property name="use_markup">False</property>
 			  <property name="justify">GTK_JUSTIFY_LEFT</property>
@@ -2830,7 +2814,35 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entrySSAASSPlayResX">
+			<widget class="GtkLabel" id="labelTimer">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Timer:</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">False</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">8</property>
+			  <property name="bottom_attach">9</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkEntry" id="entrySSAASSTimer">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -2851,16 +2863,30 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entrySSAASSPlayResY">
+			<widget class="GtkAlignment" id="playResXAlignment">
 			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xscale">0.10000000149</property>
+			  <property name="yscale">1</property>
+			  <property name="top_padding">0</property>
+			  <property name="bottom_padding">0</property>
+			  <property name="left_padding">0</property>
+			  <property name="right_padding">0</property>
+
+			  <child>
+			    <widget class="GtkSpinButton" id="spinButtonSSAASSPlayResX">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="climb_rate">1</property>
+			      <property name="digits">0</property>
+			      <property name="numeric">True</property>
+			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+			      <property name="snap_to_ticks">False</property>
+			      <property name="wrap">False</property>
+			      <property name="adjustment">0 0 10000 1 10 10</property>
+			    </widget>
+			  </child>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
@@ -2872,44 +2898,74 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entrySSAASSPlayDepth">
+			<widget class="GtkAlignment" id="playResYAlignment">
 			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xscale">0.10000000149</property>
+			  <property name="yscale">1</property>
+			  <property name="top_padding">0</property>
+			  <property name="bottom_padding">0</property>
+			  <property name="left_padding">0</property>
+			  <property name="right_padding">0</property>
+
+			  <child>
+			    <widget class="GtkSpinButton" id="spinButtonSSAASSPlayResY">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="climb_rate">1</property>
+			      <property name="digits">0</property>
+			      <property name="numeric">True</property>
+			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+			      <property name="snap_to_ticks">False</property>
+			      <property name="wrap">False</property>
+			      <property name="adjustment">0 0 10000 1 10 10</property>
+			    </widget>
+			  </child>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">10</property>
 			  <property name="bottom_attach">11</property>
-			  <property name="y_options"></property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options">fill</property>
 			</packing>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entrySSAASSTimer">
+			<widget class="GtkAlignment" id="playDepthAlignment">
 			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xscale">0.10000000149</property>
+			  <property name="yscale">1</property>
+			  <property name="top_padding">0</property>
+			  <property name="bottom_padding">0</property>
+			  <property name="left_padding">0</property>
+			  <property name="right_padding">0</property>
+
+			  <child>
+			    <widget class="GtkSpinButton" id="spinButtonSSAASSPlayDepth">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="climb_rate">1</property>
+			      <property name="digits">0</property>
+			      <property name="numeric">True</property>
+			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+			      <property name="snap_to_ticks">False</property>
+			      <property name="wrap">False</property>
+			      <property name="adjustment">0 0 10000 1 10 10</property>
+			    </widget>
+			  </child>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">11</property>
 			  <property name="bottom_attach">12</property>
-			  <property name="y_options"></property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options">fill</property>
 			</packing>
 		      </child>
 		    </widget>
@@ -3523,62 +3579,6 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      </child>
 
 		      <child>
-			<widget class="GtkLabel" id="labelDelay">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">Delay:</property>
-			  <property name="use_underline">False</property>
-			  <property name="use_markup">False</property>
-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
-			  <property name="wrap">False</property>
-			  <property name="selectable">False</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			  <property name="width_chars">-1</property>
-			  <property name="single_line_mode">False</property>
-			  <property name="angle">0</property>
-			</widget>
-			<packing>
-			  <property name="left_attach">0</property>
-			  <property name="right_attach">1</property>
-			  <property name="top_attach">5</property>
-			  <property name="bottom_attach">6</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options"></property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="GtkLabel" id="labelCDTrack">
-			  <property name="visible">True</property>
-			  <property name="label" translatable="yes">CD Track:</property>
-			  <property name="use_underline">False</property>
-			  <property name="use_markup">False</property>
-			  <property name="justify">GTK_JUSTIFY_LEFT</property>
-			  <property name="wrap">False</property>
-			  <property name="selectable">False</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-			  <property name="width_chars">-1</property>
-			  <property name="single_line_mode">False</property>
-			  <property name="angle">0</property>
-			</widget>
-			<packing>
-			  <property name="left_attach">0</property>
-			  <property name="right_attach">1</property>
-			  <property name="top_attach">6</property>
-			  <property name="bottom_attach">7</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options"></property>
-			</packing>
-		      </child>
-
-		      <child>
 			<widget class="GtkLabel" id="labelComment">
 			  <property name="visible">True</property>
 			  <property name="label" translatable="yes">Comment:</property>
@@ -3599,8 +3599,8 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<packing>
 			  <property name="left_attach">0</property>
 			  <property name="right_attach">1</property>
-			  <property name="top_attach">7</property>
-			  <property name="bottom_attach">8</property>
+			  <property name="top_attach">5</property>
+			  <property name="bottom_attach">6</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
@@ -3627,8 +3627,8 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<packing>
 			  <property name="left_attach">0</property>
 			  <property name="right_attach">1</property>
-			  <property name="top_attach">8</property>
-			  <property name="bottom_attach">9</property>
+			  <property name="top_attach">6</property>
+			  <property name="bottom_attach">7</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
@@ -3655,8 +3655,8 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<packing>
 			  <property name="left_attach">0</property>
 			  <property name="right_attach">1</property>
-			  <property name="top_attach">9</property>
-			  <property name="bottom_attach">10</property>
+			  <property name="top_attach">7</property>
+			  <property name="bottom_attach">8</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
@@ -3683,8 +3683,8 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			<packing>
 			  <property name="left_attach">0</property>
 			  <property name="right_attach">1</property>
-			  <property name="top_attach">10</property>
-			  <property name="bottom_attach">11</property>
+			  <property name="top_attach">8</property>
+			  <property name="bottom_attach">9</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
@@ -3824,79 +3824,49 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      </child>
 
 		      <child>
-			<widget class="GtkAlignment" id="delayAlignment">
+			<widget class="GtkEntry" id="entrySubViewer2Comment">
 			  <property name="visible">True</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xscale">0.10000000149</property>
-			  <property name="yscale">1</property>
-			  <property name="top_padding">0</property>
-			  <property name="bottom_padding">0</property>
-			  <property name="left_padding">0</property>
-			  <property name="right_padding">0</property>
-
-			  <child>
-			    <widget class="GtkSpinButton" id="spinButtonSubViewer2Delay">
-			      <property name="visible">True</property>
-			      <property name="can_focus">True</property>
-			      <property name="climb_rate">1</property>
-			      <property name="digits">0</property>
-			      <property name="numeric">True</property>
-			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
-			      <property name="snap_to_ticks">False</property>
-			      <property name="wrap">False</property>
-			      <property name="adjustment">0 0 1000000 1 10 10</property>
-			    </widget>
-			  </child>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">5</property>
 			  <property name="bottom_attach">6</property>
-			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
 		      <child>
-			<widget class="GtkAlignment" id="cdTrackAlignment">
+			<widget class="GtkEntry" id="entrySubViewer2FontName">
 			  <property name="visible">True</property>
-			  <property name="xalign">0</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xscale">0.10000000149</property>
-			  <property name="yscale">1</property>
-			  <property name="top_padding">0</property>
-			  <property name="bottom_padding">0</property>
-			  <property name="left_padding">0</property>
-			  <property name="right_padding">0</property>
-
-			  <child>
-			    <widget class="GtkSpinButton" id="spinButtonSubViewer2CDTrack">
-			      <property name="visible">True</property>
-			      <property name="can_focus">True</property>
-			      <property name="climb_rate">1</property>
-			      <property name="digits">0</property>
-			      <property name="numeric">True</property>
-			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
-			      <property name="snap_to_ticks">False</property>
-			      <property name="wrap">False</property>
-			      <property name="adjustment">0 0 1000 1 10 10</property>
-			    </widget>
-			  </child>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">*</property>
+			  <property name="activates_default">False</property>
 			</widget>
 			<packing>
 			  <property name="left_attach">1</property>
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">6</property>
 			  <property name="bottom_attach">7</property>
-			  <property name="x_options">fill</property>
-			  <property name="y_options">fill</property>
+			  <property name="y_options"></property>
 			</packing>
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entrySubViewer2Comment">
+			<widget class="GtkEntry" id="entrySubViewer2FontColor">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -3917,7 +3887,7 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 		      </child>
 
 		      <child>
-			<widget class="GtkEntry" id="entrySubViewer2FontName">
+			<widget class="GtkEntry" id="entrySubViewer2FontStyle">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
@@ -3933,48 +3903,6 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			  <property name="right_attach">2</property>
 			  <property name="top_attach">8</property>
 			  <property name="bottom_attach">9</property>
-			  <property name="y_options"></property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="GtkEntry" id="entrySubViewer2FontColor">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
-			</widget>
-			<packing>
-			  <property name="left_attach">1</property>
-			  <property name="right_attach">2</property>
-			  <property name="top_attach">9</property>
-			  <property name="bottom_attach">10</property>
-			  <property name="y_options"></property>
-			</packing>
-		      </child>
-
-		      <child>
-			<widget class="GtkEntry" id="entrySubViewer2Style">
-			  <property name="visible">True</property>
-			  <property name="can_focus">True</property>
-			  <property name="editable">True</property>
-			  <property name="visibility">True</property>
-			  <property name="max_length">0</property>
-			  <property name="text" translatable="yes"></property>
-			  <property name="has_frame">True</property>
-			  <property name="invisible_char">*</property>
-			  <property name="activates_default">False</property>
-			</widget>
-			<packing>
-			  <property name="left_attach">1</property>
-			  <property name="right_attach">2</property>
-			  <property name="top_attach">10</property>
-			  <property name="bottom_attach">11</property>
 			  <property name="y_options"></property>
 			</packing>
 		      </child>
@@ -4012,6 +3940,134 @@ To report this bug, please &lt;b&gt;Open the Web Form&lt;/b&gt; and paste the fo
 			  <property name="bottom_attach">12</property>
 			  <property name="x_options">fill</property>
 			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkLabel" id="labelCDTrack">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">CD Track:</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">False</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">10</property>
+			  <property name="bottom_attach">11</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkAlignment" id="cdTrackAlignment">
+			  <property name="visible">True</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xscale">0.10000000149</property>
+			  <property name="yscale">1</property>
+			  <property name="top_padding">0</property>
+			  <property name="bottom_padding">0</property>
+			  <property name="left_padding">0</property>
+			  <property name="right_padding">0</property>
+
+			  <child>
+			    <widget class="GtkSpinButton" id="spinButtonSubViewer2CDTrack">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="climb_rate">1</property>
+			      <property name="digits">0</property>
+			      <property name="numeric">True</property>
+			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+			      <property name="snap_to_ticks">False</property>
+			      <property name="wrap">False</property>
+			      <property name="adjustment">0 0 1000 1 10 10</property>
+			    </widget>
+			  </child>
+			</widget>
+			<packing>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">10</property>
+			  <property name="bottom_attach">11</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options">fill</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkLabel" id="labelDelay">
+			  <property name="visible">True</property>
+			  <property name="label" translatable="yes">Delay:</property>
+			  <property name="use_underline">False</property>
+			  <property name="use_markup">False</property>
+			  <property name="justify">GTK_JUSTIFY_LEFT</property>
+			  <property name="wrap">False</property>
+			  <property name="selectable">False</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			  <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+			  <property name="width_chars">-1</property>
+			  <property name="single_line_mode">False</property>
+			  <property name="angle">0</property>
+			</widget>
+			<packing>
+			  <property name="left_attach">0</property>
+			  <property name="right_attach">1</property>
+			  <property name="top_attach">9</property>
+			  <property name="bottom_attach">10</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options"></property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkAlignment" id="delayAlignment">
+			  <property name="visible">True</property>
+			  <property name="xalign">0</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xscale">0.10000000149</property>
+			  <property name="yscale">1</property>
+			  <property name="top_padding">0</property>
+			  <property name="bottom_padding">0</property>
+			  <property name="left_padding">0</property>
+			  <property name="right_padding">0</property>
+
+			  <child>
+			    <widget class="GtkSpinButton" id="spinButtonSubViewer2Delay">
+			      <property name="visible">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="climb_rate">1</property>
+			      <property name="digits">0</property>
+			      <property name="numeric">True</property>
+			      <property name="update_policy">GTK_UPDATE_ALWAYS</property>
+			      <property name="snap_to_ticks">False</property>
+			      <property name="wrap">False</property>
+			      <property name="adjustment">0 0 1000000 1 10 10</property>
+			    </widget>
+			  </child>
+			</widget>
+			<packing>
+			  <property name="left_attach">1</property>
+			  <property name="right_attach">2</property>
+			  <property name="top_attach">9</property>
+			  <property name="bottom_attach">10</property>
+			  <property name="x_options">fill</property>
+			  <property name="y_options">fill</property>
 			</packing>
 		      </child>
 		    </widget>
