@@ -101,6 +101,7 @@ public class Menus : GladeWidget {
 		/* File Menu */
 		SetSensitivity(WidgetNames.SaveMenuItem, false);
 		SetSensitivity(WidgetNames.SaveAsMenuItem, false);
+		SetSensitivity(WidgetNames.HeadersMenuItem, false);
 		/* Edit Menu */
 		SetSensitivity(WidgetNames.UndoMenuItem, false);
 		SetSensitivity(WidgetNames.RedoMenuItem, false);	
@@ -121,6 +122,7 @@ public class Menus : GladeWidget {
 			/* File Menu */
 			SetSensitivity(WidgetNames.SaveMenuItem, true);
 			SetSensitivity(WidgetNames.SaveAsMenuItem, true);
+			SetSensitivity(WidgetNames.HeadersMenuItem, true);
 			/* Edit Menu */
 			SetMenuSensitivity(WidgetNames.InsertSubtitleMenuItem, true);
 			SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, true);
