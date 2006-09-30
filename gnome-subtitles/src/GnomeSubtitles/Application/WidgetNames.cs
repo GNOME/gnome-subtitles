@@ -25,6 +25,7 @@ public class WidgetNames {
 	/* File Menu */
 	public const string SaveMenuItem = "saveMenuItem";
 	public const string SaveAsMenuItem = "saveAsMenuItem";
+	public const string HeadersMenuItem = "headersMenuItem";
 	
 	/* Edit Menu */
 	public const string UndoMenuItem = "undoMenuItem";
