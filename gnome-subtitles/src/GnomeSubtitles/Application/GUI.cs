@@ -168,6 +168,11 @@ public class GUI : GladeWidget {
 		subtitleEdit.Sensitive = false;
 	}
 	
+	public void OnSubtitleCountChanged (object o, EventArgs args) {
+		int count = Core.Subtitles.Collection.Count;
+		menus.OnSubtitleCountChanged(count);
+	}
+	
 	public void RefreshAndReselect () {
 		subtitleView.Refresh();
 		subtitleView.Reselect();
