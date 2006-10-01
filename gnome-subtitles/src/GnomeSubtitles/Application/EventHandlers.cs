@@ -152,8 +152,12 @@ public class EventHandlers {
 		}
 	}
 	
+	public void OnAdjustTimings (object o, EventArgs args) {
+		new AdjustTimingsDialog(gui);	
+	}
+	
 	public void OnShift (object o, EventArgs args) {
-		new ShiftDialog(gui);	
+		new ShiftTimingsDialog(gui);	
 	}
 	
 	
