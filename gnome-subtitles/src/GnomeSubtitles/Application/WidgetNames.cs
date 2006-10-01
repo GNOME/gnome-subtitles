@@ -48,7 +48,8 @@ public class WidgetNames {
 	/* Timings Menu */
 	public const string InputFrameRateMenuItem = "inputFrameRateMenuItem";
 	public const string MovieFrameRateMenuItem = "movieFrameRateMenuItem";
-	public const string ShiftMenuItem = "shiftMenuItem";
+	public const string AdjustTimingsMenuItem = "adjustTimingsMenuItem";
+	public const string ShiftMenuItem = "shiftTimingsMenuItem";
 	
 	/* Toolbar */
 	public const string Toolbar = "toolbar";
@@ -77,10 +78,8 @@ public class WidgetNames {
 	public const string SaveAsDialogFormatComboBox = "formatComboBox";
 	public const string SaveAsDialogEncodingComboBox = "encodingComboBox";
 	public const string HeadersDialog = "headersDialog";
-	public const string ShiftDialog = "shiftDialog";
-	public const string ShiftDialogLabel = "timingModeLabel";
-	public const string ShiftDialogSpinButton = "spinButton";
-	public const string ShiftDialogAllSubtitlesRadioButton = "allSubtitlesRadioButton";
+	public const string AdjustTimingsDialog = "adjustTimingsDialog";
+	public const string ShiftTimingsDialog = "shiftTimingsDialog";
 	
 	/* Windows */
 	public const string BugReportWindow = "bugReportWindow";
