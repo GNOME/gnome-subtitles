@@ -18,65 +18,49 @@
  */
 
 using System;
+using Glade;
 using Gtk;
 using SubLib;
 
 namespace GnomeSubtitles {
 
 
-public class ShiftDialog : GladeDialog {
-	private SpinButton spinButton = null;
-	private Label label = null;
+public class ShiftTimingsDialog : GladeDialog {
 	private TimingMode timingMode;
 
-	public ShiftDialog (GUI gui) : base(gui, WidgetNames.ShiftDialog){
-		spinButton = GetWidget(WidgetNames.ShiftDialogSpinButton) as SpinButton;
-		spinButton.WidthRequest = gui.SubtitleEdit.SpinButtonWidth();
+	/* Widgets */
+	
+	[WidgetAttribute]
+	private Label timingModeLabel;
+	[WidgetAttribute]
+	private SpinButton spinButton;
+	[WidgetAttribute]
+	private RadioButton allSubtitlesRadioButton;
+
+	public ShiftTimingsDialog (GUI gui) : base(gui, WidgetNames.ShiftTimingsDialog){
+		timingMode = gui.Core.TimingMode;
+		SetUpSpinButton();
+		UpdateForTimingMode(gui.Core.TimingMode);
+	}
+	
+	private void SetUpSpinButton () {
+		spinButton.WidthRequest = Utility.SpinButtonTimeWidth(spinButton);
 		spinButton.Alignment = 0.5f;
-		label = GetWidget(WidgetNames.ShiftDialogLabel) as Label;
-		UpdateSpinButton(gui.Core.TimingMode);
 	}
 
-	private void UpdateSpinButton (TimingMode timingMode) {
-		if (timingMode == TimingMode.Frames) {
-			spinButton.Adjustment.StepIncrement = 1;
-    		spinButton.Adjustment.Upper = 3000000;
-    		spinButton.Adjustment.Lower = -3000000;
-		}
-		else {
-			label.Markup = "<b>Time</b>";
-			spinButton.Input += OnTimeInput;
-			spinButton.Output += OnTimeOutput;
+	private void UpdateForTimingMode (TimingMode timingMode) {
+		Utility.SetSpinButtonTimingMode(spinButton, timingMode, true);
+		if (timingMode == TimingMode.Times) {
+			timingModeLabel.Markup = "<b>Time</b>";
 			spinButton.Value = 0;
-			spinButton.Adjustment.StepIncrement = 100;
-			spinButton.Adjustment.Upper = 86399999;
-			spinButton.Adjustment.Lower = -86399999;
 		}
-	}
-	
-	private void OnTimeInput (object o, InputArgs args) {
-		try {
-			args.NewValue = Utility.TimeTextToMilliseconds(spinButton.Text);
-		}
-		catch (Exception) {
-			args.NewValue = spinButton.Value;
-		}
-		args.RetVal = 1;
-	}
-	
-	private void OnTimeOutput (object o, OutputArgs args) {
-		spinButton.Numeric = false;
-		spinButton.Text = Utility.MillisecondsToTimeText((int)spinButton.Value);
-		spinButton.Numeric = true;
-		args.RetVal = 1;
 	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
-			RadioButton allSubtitles = GetWidget(WidgetNames.ShiftDialogAllSubtitlesRadioButton) as RadioButton;
-			bool applyToAll = allSubtitles.Active; 
+			bool applyToAll = allSubtitlesRadioButton.Active; 
 			
 			if (timingMode == TimingMode.Times) {
 				TimeSpan time = TimeSpan.Parse(spinButton.Text);
