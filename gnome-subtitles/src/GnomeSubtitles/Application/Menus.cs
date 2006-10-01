@@ -53,6 +53,23 @@ public class Menus : GladeWidget {
 			OnSubtitlesSelected(paths);
 	}
 	
+	public void OnSubtitleCountChanged (int count) {
+		if (count == 0) {
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
+			SetSensitivity(WidgetNames.ShiftMenuItem, false);
+		}
+		else if (count == 1) {
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
+			SetSensitivity(WidgetNames.ShiftMenuItem, true);
+		}
+		else if (count == 2) {
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, true);
+			SetSensitivity(WidgetNames.ShiftMenuItem, true);		
+		}
+		/* Note: Not capturing when count exceeds 2 because it would have to pass by 2
+		 * to get to other values, so this improves performance. */
+	}
+	
 	public void SetActiveTimingMode () {
 		if (GUI.Core.TimingModeIsFrames)
 	    	SetActivity(WidgetNames.FramesMenuItem, true);
@@ -143,6 +160,8 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.CutMenuItem, false);
 			SetSensitivity(WidgetNames.CopyMenuItem, false);
 			SetSensitivity(WidgetNames.PasteMenuItem, false);
+			/* Timings Menu */
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
