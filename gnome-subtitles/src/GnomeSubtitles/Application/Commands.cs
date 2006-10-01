@@ -459,16 +459,12 @@ public class ShiftTimingsCommand : MultipleSelectionCommand {
 
 
 	private void ShiftAllSubtitlesTime () {
-		foreach (Subtitle subtitle in GUI.Core.Subtitles.Collection) {
-			subtitle.Times.Shift(time);
-		}
+		GUI.Core.Subtitles.ShiftTimings(time);
 		time = time.Negate();
 	}
 	
 	private void ShiftAllSubtitlesFrames () {
-		foreach (Subtitle subtitle in GUI.Core.Subtitles.Collection) {
-			subtitle.Frames.Shift(frames);
-		}
+		GUI.Core.Subtitles.ShiftTimings(frames);
 		frames = -frames;
 	}
 	
@@ -489,9 +485,98 @@ public class ShiftTimingsCommand : MultipleSelectionCommand {
 		}
 		frames = -frames;
 	}
+}
 
+public class AdjustTimingsCommand : MultipleSelectionCommand {
+	private static string description = "Adjusting timings";
+	private TimeSpan firstTime, lastTime;
+	private int firstFrame, lastFrame;
+	private bool toUseTimes = true;
 
+	public AdjustTimingsCommand (GUI gui, TimeSpan firstTime, TimeSpan lastTime, bool applyToAll) : base(gui, description, false) {
+		this.firstTime = firstTime;
+		this.lastTime = lastTime;
+		toUseTimes = true;
+		if (applyToAll)
+			DisableSelectionUsage();
+	}
+	
+	public AdjustTimingsCommand (GUI gui, int firstFrame, int lastFrame, bool applyToAll) : base(gui, description, false) {
+		this.firstFrame = firstFrame;
+		this.lastFrame = lastFrame;
+		toUseTimes = false;
+		if (applyToAll)
+			DisableSelectionUsage();
+	}
 
+	protected override void ChangeValues () {
+		if (toUseTimes) {
+			if (Paths == null) //Apply to all subtitles
+				AdjustAllSubtitlesTime();
+			else
+				AdjustSubtitlesTime();	
+		}
+		else {
+			if (Paths == null) //Apply to all subtitles
+				AdjustAllSubtitlesFrames();
+			else
+				AdjustSubtitlesFrames();
+		}
+	}
+
+	private void AdjustAllSubtitlesTime () {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		
+		TimeSpan oldFirstTime = subtitles.Collection.Get(0).Times.Start;
+		TimeSpan oldLastTime = subtitles.Collection.Get(subtitles.Collection.Count - 1).Times.Start;
+		
+		subtitles.AdjustTimings(firstTime, lastTime);
+		
+		firstTime = oldFirstTime;
+		lastTime = oldLastTime;
+	}
+	
+	private void AdjustAllSubtitlesFrames () {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		
+		int oldFirstFrame = subtitles.Collection.Get(0).Frames.Start;
+		int oldLastFrame = subtitles.Collection.Get(subtitles.Collection.Count - 1).Frames.Start;
+		
+		subtitles.AdjustTimings(firstFrame, lastFrame);
+		
+		firstFrame = oldFirstFrame;
+		lastFrame = oldLastFrame;
+	}
+	
+	private void AdjustSubtitlesTime () {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		
+		int firstSubtitle = Paths[0].Indices[0];
+		int lastSubtitle = Paths[Paths.Length - 1].Indices[0];
+		
+		TimeSpan oldFirstTime = subtitles.Collection.Get(firstSubtitle).Times.Start;
+		TimeSpan oldLastTime = subtitles.Collection.Get(lastSubtitle).Times.Start;
+		
+		subtitles.AdjustTimings(firstSubtitle, firstTime, lastSubtitle, lastTime);
+		
+		firstTime = oldFirstTime;
+		lastTime = oldLastTime;
+	}
+	
+	private void AdjustSubtitlesFrames () {
+		Subtitles subtitles = GUI.Core.Subtitles;
+		
+		int firstSubtitle = Paths[0].Indices[0];
+		int lastSubtitle = Paths[Paths.Length - 1].Indices[0];
+		
+		int oldFirstFrame = subtitles.Collection.Get(firstSubtitle).Frames.Start;
+		int oldLastFrame = subtitles.Collection.Get(lastSubtitle).Frames.Start;
+		
+		subtitles.AdjustTimings(firstSubtitle, firstFrame, lastSubtitle, lastFrame);
+		
+		firstFrame = oldFirstFrame;
+		lastFrame = oldLastFrame;
+	}
 }
 
 }
