@@ -19,6 +19,7 @@
 
 using Gtk;
 using System;
+using SubLib;
 
 namespace GnomeSubtitles {
 
@@ -49,7 +50,46 @@ public class Utility {
 	static public int TimeTextToMilliseconds (string text) {
 		return (int)TimeSpan.Parse(text).TotalMilliseconds;	
 	}
-
+	
+	static public int SpinButtonTimeWidth (SpinButton spinButton) {
+		return TextWidth(spinButton, "00:00:00,000", 25);
+	}
+	
+	public static void OnTimeInput (object o, InputArgs args) {
+		SpinButton spinButton = o as SpinButton;
+		try {
+			args.NewValue = TimeTextToMilliseconds(spinButton.Text);
+		}
+		catch (Exception) {
+			args.NewValue = spinButton.Value;
+		}
+		args.RetVal = 1;
+	}
+	
+	public static void OnTimeOutput (object o, OutputArgs args) {
+		SpinButton spinButton = o as SpinButton;
+		spinButton.Numeric = false;
+		spinButton.Text = MillisecondsToTimeText((int)spinButton.Value);
+		spinButton.Numeric = true;
+		args.RetVal = 1;
+	}
+	
+	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode, bool canNegate) {
+		if (timingMode == TimingMode.Frames) {
+			spinButton.Adjustment.StepIncrement = 1;
+    		spinButton.Adjustment.Upper = 3000000;
+    		if (canNegate)
+    			spinButton.Adjustment.Lower = -3000000;
+		}
+		else {
+			spinButton.Input += OnTimeInput;
+			spinButton.Output += OnTimeOutput;
+			spinButton.Adjustment.StepIncrement = 100;
+			spinButton.Adjustment.Upper = 86399999;
+			if (canNegate)
+				spinButton.Adjustment.Lower = -86399999;
+		}
+	}
 
 
 }
