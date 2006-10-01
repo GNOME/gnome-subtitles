@@ -46,7 +46,7 @@ public class SubtitleEdit : GladeWidget {
 		textView = (TextView)GetWidget(WidgetNames.SubtitleTextView);
 		hBox = GetWidget(WidgetNames.SubtitleEditHBox);
 		
-    	startSpinButton.WidthRequest = SpinButtonWidth();
+    	startSpinButton.WidthRequest = Utility.SpinButtonTimeWidth(startSpinButton);
     	startSpinButton.Alignment = 0.5f;
     	endSpinButton.Alignment = 0.5f;
     	durationSpinButton.Alignment = 0.5f;   
@@ -162,11 +162,6 @@ public class SubtitleEdit : GladeWidget {
     
     public void DurationSpinButtonGrabFocus () {
     	durationSpinButton.GrabFocus();
-    }
-    
-	public int SpinButtonWidth () {
-    	const int margins = 25;
-		return Utility.TextWidth(startSpinButton, "00:00:00,000", margins);
     }
     
     /* Private Methods */
