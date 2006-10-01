@@ -25,11 +25,19 @@ namespace GnomeSubtitles {
 
 public class Subtitles : SubLib.Subtitles {
 	private ListStore model = new ListStore(typeof(Subtitle));
+	
+	public event EventHandler CountChanged;
 
 	
-	public Subtitles (SubLib.Subtitles subtitles) : base(subtitles.Collection, subtitles.Properties) {
+	public Subtitles (SubLib.Subtitles subtitles, EventHandler onCountChanged)
+			: base(subtitles.Collection, subtitles.Properties) {
+
 		ReLoad();
+		model.RowInserted += OnRowInserted;
+		model.RowDeleted += OnRowDeleted;
+		CountChanged += onCountChanged;
 	}
+	
 	
 	public ListStore Model {
 		get { return model; }
@@ -67,7 +75,6 @@ public class Subtitles : SubLib.Subtitles {
 		Collection.AddNewAfter(index, Properties);
 		int newSubtitleIndex = index + 1;
 		Subtitle newSubtitle = Get(newSubtitleIndex);
-		System.Console.WriteLine(newSubtitle == null);
 		model.SetValue(model.Insert(newSubtitleIndex), 0, newSubtitle);
 	}
 	
@@ -121,6 +128,22 @@ public class Subtitles : SubLib.Subtitles {
 		foreach (Subtitle subtitle in Collection) {
 			model.AppendValues(subtitle);
 		}
+	}
+	
+	/* Private members */
+	
+	
+	private void OnRowInserted (object o, RowInsertedArgs args) {
+		EmitCountChangedSignal();
+	}
+	
+	private void OnRowDeleted (object o, RowDeletedArgs args) {
+		EmitCountChangedSignal();
+	}
+	
+	private void EmitCountChangedSignal () {
+		if (CountChanged != null)
+			CountChanged(this, EventArgs.Empty);
 	}
 
 }
