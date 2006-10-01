@@ -25,6 +25,7 @@ using SubLib;
 namespace GnomeSubtitles {
 
 public class ApplicationCore {
+	private GUI gui = null;
 	private Gnome.Program program = null;
 	private Subtitles subtitles = null;
 	private EventHandlers handlers = null;
@@ -33,14 +34,16 @@ public class ApplicationCore {
 	private TimingMode timingMode = TimingMode.Times;
 	
 	public ApplicationCore (GUI gui) {
-		program = new Gnome.Program(ExecutionInfo.ApplicationID,
+		this.gui = gui;
+	
+		this.program = new Gnome.Program(ExecutionInfo.ApplicationID,
 			ExecutionInfo.Version, Gnome.Modules.UI, ExecutionInfo.Args);
 			
-		handlers = new EventHandlers(gui);
-		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled,
+		this.handlers = new EventHandlers(gui);
+		this.commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled,
 			handlers.OnCommandActivated, handlers.OnModified);
 		
-		clipboards = new Clipboards(gui);
+		this.clipboards = new Clipboards(gui);
 	}
 	
 	public Gnome.Program Program {
@@ -84,7 +87,7 @@ public class ApplicationCore {
 	public void New () {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
-		subtitles = new Subtitles(factory.NewWithName("Unsaved Subtitles"));
+		subtitles = new Subtitles(factory.NewWithName("Unsaved Subtitles"), gui.OnSubtitleCountChanged);
 		
 		timingMode = TimingMode.Times;
 		NewDocument();
@@ -107,7 +110,7 @@ public class ApplicationCore {
 		catch (FileNotFoundException) {
 			openedSubtitles = factory.New(fileName);		
 		}
-		subtitles = new Subtitles(openedSubtitles);
+		subtitles = new Subtitles(openedSubtitles, gui.OnSubtitleCountChanged);
 		
 		timingMode = subtitles.Properties.TimingMode;
 		NewDocument();
