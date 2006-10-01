@@ -1,5 +1,5 @@
 gnomesubtitlesdir = $(pkglibdir)
-gnomesubtitles_DATA = $(ASSEMBLY) $(SUBLIB)
+gnomesubtitles_DATA = $(ASSEMBLY)
 GS_BUILDDIR = $(srcdir)/../build
 GS_DATADIR = $(srcdir)/../data
 
