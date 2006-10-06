@@ -1,3 +1,137 @@
+2006-10-01 [r229]  noup:
+
+	* gnome-subtitles/src/Makefile.am, gnome-subtitles/configure.in,
+	  gnome-subtitles/Makefile.am: Support for building Gnome Subtitles
+	  with a sublib package included. If the sublib.dll library is
+	  found in the build dir, it's used. Else, if there's a sublib
+	  package dir in the project base dir (a sublib* dir), it's added
+	  to the compilation dirs. Autoconf is called in that dir, then
+	  make is called and finally the compiled sublib*/build/sublib.dll
+	  file is copied to the build dir.
+
+2006-10-01 [r226-228]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
+	  Added dialog for adjusting timings. Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Utility.cs: Moved
+	  some methods to the Utility class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs:
+	  Added event to notify when the number of subtitles changes.
+
+2006-10-01 [r225]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs:
+	  Moved some methods to the Utility class.
+
+2006-10-01 [r224]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Set
+	  menus depending on the number of existing subtitles.
+
+2006-10-01 [r223]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Added
+	  handler for OnSubtitleCountChanged event.
+
+2006-10-01 [r216-222]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
+	  Added dialog for adjusting timings.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Commands.cs: Added
+	  command for Adjusting Timings. Changed the Shift Subtitles
+	  command to use SubLib's Subtitles methods instead of shifting
+	  each subtitle individually when applying to all subtitles.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs:
+	  Added GUI reference. Passed handler for OnSubtitleCountChanged
+	  event.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/AdjustTimingsDialog.cs
+	  (added): Added dialog for adjusting timings.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/ShiftTimingsDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/ShiftDialog.cs
+	  (removed): Renamed dialog from ShiftDialog to ShiftTimingsDialog.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Completed
+	  headers dialog. Added timing adjustment dialog. Added
+	  corresponding menu items.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Updated file hierarchy.
+
+2006-09-30 [r212-215]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
+	  Added full support for MPSub, SSA, ASS, SubViewer1 and SubViewer2
+	  headers.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Added
+	  full support for MPSub, SSA, ASS, SubViewer1 and SubViewer2
+	  headers.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/HeadersDialog.cs:
+	  Added full support for MPSub, SSA, ASS, SubViewer1 and SubViewer2
+	  headers.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added full
+	  support for MPSub, SSA, ASS, SubViewer1 and SubViewer2 headers.
+
+2006-09-29 [r211]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/HeadersDialog.cs
+	  (added), gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
+	  Initial version of header dialog support.
+
+2006-09-22 [r210]  noup:
+
+	* gnome-subtitles/TODO: Updated.
+
+2006-09-22 [r204-209]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/BugReportWindow.cs:
+	  Print fatal exception to console besides opening bug report
+	  window.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Unset
+	  toolbar style so the application can use the GNOME default.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Set
+	  menus according to the original and current framerates from
+	  sublib.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
+	  MenuItems names are handled automatically.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs: Print
+	  fatal exception to console besides opening bug report window.
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/gnome-subtitles.mds: Code cleanup.
+
+2006-09-07 [r203]  noup:
+
+	* gnome-subtitles/README,
+	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
+	  gnome-subtitles/TODO,
+	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/BugReportWindow.cs:
+	  Updated for Mono 1.1.17 release which requires handlers to use
+	  child EventArgs.
+
+2006-09-01 [r202]  noup:
+
+	* gnome-subtitles/TODO: Updated for release 0.0.1.
+
+2006-09-01 [r201]  noup:
+
+	* gnome-subtitles/ChangeLog: Updated for release 0.0.1.
+
 2006-09-01 [r196-200]  noup:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
