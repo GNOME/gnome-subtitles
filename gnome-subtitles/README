@@ -2,7 +2,9 @@ Gnome Subtitles
 ========================
 http://gsubtitles.sf.net
 
-Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports subtitle editing, conversion and synchronization. It aims to provide a clean and functional interface to the user, without giving away the needed features.
+Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports subtitle
+editing, conversion and synchronization. It aims to provide a clean and
+functional interface to the user, without giving away the needed features.
 
 
 Dependencies
@@ -13,22 +15,19 @@ Gtk#   >= 2.8
 Gnome# >= 2.8
 Glade# >= 2.8
 Gtk+   >= 2.8
-SubLib = 0.1 (used while compiling, not to be installed - see below)
+
+Note: starting with Gnome Subtitles 0.0.2, SubLib is now bundled with the
+gnome-subtitles package, so there's no need to build it separately anymore.
 
 
 Building from Source
 ====================
 
-First of all, there must be a compiled `sublib.dll' in the build dir (which must be created
-if it doesn't exist). You can get SubLib at http://sublib.sourceforge.net. It is available in
-two flavors: as a pre-compiled dll and as a source package. If you want to use the dll, simply
-copy it to Gnome Subtitle's `build' dir. If you want to build it using the source package,
-unarchive it and run the usual `./configure' followed by `make'. Then copy `sublib.dll' from
-SubLib's `build' dir to Gnome Subtitle's `build' dir.
+Build it using the usual `./configure' command followed by `make'. Install it
+with `make install'. Run it with `gnome-subtitles' or just use the icon in the
+Gnome Menu.
 
-To build Gnome Subtitles (after `sublib.dll' is in the `build' dir), run once again the usual
-commands: `./configure' followed by `make'. To install it, run `make install'. To run the program
-without installing it, simply `cd' to the `build' dir and run `mono gnome-subtitles.exe'. See the
-INSTALL file for more information on the build procedure.
+To try the program without installing it, `cd' to the `build' dir after building
+it and run it with `mono gnome-subtitles.exe'.
 
-To run Gnome Subtitles, simply use the icon in the Gnome menu or run `gnome-subtitles'.
+The INSTALL file contains detailed information on the build procedure.
