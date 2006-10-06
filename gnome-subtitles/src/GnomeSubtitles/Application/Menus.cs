@@ -37,6 +37,7 @@ public class Menus : GladeWidget {
 
 	public void NewDocument (bool wasLoaded) {
 		SetNewDocumentSensitivity(wasLoaded);
+		SetSubtitleCountDependentSensitivity(core.Subtitles.Collection.Count);
 		SetActiveTimingMode();
 		SetFrameRateMenus();	
 	}
@@ -54,24 +55,11 @@ public class Menus : GladeWidget {
 	}
 	
 	public void OnSubtitleCountChanged (int count) {
-		if (count == 0) {
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
-			SetSensitivity(WidgetNames.ShiftMenuItem, false);
-		}
-		else if (count == 1) {
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
-			SetSensitivity(WidgetNames.ShiftMenuItem, true);
-		}
-		else if (count == 2) {
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, true);
-			SetSensitivity(WidgetNames.ShiftMenuItem, true);		
-		}
-		/* Note: Not capturing when count exceeds 2 because it would have to pass by 2
-		 * to get to other values, so this improves performance. */
+		SetSubtitleCountDependentSensitivity(count);
 	}
 	
 	public void SetActiveTimingMode () {
-		if (GUI.Core.TimingModeIsFrames)
+		if (core.TimingModeIsFrames)
 	    	SetActivity(WidgetNames.FramesMenuItem, true);
 	    else
 	    	SetActivity(WidgetNames.TimesMenuItem, true);
@@ -114,6 +102,21 @@ public class Menus : GladeWidget {
 		SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, sensitivity);	
 	}
 	
+	private void SetSubtitleCountDependentSensitivity (int count) {
+		if (count == 0) {
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
+			SetSensitivity(WidgetNames.ShiftMenuItem, false);
+		}
+		else if (count == 1) {
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
+			SetSensitivity(WidgetNames.ShiftMenuItem, true);
+		}
+		else {
+			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, true);
+			SetSensitivity(WidgetNames.ShiftMenuItem, true);		
+		}	
+	}
+	
 	private void SetBlankSensitivity () {
 		/* File Menu */
 		SetSensitivity(WidgetNames.SaveMenuItem, false);
@@ -148,8 +151,6 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.FramesMenuItem, true);
 			/* Format Menu */
 			SetStylesSensitivity(true);
-			/* Timings Menu */
-			SetSensitivity(WidgetNames.ShiftMenuItem, true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
 		}
@@ -160,8 +161,6 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.CutMenuItem, false);
 			SetSensitivity(WidgetNames.CopyMenuItem, false);
 			SetSensitivity(WidgetNames.PasteMenuItem, false);
-			/* Timings Menu */
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
@@ -186,7 +185,7 @@ public class Menus : GladeWidget {
 	}
 	
 	private void SetFrameRateMenus () {
-		if (GUI.Core.TimingModeIsFrames) {
+		if (core.TimingModeIsFrames) {
 			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
 			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
 		}
