@@ -9,4 +9,5 @@ $(sublib_DATA):
 EXTRA_DIST = 				\
 	build.properties		\
 	gnome-subtitles.mdp		\
-	gnome-subtitles.mds
+	gnome-subtitles.mds		\
+	nant.build
