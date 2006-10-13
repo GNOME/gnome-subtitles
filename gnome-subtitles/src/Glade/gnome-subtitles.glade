@@ -2,7 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
 <!-- Generated with glade3
 	Version: 3.0.1
-	Date: Fri Oct 13 22:36:05 2006
+	Date: Fri Oct 13 23:11:04 2006
 	User: noup
 	Host: nouplab
 -->
@@ -298,6 +298,7 @@
                             <property name="label">_Bold</property>
                             <property name="use_underline">True</property>
                             <signal name="toggled" handler="OnBold"/>
+                            <accelerator key="B" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                           </widget>
                         </child>
                         <child>
@@ -306,6 +307,7 @@
                             <property name="sensitive">False</property>
                             <property name="label">_Italic</property>
                             <property name="use_underline">True</property>
+                            <accelerator key="I" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                           </widget>
                         </child>
                         <child>
@@ -314,6 +316,7 @@
                             <property name="sensitive">False</property>
                             <property name="label">_Underline</property>
                             <property name="use_underline">True</property>
+                            <accelerator key="U" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                           </widget>
                         </child>
                       </widget>
