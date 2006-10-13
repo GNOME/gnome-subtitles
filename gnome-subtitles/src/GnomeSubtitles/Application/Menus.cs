@@ -29,6 +29,7 @@ public class Menus : GladeWidget {
 	public Menus (GUI gui, Glade.XML glade) : base(gui, glade) {
 		core = gui.Core;
 		(GetWidget(WidgetNames.Toolbar) as Toolbar).UnsetStyle();
+		SetToolbarHomogeneity();
 	}
 	
 	public void BlankStartUp () {
@@ -50,7 +51,7 @@ public class Menus : GladeWidget {
 	public void OnSubtitleSelection (TreePath[] paths) {
 		if (paths.Length == 0)
 			OnNoSubtitlesSelected();
-		else //length > 1
+		else
 			OnSubtitlesSelected(paths);
 	}
 	
@@ -60,9 +61,9 @@ public class Menus : GladeWidget {
 	
 	public void SetActiveTimingMode () {
 		if (core.TimingModeIsFrames)
-	    	SetActivity(WidgetNames.FramesMenuItem, true);
+	    	SetCheckMenuItemActivity(WidgetNames.FramesMenuItem, true);
 	    else
-	    	SetActivity(WidgetNames.TimesMenuItem, true);
+	    	SetCheckMenuItemActivity(WidgetNames.TimesMenuItem, true);
 	}
 	
 	public void SetCutCopySensitivity (bool sensitivity) {
@@ -135,6 +136,9 @@ public class Menus : GladeWidget {
 		SetSensitivity(WidgetNames.CutButton, false);
 		SetSensitivity(WidgetNames.CopyButton, false);
 		SetSensitivity(WidgetNames.PasteButton, false);
+		SetSensitivity(WidgetNames.BoldButton, false);
+		SetSensitivity(WidgetNames.ItalicButton, false);
+		SetSensitivity(WidgetNames.UnderlineButton, false);
 	}
 	
 	private void SetNewDocumentSensitivity (bool wasLoaded) {
@@ -149,10 +153,10 @@ public class Menus : GladeWidget {
 			/* View Menu */
 			SetSensitivity(WidgetNames.TimesMenuItem, true);
 			SetSensitivity(WidgetNames.FramesMenuItem, true);
-			/* Format Menu */
-			SetStylesSensitivity(true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
+			/* Common for Format Menu and Toolbar*/
+			SetStylesSensitivity(true);
 		}
 		else {
 			/* Edit Menu */
@@ -171,16 +175,22 @@ public class Menus : GladeWidget {
 	}
 	
 	private void SetStylesActivity (bool bold, bool italic, bool underline) {
-		SetActivity(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
-		SetActivity(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
-		SetActivity(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
+		SetCheckMenuItemActivity(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
+		SetCheckMenuItemActivity(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
+		SetCheckMenuItemActivity(WidgetNames.UnderlineMenuItem, underline, core.Handlers.OnUnderline);
+		SetToggleToolButtonActivity(WidgetNames.BoldButton, bold, core.Handlers.OnBold);
+		SetToggleToolButtonActivity(WidgetNames.ItalicButton, italic, core.Handlers.OnItalic);
+		SetToggleToolButtonActivity(WidgetNames.UnderlineButton, underline, core.Handlers.OnUnderline);
 	}
 	
 	private void SetStylesSensitivity (bool sensitivity) {
 		if (GetWidget(WidgetNames.BoldMenuItem).Sensitive != sensitivity) {
 			SetSensitivity(WidgetNames.BoldMenuItem, sensitivity);
 			SetSensitivity(WidgetNames.ItalicMenuItem, sensitivity);
-			SetSensitivity(WidgetNames.UnderlineMenuItem, sensitivity);		
+			SetSensitivity(WidgetNames.UnderlineMenuItem, sensitivity);
+			SetSensitivity(WidgetNames.BoldButton, sensitivity);
+			SetSensitivity(WidgetNames.ItalicButton, sensitivity);
+			SetSensitivity(WidgetNames.UnderlineButton, sensitivity);
 		}	
 	}
 	
@@ -197,19 +207,26 @@ public class Menus : GladeWidget {
 		float inputFrameRate = core.Subtitles.Properties.OriginalFrameRate;
 		float movieFrameRate = core.Subtitles.Properties.CurrentFrameRate;
 		
-		SetActivity(InputFrameRateMenuItem(inputFrameRate), true, core.Handlers.OnInputFrameRate);
-		SetActivity(MovieFrameRateMenuItem(movieFrameRate), true, core.Handlers.OnMovieFrameRate);
+		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, core.Handlers.OnInputFrameRate);
+		SetCheckMenuItemActivity(MovieFrameRateMenuItem(movieFrameRate), true, core.Handlers.OnMovieFrameRate);
 	}
 	
-	private void SetActivity (string menuItemName, bool isActive) {
+	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {
 		(GetWidget(menuItemName) as CheckMenuItem).Active = isActive;
 	}
 	
-	private void SetActivity (string menuItemName, bool isActive, EventHandler handler) {
+	private void SetCheckMenuItemActivity (string menuItemName, bool isActive, EventHandler handler) {
 		CheckMenuItem menuItem = GetWidget(menuItemName) as CheckMenuItem;
 		menuItem.Toggled -= handler;
 		menuItem.Active = isActive;
 		menuItem.Toggled += handler;		
+	}
+	
+	private void SetToggleToolButtonActivity (string toggleToolButtonName, bool isActive, EventHandler handler) {
+		ToggleToolButton toggleToolButton = GetWidget(toggleToolButtonName) as ToggleToolButton;
+		toggleToolButton.Toggled -= handler;
+		toggleToolButton.Active = isActive;
+		toggleToolButton.Toggled += handler;		
 	}
 	
 	private void SetSensitivity (string widgetName, bool isSensitive) {
@@ -263,6 +280,11 @@ public class Menus : GladeWidget {
 			rate = 23;
 		
 		return prefix + "FPS" + rate + "MenuItem";
+	}
+	
+	private void SetToolbarHomogeneity () {
+		//Set this toolbutton homogeneous to false because it's a lot larger than the rest
+		(GetWidget(WidgetNames.UnderlineButton) as ToolButton).Homogeneous = false;
 	}
 
 }

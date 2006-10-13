@@ -120,17 +120,17 @@ public class EventHandlers {
 	/* Format Menu */
 	
 	public void OnBold (object o, EventArgs args) {
-		bool newBoldValue = (o as CheckMenuItem).Active;
+		bool newBoldValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);  	
 		gui.Core.CommandManager.Execute(new ChangeBoldStyleCommand(gui, newBoldValue));
 	}
 	
 	public void OnItalic (object o, EventArgs args) {
-		bool newItalicValue = (o as CheckMenuItem).Active;
+		bool newItalicValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
 		gui.Core.CommandManager.Execute(new ChangeItalicStyleCommand(gui, newItalicValue));
 	}
 	
 	public void OnUnderline (object o, EventArgs args) {
-		bool newUnderlineValue = (o as CheckMenuItem).Active;
+		bool newUnderlineValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
 		gui.Core.CommandManager.Execute(new ChangeUnderlineStyleCommand(gui, newUnderlineValue));
 	}
 	
