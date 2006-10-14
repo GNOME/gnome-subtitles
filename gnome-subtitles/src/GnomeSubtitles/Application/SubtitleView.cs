@@ -111,6 +111,32 @@ public class SubtitleView : GladeWidget {
 	    treeView.GrabFocus();
     }
     
+    public void SelectNext () {
+    	if (SelectedPathCount != 1)
+    		return;
+    
+    	TreePath path = SelectedPath;
+    	if (path.Indices[0] == (subtitles.Collection.Count - 1)) //this is the last path
+    		return;
+    	
+    	path.Next();
+    	treeView.Selection.UnselectAll();
+    	treeView.Selection.SelectPath(path);
+    }
+    
+    public void SelectPrevious () {
+    	if (SelectedPathCount != 1)
+    		return;
+    
+    	TreePath path = SelectedPath;
+    	if (path.Indices[0] == 0) //this is the first path
+    		return;
+    	
+    	path.Prev();
+    	treeView.Selection.UnselectAll();
+    	treeView.Selection.SelectPath(path);
+    }
+    
     public void ToggleTimingMode (TimingMode mode) {
 	    Refresh();
     }

@@ -235,9 +235,10 @@ public class EventHandlers {
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
-    	if (args.Event.Key == Gdk.Key.Delete)
+    	Gdk.Key key = args.Event.Key;
+    	if (key == Gdk.Key.Delete)
     		OnDeleteSubtitles(o, EventArgs.Empty);
-		else if (args.Event.Key == Gdk.Key.Insert)
+		else if (key == Gdk.Key.Insert)
 			OnInsertSubtitleAfterSelection(o, EventArgs.Empty);
     }
     
@@ -249,6 +250,28 @@ public class EventHandlers {
     
     public void OnFocusOutSubtitleEdit (object o, FocusOutEventArgs args) {
     	gui.Menus.SetPasteSensitivity(false);
+    }
+    
+    [GLib.ConnectBefore]
+    public void OnSubtitleEditKeyPressed (object o, KeyPressEventArgs args) {
+    	Gdk.Key key = args.Event.Key;
+    	Gdk.ModifierType modifier = args.Event.State;
+    	Gdk.ModifierType controlModifier = Gdk.ModifierType.ControlMask;
+    	
+    	if ((modifier & controlModifier) == controlModifier) { //Control was pressed
+    		switch (key) {
+    			case Gdk.Key.Page_Up:
+    				gui.SubtitleView.SelectPrevious();
+					gui.SubtitleEdit.TextGrabFocus();
+    				args.RetVal = true;
+    				break;
+    			case Gdk.Key.Page_Down:
+					gui.SubtitleView.SelectNext();
+					gui.SubtitleEdit.TextGrabFocus();
+    				args.RetVal = true;
+    				break;
+    		}
+    	}
     }
 
 }
