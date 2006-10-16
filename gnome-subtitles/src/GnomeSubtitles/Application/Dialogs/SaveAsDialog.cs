@@ -39,8 +39,11 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 		FillFormatComboBox();
 		FillEncodingComboBox(encodingComboBox);
 		
-		if (gui.Core.Subtitles.Properties.IsFilePathRooted)
+		if (gui.Core.Subtitles.Properties.IsFilePathRooted) {
+			System.Console.WriteLine("File path is: ");
+			System.Console.WriteLine(gui.Core.Subtitles.Properties.FilePath);
 			dialog.SetFilename(gui.Core.Subtitles.Properties.FilePath);
+		}
 		else {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			dialog.CurrentName = gui.Core.Subtitles.Properties.FileName;
@@ -48,23 +51,43 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 	}
 	
 	private void FillFormatComboBox () {
-		SubtitleTypeInfo[] types = GUI.Core.Subtitles.AvailableTypes;
-		foreach (SubtitleTypeInfo type in types)
-			formatComboBox.AppendText(type.Name + " (" + type.ExtensionsAsText + ")");
-
-		formatComboBox.Active = 0;
+		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
+		SubtitleType currentType = GUI.Core.Subtitles.Properties.SubtitleType;
+		int activeFormat = 0, typeNumber = 0;
+		
+		foreach (SubtitleTypeInfo typeInfo in types) {
+			if (typeInfo.Type == currentType)
+				activeFormat = typeNumber;
+				
+			formatComboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
+			typeNumber++;
+		}
+		
+		formatComboBox.Active = activeFormat;
 		subtitleTypes = types;
+	}
+	
+	private string HandleFileNameWithExtension (SubtitleType type) {
+		SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
+		string extension = typeInfo.PreferredExtension;
+		string fileName = dialog.Filename;
+		
+		if (fileName.EndsWith(extension))
+			return fileName;
+		else
+			return fileName + "." + extension;
 	}
 
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
 	private void OnResponse (object o, ResponseArgs args) {
-		SubtitleType type = subtitleTypes[formatComboBox.Active].Type;
-		Encoding encoding = Encoding.GetEncoding(encodings[encodingComboBox.Active].CodePage);
-		
 		if (args.ResponseId == ResponseType.Ok) {
-			GUI.SaveAs(dialog.Filename, type, encoding);
+			SubtitleType type = subtitleTypes[formatComboBox.Active].Type;
+			Encoding encoding = Encoding.GetEncoding(encodings[encodingComboBox.Active].CodePage);
+			string fileName = HandleFileNameWithExtension(type);
+			
+			GUI.SaveAs(fileName, type, encoding);
 			actionDone = true;
 		}
 		
