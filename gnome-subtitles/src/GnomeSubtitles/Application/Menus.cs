@@ -78,6 +78,16 @@ public class Menus : GladeWidget {
 		SetSensitivity(WidgetNames.PasteButton, sensitivity);
 	}
 	
+	public void UpdateActiveInputFrameRateMenuItem () {
+		float inputFrameRate = core.Subtitles.Properties.OriginalFrameRate;
+		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, core.Handlers.OnInputFrameRate);
+	}
+	
+	public void UpdateActiveMovieFrameRateMenuItem () {
+		float movieFrameRate = core.Subtitles.Properties.CurrentFrameRate;
+		SetCheckMenuItemActivity(MovieFrameRateMenuItem(movieFrameRate), true, core.Handlers.OnMovieFrameRate);
+	}
+	
 	/* Static members */
 	
 	static public float FrameRateFromMenuItem (string menuItem) {
@@ -174,6 +184,22 @@ public class Menus : GladeWidget {
 		}	
 	}
 	
+	private void SetFrameRateMenus () {
+		SubtitleProperties properties = core.Subtitles.Properties;
+	
+		if (properties.TimingMode == TimingMode.Frames) {
+			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
+			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
+		}
+		else {
+			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
+			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
+		}
+		
+		UpdateActiveInputFrameRateMenuItem();
+		UpdateActiveMovieFrameRateMenuItem();
+	}
+	
 	private void SetStylesActivity (bool bold, bool italic, bool underline) {
 		SetCheckMenuItemActivity(WidgetNames.BoldMenuItem, bold, core.Handlers.OnBold);
 		SetCheckMenuItemActivity(WidgetNames.ItalicMenuItem, italic, core.Handlers.OnItalic);
@@ -192,23 +218,6 @@ public class Menus : GladeWidget {
 			SetSensitivity(WidgetNames.ItalicButton, sensitivity);
 			SetSensitivity(WidgetNames.UnderlineButton, sensitivity);
 		}	
-	}
-	
-	private void SetFrameRateMenus () {
-		if (core.TimingModeIsFrames) {
-			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
-			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
-		}
-		else {
-			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
-			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
-		}
-		 
-		float inputFrameRate = core.Subtitles.Properties.OriginalFrameRate;
-		float movieFrameRate = core.Subtitles.Properties.CurrentFrameRate;
-		
-		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, core.Handlers.OnInputFrameRate);
-		SetCheckMenuItemActivity(MovieFrameRateMenuItem(movieFrameRate), true, core.Handlers.OnMovieFrameRate);
 	}
 	
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {

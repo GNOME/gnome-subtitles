@@ -37,11 +37,13 @@ public abstract class ChangeFrameRateCommand : Command {
 		SetFrameRate(storedFrameRate);
 		storedFrameRate = previousFrameRate;
 		
+		UpdateMenuItem();
 		GUI.RefreshAndReselect();
 	}
 	
 	protected abstract float GetFrameRate ();
 	protected abstract void SetFrameRate (float frameRate);
+	protected abstract void UpdateMenuItem ();
 }
 
 public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
@@ -57,6 +59,10 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 	protected override void SetFrameRate (float frameRate) {
 		GUI.Core.Subtitles.ChangeOriginalFrameRate(frameRate);
 	}
+	
+	protected override void UpdateMenuItem () {
+		GUI.Menus.UpdateActiveInputFrameRateMenuItem();
+	}
 }
 
 public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
@@ -71,6 +77,10 @@ public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
 	
 	protected override void SetFrameRate (float frameRate) {
 		GUI.Core.Subtitles.ChangeFrameRate(frameRate);
+	}
+	
+	protected override void UpdateMenuItem () {
+		GUI.Menus.UpdateActiveMovieFrameRateMenuItem();
 	}
 }
 
