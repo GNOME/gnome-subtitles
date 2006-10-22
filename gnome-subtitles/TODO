@@ -1,26 +1,38 @@
-- Change the headers should mark the subtitles as changed
-- Undo in the header selection?
+Gnome Subtitles
+========================
+http://gsubtitles.sf.net
 
-- Add spell check
-- Add find dialog
-- Revise character encoding handling in sublib and gnome subtitles
-- Add recent files to open menu
-- Save scrolling like evince does
-- Don't show extension in FileName, in Save dialog. Append it when saving (already done)
-- Star subtitles when translating
 
-- Pass GUI directly to the command manager, instead of on each Command Creation
-- Put each glade widget in a separate file.
-- Move widget names to each widget class.
-- Refactor GladeWidget inheritance.
-- Clipboard should be able to copy entire subtitles too (from treeview selection)
-- Main SpinButtons's text entry need better cursor handling
-- Improve filename handling in the Open and Save dialogs
-- Builtin video and audio preview
-- Subtitle Translation
-- Localization
-- Help system (and Man page)
-- Gconf support to enable storing preferences (like window size)
-- Improve the Encoding selection dialog
-- Configure MIME types
-- Change CellRenderers to a custom class that stores the current timing mode
+Easy
+====
+
+* Grab UnknownCharEncodingException in the Open dialog to display a proper error message
+* Mark file as changed (show asterisk) when modifying headers
+* Hide the file's extension when saving a file (it's appended automatically)
+* Refactor: store a reference to GUI in the CommandManager, for it to pass to the Undo/Redo/other methods,
+  instead of passing the GUI to each Command created
+* Refactor: put each glade dialog in a separate file
+* Move widget names in WidgetNames to each dialog class
+* Refactor: GladeWidget class
+* Add support to copy subtitles from the subtitle list to the clipboard (currently only copies text from
+  the subtitle editing area
+
+Hard
+====
+
+* Add Find/Replace dialog(s)
+* Add support for subtitle translation
+* Add spell-check support
+* Add support for choosing the character encodings to be used in the open and save dialogs
+  Includes adding a gconf access layer (to store used encodings) and a dialog for choosing encodings
+* Show recent files in Open menu
+  Includes storing these files somewhere (gconf or in the filesystem?)
+* Save the scrolling state for documents (and perhaps other things, like the window size), like Evince does
+  Includes storing these somewhere, again
+* Star/mark subtitles, like in GMail
+* Add builtin movie previewing (#363412 - depending on GST#)
+  Includes adding a movie previewer layer so multiple previewers can be used
+  Try support for GST but also mplayer and xinelib, for instance
+* Add localization support
+* Create help documentation
+* Add MIME type support
