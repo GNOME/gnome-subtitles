@@ -25,8 +25,7 @@ Hard
 * Add spell-check support
 * Add support for choosing the character encodings to be used in the open and save dialogs
   Includes adding a gconf access layer (to store used encodings) and a dialog for choosing encodings
-* Show recent files in Open menu
-  Includes storing these files somewhere (gconf or in the filesystem?)
+* Show recent files in Open menu (depending on support for GtkRecent in GTK#)
 * Save the scrolling state for documents (and perhaps other things, like the window size), like Evince does
   Includes storing these somewhere, again
 * Star/mark subtitles, like in GMail
