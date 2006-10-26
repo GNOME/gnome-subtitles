@@ -33,7 +33,7 @@ public class BugReportWindow : GladeWidget {
 		Init(ExecutionInfo.GladeMasterFileName, WidgetNames.BugReportWindow, this);
 		
 		textView = GetWidget(WidgetNames.BugReportWindowTextView) as TextView;
-		textView.Buffer.Text = exception.ToString();
+		AddBugText(exception);
 		
 		clipboard = Clipboard.Get(Gdk.Selection.Clipboard);
 		CopyErrorLog();
@@ -46,6 +46,16 @@ public class BugReportWindow : GladeWidget {
 	private void CopyErrorLog () {
 		clipboard.Text = textView.Buffer.Text;
 	}
+
+	private void AddBugText (Exception exception) {
+		string text = String.Empty;
+		text += "Gnome Subtitles version: " + ExecutionInfo.Version + "\n";
+		text += "SubLib version: " + ExecutionInfo.SubLibVersion + "\n\n";
+		text += "Stack trace:" + "\n";
+		text += exception.ToString();
+		
+		textView.Buffer.Text = text;
+	}
 	
 	/* Event handlers */
 	
@@ -56,7 +66,8 @@ public class BugReportWindow : GladeWidget {
 	}
 	
 	private void OnOpenWebForm (object o, EventArgs args) {
-		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716496");
+		if (!Utility.OpenBugReport())
+			Console.WriteLine("Could not open web form");
 	}
 	
 	private void OnClose (object o, EventArgs args) {
