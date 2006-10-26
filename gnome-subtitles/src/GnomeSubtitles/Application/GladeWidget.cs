@@ -26,9 +26,18 @@ public class GladeWidget {
 	private Glade.XML glade = null;
 	private GUI gui = null;
 	
+	/* Delegate used before the widget is created */
+	protected delegate void PreWidgetCreationDelegate ();
+	
 	protected GladeWidget () {}
 	
-	protected GladeWidget (GUI gui, string widgetName) {
+	protected GladeWidget (GUI gui, string widgetName) : this(gui, widgetName, null) {
+	}
+
+	protected GladeWidget (GUI gui, string widgetName, PreWidgetCreationDelegate preWidgetCreation) {
+		if (preWidgetCreation != null)
+			preWidgetCreation();
+
 		this.gui = gui;
 		Init(ExecutionInfo.GladeMasterFileName, widgetName, this);
 	}
