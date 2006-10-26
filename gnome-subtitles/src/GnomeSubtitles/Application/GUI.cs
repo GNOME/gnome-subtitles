@@ -29,14 +29,14 @@ public class GUI : GladeWidget {
 	private ApplicationCore core = null;
 	private App window = null;
 	private Menus menus = null;
-	private SubtitleView subtitleView = null;	
+	private SubtitleView subtitleView = null;
 	private SubtitleEdit subtitleEdit = null;
 	
 	public GUI () {
 		core = new ApplicationCore(this);
 		Init(ExecutionInfo.GladeMasterFileName, WidgetNames.MainWindow, core.Handlers);
 		core.Handlers.Init(this.Glade);
-		
+
 		window = (App)GetWidget(WidgetNames.MainWindow);
 		window.Icon = new Gdk.Pixbuf(null, "gnome-subtitles.svg");
 		
@@ -63,7 +63,7 @@ public class GUI : GladeWidget {
     	core.Program.Quit();
 		window.Destroy();
     }
-      
+
 	public ApplicationCore Core {
 		get { return core; }
 	}
