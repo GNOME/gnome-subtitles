@@ -157,18 +157,18 @@ public class EventHandlers {
 	}
 	
 	public void OnShift (object o, EventArgs args) {
-		new ShiftTimingsDialog(gui);	
+		new ShiftTimingsDialog(gui);
 	}
 	
 	
 	/*	Help Menu */
 	
 	public void OnReportBug (object o, EventArgs args) {
-		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716496");
+		Utility.OpenBugReport();
 	}
 	
 	public void OnRequestFeature (object o, EventArgs args) {
-		Gnome.Url.Show("http://sourceforge.net/tracker/?func=add&group_id=129996&atid=716499");
+		Utility.OpenBugReport();
 	}
 	
 	public void OnAbout (object o, EventArgs args) {
