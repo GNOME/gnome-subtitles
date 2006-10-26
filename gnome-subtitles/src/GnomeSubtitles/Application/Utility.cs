@@ -90,7 +90,29 @@ public class Utility {
 				spinButton.Adjustment.Lower = -86399999;
 		}
 	}
+	
+	public static bool OpenUrl (string url) {
+		if ((url == null) || (url == String.Empty))
+			return false;
 
+		try {
+			System.Console.WriteLine("Opening... " + url);
+			Gnome.Url.Show(url);
+		}
+		catch (Exception) { //Exceptions for Url.Show are not documented in the gtk-sharp api
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static bool OpenSendEmail (string email) {
+		return OpenUrl("mailto:" + email);
+	}
+
+	public static bool OpenBugReport () {
+		return OpenUrl("http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles");
+	}
 
 }
 
