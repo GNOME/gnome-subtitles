@@ -26,10 +26,16 @@ public class GladeDialog : GladeWidget {
 	protected Dialog dialog = null;
 	protected bool actionDone = false;
 
-	public GladeDialog (GUI gui, string dialogName) : base(gui, dialogName){
+	protected GladeDialog (GUI gui, string dialogName) : base(gui, dialogName){
 		dialog = GetWidget(dialogName) as Dialog;
 		dialog.TransientFor = gui.Window;
 		dialog.Icon = gui.Window.Icon;
+	}
+
+	protected GladeDialog (GUI gui, string dialogName, PreWidgetCreationDelegate preWidgetCreation) : base(gui, dialogName, preWidgetCreation) {
+		dialog = GetWidget(dialogName) as Dialog;
+		dialog.TransientFor = gui.Window;
+		dialog.Icon = gui.Window.Icon;	
 	}
 	
 	/// <summary>To use when the window is not valid, so there is no GUI.</summary>
