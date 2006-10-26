@@ -38,7 +38,8 @@ public class Executable {
 
 	public static void Main (string[] args) {
 		ExecutionInfo.Args = args;
-		SetProcessName(ExecutionInfo.ExecutableName);
+		SetProcessName(ExecutionInfo.ExecutableName);		
+		
 		try {
 			new GUI();
 		}
