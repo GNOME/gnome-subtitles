@@ -22,7 +22,7 @@ using Gtk;
 
 namespace GnomeSubtitles {
 
-public class ConfirmationDialog : MessageDialog {
+public class ConfirmationDialog {
 	private GUI gui = null;
 	private MessageDialog dialog = null;
 	private string secondaryText = "If you don't save, all your changes will be permanently lost.";
