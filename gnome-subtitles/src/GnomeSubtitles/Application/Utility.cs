@@ -96,7 +96,6 @@ public class Utility {
 			return false;
 
 		try {
-			System.Console.WriteLine("Opening... " + url);
 			Gnome.Url.Show(url);
 		}
 		catch (Exception) { //Exceptions for Url.Show are not documented in the gtk-sharp api
