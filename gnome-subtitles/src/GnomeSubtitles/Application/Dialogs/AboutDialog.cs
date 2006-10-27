@@ -32,11 +32,11 @@ public class AboutDialog : GladeDialog {
 	
 	/* Private members */
 	
-		
 	private void SetInformation () {
 		dialog.Name = "Gnome Subtitles";
 		dialog.Comments += "\n\nUsing SubLib " + ExecutionInfo.SubLibVersion;
 		dialog.Version = ExecutionInfo.Version;
+		dialog.Logo = GUI.Window.Icon;
 	}
 	
 	private static void PreWidgetCreation () {
