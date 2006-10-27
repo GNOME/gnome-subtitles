@@ -45,11 +45,11 @@ public class ExecutionInfo {
 	}
 	
 	public static string Version {
-		get { return Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+		get { return RemoveTrailingZeros(Assembly.GetExecutingAssembly().GetName().Version.ToString()); }
 	}
 
 	public static string SubLibVersion {
-		get { return Assembly.ReflectionOnlyLoad(subLibAssemblyName).GetName().Version.ToString(); }
+		get { return RemoveTrailingZeros(Assembly.ReflectionOnlyLoad(subLibAssemblyName).GetName().Version.ToString()); }
 	}
 	
 	public static string GladeMasterFileName {
@@ -61,9 +61,13 @@ public class ExecutionInfo {
 		set { args = value; }
 	}
 	
-
-
-
+	public static string RemoveTrailingZeros (string version) {
+		while (version.EndsWith(".0")) {
+			version = version.Remove(version.Length - 2);
+		}
+		return version;
+	}
+	
 }
 
 }
