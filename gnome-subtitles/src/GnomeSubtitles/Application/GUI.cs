@@ -103,15 +103,23 @@ public class GUI : GladeWidget {
     	bool toOpen = dialog.WaitForResponse();
     	if (toOpen && ToOpenAfterWarning) {
     		string fileName = dialog.FileName;
-    		if (dialog.HasEncoding) {
-    			Encoding encoding = dialog.Encoding;
-    			Open(fileName, encoding);    		
-    		}
-    		else
-    			Open(fileName);
+    		try {
+    			if (dialog.HasEncoding) {
+	    			Encoding encoding = dialog.Encoding;
+    				Open(fileName, encoding);    		
+    			}
+    			else
+	    			Open(fileName);
+	    	}
+	    	catch (Exception exception) {
+	    		OpenErrorDialog errorDialog = new OpenErrorDialog(this, fileName, exception);
+	    		bool toOpenAgain = errorDialog.WaitForResponse();
+	    		if (toOpenAgain)
+	    			Open(); //Recursive call to open the Open dialog again
+	    	}
     	}
     }
-    
+
     public void Open (string fileName) {
     	bool wasLoaded = core.IsLoaded;
    	 	core.Open(fileName);
