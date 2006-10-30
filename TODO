@@ -1,0 +1,43 @@
+Gnome Subtitles
+========================
+http://gsubtitles.sf.net
+
+
+Easy
+====
+
+* Hide the file's extension when saving a file (it's appended automatically)
+* Refactor: store a reference to GUI in the CommandManager, for it to pass to the Undo/Redo/other methods, instead of passing the GUI to each Command created
+* Refactor: put each glade dialog in a separate file
+* Move widget names in WidgetNames to each dialog class
+* Refactor: GladeWidget class
+* Add support to copy subtitles from the subtitle list to the clipboard (currently only copies text from the subtitle editing area
+
+
+Hard
+====
+
+* Add Find/Replace dialog(s)
+* Add support for subtitle translation
+* Add spell-check support
+* Add status bar
+* Mark file as changed (show asterisk) when modifying headers
+    - Compare each header to the one in Subtitles to see if it has changed
+    - GUI.SetWindowTitle
+* Add support for choosing the character encodings to be used in the open and save dialogs
+  Includes adding a gconf access layer (to store used encodings) and a dialog for choosing encodings
+* Save the scrolling state for documents (and perhaps other things, like the window size), like Evince does
+  Includes storing these somewhere, again
+* Star/mark subtitles, like in GMail
+* Add localization support
+* Create help documentation
+* Add MIME type support
+
+
+Dependent
+=========
+
+* Show recent files in Open menu (depending on support for GtkRecent in GTK#)
+* Add builtin movie previewing (#363412 - depending on GST#)
+  Includes adding a movie previewer layer so multiple previewers can be used
+  Try support for GST but also mplayer and xinelib, for instance
