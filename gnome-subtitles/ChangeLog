@@ -1,3 +1,196 @@
+2006-10-30 [r283-284]  noup:
+
+	* gnome-subtitles/TODO: Added dialog to handle errors on opening.
+	  When opening throws an exception, it is passed to the dialog
+	  which shows itself with a message based on the exception.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Catch
+	  exceptions on opening and run the OpenErrorDialog. After running
+	  OpenErrorDialog, either show the open dialog again or return to
+	  the main window, according to the user option.
+
+2006-10-30 [r279-282]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/OpenDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/configure.in: Swaped order of sublib.dll and
+	  sublib source package detection in the project dir. Now it first
+	  tries to detect the sublib dir and only uses a possibly existent
+	  build/sublib.dll if a sublib dir isn't present. In the old
+	  behaviour, running autogen with a sublib dir present would use
+	  it, but running it a second time (with the dll already compiled)
+	  would not included, and this caused the sublib dir not to be
+	  included when "making dist".
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/OpenErrorDialog.cs
+	  (added), gnome-subtitles/gnome-subtitles.mdp: Added dialog to
+	  handle errors on opening. When opening throws an exception, it is
+	  passed to the dialog which shows itself with a message based on
+	  the exception.
+
+	* gnome-subtitles/CREDITS (added), gnome-subtitles/AUTHORS: Updated
+	  project information files.
+
+2006-10-28 [r277-278]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/SaveAsDialog.cs:
+	  Detect when the combobox is changed and update the filename
+	  accordingly. If the filename contains a subtitle extension, it's
+	  replaced with the extension of the selected format (in the
+	  combobox). If the filename doesn't contain an extension, it is
+	  added. When saving, the extension is replaced only if the current
+	  extension isn't in the list of extensions for the selected
+	  subtitle format.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Detect when the
+	  combobox is changed and update the filename accordingly. If the
+	  filename contains a subtitle extension, it's replaced with the
+	  extension of the selected format (in the combobox). If the
+	  filename doesn't contain an extension, it is added.
+
+2006-10-28 [r276]  noup:
+
+	* gnome-subtitles/TODO: UnknownCharEncoding doesn't have to be
+	  grabbed anymore because SubLib now uses Windows-1252 encoding
+	  when auto-detection fails.
+
+2006-10-27 [r273-275]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs:
+	  Cut the trailing zeros for version numbers.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/AboutDialog.cs:
+	  Added Gnome Subtitles icon.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Utility.cs: Cut
+	  the trailing zeros for version numbers.
+
+2006-10-26 [r272]  noup:
+
+	* gnome-subtitles/configure.in: Changed compiler to use gmcs (C#
+	  2.0) instead of mcs.
+
+2006-10-26 [r271]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/AboutDialog.cs:
+	  Added Url and Email handlers, to open the web browser or mail
+	  composition applications. Start showing the version of SubLib.
+	  Added short Comment on the application. Change name of
+	  application from the id GnomeSubtitles to the name "Gnome
+	  Subtitles"
+
+2006-10-26 [r261-270]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/BugReportWindow.cs:
+	  Also include Gnome Subtitles and SubLib versions in the bug
+	  report. Ask for the attatchment of the subtitle file in the
+	  warning message. use Utility.OpenUrl.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/ConfirmationDialog.cs:
+	  Code cleanup: removed inheritance from MessageDialog (was a bug).
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/GladeDialog.cs:
+	  Added constructor to allow for the execution of a method before
+	  creating the widgets.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Code
+	  cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
+	  Refactored to use Utility.BugReport for opening the bugzilla.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Utility.cs: Added
+	  methods to open an url, an email url and the program's bugzilla
+	  url. Opening an url checks for Exceptions since they're reported
+	  to be thrown when no browser is installed/set in Gnome.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/GladeWidget.cs:
+	  Added constructor and handler to allow the execution of a method
+	  before creating the widgets.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs: Code
+	  cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs:
+	  Added property to get SubLib version.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Improved the
+	  About dialog and Bug Report window.
+
+2006-10-26 [r260]  noup:
+
+	* gnome-subtitles/TODO: Marking recently used files request as
+	  dependent on GtkRecent implementation in GTK#.
+
+2006-10-22 [r257]  noup:
+
+	* gnome-subtitles/TODO: Updated todo tasks.
+
+2006-10-16 [r255-256]  noup:
+
+	* gnome-subtitles/TODO: Updated TODO.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/SaveAsDialog.cs:
+	  Save dialog now adds the extension if it isn't inserted. It also
+	  auto-selects the subtitle format currently being used.
+
+2006-10-16 [r254]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Commands.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Fixed
+	  bug with frame rate menus not being correctly set when using
+	  undo/redo.
+
+2006-10-15 [r253]  noup:
+
+	* gnome-subtitles/TODO: Updated TODO.
+
+2006-10-14 [r252]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleView.cs:
+	  Added Ctrl+PageUp/Down handling in TextView for selecting the
+	  Previous and Next subtitle, respectively.
+
+2006-10-13 [r251]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added Ctrl+B/I/U
+	  shortcuts for setting Bold, Italic and Underline.
+
+2006-10-13 [r250]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
+	  Added Bold, Italic and Underline buttons to the toolbar.
+
+2006-10-06 [r235-236]  noup:
+
+	* gnome-subtitles/Makefile.am: added nant.build file to EXTRA_DIST.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Fixed
+	  problem with subtitles menus that depend on the subtitle count
+	  not being correctly set on startup.
+
+2006-10-06 [r233]  noup:
+
+	* gnome-subtitles: Changed for release 0.0.2.
+
+2006-10-06 [r231-232]  noup:
+
+	* gnome-subtitles/NEWS, gnome-subtitles/README: Changed for release
+	  0.0.2.
+
+	* gnome-subtitles/configure.in, gnome-subtitles/ChangeLog: Changed
+	  for release 0.0.2.
+
+2006-10-06 [r230]  noup:
+
+	* gnome-subtitles/Makefile.am: Added EXTRA_DIST.
+
 2006-10-01 [r229]  noup:
 
 	* gnome-subtitles/src/Makefile.am, gnome-subtitles/configure.in,
