@@ -29,6 +29,7 @@ public class OpenDialog : SubtitleFileChooserDialog {
 	private string fileName = String.Empty;
 	private Encoding encoding = null;
 
+
 	public OpenDialog (GUI gui) : base(gui, WidgetNames.OpenDialog){
 		encodingComboBox = (ComboBox)GetWidget(WidgetNames.OpenDialogEncodingComboBox);
 		FillEncodingComboBox(encodingComboBox);
@@ -36,12 +37,10 @@ public class OpenDialog : SubtitleFileChooserDialog {
 		encodingComboBox.PrependText("Auto Detected");
 		encodingComboBox.Active = 0;
 	
-		if (gui.Core.IsLoaded && gui.Core.Subtitles.Properties.IsFilePathRooted) {
+		if (gui.Core.IsLoaded && gui.Core.Subtitles.Properties.IsFilePathRooted)
 			dialog.SetCurrentFolder(gui.Core.Subtitles.Properties.FileDirectory);
-		}
-		else {
+		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));		
-		}
 	}
 	
 	public string FileName {
