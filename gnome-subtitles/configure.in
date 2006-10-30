@@ -31,28 +31,31 @@ if test "x$MONO" = "xno"; then
 	AC_MSG_ERROR([No mono runtime found])
 fi
 
-SUBLIB_DIR=""
-echo -n "checking for build/sublib.dll... "
-if test -f "build/sublib.dll"
+dnl create build dir if it does not exist
+if test ! -d "build"
 then
-	echo "yes"
+	mkdir build
+fi
+
+SUBLIB_DIR=""
+echo -n "checking for sublib package dir... "
+for i in sublib*
+do
+	SUBLIB_DIR=$i
+done
+if test -d $SUBLIB_DIR
+then
+	echo $SUBLIB_DIR
+	AC_CONFIG_SUBDIRS($SUBLIB_DIR)
 else
 	echo "no"
-	echo -n "checking for sublib package dir... "
-	for i in sublib*
-	do
-		SUBLIB_DIR=$i
-	done
-	if test -d $SUBLIB_DIR
+	echo -n "checking for build/sublib.dll... "
+	if test -f "build/sublib.dll"
 	then
-		echo $SUBLIB_DIR
-		if test ! -d "build"
-		then
-			mkdir build
-		fi
-		AC_CONFIG_SUBDIRS($SUBLIB_DIR)
+		echo "yes"
 	else
-		AC_MSG_ERROR([SubLib not found. Place a compiled sublib.dll into the `build' dir OR extract a sublib source package into this package (gnome-subtitles) base dir.])
+		echo "no"
+		AC_MSG_ERROR([SubLib not found. Place a compiled sublib.dll into the `build' dir OR extract a sublib source dir into gnome-subtitles base dir.])
 	fi
 fi
 
