@@ -7,6 +7,7 @@ ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
 SUBLIB = $(GS_BUILDDIR)/sublib.dll
 
 GS_SOURCES = \
+	$(srcdir)/External/Freedesktop.RecentFiles/*.cs \
 	$(srcdir)/GnomeSubtitles/Application/*.cs \
 	$(srcdir)/GnomeSubtitles/Application/Dialogs/*.cs \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs
