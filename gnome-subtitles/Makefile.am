@@ -7,6 +7,7 @@ $(sublib_DATA):
 	cp $(SUBLIB_DIR)/build/sublib.dll build
 
 EXTRA_DIST = 				\
+	CREDITS				\
 	build.properties		\
 	gnome-subtitles.mdp		\
 	gnome-subtitles.mds		\
