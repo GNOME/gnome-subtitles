@@ -122,7 +122,7 @@ public class GUI : GladeWidget {
 
     public void Open (string fileName) {
     	bool wasLoaded = core.IsLoaded;
-   	 	core.Open(fileName);
+		core.Open(fileName);
     	NewDocument(wasLoaded);
     }
     
