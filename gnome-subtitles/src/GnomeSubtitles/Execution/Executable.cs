@@ -38,15 +38,8 @@ public class Executable {
 
 	public static void Main (string[] args) {
 		ExecutionInfo.Args = args;
-		SetProcessName(ExecutionInfo.ExecutableName);		
-		
-		try {
-			new GUI();
-		}
-		catch (Exception exception) {
-			System.Console.Error.WriteLine(exception);
-			new BugReportWindow(exception);
-		}
+		SetProcessName(ExecutionInfo.ExecutableName);
+		Global.Run();
 	}
 
 }
