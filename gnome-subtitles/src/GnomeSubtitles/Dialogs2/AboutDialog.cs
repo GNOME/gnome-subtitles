@@ -24,32 +24,39 @@ namespace GnomeSubtitles {
 public class AboutDialog : GladeDialog {
 	private new Gtk.AboutDialog dialog = null;
 
-	public AboutDialog (GUI gui) : base(gui, WidgetNames.AboutDialog, PreWidgetCreation) {
+	/* Constant strings */
+	private const string dialogName = "aboutDialog";
+	
+
+	public AboutDialog () {
+		SetHooks();
+		Init(dialogName);
+	
 		dialog = base.dialog as Gtk.AboutDialog;
-		
-		SetInformation();
+		SetInfo();
 	}
 	
 	/* Private members */
 	
-	private void SetInformation () {
-		dialog.Name = "Gnome Subtitles";
-		dialog.Comments += "\n\nUsing SubLib " + ExecutionInfo.SubLibVersion;
-		dialog.Version = ExecutionInfo.Version;
-		dialog.Logo = GUI.Window.Icon;
-	}
-	
-	private static void PreWidgetCreation () {
+	/// <summary>Sets the Url and Email hooks. These must be set before the dialog is realized.</summary>
+	private void SetHooks () {
 		Gtk.AboutDialog.SetUrlHook(AboutDialogOpenUrl);
 		Gtk.AboutDialog.SetEmailHook(AboutDialogOpenEmail);
 	}
 	
-	private static void AboutDialogOpenUrl (Gtk.AboutDialog about, string url) {
-		Utility.OpenUrl(url);
+	private void AboutDialogOpenUrl (Gtk.AboutDialog about, string url) {
+		Util.OpenUrl(url);
 	}
 	
-	private static void AboutDialogOpenEmail (Gtk.AboutDialog about, string email) {
-		Utility.OpenSendEmail(email);
+	private void AboutDialogOpenEmail (Gtk.AboutDialog about, string email) {
+		Util.OpenSendEmail(email);
+	}
+		
+	private void SetInfo () {
+		dialog.Name = "Gnome Subtitles";
+		dialog.Comments += "\n\nUsing SubLib " + ExecutionInfo.SubLibVersion;
+		dialog.Version = ExecutionInfo.Version;
+		dialog.Logo = Global.GUI.Window.Icon;
 	}
 
 }
