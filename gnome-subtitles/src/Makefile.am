@@ -8,8 +8,9 @@ SUBLIB = $(GS_BUILDDIR)/sublib.dll
 
 GS_SOURCES = \
 	$(srcdir)/External/Freedesktop.RecentFiles/*.cs \
-	$(srcdir)/GnomeSubtitles/Application/*.cs \
-	$(srcdir)/GnomeSubtitles/Application/Dialogs/*.cs \
+	$(srcdir)/GnomeSubtitles/Commands/*.cs \
+	$(srcdir)/GnomeSubtitles/Core/*.cs \
+	$(srcdir)/GnomeSubtitles/Dialogs/*.cs \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs
 
 GS_RESOURCES = \
