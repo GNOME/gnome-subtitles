@@ -7,18 +7,20 @@ Easy
 ====
 
 * Hide the file's extension when saving a file (it's appended automatically)
-* Refactor: store a reference to GUI in the CommandManager, for it to pass to the Undo/Redo/other methods, instead of passing the GUI to each Command created
-* Refactor: put each glade dialog in a separate file
-* Move widget names in WidgetNames to each dialog class
-* Refactor: GladeWidget class
-* Add support to copy subtitles from the subtitle list to the clipboard (currently only copies text from the subtitle editing area
+* Add support to copy subtitles from the View to the clipboard (currently only copies text from the subtitle editing area
 * Improve autogen.sh and configure.in (require automake 1.9)
 * Change timing mode when "saving as" using a different timing mode
-
+* Add Ctrl+Z for Undo (and the respective for Redo)
+* Autoselect "Apply to selection" if there are subtitles selected when shift/etc dialogs are shown
+* Check the bug report window. It should also point to the forums, in case no registration is intended.
+* Only "insert after" should be enabled when no subtitles exist
+* ChangeTextCommand should store the position of the cursor
+* Change dialogs in what concerns the selection type (e.g., Ranges)
 
 Hard
 ====
 
+* Check support for latest versions of mono and gtk-sharp
 * Add Find/Replace dialog(s)
 * Add support for subtitle translation
 * Add spell-check support
@@ -38,9 +40,36 @@ Hard
 * Add MIME type support
 
 
+Refactoring
+===========
+
+* Put each glade dialog in a separate file
+* Get rid of WidgetNames - use separate functions and WidgetAttribute to autoconnect handlers
+* Move widget names in WidgetNames to the corresponding classes of the user interface
+* Move handlers in EventHandlers to the corresponding classes of the user interface
+* Review widget names in glade
+* Sort "Using" references alphabetically and remove those that are not used.
+* Change "fileName" occurrences to "filename"
+* Change to "Movie" occurences to "Video"
+* Use Util.PathIndex in all places where path indexes are used
+* Update the way timing mode change is propagated (UpdateFromTimingMode)
+* Change the way frame rates are changed and set (including in their commands)
+
 Dependent
 =========
 
 * Add builtin movie previewing (#363412 - depending on GST#)
   Includes adding a movie previewer layer so multiple previewers can be used
   Try support for GST but also mplayer and xinelib, for instance
+
+
+Changes
+=======
+
+* Commands applied to all subtitles now select all subtitles
+* Commands applied to a range now select the range
+* Ctrl+Up/Down now scrolls too besides selecting the previous/next subtitle
+* Now scrolls to the current focus when a command is executed
+* When creating a blank subtitle file, the subtitle that is auto-inserted is added as
+    a command, so Undo can be used to remove it
+* Next and Previous subtitles should scroll too
