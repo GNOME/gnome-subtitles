@@ -84,12 +84,19 @@ public class EventHandlers {
 	}
 	
 	public void OnFind (object o, EventArgs args) {
-		System.Console.WriteLine("find");
-		new SearchDialog(false);
+		Global.GUI.View.Search.Find();
+	}
+	
+	public void OnFindNext (object o, EventArgs args) {
+		Global.GUI.View.Search.FindNext();
+	}
+	
+	public void OnFindPrevious (object o, EventArgs args) {
+		Global.GUI.View.Search.FindPrevious();
 	}
 	
 	public void OnReplace (object o, EventArgs args) {
-		System.Console.WriteLine("replace");
+		Global.GUI.View.Search.Replace();
 	}
 	
 	public void OnInsertSubtitleBeforeSelection (object o, EventArgs args) {
