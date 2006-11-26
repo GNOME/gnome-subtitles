@@ -256,7 +256,7 @@ public class GUI {
 	/// one path selected, <see cref="UpdateFromSelection(Subtitle)" /> must be used.</remarks>
 	private void UpdateFromSelection (TreePath[] paths) {
 		menus.UpdateFromSelection(paths);
-		edit.Sensitive = false;
+		edit.Enabled = false;
 	}    
 	
 	/* Private properties */
