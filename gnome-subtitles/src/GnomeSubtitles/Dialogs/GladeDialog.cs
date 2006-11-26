@@ -46,11 +46,19 @@ public class GladeDialog {
 		dialog.Run();
 		return actionDone;
 	}
+		
+	public virtual void ShowDialog () {
+		dialog.Visible = true;
+	}
 	
 	/* Protected members */
 	
 	protected void CloseDialog() {
 		dialog.Destroy();
+	}
+	
+	protected void HideDialog () {
+		dialog.Visible = false;
 	}
 	
 	/// <summary>Constructs the dialog from the glade master file, autoconnects the handlers,
