@@ -24,9 +24,11 @@ using SubLib;
 namespace GnomeSubtitles {
 
 public class SubtitleView {
+	private Subtitles subtitles = null; //A reference to Global.Subtitles, kept here because it's often accessed by CellRenderers.
+
 	private TreeView tree = null;
 	private SubtitleSelection selection = null;
-	private Subtitles subtitles = null;
+	private Search search = null;
 	
 	private TreeViewColumn numberCol = null;
 	private TreeViewColumn startCol = null;
@@ -38,6 +40,7 @@ public class SubtitleView {
 	public SubtitleView() {
 		tree = Global.GetWidget(WidgetNames.SubtitleView) as TreeView;
 		selection = new SubtitleSelection(tree);
+		search = new Search();
 
 		CreateColumns();
     }
@@ -46,6 +49,10 @@ public class SubtitleView {
 
     public SubtitleSelection Selection {
     	get { return selection; }
+    }
+    
+    public Search Search {
+    	get { return search; }
     }
     
     /* Public methods */ 
@@ -75,7 +82,6 @@ public class SubtitleView {
 
 	/// <summary>Refreshes the view.</summary>
 	/// <remarks>This is currently limited to a <see cref="TreeView.QueueDraw()" />.</remarks>
-	/// <returns></returns>
     public void Refresh () {
 	    tree.QueueDraw();
     }
