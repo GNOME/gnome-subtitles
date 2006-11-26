@@ -2,7 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
 <!-- Generated with glade3
 	Version: 3.0.1
-	Date: Mon Nov 20 00:42:38 2006
+	Date: Sun Nov 26 14:46:05 2006
 	User: noup
 	Host: nouplab
 -->
@@ -306,6 +306,58 @@
                             <property name="label">_Times</property>
                             <property name="use_underline">True</property>
                             <signal name="toggled" handler="OnTimes"/>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkMenuItem" id="menubarSearch">
+                    <property name="visible">True</property>
+                    <property name="label">_Search</property>
+                    <property name="use_underline">True</property>
+                    <child>
+                      <widget class="GtkMenu" id="menu1">
+                        <property name="visible">True</property>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="findMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label">gtk-find</property>
+                            <property name="use_underline">True</property>
+                            <property name="use_stock">True</property>
+                            <signal name="activate" handler="OnFind"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkMenuItem" id="findNextMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label">Find Ne_xt</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="OnFindNext"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkMenuItem" id="findPreviousMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label">Find Pre_vious</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="OnFindPrevious"/>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkImageMenuItem" id="replaceMenuItem">
+                            <property name="visible">True</property>
+                            <property name="label">_Replace</property>
+                            <property name="use_underline">True</property>
+                            <signal name="activate" handler="OnReplace"/>
+                            <child internal-child="image">
+                              <widget class="GtkImage" id="menu-item-image7">
+                                <property name="visible">True</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_ENTER_NOTIFY_MASK</property>
+                                <property name="stock">gtk-find-and-replace</property>
+                              </widget>
+                            </child>
                           </widget>
                         </child>
                       </widget>
@@ -805,6 +857,7 @@
                       <widget class="GtkTextView" id="subtitleTextView">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="is_focus">True</property>
                         <property name="pixels_above_lines">10</property>
                         <property name="justification">GTK_JUSTIFY_CENTER</property>
                         <property name="accepts_tab">False</property>
@@ -3037,7 +3090,6 @@ VIDEO</property>
     </child>
   </widget>
   <widget class="GtkDialog" id="searchDialog">
-    <property name="visible">True</property>
     <property name="title">Replace</property>
     <property name="resizable">False</property>
     <property name="destroy_with_parent">True</property>
@@ -3062,8 +3114,11 @@ VIDEO</property>
                 <property name="column_spacing">12</property>
                 <property name="row_spacing">12</property>
                 <child>
-                  <widget class="GtkEntry" id="replaceWithEntry">
+                  <widget class="GtkEntry" id="replaceEntry">
                     <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="activates_default">True</property>
+                    <signal name="changed" handler="OnReplaceTextChanged"/>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
@@ -3073,8 +3128,14 @@ VIDEO</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="searchForEntry">
+                  <widget class="GtkEntry" id="findEntry">
+                    <property name="width_request">300</property>
                     <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_focus">True</property>
+                    <property name="is_focus">True</property>
+                    <property name="activates_default">True</property>
+                    <signal name="changed" handler="OnFindTextChanged"/>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
@@ -3082,7 +3143,7 @@ VIDEO</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="searchForLabel">
+                  <widget class="GtkLabel" id="findLabel">
                     <property name="visible">True</property>
                     <property name="xalign">0.000000</property>
                     <property name="label" translatable="yes">_Search for:</property>
@@ -3094,7 +3155,7 @@ VIDEO</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="replaceWithLabel">
+                  <widget class="GtkLabel" id="replaceLabel">
                     <property name="visible">True</property>
                     <property name="xalign">0.000000</property>
                     <property name="label" translatable="yes">Replace _with:</property>
@@ -3120,31 +3181,46 @@ VIDEO</property>
                     <property name="label" translatable="yes">_Match case</property>
                     <property name="use_underline">True</property>
                     <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="OnMatchCaseToggled"/>
                   </widget>
                 </child>
                 <child>
-                  <widget class="GtkCheckButton" id="searchBackwardsCheckButton">
+                  <widget class="GtkCheckButton" id="backwardsCheckButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">Search _backwards</property>
                     <property name="use_underline">True</property>
                     <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="OnBackwardsToggled"/>
                   </widget>
                   <packing>
                     <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkCheckButton" id="wrapAroundCheckButton">
+                  <widget class="GtkCheckButton" id="regexCheckButton">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Search using a Regular _Expression</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="OnUseRegexToggled"/>
+                  </widget>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkCheckButton" id="wrapCheckButton">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="label" translatable="yes">_Wrap around</property>
                     <property name="use_underline">True</property>
                     <property name="active">True</property>
                     <property name="draw_indicator">True</property>
+                    <signal name="toggled" handler="OnWrapToggled"/>
                   </widget>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
               </widget>
@@ -3165,7 +3241,6 @@ VIDEO</property>
               <widget class="GtkButton" id="buttonClose">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="can_default">True</property>
                 <property name="label" translatable="yes">gtk-close</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">4</property>
@@ -3175,8 +3250,8 @@ VIDEO</property>
               <widget class="GtkButton" id="buttonReplaceAll">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="label" translatable="yes">Replace All</property>
+                <property name="label" translatable="yes">Replace _All</property>
+                <property name="use_underline">True</property>
                 <property name="response_id">3</property>
               </widget>
               <packing>
@@ -3187,8 +3262,8 @@ VIDEO</property>
               <widget class="GtkButton" id="buttonReplace">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="label" translatable="yes">Replace</property>
+                <property name="label" translatable="yes">_Replace</property>
+                <property name="use_underline">True</property>
                 <property name="response_id">2</property>
               </widget>
               <packing>
@@ -3198,8 +3273,10 @@ VIDEO</property>
             <child>
               <widget class="GtkButton" id="buttonFind">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
+                <property name="has_default">True</property>
                 <property name="label" translatable="yes">gtk-find</property>
                 <property name="use_stock">True</property>
                 <property name="response_id">1</property>
