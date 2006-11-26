@@ -65,7 +65,7 @@ public class SubtitleEdit {
     
 	/* Public properties */
 
-    public bool Sensitive {
+    public bool Enabled {
     	get { return hBox.Sensitive; }
     	set {
 			if (hBox.Sensitive == value)
@@ -78,9 +78,10 @@ public class SubtitleEdit {
     	}
     }
     
+    /// <summary>The text that is currently selected, or <see cref="Selection.Empty" /> if no text is selected.</summary>
     public string TextSelection {
     	get {
-    		if (!Sensitive)
+    		if (!Enabled)
     			return String.Empty;
 
     		TextIter start, end;
@@ -91,13 +92,16 @@ public class SubtitleEdit {
     	}
     }
     
+    
+    /// <summary>Whether the <see cref="TextView" /> is the widget with focus.</summary>
     public bool TextIsFocus {
     	get { return textView.IsFocus; }    
     }
     
+	/// <summary>The index of the cursor within the <see cref="TextView" />.</summary>
     public int TextCursorIndex {
     	get {
-    		if (!Sensitive)
+    		if (!Enabled)
     			return -1;
     		else
     			return textView.Buffer.GetIterAtMark(textView.Buffer.InsertMark).Offset;
@@ -105,7 +109,7 @@ public class SubtitleEdit {
     }
     
     /* Public methods */
-        
+
     public void GetEditableWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton,
     		out SpinButton durationSpinButton, out TextView textView) {
     	
@@ -130,7 +134,7 @@ public class SubtitleEdit {
     }
 
     public void UpdateFromSelection (Subtitle subtitle) {
-	   	this.Sensitive = true;
+	   	this.Enabled = true;
     	this.subtitle = subtitle;
 		LoadTimings(Global.TimingMode);
 		LoadTags();
@@ -139,6 +143,13 @@ public class SubtitleEdit {
 
     public void TextGrabFocus () {
     	textView.GrabFocus();
+    }
+    
+    public void TextFocusOnSelection (int startIndex, int endIndex) {
+    	TextGrabFocus();
+		TextIter start = textView.Buffer.GetIterAtOffset(startIndex);
+		TextIter end = textView.Buffer.GetIterAtOffset(endIndex);
+		textView.Buffer.SelectRange(start, end);		
     }
     
     /* Private Methods */
