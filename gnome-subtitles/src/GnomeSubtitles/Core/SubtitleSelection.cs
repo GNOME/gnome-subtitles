@@ -100,9 +100,12 @@ public class SubtitleSelection {
     
     /// <summary>The selected path that currently has the focus.<summary>
     /// <remarks>If none of the selected paths have focus, the <see cref="FirstPath" /> is returned. The first path,
-    /// on the other hand, can be null if no path is selected.</remarks>
+    /// on the other hand, can be null if no path is selected. If there isn't a focused row, null is returned.</remarks>
     public TreePath Focus {
     	get {
+    		if (Count == 0)
+    			return null;
+
     		TreePath path;
     		TreeViewColumn column;
     		tree.GetCursor(out path, out column);
@@ -152,7 +155,7 @@ public class SubtitleSelection {
     /// <summary>Selects the specified path, possibly aligning it to the center and/or reselecting it.</summary>
     /// <param name="path">The path to select. If it's null, all paths will be unselected.</param>
     /// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
-    /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param
+    /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param>
     /// <remarks>The input focus will be placed on the path.</remarks>
     public void Select (TreePath path, bool align, bool reselect) {
    		if (path == null) {
@@ -163,6 +166,21 @@ public class SubtitleSelection {
    			return;
    		
 		SetFocus(path, align);
+	}
+	
+	/// <summary>Selects a <see cref="TreePath" />, activates it and selects text in the subtitle it refers to.</summary>
+	/// <param name="path">The path to select. If it's null, all paths will be unselected.</param>
+    /// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
+    /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param>
+	/// <param name="start">The index to start the text selection with. This is also where the cursor is positioned.</param>
+	/// <param name="end">The index to start the text selection with. This is also where the cursor is positioned.</param>
+	public void Select (TreePath path, bool align, bool reselect, int start, int end) {
+		if (path == null) {
+			UnselectAll();
+			return;		
+		}
+		Select(path, align, reselect);
+		Global.GUI.Edit.TextFocusOnSelection(start, end);		
 	}
     
     /// <summary>Selects the first subtitle.</summary>
