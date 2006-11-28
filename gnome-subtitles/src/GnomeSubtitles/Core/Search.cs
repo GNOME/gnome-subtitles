@@ -50,8 +50,21 @@ public class Search {
 	public void Replace () {
 		InitDialog(true);
 	}
+	
+	/* Private properties */
+	
+	/// <summary>The currently focused subtitle, or 0 if none is.</summary>
+	private int FocusedSubtitle {
+		get {
+			TreePath focus = Global.GUI.View.Selection.Focus;
+			if (focus != null)
+				return Util.PathToInt(focus);
+			else
+				return 0;
+		}
+	}
 
-	/* Private members */
+	/* Private methods */
 	
 	private void InitDialog (bool showReplace) {
 		if (dialog == null)
@@ -61,23 +74,21 @@ public class Search {
 		dialog.ShowDialog();
 	}
 
-	/// <summary></summary>
-	/// <param name=""></param>
-	/// <remarks></remarks>
+	/// <summary>Finds text in the subtitles using the specified direction and the options set in the Find dialog.</summary>
+	/// <param name="backwards">Whether to search backwards.</param>
 	/// <returns>Whether the text was found.</returns>
 	private bool Find (bool backwards) {
 		if (dialog == null)
 			return false;
-	
-		int startSubtitle, startIndex;
-		GetCursorPosition(out startSubtitle, out startIndex);
+
+		int selectionStart, selectionEnd;
+		GetSelectionIndexes(out selectionStart, out selectionEnd);
 		
-		Regex regex = dialog.Regex;
 		int foundIndex, foundLength, foundSubtitle;
 		if (backwards)
-			foundSubtitle = Global.Subtitles.FindBackwards(regex, startSubtitle, startIndex, dialog.Wrap, out foundIndex, out foundLength);
+			foundSubtitle = Global.Subtitles.FindBackwards(dialog.BackwardRegex, FocusedSubtitle, selectionStart, dialog.Wrap, out foundIndex, out foundLength);
 		else
-			foundSubtitle = Global.Subtitles.Find(regex, startSubtitle, startIndex, dialog.Wrap, out foundIndex, out foundLength);
+			foundSubtitle = Global.Subtitles.Find(dialog.ForwardRegex, FocusedSubtitle, selectionEnd, dialog.Wrap, out foundIndex, out foundLength);
 
 		System.Console.WriteLine("Find results: subtitle " + foundSubtitle + " at index " + foundIndex);
 		if (foundSubtitle == -1) //Text not found
@@ -90,14 +101,20 @@ public class Search {
 		}
 	}	
 	
-	/// <summary>Gets the current position of the cursor.</summary>
-	/// <param name="subtitle">The subtitle with focus. If the focused subtitle isn't selected, the first
-	/// selected subtitle is used. If no subtitle is focused nor selected, the first subtitle of all is used.</param>
-	/// <param name="index">The index of the cursor within the focused subtitle, if there is only one subtitle selected.</param>
-	private void GetCursorPosition (out int subtitle, out int index) {
-		TreePath focus = Global.GUI.View.Selection.Focus;
-		subtitle = (focus != null ? Util.PathToInt(focus) :0);
-		index = ((Global.GUI.Edit.Enabled && Global.GUI.Edit.TextIsFocus) ? Global.GUI.Edit.TextCursorIndex : 0);
+
+
+	/// <summary>Gets the indexes of the current text selection.</summary>
+	/// <param name="start">The start of the selection.</param>
+	/// <param name="end">The end of the selection.</param>
+	/// <remarks>If no subtitle is being edited, both indexes are set to zero.
+	/// If no text is selected, both indexes are set to the position of the cursor.</remarks>
+	private void GetSelectionIndexes (out int start, out int end) {
+		if (Global.GUI.Edit.Enabled && Global.GUI.Edit.TextIsFocus)
+			Global.GUI.Edit.GetTextSelectionBounds(out start, out end);
+		else {
+			start = 0;
+			end = 0;
+		}
 	}
 
 	private void GetIndexesToSelect (int start, int end, bool backwards, out int newStart, out int newEnd) {
