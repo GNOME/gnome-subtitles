@@ -92,7 +92,6 @@ public class SubtitleEdit {
     	}
     }
     
-    
     /// <summary>Whether the <see cref="TextView" /> is the widget with focus.</summary>
     public bool TextIsFocus {
     	get { return textView.IsFocus; }    
@@ -109,6 +108,26 @@ public class SubtitleEdit {
     }
     
     /* Public methods */
+    
+    /// <summary>Gets the bounds of the current selection, if text is selected.</summary>
+    /// <param name="start">The start index of the selection.</param>
+    /// <param name="end">The end index of the selection.</param>
+    /// <remarks>If no text is selected, both start and end will contain the index of the cursor position.</remarks>
+    /// <returns>Whether text was selected.</returns>
+    public bool GetTextSelectionBounds (out int start, out int end) {
+    	TextIter startIter, endIter;
+    	if (textView.Buffer.GetSelectionBounds(out startIter, out endIter)) { //has selection
+    		start = startIter.Offset;
+    		end = endIter.Offset;
+    		return true;
+    	}
+    	else {
+    		int cursorIndex = TextCursorIndex;
+    		start = cursorIndex;
+    		end = cursorIndex;
+    		return false;
+    	}    
+    }
 
     public void GetEditableWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton,
     		out SpinButton durationSpinButton, out TextView textView) {
