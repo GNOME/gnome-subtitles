@@ -24,14 +24,15 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles {
 
-internal enum SearchDialogResponse { Find = 1, Replace, ReplaceAll, Close };
+internal enum SearchDialogResponse { Find = 1, Replace, ReplaceAll, Close = -6 };
 
 //TODO validate entry when using a regular expression (seems to be working as it is, though)
 //TODO check cases when dialog is opened and a change from find to replace is required
 public class SearchDialog : GladeDialog {
-	private string text = String.Empty;	//The text to search for
-	private Regex regex = null; 		//The regex that corresponds to the text and the options
-	private bool valuesCanDiffer = false; //Whether the values of the dialog might have been changed since the last Find
+	private string text = String.Empty;		//The text to search for
+	private Regex forwardRegex = null;		//The regex that corresponds to the text and the options
+	private Regex backwardRegex = null;		//The regex that corresponds to the text and the options
+	private bool valuesCanDiffer = false;	//Whether the values of the dialog might have been changed since the last Find
 
 	private bool matchCase = false;
 	private bool backwards = false;
@@ -58,7 +59,7 @@ public class SearchDialog : GladeDialog {
 	[WidgetAttribute] private Button buttonReplace;
 	[WidgetAttribute] private Button buttonFind;
 
-	public SearchDialog () : base(dialogName) {
+	public SearchDialog () : base(dialogName, true) {
 	}
 	
 	public bool ShowReplace {
@@ -80,8 +81,12 @@ public class SearchDialog : GladeDialog {
 		}
 	}
 	
-	public Regex Regex {
-		get { return regex; }
+	public Regex ForwardRegex {
+		get { return forwardRegex; }
+	}
+	
+	public Regex BackwardRegex {
+		get { return backwardRegex; }
 	}
 	
 	public bool MatchCase {
@@ -169,17 +174,16 @@ public class SearchDialog : GladeDialog {
 		RegexOptions options = RegexOptions.Singleline;
 		if (!matchCase)
 			options |= RegexOptions.IgnoreCase;
-		if (backwards)
-			options |= RegexOptions.RightToLeft;
-		
+				
 		string regexText = (useRegex ? text : Regex.Escape(text));
-		regex = new Regex(regexText, options);		
+		forwardRegex = new Regex(regexText, options);
+		backwardRegex = new Regex(regexText, options | RegexOptions.RightToLeft);
 	}
 
 	/* Event members */
 	
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
+
 	private void OnResponse (object o, ResponseArgs args) {
 		SearchDialogResponse response = (SearchDialogResponse)args.ResponseId;
 		switch (response) {
@@ -193,7 +197,6 @@ public class SearchDialog : GladeDialog {
 				System.Console.WriteLine("ReplaceAll");
 				break;
 			case SearchDialogResponse.Close:
-				System.Console.WriteLine("Close");
 				HideDialog();
 				break;
 		}
