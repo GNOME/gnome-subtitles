@@ -36,10 +36,15 @@ public class GladeDialog {
 	protected GladeDialog () {
 	}	
 
-	/// <summary>Initializes a new instance of the <see cref="GladeDialog" /> class, given the name of the dialog.</summary>
+	/// <summary>Initializes a new instance of the <see cref="GladeDialog" /> class, given the name of the dialog
+	/// and persistency possibility.</summary>
 	/// <param name="dialogName">The name of the dialog.</param>
-	protected GladeDialog (string dialogName) {
-		Init(dialogName);
+	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
+	protected GladeDialog (string dialogName) : this(dialogName, false) {
+	}
+
+	protected GladeDialog (string dialogName, bool persistent) {
+		Init(dialogName, persistent);
 	}
 	
 	public bool WaitForResponse () {
@@ -61,10 +66,20 @@ public class GladeDialog {
 		dialog.Visible = false;
 	}
 	
-	/// <summary>Constructs the dialog from the glade master file, autoconnects the handlers,
-	/// sets the icon and sets the dialog as transient for the main window.</summary>
+	/// <summary>Constructs the dialog with the specified name.</param> 
 	/// <param name="dialogName">The name of the dialog.</param>
+	/// <remarks>Constructing creates the dialog from the glade master file, autoconnects the handlers,
+	/// sets the icon and sets the dialog as transient for the main window.</summary>
 	protected void Init (string dialogName) {
+		Init(dialogName, false);
+	}
+	
+	/// <summary>Constructs the dialog with the specified name, and possibly sets it as persistent.</param> 
+	/// <param name="dialogName">The name of the dialog.</param>
+	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
+	/// <remarks>Constructing creates the dialog from the glade master file, autoconnects the handlers,
+	/// sets the icon and sets the dialog as transient for the main window.</summary>
+	protected void Init (string dialogName, bool persistent) {
 		glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, dialogName);
 		glade.Autoconnect(this);
 		dialog = glade.GetWidget(dialogName) as Dialog;
@@ -72,6 +87,16 @@ public class GladeDialog {
 		Window window = Global.GUI.Window;
 		dialog.TransientFor = window;
 		dialog.Icon = window.Icon;
+		
+		if (persistent)
+			dialog.DeleteEvent += OnDelete;
+	}
+
+	/* Event members */
+	
+	private void OnDelete (object o, DeleteEventArgs args) {
+		HideDialog();
+		args.RetVal = true;
 	}
 
 }
