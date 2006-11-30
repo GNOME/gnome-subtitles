@@ -32,7 +32,7 @@ public class SearchDialog : GladeDialog {
 	private string text = String.Empty;		//The text to search for
 	private Regex forwardRegex = null;		//The regex that corresponds to the text and the options
 	private Regex backwardRegex = null;		//The regex that corresponds to the text and the options
-	private bool valuesCanDiffer = false;	//Whether the values of the dialog might have been changed since the last Find
+	private bool valuesMayHaveChanged = false;	//Whether the values of the dialog may have been changed since the last Find
 
 	private bool matchCase = false;
 	private bool backwards = false;
@@ -54,7 +54,6 @@ public class SearchDialog : GladeDialog {
 	[WidgetAttribute] private CheckButton regexCheckButton;
 	[WidgetAttribute] private CheckButton wrapCheckButton;
 	
-	[WidgetAttribute] private Button buttonClose;
 	[WidgetAttribute] private Button buttonReplaceAll;
 	[WidgetAttribute] private Button buttonReplace;
 	[WidgetAttribute] private Button buttonFind;
@@ -115,6 +114,8 @@ public class SearchDialog : GladeDialog {
 		
 	private bool ValuesHaveChanged {
 		get {
+			if (!valuesMayHaveChanged)
+				return false;
 			if (text != findEntry.Text)
 				return true;
 			if (matchCase != matchCaseCheckButton.Active)
@@ -159,7 +160,7 @@ public class SearchDialog : GladeDialog {
 	}
 	
 	private void Find () {
-		bool updateRegex = (valuesCanDiffer && ValuesHaveChanged);
+		bool updateRegex = ValuesHaveChanged; //Need to be before SaveDialogValues, as the values will be changed
 		SaveDialogValues();
 		if (updateRegex)
 			UpdateRegex();
@@ -203,31 +204,36 @@ public class SearchDialog : GladeDialog {
 	}
 
 	private void OnFindTextChanged (object o, EventArgs args) {
-		valuesCanDiffer = true;
-		if (findEntry.Text.Length == 0)
+		valuesMayHaveChanged = true;
+		if (findEntry.Text.Length == 0) {
 			buttonFind.Sensitive = false;
-		else
+			buttonReplace.Sensitive = false;
+			buttonReplaceAll.Sensitive = false;
+		}
+		else {
 			buttonFind.Sensitive = true;
+			buttonReplaceAll.Sensitive = true;
+		}
 	}
 	
 	private void OnReplaceTextChanged (object o, EventArgs args) {
-		valuesCanDiffer = true;
+		valuesMayHaveChanged = true;
 	}
 	
 	private void OnMatchCaseToggled (object o, EventArgs args) {
-		valuesCanDiffer = true;
+		valuesMayHaveChanged = true;
 	}
 	
 	private void OnBackwardsToggled (object o, EventArgs args) {
-		valuesCanDiffer = true;
+		valuesMayHaveChanged = true;
 	}
 
 	private void OnUseRegexToggled (object o, EventArgs args) {
-		valuesCanDiffer = true;
+		valuesMayHaveChanged = true;
 	}
 	
 	private void OnWrapToggled (object o, EventArgs args) {
-		valuesCanDiffer = true;
+		valuesMayHaveChanged = true;
 	}	
 
 }
