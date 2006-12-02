@@ -2,7 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
 <!-- Generated with glade3
 	Version: 3.0.1
-	Date: Tue Nov 28 23:43:50 2006
+	Date: Sat Dec  2 02:15:41 2006
 	User: noup
 	Host: nouplab
 -->
@@ -335,6 +335,7 @@
                             <property name="label">Find Ne_xt</property>
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="OnFindNext"/>
+                            <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                           </widget>
                         </child>
                         <child>
@@ -343,6 +344,7 @@
                             <property name="label">Find Pre_vious</property>
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="OnFindPrevious"/>
+                            <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                           </widget>
                         </child>
                         <child>
@@ -351,6 +353,7 @@
                             <property name="label">_Replace</property>
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="OnReplace"/>
+                            <accelerator key="H" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                             <child internal-child="image">
                               <widget class="GtkImage" id="menu-item-image7">
                                 <property name="visible">True</property>
@@ -755,35 +758,39 @@
                     <property name="n_rows">3</property>
                     <property name="n_columns">2</property>
                     <child>
-                      <widget class="GtkSpinButton" id="startSpinButton">
+                      <widget class="GtkLabel" id="startLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="adjustment">0 0 100 1 10 10</property>
-                        <property name="climb_rate">1</property>
-                        <property name="numeric">True</property>
-                        <signal name="focus_out_event" handler="OnFocusOutSubtitleEdit"/>
-                        <signal name="focus_in_event" handler="OnFocusInSubtitleEdit"/>
+                        <property name="xalign">0.000000</property>
+                        <property name="label" translatable="yes">From:</property>
                       </widget>
                       <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkSpinButton" id="durationSpinButton">
+                      <widget class="GtkLabel" id="endLabel">
                         <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="adjustment">0 0 100 1 10 10</property>
-                        <property name="climb_rate">1</property>
-                        <signal name="focus_out_event" handler="OnFocusOutSubtitleEdit"/>
-                        <signal name="focus_in_event" handler="OnFocusInSubtitleEdit"/>
+                        <property name="xalign">0.000000</property>
+                        <property name="label" translatable="yes">To:</property>
                       </widget>
                       <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
+                        <property name="top_attach">1</property>
+                        <property name="bottom_attach">2</property>
+                        <property name="x_options">GTK_FILL</property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkLabel" id="durationLabel">
+                        <property name="visible">True</property>
+                        <property name="xalign">0.000000</property>
+                        <property name="label" translatable="yes">During:</property>
+                      </widget>
+                      <packing>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
@@ -805,39 +812,35 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkLabel" id="durationLabel">
+                      <widget class="GtkSpinButton" id="durationSpinButton">
                         <property name="visible">True</property>
-                        <property name="xalign">0.000000</property>
-                        <property name="label" translatable="yes">During:</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">0 0 100 1 10 10</property>
+                        <property name="climb_rate">1</property>
+                        <signal name="focus_out_event" handler="OnFocusOutSubtitleEdit"/>
+                        <signal name="focus_in_event" handler="OnFocusInSubtitleEdit"/>
                       </widget>
                       <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
                         <property name="top_attach">2</property>
                         <property name="bottom_attach">3</property>
-                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkLabel" id="endLabel">
+                      <widget class="GtkSpinButton" id="startSpinButton">
                         <property name="visible">True</property>
-                        <property name="xalign">0.000000</property>
-                        <property name="label" translatable="yes">To:</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">0 0 100 1 10 10</property>
+                        <property name="climb_rate">1</property>
+                        <property name="numeric">True</property>
+                        <signal name="focus_out_event" handler="OnFocusOutSubtitleEdit"/>
+                        <signal name="focus_in_event" handler="OnFocusInSubtitleEdit"/>
                       </widget>
                       <packing>
-                        <property name="top_attach">1</property>
-                        <property name="bottom_attach">2</property>
-                        <property name="x_options">GTK_FILL</property>
-                        <property name="y_options"></property>
-                      </packing>
-                    </child>
-                    <child>
-                      <widget class="GtkLabel" id="startLabel">
-                        <property name="visible">True</property>
-                        <property name="xalign">0.000000</property>
-                        <property name="label" translatable="yes">From:</property>
-                      </widget>
-                      <packing>
-                        <property name="x_options">GTK_FILL</property>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
@@ -987,29 +990,14 @@
             <property name="column_spacing">10</property>
             <property name="row_spacing">10</property>
             <child>
-              <widget class="GtkComboBox" id="encodingComboBox">
+              <widget class="GtkLabel" id="subtitleFormatLabel">
                 <property name="visible">True</property>
-                <property name="items" translatable="yes"></property>
+                <property name="xalign">0.000000</property>
+                <property name="label" translatable="yes">Subtitle Format:</property>
               </widget>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_FILL</property>
-                <property name="y_options">GTK_FILL</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkComboBox" id="formatComboBox">
-                <property name="visible">True</property>
-                <property name="items" translatable="yes"></property>
-                <signal name="changed" handler="OnFormatChanged"/>
-              </widget>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="right_attach">2</property>
-                <property name="y_options">GTK_FILL</property>
+                <property name="y_options"></property>
               </packing>
             </child>
             <child>
@@ -1026,14 +1014,29 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkLabel" id="subtitleFormatLabel">
+              <widget class="GtkComboBox" id="formatComboBox">
                 <property name="visible">True</property>
-                <property name="xalign">0.000000</property>
-                <property name="label" translatable="yes">Subtitle Format:</property>
+                <property name="items" translatable="yes"></property>
+                <signal name="changed" handler="OnFormatChanged"/>
               </widget>
               <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="y_options">GTK_FILL</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkComboBox" id="encodingComboBox">
+                <property name="visible">True</property>
+                <property name="items" translatable="yes"></property>
+              </widget>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="right_attach">2</property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
                 <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
+                <property name="y_options">GTK_FILL</property>
               </packing>
             </child>
           </widget>
@@ -1513,6 +1516,120 @@ If the bug is related to a &lt;b&gt;subtitle file&lt;/b&gt;, please attach it if
                 <property name="column_spacing">6</property>
                 <property name="row_spacing">10</property>
                 <child>
+                  <widget class="GtkLabel" id="labelTitle">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Title:</property>
+                  </widget>
+                  <packing>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelFile">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">File:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelAuthor">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Author:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entryMPSubTitle">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="width_chars">12</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entryMPSubFile">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entryMPSubAuthor">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entryMPSubNote">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">3</property>
+                    <property name="bottom_attach">4</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelNote">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Note:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">3</property>
+                    <property name="bottom_attach">4</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelType">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Type:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
                   <widget class="GtkAlignment" id="typeAlignment">
                     <property name="visible">True</property>
                     <property name="xalign">0.000000</property>
@@ -1532,120 +1649,6 @@ VIDEO</property>
                     <property name="bottom_attach">5</property>
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options">GTK_FILL</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelType">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Type:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">4</property>
-                    <property name="bottom_attach">5</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelNote">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Note:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">3</property>
-                    <property name="bottom_attach">4</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entryMPSubNote">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">3</property>
-                    <property name="bottom_attach">4</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entryMPSubAuthor">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entryMPSubFile">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entryMPSubTitle">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="width_chars">12</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelAuthor">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Author:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelFile">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">File:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelTitle">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Title:</property>
-                  </widget>
-                  <packing>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
                   </packing>
                 </child>
               </widget>
@@ -1683,12 +1686,281 @@ VIDEO</property>
                         <property name="column_spacing">6</property>
                         <property name="row_spacing">10</property>
                         <child>
-                          <widget class="GtkAlignment" id="playDepthAlignment">
+                          <widget class="GtkLabel" id="labelTitle">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Title:</property>
+                          </widget>
+                          <packing>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelOriginalScript">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Original Script:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelOriginalTranslation">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Original Translation:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelOriginalEditing">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Original Editing:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">3</property>
+                            <property name="bottom_attach">4</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelOriginalTiming">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Original Timing:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelOriginalScriptChecking">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Original Script Checking:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">5</property>
+                            <property name="bottom_attach">6</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelScriptUpdatedBy">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Script Updated By:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">6</property>
+                            <property name="bottom_attach">7</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelCollisions">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Collisions:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">7</property>
+                            <property name="bottom_attach">8</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelPlayResX">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">PlayResX:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">9</property>
+                            <property name="bottom_attach">10</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelPlayResY">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">PlayResY:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">10</property>
+                            <property name="bottom_attach">11</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelPlayDepth">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">PlayDepth:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">11</property>
+                            <property name="bottom_attach">12</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSTitle">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSOriginalScript">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSOriginalTranslation">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSOriginalEditing">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">3</property>
+                            <property name="bottom_attach">4</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSOriginalTiming">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSOriginalScriptChecking">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">5</property>
+                            <property name="bottom_attach">6</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSScriptUpdatedBy">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">6</property>
+                            <property name="bottom_attach">7</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSCollisions">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">7</property>
+                            <property name="bottom_attach">8</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelTimer">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Timer:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">8</property>
+                            <property name="bottom_attach">9</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySSAASSTimer">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">8</property>
+                            <property name="bottom_attach">9</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkAlignment" id="playResXAlignment">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
                             <property name="xscale">0.100000</property>
                             <child>
-                              <widget class="GtkSpinButton" id="spinButtonSSAASSPlayDepth">
+                              <widget class="GtkSpinButton" id="spinButtonSSAASSPlayResX">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">0 0 10000 1 10 10</property>
@@ -1700,10 +1972,9 @@ VIDEO</property>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="top_attach">11</property>
-                            <property name="bottom_attach">12</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options">GTK_FILL</property>
+                            <property name="top_attach">9</property>
+                            <property name="bottom_attach">10</property>
+                            <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
@@ -1731,12 +2002,12 @@ VIDEO</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkAlignment" id="playResXAlignment">
+                          <widget class="GtkAlignment" id="playDepthAlignment">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
                             <property name="xscale">0.100000</property>
                             <child>
-                              <widget class="GtkSpinButton" id="spinButtonSSAASSPlayResX">
+                              <widget class="GtkSpinButton" id="spinButtonSSAASSPlayDepth">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">0 0 10000 1 10 10</property>
@@ -1748,278 +2019,10 @@ VIDEO</property>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="top_attach">9</property>
-                            <property name="bottom_attach">10</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSTimer">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">8</property>
-                            <property name="bottom_attach">9</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelTimer">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Timer:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">8</property>
-                            <property name="bottom_attach">9</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSCollisions">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">7</property>
-                            <property name="bottom_attach">8</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSScriptUpdatedBy">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">6</property>
-                            <property name="bottom_attach">7</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSOriginalScriptChecking">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSOriginalTiming">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">4</property>
-                            <property name="bottom_attach">5</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSOriginalEditing">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">3</property>
-                            <property name="bottom_attach">4</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSOriginalTranslation">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSOriginalScript">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySSAASSTitle">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelPlayDepth">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">PlayDepth:</property>
-                          </widget>
-                          <packing>
                             <property name="top_attach">11</property>
                             <property name="bottom_attach">12</property>
                             <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelPlayResY">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">PlayResY:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">10</property>
-                            <property name="bottom_attach">11</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelPlayResX">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">PlayResX:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">9</property>
-                            <property name="bottom_attach">10</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelCollisions">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Collisions:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">7</property>
-                            <property name="bottom_attach">8</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelScriptUpdatedBy">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Script Updated By:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">6</property>
-                            <property name="bottom_attach">7</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelOriginalScriptChecking">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Original Script Checking:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelOriginalTiming">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Original Timing:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">4</property>
-                            <property name="bottom_attach">5</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelOriginalEditing">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Original Editing:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">3</property>
-                            <property name="bottom_attach">4</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelOriginalTranslation">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Original Translation:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelOriginalScript">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Original Script:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelTitle">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Title:</property>
-                          </widget>
-                          <packing>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
+                            <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
                       </widget>
@@ -2053,26 +2056,154 @@ VIDEO</property>
                 <property name="column_spacing">6</property>
                 <property name="row_spacing">10</property>
                 <child>
-                  <widget class="GtkAlignment" id="cdTrackAlignment">
+                  <widget class="GtkLabel" id="labelTitle">
                     <property name="visible">True</property>
                     <property name="xalign">0.000000</property>
-                    <property name="xscale">0.100000</property>
-                    <child>
-                      <widget class="GtkSpinButton" id="spinButtonSubViewer1CDTrack">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="adjustment">0 0 1000 1 10 10</property>
-                        <property name="climb_rate">1</property>
-                        <property name="numeric">True</property>
-                      </widget>
-                    </child>
+                    <property name="label" translatable="yes">Title:</property>
+                  </widget>
+                  <packing>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelAuthor">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Author:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelSource">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Source:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelProgram">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Program:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">3</property>
+                    <property name="bottom_attach">4</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelFilePath">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">File Path:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelDelay">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Delay:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">5</property>
+                    <property name="bottom_attach">6</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="labelCDTrack">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">CD Track:</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">6</property>
+                    <property name="bottom_attach">7</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entrySubViewer1Title">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
                   </widget>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
-                    <property name="top_attach">6</property>
-                    <property name="bottom_attach">7</property>
-                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entrySubViewer1Author">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entrySubViewer1Source">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">2</property>
+                    <property name="bottom_attach">3</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entrySubViewer1Program">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">3</property>
+                    <property name="bottom_attach">4</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="entrySubViewer1FilePath">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">4</property>
+                    <property name="bottom_attach">5</property>
                     <property name="y_options"></property>
                   </packing>
                 </child>
@@ -2101,153 +2232,25 @@ VIDEO</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="entrySubViewer1FilePath">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">4</property>
-                    <property name="bottom_attach">5</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entrySubViewer1Program">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">3</property>
-                    <property name="bottom_attach">4</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entrySubViewer1Source">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entrySubViewer1Author">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="entrySubViewer1Title">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelCDTrack">
+                  <widget class="GtkAlignment" id="cdTrackAlignment">
                     <property name="visible">True</property>
                     <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">CD Track:</property>
+                    <property name="xscale">0.100000</property>
+                    <child>
+                      <widget class="GtkSpinButton" id="spinButtonSubViewer1CDTrack">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="adjustment">0 0 1000 1 10 10</property>
+                        <property name="climb_rate">1</property>
+                        <property name="numeric">True</property>
+                      </widget>
+                    </child>
                   </widget>
                   <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
                     <property name="top_attach">6</property>
                     <property name="bottom_attach">7</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelDelay">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Delay:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">5</property>
-                    <property name="bottom_attach">6</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelFilePath">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">File Path:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">4</property>
-                    <property name="bottom_attach">5</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelProgram">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Program:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">3</property>
-                    <property name="bottom_attach">4</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelSource">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Source:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">2</property>
-                    <property name="bottom_attach">3</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelAuthor">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Author:</property>
-                  </widget>
-                  <packing>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="labelTitle">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Title:</property>
-                  </widget>
-                  <packing>
                     <property name="x_options">GTK_FILL</property>
                     <property name="y_options"></property>
                   </packing>
@@ -2289,15 +2292,258 @@ VIDEO</property>
                         <property name="column_spacing">6</property>
                         <property name="row_spacing">10</property>
                         <child>
-                          <widget class="GtkAlignment" id="delayAlignment">
+                          <widget class="GtkLabel" id="labelTitle">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Title:</property>
+                          </widget>
+                          <packing>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelAuthor">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Author:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelSource">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Source:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelProgram">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Program:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">3</property>
+                            <property name="bottom_attach">4</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelFilePath">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">File Path:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelComment">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Comment:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">5</property>
+                            <property name="bottom_attach">6</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelFontName">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Font Name:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">6</property>
+                            <property name="bottom_attach">7</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelFontColor">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Font Color:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">7</property>
+                            <property name="bottom_attach">8</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelFontStyle">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Font Style:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">8</property>
+                            <property name="bottom_attach">9</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="labelFontSize">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Font Size:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">11</property>
+                            <property name="bottom_attach">12</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2Title">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2Author">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2Source">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2Program">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">3</property>
+                            <property name="bottom_attach">4</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2FilePath">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">4</property>
+                            <property name="bottom_attach">5</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2Comment">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">5</property>
+                            <property name="bottom_attach">6</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2FontName">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">6</property>
+                            <property name="bottom_attach">7</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2FontColor">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">7</property>
+                            <property name="bottom_attach">8</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkEntry" id="entrySubViewer2FontStyle">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                          </widget>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
+                            <property name="top_attach">8</property>
+                            <property name="bottom_attach">9</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkAlignment" id="fontSizeAlignment">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
                             <property name="xscale">0.100000</property>
                             <child>
-                              <widget class="GtkSpinButton" id="spinButtonSubViewer2Delay">
+                              <widget class="GtkSpinButton" id="spinButtonSubViewer2FontSize">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="adjustment">0 0 1000000 1 10 10</property>
+                                <property name="adjustment">1 1 100 1 10 10</property>
                                 <property name="climb_rate">1</property>
                                 <property name="numeric">True</property>
                               </widget>
@@ -2306,21 +2552,21 @@ VIDEO</property>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="top_attach">9</property>
-                            <property name="bottom_attach">10</property>
+                            <property name="top_attach">11</property>
+                            <property name="bottom_attach">12</property>
                             <property name="x_options">GTK_FILL</property>
-                            <property name="y_options">GTK_FILL</property>
+                            <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="labelDelay">
+                          <widget class="GtkLabel" id="labelCDTrack">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Delay:</property>
+                            <property name="label" translatable="yes">CD Track:</property>
                           </widget>
                           <packing>
-                            <property name="top_attach">9</property>
-                            <property name="bottom_attach">10</property>
+                            <property name="top_attach">10</property>
+                            <property name="bottom_attach">11</property>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
@@ -2350,28 +2596,28 @@ VIDEO</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="labelCDTrack">
+                          <widget class="GtkLabel" id="labelDelay">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">CD Track:</property>
+                            <property name="label" translatable="yes">Delay:</property>
                           </widget>
                           <packing>
-                            <property name="top_attach">10</property>
-                            <property name="bottom_attach">11</property>
+                            <property name="top_attach">9</property>
+                            <property name="bottom_attach">10</property>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkAlignment" id="fontSizeAlignment">
+                          <widget class="GtkAlignment" id="delayAlignment">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
                             <property name="xscale">0.100000</property>
                             <child>
-                              <widget class="GtkSpinButton" id="spinButtonSubViewer2FontSize">
+                              <widget class="GtkSpinButton" id="spinButtonSubViewer2Delay">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="adjustment">1 1 100 1 10 10</property>
+                                <property name="adjustment">0 0 1000000 1 10 10</property>
                                 <property name="climb_rate">1</property>
                                 <property name="numeric">True</property>
                               </widget>
@@ -2380,253 +2626,10 @@ VIDEO</property>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="top_attach">11</property>
-                            <property name="bottom_attach">12</property>
+                            <property name="top_attach">9</property>
+                            <property name="bottom_attach">10</property>
                             <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2FontStyle">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">8</property>
-                            <property name="bottom_attach">9</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2FontColor">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">7</property>
-                            <property name="bottom_attach">8</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2FontName">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">6</property>
-                            <property name="bottom_attach">7</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2Comment">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2FilePath">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">4</property>
-                            <property name="bottom_attach">5</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2Program">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">3</property>
-                            <property name="bottom_attach">4</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2Source">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2Author">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkEntry" id="entrySubViewer2Title">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                          </widget>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelFontSize">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Font Size:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">11</property>
-                            <property name="bottom_attach">12</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelFontStyle">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Font Style:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">8</property>
-                            <property name="bottom_attach">9</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelFontColor">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Font Color:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">7</property>
-                            <property name="bottom_attach">8</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelFontName">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Font Name:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">6</property>
-                            <property name="bottom_attach">7</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelComment">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Comment:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelFilePath">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">File Path:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">4</property>
-                            <property name="bottom_attach">5</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelProgram">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Program:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">3</property>
-                            <property name="bottom_attach">4</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelSource">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Source:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelAuthor">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Author:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="labelTitle">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Title:</property>
-                          </widget>
-                          <packing>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
+                            <property name="y_options">GTK_FILL</property>
                           </packing>
                         </child>
                       </widget>
@@ -2732,29 +2735,36 @@ VIDEO</property>
                         <property name="column_spacing">10</property>
                         <property name="row_spacing">8</property>
                         <child>
-                          <widget class="GtkLabel" id="firstSubtitleNoInputLabel">
+                          <widget class="GtkLabel" id="firstSubtitleNoLabel">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
-                            <property name="xpad">5</property>
+                            <property name="label" translatable="yes">No.:</property>
                           </widget>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkSpinButton" id="firstSubtitleNewStartSpinButton">
+                          <widget class="GtkLabel" id="firstSubtitleStartLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="adjustment">1 0 100 1 10 10</property>
-                            <property name="climb_rate">1</property>
-                            <property name="numeric">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Start Frame:</property>
                           </widget>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="firstSubtitleNewStartLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">New Start:</property>
+                          </widget>
+                          <packing>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
                             <property name="x_options">GTK_FILL</property>
@@ -2777,12 +2787,16 @@ VIDEO</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="firstSubtitleNewStartLabel">
+                          <widget class="GtkSpinButton" id="firstSubtitleNewStartSpinButton">
                             <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">New Start:</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">1 0 100 1 10 10</property>
+                            <property name="climb_rate">1</property>
+                            <property name="numeric">True</property>
                           </widget>
                           <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
                             <property name="x_options">GTK_FILL</property>
@@ -2790,25 +2804,14 @@ VIDEO</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="firstSubtitleStartLabel">
+                          <widget class="GtkLabel" id="firstSubtitleNoInputLabel">
                             <property name="visible">True</property>
                             <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Start Frame:</property>
+                            <property name="xpad">5</property>
                           </widget>
                           <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="firstSubtitleNoLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">No.:</property>
-                          </widget>
-                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
@@ -2847,18 +2850,51 @@ VIDEO</property>
                         <property name="column_spacing">10</property>
                         <property name="row_spacing">8</property>
                         <child>
-                          <widget class="GtkSpinButton" id="lastSubtitleNewStartSpinButton">
+                          <widget class="GtkLabel" id="lastSubtitleNoLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="adjustment">1 0 100 1 10 10</property>
-                            <property name="climb_rate">1</property>
-                            <property name="numeric">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">No.:</property>
+                          </widget>
+                          <packing>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="lastSubtitleStartLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">Start Frame:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="lastSubtitleNewStartLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="label" translatable="yes">New Start:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="lastSubtitleNoInputLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0.000000</property>
+                            <property name="xpad">5</property>
                           </widget>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
@@ -2879,51 +2915,18 @@ VIDEO</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="lastSubtitleNoInputLabel">
+                          <widget class="GtkSpinButton" id="lastSubtitleNewStartSpinButton">
                             <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="xpad">5</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">1 0 100 1 10 10</property>
+                            <property name="climb_rate">1</property>
+                            <property name="numeric">True</property>
                           </widget>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="lastSubtitleNewStartLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">New Start:</property>
-                          </widget>
-                          <packing>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="lastSubtitleStartLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">Start Frame:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="lastSubtitleNoLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0.000000</property>
-                            <property name="label" translatable="yes">No.:</property>
-                          </widget>
-                          <packing>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
@@ -3117,17 +3120,29 @@ VIDEO</property>
                 <property name="column_spacing">12</property>
                 <property name="row_spacing">12</property>
                 <child>
-                  <widget class="GtkEntry" id="replaceEntry">
+                  <widget class="GtkLabel" id="replaceLabel">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="activates_default">True</property>
-                    <signal name="changed" handler="OnReplaceTextChanged"/>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">Replace _with:</property>
+                    <property name="use_underline">True</property>
                   </widget>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="findLabel">
+                    <property name="visible">True</property>
+                    <property name="xalign">0.000000</property>
+                    <property name="label" translatable="yes">_Search for:</property>
+                    <property name="use_underline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options"></property>
                   </packing>
                 </child>
                 <child>
@@ -3144,29 +3159,17 @@ VIDEO</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="findLabel">
+                  <widget class="GtkEntry" id="replaceEntry">
                     <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">_Search for:</property>
-                    <property name="use_underline">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="activates_default">True</property>
+                    <signal name="changed" handler="OnReplaceTextChanged"/>
                   </widget>
                   <packing>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="replaceLabel">
-                    <property name="visible">True</property>
-                    <property name="xalign">0.000000</property>
-                    <property name="label" translatable="yes">Replace _with:</property>
-                    <property name="use_underline">True</property>
-                  </widget>
-                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"></property>
                   </packing>
                 </child>
               </widget>
@@ -3250,6 +3253,7 @@ VIDEO</property>
             <child>
               <widget class="GtkButton" id="buttonReplaceAll">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="label" translatable="yes">Replace _All</property>
                 <property name="use_underline">True</property>
@@ -3262,6 +3266,7 @@ VIDEO</property>
             <child>
               <widget class="GtkButton" id="buttonReplace">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="label" translatable="yes">_Replace</property>
                 <property name="use_underline">True</property>
