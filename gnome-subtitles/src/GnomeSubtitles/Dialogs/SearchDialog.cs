@@ -88,6 +88,10 @@ public class SearchDialog : GladeDialog {
 		get { return backwardRegex; }
 	}
 	
+	public string Replacement {
+		get { return replaceEntry.Text; }
+	}
+	
 	public bool MatchCase {
 		get { return matchCaseCheckButton.Active; }
 	}
@@ -159,16 +163,28 @@ public class SearchDialog : GladeDialog {
 		wrap = wrapCheckButton.Active;	
 	}
 	
-	private void Find () {
+	private void HandleValuesChange () {
 		bool updateRegex = ValuesHaveChanged; //Need to be before SaveDialogValues, as the values will be changed
 		SaveDialogValues();
 		if (updateRegex)
 			UpdateRegex();
-
-		if (backwards)
-			Global.GUI.View.Search.FindPrevious();
-		else
-			Global.GUI.View.Search.FindNext();
+	
+	}
+	
+	private void Find () {
+		HandleValuesChange();
+		
+		bool found = Global.GUI.View.Search.Find();
+		if (found)
+			buttonReplace.Sensitive = true;
+	}
+	
+	private void Replace () {
+		HandleValuesChange();
+		
+		bool foundNext = Global.GUI.View.Search.Replace();
+		if (!foundNext) //No other text was found to replace, after replacing this one
+			buttonReplace.Sensitive = false;
 	}
 	
 	private void UpdateRegex() {
@@ -192,7 +208,7 @@ public class SearchDialog : GladeDialog {
 				Find();
 				break;
 			case SearchDialogResponse.Replace:
-				System.Console.WriteLine("Replace");
+				Replace();
 				break;
 			case SearchDialogResponse.ReplaceAll:
 				System.Console.WriteLine("ReplaceAll");
@@ -205,7 +221,8 @@ public class SearchDialog : GladeDialog {
 
 	private void OnFindTextChanged (object o, EventArgs args) {
 		valuesMayHaveChanged = true;
-		if (findEntry.Text.Length == 0) {
+
+		if (findEntry.Text.Length == 0) { //No text in the entry
 			buttonFind.Sensitive = false;
 			buttonReplace.Sensitive = false;
 			buttonReplaceAll.Sensitive = false;
