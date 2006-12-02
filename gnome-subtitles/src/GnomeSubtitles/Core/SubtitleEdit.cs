@@ -171,6 +171,14 @@ public class SubtitleEdit {
 		textView.Buffer.SelectRange(start, end);		
     }
     
+    public void ReplaceSelection (string replacement) {
+    	TextBuffer buffer = textView.Buffer;
+    	buffer.BeginUserAction();
+    	buffer.DeleteSelection(true, true);
+    	buffer.InsertAtCursor(replacement);    	
+    	buffer.EndUserAction();    
+    }
+    
     /* Private Methods */
     
     private void ClearFields () {
