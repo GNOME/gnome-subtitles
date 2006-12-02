@@ -35,20 +35,37 @@ public class Search {
 	
 	/* Public members */
 
-	public void Find () {
+	public void ShowFind () {
 		InitDialog(false);
 	}
-
-	public void FindPrevious () {
-		Find(true);
-	}
 	
-	public void FindNext () {
-		Find(false);
-	}
-	
-	public void Replace () {
+	public void ShowReplace () {
 		InitDialog(true);
+	}
+
+	public bool Find () {
+		if (dialog.Backwards)
+			return FindPrevious();
+		else
+			return FindNext();
+	}
+
+	public bool FindPrevious () {
+		return Find(true);
+	}
+	
+	public bool FindNext () {
+		return Find(false);
+	}
+	
+	public bool Replace () {
+		if (!SelectionMatchesSearch)
+			return Find();
+		
+		string replacement = dialog.Replacement;
+		Global.GUI.Edit.ReplaceSelection(replacement);
+		
+		return Find();
 	}
 	
 	/* Private properties */
@@ -62,6 +79,17 @@ public class Search {
 			else
 				return 0;
 		}
+	}
+	
+	private bool SelectionMatchesSearch {
+		get {
+			string selection = Global.GUI.Edit.TextSelection;
+			if (selection == String.Empty)
+				return false;
+			
+			Match match = dialog.ForwardRegex.Match(selection); //Either forward and backward regexes work
+			return (match.Success && (match.Length == selection.Length));
+		}	
 	}
 
 	/* Private methods */
@@ -90,7 +118,6 @@ public class Search {
 		else
 			foundSubtitle = Global.Subtitles.Find(dialog.ForwardRegex, FocusedSubtitle, selectionEnd, dialog.Wrap, out foundIndex, out foundLength);
 
-		System.Console.WriteLine("Find results: subtitle " + foundSubtitle + " at index " + foundIndex);
 		if (foundSubtitle == -1) //Text not found
 			return false;
 		else {
@@ -99,9 +126,7 @@ public class Search {
 			Global.GUI.View.Selection.Select(Util.IntToPath(foundSubtitle), true, true, start, end);
 			return true;
 		}
-	}	
-	
-
+	}
 
 	/// <summary>Gets the indexes of the current text selection.</summary>
 	/// <param name="start">The start of the selection.</param>

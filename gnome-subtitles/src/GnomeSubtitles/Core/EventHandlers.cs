@@ -84,7 +84,7 @@ public class EventHandlers {
 	}
 	
 	public void OnFind (object o, EventArgs args) {
-		Global.GUI.View.Search.Find();
+		Global.GUI.View.Search.ShowFind();
 	}
 	
 	public void OnFindNext (object o, EventArgs args) {
@@ -96,7 +96,7 @@ public class EventHandlers {
 	}
 	
 	public void OnReplace (object o, EventArgs args) {
-		Global.GUI.View.Search.Replace();
+		Global.GUI.View.Search.ShowReplace();
 	}
 	
 	public void OnInsertSubtitleBeforeSelection (object o, EventArgs args) {
