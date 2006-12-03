@@ -64,9 +64,11 @@ public class SubtitleView {
 
 	
     public void NewDocument (bool wasLoaded) {
-    	if (!wasLoaded) {
+    	if (!wasLoaded)
     		tree.Sensitive = true;
-    	}
+    	else
+    		search.Clear();
+
     	Load(Global.Subtitles);
     }
     
