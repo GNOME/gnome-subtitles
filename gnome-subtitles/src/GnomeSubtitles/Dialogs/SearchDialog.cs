@@ -187,6 +187,12 @@ public class SearchDialog : GladeDialog {
 			buttonReplace.Sensitive = false;
 	}
 	
+	private void ReplaceAll () {
+		HandleValuesChange();
+		
+		Global.GUI.View.Search.ReplaceAll();
+	}
+	
 	private void UpdateRegex() {
 		RegexOptions options = RegexOptions.Singleline;
 		if (!matchCase)
@@ -211,7 +217,7 @@ public class SearchDialog : GladeDialog {
 				Replace();
 				break;
 			case SearchDialogResponse.ReplaceAll:
-				System.Console.WriteLine("ReplaceAll");
+				ReplaceAll();
 				break;
 			case SearchDialogResponse.Close:
 				HideDialog();
