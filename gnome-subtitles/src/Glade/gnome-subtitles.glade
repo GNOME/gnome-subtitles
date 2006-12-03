@@ -2,7 +2,7 @@
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
 <!-- Generated with glade3
 	Version: 3.0.1
-	Date: Sat Dec  2 02:15:41 2006
+	Date: Sun Dec  3 00:49:16 2006
 	User: noup
 	Host: nouplab
 -->
@@ -186,34 +186,6 @@
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkSeparatorMenuItem" id="separator2EditMenuItem">
-                            <property name="visible">True</property>
-                          </widget>
-                        </child>
-                        <child>
-                          <widget class="GtkImageMenuItem" id="findMenuItem">
-                            <property name="visible">True</property>
-                            <property name="label">gtk-find</property>
-                            <property name="use_underline">True</property>
-                            <property name="use_stock">True</property>
-                            <signal name="activate" handler="OnFind"/>
-                          </widget>
-                        </child>
-                        <child>
-                          <widget class="GtkImageMenuItem" id="replaceMenuItem">
-                            <property name="visible">True</property>
-                            <property name="label">Replace</property>
-                            <property name="use_underline">True</property>
-                            <signal name="activate" handler="OnReplace"/>
-                            <child internal-child="image">
-                              <widget class="GtkImage" id="menu-item-image6">
-                                <property name="visible">True</property>
-                                <property name="stock">gtk-find-and-replace</property>
-                              </widget>
-                            </child>
-                          </widget>
-                        </child>
-                        <child>
                           <widget class="GtkSeparatorMenuItem" id="separator3EditMenuItem">
                             <property name="visible">True</property>
                           </widget>
@@ -323,6 +295,7 @@
                         <child>
                           <widget class="GtkImageMenuItem" id="findMenuItem">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="label">gtk-find</property>
                             <property name="use_underline">True</property>
                             <property name="use_stock">True</property>
@@ -332,6 +305,7 @@
                         <child>
                           <widget class="GtkMenuItem" id="findNextMenuItem">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="label">Find Ne_xt</property>
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="OnFindNext"/>
@@ -341,6 +315,7 @@
                         <child>
                           <widget class="GtkMenuItem" id="findPreviousMenuItem">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="label">Find Pre_vious</property>
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="OnFindPrevious"/>
@@ -348,8 +323,14 @@
                           </widget>
                         </child>
                         <child>
+                          <widget class="GtkSeparatorMenuItem" id="separator1SearchMenuItem">
+                            <property name="visible">True</property>
+                          </widget>
+                        </child>
+                        <child>
                           <widget class="GtkImageMenuItem" id="replaceMenuItem">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="label">_Replace</property>
                             <property name="use_underline">True</property>
                             <signal name="activate" handler="OnReplace"/>
