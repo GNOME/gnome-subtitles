@@ -56,15 +56,15 @@ public class GladeDialog {
 		dialog.Visible = true;
 	}
 	
-	/* Protected members */
-	
-	protected void CloseDialog() {
+	public void CloseDialog() {
 		dialog.Destroy();
 	}
 	
-	protected void HideDialog () {
+	public void HideDialog () {
 		dialog.Visible = false;
 	}
+	
+	/* Protected members */
 	
 	/// <summary>Constructs the dialog with the specified name.</param> 
 	/// <param name="dialogName">The name of the dialog.</param>
