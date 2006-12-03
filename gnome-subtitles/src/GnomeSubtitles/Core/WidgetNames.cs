@@ -41,6 +41,12 @@ public class WidgetNames {
 	public const string TimesMenuItem = "timesMenuItem";
 	public const string FramesMenuItem = "framesMenuItem";
 	
+	/* Search Menu */
+	public const string FindMenuItem = "findMenuItem";
+	public const string FindNextMenuItem = "findNextMenuItem";
+	public const string FindPreviousMenuItem = "findPreviousMenuItem";
+	public const string ReplaceMenuItem = "replaceMenuItem";
+	
 	/* Format Menu */
 	public const string BoldMenuItem = "boldMenuItem";
 	public const string ItalicMenuItem = "italicMenuItem";
