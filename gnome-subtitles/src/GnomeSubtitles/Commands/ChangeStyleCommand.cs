@@ -29,12 +29,13 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 		this.styleValue = newStyleValue;
 	}
 	
-	protected override void ChangeValues () {
+	protected override bool ChangeValues () {
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Global.Subtitles[path];
 			SetStyle(subtitle, styleValue);
 		}
 		ToggleStyleValue();
+		return true;
 	}
 
 	/* Methods to be extended */

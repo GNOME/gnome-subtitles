@@ -31,8 +31,9 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	}
 
 	
-	public override void Execute () {
+	public override bool Execute () {
 		Global.GUI.View.Remove(Paths);
+		return true;
 	}
 	
 	public override void Undo () {

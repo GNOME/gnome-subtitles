@@ -42,8 +42,10 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 		get { return reselect; }
 	}
 	
-	public override void Execute () {
-		ChangeValues();
+	public override bool Execute () {
+		bool completed = ChangeValues();
+		if (!completed)
+			return false;
 		
 		switch (SelectionType) {
 			case SelectionType.All:
@@ -61,6 +63,7 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 			Global.GUI.UpdateFromSelection();
 		
 		PostProcess();
+		return true;
 	}
 	
 	public override void Undo () {
@@ -88,8 +91,8 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 	
 	/* Methods to be extended */
 	
-	protected virtual void ChangeValues () {
-		return;
+	protected virtual bool ChangeValues () {
+		return true;
 	}
 	
 	protected virtual void PostProcess () {

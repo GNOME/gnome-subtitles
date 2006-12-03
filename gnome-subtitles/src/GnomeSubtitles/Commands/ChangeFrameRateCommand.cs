@@ -26,12 +26,13 @@ public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 		this.storedFrameRate = frameRate;
 	}
 
-	protected override void ChangeValues () {
+	protected override bool ChangeValues () {
 		float previousFrameRate = GetFrameRate();
 		SetFrameRate(storedFrameRate);
 		storedFrameRate = previousFrameRate;
 		
 		UpdateMenuItem(); //TODO: is this needed? Need to refactor this
+		return true;
 	}
 	
 	protected abstract float GetFrameRate ();

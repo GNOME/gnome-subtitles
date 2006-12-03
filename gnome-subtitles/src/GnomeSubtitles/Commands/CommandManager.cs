@@ -86,10 +86,13 @@ public class CommandManager {
 		set { wasModified = value; }	
 	}
 	
-	public void Execute (Command command) {
-		command.Execute();
-		ProcessExecute(command);
-		SetModified();
+	public bool Execute (Command command) {
+		bool completed = command.Execute();
+		if (completed) {
+			ProcessExecute(command);
+			SetModified();
+		}
+		return completed;
 	}
 	
 	public void Undo () {

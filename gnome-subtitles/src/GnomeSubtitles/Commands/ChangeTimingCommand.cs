@@ -43,7 +43,7 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 		return (Util.PathsAreEqual(Path, (command as ChangeTimingCommand).Path));	
 	}
 
-	protected override void ChangeValues () {
+	protected override bool ChangeValues () {
 		TimeSpan previousTime = GetPreviousTime();
 		if (storedFrames == -1)
 			SetTime(storedTime);
@@ -51,7 +51,8 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 			SetFrames(storedFrames);
 			storedFrames = -1; //Set to -1 because times will be used on the next times
 		}
-		storedTime = previousTime;	
+		storedTime = previousTime;
+		return true;
 	}
 
 	protected abstract TimeSpan GetPreviousTime ();

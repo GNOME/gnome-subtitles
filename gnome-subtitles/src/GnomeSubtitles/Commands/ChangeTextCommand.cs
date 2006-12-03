@@ -36,10 +36,11 @@ public class ChangeTextCommand : FixedSingleSelectionCommand {
 		return (Path.Compare((command as ChangeTextCommand).Path) == 0);	
 	}
 	
-	protected override void ChangeValues () {
+	protected override bool ChangeValues () {
 		string previousText = subtitle.Text.Get();
 		subtitle.Text.Set(storedText);
-		storedText = previousText;		
+		storedText = previousText;
+		return true;
 	}
 	
 	protected override void PostProcess () {

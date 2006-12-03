@@ -36,7 +36,7 @@ public abstract class Command {
 		get { return canGroup; }
 	}
 
-	public abstract void Execute ();
+	public abstract bool Execute ();
 
 	public virtual void Undo () {
 		Execute();

@@ -39,7 +39,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 		useTimes = false;
 	}
 
-	protected override void ChangeValues () {
+	protected override bool ChangeValues () {
 		if (useTimes) {
 			if (ApplyToAll)
 				AdjustAllSubtitlesTime();
@@ -52,6 +52,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 			else
 				AdjustSubtitlesFrames();
 		}
+		return true;
 	}
 
 	private void AdjustAllSubtitlesTime () {

@@ -28,8 +28,10 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 		this.reselect = reselect;
 	}
 
-	public override void Execute () {
-		ChangeValues();
+	public override bool Execute () {
+		bool completed = ChangeValues();
+		if (!completed)
+			return false;
 		
 		if (reselect)
 			Global.GUI.View.Selection.Select(Path, true, true);
@@ -39,6 +41,7 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 		}
 		
 		PostProcess();
+		return true;
 	}
 
 	public override void Undo () {
@@ -49,8 +52,8 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 	
 	/* Methods to be extended */
 	
-	protected virtual void ChangeValues () {
-		return;
+	protected virtual bool ChangeValues () {
+		return true;
 	}
 	
 	protected virtual void PostProcess () {

@@ -39,7 +39,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		useTimes = false;
 	}
 
-	protected override void ChangeValues () {
+	protected override bool ChangeValues () {
 		if (useTimes) {
 			if (ApplyToAll)
 				ShiftAllSubtitlesTime();
@@ -52,6 +52,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 			else
 				ShiftSubtitlesFrames();
 		}
+		return true;
 	}
 	
 	/* Private Members */

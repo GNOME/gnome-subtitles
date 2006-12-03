@@ -39,9 +39,10 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 	
 	/* Public members */
 
-	public override void Execute () {
+	public override bool Execute () {
 		InsertNew();
 		subtitle = Global.Subtitles[newPath];
+		return true;
 	}
 	
 	public override void Undo () {
