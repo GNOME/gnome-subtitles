@@ -26,21 +26,29 @@ public abstract class MultipleSelectionCommand : Command {
 	private TreePath focus = null;
 	private SelectionType selectionType;
 	
+	
+	public MultipleSelectionCommand (string description, bool canGroup, SelectionType selectionType) : this(description, canGroup, selectionType, true) {
+	}
+	
 	/// <summary>Base constructor for classes that inherit <see cref="MultipleSelectionCommand" />.</summary>
 	/// <param name="description">The description of the command.</param>
 	/// <param name="canGroup">Whether to group the command with similar commands.</param>
 	/// <param name="type">The type of selection.</param>
-	public MultipleSelectionCommand (string description, bool canGroup, SelectionType selectionType) : base(description, canGroup) {
+	/// <param name="setPaths">Whether to set the paths based on the current selection and the selectionType</param>
+	public MultipleSelectionCommand (string description, bool canGroup, SelectionType selectionType, bool setPaths) : base(description, canGroup) {
 		this.selectionType = selectionType;
-		switch (selectionType) {
-			case SelectionType.Simple:
-				this.paths = Global.GUI.View.Selection.Paths;
-				this.focus = Global.GUI.View.Selection.Focus;
-				break;
-			case SelectionType.Range:
-				this.paths = Global.GUI.View.Selection.Range;
-				this.focus = Global.GUI.View.Selection.Focus;
-				break;
+		
+		if (setPaths) {
+			switch (selectionType) {
+				case SelectionType.Simple:
+					this.paths = Global.GUI.View.Selection.Paths;
+					this.focus = Global.GUI.View.Selection.Focus;
+					break;
+				case SelectionType.Range:
+					this.paths = Global.GUI.View.Selection.Range;
+					this.focus = Global.GUI.View.Selection.Focus;
+					break;
+			}
 		}
 	}
 	
@@ -48,10 +56,12 @@ public abstract class MultipleSelectionCommand : Command {
 	
 	protected TreePath[] Paths {
 		get { return paths; }
+		set { paths = value; }
 	}
 	
 	protected TreePath Focus {
 		get { return focus; }
+		set { focus = value; }
 	}
 
 	protected SelectionType SelectionType {
