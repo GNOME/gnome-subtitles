@@ -88,6 +88,11 @@ public class Menus {
 		SetCheckMenuItemActivity(MovieFrameRateMenuItem(movieFrameRate), true, Global.Handlers.OnMovieFrameRate);
 	}
 	
+	public void EnableFindNextPrevious () {
+		SetSensitivity(WidgetNames.FindNextMenuItem, true);
+		SetSensitivity(WidgetNames.FindPreviousMenuItem, true);
+	}
+	
 	/* Static members */
 	
 	static public float FrameRateFromMenuItem (string menuItem) {
@@ -139,6 +144,11 @@ public class Menus {
 		SetSensitivity(WidgetNames.CutMenuItem, false);
 		SetSensitivity(WidgetNames.CopyMenuItem, false);
 		SetSensitivity(WidgetNames.PasteMenuItem, false);
+		/* Search Menu */
+		SetSensitivity(WidgetNames.FindMenuItem, false);
+		SetSensitivity(WidgetNames.FindNextMenuItem, false);
+		SetSensitivity(WidgetNames.FindPreviousMenuItem, false);
+		SetSensitivity(WidgetNames.ReplaceMenuItem, false);
 		/* Toolbar */
 		SetSensitivity(WidgetNames.SaveButton, false);
 		SetSensitivity(WidgetNames.UndoButton, false);
@@ -163,6 +173,9 @@ public class Menus {
 			/* View Menu */
 			SetSensitivity(WidgetNames.TimesMenuItem, true);
 			SetSensitivity(WidgetNames.FramesMenuItem, true);
+			/* Search Menu */
+			SetSensitivity(WidgetNames.FindMenuItem, true);
+			SetSensitivity(WidgetNames.ReplaceMenuItem, true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
 			/* Common for Format Menu and Toolbar*/
@@ -175,6 +188,9 @@ public class Menus {
 			SetSensitivity(WidgetNames.CutMenuItem, false);
 			SetSensitivity(WidgetNames.CopyMenuItem, false);
 			SetSensitivity(WidgetNames.PasteMenuItem, false);
+			/* Search Menu */
+			SetSensitivity(WidgetNames.FindNextMenuItem, false);
+			SetSensitivity(WidgetNames.FindPreviousMenuItem, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
