@@ -30,7 +30,6 @@ public class Search {
 	private SearchDialog dialog = null;
 
 	public Search () {
-		
 	}
 	
 	/* Public members */
@@ -44,6 +43,8 @@ public class Search {
 	}
 
 	public bool Find () {
+		Global.GUI.Menus.EnableFindNextPrevious();
+		
 		if (dialog.Backwards)
 			return FindPrevious();
 		else
@@ -66,6 +67,19 @@ public class Search {
 		Global.GUI.Edit.ReplaceSelection(replacement);
 		
 		return Find();
+	}
+	
+	public void ReplaceAll () {
+		Global.CommandManager.Execute(new ReplaceAllCommand(dialog.ForwardRegex, dialog.Replacement));
+	}
+	
+	/// <summary>Does some cleanup to make sure the dialog is like a brand new one.</summary>
+	/// <remarks>The old dialog is closed and nullified</remarks>
+	public void Clear () {
+		if (dialog != null) {
+			dialog.CloseDialog();
+			dialog = null;
+		}			
 	}
 	
 	/* Private properties */
@@ -152,7 +166,6 @@ public class Search {
 			newEnd = end;		
 		}
 	}
-
 
 }
 
