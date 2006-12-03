@@ -123,6 +123,21 @@ public class Util {
 		return new TreePath(index.ToString());
 	}
 	
+	/// <summary>Returns an array of <see cref="TreePath" /> from an array of ints.</summary>
+	public static TreePath[] IntsToPaths (int[] indexes) {
+		if (indexes == null)
+			return null;
+		
+		int length = indexes.Length;
+		TreePath[] paths = new TreePath[length];
+		for (int position = 0 ; position < length ; position++) {
+			int index = indexes[position];
+			TreePath path = IntToPath(index);
+			paths[position] = path;
+		}
+		return paths;
+	}
+	
 	/// <summary>Returns the path that succeeds the specified path.</summary>
 	public static TreePath PathNext (TreePath path) {
 		int newIndex = PathToInt(path) + 1;
