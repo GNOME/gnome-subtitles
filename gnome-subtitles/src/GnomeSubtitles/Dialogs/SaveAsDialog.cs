@@ -41,14 +41,16 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 	private ComboBox encodingComboBox;
 
 	public SaveAsDialog () : base(dialogName) {
-		dialog.DoOverwriteConfirmation = true;
-		
 		if (Global.Subtitles.Properties.IsFilePathRooted)
 			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-		
+			
 		dialog.CurrentName = Global.Subtitles.Properties.FileName;
+
+		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
+		   while in this constructor. After constructing it works fine. */
+
 		FillFormatComboBox();
 		FillEncodingComboBox(encodingComboBox);
 	}
@@ -77,7 +79,7 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 				microDVDTypeNumber = currentTypeNumber;
 			else if (type == SubtitleType.SubRip)
 				subRipTypeNumber = currentTypeNumber;
-				
+			
 			formatComboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
 			currentTypeNumber++;
 		}
@@ -168,10 +170,14 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 	private void OnFormatChanged (object o, EventArgs args) {
 		SubtitleType type = subtitleTypes[formatComboBox.Active].Type;
 		string filename = dialog.Filename;
+		if ((filename == null) || (filename == String.Empty))
+			return;
+
 		string folder = dialog.CurrentFolder;
-		if (folder.Length != 0) {
+		if ((folder != null) && (folder != String.Empty)) {
 			filename = filename.Substring(folder.Length + 1);
 		}
+
 		filename = UpdateFilenameExtension(filename, type);
 		dialog.CurrentName = filename;
 	}

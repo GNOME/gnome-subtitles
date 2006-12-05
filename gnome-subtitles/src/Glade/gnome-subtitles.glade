@@ -2,7 +2,11 @@
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
 <!-- Generated with glade3
 	Version: 3.0.1
+<<<<<<< .mine
+	Date: Tue Dec  5 18:41:26 2006
+=======
 	Date: Sun Dec  3 00:49:16 2006
+>>>>>>> .r393
 	User: noup
 	Host: nouplab
 -->
@@ -951,13 +955,17 @@
     </child>
   </widget>
   <widget class="GtkFileChooserDialog" id="saveAsDialog">
+    <property name="use_preview_label">False</property>
+    <property name="do_overwrite_confirmation">True</property>
+    <property name="preview_widget_active">False</property>
     <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <property name="visible">True</property>
     <property name="title">Save As</property>
     <property name="modal">True</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
+    <property name="destroy_with_parent">True</property>
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
-    <property name="skip_taskbar_hint">True</property>
+    <property name="has_separator">False</property>
     <signal name="response" handler="OnResponse"/>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialogVBox">
