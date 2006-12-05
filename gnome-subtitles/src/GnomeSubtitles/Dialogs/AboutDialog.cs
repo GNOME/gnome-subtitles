@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gtk;
 using System;
 
 namespace GnomeSubtitles {
@@ -57,6 +58,21 @@ public class AboutDialog : GladeDialog {
 		dialog.Comments += "\n\nUsing SubLib " + ExecutionInfo.SubLibVersion;
 		dialog.Version = ExecutionInfo.Version;
 		dialog.Logo = Global.GUI.Window.Icon;
+	}
+
+	/* Event members */
+
+	#pragma warning disable 169             //Disables warning about handlers not being used
+
+	private void OnResponse (object o, ResponseArgs args) {
+		switch (args.ResponseId) {
+			case ResponseType.Close:
+				CloseDialog();
+				break;
+			case ResponseType.Cancel:
+				CloseDialog();
+				break;
+		}
 	}
 
 }
