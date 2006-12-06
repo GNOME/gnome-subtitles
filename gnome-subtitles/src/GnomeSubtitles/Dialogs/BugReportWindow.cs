@@ -57,7 +57,10 @@ public class BugReportWindow {
 	private void AddBugText (Exception exception) {
 		string text = String.Empty;
 		text += "Gnome Subtitles version: " + ExecutionInfo.Version + "\n";
-		text += "SubLib version: " + ExecutionInfo.SubLibVersion + "\n\n";
+		text += "SubLib version: " + ExecutionInfo.SubLibVersion + "\n";
+		text += "GnomeSharp version: " + ExecutionInfo.GnomeSharpVersion + "\n";
+		text += "GtkSharp version: " + ExecutionInfo.GtkSharpVersion + "\n";
+		text += "GladeSharp version: " + ExecutionInfo.GladeSharpVersion + "\n\n";
 		text += "Stack trace:" + "\n";
 		text += exception.ToString();
 		

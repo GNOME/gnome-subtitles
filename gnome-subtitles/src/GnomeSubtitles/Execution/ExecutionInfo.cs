@@ -52,6 +52,18 @@ public class ExecutionInfo {
 		get { return RemoveTrailingZeros(Assembly.ReflectionOnlyLoad(subLibAssemblyName).GetName().Version.ToString()); }
 	}
 	
+	 public static string GnomeSharpVersion {
+                get { return RemoveTrailingZeros(Assembly.Load("gnome-sharp").GetName().Version.ToString()); }
+        }
+
+	public static string GtkSharpVersion {
+                get { return RemoveTrailingZeros(Assembly.Load("gtk-sharp").GetName().Version.ToString()); }
+        }
+
+	public static string GladeSharpVersion {
+                get { return RemoveTrailingZeros(Assembly.Load("glade-sharp").GetName().Version.ToString()); }
+        }
+	
 	public static string GladeMasterFileName {
 		get { return gladeMasterFileName; }
 	}
