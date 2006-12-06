@@ -6,14 +6,13 @@ http://gsubtitles.sf.net
 Easy
 ====
 
-* Hide the file's extension when saving a file (it's appended automatically)
+* Only "insert after" should be enabled when no subtitles exist
 * Add support to copy subtitles from the View to the clipboard (currently only copies text from the subtitle editing area
 * Improve autogen.sh and configure.in (require automake 1.9)
 * Change timing mode when "saving as" using a different timing mode
 * Add Ctrl+Z for Undo (and the respective for Redo)
 * Autoselect "Apply to selection" if there are subtitles selected when shift/etc dialogs are shown
 * Check the bug report window. It should also point to the forums, in case no registration is intended.
-* Only "insert after" should be enabled when no subtitles exist
 * ChangeTextCommand should store the position of the cursor
 * Change dialogs in what concerns the selection type (e.g., Ranges)
 * Document the key shortcuts
@@ -22,7 +21,6 @@ Hard
 ====
 
 * Check support for latest versions of mono and gtk-sharp
-* Add Find/Replace dialog(s)
 * Add support for subtitle translation
 * Add spell-check support
 * Add status bar
@@ -49,7 +47,6 @@ Refactoring
 * Move widget names in WidgetNames to the corresponding classes of the user interface
 * Move handlers in EventHandlers to the corresponding classes of the user interface
 * Review widget names in glade
-* Sort "Using" references alphabetically and remove those that are not used.
 * Change "fileName" occurrences to "filename"
 * Change to "Movie" occurences to "Video"
 * Use Util.PathIndex in all places where path indexes are used
@@ -76,3 +73,6 @@ Changes
 * When creating a blank subtitle file, the subtitle that is auto-inserted is added as
     a command, so Undo can be used to remove it
 * Next and Previous subtitles should scroll too
+* Fixed crasher in SaveAs dialog.
+* Fixed bug with About dialog not being closed
+* Added Find/Replace with regular expressions
