@@ -66,9 +66,11 @@ public class WidgetNames {
 	public const string CutButton = "toolbuttonCut";
 	public const string CopyButton = "toolbuttonCopy";
 	public const string PasteButton = "toolbuttonPaste";
-	public const string BoldButton = "toggletoolbuttonBold";
-	public const string ItalicButton = "toggletoolbuttonItalic";
-	public const string UnderlineButton = "toggletoolbuttonUnderline";
+	public const string FindButton = "toolbuttonFind";
+	public const string ReplaceButton = "toolbuttonReplace";
+	public const string BoldButton = "toolbuttonBold";
+	public const string ItalicButton = "toolbuttonItalic";
+	public const string UnderlineButton = "toolbuttonUnderline";
 	
 	
 	/* Subtitle View */
