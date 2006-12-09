@@ -156,6 +156,8 @@ public class Menus {
 		SetSensitivity(WidgetNames.CutButton, false);
 		SetSensitivity(WidgetNames.CopyButton, false);
 		SetSensitivity(WidgetNames.PasteButton, false);
+		SetSensitivity(WidgetNames.FindButton, false);
+		SetSensitivity(WidgetNames.ReplaceButton, false);
 		SetSensitivity(WidgetNames.BoldButton, false);
 		SetSensitivity(WidgetNames.ItalicButton, false);
 		SetSensitivity(WidgetNames.UnderlineButton, false);
@@ -178,6 +180,8 @@ public class Menus {
 			SetSensitivity(WidgetNames.ReplaceMenuItem, true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
+			SetSensitivity(WidgetNames.FindButton, true);
+			SetSensitivity(WidgetNames.ReplaceButton, true);
 			/* Common for Format Menu and Toolbar*/
 			SetStylesSensitivity(true);
 		}
@@ -308,8 +312,10 @@ public class Menus {
 	}
 	
 	private void SetToolbarHomogeneity () {
-		//Set this toolbutton homogeneous to false because it's a lot larger than the rest
-		(Global.GetWidget(WidgetNames.UnderlineButton) as ToolButton).Homogeneous = false;
+		Toolbar toolbar = Global.GetWidget(WidgetNames.Toolbar) as Toolbar;
+		Widget[] toolItems = toolbar.Children;
+		foreach (Widget item in toolItems)
+			(item as ToolItem).Homogeneous = false;		
 	}
 
 }
