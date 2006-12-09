@@ -55,7 +55,7 @@ public class EventHandlers {
 	public void OnHeaders (object o, EventArgs args) {
 		new HeadersDialog();
 	}
-	    
+
     public void OnQuit (object o, EventArgs args) {
 		Global.GUI.Quit();
 	}
@@ -174,6 +174,11 @@ public class EventHandlers {
 	
 	/*	Help Menu */
 	
+	public void OnHelpContents (object o, EventArgs args) {
+		Util.OpenUrl("http://gsubtitles.sourceforge.net/help");
+	}
+
+	
 	public void OnReportBug (object o, EventArgs args) {
 		Util.OpenBugReport();
 	}
@@ -193,7 +198,7 @@ public class EventHandlers {
     	Global.GUI.Quit();
     	args.RetVal = true;
     }
-    
+
     
     /* CommandManager related */
     
