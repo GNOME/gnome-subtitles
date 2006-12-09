@@ -162,9 +162,11 @@ public class GUI {
 			SubtitleType type = dialog.SubtitleType;
 			Encoding encoding = dialog.Encoding;
 			Global.Subtitles.SaveAs(filename, type, encoding);
-			Global.TimingMode = Global.Subtitles.Properties.TimingMode;
+			TimingMode newTimingMode = Global.Subtitles.Properties.TimingMode; 
+			Global.TimingMode = newTimingMode;
 			Global.CommandManager.WasModified = false;
 			UpdateWindowTitle(false);
+			OnToggleTimingMode(newTimingMode);
 			return true;
 		}
 		else
