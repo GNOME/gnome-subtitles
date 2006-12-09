@@ -51,12 +51,26 @@ public class Search {
 			return FindNext();
 	}
 
+	/// <summary>Finds the previous match.</summary>
+	/// <remarks>Find is only done if the FindPrevious menuitem is sensitive.</remarks>
+	/// <returns>Whether text was found.</returns>
 	public bool FindPrevious () {
-		return Find(true);
+		MenuItem item = Global.GetWidget(WidgetNames.FindPreviousMenuItem) as MenuItem;
+		if (item.Sensitive)
+			return Find(true);
+		else
+			return false;
 	}
 	
+	/// <summary>Finds the next match.</summary>
+	/// <remarks>Find is only done if the FindNext menuitem is sensitive.</remarks>
+	/// <returns>Whether text was found.</returns>
 	public bool FindNext () {
-		return Find(false);
+		MenuItem item = Global.GetWidget(WidgetNames.FindNextMenuItem) as MenuItem;
+		if (item.Sensitive)
+			return Find(false);
+		else
+			return false;
 	}
 	
 	public bool Replace () {
