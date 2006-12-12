@@ -27,6 +27,7 @@ public class AboutDialog : GladeDialog {
 
 	/* Constant strings */
 	private const string dialogName = "aboutDialog";
+	private const string logoFilename = "gnome-subtitles-logo.png";
 	
 
 	public AboutDialog () {
@@ -57,7 +58,8 @@ public class AboutDialog : GladeDialog {
 		dialog.Name = "Gnome Subtitles";
 		dialog.Comments += "\n\nUsing SubLib " + ExecutionInfo.SubLibVersion;
 		dialog.Version = ExecutionInfo.Version;
-		dialog.Logo = Global.GUI.Window.Icon;
+		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
+		dialog.CheckResize(); //TODO used for artifacts not to appear when the dialog is first displayed (they disappear when refreshing the window)
 	}
 
 	/* Event members */
