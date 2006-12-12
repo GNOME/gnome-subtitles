@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.2 on Sat Dec  9 01:07:30 2006 by noup@nouplab
+<!--Generated with glade3 3.0.2 on Tue Dec 12 18:12:57 2006 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -997,9 +997,9 @@
     </child>
   </widget>
   <widget class="GtkFileChooserDialog" id="saveAsDialog">
-    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
-    <property name="do_overwrite_confirmation">True</property>
     <property name="preview_widget_active">False</property>
+    <property name="do_overwrite_confirmation">True</property>
+    <property name="action">GTK_FILE_CHOOSER_ACTION_SAVE</property>
     <property name="use_preview_label">False</property>
     <property name="visible">True</property>
     <property name="title">Save As</property>
@@ -1123,8 +1123,9 @@
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
+    <property name="has_separator">False</property>
     <property name="copyright">Copyright © 2006 Pedro Castro</property>
-    <property name="comments">Movie subtitling for the Gnome desktop</property>
+    <property name="comments">Video subtitling for the GNOME desktop</property>
     <property name="website">http://gsubtitles.sf.net</property>
     <property name="license">Gnome Subtitles is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -1140,7 +1141,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</property>
     <property name="authors">Pedro Castro &lt;noup@users.sourceforge.net&gt;</property>
-    <property name="translator_credits">translator-credits</property>
+    <property name="artists">Stefan A. Keel (Sak)</property>
     <signal name="response" handler="OnResponse"/>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialogVBox">
