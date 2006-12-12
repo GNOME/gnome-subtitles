@@ -34,7 +34,7 @@ public class GUI {
 	
 	/* Constant strings */
 	private const string windowName = "mainWindow";
-	private const string iconFilename = "gnome-subtitles.svg";
+	private const string iconFilename = "gnome-subtitles.png";
 	
 	public GUI (EventHandlers handlers, out Glade.XML glade) {
 		glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, windowName);
