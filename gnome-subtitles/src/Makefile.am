@@ -14,16 +14,16 @@ GS_SOURCES = \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs
 
 GS_RESOURCES = \
-	$(srcdir)/Glade/gnome-subtitles.glade
+	$(srcdir)/Glade/gnome-subtitles.glade \
+	$(GS_DATADIR)/gnome-subtitles.png \
+	$(GS_DATADIR)/gnome-subtitles-logo.png
 
 GS_SYSTEM_REFERENCES = \
 	$(SUBLIB) \
 	Mono.Posix.dll
 
-GS_ICON = $(GS_DATADIR)/gnome-subtitles.svg
-
 $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
-	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(GS_RESOURCES:%=-resource:%) -resource:$(GS_ICON) $(GS_SOURCES)
+	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(GS_RESOURCES:%=-resource:%) $(GS_SOURCES)
 
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
