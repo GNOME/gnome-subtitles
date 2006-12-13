@@ -175,7 +175,7 @@ public class EventHandlers {
 	/*	Help Menu */
 	
 	public void OnHelpContents (object o, EventArgs args) {
-		Util.OpenUrl("http://gsubtitles.sourceforge.net/help");
+		Util.OpenUrl("http://gnome-subtitles.sourceforge.net/help");
 	}
 
 	

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PROJECT=gsubtitles
+PROJECT=gnome-subtitles
 CONFIGURE=configure.in
 
 : ${AUTOCONF=autoconf}
