@@ -1,3 +1,566 @@
+2006-12-13 [r418]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Set the
+	  sensitivity of the InsertSubtitleBefore menu when no subtitles
+	  are selected.
+
+2006-12-12 [r410-417]  noup:
+
+	* gnome-subtitles/data/Makefile.am: Updated to use the new artwork.
+
+	* gnome-subtitles/data/gnome-subtitles.png (added),
+	  gnome-subtitles/data/gnome-subtitles-logo.png (added): Added new
+	  artwork.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Updated to use the new
+	  artwork.
+
+	* gnome-subtitles/CREDITS: Added credits of the new artwork.
+
+	* gnome-subtitles/AUTHORS: Updated for release 0.1.
+
+	* gnome-subtitles/src/Makefile.am: Updated to use the new artwork.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Code
+	  cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs: Added
+	  new logo to the About dialog.
+
+2006-12-12 [r408-409]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Use the new PNG
+	  icon instead of the old SVG.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added artwork
+	  credits.
+
+2006-12-09 [r405-406]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: Reverted to
+	  the old behavior of not detecting whether the menuitems are
+	  sensitive when issuing FindNext and FindPrevious.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added
+	  accelerators for Find Next (F3), Find Previous (Shift+F3) and
+	  Redo (Ctrl+Y), besides the existing Gnome default accelerators.
+
+2006-12-09 [r403-404]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
+	  names for the Find and Replace toolbar buttons.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: FindNext and
+	  FindPrevious are now only activated when their corresponding menu
+	  items are sensitive.
+
+2006-12-09 [r399-402]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Added the Find
+	  and Replace toolbar buttons. Set the toolbar buttons not to
+	  homogeneous.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Update timing
+	  mode when issuing Save As.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Code
+	  cleanup. Added handler for Help Contents.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added some
+	  accelerators.
+
+2006-12-07 [r398]  noup:
+
+	* gnome-subtitles/TODO: Fixed GUI not changing the TimingMode when
+	  Saving As to a subtitle format with a TimingMode that's different
+	  than the one being used.
+
+2006-12-06 [r396-397]  noup:
+
+	* gnome-subtitles/TODO: Updated with fixed bugs and new changes.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/BugReportWindow.cs:
+	  Report the current version for gtk-sharp, gnome-sharp and
+	  glade-sharp in the bug report window.
+
+2006-12-05 [r395]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs: Fixed
+	  bug with About dialog not being closed when pressing Close.
+
+2006-12-05 [r394]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveAsDialog.cs: Fixed
+	  a crasher in the SaveAs dialog. There seems to be a bug that
+	  makes the dialog return null for its current filename and folder
+	  while in the constructor. Updated the properties in the glade
+	  file.
+
+2006-12-03 [r388-393]  noup:
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added Replace All.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Added
+	  Replace All.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs:
+	  CloseDialog and HideDialog are now public.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
+	  widget names for the Search menu items.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Util.cs: Added method to
+	  convert a list of integers into a list of TreePaths.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs: Clear
+	  the search environment on New Document.
+
+2006-12-03 [r387]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: Set FindNext
+	  and FindPrevious sensitivities when using Find. Added support for
+	  Replace All. Added support for clearing the dialog on
+	  NewDocument.
+
+2006-12-03 [r385-386]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Set sensitivity
+	  of Search menu items.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ReplaceAllCommand.cs
+	  (added): Command that performs ReplaceAll. Subtitles.ReplaceAll
+	  is only called once, on Execute. When issuing Undo and Redo,
+	  values are stored and swapped.
+
+2006-12-03 [r383-384]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/Command.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/FixedMultipleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/FixedSingleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTextCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:
+	  Execute now returns a boolean.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/MultipleSelectionCommand.cs:
+	  Allow to construct without immediately setting the paths and
+	  focus. Allow to set the paths and focus later. Execute now
+	  returns a boolean.
+
+2006-12-03 [r382]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Removed old
+	  Search elements from the Edit menu. Added a separator to the
+	  Search menu. Set the sensitivity on the Search menu items.
+
+2006-12-02 [r377-381]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
+	  Replace functionality. If the text to be replaced is the text
+	  currently selected, it replaces it. If not, it does a Find.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Minor
+	  modifications to handle Replace.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs: Added a
+	  method to replace the current selection. In only signals a single
+	  time with the whole change.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added
+	  accelerator to Replace, FindNext and FindPrevious menu items. Set
+	  SearchDialog buttons insensitive (except for Close).
+
+	* gnome-subtitles/CREDITS: Added Arch Linux packager.
+
+2006-11-30 [r376]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Code
+	  cleanup. Change the sensitivity of the Replace and ReplaceAll
+	  buttons when changing the text in the Find entry.
+
+2006-11-28 [r371-375]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Store
+	  both the regex to use when scanning forward but also the regex to
+	  use when scanning backwards.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs: Added
+	  a way to set a dialog as persistent, that is, it is hidden
+	  instead of destroyed, when closed.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Removed the
+	  KeyPressEvent to do Escape detection. It looks like this is a
+	  usability inconsistency in Gnome. In the future, buttons that
+	  close windows should be set with responseID = -6 in Glade, so
+	  Escape works.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs: Added
+	  method to get the bounds of the currently selected text, in case
+	  there's text selected.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: Search now
+	  uses the currently selected text's indexes instead of just the
+	  focus. This allows to switch from next and previous Find without
+	  repeating found elements.
+
+2006-11-28 [r370]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Connected
+	  KeyPress event to hide the dialog when pressing Escape.
+
+2006-11-26 [r369]  noup:
+
+	* gnome-subtitles/TODO: Updated the TODO.
+
+2006-11-26 [r367-368]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs (added): The
+	  search now includes most of the Find functionality. Replace
+	  functions aren't implemented yet.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: The
+	  search dialog now includes most of the Find functionality.
+	  Replace functions aren't implemented yet.
+
+2006-11-26 [r359-366]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs: Added
+	  methods to show and hide a dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs: Added a
+	  reference to Search, the search environment.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleSelection.cs:
+	  Focus now checks if there are selected subtitles. Added a method
+	  to select a single subtitle and, afterwards, part of its text,
+	  also focussing on it.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs: Changed
+	  SubtitleEdit.Sensitive to SubtitleEdit.Enabled. Added method to
+	  select text in the TextView and grab focus to it.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Changed
+	  SubtitleEdit.Sensitive to SubtitleEdit.Enabled.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
+	  handlers for Find, FindNext, FindPrevious and Replace. Only Find
+	  has most of the functionality done, no replace/replaceAll
+	  functionality ATM.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Improved the
+	  Search dialog with some commonly-used options. Also set the
+	  visibility to false, so the dialog is set before it's first
+	  shown. The buttons were also underlined, and handlers were handed
+	  to capture changes in the values (entries + checkbuttons).
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added Search.cs - a class to
+	  contain search operations.
+
+2006-11-24 [r358]  noup:
+
+	* gnome-subtitles/TODO: Updated refactoring tasks.
+
+2006-11-23 [r356-357]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleSelection.cs
+	  (added): This class includes everything related to selection.
+	  This also englobes focus and scrolling. Separate selection isn't
+	  done externaly now. These methods contain all the selection
+	  methods needed. Global refactoring. Most of the class is
+	  documented.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs (added):
+	  GladeWidget isn't used anymore. Global refactoring, the class is
+	  now a lot more self-contained. All members related to selection
+	  were moved to SubtitleSelection. A great part of the class is now
+	  documented. Created methods to deal with subtitle insertion and
+	  deletion. These methods are the main ones to be called, as they
+	  will call those in Subtitles.
+
+2006-11-23 [r354-355]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Subtitles.cs (added):
+	  Added indexer overloads and some other methods to handle the
+	  collection. The methods that handle insertion and removal now do
+	  a stronger validation of their arguments, so this class is more
+	  secure in overall.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs (added):
+	  GladeWidget isn't used anymore. Global refactoring, the class is
+	  now more self-contained, some members were removed, other were
+	  renamed to more self-explained method. Part of the code is now
+	  documented.
+
+2006-11-23 [r353]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs (added): Changed
+	  SubtitleView to View. Changed SubtitleEdit to Edit. GladeWidget
+	  isn't used anymore. Global refactoring, the class is now more
+	  self-contained, some members were removed, other were renamed to
+	  more self-explained method. Part of the code is now documented.
+
+2006-11-23 [r352]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Global.cs (added): New
+	  class to contain the properties to be globally accessed. This
+	  contains more or less what used to be in ApplicationCore.
+
+2006-11-23 [r349-351]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs (added):
+	  Updated to use the new Global. Code refactoring.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SelectionType.cs (added):
+	  Describes the type of a selection.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs (added): Updated
+	  to use the new Global. Code refactoring.
+
+2006-11-23 [r332-348]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs (added):
+	  Removed the names of dialog widgets, which are now inside the
+	  dialogs.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Util.cs (added): Global
+	  refactoring. Added methods to handle TreePaths. Documented the
+	  code.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Clipboards.cs (added):
+	  Global refactoring.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/CellRendererCenteredText.cs
+	  (added): Moved from SubtitleView.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core (added): Moved from
+	  SubtitleView.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs:
+	  Global refactoring.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs
+	  (added): Code cleanup. This needs a whole lotta love.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/OpenErrorDialog.cs
+	  (added): Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveAsDialog.cs
+	  (added): Save isn't performed inside the dialog. Only its
+	  properties are returned for the save to be performed outside (in
+	  GUI). Widget names are now handled inside the dialog. Code
+	  cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/OpenDialog.cs (added):
+	  Widget names are now handled inside the dialog. Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/ConfirmationDialog.cs
+	  (added): Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/BugReportWindow.cs
+	  (added): Widget names are now handled inside the dialog. Code
+	  cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs
+	  (added): Widget names are now handled inside the dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs
+	  (added): Refactored to include most properties of bothe the Open
+	  and the Save dialogs.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AdjustTimingsDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ShiftTimingsDialog.cs
+	  (added): Widget names are now handled inside the dialog. Now uses
+	  SubtitleSelection to specify the kind of selection to apply the
+	  command to.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs
+	  (added): Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileEncoding.cs
+	  (added): Moved from SubtitleFileChooserDialog
+
+2006-11-23 [r329-331]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs
+	  (added): Widget names are now handled inside the dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs (added): Widget names
+	  are now handled inside the dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs2 (removed): Source
+	  code file structure changed.
+
+2006-11-23 [r327-328]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs2/AboutDialog.cs:
+	  Widget names are now handled inside the dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs2 (added): Widget names
+	  are now handled inside the dialog.
+
+2006-11-23 [r326]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Application (removed): Source
+	  code file structure changed.
+
+2006-11-23 [r315-325]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs
+	  (added): Updated for the refactoring of the multiple selection
+	  commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs
+	  (added): Fixed some problems when handling the focus, the newly
+	  created subtitle is now focused besides being selected. Undo
+	  operation also afterwards selects the subtitle that was selected
+	  before running the command. This uses a different behavior
+	  whether the insertion is before, after or at. Code cleanup.
+	  Updated for the refactoring of the single selection commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs
+	  (added): Fixed some problems when handling the focus. Code
+	  cleanup. Updated for the refactoring of the multiple selection
+	  commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs
+	  (added): Updated for the refactoring of the single selection
+	  commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs
+	  (added): Updated for the refactoring of the single selection
+	  commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTextCommand.cs
+	  (added): Updated for the refactoring of the single selection
+	  commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs
+	  (added): Updated for the refactoring of the multiple selection
+	  commands.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs
+	  (added): When applying to All, all subtitles are now selected
+	  based on the new behavior of FixedMultipleSelectionCommand. When
+	  using the selection, a range is actually used, so selecting 2
+	  subtitles and using this command to adjust that selection will
+	  work on the range between the 2 selected paths.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/FixedMultipleSelectionCommand.cs
+	  (added): Contains the old behavior of MultipleSelectionCommand.
+	  Allows commands to be defined for a selection of subtitles. The
+	  command must not remove subtitles from the selection to be
+	  "fixed". Commands that inherit only have to define the
+	  ChangeValues method. All selection, scrolling and focussing is
+	  handled by this superclass. A PostProcess is also allowed for
+	  subclasses.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/MultipleSelectionCommand.cs
+	  (added): This is now a superclass of what it used to be, which
+	  has moved to FixedMultipleSelectionCommand. This basically allows
+	  to store a collection of selected paths, the one that's focused,
+	  and the SelectionType. On construction, it may also obtain the
+	  currently selected paths and focus.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/FixedSingleSelectionCommand.cs
+	  (added): Contains the old behavior of SingleSelectionCommand.
+	  Allows commands to be defined for the specific selection of a
+	  single subtitle. The command doesn't remove the selection,
+	  therefore it's "fixed". Commands that inherit only have to define
+	  the ChangeValues method. All selection, scrolling and focussing
+	  is handled by this superclass. A PostProcess is also allowed for
+	  subclasses.
+
+2006-11-23 [r308-314]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/SingleSelectionCommand.cs
+	  (added): The old behavior is now in FixedSingleSelectionCommand,
+	  which inherits from this class. This class now basicaly only
+	  holds a TreePath and possibly get the one that's currently
+	  selected when an instance is created.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs
+	  (added): All Commands are now in separate files.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/Command.cs (added):
+	  Separated from CommandManager.cs
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands (added): All Commands
+	  that were in Commands.cs are now in separate files. Updated for
+	  new source code file structure. The application dir has been
+	  replaced by the Core, Dialogs and Commands dirs.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Updated for new source code
+	  file structure.
+
+	* gnome-subtitles/src/Makefile.am: Updated for new source code file
+	  structure.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Global
+	  refactoring.
+
+2006-11-12 [r307]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Updated
+	  Find/Replace dialog.
+
+2006-11-10 [r306]  noup:
+
+	* gnome-subtitles/configure.in: Fixed bug which resulted in
+	  compilation errors when using a compiled sublib.dll in the build
+	  dir (instead of the sublib source dir).
+
+2006-11-09 [r305]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added initial
+	  interface of the Find/Replace dialog.
+
+2006-11-09 [r304]  noup:
+
+	* gnome-subtitles: Updated svn:ignore.
+
+2006-11-09 [r302-303]  noup:
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added Freedesktop
+	  RecentFiles implementation, from MonoDevelop.
+
+	* gnome-subtitles/src/External/Freedesktop.RecentFiles/RecentFiles.cs
+	  (added), gnome-subtitles/src/Makefile.am,
+	  gnome-subtitles/src/External/Freedesktop.RecentFiles (added),
+	  gnome-subtitles/src/External (added): Added Freedesktop
+	  RecentFiles implementation, from MonoDevelop.
+
+2006-11-09 [r297-301]  noup:
+
+	* gnome-subtitles/TODO: Updated TODO.
+
+	* gnome-subtitles/autogen.sh: Updated link. Actually, all the
+	  remaining links should be updated too.
+
+	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Code
+	  cleanup.
+
+	* gnome-subtitles/Makefile.am: Added CREDITS file.
+
+	* gnome-subtitles/configure.in: Updated to use the most recent
+	  arguments for macros.
+
+2006-10-30 [r285]  noup:
+
+	* gnome-subtitles/NEWS, gnome-subtitles/configure.in,
+	  gnome-subtitles/ChangeLog: Updated for release 0.0.3.
+
 2006-10-30 [r283-284]  noup:
 
 	* gnome-subtitles/TODO: Added dialog to handle errors on opening.

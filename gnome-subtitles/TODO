@@ -6,7 +6,6 @@ http://gsubtitles.sf.net
 Easy
 ====
 
-* Only "insert after" should be enabled when no subtitles exist
 * Add support to copy subtitles from the View to the clipboard (currently only copies text from the subtitle editing area
 * Improve autogen.sh and configure.in (require automake 1.9)
 * Add Ctrl+Z for Undo (and the respective for Redo)
@@ -14,12 +13,10 @@ Easy
 * Check the bug report window. It should also point to the forums, in case no registration is intended.
 * ChangeTextCommand should store the position of the cursor
 * Change dialogs in what concerns the selection type (e.g., Ranges)
-* Document the key shortcuts
 
 Hard
 ====
 
-* Check support for latest versions of mono and gtk-sharp
 * Add support for subtitle translation
 * Add spell-check support
 * Add status bar
@@ -60,19 +57,3 @@ Dependent
 * Add builtin movie previewing (#363412 - depending on GST#)
   Includes adding a movie previewer layer so multiple previewers can be used
   Try support for GST but also mplayer and xinelib, for instance
-
-
-Changes
-=======
-
-* Commands applied to all subtitles now select all subtitles
-* Commands applied to a range now select the range
-* Ctrl+Up/Down now scrolls too besides selecting the previous/next subtitle
-* Now scrolls to the current focus when a command is executed
-* When creating a blank subtitle file, the subtitle that is auto-inserted is added as
-    a command, so Undo can be used to remove it
-* Next and Previous subtitles should scroll too
-* Fixed crasher in SaveAs dialog.
-* Fixed bug with About dialog not being closed
-* Added Find/Replace with regular expressions
-* Change timing mode when "saving as" using a different timing mode

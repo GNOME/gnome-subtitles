@@ -1,6 +1,34 @@
 Gnome Subtitles
 ===============
 
+0.1 (13/12/2006)
+================
+
+- Added find/replace functionality, including searching with regular expressions
+- New artwork by Stefan A. Keel (Sak)
+- New keyboard shortcuts for the most used features (see list on Help page):
+  * Undo - Ctrl+Z
+  * Redo - Shift+Ctrl+Z or Ctrl+Y
+  * Insert Subtitle Before - Shift+Ctrl+Return
+  * Insert Subtitle After - Ctrl+Return
+  * Find - Ctrl+F
+  * Find Previous - Shift+Ctrl+G or Shift+F3
+  * Find Next - Ctrl+G or F3
+  * Replace - Ctrl+H
+  * Help contents - F1
+- Now works with the latest mono and gtk-sharp versions
+- Updated the way subtitles are selected, focused and scrolled, should have a
+  more natural feel now
+- Major global refactoring
+- When using "Save As", the current timing mode is updated to that of the new
+  subtitle format
+
+Bug fixes:
+- Find and Replace option (#363410)
+- "Save as" not working (#382278)
+- Close button in "About" window does not work (#383797)
+- Ctrl+Up/Down now scrolls too besides selecting the previous/next subtitle
+
 0.0.3 (30/10/2006)
 ==================
 
