@@ -20,7 +20,7 @@ Distribution:   Fedora Core 6
 %endif
 Group:          Applications/Multimedia
 License:        GPL
-URL:            http://gsubtitles.sourceforge.net/
+URL:            http://gnome-subtitles.sourceforge.net/
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
