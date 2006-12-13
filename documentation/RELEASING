@@ -1,19 +1,20 @@
-SubLib
-====================
-http://sublib.sf.net
+Gnome Subtitles
+=============================
+http://gnome-subtitles.sf.net
 
 
 RELEASE PROCEDURE
 =================
 
 	1. Revise base project files
-	2. Bump the version
+	2. Set shell variables
 	3. Commit changes and tag
-	4. Create source package
-	5. Create screenshots
-	6. Release packages
-	7. Verify integrity
+	4. Copy SubLib
+	5. Create source package
+	6. Create screenshots
+	7. Release sources
 	8. Notify
+	9. Packages
 
 
 1. Revise base project files
@@ -22,14 +23,16 @@ RELEASE PROCEDURE
 	- CREDITS
 	- README
 	- NEWS
-	- ChangeLog using svn2log:
-		svn log -v --xml https://svn.sourceforge.net/svnroot/gsubtitles/trunk/gnome-subtitles | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o changelog.txt
-
-
-2. Bump the version
-===================
-
+	- TODO
 	- configure.in: ACINIT
+	- ChangeLog using svn2log:
+		svn log -v --xml https://gnome-subtitles.svn.sourceforge.net/svnroot/gnome-subtitles/trunk/gnome-subtitles | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o ChangeLog
+
+
+2. Set shell variables
+======================
+
+	- GS_VERSION="0.1"
 
 
 3. Commit changes and tag
@@ -37,10 +40,19 @@ RELEASE PROCEDURE
 
 	- Commit changes for the release
 	- Tag the release with (replace VERSION):
-		svn copy https://svn.sourceforge.net/svnroot/gsubtitles/trunk/gnome-subtitles https://svn.sourceforge.net/svnroot/gsubtitles/tags/gnome-subtitles-VERSION -m "Tagging the VERSION release."
+		svn copy https://gnome-subtitles.svn.sourceforge.net/svnroot/gnome-subtitles/trunk/gnome-subtitles https://gnome-subtitles.svn.sourceforge.net/svnroot/gnome-subtitles/tags/gnome-subtitles-$GS_VERSION -m "Tagging the $GS_VERSION release."
+	- Check new version in:
+		http://svn.sourceforge.net/viewvc/gnome-subtitles/tags/
 
 
-4. Create source package
+4. Copy SubLib
+==============
+
+	- Extract the latest SubLib sources to the project dir
+	- Delete all files inside sublib/docs
+
+
+5. Create source package
 ========================
 
 	- Autogen autotools files with:
@@ -48,53 +60,49 @@ RELEASE PROCEDURE
 	- Package with:
 		make dist
 	- Test package with:
-		tar xzf gnome-subtitles-*.tar.gz && cd gnome-subtitles-* && ./configure && make && nant
+		tar xzf gnome-subtitles-$GS_VERSION.tar.gz && cd gnome-subtitles-$GS_VERSION && ./configure && make
 
 
-5. Create Screenshots
+6. Create Screenshots
 =====================
 
 	- Screenshots are to be created only if any of the windows/dialogs' aspect changes
 	- Create screenshots with:
 		gnome-screenshot --window --include-border --delay=5 --border-effect=shadow
-	- Screenshots for website:
-		- Flatten images with white background
-		- Remove black pixels from window corners
-		- Correct the shadow on the top right corner (white paint with 30% opacity)
+	- Flatten images with white background
 	- Screenshots for sf.net project page:
 		- Rescale to maximum 640x480 with cubic method
 		- Sharpen with a factor of 30
 
 
-6. Release packages
+7. Release sources
 ===================
 
 	- Add to File Release System in Sourceforge
+	- Verify integrity
+	- Build the source package using the "Test package with" commands above
 	- Send Email Release Notice in the File Release System
 
-
-7. Verify integrity
-===================
-
-	- Download released files to temporary dir and cd to that dir
-	- Create the checksum with the locally created file and use it to check the downloaded files, with:
-		md5sum gnome-subtitles-VERSION.tar.gz > md5result && mv md5result /path/to/downloaded/package/dir && cd /path/to/downloaded/package/dir && md5sum --check md5result && rm md5result
-	- Build the source package using the "Test package with" commands above
-	
 
 8. Notify
 =========
 
-	- Post screenshots in Sourceforge project page
-	- Post news in Sourceforge project page
+	- Update the Sourceforge project page:
+		Screenshots
+		News
 	- Update Gnome Subtitles website:
 		About
 		Download
-		Screenshots (upload new screenshots to the project's web area)
+		Screenshots
 		News
 	- Update freshmeat page
+	- Update Gnome-files.org page
 	- Send mail to the Gnome Announce mailing list
 	- Send mail to the Gnome Subtitles mailing list
-	- Update Gnome-files.org page
-	- Update Gentoo Ebuild
-	- Update threads in distro's forums, RNL forum
+	- Update threads in distro's forums
+
+9. Packages
+===========
+
+	- Make changes to the Gentoo ebuild
+	- Notify packagers
