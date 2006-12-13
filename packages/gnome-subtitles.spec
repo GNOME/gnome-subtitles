@@ -79,6 +79,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 13 2006 - Pedro Castro <noup users.sourceforge.net>
+- Updated the website URL.
 * Tue Oct 31 2006 - Damien Carbery <daymobrew users.sourceforge.net>
 - Merged with the SUSE Linux spec file.
 * Tue Oct 31 2006 - Henrique Malheiro <henrique.malheiro gmail.com>
