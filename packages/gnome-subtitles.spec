@@ -8,7 +8,7 @@
 #
 Name:           gnome-subtitles
 Summary:        Movie subtitling for the Gnome desktop
-Version:        0.0.3
+Version:        0.1
 Release:        1
 %define OnSuSE   %(test -f /etc/SuSE-release && echo 1 || echo 0)
 %define OnFedora %(test -f /etc/redhat-release && echo 1 || echo 0)
@@ -46,7 +46,7 @@ BuildRequires:  gnome-sharp2 >= 2.8
 %endif
 
 %description
-Gnome Subtitles is a subtitle editor for the GNOME Desktop. It supports the most
+Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports the most
 common subtitle formats and allows for subtitle editing, conversion and
 synchronization.
 
@@ -81,6 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Wed Dec 13 2006 - Pedro Castro <noup users.sourceforge.net>
 - Updated the website URL.
+- Updated for release 0.1.
 * Tue Oct 31 2006 - Damien Carbery <daymobrew users.sourceforge.net>
 - Merged with the SUSE Linux spec file.
 * Tue Oct 31 2006 - Henrique Malheiro <henrique.malheiro gmail.com>
