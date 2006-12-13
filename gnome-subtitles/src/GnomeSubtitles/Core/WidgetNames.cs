@@ -35,6 +35,7 @@ public class WidgetNames {
 	public const string CopyMenuItem = "copyMenuItem";
 	public const string PasteMenuItem = "pasteMenuItem";
 	public const string InsertSubtitleMenuItem = "insertSubtitleMenuItem";
+	public const string InsertSubtitleBeforeMenuItem = "insertSubtitleBeforeMenuItem";
 	public const string DeleteSubtitlesMenuItem = "deleteSubtitlesMenuItem";
 	
 	/* View Menu */

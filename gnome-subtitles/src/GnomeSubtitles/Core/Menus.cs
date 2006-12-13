@@ -115,7 +115,8 @@ public class Menus {
 	
 	private void SetSelectionDependentSensitivity (bool sensitivity) {
 		SetStylesSensitivity(sensitivity);
-		SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, sensitivity);	
+		SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.InsertSubtitleBeforeMenuItem, sensitivity);
 	}
 	
 	private void SetSubtitleCountDependentSensitivity (int count) {
@@ -129,7 +130,7 @@ public class Menus {
 		}
 		else {
 			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, true);
-			SetSensitivity(WidgetNames.ShiftMenuItem, true);		
+			SetSensitivity(WidgetNames.ShiftMenuItem, true);
 		}	
 	}
 	
