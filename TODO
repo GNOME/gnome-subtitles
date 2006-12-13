@@ -1,0 +1,59 @@
+Gnome Subtitles
+========================
+http://gsubtitles.sf.net
+
+
+Easy
+====
+
+* Add support to copy subtitles from the View to the clipboard (currently only copies text from the subtitle editing area
+* Improve autogen.sh and configure.in (require automake 1.9)
+* Add Ctrl+Z for Undo (and the respective for Redo)
+* Autoselect "Apply to selection" if there are subtitles selected when shift/etc dialogs are shown
+* Check the bug report window. It should also point to the forums, in case no registration is intended.
+* ChangeTextCommand should store the position of the cursor
+* Change dialogs in what concerns the selection type (e.g., Ranges)
+
+Hard
+====
+
+* Add support for subtitle translation
+* Add spell-check support
+* Add status bar
+* Add support for merging subtitles
+* Add support for storing recent files - use RecentFiles from MonoDevelop
+* Mark file as changed (show asterisk) when modifying headers
+    - Compare each header to the one in Subtitles to see if it has changed
+    - GUI.SetWindowTitle
+* Add support for choosing the character encodings to be used in the open and save dialogs
+  Includes adding a gconf access layer (to store used encodings) and a dialog for choosing encodings
+* Save the scrolling state for documents (and perhaps other things, like the window size), like Evince does
+  Includes storing these somewhere, again
+* Star/mark subtitles, like in GMail
+* Add localization support
+* Create help documentation
+* Add MIME type support
+
+
+Refactoring
+===========
+
+* Put each glade dialog in a separate file
+* Get rid of WidgetNames - use separate functions and WidgetAttribute to autoconnect handlers
+* Move widget names in WidgetNames to the corresponding classes of the user interface
+* Move handlers in EventHandlers to the corresponding classes of the user interface
+* Review widget names in glade
+* Change "fileName" occurrences to "filename"
+* Change to "Movie" occurences to "Video"
+* Use Util.PathIndex in all places where path indexes are used
+* Update the way timing mode change is propagated (UpdateFromTimingMode)
+* Change the way frame rates are changed and set (including in their commands)
+* Put [WidgetAttribute] on the same line as widget declarations
+* Start using Actions
+
+Dependent
+=========
+
+* Add builtin movie previewing (#363412 - depending on GST#)
+  Includes adding a movie previewer layer so multiple previewers can be used
+  Try support for GST but also mplayer and xinelib, for instance
