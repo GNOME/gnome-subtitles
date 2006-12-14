@@ -6,17 +6,15 @@
 #               Pedro Castro <noup users.sourceforge.net>
 #
 #
+%define dist	%(test -f /etc/redhat-release && echo .fc`rpm -qf --qf='%{VERSION}' /etc/redhat-release`)
+%define OnSuSE   %(test -f /etc/SuSE-release && echo 1 || echo 0)
+
 Name:           gnome-subtitles
 Summary:        Movie subtitling for the Gnome desktop
 Version:        0.1
-Release:        1
-%define OnSuSE   %(test -f /etc/SuSE-release && echo 1 || echo 0)
-%define OnFedora %(test -f /etc/redhat-release && echo 1 || echo 0)
+Release:        1%dist
 %if %OnSuSE
 Distribution:   SuSE 10.1
-%endif
-%if %OnFedora
-Distribution:   Fedora Core 6
 %endif
 Group:          Applications/Multimedia
 License:        GPL
@@ -43,6 +41,11 @@ BuildRequires:  gtk-sharp2 >= 2.8
 %if %OnSuSE
 BuildRequires:  glade-sharp2 >= 2.8
 BuildRequires:  gnome-sharp2 >= 2.8
+%endif
+
+%if "%fedora" >= "6"
+BuildRequires:	gtk-sharp2-devel >= 2.10
+BuildRequires:	gnome-sharp-devel >= 2.16
 %endif
 
 %description
@@ -74,11 +77,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.svg
+%{_datadir}/pixmaps/%{name}.png
 %doc README NEWS AUTHORS COPYING CREDITS TODO
 
 
 %changelog
+* Thu Dec 14 2006 - Henrique Malheiro <henrique.malheiro@gmail.com>
+- Updated the application icon extension from svg to png.
+- Updated the build requirements for fedora core 6 to include gtk-sharp2-devel
+  and gnome-sharp-devel.
+- Added the dist tag for using the same spec file for both distributions, fedora
+  core 5 and fedora core 6 and removed the distribution tag for fedora. This
+  will be useful for Fedora Core Extras.
 * Wed Dec 13 2006 - Pedro Castro <noup users.sourceforge.net>
 - Updated the website URL.
 - Updated for release 0.1.
