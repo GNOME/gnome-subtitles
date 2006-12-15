@@ -10,7 +10,7 @@
 %define OnSuSE   %(test -f /etc/SuSE-release && echo 1 || echo 0)
 
 Name:           gnome-subtitles
-Summary:        Movie subtitling for the Gnome desktop
+Summary:        Video subtitling for the GNOME desktop
 Version:        0.1
 Release:        1%dist
 %if %OnSuSE
@@ -18,7 +18,7 @@ Distribution:   SuSE 10.1
 %endif
 Group:          Applications/Multimedia
 License:        GPL
-URL:            http://gnome-subtitles.sourceforge.net/
+URL:            http://gnome-subtitles.sf.net/
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
