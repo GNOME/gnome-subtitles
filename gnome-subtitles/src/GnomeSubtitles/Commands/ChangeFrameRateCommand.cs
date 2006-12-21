@@ -59,10 +59,10 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 	}
 }
 
-public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = "Changing Movie Frame Rate";
+public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
+	private	static string description = "Changing Video Frame Rate";
 
-	public ChangeMovieFrameRateCommand (float frameRate) : base(description, frameRate) {
+	public ChangeVideoFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}
 	
 	protected override float GetFrameRate () {
@@ -74,7 +74,7 @@ public class ChangeMovieFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override void UpdateMenuItem () {
-		Global.GUI.Menus.UpdateActiveMovieFrameRateMenuItem();
+		Global.GUI.Menus.UpdateActiveVideoFrameRateMenuItem();
 	}
 }
 
