@@ -19,8 +19,9 @@
 
 using Gnome;
 using Gtk;
-using System;
+using Pango; //TODO delete
 using SubLib;
+using System;
 
 namespace GnomeSubtitles {
 
@@ -36,118 +37,138 @@ public class EventHandlers {
 	
 	/* File Menu */
 	
-	public void OnNew (object o, EventArgs args) {
-		Global.GUI.New(String.Empty);
+	public void OnFileNew (object o, EventArgs args) {
+		//Global.GUI.New(String.Empty); TODO uncomment
+		/*Gnome.Font font = Gnome.Font.FindClosestFromFullName("arial");
+		Console.WriteLine(font.FamilyName);
+		Console.WriteLine(font.FontName);
+		Console.WriteLine(font.FullName);
+		Console.WriteLine(font.ItalicAngle);
+		Console.WriteLine(font.Size);
+		Pango.Font pango = font.GetClosestPangoFont();
+		Console.WriteLine(pango.Describe().ToFilename());*/
+		FontDescription desc = Pango.FontDescription.FromString("Arial");
+		System.Console.WriteLine(desc);
+		System.Console.WriteLine(desc.ToFilename());
+		
 	}
 	
-	public void OnOpen (object o, EventArgs args) {
+	public void OnFileOpen (object o, EventArgs args) {
 		Global.GUI.Open();
 	}
 	
-	public void OnSave (object o, EventArgs args) {
+	public void OnFileSave (object o, EventArgs args) {
 		Global.GUI.Save();
 	}
 	
-	public void OnSaveAs (object o, EventArgs args) {
+	public void OnFileSaveAs (object o, EventArgs args) {
 		Global.GUI.SaveAs();
 	}
 	
-	public void OnHeaders (object o, EventArgs args) {
+	public void OnFileHeaders (object o, EventArgs args) {
 		new HeadersDialog();
 	}
 
-    public void OnQuit (object o, EventArgs args) {
+    public void OnFileQuit (object o, EventArgs args) {
 		Global.GUI.Quit();
 	}
 	
 	
 	/* Edit Menu */
 	
-	public void OnUndo (object o, EventArgs args) {
+	public void OnEditUndo (object o, EventArgs args) {
 		Global.CommandManager.Undo();
 	}
 	
-	public void OnRedo (object o, EventArgs args) {
+	public void OnEditRedo (object o, EventArgs args) {
 		Global.CommandManager.Redo();
 	}
 	
-	public void OnCopy (object o, EventArgs args) {
+	public void OnEditCopy (object o, EventArgs args) {
 		Global.Clipboards.Copy();
 	}
 	
-	public void OnCut (object o, EventArgs args) {
+	public void OnEditCut (object o, EventArgs args) {
 		Global.Clipboards.Cut();
 	}
 	
-	public void OnPaste (object o, EventArgs args) {
+	public void OnEditPaste (object o, EventArgs args) {
 		Global.Clipboards.Paste();
 	}
 	
-	public void OnFind (object o, EventArgs args) {
-		Global.GUI.View.Search.ShowFind();
+	public void OnEditFormatBold (object o, EventArgs args) {
+		bool newBoldValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);  	
+		Global.CommandManager.Execute(new ChangeBoldStyleCommand(newBoldValue));
 	}
 	
-	public void OnFindNext (object o, EventArgs args) {
-		Global.GUI.View.Search.FindNext();
+	public void OnEditFormatItalic (object o, EventArgs args) {
+		bool newItalicValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
+		Global.CommandManager.Execute(new ChangeItalicStyleCommand(newItalicValue));
 	}
 	
-	public void OnFindPrevious (object o, EventArgs args) {
-		Global.GUI.View.Search.FindPrevious();
+	public void OnEditFormatUnderline (object o, EventArgs args) {
+		bool newUnderlineValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
+		Global.CommandManager.Execute(new ChangeUnderlineStyleCommand(newUnderlineValue));
 	}
 	
-	public void OnReplace (object o, EventArgs args) {
-		Global.GUI.View.Search.ShowReplace();
-	}
-	
-	public void OnInsertSubtitleBeforeSelection (object o, EventArgs args) {
+	public void OnEditInsertSubtitleBefore (object o, EventArgs args) {
 		Global.CommandManager.Execute(new InsertSubtitleBeforeCommand());
 	}
 	
-	public void OnInsertSubtitleAfterSelection (object o, EventArgs args) {
+	public void OnEditInsertSubtitleAfter (object o, EventArgs args) {
 		if (Global.Subtitles.Count == 0)
 			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
 		else
 			Global.CommandManager.Execute(new InsertSubtitleAfterCommand());
 	}
 	
-	public void OnDeleteSubtitles (object o, EventArgs args) {
+	public void OnEditDeleteSubtitles (object o, EventArgs args) {
 		if (Global.GUI.View.Selection.Count > 0)
 			Global.CommandManager.Execute(new DeleteSubtitlesCommand());
 	}
-	
-	
+
+
 	/* View Menu */
 	
-	public void OnTimes (object o, EventArgs args) {
+	public void OnViewTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
 			Global.GUI.OnToggleTimingMode(TimingMode.Times);
 	}
 
-	public void OnFrames (object o, EventArgs args) {
+	public void OnViewFrames (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
 			Global.GUI.OnToggleTimingMode(TimingMode.Frames);
 	}
 	
-	/* Format Menu */
-	
-	public void OnBold (object o, EventArgs args) {
-		bool newBoldValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);  	
-		Global.CommandManager.Execute(new ChangeBoldStyleCommand(newBoldValue));
+	public void OnViewVideo (object o, EventArgs args) {
+		if ((o as CheckMenuItem).Active)
+			Global.GUI.Video.Show();
+		else
+			Global.GUI.Video.Hide();
 	}
 	
-	public void OnItalic (object o, EventArgs args) {
-		bool newItalicValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
-		Global.CommandManager.Execute(new ChangeItalicStyleCommand(newItalicValue));
+	/* Search Menu */
+	
+		
+	public void OnSearchFind (object o, EventArgs args) {
+		Global.GUI.View.Search.ShowFind();
 	}
 	
-	public void OnUnderline (object o, EventArgs args) {
-		bool newUnderlineValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
-		Global.CommandManager.Execute(new ChangeUnderlineStyleCommand(newUnderlineValue));
+	public void OnSearchFindNext (object o, EventArgs args) {
+		Global.GUI.View.Search.FindNext();
+	}
+	
+	public void OnSearchFindPrevious (object o, EventArgs args) {
+		Global.GUI.View.Search.FindPrevious();
+	}
+	
+	public void OnSearchReplace (object o, EventArgs args) {
+		Global.GUI.View.Search.ShowReplace();
 	}
 	
 	/*	Timings Menu */
 	
-	public void OnInputFrameRate (object o, EventArgs args) {
+	public void OnTimingsInputFrameRate (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
 			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
@@ -155,20 +176,51 @@ public class EventHandlers {
 		}
 	}
 	
-	public void OnMovieFrameRate (object o, EventArgs args) {
+	public void OnTimingsVideoFrameRate (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
 			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
-			Global.CommandManager.Execute(new ChangeMovieFrameRateCommand(frameRate));
+			Global.CommandManager.Execute(new ChangeVideoFrameRateCommand(frameRate));
 		}
 	}
 	
-	public void OnAdjustTimings (object o, EventArgs args) {
+	public void OnTimingsAdjust (object o, EventArgs args) {
 		new AdjustTimingsDialog();	
 	}
 	
-	public void OnShift (object o, EventArgs args) {
+	public void OnTimingsShift (object o, EventArgs args) {
 		new ShiftTimingsDialog();
+	}
+	
+	
+	/* Video Menu */
+	
+	public void OnVideoOpen (object o, EventArgs args) {
+		VideoFileChooserDialog dialog = new VideoFileChooserDialog();
+		bool toOpen = dialog.WaitForResponse();
+		if (toOpen) {
+			System.Console.WriteLine("Setting view activity to true");
+			Global.GUI.Menus.SetViewVideoActivity(true);
+			Global.GUI.Menus.SetVideoSensitivity(true);
+			Global.GUI.Video.Open(dialog.Filename);
+		}
+	}
+	
+	public void OnVideoClose (object o, EventArgs args) {
+		Global.GUI.Video.Close();
+		Global.GUI.Menus.SetVideoSensitivity(false);
+	}
+
+	public void OnVideoPlayPause (object o, EventArgs args) {
+		Global.GUI.Video.TogglePlayPause();
+	}
+	
+	public void OnVideoRewind (object o, EventArgs args) {
+		Global.GUI.Video.Rewind();
+	}
+	
+	public void OnVideoForward (object o, EventArgs args) {
+		Global.GUI.Video.Forward();
 	}
 	
 	
@@ -178,16 +230,15 @@ public class EventHandlers {
 		Util.OpenUrl("http://gnome-subtitles.sourceforge.net/help");
 	}
 
-	
-	public void OnReportBug (object o, EventArgs args) {
+	public void OnHelpRequestFeature (object o, EventArgs args) {
 		Util.OpenBugReport();
 	}
 	
-	public void OnRequestFeature (object o, EventArgs args) {
+	public void OnHelpReportBug (object o, EventArgs args) {
 		Util.OpenBugReport();
 	}
 	
-	public void OnAbout (object o, EventArgs args) {
+	public void OnHelpAbout (object o, EventArgs args) {
 		new AboutDialog();
 	}
 	
@@ -206,7 +257,7 @@ public class EventHandlers {
     	Widget button = Global.GetWidget(WidgetNames.UndoButton);
     	button.Sensitive = !button.Sensitive;
     		
-		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.UndoMenuItem);
+		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditUndo);
 		menuItem.Sensitive = !menuItem.Sensitive;
 		if (!menuItem.Sensitive)
 			(menuItem.Child as Label).Text = "Undo";
@@ -216,7 +267,7 @@ public class EventHandlers {
     		Widget button = Global.GetWidget(WidgetNames.RedoButton);
     		button.Sensitive = !button.Sensitive;
     		
-		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.RedoMenuItem);
+		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditRedo);
     		menuItem.Sensitive = !menuItem.Sensitive;
     		if (!menuItem.Sensitive)
 			(menuItem.Child as Label).Text = "Redo";
@@ -228,14 +279,14 @@ public class EventHandlers {
     		string undoDescription = commandManager.UndoDescription;
     		ToolButton undoButton = (ToolButton)(Global.GetWidget(WidgetNames.UndoButton));
     		undoButton.SetTooltip(tooltips, undoDescription, null);
-    		MenuItem undoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.UndoMenuItem));
+    		MenuItem undoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.EditUndo));
     		(undoMenuItem.Child as Label).Text = undoDescription;
     	}
     	if (commandManager.CanRedo) {
 	    	string redoDescription = commandManager.RedoDescription;
     		ToolButton redoButton = (ToolButton)(Global.GetWidget(WidgetNames.RedoButton));
     		redoButton.SetTooltip(tooltips, redoDescription, null);
-    		MenuItem redoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.RedoMenuItem));
+    		MenuItem redoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.EditRedo));
     		(redoMenuItem.Child as Label).Text = redoDescription;
     	}
     }
@@ -243,6 +294,19 @@ public class EventHandlers {
     public void OnModified (object o, EventArgs args) {
 		Global.GUI.UpdateWindowTitle(true);
     }
+    
+    /* Video */
+
+	public void OnPlayPauseToggled (object o, EventArgs args) {
+    	if ((o as ToggleButton).Active)
+			Global.GUI.Video.Play();
+		else
+			Global.GUI.Video.Pause();
+	}
+
+	public void OnVideoSliderValueChanged (object o, EventArgs args) {
+		Global.GUI.Video.UpdateFromSliderValueChanged();
+	}
     
     /*	Subtitle View	*/
     
@@ -253,9 +317,9 @@ public class EventHandlers {
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
     	Gdk.Key key = args.Event.Key;
     	if (key == Gdk.Key.Delete)
-    		OnDeleteSubtitles(o, EventArgs.Empty);
+    		OnEditDeleteSubtitles(o, EventArgs.Empty);
 		else if (key == Gdk.Key.Insert)
-			OnInsertSubtitleAfterSelection(o, EventArgs.Empty);
+			OnEditInsertSubtitleAfter(o, EventArgs.Empty);
     }
     
     /*	Subtitle Edit	*/

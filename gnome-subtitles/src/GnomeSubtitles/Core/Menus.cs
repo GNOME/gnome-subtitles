@@ -61,36 +61,47 @@ public class Menus {
 	
 	public void SetActiveTimingMode () {
 		if (Global.TimingModeIsFrames)
-	    	SetCheckMenuItemActivity(WidgetNames.FramesMenuItem, true);
+	    	SetCheckMenuItemActivity(WidgetNames.ViewFrames, true);
 	    else
-	    	SetCheckMenuItemActivity(WidgetNames.TimesMenuItem, true);
+	    	SetCheckMenuItemActivity(WidgetNames.ViewTimes, true);
 	}
 	
 	public void SetCutCopySensitivity (bool sensitivity) {
-		SetSensitivity(WidgetNames.CutMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.CopyMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.EditCut, sensitivity);
+		SetSensitivity(WidgetNames.EditCopy, sensitivity);
 		SetSensitivity(WidgetNames.CutButton, sensitivity);
 		SetSensitivity(WidgetNames.CopyButton, sensitivity);		
 	}
 	
 	public void SetPasteSensitivity (bool sensitivity) {
-		SetSensitivity(WidgetNames.PasteMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.EditPaste, sensitivity);
 		SetSensitivity(WidgetNames.PasteButton, sensitivity);
 	}
 	
 	public void UpdateActiveInputFrameRateMenuItem () {
 		float inputFrameRate = Global.Subtitles.Properties.OriginalFrameRate;
-		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, Global.Handlers.OnInputFrameRate);
+		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, Global.Handlers.OnTimingsInputFrameRate);
 	}
 	
-	public void UpdateActiveMovieFrameRateMenuItem () {
-		float movieFrameRate = Global.Subtitles.Properties.CurrentFrameRate;
-		SetCheckMenuItemActivity(MovieFrameRateMenuItem(movieFrameRate), true, Global.Handlers.OnMovieFrameRate);
+	public void UpdateActiveVideoFrameRateMenuItem () {
+		float videoFrameRate = Global.Subtitles.Properties.CurrentFrameRate;
+		SetCheckMenuItemActivity(VideoFrameRateMenuItem(videoFrameRate), true, Global.Handlers.OnTimingsVideoFrameRate);
 	}
 	
 	public void EnableFindNextPrevious () {
-		SetSensitivity(WidgetNames.FindNextMenuItem, true);
-		SetSensitivity(WidgetNames.FindPreviousMenuItem, true);
+		SetSensitivity(WidgetNames.SearchFindNext, true);
+		SetSensitivity(WidgetNames.SearchFindPrevious, true);
+	}
+	
+	public void SetViewVideoActivity (bool activity) {
+		SetCheckMenuItemActivity(WidgetNames.ViewVideo, activity);
+	}
+	
+	public void SetVideoSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.VideoClose, sensitivity);
+		SetSensitivity(WidgetNames.VideoPlayPause, sensitivity);
+		SetSensitivity(WidgetNames.VideoRewind, sensitivity);
+		SetSensitivity(WidgetNames.VideoForward, sensitivity);
 	}
 	
 	/* Static members */
@@ -115,41 +126,41 @@ public class Menus {
 	
 	private void SetSelectionDependentSensitivity (bool sensitivity) {
 		SetStylesSensitivity(sensitivity);
-		SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, sensitivity);
-		SetSensitivity(WidgetNames.InsertSubtitleBeforeMenuItem, sensitivity);
+		SetSensitivity(WidgetNames.EditDeleteSubtitles, sensitivity);
+		SetSensitivity(WidgetNames.EditInsertSubtitleBefore, sensitivity);
 	}
 	
 	private void SetSubtitleCountDependentSensitivity (int count) {
 		if (count == 0) {
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
-			SetSensitivity(WidgetNames.ShiftMenuItem, false);
+			SetSensitivity(WidgetNames.TimingsAdjust, false);
+			SetSensitivity(WidgetNames.TimingsShift, false);
 		}
 		else if (count == 1) {
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, false);
-			SetSensitivity(WidgetNames.ShiftMenuItem, true);
+			SetSensitivity(WidgetNames.TimingsAdjust, false);
+			SetSensitivity(WidgetNames.TimingsShift, true);
 		}
 		else {
-			SetSensitivity(WidgetNames.AdjustTimingsMenuItem, true);
-			SetSensitivity(WidgetNames.ShiftMenuItem, true);
+			SetSensitivity(WidgetNames.TimingsAdjust, true);
+			SetSensitivity(WidgetNames.TimingsShift, true);
 		}	
 	}
 	
 	private void SetBlankSensitivity () {
 		/* File Menu */
-		SetSensitivity(WidgetNames.SaveMenuItem, false);
-		SetSensitivity(WidgetNames.SaveAsMenuItem, false);
-		SetSensitivity(WidgetNames.HeadersMenuItem, false);
+		SetSensitivity(WidgetNames.FileSave, false);
+		SetSensitivity(WidgetNames.FileSaveAs, false);
+		SetSensitivity(WidgetNames.FileHeaders, false);
 		/* Edit Menu */
-		SetSensitivity(WidgetNames.UndoMenuItem, false);
-		SetSensitivity(WidgetNames.RedoMenuItem, false);	
-		SetSensitivity(WidgetNames.CutMenuItem, false);
-		SetSensitivity(WidgetNames.CopyMenuItem, false);
-		SetSensitivity(WidgetNames.PasteMenuItem, false);
+		SetSensitivity(WidgetNames.EditUndo, false);
+		SetSensitivity(WidgetNames.EditRedo, false);	
+		SetSensitivity(WidgetNames.EditCut, false);
+		SetSensitivity(WidgetNames.EditCopy, false);
+		SetSensitivity(WidgetNames.EditPaste, false);
 		/* Search Menu */
-		SetSensitivity(WidgetNames.FindMenuItem, false);
-		SetSensitivity(WidgetNames.FindNextMenuItem, false);
-		SetSensitivity(WidgetNames.FindPreviousMenuItem, false);
-		SetSensitivity(WidgetNames.ReplaceMenuItem, false);
+		SetSensitivity(WidgetNames.SearchFind, false);
+		SetSensitivity(WidgetNames.SearchFindNext, false);
+		SetSensitivity(WidgetNames.SearchFindPrevious, false);
+		SetSensitivity(WidgetNames.SearchReplace, false);
 		/* Toolbar */
 		SetSensitivity(WidgetNames.SaveButton, false);
 		SetSensitivity(WidgetNames.UndoButton, false);
@@ -167,18 +178,18 @@ public class Menus {
 	private void SetNewDocumentSensitivity (bool wasLoaded) {
 		if (!wasLoaded) {	
 			/* File Menu */
-			SetSensitivity(WidgetNames.SaveMenuItem, true);
-			SetSensitivity(WidgetNames.SaveAsMenuItem, true);
-			SetSensitivity(WidgetNames.HeadersMenuItem, true);
+			SetSensitivity(WidgetNames.FileSave, true);
+			SetSensitivity(WidgetNames.FileSaveAs, true);
+			SetSensitivity(WidgetNames.FileHeaders, true);
 			/* Edit Menu */
-			SetMenuSensitivity(WidgetNames.InsertSubtitleMenuItem, true);
-			SetSensitivity(WidgetNames.DeleteSubtitlesMenuItem, true);
+			SetMenuSensitivity(WidgetNames.EditInsertSubtitle, true);
+			SetSensitivity(WidgetNames.EditDeleteSubtitles, true);
 			/* View Menu */
-			SetSensitivity(WidgetNames.TimesMenuItem, true);
-			SetSensitivity(WidgetNames.FramesMenuItem, true);
+			SetSensitivity(WidgetNames.ViewTimes, true);
+			SetSensitivity(WidgetNames.ViewFrames, true);
 			/* Search Menu */
-			SetSensitivity(WidgetNames.FindMenuItem, true);
-			SetSensitivity(WidgetNames.ReplaceMenuItem, true);
+			SetSensitivity(WidgetNames.SearchFind, true);
+			SetSensitivity(WidgetNames.SearchReplace, true);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
 			SetSensitivity(WidgetNames.FindButton, true);
@@ -188,14 +199,14 @@ public class Menus {
 		}
 		else {
 			/* Edit Menu */
-			SetSensitivity(WidgetNames.UndoMenuItem, false);
-			SetSensitivity(WidgetNames.RedoMenuItem, false);
-			SetSensitivity(WidgetNames.CutMenuItem, false);
-			SetSensitivity(WidgetNames.CopyMenuItem, false);
-			SetSensitivity(WidgetNames.PasteMenuItem, false);
+			SetSensitivity(WidgetNames.EditUndo, false);
+			SetSensitivity(WidgetNames.EditRedo, false);
+			SetSensitivity(WidgetNames.EditCut, false);
+			SetSensitivity(WidgetNames.EditCopy, false);
+			SetSensitivity(WidgetNames.EditPaste, false);
 			/* Search Menu */
-			SetSensitivity(WidgetNames.FindNextMenuItem, false);
-			SetSensitivity(WidgetNames.FindPreviousMenuItem, false);
+			SetSensitivity(WidgetNames.SearchFindNext, false);
+			SetSensitivity(WidgetNames.SearchFindPrevious, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
@@ -209,32 +220,32 @@ public class Menus {
 		SubtitleProperties properties = Global.Subtitles.Properties;
 	
 		if (properties.TimingMode == TimingMode.Frames) {
-			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, true);
-			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
+			SetMenuSensitivity(WidgetNames.TimingsInputFrameRate, true);
+			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRate, true);
 		}
 		else {
-			SetMenuSensitivity(WidgetNames.InputFrameRateMenuItem, false);
-			SetMenuSensitivity(WidgetNames.MovieFrameRateMenuItem, true);
+			SetMenuSensitivity(WidgetNames.TimingsInputFrameRate, false);
+			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRate, true);
 		}
 		
 		UpdateActiveInputFrameRateMenuItem();
-		UpdateActiveMovieFrameRateMenuItem();
+		UpdateActiveVideoFrameRateMenuItem();
 	}
 	
 	private void SetStylesActivity (bool bold, bool italic, bool underline) {
-		SetCheckMenuItemActivity(WidgetNames.BoldMenuItem, bold, Global.Handlers.OnBold);
-		SetCheckMenuItemActivity(WidgetNames.ItalicMenuItem, italic, Global.Handlers.OnItalic);
-		SetCheckMenuItemActivity(WidgetNames.UnderlineMenuItem, underline, Global.Handlers.OnUnderline);
-		SetToggleToolButtonActivity(WidgetNames.BoldButton, bold, Global.Handlers.OnBold);
-		SetToggleToolButtonActivity(WidgetNames.ItalicButton, italic, Global.Handlers.OnItalic);
-		SetToggleToolButtonActivity(WidgetNames.UnderlineButton, underline, Global.Handlers.OnUnderline);
+		SetCheckMenuItemActivity(WidgetNames.EditFormatBold, bold, Global.Handlers.OnEditFormatBold);
+		SetCheckMenuItemActivity(WidgetNames.EditFormatItalic, italic, Global.Handlers.OnEditFormatItalic);
+		SetCheckMenuItemActivity(WidgetNames.EditFormatUnderline, underline, Global.Handlers.OnEditFormatUnderline);
+		SetToggleToolButtonActivity(WidgetNames.BoldButton, bold, Global.Handlers.OnEditFormatBold);
+		SetToggleToolButtonActivity(WidgetNames.ItalicButton, italic, Global.Handlers.OnEditFormatItalic);
+		SetToggleToolButtonActivity(WidgetNames.UnderlineButton, underline, Global.Handlers.OnEditFormatUnderline);
 	}
 	
 	private void SetStylesSensitivity (bool sensitivity) {
-		if (Global.GetWidget(WidgetNames.BoldMenuItem).Sensitive != sensitivity) {
-			SetSensitivity(WidgetNames.BoldMenuItem, sensitivity);
-			SetSensitivity(WidgetNames.ItalicMenuItem, sensitivity);
-			SetSensitivity(WidgetNames.UnderlineMenuItem, sensitivity);
+		if (Global.GetWidget(WidgetNames.EditFormatBold).Sensitive != sensitivity) {
+			SetSensitivity(WidgetNames.EditFormatBold, sensitivity);
+			SetSensitivity(WidgetNames.EditFormatItalic, sensitivity);
+			SetSensitivity(WidgetNames.EditFormatUnderline, sensitivity);
 			SetSensitivity(WidgetNames.BoldButton, sensitivity);
 			SetSensitivity(WidgetNames.ItalicButton, sensitivity);
 			SetSensitivity(WidgetNames.UnderlineButton, sensitivity);
@@ -289,14 +300,14 @@ public class Menus {
 	}
 	
 	private string InputFrameRateMenuItem (float frameRate) {
-		return FrameRateToMenuItem(frameRate, "input");
+		return FrameRateToMenuItem(frameRate, "Input");
 	}
 	
-	private string MovieFrameRateMenuItem (float frameRate) {
-		return FrameRateToMenuItem(frameRate, "movie");
+	private string VideoFrameRateMenuItem (float frameRate) {
+		return FrameRateToMenuItem(frameRate, "Video");
 	}
 	
-	private string FrameRateToMenuItem (float frameRate, string prefix) {
+	private string FrameRateToMenuItem (float frameRate, string type) {
 		int rate = 0;
 		if (frameRate >= 30)
 			rate = 30;
@@ -309,7 +320,7 @@ public class Menus {
 		else
 			rate = 23;
 		
-		return prefix + "FPS" + rate + "MenuItem";
+		return "timings" + type + "FrameRate" + rate;
 	}
 	
 	private void SetToolbarHomogeneity () {

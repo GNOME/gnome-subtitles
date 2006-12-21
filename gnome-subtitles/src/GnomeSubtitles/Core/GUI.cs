@@ -17,7 +17,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gnome;
 using Gtk;
 using SubLib;
 using System;
@@ -27,22 +26,23 @@ using System.Text;
 namespace GnomeSubtitles {
 
 public class GUI {
-	private App window = null;
+	private Window window = null;
 	private Menus menus = null;
+	private Video video = null;
 	private SubtitleView view = null;
 	private SubtitleEdit edit = null;
 	
 	/* Constant strings */
-	private const string windowName = "mainWindow";
 	private const string iconFilename = "gnome-subtitles.png";
 	
 	public GUI (EventHandlers handlers, out Glade.XML glade) {
-		glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, windowName);
+		glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, WidgetNames.MainWindow);
 		glade.Autoconnect(handlers); //TODO think about using separate connections for different parts of the GUI
 	
-		window = glade.GetWidget(windowName) as App;
+		window = glade.GetWidget(WidgetNames.MainWindow) as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
 		
+		video = new Video();
 		view = new SubtitleView();
 		edit = new SubtitleEdit();
 		menus = new Menus();
@@ -50,12 +50,16 @@ public class GUI {
 
 	/* Public properties */
 
-	public App Window {
+	public Window Window {
 		get { return window; }
 	}
 
 	public Menus Menus {
 		get { return menus; }
+	}
+	
+	public Video Video {
+		get { return video; }
 	}
 	
 	public SubtitleView View {
@@ -81,6 +85,7 @@ public class GUI {
     /// <summary>Quits the application.</summary>
     public void Quit () {
 		if (ToCloseAfterWarning) {
+			video.Quit();
 			Global.Quit();
 		}
     }

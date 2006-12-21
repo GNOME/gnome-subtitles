@@ -19,72 +19,93 @@
 
 namespace GnomeSubtitles {
 
-//TODO this shouldn't need to exist
 public class WidgetNames {
+
+	/* Window */
+
 	public const string MainWindow = "mainWindow";
+	public const string MainPaned = "mainPaned";
+
+	/* Menu Bar */
 	
 	/* File Menu */
-	public const string SaveMenuItem = "saveMenuItem";
-	public const string SaveAsMenuItem = "saveAsMenuItem";
-	public const string HeadersMenuItem = "headersMenuItem";
+	public const string FileSave = "fileSave";
+	public const string FileSaveAs = "fileSaveAs";
+	public const string FileHeaders = "fileHeaders";
 	
 	/* Edit Menu */
-	public const string UndoMenuItem = "undoMenuItem";
-	public const string RedoMenuItem = "redoMenuItem";
-	public const string CutMenuItem = "cutMenuItem";
-	public const string CopyMenuItem = "copyMenuItem";
-	public const string PasteMenuItem = "pasteMenuItem";
-	public const string InsertSubtitleMenuItem = "insertSubtitleMenuItem";
-	public const string InsertSubtitleBeforeMenuItem = "insertSubtitleBeforeMenuItem";
-	public const string DeleteSubtitlesMenuItem = "deleteSubtitlesMenuItem";
+	public const string EditUndo = "editUndo";
+	public const string EditRedo = "editRedo";
+	public const string EditCut = "editCut";
+	public const string EditCopy = "editCopy";
+	public const string EditPaste = "editPaste";
+	public const string EditFormatBold = "editFormatBold";
+	public const string EditFormatItalic = "editFormatItalic";
+	public const string EditFormatUnderline = "editFormatUnderline";
+	public const string EditInsertSubtitle = "editInsertSubtitle";
+	public const string EditInsertSubtitleBefore = "editInsertSubtitleBefore";
+	public const string EditDeleteSubtitles = "editDeleteSubtitles";
 	
 	/* View Menu */
-	public const string TimesMenuItem = "timesMenuItem";
-	public const string FramesMenuItem = "framesMenuItem";
+	public const string ViewTimes = "viewTimes";
+	public const string ViewFrames = "viewFrames";
+	public const string ViewVideo = "viewVideo";
 	
 	/* Search Menu */
-	public const string FindMenuItem = "findMenuItem";
-	public const string FindNextMenuItem = "findNextMenuItem";
-	public const string FindPreviousMenuItem = "findPreviousMenuItem";
-	public const string ReplaceMenuItem = "replaceMenuItem";
-	
-	/* Format Menu */
-	public const string BoldMenuItem = "boldMenuItem";
-	public const string ItalicMenuItem = "italicMenuItem";
-	public const string UnderlineMenuItem = "underlineMenuItem";
+	public const string SearchFind = "searchFind";
+	public const string SearchFindNext = "searchFindNext";
+	public const string SearchFindPrevious = "searchFindPrevious";
+	public const string SearchReplace = "searchReplace";
 
 	/* Timings Menu */
-	public const string InputFrameRateMenuItem = "inputFrameRateMenuItem";
-	public const string MovieFrameRateMenuItem = "movieFrameRateMenuItem";
-	public const string AdjustTimingsMenuItem = "adjustTimingsMenuItem";
-	public const string ShiftMenuItem = "shiftTimingsMenuItem";
+	public const string TimingsInputFrameRate = "timingsInputFrameRate";
+	public const string TimingsVideoFrameRate = "timingsVideoFrameRate";
+	public const string TimingsAdjust = "timingsAdjust";
+	public const string TimingsShift = "timingsShift";
 	
-	/* Toolbar */
+	/* Video Menu */
+	
+	public const string VideoClose = "videoClose";
+	public const string VideoPlayPause = "videoPlayPause";
+	public const string VideoRewind = "videoRewind";
+	public const string VideoForward = "videoForward";
+
+
+	/* Tool Bar */
+	
 	public const string Toolbar = "toolbar";
-	public const string SaveButton = "toolbuttonSave";
-	public const string UndoButton = "toolbuttonUndo";
-	public const string RedoButton = "toolbuttonRedo";
-	public const string CutButton = "toolbuttonCut";
-	public const string CopyButton = "toolbuttonCopy";
-	public const string PasteButton = "toolbuttonPaste";
-	public const string FindButton = "toolbuttonFind";
-	public const string ReplaceButton = "toolbuttonReplace";
-	public const string BoldButton = "toolbuttonBold";
-	public const string ItalicButton = "toolbuttonItalic";
-	public const string UnderlineButton = "toolbuttonUnderline";
+	public const string SaveButton = "saveToolButton";
+	public const string UndoButton = "undoToolButton";
+	public const string RedoButton = "redoToolButton";
+	public const string CutButton = "cutToolButton";
+	public const string CopyButton = "copyToolButton";
+	public const string PasteButton = "pasteToolButton";
+	public const string FindButton = "findToolButton";
+	public const string ReplaceButton = "replaceToolButton";
+	public const string BoldButton = "boldToolButton";
+	public const string ItalicButton = "italicToolButton";
+	public const string UnderlineButton = "underlineToolButton";
+	
+	/* Video */
+	
+	public const string VideoVBox = "videoVBox";
+	public const string VideoFrame = "videoFrame";
+	public const string VideoControlsHBox = "videoControlsHBox";
+	public const string VideoPlayPauseButton = "playPauseButton";
+	public const string VideoSlider = "videoSlider";
 	
 	
 	/* Subtitle View */
 	
-	public const string SubtitleView = "subtitleListView";
+	public const string SubtitleView = "subtitleView";
 	
 	/* Subtitle Edit */
-	public const string SubtitleEditHBox = "editAreaHBox";
+	
+	public const string SubtitleEdit = "subtitleEdit";
 	public const string StartSpinButton = "startSpinButton";
 	public const string EndSpinButton = "endSpinButton";
 	public const string DurationSpinButton = "durationSpinButton";
 	public const string SubtitleTextView = "subtitleTextView";
-
 	
 }
 
