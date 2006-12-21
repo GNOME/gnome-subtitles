@@ -29,7 +29,7 @@ public class TimingsShiftDialog : GladeDialog {
 	private TimingMode timingMode;
 
 	/* Constant strings */
-	private const string dialogName = "shiftTimingsDialog";
+	private const string gladeFilename = "TimingsShiftDialog.glade";
 
 	/* Widgets */
 	[WidgetAttribute]
@@ -39,7 +39,7 @@ public class TimingsShiftDialog : GladeDialog {
 	[WidgetAttribute]
 	private RadioButton allSubtitlesRadioButton;
 
-	public TimingsShiftDialog () : base(dialogName){
+	public TimingsShiftDialog () : base(gladeFilename){
 		timingMode = Global.TimingMode;
 		SetSpinButton();
 		UpdateForTimingMode(timingMode);

@@ -30,21 +30,21 @@ public class GladeDialog {
 	protected bool actionDone = false;
 	
 
-	/// <summary>Initializes a new instance of the <see cref="GladeDialog" /> class.</summary>
+	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class.</summary>
 	/// <remarks>The dialog isn't initialized. A call to <see cref="Init" /> is required to initialize this class.
 	/// This is useful if one needs to do some operations before creating the dialog.</remarks>
 	protected GladeDialog () {
 	}	
 
-	/// <summary>Initializes a new instance of the <see cref="GladeDialog" /> class, given the name of the dialog
+	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class, given the filename of the dialog
 	/// and persistency possibility.</summary>
-	/// <param name="dialogName">The name of the dialog.</param>
+	/// <param name="filename">The filename of the dialog.</param>
 	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
-	protected GladeDialog (string dialogName) : this(dialogName, false) {
+	protected GladeDialog (string filename) : this(filename, false) {
 	}
 
-	protected GladeDialog (string dialogName, bool persistent) {
-		Init(dialogName, persistent);
+	protected GladeDialog (string filename, bool persistent) {
+		Init(filename, persistent);
 	}
 	
 	public bool WaitForResponse () {
@@ -66,23 +66,23 @@ public class GladeDialog {
 	
 	/* Protected members */
 	
-	/// <summary>Constructs the dialog with the specified name.</param> 
-	/// <param name="dialogName">The name of the dialog.</param>
-	/// <remarks>Constructing creates the dialog from the glade master file, autoconnects the handlers,
-	/// sets the icon and sets the dialog as transient for the main window.</summary>
-	protected void Init (string dialogName) {
-		Init(dialogName, false);
+	/// <summary>Constructs the dialog in the specified filename.</param> 
+	/// <param name="filename">The filename of the dialog.</param>
+	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
+	/// sets the icon and also sets the dialog as transient for the main window.</summary>
+	protected void Init (string filename) {
+		Init(filename, false);
 	}
 	
-	/// <summary>Constructs the dialog with the specified name, and possibly sets it as persistent.</param> 
-	/// <param name="dialogName">The name of the dialog.</param>
+	/// <summary>Constructs the dialog with the specified filename, and possibly sets it as persistent.</param> 
+	/// <param name="filename">The filename of the dialog.</param>
 	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
-	/// <remarks>Constructing creates the dialog from the glade master file, autoconnects the handlers,
-	/// sets the icon and sets the dialog as transient for the main window.</summary>
-	protected void Init (string dialogName, bool persistent) {
-		glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, dialogName);
+	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
+	/// sets the icon and also sets the dialog as transient for the main window.</summary>
+	protected void Init (string filename, bool persistent) {
+		glade = new Glade.XML(filename, null);
 		glade.Autoconnect(this);
-		dialog = glade.GetWidget(dialogName) as Dialog;
+		dialog = glade.GetWidget("dialog") as Dialog;
 		
 		Window window = Global.GUI.Window;
 		dialog.TransientFor = window;

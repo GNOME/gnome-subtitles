@@ -33,13 +33,14 @@ public class GUI {
 	private SubtitleEdit edit = null;
 	
 	/* Constant strings */
+	private const string gladeFilename = "MainWindow.glade";
 	private const string iconFilename = "gnome-subtitles.png";
 	
 	public GUI (EventHandlers handlers, out Glade.XML glade) {
-		glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, WidgetNames.MainWindow);
+		glade = new Glade.XML(gladeFilename, null);
 		glade.Autoconnect(handlers); //TODO think about using separate connections for different parts of the GUI
 	
-		window = glade.GetWidget(WidgetNames.MainWindow) as Window;
+		window = glade.GetWidget("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
 		
 		video = new Video();

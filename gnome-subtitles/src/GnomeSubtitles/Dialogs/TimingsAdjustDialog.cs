@@ -29,7 +29,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	private TimingMode timingMode;
 	
 	/* Constant strings */
-	private const string dialogName = "adjustTimingsDialog";
+	private const string gladeFilename = "TimingsAdjustDialog.glade";
 	
 	/* Widgets */
 	
@@ -55,7 +55,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	private RadioButton selectedSubtitlesRadioButton;
 	
 
-	public TimingsAdjustDialog () : base(dialogName){
+	public TimingsAdjustDialog () : base(gladeFilename){
 		timingMode = Global.TimingMode; 
 		SetSpinButtons();
 		UpdateForTimingMode();

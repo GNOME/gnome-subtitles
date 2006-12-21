@@ -39,7 +39,7 @@ public class SearchDialog : GladeDialog {
 	private bool wrap = true;
 
 	/* Constant strings */
-	private const string dialogName = "searchDialog";
+	private const string gladeFilename = "SearchDialog.glade";
 
 	/* Widgets */
 	
@@ -57,7 +57,7 @@ public class SearchDialog : GladeDialog {
 	[WidgetAttribute] private Button buttonReplace;
 	[WidgetAttribute] private Button buttonFind;
 
-	public SearchDialog () : base(dialogName, true) {
+	public SearchDialog () : base(gladeFilename, true) {
 	}
 	
 	public bool ShowReplace {

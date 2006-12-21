@@ -28,7 +28,7 @@ public class BugReportWindow {
 	private Clipboard clipboard = null;
 
 	/* Constant strings */
-	private const string windowName = "bugReportWindow";
+	private const string gladeFilename = "ReportBugWindow.glade";
 
 	/* Widgets */
 	[WidgetAttribute]
@@ -38,7 +38,7 @@ public class BugReportWindow {
 		Console.Error.WriteLine(exception);
 	
 		Application.Init();
-		Glade.XML glade = new Glade.XML(ExecutionInfo.GladeMasterFileName, windowName);
+		Glade.XML glade = new Glade.XML(gladeFilename, null);
 		glade.Autoconnect(this);
 
 		AddBugText(exception);

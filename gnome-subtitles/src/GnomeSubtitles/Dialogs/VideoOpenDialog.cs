@@ -26,9 +26,9 @@ public class VideoOpenDialog : GladeDialog {
 	private string chosenFilename = String.Empty;
 
 	/* Constant strings */
-	private const string dialogName = "videoFileChooserDialog";
+	private const string gladeFilename = "VideoOpenDialog.glade";
 	
-	public VideoOpenDialog () : base(dialogName) {
+	public VideoOpenDialog () : base(gladeFilename) {
 	}
 	
 	/* Public properties */

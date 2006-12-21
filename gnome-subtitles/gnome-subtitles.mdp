@@ -26,7 +26,6 @@
     <File name="./src/GnomeSubtitles/Core/WidgetNames.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Execution/Executable.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Execution/ExecutionInfo.cs" subtype="Code" buildaction="Compile" />
-    <File name="./src/Glade/gnome-subtitles.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="./src/GnomeSubtitles/Core/Menus.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Core/Clipboards.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/External" subtype="Directory" buildaction="Compile" />
@@ -74,6 +73,17 @@
     <File name="./src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/Glade" subtype="Directory" buildaction="Compile" />
+    <File name="./src/Glade/AboutDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/FileOpenDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/FileSaveAsDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/HeadersDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/MainWindow.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/ReportBugWindow.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/SearchDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/TimingsAdjustDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/TimingsShiftDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/VideoOpenDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />

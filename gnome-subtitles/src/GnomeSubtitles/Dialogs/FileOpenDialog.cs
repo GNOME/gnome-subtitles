@@ -27,13 +27,13 @@ namespace GnomeSubtitles {
 public class FileOpenDialog : SubtitleFileChooserDialog {
 
 	/* Constant strings */
-	private const string dialogName = "openDialog";
+	private const string gladeFilename = "FileOpenDialog.glade";
 
 	/* Widgets */
 	[WidgetAttribute]
 	private ComboBox encodingComboBox;
 	
-	public FileOpenDialog () : base(dialogName) {
+	public FileOpenDialog () : base(gladeFilename) {
 		FillEncodingComboBox(encodingComboBox);
 		encodingComboBox.PrependText("-");
 		encodingComboBox.PrependText("Auto Detected");

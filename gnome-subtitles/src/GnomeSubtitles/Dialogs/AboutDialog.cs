@@ -26,13 +26,13 @@ public class AboutDialog : GladeDialog {
 	private new Gtk.AboutDialog dialog = null;
 
 	/* Constant strings */
-	private const string dialogName = "aboutDialog";
+	private const string gladeFilename = "AboutDialog.glade";
 	private const string logoFilename = "gnome-subtitles-logo.png";
 	
 
 	public AboutDialog () {
 		SetHooks();
-		Init(dialogName);
+		Init(gladeFilename);
 	
 		dialog = base.dialog as Gtk.AboutDialog;
 		SetInfo();

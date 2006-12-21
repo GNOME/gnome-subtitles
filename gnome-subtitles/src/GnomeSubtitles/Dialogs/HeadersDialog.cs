@@ -29,7 +29,7 @@ public class HeadersDialog : GladeDialog {
 	private SubtitleHeaders subtitleHeaders = null;
 
 	/* Constant strings */
-	private const string dialogName = "headersDialog";
+	private const string gladeFilename = "HeadersDialog.glade";
 
 	/* Widgets */
 	
@@ -114,7 +114,7 @@ public class HeadersDialog : GladeDialog {
 	private SpinButton spinButtonSubViewer2FontSize;
 	
 	
-	public HeadersDialog () : base(dialogName) {
+	public HeadersDialog () : base(gladeFilename) {
 		subtitleHeaders = Global.Subtitles.Properties.Headers;
 		LoadHeaders();
 	}

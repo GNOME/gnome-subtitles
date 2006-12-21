@@ -31,7 +31,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	private SubtitleTypeInfo[] subtitleTypes = null;
 
 	/* Constant strings */
-	private const string dialogName = "saveAsDialog";
+	private const string gladeFilename = "FileSaveAsDialog.glade";
 	
 	/* Widgets */
 	
@@ -40,7 +40,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute]
 	private ComboBox encodingComboBox;
 
-	public FileSaveAsDialog () : base(dialogName) {
+	public FileSaveAsDialog () : base(gladeFilename) {
 		if (Global.Subtitles.Properties.IsFilePathRooted)
 			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
 		else

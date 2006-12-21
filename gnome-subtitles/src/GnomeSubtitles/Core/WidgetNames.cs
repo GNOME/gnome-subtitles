@@ -23,7 +23,6 @@ public class WidgetNames {
 
 	/* Window */
 
-	public const string MainWindow = "mainWindow";
 	public const string MainPaned = "mainPaned";
 
 	/* Menu Bar */
