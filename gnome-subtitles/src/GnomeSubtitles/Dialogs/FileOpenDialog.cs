@@ -24,7 +24,7 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public class OpenDialog : SubtitleFileChooserDialog {
+public class FileOpenDialog : SubtitleFileChooserDialog {
 
 	/* Constant strings */
 	private const string dialogName = "openDialog";
@@ -33,7 +33,7 @@ public class OpenDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute]
 	private ComboBox encodingComboBox;
 	
-	public OpenDialog () : base(dialogName) {
+	public FileOpenDialog () : base(dialogName) {
 		FillEncodingComboBox(encodingComboBox);
 		encodingComboBox.PrependText("-");
 		encodingComboBox.PrependText("Auto Detected");

@@ -209,13 +209,6 @@ public class Player {
 		}
 	}
 	
-	private string FindFontFilename () {
-		Font font = SystemFonts.GetFontByName("arial");
-		System.Console.WriteLine(font.Name);
-		return String.Empty;	
-	}
-	
-	
 }
 
 }

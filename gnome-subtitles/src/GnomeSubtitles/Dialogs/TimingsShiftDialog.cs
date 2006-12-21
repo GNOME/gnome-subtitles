@@ -25,7 +25,7 @@ using SubLib;
 namespace GnomeSubtitles {
 
 
-public class ShiftTimingsDialog : GladeDialog {
+public class TimingsShiftDialog : GladeDialog {
 	private TimingMode timingMode;
 
 	/* Constant strings */
@@ -39,7 +39,7 @@ public class ShiftTimingsDialog : GladeDialog {
 	[WidgetAttribute]
 	private RadioButton allSubtitlesRadioButton;
 
-	public ShiftTimingsDialog () : base(dialogName){
+	public TimingsShiftDialog () : base(dialogName){
 		timingMode = Global.TimingMode;
 		SetSpinButton();
 		UpdateForTimingMode(timingMode);

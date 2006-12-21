@@ -22,13 +22,13 @@ using System;
 
 namespace GnomeSubtitles {
 
-public class VideoFileChooserDialog : GladeDialog {
+public class VideoOpenDialog : GladeDialog {
 	private string chosenFilename = String.Empty;
 
 	/* Constant strings */
 	private const string dialogName = "videoFileChooserDialog";
 	
-	public VideoFileChooserDialog () : base(dialogName) {
+	public VideoOpenDialog () : base(dialogName) {
 	}
 	
 	/* Public properties */

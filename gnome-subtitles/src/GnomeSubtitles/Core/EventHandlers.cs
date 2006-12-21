@@ -38,19 +38,7 @@ public class EventHandlers {
 	/* File Menu */
 	
 	public void OnFileNew (object o, EventArgs args) {
-		//Global.GUI.New(String.Empty); TODO uncomment
-		/*Gnome.Font font = Gnome.Font.FindClosestFromFullName("arial");
-		Console.WriteLine(font.FamilyName);
-		Console.WriteLine(font.FontName);
-		Console.WriteLine(font.FullName);
-		Console.WriteLine(font.ItalicAngle);
-		Console.WriteLine(font.Size);
-		Pango.Font pango = font.GetClosestPangoFont();
-		Console.WriteLine(pango.Describe().ToFilename());*/
-		FontDescription desc = Pango.FontDescription.FromString("Arial");
-		System.Console.WriteLine(desc);
-		System.Console.WriteLine(desc.ToFilename());
-		
+		Global.GUI.New(String.Empty);
 	}
 	
 	public void OnFileOpen (object o, EventArgs args) {
@@ -185,18 +173,18 @@ public class EventHandlers {
 	}
 	
 	public void OnTimingsAdjust (object o, EventArgs args) {
-		new AdjustTimingsDialog();	
+		new TimingsAdjustDialog();	
 	}
 	
 	public void OnTimingsShift (object o, EventArgs args) {
-		new ShiftTimingsDialog();
+		new TimingsShiftDialog();
 	}
 	
 	
 	/* Video Menu */
 	
 	public void OnVideoOpen (object o, EventArgs args) {
-		VideoFileChooserDialog dialog = new VideoFileChooserDialog();
+		VideoOpenDialog dialog = new VideoOpenDialog();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
 			System.Console.WriteLine("Setting view activity to true");

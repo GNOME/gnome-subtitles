@@ -25,13 +25,13 @@ using SubLib;
 namespace GnomeSubtitles {
 
 //TODO: use MessageDialog from Glade?
-public class OpenErrorDialog {
+public class FileOpenErrorDialog {
 	private MessageDialog dialog = null;
 	private const string primaryText = "<span weight=\"bold\" size=\"larger\">Could not open the subtitles \"{0}\".</span>";
 	private const string actionLabel = "Open another file";
 	private bool toRunAction = false;
 	
-	public OpenErrorDialog (string fileName, Exception exception) {
+	public FileOpenErrorDialog (string fileName, Exception exception) {
 		string secondaryText = SecondaryTextFromException(exception);
 		string message = primaryText + "\n\n" + secondaryText;
 		dialog = new MessageDialog(Global.GUI.Window, DialogFlags.Modal, MessageType.Error,

@@ -23,12 +23,12 @@ using Gtk;
 namespace GnomeSubtitles {
 
 /* TODO: Use MessageDialog from Glade? */
-public class ConfirmationDialog {
+public class SaveConfirmationDialog {
 	private MessageDialog dialog = null;
 	private string secondaryText = "If you don't save, all your changes will be permanently lost.";
 	private bool toClose = false;
 	
-	public ConfirmationDialog (string primaryText, string rejectLabel) {
+	public SaveConfirmationDialog (string primaryText, string rejectLabel) {
 		string message = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>\n\n" + secondaryText;
 		string fileName = Global.Subtitles.Properties.FileName;
 		dialog = new MessageDialog(Global.GUI.Window, DialogFlags.Modal, MessageType.Warning,
@@ -67,27 +67,27 @@ public class ConfirmationDialog {
 	
 }
 
-public class CloseConfirmationDialog : ConfirmationDialog {
+public class SaveOnCloseConfirmationDialog : SaveConfirmationDialog {
 	private static string primaryText = "Save the changes to subtitles \"{0}\" before closing?";
 	private static string rejectLabel = "Close without Saving";
 
-	public CloseConfirmationDialog () : base(primaryText, rejectLabel) {
+	public SaveOnCloseConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 
-public class NewConfirmationDialog : ConfirmationDialog {
+public class SaveOnNewConfirmationDialog : SaveConfirmationDialog {
 	private static string primaryText = "Save the changes to subtitles \"{0}\" before creating new subtitles?";
 	private static string rejectLabel = "Create without Saving";
 
-	public NewConfirmationDialog () : base(primaryText, rejectLabel) {
+	public SaveOnNewConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 
-public class OpenConfirmationDialog : ConfirmationDialog {
+public class SaveOnOpenConfirmationDialog : SaveConfirmationDialog {
 	private static string primaryText = "Save the changes to subtitles \"{0}\" before opening?";
 	private static string rejectLabel = "Open without Saving";
 
-	public OpenConfirmationDialog () : base(primaryText, rejectLabel) {
+	public SaveOnOpenConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 

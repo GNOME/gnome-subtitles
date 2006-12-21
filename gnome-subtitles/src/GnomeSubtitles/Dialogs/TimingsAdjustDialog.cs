@@ -25,7 +25,7 @@ using SubLib;
 namespace GnomeSubtitles {
 
 
-public class AdjustTimingsDialog : GladeDialog {
+public class TimingsAdjustDialog : GladeDialog {
 	private TimingMode timingMode;
 	
 	/* Constant strings */
@@ -55,7 +55,7 @@ public class AdjustTimingsDialog : GladeDialog {
 	private RadioButton selectedSubtitlesRadioButton;
 	
 
-	public AdjustTimingsDialog () : base(dialogName){
+	public TimingsAdjustDialog () : base(dialogName){
 		timingMode = Global.TimingMode; 
 		SetSpinButtons();
 		UpdateForTimingMode();

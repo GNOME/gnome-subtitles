@@ -121,7 +121,7 @@ public class GUI {
     /// <remarks>If there's a document currently opened with unsaved changes, a warning dialog
     /// is shown before opening the new file.</remarks>
     public void Open () {
-    	OpenDialog dialog = new OpenDialog();
+    	FileOpenDialog dialog = new FileOpenDialog();
     	bool toOpen = dialog.WaitForResponse();
     	if (toOpen && ToOpenAfterWarning) {
     		string filename = dialog.Filename;
@@ -134,7 +134,7 @@ public class GUI {
 	    			Open(filename, null);
 	    	}
 	    	catch (Exception exception) {
-	    		OpenErrorDialog errorDialog = new OpenErrorDialog(filename, exception);
+	    		FileOpenErrorDialog errorDialog = new FileOpenErrorDialog(filename, exception);
 	    		bool toOpenAgain = errorDialog.WaitForResponse();
 	    		if (toOpenAgain)
 	    			Open(); //Recursive call to open the dialog again
@@ -160,7 +160,7 @@ public class GUI {
     /// <remarks>After saving, the timing mode is set to the timing mode of the subtitle format using when saving.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
     public bool SaveAs () {
-		SaveAsDialog dialog = new SaveAsDialog();
+		FileSaveAsDialog dialog = new FileSaveAsDialog();
 		bool toSaveAs = dialog.WaitForResponse();
 		if (toSaveAs) {
 			string filename = dialog.Filename;
@@ -277,7 +277,7 @@ public class GUI {
     private bool ToCloseAfterWarning {
     	get {
     		if (ExistUnsavedChanges) {
-	    		ConfirmationDialog dialog = new CloseConfirmationDialog();
+	    		SaveConfirmationDialog dialog = new SaveOnCloseConfirmationDialog();
     			return dialog.WaitForResponse();
     		}
     		else
@@ -289,7 +289,7 @@ public class GUI {
     private bool ToCreateNewAfterWarning {
     	get {
     		if (ExistUnsavedChanges) {
-	    		ConfirmationDialog dialog = new NewConfirmationDialog();
+	    		SaveConfirmationDialog dialog = new SaveOnNewConfirmationDialog();
     			return dialog.WaitForResponse();
     		}
     		else
@@ -301,7 +301,7 @@ public class GUI {
 	private bool ToOpenAfterWarning {
     	get {
     		if (ExistUnsavedChanges) {
-	    		ConfirmationDialog dialog = new OpenConfirmationDialog();
+	    		SaveConfirmationDialog dialog = new SaveOnOpenConfirmationDialog();
     			return dialog.WaitForResponse();
     		}
     		else

@@ -26,7 +26,7 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public class SaveAsDialog : SubtitleFileChooserDialog {
+public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	private SubtitleType chosenSubtitleType;
 	private SubtitleTypeInfo[] subtitleTypes = null;
 
@@ -40,7 +40,7 @@ public class SaveAsDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute]
 	private ComboBox encodingComboBox;
 
-	public SaveAsDialog () : base(dialogName) {
+	public FileSaveAsDialog () : base(dialogName) {
 		if (Global.Subtitles.Properties.IsFilePathRooted)
 			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
 		else
