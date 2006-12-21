@@ -31,7 +31,7 @@ public class CommandManager {
 	private int redoCount = 0;
 	private int iterator = 0;
 	
-	public event EventHandler UndoToggled;
+	public event EventHandler UndoToggled; //TODO should these be private?
 	public event EventHandler RedoToggled;
 	public event EventHandler CommandActivated;
 	public event EventHandler Modified;
