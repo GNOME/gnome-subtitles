@@ -44,7 +44,7 @@ public class SubtitleEdit {
 		endSpinButton = Global.GetWidget(WidgetNames.EndSpinButton) as SpinButton;
 		durationSpinButton = Global.GetWidget(WidgetNames.DurationSpinButton) as SpinButton;
 		textView = Global.GetWidget(WidgetNames.SubtitleTextView) as TextView;
-		hBox = Global.GetWidget(WidgetNames.SubtitleEditHBox) as HBox;
+		hBox = Global.GetWidget(WidgetNames.SubtitleEdit) as HBox;
 		
     	startSpinButton.WidthRequest = Util.SpinButtonTimeWidth(startSpinButton);
     	startSpinButton.Alignment = 0.5f;
