@@ -22,37 +22,25 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles {
 
-public delegate void PlayerPositionHandler (float position);
-
 public class Video {
-	private VBox vBox = null;
+	private HBox videoArea = null;
 	private AspectFrame frame = null;
-	private HScale slider = null;
 	
 	private Player player = null;
-	private uint setPlayerPositionTimeoutId = 0;
-	private bool sliderUpdateByPlayer = true;
-
-	/* Constants */
-	private const int setPlayerPositionTimeout = 100; //Milliseconds
+	private VideoPosition position = null;
 
 	public Video () {
-		player = new Player(UpdateSlider);
-		
-		vBox = Global.GetWidget(WidgetNames.VideoVBox) as VBox;
+		videoArea = Global.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
 		frame = Global.GetWidget(WidgetNames.VideoFrame) as AspectFrame;
-		slider = Global.GetWidget(WidgetNames.VideoSlider) as HScale;
-
-		LoadVideoWidget();
-	}
+		
+		player = new Player();
+		position = new VideoPosition(player);
 	
-	private void SetControlsSensitivity (bool sensitivity) {
-		Global.GetWidget(WidgetNames.VideoControlsHBox).Sensitive = sensitivity;	
+		LoadVideoWidget(player.Widget);
 	}
 	
 	public void Show () {
-		System.Console.WriteLine("SHOWING VBOX");
-		vBox.Show();
+		videoArea.Show();
 		
 		/* Required for the vBox and children to be redrawn before launching the video player */
 		Paned paned = Global.GetWidget(WidgetNames.MainPaned) as Paned;
@@ -61,22 +49,22 @@ public class Video {
 	}
 
 	public void Hide () {
-		System.Console.WriteLine("HIDING VBOX");
-		vBox.Hide();
+		videoArea.Hide();
 	}
 	
 	public void Open (string filename) {
-		SetControlsSensitivity(true);
-
 		filename = Regex.Escape(filename);
 		player.Open(filename);
-		frame.Ratio = player.Ratio;
-		slider.Adjustment.Upper = player.TimeLength;
 		player.SeekStart();
+
+		SetControlsSensitivity(true);
+		position.Enable();
+		frame.Ratio = player.Ratio;
 	}
 	
 	public void Close () {
 		player.Close();
+		position.Disable();
 		
 		/* Update the frame */
 		frame.Child.Hide();
@@ -86,13 +74,6 @@ public class Video {
 		/* Update the PlayPause button */
 		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		button.Active = false;
-		
-		/* Update the slider */
-		if (setPlayerPositionTimeoutId != 0)
-			GLib.Source.Remove(setPlayerPositionTimeoutId);
-		
-		sliderUpdateByPlayer = true;
-		slider.Value = 0;
 		
 		SetControlsSensitivity(false);
 	}
@@ -118,59 +99,25 @@ public class Video {
 	
 	public void Rewind () {
 		System.Console.WriteLine("Rewinding...");
-		float position = player.Rewind((float)slider.Adjustment.StepIncrement);
-		if (position != -1)
-			UpdateSlider(position);
-
-		System.Console.WriteLine("New position is now " + position);
-		System.Console.WriteLine("Slider value is now " + slider.Value);
+		player.Rewind(position.StepIncrement);
 	}
 	
 	public void Forward () {
 		System.Console.WriteLine("Forwarding...");
-		float position = player.Forward((float)slider.Adjustment.StepIncrement);
-		if (position != -1)
-			UpdateSlider(position);
+		player.Forward(position.StepIncrement);
+	}
 
-		System.Console.WriteLine("New position is now " + position);
-		System.Console.WriteLine("Slider value is now " + slider.Value);
-	}
-	
-	public void UpdateFromSliderValueChanged () {
-		if (sliderUpdateByPlayer) {
-			sliderUpdateByPlayer = false;
-			return;
-		}			
-	
-		if (setPlayerPositionTimeoutId != 0)
-			GLib.Source.Remove(setPlayerPositionTimeoutId);
-		
-		setPlayerPositionTimeoutId = GLib.Timeout.Add(setPlayerPositionTimeout, SetPlayerPosition);
-	}
 	
 	/* Private methods */
 
-	private void LoadVideoWidget () {
-		Widget child = player.Widget;
-		frame.Child = child;
-		child.Realize();
-		child.Show();
+	private void LoadVideoWidget (Widget widget) {
+		frame.Child = widget;
+		widget.Realize();
+		widget.Show();
 	}
-	
-	/* Event members */
-	
-	private void UpdateSlider (float position) {
-		if (setPlayerPositionTimeoutId != 0) //There is a manual positioning going on 
-			return;
-		
-		sliderUpdateByPlayer = true;
-		slider.Value = position;
-	}
-	
-	private bool SetPlayerPosition () {
-		setPlayerPositionTimeoutId = 0;
-		player.Seek((float)slider.Value);
-		return false;
+
+	private void SetControlsSensitivity (bool sensitivity) {
+		Global.GetWidget(WidgetNames.VideoControlsVBox).Sensitive = sensitivity;	
 	}
 
 }

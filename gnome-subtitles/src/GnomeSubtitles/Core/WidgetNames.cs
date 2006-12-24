@@ -87,11 +87,14 @@ public class WidgetNames {
 	
 	/* Video */
 	
-	public const string VideoVBox = "videoVBox";
+	public const string VideoAreaHBox = "videoAreaHBox";
 	public const string VideoFrame = "videoFrame";
-	public const string VideoControlsHBox = "videoControlsHBox";
-	public const string VideoPlayPauseButton = "playPauseButton";
+	public const string VideoControlsVBox = "videoControlsVBox";
+	public const string VideoPlayPauseButton = "videoPlayPauseButton";
 	public const string VideoSlider = "videoSlider";
+	public const string VideoPositionLabel = "videoControlsPositionLabel";
+	public const string VideoPositionValueLabel = "videoControlsPositionValueLabel";
+	public const string VideoLengthValueLabel = "videoControlsLengthValueLabel";
 	
 	
 	/* Subtitle View */

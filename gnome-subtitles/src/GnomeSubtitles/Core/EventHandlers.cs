@@ -291,10 +291,7 @@ public class EventHandlers {
 		else
 			Global.GUI.Video.Pause();
 	}
-
-	public void OnVideoSliderValueChanged (object o, EventArgs args) {
-		Global.GUI.Video.UpdateFromSliderValueChanged();
-	}
+	
     
     /*	Subtitle View	*/
     
@@ -309,6 +306,7 @@ public class EventHandlers {
 		else if (key == Gdk.Key.Insert)
 			OnEditInsertSubtitleAfter(o, EventArgs.Empty);
     }
+    
     
     /*	Subtitle Edit	*/
     

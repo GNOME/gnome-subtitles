@@ -43,6 +43,10 @@ public class Util {
 			":" + time.Seconds.ToString("00;00") + "." + time.Milliseconds.ToString("000;000");
 	}
 	
+	static public string SecondsToTimeText (float seconds) {
+		return TimeSpanToText(TimeSpan.FromSeconds(seconds));
+	}
+	
 	static public string MillisecondsToTimeText (int milliseconds) {
 		return TimeSpanToText(TimeSpan.FromMilliseconds(milliseconds));
 	}

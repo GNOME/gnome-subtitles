@@ -14,7 +14,16 @@ GS_SOURCES = \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs
 
 GS_RESOURCES = \
-	$(srcdir)/Glade/gnome-subtitles.glade \
+	$(srcdir)/Glade/AboutDialog.glade \
+	$(srcdir)/Glade/FileOpenDialog.glade \
+	$(srcdir)/Glade/FileSaveAsDialog.glade \
+	$(srcdir)/Glade/HeadersDialog.glade \
+	$(srcdir)/Glade/MainWindow.glade \
+	$(srcdir)/Glade/ReportBugWindow.glade \
+	$(srcdir)/Glade/SearchDialog.glade \
+	$(srcdir)/Glade/TimingsAdjustDialog.glade \
+	$(srcdir)/Glade/TimingsShiftDialog.glade \
+	$(srcdir)/Glade/VideoOpenDialog.glade \
 	$(GS_DATADIR)/gnome-subtitles.png \
 	$(GS_DATADIR)/gnome-subtitles-logo.png
 

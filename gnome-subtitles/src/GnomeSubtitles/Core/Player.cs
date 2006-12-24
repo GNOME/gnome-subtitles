@@ -20,20 +20,24 @@
 using Gtk;
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Text;
 
 namespace GnomeSubtitles {
 
+public delegate void PlayerPositionHandler (float position);
+
 public class Player {
 	private Socket socket = null;
 	private Process process = null;
-	private PlayerPosition position = null;
+	private PlayerPositionWatcher position = null;
+	
+	/* Events */	
+	public event PlayerPositionHandler PositionChanged;
 
-	public Player (PlayerPositionHandler handler) {
+	public Player () {
 		CreateSocket();
-		position = new PlayerPosition(this, handler);
+		position = new PlayerPositionWatcher(this);
 	}
 	
 	public Socket Widget {
@@ -51,7 +55,8 @@ public class Player {
 	public float TimeLength {
 		get { return GetAsFloat("get_time_length"); }
 	}
-	
+
+	/// <summary>The current position, in seconds.</summary>
 	public float TimePosition {
 		get {
 			if (position.Paused)
@@ -60,7 +65,7 @@ public class Player {
 				return GetAsFloat("get_time_pos");
 			}
 	}
-
+	
 
 	/* Public methods */
 
@@ -74,7 +79,6 @@ public class Player {
 		Exec("loadfile " + filename);
 
 		ClearOutput();
-		position.Start();
 	}
 
 
@@ -90,49 +94,50 @@ public class Player {
 	}
 	
 	public void Play () {
+		System.Console.WriteLine("Running PLAY");
 		if (position.Paused) {
 			System.Console.WriteLine("Playing...");
 			Exec("pause");
-			position.Paused = false;
+			position.Start();
 		}
 	}
 	
 	public void Pause () {
+		System.Console.WriteLine("Running PAUSE");
 		if (!position.Paused) {
 			System.Console.WriteLine("Pausing...");
-			position.Paused = true;
+			position.Stop();
 			Exec("pause");
 		}
 	}
 	
-	public void Seek (float position) {
-		Exec("pausing_keep seek " + position + " 2");	
+	public void Seek (float newPosition) {
+		Exec("pausing_keep seek " + newPosition + " 2");
+		position.Check();
 	}
 	
-	public float Rewind (float decrement) {
+	public void Rewind (float decrement) {
 		Exec("pausing_keep seek -" + decrement + " 0");
-		if (position.Paused)
-			return TimePosition;
-		else
-			return -1;
+		position.Check();
 	}
 	
-	public float Forward (float increment) {
+	public void Forward (float increment) {
 		Exec("pausing_keep seek " + increment + " 0");
-		if (position.Paused)
-			return TimePosition;
-		else
-			return -1;
+		position.Check();
+	}
+	
+	public void EmitPositionChanged (float newPosition) {
+		PositionChanged(newPosition);
 	}
 	
 	/* Private properties */
 	
 	private int Width {
-		get { return GetAsInt32("get_property width"); }
+		get { return GetAsInt32("pausing_keep get_property width"); }
 	}
 	
 	private int Height {
-		get { return GetAsInt32("get_property height"); }
+		get { return GetAsInt32("pausing_keep get_property height"); }
 	}
 	
 	/* Private methods */
@@ -147,7 +152,7 @@ public class Player {
 		Process newProcess = new Process();
 		newProcess.StartInfo.FileName = "mplayer";
 
-		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -subfont-autoscale 2 -fontconfig -quiet -nomouseinput -slave -idle";
+		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -fontconfig -subfont-autoscale 2 -quiet -nomouseinput -slave -idle";
 		if (!newProcess.StartInfo.EnvironmentVariables.ContainsKey("TERM")) {
 			newProcess.StartInfo.EnvironmentVariables.Add("TERM", "xterm");
 		}
