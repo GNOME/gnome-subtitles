@@ -25,7 +25,9 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public delegate void PlayerPositionHandler (float position);
+public delegate void PlayerPositionChangedHandler (float position);
+public delegate float PlayerGetTimeFunc ();
+public delegate void PlayerEmitPositionChangedFunc (float position);
 
 public class Player {
 	private Socket socket = null;
@@ -33,39 +35,43 @@ public class Player {
 	private PlayerPositionWatcher position = null;
 	
 	/* Events */	
-	public event PlayerPositionHandler PositionChanged;
+	public event PlayerPositionChangedHandler PositionChanged;
 
 	public Player () {
 		CreateSocket();
-		position = new PlayerPositionWatcher(this);
+		position = new PlayerPositionWatcher(GetPosition, EmitPositionChanged);
 	}
 	
 	public Socket Widget {
 		get { return socket; }
 	}
-
 	
 	/* Public properties */
 	
-	public float Ratio {
-		get { return (float)Width / (float)Height; }
+	/// <summary>The current position, in seconds.</summary>
+	public float Position {
+		get { return position.CurrentPosition; }	
+	}
+	
+	/// <summary>The aspect ratio.</summary>	
+	public float AspectRatio {
+		get {
+			float width = GetAsInt32("pausing_keep get_property width");
+			float height = GetAsInt32("pausing_keep get_property height");
+			return width / height;
+		}
 	}
 	
 	/// <summary>The length of the video, in seconds.</summary>
-	public float TimeLength {
-		get { return GetAsFloat("get_time_length"); }
-	}
-
-	/// <summary>The current position, in seconds.</summary>
-	public float TimePosition {
+	public float Length {
 		get {
 			if (position.Paused)
-				return GetAsFloat("pausing get_time_pos");
+				return GetAsFloat("pausing get_time_length");
 			else
-				return GetAsFloat("get_time_pos");
-			}
+				return GetAsFloat("get_time_length");
+		}
 	}
-	
+
 
 	/* Public methods */
 
@@ -80,7 +86,6 @@ public class Player {
 
 		ClearOutput();
 	}
-
 
 	/// <summary>Closes the video.</summary>
 	public void Close () {
@@ -126,20 +131,12 @@ public class Player {
 		position.Check();
 	}
 	
-	public void EmitPositionChanged (float newPosition) {
+	/* Event related members */
+	
+	private void EmitPositionChanged (float newPosition) {
 		PositionChanged(newPosition);
 	}
-	
-	/* Private properties */
-	
-	private int Width {
-		get { return GetAsInt32("pausing_keep get_property width"); }
-	}
-	
-	private int Height {
-		get { return GetAsInt32("pausing_keep get_property height"); }
-	}
-	
+
 	/* Private methods */
 	
 	private void CreateSocket () {
@@ -176,6 +173,14 @@ public class Player {
 			}
 			process = null;
 		}
+	}
+	
+	/// <summary>The current position, in seconds.</summary>
+	private float GetPosition () {
+		if (position.Paused)
+			return GetAsFloat("pausing get_time_pos");
+		else
+			return GetAsFloat("get_time_pos");
 	}
 	
 	private void Exec (string command) {

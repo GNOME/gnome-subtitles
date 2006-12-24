@@ -39,6 +39,14 @@ public class Video {
 		LoadVideoWidget(player.Widget);
 	}
 	
+	/* Public properties */
+	
+	public float Position {
+		get { return player.Position; }
+	}	
+	
+	/* Public methods */
+	
 	public void Show () {
 		videoArea.Show();
 		
@@ -59,7 +67,7 @@ public class Video {
 
 		SetControlsSensitivity(true);
 		position.Enable();
-		frame.Ratio = player.Ratio;
+		frame.Ratio = player.AspectRatio;
 	}
 	
 	public void Close () {
@@ -106,7 +114,6 @@ public class Video {
 		System.Console.WriteLine("Forwarding...");
 		player.Forward(position.StepIncrement);
 	}
-
 	
 	/* Private methods */
 

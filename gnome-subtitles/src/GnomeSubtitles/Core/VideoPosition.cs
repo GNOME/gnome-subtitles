@@ -26,8 +26,7 @@ public class VideoPosition {
 	private Player player = null;
 	//private Label positionLabel = null;
 	private Label positionValueLabel = null;
-	private Label lengthValueLabel = null;
-	private float position = 0; //the current position of the player	
+	private Label lengthValueLabel = null;	
 	
 	/* Slider related */
 	private HScale slider = null;
@@ -47,11 +46,7 @@ public class VideoPosition {
 	}
 
 	/* Public properties */
-	
-	public float Position {
-		get { return position; }
-	}
-	
+
 	public float StepIncrement {
 		get { return (float)slider.Adjustment.StepIncrement; }
 	}
@@ -68,7 +63,7 @@ public class VideoPosition {
 	}
 	
 	public void Enable () {
-		SetLength(player.TimeLength);
+		SetLength(player.Length);
 		slider.Sensitive = true;
 		ConnectSliderSignals();
 		ConnectPlayerSignals();
@@ -127,9 +122,7 @@ public class VideoPosition {
 
 	/* Private members */
 	
-	//TODO delete the 3 methods if only this one is used
 	private void UpdatePositionValues (float newPosition) {
-		UpdatePosition(newPosition);
 		UpdateSlider(newPosition);
 		UpdatePositionLabel(newPosition);
 	}
@@ -137,10 +130,6 @@ public class VideoPosition {
 	private void UpdateSlider (float newPosition) {
 		isPlayerUpdate = true;
 		slider.Value = newPosition;
-	}
-
-	private void UpdatePosition (float newPosition) {
-		position = newPosition;
 	}
 
 	private void UpdatePositionLabel (float newPosition) {

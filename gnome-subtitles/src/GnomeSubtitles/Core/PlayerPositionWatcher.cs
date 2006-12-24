@@ -17,24 +17,32 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 namespace GnomeSubtitles {
 
 public class PlayerPositionWatcher {
-	private Player player = null;
 	private uint timeoutId = 0;
+	private float position = 0;
+	
+	/* delegate functions */
+	private PlayerGetTimeFunc GetTime;
+	private PlayerEmitPositionChangedFunc EmitPositionChanged;
 	
 	/* Constants */
-	private const int timeout = 500; //milliseconds
+	private const int timeout = 100; //milliseconds
 
-	public PlayerPositionWatcher (Player player) {
-		this.player = player;
+	public PlayerPositionWatcher (PlayerGetTimeFunc playerGetTimeFunc, PlayerEmitPositionChangedFunc playerEmitPositionChangedFunc) {
+		GetTime = playerGetTimeFunc;
+		EmitPositionChanged = playerEmitPositionChangedFunc;
 	}
 	
 	/* Public properties */
 	
 	public bool Paused {
 		get { return (timeoutId == 0); }
+	}
+	
+	public float CurrentPosition {
+		get { return position; }
 	}
 	
 	/* Public methods */
@@ -60,9 +68,9 @@ public class PlayerPositionWatcher {
 	/* Event members */
 
 	private bool CheckPosition () {
-		float position = player.TimePosition;
+		position = GetTime();
 		System.Console.WriteLine("Position is " + position);
-		player.EmitPositionChanged(position);
+		EmitPositionChanged(position);
 		return true;
 	}
 	
