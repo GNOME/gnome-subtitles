@@ -24,48 +24,24 @@ using SubLib;
 
 namespace GnomeSubtitles {
 
-//TODO: use MessageDialog from Glade?
-public class FileOpenErrorDialog {
-	private MessageDialog dialog = null;
-	private const string primaryText = "<span weight=\"bold\" size=\"larger\">Could not open the subtitles \"{0}\".</span>";
+public class FileOpenErrorDialog : GladeDialog {
+	
+	/* Constant strings */
+	private const string gladeFilename = "FileOpenErrorDialog.glade";
 	private const string actionLabel = "Open another file";
-	private bool toRunAction = false;
-	
-	public FileOpenErrorDialog (string fileName, Exception exception) {
-		string secondaryText = SecondaryTextFromException(exception);
-		string message = primaryText + "\n\n" + secondaryText;
-		dialog = new MessageDialog(Global.GUI.Window, DialogFlags.Modal, MessageType.Error,
-			ButtonsType.None, message, fileName);
-	
-		Button actionButton = dialog.AddButton(actionLabel, ResponseType.Accept) as Button;
-		actionButton.Image = new Image(Stock.Open, IconSize.Button);
-		dialog.AddButton(Stock.Ok, ResponseType.Ok);
 
-		dialog.Title = String.Empty;
-		dialog.Response += OnResponse;
+	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
+		MessageDialog messageDialog = dialog as MessageDialog;
+		messageDialog.Text += " " + filename + ".";
+		messageDialog.SecondaryText = SecondaryTextFromException(exception);
+
+		Button actionButton = messageDialog.AddButton(actionLabel, ResponseType.Accept) as Button;
+		actionButton.Image = new Image(Stock.Open, IconSize.Button);
+		messageDialog.AddButton(Stock.Ok, ResponseType.Ok);
 	}
-	
-	public bool WaitForResponse () {
-		dialog.Run();
-		return toRunAction;
-	}
-	
-	/* Event handlers */
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		ResponseType response = args.ResponseId;
-		if (response == ResponseType.Accept) {
-			toRunAction = true;
-		}
-		CloseDialog();
-	}
-	
+
 	/* Private members */
 	
-	private void CloseDialog() {
-		dialog.Destroy();
-	}
-
 	private string SecondaryTextFromException (Exception exception) {
 		if (exception is UnknownSubtitleFormatException)
 			return "Unable to detect the subtitle format. Please check that the file type is supported.";
@@ -74,9 +50,21 @@ public class FileOpenErrorDialog {
 		else if (exception is IOException)
 			return "An I/O error has occured.";
 		else
-			return "An unknown error has occured. Please report a bug and include this exception name: \"" + exception.GetType() + "\".";
+			return "An unknown error has occured. Please report a bug and include this name: \"" + exception.GetType() + "\".";
 	}
 	
+	/* Event members */
+	
+	#pragma warning disable 169		//Disables warning about handlers not being used
+	
+	private void OnResponse (object o, ResponseArgs args) {
+		ResponseType response = args.ResponseId;
+		if (response == ResponseType.Accept) {
+			actionDone = true;
+		}
+		CloseDialog();
+	}
+
 }
 
 }
