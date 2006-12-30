@@ -19,6 +19,7 @@
 
 using Gtk;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -76,6 +77,7 @@ public class Player {
 	/* Public methods */
 
 	/// <summary>Opens a video file.</summary>
+	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	public void Open (string filename) {
 		position.Stop();
 	
@@ -144,6 +146,8 @@ public class Player {
 		socket.ModifyBg(StateType.Normal, socket.Style.Black);	
 	}
 	
+	/// <summary>Starts a new MPlayer process on slave mode and idle.</summary>
+	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	private void StartNewProcess () {
 		/* Configure startup of new process */
 		Process newProcess = new Process();
@@ -157,7 +161,11 @@ public class Player {
 		newProcess.StartInfo.RedirectStandardInput = true;
 		newProcess.StartInfo.RedirectStandardOutput = true;
 
-		System.Console.WriteLine(newProcess.Start());
+		try {
+			newProcess.Start();
+		} catch (Win32Exception) {
+			throw new PlayerNotFoundException();
+		}
 		process = newProcess;
 	}
 	
@@ -166,7 +174,7 @@ public class Player {
 	private void TerminateProcess () {
 		if (process != null) {
 			Exec("quit");
-			bool exited = process.WaitForExit(1000); //Wait 1 second to exit
+			bool exited = process.WaitForExit(1000); //Wait 1 second for exit
 			if (!exited) {
 				System.Console.WriteLine("Process didn't exit, killing it.");
 				process.Kill();

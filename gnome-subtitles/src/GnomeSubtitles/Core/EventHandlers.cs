@@ -19,7 +19,6 @@
 
 using Gnome;
 using Gtk;
-using Pango; //TODO delete
 using SubLib;
 using System;
 
@@ -187,10 +186,15 @@ public class EventHandlers {
 		VideoOpenDialog dialog = new VideoOpenDialog();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
-			System.Console.WriteLine("Setting view activity to true");
 			Global.GUI.Menus.SetViewVideoActivity(true);
-			Global.GUI.Menus.SetVideoSensitivity(true);
-			Global.GUI.Video.Open(dialog.Filename);
+			try {
+				Global.GUI.Video.Open(dialog.Filename);
+				Global.GUI.Menus.SetVideoSensitivity(true);
+			}
+			catch (PlayerNotFoundException) {
+				Global.GUI.Video.Close();
+				new PlayerNotFoundErrorDialog();
+			}
 		}
 	}
 	

@@ -60,6 +60,8 @@ public class Video {
 		videoArea.Hide();
 	}
 	
+	/// <summary>Opens a video file.</summary>
+	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	public void Open (string filename) {
 		filename = Regex.Escape(filename);
 		player.Open(filename);
