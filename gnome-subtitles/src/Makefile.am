@@ -11,16 +11,19 @@ GS_SOURCES = \
 	$(srcdir)/GnomeSubtitles/Commands/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
 	$(srcdir)/GnomeSubtitles/Dialogs/*.cs \
+	$(srcdir)/GnomeSubtitles/Exception/*.cs \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs
 
 GS_RESOURCES = \
 	$(srcdir)/Glade/AboutDialog.glade \
 	$(srcdir)/Glade/FileOpenDialog.glade \
+	$(srcdir)/Glade/FileOpenErrorDialog.glade \
 	$(srcdir)/Glade/FileSaveAsDialog.glade \
 	$(srcdir)/Glade/HeadersDialog.glade \
 	$(srcdir)/Glade/MainWindow.glade \
 	$(srcdir)/Glade/ReportBugWindow.glade \
 	$(srcdir)/Glade/SearchDialog.glade \
+	$(srcdir)/Glade/ShowMessageDialog.glade \
 	$(srcdir)/Glade/TimingsAdjustDialog.glade \
 	$(srcdir)/Glade/TimingsShiftDialog.glade \
 	$(srcdir)/Glade/VideoOpenDialog.glade \
