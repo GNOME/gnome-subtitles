@@ -34,7 +34,7 @@ public class SubtitleFileChooserDialog : GladeDialog {
 		new FileEncoding("Current Locale")
 	};
 
-	public SubtitleFileChooserDialog (string dialogName) : base(dialogName) {
+	public SubtitleFileChooserDialog (string filename) : base(filename) {
 		dialog = base.dialog as FileChooserDialog;
 	}
 	
