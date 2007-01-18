@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,15 +28,31 @@ public class Video {
 	
 	private Player player = null;
 	private VideoPosition position = null;
+	private VideoSubtitle subtitle = null;
 
 	public Video () {
 		videoArea = Global.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
-		frame = Global.GetWidget(WidgetNames.VideoFrame) as AspectFrame;
+		subtitle = new VideoSubtitle();
+		
+		/* Create the video Frame */
+		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
+		EventBox videoFrameEventBox = new EventBox();
+		videoFrameEventBox.Add(frame);
+		videoFrameEventBox.ModifyBg(StateType.Normal, videoFrameEventBox.Style.Black);
+		
+		/* Attach the video frame */
+		Table videoImageTable = Global.GetWidget("videoImageTable") as Table;
+		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
+		videoImageTable.ShowAll();
 		
 		player = new Player();
 		position = new VideoPosition(player);
 	
 		LoadVideoWidget(player.Widget);
+	}
+	
+	public void DoSomething () { //TODO delete
+		System.Console.WriteLine("Doing something");	
 	}
 	
 	/* Public properties */
