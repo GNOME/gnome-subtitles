@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ public class VideoPosition {
 	//private Label positionLabel = null;
 	private Label positionValueLabel = null;
 	private Label lengthValueLabel = null;	
+	private float position = 0;
 	
 	/* Slider related */
 	private HScale slider = null;
@@ -36,6 +37,12 @@ public class VideoPosition {
 	/* Constants */
 	private const int userUpdateTimeout = 100; //Milliseconds
 
+	/* Handlers */
+	public delegate void VideoPositionChangedHandler (float position);
+
+	/* Events */	
+	public event VideoPositionChangedHandler Changed;
+
 	public VideoPosition (Player player) {
 		slider = Global.GetWidget(WidgetNames.VideoSlider) as HScale;
 		//positionLabel = Global.GetWidget(WidgetNames.VideoPositionLabel) as Label;
@@ -43,6 +50,7 @@ public class VideoPosition {
 		lengthValueLabel = Global.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
 
 		this.player = player;
+		player.SetPlayerPositionChangedFunc(OnPlayerPositionChanged);
 	}
 
 	/* Public properties */
@@ -51,11 +59,15 @@ public class VideoPosition {
 		get { return (float)slider.Adjustment.StepIncrement; }
 	}
 	
+	/// <summary>The current position, in seconds.</summary>
+	public float Current {
+		get { return position; }
+	}
+	
 	/* Public methods */
 	
 	public void Disable () {
 		DisconnectSliderSignals();
-		DisconnectPlayerSignals();
 		RemoveUserUpdateTimeout();
 		UpdatePositionValues(0);
 		SetLength(0);
@@ -66,7 +78,6 @@ public class VideoPosition {
 		SetLength(player.Length);
 		slider.Sensitive = true;
 		ConnectSliderSignals();
-		ConnectPlayerSignals();
 	}
 
 	/* Event members */
@@ -80,11 +91,15 @@ public class VideoPosition {
 		AddUserUpdateTimeout();
 	}
 	
+	/// <summary>Handles changes in the player position.</summary>
+	/// <param name="newPosition">The new position, in seconds, or -1 if the end was reached.</param> //TODO check for position end
 	private void OnPlayerPositionChanged (float newPosition) {
-		if (userUpdateTimeoutId != 0) //There is a manual positioning going on 
-			return;
-
-		UpdatePositionValues(newPosition);				
+		UpdatePositionLabel(newPosition);
+	
+		if (userUpdateTimeoutId == 0)  //There is not a manual positioning going on
+			UpdateSlider(newPosition);
+		
+		EmitVideoPositionChanged(newPosition);
 	}
 	
 	private bool UpdatePlayerPosition () {
@@ -104,20 +119,17 @@ public class VideoPosition {
 		userUpdateTimeoutId = GLib.Timeout.Add(userUpdateTimeout, UpdatePlayerPosition);
 	}
 	
+	private void EmitVideoPositionChanged (float newPosition) {
+		if (Changed != null)
+			Changed(newPosition);
+	}
+	
 	private void ConnectSliderSignals () {
 		slider.ValueChanged += OnSliderValueChanged;
 	}
 	
 	private void DisconnectSliderSignals () {
 		slider.ValueChanged -= OnSliderValueChanged;
-	}
-	
-	private void ConnectPlayerSignals () {
-		player.PositionChanged += OnPlayerPositionChanged;
-	}
-	
-	private void DisconnectPlayerSignals () {
-		player.PositionChanged -= OnPlayerPositionChanged;
 	}
 
 	/* Private members */

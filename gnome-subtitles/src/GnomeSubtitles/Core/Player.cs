@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,21 +26,22 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public delegate void PlayerPositionChangedHandler (float position);
-public delegate float PlayerGetTimeFunc ();
-public delegate void PlayerEmitPositionChangedFunc (float position);
+public delegate float PlayerGetPositionFunc ();
+public delegate void PlayerPositionChangedFunc (float position);
 
 public class Player {
 	private Socket socket = null;
 	private Process process = null;
 	private PlayerPositionWatcher position = null;
 	
-	/* Events */	
-	public event PlayerPositionChangedHandler PositionChanged;
+	/* Delegate functions */
+	private VideoTogglePlayPauseFunc VideoTogglePlayPause;
 
-	public Player () {
+	public Player (VideoTogglePlayPauseFunc videoTogglePlayPauseFunc) {
+		VideoTogglePlayPause = videoTogglePlayPauseFunc;
+
 		CreateSocket();
-		position = new PlayerPositionWatcher(GetPosition, EmitPositionChanged);
+		position = new PlayerPositionWatcher(GetPosition);
 	}
 	
 	public Socket Widget {
@@ -48,11 +49,6 @@ public class Player {
 	}
 	
 	/* Public properties */
-	
-	/// <summary>The current position, in seconds.</summary>
-	public float Position {
-		get { return position.CurrentPosition; }	
-	}
 	
 	/// <summary>The aspect ratio.</summary>	
 	public float AspectRatio {
@@ -133,10 +129,8 @@ public class Player {
 		position.Check();
 	}
 	
-	/* Event related members */
-	
-	private void EmitPositionChanged (float newPosition) {
-		PositionChanged(newPosition);
+	public void SetPlayerPositionChangedFunc (PlayerPositionChangedFunc onPlayerPositionChanged) {
+		position.SetPlayerPositionChangedFunc(onPlayerPositionChanged);
 	}
 
 	/* Private methods */
@@ -183,12 +177,19 @@ public class Player {
 		}
 	}
 	
-	/// <summary>The current position, in seconds.</summary>
+	/// <summary>Gets the current position, in seconds.</summary>
+	/// <returns>The current position, in seconds, or -1 if the end has been reached.</returns>
 	private float GetPosition () {
-		if (position.Paused)
-			return GetAsFloat("pausing get_time_pos");
-		else
-			return GetAsFloat("get_time_pos");
+		try {
+			if (position.Paused)
+				return GetAsFloat("pausing get_time_pos");
+			else
+				return GetAsFloat("get_time_pos");
+		}
+		catch (FormatException) { //Reached the end
+			VideoTogglePlayPause();
+			return -1;
+		}
 	}
 	
 	private void Exec (string command) {
@@ -200,6 +201,8 @@ public class Player {
 		Exec(command);
 		string line = process.StandardOutput.ReadLine();
 		System.Console.WriteLine("Response was: " + line);
+		System.Console.WriteLine("Was Response null ? " + (line == null));
+		System.Console.WriteLine("Was Response Empty ? " + (line == String.Empty));
 		int index = line.LastIndexOf("=");
 		return (index == -1 ? String.Empty : line.Substring(index + 1));
 	}
@@ -209,6 +212,10 @@ public class Player {
 		return Convert.ToInt32(text);
 	}
 	
+	/// <summary>Gets a float as the response to a command.</summary>
+	/// <param name="command">The command to execute.</param>
+	/// <returns>The response for the command parsed as a float.</returns>
+	/// <exception cref="FormatException">Thrown when the response cannot be parsed as a float.</exception> 
 	private float GetAsFloat (string command) {
 		string text = Get(command);
 		return (float)Convert.ToDouble(text);

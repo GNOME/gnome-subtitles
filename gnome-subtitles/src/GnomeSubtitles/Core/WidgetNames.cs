@@ -90,6 +90,7 @@ public class WidgetNames {
 	public const string VideoAreaHBox = "videoAreaHBox";
 	public const string VideoFrame = "videoFrame";
 	public const string VideoSubtitleLabel = "videoSubtitle";
+	public const string VideoSubtitleLabelEventBox = "videoSubtitleEventBox";
 	public const string VideoControlsVBox = "videoControlsVBox";
 	public const string VideoPlayPauseButton = "videoPlayPauseButton";
 	public const string VideoSlider = "videoSlider";

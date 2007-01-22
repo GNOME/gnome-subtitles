@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,26 +23,21 @@ public class PlayerPositionWatcher {
 	private uint timeoutId = 0;
 	private float position = 0;
 	
-	/* delegate functions */
-	private PlayerGetTimeFunc GetTime;
-	private PlayerEmitPositionChangedFunc EmitPositionChanged;
+	/* Delegate functions */
+	private PlayerGetPositionFunc PlayerGetPosition;
+	private PlayerPositionChangedFunc PositionChanged;	
 	
 	/* Constants */
 	private const int timeout = 100; //milliseconds
 
-	public PlayerPositionWatcher (PlayerGetTimeFunc playerGetTimeFunc, PlayerEmitPositionChangedFunc playerEmitPositionChangedFunc) {
-		GetTime = playerGetTimeFunc;
-		EmitPositionChanged = playerEmitPositionChangedFunc;
+	public PlayerPositionWatcher (PlayerGetPositionFunc playerGetPositionFunc) {
+		PlayerGetPosition = playerGetPositionFunc;
 	}
 	
 	/* Public properties */
 	
 	public bool Paused {
 		get { return (timeoutId == 0); }
-	}
-	
-	public float CurrentPosition {
-		get { return position; }
 	}
 	
 	/* Public methods */
@@ -65,12 +60,19 @@ public class PlayerPositionWatcher {
 		}	
 	}
 	
+	public void SetPlayerPositionChangedFunc (PlayerPositionChangedFunc onPlayerPositionChanged) {
+		PositionChanged = onPlayerPositionChanged;
+	}
+	
 	/* Event members */
 
 	private bool CheckPosition () {
-		position = GetTime();
+		position = PlayerGetPosition();
 		System.Console.WriteLine("Position is " + position);
-		EmitPositionChanged(position);
+
+		if (position >= 0)
+			EmitPositionChanged(position);
+
 		return true;
 	}
 	
@@ -83,6 +85,11 @@ public class PlayerPositionWatcher {
 			GLib.Source.Remove(timeoutId);
 			timeoutId = 0;
 		}	
+	}
+	
+	private void EmitPositionChanged (float position) {
+		if (PositionChanged != null)
+			PositionChanged(position);
 	}
 
 

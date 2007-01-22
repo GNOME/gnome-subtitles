@@ -22,6 +22,8 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles {
 
+public delegate void VideoTogglePlayPauseFunc ();
+
 public class Video {
 	private HBox videoArea = null;
 	private AspectFrame frame = null;
@@ -32,7 +34,6 @@ public class Video {
 
 	public Video () {
 		videoArea = Global.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
-		subtitle = new VideoSubtitle();
 		
 		/* Create the video Frame */
 		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
@@ -45,8 +46,9 @@ public class Video {
 		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
 		videoImageTable.ShowAll();
 		
-		player = new Player();
+		player = new Player(TogglePlayPause);
 		position = new VideoPosition(player);
+		subtitle = new VideoSubtitle(position);
 	
 		LoadVideoWidget(player.Widget);
 	}
@@ -54,12 +56,6 @@ public class Video {
 	public void DoSomething () { //TODO delete
 		System.Console.WriteLine("Doing something");	
 	}
-	
-	/* Public properties */
-	
-	public float Position {
-		get { return player.Position; }
-	}	
 	
 	/* Public methods */
 	
@@ -90,6 +86,7 @@ public class Video {
 	
 	public void Close () {
 		player.Close();
+		subtitle.Close();
 		position.Disable();
 		
 		/* Update the frame */

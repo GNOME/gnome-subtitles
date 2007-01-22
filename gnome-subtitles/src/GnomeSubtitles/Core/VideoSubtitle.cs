@@ -18,16 +18,98 @@
  */
 
 using Gtk;
+using SubLib;
+using System;
 
 namespace GnomeSubtitles {
 
 public class VideoSubtitle {
 	private Label label = null;
 	
-	public VideoSubtitle () {
+	/* Current subtitle */
+	private Subtitle subtitle = null;
+	private int subtitleNumber = -1;
+	private float subtitleStart = -1;
+	private float subtitleEnd = -1;
+	
+	public VideoSubtitle (VideoPosition position) {
+		EventBox box = Global.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
+		box.ModifyBg(StateType.Normal, box.Style.Black);
+
 		label = Global.GetWidget(WidgetNames.VideoSubtitleLabel) as Label;
+		label.ModifyFg(StateType.Normal, new Gdk.Color(255, 255, 0));
+
+		position.Changed += OnVideoPositionChanged;
 	}
 
+	public void Close () {
+		UnloadSubtitle();
+	}
+
+	/* Event members */
+	
+	private void OnVideoPositionChanged (float newPosition) {
+		if (!(Global.AreSubtitlesLoaded))
+			return;
+	
+		if (!(IsTimeInCurrentSubtitle(newPosition))) {
+			int foundSubtitle = Global.Subtitles.FindWithTime(newPosition);
+			if (foundSubtitle == -1)
+				UnloadSubtitle();
+			else
+				LoadSubtitle(foundSubtitle);
+		}
+	}
+	
+	/* Private properties */
+	
+	private bool IsSubtitleLoaded {
+		get { return subtitle != null; }
+	}
+	
+	/* Private methods */
+	
+	private bool IsTimeInCurrentSubtitle (float time) {
+		return IsSubtitleLoaded && (time >= subtitleStart) && (time <= subtitleEnd);	
+	}
+	
+	private void LoadSubtitle (int number) {
+		subtitle = Global.Subtitles[number];
+		subtitleNumber = number;
+		subtitleStart = (float)subtitle.Times.Start.TotalSeconds;
+		subtitleEnd = (float)subtitle.Times.End.TotalSeconds;
+		SetText();
+	}
+	
+	private void UnloadSubtitle () {
+		subtitle = null;
+		subtitleNumber = -1;
+		subtitleStart = -1;
+		subtitleEnd = -1;
+		ClearText();
+	}
+	
+	private void SetText () {
+		string text = subtitle.Text.Get();
+		string markup = "<span size=\"x-large\""; 
+	
+		if (subtitle.Style.Bold)
+			markup += " weight=\"bold\"";
+
+		if (subtitle.Style.Italic)
+			markup += " style=\"italic\"";
+
+		if (subtitle.Style.Underline)
+			markup += " underline=\"single\"";
+		
+		markup += ">" + text + "</span>";
+		label.Markup = markup;
+	}
+	
+	private void ClearText () {
+		label.Text = String.Empty;
+	}
+	
 }
 
 }
