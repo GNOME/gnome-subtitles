@@ -17,21 +17,26 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using System;
+
 namespace GnomeSubtitles {
 
 public class PlayerPositionWatcher {
 	private uint timeoutId = 0;
 	private float position = 0;
+	private float length = 0;
 	
 	/* Delegate functions */
 	private PlayerGetPositionFunc PlayerGetPosition;
-	private PlayerPositionChangedFunc PositionChanged;	
+	private PlayerEndReachedFunc PlayerEndReached;
+	private PlayerPositionChangedFunc PlayerPositionChanged;
 	
 	/* Constants */
 	private const int timeout = 100; //milliseconds
 
-	public PlayerPositionWatcher (PlayerGetPositionFunc playerGetPositionFunc) {
+	public PlayerPositionWatcher (PlayerGetPositionFunc playerGetPositionFunc, PlayerEndReachedFunc playerEndReachedFunc) {
 		PlayerGetPosition = playerGetPositionFunc;
+		PlayerEndReached = playerEndReachedFunc;
 	}
 	
 	/* Public properties */
@@ -39,6 +44,16 @@ public class PlayerPositionWatcher {
 	public bool Paused {
 		get { return (timeoutId == 0); }
 	}
+	
+	public float Length {
+		get { return length; }
+		set { length = value; }
+	}
+	
+	public PlayerPositionChangedFunc OnPlayerPositionChanged {
+		set { PlayerPositionChanged = value; }
+	}
+
 	
 	/* Public methods */
 	
@@ -60,17 +75,18 @@ public class PlayerPositionWatcher {
 		}	
 	}
 	
-	public void SetPlayerPositionChangedFunc (PlayerPositionChangedFunc onPlayerPositionChanged) {
-		PositionChanged = onPlayerPositionChanged;
-	}
-	
 	/* Event members */
 
 	private bool CheckPosition () {
 		position = PlayerGetPosition();
 		System.Console.WriteLine("Position is " + position);
 
-		if (position >= 0)
+		if (position == -1) { //The end has been reached
+			Stop();
+			PlayerEndReached();
+			EmitPositionChanged(length);
+		}
+		else
 			EmitPositionChanged(position);
 
 		return true;
@@ -88,8 +104,8 @@ public class PlayerPositionWatcher {
 	}
 	
 	private void EmitPositionChanged (float position) {
-		if (PositionChanged != null)
-			PositionChanged(position);
+		if (PlayerPositionChanged != null)
+			PlayerPositionChanged(position);
 	}
 
 

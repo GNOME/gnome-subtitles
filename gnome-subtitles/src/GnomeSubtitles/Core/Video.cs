@@ -18,11 +18,10 @@
  */
 
 using Gtk;
+using System;
 using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles {
-
-public delegate void VideoTogglePlayPauseFunc ();
 
 public class Video {
 	private HBox videoArea = null;
@@ -46,7 +45,9 @@ public class Video {
 		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
 		videoImageTable.ShowAll();
 		
-		player = new Player(TogglePlayPause);
+		player = new Player();
+		player.EndReached += OnPlayerEndReached;
+		
 		position = new VideoPosition(player);
 		subtitle = new VideoSubtitle(position);
 	
@@ -112,12 +113,14 @@ public class Video {
 	
 	public void Play () {
 		System.Console.WriteLine("PLAY pressed");
-		player.Play();
+		if (player.Paused)
+			player.Play();
 	}
 	
 	public void Pause () {
 		System.Console.WriteLine("PAUSE pressed");
-		player.Pause();
+		if (!player.Paused)
+			player.Pause();
 	}
 	
 	public void Rewind () {
@@ -140,6 +143,14 @@ public class Video {
 
 	private void SetControlsSensitivity (bool sensitivity) {
 		Global.GetWidget(WidgetNames.VideoControlsVBox).Sensitive = sensitivity;	
+	}
+	
+	/* Event members */
+	
+	private void OnPlayerEndReached (object o, EventArgs args) {
+		System.Console.WriteLine("Player end has been reached!");
+		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		button.Active = false;		
 	}
 
 }

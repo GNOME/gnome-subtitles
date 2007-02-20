@@ -40,7 +40,7 @@ public class VideoPosition {
 	/* Handlers */
 	public delegate void VideoPositionChangedHandler (float position);
 
-	/* Events */	
+	/* Events */
 	public event VideoPositionChangedHandler Changed;
 
 	public VideoPosition (Player player) {
@@ -50,7 +50,7 @@ public class VideoPosition {
 		lengthValueLabel = Global.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
 
 		this.player = player;
-		player.SetPlayerPositionChangedFunc(OnPlayerPositionChanged);
+		player.OnPositionChanged = OnPlayerPositionChanged;
 	}
 
 	/* Public properties */
@@ -83,22 +83,23 @@ public class VideoPosition {
 	/* Event members */
 	
 	private void OnSliderValueChanged (object o, EventArgs args) {
+		System.Console.WriteLine("Slider Value has changed! " + isPlayerUpdate);
+	
 		if (isPlayerUpdate) {
 			isPlayerUpdate = false;
 			return;
-		}		
+		}
 		RemoveUserUpdateTimeout();
 		AddUserUpdateTimeout();
 	}
 	
 	/// <summary>Handles changes in the player position.</summary>
-	/// <param name="newPosition">The new position, in seconds, or -1 if the end was reached.</param> //TODO check for position end
+	/// <param name="newPosition">The new position, in seconds, or -1 if the end was reached.</param>
 	private void OnPlayerPositionChanged (float newPosition) {
-		UpdatePositionLabel(newPosition);
-	
 		if (userUpdateTimeoutId == 0)  //There is not a manual positioning going on
 			UpdateSlider(newPosition);
-		
+
+		UpdatePositionLabel(newPosition);
 		EmitVideoPositionChanged(newPosition);
 	}
 	

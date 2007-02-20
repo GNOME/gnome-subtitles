@@ -26,22 +26,21 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public delegate float PlayerGetPositionFunc ();
-public delegate void PlayerPositionChangedFunc (float position);
+public delegate float PlayerGetPositionFunc (); //Represents a function that gets the current player position
+public delegate void PlayerPositionChangedFunc (float position); //Represents a function that handles changes in the position
+public delegate void PlayerEndReachedFunc (); //Represents a function that handles reaching of the end in the player
 
 public class Player {
 	private Socket socket = null;
 	private Process process = null;
 	private PlayerPositionWatcher position = null;
 	
-	/* Delegate functions */
-	private VideoTogglePlayPauseFunc VideoTogglePlayPause;
+	/* Events */
+	public event EventHandler EndReached = null;
 
-	public Player (VideoTogglePlayPauseFunc videoTogglePlayPauseFunc) {
-		VideoTogglePlayPause = videoTogglePlayPauseFunc;
-
+	public Player () {
 		CreateSocket();
-		position = new PlayerPositionWatcher(GetPosition);
+		position = new PlayerPositionWatcher(GetPosition, EmitEndReachedEvent);
 	}
 	
 	public Socket Widget {
@@ -49,6 +48,10 @@ public class Player {
 	}
 	
 	/* Public properties */
+	
+	public bool Paused {
+		get { return position.Paused; }
+	}
 	
 	/// <summary>The aspect ratio.</summary>	
 	public float AspectRatio {
@@ -61,12 +64,11 @@ public class Player {
 	
 	/// <summary>The length of the video, in seconds.</summary>
 	public float Length {
-		get {
-			if (position.Paused)
-				return GetAsFloat("pausing get_time_length");
-			else
-				return GetAsFloat("get_time_length");
-		}
+		get { return position.Length; }
+	}
+	
+	public PlayerPositionChangedFunc OnPositionChanged {
+		set { position.OnPlayerPositionChanged = value; }
 	}
 
 
@@ -77,12 +79,11 @@ public class Player {
 	public void Open (string filename) {
 		position.Stop();
 	
-		if (process == null)
-			StartNewProcess();
-
-		Exec("loadfile " + filename);
+		StartNewProcess(filename); //TODO was doing thing here with processes
 
 		ClearOutput();
+		
+		position.Length = GetLength();
 	}
 
 	/// <summary>Closes the video.</summary>
@@ -129,9 +130,6 @@ public class Player {
 		position.Check();
 	}
 	
-	public void SetPlayerPositionChangedFunc (PlayerPositionChangedFunc onPlayerPositionChanged) {
-		position.SetPlayerPositionChangedFunc(onPlayerPositionChanged);
-	}
 
 	/* Private methods */
 	
@@ -142,12 +140,12 @@ public class Player {
 	
 	/// <summary>Starts a new MPlayer process on slave mode and idle.</summary>
 	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
-	private void StartNewProcess () {
+	private void StartNewProcess (string filename) {
 		/* Configure startup of new process */
 		Process newProcess = new Process();
 		newProcess.StartInfo.FileName = "mplayer";
 
-		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -fontconfig -subfont-autoscale 2 -quiet -nomouseinput -slave -idle";
+		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -fontconfig -subfont-autoscale 2 -quiet -nomouseinput -slave " + filename;
 		if (!newProcess.StartInfo.EnvironmentVariables.ContainsKey("TERM")) {
 			newProcess.StartInfo.EnvironmentVariables.Add("TERM", "xterm");
 		}
@@ -187,9 +185,15 @@ public class Player {
 				return GetAsFloat("get_time_pos");
 		}
 		catch (FormatException) { //Reached the end
-			VideoTogglePlayPause();
 			return -1;
 		}
+	}
+	
+	private float GetLength () {
+		if (position.Paused)
+			return GetAsFloat("pausing get_time_length");
+		else
+			return GetAsFloat("get_time_length");
 	}
 	
 	private void Exec (string command) {
@@ -232,6 +236,13 @@ public class Player {
 			if (line.StartsWith("ANS_VO_FULLSCREEN"))
 				break;
 		}
+	}
+	
+	/* Event members */
+	
+	private void EmitEndReachedEvent () {
+		if (EndReached != null)
+			EndReached(this, EventArgs.Empty);
 	}
 	
 }
