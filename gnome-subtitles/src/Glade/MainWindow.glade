@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Sun Jan 21 03:06:52 2007 by noup@nouplab
+<!--Generated with glade3 3.0.3 on Fri Feb 23 19:40:01 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -637,6 +637,29 @@
                         <signal name="activate" handler="OnVideoForward"/>
                       </widget>
                     </child>
+                    <child>
+                      <widget class="GtkSeparatorMenuItem" id="videoSeparator2">
+                        <property name="visible">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="videoSetSubtitleStart">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="label" translatable="yes">Set Subtitle Start</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="OnVideoSetSubtitleStart"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="videoSetSubtitleEnd">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="label" translatable="yes">Set Subtitle End</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="OnVideoSetSubtitleEnd"/>
+                      </widget>
+                    </child>
                   </widget>
                 </child>
               </widget>
@@ -916,6 +939,9 @@
                           </packing>
                         </child>
                       </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                      </packing>
                     </child>
                     <child>
                       <widget class="GtkHSeparator" id="videoControlsSeparator1">
@@ -933,16 +959,17 @@
                         <property name="spacing">4</property>
                         <property name="homogeneous">True</property>
                         <child>
-                          <widget class="GtkButton" id="videoSetFromButton">
+                          <widget class="GtkButton" id="videoSetSubtitleStartButton">
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">\_</property>
-                            <signal name="clicked" handler="OnVideoSetFrom"/>
+                            <signal name="clicked" handler="OnVideoSetSubtitleStart"/>
                           </widget>
                         </child>
                         <child>
-                          <widget class="GtkButton" id="videoSetToButton">
+                          <widget class="GtkButton" id="videoSetSubtitleEndButton">
                             <property name="visible">True</property>
                             <property name="label" translatable="yes">_/</property>
+                            <signal name="clicked" handler="OnVideoSetSubtitleEnd"/>
                           </widget>
                           <packing>
                             <property name="position">1</property>
@@ -950,6 +977,7 @@
                         </child>
                       </widget>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="fill">False</property>
                         <property name="position">2</property>
                       </packing>
@@ -1115,6 +1143,7 @@
                     <child>
                       <widget class="GtkHScale" id="videoSlider">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="adjustment">0 0 100 0.5 10 10</property>
                         <property name="draw_value">False</property>
                         <property name="value_pos">GTK_POS_BOTTOM</property>
