@@ -35,6 +35,9 @@ public class Player {
 	private Process process = null;
 	private PlayerPositionWatcher position = null;
 	
+	private string filename = String.Empty;
+	private float frameRate = 0;
+	
 	/* Events */
 	public event EventHandler EndReached = null;
 
@@ -67,6 +70,10 @@ public class Player {
 		get { return position.Length; }
 	}
 	
+	public float FrameRate {
+		get { return frameRate; }
+	}
+	
 	public PlayerPositionChangedFunc OnPositionChanged {
 		set { position.OnPlayerPositionChanged = value; }
 	}
@@ -77,39 +84,50 @@ public class Player {
 	/// <summary>Opens a video file.</summary>
 	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	public void Open (string filename) {
+		this.filename = filename;
+	
 		position.Stop();
 	
-		StartNewProcess(filename); //TODO was doing thing here with processes
-
+		StartNewProcess(filename);
 		ClearOutput();
 		
-		position.Length = GetLength();
+		position.Enable(GetLength());
+		
+		frameRate = GetFrameRate();
 	}
 
 	/// <summary>Closes the video.</summary>
 	public void Close () {
-		position.Stop();
+		position.Disable();
 		TerminateProcess();
+		
+		this.filename = String.Empty;
+		this.frameRate = 0;
 	}
 	
 	public void SeekStart () {
-		System.Console.WriteLine("Seeking to start.");
 		Exec("pausing seek 0 2");
 	}
 	
 	public void Play () {
-		System.Console.WriteLine("Running PLAY");
+		if (position.EndReached) {
+			EmitEndReachedEvent();
+			return;
+		}
+		
 		if (position.Paused) {
-			System.Console.WriteLine("Playing...");
 			Exec("pause");
 			position.Start();
 		}
 	}
 	
 	public void Pause () {
-		System.Console.WriteLine("Running PAUSE");
+		if (position.EndReached) {
+			EmitEndReachedEvent();
+			return;
+		}
+		
 		if (!position.Paused) {
-			System.Console.WriteLine("Pausing...");
 			position.Stop();
 			Exec("pause");
 		}
@@ -121,17 +139,35 @@ public class Player {
 	}
 	
 	public void Rewind (float decrement) {
-		Exec("pausing_keep seek -" + decrement + " 0");
-		position.Check();
+		if (position.EndReached) { //Seek to near the end
+			float length = position.Length;
+			float nearEndPosition = (length > 5) ? length - 5 : 0;
+			Seek(nearEndPosition);
+		}
+		else {
+			Exec("pausing_keep seek -" + decrement + " 0");
+			position.Check();
+		}
 	}
 	
 	public void Forward (float increment) {
+		if (position.EndReached) {
+			EmitEndReachedEvent();
+			return;
+		}
+	
 		Exec("pausing_keep seek " + increment + " 0");
 		position.Check();
 	}
 	
 
 	/* Private methods */
+	
+	private void RestartPlayer () {
+		StartNewProcess(filename);
+		ClearOutput();
+		SeekStart();
+	}
 	
 	private void CreateSocket () {
 		socket = new Socket();
@@ -152,6 +188,7 @@ public class Player {
 		newProcess.StartInfo.UseShellExecute = false;
 		newProcess.StartInfo.RedirectStandardInput = true;
 		newProcess.StartInfo.RedirectStandardOutput = true;
+		newProcess.EnableRaisingEvents = true;
 
 		try {
 			newProcess.Start();
@@ -159,18 +196,19 @@ public class Player {
 			throw new PlayerNotFoundException();
 		}
 		process = newProcess;
+		process.Exited += OnProcessExited;
 	}
 	
 	/// <summary>Terminates the current running process, if it exists.</summary>
 	/// <remarks>Waits for the process to end, and kills it if it doesn't.</remarks>
 	private void TerminateProcess () {
 		if (process != null) {
+			process.Exited -= OnProcessExited;
 			Exec("quit");
 			bool exited = process.WaitForExit(1000); //Wait 1 second for exit
-			if (!exited) {
-				System.Console.WriteLine("Process didn't exit, killing it.");
+			if (!exited)
 				process.Kill();
-			}
+
 			process = null;
 		}
 	}
@@ -196,17 +234,21 @@ public class Player {
 			return GetAsFloat("get_time_length");
 	}
 	
+	private float GetFrameRate () {
+		if (position.Paused)
+			return GetAsFloat("pausing get_property fps");
+		else
+			return GetAsFloat("get_property fps");
+	}
+	
 	private void Exec (string command) {
-		System.Console.WriteLine("Executing command: " + command);
 		process.StandardInput.WriteLine(command);
 	}
 	
 	private string Get (string command) {
 		Exec(command);
+
 		string line = process.StandardOutput.ReadLine();
-		System.Console.WriteLine("Response was: " + line);
-		System.Console.WriteLine("Was Response null ? " + (line == null));
-		System.Console.WriteLine("Was Response Empty ? " + (line == String.Empty));
 		int index = line.LastIndexOf("=");
 		return (index == -1 ? String.Empty : line.Substring(index + 1));
 	}
@@ -243,6 +285,10 @@ public class Player {
 	private void EmitEndReachedEvent () {
 		if (EndReached != null)
 			EndReached(this, EventArgs.Empty);
+	}
+	
+	private void OnProcessExited (object o, EventArgs args) {
+		RestartPlayer();
 	}
 	
 }
