@@ -256,6 +256,7 @@ public class GUI {
 	private void UpdateFromSelection (Subtitle subtitle) {
 		menus.UpdateFromSelection(subtitle);
 		edit.UpdateFromSelection(subtitle);
+		video.UpdateFromSelection(true);
 	}
 
 	/// <summary>Updates the GUI from the specified selected paths.</summary>
@@ -265,6 +266,7 @@ public class GUI {
 	private void UpdateFromSelection (TreePath[] paths) {
 		menus.UpdateFromSelection(paths);
 		edit.Enabled = false;
+		video.UpdateFromSelection(false);
 	}    
 	
 	/* Private properties */
@@ -317,6 +319,7 @@ public class GUI {
 		Global.TimingMode = newMode;
 		view.ToggleTimingMode(newMode);
 		edit.ToggleTimingMode(newMode);
+		video.ToggleTimingMode(newMode);
 	}
 
 }
