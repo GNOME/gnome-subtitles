@@ -68,6 +68,8 @@ public class WidgetNames {
 	public const string VideoPlayPause = "videoPlayPause";
 	public const string VideoRewind = "videoRewind";
 	public const string VideoForward = "videoForward";
+	public const string VideoSetSubtitleStart = "videoSetSubtitleStart";
+	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
 
 
 	/* Tool Bar */
@@ -97,7 +99,8 @@ public class WidgetNames {
 	public const string VideoPositionLabel = "videoControlsPositionLabel";
 	public const string VideoPositionValueLabel = "videoControlsPositionValueLabel";
 	public const string VideoLengthValueLabel = "videoControlsLengthValueLabel";
-	
+	public const string VideoSetSubtitleStartButton = "videoSetSubtitleStartButton";
+	public const string VideoSetSubtitleEndButton = "videoSetSubtitleEndButton";
 	
 	/* Subtitle View */
 	
