@@ -68,6 +68,8 @@ public class ChangeStartCommand : ChangeTimingCommand {
 	
 	public ChangeStartCommand (TimeSpan time): base(time, description) {
 	}
+	
+	/* Overriden methods */
 
 	protected override TimeSpan GetPreviousTime () {
 		return subtitle.Times.Start;
