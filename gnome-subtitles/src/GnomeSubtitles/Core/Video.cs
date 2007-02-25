@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using SubLib;
 using System;
 using System.Text.RegularExpressions;
 
@@ -30,6 +31,8 @@ public class Video {
 	private Player player = null;
 	private VideoPosition position = null;
 	private VideoSubtitle subtitle = null;
+	
+	private bool isLoaded = false;
 
 	public Video () {
 		videoArea = Global.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
@@ -54,8 +57,14 @@ public class Video {
 		LoadVideoWidget(player.Widget);
 	}
 	
-	public void DoSomething () { //TODO delete
-		System.Console.WriteLine("Doing something");	
+	/* Public properties */
+	
+	public VideoPosition Position {
+		get { return position; }
+	}
+	
+	public bool IsLoaded {
+		get { return isLoaded; }
 	}
 	
 	/* Public methods */
@@ -76,6 +85,8 @@ public class Video {
 	/// <summary>Opens a video file.</summary>
 	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	public void Open (string filename) {
+		Close();
+	
 		filename = Regex.Escape(filename);
 		player.Open(filename);
 		player.SeekStart();
@@ -83,9 +94,13 @@ public class Video {
 		SetControlsSensitivity(true);
 		position.Enable();
 		frame.Ratio = player.AspectRatio;
+		
+		isLoaded = true;
 	}
 	
 	public void Close () {
+		isLoaded = false;
+	
 		player.Close();
 		subtitle.Close();
 		position.Disable();
@@ -102,8 +117,21 @@ public class Video {
 		SetControlsSensitivity(false);
 	}
 	
+	/// <summary>Updates the controls for a subtitle selection change.</summary>
+	/// <param name="isSingle">Whether there is only 1 selected subtitle.</param>
+	public void UpdateFromSelection (bool isSingle) {
+		if (isSingle && IsLoaded)
+			SetSelectionDependentControlsSensitivity(true);
+		else
+			SetSelectionDependentControlsSensitivity(false);
+	}
+	
 	public void Quit () {
 		player.Close();
+	}
+	
+	public void ToggleTimingMode (TimingMode newMode) {
+		position.ToggleTimingMode(newMode);
 	}
 	
 	public void TogglePlayPause () {
@@ -112,24 +140,20 @@ public class Video {
 	}
 	
 	public void Play () {
-		System.Console.WriteLine("PLAY pressed");
 		if (player.Paused)
 			player.Play();
 	}
 	
 	public void Pause () {
-		System.Console.WriteLine("PAUSE pressed");
 		if (!player.Paused)
 			player.Pause();
 	}
 	
 	public void Rewind () {
-		System.Console.WriteLine("Rewinding...");
 		player.Rewind(position.StepIncrement);
 	}
 	
 	public void Forward () {
-		System.Console.WriteLine("Forwarding...");
 		player.Forward(position.StepIncrement);
 	}
 	
@@ -142,15 +166,24 @@ public class Video {
 	}
 
 	private void SetControlsSensitivity (bool sensitivity) {
-		Global.GetWidget(WidgetNames.VideoControlsVBox).Sensitive = sensitivity;	
+		Global.GetWidget(WidgetNames.VideoControlsVBox).Sensitive = sensitivity;
+		
+		if ((Global.GUI.View.Selection.Count == 1) && sensitivity)
+			SetSelectionDependentControlsSensitivity(true);
+		else
+			SetSelectionDependentControlsSensitivity(false);
+	}
+	
+	private void SetSelectionDependentControlsSensitivity (bool sensitivity) {
+		Global.GetWidget(WidgetNames.VideoSetSubtitleStartButton).Sensitive = sensitivity;
+		Global.GetWidget(WidgetNames.VideoSetSubtitleEndButton).Sensitive = sensitivity;
 	}
 	
 	/* Event members */
 	
 	private void OnPlayerEndReached (object o, EventArgs args) {
-		System.Console.WriteLine("Player end has been reached!");
-		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
-		button.Active = false;		
+		ToggleButton playPauseButton = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		playPauseButton.Active = false;
 	}
 
 }
