@@ -181,36 +181,6 @@ public class EventHandlers {
 	
 	
 	/* Video Menu */
-	
-	public void OnVideoSetFrom (object o, EventArgs args) {
-		Global.GUI.Video.DoSomething();
-	}
-	
-	/*
-	public void OnVideoSetFrom (object o, EventArgs args) {
-		/*Frame frame = Global.GetWidget("videoFrame") as Frame;
-		Socket socket = frame.Child as Socket;
-		Pango.Layout layout = socket.CreatePangoLayout("HEY THERE");
-		//layout.SetText("HEY THERE");
-			
-		
-		socket.GdkWindow.DrawLayout(socket.Style.TextGC(StateType.Normal			), 100, 100, layout);
-		System.Console.WriteLine("Drawn!");*/
-		/*System.Console.WriteLine("Clicked");
-		Frame frame = Global.GetWidget("videoFrame") as Frame;
-		frame.Child.ExposeEvent += OnBlaExposed;
-		frame.ExposeEvent		 += OnBlaExposed;
-	}*/
-	
-	[GLib.ConnectBefore]
-	public void OnBlaExposed (object o, EventArgs args) {
-		System.Console.WriteLine("EXPOSED! " + o);
-		Frame frame = Global.GetWidget("videoFrame") as Frame;
-		Pango.Layout layout = frame.CreatePangoLayout("HEY THERE");			
-		
-		frame.GdkWindow.DrawLayout(frame.Style.TextGC(StateType.Normal), 200, 200, layout);
-		System.Console.WriteLine("Drawn!");	
-	}
 		
 	public void OnVideoOpen (object o, EventArgs args) {
 		VideoOpenDialog dialog = new VideoOpenDialog();
@@ -231,6 +201,28 @@ public class EventHandlers {
 	public void OnVideoClose (object o, EventArgs args) {
 		Global.GUI.Video.Close();
 		Global.GUI.Menus.SetVideoSensitivity(false);
+	}
+	
+	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
+		if (Global.TimingMode == TimingMode.Times) {
+			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
+			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
+		}
+		else {
+			int frames = Global.GUI.Video.Position.CurrentFrames;
+			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(frames));
+		}
+	}
+	
+	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
+		if (Global.TimingMode == TimingMode.Times) {
+			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
+			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
+		}
+		else {
+			int frames = Global.GUI.Video.Position.CurrentFrames;
+			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
+		}
 	}
 
 	public void OnVideoPlayPause (object o, EventArgs args) {
