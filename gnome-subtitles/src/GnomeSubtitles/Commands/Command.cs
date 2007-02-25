@@ -49,6 +49,16 @@ public abstract class Command {
 	public virtual bool CanGroupWith (Command command) {
 		return false;
 	}
+	
+	/* Protected members */
+	
+	protected void SetDescription (string description) {
+		this.description = description;
+	}
+	
+	protected void SetCanGroup (bool canGroup) {
+		this.canGroup = canGroup;
+	}
 }
 
 }
