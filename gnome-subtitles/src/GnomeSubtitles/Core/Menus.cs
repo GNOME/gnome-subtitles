@@ -46,10 +46,13 @@ public class Menus {
 	
 	public void UpdateFromSelection (Subtitle subtitle) { 
 		SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
-		SetSelectionDependentSensitivity(true);
+		SetNonZeroSelectionDependentSensitivity(true);
+		SetOneSelectionDependentSensitivity(true);
 	}
 	
 	public void UpdateFromSelection (TreePath[] paths) {
+		SetOneSelectionDependentSensitivity(false);
+	
 		if (paths.Length == 0)
 			UpdateFromNoSelection();
 		else
@@ -103,6 +106,12 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoPlayPause, sensitivity);
 		SetSensitivity(WidgetNames.VideoRewind, sensitivity);
 		SetSensitivity(WidgetNames.VideoForward, sensitivity);
+		
+		/* Set video menu dependent sensitivity if there is 1 selected subtitle. */
+		if ((Global.GUI.View.Selection.Count == 1) && sensitivity)
+			SetVideoSelectionDependentSensitivity(true);
+		else
+			SetVideoSelectionDependentSensitivity(false);
 	}
 	
 	/* Static members */
@@ -116,21 +125,29 @@ public class Menus {
 	/* Private members */
 	
 	private void UpdateFromNoSelection () {
-		SetSelectionDependentSensitivity(false);
+		SetNonZeroSelectionDependentSensitivity(false);
 		SetStylesActivity(false, false, false);
 	}
 	
 	private void UpdateFromSelectedPaths (TreePath[] paths) {
-		SetSelectionDependentSensitivity(true);
+		SetNonZeroSelectionDependentSensitivity(true);
 		bool bold, italic, underline;
 		GetGlobalStyles(paths, out bold, out italic, out underline);
 		SetStylesActivity(bold, italic, underline);		
 	}
 	
-	private void SetSelectionDependentSensitivity (bool sensitivity) {
+	/// <summary>Sets the sensitivity depending on 1 or more selected subtitles.</summary>
+	/// <param name="sensitivity">Whether the items are set sensitive.</param>
+	private void SetNonZeroSelectionDependentSensitivity (bool sensitivity) {
 		SetStylesSensitivity(sensitivity);
 		SetSensitivity(WidgetNames.EditDeleteSubtitles, sensitivity);
 		SetSensitivity(WidgetNames.EditInsertSubtitleBefore, sensitivity);
+	}
+	
+	/// <summary>Sets the sensitivity depending on exactly 1 selected subtitle.</summary>
+	/// <param name="sensitivity">Whether the items are set sensitive.</param>
+	private void SetOneSelectionDependentSensitivity (bool sensitivity) {
+		SetVideoSelectionDependentSensitivity(sensitivity);
 	}
 	
 	private void SetSubtitleCountDependentSensitivity (int count) {
@@ -253,6 +270,20 @@ public class Menus {
 			SetSensitivity(WidgetNames.ItalicButton, sensitivity);
 			SetSensitivity(WidgetNames.UnderlineButton, sensitivity);
 		}	
+	}
+	
+	/// <summary>Set the video selection dependent menu items.</summary>
+	/// <param name="sensitivity">Whether to set the menu items sensitive.</param>
+	/// <remarks>The menu items are only set sensitive if the video is loaded.</remarks>
+	private void SetVideoSelectionDependentSensitivity (bool sensitivity) {
+		if (Global.GUI.Video.IsLoaded && sensitivity) {
+			SetSensitivity(WidgetNames.VideoSetSubtitleStart, true);
+			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, true);
+		}
+		else {
+			SetSensitivity(WidgetNames.VideoSetSubtitleStart, false);
+			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
+		}
 	}
 	
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {
