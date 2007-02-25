@@ -18,6 +18,7 @@
  */
 
 using System;
+using System.IO;
 
 namespace GnomeSubtitles {
 
@@ -25,6 +26,7 @@ public class PlayerPositionWatcher {
 	private uint timeoutId = 0;
 	private float position = 0;
 	private float length = 0;
+	private bool endReached = false;
 	
 	/* Delegate functions */
 	private PlayerGetPositionFunc PlayerGetPosition;
@@ -47,7 +49,10 @@ public class PlayerPositionWatcher {
 	
 	public float Length {
 		get { return length; }
-		set { length = value; }
+	}
+	
+	public bool EndReached {
+		get { return endReached; }
 	}
 	
 	public PlayerPositionChangedFunc OnPlayerPositionChanged {
@@ -57,10 +62,23 @@ public class PlayerPositionWatcher {
 	
 	/* Public methods */
 	
+	public void Enable (float length) {
+		position = 0;
+		this.length = length;
+	}
+	
+	public void Disable () {
+		Stop();
+		position = 0;
+		length = 0;
+	}
+	
+	
 	/// <summary>Starts watching for changes on the player position.</summary>
 	/// <remarks>This should only be used after opening a new video. If issued right after a <see cref="Stop" />,
 	/// unpredictable results may arise. Use <see cref="Enabled" /> to toggle enable on the same video.</remarks>
 	public void Start () {
+		endReached = false;
 		RemoveCheckPositionTimeout();
 		AddCheckPositionTimeout();
 	}
@@ -78,16 +96,27 @@ public class PlayerPositionWatcher {
 	/* Event members */
 
 	private bool CheckPosition () {
-		position = PlayerGetPosition();
-		System.Console.WriteLine("Position is " + position);
+		bool caughtException = false;
+		
+		try {
+			position = PlayerGetPosition();
+		}
+		catch (IOException) {
+			caughtException = true;
+		}
 
-		if (position == -1) { //The end has been reached
+		if ((position == -1) || (caughtException)) { //The end has been reached
+			endReached = true;
 			Stop();
 			PlayerEndReached();
 			EmitPositionChanged(length);
 		}
-		else
+		else {
+			if (position < length)
+				endReached = false;
+			
 			EmitPositionChanged(position);
+		}
 
 		return true;
 	}
