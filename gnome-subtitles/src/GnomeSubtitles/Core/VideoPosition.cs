@@ -18,13 +18,14 @@
  */
 
 using Gtk;
+using SubLib;
 using System;
 
 namespace GnomeSubtitles {
 
 public class VideoPosition {
 	private Player player = null;
-	//private Label positionLabel = null;
+	private Label positionLabel = null;
 	private Label positionValueLabel = null;
 	private Label lengthValueLabel = null;	
 	private float position = 0;
@@ -45,7 +46,7 @@ public class VideoPosition {
 
 	public VideoPosition (Player player) {
 		slider = Global.GetWidget(WidgetNames.VideoSlider) as HScale;
-		//positionLabel = Global.GetWidget(WidgetNames.VideoPositionLabel) as Label;
+		positionLabel = Global.GetWidget(WidgetNames.VideoPositionLabel) as Label;
 		positionValueLabel = Global.GetWidget(WidgetNames.VideoPositionValueLabel) as Label;
 		lengthValueLabel = Global.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
 
@@ -60,8 +61,12 @@ public class VideoPosition {
 	}
 	
 	/// <summary>The current position, in seconds.</summary>
-	public float Current {
+	public float CurrentTime {
 		get { return position; }
+	}
+	
+	public int CurrentFrames {
+		get { return Convert.ToInt32(SubLib.Synchronization.TimeToFrames(position, player.FrameRate)); }
 	}
 	
 	/* Public methods */
@@ -69,8 +74,11 @@ public class VideoPosition {
 	public void Disable () {
 		DisconnectSliderSignals();
 		RemoveUserUpdateTimeout();
+		
+		position = 0;
 		UpdatePositionValues(0);
 		SetLength(0);
+		
 		slider.Sensitive = false;	
 	}
 	
@@ -79,12 +87,16 @@ public class VideoPosition {
 		slider.Sensitive = true;
 		ConnectSliderSignals();
 	}
+	
+	public void ToggleTimingMode (TimingMode newMode) {
+		UpdatePositionLabel(newMode);
+		UpdatePositionValueLabel(position);
+		UpdateLengthLabel(newMode, player.Length);
+	}
 
 	/* Event members */
 	
 	private void OnSliderValueChanged (object o, EventArgs args) {
-		System.Console.WriteLine("Slider Value has changed! " + isPlayerUpdate);
-	
 		if (isPlayerUpdate) {
 			isPlayerUpdate = false;
 			return;
@@ -96,10 +108,12 @@ public class VideoPosition {
 	/// <summary>Handles changes in the player position.</summary>
 	/// <param name="newPosition">The new position, in seconds, or -1 if the end was reached.</param>
 	private void OnPlayerPositionChanged (float newPosition) {
+		position = newPosition;
+	
 		if (userUpdateTimeoutId == 0)  //There is not a manual positioning going on
 			UpdateSlider(newPosition);
 
-		UpdatePositionLabel(newPosition);
+		UpdatePositionValueLabel(newPosition);
 		EmitVideoPositionChanged(newPosition);
 	}
 	
@@ -137,7 +151,7 @@ public class VideoPosition {
 	
 	private void UpdatePositionValues (float newPosition) {
 		UpdateSlider(newPosition);
-		UpdatePositionLabel(newPosition);
+		UpdatePositionValueLabel(newPosition);
 	}
 	
 	private void UpdateSlider (float newPosition) {
@@ -145,13 +159,36 @@ public class VideoPosition {
 		slider.Value = newPosition;
 	}
 
-	private void UpdatePositionLabel (float newPosition) {
-		positionValueLabel.Text = Util.SecondsToTimeText(newPosition);
+	private void UpdatePositionValueLabel (float newPosition) {
+		if (Global.TimingMode == TimingMode.Times)
+			positionValueLabel.Text = Util.SecondsToTimeText(newPosition);
+		else {
+			double frames = SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate);
+			positionValueLabel.Text = Convert.ToInt32(frames).ToString();
+		}
+	}
+
+	private void UpdatePositionLabel (TimingMode timingMode) {
+		string mode = (timingMode == TimingMode.Times ? "Times" : "Frames");
+		positionLabel.Markup = "<b>" + mode + "</b>"; 
 	}
 	
 	private void SetLength (float length) {
+		SetSliderLength(length);
+		UpdateLengthLabel (Global.TimingMode, length);
+	}
+	
+	private void UpdateLengthLabel (TimingMode timingMode, float length) {
+		if (timingMode == TimingMode.Times)
+			lengthValueLabel.Text = Util.SecondsToTimeText(length);
+		else {
+			double frames = SubLib.Synchronization.TimeToFrames(length, player.FrameRate);
+			lengthValueLabel.Text = Convert.ToInt32(frames).ToString();
+		}
+	}
+	
+	private void SetSliderLength (float length) {
 		slider.Adjustment.Upper = length;
-		lengthValueLabel.Text = Util.SecondsToTimeText(length);
 	}
 
 }
