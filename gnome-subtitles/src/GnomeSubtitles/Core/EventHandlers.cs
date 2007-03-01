@@ -185,17 +185,8 @@ public class EventHandlers {
 	public void OnVideoOpen (object o, EventArgs args) {
 		VideoOpenDialog dialog = new VideoOpenDialog();
 		bool toOpen = dialog.WaitForResponse();
-		if (toOpen) {
-			Global.GUI.Menus.SetViewVideoActivity(true);
-			try {
-				Global.GUI.Video.Open(dialog.Filename);
-				Global.GUI.Menus.SetVideoSensitivity(true);
-			}
-			catch (PlayerNotFoundException) {
-				Global.GUI.Video.Close();
-				new PlayerNotFoundErrorDialog();
-			}
-		}
+		if (toOpen)
+			Global.GUI.OpenVideo(dialog.Filename);
 	}
 	
 	public void OnVideoClose (object o, EventArgs args) {

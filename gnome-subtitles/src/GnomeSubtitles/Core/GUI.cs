@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ public class GUI {
     /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
     public void Start () {
     	if (ExecutionInfo.Args.Length > 0)
-			Open(ExecutionInfo.Args[0], null);
+			Open(ExecutionInfo.Args[0], null, String.Empty);
 		else
 			BlankStartUp();
     }
@@ -127,12 +127,8 @@ public class GUI {
     	if (toOpen && ToOpenAfterWarning) {
     		string filename = dialog.Filename;
     		try {
-    			if (dialog.HasEncoding) {
-	    			Encoding encoding = dialog.Encoding;
-    				Open(filename, encoding);    		
-    			}
-    			else
-	    			Open(filename, null);
+    			Encoding encoding = (dialog.HasEncoding ? dialog.Encoding : null);
+				Open(filename, encoding, dialog.VideoFilename);
 	    	}
 	    	catch (Exception exception) {
 	    		FileOpenErrorDialog errorDialog = new FileOpenErrorDialog(filename, exception);
@@ -141,6 +137,18 @@ public class GUI {
 	    			Open(); //Recursive call to open the dialog again
 	    	}
     	}
+    }
+    
+	public void OpenVideo (string filename) {
+    	Menus.SetViewVideoActivity(true);
+		try {
+			Video.Open(filename);
+			Menus.SetVideoSensitivity(true);
+		}
+		catch (PlayerNotFoundException) {
+			Video.Close();
+			new PlayerNotFoundErrorDialog(); //TODO replace with OpenVideoError
+		}
     }
     
     /// <summary>Executes a Save operation.</summary>
@@ -205,7 +213,8 @@ public class GUI {
 	/// <summary>Opens a subtitle file, given its filename and encoding.</summary>
 	/// <param name="filename">The filename to open.</param>
 	/// <param name="encoding">The encoding of the filename. To use autodetection, set it to null.</param>
-    private void Open (string filename, Encoding encoding) {
+	/// <param name="videoFilename">The videoFilename to open. If <see cref="String.Empty" />, no video will be opened.</param>
+    private void Open (string filename, Encoding encoding, string videoFilename) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		if (encoding != null)
@@ -224,6 +233,9 @@ public class GUI {
 
     	NewDocument(subtitles, timingMode);
 		view.Selection.SelectFirst();
+		
+		if (videoFilename != String.Empty)
+			OpenVideo(videoFilename);
     }
 	
 	/// <summary>Executes a blank startup operation.</summary>
