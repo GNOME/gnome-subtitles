@@ -193,6 +193,22 @@ public class EventHandlers {
 		Global.GUI.Video.Close();
 		Global.GUI.Menus.SetVideoSensitivity(false);
 	}
+
+	public void OnVideoPlayPause (object o, EventArgs args) {
+		Global.GUI.Video.TogglePlayPause();
+	}
+	
+	public void OnVideoRewind (object o, EventArgs args) {
+		Global.GUI.Video.Rewind();
+	}
+	
+	public void OnVideoForward (object o, EventArgs args) {
+		Global.GUI.Video.Forward();
+	}
+	
+	public void OnVideoSeekToSelection (object o, EventArgs args) {
+		Global.GUI.Video.SeekToSelection();	
+	}
 	
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
 		if (Global.TimingMode == TimingMode.Times) {
@@ -214,18 +230,6 @@ public class EventHandlers {
 			int frames = Global.GUI.Video.Position.CurrentFrames;
 			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 		}
-	}
-
-	public void OnVideoPlayPause (object o, EventArgs args) {
-		Global.GUI.Video.TogglePlayPause();
-	}
-	
-	public void OnVideoRewind (object o, EventArgs args) {
-		Global.GUI.Video.Rewind();
-	}
-	
-	public void OnVideoForward (object o, EventArgs args) {
-		Global.GUI.Video.Forward();
 	}
 	
 	
@@ -302,7 +306,7 @@ public class EventHandlers {
     
     /* Video */
 
-	public void OnPlayPauseToggled (object o, EventArgs args) {
+	public void OnVideoPlayPauseButtonToggled (object o, EventArgs args) {
     	if ((o as ToggleButton).Active)
 			Global.GUI.Video.Play();
 		else
@@ -313,9 +317,7 @@ public class EventHandlers {
     /*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
-    	Subtitle subtitle = Global.GUI.View.Selection.Subtitle;
-    	float time = (float)subtitle.Times.Start.TotalSeconds;
-    	Global.GUI.Video.Seek(time);
+    	Global.GUI.Video.SeekToSelection();
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
