@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Tue Feb 27 00:32:13 2007 by noup@nouplab
+<!--Generated with glade3 3.0.3 on Thu Mar  1 12:37:50 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -8,6 +8,7 @@
 -->
 <glade-interface>
   <widget class="GtkFileChooserDialog" id="dialog">
+    <property name="height_request">450</property>
     <property name="visible">True</property>
     <property name="title">Open File</property>
     <property name="modal">True</property>
@@ -16,6 +17,7 @@
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
+    <property name="has_separator">False</property>
     <signal name="response" handler="OnResponse"/>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialogVBox">
