@@ -19,6 +19,7 @@
 
 using Glade;
 using Gtk;
+using SubLib;
 using System;
 using System.Collections;
 using System.IO;
@@ -57,6 +58,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+			
+		SetFilters();
 	}
 	
 	/* Public properties */
@@ -156,6 +159,43 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			return filename.Substring(0, index);
 		else
 			return filename;
+	}
+	
+	private void SetFilters () {
+		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
+		FileFilter[] filters = new FileFilter[types.Length + 2];
+		int filterPosition = 0;
+		
+		/* First filter corresponds to all files */
+		FileFilter allFilesFilter = new FileFilter();
+		allFilesFilter.Name = "All Files";
+		allFilesFilter.AddPattern("*");
+		filters[filterPosition] = allFilesFilter;
+		filterPosition++;
+		
+		/* Second filter corresponds to all subtitle files */
+		FileFilter subtitleFilesFilter = new FileFilter();
+		subtitleFilesFilter.Name = "All Subtitle Files";
+		filters[filterPosition] = subtitleFilesFilter;
+		filterPosition++;
+		
+		/* Remaining filters correspond to the subtitle types */
+		foreach (SubtitleTypeInfo type in types) {
+			FileFilter filter = new FileFilter();
+			foreach (string extension in type.Extensions) {
+				string pattern = "*." + extension;
+				filter.AddPattern(pattern);
+				subtitleFilesFilter.AddPattern(pattern);
+			}
+			filter.Name = type.Name;
+			filters[filterPosition] = filter;
+			filterPosition++;
+		}
+		
+		foreach (FileFilter filter in filters)
+			dialog.AddFilter(filter);
+		
+		dialog.Filter = subtitleFilesFilter;
 	}
 	
 	
