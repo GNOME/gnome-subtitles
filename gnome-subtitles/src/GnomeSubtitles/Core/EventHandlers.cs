@@ -313,7 +313,9 @@ public class EventHandlers {
     /*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
-    	Global.GUI.View.Selection.ActivatePath();
+    	Subtitle subtitle = Global.GUI.View.Selection.Subtitle;
+    	float time = (float)subtitle.Times.Start.TotalSeconds;
+    	Global.GUI.Video.Seek(time);
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {

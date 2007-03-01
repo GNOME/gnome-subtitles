@@ -157,6 +157,15 @@ public class Video {
 		player.Forward(position.StepIncrement);
 	}
 	
+	/// <summary>Seeks to the specified time.</summary>
+	/// <param name="time">The time position to seek to, in seconds.</param>
+	public void Seek (float time) {
+		if (!isLoaded)
+			return;
+
+		player.Seek(time);
+	}
+	
 	/* Private methods */
 
 	private void LoadVideoWidget (Widget widget) {
