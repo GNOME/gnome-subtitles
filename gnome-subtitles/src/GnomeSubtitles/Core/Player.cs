@@ -181,7 +181,8 @@ public class Player {
 		Process newProcess = new Process();
 		newProcess.StartInfo.FileName = "mplayer";
 
-		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -fontconfig -subfont-autoscale 2 -quiet -nomouseinput -slave " + filename;
+		//newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -fontconfig -subfont-autoscale 2 -quiet -nomouseinput -slave " + filename;
+		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 0 -noautosub -quiet -nomouseinput -slave " + filename;
 		if (!newProcess.StartInfo.EnvironmentVariables.ContainsKey("TERM")) {
 			newProcess.StartInfo.EnvironmentVariables.Add("TERM", "xterm");
 		}
