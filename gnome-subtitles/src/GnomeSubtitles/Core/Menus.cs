@@ -277,10 +277,12 @@ public class Menus {
 	/// <remarks>The menu items are only set sensitive if the video is loaded.</remarks>
 	private void SetVideoSelectionDependentSensitivity (bool sensitivity) {
 		if (Global.GUI.Video.IsLoaded && sensitivity) {
+			SetSensitivity(WidgetNames.VideoSeekToSelection, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, true);
 		}
 		else {
+			SetSensitivity(WidgetNames.VideoSeekToSelection, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
 		}
