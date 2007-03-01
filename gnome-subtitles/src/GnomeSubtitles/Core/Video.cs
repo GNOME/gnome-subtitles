@@ -166,6 +166,12 @@ public class Video {
 		player.Seek(time);
 	}
 	
+	public void SeekToSelection () {
+		Subtitle subtitle = Global.GUI.View.Selection.Subtitle;
+    	float time = (float)subtitle.Times.Start.TotalSeconds;
+    	Seek(time);
+	}
+	
 	/* Private methods */
 
 	private void LoadVideoWidget (Widget widget) {

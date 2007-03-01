@@ -68,6 +68,7 @@ public class WidgetNames {
 	public const string VideoPlayPause = "videoPlayPause";
 	public const string VideoRewind = "videoRewind";
 	public const string VideoForward = "videoForward";
+	public const string VideoSeekToSelection = "videoSeekToSelection";
 	public const string VideoSetSubtitleStart = "videoSetSubtitleStart";
 	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
 
