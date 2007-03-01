@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@ using System.Text;
 namespace GnomeSubtitles {
 
 public class SubtitleFileChooserDialog : GladeDialog {
+
 	/* Protected variables */
 	protected string chosenFilename = String.Empty;
 	protected Encoding chosenEncoding = null;
