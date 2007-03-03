@@ -21,6 +21,7 @@ using Gtk;
 
 namespace GnomeSubtitles {
 
+/* TODO this is deprecated */
 public class ShowMessageDialog : GladeDialog {
 	
 	/* Constant strings */
@@ -44,6 +45,7 @@ public class ShowMessageDialog : GladeDialog {
 	#pragma warning restore 169		//Restore warning about handlers not being used
 }
 
+/* TODO this is deprecated */
 public class PlayerNotFoundErrorDialog : ShowMessageDialog {
 
 	/* Constant strings */
