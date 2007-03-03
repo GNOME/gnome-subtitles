@@ -55,6 +55,11 @@ public class PlayerPositionWatcher {
 		get { return endReached; }
 	}
 	
+	/// <summary>Whether the end has been reached or the position is 1 second or less away from end.</summary>
+	public bool NearEndReached {
+		get { return (endReached || (position >= (length - 1))); } 
+	}
+	
 	public PlayerPositionChangedFunc OnPlayerPositionChanged {
 		set { PlayerPositionChanged = value; }
 	}
@@ -90,7 +95,14 @@ public class PlayerPositionWatcher {
 	public void Check () {
 		if (Paused) { //Only check if paused, otherwise automatic updates are used
 			CheckPosition();
-		}	
+		}
+	}
+	
+	public void SetEndReached () {
+		endReached = true;
+		position = length;
+		PlayerEndReached();
+		EmitPositionChanged(length);
 	}
 	
 	/* Event members */
