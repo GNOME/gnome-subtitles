@@ -84,6 +84,7 @@ public class Video {
 	
 	/// <summary>Opens a video file.</summary>
 	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
+	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
 	public void Open (string filename) {
 		Close();
 	
