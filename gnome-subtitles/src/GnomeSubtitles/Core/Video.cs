@@ -34,6 +34,10 @@ public class Video {
 	
 	private bool isLoaded = false;
 
+	/* Constant strings */
+	private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
+	private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
+
 	public Video () {
 		videoArea = Global.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
 		
@@ -55,6 +59,9 @@ public class Video {
 		subtitle = new VideoSubtitle(position);
 	
 		LoadVideoWidget(player.Widget);
+		
+		/* Set the custom icons */
+		SetCustomIcons();
 	}
 	
 	/* Public properties */
@@ -179,6 +186,18 @@ public class Video {
 		frame.Child = widget;
 		widget.Realize();
 		widget.Show();
+	}
+
+	private void SetCustomIcons () {
+		/* Set the icon for the SetSubtitleStart button */
+		Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
+		Image image = Global.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
+		image.FromPixbuf = pixbuf;
+
+		/* Set the icon for the SetSubtitleEnd button */
+		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
+		image = Global.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
+		image.FromPixbuf = pixbuf;
 	}
 
 	private void SetControlsSensitivity (bool sensitivity) {
