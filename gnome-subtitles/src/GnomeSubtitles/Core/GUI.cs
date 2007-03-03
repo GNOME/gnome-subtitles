@@ -261,7 +261,7 @@ public class GUI {
     /// <summary>Sets the window for a new document.</summary>
     /// <remarks>A new document can be the result of Open or New operations.</remarks>
 	private void NewDocument (Subtitles subtitles, TimingMode mode) {
-   		bool wasLoaded = Global.AreSubtitlesLoaded; //TODO remove this?
+   		bool wasLoaded = Global.AreSubtitlesLoaded;
    		
    		Global.CommandManager.Clear();
    		Global.Subtitles = subtitles;

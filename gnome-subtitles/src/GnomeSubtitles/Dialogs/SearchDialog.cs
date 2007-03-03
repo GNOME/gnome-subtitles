@@ -26,7 +26,6 @@ namespace GnomeSubtitles {
 
 internal enum SearchDialogResponse { Find = 1, Replace, ReplaceAll, Close = -6 };
 
-//TODO validate entry when using a regular expression (seems to be working as it is, though)
 public class SearchDialog : GladeDialog {
 	private string text = String.Empty;		//The text to search for
 	private Regex forwardRegex = null;		//The regex that corresponds to the text and the options

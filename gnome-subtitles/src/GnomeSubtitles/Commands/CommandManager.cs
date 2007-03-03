@@ -31,10 +31,10 @@ public class CommandManager {
 	private int redoCount = 0;
 	private int iterator = 0;
 	
-	public event EventHandler UndoToggled; //TODO should these be private?
-	public event EventHandler RedoToggled;
-	public event EventHandler CommandActivated;
-	public event EventHandler Modified;
+	private event EventHandler UndoToggled;
+	private event EventHandler RedoToggled;
+	private event EventHandler CommandActivated;
+	private event EventHandler Modified;
 
 	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled,
 			EventHandler onCommandActivated, EventHandler onModified) {
