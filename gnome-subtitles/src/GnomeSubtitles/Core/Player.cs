@@ -83,13 +83,16 @@ public class Player {
 
 	/// <summary>Opens a video file.</summary>
 	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
+	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
 	public void Open (string filename) {
 		this.filename = filename;
-	
+		
 		position.Stop();
 	
 		StartNewProcess(filename);
-		ClearOutput();
+		bool couldStart = ClearOutput();
+		if (!couldStart)
+			throw new PlayerCouldNotOpenVideoException();
 		
 		position.Enable(GetLength());
 		
@@ -190,6 +193,7 @@ public class Player {
 		newProcess.StartInfo.RedirectStandardInput = true;
 		newProcess.StartInfo.RedirectStandardOutput = true;
 		newProcess.EnableRaisingEvents = true;
+		newProcess.Exited += OnProcessExited;
 
 		try {
 			newProcess.Start();
@@ -197,7 +201,6 @@ public class Player {
 			throw new PlayerNotFoundException();
 		}
 		process = newProcess;
-		process.Exited += OnProcessExited;
 	}
 	
 	/// <summary>Terminates the current running process, if it exists.</summary>
@@ -205,7 +208,12 @@ public class Player {
 	private void TerminateProcess () {
 		if (process != null) {
 			process.Exited -= OnProcessExited;
-			Exec("quit");
+			try {
+				Exec("quit");
+			}
+			catch (IOException) {
+				//Do nothing
+			}
 			bool exited = process.WaitForExit(1000); //Wait 1 second for exit
 			if (!exited)
 				process.Kill();
@@ -269,16 +277,21 @@ public class Player {
 	}
 
 	/// <summary>Clears the current output.</summary>
+	/// <returns>Whether output could be cleared or not. In case not, it means the player could not be started correcty or may have terminated.</returns>
 	/// <remarks>This uses a hack to detect the end of the output, as the StreamReader could not detect it correctly.
 	/// It executes a command and uses the result of that command to detect the end of output.</remarks>
-	private void ClearOutput () {
+	private bool ClearOutput () {
 		Exec("get_vo_fullscreen");
 		StreamReader reader = process.StandardOutput;
 		while (true) {
 			string line = reader.ReadLine();
+			if (line == null) //Got end of stream
+				return false;
+
 			if (line.StartsWith("ANS_VO_FULLSCREEN"))
 				break;
 		}
+		return true;
 	}
 	
 	/* Event members */
@@ -289,7 +302,13 @@ public class Player {
 	}
 	
 	private void OnProcessExited (object o, EventArgs args) {
-		RestartPlayer();
+		position.Stop();
+		
+		/* Check if it is near the end, meaning playback has ended */
+		if (position.NearEndReached) {
+			position.SetEndReached();
+			RestartPlayer();
+		}
 	}
 	
 }
