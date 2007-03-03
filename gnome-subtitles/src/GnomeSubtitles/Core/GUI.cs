@@ -131,7 +131,7 @@ public class GUI {
 				Open(filename, encoding, dialog.VideoFilename);
 	    	}
 	    	catch (Exception exception) {
-	    		FileOpenErrorDialog errorDialog = new FileOpenErrorDialog(filename, exception);
+	    		SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(filename, exception);
 	    		bool toOpenAgain = errorDialog.WaitForResponse();
 	    		if (toOpenAgain)
 	    			Open(); //Recursive call to open the dialog again
@@ -139,15 +139,12 @@ public class GUI {
     	}
     }
     
-	public void OpenVideo (string filename) {
-    	Menus.SetViewVideoActivity(true);
-		try {
-			Video.Open(filename);
-			Menus.SetVideoSensitivity(true);
-		}
-		catch (PlayerNotFoundException) {
-			Video.Close();
-			new PlayerNotFoundErrorDialog(); //TODO replace with OpenVideoError
+    public void OpenVideo () {
+    	VideoOpenDialog dialog = new VideoOpenDialog();
+		bool toOpen = dialog.WaitForResponse();
+		if (toOpen) {
+			string filename = dialog.Filename;
+			OpenVideo(filename);
 		}
     }
     
@@ -236,6 +233,21 @@ public class GUI {
 		
 		if (videoFilename != String.Empty)
 			OpenVideo(videoFilename);
+    }
+    
+    private void OpenVideo (string filename) {
+    	Menus.SetViewVideoActivity(true);
+		try {
+			Video.Open(filename);
+			Menus.SetVideoSensitivity(true);
+		}
+		catch (Exception exception) {
+			Video.Close();
+			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(filename, exception);
+			bool toOpenAgain = errorDialog.WaitForResponse();
+	    	if (toOpenAgain)
+	    		OpenVideo(); //Recursive call to open the dialog again
+		}
     }
 	
 	/// <summary>Executes a blank startup operation.</summary>

@@ -183,10 +183,7 @@ public class EventHandlers {
 	/* Video Menu */
 		
 	public void OnVideoOpen (object o, EventArgs args) {
-		VideoOpenDialog dialog = new VideoOpenDialog();
-		bool toOpen = dialog.WaitForResponse();
-		if (toOpen)
-			Global.GUI.OpenVideo(dialog.Filename);
+		Global.GUI.OpenVideo();
 	}
 	
 	public void OnVideoClose (object o, EventArgs args) {
