@@ -98,7 +98,9 @@ public class WidgetNames {
 	public const string VideoPositionValueLabel = "videoControlsPositionValueLabel";
 	public const string VideoLengthValueLabel = "videoControlsLengthValueLabel";
 	public const string VideoSetSubtitleStartButton = "videoSetSubtitleStartButton";
+	public const string VideoSetSubtitleStartButtonImage = "videoSetSubtitleStartButtonImage";
 	public const string VideoSetSubtitleEndButton = "videoSetSubtitleEndButton";
+	public const string VideoSetSubtitleEndButtonImage = "videoSetSubtitleEndButtonImage";
 	public const string VideoFrame = "videoFrame";
 	public const string VideoPlaybackHBox = "videoPlaybackHBox";
 	public const string VideoSlider = "videoSlider";
