@@ -79,6 +79,7 @@ public class VideoSubtitle {
 		subtitleStart = (float)subtitle.Times.Start.TotalSeconds;
 		subtitleEnd = (float)subtitle.Times.End.TotalSeconds;
 		SetText();
+		label.Visible = true;
 	}
 	
 	private void UnloadSubtitle () {
@@ -87,6 +88,7 @@ public class VideoSubtitle {
 		subtitleStart = -1;
 		subtitleEnd = -1;
 		ClearText();
+		label.Visible = false;
 	}
 	
 	private void SetText () {
