@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ using SubLib;
 
 namespace GnomeSubtitles {
 
-public class FileOpenErrorDialog : GladeDialog {
+public abstract class FileOpenErrorDialog : GladeDialog {
 	
 	/* Constant strings */
 	private const string gladeFilename = "FileOpenErrorDialog.glade";
@@ -40,17 +40,14 @@ public class FileOpenErrorDialog : GladeDialog {
 		messageDialog.AddButton(Stock.Ok, ResponseType.Ok);
 	}
 
-	/* Private members */
+	/* Abstract methods */
 	
-	private string SecondaryTextFromException (Exception exception) {
-		if (exception is UnknownSubtitleFormatException)
-			return "Unable to detect the subtitle format. Please check that the file type is supported.";
-		else if (exception is OutOfMemoryException)
-			return "You have run out of memory. Please close some programs and try again.";
-		else if (exception is IOException)
-			return "An I/O error has occured.";
-		else
-			return "An unknown error has occured. Please report a bug and include this name: \"" + exception.GetType() + "\".";
+	protected abstract string SecondaryTextFromException (Exception exception);
+	
+	/* Protected methods */
+	
+	protected string GetGeneralExceptionErrorMessage (Exception exception) {
+		return "An unknown error has occured. Please report a bug and include this error name: \"" + exception.GetType() + "\".";
 	}
 	
 	/* Event members */
