@@ -182,7 +182,8 @@ public class Video {
 	}
 
 	private void SetControlsSensitivity (bool sensitivity) {
-		Global.GetWidget(WidgetNames.VideoControlsVBox).Sensitive = sensitivity;
+		Global.GetWidget(WidgetNames.VideoTimingsVBox).Sensitive = sensitivity;
+		Global.GetWidget(WidgetNames.VideoPlaybackHBox).Sensitive = sensitivity;
 		
 		if ((Global.GUI.View.Selection.Count == 1) && sensitivity)
 			SetSelectionDependentControlsSensitivity(true);
