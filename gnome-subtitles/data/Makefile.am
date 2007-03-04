@@ -6,4 +6,3 @@ gnomesubtitlesicon_DATA = gnome-subtitles.png
 
 EXTRA_DIST =	\
 	gnome-subtitles.png
-
