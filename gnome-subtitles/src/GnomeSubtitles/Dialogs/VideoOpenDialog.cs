@@ -23,11 +23,13 @@ using System;
 namespace GnomeSubtitles {
 
 public class VideoOpenDialog : GladeDialog {
-	private string chosenFilename = String.Empty;
 	protected new FileChooserDialog dialog = null;
-
+	private static string[] extensions = { "avi", "mpeg", "mpg", "mp4", "ogm", "divx", "xvid" };
+	private string chosenFilename = String.Empty;
+	
 	/* Constant strings */
 	private const string gladeFilename = "VideoOpenDialog.glade";
+	
 	
 	public VideoOpenDialog () : base(gladeFilename) {
 		dialog = base.dialog as FileChooserDialog;
@@ -36,12 +38,37 @@ public class VideoOpenDialog : GladeDialog {
 			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+			
+		SetFilters();
 	}
 	
 	/* Public properties */
 	
 	public string Filename {
 		get { return chosenFilename; }
+	}
+	
+	/* Private methods */
+	
+	/* TODO check how other players are setting up the filters, possibly using MIME types. */
+	private void SetFilters () {
+
+		/* First filter corresponds to all files */
+		FileFilter allFilesFilter = new FileFilter();
+		allFilesFilter.Name = "All Files";
+		allFilesFilter.AddPattern("*");
+		dialog.AddFilter(allFilesFilter);
+		
+		/* Second filter corresponds to video files */
+		FileFilter videoFilesFilter = new FileFilter();
+		videoFilesFilter.Name = "All Video Files";
+		foreach (string extension in extensions) {
+			videoFilesFilter.AddPattern("*." + extension);
+		}
+		dialog.AddFilter(videoFilesFilter);
+		
+		/* Set active filter */
+		dialog.Filter = videoFilesFilter;
 	}
 	
 	#pragma warning disable 169		//Disables warning about handlers not being used
