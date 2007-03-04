@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,11 +24,18 @@ namespace GnomeSubtitles {
 
 public class VideoOpenDialog : GladeDialog {
 	private string chosenFilename = String.Empty;
+	protected new FileChooserDialog dialog = null;
 
 	/* Constant strings */
 	private const string gladeFilename = "VideoOpenDialog.glade";
 	
 	public VideoOpenDialog () : base(gladeFilename) {
+		dialog = base.dialog as FileChooserDialog;
+	
+		if (Global.AreSubtitlesLoaded && Global.Subtitles.Properties.IsFilePathRooted)
+			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
+		else
+			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 	}
 	
 	/* Public properties */
