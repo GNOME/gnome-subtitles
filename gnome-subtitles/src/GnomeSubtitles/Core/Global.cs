@@ -1,5 +1,5 @@
 /*
- * This file is part of Gnome Subtitles, a subtitle editor for Gnome.
+ * This file is part of Gnome Subtitles.
  * Copyright (C) 2006 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
