@@ -23,12 +23,13 @@ GS_RESOURCES = \
 	$(srcdir)/Glade/MainWindow.glade \
 	$(srcdir)/Glade/ReportBugWindow.glade \
 	$(srcdir)/Glade/SearchDialog.glade \
-	$(srcdir)/Glade/ShowMessageDialog.glade \
 	$(srcdir)/Glade/TimingsAdjustDialog.glade \
 	$(srcdir)/Glade/TimingsShiftDialog.glade \
 	$(srcdir)/Glade/VideoOpenDialog.glade \
 	$(GS_DATADIR)/gnome-subtitles.png \
-	$(GS_DATADIR)/gnome-subtitles-logo.png
+	$(GS_DATADIR)/gnome-subtitles-logo.png \
+	$(GS_DATADIR)/video-set-subtitle-end-16x.png \	
+	$(GS_DATADIR)/video-set-subtitle-start-16x.png
 
 GS_SYSTEM_REFERENCES = \
 	$(SUBLIB) \
