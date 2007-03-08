@@ -1,6 +1,37 @@
 Gnome Subtitles
 ===============
 
+0.2 (07/03/2007)
+================
+
+- New built-in video previewing:
+  * MPlayer used as the backend
+  * Built-in subtitle display
+  * Shows the video length and current position
+  * Open Video dialog with video file filters
+  * Errors shown on video opening, allowing to open another video file
+- Double-clicking a subtitle now seeks the video to the subtitle position
+- Allow to set the subtitle Start and End timings based on the video position
+- Updated the File Open dialog:
+  * Allow to select a video file to be opened together with a subtitle file
+  * Video file list populated when entering a folder
+  * Video file automatically selected if it matches the selected subtitle file
+  * Added subtitle format filters
+- Updated the Desktop file to use new properties and the correct program icon
+- Major refactoring:
+  * Main window is now a Gtk.Window instead of a Gnome.App
+  * Every dialog and window is now in a separate glade file
+  * Widget names reviewed and renamed
+  * Derived Command classes are now in separate files
+  * Changed uses of "movie" to "video"
+
+Bug fixes:
+- App crashes when selection float value with , as a decimal separator (#402201)
+
+Thanks to:
+- Stefan A. Keel (Sak), for the artwork on the new custom icons
+
+
 0.1 (13/12/2006)
 ================
 
@@ -29,6 +60,7 @@ Bug fixes:
 - Close button in "About" window does not work (#383797)
 - Ctrl+Up/Down now scrolls too besides selecting the previous/next subtitle
 
+
 0.0.3 (30/10/2006)
 ==================
 
@@ -52,8 +84,9 @@ Bug fixes:
 - Changed compiler to use gmcs (C# 2.0) instead of mcs
 
 Bug fixes:
-- Frame rate menus not being correctly set when using undo/redo.
+- Frame rate menus not being correctly set when using undo/redo
 - Crash at open subtitle (old tracker #1577626)
+
 
 0.0.2 (06/10/2006)
 ==================
@@ -67,11 +100,12 @@ Bug fixes:
   * Sub Station Alpha
   * Advanced Sub Station Alpha
 - Added dialog to auto-adjust timings based on the correct times for two
-  subtitles/synchronization points.
+  subtitles/synchronization points
 - Added dialog to edit the subtitle file headers
-- Fixed crash when using the latest version of Mono (1.1.17.1).
+- Fixed crash when using the latest version of Mono (1.1.17.1)
 - Use of Gnome's default toolbar style (thanks to Osmo Salomaa)
 - Changed the build procedure to bundle SubLib with Gnome Subtitles
+
 
 0.0.1 (01/09/2006)
 ==================
