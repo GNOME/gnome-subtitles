@@ -1,3 +1,610 @@
+2007-03-08 [r533]  noup:
+
+	* gnome-subtitles/CREDITS: Updated for release 0.2.
+
+2007-03-08 [r527-532]  noup:
+
+	* gnome-subtitles/TODO: Updated for release 0.2.
+
+	* gnome-subtitles/README: Updated for release 0.2.
+
+	* gnome-subtitles/NEWS: Updated for release 0.2.
+
+	* gnome-subtitles/configure.in: Updated for release 0.2.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:
+	  Added new video extensions.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Added new video extensions. Fixed bug with active ComboBox items
+	  being incorrectly used when the ComboBox was inactive.
+
+2007-03-04 [r521-526]  noup:
+
+	* gnome-subtitles/TODO: Updated to reflect latest changes.
+
+	* gnome-subtitles/configure.in: Desktop In file is no longer
+	  needed.
+
+	* gnome-subtitles/data/gnome-subtitles.desktop.in (removed):
+	  Desktop In file is no longer needed.
+
+	* gnome-subtitles/src/Glade/ReportBugWindow.glade: Minor textual
+	  change.
+
+	* gnome-subtitles/data/Makefile.am: Code cleanup.
+
+	* gnome-subtitles/data/gnome-subtitles.desktop (added): Updated
+	  Exec, TryExec and Icon name. Stopped using absolute paths.
+
+2007-03-04 [r520]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:
+	  Added filter for video file types.
+
+2007-03-04 [r519]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:
+	  Set initial folder to that of the subtitles, or Home if no
+	  subtitles are open.
+
+2007-03-04 [r517-518]  noup:
+
+	* gnome-subtitles/nant.build: Updated with more current
+	  information.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/AssemblyInfo.cs.in:
+	  Updated with more current information.
+
+2007-03-04 [r511-516]  noup:
+
+	* gnome-subtitles/data/gnome-subtitles.desktop.in: Updated to use
+	  the PNG icon instead of the SVG icon.
+
+	* gnome-subtitles/Makefile.am: Code cleanup.
+
+	* gnome-subtitles/src/Makefile.am: Added SetSubtitleStart and
+	  SetSubtitleEnd icons as resources.
+
+	* gnome-subtitles/README: Updated with more current information.
+
+	* gnome-subtitles/CREDITS, gnome-subtitles/AUTHORS: Updated with
+	  more current information.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SelectionType.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/Command.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/FixedMultipleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTextCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Exception/PlayerCouldNotOpenVideoException.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Search.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ReplaceAllCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Clipboards.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/CellRendererCenteredText.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Exception/PlayerNotFoundException.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/SingleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ShowMessageDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Global.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SubtitleSelection.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/MultipleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/AssemblyInfo.cs.in,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Util.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Subtitles.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/FixedSingleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileEncoding.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoSubtitle.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs:
+	  Updated project description.
+
+2007-03-03 [r509]  noup:
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added icon files as
+	  resources.
+
+2007-03-03 [r508]  noup:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: SetSubtitleStart and
+	  SetSubtitleEnd buttons are now container buttons.
+
+2007-03-03 [r503-507]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
+	  icons for the SetSubtitleStart and SetSubtitleEnd buttons.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoSubtitle.cs: Set
+	  label visibility so black text isn't retained when subtitles
+	  aren't being displayed.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs: Set the icons
+	  of the SetSubtitleStart and SetSubtitleStart buttons.
+
+	* gnome-subtitles/data/video-set-subtitle-end-16x.png (added),
+	  gnome-subtitles/data/video-set-subtitle-start-16x.png (added):
+	  Added icons for the SetSubtitleStart and SetSubtitleEnd buttons.
+
+	* gnome-subtitles/data/gnome-subtitles.svg (removed): Removed old
+	  gnome-subtitles icon.
+
+2007-03-03 [r501-502]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/Glade/MainWindow.glade: Updated widget names.
+	  Correctly set the sensitivity of the video playback controls.
+	  Code cleanup.
+
+2007-03-03 [r499-500]  noup:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Updated to separate
+	  playback controls from timings controls.
+
+	* gnome-subtitles/TODO: Updated with completed tasks.
+
+2007-03-03 [r497-498]  noup:
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/gnome-subtitles.mds: Updated with new dialog and
+	  exception files.
+
+	* gnome-subtitles/src/GnomeSubtitles/Exception/PlayerCouldNotOpenVideoException.cs
+	  (added): Exception to handle the cases in which a video file
+	  could not be opened.
+
+2007-03-03 [r489-496]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs
+	  (added): Custom error messages to show with the
+	  FileOpenErrorDialog when opening video files.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs
+	  (added): Part of the old FileOpenErrorDialog class. It contains
+	  the specific parts to subtitle file opening.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/ShowMessageDialog.cs:
+	  Deprecated.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:
+	  This class is now a reusable class for showing file opening
+	  errors. It is used for showing errors on subtitle file opening
+	  and video file opening.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs: Improved code
+	  comments.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs:
+	  Check if the current position is near the end, to detect process
+	  termination due to playback end. Allow to set the end as reached
+	  when the process terminates before the end is detected.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Detect if the
+	  process has terminated near the end, meaning it terminated
+	  because the playback stopped. Throw a
+	  PlayerCouldNotOpenVideoFileException if a video file cannot be
+	  played. Suppress exceptions when terminating the video process.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Updated to show
+	  an improved error dialog on video file opening. The error dialog
+	  dialog has an "Open another file" action.
+
+2007-03-01 [r487-488]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Added Filters to subtitle formats.
+
+	* gnome-subtitles/src/Glade/FileOpenDialog.glade,
+	  gnome-subtitles/src/Glade/MainWindow.glade: Minor property
+	  changes.
+
+2007-03-01 [r483-486]  noup:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Added Seek To
+	  Selection to the Video menu.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
+	  Seek To Selection to the Video menu.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Added Seek To
+	  Selection to the Video menu.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Code
+	  cleanup. Added Seek To Selection to the Video menu.
+
+2007-03-01 [r482]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Seek to
+	  the current selected subtitle on row activation.
+
+2007-03-01 [r476-481]  noup:
+
+	* gnome-subtitles: Added file to svn:ignore.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Added a video selection combobox to the File Open dialog. The
+	  combobox is auto filled when dir is changed, containing the
+	  videos in that dir. A video in the combobox is auto selected when
+	  selecting its corresponding subtitle file.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Changed
+	  osdlevel to 0 and forced subtitles not to autoload.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Moved the general
+	  open video functionality to GUI. It now uses the possibly
+	  selected video filename (in the Open File dialog) to open a video
+	  after a subtitle file.
+
+	* gnome-subtitles/src/Glade/FileOpenDialog.glade: Added a video
+	  selection combobox to the File Open dialog.
+
+2007-02-25 [r471-475]  noup:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Added the
+	  SetSubtitleStart and SetSubtitleEnd menu items and connected
+	  their handlers.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
+	  widget names related to video playback.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoSubtitle.cs: Code
+	  cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs: Store
+	  the current position. Display the labels according to the current
+	  TimingMode.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs: Store if video
+	  is loaded. Close the previous video when opening a new one.
+	  Update the sensitivity of the SetSubtitleStart and SetSubtitleEnd
+	  buttons based on the subtitle selection. Update the labels based
+	  on the current Timing Mode. Code cleanup.
+
+2007-02-25 [r470]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs:
+	  Store when playback end has been reached. Allow to enable and
+	  disable.
+
+2007-02-25 [r469]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Store the
+	  video filename and framerate. Check if end has been reached on
+	  Play, Rewind and Forward. Restart process when it ends, to check
+	  for playback end. Code cleanup.
+
+2007-02-25 [r463-468]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Set the
+	  VideoSetSubtitleStart and VideoSetSubtitleEnd menu items based on
+	  the current selection and whether the video is loaded.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Propagate
+	  UpdateFromSelection and ToggleTimingMode to Video components.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Code
+	  cleanup. Added handlers to set subtitle start and end based on
+	  the video position.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/Command.cs: Added
+	  properties so inherited classes can set Description and CanGroup
+	  after construction.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs
+	  (added): Added command to set subtitle start and end based on the
+	  video position.
+
+2007-02-20 [r462]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs:
+	  Detect when the video reaches its end. Still incomplete, though.
+
+2007-01-29 [r461]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Fixes bug
+	  #402201 - app crashes when selection float value with , as a
+	  decimal separator
+
+2007-01-22 [r460]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoSubtitle.cs,
+	  gnome-subtitles/src/Glade/MainWindow.glade: Implemented the
+	  subtitle engine, which now shows subtitles correctly while
+	  playing and seeking. Refactoring and code cleanup. Initial fix
+	  for the case of reaching the end of the video.
+
+2007-01-18 [r458-459]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
+	  subtitle label to the front of the video frame. This will allow
+	  to save space, even though by now the label's background has to
+	  be black (not transparent).
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoSubtitle.cs (added),
+	  gnome-subtitles/src/Glade/MainWindow.glade: Added subtitle label
+	  to the front of the video frame. This will allow to save space,
+	  even though by now the label's background has to be black (not
+	  transparent).
+
+2006-12-30 [r453-457]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Major
+	  changes in the video previewing layout. Improvements in the video
+	  editing and error handling.
+
+	* gnome-subtitles/src/Makefile.am: Updated with new glade dialog
+	  references and Exception dir.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added new dialog files and
+	  glade resources.
+
+	* gnome-subtitles/src/GnomeSubtitles/Exception/PlayerNotFoundException.cs
+	  (added), gnome-subtitles/src/GnomeSubtitles/Exception (added):
+	  Added exception to be used when the player is not found.
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Multiple changes have
+	  been made to the layout of the video previewing area.
+
+2006-12-30 [r448-452]  noup:
+
+	* gnome-subtitles/src/Glade/ShowMessageDialog.glade (added): Added
+	  dialog to display a message (using MessageDialog).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:
+	  A glade MessageDialog is now used to display file opening errors.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/ShowMessageDialog.cs
+	  (added): Added dialog to display a message (using MessageDialog).
+	  Added dialog to display an error when the video player was not
+	  found.
+
+	* gnome-subtitles/src/Glade/FileOpenErrorDialog.glade (added): A
+	  glade MessageDialog is now used to display file opening errors.
+
+2006-12-24 [r447]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/gnome-subtitles.mds,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPosition.cs
+	  (removed): Refactoring. Player position is now in Player, not in
+	  Video. Use of delegates not to expose unnecessary members in
+	  Player as public.
+
+2006-12-24 [r446]  noup:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Refactored the video
+	  previewing functionality. The current time position is now always
+	  referenced on VideoPosition. There is now a column side by side
+	  with the video previewer that includes the buttons and time
+	  information.
+
+2006-12-24 [r445]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/Makefile.am,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs (added),
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Util.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs:
+	  Refactored the video previewing functionality. The current time
+	  position is now always referenced on VideoPosition. There is now
+	  a column side by side with the video previewer that includes the
+	  buttons and time information.
+
+2006-12-21 [r444]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs,
+	  gnome-subtitles/src/Glade/gnome-subtitles.gladep (removed),
+	  gnome-subtitles/src/Glade/ReportBugWindow.glade (added),
+	  gnome-subtitles/src/Glade/FileSaveAsDialog.glade (added),
+	  gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  gnome-subtitles/src/Glade/TimingsAdjustDialog.glade (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/Glade/VideoOpenDialog.glade (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/Glade/MainWindow.glade (added),
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/Glade/gnome-subtitles.glade (removed),
+	  gnome-subtitles/src/Glade/FileOpenDialog.glade (added),
+	  gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/Glade/SearchDialog.glade (added),
+	  gnome-subtitles/src/Glade/TimingsShiftDialog.glade (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
+	  gnome-subtitles/src/Glade/AboutDialog.glade (added),
+	  gnome-subtitles/src/Glade/HeadersDialog.glade (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Moved glade
+	  dialogs and windows to separate glade files.
+
+2006-12-21 [r443]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Renaming dialogs.
+	  Code cleanup.
+
+2006-12-21 [r442]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/OpenErrorDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs
+	  (added), gnome-subtitles/src/GnomeSubtitles/Dialogs/OpenDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveAsDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ConfirmationDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ShiftTimingsDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileChooserDialog.cs
+	  (removed): Renaming dialogs.
+
+2006-12-21 [r438-441]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AdjustTimingsDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs
+	  (added): Renaming dialogs.
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Initial import
+	  of the video previewing functionality. MPlayer is used to display
+	  videos.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileChooserDialog.cs
+	  (added): Initial import of the video previewing functionality.
+	  MPlayer is used to display videos.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs (added),
+	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs (added),
+	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPosition.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Initial import of
+	  the video previewing functionality. MPlayer is used to display
+	  videos.
+
+2006-12-21 [r431-437]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs: Updated
+	  for changes in the Glade files.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:
+	  Changed Movie namings to Video.
+
+	* gnome-subtitles/etc/samples/Romeo and Juliet.srt (added): Romeo
+	  and Juliet captions.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added Video previewing
+	  files.
+
+	* gnome-subtitles/CREDITS: Added João Pinto - Deb packager.
+
+	* gnome-subtitles/TODO: Updated TODO.
+
+2006-12-21 [r430]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/BugReportWindow.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs
+	  (added): Renaming dialogs.
+
+2006-12-13 [r423]  noup:
+
+	* gnome-subtitles/CREDITS, gnome-subtitles/README,
+	  gnome-subtitles/src/Glade/gnome-subtitles.glade,
+	  gnome-subtitles/AUTHORS, gnome-subtitles/TODO,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/autogen.sh: Updated for a change in the website
+	  address.
+
+2006-12-13 [r422]  noup:
+
+	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Connected
+	  handlers to the Find and Replace toolbar buttons.
+
+2006-12-13 [r419]  noup:
+
+	* gnome-subtitles/NEWS, gnome-subtitles/README,
+	  gnome-subtitles/TODO, gnome-subtitles/configure.in,
+	  gnome-subtitles/ChangeLog: Updating for release 0.1.
+
 2006-12-13 [r418]  noup:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
