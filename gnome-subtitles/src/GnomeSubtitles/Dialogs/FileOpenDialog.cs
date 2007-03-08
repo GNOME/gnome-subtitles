@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 namespace GnomeSubtitles {
 
 public class FileOpenDialog : SubtitleFileChooserDialog {
-	private Regex regex = new Regex(@"^.*\.((avi)|(mpeg)|(mpg)|(mp4)|(ogm)|(divx)|(xvid))$"); //Regex to match video files
+	private Regex regex = new Regex(@"^.*\.((avi)|(mpeg)|(mpg)|(mp4)|(ogm)|(divx)|(xvid)|(mov))$"); //Regex to match video files
 	private ArrayList videoFiles = null; //The full paths of the video files in the current fir
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
 	
@@ -204,11 +204,11 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
 			chosenFilename = dialog.Filename;
-			if (encodingComboBox.Active != 0) {
+			if (encodingComboBox.Active > 0) {
 				int encodingIndex = encodingComboBox.Active - 2;
 				chosenEncoding = Encoding.GetEncoding(encodings[encodingIndex].CodePage);
 			}
-			if (videoComboBox.Active != 0) {
+			if (videoComboBox.Active > 0) {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoFilename = videoFiles[videoFileIndex] as string;
 			}			
