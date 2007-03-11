@@ -176,6 +176,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		/* Second filter corresponds to all subtitle files */
 		FileFilter subtitleFilesFilter = new FileFilter();
 		subtitleFilesFilter.Name = "All Subtitle Files";
+		subtitleFilesFilter.AddPattern("*.txt");
 		filters[filterPosition] = subtitleFilesFilter;
 		filterPosition++;
 		
