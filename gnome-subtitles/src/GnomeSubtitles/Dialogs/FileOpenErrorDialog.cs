@@ -47,6 +47,7 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	/* Protected methods */
 	
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
+		System.Console.WriteLine(exception);
 		return "An unknown error has occured. Please report a bug and include this error name: \"" + exception.GetType() + "\".";
 	}
 	
