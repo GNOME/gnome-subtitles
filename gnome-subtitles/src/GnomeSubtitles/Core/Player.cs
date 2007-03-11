@@ -208,15 +208,23 @@ public class Player {
 	private void TerminateProcess () {
 		if (process != null) {
 			process.Exited -= OnProcessExited;
+			
 			try {
 				Exec("quit");
 			}
 			catch (IOException) {
 				//Do nothing
 			}
+			
 			bool exited = process.WaitForExit(1000); //Wait 1 second for exit
-			if (!exited)
-				process.Kill();
+			if (!exited) {
+				try {
+					process.Kill();
+				}
+				catch (Exception) {
+					//Do nothing
+				}
+			}
 
 			process = null;
 		}
