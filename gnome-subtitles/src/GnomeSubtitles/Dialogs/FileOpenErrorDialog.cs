@@ -28,12 +28,16 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	
 	/* Constant strings */
 	private const string gladeFilename = "FileOpenErrorDialog.glade";
-	private const string actionLabel = "Open another file";
+	private const string actionLabel = "Open another file"; 
 
 	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
 		MessageDialog messageDialog = dialog as MessageDialog;
-		messageDialog.Text += " " + filename + ".";
-		messageDialog.SecondaryText = SecondaryTextFromException(exception);
+		
+		string primaryText = GetPrimaryText(filename);
+		string secondaryText = SecondaryTextFromException(exception);
+		string text = primaryText + "\n\n" + secondaryText;
+		
+		messageDialog.Markup = text; //Markup has to be used as the Text property is only available from GTK# 2.10
 
 		Button actionButton = messageDialog.AddButton(actionLabel, ResponseType.Accept) as Button;
 		actionButton.Image = new Image(Stock.Open, IconSize.Button);
@@ -49,6 +53,12 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
 		System.Console.WriteLine(exception);
 		return "An unknown error has occured. Please report a bug and include this error name: \"" + exception.GetType() + "\".";
+	}
+	
+	/* Private methods */
+	
+	private string GetPrimaryText (string filename) {
+		return "<span weight=\"bold\" size=\"larger\">Could not open the file " + filename + "</span>.";
 	}
 	
 	/* Event members */
