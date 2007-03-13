@@ -1,0 +1,111 @@
+<Project name="gnome-subtitles" fileversion="2.0" language="C#" clr-version="Net_2_0" ctype="DotNetProject">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="./build" assembly="gnome-subtitles" />
+      <Build debugmode="True" target="Exe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="./build" assembly="gnome-subtitles" />
+      <Build debugmode="False" target="Exe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <Contents>
+    <File name="./src" subtype="Directory" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles" subtype="Directory" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core" subtype="Directory" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Execution" subtype="Directory" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/EventHandlers.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/GUI.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/SubtitleEdit.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Util.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/WidgetNames.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Execution/Executable.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Execution/ExecutionInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Menus.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Clipboards.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/External" subtype="Directory" buildaction="Compile" />
+    <File name="./src/External/Freedesktop.RecentFiles" subtype="Directory" buildaction="Compile" />
+    <File name="./src/External/Freedesktop.RecentFiles/RecentFiles.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Global.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/ChangeStyleCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/ChangeTextCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/ChangeTimingCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/Command.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/CommandManager.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/FixedMultipleSelectionCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/FixedSingleSelectionCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/MultipleSelectionCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/SingleSelectionCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/AboutDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/FileEncoding.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/GladeDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/HeadersDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/SearchDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/CellRendererCenteredText.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/SubtitleSelection.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Subtitles.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/SubtitleView.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/SelectionType.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Search.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/ReplaceAllCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data" subtype="Directory" buildaction="Compile" />
+    <File name="./data/gnome-subtitles.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./data/gnome-subtitles-logo.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/GnomeSubtitles/Core/Video.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/Player.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/PlayerPositionWatcher.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/ReportBugWindow.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/FileOpenDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/Glade" subtype="Directory" buildaction="Compile" />
+    <File name="./src/Glade/AboutDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/FileOpenDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/FileSaveAsDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/HeadersDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/MainWindow.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/ReportBugWindow.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/SearchDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/TimingsAdjustDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/TimingsShiftDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/Glade/VideoOpenDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/GnomeSubtitles/Core/VideoPosition.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Exception" subtype="Directory" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Exception/PlayerNotFoundException.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/Glade/FileOpenErrorDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/GnomeSubtitles/Core/VideoSubtitle.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Exception/PlayerCouldNotOpenVideoException.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data/video-set-subtitle-start-16x.png" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./data/video-set-subtitle-end-16x.png" subtype="Code" buildaction="EmbedAsResource" />
+  </Contents>
+  <References>
+    <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="glade-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="gnome-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Assembly" localcopy="True" refto="./build/sublib.dll" />
+    <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  </References>
+  <DeploymentInformation strategy="File">
+    <excludeFiles />
+  </DeploymentInformation>
+</Project>

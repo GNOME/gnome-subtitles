@@ -1,0 +1,117 @@
+/*
+ * This file is part of Gnome Subtitles.
+ * Copyright (C) 2007 Pedro Castro
+ *
+ * Gnome Subtitles is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Gnome Subtitles is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+using Gtk;
+using SubLib;
+using System;
+
+namespace GnomeSubtitles {
+
+public class VideoSubtitle {
+	private Label label = null;
+	
+	/* Current subtitle */
+	private Subtitle subtitle = null;
+	//private int subtitleNumber = -1; TODO Uncomment
+	private float subtitleStart = -1;
+	private float subtitleEnd = -1;
+	
+	public VideoSubtitle (VideoPosition position) {
+		EventBox box = Global.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
+		box.ModifyBg(StateType.Normal, box.Style.Black);
+
+		label = Global.GetWidget(WidgetNames.VideoSubtitleLabel) as Label;
+		label.ModifyFg(StateType.Normal, new Gdk.Color(255, 255, 0));
+
+		position.Changed += OnVideoPositionChanged;
+	}
+
+	public void Close () {
+		UnloadSubtitle();
+	}
+
+	/* Event members */
+	
+	private void OnVideoPositionChanged (float newPosition) {
+		if (!(Global.AreSubtitlesLoaded))
+			return;
+	
+		if (!(IsTimeInCurrentSubtitle(newPosition))) {
+			int foundSubtitle = Global.Subtitles.FindWithTime(newPosition);
+			if (foundSubtitle == -1)
+				UnloadSubtitle();
+			else
+				LoadSubtitle(foundSubtitle);
+		}
+	}
+	
+	/* Private properties */
+	
+	private bool IsSubtitleLoaded {
+		get { return subtitle != null; }
+	}
+	
+	/* Private methods */
+	
+	private bool IsTimeInCurrentSubtitle (float time) {
+		return IsSubtitleLoaded && (time >= subtitleStart) && (time <= subtitleEnd);	
+	}
+	
+	private void LoadSubtitle (int number) {
+		subtitle = Global.Subtitles[number];
+		//subtitleNumber = number; TODO Uncomment
+		subtitleStart = (float)subtitle.Times.Start.TotalSeconds;
+		subtitleEnd = (float)subtitle.Times.End.TotalSeconds;
+		SetText();
+		label.Visible = true;
+	}
+	
+	private void UnloadSubtitle () {
+		subtitle = null;
+		//subtitleNumber = -1; TODO Uncomment
+		subtitleStart = -1;
+		subtitleEnd = -1;
+		ClearText();
+		label.Visible = false;
+	}
+	
+	private void SetText () {
+		string text = subtitle.Text.Get();
+		string markup = "<span size=\"x-large\""; 
+	
+		if (subtitle.Style.Bold)
+			markup += " weight=\"bold\"";
+
+		if (subtitle.Style.Italic)
+			markup += " style=\"italic\"";
+
+		if (subtitle.Style.Underline)
+			markup += " underline=\"single\"";
+		
+		markup += ">" + text + "</span>";
+		label.Markup = markup;
+	}
+	
+	private void ClearText () {
+		label.Text = String.Empty;
+	}
+	
+}
+
+}
