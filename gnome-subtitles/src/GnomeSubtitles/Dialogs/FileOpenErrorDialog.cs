@@ -33,6 +33,8 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
 		MessageDialog messageDialog = dialog as MessageDialog;
 		
+		System.Console.WriteLine(exception);
+
 		string primaryText = GetPrimaryText(filename);
 		string secondaryText = SecondaryTextFromException(exception);
 		string text = primaryText + "\n\n" + secondaryText;
@@ -51,7 +53,6 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	/* Protected methods */
 	
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		System.Console.WriteLine(exception);
 		return "An unknown error has occured. Please report a bug and include this error name: \"" + exception.GetType() + "\".";
 	}
 	

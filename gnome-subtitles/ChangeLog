@@ -1,4 +1,39 @@
-2007-03-08 [r533]  noup:
+2007-03-12 [r542]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/src/Glade/ShowMessageDialog.glade (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ShowMessageDialog.cs
+	  (removed): Removed the ShowMessageDialog as it was obsolete and
+	  using members of GTK# 2.10. FileOpenErrorDialog now uses
+	  MessageDialog.Markup instead of MessageDialog.Text (and
+	  SecondaryText) to change the text in the dialog, because only
+	  .Markup is available on GTK# before 2.10.
+
+2007-03-11 [r541]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:
+	  Print exception stack trace to console when an unknown exception
+	  is found during File Open.
+
+2007-03-11 [r540]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Added *.txt pattern to "All Subtitle Files" filter.
+
+2007-03-11 [r539]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Fixed bug
+	  #416895, a crash that happend on close, when trying to kill the
+	  MPlayer process that had already finished.
+
+2007-03-08 [r536]  noup:
+
+	* gnome-subtitles/data/Makefile.am: Fixed to include the
+	  gnome-subtitles.desktop file in the source distribution.
+
+2007-03-08 [r533-534]  noup:
+
+	* gnome-subtitles/ChangeLog: Updated for release 0.2.
 
 	* gnome-subtitles/CREDITS: Updated for release 0.2.
 

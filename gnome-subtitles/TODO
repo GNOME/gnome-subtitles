@@ -19,7 +19,10 @@ Easy
 * Think about using Bug-Buddy
 * Store the current video folder to use in the VideoOpenDialog
 * Make the use of video extensions more uniform, case insensitive and reusable
-
+* Show a warning when trying to open a large file (probably isn't valid). Perhaps detect if it is plain-text too.
+* Add Preferences option to enable/disable video autoloading
+* Opening a file with a '-symbol in it issues "Please check that the video file is supported"
+* System.InvalidOperationException is sometimes being thrown in the second (and beyond) files opened after the first one.
 
 Hard
 ====
