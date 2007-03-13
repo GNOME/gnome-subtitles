@@ -18,9 +18,9 @@
  */
 
 using Gtk;
+using SubLib;
 using System;
 using System.Globalization;
-using SubLib;
 
 namespace GnomeSubtitles {
 

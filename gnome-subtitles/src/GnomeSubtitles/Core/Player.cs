@@ -21,6 +21,7 @@ using Gtk;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -281,7 +282,8 @@ public class Player {
 	/// <exception cref="FormatException">Thrown when the response cannot be parsed as a float.</exception> 
 	private float GetAsFloat (string command) {
 		string text = Get(command);
-		return (float)Convert.ToDouble(text);
+		NumberFormatInfo invariant = NumberFormatInfo.InvariantInfo;
+		return (float)Convert.ToDouble(text, invariant);
 	}
 
 	/// <summary>Clears the current output.</summary>
