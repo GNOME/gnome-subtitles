@@ -158,6 +158,14 @@ public class Util {
 	public static bool PathsAreEqual (TreePath path1, TreePath path2) {
 		return (path1.Compare(path2) == 0);	
 	}
+	
+	/// <summary>Quotes a filename.</summary>
+	/// <returns>The filename, starting and ending with quotation marks.</returns>
+	/// <remarks>If the filename contains quotation marks itself, they are escapted.
+	public static string QuoteFilename (string filename) {
+		string escapedFilename = filename.Replace("\"", "\\\""); //Replaces " with \"
+		return "\"" + escapedFilename + "\"";
+	}
 
 }
 

@@ -94,8 +94,9 @@ public class Video {
 	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
 	public void Open (string filename) {
 		Close();
-	
-		filename = Regex.Escape(filename);
+
+		filename = Util.QuoteFilename(filename);
+		
 		player.Open(filename);
 		player.SeekStart();
 
