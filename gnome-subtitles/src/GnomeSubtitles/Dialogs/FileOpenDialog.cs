@@ -128,24 +128,31 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			return;
 	
 		string filePath = dialog.Filename;
-		if ((filePath == String.Empty) || (filePath == null) || (!File.Exists(filePath)))
+		if ((filePath == String.Empty) || (filePath == null) || (!File.Exists(filePath))) {
+			SetActiveComboBoxItem(0);
 			return;
+		}
 		
 		string filename = Path.GetFileNameWithoutExtension(filePath);
-		if ((filename == String.Empty) || (filename == null))
+		if ((filename == String.Empty) || (filename == null)) {
+			SetActiveComboBoxItem(0);
 			return;
+		}
 		
 		int activeVideoFile = 0;
 		
 		for (int count = 0 ; count < videoFilenames.Count ; count++) {
 			string videoFilename = videoFilenames[count] as string;
 			if (filename.Equals(videoFilename)) {
-				activeVideoFile = count + 2; //Add 2 because of prepended textt
+				activeVideoFile = count + 2; //Add 2 because of prepended text
 				break;
 			}
-		}
-		
-		videoComboBox.Active = activeVideoFile;
+		}		
+		SetActiveComboBoxItem(activeVideoFile);		
+	}
+	
+	private void SetActiveComboBoxItem (int item) {
+		videoComboBox.Active = item;
 	}
 	
 	private void SetVideoSelectionSensitivity (bool sensitivity) {
