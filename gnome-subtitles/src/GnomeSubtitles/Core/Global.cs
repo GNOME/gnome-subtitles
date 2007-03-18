@@ -34,6 +34,7 @@ public class Global {
 	private static EventHandlers handlers = null;
 	private static CommandManager commandManager = null;
 	private static Clipboards clipboards = null;
+	private static Config config = null;
 	
 	private static Subtitles subtitles = null;
 	private static TimingMode timingMode = TimingMode.Times;
@@ -55,6 +56,10 @@ public class Global {
 	
 	public static Clipboards Clipboards {
 		get { return clipboards; }
+	}
+	
+	public static Config Config {
+		get { return config; }
 	}
 	
 	public static Subtitles Subtitles {
@@ -123,6 +128,7 @@ public class Global {
 		handlers = new EventHandlers();
 		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled, handlers.OnCommandActivated, handlers.OnModified); //TODO 25 should be set on gconf
 		clipboards = new Clipboards();
+		config = new Config();
 
 		gui = new GUI(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
