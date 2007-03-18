@@ -21,6 +21,7 @@ GS_RESOURCES = \
 	$(srcdir)/Glade/FileSaveAsDialog.glade \
 	$(srcdir)/Glade/HeadersDialog.glade \
 	$(srcdir)/Glade/MainWindow.glade \
+	$(srcdir)/Glade/PreferencesDialog.glade \
 	$(srcdir)/Glade/ReportBugWindow.glade \
 	$(srcdir)/Glade/SearchDialog.glade \
 	$(srcdir)/Glade/TimingsAdjustDialog.glade \
