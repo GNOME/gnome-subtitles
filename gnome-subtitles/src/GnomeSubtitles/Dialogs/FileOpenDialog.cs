@@ -34,6 +34,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
 	
 	private string chosenVideoFilename = String.Empty;
+	private bool autoSelectVideoFile = true;
 
 	/* Constant strings */
 	private const string gladeFilename = "FileOpenDialog.glade";
@@ -48,6 +49,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	
 	
 	public FileOpenDialog () : base(gladeFilename) {
+		autoSelectVideoFile = Global.Config.PrefsVideoAutoSelectFile;
+	
 		FillEncodingComboBox();
 		videoComboBox.RowSeparatorFunc = SeparatorFunc;	
 		
@@ -82,13 +85,15 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	}
 	
 	private void FillVideoComboBoxBasedOnCurrentFolder () {
+		System.Console.WriteLine("FillVideoComboBoxBasedOnCurrentFolder: FVCBBOCF"); //TODO delete
 		videoFiles = null;
 		videoFilenames = null;
 		(videoComboBox.Model as ListStore).Clear();
 	
 		string folder = dialog.CurrentFolder;
+		System.Console.WriteLine("FVCBBOCF: Current Folder = " + folder + ". Is it null? " + (folder == null)); //TODO delete
 		if ((folder == null) || (folder == String.Empty)) {
-			System.Console.WriteLine("Selected folder on File Open is null or empty");
+			System.Console.WriteLine("Selected folder on File Open is null or empty"); //TODO delete
 			return;
 		}
 		
@@ -121,19 +126,31 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		videoComboBox.PrependText("-");
 		videoComboBox.PrependText("None");
 		videoComboBox.Active = 0;
+		
+		System.Console.WriteLine("FVCBBOCF: Found " + videoFiles.Count + " video files."); //TODO delete
 	}
 	
 	private void SetActiveVideoFile () {
+		System.Console.WriteLine("SetActiveVideoFile: SAVF"); //TODO delete
+		System.Console.WriteLine("SAVF: videoFiles null? " + (videoFiles == null)); //TODO delete
+		System.Console.WriteLine("SAVF: videoFiles has " + videoFiles.Count + " elements."); //TODO delete
 		if ((videoFiles == null) || (videoFiles.Count == 0))
 			return;
 	
 		string filePath = dialog.Filename;
+		System.Console.WriteLine("SAVF: Selected file path: " + filePath); //TODO delete
+		System.Console.WriteLine("SAVF: Selected file path is null? " + (filePath == null)); //TODO delete
+		System.Console.WriteLine("SAVF: Selected file path is empty? " + (filePath == String.Empty)); //TODO delete
+		System.Console.WriteLine("SAVF: Selected file path exists? " + File.Exists(filePath)); //TODO delete
 		if ((filePath == String.Empty) || (filePath == null) || (!File.Exists(filePath))) {
 			SetActiveComboBoxItem(0);
 			return;
 		}
 		
 		string filename = Path.GetFileNameWithoutExtension(filePath);
+		System.Console.WriteLine("SAVF: Filename related to filePath: " + filename); //TODO delete
+		System.Console.WriteLine("SAVF: Filename is empty? " + (filename == String.Empty)); //TODO delete
+		System.Console.WriteLine("SAVF: Filename is null? " + (filename == null)); //TODO delete
 		if ((filename == String.Empty) || (filename == null)) {
 			SetActiveComboBoxItem(0);
 			return;
@@ -141,13 +158,17 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		
 		int activeVideoFile = 0;
 		
+		System.Console.WriteLine("SAVF: Matching file with videos."); //TODO delete
 		for (int count = 0 ; count < videoFilenames.Count ; count++) {
 			string videoFilename = videoFilenames[count] as string;
+			System.Console.WriteLine("SAVF: Count " + count + ", video filename: " + videoFilename + ", video filepath: " + (videoFiles[count] as string)); //TODO delete
 			if (filename.Equals(videoFilename)) {
+				System.Console.WriteLine("SAVF: It matches! Setting activeVideoFile to " + (count + 2) + " in " + videoFilenames.Count + " total files (plus 2)."); //TODO delete
 				activeVideoFile = count + 2; //Add 2 because of prepended text
 				break;
 			}
-		}		
+		}
+		System.Console.WriteLine("SAVF: Setting activeVideoFile to " + activeVideoFile); //TODO delete
 		SetActiveComboBoxItem(activeVideoFile);		
 	}
 	
@@ -226,11 +247,14 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	}
 	
 	private void OnCurrentFolderChanged (object o, EventArgs args) {
+		System.Console.WriteLine("OnCurrentFolderChanged event"); //TODO delete
 		FillVideoComboBoxBasedOnCurrentFolder();
 	}
 	
 	private void OnSelectionChanged (object o, EventArgs args) {
-		SetActiveVideoFile();
+		System.Console.WriteLine("OnSelectionChanged event"); //TODO delete
+		if (autoSelectVideoFile)
+			SetActiveVideoFile();
 	}
 	
 }
