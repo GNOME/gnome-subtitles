@@ -114,6 +114,9 @@ public class EventHandlers {
 			Global.CommandManager.Execute(new DeleteSubtitlesCommand());
 	}
 
+	public void OnEditPreferences (object o, EventArgs args) {
+		new PreferencesDialog();
+	}
 
 	/* View Menu */
 	
