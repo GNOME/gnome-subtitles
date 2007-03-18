@@ -40,11 +40,11 @@ public class GladeDialog {
 	/// and persistency possibility.</summary>
 	/// <param name="filename">The filename of the dialog.</param>
 	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
-	protected GladeDialog (string filename) : this(filename, false) {
+	protected GladeDialog (string filename) : this(filename, false, true) {
 	}
 
-	protected GladeDialog (string filename, bool persistent) {
-		Init(filename, persistent);
+	protected GladeDialog (string filename, bool persistent, bool autoconnect) {
+		Init(filename, persistent, autoconnect);
 	}
 	
 	public bool WaitForResponse () {
@@ -71,17 +71,23 @@ public class GladeDialog {
 	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
 	/// sets the icon and also sets the dialog as transient for the main window.</summary>
 	protected void Init (string filename) {
-		Init(filename, false);
+		Init(filename, false, true);
 	}
 	
 	/// <summary>Constructs the dialog with the specified filename, and possibly sets it as persistent.</param> 
 	/// <param name="filename">The filename of the dialog.</param>
 	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
+	/// <param name="autoconnect">Whether to autoconnect the event handlers.</param>
 	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
 	/// sets the icon and also sets the dialog as transient for the main window.</summary>
-	protected void Init (string filename, bool persistent) {
+	protected void Init (string filename, bool persistent, bool autoconnect) {
 		glade = new Glade.XML(filename, null);
-		glade.Autoconnect(this);
+		
+		if (autoconnect)
+			Autoconnect();
+		else
+			glade.BindFields(this);
+
 		dialog = glade.GetWidget("dialog") as Dialog;
 		
 		Window window = Global.GUI.Window;
@@ -90,6 +96,10 @@ public class GladeDialog {
 		
 		if (persistent)
 			dialog.DeleteEvent += OnDelete;
+	}
+	
+	protected void Autoconnect () {
+		glade.Autoconnect(this);
 	}
 
 	/* Event members */
