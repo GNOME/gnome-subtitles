@@ -56,7 +56,7 @@ public class SearchDialog : GladeDialog {
 	[WidgetAttribute] private Button buttonReplace;
 	[WidgetAttribute] private Button buttonFind;
 
-	public SearchDialog () : base(gladeFilename, true) {
+	public SearchDialog () : base(gladeFilename, true, true) {
 	}
 	
 	public bool ShowReplace {
