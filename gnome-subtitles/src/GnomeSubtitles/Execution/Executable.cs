@@ -26,14 +26,18 @@ namespace GnomeSubtitles {
 public class Executable {
 
 	[DllImport("libc")]
-	private static extern int prctl(int option, byte [] arg2, ulong arg3,
-    		ulong arg4, ulong arg5);
+	private static extern int prctl(int option, byte [] arg2, ulong arg3, ulong arg4, ulong arg5);
     		
     public static void SetProcessName(string name) {
-   		if(prctl(15 /* PR_SET_NAME */, Encoding.ASCII.GetBytes(name + "\0"), 0, 0, 0) != 0) {
-        		throw new ApplicationException("Error setting process name: " +
-        			Mono.Unix.Native.Stdlib.GetLastError());
+    	try {
+   			if(prctl(15 /* PR_SET_NAME */, Encoding.ASCII.GetBytes(name + "\0"), 0, 0, 0) != 0) {
+	   			System.Console.WriteLine("Error setting process name: " + Mono.Unix.Native.Stdlib.GetLastError());
         	}
+        }
+        catch (Exception e) {
+        	System.Console.WriteLine("Could not set the process name.");
+        	System.Console.WriteLine(e);
+        }
     }
 
 	public static void Main (string[] args) {
