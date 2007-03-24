@@ -254,9 +254,14 @@ public class EventHandlers {
 	
 	/*	Window	*/
 	
-	public void OnDelete (object o, DeleteEventArgs args) {
+	public void OnWindowDelete (object o, DeleteEventArgs args) {
     	Global.GUI.Quit();
     	args.RetVal = true;
+    }
+    
+    public void OnSizeAllocated (object o, SizeAllocatedArgs args) {
+    	Global.Config.PrefsWindowWidth = args.Allocation.Width;
+    	Global.Config.PrefsWindowHeight = args.Allocation.Height;
     }
 
     
