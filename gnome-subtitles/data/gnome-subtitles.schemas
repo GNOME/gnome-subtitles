@@ -2,14 +2,26 @@
 <gconfschemafile>
 	<schemalist>
 		<schema>
-			<key>/schemas/apps/gnome-subtitles/preferences/video/auto_select_file</key>
-			<applyto>/apps/gnome-subtitles/preferences/video/auto_select_file</applyto>
+			<key>/schemas/apps/gnome-subtitles/preferences/video/auto_choose_file</key>
+			<applyto>/apps/gnome-subtitles/preferences/video/auto_choose_file</applyto>
 			<owner>gnome-subtitles</owner>
 			<type>bool</type>
 			<default>TRUE</default>
 			<locale name="C">
-				<short>Auto Select Video File</short>
-				<long>Whether to automatically select the video file to open, when selecting a subtitle file.</long>
+				<short>Automatically Choose Video File</short>
+				<long>Whether to automatically choose the video file to open, when opening a subtitle file. A video file is chosen based on the name of the subtitle file.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/encodings/shown_in_menu</key>
+			<applyto>/apps/gnome-subtitles/preferences/encodings/shown_in_menu</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>list</type>
+			<list_type>string</list_type>
+			<default>[ISO-8859-15]</default>
+			<locale name="C">
+				<short>Encodings shown in menu</short>
+				<long>List of encodings shown in the File Open/Save dialogs.</long>
 			</locale>
 		</schema>
 	</schemalist>
