@@ -31,7 +31,7 @@ public class PreferencesDialog : GladeDialog {
 	/* Widgets */
 	
 	[WidgetAttribute]
-	private CheckButton videoAutoSelectFileCheckButton;
+	private CheckButton videoAutoChooseFileCheckButton;
 
 
 	public PreferencesDialog () : base(gladeFilename, false, false) {
@@ -42,7 +42,7 @@ public class PreferencesDialog : GladeDialog {
 	/* Private members */
 	
 	private void LoadValues () {
-		videoAutoSelectFileCheckButton.Active = Global.Config.PrefsVideoAutoSelectFile;
+		videoAutoChooseFileCheckButton.Active = Global.Config.PrefsVideoAutoChooseFile;
 	}
 	
 	/* Event handlers */
@@ -53,8 +53,8 @@ public class PreferencesDialog : GladeDialog {
 		CloseDialog();
 	}
 	
-	private void OnVideoAutoSelectFileToggled (object o, EventArgs args) {
-		Global.Config.PrefsVideoAutoSelectFile = videoAutoSelectFileCheckButton.Active;
+	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
+		Global.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
 	}
 
 }
