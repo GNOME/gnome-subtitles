@@ -34,7 +34,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
 	
 	private string chosenVideoFilename = String.Empty;
-	private bool autoSelectVideoFile = true;
+	private bool autoChooseVideoFile = true;
 
 	/* Constant strings */
 	private const string gladeFilename = "FileOpenDialog.glade";
@@ -49,9 +49,9 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	
 	
 	public FileOpenDialog () : base(gladeFilename) {
-		autoSelectVideoFile = Global.Config.PrefsVideoAutoSelectFile;
+		autoChooseVideoFile = Global.Config.PrefsVideoAutoChooseFile;
 	
-		FillEncodingComboBox();
+		SetEncodingComboBox();
 		videoComboBox.RowSeparatorFunc = SeparatorFunc;	
 		
 		dialog.CurrentFolderChanged += OnCurrentFolderChanged; //Only needed because setting it in the Glade file is not working
@@ -77,8 +77,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	
 	/* Private members */
 	
-	private void FillEncodingComboBox () {
-		FillEncodingComboBox(encodingComboBox);
+	private void SetEncodingComboBox () {
+		SetEncodingComboBox(encodingComboBox);
 		encodingComboBox.PrependText("-");
 		encodingComboBox.PrependText("Auto Detected");
 		encodingComboBox.Active = 0;
@@ -235,7 +235,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			chosenFilename = dialog.Filename;
 			if (encodingComboBox.Active > 0) {
 				int encodingIndex = encodingComboBox.Active - 2;
-				chosenEncoding = Encoding.GetEncoding(encodings[encodingIndex].CodePage);
+				chosenEncoding = encodings[encodingIndex];
+				hasChosenEncoding = true;
 			}
 			if (videoComboBox.Active > 0) {
 				int videoFileIndex = videoComboBox.Active - 2;
@@ -253,7 +254,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	
 	private void OnSelectionChanged (object o, EventArgs args) {
 		System.Console.WriteLine("OnSelectionChanged event"); //TODO delete
-		if (autoSelectVideoFile)
+		if (autoChooseVideoFile)
 			SetActiveVideoFile();
 	}
 	
