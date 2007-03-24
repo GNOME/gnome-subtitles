@@ -52,7 +52,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		   while in this constructor. After constructing it works fine. */
 
 		FillFormatComboBox();
-		FillEncodingComboBox(encodingComboBox);
+		SetEncodingComboBox(encodingComboBox);
 	}
 	
 	public SubtitleType SubtitleType {
@@ -161,7 +161,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 			chosenSubtitleType = subtitleTypes[formatIndex].Type;
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
 			int encodingIndex = encodingComboBox.Active;
-			chosenEncoding = Encoding.GetEncoding(encodings[encodingIndex].CodePage);
+			chosenEncoding = encodings[encodingIndex];
 			actionDone = true;
 		}		
 		CloseDialog();
