@@ -46,7 +46,6 @@
     <File name="./src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Commands/SingleSelectionCommand.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/AboutDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="./src/GnomeSubtitles/Dialogs/FileEncoding.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/GladeDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/HeadersDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/SearchDialog.cs" subtype="Code" buildaction="Compile" />
@@ -97,6 +96,10 @@
     <File name="./src/GnomeSubtitles/Core/Config.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/GnomeSubtitles/Dialogs/PreferencesDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="./src/Glade/PreferencesDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/GnomeSubtitles/Dialogs/EncodingsDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/Glade/EncodingsDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
+    <File name="./src/GnomeSubtitles/Core/Encodings.cs" subtype="Code" buildaction="Compile" />
+    <File name="./src/GnomeSubtitles/Core/EncodingDescription.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
