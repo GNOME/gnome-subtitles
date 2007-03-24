@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Sun Mar 18 00:03:36 2007 by noup@nouplab-->
+<!--Generated with glade3 3.0.3 on Fri Mar 23 23:44:14 2007 by noup@nouplab-->
 <glade-interface>
   <widget class="GtkDialog" id="dialog">
     <property name="visible">True</property>
@@ -37,11 +37,11 @@
                   <widget class="GtkHBox" id="hbox1">
                     <property name="visible">True</property>
                     <child>
-                      <widget class="GtkCheckButton" id="videoAutoSelectFileCheckButton">
+                      <widget class="GtkCheckButton" id="videoAutoChooseFileCheckButton">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Automatically select video to open</property>
+                        <property name="label" translatable="yes">Automatically choose video to open</property>
                         <property name="draw_indicator">True</property>
-                        <signal name="toggled" handler="OnVideoAutoSelectFileToggled"/>
+                        <signal name="toggled" handler="OnVideoAutoChooseFileToggled"/>
                       </widget>
                       <packing>
                         <property name="expand">False</property>
