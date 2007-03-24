@@ -37,6 +37,8 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 			return "You have run out of memory. Please close some programs and try again.";
 		else if (exception is IOException)
 			return "An I/O error has occured.";
+		else if (exception is NotSupportedException)
+			return "The encoding used is not supported by your system.";
 		else
 			return GetGeneralExceptionErrorMessage(exception);
 	}
