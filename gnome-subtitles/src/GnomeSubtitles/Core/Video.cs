@@ -43,10 +43,11 @@ public class Video {
 		
 		/* Create the video Frame */
 		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
+		frame.Shadow = ShadowType.None;
 		EventBox videoFrameEventBox = new EventBox();
 		videoFrameEventBox.Add(frame);
 		videoFrameEventBox.ModifyBg(StateType.Normal, videoFrameEventBox.Style.Black);
-		
+
 		/* Attach the video frame */
 		Table videoImageTable = Global.GetWidget("videoImageTable") as Table;
 		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
