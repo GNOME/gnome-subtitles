@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Thu Mar  1 12:37:50 2007 by noup@nouplab
+<!--Generated with glade3 3.0.3 on Wed Mar 21 22:46:22 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -31,24 +31,15 @@
             <property name="column_spacing">10</property>
             <property name="row_spacing">10</property>
             <child>
-              <widget class="GtkComboBox" id="encodingComboBox">
+              <widget class="GtkComboBox" id="videoComboBox">
                 <property name="visible">True</property>
                 <property name="items" translatable="yes"></property>
               </widget>
               <packing>
                 <property name="left_attach">1</property>
                 <property name="right_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="GtkLabel" id="encodingLabel">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">Character Coding:</property>
-              </widget>
-              <packing>
-                <property name="x_options">GTK_FILL</property>
-                <property name="y_options"></property>
+                <property name="top_attach">1</property>
+                <property name="bottom_attach">2</property>
               </packing>
             </child>
             <child>
@@ -65,15 +56,25 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkComboBox" id="videoComboBox">
+              <widget class="GtkLabel" id="encodingLabel">
+                <property name="visible">True</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Character Coding:</property>
+              </widget>
+              <packing>
+                <property name="x_options">GTK_FILL</property>
+                <property name="y_options"></property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkComboBox" id="encodingComboBox">
                 <property name="visible">True</property>
                 <property name="items" translatable="yes"></property>
+                <signal name="changed" handler="OnEncodingComboBoxChanged"/>
               </widget>
               <packing>
                 <property name="left_attach">1</property>
                 <property name="right_attach">2</property>
-                <property name="top_attach">1</property>
-                <property name="bottom_attach">2</property>
               </packing>
             </child>
           </widget>
