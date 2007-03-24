@@ -20,10 +20,8 @@ Easy
 * Store the current video folder to use in the VideoOpenDialog
 * Make the use of video extensions more uniform, case insensitive and reusable
 * Show a warning when trying to open a large file (probably isn't valid). Perhaps detect if it is plain-text too.
-* Add Preferences option to enable/disable video autoloading
-* Opening a file with a '-symbol in it issues "Please check that the video file is supported"
 * System.InvalidOperationException is sometimes being thrown in the second (and beyond) files opened after the first one.
-* Update the Copyright information in the About dialog
+* Use setproctitle in Executable so setting the process name works in FreeBSD
 
 Hard
 ====
@@ -36,8 +34,6 @@ Hard
 * Mark file as changed (show asterisk) when modifying headers
     - Compare each header to the one in Subtitles to see if it has changed
     - GUI.SetWindowTitle
-* Add support for choosing the character encodings to be used in the open and save dialogs
-  Includes adding a gconf access layer (to store used encodings) and a dialog for choosing encodings
 * Save the scrolling state for documents (and perhaps other things, like the window size), like Evince does
   Includes storing these somewhere, again
 * Star/mark subtitles, like in GMail
