@@ -38,15 +38,18 @@ public class GUI {
 	
 	public GUI (EventHandlers handlers, out Glade.XML glade) {
 		glade = new Glade.XML(gladeFilename, null);
-		glade.Autoconnect(handlers); //TODO think about using separate connections for different parts of the GUI
-	
+		
 		window = glade.GetWidget("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
+		window.SetDefaultSize(Global.Config.PrefsWindowWidth, Global.Config.PrefsWindowHeight);
 		
 		video = new Video();
 		view = new SubtitleView();
 		edit = new SubtitleEdit();
 		menus = new Menus();
+
+		glade.Autoconnect(handlers); //TODO think about using separate connections for different parts of the GUI
+		window.Visible = true;
     }
 
 	/* Public properties */
