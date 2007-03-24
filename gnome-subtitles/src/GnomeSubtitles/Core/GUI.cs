@@ -127,7 +127,10 @@ public class GUI {
     	if (toOpen && ToOpenAfterWarning) {
     		string filename = dialog.Filename;
     		try {
-    			Encoding encoding = (dialog.HasEncoding ? dialog.Encoding : null);
+    			Encoding encoding = null;
+    			if (dialog.HasChosenEncoding)
+    				encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
+
 				Open(filename, encoding, dialog.VideoFilename);
 	    	}
 	    	catch (Exception exception) {
@@ -171,7 +174,7 @@ public class GUI {
 		if (toSaveAs) {
 			string filename = dialog.Filename;
 			SubtitleType type = dialog.SubtitleType;
-			Encoding encoding = dialog.Encoding;
+			Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
 			Global.Subtitles.SaveAs(filename, type, encoding);
 			TimingMode newTimingMode = Global.Subtitles.Properties.TimingMode; 
 			Global.TimingMode = newTimingMode;
