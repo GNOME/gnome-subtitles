@@ -29,9 +29,11 @@ public class Config {
 	private const string keyPrefix = "/apps/gnome-subtitles/";
 	private const string keyPrefs = keyPrefix + "preferences/";
 	private const string keyPrefsVideo = keyPrefs + "video/";
+	private const string keyPrefsEncodings = keyPrefs + "encodings/";
 	
 	/* Constant key strings */
-	private const string keyPrefsVideoAutoSelectFile = keyPrefsVideo + "auto_select_file";
+	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
+	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
 
 	public Config () {
 		client = new Client();
@@ -39,9 +41,17 @@ public class Config {
 	
 	/* Public properties */
 	
-	public bool PrefsVideoAutoSelectFile {
-		get { return GetBool(keyPrefsVideoAutoSelectFile, true); }
-		set { Set(keyPrefsVideoAutoSelectFile, value); }
+	public bool PrefsVideoAutoChooseFile {
+		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
+		set { Set(keyPrefsVideoAutoChooseFile, value); }
+	}
+	
+	public string[] PrefsEncodingsShownInMenu {
+		get {
+			string[] defaultValue = { "ISO-8859-15" };
+			return GetStrings(keyPrefsEncodingsShownInMenu, defaultValue);
+		}
+		set { SetStrings(keyPrefsEncodingsShownInMenu, value); }
 	}
 	
 	/* Private members */
@@ -55,12 +65,35 @@ public class Config {
 		}
 	}
 	
+	private string[] GetStrings (string key, string[] defaultValue) {
+		try {
+			string[] strings = client.Get(key) as string[];
+			if ((strings.Length == 1) && (strings[0] == String.Empty))
+				return new string[0];
+			else
+				return strings;
+		}
+		catch (Exception e) {
+			System.Console.WriteLine(e);
+			return defaultValue;
+		}	
+	}
+	
+	private void SetStrings (string key, string[] values) {
+		if (values.Length == 0) {
+			string[] newValues = { String.Empty };
+			Set(key, newValues);
+		}
+		else
+			Set(key, values);
+	}
+	
 	private void Set (string key, object val) {
 		try {
 			client.Set(key, val);
 		}
-		catch (Exception) {
-			System.Console.WriteLine("Do nothing");
+		catch (Exception e) {
+			System.Console.WriteLine(e);
 		}
 	}
 
