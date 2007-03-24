@@ -28,24 +28,22 @@ public class Config {
 	/* Constant prefix strings */
 	private const string keyPrefix = "/apps/gnome-subtitles/";
 	private const string keyPrefs = keyPrefix + "preferences/";
-	private const string keyPrefsVideo = keyPrefs + "video/";
 	private const string keyPrefsEncodings = keyPrefs + "encodings/";
+	private const string keyPrefsVideo = keyPrefs + "video/";
+	private const string keyPrefsWindow = keyPrefs + "window/";
 	
 	/* Constant key strings */
-	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
+	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
+	private const string keyPrefsWindowHeight = keyPrefsWindow + "height";
+	private const string keyPrefsWindowWidth = keyPrefsWindow + "width";
 
 	public Config () {
 		client = new Client();
 	}
 	
 	/* Public properties */
-	
-	public bool PrefsVideoAutoChooseFile {
-		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
-		set { Set(keyPrefsVideoAutoChooseFile, value); }
-	}
-	
+
 	public string[] PrefsEncodingsShownInMenu {
 		get {
 			string[] defaultValue = { "ISO-8859-15" };
@@ -54,11 +52,51 @@ public class Config {
 		set { SetStrings(keyPrefsEncodingsShownInMenu, value); }
 	}
 	
+	public bool PrefsVideoAutoChooseFile {
+		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
+		set { Set(keyPrefsVideoAutoChooseFile, value); }
+	}
+	
+	public int PrefsWindowHeight {
+		get { return GetInt(keyPrefsWindowHeight, 600, 200, true, 0, false); }
+		set { Set(keyPrefsWindowHeight, value); }
+	}
+	
+	public int PrefsWindowWidth {
+		get { return GetInt(keyPrefsWindowWidth, 690, 200, true, 0, false); }
+		set { Set(keyPrefsWindowWidth, value); }
+	}
+	
 	/* Private members */
 	
 	private bool GetBool (string key, bool defaultValue) {
 		try {
 			return (bool)client.Get(key);
+		}
+		catch (Exception) {
+			return defaultValue;
+		}
+	}
+
+	/* private int GetInt (string key, int defaultValue) {
+		try {
+			return (int)client.Get(key);
+		}
+		catch (Exception) {
+			return defaultValue;
+		}
+	}*/
+	
+	private int GetInt (string key, int defaultValue, int lowerLimit, bool useLowerLimit, int upperLimit, bool useUpperLimit) {
+		try {
+			int number = (int)client.Get(key);
+			if (useLowerLimit && (number < lowerLimit))
+				return defaultValue;
+			
+			if (useUpperLimit && (number > upperLimit))
+				return defaultValue;
+			
+			return number;
 		}
 		catch (Exception) {
 			return defaultValue;
