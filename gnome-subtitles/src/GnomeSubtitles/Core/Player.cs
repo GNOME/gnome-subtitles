@@ -138,7 +138,7 @@ public class Player {
 	}
 	
 	public void Seek (float newPosition) {
-		Exec("pausing_keep seek " + newPosition + " 2");
+		Exec("pausing_keep seek " + Util.ToString(newPosition) + " 2");
 		position.Check();
 	}
 	
@@ -149,7 +149,7 @@ public class Player {
 			Seek(nearEndPosition);
 		}
 		else {
-			Exec("pausing_keep seek -" + decrement + " 0");
+			Exec("pausing_keep seek -" + Util.ToString(decrement) + " 0");
 			position.Check();
 		}
 	}
@@ -159,8 +159,8 @@ public class Player {
 			EmitEndReachedEvent();
 			return;
 		}
-	
-		Exec("pausing_keep seek " + increment + " 0");
+
+		Exec("pausing_keep seek " + Util.ToString(increment) + " 0");
 		position.Check();
 	}
 	
@@ -282,8 +282,7 @@ public class Player {
 	/// <exception cref="FormatException">Thrown when the response cannot be parsed as a float.</exception> 
 	private float GetAsFloat (string command) {
 		string text = Get(command);
-		NumberFormatInfo invariant = NumberFormatInfo.InvariantInfo;
-		return (float)Convert.ToDouble(text, invariant);
+		return (float)Convert.ToDouble(text, NumberFormatInfo.InvariantInfo);
 	}
 
 	/// <summary>Clears the current output.</summary>
