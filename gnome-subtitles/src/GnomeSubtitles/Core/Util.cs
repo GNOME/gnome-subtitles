@@ -19,13 +19,14 @@
 
 using Gtk;
 using System;
+using System.Globalization;
 using SubLib;
 
 namespace GnomeSubtitles {
 
 public class Util {
   
-    static public int TextWidth (Widget widget, string text, int margins) {
+    public static int TextWidth (Widget widget, string text, int margins) {
     	Pango.Layout layout = widget.CreatePangoLayout(text);
     	int width, height;
     	layout.GetPixelSize(out width, out height);
@@ -37,25 +38,25 @@ public class Util {
     /// <see cref="TimeSpan.Parse" />.</remarks>
     /// <param name="time">The time to convert to text.</param>
     /// <returns>The text representation of the specified time.</returns>
-    static public string TimeSpanToText (TimeSpan time) {
+    public static string TimeSpanToText (TimeSpan time) {
 		return (time.TotalMilliseconds < 0 ? "-" : String.Empty) +
 			time.Hours.ToString("00;00") + ":" + time.Minutes.ToString("00;00") +
 			":" + time.Seconds.ToString("00;00") + "." + time.Milliseconds.ToString("000;000");
 	}
 	
-	static public string SecondsToTimeText (float seconds) {
+	public static string SecondsToTimeText (float seconds) {
 		return TimeSpanToText(TimeSpan.FromSeconds(seconds));
 	}
 	
-	static public string MillisecondsToTimeText (int milliseconds) {
+	public static string MillisecondsToTimeText (int milliseconds) {
 		return TimeSpanToText(TimeSpan.FromMilliseconds(milliseconds));
 	}
 	
-	static public int TimeTextToMilliseconds (string text) {
+	public static int TimeTextToMilliseconds (string text) {
 		return (int)TimeSpan.Parse(text).TotalMilliseconds;	
 	}
 	
-	static public int SpinButtonTimeWidth (SpinButton spinButton) {
+	public static int SpinButtonTimeWidth (SpinButton spinButton) {
 		return TextWidth(spinButton, "00:00:00,000", 25);
 	}
 	
@@ -165,6 +166,11 @@ public class Util {
 	public static string QuoteFilename (string filename) {
 		string escapedFilename = filename.Replace("\"", "\\\""); //Replaces " with \"
 		return "\"" + escapedFilename + "\"";
+	}
+	
+	/// <summary>Returns the invariant culture string of a number.</summary>
+	public static string ToString (float number) {
+		return number.ToString(NumberFormatInfo.InvariantInfo);
 	}
 
 }
