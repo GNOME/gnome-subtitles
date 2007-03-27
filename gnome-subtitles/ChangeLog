@@ -1,3 +1,217 @@
+2007-03-27 [r592-593]  noup:
+
+	* gnome-subtitles/NEWS, gnome-subtitles/CREDITS,
+	  gnome-subtitles/README, gnome-subtitles/TODO: Updated for release
+	  0.3.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Deleted console prints used for debugging.
+
+2007-03-25 [r590-591]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Use invariant
+	  culture ToString when converting float times to strings. Fixes
+	  bug #421883.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Util.cs: Added method to
+	  convert a number to an invariant culture string.
+
+2007-03-24 [r589]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs: Use
+	  "setproctitle" when "prctl" is not found, so this can work in
+	  BSD's too.
+
+2007-03-24 [r588]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Set the default
+	  window size based on GConf properties.
+
+2007-03-24 [r584-587]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Config.cs: Code cleanup.
+	  Allow to set a key with an integer value, checking its upper and
+	  lower limits. Added properties for setting and getting the main
+	  window's width and height.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
+	  SizeAllocated event handler to detect for changes on the window
+	  size.
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Set the window as
+	  Invisible as default. Added SizeAllocated event handler to detect
+	  for changes on the window size.
+
+	* gnome-subtitles/data/gnome-subtitles.schemas: Minor changes in
+	  the key descriptions. Added keys for window Width and Height.
+
+2007-03-24 [r578-583]  noup:
+
+	* gnome-subtitles/TODO: Updated to reflect latest code changes.
+
+	* gnome-subtitles/src/Glade/AboutDialog.glade: Updated copyright
+	  information.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added Encodings dialog.
+
+	* gnome-subtitles/data/gnome-subtitles.schemas: Changed AutoSelect
+	  to AutoChoose (pure name change). Added the key for the encodings
+	  list.
+
+	* gnome-subtitles/src/Makefile.am: Added Encodings dialog.
+
+	* gnome-subtitles/src/Glade/PreferencesDialog.glade: Changed
+	  AutoSelect to AutoChoose (pure name change).
+
+2007-03-24 [r576-577]  noup:
+
+	* gnome-subtitles/src/Glade/FileSaveAsDialog.glade: Updated to
+	  handle the new EncodingDialog.
+
+	* gnome-subtitles/src/Glade/FileOpenDialog.glade: Updated to handle
+	  the new EncodingDialog.
+
+2007-03-24 [r572-575]  noup:
+
+	* gnome-subtitles/src/Glade/EncodingsDialog.glade (added): Dialog
+	  that allows to select the encodings to be used in the program.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileEncoding.cs
+	  (removed): Describes an encoding, including its codepage, name
+	  and description. Is mostly similar to the old FileEncoding.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:
+	  Check for NotSupportedException, meaning that the specified
+	  encoding is not available in the system.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:
+	  Store EncodingDescriptions which are automatically updated based
+	  on GConf values, instead of the old static encodings' list that
+	  was made available before. Setting the last item in the TreeModel
+	  will open the Encoding selection dialog.
+
+2007-03-24 [r571]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/PreferencesDialog.cs:
+	  Changed AutoSelect to AutoChoose (pure name change).
+
+2007-03-24 [r569-570]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Changed AutoSelect to AutoChoose (pure name change).
+
+2007-03-24 [r567-568]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/EncodingsDialog.cs
+	  (added): Dialog that allows to select the encodings to be used in
+	  the program.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs: Bug Fix -
+	  Shadow shown around the video frame.
+
+2007-03-24 [r563-566]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Now uses the
+	  codepage set in the dialog to create the Encoding when the dialog
+	  is closed.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Encodings.cs (added):
+	  Includes the encodings used in the File Open/Save dialogs.
+	  Includes methods to find encodings, and to get the system's
+	  default encoding.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EncodingDescription.cs
+	  (added): Describes an encoding, including its codepage, name and
+	  description. Is mostly similar to the old FileEncoding.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Config.cs: Added kes for
+	  storing encodings used in the File Open/Save dialogs. Added
+	  method to get a list of strings from a key. It uses a hack to
+	  deal with the fact that setting a key to an empty list throws an
+	  exception. Changed AutoSelectVideoFile to AutoChooseVideoFile.
+
+2007-03-22 [r562]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs: Catch
+	  exceptions and print error when unable to set the process name,
+	  instead of throwing exceptions.
+
+2007-03-18 [r551-561]  noup:
+
+	* gnome-subtitles/configure.in: Added GConf config detection. Added
+	  GConf installation targets to the makefiles.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added Preferences dialog.
+
+	* gnome-subtitles/src/Makefile.am: Added Preferences dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Added
+	  option to enable or disable signal autoconnection on dialog
+	  creation. Signals can be autoconnected later.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/PreferencesDialog.cs
+	  (added): Added Preferences dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs: Added
+	  option to enable or disable signal autoconnection on dialog
+	  creation. Signals can be autoconnected later.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Global.cs: Added entry
+	  point for interacting with GConf.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
+	  Preferences dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Config.cs (added): Class
+	  to handle interaction with GConf.
+
+	* gnome-subtitles/src/Glade/PreferencesDialog.glade (added),
+	  gnome-subtitles/src/Glade/MainWindow.glade: Added Preferences
+	  dialog.
+
+	* gnome-subtitles/data/gnome-subtitles.schemas (added),
+	  gnome-subtitles/data/Makefile.am: Added GConf schemas file.
+
+2007-03-18 [r550]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Inserted debug messages to help on clearing some bugs.
+
+2007-03-17 [r549]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Fixed bug with current active video not being unselected when
+	  selecting a folder, for example.
+
+2007-03-13 [r548]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Util.cs: Fixed Bug 417868
+	  – Quote symbol in path prevents file from opening.
+
+2007-03-13 [r547]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Fix for
+	  System.FormatException being thrown when opening a video file.
+	  This is due to the local representation of a double (using , or .
+	  as decimal separator), so an invariant provider is now used.
+
+2007-03-13 [r546]  noup:
+
+	* gnome-subtitles/TODO: Updated with more current feedback.
+
+2007-03-13 [r544]  noup:
+
+	* gnome-subtitles/NEWS,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/gnome-subtitles.mdp, gnome-subtitles/TODO,
+	  gnome-subtitles/configure.in, gnome-subtitles/ChangeLog: Updated
+	  for release 0.2.1.
+
 2007-03-12 [r542]  noup:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
