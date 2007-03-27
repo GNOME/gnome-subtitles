@@ -33,7 +33,7 @@ RELEASE PROCEDURE
 2. Set shell variables
 ======================
 
-	- GS_VERSION="0.1"
+	- GS_VERSION="0.X"
 
 
 3. Commit changes and tag
@@ -67,7 +67,7 @@ RELEASE PROCEDURE
 6. Create Screenshots
 =====================
 
-	- Screenshots are to be created only if any of the windows/dialogs' aspect changes
+	- Screenshots are to be created for the windows or dialogs that have changed
 	- Create screenshots with:
 		gnome-screenshot --window --include-border --delay=5 --border-effect=shadow
 	- Flatten images with white background
@@ -99,6 +99,10 @@ RELEASE PROCEDURE
 		Project info
 		Screenshot
 	- Gnome Files page
+		New release
+		Project info
+	- Gnome Bugzilla
+		Add new version
 
 
 9. Notify
