@@ -1,6 +1,36 @@
 Gnome Subtitles
 ===============
 
+0.3 (27/03/2007)
+================
+
+- New dialog to add or remove encodings used in File Open/Save
+- New Preferences dialog
+  * Set whether to automatically choose video files when selecting/opening
+    subtitle files
+- Video times, rewind and forward now work correctly on locales that use a comma
+  as decimal separator (e.g., French, Polish)
+- Store the window size on exit and restore it on start
+- Removed the shadow that appeared around the video image frame
+- Now prints an adequate error message when using an encoding not supported by
+  the system
+- Properly unselect video file when selecting a folder, in the File Open dialog
+- Use "setproctitle" when "prctl" isn't found, so setting the process name also
+  works in FreeBSD
+- Improved the verbosity level in some error situations
+
+Bug fixes:
+- Video loaded with wrong length (#418099)
+- "System.FormatException" error during opening video (#421457)
+- Quote symbol in path prevents file from opening (#417868)
+- Video file is reported as not supported but MPlayer supports it (#417848)
+- Video previewing doesn't function correctly (#421883)
+
+Thanks:
+- Carlos Doki, Malte Skoruppa, Marcin Zajaczkowski, Phalanx747, Rafal Slubowski,
+  Sebastian Porta
+
+
 0.2.1 (13/03/2007)
 ==================
 
@@ -13,8 +43,8 @@ Gnome Subtitles
 Bug fixes:
 - Application crashes at exit when MPlayer has already finished (#416895)
 
-Thanks to:
-- Marcin Zajaczkowski, for the feedback
+Thanks:
+- Marcin Zajaczkowski
 
 
 0.2 (07/03/2007)
@@ -26,7 +56,7 @@ Thanks to:
   * Shows the video length and current position
   * Open Video dialog with video file filters
   * Errors shown on video opening, allowing to open another video file
-- Double-clicking a subtitle now seeks the video to the subtitle position
+- Doub	le-clicking a subtitle now seeks the video to the subtitle position
 - Allow to set the subtitle Start and End timings based on the video position
 - Updated the File Open dialog:
   * Allow to select a video file to be opened together with a subtitle file
@@ -44,7 +74,7 @@ Thanks to:
 Bug fixes:
 - App crashes when selection float value with , as a decimal separator (#402201)
 
-Thanks to:
+Thanks:
 - Stefan A. Keel (Sak), for the artwork on the new custom icons
 
 
