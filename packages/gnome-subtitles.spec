@@ -11,7 +11,7 @@
 
 Name:           gnome-subtitles
 Summary:        Video subtitling for the GNOME desktop
-Version:        0.1
+Version:        0.3
 Release:        1%dist
 %if %OnSuSE
 Distribution:   SuSE 10.1
@@ -19,15 +19,17 @@ Distribution:   SuSE 10.1
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://gnome-subtitles.sf.net/
-Source:         %{name}-%{version}.tar.gz
+Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 Prereq:         /sbin/ldconfig
 
 Requires:       mono-core >= 1.0
-Requires:       gtk2 >= 2.8
+Requires:       gtk2 >= 2.10
 Requires:       gtk-sharp2 >= 2.8
+Requires:       gconf-sharp2 >= 2.8
+Requires:       gconf2
 
 %if %OnSuSE
 Requires:       glade-sharp2 >= 2.8
@@ -37,6 +39,7 @@ Requires:       gnome-sharp2 >= 2.8
 BuildRequires:  mono-devel >= 1.0
 BuildRequires:  gtk2-devel >= 2.8
 BuildRequires:  gtk-sharp2 >= 2.8
+BuildRequires:  gconf-sharp2 >= 2.8
 
 %if %OnSuSE
 BuildRequires:  glade-sharp2 >= 2.8
@@ -57,17 +60,32 @@ synchronization.
 %setup -q
 
 %build
-./configure --prefix=/usr --bindir=/usr/bin --libdir=/usr/lib --datadir=/usr/share
+# Set _libdir otherwise it becomes /usr/lib64 on SuSE x64.
+%define _libdir %{_prefix}/lib
+%if %OnSuSE
+./configure --prefix=%{_prefix} --bindir=%{_bindir} --libdir=%{_libdir} --datadir=%{_datadir} --sysconfdir=%{_sysconfdir}
+%else
+./configure --prefix=/usr --bindir=/usr/bin --libdir=/usr/lib --datadir=/usr/share --sysconfdir=%{_sysconfdir}
+%endif
 make
 
 %install
+export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 make DESTDIR=$RPM_BUILD_ROOT install
+unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%if %OnSuSE
+GCONFTOOL=/opt/gnome/bin/gconftool-2
+%else
+GCONFTOOL=/usr/bin/gconftool-2
+%endif
 /sbin/ldconfig
+export GCONF_CONFIG_SOURCE=`/opt/gnome/bin/gconftool-2 --get-default-source`
+/opt/gnome/bin/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/gnome-subtitles.schemas > /dev/null
 
 %postun
 /sbin/ldconfig
@@ -78,10 +96,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_sysconfdir}/gconf/schemas/gnome-subtitles.schemas
+
 %doc README NEWS AUTHORS COPYING CREDITS TODO
 
 
 %changelog
+* Tue Mar 27 2007 - Damien Carbery <daymobrew users.sourceforge.net>
+- Bump to 0.3 and add GConf code to %install and %post.
 * Thu Dec 14 2006 - Henrique Malheiro <henrique.malheiro@gmail.com>
 - Updated the application icon extension from svg to png.
 - Updated the build requirements for fedora core 6 to include gtk-sharp2-devel
