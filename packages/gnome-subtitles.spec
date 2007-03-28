@@ -79,13 +79,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %if %OnSuSE
-GCONFTOOL=/opt/gnome/bin/gconftool-2
+export GC2=/opt/gnome/bin/gconftool-2
 %else
-GCONFTOOL=/usr/bin/gconftool-2
+export GC2=/usr/bin/gconftool-2
 %endif
 /sbin/ldconfig
-export GCONF_CONFIG_SOURCE=`/opt/gnome/bin/gconftool-2 --get-default-source`
-/opt/gnome/bin/gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/gnome-subtitles.schemas > /dev/null
+export GCONF_CONFIG_SOURCE=`$GC2 --get-default-source`
+$GC2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/gnome-subtitles.schemas > /dev/null
 
 %postun
 /sbin/ldconfig
