@@ -29,7 +29,6 @@ using System.Text.RegularExpressions;
 namespace GnomeSubtitles {
 
 public class FileOpenDialog : SubtitleFileChooserDialog {
-	private Regex regex = new Regex(@"^.*\.((avi)|(mpeg)|(mpg)|(mp4)|(ogm)|(divx)|(xvid)|(mov))$"); //Regex to match video files
 	private ArrayList videoFiles = null; //The full paths of the video files in the current fir
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
 	
@@ -40,25 +39,20 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private const string gladeFilename = "FileOpenDialog.glade";
 
 	/* Widgets */
-	[WidgetAttribute]
-	private ComboBox encodingComboBox;
-	[WidgetAttribute]
-	private ComboBox videoComboBox;
-	[WidgetAttribute]
-	private Label videoLabel;
+	[WidgetAttribute] private ComboBox videoComboBox;
+	[WidgetAttribute] private Label videoLabel;
 	
 	
 	public FileOpenDialog () : base(gladeFilename) {
 		autoChooseVideoFile = Global.Config.PrefsVideoAutoChooseFile;
-	
-		SetEncodingComboBox();
+
 		videoComboBox.RowSeparatorFunc = SeparatorFunc;	
 		
 		dialog.CurrentFolderChanged += OnCurrentFolderChanged; //Only needed because setting it in the Glade file is not working
 		dialog.SelectionChanged += OnSelectionChanged; //Only needed because setting it in the Glade file is not working
 	
-		if (Global.AreSubtitlesLoaded && Global.Subtitles.Properties.IsFilePathRooted)
-			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
+		if (Global.IsDocumentLoaded && Global.Document.FileProperties.IsPathRooted)
+			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			
@@ -75,14 +69,14 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		get { return chosenVideoFilename; }
 	}
 	
-	/* Private members */
+	/* Protected members */
 	
-	private void SetEncodingComboBox () {
-		SetEncodingComboBox(encodingComboBox);
-		encodingComboBox.PrependText("-");
-		encodingComboBox.PrependText("Auto Detected");
-		encodingComboBox.Active = 0;
+	protected override void AddInitialEncodingComboBoxItems (ComboBox comboBox) {
+		comboBox.AppendText("Auto Detected");
+		comboBox.AppendText("-");
 	}
+	
+	/* Private members */
 	
 	private void FillVideoComboBoxBasedOnCurrentFolder () {
 		videoFiles = null;
@@ -92,17 +86,9 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		string folder = dialog.CurrentFolder;
 		if ((folder == null) || (folder == String.Empty))
 			return;
-		
-		string[] allFiles = Directory.GetFiles(folder, "*.*");
-		
-		videoFiles = new ArrayList();
-		videoFilenames = new ArrayList();
-		
-		foreach (string file in allFiles) {
-			if (regex.IsMatch(file))
-				videoFiles.Add(file);	
-		}
-		
+
+		videoFiles = VideoFiles.GetVideoFilesAtPath(folder);
+
 		if ((videoFiles.Count == 0) || (videoFiles == null)) {
 			SetVideoSelectionSensitivity(false);
 			return;
@@ -111,7 +97,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			SetVideoSelectionSensitivity(true);
 				
 		videoFiles.Sort();
-
+		videoFilenames = new ArrayList();
 		foreach (string file in videoFiles) {
 			string filename = Path.GetFileName(file);
 			videoComboBox.AppendText(filename);
@@ -213,8 +199,9 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
 			chosenFilename = dialog.Filename;
-			if (encodingComboBox.Active > 0) {
-				int encodingIndex = encodingComboBox.Active - 2;
+			int activeEncodingComboBoxItem = GetActiveEncodingComboBoxItem();
+			if (activeEncodingComboBoxItem > 0) {
+				int encodingIndex = activeEncodingComboBoxItem - 2;
 				chosenEncoding = encodings[encodingIndex];
 				hasChosenEncoding = true;
 			}
