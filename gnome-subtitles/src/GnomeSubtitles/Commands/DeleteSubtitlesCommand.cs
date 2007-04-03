@@ -51,7 +51,7 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 		subtitles = new Subtitle[count];
 		for (int index = 0 ; index < count ; index++) {
 			TreePath path = Paths[index];
-			subtitles[index] = Global.Subtitles[path];
+			subtitles[index] = Global.Document.Subtitles[path];
 		}	
 	}
 

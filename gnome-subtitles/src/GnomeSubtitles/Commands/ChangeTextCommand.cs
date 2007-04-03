@@ -27,7 +27,7 @@ public class ChangeTextCommand : FixedSingleSelectionCommand {
 	string storedText;
 
 	public ChangeTextCommand (string text) : base(description, true, false) {
-		this.subtitle = Global.Subtitles[Path];
+		this.subtitle = Global.Document.Subtitles[Path];
 		this.storedText = text;
 	}
 	

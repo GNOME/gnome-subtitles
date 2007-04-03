@@ -30,12 +30,12 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	protected Subtitle subtitle = null;
 	
 	public ChangeTimingCommand (int frames, string description): base(description, true, true) {
-		this.subtitle = Global.Subtitles[Path];
+		this.subtitle = Global.Document.Subtitles[Path];
 		this.storedFrames = frames;
 	}
 	
 	public ChangeTimingCommand (TimeSpan time, string description): base(description, true, true) {
-		this.subtitle = Global.Subtitles[Path];
+		this.subtitle = Global.Document.Subtitles[Path];
 		this.storedTime = time;
 	}
 

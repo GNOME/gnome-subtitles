@@ -41,7 +41,7 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 
 	public override bool Execute () {
 		InsertNew();
-		subtitle = Global.Subtitles[newPath];
+		subtitle = Global.Document.Subtitles[newPath];
 		return true;
 	}
 	

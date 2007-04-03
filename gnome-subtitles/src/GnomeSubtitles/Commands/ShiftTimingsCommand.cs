@@ -58,18 +58,18 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	/* Private Members */
 
 	private void ShiftAllSubtitlesTime () {
-		Global.Subtitles.ShiftTimings(time);
+		Global.Document.Subtitles.ShiftTimings(time);
 		time = time.Negate();
 	}
 	
 	private void ShiftAllSubtitlesFrames () {
-		Global.Subtitles.ShiftTimings(frames);
+		Global.Document.Subtitles.ShiftTimings(frames);
 		frames = -frames;
 	}
 	
 	private void ShiftSubtitlesTime () {
 		foreach (TreePath path in Paths) {
-			Subtitle subtitle = Global.Subtitles[path];
+			Subtitle subtitle = Global.Document.Subtitles[path];
 			subtitle.Times.Shift(time);
 		}
 		time = time.Negate();	
@@ -77,7 +77,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 
 	private void ShiftSubtitlesFrames () {
 		foreach (TreePath path in Paths) {
-			Subtitle subtitle = Global.Subtitles[path];
+			Subtitle subtitle = Global.Document.Subtitles[path];
 			subtitle.Frames.Shift(frames);
 		}
 		frames = -frames;

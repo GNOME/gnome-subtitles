@@ -56,7 +56,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 
 	private void AdjustAllSubtitlesTime () {
-		Subtitles subtitles = Global.Subtitles;
+		Subtitles subtitles = Global.Document.Subtitles;
 		
 		TimeSpan oldFirstTime = subtitles[0].Times.Start;
 		TimeSpan oldLastTime = subtitles[subtitles.Count - 1].Times.Start;
@@ -68,7 +68,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 	
 	private void AdjustAllSubtitlesFrames () {
-		Subtitles subtitles = Global.Subtitles;
+		Subtitles subtitles = Global.Document.Subtitles;
 		
 		int oldFirstFrame = subtitles[0].Frames.Start;
 		int oldLastFrame = subtitles[subtitles.Count - 1].Frames.Start;
@@ -80,7 +80,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 	
 	private void AdjustSubtitlesTime () {
-		Subtitles subtitles = Global.Subtitles;
+		Subtitles subtitles = Global.Document.Subtitles;
 		
 		int firstSubtitle = Util.PathToInt(Paths[0]);
 		int lastSubtitle = Util.PathToInt(Paths[Paths.Length - 1]);
@@ -95,7 +95,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 	
 	private void AdjustSubtitlesFrames () {
-		Subtitles subtitles = Global.Subtitles;
+		Subtitles subtitles = Global.Document.Subtitles;
 		
 		int firstSubtitle = Util.PathToInt(Paths[0]);
 		int lastSubtitle = Util.PathToInt(Paths[Paths.Length - 1]);

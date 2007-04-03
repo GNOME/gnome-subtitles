@@ -47,11 +47,11 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override float GetFrameRate () {
-		return Global.Subtitles.Properties.OriginalFrameRate;
+		return Global.Document.Subtitles.Properties.OriginalFrameRate;
 	}
 	
 	protected override void SetFrameRate (float frameRate) {
-		Global.Subtitles.ChangeOriginalFrameRate(frameRate);
+		Global.Document.Subtitles.ChangeOriginalFrameRate(frameRate);
 	}
 	
 	protected override void UpdateMenuItem () {
@@ -66,11 +66,11 @@ public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override float GetFrameRate () {
-		return Global.Subtitles.Properties.CurrentFrameRate;
+		return Global.Document.Subtitles.Properties.CurrentFrameRate;
 	}
 	
 	protected override void SetFrameRate (float frameRate) {
-		Global.Subtitles.ChangeFrameRate(frameRate);
+		Global.Document.Subtitles.ChangeFrameRate(frameRate);
 	}
 	
 	protected override void UpdateMenuItem () {

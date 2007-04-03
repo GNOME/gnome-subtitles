@@ -31,7 +31,7 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	
 	protected override bool ChangeValues () {
 		foreach (TreePath path in Paths) {
-			Subtitle subtitle = Global.Subtitles[path];
+			Subtitle subtitle = Global.Document.Subtitles[path];
 			SetStyle(subtitle, styleValue);
 		}
 		ToggleStyleValue();
