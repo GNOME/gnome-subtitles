@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,30 +33,20 @@ public class TimingsAdjustDialog : GladeDialog {
 	
 	/* Widgets */
 	
-	[WidgetAttribute]
-	private Label firstSubtitleStartLabel;
-	[WidgetAttribute]
-	private Label firstSubtitleNoInputLabel;
-	[WidgetAttribute]
-	private Label firstSubtitleStartInputLabel;
-	[WidgetAttribute]
-	private SpinButton firstSubtitleNewStartSpinButton;
-	[WidgetAttribute]
-	private Label lastSubtitleStartLabel;
-	[WidgetAttribute]
-	private Label lastSubtitleNoInputLabel;
-	[WidgetAttribute]
-	private Label lastSubtitleStartInputLabel;
-	[WidgetAttribute]
-	private SpinButton lastSubtitleNewStartSpinButton;
-	[WidgetAttribute]
-	private RadioButton allSubtitlesRadioButton;	
-	[WidgetAttribute]
-	private RadioButton selectedSubtitlesRadioButton;
+	[WidgetAttribute] private Label firstSubtitleStartLabel;
+	[WidgetAttribute] private Label firstSubtitleNoInputLabel;
+	[WidgetAttribute] private Label firstSubtitleStartInputLabel;
+	[WidgetAttribute] private SpinButton firstSubtitleNewStartSpinButton;
+	[WidgetAttribute] private Label lastSubtitleStartLabel;
+	[WidgetAttribute] private Label lastSubtitleNoInputLabel;
+	[WidgetAttribute] private Label lastSubtitleStartInputLabel;
+	[WidgetAttribute] private SpinButton lastSubtitleNewStartSpinButton;
+	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;	
+	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
 	
 
 	public TimingsAdjustDialog () : base(gladeFilename){
-		timingMode = Global.TimingMode; 
+		timingMode = Global.Document.TimingMode; 
 		SetSpinButtons();
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();
@@ -80,7 +70,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	}	
 
 	private void SetApplyToAll () {
-		SubtitleCollection collection = Global.Subtitles.Collection;
+		SubtitleCollection collection = Global.Document.Subtitles.Collection;
 		
 		int firstNo = 1;
 		int lastNo = collection.Count;		
@@ -104,7 +94,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	}
 
 	private void UpdateInputValues (int firstNo, int lastNo) {
-		SubtitleCollection collection = Global.Subtitles.Collection;
+		SubtitleCollection collection = Global.Document.Subtitles.Collection;
 		Subtitle firstSubtitle = collection.Get(firstNo - 1);
 		Subtitle lastSubtitle = collection.Get(lastNo - 1);
 	
