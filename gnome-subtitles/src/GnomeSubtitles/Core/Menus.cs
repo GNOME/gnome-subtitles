@@ -37,11 +37,11 @@ public class Menus {
 		SetBlankSensitivity();
 	}
 
-	public void NewDocument (bool wasLoaded) {
+	public void UpdateFromNewDocument (bool wasLoaded) {
 		SetNewDocumentSensitivity(wasLoaded);
-		SetSubtitleCountDependentSensitivity(Global.Subtitles.Collection.Count);
-		SetActiveTimingMode();
-		SetFrameRateMenus();	
+		SetSubtitleCountDependentSensitivity(Global.Document.Subtitles.Collection.Count);
+		SetFrameRateMenus();
+		SetActiveTimingMode(Global.Document.TimingMode);
 	}
 	
 	public void UpdateFromSelection (Subtitle subtitle) { 
@@ -62,12 +62,12 @@ public class Menus {
 	public void UpdateFromSubtitleCount (int count) {
 		SetSubtitleCountDependentSensitivity(count);
 	}
-	
-	public void SetActiveTimingMode () {
-		if (Global.TimingModeIsFrames)
-	    	SetCheckMenuItemActivity(WidgetNames.ViewFrames, true);
-	    else
-	    	SetCheckMenuItemActivity(WidgetNames.ViewTimes, true);
+
+	public void SetActiveTimingMode (TimingMode mode) {
+		if (mode == TimingMode.Times)
+			SetCheckMenuItemActivity(WidgetNames.ViewTimes, true);
+		else
+			SetCheckMenuItemActivity(WidgetNames.ViewFrames, true);
 	}
 	
 	public void SetCutCopySensitivity (bool sensitivity) {
@@ -83,12 +83,12 @@ public class Menus {
 	}
 	
 	public void UpdateActiveInputFrameRateMenuItem () {
-		float inputFrameRate = Global.Subtitles.Properties.OriginalFrameRate;
+		float inputFrameRate = Global.Document.Subtitles.Properties.OriginalFrameRate;
 		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, Global.Handlers.OnTimingsInputFrameRate);
 	}
 	
 	public void UpdateActiveVideoFrameRateMenuItem () {
-		float videoFrameRate = Global.Subtitles.Properties.CurrentFrameRate;
+		float videoFrameRate = Global.Document.Subtitles.Properties.CurrentFrameRate;
 		SetCheckMenuItemActivity(VideoFrameRateMenuItem(videoFrameRate), true, Global.Handlers.OnTimingsVideoFrameRate);
 	}
 	
@@ -237,9 +237,7 @@ public class Menus {
 	}
 	
 	private void SetFrameRateMenus () {
-		SubtitleProperties properties = Global.Subtitles.Properties;
-	
-		if (properties.TimingMode == TimingMode.Frames) {
+		if (Global.Document.TimingMode == TimingMode.Frames) {
 			SetMenuSensitivity(WidgetNames.TimingsInputFrameRate, true);
 			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRate, true);
 		}
@@ -320,7 +318,7 @@ public class Menus {
 	}
 		
 	private void GetGlobalStyles (TreePath[] paths, out bool bold, out bool italic, out bool underline) {
-		Subtitles subtitles = Global.Subtitles;
+		Subtitles subtitles = Global.Document.Subtitles;
 		bold = true;
 		italic = true;
 		underline = true;
