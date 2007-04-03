@@ -7,9 +7,12 @@ gnomesubtitlesicon_DATA = gnome-subtitles.png
 schemadir = $(GCONF_SCHEMA_FILE_DIR)
 schema_DATA = gnome-subtitles.schemas
 
-EXTRA_DIST =					\
-	$(desktop_DATA)				\
+man_MANS = gnome-subtitles.1
+
+EXTRA_DIST =				\
+	$(desktop_DATA)			\
 	$(gnomesubtitlesicon_DATA)	\
+	$(man_MANS)			\
 	$(schema_DATA)
 
 if GCONF_SCHEMAS_INSTALL
