@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,8 +36,7 @@ public class Global {
 	private static Clipboards clipboards = null;
 	private static Config config = null;
 	
-	private static Subtitles subtitles = null;
-	private static TimingMode timingMode = TimingMode.Times;
+	private static Document document = null;
 
 	
 	/* Public properties */
@@ -62,28 +61,19 @@ public class Global {
 		get { return config; }
 	}
 	
-	public static Subtitles Subtitles {
-		get { return subtitles; }
-		set { subtitles = value; }
+	public static Document Document {
+		get { return document; }
+		set {
+			bool wasLoaded = IsDocumentLoaded;
+			document = value;
+			GUI.UpdateFromNewDocument(wasLoaded);
+		}
 	}
 	
-	public static bool AreSubtitlesLoaded {
-		get { return subtitles != null; }
+	public static bool IsDocumentLoaded {
+		get { return document != null; }
 	}
 
-	//This should be the prefered way to set the timing mode, should propagate throughout the GUI
-	public static TimingMode TimingMode {
-		get { return timingMode; }
-		set { timingMode = value; }
-	}
-
-	public static bool TimingModeIsFrames {
-		get { return timingMode == TimingMode.Frames; }
-	}
-	
-	public static bool TimingModeIsTimes {
-		get { return timingMode == TimingMode.Times; }
-	}
 
 	/* Public methods */
 	
@@ -99,7 +89,9 @@ public class Global {
 			return true;
 		}
 		catch (Exception exception) {
+			Console.Error.WriteLine(exception);
 			Kill();
+			//ReportBug(exception);
 			new BugReportWindow(exception);
 			return false;
 		}
@@ -145,6 +137,10 @@ public class Global {
 		catch (Exception) {
 			; //Nothing to do if there were errors while killing the window 
 		}
+	}
+	
+	private static void ReportBug () {
+		
 	}
 
 
