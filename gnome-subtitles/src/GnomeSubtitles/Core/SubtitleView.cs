@@ -61,18 +61,17 @@ public class SubtitleView {
     public void BlankStartUp () {
     	tree.Model = new ListStore(typeof(Subtitle));
     }
-
-	
-    public void NewDocument (bool wasLoaded) {
+    
+	public void UpdateFromNewDocument (bool wasLoaded) {
     	if (!wasLoaded)
     		tree.Sensitive = true;
     	else
     		search.Clear();
 
-    	Load(Global.Subtitles);
+    	Load(Global.Document.Subtitles);
     }
     
-	public void ToggleTimingMode (TimingMode mode) {
+	public void UpdateFromTimingMode (TimingMode mode) {
 		Refresh();
 	}
 	
@@ -196,6 +195,7 @@ public class SubtitleView {
 		}
 		return true;
 	}
+
     
     /* Private members */
     
@@ -267,7 +267,7 @@ public class SubtitleView {
 
 	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames) //TODO use different renderers for different timingmodes
+		if (Global.Document.TimingModeIsFrames) //TODO use different renderers for different timingmodes
 			renderer.Text = subtitles[iter].Frames.Start.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Start);
@@ -275,7 +275,7 @@ public class SubtitleView {
 	
 	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames)
+		if (Global.Document.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.End.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.End);
@@ -283,7 +283,7 @@ public class SubtitleView {
 	
 	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames)
+		if (Global.Document.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Duration.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Duration);
