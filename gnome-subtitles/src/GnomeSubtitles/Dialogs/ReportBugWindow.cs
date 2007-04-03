@@ -31,12 +31,9 @@ public class BugReportWindow {
 	private const string gladeFilename = "ReportBugWindow.glade";
 
 	/* Widgets */
-	[WidgetAttribute]
-	private TextView bugTextView;
+	[WidgetAttribute] private TextView bugTextView;
 	
 	public BugReportWindow (Exception exception) {
-		Console.Error.WriteLine(exception);
-	
 		Application.Init();
 		Glade.XML glade = new Glade.XML(gladeFilename, null);
 		glade.Autoconnect(this);
