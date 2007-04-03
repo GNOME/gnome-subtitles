@@ -6,7 +6,9 @@ http://gnome-subtitles.sf.net
 Easy
 ====
 
-* Changing the TimingMode doesn't update spin buttons (after saving a new subtitle)
+* Add gconf-sharp to bug reporter
+* Remove the NAnt file (and update website with this info)
+* Change Console.Write to Error.Write
 * Add support to copy subtitles from the View to the clipboard (currently only copies text from the editing area)
 * Improve autogen.sh and configure.in (require automake 1.9)
 * Autoselect "Apply to selection" if there are subtitles selected when shift/etc dialogs are shown
@@ -14,6 +16,7 @@ Easy
 * ChangeTextCommand should store the position of the cursor
 * Change dialogs in what concerns the selection type (e.g., Ranges)
 * Change dialogs to be centered on the parent window
+  * Include changing the .glade file Visible to False and using ShowDialog in the constructor
 * Try to use Mime Types instead of patterns in the File Open dialogs
 * Choose Open instead of New, by default, in the toolbar
 * Think about using Bug-Buddy
@@ -23,8 +26,6 @@ Easy
 * System.InvalidOperationException is sometimes being thrown in the second (and beyond) files opened after the first one.
 * Add a message to the end of the Gentoo ebuild to inform the users to install MPlayer.
 * Configure the gnome-subtitles.in script according to the system (use "sh", possibly without "-a" in BSD)
-* Auto Select the Encoding being used when using SaveAs
-* Automatically open the video file when running Gnome Subtitles with a subtitle file as argument
 
 Hard
 ====
@@ -49,7 +50,6 @@ Refactoring
 ===========
 
 * Move handlers in EventHandlers to the corresponding classes of the user interface
-* Put [WidgetAttribute] on the same line as widget declarations
 * Think about using Actions
 
 Dependent
@@ -57,3 +57,16 @@ Dependent
 
 * Add GStreamer support (#363412 - depending on GST#)
   Includes refactoring the current mplayer support.
+
+Fixed
+=====
+* Put [WidgetAttribute] on the same line as widget declarations
+* Auto Select the Encoding being used when using SaveAs
+* Automatically open the video file when running Gnome Subtitles with a subtitle file as argument
+* Added Manpage
+* Changing the TimingMode doesn't update spin buttons (after saving a new subtitle)
+* Don't show any error when opening a blank file
+
+Bugs:
+417310 - Error shown when opening a blank file
+417303 - Can't load srt subtitles - detected encoding is not supported
