@@ -160,7 +160,7 @@ public class VideoPosition {
 	}
 
 	private void UpdatePositionValueLabel (float newPosition) {
-		if (Global.TimingMode == TimingMode.Times)
+		if (Global.Document.TimingMode == TimingMode.Times)
 			positionValueLabel.Text = Util.SecondsToTimeText(newPosition);
 		else {
 			double frames = SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate);
@@ -175,7 +175,7 @@ public class VideoPosition {
 	
 	private void SetLength (float length) {
 		SetSliderLength(length);
-		UpdateLengthLabel (Global.TimingMode, length);
+		UpdateLengthLabel (Global.Document.TimingMode, length);
 	}
 	
 	private void UpdateLengthLabel (TimingMode timingMode, float length) {
