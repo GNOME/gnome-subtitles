@@ -34,88 +34,52 @@ public class HeadersDialog : GladeDialog {
 	/* Widgets */
 	
 	/* MPSub fields */
-	[WidgetAttribute]
-	private Entry entryMPSubTitle;
-	[WidgetAttribute]
-	private Entry entryMPSubFile;
-	[WidgetAttribute]
-	private Entry entryMPSubAuthor;
-	[WidgetAttribute]
-	private Entry entryMPSubNote;
-	[WidgetAttribute]
-	private ComboBox comboBoxMPSubType;
+	[WidgetAttribute] private Entry entryMPSubTitle;
+	[WidgetAttribute] private Entry entryMPSubFile;
+	[WidgetAttribute] private Entry entryMPSubAuthor;
+	[WidgetAttribute] private Entry entryMPSubNote;
+	[WidgetAttribute] private ComboBox comboBoxMPSubType;
 
 	/* SubStationAlphaASS fields */
-	[WidgetAttribute]
-	private Entry entrySSAASSTitle;
-	[WidgetAttribute]
-	private Entry entrySSAASSOriginalScript;
-	[WidgetAttribute]
-	private Entry entrySSAASSOriginalTranslation;
-	[WidgetAttribute]
-	private Entry entrySSAASSOriginalEditing;
-	[WidgetAttribute]
-	private Entry entrySSAASSOriginalTiming;
-	[WidgetAttribute]
-	private Entry entrySSAASSOriginalScriptChecking;
-	[WidgetAttribute]
-	private Entry entrySSAASSScriptUpdatedBy;
-	[WidgetAttribute]
-	private Entry entrySSAASSCollisions;
-	[WidgetAttribute]
-	private Entry entrySSAASSTimer;
-	[WidgetAttribute]
-	private SpinButton spinButtonSSAASSPlayResX;
-	[WidgetAttribute]
-	private SpinButton spinButtonSSAASSPlayResY;
-	[WidgetAttribute]
-	private SpinButton spinButtonSSAASSPlayDepth;
+	[WidgetAttribute] private Entry entrySSAASSTitle;
+	[WidgetAttribute] private Entry entrySSAASSOriginalScript;
+	[WidgetAttribute] private Entry entrySSAASSOriginalTranslation;
+	[WidgetAttribute] private Entry entrySSAASSOriginalEditing;
+	[WidgetAttribute] private Entry entrySSAASSOriginalTiming;
+	[WidgetAttribute] private Entry entrySSAASSOriginalScriptChecking;
+	[WidgetAttribute] private Entry entrySSAASSScriptUpdatedBy;
+	[WidgetAttribute] private Entry entrySSAASSCollisions;
+	[WidgetAttribute] private Entry entrySSAASSTimer;
+	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayResX;
+	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayResY;
+	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayDepth;
 	
 	/* SubViewer1 fields */
-	[WidgetAttribute]
-	private Entry entrySubViewer1Title;
-	[WidgetAttribute]
-	private Entry entrySubViewer1Author;
-	[WidgetAttribute]
-	private Entry entrySubViewer1Source;
-	[WidgetAttribute]
-	private Entry entrySubViewer1Program;
-	[WidgetAttribute]
-	private Entry entrySubViewer1FilePath;
-	[WidgetAttribute]
-	private SpinButton spinButtonSubViewer1Delay;
-	[WidgetAttribute]
-	private SpinButton spinButtonSubViewer1CDTrack;
+	[WidgetAttribute] private Entry entrySubViewer1Title;
+	[WidgetAttribute] private Entry entrySubViewer1Author;
+	[WidgetAttribute] private Entry entrySubViewer1Source;
+	[WidgetAttribute] private Entry entrySubViewer1Program;
+	[WidgetAttribute] private Entry entrySubViewer1FilePath;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer1Delay;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer1CDTrack;
 	
 	/* SubViewer2 fields */
-	[WidgetAttribute]
-	private Entry entrySubViewer2Title;
-	[WidgetAttribute]
-	private Entry entrySubViewer2Author;
-	[WidgetAttribute]
-	private Entry entrySubViewer2Source;
-	[WidgetAttribute]
-	private Entry entrySubViewer2Program;
-	[WidgetAttribute]
-	private Entry entrySubViewer2FilePath;
-	[WidgetAttribute]
-	private Entry entrySubViewer2Comment;
-	[WidgetAttribute]
-	private Entry entrySubViewer2FontName;
-	[WidgetAttribute]
-	private Entry entrySubViewer2FontColor;
-	[WidgetAttribute]
-	private Entry entrySubViewer2FontStyle;
-	[WidgetAttribute]
-	private SpinButton spinButtonSubViewer2Delay;
-	[WidgetAttribute]
-	private SpinButton spinButtonSubViewer2CDTrack;
-	[WidgetAttribute]
-	private SpinButton spinButtonSubViewer2FontSize;
+	[WidgetAttribute] private Entry entrySubViewer2Title;
+	[WidgetAttribute] private Entry entrySubViewer2Author;
+	[WidgetAttribute] private Entry entrySubViewer2Source;
+	[WidgetAttribute] private Entry entrySubViewer2Program;
+	[WidgetAttribute] private Entry entrySubViewer2FilePath;
+	[WidgetAttribute] private Entry entrySubViewer2Comment;
+	[WidgetAttribute] private Entry entrySubViewer2FontName;
+	[WidgetAttribute] private Entry entrySubViewer2FontColor;
+	[WidgetAttribute] private Entry entrySubViewer2FontStyle;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer2Delay;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer2CDTrack;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer2FontSize;
 	
 	
 	public HeadersDialog () : base(gladeFilename) {
-		subtitleHeaders = Global.Subtitles.Properties.Headers;
+		subtitleHeaders = Global.Document.Subtitles.Properties.Headers;
 		LoadHeaders();
 	}
 	

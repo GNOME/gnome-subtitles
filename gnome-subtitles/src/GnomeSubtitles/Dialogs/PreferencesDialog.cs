@@ -30,8 +30,7 @@ public class PreferencesDialog : GladeDialog {
 
 	/* Widgets */
 	
-	[WidgetAttribute]
-	private CheckButton videoAutoChooseFileCheckButton;
+	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton;
 
 
 	public PreferencesDialog () : base(gladeFilename, false, false) {
