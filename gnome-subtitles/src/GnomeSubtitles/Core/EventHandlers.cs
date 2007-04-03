@@ -33,7 +33,7 @@ public class EventHandlers {
 		tooltips.Enable();
     }
 
-	
+
 	/* File Menu */
 	
 	public void OnFileNew (object o, EventArgs args) {
@@ -103,7 +103,7 @@ public class EventHandlers {
 	}
 	
 	public void OnEditInsertSubtitleAfter (object o, EventArgs args) {
-		if (Global.Subtitles.Count == 0)
+		if (Global.Document.Subtitles.Count == 0)
 			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
 		else
 			Global.CommandManager.Execute(new InsertSubtitleAfterCommand());
@@ -122,12 +122,12 @@ public class EventHandlers {
 	
 	public void OnViewTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.GUI.OnToggleTimingMode(TimingMode.Times);
+			Global.Document.TimingMode = TimingMode.Times;
 	}
 
 	public void OnViewFrames (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.GUI.OnToggleTimingMode(TimingMode.Frames);
+			Global.Document.TimingMode = TimingMode.Frames;
 	}
 	
 	public void OnViewVideo (object o, EventArgs args) {
@@ -211,7 +211,7 @@ public class EventHandlers {
 	}
 	
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
-		if (Global.TimingMode == TimingMode.Times) {
+		if (Global.Document.TimingMode == TimingMode.Times) {
 			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
 			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
 		}
@@ -222,7 +222,7 @@ public class EventHandlers {
 	}
 	
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
-		if (Global.TimingMode == TimingMode.Times) {
+		if (Global.Document.TimingMode == TimingMode.Times) {
 			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
 			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 		}
