@@ -30,7 +30,7 @@ public class SaveConfirmationDialog {
 	
 	public SaveConfirmationDialog (string primaryText, string rejectLabel) {
 		string message = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>\n\n" + secondaryText;
-		string fileName = Global.Subtitles.Properties.FileName;
+		string fileName = Global.Document.FileProperties.Filename;
 		dialog = new MessageDialog(Global.GUI.Window, DialogFlags.Modal, MessageType.Warning,
 			ButtonsType.None, message, fileName);
 	
