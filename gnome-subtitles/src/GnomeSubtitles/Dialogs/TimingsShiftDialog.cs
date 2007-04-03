@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,15 +32,12 @@ public class TimingsShiftDialog : GladeDialog {
 	private const string gladeFilename = "TimingsShiftDialog.glade";
 
 	/* Widgets */
-	[WidgetAttribute]
-	private Label timingModeLabel;
-	[WidgetAttribute]
-	private SpinButton spinButton;
-	[WidgetAttribute]
-	private RadioButton allSubtitlesRadioButton;
+	[WidgetAttribute] private Label timingModeLabel;
+	[WidgetAttribute] private SpinButton spinButton;
+	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;
 
 	public TimingsShiftDialog () : base(gladeFilename){
-		timingMode = Global.TimingMode;
+		timingMode = Global.Document.TimingMode;
 		SetSpinButton();
 		UpdateForTimingMode(timingMode);
 	}
