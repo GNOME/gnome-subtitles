@@ -38,6 +38,7 @@ public class SubtitleEdit {
 	private ArrayList subtitleTags = new ArrayList(4); //4 not to resize with 3 items
 	
 	private Subtitle subtitle = null;
+	private TimingMode timingMode = TimingMode.Frames; //Need to store to prevent from connecting more than 1 handler to the spin buttons. Default is Frames because it's going to be set to Times in the constructor.
 
 	public SubtitleEdit() {
 		startSpinButton = Global.GetWidget(WidgetNames.StartSpinButton) as SpinButton;
@@ -59,8 +60,8 @@ public class SubtitleEdit {
     	textView.Buffer.TagTable.Add(boldTag);
     	textView.Buffer.TagTable.Add(italicTag);
     	textView.Buffer.TagTable.Add(underlineTag);
-    	
-    	SetTimesMode(); //Initial timing mode is Times
+
+    	SetTimingMode(TimingMode.Times); //Initial timing mode is Times
     }
     
 	/* Public properties */
@@ -138,24 +139,26 @@ public class SubtitleEdit {
     	textView = this.textView;   	
     }
     
-    public void NewDocument (bool wasLoaded) {
-    	if (!wasLoaded)
-    		hBox.Sensitive = true;
-    }
-    
     public void BlankStartUp () {
     	ClearFields();
     }
-    
-    public void ToggleTimingMode (TimingMode mode) { 	
-    	SetTimingMode(mode);
-	   	LoadTimings(mode);
-    }
+
+	public void UpdateFromNewDocument (bool wasLoaded) {
+		UpdateFromTimingMode(Global.Document.TimingMode);
+	}
+	
+	public void UpdateFromTimingMode (TimingMode mode) {
+		if (mode == timingMode)
+			return;
+
+		SetTimingMode(mode);
+		LoadTimings(mode);
+	}
 
     public void UpdateFromSelection (Subtitle subtitle) {
 	   	this.Enabled = true;
     	this.subtitle = subtitle;
-		LoadTimings(Global.TimingMode);
+		LoadTimings(Global.Document.TimingMode);
 		LoadTags();
     	LoadText();
     }
@@ -247,6 +250,10 @@ public class SubtitleEdit {
    	}
    	
    	private void SetTimingMode(TimingMode mode) {
+   		if (mode == timingMode) //Only set if it's not already set
+   			return;
+   			
+   		timingMode = mode;   	
    		if (mode == TimingMode.Frames)
    			SetFramesMode();
    		else
@@ -348,21 +355,21 @@ public class SubtitleEdit {
 	}
 
 	private void OnStartValueChanged (object o, EventArgs args) {
-		if (Global.TimingModeIsFrames)
+		if (Global.Document.TimingModeIsFrames)
 			Global.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value));
 		else
 			Global.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value)));
 	}
 	
 	private void OnEndValueChanged (object o, EventArgs args) {
-		if (Global.TimingModeIsFrames)
+		if (Global.Document.TimingModeIsFrames)
 			Global.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value));
 		else
 			Global.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value)));
 	}
 	
 	private void OnDurationValueChanged (object o, EventArgs args) {
-		if (Global.TimingModeIsFrames)
+		if (Global.Document.TimingModeIsFrames)
 			Global.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value));
 		else
 			Global.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
