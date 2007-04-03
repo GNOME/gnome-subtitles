@@ -40,7 +40,7 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 
 
 	public override bool Execute () {
-		int count = Global.Subtitles.ReplaceAll(regex, replacement, out subtitles, out texts);
+		int count = Global.Document.Subtitles.ReplaceAll(regex, replacement, out subtitles, out texts);
 		if (count == 0)
 			return false;
 		
@@ -55,7 +55,7 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 	public override void Undo () {
 		for (int position = 0 ; position < subtitles.Length ; position++) {
 			int index = subtitles[position];
-			Subtitle subtitle = Global.Subtitles[index];
+			Subtitle subtitle = Global.Document.Subtitles[index];
 			string oldText = subtitle.Text.Get();
 			string newText = texts[position];
 			subtitle.Text.Set(newText);
