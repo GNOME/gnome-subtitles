@@ -126,7 +126,11 @@ public class Video {
 		
 		SetControlsSensitivity(false);
 	}
-	
+
+	public void UpdateFromTimingMode (TimingMode newMode) {
+		position.ToggleTimingMode(newMode);
+	}
+
 	/// <summary>Updates the controls for a subtitle selection change.</summary>
 	/// <param name="isSingle">Whether there is only 1 selected subtitle.</param>
 	public void UpdateFromSelection (bool isSingle) {
@@ -139,11 +143,7 @@ public class Video {
 	public void Quit () {
 		player.Close();
 	}
-	
-	public void ToggleTimingMode (TimingMode newMode) {
-		position.ToggleTimingMode(newMode);
-	}
-	
+
 	public void TogglePlayPause () {
 		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		button.Active = !button.Active; //Toggle() only emits the Toggled event
