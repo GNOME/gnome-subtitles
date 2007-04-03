@@ -90,7 +90,7 @@ public class SubtitleSelection {
     
     /// <summary>The selected subtitle. If there is more than one selected, the first is returned.</summary>
     public Subtitle Subtitle {
-    	get { return Global.Subtitles[Path]; }
+    	get { return Global.Document.Subtitles[Path]; }
     }
 
     /// <summary>The number of selected paths.</summary>
@@ -186,7 +186,7 @@ public class SubtitleSelection {
     /// <summary>Selects the first subtitle.</summary>
     /// <remarks>The subtitle is only selected if it exists.</remarks>
     public void SelectFirst () {
-    	if (Global.Subtitles.Count > 0)
+    	if (Global.Document.Subtitles.Count > 0)
     		Select(TreePath.NewFirst(), false, false);
     }
     
@@ -198,7 +198,7 @@ public class SubtitleSelection {
     		return;
     	}    
     	TreePath path = LastPath;
-    	if (path.Indices[0] == (Global.Subtitles.Count - 1)) //this is the last existing path
+    	if (path.Indices[0] == (Global.Document.Subtitles.Count - 1)) //this is the last existing path
     		return;
     	
     	TreePath next = Util.PathNext(path);
@@ -389,7 +389,7 @@ public class SubtitleSelection {
     	if (!isEndPathValid) {
     		hasEmptySpace = true;
     		if (isStartPathValid) {
-    			int lastPath = Global.Subtitles.Count - 1;
+    			int lastPath = Global.Document.Subtitles.Count - 1;
     			endPath = new TreePath(lastPath.ToString());
     		}
     		else
