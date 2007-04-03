@@ -49,11 +49,11 @@ public class VideoSubtitle {
 	/* Event members */
 	
 	private void OnVideoPositionChanged (float newPosition) {
-		if (!(Global.AreSubtitlesLoaded))
+		if (!(Global.IsDocumentLoaded))
 			return;
 	
 		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = Global.Subtitles.FindWithTime(newPosition);
+			int foundSubtitle = Global.Document.Subtitles.FindWithTime(newPosition);
 			if (foundSubtitle == -1)
 				UnloadSubtitle();
 			else
@@ -74,7 +74,7 @@ public class VideoSubtitle {
 	}
 	
 	private void LoadSubtitle (int number) {
-		subtitle = Global.Subtitles[number];
+		subtitle = Global.Document.Subtitles[number];
 		//subtitleNumber = number; TODO Uncomment
 		subtitleStart = (float)subtitle.Times.Start.TotalSeconds;
 		subtitleEnd = (float)subtitle.Times.End.TotalSeconds;
