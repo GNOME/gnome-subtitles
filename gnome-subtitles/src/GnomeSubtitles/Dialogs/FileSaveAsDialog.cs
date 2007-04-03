@@ -35,35 +35,42 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	/* Widgets */
 	
-	[WidgetAttribute]
-	private ComboBox formatComboBox;
-	[WidgetAttribute]
-	private ComboBox encodingComboBox;
+	[WidgetAttribute] private ComboBox formatComboBox;
 
 	public FileSaveAsDialog () : base(gladeFilename) {
-		if (Global.Subtitles.Properties.IsFilePathRooted)
-			dialog.SetCurrentFolder(Global.Subtitles.Properties.FileDirectory);
+		if (Global.Document.FileProperties.IsPathRooted)
+			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			
-		dialog.CurrentName = Global.Subtitles.Properties.FileName;
+		dialog.CurrentName = Global.Document.FileProperties.Filename;
 
 		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
 		   while in this constructor. After constructing it works fine. */
 
 		FillFormatComboBox();
-		SetEncodingComboBox(encodingComboBox);
 	}
 	
 	public SubtitleType SubtitleType {
 		get { return chosenSubtitleType; }
 	}
 	
+	/* Protected methods */
+	
+	protected override int GetFixedEncoding () {
+		try {
+			return Global.Document.FileProperties.Encoding.CodePage;
+		}
+		catch (NullReferenceException) {
+			return -1;
+		}
+	}
+	
 	/* Private members */
 
 	private void FillFormatComboBox () {
 		subtitleTypes = Subtitles.AvailableTypesSorted;
-		SubtitleType subtitleType = Global.Subtitles.Properties.SubtitleType; //The type of the subtitle file
+		SubtitleType subtitleType = Global.Document.FileProperties.SubtitleType; //The type of the subtitle file
 		int activeType = -1; //The position of the combobox to make active
 		int microDVDTypeNumber = -1; //The position of the MicroDVD format in the combobox
 		int subRipTypeNumber = -1; //The position of the SubRip format in the combobox
@@ -85,7 +92,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		}
 
 		if (subtitleType == SubtitleType.Unknown) { //Active type isn't known, selecting MicroDVD or SubRip depending on Timing Mode
-			TimingMode timingMode = Global.TimingMode;
+			TimingMode timingMode = Global.Document.TimingMode;
 			if ((timingMode == TimingMode.Frames) && (microDVDTypeNumber != -1))
 				formatComboBox.Active = microDVDTypeNumber;
 			else if ((timingMode == TimingMode.Times) && (subRipTypeNumber != -1))
@@ -160,13 +167,13 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 			int formatIndex = formatComboBox.Active;
 			chosenSubtitleType = subtitleTypes[formatIndex].Type;
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
-			int encodingIndex = encodingComboBox.Active;
+			int encodingIndex = GetActiveEncodingComboBoxItem();
 			chosenEncoding = encodings[encodingIndex];
 			actionDone = true;
-		}		
+		}
 		CloseDialog();
 	}
-	
+
 	private void OnFormatChanged (object o, EventArgs args) {
 		SubtitleType type = subtitleTypes[formatComboBox.Active].Type;
 		string filename = dialog.Filename;
