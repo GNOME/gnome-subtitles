@@ -132,9 +132,9 @@ public class Search {
 		
 		int foundIndex, foundLength, foundSubtitle;
 		if (backwards)
-			foundSubtitle = Global.Subtitles.FindBackwards(dialog.BackwardRegex, FocusedSubtitle, selectionStart, dialog.Wrap, out foundIndex, out foundLength);
+			foundSubtitle = Global.Document.Subtitles.FindBackwards(dialog.BackwardRegex, FocusedSubtitle, selectionStart, dialog.Wrap, out foundIndex, out foundLength);
 		else
-			foundSubtitle = Global.Subtitles.Find(dialog.ForwardRegex, FocusedSubtitle, selectionEnd, dialog.Wrap, out foundIndex, out foundLength);
+			foundSubtitle = Global.Document.Subtitles.Find(dialog.ForwardRegex, FocusedSubtitle, selectionEnd, dialog.Wrap, out foundIndex, out foundLength);
 
 		if (foundSubtitle == -1) //Text not found
 			return false;
