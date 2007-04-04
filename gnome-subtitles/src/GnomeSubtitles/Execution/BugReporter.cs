@@ -18,16 +18,32 @@
  */
 
 using System;
+using System.Diagnostics;
+using System.IO;
 
 namespace GnomeSubtitles {
 
 public class BugReporter {
 
 	public static void Report (Exception exception) {
-	
+		
 	}
 	
 	/* Private members */
+	
+	private static void RunBugBuddy (Exception exception) {
+		string path = WriteBugInfo(exception);
+		
+		Process current = Process.GetCurrentProcess();
+		string executable = current.ProcessName;
+		int pid = current.Id;
+		
+		Process process = new Process();
+		process.StartInfo.FileName = "bug-buddy";
+		process.StartInfo.Arguments = "--package=gnome-subtitles --package-ver=" + ExecutionInfo.Version + " --appname=" + executable + " --include=" + path + " --pid=" + pid + " --kill=" + pid;
+		
+		process.Start();
+	}
 	
 	private static string GetBugInfo (Exception exception) {
 		return "Gnome Subtitles version: " + ExecutionInfo.Version + "\n"
@@ -38,6 +54,29 @@ public class BugReporter {
 			+ "GConfSharp version: " + ExecutionInfo.GConfSharpVersion + "\n\n"
 			+ "Stack trace:" + "\n"
 			+ exception.ToString();
+	}
+	
+	private static string WriteBugInfo (Exception exception) {
+		string path = GetTempPath();
+		string info = GetBugInfo(exception);
+		File.WriteAllText(path, info);
+		return path;
+	}
+
+	private static string GetTempPath () {
+		try {
+			string path = Path.GetTempFileName();
+			if ((path != null) && (path != String.Empty))
+				return path;
+		}
+		catch (IOException) {
+		}
+		
+		/* Could not get path in the previous method, trying alternative */
+		
+		Random random = new Random();
+		int number = random.Next(10000);
+		return Path.GetTempPath() + Path.DirectorySeparatorChar + number + ".tmp";	
 	}
 
 }
