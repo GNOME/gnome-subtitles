@@ -33,7 +33,7 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
 		MessageDialog messageDialog = dialog as MessageDialog;
 		
-		System.Console.WriteLine(exception);
+		Console.Error.WriteLine(exception);
 
 		string primaryText = GetPrimaryText(filename);
 		string secondaryText = SecondaryTextFromException(exception);
