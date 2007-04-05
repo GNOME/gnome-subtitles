@@ -36,6 +36,8 @@ public class AboutDialog : GladeDialog {
 	
 		dialog = base.dialog as Gtk.AboutDialog;
 		SetInfo();
+		
+		ShowDialog();
 	}
 	
 	/* Private members */

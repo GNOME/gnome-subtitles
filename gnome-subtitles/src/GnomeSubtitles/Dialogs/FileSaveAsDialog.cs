@@ -49,6 +49,8 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		   while in this constructor. After constructing it works fine. */
 
 		FillFormatComboBox();
+		
+		ShowDialog();
 	}
 	
 	public SubtitleType SubtitleType {

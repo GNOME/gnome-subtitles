@@ -38,8 +38,10 @@ public class VideoOpenDialog : GladeDialog {
 			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-			
+
 		SetFilters();
+		
+		ShowDialog();
 	}
 	
 	/* Public properties */

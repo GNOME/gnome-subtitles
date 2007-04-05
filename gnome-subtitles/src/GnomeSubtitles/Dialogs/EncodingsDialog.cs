@@ -46,6 +46,8 @@ public class EncodingsDialog : GladeDialog {
 		FillShownEncodings();
 		
 		ConnectSignals();
+		
+		ShowDialog();
 	}
 	
 	/* Public properties */

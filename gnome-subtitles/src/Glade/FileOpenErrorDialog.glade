@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Sat Dec 30 23:06:48 2006 by noup@nouplab-->
+<!--Generated with glade3 3.0.3 on Thu Apr  5 19:30:23 2007 by noup@nouplab-->
 <glade-interface>
   <widget class="GtkMessageDialog" id="dialog">
-    <property name="visible">True</property>
     <property name="border_width">5</property>
     <property name="modal">True</property>
     <property name="window_position">GTK_WIN_POS_CENTER_ON_PARENT</property>
@@ -12,5 +11,19 @@
     <property name="message_type">GTK_MESSAGE_ERROR</property>
     <property name="text">Could not open the file</property>
     <signal name="response" handler="OnResponse"/>
+    <child internal-child="vbox">
+      <widget class="GtkVBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <child internal-child="action_area">
+          <widget class="GtkHButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">GTK_PACK_END</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
   </widget>
 </glade-interface>

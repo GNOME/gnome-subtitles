@@ -81,6 +81,8 @@ public class HeadersDialog : GladeDialog {
 	public HeadersDialog () : base(gladeFilename) {
 		subtitleHeaders = Global.Document.Subtitles.Properties.Headers;
 		LoadHeaders();
+		
+		ShowDialog();
 	}
 	
 	

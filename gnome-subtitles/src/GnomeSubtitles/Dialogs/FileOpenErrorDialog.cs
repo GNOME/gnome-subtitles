@@ -44,6 +44,8 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 		Button actionButton = messageDialog.AddButton(actionLabel, ResponseType.Accept) as Button;
 		actionButton.Image = new Image(Stock.Open, IconSize.Button);
 		messageDialog.AddButton(Stock.Ok, ResponseType.Ok);
+		
+		ShowDialog();
 	}
 
 	/* Abstract methods */

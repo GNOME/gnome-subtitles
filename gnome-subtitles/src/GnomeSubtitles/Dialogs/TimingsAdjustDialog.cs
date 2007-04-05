@@ -51,6 +51,8 @@ public class TimingsAdjustDialog : GladeDialog {
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();
 		SetApplyToAll();
+		
+		ShowDialog();
 	}
 	
 	private void SetSpinButtons () {

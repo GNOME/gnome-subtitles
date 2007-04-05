@@ -36,6 +36,8 @@ public class PreferencesDialog : GladeDialog {
 	public PreferencesDialog () : base(gladeFilename, false, false) {
 		LoadValues();
 		Autoconnect();
+		
+		ShowDialog();
 	}
 
 	/* Private members */

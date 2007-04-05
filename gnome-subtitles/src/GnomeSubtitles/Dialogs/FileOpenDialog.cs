@@ -57,6 +57,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			
 		SetFilters();
+		
+		ShowDialog();
 	}
 	
 	/* Public properties */

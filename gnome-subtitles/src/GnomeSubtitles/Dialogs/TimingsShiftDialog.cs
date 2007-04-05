@@ -40,7 +40,11 @@ public class TimingsShiftDialog : GladeDialog {
 		timingMode = Global.Document.TimingMode;
 		SetSpinButton();
 		UpdateForTimingMode(timingMode);
+		
+		ShowDialog();
 	}
+	
+	/* Private methods */
 	
 	private void SetSpinButton () {
 		spinButton.WidthRequest = Util.SpinButtonTimeWidth(spinButton);

@@ -31,6 +31,7 @@ public class BugReportWindow {
 	private const string gladeFilename = "ReportBugWindow.glade";
 
 	/* Widgets */
+	[WidgetAttribute] private Window window;
 	[WidgetAttribute] private TextView bugTextView;
 	
 	public BugReportWindow (Exception exception, string bugInfo) {
@@ -41,6 +42,8 @@ public class BugReportWindow {
 		bugTextView.Buffer.Text = bugInfo;
 		clipboard = Clipboard.Get(Gdk.Selection.Clipboard);
 		CopyErrorLog();
+		
+		window.Visible = true;
 		
 		Application.Run();
 	}
