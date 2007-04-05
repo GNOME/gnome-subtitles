@@ -112,7 +112,7 @@ public class Config {
 				return strings;
 		}
 		catch (Exception e) {
-			System.Console.WriteLine(e);
+			Console.Error.WriteLine(e);
 			return defaultValue;
 		}	
 	}
@@ -131,7 +131,7 @@ public class Config {
 			client.Set(key, val);
 		}
 		catch (Exception e) {
-			System.Console.WriteLine(e);
+			Console.Error.WriteLine(e);
 		}
 	}
 
