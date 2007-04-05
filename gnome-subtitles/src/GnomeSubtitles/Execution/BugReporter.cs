@@ -18,6 +18,7 @@
  */
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
@@ -26,22 +27,27 @@ namespace GnomeSubtitles {
 public class BugReporter {
 
 	public static void Report (Exception exception) {
-		
+		Console.Error.WriteLine(exception);
+		string bugInfo = GetBugInfo(exception);
+
+		try {
+			RunBugBuddy(exception, bugInfo);
+		}
+		catch (Win32Exception) { //Could not run bug buddy, opening the custom error dialog
+			new BugReportWindow(exception, bugInfo);
+		}
 	}
 	
 	/* Private members */
 	
-	private static void RunBugBuddy (Exception exception) {
-		string path = WriteBugInfo(exception);
-		
-		Process current = Process.GetCurrentProcess();
-		string executable = current.ProcessName;
-		int pid = current.Id;
-		
+	private static void RunBugBuddy (Exception exception, string bugInfo) {
+		string path = WriteBugInfo(exception, bugInfo);
+
 		Process process = new Process();
 		process.StartInfo.FileName = "bug-buddy";
-		process.StartInfo.Arguments = "--package=gnome-subtitles --package-ver=" + ExecutionInfo.Version + " --appname=" + executable + " --include=" + path + " --pid=" + pid + " --kill=" + pid;
-		
+		process.StartInfo.Arguments = "--appname=gnome-subtitles --include=" + path;
+		process.StartInfo.UseShellExecute = false;
+
 		process.Start();
 	}
 	
@@ -56,10 +62,9 @@ public class BugReporter {
 			+ exception.ToString();
 	}
 	
-	private static string WriteBugInfo (Exception exception) {
+	private static string WriteBugInfo (Exception exception, string bugInfo) {
 		string path = GetTempPath();
-		string info = GetBugInfo(exception);
-		File.WriteAllText(path, info);
+		File.WriteAllText(path, bugInfo);
 		return path;
 	}
 
@@ -70,13 +75,13 @@ public class BugReporter {
 				return path;
 		}
 		catch (IOException) {
+			//Don't do anything, a random name will be chosen next
 		}
 		
 		/* Could not get path in the previous method, trying alternative */
-		
 		Random random = new Random();
 		int number = random.Next(10000);
-		return Path.GetTempPath() + Path.DirectorySeparatorChar + number + ".tmp";	
+		return Path.GetTempPath() + Path.DirectorySeparatorChar + number + ".tmp";
 	}
 
 }

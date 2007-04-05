@@ -33,12 +33,12 @@ public class Executable {
 	public static bool SetProcessNamePrctl (string name) {
 		try {
 			if (prctl(15, Encoding.ASCII.GetBytes(name + "\0"), 0, 0, 0) != 0) { // 15 = PR_SET_NAME
-				System.Console.WriteLine("Error setting process name with prctl: " + Mono.Unix.Native.Stdlib.GetLastError());
+				Console.Error.WriteLine("Error setting process name with prctl: " + Mono.Unix.Native.Stdlib.GetLastError());
 			}
 		}
 		catch (Exception e) {
-        	System.Console.WriteLine("Setting the process name using prctl has thrown an exception:");
-        	System.Console.WriteLine(e);
+        	Console.Error.WriteLine("Setting the process name using prctl has thrown an exception:");
+        	Console.Error.WriteLine(e);
         	return false;
         }
         return true;
@@ -49,8 +49,8 @@ public class Executable {
 			setproctitle(Encoding.ASCII.GetBytes("%s\0"), Encoding.ASCII.GetBytes(name + "\0"));
 		}
 		catch (Exception e) {
-        	System.Console.WriteLine("Setting the process name using setproctitle has thrown an exception:");
-        	System.Console.WriteLine(e);
+        	Console.Error.WriteLine("Setting the process name using setproctitle has thrown an exception:");
+        	Console.Error.WriteLine(e);
         	return false;
         }
         return true;
