@@ -78,7 +78,7 @@ public class Global {
 	/* Public methods */
 	
 	/// <summary>Runs the main GUI, after initialization.</summary>
-	/// <returns>Whether 
+	/// <returns>Whether running the application completed without fatal errors.</returns> 
 	public static bool Run () {
 		try {
 			if (!Init())
@@ -89,10 +89,8 @@ public class Global {
 			return true;
 		}
 		catch (Exception exception) {
-			Console.Error.WriteLine(exception);
 			Kill();
-			//ReportBug(exception);
-			new BugReportWindow(exception);
+			BugReporter.Report(exception);
 			return false;
 		}
 	}
@@ -138,11 +136,6 @@ public class Global {
 			; //Nothing to do if there were errors while killing the window 
 		}
 	}
-	
-	private static void ReportBug () {
-		
-	}
-
 
 }
 

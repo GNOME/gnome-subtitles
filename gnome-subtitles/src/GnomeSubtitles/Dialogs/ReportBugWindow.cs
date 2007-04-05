@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,12 +33,12 @@ public class BugReportWindow {
 	/* Widgets */
 	[WidgetAttribute] private TextView bugTextView;
 	
-	public BugReportWindow (Exception exception) {
+	public BugReportWindow (Exception exception, string bugInfo) {
 		Application.Init();
 		Glade.XML glade = new Glade.XML(gladeFilename, null);
 		glade.Autoconnect(this);
 
-		AddBugText(exception);
+		bugTextView.Buffer.Text = bugInfo;
 		clipboard = Clipboard.Get(Gdk.Selection.Clipboard);
 		CopyErrorLog();
 		
@@ -51,18 +51,6 @@ public class BugReportWindow {
 		clipboard.Text = bugTextView.Buffer.Text;
 	}
 
-	private void AddBugText (Exception exception) {
-		string text = String.Empty;
-		text += "Gnome Subtitles version: " + ExecutionInfo.Version + "\n";
-		text += "SubLib version: " + ExecutionInfo.SubLibVersion + "\n";
-		text += "GnomeSharp version: " + ExecutionInfo.GnomeSharpVersion + "\n";
-		text += "GtkSharp version: " + ExecutionInfo.GtkSharpVersion + "\n";
-		text += "GladeSharp version: " + ExecutionInfo.GladeSharpVersion + "\n\n";
-		text += "Stack trace:" + "\n";
-		text += exception.ToString();
-		
-		bugTextView.Buffer.Text = text;
-	}
 	
 	/* Event handlers */
 	
@@ -74,7 +62,7 @@ public class BugReportWindow {
 	
 	private void OnOpenWebForm (object o, EventArgs args) {
 		if (!Util.OpenBugReport())
-			Console.WriteLine("Could not open web form");
+			Console.Error.WriteLine("Could not open web form");
 	}
 	
 	private void OnClose (object o, EventArgs args) {
