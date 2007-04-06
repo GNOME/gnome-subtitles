@@ -55,6 +55,10 @@ public class EventHandlers {
 	public void OnFileHeaders (object o, EventArgs args) {
 		new HeadersDialog();
 	}
+	
+	public void OnFileProperties (object o, EventArgs args) {
+		new FilePropertiesDialog();
+	}
 
     public void OnFileQuit (object o, EventArgs args) {
 		Global.GUI.Quit();
