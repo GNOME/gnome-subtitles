@@ -201,6 +201,7 @@ public class Menus {
 			SetSensitivity(WidgetNames.FileSave, true);
 			SetSensitivity(WidgetNames.FileSaveAs, true);
 			SetSensitivity(WidgetNames.FileHeaders, true);
+			SetSensitivity(WidgetNames.FileProperties, true);
 			/* Edit Menu */
 			SetMenuSensitivity(WidgetNames.EditInsertSubtitle, true);
 			SetSensitivity(WidgetNames.EditDeleteSubtitles, true);
