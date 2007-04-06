@@ -19,6 +19,7 @@ GS_RESOURCES = \
 	$(srcdir)/Glade/EncodingsDialog.glade \
 	$(srcdir)/Glade/FileOpenDialog.glade \
 	$(srcdir)/Glade/FileOpenErrorDialog.glade \
+	$(srcdir)/Glade/FilePropertiesDialog.glade \
 	$(srcdir)/Glade/FileSaveAsDialog.glade \
 	$(srcdir)/Glade/HeadersDialog.glade \
 	$(srcdir)/Glade/MainWindow.glade \
