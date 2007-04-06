@@ -131,17 +131,17 @@ public class TimingsAdjustDialog : GladeDialog {
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
-			SelectionType selectionType = (allSubtitlesRadioButton.Active ? SelectionType.All : SelectionType.Range);
+			SelectionIntended selectionIntended = (allSubtitlesRadioButton.Active ? SelectionIntended.All : SelectionIntended.Range);
 			
 			if (timingMode == TimingMode.Times) {
 				TimeSpan firstTime = TimeSpan.Parse(firstSubtitleNewStartSpinButton.Text);
 				TimeSpan lastTime = TimeSpan.Parse(lastSubtitleNewStartSpinButton.Text);
-				Global.CommandManager.Execute(new AdjustTimingsCommand(firstTime, lastTime, selectionType));
+				Global.CommandManager.Execute(new AdjustTimingsCommand(firstTime, lastTime, selectionIntended));
 			}
 			else {
 				int firstFrame = (int)firstSubtitleNewStartSpinButton.Value;
 				int lastFrame = (int)lastSubtitleNewStartSpinButton.Value;
-				Global.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionType));
+				Global.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionIntended));
 			}
 		}
 		CloseDialog();
