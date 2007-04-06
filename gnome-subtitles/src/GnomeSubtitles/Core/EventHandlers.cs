@@ -53,11 +53,11 @@ public class EventHandlers {
 	}
 	
 	public void OnFileHeaders (object o, EventArgs args) {
-		new HeadersDialog();
+		new HeadersDialog().Show();
 	}
 	
 	public void OnFileProperties (object o, EventArgs args) {
-		new FilePropertiesDialog();
+		new FilePropertiesDialog().Show();
 	}
 
     public void OnFileQuit (object o, EventArgs args) {
@@ -119,7 +119,7 @@ public class EventHandlers {
 	}
 
 	public void OnEditPreferences (object o, EventArgs args) {
-		new PreferencesDialog();
+		new PreferencesDialog().Show();
 	}
 
 	/* View Menu */
@@ -179,11 +179,11 @@ public class EventHandlers {
 	}
 	
 	public void OnTimingsAdjust (object o, EventArgs args) {
-		new TimingsAdjustDialog();	
+		new TimingsAdjustDialog().Show();	
 	}
 	
 	public void OnTimingsShift (object o, EventArgs args) {
-		new TimingsShiftDialog();
+		Global.Dialogs.TimingsShiftDialog.Show();
 	}
 	
 	
@@ -252,7 +252,7 @@ public class EventHandlers {
 	}
 	
 	public void OnHelpAbout (object o, EventArgs args) {
-		new AboutDialog();
+		new AboutDialog().Show();
 	}
 	
 	

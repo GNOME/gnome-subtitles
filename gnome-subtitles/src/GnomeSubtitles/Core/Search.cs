@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -81,7 +81,7 @@ public class Search {
 	/// <remarks>The old dialog is closed and nullified</remarks>
 	public void Clear () {
 		if (dialog != null) {
-			dialog.CloseDialog();
+			dialog.Close();
 			dialog = null;
 		}			
 	}
@@ -113,11 +113,10 @@ public class Search {
 	/* Private methods */
 	
 	private void InitDialog (bool showReplace) {
-		if (dialog == null)
-			dialog = new SearchDialog(); //SearchDialog starts invisible as default
+		dialog = Global.Dialogs.SearchDialog;
 	
 		dialog.ShowReplace = showReplace;
-		dialog.ShowDialog();
+		dialog.Show();
 	}
 
 	/// <summary>Finds text in the subtitles using the specified direction and the options set in the Find dialog.</summary>

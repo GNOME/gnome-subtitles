@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,15 +52,15 @@ public class GladeDialog {
 		return actionDone;
 	}
 		
-	public virtual void ShowDialog () {
+	public virtual void Show () {
 		dialog.Visible = true;
 	}
 	
-	public void CloseDialog() {
+	public void Close() {
 		dialog.Destroy();
 	}
 	
-	public void HideDialog () {
+	public void Hide () {
 		dialog.Visible = false;
 	}
 	
@@ -105,7 +105,7 @@ public class GladeDialog {
 	/* Event members */
 	
 	private void OnDelete (object o, DeleteEventArgs args) {
-		HideDialog();
+		Hide();
 		args.RetVal = true;
 	}
 

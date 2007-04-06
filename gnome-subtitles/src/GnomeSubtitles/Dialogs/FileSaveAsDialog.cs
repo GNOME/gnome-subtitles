@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,8 +49,6 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		   while in this constructor. After constructing it works fine. */
 
 		FillFormatComboBox();
-		
-		ShowDialog();
 	}
 	
 	public SubtitleType SubtitleType {
@@ -173,7 +171,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 			chosenEncoding = encodings[encodingIndex];
 			actionDone = true;
 		}
-		CloseDialog();
+		Close();
 	}
 
 	private void OnFormatChanged (object o, EventArgs args) {

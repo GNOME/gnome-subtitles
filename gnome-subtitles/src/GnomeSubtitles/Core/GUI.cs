@@ -127,6 +127,7 @@ public class GUI {
     /// is shown before opening the new file.</remarks>
     public void Open () {
     	FileOpenDialog dialog = new FileOpenDialog();
+    	dialog.Show();
     	bool toOpen = dialog.WaitForResponse();
     	if (toOpen && ToOpenAfterWarning) {
     		string filename = dialog.Filename;
@@ -139,6 +140,7 @@ public class GUI {
 	    	}
 	    	catch (Exception exception) {
 	    		SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(filename, exception);
+	    		errorDialog.Show();
 	    		bool toOpenAgain = errorDialog.WaitForResponse();
 	    		if (toOpenAgain)
 	    			Open(); //Recursive call to open the dialog again
@@ -148,6 +150,7 @@ public class GUI {
     
     public void OpenVideo () {
     	VideoOpenDialog dialog = new VideoOpenDialog();
+    	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
 			string filename = dialog.Filename;
@@ -174,6 +177,7 @@ public class GUI {
     /// <returns>Whether the file was saved or not.</returns>
     public bool SaveAs () {
 		FileSaveAsDialog dialog = new FileSaveAsDialog();
+		dialog.Show();
 		bool toSaveAs = dialog.WaitForResponse();
 		if (toSaveAs) {
 			string filename = dialog.Filename;
@@ -250,6 +254,7 @@ public class GUI {
 		catch (Exception exception) {
 			Video.Close();
 			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(path, exception);
+			errorDialog.Show();
 			bool toOpenAgain = errorDialog.WaitForResponse();
 	    	if (toOpenAgain)
 	    		OpenVideo(); //Recursive call to open the dialog again

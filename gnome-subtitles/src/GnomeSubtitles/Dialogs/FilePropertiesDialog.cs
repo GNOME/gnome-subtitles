@@ -40,8 +40,6 @@ public class FilePropertiesDialog : GladeDialog {
 	
 	public FilePropertiesDialog () : base(gladeFilename) {
 		FillLabelValues();
-	
-		ShowDialog();
 	}
 	
 	/* Private methods */
@@ -103,7 +101,7 @@ public class FilePropertiesDialog : GladeDialog {
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
 	private void OnResponse (object o, ResponseArgs args) {
-		CloseDialog();
+		Close();
 	}
 	
 }

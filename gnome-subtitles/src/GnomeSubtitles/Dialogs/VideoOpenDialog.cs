@@ -40,8 +40,6 @@ public class VideoOpenDialog : GladeDialog {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 
 		SetFilters();
-		
-		ShowDialog();
 	}
 	
 	/* Public properties */
@@ -80,7 +78,7 @@ public class VideoOpenDialog : GladeDialog {
 			chosenFilename = (dialog as FileChooserDialog).Filename;
 			actionDone = true;
 		}
-		CloseDialog();
+		Close();
 	}
 
 }

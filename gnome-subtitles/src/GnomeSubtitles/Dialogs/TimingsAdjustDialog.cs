@@ -51,8 +51,6 @@ public class TimingsAdjustDialog : GladeDialog {
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();
 		SetApplyToAll();
-		
-		ShowDialog();
 	}
 	
 	private void SetSpinButtons () {
@@ -144,7 +142,7 @@ public class TimingsAdjustDialog : GladeDialog {
 				Global.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionIntended));
 			}
 		}
-		CloseDialog();
+		Close();
 	}
 
 }

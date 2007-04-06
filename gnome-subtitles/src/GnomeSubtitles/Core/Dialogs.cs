@@ -17,44 +17,32 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
-using Gtk;
-using System;
-
 namespace GnomeSubtitles {
 
-public class PreferencesDialog : GladeDialog {
-
-	/* Constant strings */
-	private const string gladeFilename = "PreferencesDialog.glade";
-
-	/* Widgets */
+public class Dialogs {
+	private SearchDialog searchDialog = null;
+	private TimingsShiftDialog timingsShiftDialog = null;
 	
-	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton;
-
-
-	public PreferencesDialog () : base(gladeFilename, false, false) {
-		LoadValues();
-		Autoconnect();
-	}
-
-	/* Private members */
-	
-	private void LoadValues () {
-		videoAutoChooseFileCheckButton.Active = Global.Config.PrefsVideoAutoChooseFile;
+	public SearchDialog SearchDialog {
+		get {
+			if (searchDialog == null)
+				searchDialog = new SearchDialog();
+			
+			return searchDialog;		
+		}
 	}
 	
-	/* Event handlers */
+	public TimingsShiftDialog TimingsShiftDialog {
+		get {
+			if (timingsShiftDialog == null)
+				timingsShiftDialog = new TimingsShiftDialog();
+			
+			return timingsShiftDialog;		
+		}
+	}
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		Close();
-	}
-	
-	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
-		Global.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
-	}
+
+
 
 }
 

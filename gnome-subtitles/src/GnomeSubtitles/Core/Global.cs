@@ -35,6 +35,7 @@ public class Global {
 	private static CommandManager commandManager = null;
 	private static Clipboards clipboards = null;
 	private static Config config = null;
+	private static Dialogs dialogs = null;
 	
 	private static Document document = null;
 
@@ -59,6 +60,10 @@ public class Global {
 	
 	public static Config Config {
 		get { return config; }
+	}
+	
+	public static Dialogs Dialogs {
+		get { return dialogs; }
 	}
 	
 	public static Document Document {
@@ -119,6 +124,7 @@ public class Global {
 		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled, handlers.OnCommandActivated, handlers.OnModified); //TODO 25 should be set on gconf
 		clipboards = new Clipboards();
 		config = new Config();
+		dialogs = new Dialogs();
 
 		gui = new GUI(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;

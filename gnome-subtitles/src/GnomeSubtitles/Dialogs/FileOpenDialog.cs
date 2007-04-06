@@ -57,8 +57,6 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			
 		SetFilters();
-		
-		ShowDialog();
 	}
 	
 	/* Public properties */
@@ -213,7 +211,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			}			
 			actionDone = true;
 		}
-		CloseDialog();
+		Close();
 	}
 	
 	private void OnCurrentFolderChanged (object o, EventArgs args) {

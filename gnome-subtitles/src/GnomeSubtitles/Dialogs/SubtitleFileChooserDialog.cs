@@ -171,6 +171,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog { //TODO make this
 		int itemCount = comboBox.Model.IterNChildren();
 		if (comboBox.Active == (itemCount - 1)) {
 			EncodingsDialog dialog = new EncodingsDialog();
+			dialog.Show();
 			dialog.WaitForResponse();
 			UpdateEncodingComboBox(comboBox, dialog.ChosenNames);
 		}

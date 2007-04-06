@@ -46,8 +46,6 @@ public class EncodingsDialog : GladeDialog {
 		FillShownEncodings();
 		
 		ConnectSignals();
-		
-		ShowDialog();
 	}
 	
 	/* Public properties */
@@ -199,7 +197,7 @@ public class EncodingsDialog : GladeDialog {
 	}
 	
 	private void OnResponse (object o, ResponseArgs args) {
-		CloseDialog();
+		Close();
 	}
 	
 	private void OnAvailableRowActivated (object o, RowActivatedArgs args) {

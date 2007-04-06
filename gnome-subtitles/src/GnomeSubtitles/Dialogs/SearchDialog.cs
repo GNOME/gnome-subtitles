@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -106,9 +106,9 @@ public class SearchDialog : GladeDialog {
 		get { return wrapCheckButton.Active; }
 	}
 	
-	public override void ShowDialog() { //TODO add ShowReplace here?
+	public override void Show() { //TODO add ShowReplace here?
 		LoadDialogValues();
-		base.ShowDialog();
+		base.Show();
 	}
 	
 	
@@ -218,7 +218,7 @@ public class SearchDialog : GladeDialog {
 				ReplaceAll();
 				break;
 			case SearchDialogResponse.Close:
-				HideDialog();
+				Hide();
 				break;
 		}
 	}

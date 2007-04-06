@@ -38,12 +38,10 @@ public class TimingsShiftDialog : GladeDialog {
 	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
 	[WidgetAttribute] private RadioButton selectedSubtitleToFirstRadioButton;
 
-	public TimingsShiftDialog () : base(gladeFilename){
+	public TimingsShiftDialog () : base(gladeFilename, true, true){
 		timingMode = Global.Document.TimingMode;
 		SetSpinButton();
 		UpdateForTimingMode(timingMode);
-		
-		ShowDialog();
 	}
 	
 	/* Private methods */
@@ -87,7 +85,7 @@ public class TimingsShiftDialog : GladeDialog {
 				Global.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
 			}
 		}
-		CloseDialog();
+		Hide();
 	}
 
 }
