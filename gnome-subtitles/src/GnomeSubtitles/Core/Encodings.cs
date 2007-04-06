@@ -155,6 +155,22 @@ public class Encodings {
 		}
 		return false;
 	}
+	
+	public static string GetEncodingName (int codePage) {
+		EncodingDescription desc = new EncodingDescription();
+		if (Find(codePage, ref desc))
+			return desc.Name;
+
+		try {
+			Encoding encoding = Encoding.GetEncoding(codePage);
+			if (encoding != null)
+				return encoding.WebName;
+		}
+		catch (ArgumentException) {
+			//Don't do anything, this will be handled next
+		}
+		return null;
+	}
 
 }
 
