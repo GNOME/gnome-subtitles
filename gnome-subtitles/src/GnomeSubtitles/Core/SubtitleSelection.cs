@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -86,6 +86,36 @@ public class SubtitleSelection {
     			return range;
     		}
     	}
+	}
+	
+	/// <summary>The range of paths, starting at the first path (even if not selected), and ending at the last selected path.</summary>
+	public TreePath[] PathsToFirst {
+		get {
+			TreePath lastPath = LastPath;
+			if (lastPath == null)
+				return null;
+			
+			TreePath[] range = new TreePath[2];
+    		range[0] = TreePath.NewFirst();
+    		range[1] = lastPath;
+    		return range;
+		}
+	}
+	
+	/// <summary>The range of paths, starting at the first selected path, and ending at the last path (even if not selected).</summary>
+	public TreePath[] PathsToLast {
+		get {
+			TreePath firstPath = FirstPath;
+			if (firstPath == null)
+				return null;
+			
+			TreePath[] range = new TreePath[2];
+    		range[0] = firstPath;
+    		
+    		int count = Global.Document.Subtitles.Count;
+    		range[1] = Util.IntToPath(count - 1);
+    		return range;
+		}
 	}
     
     /// <summary>The selected subtitle. If there is more than one selected, the first is returned.</summary>
@@ -190,6 +220,14 @@ public class SubtitleSelection {
     		Select(TreePath.NewFirst(), false, false);
     }
     
+    /// <summary>Selects the last subtitle.</summary>
+    /// <remarks>The subtitle is only selected if it exists.</remarks>
+    public void SelectLast () {
+    	int count = Global.Document.Subtitles.Count;
+    	if (count > 0)
+    		Select(Util.IntToPath(count - 1), false, false);
+    }
+    
     /// <summary>Selects the next path. If multiple paths are currently selected, the one after the
     /// last selected path is selected. If no paths are selected, the first one is selected.</summary>
     public void SelectNext () {
@@ -235,7 +273,7 @@ public class SubtitleSelection {
 		Global.GUI.Edit.TextGrabFocus();
 		return true;
 	}
-	
+
 	/// <summary>Scrolls to the specified path and optionally aligns it to the center of the <see cref="TreeView" />.</summary>
 	/// <remarks>This should only be used to scroll to the input focus.</remarks>
     /// <param name="focus ">The path corresponding to the input focus.</param>
