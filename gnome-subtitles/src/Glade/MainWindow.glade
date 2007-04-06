@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Sat Mar 24 17:17:27 2007 by noup@nouplab
+<!--Generated with glade3 3.0.3 on Fri Apr  6 19:12:10 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -20,7 +20,7 @@
             <child>
               <widget class="GtkMenuItem" id="file">
                 <property name="visible">True</property>
-                <property name="label">_File</property>
+                <property name="label" translatable="yes">_File</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="fileMenu">
@@ -72,9 +72,18 @@
                       <widget class="GtkMenuItem" id="fileHeaders">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">_Headers</property>
+                        <property name="label" translatable="yes">_Headers</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnFileHeaders"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="fileProperties">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="label" translatable="yes">_Properties</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="OnFileProperties"/>
                       </widget>
                     </child>
                     <child>
@@ -98,7 +107,7 @@
             <child>
               <widget class="GtkMenuItem" id="edit">
                 <property name="visible">True</property>
-                <property name="label">_Edit</property>
+                <property name="label" translatable="yes">_Edit</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="editMenu">
@@ -168,7 +177,7 @@
                     <child>
                       <widget class="GtkMenuItem" id="editFormat">
                         <property name="visible">True</property>
-                        <property name="label">_Format</property>
+                        <property name="label" translatable="yes">_Format</property>
                         <property name="use_underline">True</property>
                         <child>
                           <widget class="GtkMenu" id="formatMenu">
@@ -176,7 +185,7 @@
                               <widget class="GtkCheckMenuItem" id="editFormatBold">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="label">_Bold</property>
+                                <property name="label" translatable="yes">_Bold</property>
                                 <property name="use_underline">True</property>
                                 <signal name="toggled" handler="OnEditFormatBold"/>
                                 <accelerator key="B" modifiers="GDK_CONTROL_MASK" signal="activate"/>
@@ -186,7 +195,7 @@
                               <widget class="GtkCheckMenuItem" id="editFormatItalic">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="label">_Italic</property>
+                                <property name="label" translatable="yes">_Italic</property>
                                 <property name="use_underline">True</property>
                                 <signal name="toggled" handler="OnEditFormatItalic"/>
                                 <accelerator key="I" modifiers="GDK_CONTROL_MASK" signal="activate"/>
@@ -196,7 +205,7 @@
                               <widget class="GtkCheckMenuItem" id="editFormatUnderline">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="label">_Underline</property>
+                                <property name="label" translatable="yes">_Underline</property>
                                 <property name="use_underline">True</property>
                                 <signal name="toggled" handler="OnEditFormatUnderline"/>
                                 <accelerator key="U" modifiers="GDK_CONTROL_MASK" signal="activate"/>
@@ -214,7 +223,7 @@
                     <child>
                       <widget class="GtkMenuItem" id="editInsertSubtitle">
                         <property name="visible">True</property>
-                        <property name="label">_Insert Subtitle</property>
+                        <property name="label" translatable="yes">_Insert Subtitle</property>
                         <property name="use_underline">True</property>
                         <child>
                           <widget class="GtkMenu" id="editInsertSubtitleMenu">
@@ -222,7 +231,7 @@
                               <widget class="GtkImageMenuItem" id="editInsertSubtitleBefore">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="label">_Before</property>
+                                <property name="label" translatable="yes">_Before</property>
                                 <property name="use_underline">True</property>
                                 <signal name="activate" handler="OnEditInsertSubtitleBefore"/>
                                 <accelerator key="Return" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
@@ -239,7 +248,7 @@
                               <widget class="GtkImageMenuItem" id="editInsertSubtitleAfter">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="label">_After</property>
+                                <property name="label" translatable="yes">_After</property>
                                 <property name="use_underline">True</property>
                                 <signal name="activate" handler="OnEditInsertSubtitleAfter"/>
                                 <accelerator key="Return" modifiers="GDK_CONTROL_MASK" signal="activate"/>
@@ -260,7 +269,7 @@
                       <widget class="GtkImageMenuItem" id="editDeleteSubtitles">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">_Delete Subtitles</property>
+                        <property name="label" translatable="yes">_Delete Subtitles</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditDeleteSubtitles"/>
                         <child internal-child="image">
@@ -293,7 +302,7 @@
             <child>
               <widget class="GtkMenuItem" id="view">
                 <property name="visible">True</property>
-                <property name="label">_View</property>
+                <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="viewMenu">
@@ -301,7 +310,7 @@
                       <widget class="GtkRadioMenuItem" id="viewFrames">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">_Frames</property>
+                        <property name="label" translatable="yes">_Frames</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="OnViewFrames"/>
                       </widget>
@@ -312,7 +321,7 @@
                         <property name="sensitive">False</property>
                         <property name="active">True</property>
                         <property name="group">viewFrames</property>
-                        <property name="label">_Times</property>
+                        <property name="label" translatable="yes">_Times</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="OnViewTimes"/>
                       </widget>
@@ -337,7 +346,7 @@
             <child>
               <widget class="GtkMenuItem" id="search">
                 <property name="visible">True</property>
-                <property name="label">_Search</property>
+                <property name="label" translatable="yes">_Search</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="searchMenu">
@@ -356,7 +365,7 @@
                       <widget class="GtkMenuItem" id="searchFindNext">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">Find Ne_xt</property>
+                        <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
                         <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
@@ -367,7 +376,7 @@
                       <widget class="GtkMenuItem" id="searchFindPrevious">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">Find Pre_vious</property>
+                        <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
                         <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
@@ -383,7 +392,7 @@
                       <widget class="GtkImageMenuItem" id="searchReplace">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">_Replace</property>
+                        <property name="label" translatable="yes">_Replace</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchReplace"/>
                         <accelerator key="H" modifiers="GDK_CONTROL_MASK" signal="activate"/>
@@ -404,14 +413,14 @@
             <child>
               <widget class="GtkMenuItem" id="timings">
                 <property name="visible">True</property>
-                <property name="label">_Timings</property>
+                <property name="label" translatable="yes">_Timings</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="timingsMenu">
                     <child>
                       <widget class="GtkMenuItem" id="timingsInputFrameRate">
                         <property name="visible">True</property>
-                        <property name="label">_Input Frame Rate</property>
+                        <property name="label" translatable="yes">_Input Frame Rate</property>
                         <property name="use_underline">True</property>
                         <child>
                           <widget class="GtkMenu" id="inputFrameRateMenu">
@@ -477,7 +486,7 @@
                     <child>
                       <widget class="GtkMenuItem" id="timingsVideoFrameRate">
                         <property name="visible">True</property>
-                        <property name="label">_Video Frame Rate</property>
+                        <property name="label" translatable="yes">_Video Frame Rate</property>
                         <property name="use_underline">True</property>
                         <child>
                           <widget class="GtkMenu" id="videoFrameRateMenu">
@@ -549,7 +558,7 @@
                       <widget class="GtkMenuItem" id="timingsAdjust">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">Adjust</property>
+                        <property name="label" translatable="yes">Adjust</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnTimingsAdjust"/>
                       </widget>
@@ -558,7 +567,7 @@
                       <widget class="GtkMenuItem" id="timingsShift">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">Shift</property>
+                        <property name="label" translatable="yes">Shift</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnTimingsShift"/>
                       </widget>
@@ -657,7 +666,7 @@
                     <child>
                       <widget class="GtkMenuItem" id="videoSeekToSelection">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Seek To Selection</property>
+                        <property name="label" translatable="yes">Seek _To Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection"/>
                       </widget>
@@ -671,7 +680,7 @@
                       <widget class="GtkMenuItem" id="videoSetSubtitleStart">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label" translatable="yes">Set Subtitle Start</property>
+                        <property name="label" translatable="yes">Set Subtitle _Start</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSetSubtitleStart"/>
                       </widget>
@@ -680,7 +689,7 @@
                       <widget class="GtkMenuItem" id="videoSetSubtitleEnd">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label" translatable="yes">Set Subtitle End</property>
+                        <property name="label" translatable="yes">Set Subtitle _End</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSetSubtitleEnd"/>
                       </widget>
@@ -692,14 +701,14 @@
             <child>
               <widget class="GtkMenuItem" id="help">
                 <property name="visible">True</property>
-                <property name="label">_Help</property>
+                <property name="label" translatable="yes">_Help</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="helpMenu">
                     <child>
                       <widget class="GtkImageMenuItem" id="helpContents">
                         <property name="visible">True</property>
-                        <property name="label">_Contents</property>
+                        <property name="label" translatable="yes">_Contents</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnHelpContents"/>
                         <accelerator key="F1" modifiers="" signal="activate"/>
@@ -721,7 +730,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="helpRequestFeature">
                         <property name="visible">True</property>
-                        <property name="label">Request a _Feature</property>
+                        <property name="label" translatable="yes">Request a _Feature</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnHelpRequestFeature"/>
                         <child internal-child="image">
@@ -736,7 +745,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="helpReportBug">
                         <property name="visible">True</property>
-                        <property name="label">Report a _Bug</property>
+                        <property name="label" translatable="yes">Report a _Bug</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnHelpReportBug"/>
                         <child internal-child="image">
