@@ -35,6 +35,8 @@ public class TimingsShiftDialog : GladeDialog {
 	[WidgetAttribute] private Label timingModeLabel;
 	[WidgetAttribute] private SpinButton spinButton;
 	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;
+	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
+	[WidgetAttribute] private RadioButton selectedSubtitleToFirstRadioButton;
 
 	public TimingsShiftDialog () : base(gladeFilename){
 		timingMode = Global.Document.TimingMode;
@@ -58,20 +60,31 @@ public class TimingsShiftDialog : GladeDialog {
 			spinButton.Value = 0;
 		}
 	}
+	
+	private SelectionIntended GetSelectionIntended () {
+		if (allSubtitlesRadioButton.Active)
+			return SelectionIntended.All;
+		else if (selectedSubtitlesRadioButton.Active)
+			return SelectionIntended.Simple;
+		else if (selectedSubtitleToFirstRadioButton.Active)
+			return SelectionIntended.SimpleToFirst;
+		else
+			return SelectionIntended.SimpleToLast;
+	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
-			SelectionType selectionType = (allSubtitlesRadioButton.Active ? SelectionType.All : SelectionType.Simple);
+			SelectionIntended selectionIntended = GetSelectionIntended();
 			
 			if (timingMode == TimingMode.Times) {
 				TimeSpan time = TimeSpan.Parse(spinButton.Text);
-				Global.CommandManager.Execute(new ShiftTimingsCommand(time, selectionType));
+				Global.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
 			}
 			else {
 				int frames = (int)spinButton.Value;
-				Global.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionType));
+				Global.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
 			}
 		}
 		CloseDialog();
