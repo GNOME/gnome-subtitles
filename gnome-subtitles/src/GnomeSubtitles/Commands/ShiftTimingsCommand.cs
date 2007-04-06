@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,12 +29,12 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	private int frames;
 	private bool useTimes = true;
 
-	public ShiftTimingsCommand (TimeSpan time, SelectionType selectionType) : base(description, false, selectionType, true) {
+	public ShiftTimingsCommand (TimeSpan time, SelectionIntended selectionIntended) : base(description, false, selectionIntended, true) {
 		this.time = time;
 		useTimes = true;
 	}
 	
-	public ShiftTimingsCommand (int frames, SelectionType selectionType) : base(description, false, selectionType, true) {
+	public ShiftTimingsCommand (int frames, SelectionIntended selectionIntended) : base(description, false, selectionIntended, true) {
 		this.frames = frames;
 		useTimes = false;
 	}
@@ -42,44 +42,64 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	protected override bool ChangeValues () {
 		if (useTimes) {
 			if (ApplyToAll)
-				ShiftAllSubtitlesTime();
+				ShiftTimesAll();
+			else if (ApplyToSimple)
+				ShiftTimesSimple();
 			else
-				ShiftSubtitlesTime();	
+				ShiftTimesRange();
 		}
 		else {
 			if (ApplyToAll)
-				ShiftAllSubtitlesFrames();
+				ShiftFramesAll();
+			else if (ApplyToSimple)
+				ShiftFramesSimple();
 			else
-				ShiftSubtitlesFrames();
+				ShiftFramesRange();
 		}
 		return true;
 	}
 	
 	/* Private Members */
 
-	private void ShiftAllSubtitlesTime () {
+	private void ShiftTimesAll () {
 		Global.Document.Subtitles.ShiftTimings(time);
 		time = time.Negate();
 	}
 	
-	private void ShiftAllSubtitlesFrames () {
+	private void ShiftFramesAll () {
 		Global.Document.Subtitles.ShiftTimings(frames);
 		frames = -frames;
 	}
 	
-	private void ShiftSubtitlesTime () {
+	private void ShiftTimesSimple () {
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Global.Document.Subtitles[path];
 			subtitle.Times.Shift(time);
 		}
-		time = time.Negate();	
+		time = time.Negate();
 	}
 
-	private void ShiftSubtitlesFrames () {
+	private void ShiftFramesSimple () {
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Global.Document.Subtitles[path];
 			subtitle.Frames.Shift(frames);
 		}
+		frames = -frames;
+	}
+	
+	private void ShiftTimesRange () {
+		int firstSubtitle = Util.PathToInt(FirstPath);
+		int lastSubtitle = Util.PathToInt(LastPath);
+		
+		Global.Document.Subtitles.ShiftTimings(time, firstSubtitle, lastSubtitle);
+		time = time.Negate();
+	}
+	
+	private void ShiftFramesRange () {
+		int firstSubtitle = Util.PathToInt(FirstPath);
+		int lastSubtitle = Util.PathToInt(LastPath);
+		
+		Global.Document.Subtitles.ShiftTimings(frames, firstSubtitle, lastSubtitle);
 		frames = -frames;
 	}
 }
