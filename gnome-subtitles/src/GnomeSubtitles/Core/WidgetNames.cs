@@ -31,6 +31,7 @@ public class WidgetNames {
 	public const string FileSave = "fileSave";
 	public const string FileSaveAs = "fileSaveAs";
 	public const string FileHeaders = "fileHeaders";
+	public const string FileProperties = "fileProperties";
 	
 	/* Edit Menu */
 	public const string EditUndo = "editUndo";
