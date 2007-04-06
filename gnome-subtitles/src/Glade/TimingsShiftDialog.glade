@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Thu Apr  5 19:26:09 2007 by noup@nouplab
+<!--Generated with glade3 3.0.3 on Fri Apr  6 01:47:18 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -80,7 +80,7 @@
                       <widget class="GtkRadioButton" id="allSubtitlesRadioButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">All Subtitles</property>
+                        <property name="label" translatable="yes">All subtitles</property>
                         <property name="use_underline">True</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
@@ -94,7 +94,7 @@
                       <widget class="GtkRadioButton" id="selectedSubtitlesRadioButton">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">Selected Subtitles</property>
+                        <property name="label" translatable="yes">Selected subtitles</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                         <property name="group">allSubtitlesRadioButton</property>
@@ -103,6 +103,36 @@
                         <property name="expand">False</property>
                         <property name="fill">False</property>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkRadioButton" id="selectedSubtitleToFirstRadioButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="label" translatable="yes">Selected subtitle to first</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">allSubtitlesRadioButton</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkRadioButton" id="selectedSubtitleToLastRadioButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="label" translatable="yes">Selected subtitle to last</property>
+                        <property name="use_underline">True</property>
+                        <property name="draw_indicator">True</property>
+                        <property name="group">allSubtitlesRadioButton</property>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">3</property>
                       </packing>
                     </child>
                   </widget>
