@@ -26,7 +26,7 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	private static string description = "Deleting Subtitles";
 	private Subtitle[] subtitles = null;
 	
-	public DeleteSubtitlesCommand () : base(description, false, SelectionType.Simple) {
+	public DeleteSubtitlesCommand () : base(description, false, SelectionIntended.Simple) {
 		StoreSubtitles();
 	}
 

@@ -28,9 +28,9 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 	/// <summary>Creates a new instance of the <see cref="MultipleFixedSelectionCommand" /> class.</summary>
 	/// <param name="description">The description of the command.</param>
 	/// <param name="canGroup">Whether to group the command with similar commands.</param>
-	/// <param name="applyToAll">Whether the command should be executed for all subtitles. See the <see cref="ApplyToAll" /> property.</param>
+	/// <param name="selectionIntended">The intended selection.</param>
 	/// <param name="reselect">Whether to reselect the command when executing. Note that this doesn't apply to Undo nor to Redo.</param>
-	public FixedMultipleSelectionCommand (string description, bool canGroup, SelectionType selectionType, bool reselect) : base(description, canGroup, selectionType) {
+	public FixedMultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, bool reselect) : base(description, canGroup, selectionIntended) {
 		this.reselect = reselect;		
 	}
 	

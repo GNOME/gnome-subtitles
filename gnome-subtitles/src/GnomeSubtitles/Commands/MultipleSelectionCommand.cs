@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,29 +27,37 @@ public abstract class MultipleSelectionCommand : Command {
 	private SelectionType selectionType;
 	
 	
-	public MultipleSelectionCommand (string description, bool canGroup, SelectionType selectionType) : this(description, canGroup, selectionType, true) {
+	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended) : this(description, canGroup, selectionIntended, true) {
 	}
 	
 	/// <summary>Base constructor for classes that inherit <see cref="MultipleSelectionCommand" />.</summary>
 	/// <param name="description">The description of the command.</param>
 	/// <param name="canGroup">Whether to group the command with similar commands.</param>
-	/// <param name="type">The type of selection.</param>
+	/// <param name="selectionIntended">The intended selection.</param>
 	/// <param name="setPaths">Whether to set the paths based on the current selection and the selectionType</param>
-	public MultipleSelectionCommand (string description, bool canGroup, SelectionType selectionType, bool setPaths) : base(description, canGroup) {
-		this.selectionType = selectionType;
-		
+	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, bool setPaths) : base(description, canGroup) {
 		if (setPaths) {
-			switch (selectionType) {
-				case SelectionType.Simple:
+			switch (selectionIntended) {
+				case SelectionIntended.Simple:
 					this.paths = Global.GUI.View.Selection.Paths;
 					this.focus = Global.GUI.View.Selection.Focus;
 					break;
-				case SelectionType.Range:
+				case SelectionIntended.Range:
 					this.paths = Global.GUI.View.Selection.Range;
+					this.focus = Global.GUI.View.Selection.Focus;
+					break;
+				case SelectionIntended.SimpleToFirst:
+					this.paths = Global.GUI.View.Selection.PathsToFirst;
+					this.focus = Global.GUI.View.Selection.Focus;
+					break;
+				case SelectionIntended.SimpleToLast:
+					this.paths = Global.GUI.View.Selection.PathsToLast;
 					this.focus = Global.GUI.View.Selection.Focus;
 					break;
 			}
 		}
+
+		this.selectionType = GetSelectionType(selectionIntended);
 	}
 	
 	/* Protected properties */
@@ -57,6 +65,14 @@ public abstract class MultipleSelectionCommand : Command {
 	protected TreePath[] Paths {
 		get { return paths; }
 		set { paths = value; }
+	}
+	
+	protected TreePath FirstPath {
+		get { return paths[0]; }
+	}
+	
+	protected TreePath LastPath {
+		get { return paths[paths.Length - 1]; }
 	}
 	
 	protected TreePath Focus {
@@ -83,6 +99,24 @@ public abstract class MultipleSelectionCommand : Command {
 		get { return selectionType == SelectionType.Simple; }
 	}
 	
+	/* Private methods */
+	
+	private SelectionType GetSelectionType (SelectionIntended selectionIntended) {
+		switch (selectionIntended) {
+			case SelectionIntended.All:
+				return SelectionType.All;
+			case SelectionIntended.Simple:
+				return SelectionType.Simple;
+			case SelectionIntended.SimpleToFirst:
+				return SelectionType.Range;
+			case SelectionIntended.SimpleToLast:
+				return SelectionType.Range;
+			case SelectionIntended.Range:
+				return SelectionType.Range;
+			default:
+				return SelectionType.Simple;
+		}	
+	}
 
 }
 

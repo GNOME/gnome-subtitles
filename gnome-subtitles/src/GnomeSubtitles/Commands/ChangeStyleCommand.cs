@@ -25,7 +25,7 @@ namespace GnomeSubtitles {
 public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	private bool styleValue;
 
-	public ChangeStyleCommand (string description, bool newStyleValue) : base(description, false, SelectionType.Simple, true) {
+	public ChangeStyleCommand (string description, bool newStyleValue) : base(description, false, SelectionIntended.Simple, true) {
 		this.styleValue = newStyleValue;
 	}
 	

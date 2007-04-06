@@ -33,7 +33,7 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 	private Regex regex = null;
 	private string replacement = String.Empty;
 
-	public ReplaceAllCommand (Regex regex, string replacement) : base(description, false, SelectionType.Simple, false) {
+	public ReplaceAllCommand (Regex regex, string replacement) : base(description, false, SelectionIntended.Simple, false) {
 		this.regex = regex;
 		this.replacement = replacement;
 	}

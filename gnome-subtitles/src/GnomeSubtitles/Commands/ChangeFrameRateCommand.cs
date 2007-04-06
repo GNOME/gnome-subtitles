@@ -22,7 +22,7 @@ namespace GnomeSubtitles {
 public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 	private float storedFrameRate = 0;
 
-	public ChangeFrameRateCommand (string description, float frameRate) : base(description, false, SelectionType.All, true) {
+	public ChangeFrameRateCommand (string description, float frameRate) : base(description, false, SelectionIntended.All, true) {
 		this.storedFrameRate = frameRate;
 	}
 
