@@ -81,6 +81,8 @@ public class Util {
 	
 	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode, bool canNegate) {
 		if (timingMode == TimingMode.Frames) {
+			spinButton.Input -= OnTimeInput;
+			spinButton.Output -= OnTimeOutput;
 			spinButton.Adjustment.StepIncrement = 1;
     		spinButton.Adjustment.Upper = 3000000;
     		if (canNegate)
