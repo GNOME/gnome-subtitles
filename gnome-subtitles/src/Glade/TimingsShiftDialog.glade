@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Fri Apr  6 01:47:18 2007 by noup@nouplab
+<!--Generated with glade3 3.0.3 on Sat Apr  7 03:21:44 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -34,14 +34,38 @@
                 <property name="xscale">0.80000001192092896</property>
                 <property name="left_padding">10</property>
                 <child>
-                  <widget class="GtkSpinButton" id="spinButton">
+                  <widget class="GtkHBox" id="alignmentHBox">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="has_focus">True</property>
-                    <property name="is_focus">True</property>
-                    <property name="adjustment">0 -100 100 1 10 10</property>
-                    <property name="climb_rate">1</property>
-                    <property name="numeric">True</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <widget class="GtkSpinButton" id="spinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="has_focus">True</property>
+                        <property name="is_focus">True</property>
+                        <property name="adjustment">0 -100 100 1 10 10</property>
+                        <property name="climb_rate">1</property>
+                        <property name="numeric">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkButton" id="clearButton">
+                        <property name="visible">True</property>
+                        <signal name="clicked" handler="OnClear"/>
+                        <child>
+                          <widget class="GtkImage" id="clearButtonImage">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-clear</property>
+                            <property name="icon_size">1</property>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </widget>
                 </child>
               </widget>
