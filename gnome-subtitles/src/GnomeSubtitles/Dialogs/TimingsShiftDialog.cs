@@ -24,9 +24,8 @@ using SubLib;
 
 namespace GnomeSubtitles {
 
-
 public class TimingsShiftDialog : GladeDialog {
-	private TimingMode timingMode;
+	private TimingMode timingMode = TimingMode.Frames;
 
 	/* Constant strings */
 	private const string gladeFilename = "TimingsShiftDialog.glade";
@@ -37,26 +36,80 @@ public class TimingsShiftDialog : GladeDialog {
 	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;
 	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
 	[WidgetAttribute] private RadioButton selectedSubtitleToFirstRadioButton;
+	[WidgetAttribute] private RadioButton selectedSubtitleToLastRadioButton;
 
 	public TimingsShiftDialog () : base(gladeFilename, true, true){
-		timingMode = Global.Document.TimingMode;
-		SetSpinButton();
-		UpdateForTimingMode(timingMode);
+		InitSpinButton();
+		UpdateContents();
+	}
+	
+	/* Protected methods */
+	
+	public override void Show () {
+		UpdateContents();
+		base.Show();		
 	}
 	
 	/* Private methods */
 	
-	private void SetSpinButton () {
+	private void UpdateContents () {
+		UpdateFromTimingMode(Global.Document.TimingMode);
+		UpdateFromSelection();
+		UpdateSpinButtonValue();
+	}
+	
+	private void InitSpinButton () {
 		spinButton.WidthRequest = Util.SpinButtonTimeWidth(spinButton);
 		spinButton.Alignment = 0.5f;
 	}
 
-	private void UpdateForTimingMode (TimingMode timingMode) {
+	private void UpdateFromTimingMode (TimingMode newTimingMode) {
+		if (newTimingMode == timingMode)
+			return;
+			
+		timingMode = newTimingMode;	
 		Util.SetSpinButtonTimingMode(spinButton, timingMode, true);
-		if (timingMode == TimingMode.Times) {
-			timingModeLabel.Markup = "<b>Time</b>";
-			spinButton.Value = 0;
+		
+		string label = (timingMode == TimingMode.Times ? "Time" : "Frames");
+		string markup = "<b>" + label + "</b>";
+		timingModeLabel.Markup = markup;
+	}
+	
+	private void UpdateFromSelection () {
+		bool sensitive = (Global.GUI.View.Selection.Count == 1);
+		selectedSubtitleToFirstRadioButton.Sensitive = sensitive;
+		selectedSubtitleToLastRadioButton.Sensitive = sensitive;
+		
+		if ((!sensitive) && (!allSubtitlesRadioButton.Active) && (!selectedSubtitlesRadioButton.Active))
+			selectedSubtitlesRadioButton.Active = true;
+	}
+	
+	private void UpdateSpinButtonValue () {
+		if (!Global.GUI.Video.IsLoaded) {
+			SetSpinButtonValue(0);
+			return;
 		}
+		
+		TreePath path = Global.GUI.View.Selection.FirstPath;
+		Subtitle subtitle = Global.Document.Subtitles[path];
+
+		double subtitlePosition = 0;
+		double videoPosition = 0;
+		if (Global.Document.TimingModeIsTimes) {
+			subtitlePosition = subtitle.Times.Start.TotalMilliseconds;
+			videoPosition = Global.GUI.Video.Position.CurrentTime * 1000; //Times 1000 for milliseconds
+		}
+		else {
+			subtitlePosition = subtitle.Frames.Start;
+			videoPosition = Global.GUI.Video.Position.CurrentFrames;
+		}
+
+		double difference = videoPosition - subtitlePosition;
+		SetSpinButtonValue(difference);
+	}
+	
+	private void SetSpinButtonValue (double newValue) {
+		spinButton.Value = newValue;
 	}
 	
 	private SelectionIntended GetSelectionIntended () {
@@ -71,6 +124,10 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
+	
+	private void OnClear (object o, EventArgs args) {
+		SetSpinButtonValue(0);
+	}
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
