@@ -195,7 +195,6 @@ public class EventHandlers {
 	
 	public void OnVideoClose (object o, EventArgs args) {
 		Global.GUI.Video.Close();
-		Global.GUI.Menus.SetVideoSensitivity(false);
 	}
 
 	public void OnVideoPlayPause (object o, EventArgs args) {
@@ -270,6 +269,7 @@ public class EventHandlers {
 
     
     /* CommandManager related */
+    //TODO move part of this to Menus?
     
     public void OnUndoToggled (object o, EventArgs args) {
     	Widget button = Global.GetWidget(WidgetNames.UndoButton);

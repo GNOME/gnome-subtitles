@@ -26,6 +26,9 @@ namespace GnomeSubtitles {
 
 public class Menus {
 
+	/* Constant strings */
+	private const string videoTagText = "Video";
+
 	/* Public methods */
 
 	public Menus () {
@@ -112,6 +115,32 @@ public class Menus {
 			SetVideoSelectionDependentSensitivity(true);
 		else
 			SetVideoSelectionDependentSensitivity(false);
+	}
+	
+	public void AddFrameRateVideoTag (float frameRate) {
+		if (frameRate <= 0)
+			return;
+	
+		string menuItemName = FrameRateToMenuItem(frameRate, "Video");
+		string menuItemText = GetMenuItemText(menuItemName);
+		
+		menuItemText += " (" + videoTagText + ")";
+		SetMenuItemText(menuItemName, menuItemText);	
+	}
+	
+	public void RemoveFrameRateVideoTag (float frameRate) {
+		if (frameRate <= 0)
+			return;
+
+		string menuItemName = FrameRateToMenuItem(frameRate, "Video");
+		string menuItemText = GetMenuItemText(menuItemName);
+		
+		int lastSpaceIndex = menuItemText.LastIndexOf(' ');
+		if (lastSpaceIndex < 0)
+			return;
+		
+		string frameRateText = menuItemText.Substring(0, lastSpaceIndex);
+		SetMenuItemText(menuItemName, frameRateText);
 	}
 	
 	/* Static members */
@@ -356,6 +385,18 @@ public class Menus {
 			rate = 23;
 		
 		return "timings" + type + "FrameRate" + rate;
+	}
+	
+	private string GetMenuItemText (string menuItemName) {
+		MenuItem menuItem = Global.GetWidget(menuItemName) as MenuItem;
+		Label label = menuItem.Child as Label;
+		return label.Text;
+	}
+	
+	private void SetMenuItemText (string menuItemName, string text) {
+		MenuItem menuItem = Global.GetWidget(menuItemName) as MenuItem;
+		Label label = menuItem.Child as Label;
+		label.Text = text;	
 	}
 	
 	private void SetToolbarHomogeneity () {

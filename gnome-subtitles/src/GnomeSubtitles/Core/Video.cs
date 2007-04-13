@@ -105,11 +105,15 @@ public class Video {
 		position.Enable();
 		frame.Ratio = player.AspectRatio;
 		
+		Global.GUI.Menus.AddFrameRateVideoTag(player.FrameRate);
+		
 		isLoaded = true;
 	}
 	
 	public void Close () {
 		isLoaded = false;
+
+		float oldFrameRate = player.FrameRate; //Need to store this before closing the player
 	
 		player.Close();
 		subtitle.Close();
@@ -125,6 +129,9 @@ public class Video {
 		button.Active = false;
 		
 		SetControlsSensitivity(false);
+
+		Global.GUI.Menus.SetVideoSensitivity(false);
+		Global.GUI.Menus.RemoveFrameRateVideoTag(oldFrameRate);
 	}
 
 	public void UpdateFromTimingMode (TimingMode newMode) {
