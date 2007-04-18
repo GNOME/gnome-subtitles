@@ -6,16 +6,12 @@ http://gnome-subtitles.sf.net
 Easy
 ====
 
+* Autosave as .bak every # minutes
 * Change the SetSubtitleStart and SetSubtitleEnd commands to allow multiple selection
-* Improve the Adjust dialog (or perhaps add a new Auto Adjust dialog)
+* Improve the Adjust dialog (and perhaps add a new Auto Adjust dialog)
 * Add support to copy subtitles from the View to the clipboard (currently only copies text from the editing area)
-* Improve autogen.sh and configure.in (require automake 1.9)
-* Autoselect "Apply to selection" if there are subtitles selected when shift/etc dialogs are shown
-* Check the bug report window. It should also point to the forums, in case no registration is intended.
 * ChangeTextCommand should store the position of the cursor
 * Change dialogs in what concerns the selection type (e.g., Ranges)
-* Change dialogs to be centered on the parent window
-  * Include changing the .glade file Visible to False and using ShowDialog in the constructor
 * Try to use Mime Types instead of patterns in the File Open dialogs
 * Choose Open instead of New, by default, in the toolbar
 * Set the folder on VideoOpenDialog according to the path of the open video
@@ -64,6 +60,7 @@ Fixed
 * Changing the TimingMode doesn't update spin buttons (after saving a new subtitle)
 * Don't show any error when opening a blank file
 * Use BugBuddy, reverting to the old bug reporter when BugBuddy cannot be found.
+* Set a tag with the Video frame rate in the VideoFrameRate menu
 
 Bugs:
 417310 - Error shown when opening a blank file
