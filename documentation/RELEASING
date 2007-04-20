@@ -8,9 +8,9 @@ RELEASE PROCEDURE
 
 	1.  Revise base project files
 	2.  Set shell variables
-	3.  Commit changes and tag
-	4.  Copy SubLib
-	5.  Create source package
+	3.  Copy SubLib
+	4.  Create source package
+	5.  Commit changes and tag
 	6.  Create screenshots
 	7.  Release sources
 	8.  Update websites
@@ -36,24 +36,14 @@ RELEASE PROCEDURE
 	- GS_VERSION="0.X"
 
 
-3. Commit changes and tag
-=========================
-
-	- Commit changes for the release
-	- Tag the release with (replace VERSION):
-		svn copy https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/trunk/gnome-subtitles https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/tags/gnome-subtitles-$GS_VERSION -m "Tagging the $GS_VERSION release."
-	- Check new version in:
-		http://svn.sourceforge.net/viewvc/gnome-subtitles/tags/
-
-
-4. Copy SubLib
+3. Copy SubLib
 ==============
 
 	- Extract the latest SubLib sources to the project dir
 	- Delete all files inside sublib/docs
 
 
-5. Create source package
+4. Create source package
 ========================
 
 	- Autogen autotools files with:
@@ -62,6 +52,16 @@ RELEASE PROCEDURE
 		make dist
 	- Test package with:
 		tar xzf gnome-subtitles-$GS_VERSION.tar.gz && cd gnome-subtitles-$GS_VERSION && ./configure && make
+
+
+5. Commit changes and tag
+=========================
+
+	- Commit changes for the release
+	- Tag the release with:
+		svn copy https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/trunk/gnome-subtitles https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/tags/gnome-subtitles-$GS_VERSION -m "Tagging the $GS_VERSION release."
+	- Check new version in:
+		http://svn.sourceforge.net/viewvc/gnome-subtitles/tags/
 
 
 6. Create Screenshots
@@ -113,8 +113,6 @@ RELEASE PROCEDURE
 	- Send Email Release Notice in the File Release System
 	- Send mail to the Gnome Announce mailing list
 	- Send mail to the Gnome Subtitles mailing list
-	- Send mail to the Mono Announce mailing list
-	- Update threads in distro's forums
 
 10. Packages
 ============
