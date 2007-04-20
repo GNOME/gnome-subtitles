@@ -6,7 +6,9 @@ http://gnome-subtitles.sf.net
 Easy
 ====
 
-* Autosave as .bak every # minutes
+* Add Ln and Col information to the status bar
+	- Have 3 status bars, like in gedit
+* Increase video playback precision
 * Change the SetSubtitleStart and SetSubtitleEnd commands to allow multiple selection
 * Improve the Adjust dialog (and perhaps add a new Auto Adjust dialog)
 * Add support to copy subtitles from the View to the clipboard (currently only copies text from the editing area)
@@ -23,6 +25,7 @@ Easy
 Hard
 ====
 
+* Autosave as .bak every # minutes
 * Add support for subtitle translation
 * Add spell-check support
 * Add status bar messages
@@ -50,19 +53,3 @@ Dependent
 
 * Add GStreamer support (#363412 - depending on GST#)
   Includes refactoring the current mplayer support.
-
-Fixed
-=====
-* Put [WidgetAttribute] on the same line as widget declarations
-* Auto Select the Encoding being used when using SaveAs
-* Automatically open the video file when running Gnome Subtitles with a subtitle file as argument
-* Added Manpage
-* Changing the TimingMode doesn't update spin buttons (after saving a new subtitle)
-* Don't show any error when opening a blank file
-* Use BugBuddy, reverting to the old bug reporter when BugBuddy cannot be found.
-* Set a tag with the Video frame rate in the VideoFrameRate menu
-
-Bugs:
-417310 - Error shown when opening a blank file
-417303 - Can't load srt subtitles - detected encoding is not supported
-417869 - MPlayer fails for each second file

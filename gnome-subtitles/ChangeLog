@@ -1,3 +1,384 @@
+2007-04-20 [r670]  noup:
+
+	* gnome-subtitles/src/Glade/FilePropertiesDialog.glade: Unset the
+	  Expand property on some labels, for resizing to work properly.
+
+2007-04-19 [r668-669]  noup:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Added mneumonics for
+	  the timings Shift and Adjust menu items.
+
+	* gnome-subtitles/src/Glade/TimingsShiftDialog.glade: Activate the
+	  default widget (Shift button) when pressing Return in the entry
+	  widget.
+
+2007-04-19 [r667]  noup:
+
+	* gnome-subtitles/data/gnome-subtitles.1: Updated with some changes
+	  from Tiago Borboletto Vaz.
+
+2007-04-18 [r664-666]  noup:
+
+	* gnome-subtitles/src/Makefile.am: Fixed minor warning related to
+	  spaces after backslash.
+
+	* gnome-subtitles/configure.in: Require Automake and Autoconf
+	  versions.
+
+	* gnome-subtitles/TODO: Removed solved tasks.
+
+2007-04-13 [r663]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Add a
+	  "Video" tag to the Video FrameRate MenuItem that corresponds to
+	  the frame rate of the opened video. Remove it when the video is
+	  closed.
+
+2007-04-09 [r659-662]  noup:
+
+	* gnome-subtitles/TODO: Updated with latest changes.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:
+	  Now updates the spin button value according to the video
+	  position, if the video is loaded. Added possibility to apply the
+	  Shift to the current subtitle to the last and first. Added a
+	  button to clear the spin button value.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Util.cs: Remove the
+	  OnInput and OnOutput handlers when setting the Frames mode on a
+	  Spin Button. This works even if the handlers haven't even been
+	  connected before, but insures they don't remain if they have.
+
+	* gnome-subtitles/src/Glade/TimingsShiftDialog.glade: Added
+	  possibility to apply the Shift to the current subtitle to the
+	  last and first. Added a button to clear the spin button value.
+
+2007-04-07 [r658]  noup:
+
+	* gnome-subtitles/nant.build (removed), gnome-subtitles/TODO,
+	  gnome-subtitles/build.properties (removed): Deleted the NAnt
+	  build files.
+
+2007-04-06 [r657]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Global.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Search.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs,
+	  gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/PreferencesDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Dialogs.cs (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/EncodingsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: New Dialogs class
+	  to store persistent dialogs. Refactored the GladeDialog class to
+	  have simpler method names. Showing a dialog is now done after
+	  constructing it, outside, not in the constructor. The
+	  ShiftTimingsDialog is now persistent, besides the Search dialog.
+
+2007-04-06 [r648-656]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
+	  File Properties dialog.
+
+	* gnome-subtitles/src/Makefile.am: Added File Properties dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs
+	  (added): Added File Properties dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Added File
+	  Properties dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
+	  File Properties dialog.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Encodings.cs: Added
+	  method to obtain the name of an encoding, given its code page.
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Added File Properties
+	  dialog. Set the Translatable flag on some menu items that were
+	  missing it.
+
+	* gnome-subtitles/src/Glade/FilePropertiesDialog.glade (added):
+	  Added File Properties dialog.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Added File Properties
+	  dialog.
+
+2007-04-06 [r641-647]  noup:
+
+	* gnome-subtitles/src/Glade/TimingsShiftDialog.glade: Allow to
+	  apply the command from the current selection to the first or last
+	  subtitle. SelectionIntended is now use to represent the intended
+	  selection, because the wanted selection may not yet be selected
+	  when the command is created (and should be created by the
+	  command).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs:
+	  SelectionIntended is now use to represent the intended selection,
+	  because the wanted selection may not yet be selected when the
+	  command is created (and should be created by the command).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:
+	  Allow to apply the command from the current selection to the
+	  first or last subtitle. SelectionIntended is now use to represent
+	  the intended selection, because the wanted selection may not yet
+	  be selected when the command is created (and should be created by
+	  the command).
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleSelection.cs:
+	  Added methods to select the last subtitle, and get a selection
+	  range starting with the current selection and ending with the
+	  first or last paths.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs:
+	  Allow to apply the command from the current selection to the
+	  first or last subtitle. SelectionIntended is now use to represent
+	  the intended selection, because the wanted selection may not yet
+	  be selected when the command is created (and should be created by
+	  the command).
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/FixedMultipleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/MultipleSelectionCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ReplaceAllCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:
+	  SelectionIntended is now use to represent the intended selection,
+	  because the wanted selection may not yet be selected when the
+	  command is created (and should be created by the command).
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SelectionIntended.cs
+	  (added): Added class to represent the intended selection.
+
+2007-04-05 [r640]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/src/Glade/ReportBugWindow.glade,
+	  gnome-subtitles/src/Glade/FileSaveAsDialog.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
+	  gnome-subtitles/src/Glade/TimingsAdjustDialog.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/Glade/VideoOpenDialog.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/Glade/FileOpenDialog.glade,
+	  gnome-subtitles/src/Glade/PreferencesDialog.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/PreferencesDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/Glade/TimingsShiftDialog.glade,
+	  gnome-subtitles/src/Glade/EncodingsDialog.glade,
+	  gnome-subtitles/src/Glade/AboutDialog.glade,
+	  gnome-subtitles/src/Glade/HeadersDialog.glade,
+	  gnome-subtitles/src/Glade/FileOpenErrorDialog.glade,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/EncodingsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs: Set
+	  dialogs (and windows) as invisible by default. Make them visible
+	  in the last step of constructing the dialog. This assures that
+	  dialogs are properly constructed when shown to the user. It also
+	  ensures that they are properly centered.
+
+2007-04-05 [r633-639]  noup:
+
+	* gnome-subtitles/data/gnome-subtitles.desktop (removed): Added
+	  Bugzilla properties to the gnome-subtitles.desktop.in file. The
+	  file gnome-subtitles.desktop was renamed to
+	  gnome-subtitles.desktop.in to expand the VERSION information.
+
+	* gnome-subtitles/TODO: Updated with latest changes.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Config.cs: Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Global.cs: Completed the
+	  support for Bug Buddy. The old bug reporter is still used if
+	  BugBuddy cannot be found.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/BugReporter.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs:
+	  Completed the support for Bug Buddy. The old bug reporter is
+	  still used if BugBuddy cannot be found.
+
+	* gnome-subtitles/configure.in,
+	  gnome-subtitles/data/gnome-subtitles.desktop.in (added): Added
+	  Bugzilla properties to the gnome-subtitles.desktop.in file. The
+	  file gnome-subtitles.desktop was renamed to
+	  gnome-subtitles.desktop.in to expand the VERSION information.
+
+2007-04-05 [r632]  noup:
+
+	* gnome-subtitles/TODO: Updated with latest changes.
+
+2007-04-04 [r631]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/BugReporter.cs:
+	  Improved support for BugBuddy.
+
+2007-04-03 [r630]  noup:
+
+	* gnome-subtitles/TODO: Updated with more recent information.
+
+2007-04-03 [r607-629]  noup:
+
+	* gnome-subtitles/CREDITS: Updated contact information.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs:
+	  Added the detection of the GConf-sharp version. Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs:
+	  Updated copyright information.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/BugReporter.cs
+	  (added): New class to handle the use of BugBuddy. It will also
+	  contain common Bug-Related functionality.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs:
+	  Updated to reflect the use of the Document class. Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/PreferencesDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:
+	  Updated to reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs:
+	  Code cleanup. Don't output the exception to the console (it will
+	  be done previously in Global).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:
+	  Updated to reflect the use of the Document class. Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:
+	  Code cleanup. The Encodings combo box is now filled by the base
+	  constructor. Specific methods are defined to enable specific
+	  parts of encodings selection, like prepending some options or
+	  adding fixed encodings. updated to reflect the addition of the
+	  Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:
+	  Code cleanup. The Encodings combo box is now filled by the base
+	  constructor. Specific methods are defined to enable specific
+	  parts of encodings selection, like prepending some options or
+	  adding fixed encodings. updated to reflect the addition of the
+	  Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
+	  Code cleanup. The Encodings combo box is now filled by the base
+	  constructor. Specific methods are defined to enable specific
+	  parts of encodings selection, like prepending some options or
+	  adding fixed encodings. Move the detection of a matching video to
+	  VideoFiles.
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ReplaceAllCommand.cs:
+	  Updated to reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoSubtitle.cs: Updated
+	  to reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs: Updated
+	  to reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoFiles.cs (added):
+	  Class that contains common functionality related to video files
+	  (their extensions, how to find matching files, etc).
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs: Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs: Updated
+	  to reflect the use of the Document class. Code cleanup.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleSelection.cs:
+	  Updated to reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs: Updated
+	  to reflect the use of the Document class. TimingMode is now
+	  stored to make sure that handlers aren't connected more than
+	  once.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: Updated to
+	  reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Updated to
+	  reflect the use of the Document class. TimingMode is now set here
+	  directly (as if it was a user selection).
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Open a matching
+	  video when running GS with a filename as argument (if the option
+	  is set in the preferences) Updated to reflect the use of the new
+	  Document class, which contains all the functionality for creating
+	  Documents/Subtitles. Methods that propagate events throughout the
+	  GUI now have the UpdateFrom prefix. Code cleanup. TimingModes are
+	  now set in the Menus directly.
+
+2007-04-03 [r604-606]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Global.cs: Updated to
+	  reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Updated
+	  to reflect the use of the Document class.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Document.cs (added):
+	  Class that contains all information related to a document,
+	  including its Subtitles, TimingMode and FileProperties. This
+	  works with the latest SubLib changes, which now don't maintain a
+	  file's state along with subtitle properties. Saving subtitles is
+	  also different now, as well as creating new and opening
+	  subtitles. The preferred way to set the timing mode is now
+	  through the Menus. On the other hand, the menus use
+	  Document.TimingMode to set the timing mode and propagate it
+	  throughout the rest of the GUI.
+
+2007-04-03 [r599-603]  noup:
+
+	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTextCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:
+	  Updated to reflect the use of the Document class.
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/gnome-subtitles.mds: Updated with new file
+	  structure.
+
+	* gnome-subtitles/etc/samples/CC Mayer and Bettle Animation.srt
+	  (added): Added sample file to use in the examples (and
+	  screenshots).
+
+	* gnome-subtitles/data/Makefile.am: Added the MAN page.
+
+	* gnome-subtitles/data/gnome-subtitles.1 (added): Added the MAN
+	  page.
+
+2007-03-27 [r595]  noup:
+
+	* gnome-subtitles/ChangeLog: Updated for release 0.3.
+
 2007-03-27 [r592-593]  noup:
 
 	* gnome-subtitles/NEWS, gnome-subtitles/CREDITS,

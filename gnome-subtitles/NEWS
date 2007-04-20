@@ -1,6 +1,47 @@
 Gnome Subtitles
 ===============
 
+
+0.4 (20/04/2007)
+================
+
+- Automatically select the file's character coding in the SaveAs dialog
+- Automatically open a video file when running Gnome Subtitles with a subtitle
+  file as argument
+- Improved Timings Shift dialog:
+  * New selection options, allowing to apply the shift to all subtitles, the
+    selected subtitles, and the selected subtitle to the first or last subtitles
+  * Automatically update the shift value according to the video position,
+    allowing to shift a set of subtitles to start at that position
+  * Added a button to clear the shift value
+- New File Properties dialog, showing the file name, path, character coding,
+  subtitle format and timing mode
+- Add a "Video" tag to the frame rate of the video, in the Video Framerate
+  menu, when opening a video file
+- Allow to open a blank subtitle file (showing no errors)
+- Use Bug Buddy, the official GNOME bug reporting tool, reverting to the old bug
+  reporter if Bug Buddy isn't available
+- Added a Man page
+- Fixed some bugs related to the GUI not being correctly updated when changing
+  the timing mode
+- Internal refactoring:
+  * Updated to reflect changes in SubLib
+  * Better handle documents and their properties
+  * Better support changing the timing mode, which fixes some existing bugs
+  * Single place for common video-related functionality
+  * Ensure dialogs are properly shown, by setting them visible as the last step
+    in their creation
+
+Bug fixes:
+- Error shown when opening a blank file (#417310)
+- Can't load srt subtitles - detected encoding is not supported (#417303)
+- MPlayer fails for each second file (#417869)
+
+Thanks:
+- Marcin Simonides, Marcin Zajaczkowski, Marco Lackovic, Phalanx747,
+  Tiago Bortoletto Vaz
+
+
 0.3 (27/03/2007)
 ================
 
