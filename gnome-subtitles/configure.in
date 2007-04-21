@@ -1,11 +1,22 @@
 AC_PREREQ(2.58)
-AC_INIT([gnome-subtitles], [0.4])
-AC_CANONICAL_SYSTEM
+AC_INIT(gnome-subtitles, 0.4, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
+
 AM_INIT_AUTOMAKE(1.9)
 AM_MAINTAINER_MODE
 
+IT_PROG_INTLTOOL([0.35.0])
+
 AC_PROG_INSTALL
 AC_PREFIX_PROGRAM(mono)
+
+
+dnl Gettext stuff.
+
+GETTEXT_PACKAGE=gnome-subtitles
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
+
+AM_GLIB_GNU_GETTEXT
 
 dnl pkg-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
@@ -84,4 +95,5 @@ data/gnome-subtitles.desktop
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
-])
+po/Makefile.in])
+
