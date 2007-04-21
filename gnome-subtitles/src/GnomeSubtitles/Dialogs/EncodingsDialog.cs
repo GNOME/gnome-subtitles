@@ -83,11 +83,11 @@ public class EncodingsDialog : GladeDialog {
 	}
 	
 	private void SetColumns (TreeView tree) {
-		TreeViewColumn descriptionColumn = new TreeViewColumn("Description", new CellRendererText(), "text", descColumnNum);
+		TreeViewColumn descriptionColumn = new TreeViewColumn(Cat.Get("Description"), new CellRendererText(), "text", descColumnNum);
 		descriptionColumn.SortColumnId = descColumnNum;
 		tree.AppendColumn(descriptionColumn);
 		
-		TreeViewColumn nameColumn = new TreeViewColumn("Encoding", new CellRendererText(), "text", nameColumnNum);
+		TreeViewColumn nameColumn = new TreeViewColumn(Cat.Get("Encoding"), new CellRendererText(), "text", nameColumnNum);
 		nameColumn.SortColumnId = nameColumnNum;
 		tree.AppendColumn(nameColumn);
 	}

@@ -72,7 +72,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	/* Protected members */
 	
 	protected override void AddInitialEncodingComboBoxItems (ComboBox comboBox) {
-		comboBox.AppendText("Auto Detected");
+		comboBox.AppendText(Cat.Get("Auto Detected"));
 		comboBox.AppendText("-");
 	}
 	
@@ -106,7 +106,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		}
 		
 		videoComboBox.PrependText("-");
-		videoComboBox.PrependText("None");
+		videoComboBox.PrependText(Cat.Get("None"));
 		videoComboBox.Active = 0;
 	}
 	
@@ -162,14 +162,14 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		
 		/* First filter corresponds to all files */
 		FileFilter allFilesFilter = new FileFilter();
-		allFilesFilter.Name = "All Files";
+		allFilesFilter.Name = Cat.Get("All Files");
 		allFilesFilter.AddPattern("*");
 		filters[filterPosition] = allFilesFilter;
 		filterPosition++;
 		
 		/* Second filter corresponds to all subtitle files */
 		FileFilter subtitleFilesFilter = new FileFilter();
-		subtitleFilesFilter.Name = "All Subtitle Files";
+		subtitleFilesFilter.Name = Cat.Get("All Subtitle Files");
 		subtitleFilesFilter.AddPattern("*.txt");
 		filters[filterPosition] = subtitleFilesFilter;
 		filterPosition++;

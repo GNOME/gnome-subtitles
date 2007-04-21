@@ -62,11 +62,11 @@ public class SearchDialog : GladeDialog {
 	public bool ShowReplace {
 		set {
 			if (value == true) {
-				dialog.Title = "Replace";
+				dialog.Title = Cat.Get("Replace");
 				table.RowSpacing = 12;
 			}
 			else {
-				dialog.Title = "Find";
+				dialog.Title = Cat.Get("Find");
 				table.RowSpacing = 0;
 			}
 		

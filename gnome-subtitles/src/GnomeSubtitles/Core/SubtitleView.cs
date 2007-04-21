@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -207,15 +207,15 @@ public class SubtitleView {
     }
 	
     private void CreateColumns() {
-    	numberCol = CreateColumn("No.", ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
+    	numberCol = CreateColumn(Cat.Get("No."), ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
     		
     	int timeWidth = ColumnWidth("00:00:00.000");
-    	startCol = CreateColumn("From", timeWidth, new CellRendererText(), RenderStartCell);
-    	endCol = CreateColumn("To", timeWidth, new CellRendererText(), RenderEndCell);
-    	durationCol = CreateColumn("During", timeWidth, new CellRendererText(), RenderDurationCell);
+    	startCol = CreateColumn(Cat.Get("From"), timeWidth, new CellRendererText(), RenderStartCell);
+    	endCol = CreateColumn(Cat.Get("To"), timeWidth, new CellRendererText(), RenderEndCell);
+    	durationCol = CreateColumn(Cat.Get("During"), timeWidth, new CellRendererText(), RenderDurationCell);
     	
     	int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
-    	textCol = CreateColumn("Text", textWidth, new CellRendererCenteredText(), RenderTextCell);
+    	textCol = CreateColumn(Cat.Get("Text"), textWidth, new CellRendererCenteredText(), RenderTextCell);
     	    		
     	tree.AppendColumn(numberCol);
     	tree.AppendColumn(startCol);

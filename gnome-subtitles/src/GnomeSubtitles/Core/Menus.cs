@@ -27,7 +27,7 @@ namespace GnomeSubtitles {
 public class Menus {
 
 	/* Constant strings */
-	private const string videoTagText = "Video";
+	private string videoTagText = Cat.Get("Video");
 
 	/* Public methods */
 

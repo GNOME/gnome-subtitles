@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ public class CommandManager {
 	public string UndoDescription {
 		get {
 			if (CanUndo)
-				return "Undo " + PreviousCommand().Description;
+				return Cat.Get("Undo") + " " + PreviousCommand().Description;
 			else
 				return String.Empty;
 		}
@@ -75,7 +75,7 @@ public class CommandManager {
 	public string RedoDescription {
 		get {
 			if (CanRedo)
-				return "Redo " + NextCommand().Description;
+				return Cat.Get("Redo") + " " + NextCommand().Description;
 			else
 				return String.Empty;
 		}

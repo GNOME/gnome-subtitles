@@ -26,9 +26,9 @@ namespace GnomeSubtitles {
 
 public abstract class FileOpenErrorDialog : GladeDialog {
 	
-	/* Constant strings */
+	/* Strings */
 	private const string gladeFilename = "FileOpenErrorDialog.glade";
-	private const string actionLabel = "Open another file"; 
+	private string actionLabel = Cat.Get("Open another file"); 
 
 	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
 		MessageDialog messageDialog = dialog as MessageDialog;
@@ -53,13 +53,13 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	/* Protected methods */
 	
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return "An unknown error has occured. Please report a bug and include this error name: \"" + exception.GetType() + "\".";
+		return Cat.Get("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
 	}
 	
 	/* Private methods */
 	
 	private string GetPrimaryText (string filename) {
-		return "<span weight=\"bold\" size=\"larger\">Could not open the file " + filename + "</span>.";
+		return "<span weight=\"bold\" size=\"larger\">" + Cat.Get("Could not open the file") + " " + filename + "</span>.";
 	}
 	
 	/* Event members */

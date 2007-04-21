@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 }
 
 public class ChangeBoldStyleCommand : ChangeStyleCommand {
-	private static string description = "Toggling Bold";
+	private static string description = Cat.Get("Toggling Bold");
 
 	public ChangeBoldStyleCommand (bool newStyleValue) : base(description, newStyleValue) {
 	}
@@ -62,7 +62,7 @@ public class ChangeBoldStyleCommand : ChangeStyleCommand {
 }
 
 public class ChangeItalicStyleCommand : ChangeStyleCommand {
-	private static string description = "Toggling Italic";
+	private static string description = Cat.Get("Toggling Italic");
 
 	public ChangeItalicStyleCommand (bool newStyleValue) : base(description, newStyleValue) {
 	}
@@ -73,7 +73,7 @@ public class ChangeItalicStyleCommand : ChangeStyleCommand {
 }
 
 public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
-	private static string description = "Toggling Underline";
+	private static string description = Cat.Get("Toggling Underline");
 
 	public ChangeUnderlineStyleCommand (bool newStyleValue) : base(description, newStyleValue) {
 	}

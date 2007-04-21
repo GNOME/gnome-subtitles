@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 }
 
 public class ChangeStartCommand : ChangeTimingCommand {
-	private static string description = "Editing From";
+	private static string description = Cat.Get("Editing From");
 
 	public ChangeStartCommand (int frames): base(frames, description) {
 	}
@@ -85,7 +85,7 @@ public class ChangeStartCommand : ChangeTimingCommand {
 }
 
 public class ChangeEndCommand : ChangeTimingCommand {
-	private static string description = "Editing To";
+	private static string description = Cat.Get("Editing To");
 
 	public ChangeEndCommand (int frames): base(frames, description) {
 	}
@@ -107,7 +107,7 @@ public class ChangeEndCommand : ChangeTimingCommand {
 }
 
 public class ChangeDurationCommand : ChangeTimingCommand {
-	private static string description = "Editing During";
+	private static string description = Cat.Get("Editing During");
 
 	public ChangeDurationCommand (int frames): base(frames, description) {
 	}

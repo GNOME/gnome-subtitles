@@ -22,7 +22,7 @@ using System;
 namespace GnomeSubtitles {
 
 public class VideoSetSubtitleStartCommand : ChangeStartCommand {
-	private static string description = "Setting Subtitle Start";
+	private static string description = Cat.Get("Setting Subtitle Start");
 
 	public VideoSetSubtitleStartCommand (int frames) : base(frames) {
 		SetCommandProperties();
@@ -41,7 +41,7 @@ public class VideoSetSubtitleStartCommand : ChangeStartCommand {
 }
 
 public class VideoSetSubtitleEndCommand : ChangeEndCommand {
-	private static string description = "Setting Subtitle End";
+	private static string description = Cat.Get("Setting Subtitle End");
 
 	public VideoSetSubtitleEndCommand (int frames) : base(frames) {
 		SetCommandProperties();

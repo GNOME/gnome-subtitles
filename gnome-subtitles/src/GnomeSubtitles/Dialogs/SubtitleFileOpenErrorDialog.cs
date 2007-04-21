@@ -32,13 +32,13 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 	
 	protected override string SecondaryTextFromException (Exception exception) {
 		if (exception is UnknownSubtitleFormatException)
-			return "Unable to detect the subtitle format. Please check that the file type is supported.";
+			return Cat.Get("Unable to detect the subtitle format. Please check that the file type is supported.");
 		else if (exception is OutOfMemoryException)
-			return "You have run out of memory. Please close some programs and try again.";
+			return Cat.Get("You have run out of memory. Please close some programs and try again.");
 		else if (exception is IOException)
-			return "An I/O error has occured.";
+			return Cat.Get("An I/O error has occured.");
 		else if (exception is NotSupportedException)
-			return "The encoding used is not supported by your system.";
+			return Cat.Get("The encoding used is not supported by your system.");
 		else
 			return GetGeneralExceptionErrorMessage(exception);
 	}

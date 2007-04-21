@@ -278,7 +278,7 @@ public class EventHandlers {
 		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditUndo);
 		menuItem.Sensitive = !menuItem.Sensitive;
 		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = "Undo";
+			(menuItem.Child as Label).Text = Cat.Get("Undo");
     }
     
      public void OnRedoToggled (object o, EventArgs args) {
@@ -288,7 +288,7 @@ public class EventHandlers {
 		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditRedo);
     		menuItem.Sensitive = !menuItem.Sensitive;
     		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = "Redo";
+			(menuItem.Child as Label).Text = Cat.Get("Redo");
     }
     
     public void OnCommandActivated (object o, EventArgs args) {

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 }
 
 public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = "Changing Input Frame Rate";
+	private	static string description = Cat.Get("Changing Input Frame Rate");
 
 	public ChangeInputFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}
@@ -60,7 +60,7 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 }
 
 public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = "Changing Video Frame Rate";
+	private	static string description = Cat.Get("Changing Video Frame Rate");
 
 	public ChangeVideoFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}

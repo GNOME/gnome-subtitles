@@ -55,13 +55,13 @@ public class VideoOpenDialog : GladeDialog {
 
 		/* First filter corresponds to all files */
 		FileFilter allFilesFilter = new FileFilter();
-		allFilesFilter.Name = "All Files";
+		allFilesFilter.Name = Cat.Get("All Files");
 		allFilesFilter.AddPattern("*");
 		dialog.AddFilter(allFilesFilter);
 		
 		/* Second filter corresponds to video files */
 		FileFilter videoFilesFilter = new FileFilter();
-		videoFilesFilter.Name = "All Video Files";
+		videoFilesFilter.Name = Cat.Get("All Video Files");
 		foreach (string extension in extensions) {
 			videoFilesFilter.AddPattern("*." + extension);
 		}

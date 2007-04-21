@@ -29,81 +29,81 @@ public class Encodings {
 	 * Copyright (C) 2002 Red Hat, Inc.
  	 */
 	private static EncodingDescription[] descriptions = {
-		new EncodingDescription(28591, "ISO-8859-1", "Western"),
-		new EncodingDescription(28592, "ISO-8859-2", "Central European"),
-		new EncodingDescription(28593, "ISO-8859-3", "South European"),
-		new EncodingDescription(28594, "ISO-8859-4", "Baltic"),
-		new EncodingDescription(28595, "ISO-8859-5", "Cyrillic"),
-		new EncodingDescription(28596, "ISO-8859-6", "Arabic"),
-		new EncodingDescription(28597, "ISO-8859-7", "Greek"),
-		new EncodingDescription(28598, "ISO-8859-8", "Hebrew"),
-		new EncodingDescription(28599, "ISO-8859-9", "Turkish"),
-		new EncodingDescription(28600, "ISO-8859-10", "Nordic"),
-		new EncodingDescription(28603, "ISO-8859-13", "Baltic"),
-		new EncodingDescription(28604, "ISO-8859-14", "Celtic"),
-		new EncodingDescription(28605, "ISO-8859-15", "Western"),
-		new EncodingDescription(28606, "ISO-8859-16", "Romanian"),
+		new EncodingDescription(28591, "ISO-8859-1", Cat.Get("Western")),
+		new EncodingDescription(28592, "ISO-8859-2", Cat.Get("Central European")),
+		new EncodingDescription(28593, "ISO-8859-3", Cat.Get("South European")),
+		new EncodingDescription(28594, "ISO-8859-4", Cat.Get("Baltic")),
+		new EncodingDescription(28595, "ISO-8859-5", Cat.Get("Cyrillic")),
+		new EncodingDescription(28596, "ISO-8859-6", Cat.Get("Arabic")),
+		new EncodingDescription(28597, "ISO-8859-7", Cat.Get("Greek")),
+		new EncodingDescription(28598, "ISO-8859-8", Cat.Get("Hebrew")),
+		new EncodingDescription(28599, "ISO-8859-9", Cat.Get("Turkish")),
+		new EncodingDescription(28600, "ISO-8859-10", Cat.Get("Nordic")),
+		new EncodingDescription(28603, "ISO-8859-13", Cat.Get("Baltic")),
+		new EncodingDescription(28604, "ISO-8859-14", Cat.Get("Celtic")),
+		new EncodingDescription(28605, "ISO-8859-15", Cat.Get("Western")),
+		new EncodingDescription(28606, "ISO-8859-16", Cat.Get("Romanian")),
 		/* ISO-8859-8-I not used */
 		
-		new EncodingDescription(65001, "UTF-8", "Unicode"), /* Added */
-		new EncodingDescription(65000, "UTF-7", "Unicode"),
-		new EncodingDescription(1200, "UTF-16", "Unicode"),
-		new EncodingDescription(1201, "UTF-16BE", "Unicode"),
-		new EncodingDescription(1200, "UTF-16LE", "Unicode"),
-		new EncodingDescription(12000, "UTF-32", "Unicode"),
-		new EncodingDescription(12001, "UTF-32BE", "Unicode"), /* Added */
-		new EncodingDescription(12000, "UTF-32LE", "Unicode"), /* Added */
+		new EncodingDescription(65001, "UTF-8", Cat.Get("Unicode")), /* Added */
+		new EncodingDescription(65000, "UTF-7", Cat.Get("Unicode")),
+		new EncodingDescription(1200, "UTF-16", Cat.Get("Unicode")),
+		new EncodingDescription(1201, "UTF-16BE", Cat.Get("Unicode")),
+		new EncodingDescription(1200, "UTF-16LE", Cat.Get("Unicode")),
+		new EncodingDescription(12000, "UTF-32", Cat.Get("Unicode")),
+		new EncodingDescription(12001, "UTF-32BE", Cat.Get("Unicode")), /* Added */
+		new EncodingDescription(12000, "UTF-32LE", Cat.Get("Unicode")), /* Added */
 		/* UCS-2 and UCS-4 not used */
 
-		new EncodingDescription(950, "BIG5", "Chinese Traditional"),
-		new EncodingDescription(951, "BIG5-HKSCS", "Chinese Traditional"),
-		new EncodingDescription(866, "CP866", "Cyrillic/Russian"),
+		new EncodingDescription(950, "BIG5", Cat.Get("Chinese Traditional")),
+		new EncodingDescription(951, "BIG5-HKSCS", Cat.Get("Chinese Traditional")),
+		new EncodingDescription(866, "CP866", Cat.Get("Cyrillic/Russian")),
 		/* ARMSCII-8 not used */
 		
-		new EncodingDescription(51932, "EUC-JP", "Japanese"),
-		new EncodingDescription(932, "CP932", "Japanese"),
+		new EncodingDescription(51932, "EUC-JP", Cat.Get("Japanese")),
+		new EncodingDescription(932, "CP932", Cat.Get("Japanese")),
 		/* EUC-JP-MS not used */
 		
-		new EncodingDescription(51949, "EUC-KR", "Korean"),
+		new EncodingDescription(51949, "EUC-KR", Cat.Get("Korean")),
 		/* EUC-TW not used */
 		
-		new EncodingDescription(54936, "GB18030", "Chinese Simplified"),
-		new EncodingDescription(936, "GB2312", "Chinese Simplified"),
-		new EncodingDescription(936, "GBK", "Chinese Simplified"),
+		new EncodingDescription(54936, "GB18030", Cat.Get("Chinese Simplified")),
+		new EncodingDescription(936, "GB2312", Cat.Get("Chinese Simplified")),
+		new EncodingDescription(936, "GBK", Cat.Get("Chinese Simplified")),
 		/* GEOSTD8, HZ not used */
 		
-		new EncodingDescription(850, "IBM850", "Western"),
-		new EncodingDescription(852, "IBM852", "Central European"),
-		new EncodingDescription(855, "IBM855", "Cyrillic"),
-		new EncodingDescription(857, "IBM857", "Turkish"),
-		new EncodingDescription(860, "IBM860", "Portuguese"), /* Added */
-		new EncodingDescription(861, "IBM861", "Icelandic"), /* Added */
-		new EncodingDescription(862, "IBM862", "Hebrew"),
-		new EncodingDescription(863, "IBM863", "French Canadian"), /* Added */
-		new EncodingDescription(864, "IBM864", "Arabic"),
-		new EncodingDescription(865, "IBM865", "Nordic"), /* Added */
-		new EncodingDescription(866, "IBM866", "Cyrillic"), /* Added */
-		new EncodingDescription(869, "IBM869", "Greek"), /* Added */
+		new EncodingDescription(850, "IBM850", Cat.Get("Western")),
+		new EncodingDescription(852, "IBM852", Cat.Get("Central European")),
+		new EncodingDescription(855, "IBM855", Cat.Get("Cyrillic")),
+		new EncodingDescription(857, "IBM857", Cat.Get("Turkish")),
+		new EncodingDescription(860, "IBM860", Cat.Get("Portuguese")), /* Added */
+		new EncodingDescription(861, "IBM861", Cat.Get("Icelandic")), /* Added */
+		new EncodingDescription(862, "IBM862", Cat.Get("Hebrew")),
+		new EncodingDescription(863, "IBM863", Cat.Get("French Canadian")), /* Added */
+		new EncodingDescription(864, "IBM864", Cat.Get("Arabic")),
+		new EncodingDescription(865, "IBM865", Cat.Get("Nordic")), /* Added */
+		new EncodingDescription(866, "IBM866", Cat.Get("Cyrillic")), /* Added */
+		new EncodingDescription(869, "IBM869", Cat.Get("Greek")), /* Added */
 		
-		new EncodingDescription(50221, "ISO-2022-JP", "Japanese"),
-		new EncodingDescription(50225, "ISO-2022-KR", "Korean"),
-		new EncodingDescription(1361, "JOHAB", "Korean"),
-		new EncodingDescription(20866, "KOI8-R", "Cyrillic"),
-		new EncodingDescription(21866, "KOI8-U", "Cyrillic/Ukrainian"), /* Added */
+		new EncodingDescription(50221, "ISO-2022-JP", Cat.Get("Japanese")),
+		new EncodingDescription(50225, "ISO-2022-KR", Cat.Get("Korean")),
+		new EncodingDescription(1361, "JOHAB", Cat.Get("Korean")),
+		new EncodingDescription(20866, "KOI8-R", Cat.Get("Cyrillic")),
+		new EncodingDescription(21866, "KOI8-U", Cat.Get("Cyrillic/Ukrainian")), /* Added */
 		/* ISO-IR-111, KOI8R, KOI8U not used */
 		
-		new EncodingDescription(932, "SHIFT_JIS", "Japanese"),
+		new EncodingDescription(932, "SHIFT_JIS", Cat.Get("Japanese")),
 		/* TCVN, TIS-620, UHC, VISCII not used */
 		
-		new EncodingDescription(1250, "WINDOWS-1250", "Central"),
-		new EncodingDescription(1251, "WINDOWS-1251", "Cyrillic"),
-		new EncodingDescription(1252, "WINDOWS-1252", "Western"),
-		new EncodingDescription(1253, "WINDOWS-1253", "Greek"),
-		new EncodingDescription(1254, "WINDOWS-1254", "Turkish"),
-		new EncodingDescription(1255, "WINDOWS-1255", "Hebrew"),
-		new EncodingDescription(1256, "WINDOWS-1256", "Arabic"),
-		new EncodingDescription(1257, "WINDOWS-1257", "Baltic"),
-		new EncodingDescription(1258, "WINDOWS-1258", "Vietnamese"),
+		new EncodingDescription(1250, "WINDOWS-1250", Cat.Get("Central")),
+		new EncodingDescription(1251, "WINDOWS-1251", Cat.Get("Cyrillic")),
+		new EncodingDescription(1252, "WINDOWS-1252", Cat.Get("Western")),
+		new EncodingDescription(1253, "WINDOWS-1253", Cat.Get("Greek")),
+		new EncodingDescription(1254, "WINDOWS-1254", Cat.Get("Turkish")),
+		new EncodingDescription(1255, "WINDOWS-1255", Cat.Get("Hebrew")),
+		new EncodingDescription(1256, "WINDOWS-1256", Cat.Get("Arabic")),
+		new EncodingDescription(1257, "WINDOWS-1257", Cat.Get("Baltic")),
+		new EncodingDescription(1258, "WINDOWS-1258", Cat.Get("Vietnamese")),
 	};
 	
 	/* Public properties */
@@ -114,7 +114,7 @@ public class Encodings {
 
 	public static EncodingDescription SystemDefault {
 		get {
-			string description = "Current Locale";
+			string description = Cat.Get("Current Locale");
 			
 			Encoding defaultEncoding = Encoding.Default;
 			int codePage = defaultEncoding.CodePage;

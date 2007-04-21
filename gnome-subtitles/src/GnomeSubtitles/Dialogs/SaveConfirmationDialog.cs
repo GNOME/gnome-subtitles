@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,9 +25,12 @@ namespace GnomeSubtitles {
 /* TODO: Use MessageDialog from Glade? */
 public class SaveConfirmationDialog {
 	private MessageDialog dialog = null;
-	private string secondaryText = "If you don't save, all your changes will be permanently lost.";
 	private bool toClose = false;
 	
+	/* Strings */
+	private string secondaryText = Cat.Get("If you don't save, all your changes will be permanently lost.");
+
+
 	public SaveConfirmationDialog (string primaryText, string rejectLabel) {
 		string message = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>\n\n" + secondaryText;
 		string fileName = Global.Document.FileProperties.Filename;
@@ -68,24 +71,24 @@ public class SaveConfirmationDialog {
 }
 
 public class SaveOnCloseConfirmationDialog : SaveConfirmationDialog {
-	private static string primaryText = "Save the changes to subtitles \"{0}\" before closing?";
-	private static string rejectLabel = "Close without Saving";
+	private static string primaryText = Cat.Get("Save the changes to subtitles \"{0}\" before closing?");
+	private static string rejectLabel = Cat.Get("Close without Saving");
 
 	public SaveOnCloseConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 
 public class SaveOnNewConfirmationDialog : SaveConfirmationDialog {
-	private static string primaryText = "Save the changes to subtitles \"{0}\" before creating new subtitles?";
-	private static string rejectLabel = "Create without Saving";
+	private static string primaryText = Cat.Get("Save the changes to subtitles \"{0}\" before creating new subtitles?");
+	private static string rejectLabel = Cat.Get("Create without Saving");
 
 	public SaveOnNewConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 
 public class SaveOnOpenConfirmationDialog : SaveConfirmationDialog {
-	private static string primaryText = "Save the changes to subtitles \"{0}\" before opening?";
-	private static string rejectLabel = "Open without Saving";
+	private static string primaryText = Cat.Get("Save the changes to subtitles \"{0}\" before opening?");
+	private static string rejectLabel = Cat.Get("Open without Saving");
 
 	public SaveOnOpenConfirmationDialog () : base(primaryText, rejectLabel) {
 	}

@@ -70,7 +70,7 @@ public class TimingsShiftDialog : GladeDialog {
 		timingMode = newTimingMode;	
 		Util.SetSpinButtonTimingMode(spinButton, timingMode, true);
 		
-		string label = (timingMode == TimingMode.Times ? "Time" : "Frames");
+		string label = (timingMode == TimingMode.Times ? Cat.Get("Time") : Cat.Get("Frames"));
 		string markup = "<b>" + label + "</b>";
 		timingModeLabel.Markup = markup;
 	}

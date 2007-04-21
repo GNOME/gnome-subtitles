@@ -24,7 +24,7 @@ using System;
 namespace GnomeSubtitles {
 
 public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
-	private static string description = "Shifting timings";
+	private static string description = Cat.Get("Shifting timings");
 	private TimeSpan time;
 	private int frames;
 	private bool useTimes = true;

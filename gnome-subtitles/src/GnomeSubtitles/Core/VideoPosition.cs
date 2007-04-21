@@ -169,7 +169,7 @@ public class VideoPosition {
 	}
 
 	private void UpdatePositionLabel (TimingMode timingMode) {
-		string mode = (timingMode == TimingMode.Times ? "Time" : "Frame");
+		string mode = (timingMode == TimingMode.Times ? Cat.Get("Time") : Cat.Get("Frame"));
 		positionLabel.Markup = "<b>" + mode + "</b>"; 
 	}
 	

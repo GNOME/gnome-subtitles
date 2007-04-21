@@ -61,7 +61,7 @@ public class TimingsAdjustDialog : GladeDialog {
 
 	private void UpdateForTimingMode () {
 		if (timingMode == TimingMode.Times) {
-			string startLabel = "Start Time:";
+			string startLabel = Cat.Get("Start Time:");
 			firstSubtitleStartLabel.Text = startLabel;
 			lastSubtitleStartLabel.Text = startLabel;
 		}

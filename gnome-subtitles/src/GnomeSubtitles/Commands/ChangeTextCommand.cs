@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ using SubLib;
 namespace GnomeSubtitles {
 
 public class ChangeTextCommand : FixedSingleSelectionCommand {
-	private static string description = "Editing Text";
+	private static string description = Cat.Get("Editing Text");
 	private Subtitle subtitle;
 	string storedText;
 

@@ -111,7 +111,7 @@ public class GUI {
     		return;
 
 		if (path == String.Empty)
-			path = "Unsaved Subtitles";
+			path = Cat.Get("Unsaved Subtitles");
 
 		Document document = new Document(path);
 		Global.Document = document;

@@ -133,7 +133,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog { //TODO make this
 		}
 
 		encodingComboBox.AppendText("-");
-		encodingComboBox.AppendText("Add or Remove...");
+		encodingComboBox.AppendText(Cat.Get("Add or Remove..."));
 		
 		encodingComboBox.Active = activeItem;
 	}

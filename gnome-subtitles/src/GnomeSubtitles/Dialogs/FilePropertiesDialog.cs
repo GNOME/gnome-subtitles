@@ -56,14 +56,14 @@ public class FilePropertiesDialog : GladeDialog {
 	
 	private void FillName (string name) {
 		if (name == String.Empty)
-			name = "Unknown";
+			name = Cat.Get("Unknown");
 
 		nameValueLabel.Text = name;
 	}
 	
 	private void FillPath (string path) {
 		if (path == String.Empty)
-			path = "Unknown";
+			path = Cat.Get("Unknown");
 
 		pathValueLabel.Text = path;
 	}
@@ -71,11 +71,11 @@ public class FilePropertiesDialog : GladeDialog {
 	private void FillEncoding (Encoding encoding) {
 		string encodingName = String.Empty;
 		if (encoding == null)
-			encodingName = "Unknown";
+			encodingName = Cat.Get("Unknown");
 		else {
 			encodingName = Encodings.GetEncodingName(encoding.CodePage);
 			if ((encodingName == null) || (encodingName == String.Empty))
-				encodingName = "Unknown";
+				encodingName = Cat.Get("Unknown");
 		}
 		
 		encodingValueLabel.Text = encodingName;
@@ -84,7 +84,7 @@ public class FilePropertiesDialog : GladeDialog {
 	private void FillSubtitleFormat (SubtitleType type) {
 		string format = String.Empty;
 		if (type == SubtitleType.Unknown)
-			format = "Unknown";
+			format = Cat.Get("Unknown");
 		else {
 			SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
 			format = typeInfo.Name;
