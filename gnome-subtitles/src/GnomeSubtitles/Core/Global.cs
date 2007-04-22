@@ -26,11 +26,10 @@ using System.Text;
 namespace GnomeSubtitles {
 
 public class Global {
-	private static bool initialized = false;
-	private static Gnome.Program program = null;
 	private static Glade.XML glade = null;
 	
 	private static GnomeSubtitles.GUI gui = null;
+	private static Execution execution = null;
 	private static EventHandlers handlers = null;
 	private static CommandManager commandManager = null;
 	private static Clipboards clipboards = null;
@@ -44,6 +43,10 @@ public class Global {
 	
 	public static GnomeSubtitles.GUI GUI {
 		get { return gui; }
+	}
+	
+	public static Execution Execution {
+		get { return execution; }
 	}
 	
 	public static EventHandlers Handlers {
@@ -84,13 +87,14 @@ public class Global {
 	
 	/// <summary>Runs the main GUI, after initialization.</summary>
 	/// <returns>Whether running the application completed without fatal errors.</returns> 
-	public static bool Run () {
+	public static bool Run (Execution execution) {
 		try {
-			if (!Init())
+			if (!Init(execution))
 				throw new Exception("The Global environment was already initialized.");
 			
 			gui.Start();
-			program.Run();
+			execution.RunProgram();
+
 			return true;
 		}
 		catch (Exception exception) {
@@ -102,7 +106,7 @@ public class Global {
 	
 	/// <summary>Quits the program.</summary>
 	public static void Quit () {
-		program.Quit();
+		execution.QuitProgram();
 	}
 	
 	public static Widget GetWidget (string name) {
@@ -115,11 +119,12 @@ public class Global {
 	/// <remarks>Nothing is done if initialization has already occured. The core value is checked for this,
 	/// if it's null then initialization hasn't occured yet.</remarks>
 	/// <returns>Whether initialization succeeded.</returns>
-	private static bool Init () {
-		if (initialized)
+	private static bool Init (Execution exec) {
+		if (exec.Initialized)
 			return false;
 
-		program = new Gnome.Program(ExecutionInfo.ApplicationID, ExecutionInfo.Version, Gnome.Modules.UI, ExecutionInfo.Args);
+		execution = exec;
+		execution.Init();
 		handlers = new EventHandlers();
 		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled, handlers.OnCommandActivated, handlers.OnModified); //TODO 25 should be set on gconf
 		clipboards = new Clipboards();
@@ -128,6 +133,8 @@ public class Global {
 
 		gui = new GUI(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
+		Cat.Init();
+
 		return true;
 	}
 	
@@ -135,7 +142,7 @@ public class Global {
 	private static void Kill () {
 		try {
 	   		clipboards.WatchPrimaryChanges = false;
-    		program.Quit();
+    		execution.QuitProgram();
 			gui.Kill();
 		}
 		catch (Exception) {

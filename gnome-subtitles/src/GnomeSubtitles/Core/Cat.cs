@@ -24,6 +24,10 @@ namespace GnomeSubtitles {
 /// Class that wrapps Mono.Unix.Catalog methods with shorter names
 public class Cat {
 
+	public static void Init () {
+		Catalog.Init(Global.Execution.ExecutableName, Global.Execution.GnomeSharpVersion + "/locale");
+	}
+
 	public static string Get (string s) {
 		return Catalog.GetString(s);
 	}

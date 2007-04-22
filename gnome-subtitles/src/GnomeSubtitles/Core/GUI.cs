@@ -81,10 +81,11 @@ public class GUI {
     /// <summary>Starts the GUI</summary>
     /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
     public void Start () {
-    	if (ExecutionInfo.Args.Length > 0) {
-    		string subtitleFile = ExecutionInfo.Args[0];
+    	string[] args = Global.Execution.Args;
+    	if (args.Length > 0) {
+    		string subtitleFile = args[0];
     		string videoFile = Global.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : String.Empty;
-			Open(ExecutionInfo.Args[0], null, videoFile);
+			Open(subtitleFile, null, videoFile);
 		}
 		else
 			BlankStartUp();
@@ -196,7 +197,7 @@ public class GUI {
 	public void UpdateWindowTitle (bool modified) {
 		string prefix = (modified ? "*" : String.Empty);
 		window.Title = prefix + Global.Document.FileProperties.Filename +
-			" - " + ExecutionInfo.ApplicationName;
+			" - " + Global.Execution.ApplicationName;
 	}
 	
 	public void UpdateFromNewDocument (bool wasLoaded) {
