@@ -1,4 +1,4 @@
-SUBDIRS = $(SUBLIB_DIR) . src data
+SUBDIRS = $(SUBLIB_DIR) . src data po
 
 sublibdir = $(pkglibdir)
 sublib_DATA = build/sublib.dll
@@ -9,4 +9,7 @@ $(sublib_DATA):
 EXTRA_DIST = 			\
 	CREDITS				\
 	gnome-subtitles.mdp \
-	gnome-subtitles.mds
+	gnome-subtitles.mds \
+	intltool-extract.in \
+	intltool-merge.in \
+	intltool-update.in
