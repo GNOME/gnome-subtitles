@@ -17,62 +17,97 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gnome;
 using System;
 using System.Reflection;
 
 namespace GnomeSubtitles {
 
-public class ExecutionInfo {
+public class Execution {
+	private Program program = null;
+	private bool initialized = false;
+
+	/* Constant strings */
 	private const string applicationName = "Gnome Subtitles";
 	private const string applicationID = "GnomeSubtitles";
 	private const string executableName = "gnome-subtitles";
 	private const string subLibAssemblyName = "sublib";
 	
-	private static string[] args = null;
+	private string[] args = null;
 	
+	public Execution (string[] args) {
+		this.args = args;
+	}
 	
-	public static string ApplicationName {
+	/* Public properties */
+	
+	public bool Initialized {
+		get { return initialized; }
+	}
+	
+	public string ApplicationName {
 		get { return applicationName; }
 	}
 	
-	public static string ApplicationID {
+	public string ApplicationID {
 		get { return applicationID; }
 	}
 	
-	public static string ExecutableName {
+	public string ExecutableName {
 		get { return executableName; }
 	}
 	
-	public static string Version {
+	public string Version {
 		get { return RemoveTrailingZeros(Assembly.GetExecutingAssembly().GetName().Version.ToString()); }
 	}
 
-	public static string SubLibVersion {
+	public string SubLibVersion {
 		get { return RemoveTrailingZeros(Assembly.ReflectionOnlyLoad(subLibAssemblyName).GetName().Version.ToString()); }
 	}
 	
-	public static string GtkSharpVersion {
+	public string GtkSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gtk-sharp").GetName().Version.ToString()); }
 	}
 	
-	public static string GnomeSharpVersion {
+	public string GnomeSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gnome-sharp").GetName().Version.ToString()); }
 	}
 
-	public static string GladeSharpVersion {
+	public string GladeSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("glade-sharp").GetName().Version.ToString()); }
 	}
 	
-	public static string GConfSharpVersion {
+	public string GConfSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gconf-sharp").GetName().Version.ToString()); }
 	}
 
-	public static string[] Args {
+	public string[] Args {
 		get { return args; }
 		set { args = value; }
 	}
 	
-	public static string RemoveTrailingZeros (string version) {
+	public string SystemDataDir {
+		get { return program.GnomeDatadir; }
+	}
+	
+	/* Public methods */
+	
+	public void Init () {
+		program = new Program(applicationID, Version, Gnome.Modules.UI, args);
+		initialized = true;
+	}
+	
+	public void RunProgram () {
+		program.Run();
+	}
+	
+	public void QuitProgram () {
+		program.Quit();
+	}
+	
+	/* Private methods */
+	
+	private string RemoveTrailingZeros (string version) {
 		while (version.EndsWith(".0")) {
 			version = version.Remove(version.Length - 2);
 		}

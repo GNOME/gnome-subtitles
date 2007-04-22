@@ -62,9 +62,9 @@ public class Executable {
     }
 
 	public static void Main (string[] args) {
-		ExecutionInfo.Args = args;
-		SetProcessName(ExecutionInfo.ExecutableName);
-		Global.Run();
+		Execution execution = new Execution(args);
+		SetProcessName(execution.ExecutableName);
+		Global.Run(execution);
 	}
 
 }

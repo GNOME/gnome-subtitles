@@ -52,12 +52,12 @@ public class BugReporter {
 	}
 	
 	private static string GetBugInfo (Exception exception) {
-		return "Gnome Subtitles version: " + ExecutionInfo.Version + "\n"
-			+ "SubLib version: " + ExecutionInfo.SubLibVersion + "\n"
-			+ "GtkSharp version: " + ExecutionInfo.GtkSharpVersion + "\n"
-			+ "GnomeSharp version: " + ExecutionInfo.GnomeSharpVersion + "\n"
-			+ "GladeSharp version: " + ExecutionInfo.GladeSharpVersion + "\n"
-			+ "GConfSharp version: " + ExecutionInfo.GConfSharpVersion + "\n\n"
+		return "Gnome Subtitles version: " + Global.Execution.Version + "\n"
+			+ "SubLib version: " + Global.Execution.SubLibVersion + "\n"
+			+ "GtkSharp version: " + Global.Execution.GtkSharpVersion + "\n"
+			+ "GnomeSharp version: " + Global.Execution.GnomeSharpVersion + "\n"
+			+ "GladeSharp version: " + Global.Execution.GladeSharpVersion + "\n"
+			+ "GConfSharp version: " + Global.Execution.GConfSharpVersion + "\n\n"
 			+ "Stack trace:" + "\n"
 			+ exception.ToString();
 	}
