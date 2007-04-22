@@ -56,8 +56,8 @@ public class AboutDialog : GladeDialog {
 		
 	private void SetInfo () {
 		dialog.Name = "Gnome Subtitles";
-		dialog.Comments += "\n\nUsing SubLib " + ExecutionInfo.SubLibVersion;
-		dialog.Version = ExecutionInfo.Version;
+		dialog.Comments += "\n\nUsing SubLib " + Global.Execution.SubLibVersion;
+		dialog.Version = Global.Execution.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
 		dialog.CheckResize(); //TODO used for artifacts not to appear when the dialog is first displayed (they disappear when refreshing the window)
 	}
