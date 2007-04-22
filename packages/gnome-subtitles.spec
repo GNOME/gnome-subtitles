@@ -11,7 +11,7 @@
 
 Name:           gnome-subtitles
 Summary:        Video subtitling for the GNOME desktop
-Version:        0.3
+Version:        0.4
 Release:        1%dist
 %if %OnSuSE
 Distribution:   SuSE 10.1
@@ -95,13 +95,16 @@ $GC2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/gnome-subtitles.schema
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/man/man1/%{name}.1.gz
 %{_datadir}/pixmaps/%{name}.png
-%{_sysconfdir}/gconf/schemas/gnome-subtitles.schemas
+%{_sysconfdir}/gconf/schemas/%{name}.schemas
 
 %doc README NEWS AUTHORS COPYING CREDITS TODO
 
 
 %changelog
+* Sun Apr 22 2007 - Damien Carbery <daymobrew users.sourceforge.net>
+- Bump to 0.4 and add man page to %files.
 * Tue Mar 27 2007 - Damien Carbery <daymobrew users.sourceforge.net>
 - Bump to 0.3 and add GConf code to %install and %post.
 * Thu Dec 14 2006 - Henrique Malheiro <henrique.malheiro@gmail.com>
