@@ -159,7 +159,6 @@ public class VideoPosition {
 		slider.Value = newPosition;
 	}
 
-	// TODO This is using Document, but Document does not exist yet
 	private void UpdatePositionValueLabel (float newPosition) {
 		if (Global.TimingMode == TimingMode.Times)
 			positionValueLabel.Text = Util.SecondsToTimeText(newPosition);
