@@ -85,7 +85,7 @@ public class GUI {
     	if (args.Length > 0) {
     		string subtitleFile = args[0];
     		string videoFile = Global.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : String.Empty;
-			Open(subtitleFile, null, videoFile);
+			Open(subtitleFile, -1, videoFile);
 		}
 		else
 			BlankStartUp();
@@ -132,23 +132,12 @@ public class GUI {
     	bool toOpen = dialog.WaitForResponse();
     	if (toOpen && ToOpenAfterWarning) {
     		string filename = dialog.Filename;
-    		try {
-    			Encoding encoding = null;
-    			if (dialog.HasChosenEncoding)
-    				encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
-
-				Open(filename, encoding, dialog.VideoFilename);
-	    	}
-	    	catch (Exception exception) {
-	    		SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(filename, exception);
-	    		errorDialog.Show();
-	    		bool toOpenAgain = errorDialog.WaitForResponse();
-	    		if (toOpenAgain)
-	    			Open(); //Recursive call to open the dialog again
-	    	}
+    		int codePage = (dialog.HasChosenEncoding ? dialog.ChosenEncoding.CodePage : -1);
+    		string videoFilename = dialog.VideoFilename;
+    		Open(filename, codePage, videoFilename);
     	}
     }
-    
+        
     public void OpenVideo () {
     	VideoOpenDialog dialog = new VideoOpenDialog();
     	dialog.Show();
@@ -232,18 +221,30 @@ public class GUI {
 	
 	/* Private members */
 	
-	/// <summary>Opens a subtitle file, given its filename and encoding.</summary>
+	/// <summary>Opens a subtitle file, given its filename, code page and video filename.</summary>
 	/// <param name="path">The path of the subtitles file to open.</param>
-	/// <param name="encoding">The encoding of the filename. To use autodetection, set it to null.</param>
+	/// <param name="codePage">The code page of the filename. To use autodetection, set it to -1.</param>
 	/// <param name="videoFilename">The videoFilename to open. If <see cref="String.Empty" />, no video will be opened.</param>
-    private void Open (string path, Encoding encoding, string videoFilename) {
-    	Global.Document = new Document(path, encoding);
-    	Global.Document.UpdateTimingModeFromFileProperties();
+	/// <remarks>An error dialog is presented if an exception is caught during open.</remarks>
+    private void Open (string path, int codePage, string videoFilename) {
+    	try {
+    		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
+    		
+    		Global.Document = new Document(path, encoding);
+    		Global.Document.UpdateTimingModeFromFileProperties();
 
-		view.Selection.SelectFirst(); //TODO is this needed?
+			view.Selection.SelectFirst(); //TODO is this needed?
 		
-		if (videoFilename != String.Empty)
-			OpenVideo(videoFilename);
+			if (videoFilename != String.Empty)
+				OpenVideo(videoFilename);
+		}
+		catch (Exception exception) {
+			SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(path, exception);
+			errorDialog.Show();
+			bool toOpenAgain = errorDialog.WaitForResponse();
+			if (toOpenAgain)
+				Open();
+		}
     }
     
     private void OpenVideo (string path) {
@@ -253,6 +254,7 @@ public class GUI {
 			Menus.SetVideoSensitivity(true);
 		}
 		catch (Exception exception) {
+			System.Console.Error.WriteLine(exception);
 			Video.Close();
 			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(path, exception);
 			errorDialog.Show();
