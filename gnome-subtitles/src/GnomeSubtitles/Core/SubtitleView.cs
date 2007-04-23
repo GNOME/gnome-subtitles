@@ -267,7 +267,7 @@ public class SubtitleView {
 
 	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.Document.TimingModeIsFrames) //TODO use different renderers for different timingmodes
+		if (Global.TimingModeIsFrames) //TODO use different renderers for different timingmodes
 			renderer.Text = subtitles[iter].Frames.Start.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Start);
@@ -275,7 +275,7 @@ public class SubtitleView {
 	
 	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.Document.TimingModeIsFrames)
+		if (Global.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.End.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.End);
@@ -283,7 +283,7 @@ public class SubtitleView {
 	
 	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.Document.TimingModeIsFrames)
+		if (Global.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Duration.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Duration);

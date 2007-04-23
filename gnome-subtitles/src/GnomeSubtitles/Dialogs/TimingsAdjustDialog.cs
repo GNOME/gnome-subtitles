@@ -46,7 +46,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	
 
 	public TimingsAdjustDialog () : base(gladeFilename){
-		timingMode = Global.Document.TimingMode; 
+		timingMode = Global.TimingMode; 
 		SetSpinButtons();
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();

@@ -126,12 +126,12 @@ public class EventHandlers {
 	
 	public void OnViewTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.Document.TimingMode = TimingMode.Times;
+			Global.TimingMode = TimingMode.Times;
 	}
 
 	public void OnViewFrames (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.Document.TimingMode = TimingMode.Frames;
+			Global.TimingMode = TimingMode.Frames;
 	}
 	
 	public void OnViewVideo (object o, EventArgs args) {
@@ -214,7 +214,7 @@ public class EventHandlers {
 	}
 	
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
-		if (Global.Document.TimingMode == TimingMode.Times) {
+		if (Global.TimingMode == TimingMode.Times) {
 			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
 			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
 		}
@@ -225,7 +225,7 @@ public class EventHandlers {
 	}
 	
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
-		if (Global.Document.TimingMode == TimingMode.Times) {
+		if (Global.TimingMode == TimingMode.Times) {
 			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
 			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 		}

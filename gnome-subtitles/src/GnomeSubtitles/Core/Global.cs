@@ -37,6 +37,7 @@ public class Global {
 	private static Dialogs dialogs = null;
 	
 	private static Document document = null;
+	private static TimingMode timingMode = TimingMode.Times;
 
 	
 	/* Public properties */
@@ -80,6 +81,24 @@ public class Global {
 	
 	public static bool IsDocumentLoaded {
 		get { return document != null; }
+	}
+	
+	public static TimingMode TimingMode {
+		get { return timingMode; }
+		set {
+			if (timingMode != value) {
+				timingMode = value;
+				Global.GUI.UpdateFromTimingMode(value);
+			}		
+		}
+	}
+
+	public static bool TimingModeIsFrames {
+		get { return timingMode == TimingMode.Frames; }
+	}
+
+	public static bool TimingModeIsTimes {
+		get { return timingMode == TimingMode.Times; }
 	}
 
 

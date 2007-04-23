@@ -25,7 +25,6 @@ namespace GnomeSubtitles {
 
 public class Document {
 	private Subtitles subtitles = null;
-	private TimingMode timingMode = TimingMode.Times;
 
 	private FileProperties fileProperties = null;
 	private bool canBeSaved = false; //Whether this document can be saved with existing fileProperties
@@ -48,27 +47,6 @@ public class Document {
 	public Subtitles Subtitles {
 		get { return subtitles; }
 	}
-
-	//This should be the prefered way to set the timing mode, should propagate throughout the GUI
-	public TimingMode TimingMode {
-		get { return timingMode; }
-		set {
-			if (timingMode != value) {
-				timingMode = value;
-				Global.GUI.UpdateFromTimingMode(value);
-			}
-		}
-	}
-	
-	//TODO delete?
-	public bool TimingModeIsFrames {
-		get { return timingMode == TimingMode.Frames; }
-	}
-	
-	//TODO delete?
-	public bool TimingModeIsTimes {
-		get { return timingMode == TimingMode.Times; }
-	}
 	
 	public bool CanBeSaved {
 		get { return canBeSaved; }
@@ -80,7 +58,7 @@ public class Document {
 		if (!canBeSaved)
 			return false;
 
-		fileProperties.TimingMode = timingMode;
+		fileProperties.TimingMode = Global.TimingMode;
 		SubtitleSaver saver = new SubtitleSaver();
 		saver.Save(subtitles, fileProperties);
 		fileProperties = saver.FileProperties;
@@ -88,7 +66,7 @@ public class Document {
 	}
 
 	public bool Save (string path, Encoding encoding, SubtitleType type) {
-		fileProperties = new FileProperties(path, encoding, type, timingMode);
+		fileProperties = new FileProperties(path, encoding, type, Global.TimingMode);
 		
 		canBeSaved = true;
 		Save();
@@ -98,7 +76,7 @@ public class Document {
 	}
 
 	public void UpdateTimingModeFromFileProperties () {
-		TimingMode = fileProperties.TimingMode;
+		Global.TimingMode = fileProperties.TimingMode;
 	}
 	
 	/* Private methods */
@@ -127,10 +105,11 @@ public class Document {
 
 		subtitles = new Subtitles(openedSubtitles);
 		fileProperties = factory.FileProperties;
-		timingMode = fileProperties.TimingMode;
 		
 		if (fileProperties.SubtitleType != SubtitleType.Unknown)
 			canBeSaved = true;
+			
+		Global.TimingMode = fileProperties.TimingMode;
 	}
 
 }

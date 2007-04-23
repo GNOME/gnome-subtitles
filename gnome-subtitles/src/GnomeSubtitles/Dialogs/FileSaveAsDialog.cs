@@ -92,7 +92,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		}
 
 		if (subtitleType == SubtitleType.Unknown) { //Active type isn't known, selecting MicroDVD or SubRip depending on Timing Mode
-			TimingMode timingMode = Global.Document.TimingMode;
+			TimingMode timingMode = Global.TimingMode;
 			if ((timingMode == TimingMode.Frames) && (microDVDTypeNumber != -1))
 				formatComboBox.Active = microDVDTypeNumber;
 			else if ((timingMode == TimingMode.Times) && (subRipTypeNumber != -1))

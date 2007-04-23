@@ -44,7 +44,7 @@ public class Menus {
 		SetNewDocumentSensitivity(wasLoaded);
 		SetSubtitleCountDependentSensitivity(Global.Document.Subtitles.Collection.Count);
 		SetFrameRateMenus();
-		SetActiveTimingMode(Global.Document.TimingMode);
+		SetActiveTimingMode(Global.TimingMode);
 	}
 	
 	public void UpdateFromSelection (Subtitle subtitle) { 
@@ -267,7 +267,7 @@ public class Menus {
 	}
 	
 	private void SetFrameRateMenus () {
-		if (Global.Document.TimingMode == TimingMode.Frames) {
+		if (Global.TimingMode == TimingMode.Frames) {
 			SetMenuSensitivity(WidgetNames.TimingsInputFrameRate, true);
 			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRate, true);
 		}

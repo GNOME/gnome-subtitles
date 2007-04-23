@@ -53,7 +53,7 @@ public class TimingsShiftDialog : GladeDialog {
 	/* Private methods */
 	
 	private void UpdateContents () {
-		UpdateFromTimingMode(Global.Document.TimingMode);
+		UpdateFromTimingMode(Global.TimingMode);
 		UpdateFromSelection();
 		UpdateSpinButtonValue();
 	}
@@ -95,7 +95,7 @@ public class TimingsShiftDialog : GladeDialog {
 
 		double subtitlePosition = 0;
 		double videoPosition = 0;
-		if (Global.Document.TimingModeIsTimes) {
+		if (Global.TimingModeIsTimes) {
 			subtitlePosition = subtitle.Times.Start.TotalMilliseconds;
 			videoPosition = Global.GUI.Video.Position.CurrentTime * 1000; //Times 1000 for milliseconds
 		}

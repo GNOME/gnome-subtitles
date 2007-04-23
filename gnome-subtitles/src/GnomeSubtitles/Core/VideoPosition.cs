@@ -159,8 +159,9 @@ public class VideoPosition {
 		slider.Value = newPosition;
 	}
 
+	// TODO This is using Document, but Document does not exist yet
 	private void UpdatePositionValueLabel (float newPosition) {
-		if (Global.Document.TimingMode == TimingMode.Times)
+		if (Global.TimingMode == TimingMode.Times)
 			positionValueLabel.Text = Util.SecondsToTimeText(newPosition);
 		else {
 			double frames = SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate);
@@ -175,7 +176,7 @@ public class VideoPosition {
 	
 	private void SetLength (float length) {
 		SetSliderLength(length);
-		UpdateLengthLabel (Global.Document.TimingMode, length);
+		UpdateLengthLabel(Global.TimingMode, length);
 	}
 	
 	private void UpdateLengthLabel (TimingMode timingMode, float length) {

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -144,7 +144,7 @@ public class SubtitleEdit {
     }
 
 	public void UpdateFromNewDocument (bool wasLoaded) {
-		UpdateFromTimingMode(Global.Document.TimingMode);
+		UpdateFromTimingMode(Global.TimingMode);
 	}
 	
 	public void UpdateFromTimingMode (TimingMode mode) {
@@ -158,7 +158,7 @@ public class SubtitleEdit {
     public void UpdateFromSelection (Subtitle subtitle) {
 	   	this.Enabled = true;
     	this.subtitle = subtitle;
-		LoadTimings(Global.Document.TimingMode);
+		LoadTimings(Global.TimingMode);
 		LoadTags();
     	LoadText();
     }
@@ -355,21 +355,21 @@ public class SubtitleEdit {
 	}
 
 	private void OnStartValueChanged (object o, EventArgs args) {
-		if (Global.Document.TimingModeIsFrames)
+		if (Global.TimingModeIsFrames)
 			Global.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value));
 		else
 			Global.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value)));
 	}
 	
 	private void OnEndValueChanged (object o, EventArgs args) {
-		if (Global.Document.TimingModeIsFrames)
+		if (Global.TimingModeIsFrames)
 			Global.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value));
 		else
 			Global.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value)));
 	}
 	
 	private void OnDurationValueChanged (object o, EventArgs args) {
-		if (Global.Document.TimingModeIsFrames)
+		if (Global.TimingModeIsFrames)
 			Global.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value));
 		else
 			Global.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
