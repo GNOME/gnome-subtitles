@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 using System.Text.RegularExpressions;
@@ -25,7 +26,7 @@ using System.Text.RegularExpressions;
 namespace GnomeSubtitles {
 
 public class ReplaceAllCommand : MultipleSelectionCommand {
-	private static string description = Cat.Get("Replacing All");
+	private static string description = Catalog.GetString("Replacing All");
 	
 	private int[] subtitles = null;
 	private string[] texts  = null;

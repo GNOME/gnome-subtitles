@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 
@@ -169,7 +170,7 @@ public class VideoPosition {
 	}
 
 	private void UpdatePositionLabel (TimingMode timingMode) {
-		string mode = (timingMode == TimingMode.Times ? Cat.Get("Time") : Cat.Get("Frame"));
+		string mode = (timingMode == TimingMode.Times ? Catalog.GetString("Time") : Catalog.GetString("Frame"));
 		positionLabel.Markup = "<b>" + mode + "</b>"; 
 	}
 	

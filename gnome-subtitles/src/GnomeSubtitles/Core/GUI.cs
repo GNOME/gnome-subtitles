@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 using System.IO;
@@ -37,7 +38,7 @@ public class GUI {
 	private const string iconFilename = "gnome-subtitles.png";
 	
 	public GUI (EventHandlers handlers, out Glade.XML glade) {
-		glade = new Glade.XML(gladeFilename, null);
+		glade = new Glade.XML(null, gladeFilename, null, Global.Execution.TranslationDomain);
 		
 		window = glade.GetWidget("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
@@ -112,7 +113,7 @@ public class GUI {
     		return;
 
 		if (path == String.Empty)
-			path = Cat.Get("Unsaved Subtitles");
+			path = Catalog.GetString("Unsaved Subtitles");
 
 		Document document = new Document(path);
 		Global.Document = document;

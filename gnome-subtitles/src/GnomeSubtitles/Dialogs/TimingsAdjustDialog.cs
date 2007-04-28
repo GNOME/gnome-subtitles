@@ -17,10 +17,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System;
 using Glade;
 using Gtk;
+using Mono.Unix;
 using SubLib;
+using System;
 
 namespace GnomeSubtitles {
 
@@ -61,7 +62,7 @@ public class TimingsAdjustDialog : GladeDialog {
 
 	private void UpdateForTimingMode () {
 		if (timingMode == TimingMode.Times) {
-			string startLabel = Cat.Get("Start Time:");
+			string startLabel = Catalog.GetString("Start Time:");
 			firstSubtitleStartLabel.Text = startLabel;
 			lastSubtitleStartLabel.Text = startLabel;
 		}

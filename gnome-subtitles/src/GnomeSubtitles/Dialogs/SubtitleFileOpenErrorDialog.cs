@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using SubLib;
 using System;
 using System.IO;
@@ -32,13 +33,13 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 	
 	protected override string SecondaryTextFromException (Exception exception) {
 		if (exception is UnknownSubtitleFormatException)
-			return Cat.Get("Unable to detect the subtitle format. Please check that the file type is supported.");
+			return Catalog.GetString("Unable to detect the subtitle format. Please check that the file type is supported.");
 		else if (exception is OutOfMemoryException)
-			return Cat.Get("You have run out of memory. Please close some programs and try again.");
+			return Catalog.GetString("You have run out of memory. Please close some programs and try again.");
 		else if (exception is IOException)
-			return Cat.Get("An I/O error has occured.");
+			return Catalog.GetString("An I/O error has occured.");
 		else if (exception is NotSupportedException)
-			return Cat.Get("The encoding used is not supported by your system.");
+			return Catalog.GetString("The encoding used is not supported by your system.");
 		else
 			return GetGeneralExceptionErrorMessage(exception);
 	}

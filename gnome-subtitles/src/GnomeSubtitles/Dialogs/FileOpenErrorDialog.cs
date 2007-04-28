@@ -17,10 +17,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gtk;
+using Mono.Unix;
+using SubLib;
 using System;
 using System.IO;
-using Gtk;
-using SubLib;
 
 namespace GnomeSubtitles {
 
@@ -28,7 +29,7 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	
 	/* Strings */
 	private const string gladeFilename = "FileOpenErrorDialog.glade";
-	private string actionLabel = Cat.Get("Open another file"); 
+	private string actionLabel = Catalog.GetString("Open another file"); 
 
 	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
 		MessageDialog messageDialog = dialog as MessageDialog;
@@ -53,13 +54,13 @@ public abstract class FileOpenErrorDialog : GladeDialog {
 	/* Protected methods */
 	
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return Cat.Get("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
+		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
 	}
 	
 	/* Private methods */
 	
 	private string GetPrimaryText (string filename) {
-		return "<span weight=\"bold\" size=\"larger\">" + Cat.Get("Could not open the file") + " " + filename + "</span>.";
+		return "<span weight=\"bold\" size=\"larger\">" + Catalog.GetString("Could not open the file") + " " + filename + "</span>.";
 	}
 	
 	/* Event members */

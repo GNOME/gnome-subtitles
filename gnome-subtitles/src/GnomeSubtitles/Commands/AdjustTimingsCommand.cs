@@ -17,12 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using System;
 
 namespace GnomeSubtitles {
 
 public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
-	private static string description = Cat.Get("Adjusting timings");
+	private static string description = Catalog.GetString("Adjusting timings");
 	private TimeSpan firstTime, lastTime;
 	private int firstFrame, lastFrame;
 	private bool useTimes = true;

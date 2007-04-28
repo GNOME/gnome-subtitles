@@ -29,8 +29,7 @@ public class Execution {
 
 	/* Constant strings */
 	private const string applicationName = "Gnome Subtitles";
-	private const string applicationID = "GnomeSubtitles";
-	private const string executableName = "gnome-subtitles";
+	private const string applicationID = "gnome-subtitles";
 	private const string subLibAssemblyName = "sublib";
 	
 	private string[] args = null;
@@ -54,7 +53,7 @@ public class Execution {
 	}
 	
 	public string ExecutableName {
-		get { return executableName; }
+		get { return applicationID; }
 	}
 	
 	public string Version {
@@ -88,6 +87,10 @@ public class Execution {
 	
 	public string SystemDataDir {
 		get { return program.GnomeDatadir; }
+	}
+	
+	public string TranslationDomain {
+		get { return applicationID; }
 	}
 	
 	/* Public methods */

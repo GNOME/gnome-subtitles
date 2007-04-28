@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using System;
 using SubLib;
 
@@ -207,15 +208,15 @@ public class SubtitleView {
     }
 	
     private void CreateColumns() {
-    	numberCol = CreateColumn(Cat.Get("No."), ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
+    	numberCol = CreateColumn(Catalog.GetString("No."), ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
     		
     	int timeWidth = ColumnWidth("00:00:00.000");
-    	startCol = CreateColumn(Cat.Get("From"), timeWidth, new CellRendererText(), RenderStartCell);
-    	endCol = CreateColumn(Cat.Get("To"), timeWidth, new CellRendererText(), RenderEndCell);
-    	durationCol = CreateColumn(Cat.Get("During"), timeWidth, new CellRendererText(), RenderDurationCell);
+    	startCol = CreateColumn(Catalog.GetString("From"), timeWidth, new CellRendererText(), RenderStartCell);
+    	endCol = CreateColumn(Catalog.GetString("To"), timeWidth, new CellRendererText(), RenderEndCell);
+    	durationCol = CreateColumn(Catalog.GetString("During"), timeWidth, new CellRendererText(), RenderDurationCell);
     	
     	int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
-    	textCol = CreateColumn(Cat.Get("Text"), textWidth, new CellRendererCenteredText(), RenderTextCell);
+    	textCol = CreateColumn(Catalog.GetString("Text"), textWidth, new CellRendererCenteredText(), RenderTextCell);
     	    		
     	tree.AppendColumn(numberCol);
     	tree.AppendColumn(startCol);

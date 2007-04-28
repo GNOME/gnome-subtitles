@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 using System.Globalization;
@@ -27,7 +28,7 @@ namespace GnomeSubtitles {
 public class Menus {
 
 	/* Constant strings */
-	private string videoTagText = Cat.Get("Video");
+	private string videoTagText = Catalog.GetString("Video");
 
 	/* Public methods */
 

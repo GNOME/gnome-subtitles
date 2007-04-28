@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
+
 namespace GnomeSubtitles {
 
 public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
@@ -41,7 +43,7 @@ public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 }
 
 public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = Cat.Get("Changing Input Frame Rate");
+	private	static string description = Catalog.GetString("Changing Input Frame Rate");
 
 	public ChangeInputFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}
@@ -60,7 +62,7 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 }
 
 public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
-	private	static string description = Cat.Get("Changing Video Frame Rate");
+	private	static string description = Catalog.GetString("Changing Video Frame Rate");
 
 	public ChangeVideoFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}

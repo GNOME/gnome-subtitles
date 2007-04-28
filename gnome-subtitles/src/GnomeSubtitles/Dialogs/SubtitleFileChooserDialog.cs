@@ -19,6 +19,7 @@
 
 using Glade;
 using Gtk;
+using Mono.Unix;
 using System;
 using System.Collections;
 using System.Text;
@@ -133,7 +134,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog { //TODO make this
 		}
 
 		encodingComboBox.AppendText("-");
-		encodingComboBox.AppendText(Cat.Get("Add or Remove..."));
+		encodingComboBox.AppendText(Catalog.GetString("Add or Remove..."));
 		
 		encodingComboBox.Active = activeItem;
 	}

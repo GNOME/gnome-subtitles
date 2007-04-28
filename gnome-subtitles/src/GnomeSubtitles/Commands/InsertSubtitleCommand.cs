@@ -18,12 +18,13 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 
 namespace GnomeSubtitles {
 
 public abstract class InsertSubtitleCommand : SingleSelectionCommand {
-	private static string description = Cat.Get("Inserting Subtitle");
+	private static string description = Catalog.GetString("Inserting Subtitle");
 	private TreePath newPath = null;
 	private Subtitle subtitle = null;
 

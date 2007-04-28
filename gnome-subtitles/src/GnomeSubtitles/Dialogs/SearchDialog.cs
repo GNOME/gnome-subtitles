@@ -19,6 +19,7 @@
 
 using Glade;
 using Gtk;
+using Mono.Unix;
 using System;
 using System.Text.RegularExpressions;
 
@@ -62,11 +63,11 @@ public class SearchDialog : GladeDialog {
 	public bool ShowReplace {
 		set {
 			if (value == true) {
-				dialog.Title = Cat.Get("Replace");
+				dialog.Title = Catalog.GetString("Replace");
 				table.RowSpacing = 12;
 			}
 			else {
-				dialog.Title = Cat.Get("Find");
+				dialog.Title = Catalog.GetString("Find");
 				table.RowSpacing = 0;
 			}
 		

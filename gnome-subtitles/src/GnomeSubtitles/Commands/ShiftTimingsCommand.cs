@@ -18,13 +18,14 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 
 namespace GnomeSubtitles {
 
 public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
-	private static string description = Cat.Get("Shifting timings");
+	private static string description = Catalog.GetString("Shifting timings");
 	private TimeSpan time;
 	private int frames;
 	private bool useTimes = true;

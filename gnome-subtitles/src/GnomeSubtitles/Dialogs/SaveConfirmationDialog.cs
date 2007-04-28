@@ -17,8 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System;
 using Gtk;
+using Mono.Unix;
+using System;
 
 namespace GnomeSubtitles {
 
@@ -28,7 +29,7 @@ public class SaveConfirmationDialog {
 	private bool toClose = false;
 	
 	/* Strings */
-	private string secondaryText = Cat.Get("If you don't save, all your changes will be permanently lost.");
+	private string secondaryText = Catalog.GetString("If you don't save, all your changes will be permanently lost.");
 
 
 	public SaveConfirmationDialog (string primaryText, string rejectLabel) {
@@ -71,24 +72,24 @@ public class SaveConfirmationDialog {
 }
 
 public class SaveOnCloseConfirmationDialog : SaveConfirmationDialog {
-	private static string primaryText = Cat.Get("Save the changes to subtitles \"{0}\" before closing?");
-	private static string rejectLabel = Cat.Get("Close without Saving");
+	private static string primaryText = Catalog.GetString("Save the changes to subtitles \"{0}\" before closing?");
+	private static string rejectLabel = Catalog.GetString("Close without Saving");
 
 	public SaveOnCloseConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 
 public class SaveOnNewConfirmationDialog : SaveConfirmationDialog {
-	private static string primaryText = Cat.Get("Save the changes to subtitles \"{0}\" before creating new subtitles?");
-	private static string rejectLabel = Cat.Get("Create without Saving");
+	private static string primaryText = Catalog.GetString("Save the changes to subtitles \"{0}\" before creating new subtitles?");
+	private static string rejectLabel = Catalog.GetString("Create without Saving");
 
 	public SaveOnNewConfirmationDialog () : base(primaryText, rejectLabel) {
 	}
 }
 
 public class SaveOnOpenConfirmationDialog : SaveConfirmationDialog {
-	private static string primaryText = Cat.Get("Save the changes to subtitles \"{0}\" before opening?");
-	private static string rejectLabel = Cat.Get("Open without Saving");
+	private static string primaryText = Catalog.GetString("Save the changes to subtitles \"{0}\" before opening?");
+	private static string rejectLabel = Catalog.GetString("Open without Saving");
 
 	public SaveOnOpenConfirmationDialog () : base(primaryText, rejectLabel) {
 	}

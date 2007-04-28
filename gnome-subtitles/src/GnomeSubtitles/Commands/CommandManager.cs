@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using System;
 
 namespace GnomeSubtitles {
@@ -66,7 +67,7 @@ public class CommandManager {
 	public string UndoDescription {
 		get {
 			if (CanUndo)
-				return Cat.Get("Undo") + " " + PreviousCommand().Description;
+				return Catalog.GetString("Undo") + " " + PreviousCommand().Description;
 			else
 				return String.Empty;
 		}
@@ -75,7 +76,7 @@ public class CommandManager {
 	public string RedoDescription {
 		get {
 			if (CanRedo)
-				return Cat.Get("Redo") + " " + NextCommand().Description;
+				return Catalog.GetString("Redo") + " " + NextCommand().Description;
 			else
 				return String.Empty;
 		}

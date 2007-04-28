@@ -18,12 +18,13 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 
 namespace GnomeSubtitles {
 
 public class DeleteSubtitlesCommand : MultipleSelectionCommand {
-	private static string description = Cat.Get("Deleting Subtitles");
+	private static string description = Catalog.GetString("Deleting Subtitles");
 	private Subtitle[] subtitles = null;
 	
 	public DeleteSubtitlesCommand () : base(description, false, SelectionIntended.Simple) {

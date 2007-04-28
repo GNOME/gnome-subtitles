@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 
 namespace GnomeSubtitles {
@@ -51,7 +52,7 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 }
 
 public class ChangeBoldStyleCommand : ChangeStyleCommand {
-	private static string description = Cat.Get("Toggling Bold");
+	private static string description = Catalog.GetString("Toggling Bold");
 
 	public ChangeBoldStyleCommand (bool newStyleValue) : base(description, newStyleValue) {
 	}
@@ -62,7 +63,7 @@ public class ChangeBoldStyleCommand : ChangeStyleCommand {
 }
 
 public class ChangeItalicStyleCommand : ChangeStyleCommand {
-	private static string description = Cat.Get("Toggling Italic");
+	private static string description = Catalog.GetString("Toggling Italic");
 
 	public ChangeItalicStyleCommand (bool newStyleValue) : base(description, newStyleValue) {
 	}
@@ -73,7 +74,7 @@ public class ChangeItalicStyleCommand : ChangeStyleCommand {
 }
 
 public class ChangeUnderlineStyleCommand : ChangeStyleCommand {
-	private static string description = Cat.Get("Toggling Underline");
+	private static string description = Catalog.GetString("Toggling Underline");
 
 	public ChangeUnderlineStyleCommand (bool newStyleValue) : base(description, newStyleValue) {
 	}

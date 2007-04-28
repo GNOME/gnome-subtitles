@@ -17,12 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using SubLib;
 
 namespace GnomeSubtitles {
 
 public class ChangeTextCommand : FixedSingleSelectionCommand {
-	private static string description = Cat.Get("Editing Text");
+	private static string description = Catalog.GetString("Editing Text");
 	private Subtitle subtitle;
 	string storedText;
 

@@ -19,6 +19,7 @@
 
 using Gnome;
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 
@@ -278,7 +279,7 @@ public class EventHandlers {
 		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditUndo);
 		menuItem.Sensitive = !menuItem.Sensitive;
 		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = Cat.Get("Undo");
+			(menuItem.Child as Label).Text = Catalog.GetString("Undo");
     }
     
      public void OnRedoToggled (object o, EventArgs args) {
@@ -288,7 +289,7 @@ public class EventHandlers {
 		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditRedo);
     		menuItem.Sensitive = !menuItem.Sensitive;
     		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = Cat.Get("Redo");
+			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
     }
     
     public void OnCommandActivated (object o, EventArgs args) {

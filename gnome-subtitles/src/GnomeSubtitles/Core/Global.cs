@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 using System.IO;
@@ -152,7 +153,7 @@ public class Global {
 
 		gui = new GUI(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
-		Cat.Init();
+		Catalog.Init(Global.Execution.TranslationDomain, Global.Execution.GnomeSharpVersion + "/locale");
 
 		return true;
 	}

@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using SubLib;
 using System;
 
@@ -61,7 +62,7 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 }
 
 public class ChangeStartCommand : ChangeTimingCommand {
-	private static string description = Cat.Get("Editing From");
+	private static string description = Catalog.GetString("Editing From");
 
 	public ChangeStartCommand (int frames): base(frames, description) {
 	}
@@ -85,7 +86,7 @@ public class ChangeStartCommand : ChangeTimingCommand {
 }
 
 public class ChangeEndCommand : ChangeTimingCommand {
-	private static string description = Cat.Get("Editing To");
+	private static string description = Catalog.GetString("Editing To");
 
 	public ChangeEndCommand (int frames): base(frames, description) {
 	}
@@ -107,7 +108,7 @@ public class ChangeEndCommand : ChangeTimingCommand {
 }
 
 public class ChangeDurationCommand : ChangeTimingCommand {
-	private static string description = Cat.Get("Editing During");
+	private static string description = Catalog.GetString("Editing During");
 
 	public ChangeDurationCommand (int frames): base(frames, description) {
 	}

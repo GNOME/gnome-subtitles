@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using System;
 
 namespace GnomeSubtitles {
@@ -55,13 +56,13 @@ public class VideoOpenDialog : GladeDialog {
 
 		/* First filter corresponds to all files */
 		FileFilter allFilesFilter = new FileFilter();
-		allFilesFilter.Name = Cat.Get("All Files");
+		allFilesFilter.Name = Catalog.GetString("All Files");
 		allFilesFilter.AddPattern("*");
 		dialog.AddFilter(allFilesFilter);
 		
 		/* Second filter corresponds to video files */
 		FileFilter videoFilesFilter = new FileFilter();
-		videoFilesFilter.Name = Cat.Get("All Video Files");
+		videoFilesFilter.Name = Catalog.GetString("All Video Files");
 		foreach (string extension in extensions) {
 			videoFilesFilter.AddPattern("*." + extension);
 		}

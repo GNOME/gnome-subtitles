@@ -81,7 +81,7 @@ public class GladeDialog {
 	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
 	/// sets the icon and also sets the dialog as transient for the main window.</summary>
 	protected void Init (string filename, bool persistent, bool autoconnect) {
-		glade = new Glade.XML(filename, null);
+		glade = new Glade.XML(null, filename, null, Global.Execution.TranslationDomain);
 		
 		if (autoconnect)
 			Autoconnect();

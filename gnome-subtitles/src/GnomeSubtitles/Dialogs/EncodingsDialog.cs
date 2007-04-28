@@ -19,6 +19,7 @@
 
 using Glade;
 using Gtk;
+using Mono.Unix;
 using System;
 
 namespace GnomeSubtitles {
@@ -83,11 +84,11 @@ public class EncodingsDialog : GladeDialog {
 	}
 	
 	private void SetColumns (TreeView tree) {
-		TreeViewColumn descriptionColumn = new TreeViewColumn(Cat.Get("Description"), new CellRendererText(), "text", descColumnNum);
+		TreeViewColumn descriptionColumn = new TreeViewColumn(Catalog.GetString("Description"), new CellRendererText(), "text", descColumnNum);
 		descriptionColumn.SortColumnId = descColumnNum;
 		tree.AppendColumn(descriptionColumn);
 		
-		TreeViewColumn nameColumn = new TreeViewColumn(Cat.Get("Encoding"), new CellRendererText(), "text", nameColumnNum);
+		TreeViewColumn nameColumn = new TreeViewColumn(Catalog.GetString("Encoding"), new CellRendererText(), "text", nameColumnNum);
 		nameColumn.SortColumnId = nameColumnNum;
 		tree.AppendColumn(nameColumn);
 	}

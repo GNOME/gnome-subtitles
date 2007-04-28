@@ -36,7 +36,7 @@ public class BugReportWindow {
 	
 	public BugReportWindow (Exception exception, string bugInfo) {
 		Application.Init();
-		Glade.XML glade = new Glade.XML(gladeFilename, null);
+		Glade.XML glade = new Glade.XML(null, gladeFilename, null, Global.Execution.TranslationDomain);
 		glade.Autoconnect(this);
 
 		bugTextView.Buffer.Text = bugInfo;
