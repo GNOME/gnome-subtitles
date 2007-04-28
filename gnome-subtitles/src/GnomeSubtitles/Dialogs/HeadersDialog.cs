@@ -30,6 +30,8 @@ public class HeadersDialog : GladeDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "HeadersDialog.glade";
+	private const string mpSubAudioTag = "AUDIO";
+	private const string mpSubVideoTag = "VIDEO";
 
 	/* Widgets */
 	
@@ -101,7 +103,7 @@ public class HeadersDialog : GladeDialog {
 		entryMPSubAuthor.Text = headers.Author;
 		entryMPSubNote.Text = headers.Note;
 
-		comboBoxMPSubType.Active = (headers.MediaType == "AUDIO" ? 0 : 1); 
+		comboBoxMPSubType.Active = (headers.MediaType == mpSubAudioTag ? 0 : 1); 
 	}
 	
 	private void LoadSSAASSHeaders () {
@@ -168,7 +170,7 @@ public class HeadersDialog : GladeDialog {
 		headers.Author = entryMPSubAuthor.Text;
 		headers.Note = entryMPSubNote.Text;
 
-		headers.MediaType = comboBoxMPSubType.ActiveText; 
+		headers.MediaType = (comboBoxMPSubType.Active == 0 ? mpSubAudioTag : mpSubVideoTag);
 	}
 	
 	private void StoreSSAASSHeaders () {
