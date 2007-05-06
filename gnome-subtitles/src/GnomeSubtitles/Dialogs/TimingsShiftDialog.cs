@@ -43,9 +43,7 @@ public class TimingsShiftDialog : GladeDialog {
 		InitSpinButton();
 		UpdateContents();
 	}
-	
-	/* Protected methods */
-	
+
 	public override void Show () {
 		UpdateContents();
 		base.Show();		
