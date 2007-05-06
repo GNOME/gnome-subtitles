@@ -167,15 +167,16 @@ public class GUI {
     /// <remarks>After saving, the timing mode is set to the timing mode of the subtitle format using when saving.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
     public bool SaveAs () {
-		FileSaveAsDialog dialog = new FileSaveAsDialog();
+		FileSaveAsDialog dialog = Global.Dialogs.FileSaveAsDialog;
 		dialog.Show();
 		bool toSaveAs = dialog.WaitForResponse();
 		if (toSaveAs) {
 			string filename = dialog.Filename;
-			SubtitleType type = dialog.SubtitleType;
+			SubtitleType subtitleType = dialog.SubtitleType;
 			Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
+			NewlineType newlineType = dialog.NewlineType;
 
-			Global.Document.Save(filename, encoding, type);
+			Global.Document.Save(filename, encoding, subtitleType, newlineType);
 			Global.CommandManager.WasModified = false;
 			UpdateWindowTitle(false);
 			return true;

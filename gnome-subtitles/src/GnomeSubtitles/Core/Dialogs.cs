@@ -20,8 +20,18 @@
 namespace GnomeSubtitles {
 
 public class Dialogs {
+	private FileSaveAsDialog fileSaveAsDialog = null;
 	private SearchDialog searchDialog = null;
 	private TimingsShiftDialog timingsShiftDialog = null;
+	
+	public FileSaveAsDialog FileSaveAsDialog {
+		get {
+			if (fileSaveAsDialog == null)
+				fileSaveAsDialog = new FileSaveAsDialog();
+			
+			return fileSaveAsDialog;		
+		}
+	}
 	
 	public SearchDialog SearchDialog {
 		get {
