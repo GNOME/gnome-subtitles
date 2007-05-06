@@ -37,12 +37,12 @@ public abstract class SubtitleFileChooserDialog : GladeDialog { //TODO make this
 	protected bool hasChosenEncoding = false;
 	
 	protected EncodingDescription[] encodings = null;
-	
+
 	/* Widgets */
 	
 	[WidgetAttribute] private ComboBox encodingComboBox;
 
-	public SubtitleFileChooserDialog (string filename) : base(filename) {
+	protected SubtitleFileChooserDialog (string filename, bool persistent) : base(filename, persistent, true) {
 		dialog = base.dialog as FileChooserDialog;
 		
 		fixedEncoding = GetFixedEncoding();
