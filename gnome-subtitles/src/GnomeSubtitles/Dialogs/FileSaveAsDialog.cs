@@ -19,6 +19,7 @@
 
 using Glade;
 using Gtk;
+using Mono.Unix;
 using SubLib;
 using System;
 using System.IO;
@@ -29,6 +30,7 @@ namespace GnomeSubtitles {
 public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	private SubtitleType chosenSubtitleType;
 	private SubtitleTypeInfo[] subtitleTypes = null;
+	private NewlineType chosenNewlineType;
 
 	/* Constant strings */
 	private const string gladeFilename = "FileSaveAsDialog.glade";
@@ -36,23 +38,28 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	/* Widgets */
 	
 	[WidgetAttribute] private ComboBox formatComboBox;
+	[WidgetAttribute] private ComboBox newlineTypeComboBox;
 
-	public FileSaveAsDialog () : base(gladeFilename) {
-		if (Global.Document.FileProperties.IsPathRooted)
-			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
-		else
-			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-			
-		dialog.CurrentName = Global.Document.FileProperties.Filename;
-
-		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
-		   while in this constructor. After constructing it works fine. */
-
+	public FileSaveAsDialog () : base(gladeFilename, true) {
 		FillFormatComboBox();
+		FillNewlineTypeComboBox();
 	}
+	
+	/* Public properties */
 	
 	public SubtitleType SubtitleType {
 		get { return chosenSubtitleType; }
+	}
+	
+	public NewlineType NewlineType {
+		get { return chosenNewlineType; }
+	}
+	
+	/* Public methods */
+	
+	public override void Show () {
+		UpdateContents();
+		base.Show();		
 	}
 	
 	/* Protected methods */
@@ -67,42 +74,68 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	}
 	
 	/* Private members */
+	
+	private void UpdateContents () {
+		if (Global.Document.FileProperties.IsPathRooted)
+			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
+		else
+			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+			
+		dialog.CurrentName = Global.Document.FileProperties.Filename;
+
+		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
+		   while in this constructor. After constructing it works fine. */
+
+		SetActiveFormat();
+		SetActiveNewlineType();
+	}
 
 	private void FillFormatComboBox () {
 		subtitleTypes = Subtitles.AvailableTypesSorted;
-		SubtitleType subtitleType = Global.Document.FileProperties.SubtitleType; //The type of the subtitle file
-		int activeType = -1; //The position of the combobox to make active
-		int microDVDTypeNumber = -1; //The position of the MicroDVD format in the combobox
-		int subRipTypeNumber = -1; //The position of the SubRip format in the combobox
 		
-		int currentTypeNumber = 0;
 		foreach (SubtitleTypeInfo typeInfo in subtitleTypes) {
-			SubtitleType type = typeInfo.Type;
-			
-			if (type == subtitleType)
-				activeType = currentTypeNumber;
-			
-			if (type == SubtitleType.MicroDVD)
-				microDVDTypeNumber = currentTypeNumber;
-			else if (type == SubtitleType.SubRip)
-				subRipTypeNumber = currentTypeNumber;
-			
 			formatComboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
-			currentTypeNumber++;
-		}
+		}	
+	}
 
-		if (subtitleType == SubtitleType.Unknown) { //Active type isn't known, selecting MicroDVD or SubRip depending on Timing Mode
-			TimingMode timingMode = Global.TimingMode;
-			if ((timingMode == TimingMode.Frames) && (microDVDTypeNumber != -1))
-				formatComboBox.Active = microDVDTypeNumber;
-			else if ((timingMode == TimingMode.Times) && (subRipTypeNumber != -1))
-				formatComboBox.Active = subRipTypeNumber;
-			else
-				formatComboBox.Active = 0;
+	private void SetActiveFormat () {
+		SubtitleType subtitleType = Global.Document.FileProperties.SubtitleType; //The type of the subtitle file
+		int position = FindSubtitleTypePosition(subtitleType);
+		if (position != -1) {
+			formatComboBox.Active = position;
+			return;
 		}
-		else {
-			formatComboBox.Active = activeType;
+		
+		/* The current subtitle type was not found, trying the most common based on the TimingMode */
+		TimingMode timingMode = Global.TimingMode;
+		
+		/* If timing mode is Frames, set to MicroDVD */
+		if (timingMode == TimingMode.Frames) {
+			position = FindSubtitleTypePosition(SubtitleType.MicroDVD);
+			if (position != -1) {
+				formatComboBox.Active = position;
+				return;
+			}
 		}
+		
+		/* If SubRip subtitle type is found, use it */
+		position = FindSubtitleTypePosition(SubtitleType.SubRip);
+		if (position != -1) {
+			formatComboBox.Active = position;
+			return;
+		}
+		
+		/* All options tried to no aval, selecting the first */
+		formatComboBox.Active = 0;
+	}
+	
+	private int FindSubtitleTypePosition (SubtitleType type) {
+		for (int position = 0 ; position < subtitleTypes.Length ; position++) {
+			SubtitleType current = subtitleTypes[position].Type;
+			if (current == type)
+				return position;
+		}
+		return -1;
 	}
 	
 	private string UpdateFilenameExtension (string filename, SubtitleType type) {
@@ -157,6 +190,81 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 			return String.Empty;
 		}
 	}
+	
+	private void FillNewlineTypeComboBox () {
+		string mac = "Macintosh";
+		string unix = "Unix";
+		string windows = "Windows";
+		string systemDefault = " (" + Catalog.GetString("System Default") + ")";
+		
+		NewlineType systemNewline = GetSystemNewlineType();
+		SetSystemNewlineSuffix(systemNewline, ref mac, ref unix, ref windows, systemDefault);
+		
+		newlineTypeComboBox.AppendText(mac);
+		newlineTypeComboBox.AppendText(unix);
+		newlineTypeComboBox.AppendText(windows);
+	}
+	
+	private void SetActiveNewlineType () {
+		NewlineType systemNewline = GetSystemNewlineType();
+		NewlineType documentNewline = Global.Document.FileProperties.NewlineType;
+		NewlineType newlineToMakeActive = (documentNewline != NewlineType.Unknown ? documentNewline : systemNewline);
+		int item = GetNewlineTypePosition(newlineToMakeActive);
+		newlineTypeComboBox.Active = item;	
+	}
+	
+	private NewlineType GetSystemNewlineType () {
+		switch (Environment.NewLine) {
+			case "\n":
+				return NewlineType.Unix;
+			case "\r":
+				return NewlineType.Macintosh;
+			case "\r\n":
+				return NewlineType.Windows;
+			default:
+				return NewlineType.Unknown;
+		}
+	}
+	
+	private void SetSystemNewlineSuffix (NewlineType newline, ref string mac, ref string unix, ref string windows, string suffix) {
+		switch (newline) {
+			case NewlineType.Macintosh:
+				mac += suffix;
+				break;
+			case NewlineType.Unix:
+				unix += suffix;
+				break;
+			case NewlineType.Windows:
+				windows += suffix;
+				break;
+		}
+	}
+	
+	private int GetNewlineTypePosition (NewlineType newline) {
+		switch (newline) {
+			case NewlineType.Macintosh:
+				return 0;
+			case NewlineType.Unix:
+				return 1;
+			case NewlineType.Windows:
+				return 2;
+			default:
+				return 1;
+		}	
+	}
+	
+	private NewlineType GetChosenNewlineType () {
+		switch (newlineTypeComboBox.Active) {
+			case 0:
+				return NewlineType.Macintosh;
+			case 1:
+				return NewlineType.Unix;
+			case 2:
+				return NewlineType.Windows;
+			default:
+				return NewlineType.Unix;
+		}
+	}
 
 	/* Event members */
 
@@ -167,11 +275,14 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 			int formatIndex = formatComboBox.Active;
 			chosenSubtitleType = subtitleTypes[formatIndex].Type;
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
+			
 			int encodingIndex = GetActiveEncodingComboBoxItem();
 			chosenEncoding = encodings[encodingIndex];
 			actionDone = true;
+			
+			chosenNewlineType = GetChosenNewlineType();
 		}
-		Close();
+		Hide();
 	}
 
 	private void OnFormatChanged (object o, EventArgs args) {
