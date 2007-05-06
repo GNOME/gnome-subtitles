@@ -44,7 +44,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute] private Label videoLabel;
 	
 	
-	public FileOpenDialog () : base(gladeFilename) {
+	public FileOpenDialog () : base(gladeFilename, false) {
 		autoChooseVideoFile = Global.Config.PrefsVideoAutoChooseFile;
 
 		videoComboBox.RowSeparatorFunc = SeparatorFunc;	
