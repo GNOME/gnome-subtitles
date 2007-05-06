@@ -65,8 +65,8 @@ public class Document {
 		return true;
 	}
 
-	public bool Save (string path, Encoding encoding, SubtitleType type) {
-		fileProperties = new FileProperties(path, encoding, type, Global.TimingMode);
+	public bool Save (string path, Encoding encoding, SubtitleType subtitleType, NewlineType newlineType) {
+		fileProperties = new FileProperties(path, encoding, subtitleType, Global.TimingMode, newlineType);
 		
 		canBeSaved = true;
 		Save();
