@@ -153,7 +153,7 @@ public class Global {
 
 		gui = new GUI(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
-		Catalog.Init(Global.Execution.TranslationDomain, Global.Execution.GnomeSharpVersion + "/locale");
+		Catalog.Init(Global.Execution.TranslationDomain, Global.Execution.SystemShareLocaleDir);
 
 		return true;
 	}
