@@ -32,4 +32,20 @@ Run it with `gnome-subtitles' or use the icon in the GNOME menu.
 To try the program without installing it, `cd' to the `build' dir after building
 it and run it with `mono gnome-subtitles.exe'.
 
-The INSTALL file contains detailed information on the build procedure.
+The INSTALL file contains detailed information on this subject.
+
+
+Building from SVN
+=================
+
+Checkout the latest Gnome Subtitles version from the GNOME SVN:
+	svn co http://svn.gnome.org/svn/gnome-subtitles/trunk/gnome-subtitles
+
+Next, `cd' to the project dir and checkout the latest SubLib version from the
+Sourceforge.net SVN:
+	svn co https://sublib.svn.sf.net/svnroot/sublib/trunk/sublib
+
+Finally, run `autogen.sh' to generate the build scripts (note - you'll need to
+have "gnome-common" installed).
+
+You can now proceed to "Building from Source" to build Gnome Subtitles.
