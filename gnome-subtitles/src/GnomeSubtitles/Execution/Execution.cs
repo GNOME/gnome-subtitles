@@ -19,6 +19,7 @@
 
 using Gnome;
 using System;
+using System.IO;
 using System.Reflection;
 
 namespace GnomeSubtitles {
@@ -85,8 +86,20 @@ public class Execution {
 		set { args = value; }
 	}
 	
-	public string SystemDataDir {
+	public string SystemShareDir {
 		get { return program.GnomeDatadir; }
+	}
+	
+	public string SystemShareLocaleDir {
+		get { return Path.Combine(SystemShareDir, "locale"); }
+	}
+	
+	public string SystemHelpDir {
+		get {
+			return Path.Combine(SystemShareDir,
+				Path.Combine("gnome",
+				Path.Combine("help", applicationID)));
+		}
 	}
 	
 	public string TranslationDomain {
