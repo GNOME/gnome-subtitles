@@ -240,7 +240,15 @@ public class EventHandlers {
 	/*	Help Menu */
 	
 	public void OnHelpContents (object o, EventArgs args) {
-		Util.OpenUrl("http://gnome-subtitles.sourceforge.net/help");
+		try {
+			const string filename = "gnome-subtitles.xml";
+			Gnome.Help.DisplayDesktopOnScreen(Gnome.Program.Get(), Global.Execution.SystemHelpDir, filename, null, Global.GUI.Window.Screen);
+		}
+		catch (Exception e) {
+			System.Console.WriteLine(e);
+			//TODO show an error message
+		}
+		//Util.OpenUrl("http://gnome-subtitles.sourceforge.net/help");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
