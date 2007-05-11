@@ -1,0 +1,566 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+          <!ENTITY legal SYSTEM "legal.xml">
+          <!ENTITY appversion "0.4">
+          <!ENTITY manrevision "1.0">
+          <!ENTITY date "May 2007">
+          <!ENTITY app "<application>Gnome Subtitles</application>">
+          ]>
+<!--
+    (Do not remove this comment block.)
+    Maintained by the GNOME Documentation Project
+    http://developer.gnome.org/projects/gdp
+    Template version: 2.0 beta
+    Template last modified Apr 11, 2002
+    -->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+  <!-- please do not change the id; for translations, change lang to -->
+  <!-- appropriate code -->
+  <articleinfo>
+    <title>&app; Manual V&manrevision;</title>
+    
+    <copyright>
+      <year>2007</year>
+      <holder>Erin Bloom</holder>
+    </copyright>
+    
+    <!-- An address can be added to the publisher information.  If a role is
+          not specified, the publisher/author is the same for all versions of the
+          document.  -->
+    <publisher>
+      <publishername> GNOME Documentation Project </publishername>
+    </publisher>
+    
+    &legal;
+    
+    <authorgroup>
+      <author role="maintainer">
+        <firstname>Erin</firstname>
+        <surname>Bloom</surname>
+        <affiliation>
+          <orgname>GNOME Documentation Project</orgname>
+          <address> <email>doc-writer2@gnome.org</email> </address>
+        </affiliation>
+      </author>
+
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+      
+      <othercredit role="translator">
+        <firstname>Latin</firstname>
+        <surname>Translator 1</surname>
+        <affiliation>
+          <orgname>Latin Translation Team</orgname>
+          <address> <email>translator@gnome.org</email> </address>
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+      -->
+    </authorgroup>
+    
+  
+  <!-- According to GNU FDL, revision history is mandatory if you are -->
+  <!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+  <!-- Remember to remove the &manrevision; entity from the revision entries other -->
+  <!-- than the current revision. -->
+  <!-- The revision numbering system for GNOME manuals is as follows: -->
+  <!-- * the revision number consists of two components -->
+  <!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+  <!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+  <!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+  <!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+  <!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+  <!-- to V3.0, and so on. -->
+  <revhistory>
+    <revision>
+      <revnumber>&app; Manual V&manrevision;</revnumber>
+      <date>&date;</date>
+      <revdescription>
+        <para role="author">Erin Bloom
+          <email>docwriter2@gnome.org</email>
+        </para>
+        <para role="publisher">GNOME Documentation Project</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  
+  <releaseinfo>This manual describes version &appversion; of &app;</releaseinfo>
+  <legalnotice>
+    <title>Feedback</title>
+    <para>To report a bug or make a suggestion regarding the &app; application or
+      this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.
+    </para>
+    <!-- Translators may also add here feedback address for translations -->
+  </legalnotice>
+</articleinfo>
+<!-- Index Section -->
+<indexterm zone="index">
+  <primary>Gnome Subtitles</primary>
+</indexterm>
+<indexterm zone="index">
+  <primary>gnomesubtitles</primary>
+</indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<!-- Use the Introduction section to give a brief overview of what
+    the application is and what it does. -->
+<sect1 id="gs-introduction">
+  <title>Introduction</title>
+  <para>&app; is a subtitle editor for the GNOME desktop.
+    &app; supports the most common text-based subtitle formats
+    and allows for subtitle editing, conversion and synchronization.
+    Its features follow.</para>
+  <itemizedlist>
+    <listitem>
+      <para>Subtitle Formats:</para> 
+      <itemizedlist> 
+        <listitem><para>Advanced Sub Station Alpha</para></listitem> 
+        <listitem><para>MicroDVD</para></listitem> 
+        <listitem><para>MPlayer</para></listitem> 
+        <listitem><para>Mplayer 2</para></listitem> 
+        <listitem><para>MPSub</para></listitem> 
+        <listitem><para>SubRip</para></listitem> 
+        <listitem><para>Sub Station Alpha</para></listitem> 
+        <listitem><para>SubViewer 1.0</para></listitem> 
+        <listitem><para>SubViewer 2.0</para></listitem> 
+      </itemizedlist> 
+    </listitem> 
+    <listitem><para>Built-in Video Preview</para> 
+      <itemizedlist>
+        <listitem><para>Uses mplayer as the backend</para></listitem>
+        <listitem><para>Video length and current position display</para></listitem>
+        <listitem><para>Set subtitle timings based on video position</para></listitem>
+        <listitem><para>Automatically select video when opening subtitles</para></listitem>
+      </itemizedlist>
+    </listitem> 
+    <listitem>
+      <para>User Interface</para>
+      <itemizedlist>
+        <listitem><para>WYSIWYG-What you see is what you get</para></listitem>
+        <listitem><para>Edit subtitle headers</para></listitem>
+        <listitem><para>Find and Replace, including regular expression support</para></listitem>
+        <listitem><para>Undo/Redo</para></listitem>
+      </itemizedlist>
+    </listitem>
+    <listitem>
+      <para>Timing Operations</para>
+      <itemizedlist>
+        <listitem><para>Auto-adjust timings based on 2 correct time/synchronization points</para></listitem>
+        <listitem><para>Shift subtitles by a specified delay (which can be based on the video)</para></listitem>	
+        <listitem><para>Convert between framerates</para></listitem>
+        <listitem><para>Edit times and frames</para></listitem>
+      </itemizedlist>
+    </listitem>
+    <listitem><para>Other Features</para>
+      <itemizedlist>
+        <listitem><para>Character coding a subtitle format auto-detection (on opening)</para></listitem>
+        <listitem><para>Multiple character encoding choice</para></listitem>
+        <listitem><para>Relaxes subtitle reading, to read subtitles that contain errors</para></listitem>
+      </itemizedlist>
+    </listitem>
+  </itemizedlist>
+</sect1>
+
+<!-- =========== Getting Started ============================== -->
+<!-- Use the Getting Started section to describe the steps required
+    to start the application and to describe the user interface components
+  of the application. If there is other information that it is important
+    for readers to know before they start using the application, you should
+    also include this information here. 
+    If the information about how to get started is very short, you can 
+    include it in the Introduction and omit this section. -->
+
+<sect1 id="gs-getting-started">
+  <title>Getting Started</title> 
+  
+  <sect2 id="gs-start">
+    <title>To Start &app;</title>
+    <para>You can start <application>&app;</application> in the following ways:
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term><guimenu>Applications</guimenu> menu</term>
+        <listitem>
+          <para>Choose
+            <menuchoice>
+              <guisubmenu>Sound &#38; Video</guisubmenu>
+              <guimenuitem>Gnome Subtitles</guimenuitem>
+            </menuchoice>. </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Command line</term>
+        <listitem>
+          <para>Type <command>gnome-subtitles</command> <replaceable>filename</replaceable> and press <keycap>Return</keycap>.</para>
+          <para>The <replaceable>filename</replaceable> argument is optional. If specified, the application will open that file when starting.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+</sect1>
+<sect1 id="gs-working-with-files">
+  <title>Working with Files</title>
+  <sect2 id="gs-creating-new-doc">
+    <title>Creating a new subtitle document</title>
+    <procedure>
+      <title>Creating a new subtitle document</title>
+      <step performance="required">
+      <para>
+      Go to <menuchoice>
+              <guisubmenu>File</guisubmenu>
+              <guimenuitem>New</guimenuitem>
+            </menuchoice>. </para>
+      <para>A new file should open in the editor</para>
+      </step>
+      </procedure>
+  </sect2>
+    <sect2 id="gs-opendingfile">
+    <title>Opening a file</title>
+      <procedure>
+      <title>Opening a file</title>
+      <step performance="required">
+      <para>
+      Go to <menuchoice>
+              <guisubmenu>File</guisubmenu>
+              <guimenuitem>Open</guimenuitem>
+            </menuchoice>. </para>
+      <para>The Open File window should open</para>
+      </step>
+      <step performance="required">
+      <para>Select the subtitle file you wish to open.
+      </para>
+      <substeps>
+      <step performance="optional">
+      <para>If you want to specify the encoding, choose the appropriate character encoding from
+        the Encoding</para>
+      </step>
+      <step performance="optional">
+      <para>If you want to choose a video to open immediately, choose a video from the Video list.</para>
+      </step>
+      </substeps>
+      </step>
+      </procedure>
+      <note><para>When selecting a video, you can only choose from the videos in the current directory.  
+        If the video you want to open is not in the same directory as the subtitle file, 
+        you can open the video after opening the subtitle file.</para>
+      </note>
+  </sect2>
+    <sect2 id="gs-saving-file">
+    <title>Saving a file</title>
+      <procedure>
+      <title>Saving a file</title>
+      <para>You can either save a file normally, or use Save As to set different options.</para>
+      <step performance="required">
+      <para>
+      Go to <menuchoice>
+              <guisubmenu>File</guisubmenu>
+              <guimenuitem>Save</guimenuitem>
+            </menuchoice>. </para>
+      <para>The Open File window should open</para>
+      </step>
+    </procedure>
+    <note><para>If you are saving a new file, the Save As window will appear</para></note>
+    <procedure>
+      <title>Saving as a new file</title>
+      <step performance="required">
+      <para>
+      Go to <menuchoice>
+              <guisubmenu>File</guisubmenu>
+              <guimenuitem>Save As</guimenuitem>
+            </menuchoice>. </para>
+      <para>The Save As window should open</para>
+      </step>
+      <step performance="required"><para>Enter a new name for your subtitle file</para></step>
+      <step performance="optional"><para>If you would like to save the file in a different location, browse to the new location in the
+          file browser</para></step>
+      <step performance="optional"><para>If you would like to save the file in a format other than the format
+          listed in the Subtitle Format list, choose a different format.</para></step>
+      <step performance="optional"><para>If you would like to save the file in a character encoding other than
+          your default encoding which is listed, change the encoding in the character encoding list.</para></step>
+      <step performance="required"><para>Click Save</para></step>
+    </procedure>
+  </sect2>
+  
+    <sect2 id="gs-select-char-coding">
+    <title>Selecting a character encoding</title>
+    <para>If you use special characters in your subtitle file, you will want to make sure that your
+      file is saved in an encoding that supports those characters.</para>
+    <caution><para>Saving a file in a character encoding that does not support the special characters
+        will cause loss of character data.  This occurs when you try to save multi-byte characters in a
+        single byte character encoding.</para></caution>
+  </sect2>
+    <sect2 id="gs-editing-headers">
+    <title>Editing subtitle headers</title>
+
+        <procedure>
+  <para>Some subtitle formats have file headers that contain information about the file.
+    You can edit these fields in &app; by</para>
+      <step performance="required">
+      <para>
+      Go to <menuchoice>
+              <guisubmenu>File</guisubmenu>
+              <guimenuitem>Headers</guimenuitem>
+            </menuchoice>. </para>
+      <para>The Headers window will open.  It has 4 tabs on it.</para>
+      </step>
+      <step performance="required"> <para>Select the tab that corresponds to the format of your subtitle file</para></step>
+      <step performance="required"><para>Fill in appropriate fields.</para></step>
+      <step performance="required"><para>When you are done entering header data in, click OK</para></step>
+    </procedure>
+  </sect2>
+</sect1>
+    <!-- ============= Working with Subtitles ================================== -->
+<sect1 id="gs-working-with-subs">
+<title>Working with Subtitles</title>
+<note><para>This help lists the keyboard shortcuts to accomplish tasks.  All of the tasks can also
+  be accomplished by using the Edit menu instead of keyboard shortcuts.</para></note>
+      <sect2 id="gs-wws-adding">
+        <title>Adding a Subtitle</title>
+        <para>New subtitles are added either before or after the current subtitle.</para>
+        <procedure>
+          <title>To add a new subtitle after the current subtitle</title>
+      <step performance="required">
+      <para>Type <keycap>Insert</keycap> or <keycap>Control-Return</keycap></para>
+      </step>
+    </procedure>
+            <procedure>
+          <title>To add a new subtitle before the current subtitle</title>
+      <step performance="required">
+      <para>Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</keycap></para>
+      </step>
+    </procedure>
+      </sect2>     
+      <sect2 id="gs-wws-moving">
+        <title>Moving between subtitles</title>
+        <para>To select subtitles you can either use your mouse to click the subtitle
+        , or, when your cursor is in the edit window, you can use keyboard shortcuts 
+        to move between subtitles</para>
+        <procedure>
+          <title>To go to the next subtitle</title>
+      <step performance="required">
+      <para>Type <keycap>Control</keycap>-<keycap>Page Down</keycap></para>
+      </step>
+    </procedure>
+            <procedure>
+          <title>To move to the previous subtitle</title>
+      <step performance="required">
+      <para>Type <keycap>Control</keycap>-<keycap>Page Up</keycap></para>
+      </step>
+    </procedure>
+      </sect2>     
+      <sect2 id="gs-wws-removing">
+        <title>Removing Subtitle(s)</title>
+      <procedure><step><para>Type <keycap>Delete</keycap></para></step></procedure>
+      </sect2>      
+      <sect2 id="gs-wws-batch">
+        <title>Working with Multiple Subtitles</title>
+        <para>Sometimes you will want to select multiple subtitles.  Use <keycap>Shift</keycap> to
+          select sequenctial subtitles, and <keycap>Control</keycap> to select non-sequention subtitles</para>
+        <para>To select all subtitles type <keycap>Control</keycap>-<keycap>A</keycap></para>
+      </sect2>      
+      <sect2 id="gs-wws-editing">
+        <title>Editing Text</title>
+        <para>To edit text in a subtitle</para>
+          <procedure>
+            <step><para>Select the subtitle</para></step>
+            <step><para>Click the edit window to move the cursor into the edit window</para></step>
+          </procedure>
+      </sect2>
+      <sect2 id="gs-wws-format">
+        <title>Text format</title>
+        <note><para>A type format (bold, italics, underline) can be applied to the whole line only.
+          Currently, if you want to have only certain characters formatted specially, you will need
+        to edit the subtitle file in a text editor.</para></note>
+      </sect2>
+      <sect2 id="gs-wws-oops">
+        <title>Undoing and Redoing</title>
+        <procedure><title>To undo an action</title><step><para>Type <keycap>Control</keycap>-
+              <keycap>Z</keycap></para></step></procedure>
+        <procedure><title>To redo an action</title><step><para>Type <keycap>Control</keycap>-
+              <keycap>Y</keycap> or <keycap>Control</keycap>-<keycap>Shift</keycap>-<keycap>Z
+              </keycap></para></step></procedure>
+      </sect2>      
+      <sect2 id="gs-wws-ccp">
+        <title>Cutting, Copying, and Pasting</title>
+        <para>You can cut, copy, and paste the text in a subtitle.</para>
+        <procedure><title>To copy text</title><step><para><keycap>Control</keycap>-
+              <keycap>C</keycap></para></step></procedure>
+        <procedure><title>To cut text</title><step><para><keycap>Control</keycap>-
+              <keycap>X</keycap></para></step></procedure>
+        <procedure><title>To paste text</title><step><para><keycap>Control</keycap>-
+              <keycap>V</keycap></para></step></procedure>
+      </sect2>
+</sect1>
+    <!-- ============= find/replace ================================== -->
+<!--    <sect1 id="gs-findreplace">
+      <title>Finding and Replacing</title>
+      <sect2 id="gs-fr-finding">
+        <title>Finding</title>
+        <para>Questions and general discussions should be posted on the <ulink url="http://sourceforge.net/forum/?group_id=129996" type="http">Forum</ulink> (no registration needed).</para>
+      </sect2>
+            <sect2 id="gs-fr-replacing">
+        <title>Replacing</title>
+        <para>You might get a quick response by asking the <ulink url="http://lists.sourceforge.net/lists/listinfo/gnome-subtitles-general" type="http">Mailing List</ulink> (<ulink url="http://sourceforge.net/mailarchive/forum.php?forum=gnome-subtitles-general" type="http">archives</ulink> are available).</para>
+      </sect2>
+      <sect2 id="gs-fr-options">
+        <title>Find and Replace Options</title>
+        <para>Questions and general discussions should be posted on the <ulink url="http://sourceforge.net/forum/?group_id=129996" type="http">Forum</ulink> (no registration needed).</para>
+      </sect2>
+      <sect2 id="gs-regex">
+        <title>Using Regular Expressions</title>
+        <para>Bugs and Feature Requests can be reported at the official <ulink url="http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles" type="http">Gnome Bugzilla</ulink>.</para>
+      </sect2>
+    </sect1>
+-->
+    <!-- ============= Timings ================================== -->
+    <sect1 id="gs-timings">
+      <title>Manipulating Subtitles</title>
+      <sect2 id="gs-timings-settingview">
+        <title>Setting subtitle units</title>
+        <para>In &app; you can set and adjust subtitles in time units (minutes and seconds) or in frame units.
+              The default unit is time.</para>
+            <procedure><title>To use Frame units</title>
+              <step><para>Go to <menuchoice>
+              <guisubmenu>View</guisubmenu>
+              <guimenuitem>Frames</guimenuitem>
+            </menuchoice>. </para></step></procedure>
+              <procedure><title>To use Time units</title>
+              <step><para>Go to <menuchoice>
+              <guisubmenu>View</guisubmenu>
+              <guimenuitem>Times</guimenuitem>
+            </menuchoice>. </para></step></procedure>
+      </sect2>
+      <sect2 id="gs-timings-Adjusting">
+        <title>Adjusting Timings</title>
+           <procedure>
+             <step><para>If you want to adjust the timings of only some subtitles, select the subtitles
+                 that you want to adjust the timing of</para></step>
+              <step><para>Go to <menuchoice>
+              <guisubmenu>Timings</guisubmenu>
+              <guimenuitem>Adjust</guimenuitem>
+            </menuchoice>. </para></step>
+            <step><para>Choose the new starting time of the first subtitle and the new starting time of the last subtitle
+            </para></step>
+      </procedure>
+      </sect2>
+            <sect2 id="gs-timings-Shifitng">
+        <title>Shifting Timings</title>
+        <para>Shifting timings allows you to moves one or more subtitles ahead or behind by a 
+              specific amount.  Unlike the Adjust subtitles feature, Shifting subtitles does not
+              affect the duration of the subtitles.</para>
+              <procedure><title>To use shift subtitles</title>
+                <step><para>Select which subtitle(s) you want to shift.  If you want to shift the time/frame of one
+                  subtitle and/or all subtitles before or after a specific subtitle, select that subtitle.
+                  If you want to shift more than one specific subtitles, select all of the subtitles that you want to shift.</para></step>
+              <step><para>Go to <menuchoice>
+              <guisubmenu>Timings</guisubmenu>
+              <guimenuitem>Shift</guimenuitem>
+            </menuchoice>. </para></step>
+            <step><para>Enter in the amount of time (or frames, if you are using the frame unit) to 
+                        adjust your subtitles by.  If you want to move the subtitles back, enter a negative value,
+                        otherwise, enter a positive value.</para></step>
+            <step><para>Select how you want to shift your subtitles.</para></step>
+            <step><para>Click Shift to shift the subtitles.</para></step>
+      </procedure>
+      </sect2>
+      <sect2 id="gs-timings-inputfr">
+        <title>Setting the Input and Video Framerates</title>
+        <para>When you open a video, &app; does not automatically set the framerate of the video.</para>
+        <para>&app; manipulates subtitles based on time, regardless of view mode.  Therefore, when you 
+          change the video frame rate, &app; adjusts the frames to compensate for the change.  The duration 
+          of the subtitle remains the same.</para>
+        <caution><para>If your subtitle format uses frames to determine when a subtitle is dispayed (MicroDVD), 
+          changing the video framerate may cause your subtitles to lose their sync.</para></caution>
+        <procedure><title>To set the video framerate</title>
+              <step><para>Go to <menuchoice>
+              <guisubmenu>Timings</guisubmenu>
+              <guimenuitem>Video Frame Rate</guimenuitem>
+            </menuchoice> and select the appropriate framerate.</para></step>
+      </procedure>
+      <procedure><title>To set the input framerate</title>
+              <step><para>Go to <menuchoice>
+              <guisubmenu>Timings</guisubmenu>
+              <guimenuitem>Input Frame Rate</guimenuitem>
+            </menuchoice> and select the appropriate framerate.</para></step>
+      </procedure>
+      </sect2>
+    </sect1>
+     <!-- ============= Video ================================== -->
+    <sect1 id="gs-video">
+      <title>Working with Videos</title>
+      <sect2 id="gs-video-opening">
+        <title>Opening and Closing a Video</title>
+        <procedure>
+          <title>To open a video</title>
+          <step><para>Go to <menuchoice>
+              <guisubmenu>Video</guisubmenu>
+              <guimenuitem>Open</guimenuitem>
+            </menuchoice>
+          </para></step>
+        </procedure>
+        <procedure>
+          <title>To close a video</title>
+          <step><para>Go to <menuchoice>
+              <guisubmenu>Video</guisubmenu>
+              <guimenuitem>Close</guimenuitem>
+            </menuchoice>
+          </para></step>
+        </procedure>
+      </sect2>
+      <sect2 id="gs-video-playback">
+        <title>Playing back</title>
+        <para>&app; will play the video in the view window with your subtitles.</para>
+      </sect2>
+      <sect2 id="gs-video-seeking">
+        <title>Seeking to the Selection</title>
+        <para>You can go to the point in the loaded video where a subtitle starts</para>
+        <procedure>
+          <title>To seek to a subtitle</title>
+          <step><para>Go to <menuchoice>
+              <guisubmenu>Video</guisubmenu>
+              <guimenuitem>Seek to Selection</guimenuitem>
+            </menuchoice>
+          </para></step>
+        </procedure>
+      </sect2>
+      <sect2 id="gs-video-settingsubs">
+        <title>Setting the Subtitle Start or End Positions</title>
+        <para>You can set the subtitles start or end time based on the point at which the loaded video is paused</para>
+        <procedure>
+          <title>To set subtitle starting time</title>
+          <step><para>Go to <menuchoice>
+              <guisubmenu>Video</guisubmenu>
+              <guimenuitem>Set Subtitle Start</guimenuitem>
+            </menuchoice>
+          </para></step>
+        </procedure>
+        <procedure>
+          <title>To set subtitle starting time</title>
+          <step><para>Go to <menuchoice>
+              <guisubmenu>Video</guisubmenu>
+              <guimenuitem>Set Subtitle End</guimenuitem>
+            </menuchoice>
+          </para></step>
+        </procedure>
+      </sect2>
+    </sect1>
+   <!-- ============= Support ================================== -->
+    <sect1 id="gs-support">
+      <title>Where to Get Additional Support</title>
+      <sect2 id="gs-support-forums">
+        <title>Forums</title>
+        <para>Questions and general discussions should be posted on the <ulink url="http://sourceforge.net/forum/?group_id=129996" type="http">Forum</ulink> (no registration needed).</para>
+      </sect2>
+            <sect2 id="gs-support-mailinglist">
+        <title>Mailing List</title>
+        <para>You might get a quick response by asking the <ulink url="http://lists.sourceforge.net/lists/listinfo/gnome-subtitles-general" type="http">Mailing List</ulink> (<ulink url="http://sourceforge.net/mailarchive/forum.php?forum_name=gnome-subtitles-general" type="http">archives</ulink> are available).</para>
+      </sect2>
+      <sect2 id="gs-support-bugzilla">
+        <title>Bugs and Features</title>
+        <para>Bugs and Feature Requests can be reported at the official <ulink url="http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles" type="http">Gnome Bugzilla</ulink>.</para>
+      </sect2>
+    </sect1>
+  </article>
