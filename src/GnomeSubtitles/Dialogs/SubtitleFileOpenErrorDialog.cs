@@ -21,6 +21,7 @@ using Mono.Unix;
 using SubLib;
 using System;
 using System.IO;
+using System.Security;
 
 namespace GnomeSubtitles {
 
@@ -40,8 +41,14 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 			return Catalog.GetString("An I/O error has occured.");
 		else if (exception is NotSupportedException)
 			return Catalog.GetString("The encoding used is not supported by your system.");
+		else if ((exception is UnauthorizedAccessException) || (exception is SecurityException))
+			return Catalog.GetString("You do not have the permissions necessary to open the file.");
+		else if ((exception is ArgumentNullException) || (exception is ArgumentException) || (exception is PathTooLongException))
+			return Catalog.GetString("The specified file is invalid.");
+		else if (exception is FileNotFoundException)
+			return Catalog.GetString("The file could not be found.");
 		else
-			return GetGeneralExceptionErrorMessage(exception);
+			return String.Empty;
 	}
 
 }
