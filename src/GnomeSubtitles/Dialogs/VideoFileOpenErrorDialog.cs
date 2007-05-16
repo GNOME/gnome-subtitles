@@ -17,10 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using SubLib;
 using Mono.Unix;
 using System;
-using System.IO;
 
 namespace GnomeSubtitles {
 
@@ -37,7 +35,7 @@ public class VideoFileOpenErrorDialog : FileOpenErrorDialog {
 		else if (exception is PlayerCouldNotOpenVideoException)
 			return Catalog.GetString("Please check that the video file is supported.");
 		else
-			return GetGeneralExceptionErrorMessage(exception);
+			return String.Empty;
 	}
 
 }
