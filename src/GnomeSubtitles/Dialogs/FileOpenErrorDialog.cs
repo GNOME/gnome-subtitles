@@ -19,60 +19,50 @@
 
 using Gtk;
 using Mono.Unix;
-using SubLib;
 using System;
-using System.IO;
 
 namespace GnomeSubtitles {
 
-public abstract class FileOpenErrorDialog : GladeDialog {
+public abstract class FileOpenErrorDialog : ErrorDialog {
 	
 	/* Strings */
-	private const string gladeFilename = "FileOpenErrorDialog.glade";
+	private string primaryTextStart = Catalog.GetString("Could not open the file");
 	private string actionLabel = Catalog.GetString("Open another file"); 
 
-	public FileOpenErrorDialog (string filename, Exception exception) : base(gladeFilename) {
-		MessageDialog messageDialog = dialog as MessageDialog;
-		
-		Console.Error.WriteLine(exception);
+	public FileOpenErrorDialog (string filename, Exception exception) {
+		Console.Error.WriteLine("File open error:\n" + exception);
 
 		string primaryText = GetPrimaryText(filename);
-		string secondaryText = SecondaryTextFromException(exception);
-		string text = primaryText + "\n\n" + secondaryText;
-		
-		messageDialog.Markup = text; //Markup has to be used as the Text property is only available from GTK# 2.10
-
-		Button actionButton = messageDialog.AddButton(actionLabel, ResponseType.Accept) as Button;
-		actionButton.Image = new Image(Stock.Open, IconSize.Button);
-		messageDialog.AddButton(Stock.Ok, ResponseType.Ok);
+		string secondaryText = GetSecondaryText(exception);
+		SetText(primaryText, secondaryText);
 	}
+	
+	/* Protected methods */
+	
+	protected override void AddButtons () {
+		Button actionButton = dialog.AddButton(actionLabel, ResponseType.Accept) as Button;
+		actionButton.Image = new Image(Stock.Open, IconSize.Button);
+		dialog.AddButton(Stock.Ok, ResponseType.Ok);
+	}
+
 
 	/* Abstract methods */
 	
 	protected abstract string SecondaryTextFromException (Exception exception);
-	
-	/* Protected methods */
-	
-	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
-	}
+
 	
 	/* Private methods */
 	
 	private string GetPrimaryText (string filename) {
-		return "<span weight=\"bold\" size=\"larger\">" + Catalog.GetString("Could not open the file") + " " + filename + "</span>.";
+		return primaryTextStart + " " + filename + ".";
 	}
 	
-	/* Event members */
-	
-	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		ResponseType response = args.ResponseId;
-		if (response == ResponseType.Accept) {
-			actionDone = true;
-		}
-		Close();
+	private string GetSecondaryText (Exception exception) {
+		string text = SecondaryTextFromException(exception);
+		if (text != String.Empty)
+			return text;
+		else
+			return GetGeneralExceptionErrorMessage(exception);
 	}
 
 }
