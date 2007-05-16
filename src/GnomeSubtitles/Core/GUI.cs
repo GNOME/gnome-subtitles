@@ -154,9 +154,7 @@ public class GUI {
     /// <returns>Whether the file was saved or not.</returns>
     public bool Save () {
     	if (Global.Document.CanBeSaved) { //Check if document can be saved or needs a SaveAs
-			Global.Document.Save();
-			Global.CommandManager.WasModified = false;
-			UpdateWindowTitle(false);
+			Save(Global.Document.FileProperties);
 			return true;
 		}
 		else
@@ -171,14 +169,14 @@ public class GUI {
 		dialog.Show();
 		bool toSaveAs = dialog.WaitForResponse();
 		if (toSaveAs) {
-			string filename = dialog.Filename;
-			SubtitleType subtitleType = dialog.SubtitleType;
+			string path = dialog.Filename;
 			Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
+			SubtitleType subtitleType = dialog.SubtitleType;			
 			NewlineType newlineType = dialog.NewlineType;
+			TimingMode timingMode = Global.TimingMode;
 
-			Global.Document.Save(filename, encoding, subtitleType, newlineType);
-			Global.CommandManager.WasModified = false;
-			UpdateWindowTitle(false);
+			FileProperties fileProperties = new FileProperties(path, encoding, subtitleType, timingMode, newlineType);
+			Save(fileProperties);
 			return true;
 		}
 		else
@@ -256,15 +254,29 @@ public class GUI {
 			Menus.SetVideoSensitivity(true);
 		}
 		catch (Exception exception) {
-			System.Console.Error.WriteLine(exception);
 			Video.Close();
 			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(path, exception);
 			errorDialog.Show();
 			bool toOpenAgain = errorDialog.WaitForResponse();
 	    	if (toOpenAgain)
-	    		OpenVideo(); //Recursive call to open the dialog again
+	    		OpenVideo();
 		}
     }
+    
+    private void Save (FileProperties fileProperties) {
+		try {
+			Global.Document.Save(fileProperties);
+			Global.CommandManager.WasModified = false;
+			UpdateWindowTitle(false);
+		}
+		catch (Exception exception) {
+			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception);
+			errorDialog.Show();
+			bool toSaveAgain = errorDialog.WaitForResponse();
+	    	if (toSaveAgain)
+	    		SaveAs();			
+		}
+	}
 	
 	/// <summary>Executes a blank startup operation.</summary>
 	/// <remarks>This is used when no document is loaded.</remarks>

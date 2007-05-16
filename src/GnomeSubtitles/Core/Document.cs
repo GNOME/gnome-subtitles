@@ -53,23 +53,13 @@ public class Document {
 	}
 	
 	/* Public methods */
-	
-	public bool Save () {
-		if (!canBeSaved)
-			return false;
 
-		fileProperties.TimingMode = Global.TimingMode;
+	public bool Save (FileProperties newFileProperties) {
 		SubtitleSaver saver = new SubtitleSaver();
-		saver.Save(subtitles, fileProperties);
-		fileProperties = saver.FileProperties;
-		return true;
-	}
-
-	public bool Save (string path, Encoding encoding, SubtitleType subtitleType, NewlineType newlineType) {
-		fileProperties = new FileProperties(path, encoding, subtitleType, Global.TimingMode, newlineType);
+		saver.Save(subtitles, newFileProperties);
 		
+		fileProperties = saver.FileProperties;		
 		canBeSaved = true;
-		Save();
 
 		Global.GUI.Menus.SetActiveTimingMode(fileProperties.TimingMode);
 		return true;
