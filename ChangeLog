@@ -1,9 +1,408 @@
-2007-04-20 [r670]  noup:
+2007-05-16 [r736-745]  pcastro:
+
+	* src/Glade/ErrorDialog.glade (added),
+	  src/Glade/FileOpenErrorDialog.glade (removed): New error dialog
+	  to be used when errors occur on File Save.
+
+	* src/Glade/AboutDialog.glade: Fixed author email.
+
+	* src/GnomeSubtitles/Core/Document.cs,
+	  src/GnomeSubtitles/Core/GUI.cs: Display an error dialog when
+	  exceptions occur during File Save. This is used in Save and
+	  SaveAs.
+
+	* src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs (added): New
+	  error dialog to be used when errors occur on File Save.
+
+	* src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs: Check for
+	  some exceptions that were missing.
+
+	* src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs: Check
+	  for some exceptions that were missing.
+
+	* src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs: Refactored to
+	  use the main ErrorDialog class.
+
+	* src/GnomeSubtitles/Dialogs/ErrorDialog.cs (added): New dialog
+	  from which all error dialogs should be constructed. Provides
+	  reusable code.
+
+	* gnome-subtitles.mdp, TODO: General update.
+
+	* configure.ac: Preparing for release 0.5.
+
+2007-05-15 [r735]  pcastro:
+
+	* AUTHORS: Added Erin Bloom.
+
+2007-05-12 [r734]  pcastro:
+
+	* README, src/GnomeSubtitles/Commands/MultipleSelectionCommand.cs,
+	  src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  src/GnomeSubtitles/Execution/AssemblyInfo.cs.in,
+	  src/GnomeSubtitles/Core/Util.cs, etc/samples/sample.srt,
+	  src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs,
+	  src/GnomeSubtitles/Commands/CommandManager.cs, Makefile.am,
+	  src/GnomeSubtitles/Dialogs/AboutDialog.cs,
+	  src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  src/GnomeSubtitles/Core/SubtitleView.cs,
+	  src/GnomeSubtitles/Dialogs/GladeDialog.cs,
+	  src/GnomeSubtitles/Core/Menus.cs,
+	  src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs,
+	  src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  etc/samples/sample.sub,
+	  src/GnomeSubtitles/Core/SubtitleSelection.cs,
+	  src/GnomeSubtitles/Core/EventHandlers.cs,
+	  data/video-set-subtitle-start-16x.png,
+	  src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
+	  src/GnomeSubtitles/Core/WidgetNames.cs, src/Makefile.am,
+	  gnome-subtitles.mdp,
+	  src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles.mds, data/video-set-subtitle-end-16x.png,
+	  src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  src/GnomeSubtitles/Core/Subtitles.cs,
+	  src/GnomeSubtitles/Dialogs/SearchDialog.cs, INSTALL,
+	  src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs,
+	  src/GnomeSubtitles/Core/Clipboards.cs,
+	  src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  src/GnomeSubtitles/Core/GUI.cs,
+	  src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs,
+	  src/GnomeSubtitles/Core/CellRendererCenteredText.cs,
+	  src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
+	  src/GnomeSubtitles/Commands/Command.cs,
+	  src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
+	  src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
+	  src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  src/GnomeSubtitles/Commands/SingleSelectionCommand.cs,
+	  src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  src/GnomeSubtitles/Core/Global.cs, ChangeLog,
+	  src/GnomeSubtitles/Core/SubtitleEdit.cs,
+	  src/GnomeSubtitles/Commands/ChangeTextCommand.cs: Fixed file
+	  permissions.
+
+2007-05-12 [r733]  pcastro:
+
+	* NEWS: Fixed SVN link in "Building from SVN". Fixed permissions.
+
+2007-05-11 [r728-729]  pcastro:
+
+	* gnome-subtitles/README: Minor text editing.
+
+	* gnome-subtitles/CREDITS,
+	  gnome-subtitles/src/Glade/AboutDialog.glade: Added Erin Bloom to
+	  the credits regarding documentation.
+
+2007-05-11 [r726-727]  pcastro:
+
+	* gnome-subtitles/README: Updated with info for building from SVN.
+
+	* gnome-subtitles/TODO: Updated with new tasks.
+
+2007-05-11 [r715-725]  pcastro:
+
+	* gnome-subtitles: Updated ignore list.
+
+	* gnome-subtitles/configure.in (removed): Changed the autotools
+	  scripts to use gnome-common, and to build/install help and
+	  translation files.
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/Execution.cs: Added
+	  properties to get some common system paths.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Global.cs: Fixed bug with
+	  an incorrect string being used as the path in the catalog
+	  initialization.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Show
+	  the user guide / help in Help->Contents.
+
+	* gnome-subtitles/help: Updated ignore list.
+
+	* gnome-subtitles/help/C/legal.xml (added),
+	  gnome-subtitles/help/gnome-subtitles.omf.in (added),
+	  gnome-subtitles/help/Makefile.am (added), gnome-subtitles/help
+	  (added), gnome-subtitles/help/C (added),
+	  gnome-subtitles/help/C/gnome-subtitles.xml (added): Initial
+	  commit of the help files, written by Erin Bloom and revised by
+	  me.
+
+	* gnome-subtitles/macros2 (removed): Changed the autotools scripts
+	  to use gnome-common, and to build/install help and translation
+	  files.
+
+	* gnome-subtitles/Makefile.am, gnome-subtitles/autogen.sh: Changed
+	  the autotools scripts to use gnome-common, and to build/install
+	  help and translation files.
+
+	* gnome-subtitles/configure.ac (added): Changed the autotools
+	  scripts to use gnome-common, and to build/install help and
+	  translation files.
+
+	* gnome-subtitles/m4 (added), gnome-subtitles/m4/intltool.m4
+	  (added), gnome-subtitles/m4/gnome-doc-utils.m4 (added),
+	  gnome-subtitles/m4/gtk-doc.m4 (added): Changed the autotools
+	  scripts to use gnome-common, and to build/install help and
+	  translation files.
+
+2007-05-08 [r714]  pcastro:
+
+	* gnome-subtitles/src/Glade/MainWindow.glade: Fixed underline in
+	  Video->Set Subtitle End. Was using the same letter as Rewind.
+
+2007-05-07 [r713]  pcastro:
+
+	* gnome-subtitles/TODO: Updated with fixed changes.
+
+2007-05-06 [r708-712]  pcastro:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Document.cs: Take into
+	  account the newline type used when saving.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Dialogs.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: The SaveAs dialog
+	  is now persistent, i.e., it hides instead of closing. Added an
+	  expander that allows to choose the type of newline (Macintosh,
+	  Unix or Windows).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs: The
+	  SaveAs dialog is now persistent, i.e., it hides instead of
+	  closing. Added an expander that allows to choose the type of
+	  newline (Macintosh, Unix or Windows).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:
+	  The dialog is now persistent, i.e., it hides instead of closing.
+	  Added an expander that allows to choose the type of newline
+	  (Macintosh, Unix or Windows).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:
+	  The dialog is now persistent, i.e., it hides instead of closing.
+	  Added an expander that allows to choose the type of newline
+	  (Macintosh, Unix or Windows).
+
+2007-05-06 [r706-707]  pcastro:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:
+	  Code cleanup.
+
+	* gnome-subtitles/src/Glade/FileSaveAsDialog.glade: Added an
+	  expander that allows to choose the type of newline (Macintosh,
+	  Unix or Windows).
+
+2007-04-28 [r704-705]  pcastro:
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs:
+	  Fixed some strings to handle translation.
+
+	* gnome-subtitles/src/Glade/PreferencesDialog.glade,
+	  gnome-subtitles/src/Glade/SearchDialog.glade,
+	  gnome-subtitles/src/Glade/TimingsShiftDialog.glade,
+	  gnome-subtitles/src/Glade/VideoOpenDialog.glade,
+	  gnome-subtitles/src/Glade/HeadersDialog.glade,
+	  gnome-subtitles/src/Glade/FilePropertiesDialog.glade,
+	  gnome-subtitles/src/Glade/MainWindow.glade: Fixed some strings
+	  that were incorrectly marked as translatable by Glade3. Use stock
+	  items for File->Properties, Video->Open and Video->Close.
+
+2007-04-28 [r703]  pcastro:
+
+	* gnome-subtitles/po: Updated svn:ignore.
+
+2007-04-28 [r701-702]  pcastro:
+
+	* gnome-subtitles/gnome-subtitles.mdp: Cat class not used anymore.
+	  Reverted to normal Catalog.Init for strings to be detected by
+	  intltool.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTextCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Cat.cs (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Encodings.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ReplaceAllCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Global.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/Execution.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/EncodingsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Cat class not
+	  used anymore. Reverted to normal Catalog.Init for strings to be
+	  detected by intltool.
+
+2007-04-24 [r700]  pcastro:
+
+	* gnome-subtitles/data/video-set-subtitle-end-16x.png,
+	  gnome-subtitles/data/video-set-subtitle-start-16x.png: Fixed the
+	  transparency of the images in the SetSubtitleStart and
+	  SetSubtitleEnd buttons (was white before).
+
+2007-04-23 [r698-699]  pcastro:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs: Fixed
+	  bug #432635.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Document.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Global.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:
+	  Moved the current TimingMode to the Global class, as it's not
+	  always related to a Document (no document may be open, and one
+	  may want to relate a timing mode to the video).
+
+2007-04-23 [r696-697]  pcastro:
+
+	* gnome-subtitles/CREDITS: Added OpenSolaris credits.
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Use the code that
+	  captures file opening errors and shows an error dialog also when
+	  opening a subtitle that was passed as argument (so not only when
+	  manually doing File->Open). Fixes bug #432233.
+
+2007-04-22 [r689-694]  pcastro:
+
+	* gnome-subtitles/Makefile.am: Descend into the PO dir.
+
+	* gnome-subtitles/gnome-subtitles.mdp: Refactored to include
+	  Gnome.Program in Execution (which was ExecutionInfo previously).
+
+	* gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Execution/AssemblyInfo.cs.in,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/BugReporter.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Execution/Execution.cs
+	  (added): Refactored to include Gnome.Program in Execution (which
+	  was ExecutionInfo previously).
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs:
+	  Refactored to include Gnome.Program in Execution (which was
+	  ExecutionInfo previously).
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Cat.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Global.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Refactored to
+	  include Gnome.Program in Execution (which was ExecutionInfo
+	  previously). Initialize the translation catalog.
+
+	* gnome-subtitles/po/POTFILES.in, gnome-subtitles/po/POTFILES.skip:
+	  Updated list of Pot files.
+
+2007-04-21 [r682-688]  pcastro:
+
+	* gnome-subtitles: Updated svn:ignore.
+
+	* gnome-subtitles/TODO: Removed completed tasks.
+
+	* gnome-subtitles/gnome-subtitles.mdp,
+	  gnome-subtitles/gnome-subtitles.mds: Added i18n wrapper to
+	  translatable strings.
+
+	* gnome-subtitles/configure.in: Updated to include i18n macro
+	  calls.
+
+	* gnome-subtitles/autogen.sh: Updated to the gnome-common
+	  autogen.sh.
+
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTextCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/Encodings.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ReplaceAllCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeStyleCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/EncodingsDialog.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:
+	  Added i18n wrapper to translatable strings.
+
+	* gnome-subtitles/po/POTFILES.in: Updated with current list of
+	  files that have translatable strings.
+
+2007-04-21 [r681]  pcastro:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs: Times
+	  and Frames were incorrect lables, the correct ones are "time" and
+	  "frame", relating to the current video position. The default on
+	  the glade file is Time (which is correct).
+
+2007-04-21 [r679-680]  pcastro:
+
+	* gnome-subtitles/po: Initial files for i18n.
+
+	* gnome-subtitles/po (added), gnome-subtitles/po/LINGUAS (added),
+	  gnome-subtitles/po/POTFILES.in (added),
+	  gnome-subtitles/po/POTFILES.skip (added): Initial files for i18n.
+
+2007-04-21 [r678]  pcastro:
+
+	* gnome-subtitles/macros2/gnome-autogen.sh (added),
+	  gnome-subtitles/macros2 (added): GNOME autogen script.
+
+2007-04-21 [r677]  pcastro:
+
+	* gnome-subtitles/src/GnomeSubtitles/Core/Cat.cs (added): Class
+	  that wrapps Mono.Unix.Catalog methods with shorter names.
+
+2007-04-20 [r674]  pcastro:
+
+	* gnome-subtitles/Makefile.am: Removed references to NAnt build
+	  files.
+
+2007-04-20 [r670-671]  pcastro:
+
+	* gnome-subtitles/NEWS, gnome-subtitles/TODO,
+	  gnome-subtitles/ChangeLog: Updated for release 0.4.
 
 	* gnome-subtitles/src/Glade/FilePropertiesDialog.glade: Unset the
 	  Expand property on some labels, for resizing to work properly.
 
-2007-04-19 [r668-669]  noup:
+2007-04-19 [r668-669]  pcastro:
 
 	* gnome-subtitles/src/Glade/MainWindow.glade: Added mneumonics for
 	  the timings Shift and Adjust menu items.
@@ -12,12 +411,12 @@
 	  default widget (Shift button) when pressing Return in the entry
 	  widget.
 
-2007-04-19 [r667]  noup:
+2007-04-19 [r667]  pcastro:
 
 	* gnome-subtitles/data/gnome-subtitles.1: Updated with some changes
 	  from Tiago Borboletto Vaz.
 
-2007-04-18 [r664-666]  noup:
+2007-04-18 [r664-666]  pcastro:
 
 	* gnome-subtitles/src/Makefile.am: Fixed minor warning related to
 	  spaces after backslash.
@@ -27,7 +426,7 @@
 
 	* gnome-subtitles/TODO: Removed solved tasks.
 
-2007-04-13 [r663]  noup:
+2007-04-13 [r663]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
@@ -36,7 +435,7 @@
 	  the frame rate of the opened video. Remove it when the video is
 	  closed.
 
-2007-04-09 [r659-662]  noup:
+2007-04-09 [r659-662]  pcastro:
 
 	* gnome-subtitles/TODO: Updated with latest changes.
 
@@ -55,13 +454,13 @@
 	  possibility to apply the Shift to the current subtitle to the
 	  last and first. Added a button to clear the spin button value.
 
-2007-04-07 [r658]  noup:
+2007-04-07 [r658]  pcastro:
 
 	* gnome-subtitles/nant.build (removed), gnome-subtitles/TODO,
 	  gnome-subtitles/build.properties (removed): Deleted the NAnt
 	  build files.
 
-2007-04-06 [r657]  noup:
+2007-04-06 [r657]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
@@ -88,7 +487,7 @@
 	  constructing it, outside, not in the constructor. The
 	  ShiftTimingsDialog is now persistent, besides the Search dialog.
 
-2007-04-06 [r648-656]  noup:
+2007-04-06 [r648-656]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
 	  File Properties dialog.
@@ -117,7 +516,7 @@
 	* gnome-subtitles/gnome-subtitles.mdp: Added File Properties
 	  dialog.
 
-2007-04-06 [r641-647]  noup:
+2007-04-06 [r641-647]  pcastro:
 
 	* gnome-subtitles/src/Glade/TimingsShiftDialog.glade: Allow to
 	  apply the command from the current selection to the first or last
@@ -165,7 +564,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Core/SelectionIntended.cs
 	  (added): Added class to represent the intended selection.
 
-2007-04-05 [r640]  noup:
+2007-04-05 [r640]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
@@ -194,7 +593,7 @@
 	  dialogs are properly constructed when shown to the user. It also
 	  ensures that they are properly centered.
 
-2007-04-05 [r633-639]  noup:
+2007-04-05 [r633-639]  pcastro:
 
 	* gnome-subtitles/data/gnome-subtitles.desktop (removed): Added
 	  Bugzilla properties to the gnome-subtitles.desktop.in file. The
@@ -224,20 +623,20 @@
 	  file gnome-subtitles.desktop was renamed to
 	  gnome-subtitles.desktop.in to expand the VERSION information.
 
-2007-04-05 [r632]  noup:
+2007-04-05 [r632]  pcastro:
 
 	* gnome-subtitles/TODO: Updated with latest changes.
 
-2007-04-04 [r631]  noup:
+2007-04-04 [r631]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Execution/BugReporter.cs:
 	  Improved support for BugBuddy.
 
-2007-04-03 [r630]  noup:
+2007-04-03 [r630]  pcastro:
 
 	* gnome-subtitles/TODO: Updated with more recent information.
 
-2007-04-03 [r607-629]  noup:
+2007-04-03 [r607-629]  pcastro:
 
 	* gnome-subtitles/CREDITS: Updated contact information.
 
@@ -331,7 +730,7 @@
 	  GUI now have the UpdateFrom prefix. Code cleanup. TimingModes are
 	  now set in the Menus directly.
 
-2007-04-03 [r604-606]  noup:
+2007-04-03 [r604-606]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Global.cs: Updated to
 	  reflect the use of the Document class.
@@ -350,7 +749,7 @@
 	  Document.TimingMode to set the timing mode and propagate it
 	  throughout the rest of the GUI.
 
-2007-04-03 [r599-603]  noup:
+2007-04-03 [r599-603]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs,
@@ -375,11 +774,11 @@
 	* gnome-subtitles/data/gnome-subtitles.1 (added): Added the MAN
 	  page.
 
-2007-03-27 [r595]  noup:
+2007-03-27 [r595]  pcastro:
 
 	* gnome-subtitles/ChangeLog: Updated for release 0.3.
 
-2007-03-27 [r592-593]  noup:
+2007-03-27 [r592-593]  pcastro:
 
 	* gnome-subtitles/NEWS, gnome-subtitles/CREDITS,
 	  gnome-subtitles/README, gnome-subtitles/TODO: Updated for release
@@ -388,7 +787,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
 	  Deleted console prints used for debugging.
 
-2007-03-25 [r590-591]  noup:
+2007-03-25 [r590-591]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Use invariant
 	  culture ToString when converting float times to strings. Fixes
@@ -397,18 +796,18 @@
 	* gnome-subtitles/src/GnomeSubtitles/Core/Util.cs: Added method to
 	  convert a number to an invariant culture string.
 
-2007-03-24 [r589]  noup:
+2007-03-24 [r589]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs: Use
 	  "setproctitle" when "prctl" is not found, so this can work in
 	  BSD's too.
 
-2007-03-24 [r588]  noup:
+2007-03-24 [r588]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Set the default
 	  window size based on GConf properties.
 
-2007-03-24 [r584-587]  noup:
+2007-03-24 [r584-587]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Config.cs: Code cleanup.
 	  Allow to set a key with an integer value, checking its upper and
@@ -426,7 +825,7 @@
 	* gnome-subtitles/data/gnome-subtitles.schemas: Minor changes in
 	  the key descriptions. Added keys for window Width and Height.
 
-2007-03-24 [r578-583]  noup:
+2007-03-24 [r578-583]  pcastro:
 
 	* gnome-subtitles/TODO: Updated to reflect latest code changes.
 
@@ -444,7 +843,7 @@
 	* gnome-subtitles/src/Glade/PreferencesDialog.glade: Changed
 	  AutoSelect to AutoChoose (pure name change).
 
-2007-03-24 [r576-577]  noup:
+2007-03-24 [r576-577]  pcastro:
 
 	* gnome-subtitles/src/Glade/FileSaveAsDialog.glade: Updated to
 	  handle the new EncodingDialog.
@@ -452,7 +851,7 @@
 	* gnome-subtitles/src/Glade/FileOpenDialog.glade: Updated to handle
 	  the new EncodingDialog.
 
-2007-03-24 [r572-575]  noup:
+2007-03-24 [r572-575]  pcastro:
 
 	* gnome-subtitles/src/Glade/EncodingsDialog.glade (added): Dialog
 	  that allows to select the encodings to be used in the program.
@@ -471,12 +870,12 @@
 	  was made available before. Setting the last item in the TreeModel
 	  will open the Encoding selection dialog.
 
-2007-03-24 [r571]  noup:
+2007-03-24 [r571]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/PreferencesDialog.cs:
 	  Changed AutoSelect to AutoChoose (pure name change).
 
-2007-03-24 [r569-570]  noup:
+2007-03-24 [r569-570]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:
 	  Code cleanup.
@@ -484,7 +883,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
 	  Changed AutoSelect to AutoChoose (pure name change).
 
-2007-03-24 [r567-568]  noup:
+2007-03-24 [r567-568]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/EncodingsDialog.cs
 	  (added): Dialog that allows to select the encodings to be used in
@@ -493,7 +892,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs: Bug Fix -
 	  Shadow shown around the video frame.
 
-2007-03-24 [r563-566]  noup:
+2007-03-24 [r563-566]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Now uses the
 	  codepage set in the dialog to create the Encoding when the dialog
@@ -514,13 +913,13 @@
 	  deal with the fact that setting a key to an empty list throws an
 	  exception. Changed AutoSelectVideoFile to AutoChooseVideoFile.
 
-2007-03-22 [r562]  noup:
+2007-03-22 [r562]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Execution/Executable.cs: Catch
 	  exceptions and print error when unable to set the process name,
 	  instead of throwing exceptions.
 
-2007-03-18 [r551-561]  noup:
+2007-03-18 [r551-561]  pcastro:
 
 	* gnome-subtitles/configure.in: Added GConf config detection. Added
 	  GConf installation targets to the makefiles.
@@ -556,24 +955,24 @@
 	* gnome-subtitles/data/gnome-subtitles.schemas (added),
 	  gnome-subtitles/data/Makefile.am: Added GConf schemas file.
 
-2007-03-18 [r550]  noup:
+2007-03-18 [r550]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
 	  Inserted debug messages to help on clearing some bugs.
 
-2007-03-17 [r549]  noup:
+2007-03-17 [r549]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
 	  Fixed bug with current active video not being unselected when
 	  selecting a folder, for example.
 
-2007-03-13 [r548]  noup:
+2007-03-13 [r548]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/Util.cs: Fixed Bug 417868
 	  – Quote symbol in path prevents file from opening.
 
-2007-03-13 [r547]  noup:
+2007-03-13 [r547]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Fix for
@@ -581,11 +980,11 @@
 	  This is due to the local representation of a double (using , or .
 	  as decimal separator), so an invariant provider is now used.
 
-2007-03-13 [r546]  noup:
+2007-03-13 [r546]  pcastro:
 
 	* gnome-subtitles/TODO: Updated with more current feedback.
 
-2007-03-13 [r544]  noup:
+2007-03-13 [r544]  pcastro:
 
 	* gnome-subtitles/NEWS,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
@@ -593,7 +992,7 @@
 	  gnome-subtitles/configure.in, gnome-subtitles/ChangeLog: Updated
 	  for release 0.2.1.
 
-2007-03-12 [r542]  noup:
+2007-03-12 [r542]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
 	  gnome-subtitles/src/Glade/ShowMessageDialog.glade (removed),
@@ -604,35 +1003,35 @@
 	  SecondaryText) to change the text in the dialog, because only
 	  .Markup is available on GTK# before 2.10.
 
-2007-03-11 [r541]  noup:
+2007-03-11 [r541]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:
 	  Print exception stack trace to console when an unknown exception
 	  is found during File Open.
 
-2007-03-11 [r540]  noup:
+2007-03-11 [r540]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
 	  Added *.txt pattern to "All Subtitle Files" filter.
 
-2007-03-11 [r539]  noup:
+2007-03-11 [r539]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Fixed bug
 	  #416895, a crash that happend on close, when trying to kill the
 	  MPlayer process that had already finished.
 
-2007-03-08 [r536]  noup:
+2007-03-08 [r536]  pcastro:
 
 	* gnome-subtitles/data/Makefile.am: Fixed to include the
 	  gnome-subtitles.desktop file in the source distribution.
 
-2007-03-08 [r533-534]  noup:
+2007-03-08 [r533-534]  pcastro:
 
 	* gnome-subtitles/ChangeLog: Updated for release 0.2.
 
 	* gnome-subtitles/CREDITS: Updated for release 0.2.
 
-2007-03-08 [r527-532]  noup:
+2007-03-08 [r527-532]  pcastro:
 
 	* gnome-subtitles/TODO: Updated for release 0.2.
 
@@ -649,7 +1048,7 @@
 	  Added new video extensions. Fixed bug with active ComboBox items
 	  being incorrectly used when the ComboBox was inactive.
 
-2007-03-04 [r521-526]  noup:
+2007-03-04 [r521-526]  pcastro:
 
 	* gnome-subtitles/TODO: Updated to reflect latest changes.
 
@@ -667,18 +1066,18 @@
 	* gnome-subtitles/data/gnome-subtitles.desktop (added): Updated
 	  Exec, TryExec and Icon name. Stopped using absolute paths.
 
-2007-03-04 [r520]  noup:
+2007-03-04 [r520]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:
 	  Added filter for video file types.
 
-2007-03-04 [r519]  noup:
+2007-03-04 [r519]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:
 	  Set initial folder to that of the subtitles, or Home if no
 	  subtitles are open.
 
-2007-03-04 [r517-518]  noup:
+2007-03-04 [r517-518]  pcastro:
 
 	* gnome-subtitles/nant.build: Updated with more current
 	  information.
@@ -686,7 +1085,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Execution/AssemblyInfo.cs.in:
 	  Updated with more current information.
 
-2007-03-04 [r511-516]  noup:
+2007-03-04 [r511-516]  pcastro:
 
 	* gnome-subtitles/data/gnome-subtitles.desktop.in: Updated to use
 	  the PNG icon instead of the SVG icon.
@@ -760,17 +1159,17 @@
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs:
 	  Updated project description.
 
-2007-03-03 [r509]  noup:
+2007-03-03 [r509]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Added icon files as
 	  resources.
 
-2007-03-03 [r508]  noup:
+2007-03-03 [r508]  pcastro:
 
 	* gnome-subtitles/src/Glade/MainWindow.glade: SetSubtitleStart and
 	  SetSubtitleEnd buttons are now container buttons.
 
-2007-03-03 [r503-507]  noup:
+2007-03-03 [r503-507]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
 	  icons for the SetSubtitleStart and SetSubtitleEnd buttons.
@@ -789,7 +1188,7 @@
 	* gnome-subtitles/data/gnome-subtitles.svg (removed): Removed old
 	  gnome-subtitles icon.
 
-2007-03-03 [r501-502]  noup:
+2007-03-03 [r501-502]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Commands/CommandManager.cs,
@@ -801,14 +1200,14 @@
 	  Correctly set the sensitivity of the video playback controls.
 	  Code cleanup.
 
-2007-03-03 [r499-500]  noup:
+2007-03-03 [r499-500]  pcastro:
 
 	* gnome-subtitles/src/Glade/MainWindow.glade: Updated to separate
 	  playback controls from timings controls.
 
 	* gnome-subtitles/TODO: Updated with completed tasks.
 
-2007-03-03 [r497-498]  noup:
+2007-03-03 [r497-498]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp,
 	  gnome-subtitles/gnome-subtitles.mds: Updated with new dialog and
@@ -818,7 +1217,7 @@
 	  (added): Exception to handle the cases in which a video file
 	  could not be opened.
 
-2007-03-03 [r489-496]  noup:
+2007-03-03 [r489-496]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs
 	  (added): Custom error messages to show with the
@@ -855,7 +1254,7 @@
 	  an improved error dialog on video file opening. The error dialog
 	  dialog has an "Open another file" action.
 
-2007-03-01 [r487-488]  noup:
+2007-03-01 [r487-488]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:
 	  Added Filters to subtitle formats.
@@ -864,7 +1263,7 @@
 	  gnome-subtitles/src/Glade/MainWindow.glade: Minor property
 	  changes.
 
-2007-03-01 [r483-486]  noup:
+2007-03-01 [r483-486]  pcastro:
 
 	* gnome-subtitles/src/Glade/MainWindow.glade: Added Seek To
 	  Selection to the Video menu.
@@ -879,13 +1278,13 @@
 	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Code
 	  cleanup. Added Seek To Selection to the Video menu.
 
-2007-03-01 [r482]  noup:
+2007-03-01 [r482]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Seek to
 	  the current selected subtitle on row activation.
 
-2007-03-01 [r476-481]  noup:
+2007-03-01 [r476-481]  pcastro:
 
 	* gnome-subtitles: Added file to svn:ignore.
 
@@ -910,7 +1309,7 @@
 	* gnome-subtitles/src/Glade/FileOpenDialog.glade: Added a video
 	  selection combobox to the File Open dialog.
 
-2007-02-25 [r471-475]  noup:
+2007-02-25 [r471-475]  pcastro:
 
 	* gnome-subtitles/src/Glade/MainWindow.glade: Added the
 	  SetSubtitleStart and SetSubtitleEnd menu items and connected
@@ -932,20 +1331,20 @@
 	  buttons based on the subtitle selection. Update the labels based
 	  on the current Timing Mode. Code cleanup.
 
-2007-02-25 [r470]  noup:
+2007-02-25 [r470]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs:
 	  Store when playback end has been reached. Allow to enable and
 	  disable.
 
-2007-02-25 [r469]  noup:
+2007-02-25 [r469]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Player.cs: Store the
 	  video filename and framerate. Check if end has been reached on
 	  Play, Rewind and Forward. Restart process when it ends, to check
 	  for playback end. Code cleanup.
 
-2007-02-25 [r463-468]  noup:
+2007-02-25 [r463-468]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Set the
 	  VideoSetSubtitleStart and VideoSetSubtitleEnd menu items based on
@@ -970,7 +1369,7 @@
 	  (added): Added command to set subtitle start and end based on the
 	  video position.
 
-2007-02-20 [r462]  noup:
+2007-02-20 [r462]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/VideoPosition.cs,
@@ -978,13 +1377,13 @@
 	  gnome-subtitles/src/GnomeSubtitles/Core/PlayerPositionWatcher.cs:
 	  Detect when the video reaches its end. Still incomplete, though.
 
-2007-01-29 [r461]  noup:
+2007-01-29 [r461]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Fixes bug
 	  #402201 - app crashes when selection float value with , as a
 	  decimal separator
 
-2007-01-22 [r460]  noup:
+2007-01-22 [r460]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
@@ -997,7 +1396,7 @@
 	  playing and seeking. Refactoring and code cleanup. Initial fix
 	  for the case of reaching the end of the video.
 
-2007-01-18 [r458-459]  noup:
+2007-01-18 [r458-459]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
@@ -1013,7 +1412,7 @@
 	  even though by now the label's background has to be black (not
 	  transparent).
 
-2006-12-30 [r453-457]  noup:
+2006-12-30 [r453-457]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/Player.cs,
@@ -1034,7 +1433,7 @@
 	* gnome-subtitles/src/Glade/MainWindow.glade: Multiple changes have
 	  been made to the layout of the video previewing area.
 
-2006-12-30 [r448-452]  noup:
+2006-12-30 [r448-452]  pcastro:
 
 	* gnome-subtitles/src/Glade/ShowMessageDialog.glade (added): Added
 	  dialog to display a message (using MessageDialog).
@@ -1053,7 +1452,7 @@
 	* gnome-subtitles/src/Glade/FileOpenErrorDialog.glade (added): A
 	  glade MessageDialog is now used to display file opening errors.
 
-2006-12-24 [r447]  noup:
+2006-12-24 [r447]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/gnome-subtitles.mdp,
@@ -1066,7 +1465,7 @@
 	  Video. Use of delegates not to expose unnecessary members in
 	  Player as public.
 
-2006-12-24 [r446]  noup:
+2006-12-24 [r446]  pcastro:
 
 	* gnome-subtitles/src/Glade/MainWindow.glade: Refactored the video
 	  previewing functionality. The current time position is now always
@@ -1074,7 +1473,7 @@
 	  with the video previewer that includes the buttons and time
 	  information.
 
-2006-12-24 [r445]  noup:
+2006-12-24 [r445]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Video.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
@@ -1090,12 +1489,12 @@
 	  a column side by side with the video previewer that includes the
 	  buttons and time information.
 
-2006-12-21 [r444]  noup:
+2006-12-21 [r444]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/HeadersDialog.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs,
-	  gnome-subtitles/src/Glade/gnome-subtitles.gladep (removed),
 	  gnome-subtitles/src/Glade/ReportBugWindow.glade (added),
+	  gnome-subtitles/src/Glade/gnome-subtitles.gladep (removed),
 	  gnome-subtitles/src/Glade/FileSaveAsDialog.glade (added),
 	  gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs,
@@ -1106,8 +1505,8 @@
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
 	  gnome-subtitles/src/Glade/MainWindow.glade (added),
 	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs,
-	  gnome-subtitles/src/Glade/gnome-subtitles.glade (removed),
 	  gnome-subtitles/src/Glade/FileOpenDialog.glade (added),
+	  gnome-subtitles/src/Glade/gnome-subtitles.glade (removed),
 	  gnome-subtitles/gnome-subtitles.mdp,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenDialog.cs,
 	  gnome-subtitles/src/Glade/SearchDialog.glade (added),
@@ -1120,7 +1519,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Moved glade
 	  dialogs and windows to separate glade files.
 
-2006-12-21 [r443]  noup:
+2006-12-21 [r443]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
 	  gnome-subtitles/gnome-subtitles.mdp,
@@ -1135,7 +1534,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Renaming dialogs.
 	  Code cleanup.
 
-2006-12-21 [r442]  noup:
+2006-12-21 [r442]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs
 	  (added),
@@ -1150,23 +1549,23 @@
 	  (removed),
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs
 	  (added),
-	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ConfirmationDialog.cs
-	  (removed),
-	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ShiftTimingsDialog.cs
-	  (removed),
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs
 	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs
 	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ConfirmationDialog.cs
+	  (removed),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ShiftTimingsDialog.cs
+	  (removed),
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/VideoFileChooserDialog.cs
 	  (removed): Renaming dialogs.
 
-2006-12-21 [r438-441]  noup:
+2006-12-21 [r438-441]  pcastro:
 
-	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AdjustTimingsDialog.cs
-	  (removed),
-	  gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs
-	  (added): Renaming dialogs.
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AdjustTimingsDialog.cs
+	  (removed): Renaming dialogs.
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Initial import
 	  of the video previewing functionality. MPlayer is used to display
@@ -1187,7 +1586,7 @@
 	  the video previewing functionality. MPlayer is used to display
 	  videos.
 
-2006-12-21 [r431-437]  noup:
+2006-12-21 [r431-437]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleEdit.cs: Updated
 	  for changes in the Glade files.
@@ -1208,14 +1607,14 @@
 
 	* gnome-subtitles/TODO: Updated TODO.
 
-2006-12-21 [r430]  noup:
+2006-12-21 [r430]  pcastro:
 
-	* gnome-subtitles/src/GnomeSubtitles/Dialogs/BugReportWindow.cs
-	  (removed),
-	  gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs
-	  (added): Renaming dialogs.
+	* gnome-subtitles/src/GnomeSubtitles/Dialogs/ReportBugWindow.cs
+	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Dialogs/BugReportWindow.cs
+	  (removed): Renaming dialogs.
 
-2006-12-13 [r423]  noup:
+2006-12-13 [r423]  pcastro:
 
 	* gnome-subtitles/CREDITS, gnome-subtitles/README,
 	  gnome-subtitles/src/Glade/gnome-subtitles.glade,
@@ -1224,25 +1623,25 @@
 	  gnome-subtitles/autogen.sh: Updated for a change in the website
 	  address.
 
-2006-12-13 [r422]  noup:
+2006-12-13 [r422]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Connected
 	  handlers to the Find and Replace toolbar buttons.
 
-2006-12-13 [r419]  noup:
+2006-12-13 [r419]  pcastro:
 
 	* gnome-subtitles/NEWS, gnome-subtitles/README,
 	  gnome-subtitles/TODO, gnome-subtitles/configure.in,
 	  gnome-subtitles/ChangeLog: Updating for release 0.1.
 
-2006-12-13 [r418]  noup:
+2006-12-13 [r418]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Set the
 	  sensitivity of the InsertSubtitleBefore menu when no subtitles
 	  are selected.
 
-2006-12-12 [r410-417]  noup:
+2006-12-12 [r410-417]  pcastro:
 
 	* gnome-subtitles/data/Makefile.am: Updated to use the new artwork.
 
@@ -1265,7 +1664,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs: Added
 	  new logo to the About dialog.
 
-2006-12-12 [r408-409]  noup:
+2006-12-12 [r408-409]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs: Use the new PNG
 	  icon instead of the old SVG.
@@ -1273,7 +1672,7 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added artwork
 	  credits.
 
-2006-12-09 [r405-406]  noup:
+2006-12-09 [r405-406]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: Reverted to
 	  the old behavior of not detecting whether the menuitems are
@@ -1283,7 +1682,7 @@
 	  accelerators for Find Next (F3), Find Previous (Shift+F3) and
 	  Redo (Ctrl+Y), besides the existing Gnome default accelerators.
 
-2006-12-09 [r403-404]  noup:
+2006-12-09 [r403-404]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs: Added
 	  names for the Find and Replace toolbar buttons.
@@ -1292,7 +1691,7 @@
 	  FindPrevious are now only activated when their corresponding menu
 	  items are sensitive.
 
-2006-12-09 [r399-402]  noup:
+2006-12-09 [r399-402]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Added the Find
 	  and Replace toolbar buttons. Set the toolbar buttons not to
@@ -1307,13 +1706,13 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added some
 	  accelerators.
 
-2006-12-07 [r398]  noup:
+2006-12-07 [r398]  pcastro:
 
 	* gnome-subtitles/TODO: Fixed GUI not changing the TimingMode when
 	  Saving As to a subtitle format with a TimingMode that's different
 	  than the one being used.
 
-2006-12-06 [r396-397]  noup:
+2006-12-06 [r396-397]  pcastro:
 
 	* gnome-subtitles/TODO: Updated with fixed bugs and new changes.
 
@@ -1322,13 +1721,13 @@
 	  Report the current version for gtk-sharp, gnome-sharp and
 	  glade-sharp in the bug report window.
 
-2006-12-05 [r395]  noup:
+2006-12-05 [r395]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs: Fixed
 	  bug with About dialog not being closed when pressing Close.
 
-2006-12-05 [r394]  noup:
+2006-12-05 [r394]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Dialogs/SaveAsDialog.cs: Fixed
@@ -1337,7 +1736,7 @@
 	  while in the constructor. Updated the properties in the glade
 	  file.
 
-2006-12-03 [r388-393]  noup:
+2006-12-03 [r388-393]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Added Replace All.
 
@@ -1356,14 +1755,14 @@
 	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleView.cs: Clear
 	  the search environment on New Document.
 
-2006-12-03 [r387]  noup:
+2006-12-03 [r387]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs: Set FindNext
 	  and FindPrevious sensitivities when using Find. Added support for
 	  Replace All. Added support for clearing the dialog on
 	  NewDocument.
 
-2006-12-03 [r385-386]  noup:
+2006-12-03 [r385-386]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs: Set sensitivity
 	  of Search menu items.
@@ -1373,7 +1772,7 @@
 	  is only called once, on Execute. When issuing Undo and Redo,
 	  values are stored and swapped.
 
-2006-12-03 [r383-384]  noup:
+2006-12-03 [r383-384]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Commands/ChangeTimingCommand.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Commands/Command.cs,
@@ -1394,13 +1793,13 @@
 	  focus. Allow to set the paths and focus later. Execute now
 	  returns a boolean.
 
-2006-12-03 [r382]  noup:
+2006-12-03 [r382]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Removed old
 	  Search elements from the Edit menu. Added a separator to the
 	  Search menu. Set the sensitivity on the Search menu items.
 
-2006-12-02 [r377-381]  noup:
+2006-12-02 [r377-381]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs: Added
@@ -1420,13 +1819,13 @@
 
 	* gnome-subtitles/CREDITS: Added Arch Linux packager.
 
-2006-11-30 [r376]  noup:
+2006-11-30 [r376]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Code
 	  cleanup. Change the sensitivity of the Replace and ReplaceAll
 	  buttons when changing the text in the Find entry.
 
-2006-11-28 [r371-375]  noup:
+2006-11-28 [r371-375]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/SearchDialog.cs: Store
 	  both the regex to use when scanning forward but also the regex to
@@ -1451,16 +1850,16 @@
 	  focus. This allows to switch from next and previous Find without
 	  repeating found elements.
 
-2006-11-28 [r370]  noup:
+2006-11-28 [r370]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Connected
 	  KeyPress event to hide the dialog when pressing Escape.
 
-2006-11-26 [r369]  noup:
+2006-11-26 [r369]  pcastro:
 
 	* gnome-subtitles/TODO: Updated the TODO.
 
-2006-11-26 [r367-368]  noup:
+2006-11-26 [r367-368]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Search.cs (added): The
 	  search now includes most of the Find functionality. Replace
@@ -1470,7 +1869,7 @@
 	  search dialog now includes most of the Find functionality.
 	  Replace functions aren't implemented yet.
 
-2006-11-26 [r359-366]  noup:
+2006-11-26 [r359-366]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/GladeDialog.cs: Added
 	  methods to show and hide a dialog.
@@ -1504,11 +1903,11 @@
 	* gnome-subtitles/gnome-subtitles.mdp: Added Search.cs - a class to
 	  contain search operations.
 
-2006-11-24 [r358]  noup:
+2006-11-24 [r358]  pcastro:
 
 	* gnome-subtitles/TODO: Updated refactoring tasks.
 
-2006-11-23 [r356-357]  noup:
+2006-11-23 [r356-357]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/SubtitleSelection.cs
 	  (added): This class includes everything related to selection.
@@ -1525,7 +1924,7 @@
 	  deletion. These methods are the main ones to be called, as they
 	  will call those in Subtitles.
 
-2006-11-23 [r354-355]  noup:
+2006-11-23 [r354-355]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Subtitles.cs (added):
 	  Added indexer overloads and some other methods to handle the
@@ -1539,7 +1938,7 @@
 	  renamed to more self-explained method. Part of the code is now
 	  documented.
 
-2006-11-23 [r353]  noup:
+2006-11-23 [r353]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/GUI.cs (added): Changed
 	  SubtitleView to View. Changed SubtitleEdit to Edit. GladeWidget
@@ -1547,13 +1946,13 @@
 	  self-contained, some members were removed, other were renamed to
 	  more self-explained method. Part of the code is now documented.
 
-2006-11-23 [r352]  noup:
+2006-11-23 [r352]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/Global.cs (added): New
 	  class to contain the properties to be globally accessed. This
 	  contains more or less what used to be in ApplicationCore.
 
-2006-11-23 [r349-351]  noup:
+2006-11-23 [r349-351]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/EventHandlers.cs (added):
 	  Updated to use the new Global. Code refactoring.
@@ -1564,7 +1963,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Core/Menus.cs (added): Updated
 	  to use the new Global. Code refactoring.
 
-2006-11-23 [r332-348]  noup:
+2006-11-23 [r332-348]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Core/WidgetNames.cs (added):
 	  Removed the names of dialog widgets, which are now inside the
@@ -1628,7 +2027,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/FileEncoding.cs
 	  (added): Moved from SubtitleFileChooserDialog
 
-2006-11-23 [r329-331]  noup:
+2006-11-23 [r329-331]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs/AboutDialog.cs
 	  (added): Widget names are now handled inside the dialog.
@@ -1639,7 +2038,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs2 (removed): Source
 	  code file structure changed.
 
-2006-11-23 [r327-328]  noup:
+2006-11-23 [r327-328]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs2/AboutDialog.cs:
 	  Widget names are now handled inside the dialog.
@@ -1647,12 +2046,12 @@
 	* gnome-subtitles/src/GnomeSubtitles/Dialogs2 (added): Widget names
 	  are now handled inside the dialog.
 
-2006-11-23 [r326]  noup:
+2006-11-23 [r326]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application (removed): Source
 	  code file structure changed.
 
-2006-11-23 [r315-325]  noup:
+2006-11-23 [r315-325]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs
 	  (added): Updated for the refactoring of the multiple selection
@@ -1719,7 +2118,7 @@
 	  is handled by this superclass. A PostProcess is also allowed for
 	  subclasses.
 
-2006-11-23 [r308-314]  noup:
+2006-11-23 [r308-314]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Commands/SingleSelectionCommand.cs
 	  (added): The old behavior is now in FixedSingleSelectionCommand,
@@ -1747,27 +2146,27 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Global
 	  refactoring.
 
-2006-11-12 [r307]  noup:
+2006-11-12 [r307]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Updated
 	  Find/Replace dialog.
 
-2006-11-10 [r306]  noup:
+2006-11-10 [r306]  pcastro:
 
 	* gnome-subtitles/configure.in: Fixed bug which resulted in
 	  compilation errors when using a compiled sublib.dll in the build
 	  dir (instead of the sublib source dir).
 
-2006-11-09 [r305]  noup:
+2006-11-09 [r305]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added initial
 	  interface of the Find/Replace dialog.
 
-2006-11-09 [r304]  noup:
+2006-11-09 [r304]  pcastro:
 
 	* gnome-subtitles: Updated svn:ignore.
 
-2006-11-09 [r302-303]  noup:
+2006-11-09 [r302-303]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Added Freedesktop
 	  RecentFiles implementation, from MonoDevelop.
@@ -1778,7 +2177,7 @@
 	  gnome-subtitles/src/External (added): Added Freedesktop
 	  RecentFiles implementation, from MonoDevelop.
 
-2006-11-09 [r297-301]  noup:
+2006-11-09 [r297-301]  pcastro:
 
 	* gnome-subtitles/TODO: Updated TODO.
 
@@ -1793,12 +2192,12 @@
 	* gnome-subtitles/configure.in: Updated to use the most recent
 	  arguments for macros.
 
-2006-10-30 [r285]  noup:
+2006-10-30 [r285]  pcastro:
 
 	* gnome-subtitles/NEWS, gnome-subtitles/configure.in,
 	  gnome-subtitles/ChangeLog: Updated for release 0.0.3.
 
-2006-10-30 [r283-284]  noup:
+2006-10-30 [r283-284]  pcastro:
 
 	* gnome-subtitles/TODO: Added dialog to handle errors on opening.
 	  When opening throws an exception, it is passed to the dialog
@@ -1809,7 +2208,7 @@
 	  OpenErrorDialog, either show the open dialog again or return to
 	  the main window, according to the user option.
 
-2006-10-30 [r279-282]  noup:
+2006-10-30 [r279-282]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/OpenDialog.cs:
 	  Code cleanup.
@@ -1832,7 +2231,7 @@
 	* gnome-subtitles/CREDITS (added), gnome-subtitles/AUTHORS: Updated
 	  project information files.
 
-2006-10-28 [r277-278]  noup:
+2006-10-28 [r277-278]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/SaveAsDialog.cs:
 	  Detect when the combobox is changed and update the filename
@@ -1849,13 +2248,13 @@
 	  extension of the selected format (in the combobox). If the
 	  filename doesn't contain an extension, it is added.
 
-2006-10-28 [r276]  noup:
+2006-10-28 [r276]  pcastro:
 
 	* gnome-subtitles/TODO: UnknownCharEncoding doesn't have to be
 	  grabbed anymore because SubLib now uses Windows-1252 encoding
 	  when auto-detection fails.
 
-2006-10-27 [r273-275]  noup:
+2006-10-27 [r273-275]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Execution/ExecutionInfo.cs:
 	  Cut the trailing zeros for version numbers.
@@ -1866,12 +2265,12 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/Utility.cs: Cut
 	  the trailing zeros for version numbers.
 
-2006-10-26 [r272]  noup:
+2006-10-26 [r272]  pcastro:
 
 	* gnome-subtitles/configure.in: Changed compiler to use gmcs (C#
 	  2.0) instead of mcs.
 
-2006-10-26 [r271]  noup:
+2006-10-26 [r271]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/AboutDialog.cs:
 	  Added Url and Email handlers, to open the web browser or mail
@@ -1880,7 +2279,7 @@
 	  application from the id GnomeSubtitles to the name "Gnome
 	  Subtitles"
 
-2006-10-26 [r261-270]  noup:
+2006-10-26 [r261-270]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/BugReportWindow.cs:
 	  Also include Gnome Subtitles and SubLib versions in the bug
@@ -1918,16 +2317,16 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Improved the
 	  About dialog and Bug Report window.
 
-2006-10-26 [r260]  noup:
+2006-10-26 [r260]  pcastro:
 
 	* gnome-subtitles/TODO: Marking recently used files request as
 	  dependent on GtkRecent implementation in GTK#.
 
-2006-10-22 [r257]  noup:
+2006-10-22 [r257]  pcastro:
 
 	* gnome-subtitles/TODO: Updated todo tasks.
 
-2006-10-16 [r255-256]  noup:
+2006-10-16 [r255-256]  pcastro:
 
 	* gnome-subtitles/TODO: Updated TODO.
 
@@ -1935,18 +2334,18 @@
 	  Save dialog now adds the extension if it isn't inserted. It also
 	  auto-selects the subtitle format currently being used.
 
-2006-10-16 [r254]  noup:
+2006-10-16 [r254]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Commands.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Fixed
 	  bug with frame rate menus not being correctly set when using
 	  undo/redo.
 
-2006-10-15 [r253]  noup:
+2006-10-15 [r253]  pcastro:
 
 	* gnome-subtitles/TODO: Updated TODO.
 
-2006-10-14 [r252]  noup:
+2006-10-14 [r252]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -1954,12 +2353,12 @@
 	  Added Ctrl+PageUp/Down handling in TextView for selecting the
 	  Previous and Next subtitle, respectively.
 
-2006-10-13 [r251]  noup:
+2006-10-13 [r251]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added Ctrl+B/I/U
 	  shortcuts for setting Bold, Italic and Underline.
 
-2006-10-13 [r250]  noup:
+2006-10-13 [r250]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -1967,7 +2366,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Added Bold, Italic and Underline buttons to the toolbar.
 
-2006-10-06 [r235-236]  noup:
+2006-10-06 [r235-236]  pcastro:
 
 	* gnome-subtitles/Makefile.am: added nant.build file to EXTRA_DIST.
 
@@ -1975,11 +2374,11 @@
 	  problem with subtitles menus that depend on the subtitle count
 	  not being correctly set on startup.
 
-2006-10-06 [r233]  noup:
+2006-10-06 [r233]  pcastro:
 
 	* gnome-subtitles: Changed for release 0.0.2.
 
-2006-10-06 [r231-232]  noup:
+2006-10-06 [r231-232]  pcastro:
 
 	* gnome-subtitles/NEWS, gnome-subtitles/README: Changed for release
 	  0.0.2.
@@ -1987,11 +2386,11 @@
 	* gnome-subtitles/configure.in, gnome-subtitles/ChangeLog: Changed
 	  for release 0.0.2.
 
-2006-10-06 [r230]  noup:
+2006-10-06 [r230]  pcastro:
 
 	* gnome-subtitles/Makefile.am: Added EXTRA_DIST.
 
-2006-10-01 [r229]  noup:
+2006-10-01 [r229]  pcastro:
 
 	* gnome-subtitles/src/Makefile.am, gnome-subtitles/configure.in,
 	  gnome-subtitles/Makefile.am: Support for building Gnome Subtitles
@@ -2002,7 +2401,7 @@
 	  make is called and finally the compiled sublib*/build/sublib.dll
 	  file is copied to the build dir.
 
-2006-10-01 [r226-228]  noup:
+2006-10-01 [r226-228]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Added dialog for adjusting timings. Code cleanup.
@@ -2013,22 +2412,22 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs:
 	  Added event to notify when the number of subtitles changes.
 
-2006-10-01 [r225]  noup:
+2006-10-01 [r225]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs:
 	  Moved some methods to the Utility class.
 
-2006-10-01 [r224]  noup:
+2006-10-01 [r224]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs: Set
 	  menus depending on the number of existing subtitles.
 
-2006-10-01 [r223]  noup:
+2006-10-01 [r223]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Added
 	  handler for OnSubtitleCountChanged event.
 
-2006-10-01 [r216-222]  noup:
+2006-10-01 [r216-222]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Added dialog for adjusting timings.
@@ -2056,7 +2455,7 @@
 
 	* gnome-subtitles/gnome-subtitles.mdp: Updated file hierarchy.
 
-2006-09-30 [r212-215]  noup:
+2006-09-30 [r212-215]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Added full support for MPSub, SSA, ASS, SubViewer1 and SubViewer2
@@ -2073,7 +2472,7 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added full
 	  support for MPSub, SSA, ASS, SubViewer1 and SubViewer2 headers.
 
-2006-09-29 [r211]  noup:
+2006-09-29 [r211]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/HeadersDialog.cs
@@ -2082,11 +2481,11 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Initial version of header dialog support.
 
-2006-09-22 [r210]  noup:
+2006-09-22 [r210]  pcastro:
 
 	* gnome-subtitles/TODO: Updated.
 
-2006-09-22 [r204-209]  noup:
+2006-09-22 [r204-209]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/BugReportWindow.cs:
 	  Print fatal exception to console besides opening bug report
@@ -2108,7 +2507,7 @@
 	* gnome-subtitles/gnome-subtitles.mdp,
 	  gnome-subtitles/gnome-subtitles.mds: Code cleanup.
 
-2006-09-07 [r203]  noup:
+2006-09-07 [r203]  pcastro:
 
 	* gnome-subtitles/README,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -2117,15 +2516,15 @@
 	  Updated for Mono 1.1.17 release which requires handlers to use
 	  child EventArgs.
 
-2006-09-01 [r202]  noup:
+2006-09-01 [r202]  pcastro:
 
 	* gnome-subtitles/TODO: Updated for release 0.0.1.
 
-2006-09-01 [r201]  noup:
+2006-09-01 [r201]  pcastro:
 
 	* gnome-subtitles/ChangeLog: Updated for release 0.0.1.
 
-2006-09-01 [r196-200]  noup:
+2006-09-01 [r196-200]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/ShiftDialog.cs,
@@ -2149,12 +2548,12 @@
 	* gnome-subtitles/configure.in: Updated dependencies' versions for
 	  the first release.
 
-2006-09-01 [r195]  noup:
+2006-09-01 [r195]  pcastro:
 
 	* gnome-subtitles/configure.in: Updated version and dependencies'
 	  versions for the first release.
 
-2006-08-31 [r190-194]  noup:
+2006-08-31 [r190-194]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs:
 	  Corrected the way sensitivity was set for the cut, copy and paste
@@ -2176,7 +2575,7 @@
 	  text view to detect when focus is in or out, to enable or disable
 	  the paste buttons.
 
-2006-08-31 [r184-189]  noup:
+2006-08-31 [r184-189]  pcastro:
 
 	* gnome-subtitles: Updated svn:ignore attributes.
 
@@ -2194,7 +2593,7 @@
 
 	* gnome-subtitles/data: Updated svn:ignore attributes.
 
-2006-08-29 [r172-183]  noup:
+2006-08-29 [r172-183]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Added confirmation dialog to
 	  use when performing new/open/save operations on an unsaved
@@ -2236,7 +2635,7 @@
 	  menus which had their radio buttons active by default. Some minor
 	  visual changes.
 
-2006-08-28 [r164-171]  noup:
+2006-08-28 [r164-171]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Window to use for reporting
 	  bugs.
@@ -2266,14 +2665,14 @@
 	  Added method to use GladeWidget with a new window. This needs
 	  refactoring.
 
-2006-08-26 [r163]  noup:
+2006-08-26 [r163]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/GladeDialog.cs:
 	  Solved bug with icon not being set in dialogs (TransientFor
 	  didn't work). Now manually sets the icon (from the main window)
 	  everytime the dialog is created.
 
-2006-08-25 [r151-162]  noup:
+2006-08-25 [r151-162]  pcastro:
 
 	* gnome-subtitles/etc/script.in (removed): Moved script to
 	  src/GnomeSubtitles/Execution
@@ -2310,7 +2709,7 @@
 	* gnome-subtitles/src/Makefile.am: Rewritten to support file
 	  instalation.
 
-2006-08-25 [r150]  noup:
+2006-08-25 [r150]  pcastro:
 
 	* gnome-subtitles/data/Makefile.am (added),
 	  gnome-subtitles/data/gnome-subtitles.desktop.in (added),
@@ -2318,7 +2717,7 @@
 	  gnome-subtitles/data (added): Added data dir to include desktop
 	  file and program icon.
 
-2006-08-24 [r144-149]  noup:
+2006-08-24 [r144-149]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs:
 	  Added a method to retrieve the spinbuttons and textview to use
@@ -2340,7 +2739,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/Clipboards.cs
 	  (added): Added Clipboards class to handle clipboard operations.
 
-2006-08-11 [r139-143]  noup:
+2006-08-11 [r139-143]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Added support for shifting
 	  timings.
@@ -2363,7 +2762,7 @@
 	  SingleSelectionCommand which resulted in SubtitleView.Reselect
 	  being called and not refreshing the currently selected subtitle.
 
-2006-08-11 [r132-138]  noup:
+2006-08-11 [r132-138]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Commands.cs: Added
 	  command to support Timings Shift.
@@ -2386,7 +2785,7 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added timings
 	  shifting to the menus.
 
-2006-08-08 [r129-131]  noup:
+2006-08-08 [r129-131]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp: Updated compilation
 	  parameters.
@@ -2398,20 +2797,20 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Code cleanup.
 
-2006-07-21 [r128]  noup:
+2006-07-21 [r128]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs:
 	  Refactored code. Adjusted sensitivity for subtitle deletion.
 
-2006-07-21 [r127]  noup:
+2006-07-21 [r127]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Menus.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Updated sensitivity for menus.
 
-2006-07-20 [r122-126]  noup:
+2006-07-20 [r122-126]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Cleaned for non-existing widgets.
@@ -2432,7 +2831,7 @@
 	  some methods to determine when a blank screen is created and,
 	  when creating a new document, if there was a document existing.
 
-2006-07-20 [r117-121]  noup:
+2006-07-20 [r117-121]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Changed
 	  some methods to determine when a blank screen is created and,
@@ -2451,7 +2850,7 @@
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added Insert
 	  After and Before menu.
 
-2006-07-16 [r116]  noup:
+2006-07-16 [r116]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs,
@@ -2464,14 +2863,14 @@
 	  operations were performed on an empty set of subtitles, or when
 	  there was only 1 subtitle.
 
-2006-07-15 [r115]  noup:
+2006-07-15 [r115]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs: Use
 	  constants from SubLib.SubtitleConstants when creating new
 	  subtitles.
 
-2006-07-15 [r114]  noup:
+2006-07-15 [r114]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -2481,7 +2880,7 @@
 	  bug with input and movie frame rate commands being executed on
 	  program startup (handlers weren't being disabled).
 
-2006-07-14 [r112-113]  noup:
+2006-07-14 [r112-113]  pcastro:
 
 	* gnome-subtitles/TODO: Updated TODO.
 
@@ -2490,18 +2889,18 @@
 	  GetVisibleRange was producing unwanted warnings when rows were
 	  deleted at the end.
 
-2006-07-14 [r111]  noup:
+2006-07-14 [r111]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs:
 	  Added some common collection methods.
 
-2006-07-14 [r110]  noup:
+2006-07-14 [r110]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Commands.cs:
 	  Updated delete subtitles command to delete several subtitles
 	  instead of just a single one. Added command to insert subtitles.
 
-2006-07-14 [r107-109]  noup:
+2006-07-14 [r107-109]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Added handlers for inserting and deleting subtitles. Code
@@ -2514,19 +2913,19 @@
 	  Fixed bug with Previous subtitle not being returned successfuly.
 	  Added features to SingleSelectionCommand.
 
-2006-07-12 [r106]  noup:
+2006-07-12 [r106]  pcastro:
 
 	* gnome-subtitles, gnome-subtitles/src: Added autotools generated
 	  files to svn ignore.
 
-2006-07-09 [r104-105]  noup:
+2006-07-09 [r104-105]  pcastro:
 
 	* gnome-subtitles: Numerous features and bugfixes.
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs
 	  (added): Numerous features and bugfixes.
 
-2006-07-09 [r97-102]  noup:
+2006-07-09 [r97-102]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/CellRendererSpinButton.cs
 	  (removed): No longer needed.
@@ -2556,18 +2955,18 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/CommandManager.cs:
 	  Numerous features and bugfixes.
 
-2006-07-09 [r96]  noup:
+2006-07-09 [r96]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Execution/AssemblyInfo.cs.in
 	  (added): Added AssemblyInfo.
 
-2006-07-09 [r95]  noup:
+2006-07-09 [r95]  pcastro:
 
 	* gnome-subtitles/gnome-subtitles.mdp (added),
 	  gnome-subtitles/gnome-subtitles.mds (added): Added support for
 	  Monodevelop.
 
-2006-07-09 [r92-94]  noup:
+2006-07-09 [r92-94]  pcastro:
 
 	* gnome-subtitles/nant.build, gnome-subtitles/build.properties:
 	  Updated nant build files.
@@ -2578,7 +2977,7 @@
 	  (added), gnome-subtitles/autogen.sh (added): Added support for
 	  autotools.
 
-2006-07-09 [r89-91]  noup:
+2006-07-09 [r89-91]  pcastro:
 
 	* gnome-subtitles/NEWS (added), gnome-subtitles/README (added),
 	  gnome-subtitles/INSTALL (added), gnome-subtitles/ChangeLog
@@ -2593,14 +2992,14 @@
 	  gnome-subtitles/etc/script.in (added): added script to be used to
 	  call the application.
 
-2006-04-29 [r88]  noup:
+2006-04-29 [r88]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs:
 	  Added possibility to set SubtitleEdit insensitive, to use when
 	  selecting multiple subtitles (not implemented yet). The values
 	  are removed when the SubtitleEdit is set insensitive.
 
-2006-04-06 [r81-87]  noup:
+2006-04-06 [r81-87]  pcastro:
 
 	* gnome-subtitles/TODO: Completed support for changing subtitle
 	  frame rates.
@@ -2628,13 +3027,13 @@
 	  based on the subtitle type. 25 FPS are used by default, and reset
 	  when subtitles are opened or created.
 
-2006-04-05 [r80]  noup:
+2006-04-05 [r80]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Added "Report a Bug" menu item.
 
-2006-04-02 [r79]  noup:
+2006-04-02 [r79]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -2647,7 +3046,7 @@
 	  open document, etc) Completed support for setting style: bold,
 	  italic and underline.
 
-2006-03-28 [r77-78]  noup:
+2006-03-28 [r77-78]  pcastro:
 
 	* gnome-subtitles/TODO (added): Added TODO.
 
@@ -2657,7 +3056,7 @@
 	  connected and assigning a new model would fire the event with an
 	  inconsistent model state)
 
-2006-03-19 [r75-76]  noup:
+2006-03-19 [r75-76]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Added support
 	  for subtitle formatting - bold, italic and underline. Added
@@ -2670,7 +3069,7 @@
 	  subtitle style: bold, italic and underline. Fixed some bugs with
 	  ChangeText command not being updated consistently.
 
-2006-03-19 [r73-74]  noup:
+2006-03-19 [r73-74]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Added support for subtitle formatting - bold, italic and
@@ -2679,7 +3078,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Added
 	  support for subtitle formatting - bold, italic and underline.
 
-2006-03-19 [r70-72]  noup:
+2006-03-19 [r70-72]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs:
 	  ApplyTags is now executed from within the ChangeText command.
@@ -2692,7 +3091,7 @@
 	  Added support for subtitle formatting - bold, italic and
 	  underline.
 
-2006-03-05 [r64-69]  noup:
+2006-03-05 [r64-69]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs:
 	  Added file character encoding selection in open dialog.
@@ -2713,12 +3112,12 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/OpenDialog.cs:
 	  Added file character encoding selection.
 
-2006-03-05 [r63]  noup:
+2006-03-05 [r63]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Update
 	  timing mode when saving as.
 
-2006-03-04 [r53-62]  noup:
+2006-03-04 [r53-62]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/SaveAsDialog.cs
 	  (added): Dialog now extends a more general dialog:
@@ -2758,7 +3157,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/WidgetNames.cs
 	  (added): Moved to a separate file.
 
-2006-02-28 [r47-52]  noup:
+2006-02-28 [r47-52]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/GUI.cs: Improved
 	  Save and Save As support.
@@ -2784,7 +3183,7 @@
 	  renamed to Save As. Improved Save As dialog to include subtitle
 	  format and character coding combo boxes.
 
-2006-02-27 [r45-46]  noup:
+2006-02-27 [r45-46]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade: Cleaned up
 	  unused items.
@@ -2793,7 +3192,7 @@
 	  items sensitive or not depending on being editing a document or
 	  not.
 
-2006-02-27 [r44]  noup:
+2006-02-27 [r44]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/Glade/gnome-subtitles.glade,
@@ -2804,12 +3203,12 @@
 	  Sets undo and redo menuitem labels according to the possible undo
 	  and redo operations.
 
-2006-02-27 [r43]  noup:
+2006-02-27 [r43]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/CommandManager.cs:
 	  Code cleanup.
 
-2006-02-26 [r42]  noup:
+2006-02-26 [r42]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
@@ -2819,14 +3218,14 @@
 	  by the first time. In that case, Execute() is called. In the
 	  undo/redo case, Undo or Redo is called.
 
-2006-02-26 [r41]  noup:
+2006-02-26 [r41]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Grab text focus when a row is activated (double-clicked).
 
-2006-02-26 [r40]  noup:
+2006-02-26 [r40]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -2834,7 +3233,7 @@
 	  Update spinbuttons when any of it changes (also applies to
 	  undo/redo). Code cleanup.
 
-2006-02-26 [r38-39]  noup:
+2006-02-26 [r38-39]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/CommandManager.cs:
@@ -2845,20 +3244,20 @@
 	  Edit and Redo Buttons now display tooltips according to the Undo
 	  and Redo commands.
 
-2006-02-26 [r37]  noup:
+2006-02-26 [r37]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/CommandManager.cs:
 	  Added description to commands.
 
-2006-02-25 [r35]  noup:
+2006-02-25 [r35]  pcastro:
 
 	* gnome-subtitles/.cvsignore (removed): Removed remaining
 	  CVS-related files.
 
-2006-02-22 [r34]  noup:
+2006-02-22 [r34]  pcastro:
 
-	* gnome-subtitles/src/GnomeSubtitles/Application/CellRendererSpinButton.cs,
-	  gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
+	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/CellRendererSpinButton.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs,
@@ -2867,7 +3266,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/CommandManager.cs:
 	  Updated for namespace change in SubLib.
 
-2006-02-19 [r28-33]  noup:
+2006-02-19 [r28-33]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
@@ -2891,12 +3290,12 @@
 	  Added support for handling CanUndo and CanRedo events, and Undo
 	  and Redo buttons.
 
-2006-02-18 [r27]  noup:
+2006-02-18 [r27]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/GladeWidget.cs:
 	  Code cleanup.
 
-2006-02-17 [r24-26]  noup:
+2006-02-17 [r24-26]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs,
@@ -2909,7 +3308,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs:
 	  Set verbosity on SubLib by default.
 
-2006-02-15 [r19-23]  noup:
+2006-02-15 [r19-23]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleView.cs:
 	  Method naming adjustment. Automatically selects the first
@@ -2929,7 +3328,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs:
 	  Automatically adds a subtitle if the list is empty.
 
-2006-02-14 [r18]  noup:
+2006-02-14 [r18]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleView.cs:
 	  Stop showing shadow when invisible Use of ColumnWidth instead of
@@ -2937,7 +3336,7 @@
 	  disable of warning 169, since it doesn't apply anymore. Updates
 	  the editing area when a row is selected.
 
-2006-02-14 [r13-17]  noup:
+2006-02-14 [r13-17]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleEdit.cs
 	  (added): Editing area. Includes functions to set formated text,
@@ -2955,12 +3354,12 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/Utility.cs
 	  (added): Utility functions.
 
-2006-02-13 [r12]  noup:
+2006-02-13 [r12]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/CommandManager.cs
 	  (added): CommandManager to implement multilevel undo.
 
-2006-02-13 [r11]  noup:
+2006-02-13 [r11]  pcastro:
 
 	* gnome-subtitles/src/Glade/gnome-subtitles.glade,
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleView.cs:
@@ -2969,7 +3368,7 @@
 	  CellRendererCenteredText, which centers text inside a
 	  CellRenderer Code cleanup in SubtitleView
 
-2006-02-11 [r9-10]  noup:
+2006-02-11 [r9-10]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/SubtitleView.cs:
 	  Columns' width is now fixed. Temporarily, the size is constant
@@ -2980,7 +3379,7 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/EventHandlers.cs:
 	  Code cleanup.
 
-2006-02-11 [r6-8]  noup:
+2006-02-11 [r6-8]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs:
 	  Detect if subtitles were loaded or not (new subtitles are treated
@@ -2994,7 +3393,7 @@
 	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/AboutDialog.cs:
 	  Code cleanup.
 
-2006-02-10 [r5]  noup:
+2006-02-10 [r5]  pcastro:
 
 	* gnome-subtitles/etc/gnome-subtitles (added),
 	  gnome-subtitles/.cvsignore (added), gnome-subtitles/nant.build,
@@ -3008,13 +3407,13 @@
 	  Created program launcher, very primitive and not ready to
 	  distribute yet.
 
-2006-02-09 [r4]  noup:
+2006-02-09 [r4]  pcastro:
 
-	* gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/SaveSubtitleDialog.cs
-	  (added),
+	* gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
 	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/AboutDialog.cs
 	  (added),
-	  gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs,
+	  gnome-subtitles/src/GnomeSubtitles/Application/Dialogs/SaveSubtitleDialog.cs
+	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/MainWindow.cs
 	  (removed),
 	  gnome-subtitles/src/GnomeSubtitles/Application/MainStatusBar.cs
@@ -3038,14 +3437,14 @@
 	  are in ApplicationCore, GladeWidget now supports the creation of
 	  a main GUI widget.
 
-2006-02-06 [r3]  noup:
+2006-02-06 [r3]  pcastro:
 
 	* gnome-subtitles/src/GnomeSubtitles/Application/MainWindow.cs
 	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/ApplicationCore.cs
-	  (added), gnome-subtitles/src/Glade/gnome-subtitles.gladep
 	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/MainStatusBar.cs
+	  (added), gnome-subtitles/src/Glade/gnome-subtitles.gladep
 	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/Subtitles.cs
 	  (added),
@@ -3061,16 +3460,16 @@
 	  gnome-subtitles/src/GnomeSubtitles/Application/SubtitleView.cs
 	  (added), gnome-subtitles/build.properties (added),
 	  gnome-subtitles/src/GnomeSubtitles (added),
-	  gnome-subtitles/src/GnomeSubtitles/Application/SaveSubtitleDialog.cs
-	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/AboutDialog.cs
 	  (added),
+	  gnome-subtitles/src/GnomeSubtitles/Application/SaveSubtitleDialog.cs
+	  (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/CellRendererSpinButton.cs
-	  (added), gnome-subtitles/nant.build (added),
-	  gnome-subtitles/src/GnomeSubtitles/Application (added),
+	  (added), gnome-subtitles/src/GnomeSubtitles/Application (added),
+	  gnome-subtitles/nant.build (added),
 	  gnome-subtitles/src/GnomeSubtitles/Execution (added),
+	  gnome-subtitles/src/Glade/gnome-subtitles.glade (added),
 	  gnome-subtitles/src/GnomeSubtitles/Application/OpenSubtitleDialog.cs
-	  (added), gnome-subtitles/src/Glade/gnome-subtitles.glade (added),
-	  gnome-subtitles (added), gnome-subtitles/src/Glade (added),
-	  gnome-subtitles/COPYING (added): Initial commit.
+	  (added), gnome-subtitles (added), gnome-subtitles/src/Glade
+	  (added), gnome-subtitles/COPYING (added): Initial commit.
 

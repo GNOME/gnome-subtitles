@@ -2,6 +2,35 @@ Gnome Subtitles
 ===============
 
 
+0.5 (17/05/2007)
+================
+
+- Initial support for internationalization (i18n)
+- Initial version of the user manual, written by Erin Bloom
+- New option to select the type of newline to be used for saving a file, in the
+  SaveAs dialog
+- Fixed a crash that happened when loading a video with no subtitles open
+- Show an error dialog if errors occur when running the application with a
+  subtitle file as argument
+- Show an error dialog if errors occur when saving a file
+- Improved the text messages in the error dialogs
+- Fixed the Time and Frames labels regarding the current video position
+- Fixed the transparency of the images in the SetSubtitleStart and
+  SetSubtitleEnd buttons
+- Use stock items for File Properties, and Video Open and Close
+- Fixed underline in Video SetSubtitleEnd, which was conflicting with Rewind
+
+Bug Fixes:
+- Crash when passing an invalid subtitle as argument (#432233)
+- Crash when opening a video with no subtitles loaded (#432635)
+- Option to select end line style (unix, windows/dos, mac) (#435606)
+- Video menu short cut keys (#436745)
+- Exceptions not handled when saving a file (#438446)
+
+Thanks:
+- Luciano Ferrer, Erin Bloom
+
+
 0.4 (20/04/2007)
 ================
 
