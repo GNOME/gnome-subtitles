@@ -25,9 +25,11 @@ RELEASE PROCEDURE
 	- README
 	- NEWS
 	- TODO
-	- configure.in: ACINIT
+	- configure.ac: ACINIT
 	- ChangeLog using svn2log:
-		svn log -v --xml https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/trunk/gnome-subtitles | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o ChangeLog
+		svn log -v --xml http://svn.gnome.org/svn/gnome-subtitles/trunk | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o ChangeLog
+	- po ChangeLog using svn2log:
+		svn log -v --xml http://svn.gnome.org/svn/gnome-subtitles/trunk/po | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o po/ChangeLog
 
 
 2. Set shell variables
@@ -59,9 +61,9 @@ RELEASE PROCEDURE
 
 	- Commit changes for the release
 	- Tag the release with:
-		svn copy https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/trunk/gnome-subtitles https://gnome-subtitles.svn.sf.net/svnroot/gnome-subtitles/tags/gnome-subtitles-$GS_VERSION -m "Tagging the $GS_VERSION release."
+		svn copy svn+ssh://pcastro@svn.gnome.org/svn/gnome-subtitles/trunk svn+ssh://pcastro@svn.gnome.org/svn/gnome-subtitles/tags/gnome-subtitles-$GS_VERSION -m "Tagging the $GS_VERSION release."
 	- Check new version in:
-		http://svn.sourceforge.net/viewvc/gnome-subtitles/tags/
+		http://svn.gnome.org/viewcvs/gnome-subtitles/tags
 
 
 6. Create Screenshots
