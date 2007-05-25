@@ -54,6 +54,7 @@ RELEASE PROCEDURE
 		make dist
 	- Test package with:
 		tar xzf gnome-subtitles-$GS_VERSION.tar.gz && cd gnome-subtitles-$GS_VERSION && ./configure && make
+		make check
 
 
 5. Commit changes and tag
