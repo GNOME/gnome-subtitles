@@ -245,7 +245,7 @@ public class EventHandlers {
 			Gnome.Help.DisplayDesktopOnScreen(Gnome.Program.Get(), Global.Execution.SystemHelpDir, filename, null, Global.GUI.Window.Screen);
 		}
 		catch (Exception e) {
-			System.Console.WriteLine(e);
+			System.Console.Error.WriteLine(e);
 			//TODO show an error message
 		}
 		//Util.OpenUrl("http://gnome-subtitles.sourceforge.net/help");
@@ -350,11 +350,11 @@ public class EventHandlers {
     /*	Subtitle Edit	*/
     
     public void OnFocusInSubtitleEdit (object o, FocusInEventArgs args) {
-    	Global.GUI.Menus.SetPasteSensitivity(true);
+    	Global.GUI.Edit.OnFocusIn(o, args);
     }
     
     public void OnFocusOutSubtitleEdit (object o, FocusOutEventArgs args) {
-    	Global.GUI.Menus.SetPasteSensitivity(false);
+    	Global.GUI.Edit.OnFocusOut(o, args); 
     }
     
     [GLib.ConnectBefore]
@@ -380,7 +380,7 @@ public class EventHandlers {
     }
     
     public void OnSubtitleEditToggleOverwrite (object o, EventArgs args) {
-    	Global.GUI.Status.Overwrite = (o as TextView).Overwrite;
+    	Global.GUI.Edit.OnToggleOverwrite(o, args);
     }
 
 }
