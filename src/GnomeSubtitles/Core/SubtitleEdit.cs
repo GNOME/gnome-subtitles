@@ -38,6 +38,7 @@ public class SubtitleEdit {
 	private ArrayList subtitleTags = new ArrayList(4); //4 not to resize with 3 items
 	
 	private Subtitle subtitle = null;
+	private bool isBufferChangeManual = true; //used to indicate whether there were manual (not by the user) changes to the buffer
 	private TimingMode timingMode = TimingMode.Frames; //Need to store to prevent from connecting more than 1 handler to the spin buttons. Default is Frames because it's going to be set to Times in the constructor.
 
 	public SubtitleEdit() {
@@ -62,6 +63,8 @@ public class SubtitleEdit {
     	textView.Buffer.TagTable.Add(underlineTag);
 
     	SetTimingMode(TimingMode.Times); //Initial timing mode is Times
+    	ConnectTextBufferChangedSignal();
+    	ConnectTextBufferMarkSetSignal();
     }
     
 	/* Public properties */
@@ -103,8 +106,10 @@ public class SubtitleEdit {
     	get {
     		if (!Enabled)
     			return -1;
-    		else
-    			return textView.Buffer.GetIterAtMark(textView.Buffer.InsertMark).Offset;
+    		else {
+    			TextIter iter = GetIterAtInsertMark();
+    			return iter.Offset;
+    		}
     	}
     }
     
@@ -185,10 +190,8 @@ public class SubtitleEdit {
     /* Private Methods */
     
     private void ClearFields () {
-   		DisconnectTextBufferChangedSignal();
-    	textView.Buffer.Text = String.Empty;
-    	ConnectTextBufferChangedSignal();
-    	
+    	SetText(String.Empty);
+
     	DisconnectSpinButtonsChangedSignals();
 		startSpinButton.Text = String.Empty;
 		endSpinButton.Text = String.Empty;
@@ -204,10 +207,13 @@ public class SubtitleEdit {
     }
     
     private void LoadText () {
-    	textView.Buffer.Changed -= OnBufferChanged; 
-    	textView.Buffer.Text = subtitle.Text.Get();    		
-		ApplyLoadedTags();   
-		textView.Buffer.Changed += OnBufferChanged; 
+    	SetText(subtitle.Text.Get()); 
+    }
+    
+    private void SetText (string text) {
+    	isBufferChangeManual = true;
+    	textView.Buffer.Text = text;
+    	isBufferChangeManual = false;
     }
     
     private void LoadTags () {
@@ -226,8 +232,26 @@ public class SubtitleEdit {
     	TextIter end = buffer.EndIter;
     	buffer.ApplyTag(scaleTag, start, end);
     	foreach (TextTag tag in subtitleTags)
-		SetTag(tag, start, end, true);
+			SetTag(tag, start, end, true);
     }
+    
+    private TextIter GetIterAtInsertMark () {
+    	return textView.Buffer.GetIterAtMark(textView.Buffer.InsertMark);
+    }
+    
+    private void UpdateLineColStatus () {
+    	if ((!Enabled) || (!TextIsFocus))
+    		return;
+
+		TextIter iter = GetIterAtInsertMark();
+		int line = iter.Line + 1;
+		int column = iter.LineOffset + 1;
+		Global.GUI.Status.SetPosition(line, column);
+	}
+	
+	private void UpdateOverwriteStatus () {
+		Global.GUI.Status.Overwrite = textView.Overwrite;
+	}
     
     private void ConnectTextBufferChangedSignal () {
 		textView.Buffer.Changed += OnBufferChanged; 
@@ -235,6 +259,10 @@ public class SubtitleEdit {
     
     private void DisconnectTextBufferChangedSignal () {
 		textView.Buffer.Changed -= OnBufferChanged; 
+    }
+    
+    private void ConnectTextBufferMarkSetSignal () {
+    	textView.Buffer.MarkSet += OnBufferMarkSet;
     }
     
     private void ConnectSpinButtonsChangedSignals () {
@@ -330,6 +358,25 @@ public class SubtitleEdit {
 	
 	/* Event Handlers */
     
+    /* FIXME Needs to be public to be called from EventHandlers */
+    public void OnFocusIn (object o, FocusInEventArgs args) {
+		UpdateLineColStatus();
+		UpdateOverwriteStatus();
+		
+		Global.GUI.Menus.SetPasteSensitivity(true);
+	}
+
+	/* FIXME Needs to be public to be called from EventHandlers */
+    public void OnFocusOut (object o, FocusOutEventArgs args) {
+		Global.GUI.Menus.SetPasteSensitivity(false);
+    	Global.GUI.Status.ClearEditRelatedStatus();
+	}
+
+	/* FIXME Needs to be public to be called from EventHandlers */
+    public void OnToggleOverwrite (object o, EventArgs args) {
+		UpdateOverwriteStatus();
+	}
+    
 	private void OnTimeInput (object o, InputArgs args) {
 		SpinButton spinButton = o as SpinButton;
 		try {
@@ -350,8 +397,16 @@ public class SubtitleEdit {
 	}
 	
 	private void OnBufferChanged (object o, EventArgs args) {
-		ApplyLoadedTags();
-		Global.CommandManager.Execute(new ChangeTextCommand((o as TextBuffer).Text));
+		if (!isBufferChangeManual) {
+			Global.CommandManager.Execute(new ChangeTextCommand((o as TextBuffer).Text));
+		}
+		
+		ApplyLoadedTags();		
+		UpdateLineColStatus();
+	}
+	
+	private void OnBufferMarkSet (object o, MarkSetArgs args) {
+		UpdateLineColStatus();
 	}
 
 	private void OnStartValueChanged (object o, EventArgs args) {
