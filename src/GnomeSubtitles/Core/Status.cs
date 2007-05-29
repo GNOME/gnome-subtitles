@@ -31,18 +31,35 @@ public class Status {
 		messageStatus = Global.GetWidget(WidgetNames.MessageStatusbar) as Gtk.Statusbar;
 		positionStatus = Global.GetWidget(WidgetNames.PositionStatusbar) as Gtk.Statusbar;
 		overwriteStatus = Global.GetWidget(WidgetNames.OverwriteStatusbar) as Gtk.Statusbar;
-		
-		Overwrite = false;
 	}
 
 	/* Public properties */
 
 	public bool Overwrite {
 		set {
-			overwriteStatus.Pop(0);
 			string message = (value == true ? Catalog.GetString("OVR") : Catalog.GetString("INS"));
+			ClearStatus(overwriteStatus);
 			overwriteStatus.Push(0, message);
 		}
+	}
+
+	/* Public methods */
+	
+	public void ClearEditRelatedStatus () {
+		ClearStatus(positionStatus);
+		ClearStatus(overwriteStatus);
+	}
+	
+	public void SetPosition (int line, int column) {
+		string message = Catalog.GetString("Ln") + " " + line + ", " + Catalog.GetString("Col") + " " + column;
+		ClearStatus(positionStatus);
+		positionStatus.Push(0, message);
+	}
+	
+	/* Private methods */
+	
+	private void ClearStatus (Statusbar statusBar) {
+		statusBar.Pop(0);
 	}
 
 }
