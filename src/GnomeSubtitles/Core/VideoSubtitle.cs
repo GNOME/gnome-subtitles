@@ -28,7 +28,6 @@ public class VideoSubtitle {
 	
 	/* Current subtitle */
 	private Subtitle subtitle = null;
-	//private int subtitleNumber = -1; TODO Uncomment
 	private float subtitleStart = -1;
 	private float subtitleEnd = -1;
 	
@@ -75,7 +74,6 @@ public class VideoSubtitle {
 	
 	private void LoadSubtitle (int number) {
 		subtitle = Global.Document.Subtitles[number];
-		//subtitleNumber = number; TODO Uncomment
 		subtitleStart = (float)subtitle.Times.Start.TotalSeconds;
 		subtitleEnd = (float)subtitle.Times.End.TotalSeconds;
 		SetText();
@@ -84,7 +82,6 @@ public class VideoSubtitle {
 	
 	private void UnloadSubtitle () {
 		subtitle = null;
-		//subtitleNumber = -1; TODO Uncomment
 		subtitleStart = -1;
 		subtitleEnd = -1;
 		ClearText();
