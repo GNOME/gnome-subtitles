@@ -32,6 +32,7 @@ public class GUI {
 	private Video video = null;
 	private SubtitleView view = null;
 	private SubtitleEdit edit = null;
+	private Status status = null;
 	
 	/* Constant strings */
 	private const string gladeFilename = "MainWindow.glade";
@@ -48,6 +49,7 @@ public class GUI {
 		view = new SubtitleView();
 		edit = new SubtitleEdit();
 		menus = new Menus();
+		status = new Status();
 
 		glade.Autoconnect(handlers); //TODO think about using separate connections for different parts of the GUI
 		
@@ -74,6 +76,10 @@ public class GUI {
 	
 	public SubtitleEdit Edit {
 		get { return edit; }
+	}
+	
+	public Status Status {
+		get { return status; }
 	}
 
     

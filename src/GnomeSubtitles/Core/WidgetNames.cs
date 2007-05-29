@@ -119,6 +119,12 @@ public class WidgetNames {
 	public const string DurationSpinButton = "durationSpinButton";
 	public const string SubtitleTextView = "subtitleTextView";
 	
+	/* Status Bar */
+	
+	public const string MessageStatusbar = "messageStatusbar";
+	public const string PositionStatusbar = "positionStatusbar";
+	public const string OverwriteStatusbar = "overwriteStatusbar";
+	
 }
 
 }

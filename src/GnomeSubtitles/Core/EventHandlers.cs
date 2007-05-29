@@ -378,6 +378,10 @@ public class EventHandlers {
     		}
     	}
     }
+    
+    public void OnSubtitleEditToggleOverwrite (object o, EventArgs args) {
+    	Global.GUI.Status.Overwrite = (o as TextView).Overwrite;
+    }
 
 }
 
