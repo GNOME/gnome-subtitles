@@ -22,6 +22,7 @@ namespace GnomeSubtitles {
 public abstract class Command {
 	private string description;
 	private bool canGroup;
+	private CommandTarget target = CommandTarget.Normal; //Normal is the typical type of command
 
 	public Command (string description, bool canGroup) {
 		this.description = description;
@@ -34,6 +35,10 @@ public abstract class Command {
 	
 	public bool CanGroup {
 		get { return canGroup; }
+	}
+	
+	public CommandTarget Target {
+		get { return target; }
 	}
 
 	public abstract bool Execute ();
@@ -48,6 +53,10 @@ public abstract class Command {
 	
 	public virtual bool CanGroupWith (Command command) {
 		return false;
+	}
+	
+	public virtual void SetCommandTarget (CommandTarget target) {
+		this.target = target;
 	}
 	
 	/* Protected members */
