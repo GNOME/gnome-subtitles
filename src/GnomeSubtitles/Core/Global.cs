@@ -73,11 +73,6 @@ public class Global {
 	
 	public static Document Document {
 		get { return document; }
-		set {
-			bool wasLoaded = IsDocumentLoaded;
-			document = value;
-			GUI.UpdateFromNewDocument(wasLoaded);
-		}
 	}
 	
 	public static bool IsDocumentLoaded {
@@ -129,6 +124,18 @@ public class Global {
 		execution.QuitProgram();
 	}
 	
+	public static void CreateDocument (string path) {
+		bool wasLoaded = IsDocumentLoaded;
+		document = new Document();
+		document.New(path, wasLoaded);	
+	}
+	
+	public static void CreateDocument (string path, Encoding encoding) {
+		bool wasLoaded = IsDocumentLoaded;
+		document = new Document();
+		document.Open(path, encoding, wasLoaded);	
+	}
+	
 	public static Widget GetWidget (string name) {
 		return glade.GetWidget(name);
 	}
@@ -146,7 +153,7 @@ public class Global {
 		execution = exec;
 		execution.Init();
 		handlers = new EventHandlers();
-		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled, handlers.OnCommandActivated, handlers.OnModified); //TODO 25 should be set on gconf
+		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled, handlers.OnCommandActivated); //TODO 25 should be set on gconf
 		clipboards = new Clipboards();
 		config = new Config();
 		dialogs = new Dialogs();
