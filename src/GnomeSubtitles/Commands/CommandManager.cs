@@ -25,27 +25,21 @@ namespace GnomeSubtitles {
 public class CommandManager {
 	private int limit = 25;
 	private Command[] commands = null;
-	private bool wasModified = false;
 
-	
 	private int undoCount = 0;
 	private int redoCount = 0;
 	private int iterator = 0;
 	
 	private event EventHandler UndoToggled;
 	private event EventHandler RedoToggled;
-	private event EventHandler CommandActivated;
-	private event EventHandler Modified;
+	private event CommandActivatedHandler CommandActivated;
 
-	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled,
-			EventHandler onCommandActivated, EventHandler onModified) {
-
+	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled, CommandActivatedHandler onCommandActivated) {
 		limit = undoLimit;
 		commands = new Command[undoLimit];
 		UndoToggled += onUndoToggled;
 		RedoToggled += onRedoToggled;
 		CommandActivated += onCommandActivated;
-		Modified += onModified;
 	}
 	
 	public void Clear () {
@@ -53,7 +47,6 @@ public class CommandManager {
 		undoCount = 0;
 		redoCount = 0;
 		iterator = 0;
-		wasModified = false;
 	}
 	
 	public bool CanUndo {
@@ -81,37 +74,33 @@ public class CommandManager {
 				return String.Empty;
 		}
 	}
-	
-	public bool WasModified {
-		get { return wasModified; }
-		set { wasModified = value; }	
-	}
-	
+
 	public bool Execute (Command command) {
 		bool completed = command.Execute();
 		if (completed) {
 			ProcessExecute(command);
-			SetModified();
+			EmitCommandActivated(command);
 		}
 		return completed;
 	}
 	
 	public void Undo () {
 		if (CanUndo) {
-			PreviousCommand().Undo();
-			ProcessUndo();	
-			SetModified();
+			Command command = PreviousCommand(); 
+			command.Undo();
+			ProcessUndo();
+			EmitCommandActivated(command);
 		}
 	}
 	
 	public void Redo () {
 		if (CanRedo) {
-			NextCommand().Redo();
+			Command command = NextCommand();
+			command.Redo();
 			ProcessRedo();
-			SetModified();
+			EmitCommandActivated(command);
 		}
 	}
-
 
 	private void ProcessExecute (Command command) {
 		bool couldUndoBefore = CanUndo;
@@ -130,7 +119,7 @@ public class CommandManager {
 			commands[iterator] = command;
 			Next();
 			undoCount = IncrementCount(undoCount);
-			EmitCommandActivated();
+			//EmitCommandActivated(command); TODO delete this
 		}
 
 		if (!couldUndoBefore)
@@ -153,8 +142,6 @@ public class CommandManager {
 		
 		if (!couldRedoBefore)
 			EmitRedoToggled();
-			
-		EmitCommandActivated();
 	}
 	
 	private void ProcessRedo () {
@@ -169,8 +156,6 @@ public class CommandManager {
 			
 		if (!couldUndoBefore)
 			EmitUndoToggled();
-		
-		EmitCommandActivated();
 	}
 	
 	private void EmitUndoToggled () {
@@ -183,15 +168,8 @@ public class CommandManager {
 			RedoToggled(this, EventArgs.Empty);
 	}
 	
-	private void EmitCommandActivated () {
-		CommandActivated(this, EventArgs.Empty);
-	}
-	
-	private void SetModified () {
-		if (!wasModified) {
-			wasModified = true;
-			Modified(this, EventArgs.Empty);		
-		}
+	private void EmitCommandActivated (Command command) {
+		CommandActivated(this, new CommandActivatedArgs(command.Target));
 	}
 	
 	private Command NextCommand () {
