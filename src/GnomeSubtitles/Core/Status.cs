@@ -23,12 +23,12 @@ using Mono.Unix;
 namespace GnomeSubtitles {
 
 public class Status {
-	private Statusbar messageStatus = null;
+	//private Statusbar messageStatus = null;
 	private Statusbar positionStatus = null;
 	private Statusbar overwriteStatus = null;
 
 	public Status () {
-		messageStatus = Global.GetWidget(WidgetNames.MessageStatusbar) as Gtk.Statusbar;
+		//messageStatus = Global.GetWidget(WidgetNames.MessageStatusbar) as Gtk.Statusbar;
 		positionStatus = Global.GetWidget(WidgetNames.PositionStatusbar) as Gtk.Statusbar;
 		overwriteStatus = Global.GetWidget(WidgetNames.OverwriteStatusbar) as Gtk.Statusbar;
 	}
