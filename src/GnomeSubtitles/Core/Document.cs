@@ -25,17 +25,14 @@ namespace GnomeSubtitles {
 
 public class Document {
 	private Subtitles subtitles = null;
+	private bool wasNormalModified = false;
+	private bool wasTranslationModified = false;
 
 	private FileProperties fileProperties = null;
 	private bool canBeSaved = false; //Whether this document can be saved with existing fileProperties
 
 
-	public Document (string path) {
-		New(path);
-	}
-	
-	public Document (string path, Encoding encoding) {
-		Open(path, encoding);	
+	public Document () {
 	}
 	
 	/* Public properties */
@@ -52,34 +49,27 @@ public class Document {
 		get { return canBeSaved; }
 	}
 	
+	public bool WasNormalModified {
+		get { return wasNormalModified; }
+	}
+	
+	public bool WasTranslationModified {
+		get { return wasTranslationModified; }
+	}
+	
 	/* Public methods */
 
-	public bool Save (FileProperties newFileProperties) {
-		SubtitleSaver saver = new SubtitleSaver();
-		saver.Save(subtitles, newFileProperties);
-		
-		fileProperties = saver.FileProperties;		
-		canBeSaved = true;
-
-		Global.GUI.Menus.SetActiveTimingMode(fileProperties.TimingMode);
-		return true;
-	}
-
-	public void UpdateTimingModeFromFileProperties () {
-		Global.TimingMode = fileProperties.TimingMode;
-	}
-	
-	/* Private methods */
-	
-	private void New (string path) {
+	public void New (string path, bool wasLoaded) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		
 		subtitles = new Subtitles(factory.New());
 		fileProperties = new FileProperties(path);
+		
+		Global.GUI.UpdateFromNewDocument(wasLoaded);
 	}
 	
-	private void Open (string path, Encoding encoding) {
+	public void Open (string path, Encoding encoding, bool wasLoaded) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		factory.Encoding = encoding;
@@ -89,7 +79,7 @@ public class Document {
 			openedSubtitles = factory.Open(path);
 		}
 		catch (FileNotFoundException) {
-			New(path);
+			New(path, wasLoaded);
 			return;
 		}
 
@@ -100,7 +90,47 @@ public class Document {
 			canBeSaved = true;
 			
 		Global.TimingMode = fileProperties.TimingMode;
+		Global.GUI.UpdateFromNewDocument(wasLoaded);
 	}
+
+	public bool Save (FileProperties newFileProperties) {
+		SubtitleSaver saver = new SubtitleSaver();
+		saver.Save(subtitles, newFileProperties);
+		
+		fileProperties = saver.FileProperties;		
+		canBeSaved = true;
+
+		Global.GUI.Menus.SetActiveTimingMode(fileProperties.TimingMode);
+		
+		ClearNormalModified();
+		return true;
+	}
+	
+	public void UpdateFromCommandActivated (CommandTarget target) {
+		if ((target == CommandTarget.Normal) && (!wasNormalModified)) {
+			wasNormalModified = true;
+			Global.GUI.UpdateFromDocumentModified(true);
+		}
+		else if ((target == CommandTarget.Translation) && (!wasTranslationModified)) {
+			wasTranslationModified = true;
+			Global.GUI.UpdateFromDocumentModified(true);
+		}
+	}
+
+
+	/* Private methods */
+	
+	private void ClearNormalModified () {
+		wasNormalModified = false;
+		if (!wasTranslationModified) //Update the GUI if translation is also not in modified state
+			Global.GUI.UpdateFromDocumentModified(false);
+	}
+	
+	/*private void ClearTranslationModified () {
+		wasTranslationModified = false;
+		if (!wasNormalModified) //Update the GUI if normal is also not in modified state
+			Global.GUI.UpdateFromDocumentModified(false);
+	}*/
 
 }
 
