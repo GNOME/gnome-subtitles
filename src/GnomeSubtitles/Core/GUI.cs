@@ -100,7 +100,7 @@ public class GUI {
     
     /// <summary>Quits the application.</summary>
     public void Quit () {
-		if (ToCloseAfterWarning) {
+		if (ToCloseAfterWarning()) {
 			video.Quit();
 			Global.Quit();
 		}
@@ -115,16 +115,15 @@ public class GUI {
 	/// <param name="path">The subtitles' filename. If it's an empty string, 'Unsaved Subtitles' will be used instead.</param>
 	/// <remarks>If there's a document opened with unsaved changes, a warning dialog is shown.</remarks>
     public void New (string path) {
-    	if (!ToCreateNewAfterWarning)
+    	if (!ToCreateNewAfterWarning())
     		return;
 
 		if (path == String.Empty)
 			path = Catalog.GetString("Unsaved Subtitles");
 
-		Document document = new Document(path);
-		Global.Document = document;
+		Global.CreateDocument(path);
 
-		if (document.Subtitles.Count == 0) {
+		if (Global.Document.Subtitles.Count == 0) {
 			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
 			Global.GUI.View.Selection.ActivatePath(); //TODO is this necessary?
 		}
@@ -137,7 +136,7 @@ public class GUI {
     	FileOpenDialog dialog = new FileOpenDialog();
     	dialog.Show();
     	bool toOpen = dialog.WaitForResponse();
-    	if (toOpen && ToOpenAfterWarning) {
+    	if (toOpen && ToOpenAfterWarning()) {
     		string filename = dialog.Filename;
     		int codePage = (dialog.HasChosenEncoding ? dialog.ChosenEncoding.CodePage : -1);
     		string videoFilename = dialog.VideoFilename;
@@ -189,7 +188,7 @@ public class GUI {
 			return false;
 	}
 
-	public void UpdateWindowTitle (bool modified) {
+	public void UpdateFromDocumentModified (bool modified) {
 		string prefix = (modified ? "*" : String.Empty);
 		window.Title = prefix + Global.Document.FileProperties.Filename +
 			" - " + Global.Execution.ApplicationName;
@@ -198,7 +197,7 @@ public class GUI {
 	public void UpdateFromNewDocument (bool wasLoaded) {
 	   	Global.CommandManager.Clear();
 
-		UpdateWindowTitle(false);
+		UpdateFromDocumentModified(false);
 		view.UpdateFromNewDocument(wasLoaded);
 		edit.UpdateFromNewDocument(wasLoaded);
 		menus.UpdateFromNewDocument(wasLoaded);
@@ -235,10 +234,7 @@ public class GUI {
     private void Open (string path, int codePage, string videoFilename) {
     	try {
     		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
-    		
-    		Global.Document = new Document(path, encoding);
-    		Global.Document.UpdateTimingModeFromFileProperties();
-
+    		Global.CreateDocument(path, encoding);
 			view.Selection.SelectFirst(); //TODO is this needed?
 		
 			if (videoFilename != String.Empty)
@@ -272,8 +268,6 @@ public class GUI {
     private void Save (FileProperties fileProperties) {
 		try {
 			Global.Document.Save(fileProperties);
-			Global.CommandManager.WasModified = false;
-			UpdateWindowTitle(false);
 		}
 		catch (Exception exception) {
 			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception);
@@ -312,47 +306,39 @@ public class GUI {
 		video.UpdateFromSelection(false);
 	}    
 
-	/* Private properties */
-	
 	/// <summary>Whether there are unsaved changes.</summary>
-	private bool ExistUnsavedChanges {
-		get { return Global.CommandManager.WasModified; }
+	private bool ExistUnsavedChanges () {
+		return Global.IsDocumentLoaded && Global.Document.WasNormalModified;
 	}
 
 	/// <summary>Whether the program should be closed, after choosing the respective confirmation dialog.</summary>
-    private bool ToCloseAfterWarning {
-    	get {
-    		if (ExistUnsavedChanges) {
-	    		SaveConfirmationDialog dialog = new SaveOnCloseConfirmationDialog();
-    			return dialog.WaitForResponse();
-    		}
-    		else
-	    		return true; 
-		}
+    private bool ToCloseAfterWarning () {
+    	if (ExistUnsavedChanges()) {
+	    	SaveConfirmationDialog dialog = new SaveOnCloseConfirmationDialog();
+    		return dialog.WaitForResponse();
+    	}
+    	else
+	    	return true; 
 	}
     
     /// <summary>Whether a new document should be created, after choosing the respective confirmation dialog.</summary>
-    private bool ToCreateNewAfterWarning {
-    	get {
-    		if (ExistUnsavedChanges) {
-	    		SaveConfirmationDialog dialog = new SaveOnNewConfirmationDialog();
-    			return dialog.WaitForResponse();
-    		}
-    		else
-	    		return true; 
-		}
+    private bool ToCreateNewAfterWarning () {
+   		if (ExistUnsavedChanges()) {
+    		SaveConfirmationDialog dialog = new SaveOnNewConfirmationDialog();
+   			return dialog.WaitForResponse();
+   		}
+   		else
+    		return true; 
 	}
 	
 	/// <summary>Whether a document should be opened, after choosing the respective confirmation dialog.</summary>
-	private bool ToOpenAfterWarning { //TODO turn this into a function
-    	get {
-    		if (ExistUnsavedChanges) {
-	    		SaveConfirmationDialog dialog = new SaveOnOpenConfirmationDialog();
-    			return dialog.WaitForResponse();
-    		}
-    		else
-	    		return true; 
-		}
+	private bool ToOpenAfterWarning () {
+   		if (ExistUnsavedChanges()) {
+    		SaveConfirmationDialog dialog = new SaveOnOpenConfirmationDialog();
+   			return dialog.WaitForResponse();
+   		}
+   		else
+    		return true; 
 	}
 
 }
