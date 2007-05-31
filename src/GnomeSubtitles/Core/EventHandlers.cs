@@ -300,7 +300,7 @@ public class EventHandlers {
 			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
     }
     
-    public void OnCommandActivated (object o, EventArgs args) {
+    public void OnCommandActivated (object o, CommandActivatedArgs args) {
     	CommandManager commandManager = Global.CommandManager;
     	if (commandManager.CanUndo) {
     		string undoDescription = commandManager.UndoDescription;
@@ -316,10 +316,8 @@ public class EventHandlers {
     		MenuItem redoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.EditRedo));
     		(redoMenuItem.Child as Label).Text = redoDescription;
     	}
-    }
-    
-    public void OnModified (object o, EventArgs args) {
-		Global.GUI.UpdateWindowTitle(true);
+    	
+    	Global.Document.UpdateFromCommandActivated(args.Target);
     }
     
     /* Video */
