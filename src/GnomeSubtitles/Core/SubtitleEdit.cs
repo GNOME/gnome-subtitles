@@ -257,10 +257,6 @@ public class SubtitleEdit {
 		textView.Buffer.Changed += OnBufferChanged; 
     }
     
-    private void DisconnectTextBufferChangedSignal () {
-		textView.Buffer.Changed -= OnBufferChanged; 
-    }
-    
     private void ConnectTextBufferMarkSetSignal () {
     	textView.Buffer.MarkSet += OnBufferMarkSet;
     }
