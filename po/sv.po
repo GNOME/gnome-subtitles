@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-03 10:03+0200\n"
-"PO-Revision-Date: 2007-06-03 10:02+0100\n"
+"PO-Revision-Date: 2007-06-03 10:35+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -289,7 +289,7 @@ msgstr "_Hjälp"
 
 #: ../src/Glade/MainWindow.glade.h:29
 msgid "_Input Frame Rate"
-msgstr "_Bildhastighet för inmatning"
+msgstr "_Bildfrekvens för inmatning"
 
 #: ../src/Glade/MainWindow.glade.h:30
 msgid "_Insert Subtitle"
@@ -303,7 +303,8 @@ msgstr "_Kursiv"
 msgid "_Play / Pause"
 msgstr "_Spela upp / Gör paus"
 
-#: ../src/Glade/MainWindow.glade.h:33 ../src/Glade/SearchDialog.glade.h:6
+#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/SearchDialog.glade.h:6
 msgid "_Replace"
 msgstr "_Ersätt"
 
@@ -333,7 +334,7 @@ msgstr "_Video"
 
 #: ../src/Glade/MainWindow.glade.h:40
 msgid "_Video Frame Rate"
-msgstr "Bildhastighet för _video"
+msgstr "Bildfrekvens för _video"
 
 #: ../src/Glade/MainWindow.glade.h:41
 msgid "_View"
@@ -355,19 +356,15 @@ msgstr "Inställningar"
 msgid ""
 "An Error has occured.\n"
 "\n"
-"To report this bug, please <b>Open the Bugzilla</b> and paste the following "
-"<b>log</b> into the bug description.\n"
+"To report this bug, please <b>Open the Bugzilla</b> and paste the following <b>log</b> into the bug description.\n"
 "\n"
-"If the bug is related to a <b>subtitle file</b>, please attach it if "
-"possible."
+"If the bug is related to a <b>subtitle file</b>, please attach it if possible."
 msgstr ""
 "Ett fel har inträffat.\n"
 "\n"
-"För att rapportera det här felet kan du <b>Öppna Bugzilla</b> och klistra in "
-"följande <b>logg</b> i felbeskrivningsfältet.\n"
+"För att rapportera det här felet kan du <b>Öppna Bugzilla</b> och klistra in följande <b>logg</b> i felbeskrivningsfältet.\n"
 "\n"
-"Om felet relaterar till en <b>undertextfil</b> bör du bifoga filen om "
-"möjligt."
+"Om felet relaterar till en <b>undertextfil</b> bör du bifoga filen om möjligt."
 
 #: ../src/Glade/ReportBugWindow.glade.h:6
 msgid "Open Bugzilla"
@@ -474,11 +471,11 @@ msgstr "Justerar tider"
 
 #: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:46
 msgid "Changing Input Frame Rate"
-msgstr "Ändrar bildhastighet för inmatning"
+msgstr "Ändrar bildfrekvens för inmatning"
 
 #: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:65
 msgid "Changing Video Frame Rate"
-msgstr "Ändrar bildhastighet för video"
+msgstr "Ändrar bildfrekvens för video"
 
 #: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:55
 msgid "Toggling Bold"
@@ -756,11 +753,8 @@ msgid "Encoding"
 msgstr "Kodning"
 
 #: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:47
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Ett okänt fel har inträffat. Rapportera felet och inkludera detta felnamn:"
+msgid "An unknown error has occured. Please report a bug and include this error name:"
+msgstr "Ett okänt fel har inträffat. Rapportera felet och inkludera detta felnamn:"
 
 #: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:76
 msgid "Auto Detected"
@@ -873,11 +867,8 @@ msgid "Add or Remove..."
 msgstr "Lägg till eller ta bort..."
 
 #: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"Kunde inte identifiera undertextformatet. Försäkra dig om att filtypen stöds."
+msgid "Unable to detect the subtitle format. Please check that the file type is supported."
+msgstr "Kunde inte identifiera undertextformatet. Försäkra dig om att filtypen stöds."
 
 #: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
 msgid "The encoding used is not supported by your system."
@@ -900,10 +891,8 @@ msgid "Frames"
 msgstr "Bildrutor"
 
 #: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:34
-msgid ""
-"Unable to start the video player. Please check that MPlayer is installed."
-msgstr ""
-"Kunde inte starta videospelaren. Kontrollera att MPlayer är installerad."
+msgid "Unable to start the video player. Please check that MPlayer is installed."
+msgstr "Kunde inte starta videospelaren. Kontrollera att MPlayer är installerad."
 
 #: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:36
 msgid "Please check that the video file is supported."
@@ -912,3 +901,4 @@ msgstr "Försäkra dig om att videofilen stöds."
 #: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:65
 msgid "All Video Files"
 msgstr "Alla videofiler"
+
