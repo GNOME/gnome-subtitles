@@ -129,7 +129,6 @@ public class PlayerPositionWatcher {
 			
 			EmitPositionChanged(position);
 		}
-
 		return true;
 	}
 	

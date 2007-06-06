@@ -110,7 +110,13 @@ public class Player {
 	}
 	
 	public void SeekStart () {
-		Exec("pausing seek 0 2");
+		try {
+			Exec("pausing seek 0 2");
+		}
+		catch (Exception e) {
+			System.Console.Error.WriteLine("Caught exception while trying to Seek:");
+			System.Console.Error.WriteLine(e);
+		}
 	}
 	
 	public void Play () {
@@ -259,6 +265,9 @@ public class Player {
 			return GetAsFloat("get_property fps");
 	}
 	
+	/// <summary>Executes a command.</summary>
+	/// <param name="command">The command to execute.</param>
+	/// <remarks>A command is executed by writting it to the output stream.</remarks>
 	private void Exec (string command) {
 		process.StandardInput.WriteLine(command);
 	}
@@ -306,8 +315,9 @@ public class Player {
 	/* Event members */
 	
 	private void EmitEndReachedEvent () {
-		if (EndReached != null)
+		if (EndReached != null) {
 			EndReached(this, EventArgs.Empty);
+		}
 	}
 	
 	private void OnProcessExited (object o, EventArgs args) {
