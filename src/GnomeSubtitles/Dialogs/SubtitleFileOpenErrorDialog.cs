@@ -35,15 +35,15 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 	protected override string SecondaryTextFromException (Exception exception) {
 		if (exception is UnknownSubtitleFormatException)
 			return Catalog.GetString("Unable to detect the subtitle format. Please check that the file type is supported.");
+		else if (exception is EncodingNotSupportedException)
+			return Catalog.GetString("The encoding used is not supported by your system. Please choose another encoding.");
 		else if (exception is OutOfMemoryException)
 			return Catalog.GetString("You have run out of memory. Please close some programs and try again.");
 		else if (exception is IOException)
 			return Catalog.GetString("An I/O error has occured.");
-		else if (exception is NotSupportedException)
-			return Catalog.GetString("The encoding used is not supported by your system.");
 		else if ((exception is UnauthorizedAccessException) || (exception is SecurityException))
 			return Catalog.GetString("You do not have the permissions necessary to open the file.");
-		else if ((exception is ArgumentNullException) || (exception is ArgumentException) || (exception is PathTooLongException))
+		else if ((exception is ArgumentNullException) || (exception is ArgumentException) || (exception is NotSupportedException) || (exception is PathTooLongException))
 			return Catalog.GetString("The specified file is invalid.");
 		else if (exception is FileNotFoundException)
 			return Catalog.GetString("The file could not be found.");
