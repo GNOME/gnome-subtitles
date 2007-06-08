@@ -83,10 +83,23 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		videoFiles = null;
 		videoFilenames = null;
 		(videoComboBox.Model as ListStore).Clear();
-	
-		string folder = dialog.CurrentFolder;
-		if ((folder == null) || (folder == String.Empty))
+
+		string folder = String.Empty;
+		try {
+			folder = dialog.CurrentFolder;
+		}
+		catch (Exception e) {
+			System.Console.Error.WriteLine("Caught exception when trying to get the current folder:");
+			System.Console.Error.WriteLine(e);
+			SetVideoSelectionSensitivity(false);
 			return;
+		}
+			
+		if ((folder == null) || (folder == String.Empty)) {
+			System.Console.Error.WriteLine("Error when trying to get the current folder.");
+			SetVideoSelectionSensitivity(false);
+			return;
+		}
 
 		videoFiles = VideoFiles.GetVideoFilesAtPath(folder);
 
