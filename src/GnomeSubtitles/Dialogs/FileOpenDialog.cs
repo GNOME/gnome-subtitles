@@ -127,8 +127,18 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private void SetActiveVideoFile () {
 		if ((videoFiles == null) || (videoFiles.Count == 0))
 			return;
-	
-		string filePath = dialog.Filename;
+		
+		string filePath = String.Empty;
+		try {
+			filePath = dialog.Filename;
+		}
+		catch (Exception e) {
+			System.Console.Error.WriteLine("Caught exception when trying to get the current filename:");
+			System.Console.Error.WriteLine(e);
+			SetActiveComboBoxItem(0);
+			return;
+		}
+		
 		if ((filePath == null) || (filePath == String.Empty) || (!File.Exists(filePath))) {
 			SetActiveComboBoxItem(0);
 			return;
