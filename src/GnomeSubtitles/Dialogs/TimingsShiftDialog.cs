@@ -41,18 +41,18 @@ public class TimingsShiftDialog : GladeDialog {
 
 	public TimingsShiftDialog () : base(gladeFilename, true, true){
 		InitSpinButton();
-		UpdateContents();
+		UpdateContents(true);
 	}
 
 	public override void Show () {
-		UpdateContents();
+		UpdateContents(false);
 		base.Show();		
 	}
 	
 	/* Private methods */
 	
-	private void UpdateContents () {
-		UpdateFromTimingMode(Global.TimingMode);
+	private void UpdateContents (bool initializing) {
+		UpdateFromTimingMode(Global.TimingMode, initializing);
 		UpdateFromSelection();
 		UpdateSpinButtonValue();
 	}
@@ -62,8 +62,8 @@ public class TimingsShiftDialog : GladeDialog {
 		spinButton.Alignment = 0.5f;
 	}
 
-	private void UpdateFromTimingMode (TimingMode newTimingMode) {
-		if (newTimingMode == timingMode)
+	private void UpdateFromTimingMode (TimingMode newTimingMode, bool initializing) {
+		if ((!initializing) && (newTimingMode == timingMode))
 			return;
 			
 		timingMode = newTimingMode;	
