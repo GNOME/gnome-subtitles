@@ -21,7 +21,8 @@ namespace GnomeSubtitles {
 
 public abstract class Command {
 	private string description;
-	private bool canGroup;
+	private bool canGroup = false; //Whether this command can possibly be grouped with the previous command, if similar
+	private bool stopsGrouping = false; //Whether this command stops further grouping
 	private CommandTarget target = CommandTarget.Normal; //Normal is the typical type of command
 
 	public Command (string description, bool canGroup) {
@@ -35,6 +36,10 @@ public abstract class Command {
 	
 	public bool CanGroup {
 		get { return canGroup; }
+	}
+	
+	public bool StopsGrouping {
+		get { return stopsGrouping; }
 	}
 	
 	public CommandTarget Target {
@@ -51,12 +56,14 @@ public abstract class Command {
 		Undo();
 	}
 	
+	/// <summary>Whether this command can be grouped with the last command.</summary>
 	public virtual bool CanGroupWith (Command command) {
 		return false;
 	}
-	
-	public virtual void SetCommandTarget (CommandTarget target) {
-		this.target = target;
+
+	/// <summary>Merges a command with an existing command.</summary>
+	public virtual Command MergeWith (Command command) {
+		return command;
 	}
 	
 	/* Protected members */
@@ -65,9 +72,18 @@ public abstract class Command {
 		this.description = description;
 	}
 	
+	protected void SetStopsGrouping (bool stopsGrouping) {
+		this.stopsGrouping = stopsGrouping;
+	}
+	
 	protected void SetCanGroup (bool canGroup) {
 		this.canGroup = canGroup;
 	}
+	
+	protected virtual void SetCommandTarget (CommandTarget target) {
+		this.target = target;
+	}
+
 }
 
 }
