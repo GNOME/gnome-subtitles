@@ -19,6 +19,7 @@
 
 using Gtk;
 using Mono.Unix;
+using SubLib;
 
 namespace GnomeSubtitles {
 
@@ -50,8 +51,12 @@ public class Status {
 		ClearStatus(overwriteStatus);
 	}
 	
-	public void SetPosition (int line, int column) {
-		string message = Catalog.GetString("Ln") + " " + line + ", " + Catalog.GetString("Col") + " " + column;
+	public void SetPosition (SubtitleTextType textType, int lineNumber, int columnNumber) {
+		string type = (textType == SubtitleTextType.Text ? Catalog.GetString("Text") : Catalog.GetString("Trans"));
+		string line = Catalog.GetString("Ln");
+		string column = Catalog.GetString("Col");
+
+		string message = type + " " + line  + " " + lineNumber + ", " + column + " " + columnNumber;
 		ClearStatus(positionStatus);
 		positionStatus.Push(0, message);
 	}
