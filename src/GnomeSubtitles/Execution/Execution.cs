@@ -87,7 +87,13 @@ public class Execution {
 	}
 	
 	public string SystemShareDir {
-		get { return program.GnomeDatadir; }
+		get { 
+			string path = program.LocateFile(FileDomain.Datadir, String.Empty, true, null);
+			if ((path != null) && (path != String.Empty))
+				return path;
+			else
+				return program.GnomeDatadir;
+		}
 	}
 	
 	public string SystemShareLocaleDir {
@@ -96,9 +102,14 @@ public class Execution {
 	
 	public string SystemHelpDir {
 		get {
-			return Path.Combine(SystemShareDir,
-				Path.Combine("gnome",
-				Path.Combine("help", applicationID)));
+			string path = program.LocateFile(FileDomain.Help, applicationID, true, null);
+			if ((path != null) && (path != String.Empty))
+				return path;
+			else {
+				return Path.Combine(SystemShareDir,
+							Path.Combine("gnome",
+							Path.Combine("help", applicationID)));
+			}
 		}
 	}
 	
