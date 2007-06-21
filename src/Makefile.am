@@ -7,12 +7,14 @@ ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
 SUBLIB = $(GS_BUILDDIR)/sublib.dll
 
 GS_SOURCES = \
-	$(srcdir)/External/Freedesktop.RecentFiles/*.cs \
 	$(srcdir)/GnomeSubtitles/Commands/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
 	$(srcdir)/GnomeSubtitles/Dialogs/*.cs \
 	$(srcdir)/GnomeSubtitles/Exception/*.cs \
-	$(srcdir)/GnomeSubtitles/Execution/*.cs
+	$(srcdir)/GnomeSubtitles/Execution/*.cs \
+	$(srcdir)/GnomeSubtitles/SubtitleEdit/*.cs \
+	$(srcdir)/GnomeSubtitles/SubtitleView/*.cs \
+	$(srcdir)/GnomeSubtitles/Video/*.cs
 
 GS_RESOURCES = \
 	$(srcdir)/Glade/AboutDialog.glade \
