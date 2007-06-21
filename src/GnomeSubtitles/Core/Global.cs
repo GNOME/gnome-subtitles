@@ -152,12 +152,19 @@ public class Global {
 
 		execution = exec;
 		execution.Init();
+		
+		/* Initialize Command manager */
+		commandManager = new CommandManager(25);
+		
+		/* Initialize handlers */
 		handlers = new EventHandlers();
-		commandManager = new CommandManager(25, handlers.OnUndoToggled, handlers.OnRedoToggled, handlers.OnCommandActivated); //TODO 25 should be set on gconf
+		
+		/* Initialize misc */
 		clipboards = new Clipboards();
 		config = new Config();
 		dialogs = new Dialogs();
 
+		/* Initialize the GUI */
 		gui = new GUI(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
 		Catalog.Init(Global.Execution.TranslationDomain, Global.Execution.SystemShareLocaleDir);
