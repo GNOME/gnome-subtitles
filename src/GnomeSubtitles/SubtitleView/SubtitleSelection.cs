@@ -204,13 +204,14 @@ public class SubtitleSelection {
     /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param>
 	/// <param name="start">The index to start the text selection with. This is also where the cursor is positioned.</param>
 	/// <param name="end">The index to start the text selection with. This is also where the cursor is positioned.</param>
-	public void Select (TreePath path, bool align, bool reselect, int start, int end) {
+	/// <param name="textType">The type of text content to select.</param>
+	public void Select (TreePath path, bool align, bool reselect, int start, int end, SubtitleTextType textType) {
 		if (path == null) {
 			UnselectAll();
 			return;		
 		}
 		Select(path, align, reselect);
-		Global.GUI.Edit.TextFocusOnSelection(start, end);		
+		Global.GUI.Edit.TextFocusOnSelection(start, end, textType);		
 	}
     
     /// <summary>Selects the first subtitle.</summary>
@@ -261,17 +262,6 @@ public class SubtitleSelection {
 	/// <summary>Selects all subtitles.</summary>
 	public void SelectAll () {
 		selection.SelectAll();
-	}
-	
-	/// <summary>Activates the selected path.</summary>
-	/// <remarks>If there isn't one and only one path selected, nothing is done.</remarks>
-	/// <returns>Whether there was only one path to be activated.</returns>
-	public bool ActivatePath () {
-		if (Count != 1)
-			return false;
-		
-		Global.GUI.Edit.TextGrabFocus();
-		return true;
 	}
 
 	/// <summary>Scrolls to the specified path and optionally aligns it to the center of the <see cref="TreeView" />.</summary>
