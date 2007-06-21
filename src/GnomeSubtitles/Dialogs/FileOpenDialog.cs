@@ -44,20 +44,32 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute] private Label videoLabel;
 	
 	
-	public FileOpenDialog () : base(gladeFilename, false) {
-		autoChooseVideoFile = Global.Config.PrefsVideoAutoChooseFile;
-
-		videoComboBox.RowSeparatorFunc = SeparatorFunc;	
-		
-		dialog.CurrentFolderChanged += OnCurrentFolderChanged; //Only needed because setting it in the Glade file is not working
-		dialog.SelectionChanged += OnSelectionChanged; //Only needed because setting it in the Glade file is not working
+	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
+	}
 	
-		if (Global.IsDocumentLoaded && Global.Document.FileProperties.IsPathRooted)
-			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
-		else
-			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-			
+	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename, false) {
+		dialog.Title = title;
+		
+		if (toEnableVideo)
+			EnableVideo();
+	
+		string startFolder = GetStartFolder();
+		dialog.SetCurrentFolder(startFolder);
+
 		SetFilters();
+	}
+	
+	private void EnableVideo () {
+		videoLabel.Visible = true;
+		videoComboBox.Visible = true;
+		
+		autoChooseVideoFile = Global.Config.PrefsVideoAutoChooseFile;
+		videoComboBox.RowSeparatorFunc = SeparatorFunc;
+		
+		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
+		dialog.SelectionChanged += OnSelectionChanged;
+
+	
 	}
 	
 	/* Public properties */
@@ -71,6 +83,13 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	}
 	
 	/* Protected members */
+	
+	protected virtual string GetStartFolder () {
+		if (Global.IsDocumentLoaded && Global.Document.TextFile.IsPathRooted)
+			return Global.Document.TextFile.Directory;
+		else
+			return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+	}
 	
 	protected override void AddInitialEncodingComboBoxItems (ComboBox comboBox) {
 		comboBox.AppendText(Catalog.GetString("Auto Detected"));
