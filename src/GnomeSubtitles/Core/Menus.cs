@@ -26,6 +26,7 @@ using System.Globalization;
 namespace GnomeSubtitles {
 
 public class Menus {
+	private Tooltips tooltips = new Tooltips();
 
 	/* Constant strings */
 	private string videoTagText = Catalog.GetString("Video");
@@ -35,6 +36,7 @@ public class Menus {
 	public Menus () {
 		(Global.GetWidget(WidgetNames.Toolbar) as Toolbar).UnsetStyle(); //Unset toolbar style that was set in Glade
 		SetToolbarHomogeneity();
+		tooltips.Enable();
 	}
 	
 	public void BlankStartUp () {
@@ -47,6 +49,16 @@ public class Menus {
 		SetFrameRateMenus();
 		SetActiveTimingMode(Global.TimingMode);
 	}
+	
+	public void UpdateFromNewTranslationDocument () {
+		SetNewTranslationSensitivity(true);
+		UpdateUndoRedoMessages();
+	}
+	
+	public void UpdateFromCloseTranslation () {
+    	SetNewTranslationSensitivity(false);
+    	UpdateUndoRedoMessages();
+    }
 	
 	public void UpdateFromSelection (Subtitle subtitle) { 
 		SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
@@ -66,6 +78,30 @@ public class Menus {
 	public void UpdateFromSubtitleCount (int count) {
 		SetSubtitleCountDependentSensitivity(count);
 	}
+	
+	public void UpdateFromUndoToggled()  {
+   		Widget button = Global.GetWidget(WidgetNames.UndoButton);
+   		button.Sensitive = !button.Sensitive;
+    		
+		MenuItem menuItem = Global.GetWidget(WidgetNames.EditUndo) as MenuItem;
+		menuItem.Sensitive = !menuItem.Sensitive;
+		if (!menuItem.Sensitive)
+			(menuItem.Child as Label).Text = Catalog.GetString("Undo");
+	}
+    
+     public void UpdateFromRedoToggled () {
+    	Widget button = Global.GetWidget(WidgetNames.RedoButton);
+    	button.Sensitive = !button.Sensitive;
+    		
+		MenuItem menuItem = Global.GetWidget(WidgetNames.EditRedo) as MenuItem;
+    	menuItem.Sensitive = !menuItem.Sensitive;
+    	if (!menuItem.Sensitive)
+			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
+    }
+    
+    public void UpdateFromCommandActivated () {
+    	UpdateUndoRedoMessages();
+    }
 
 	public void SetActiveTimingMode (TimingMode mode) {
 		if (mode == TimingMode.Times)
@@ -232,6 +268,8 @@ public class Menus {
 			SetSensitivity(WidgetNames.FileSaveAs, true);
 			SetSensitivity(WidgetNames.FileHeaders, true);
 			SetSensitivity(WidgetNames.FileProperties, true);
+			SetSensitivity(WidgetNames.FileTranslationNew, true);
+			SetSensitivity(WidgetNames.FileTranslationOpen, true);
 			/* Edit Menu */
 			SetMenuSensitivity(WidgetNames.EditInsertSubtitle, true);
 			SetSensitivity(WidgetNames.EditDeleteSubtitles, true);
@@ -249,6 +287,10 @@ public class Menus {
 			SetStylesSensitivity(true);
 		}
 		else {
+			/* File Menu */
+			SetSensitivity(WidgetNames.FileTranslationSave, false);
+			SetSensitivity(WidgetNames.FileTranslationSaveAs, false);
+			SetSensitivity(WidgetNames.FileTranslationClose, false);
 			/* Edit Menu */
 			SetSensitivity(WidgetNames.EditUndo, false);
 			SetSensitivity(WidgetNames.EditRedo, false);
@@ -265,6 +307,12 @@ public class Menus {
 			SetSensitivity(WidgetNames.CopyButton, false);
 			SetSensitivity(WidgetNames.PasteButton, false);
 		}	
+	}
+	
+	private void SetNewTranslationSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.FileTranslationSave, sensitivity);
+		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
+		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
 	}
 	
 	private void SetFrameRateMenus () {
@@ -406,6 +454,24 @@ public class Menus {
 		foreach (Widget item in toolItems)
 			(item as ToolItem).Homogeneous = false;		
 	}
+	
+	private void UpdateUndoRedoMessages () {
+    	CommandManager commandManager = Global.CommandManager;
+    	if (commandManager.CanUndo) {
+    		string undoDescription = commandManager.UndoDescription;
+    		ToolButton undoButton = Global.GetWidget(WidgetNames.UndoButton) as ToolButton;
+    		undoButton.SetTooltip(tooltips, undoDescription, null);
+    		MenuItem undoMenuItem = Global.GetWidget(WidgetNames.EditUndo) as MenuItem;
+    		(undoMenuItem.Child as Label).Text = undoDescription;
+    	}
+    	if (commandManager.CanRedo) {
+	    	string redoDescription = commandManager.RedoDescription;
+    		ToolButton redoButton = Global.GetWidget(WidgetNames.RedoButton) as ToolButton;
+    		redoButton.SetTooltip(tooltips, redoDescription, null);
+    		MenuItem redoMenuItem = Global.GetWidget(WidgetNames.EditRedo) as MenuItem;
+    		(redoMenuItem.Child as Label).Text = redoDescription;
+    	}
+    }
 
 }
 
