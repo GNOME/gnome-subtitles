@@ -26,7 +26,7 @@ using System.Text;
 
 namespace GnomeSubtitles {
 
-public abstract class SubtitleFileChooserDialog : GladeDialog { //TODO make this abstract and depend on other methods to correctly fill encodings list
+public abstract class SubtitleFileChooserDialog : GladeDialog {
 	private int fixedEncoding = -1;
 
 	/* Protected variables */
