@@ -36,6 +36,7 @@ public class SubtitleView {
 	private TreeViewColumn endCol = null;
 	private TreeViewColumn durationCol = null;
 	private TreeViewColumn textCol = null;
+	private TreeViewColumn translationCol = null;
 
 	
 	public SubtitleView() {
@@ -66,10 +67,21 @@ public class SubtitleView {
 	public void UpdateFromNewDocument (bool wasLoaded) {
     	if (!wasLoaded)
     		tree.Sensitive = true;
-    	else
+    	else {
     		search.Clear();
+    		SetTranslationVisible(false);
+    	}
 
     	Load(Global.Document.Subtitles);
+    }
+    
+    public void UpdateFromNewTranslationDocument () {
+    	SetTranslationVisible(true);
+    	Refresh();
+    }
+    
+    public void UpdateFromCloseTranslation () {
+    	SetTranslationVisible(false);
     }
     
 	public void UpdateFromTimingMode (TimingMode mode) {
@@ -217,13 +229,16 @@ public class SubtitleView {
     	
     	int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
     	textCol = CreateColumn(Catalog.GetString("Text"), textWidth, new CellRendererCenteredText(), RenderTextCell);
-    	    		
+    	translationCol = CreateColumn(Catalog.GetString("Translation"), textWidth, new CellRendererCenteredText(), RenderTranslationCell);
+    	SetTranslationVisible(false);
+
     	tree.AppendColumn(numberCol);
     	tree.AppendColumn(startCol);
     	tree.AppendColumn(endCol);
     	tree.AppendColumn(durationCol);
     	tree.AppendColumn(textCol);
-    	tree.AppendColumn(new TreeViewColumn());
+    	tree.AppendColumn(translationCol);
+    	tree.AppendColumn(new TreeViewColumn()); //Appending to leave empty space to the right 
     }
 
 	private TreeViewColumn CreateColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
@@ -243,6 +258,10 @@ public class SubtitleView {
 	private int ColumnWidth (string text) {
 		const int margins = 10;
 		return Util.TextWidth(tree, text, margins);
+	}
+	
+	private void SetTranslationVisible (bool visible) {
+		translationCol.Visible = visible;
 	}
 
 		
@@ -268,7 +287,7 @@ public class SubtitleView {
 
 	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames) //TODO use different renderers for different timingmodes
+		if (Global.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Start.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Start);
@@ -291,15 +310,20 @@ public class SubtitleView {
 	}
 	
 	private void RenderTextCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
-		CellRendererText renderer = cell as CellRendererText;
 		Subtitle subtitle = subtitles[iter];
-		if (subtitle.Text.IsEmpty) {
-			renderer.Text = " ";
-			return;
-		}
-		
-		renderer.Text = subtitle.Text.GetReplaceEmptyLines(" "); //TODO check if ReplaceEmptyLines is required
-		
+		CellRendererText renderer = cell as CellRendererText;		
+		renderer.Text = subtitle.Text.GetReplaceEmptyLines(" "); //Replace empty lines with a space so Pango doesn't complain
+		SetRendererStyle(renderer, subtitle);
+	}
+	
+	private void RenderTranslationCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+		Subtitle subtitle = subtitles[iter];
+		CellRendererText renderer = cell as CellRendererText;		
+		renderer.Text = subtitle.Translation.GetReplaceEmptyLines(" "); //Replace empty lines with a space so Pango doesn't complain
+		SetRendererStyle(renderer, subtitle);		
+	}
+	
+	private void SetRendererStyle (CellRendererText renderer, Subtitle subtitle) {
 		if (subtitle.Style.Italic)
 			renderer.Style = Pango.Style.Italic;
 		else
