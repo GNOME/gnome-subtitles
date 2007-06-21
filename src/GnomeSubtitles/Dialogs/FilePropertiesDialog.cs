@@ -46,7 +46,7 @@ public class FilePropertiesDialog : GladeDialog {
 	/* Private methods */
 	
 	private void FillLabelValues () {
-		FileProperties properties = Global.Document.FileProperties;
+		FileProperties properties = Global.Document.TextFile;
 		
 		FillName(properties.Filename);
 		FillPath(properties.Directory);
