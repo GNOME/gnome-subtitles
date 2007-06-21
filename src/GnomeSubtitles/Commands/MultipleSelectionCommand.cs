@@ -32,7 +32,7 @@ public abstract class MultipleSelectionCommand : Command {
 	
 	/// <summary>Base constructor for classes that inherit <see cref="MultipleSelectionCommand" />.</summary>
 	/// <param name="description">The description of the command.</param>
-	/// <param name="canGroup">Whether to group the command with similar commands.</param>
+	/// <param name="canGroup">Whether to possibly group the command with the previous command.</param>
 	/// <param name="selectionIntended">The intended selection.</param>
 	/// <param name="setPaths">Whether to set the paths based on the current selection and the selectionType</param>
 	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, bool setPaths) : base(description, canGroup) {
