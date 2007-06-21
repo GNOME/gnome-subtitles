@@ -28,6 +28,7 @@ using System.Text;
 namespace GnomeSubtitles {
 
 public class FileSaveAsDialog : SubtitleFileChooserDialog {
+	private SubtitleTextType textType;
 	private SubtitleType chosenSubtitleType;
 	private SubtitleTypeInfo[] subtitleTypes = null;
 	private NewlineType chosenNewlineType;
@@ -40,7 +41,9 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute] private ComboBox formatComboBox;
 	[WidgetAttribute] private ComboBox newlineTypeComboBox;
 
-	public FileSaveAsDialog () : base(gladeFilename, true) {
+	public FileSaveAsDialog (SubtitleTextType textType) : base(gladeFilename, true) {
+		this.textType = textType;
+		SetTitle();
 		FillFormatComboBox();
 		FillNewlineTypeComboBox();
 	}
@@ -66,7 +69,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	protected override int GetFixedEncoding () {
 		try {
-			return Global.Document.FileProperties.Encoding.CodePage;
+			return Global.Document.TextFile.Encoding.CodePage;
 		}
 		catch (NullReferenceException) {
 			return -1;
@@ -75,16 +78,26 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	/* Private members */
 	
+	private void SetTitle () {
+		if (textType == SubtitleTextType.Text)
+			dialog.Title = Catalog.GetString("Save As");
+		else
+			dialog.Title = Catalog.GetString("Save Translation As");
+	
+	}
+	
 	private void UpdateContents () {
-		if (Global.Document.FileProperties.IsPathRooted)
-			dialog.SetCurrentFolder(Global.Document.FileProperties.Directory);
+		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Global.Document.TextFile : Global.Document.TranslationFile);
+	
+		if (fileProperties.IsPathRooted)
+			dialog.SetCurrentFolder(fileProperties.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			
-		dialog.CurrentName = Global.Document.FileProperties.Filename;
+		dialog.CurrentName = fileProperties.Filename;
 
 		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
-		   while in this constructor. After constructing it works fine. */
+		   while in the constructor. After constructing it works fine. */
 
 		SetActiveFormat();
 		SetActiveNewlineType();
@@ -99,7 +112,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	}
 
 	private void SetActiveFormat () {
-		SubtitleType subtitleType = Global.Document.FileProperties.SubtitleType; //The type of the subtitle file
+		SubtitleType subtitleType = Global.Document.TextFile.SubtitleType; //The type of the subtitle file
 		int position = FindSubtitleTypePosition(subtitleType);
 		if (position != -1) {
 			formatComboBox.Active = position;
@@ -207,7 +220,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	private void SetActiveNewlineType () {
 		NewlineType systemNewline = GetSystemNewlineType();
-		NewlineType documentNewline = Global.Document.FileProperties.NewlineType;
+		NewlineType documentNewline = Global.Document.TextFile.NewlineType;
 		NewlineType newlineToMakeActive = (documentNewline != NewlineType.Unknown ? documentNewline : systemNewline);
 		int item = GetNewlineTypePosition(newlineToMakeActive);
 		newlineTypeComboBox.Active = item;	
