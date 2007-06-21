@@ -30,16 +30,13 @@ public class CommandManager {
 	private int redoCount = 0;
 	private int iterator = 0;
 	
-	private event EventHandler UndoToggled;
-	private event EventHandler RedoToggled;
-	private event CommandActivatedHandler CommandActivated;
+	public event EventHandler UndoToggled;
+	public event EventHandler RedoToggled;
+	public event CommandActivatedHandler CommandActivated;
 
-	public CommandManager (int undoLimit, EventHandler onUndoToggled, EventHandler onRedoToggled, CommandActivatedHandler onCommandActivated) {
+	public CommandManager (int undoLimit) {
 		limit = undoLimit;
 		commands = new Command[undoLimit];
-		UndoToggled += onUndoToggled;
-		RedoToggled += onRedoToggled;
-		CommandActivated += onCommandActivated;
 	}
 	
 	public void Clear () {
@@ -47,6 +44,64 @@ public class CommandManager {
 		undoCount = 0;
 		redoCount = 0;
 		iterator = 0;
+	}
+	
+	public void ClearTarget (CommandTarget target) {
+
+		/* Create new collection of commands */
+		Command[] newCommands = new Command[limit];
+		int newIterator = 0;
+		int newUndoCount = 0;
+		int newRedoCount = 0;
+		
+		/* Go through the undo commands */
+		if (undoCount > 0) {
+			int lastUndoIter = iterator - undoCount;
+			if (lastUndoIter < 0)
+				lastUndoIter = limit + lastUndoIter;
+	
+			int undoIter = lastUndoIter;
+			while (undoIter != iterator) {
+				Command undoCommand = commands[undoIter];
+				if (undoCommand.Target != target) {
+					newCommands[newIterator] = undoCommand;
+					newIterator++;
+					newUndoCount++;
+				}		
+				undoIter = (undoIter == limit - 1 ? 0 : undoIter + 1);
+			}
+		}
+		
+		/* Go through the redo commands */
+		if (redoCount > 0) {
+			int redoIter = iterator;
+			int newRedoIterator = newIterator; //Because newIterator cannot be changed now
+			for (int redoNum = 0 ; redoNum < redoCount ; redoNum++) {
+				Command redoCommand = commands[redoIter];
+				if (redoCommand.Target != target) {
+					newCommands[newRedoIterator] = redoCommand;
+					newRedoIterator++;
+					newRedoCount++;				
+				}			
+				redoIter = (redoIter == limit - 1 ? 0 : redoIter + 1);
+			}
+		}
+		
+		/* Check whether to toggle undo and redo */
+		bool toToggleUndo = ((undoCount > 0) && (newUndoCount == 0));
+		bool toToggleRedo = ((redoCount > 0) && (newRedoCount == 0));
+		
+		/* Update state */
+		commands = newCommands;
+		undoCount = newUndoCount;
+		redoCount = newRedoCount;
+		iterator = newIterator;
+		
+		/* Issue possible events */
+		if (toToggleUndo)
+			EmitUndoToggled();
+		if (toToggleRedo)
+			EmitRedoToggled();
 	}
 	
 	public bool CanUndo {
@@ -60,7 +115,7 @@ public class CommandManager {
 	public string UndoDescription {
 		get {
 			if (CanUndo)
-				return Catalog.GetString("Undo") + " " + PreviousCommand().Description;
+				return Catalog.GetString("Undo") + " " + GetPreviousCommand().Description;
 			else
 				return String.Empty;
 		}
@@ -69,7 +124,7 @@ public class CommandManager {
 	public string RedoDescription {
 		get {
 			if (CanRedo)
-				return Catalog.GetString("Redo") + " " + NextCommand().Description;
+				return Catalog.GetString("Redo") + " " + GetNextCommand().Description;
 			else
 				return String.Empty;
 		}
@@ -86,7 +141,7 @@ public class CommandManager {
 	
 	public void Undo () {
 		if (CanUndo) {
-			Command command = PreviousCommand(); 
+			Command command = GetPreviousCommand(); 
 			command.Undo();
 			ProcessUndo();
 			EmitCommandActivated(command);
@@ -95,12 +150,14 @@ public class CommandManager {
 	
 	public void Redo () {
 		if (CanRedo) {
-			Command command = NextCommand();
+			Command command = GetNextCommand();
 			command.Redo();
 			ProcessRedo();
 			EmitCommandActivated(command);
 		}
 	}
+
+	/* Private methods */
 
 	private void ProcessExecute (Command command) {
 		bool couldUndoBefore = CanUndo;
@@ -110,16 +167,18 @@ public class CommandManager {
 		
 		bool canGroup = false;
 		if (CanUndo && command.CanGroup) {
-			Command lastCommand = PreviousCommand();
-			if ((lastCommand.GetType() == command.GetType()) && (lastCommand.CanGroupWith(command)))
+			Command lastCommand = GetPreviousCommand();
+			if ((!lastCommand.StopsGrouping) && (lastCommand.GetType() == command.GetType()) && (command.CanGroupWith(lastCommand))) {
 				canGroup = true;
+				Command merged = command.MergeWith(lastCommand);
+				SetPreviousCommand(merged);
+			}
 		}
 		
 		if (!canGroup) {
-			commands[iterator] = command;
+			SetNextCommand(command);
 			Next();
 			undoCount = IncrementCount(undoCount);
-			//EmitCommandActivated(command); TODO delete this
 		}
 
 		if (!couldUndoBefore)
@@ -172,15 +231,26 @@ public class CommandManager {
 		CommandActivated(this, new CommandActivatedArgs(command.Target));
 	}
 	
-	private Command NextCommand () {
+	private Command GetNextCommand () {
 		return commands[iterator];
 	}
 	
-	private Command PreviousCommand () {
+	private Command GetPreviousCommand () {
 		if (iterator == 0)
 			return commands[limit - 1];
 		else
 			return commands[iterator - 1];
+	}
+	
+	private void SetNextCommand (Command command) {
+		commands[iterator] = command;
+	}
+	
+	private void SetPreviousCommand (Command command) {
+		if (iterator == 0)
+			commands[limit - 1] = command;
+		else
+			commands[iterator - 1] = command;
 	}
 	
 	private void Next () {
