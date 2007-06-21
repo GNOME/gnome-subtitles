@@ -23,6 +23,7 @@ using Gtk;
 namespace GnomeSubtitles {
 
 /// <summary>Provides a cell renderer that centers text with multiple lines.</summary>
+//TODO It looks like the Alignment property can now be used. It requires GTK# 2.10.
 public class CellRendererCenteredText : CellRendererText {
 
 	protected override void Render (Drawable window, Widget widget, Rectangle backgroundArea,
