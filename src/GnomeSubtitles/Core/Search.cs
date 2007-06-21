@@ -64,7 +64,7 @@ public class Search {
 	}
 	
 	public bool Replace () {
-		if (!SelectionMatchesSearch)
+		if (!SelectionMatchesSearch())
 			return Find();
 		
 		string replacement = dialog.Replacement;
@@ -85,30 +85,6 @@ public class Search {
 			dialog = null;
 		}			
 	}
-	
-	/* Private properties */
-	
-	/// <summary>The currently focused subtitle, or 0 if none is.</summary>
-	private int FocusedSubtitle {
-		get {
-			TreePath focus = Global.GUI.View.Selection.Focus;
-			if (focus != null)
-				return Util.PathToInt(focus);
-			else
-				return 0;
-		}
-	}
-	
-	private bool SelectionMatchesSearch {
-		get {
-			string selection = Global.GUI.Edit.TextSelection;
-			if (selection == String.Empty)
-				return false;
-			
-			Match match = dialog.ForwardRegex.Match(selection); //Either forward and backward regexes work
-			return (match.Success && (match.Length == selection.Length));
-		}	
-	}
 
 	/* Private methods */
 	
@@ -126,36 +102,44 @@ public class Search {
 		if (dialog == null)
 			return false;
 
+		/* Get selection range */
+		SubtitleTextType textType;
 		int selectionStart, selectionEnd;
-		GetSelectionIndexes(out selectionStart, out selectionEnd);
-		
-		int foundIndex, foundLength, foundSubtitle;
-		if (backwards)
-			foundSubtitle = Global.Document.Subtitles.FindBackwards(dialog.BackwardRegex, FocusedSubtitle, selectionStart, dialog.Wrap, out foundIndex, out foundLength);
-		else
-			foundSubtitle = Global.Document.Subtitles.Find(dialog.ForwardRegex, FocusedSubtitle, selectionEnd, dialog.Wrap, out foundIndex, out foundLength);
+		GetTextContentSelectionIndexes(out selectionStart, out selectionEnd, out textType);
 
-		if (foundSubtitle == -1) //Text not found
+		/* Get remaining properties */
+		int subtitle = GetFocusedSubtitle();
+		Regex regex = (backwards ? dialog.BackwardRegex : dialog.ForwardRegex);
+		int index = (backwards ? selectionStart : selectionEnd);
+
+		/* Search */
+		SubtitleSearchOptions options = new SubtitleSearchOptions(regex, textType, subtitle, index, dialog.Wrap, backwards);
+		SubtitleSearchResults results = Global.Document.Subtitles.Find(options);
+		
+		/* If no text was found, return */
+		if (results == null)
 			return false;
-		else {
-			int start, end;
-			GetIndexesToSelect(foundIndex, foundIndex + foundLength, backwards, out start, out end);
-			Global.GUI.View.Selection.Select(Util.IntToPath(foundSubtitle), true, true, start, end);
-			return true;
-		}
+
+		/* Text was found, selecting it */
+		int start, end;
+		GetIndexesToSelect(results.Index, results.Index + results.Length, backwards, out start, out end);
+		Global.GUI.View.Selection.Select(Util.IntToPath(results.Subtitle), true, true, start, end, results.TextType);
+		return true;
 	}
 
 	/// <summary>Gets the indexes of the current text selection.</summary>
 	/// <param name="start">The start of the selection.</param>
 	/// <param name="end">The end of the selection.</param>
+	/// <param name="textType">The type of text content selected.</param>
 	/// <remarks>If no subtitle is being edited, both indexes are set to zero.
 	/// If no text is selected, both indexes are set to the position of the cursor.</remarks>
-	private void GetSelectionIndexes (out int start, out int end) {
-		if (Global.GUI.Edit.Enabled && Global.GUI.Edit.TextIsFocus)
-			Global.GUI.Edit.GetTextSelectionBounds(out start, out end);
+	private void GetTextContentSelectionIndexes (out int start, out int end, out SubtitleTextType textType) {
+		if (Global.GUI.Edit.Enabled && Global.GUI.Edit.TextOrTranslationIsFocus)
+			Global.GUI.Edit.GetTextSelectionBounds(out start, out end, out textType);
 		else {
 			start = 0;
 			end = 0;
+			textType = SubtitleTextType.Text;
 		}
 	}
 
@@ -168,6 +152,24 @@ public class Search {
 			newStart = start;
 			newEnd = end;		
 		}
+	}
+	
+	/// <summary>The currently focused subtitle, or 0 if none is.</summary>
+	private int GetFocusedSubtitle() {
+			TreePath focus = Global.GUI.View.Selection.Focus;
+			if (focus != null)
+				return Util.PathToInt(focus);
+			else
+				return 0;
+	}
+	
+	private bool SelectionMatchesSearch () {
+			string selection = Global.GUI.Edit.SelectedTextContent;
+			if (selection == String.Empty)
+				return false;
+			
+			Match match = dialog.ForwardRegex.Match(selection); //Either forward and backward regexes work
+			return (match.Success && (match.Length == selection.Length));
 	}
 
 }
