@@ -34,7 +34,7 @@ public class VideoPosition {
 	/* Slider related */
 	private HScale slider = null;
 	private uint userUpdateTimeoutId = 0; //the ID of the timeout after which the value will be updated by the user selection
-	private bool isPlayerUpdate = false; //TODO should this be TRUE?
+	private bool isPlayerUpdate = false;
 
 	/* Constants */
 	private const int userUpdateTimeout = 100; //Milliseconds
