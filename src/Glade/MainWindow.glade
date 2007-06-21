@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.0.3 on Tue May 29 18:07:47 2007 by noup@nouplab
+<!--Generated with glade3 3.2.0 on Wed Jun 20 15:13:16 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -66,6 +66,81 @@
                     <child>
                       <widget class="GtkSeparatorMenuItem" id="fileSeparator1">
                         <property name="visible">True</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="fileTranslation">
+                        <property name="visible">True</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="label" translatable="yes">Translation</property>
+                        <property name="use_underline">True</property>
+                        <child>
+                          <widget class="GtkMenu" id="fileTranslationMenu">
+                            <property name="visible">True</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                            <child>
+                              <widget class="GtkImageMenuItem" id="fileTranslationNew">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                <property name="label" translatable="yes">gtk-new</property>
+                                <property name="use_underline">True</property>
+                                <property name="use_stock">True</property>
+                                <signal name="activate" handler="OnFileTranslationNew"/>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkImageMenuItem" id="fileTranslationOpen">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                <property name="label" translatable="yes">gtk-open</property>
+                                <property name="use_underline">True</property>
+                                <property name="use_stock">True</property>
+                                <signal name="activate" handler="OnFileTranslationOpen"/>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkImageMenuItem" id="fileTranslationSave">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                <property name="label" translatable="yes">gtk-save</property>
+                                <property name="use_underline">True</property>
+                                <property name="use_stock">True</property>
+                                <signal name="activate" handler="OnFileTranslationSave"/>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkImageMenuItem" id="fileTranslationSaveAs">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                <property name="label" translatable="yes">gtk-save-as</property>
+                                <property name="use_underline">True</property>
+                                <property name="use_stock">True</property>
+                                <signal name="activate" handler="OnFileTranslationSaveAs"/>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkImageMenuItem" id="fileTranslationClose">
+                                <property name="visible">True</property>
+                                <property name="sensitive">False</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                <property name="label" translatable="yes">gtk-close</property>
+                                <property name="use_underline">True</property>
+                                <property name="use_stock">True</property>
+                                <signal name="activate" handler="OnFileTranslationClose"/>
+                              </widget>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkSeparatorMenuItem" id="fileSeparator2">
+                        <property name="visible">True</property>
                       </widget>
                     </child>
                     <child>
@@ -87,7 +162,7 @@
                       </widget>
                     </child>
                     <child>
-                      <widget class="GtkSeparatorMenuItem" id="fileSeparator2">
+                      <widget class="GtkSeparatorMenuItem" id="fileSeparator3">
                         <property name="visible">True</property>
                       </widget>
                     </child>
@@ -319,10 +394,10 @@
                       <widget class="GtkRadioMenuItem" id="viewTimes">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="active">True</property>
-                        <property name="group">viewFrames</property>
                         <property name="label" translatable="yes">_Times</property>
                         <property name="use_underline">True</property>
+                        <property name="active">True</property>
+                        <property name="group">viewFrames</property>
                         <signal name="toggled" handler="OnViewTimes"/>
                       </widget>
                     </child>
@@ -428,9 +503,9 @@
                               <widget class="GtkRadioMenuItem" id="timingsInputFrameRate23">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
                                 <property name="label">23.976</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
                                 <signal name="toggled" handler="OnTimingsInputFrameRate"/>
                               </widget>
                             </child>
@@ -438,10 +513,10 @@
                               <widget class="GtkRadioMenuItem" id="timingsInputFrameRate24">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
                                 <property name="label">24</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">timingsInputFrameRate23</property>
                                 <signal name="toggled" handler="OnTimingsInputFrameRate"/>
                               </widget>
                             </child>
@@ -449,11 +524,11 @@
                               <widget class="GtkRadioMenuItem" id="timingsInputFrameRate25">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
+                                <property name="label">25 (PAL)</property>
+                                <property name="use_underline">True</property>
                                 <property name="active">True</property>
                                 <property name="draw_as_radio">True</property>
                                 <property name="group">timingsInputFrameRate23</property>
-                                <property name="label">25 (PAL)</property>
-                                <property name="use_underline">True</property>
                                 <signal name="toggled" handler="OnTimingsInputFrameRate"/>
                               </widget>
                             </child>
@@ -461,10 +536,10 @@
                               <widget class="GtkRadioMenuItem" id="timingsInputFrameRate29">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
                                 <property name="label">29.97 (NTSC)</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">timingsInputFrameRate23</property>
                                 <signal name="toggled" handler="OnTimingsInputFrameRate"/>
                               </widget>
                             </child>
@@ -472,10 +547,10 @@
                               <widget class="GtkRadioMenuItem" id="timingsInputFrameRate30">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
                                 <property name="label">30</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">timingsInputFrameRate23</property>
                                 <signal name="toggled" handler="OnTimingsInputFrameRate"/>
                               </widget>
                             </child>
@@ -494,9 +569,9 @@
                               <widget class="GtkRadioMenuItem" id="timingsVideoFrameRate23">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
                                 <property name="label">23.976</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
                                 <signal name="toggled" handler="OnTimingsVideoFrameRate"/>
                               </widget>
                             </child>
@@ -504,10 +579,10 @@
                               <widget class="GtkRadioMenuItem" id="timingsVideoFrameRate24">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
                                 <property name="label">24</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">timingsVideoFrameRate23</property>
                                 <signal name="toggled" handler="OnTimingsVideoFrameRate"/>
                               </widget>
                             </child>
@@ -515,11 +590,11 @@
                               <widget class="GtkRadioMenuItem" id="timingsVideoFrameRate25">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
+                                <property name="label">25 (PAL)</property>
+                                <property name="use_underline">True</property>
                                 <property name="active">True</property>
                                 <property name="draw_as_radio">True</property>
                                 <property name="group">timingsVideoFrameRate23</property>
-                                <property name="label">25 (PAL)</property>
-                                <property name="use_underline">True</property>
                                 <signal name="toggled" handler="OnTimingsVideoFrameRate"/>
                               </widget>
                             </child>
@@ -527,10 +602,10 @@
                               <widget class="GtkRadioMenuItem" id="timingsVideoFrameRate29">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
                                 <property name="label">29.97 (NTSC)</property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">timingsVideoFrameRate23</property>
                                 <signal name="toggled" handler="OnTimingsVideoFrameRate"/>
                               </widget>
                             </child>
@@ -538,10 +613,10 @@
                               <widget class="GtkRadioMenuItem" id="timingsVideoFrameRate30">
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
-                                <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
                                 <property name="label">30 </property>
                                 <property name="use_underline">True</property>
+                                <property name="draw_as_radio">True</property>
+                                <property name="group">timingsVideoFrameRate23</property>
                                 <signal name="toggled" handler="OnTimingsVideoFrameRate"/>
                               </widget>
                             </child>
@@ -775,32 +850,45 @@
             <child>
               <widget class="GtkToolButton" id="newToolButton">
                 <property name="visible">True</property>
-                <property name="stock_id">gtk-new</property>
                 <property name="tooltip">New File</property>
+                <property name="stock_id">gtk-new</property>
                 <signal name="clicked" handler="OnFileNew"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="openToolButton">
                 <property name="visible">True</property>
-                <property name="stock_id">gtk-open</property>
                 <property name="tooltip">Open File</property>
+                <property name="stock_id">gtk-open</property>
                 <signal name="clicked" handler="OnFileOpen"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="saveToolButton">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
-                <property name="stock_id">gtk-save</property>
                 <property name="tooltip">Save File</property>
+                <property name="stock_id">gtk-save</property>
                 <signal name="clicked" handler="OnFileSave"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator1">
                 <property name="visible">True</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="undoToolButton">
@@ -809,6 +897,9 @@
                 <property name="stock_id">gtk-undo</property>
                 <signal name="clicked" handler="OnEditUndo"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="redoToolButton">
@@ -817,11 +908,18 @@
                 <property name="stock_id">gtk-redo</property>
                 <signal name="clicked" handler="OnEditRedo"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator2">
                 <property name="visible">True</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="cutToolButton">
@@ -830,6 +928,9 @@
                 <property name="stock_id">gtk-cut</property>
                 <signal name="clicked" handler="OnEditCut"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="copyToolButton">
@@ -838,6 +939,9 @@
                 <property name="stock_id">gtk-copy</property>
                 <signal name="clicked" handler="OnEditCopy"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="pasteToolButton">
@@ -846,11 +950,18 @@
                 <property name="stock_id">gtk-paste</property>
                 <signal name="clicked" handler="OnEditPaste"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator3">
                 <property name="visible">True</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="findToolButton">
@@ -858,6 +969,9 @@
                 <property name="stock_id">gtk-find</property>
                 <signal name="clicked" handler="OnSearchFind"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="replaceToolButton">
@@ -866,11 +980,18 @@
                 <property name="stock_id">gtk-find-and-replace</property>
                 <signal name="clicked" handler="OnSearchReplace"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator4">
                 <property name="visible">True</property>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToggleToolButton" id="boldToolButton">
@@ -879,6 +1000,9 @@
                 <property name="stock_id">gtk-bold</property>
                 <signal name="toggled" handler="OnEditFormatBold"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToggleToolButton" id="italicToolButton">
@@ -887,6 +1011,9 @@
                 <property name="stock_id">gtk-italic</property>
                 <signal name="toggled" handler="OnEditFormatItalic"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToggleToolButton" id="underlineToolButton">
@@ -895,6 +1022,9 @@
                 <property name="stock_id">gtk-underline</property>
                 <signal name="toggled" handler="OnEditFormatUnderline"/>
               </widget>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
             </child>
           </widget>
           <packing>
@@ -1327,28 +1457,44 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkScrolledWindow" id="textViewScrolledWindow">
+                      <widget class="GtkScrolledWindow" id="subtitleEditTextScrolledWindow">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                         <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
                         <property name="shadow_type">GTK_SHADOW_IN</property>
                         <child>
-                          <widget class="GtkTextView" id="subtitleTextView">
+                          <widget class="GtkTextView" id="subtitleEditText">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="pixels_above_lines">10</property>
                             <property name="justification">GTK_JUSTIFY_CENTER</property>
                             <property name="accepts_tab">False</property>
-                            <signal name="focus_out_event" handler="OnFocusOutSubtitleEdit"/>
-                            <signal name="focus_in_event" handler="OnFocusInSubtitleEdit"/>
-                            <signal name="key_press_event" handler="OnSubtitleEditKeyPressed"/>
-                            <signal name="toggle_overwrite" handler="OnSubtitleEditToggleOverwrite"/>
                           </widget>
                         </child>
                       </widget>
                       <packing>
                         <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkScrolledWindow" id="subtitleEditTranslationScrolledWindow">
+                        <property name="can_focus">True</property>
+                        <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                        <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                        <property name="shadow_type">GTK_SHADOW_IN</property>
+                        <child>
+                          <widget class="GtkTextView" id="subtitleEditTranslation">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="pixels_above_lines">10</property>
+                            <property name="justification">GTK_JUSTIFY_CENTER</property>
+                            <property name="accepts_tab">False</property>
+                          </widget>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </widget>
