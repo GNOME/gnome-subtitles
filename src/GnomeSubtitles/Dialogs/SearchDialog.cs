@@ -143,11 +143,11 @@ public class SearchDialog : GladeDialog {
 		regexCheckButton.Active = useRegex;
 		wrapCheckButton.Active = wrap;
 	}
-	
+
 	/// <summary>Sets the text in the Find entry.</summary>
 	/// <remarks>Updating the text will select it and grab the focus to the entry.</remarks>
 	private void SetFindEntryText () {
-		string currentSelection = Global.GUI.Edit.TextSelection;
+		string currentSelection = Global.GUI.Edit.SelectedTextContent;
 		string textToUse = (currentSelection != String.Empty ? currentSelection : text);
 		findEntry.Text = textToUse;
 		findEntry.SelectRegion(0, textToUse.Length);
