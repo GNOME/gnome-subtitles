@@ -23,6 +23,7 @@ using SubLib;
 
 namespace GnomeSubtitles {
 
+//TODO maybe this can be optimized (not tracking owner changes to primary)
 public class Clipboards {
 	private Clipboard clipboard = null;
 	private Clipboard primary = null;
@@ -60,9 +61,9 @@ public class Clipboards {
     
     public bool ValidWidgetHasFocus () {
     	SpinButton start, end, duration;
-    	TextView textView;
-    	Global.GUI.Edit.GetEditableWidgets (out start, out end, out duration, out textView);
-    	return start.HasFocus || end.HasFocus || duration.HasFocus || textView.HasFocus;
+    	TextView textEdit, translationEdit;
+    	Global.GUI.Edit.GetEditableWidgets (out start, out end, out duration, out textEdit, out translationEdit);
+    	return start.HasFocus || end.HasFocus || duration.HasFocus || textEdit.HasFocus || translationEdit.HasFocus;
     }
     
     public void Copy () {
