@@ -32,6 +32,11 @@ public class WidgetNames {
 	public const string FileSaveAs = "fileSaveAs";
 	public const string FileHeaders = "fileHeaders";
 	public const string FileProperties = "fileProperties";
+	public const string FileTranslationNew = "fileTranslationNew";
+	public const string FileTranslationOpen = "fileTranslationOpen";
+	public const string FileTranslationSave = "fileTranslationSave";
+	public const string FileTranslationSaveAs = "fileTranslationSaveAs";
+	public const string FileTranslationClose = "fileTranslationClose";
 	
 	/* Edit Menu */
 	public const string EditUndo = "editUndo";
@@ -64,7 +69,6 @@ public class WidgetNames {
 	public const string TimingsShift = "timingsShift";
 	
 	/* Video Menu */
-	
 	public const string VideoClose = "videoClose";
 	public const string VideoPlayPause = "videoPlayPause";
 	public const string VideoRewind = "videoRewind";
@@ -74,8 +78,7 @@ public class WidgetNames {
 	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
 
 
-	/* Tool Bar */
-	
+	/* Toolbar */
 	public const string Toolbar = "toolbar";
 	public const string SaveButton = "saveToolButton";
 	public const string UndoButton = "undoToolButton";
@@ -90,7 +93,6 @@ public class WidgetNames {
 	public const string UnderlineButton = "underlineToolButton";
 	
 	/* Video */
-	
 	public const string VideoAreaHBox = "videoAreaHBox";
 	public const string VideoTimingsVBox = "videoTimingsVBox";
 	public const string VideoSubtitleLabel = "videoSubtitle";
@@ -108,19 +110,18 @@ public class WidgetNames {
 	public const string VideoPlayPauseButton = "videoPlayPauseButton";
 	
 	/* Subtitle View */
-	
 	public const string SubtitleView = "subtitleView";
 	
 	/* Subtitle Edit */
-	
 	public const string SubtitleEdit = "subtitleEdit";
 	public const string StartSpinButton = "startSpinButton";
 	public const string EndSpinButton = "endSpinButton";
 	public const string DurationSpinButton = "durationSpinButton";
-	public const string SubtitleTextView = "subtitleTextView";
+	public const string SubtitleEditText = "subtitleEditText";
+	public const string SubtitleEditTranslation = "subtitleEditTranslation";
+	public const string SubtitleEditTranslationScrolledWindow = "subtitleEditTranslationScrolledWindow";
 	
 	/* Status Bar */
-	
 	public const string MessageStatusbar = "messageStatusbar";
 	public const string PositionStatusbar = "positionStatusbar";
 	public const string OverwriteStatusbar = "overwriteStatusbar";
