@@ -27,11 +27,9 @@ namespace GnomeSubtitles {
 
 /* TODO: Think about splitting this and using different methods in glade */
 public class EventHandlers {
-	
-	private Tooltips tooltips = new Tooltips();
 
 	public EventHandlers () {
-		tooltips.Enable();
+		ConnectSignals();
     }
 
 
@@ -51,6 +49,26 @@ public class EventHandlers {
 	
 	public void OnFileSaveAs (object o, EventArgs args) {
 		Global.GUI.SaveAs();
+	}
+	
+	public void OnFileTranslationNew (object o, EventArgs args) {
+		Global.GUI.TranslationNew();
+	}
+	
+	public void OnFileTranslationOpen (object o, EventArgs args) {
+		Global.GUI.TranslationOpen();
+	}
+	
+	public void OnFileTranslationSave (object o, EventArgs args) {
+		Global.GUI.TranslationSave();
+	}
+	
+	public void OnFileTranslationSaveAs (object o, EventArgs args) {
+		Global.GUI.TranslationSaveAs();
+	}
+	
+	public void OnFileTranslationClose (object o, EventArgs args) {
+		Global.GUI.TranslationClose();
 	}
 	
 	public void OnFileHeaders (object o, EventArgs args) {
@@ -248,7 +266,6 @@ public class EventHandlers {
 			System.Console.Error.WriteLine(e);
 			//TODO show an error message
 		}
-		//Util.OpenUrl("http://gnome-subtitles.sourceforge.net/help");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
@@ -276,50 +293,7 @@ public class EventHandlers {
     	Global.Config.PrefsWindowHeight = args.Allocation.Height;
     }
 
-    
-    /* CommandManager related */
-    //TODO move part of this to Menus?
-    
-    public void OnUndoToggled (object o, EventArgs args) {
-    	Widget button = Global.GetWidget(WidgetNames.UndoButton);
-    	button.Sensitive = !button.Sensitive;
-    		
-		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditUndo);
-		menuItem.Sensitive = !menuItem.Sensitive;
-		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = Catalog.GetString("Undo");
-    }
-    
-     public void OnRedoToggled (object o, EventArgs args) {
-    		Widget button = Global.GetWidget(WidgetNames.RedoButton);
-    		button.Sensitive = !button.Sensitive;
-    		
-		MenuItem menuItem = (MenuItem)Global.GetWidget(WidgetNames.EditRedo);
-    		menuItem.Sensitive = !menuItem.Sensitive;
-    		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
-    }
-    
-    public void OnCommandActivated (object o, CommandActivatedArgs args) {
-    	CommandManager commandManager = Global.CommandManager;
-    	if (commandManager.CanUndo) {
-    		string undoDescription = commandManager.UndoDescription;
-    		ToolButton undoButton = (ToolButton)(Global.GetWidget(WidgetNames.UndoButton));
-    		undoButton.SetTooltip(tooltips, undoDescription, null);
-    		MenuItem undoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.EditUndo));
-    		(undoMenuItem.Child as Label).Text = undoDescription;
-    	}
-    	if (commandManager.CanRedo) {
-	    	string redoDescription = commandManager.RedoDescription;
-    		ToolButton redoButton = (ToolButton)(Global.GetWidget(WidgetNames.RedoButton));
-    		redoButton.SetTooltip(tooltips, redoDescription, null);
-    		MenuItem redoMenuItem = (MenuItem)(Global.GetWidget(WidgetNames.EditRedo));
-    		(redoMenuItem.Child as Label).Text = redoDescription;
-    	}
-    	
-    	Global.Document.UpdateFromCommandActivated(args.Target);
-    }
-    
+
     /* Video */
 
 	public void OnVideoPlayPauseButtonToggled (object o, EventArgs args) {
@@ -345,40 +319,27 @@ public class EventHandlers {
     }
     
     
-    /*	Subtitle Edit	*/
-    
-    public void OnFocusInSubtitleEdit (object o, FocusInEventArgs args) {
-    	Global.GUI.Edit.OnFocusIn(o, args);
+    /*	Command Manager */
+
+    private void OnUndoToggled (object o, EventArgs args) {
+    	Global.GUI.Menus.UpdateFromUndoToggled();
     }
     
-    public void OnFocusOutSubtitleEdit (object o, FocusOutEventArgs args) {
-    	Global.GUI.Edit.OnFocusOut(o, args); 
+    private void OnRedoToggled (object o, EventArgs args) {
+    	Global.GUI.Menus.UpdateFromRedoToggled();
     }
     
-    [GLib.ConnectBefore]
-    public void OnSubtitleEditKeyPressed (object o, KeyPressEventArgs args) {
-    	Gdk.Key key = args.Event.Key;
-    	Gdk.ModifierType modifier = args.Event.State;
-    	Gdk.ModifierType controlModifier = Gdk.ModifierType.ControlMask;
-    	
-    	if ((modifier & controlModifier) == controlModifier) { //Control was pressed
-    		switch (key) {
-    			case Gdk.Key.Page_Up:
-    				Global.GUI.View.Selection.SelectPrevious();
-					Global.GUI.Edit.TextGrabFocus();
-    				args.RetVal = true;
-    				break;
-    			case Gdk.Key.Page_Down:
-					Global.GUI.View.Selection.SelectNext();
-					Global.GUI.Edit.TextGrabFocus();
-    				args.RetVal = true;
-    				break;
-    		}
-    	}
+    private void OnCommandActivated (object o, CommandActivatedArgs args) {
+    	Global.GUI.Menus.UpdateFromCommandActivated();
+    	Global.Document.UpdateFromCommandActivated(args.Target);
     }
     
-    public void OnSubtitleEditToggleOverwrite (object o, EventArgs args) {
-    	Global.GUI.Edit.OnToggleOverwrite(o, args);
+    /* Private members */
+    
+    private void ConnectSignals () {
+    	Global.CommandManager.UndoToggled += OnUndoToggled;
+    	Global.CommandManager.RedoToggled += OnRedoToggled;
+    	Global.CommandManager.CommandActivated += OnCommandActivated;
     }
 
 }
