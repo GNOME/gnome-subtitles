@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using SubLib;
 using System.IO;
 using System.Text;
@@ -25,11 +26,13 @@ namespace GnomeSubtitles {
 
 public class Document {
 	private Subtitles subtitles = null;
-	private bool wasNormalModified = false;
+	private bool wasTextModified = false;
 	private bool wasTranslationModified = false;
 
-	private FileProperties fileProperties = null;
-	private bool canBeSaved = false; //Whether this document can be saved with existing fileProperties
+	private FileProperties textFile = null;
+	private FileProperties translationFile = null;
+	private bool canTextBeSaved = false; //Whether the text document can be saved with existing textFile properties
+	private bool canTranslationBeSaved = false; //Whether the translation document can be saved with existing translationFile properties
 
 
 	public Document () {
@@ -37,20 +40,32 @@ public class Document {
 	
 	/* Public properties */
 
-	public FileProperties FileProperties {
-		get { return fileProperties; }
+	public FileProperties TextFile {
+		get { return textFile; }
+	}
+	
+	public FileProperties TranslationFile {
+		get { return translationFile; }
+	}
+	
+	public bool IsTranslationLoaded {
+		get { return translationFile != null; }
 	}
 
 	public Subtitles Subtitles {
 		get { return subtitles; }
 	}
 	
-	public bool CanBeSaved {
-		get { return canBeSaved; }
+	public bool CanTextBeSaved {
+		get { return canTextBeSaved; }
 	}
 	
-	public bool WasNormalModified {
-		get { return wasNormalModified; }
+	public bool CanTranslationBeSaved {
+		get { return canTranslationBeSaved; }
+	}
+	
+	public bool WasTextModified {
+		get { return wasTextModified; }
 	}
 	
 	public bool WasTranslationModified {
@@ -64,8 +79,10 @@ public class Document {
 		factory.Verbose = true;
 		
 		subtitles = new Subtitles(factory.New());
-		fileProperties = new FileProperties(path);
+		textFile = new FileProperties(path);
 		
+		Global.CommandManager.Clear();
+		Global.GUI.UpdateFromDocumentModified(false);
 		Global.GUI.UpdateFromNewDocument(wasLoaded);
 	}
 	
@@ -84,31 +101,76 @@ public class Document {
 		}
 
 		subtitles = new Subtitles(openedSubtitles);
-		fileProperties = factory.FileProperties;
+		textFile = factory.FileProperties;
 		
-		if (fileProperties.SubtitleType != SubtitleType.Unknown)
-			canBeSaved = true;
+		if (textFile.SubtitleType != SubtitleType.Unknown)
+			canTextBeSaved = true;
 			
-		Global.TimingMode = fileProperties.TimingMode;
+		Global.TimingMode = textFile.TimingMode;
 		Global.GUI.UpdateFromNewDocument(wasLoaded);
 	}
 
 	public bool Save (FileProperties newFileProperties) {
 		SubtitleSaver saver = new SubtitleSaver();
-		saver.Save(subtitles, newFileProperties);
+		saver.Save(subtitles, newFileProperties, SubtitleTextType.Text);
 		
-		fileProperties = saver.FileProperties;		
-		canBeSaved = true;
+		textFile = saver.FileProperties;		
+		canTextBeSaved = true;
 
-		Global.GUI.Menus.SetActiveTimingMode(fileProperties.TimingMode);
+		Global.GUI.Menus.SetActiveTimingMode(textFile.TimingMode);
 		
-		ClearNormalModified();
+		ClearTextModified();
+		return true;
+	}
+
+	public void NewTranslation () {
+		RemoveTranslationFromSubtitles();
+		ClearTranslationStatus();
+		CreateNewTranslationFileProperties();
+
+		Global.GUI.UpdateFromNewTranslationDocument();
+	}
+	
+	public void CloseTranslation () {
+		RemoveTranslationFromSubtitles();
+		ClearTranslationStatus();
+		Global.GUI.UpdateFromCloseTranslation();
+	}
+
+	public void OpenTranslation (string path, Encoding encoding) {
+		SubtitleFactory factory = new SubtitleFactory();
+		factory.Verbose = true;
+		factory.Encoding = encoding;
+
+		SubLib.Subtitles openedTranslation = factory.Open(path);
+		FileProperties newTranslationFile = factory.FileProperties;
+		AddExtraSubtitles(openedTranslation);
+
+		Translations translations = new Translations();
+		translations.Import(subtitles, openedTranslation);
+
+		ClearTranslationStatus();
+		if (newTranslationFile.SubtitleType != SubtitleType.Unknown)
+			canTranslationBeSaved = true;
+	
+		translationFile = newTranslationFile;
+		Global.GUI.UpdateFromNewTranslationDocument();
+	}
+	
+	public bool SaveTranslation (FileProperties newFileProperties) {
+		SubtitleSaver saver = new SubtitleSaver();
+		saver.Save(subtitles, newFileProperties, SubtitleTextType.Translation);
+		
+		translationFile = saver.FileProperties;		
+		canTranslationBeSaved = true;
+		
+		ClearTranslationModified();
 		return true;
 	}
 	
 	public void UpdateFromCommandActivated (CommandTarget target) {
-		if ((target == CommandTarget.Normal) && (!wasNormalModified)) {
-			wasNormalModified = true;
+		if ((target == CommandTarget.Normal) && (!wasTextModified)) {
+			wasTextModified = true;
 			Global.GUI.UpdateFromDocumentModified(true);
 		}
 		else if ((target == CommandTarget.Translation) && (!wasTranslationModified)) {
@@ -120,17 +182,43 @@ public class Document {
 
 	/* Private methods */
 	
-	private void ClearNormalModified () {
-		wasNormalModified = false;
+	private void ClearTextModified () {
+		wasTextModified = false;
 		if (!wasTranslationModified) //Update the GUI if translation is also not in modified state
 			Global.GUI.UpdateFromDocumentModified(false);
 	}
 	
-	/*private void ClearTranslationModified () {
+	private void ClearTranslationModified () {
 		wasTranslationModified = false;
-		if (!wasNormalModified) //Update the GUI if normal is also not in modified state
+		if (!wasTextModified) //Update the GUI if text is also not in modified state
 			Global.GUI.UpdateFromDocumentModified(false);
-	}*/
+	}
+	
+	private void CreateNewTranslationFileProperties () {
+		string filename = Catalog.GetString("Unsaved Translation");
+		string path = (textFile.IsPathRooted ? Path.Combine(textFile.Directory, filename) : filename);
+		translationFile = new FileProperties(path, textFile.Encoding, textFile.SubtitleType, textFile.TimingMode, textFile.NewlineType);
+	}
+	
+	private void RemoveTranslationFromSubtitles () {
+		Translations translations = new Translations();
+		translations.Clear(subtitles);
+	}
+	
+	private void ClearTranslationStatus () {
+		wasTranslationModified = false;
+		translationFile = null;
+		canTranslationBeSaved = false;
+		
+		Global.CommandManager.ClearTarget(CommandTarget.Translation);
+		ClearTranslationModified();
+	}
+	
+	private void AddExtraSubtitles (SubLib.Subtitles translation) {
+		int extraCount = translation.Collection.Count - subtitles.Collection.Count;
+		if (extraCount > 0)
+			subtitles.AddExtra(extraCount);	
+	}
 
 }
 
