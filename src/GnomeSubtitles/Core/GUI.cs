@@ -125,12 +125,11 @@ public class GUI {
 
 		if (Global.Document.Subtitles.Count == 0) {
 			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
-			Global.GUI.View.Selection.ActivatePath(); //TODO is this necessary?
 		}
     }
     
     /// <summary>Shows the open dialog and possibly opens a subtitle.</summary>
-    /// <remarks>If there's a document currently opened with unsaved changes, a warning dialog
+    /// <remarks>If there's a document currently open with unsaved changes, a warning dialog
     /// is shown before opening the new file.</remarks>
     public void Open () {
     	FileOpenDialog dialog = new FileOpenDialog();
@@ -158,8 +157,8 @@ public class GUI {
     /// <remarks>If the document hasn't been saved before, a SaveAs is executed.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
     public bool Save () {
-    	if (Global.Document.CanBeSaved) { //Check if document can be saved or needs a SaveAs
-			Save(Global.Document.FileProperties);
+    	if (Global.Document.CanTextBeSaved) { //Check if document can be saved or needs a SaveAs
+			Save(Global.Document.TextFile);
 			return true;
 		}
 		else
@@ -171,36 +170,94 @@ public class GUI {
     /// <returns>Whether the file was saved or not.</returns>
     public bool SaveAs () {
 		FileSaveAsDialog dialog = Global.Dialogs.FileSaveAsDialog;
-		dialog.Show();
-		bool toSaveAs = dialog.WaitForResponse();
-		if (toSaveAs) {
-			string path = dialog.Filename;
-			Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
-			SubtitleType subtitleType = dialog.SubtitleType;			
-			NewlineType newlineType = dialog.NewlineType;
-			TimingMode timingMode = Global.TimingMode;
+		FileProperties properties = ShowSaveAsDialog(dialog);
+		if (properties != null) {
+			Save(properties);
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	/// <summary>Starts a new translation.</summary>
+	/// <remarks>If there's a translation open with unsaved changes, a warning dialog is shown.</remarks>
+    public void TranslationNew () {
+    	if (!ToCreateNewTranslationAfterWarning())
+    		return;
 
-			FileProperties fileProperties = new FileProperties(path, encoding, subtitleType, timingMode, newlineType);
-			Save(fileProperties);
+		Global.Document.NewTranslation();
+    }
+    
+    /// <summary>Shows the open translation dialog and possibly opens a file.</summary>
+    /// <remarks>If there's a translation currently open with unsaved changes, a warning dialog
+    /// is shown before opening the new file.</remarks>
+    public void TranslationOpen () {
+    	FileOpenDialog dialog = new FileTranslationOpenDialog();
+    	dialog.Show();
+    	bool toOpen = dialog.WaitForResponse();
+    	if (toOpen && ToOpenTranslationAfterWarning()) {
+    		string filename = dialog.Filename;
+    		int codePage = (dialog.HasChosenEncoding ? dialog.ChosenEncoding.CodePage : -1);
+    		OpenTranslation(filename, codePage);
+    	}
+    }
+    
+    /// <summary>Executes a Save operation regarding the translation.</summary>
+    /// <remarks>If the translation hasn't been saved before, a TranslationSaveAs is executed.</remarks>
+    /// <returns>Whether the translation file was saved or not.</returns>
+    public bool TranslationSave () {
+    	if (Global.Document.CanTranslationBeSaved) { //Check if translation can be saved or needs a SaveAs
+			SaveTranslation(Global.Document.TranslationFile);
+			return true;
+		}
+		else
+			return TranslationSaveAs();
+    }
+    
+    /// <summary>Executes a translation SaveAs operation.</summary>
+    /// <returns>Whether the translation file was saved or not.</returns>
+    public bool TranslationSaveAs () {
+		FileSaveAsDialog dialog = Global.Dialogs.TranslationSaveAsDialog;
+		FileProperties properties = ShowSaveAsDialog(dialog);
+		if (properties != null) {
+			SaveTranslation(properties);
 			return true;
 		}
 		else
 			return false;
 	}
 
+    /// <summary>Closes a translation.</summary>
+	/// <remarks>If there's a translation open with unsaved changes, a warning dialog is shown.</remarks>
+    public void TranslationClose () {
+    	if (!ToCloseTranslationAfterWarning())
+    		return;
+
+		Global.Document.CloseTranslation();
+    }
+
 	public void UpdateFromDocumentModified (bool modified) {
 		string prefix = (modified ? "*" : String.Empty);
-		window.Title = prefix + Global.Document.FileProperties.Filename +
+		window.Title = prefix + Global.Document.TextFile.Filename +
 			" - " + Global.Execution.ApplicationName;
 	}
 	
 	public void UpdateFromNewDocument (bool wasLoaded) {
-	   	Global.CommandManager.Clear();
-
-		UpdateFromDocumentModified(false);
 		view.UpdateFromNewDocument(wasLoaded);
 		edit.UpdateFromNewDocument(wasLoaded);
 		menus.UpdateFromNewDocument(wasLoaded);
+	}
+	
+	public void UpdateFromNewTranslationDocument () {
+		view.UpdateFromNewTranslationDocument();
+		edit.UpdateFromNewTranslationDocument();
+		menus.UpdateFromNewTranslationDocument();
+	}
+	
+	public void UpdateFromCloseTranslation () {
+		view.UpdateFromCloseTranslation();
+		edit.UpdateFromCloseTranslation();
+		menus.UpdateFromCloseTranslation();
 	}
 	
 	public void UpdateFromTimingMode (TimingMode mode) {
@@ -249,6 +306,24 @@ public class GUI {
 		}
     }
     
+    /// <summary>Opens a translation file, given its filename and code page.</summary>
+	/// <param name="path">The path of the translation file to open.</param>
+	/// <param name="codePage">The code page of the filename. To use autodetection, set it to -1.</param>
+	/// <remarks>An error dialog is presented if an exception is caught during open.</remarks>
+    private void OpenTranslation (string path, int codePage) {
+    	try {
+    		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
+    		Global.Document.OpenTranslation(path, encoding);
+		}
+		catch (Exception exception) {
+			SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(path, exception);
+			errorDialog.Show();
+			bool toOpenAgain = errorDialog.WaitForResponse();
+			if (toOpenAgain)
+				Open();
+		}
+    }
+    
     private void OpenVideo (string path) {
     	Menus.SetViewVideoActivity(true);
 		try {
@@ -276,6 +351,36 @@ public class GUI {
 	    	if (toSaveAgain)
 	    		SaveAs();			
 		}
+	}
+	
+	private void SaveTranslation (FileProperties fileProperties) {
+		try {
+			Global.Document.SaveTranslation(fileProperties);
+		}
+		catch (Exception exception) {
+			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception); //TODO check messages for translation
+			errorDialog.Show();
+			bool toSaveAgain = errorDialog.WaitForResponse();
+	    	if (toSaveAgain)
+	    		TranslationSaveAs();			
+		}
+	}
+	
+	/// <summary>Displays a SaveAs dialog and gets the chosen options as <cref="FileProperties" />.</summary>
+	/// <param name="dialog">The dialog to display.</param>
+	/// <returns>The chosen file properties, or null in case SaveAs was canceled.</returns>
+	private FileProperties ShowSaveAsDialog (FileSaveAsDialog dialog) {
+		dialog.Show();
+		bool toSaveAs = dialog.WaitForResponse();
+		if (!toSaveAs)
+			return null;
+		
+		string path = dialog.Filename;
+		Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
+		SubtitleType subtitleType = dialog.SubtitleType;			
+		NewlineType newlineType = dialog.NewlineType;
+		TimingMode timingMode = Global.TimingMode;
+		return new FileProperties(path, encoding, subtitleType, timingMode, newlineType);
 	}
 	
 	/// <summary>Executes a blank startup operation.</summary>
@@ -306,35 +411,82 @@ public class GUI {
 		video.UpdateFromSelection(false);
 	}    
 
-	/// <summary>Whether there are unsaved changes.</summary>
-	private bool ExistUnsavedChanges () {
-		return Global.IsDocumentLoaded && Global.Document.WasNormalModified;
+	/// <summary>Whether there are unsaved normal changes.</summary>
+	private bool ExistTextUnsavedChanges () {
+		return Global.IsDocumentLoaded && Global.Document.WasTextModified;
+	}
+	
+	/// <summary>Whether there are unsaved translation changes.</summary>
+	private bool ExistTranslationUnsavedChanges () {
+		return Global.IsDocumentLoaded && Global.Document.IsTranslationLoaded && Global.Document.WasTranslationModified;
 	}
 
 	/// <summary>Whether the program should be closed, after choosing the respective confirmation dialog.</summary>
     private bool ToCloseAfterWarning () {
-    	if (ExistUnsavedChanges()) {
-	    	SaveConfirmationDialog dialog = new SaveOnCloseConfirmationDialog();
-    		return dialog.WaitForResponse();
+    	bool toCreate = true;
+    	if (ExistTextUnsavedChanges()) {
+	    	SaveConfirmationDialog subtitleDialog = new SaveSubtitlesOnCloseFileConfirmationDialog();
+    		toCreate = subtitleDialog.WaitForResponse();
     	}
-    	else
-	    	return true; 
+    	if (toCreate && ExistTranslationUnsavedChanges()) {
+   			SaveConfirmationDialog translationDialog = new SaveTranslationOnCloseConfirmationDialog();
+   			toCreate = translationDialog.WaitForResponse();
+   		}
+    	return toCreate; 
 	}
-    
+
     /// <summary>Whether a new document should be created, after choosing the respective confirmation dialog.</summary>
     private bool ToCreateNewAfterWarning () {
-   		if (ExistUnsavedChanges()) {
-    		SaveConfirmationDialog dialog = new SaveOnNewConfirmationDialog();
+    	bool toCreate = true;
+   		if (ExistTextUnsavedChanges()) {
+    		SaveConfirmationDialog subtitleDialog = new SaveSubtitlesOnNewFileConfirmationDialog();
+   			toCreate = subtitleDialog.WaitForResponse();
+   		}
+   		if (toCreate && ExistTranslationUnsavedChanges()) {
+   			SaveConfirmationDialog translationDialog = new SaveTranslationOnNewFileConfirmationDialog();
+   			toCreate = translationDialog.WaitForResponse();
+   		}
+   		return toCreate;
+	}
+	
+	/// <summary>Whether a document should be opened, after choosing the respective confirmation dialog.</summary>
+	private bool ToOpenAfterWarning () {
+   		bool toCreate = true;
+   		if (ExistTextUnsavedChanges()) {
+    		SaveConfirmationDialog subtitleDialog = new SaveSubtitlesOnOpenFileConfirmationDialog();
+   			toCreate = subtitleDialog.WaitForResponse();
+   		}
+   		if (toCreate && ExistTranslationUnsavedChanges()) {
+   			SaveConfirmationDialog translationDialog = new SaveTranslationOnOpenConfirmationDialog();
+   			toCreate = translationDialog.WaitForResponse();
+   		}
+   		return toCreate;
+	}
+
+	/// <summary>Whether a new translation should be created, after choosing the respective confirmation dialog.</summary>
+    private bool ToCreateNewTranslationAfterWarning () {
+   		if (ExistTranslationUnsavedChanges()) {
+    		SaveConfirmationDialog dialog = new SaveTranslationOnNewTranslationConfirmationDialog();
    			return dialog.WaitForResponse();
    		}
    		else
     		return true; 
 	}
 	
-	/// <summary>Whether a document should be opened, after choosing the respective confirmation dialog.</summary>
-	private bool ToOpenAfterWarning () {
-   		if (ExistUnsavedChanges()) {
-    		SaveConfirmationDialog dialog = new SaveOnOpenConfirmationDialog();
+	/// <summary>Whether a translation should be opened, after choosing the respective confirmation dialog.</summary>
+	private bool ToOpenTranslationAfterWarning () {
+   		if (ExistTranslationUnsavedChanges()) {
+    		SaveConfirmationDialog dialog = new SaveTranslationOnOpenConfirmationDialog();
+   			return dialog.WaitForResponse();
+   		}
+   		else
+    		return true; 
+	}
+	
+	/// <summary>Whether a translation should be closed, after choosing the respective confirmation dialog.</summary>
+    private bool ToCloseTranslationAfterWarning () {
+   		if (ExistTranslationUnsavedChanges()) {
+    		SaveConfirmationDialog dialog = new SaveTranslationOnCloseConfirmationDialog();
    			return dialog.WaitForResponse();
    		}
    		else
