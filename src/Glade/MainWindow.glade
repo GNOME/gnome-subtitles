@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.2.0 on Wed Jun 20 15:13:16 2007 by noup@nouplab
+<!--Generated with glade3 3.2.0 on Fri Jun 22 13:33:33 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -84,10 +84,15 @@
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">gtk-new</property>
+                                <property name="label" translatable="yes">_New</property>
                                 <property name="use_underline">True</property>
-                                <property name="use_stock">True</property>
                                 <signal name="activate" handler="OnFileTranslationNew"/>
+                                <child internal-child="image">
+                                  <widget class="GtkImage" id="fileTranslationNewMenuItemImage">
+                                    <property name="stock">gtk-new</property>
+                                    <property name="icon_size">1</property>
+                                  </widget>
+                                </child>
                               </widget>
                             </child>
                             <child>
@@ -95,10 +100,15 @@
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">gtk-open</property>
+                                <property name="label" translatable="yes">_Open</property>
                                 <property name="use_underline">True</property>
-                                <property name="use_stock">True</property>
                                 <signal name="activate" handler="OnFileTranslationOpen"/>
+                                <child internal-child="image">
+                                  <widget class="GtkImage" id="fileTranslationOpenMenuItemImage">
+                                    <property name="stock">gtk-open</property>
+                                    <property name="icon_size">1</property>
+                                  </widget>
+                                </child>
                               </widget>
                             </child>
                             <child>
@@ -106,10 +116,16 @@
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">gtk-save</property>
+                                <property name="label" translatable="yes">_Save</property>
                                 <property name="use_underline">True</property>
-                                <property name="use_stock">True</property>
                                 <signal name="activate" handler="OnFileTranslationSave"/>
+                                <accelerator key="T" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                                <child internal-child="image">
+                                  <widget class="GtkImage" id="filetranslationSaveMenuItemImage">
+                                    <property name="stock">gtk-save</property>
+                                    <property name="icon_size">1</property>
+                                  </widget>
+                                </child>
                               </widget>
                             </child>
                             <child>
@@ -117,10 +133,16 @@
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">gtk-save-as</property>
+                                <property name="label" translatable="yes">Save _As</property>
                                 <property name="use_underline">True</property>
-                                <property name="use_stock">True</property>
                                 <signal name="activate" handler="OnFileTranslationSaveAs"/>
+                                <accelerator key="T" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
+                                <child internal-child="image">
+                                  <widget class="GtkImage" id="fileTranslationSaveAsMenuItemImage">
+                                    <property name="stock">gtk-save-as</property>
+                                    <property name="icon_size">1</property>
+                                  </widget>
+                                </child>
                               </widget>
                             </child>
                             <child>
@@ -128,10 +150,15 @@
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">gtk-close</property>
+                                <property name="label" translatable="yes">_Close</property>
                                 <property name="use_underline">True</property>
-                                <property name="use_stock">True</property>
                                 <signal name="activate" handler="OnFileTranslationClose"/>
+                                <child internal-child="image">
+                                  <widget class="GtkImage" id="fileTranslationCloseMenuItemImage">
+                                    <property name="stock">gtk-close</property>
+                                    <property name="icon_size">1</property>
+                                  </widget>
+                                </child>
                               </widget>
                             </child>
                           </widget>
@@ -159,6 +186,7 @@
                         <property name="label">gtk-properties</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
+                        <signal name="activate" handler="OnFileProperties"/>
                       </widget>
                     </child>
                     <child>
@@ -205,8 +233,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Y" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="Z" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="Y" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -364,10 +392,15 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="editPreferences">
                         <property name="visible">True</property>
-                        <property name="label">gtk-preferences</property>
+                        <property name="label">Pr_eferences</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditPreferences"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="editPreferencesMenuItemImage">
+                            <property name="stock">gtk-preferences</property>
+                            <property name="icon_size">1</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                   </widget>
@@ -443,8 +476,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="F3" modifiers="" signal="activate"/>
                         <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="F3" modifiers="" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -454,8 +487,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="F3" modifiers="GDK_SHIFT_MASK" signal="activate"/>
                         <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="F3" modifiers="GDK_SHIFT_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -662,20 +695,30 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="videoOpen">
                         <property name="visible">True</property>
-                        <property name="label">gtk-open</property>
+                        <property name="label">_Open</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoOpen"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="videoOpenMenuItemImage">
+                            <property name="stock">gtk-open</property>
+                            <property name="icon_size">1</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="videoClose">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">gtk-close</property>
+                        <property name="label">_Close</property>
                         <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoClose"/>
+                        <child internal-child="image">
+                          <widget class="GtkImage" id="videoCloseMenuItemImage">
+                            <property name="stock">gtk-close</property>
+                            <property name="icon_size">1</property>
+                          </widget>
+                        </child>
                       </widget>
                     </child>
                     <child>
