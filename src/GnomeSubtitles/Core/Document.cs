@@ -82,8 +82,9 @@ public class Document {
 		textFile = new FileProperties(path);
 		
 		Global.CommandManager.Clear();
-		Global.GUI.UpdateFromDocumentModified(false);
+		ClearTextModified();
 		Global.GUI.UpdateFromNewDocument(wasLoaded);
+		System.Console.WriteLine(wasTranslationModified);
 	}
 	
 	public void Open (string path, Encoding encoding, bool wasLoaded) {
@@ -107,6 +108,7 @@ public class Document {
 			canTextBeSaved = true;
 			
 		Global.TimingMode = textFile.TimingMode;
+		ClearTextModified();
 		Global.GUI.UpdateFromNewDocument(wasLoaded);
 	}
 
