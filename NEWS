@@ -1,6 +1,38 @@
 Gnome Subtitles
 ===============
 
+0.6 (08/07/2007)
+================
+
+- Added support for subtitle translation
+- Show the cursor position and the editing mode (INS or OVR) in the status bar
+- Improved the undo/redo of text editing, which is now based on words
+- Try the remaining encodings when the first fails, on File Open
+- Close the save error dialog immediately when accepting to open another file,
+  so the error message isn't visible behind
+- Use a different way of detecting the system data dir, which works on FreeBSD
+- Fixed multiple menu underlines and accelerators
+- Use an updated version of the character coding auto-detection library
+- Fixed a bug related to searching backwards
+- Fixed some errors with the documentation
+
+Bug Fixes:
+- Translator mode (#387867)
+- Write fault on path when using Video (#438947)
+- Add an abstract with the role attribute set to "description" (#439274)
+- Exception when getting the CurrentFolder in the File Open dialog (#442513)
+- Exception when getting the Filename in the File Open dialog (#443061)
+- Shift limit was 100 frames in the Shift dialog
+
+Translations:
+- Joan Duran (ca)
+- Yumkee Lhamo (dz)
+- Jorge González, Paulino Padial (es)
+- Daniel Nylander (sv)
+
+Thanks:
+- Marcin Simonides, Thilo Pfennig
+
 
 0.5.1 (19/05/2007)
 ==================
@@ -240,3 +272,4 @@ Bug fixes:
 ==================
 
 - First release
+
