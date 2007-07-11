@@ -126,14 +126,20 @@ public class Global {
 	
 	public static void CreateDocument (string path) {
 		bool wasLoaded = IsDocumentLoaded;
-		document = new Document();
-		document.New(path, wasLoaded);	
+		document = new Document(path, wasLoaded);
+		
+		CommandManager.Clear();
+		GUI.UpdateFromDocumentModified(false);
+		GUI.UpdateFromNewDocument(wasLoaded);		
 	}
 	
 	public static void CreateDocument (string path, Encoding encoding) {
 		bool wasLoaded = IsDocumentLoaded;
-		document = new Document();
-		document.Open(path, encoding, wasLoaded);	
+		document = new Document(path, encoding, wasLoaded);
+
+		TimingMode = document.TextFile.TimingMode;
+		GUI.UpdateFromDocumentModified(false);
+		GUI.UpdateFromNewDocument(wasLoaded);
 	}
 	
 	public static Widget GetWidget (string name) {

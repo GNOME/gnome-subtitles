@@ -34,7 +34,7 @@ public class VideoOpenDialog : GladeDialog {
 	
 	public VideoOpenDialog () : base(gladeFilename) {
 		dialog = base.dialog as FileChooserDialog;
-	
+
 		if (Global.IsDocumentLoaded && Global.Document.TextFile.IsPathRooted)
 			dialog.SetCurrentFolder(Global.Document.TextFile.Directory);
 		else

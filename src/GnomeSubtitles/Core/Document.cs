@@ -35,7 +35,12 @@ public class Document {
 	private bool canTranslationBeSaved = false; //Whether the translation document can be saved with existing translationFile properties
 
 
-	public Document () {
+	public Document (string path, bool wasLoaded) {
+		New(path, wasLoaded);
+	}
+	
+	public Document (string path, Encoding encoding, bool wasLoaded) {
+		Open(path, encoding, wasLoaded);
 	}
 	
 	/* Public properties */
@@ -73,44 +78,6 @@ public class Document {
 	}
 	
 	/* Public methods */
-
-	public void New (string path, bool wasLoaded) {
-		SubtitleFactory factory = new SubtitleFactory();
-		factory.Verbose = true;
-		
-		subtitles = new Subtitles(factory.New());
-		textFile = new FileProperties(path);
-		
-		Global.CommandManager.Clear();
-		ClearTextModified();
-		Global.GUI.UpdateFromNewDocument(wasLoaded);
-		System.Console.WriteLine(wasTranslationModified);
-	}
-	
-	public void Open (string path, Encoding encoding, bool wasLoaded) {
-		SubtitleFactory factory = new SubtitleFactory();
-		factory.Verbose = true;
-		factory.Encoding = encoding;
-
-		SubLib.Subtitles openedSubtitles = null;
-		try {
-			openedSubtitles = factory.Open(path);
-		}
-		catch (FileNotFoundException) {
-			New(path, wasLoaded);
-			return;
-		}
-
-		subtitles = new Subtitles(openedSubtitles);
-		textFile = factory.FileProperties;
-		
-		if (textFile.SubtitleType != SubtitleType.Unknown)
-			canTextBeSaved = true;
-			
-		Global.TimingMode = textFile.TimingMode;
-		ClearTextModified();
-		Global.GUI.UpdateFromNewDocument(wasLoaded);
-	}
 
 	public bool Save (FileProperties newFileProperties) {
 		SubtitleSaver saver = new SubtitleSaver();
@@ -183,6 +150,37 @@ public class Document {
 
 
 	/* Private methods */
+	
+	/* Used in the object construction */
+	private void New (string path, bool wasLoaded) {
+		SubtitleFactory factory = new SubtitleFactory();
+		factory.Verbose = true;
+		
+		subtitles = new Subtitles(factory.New());
+		textFile = new FileProperties(path);
+	}
+	
+	/* Used in the object construction */
+	private void Open (string path, Encoding encoding, bool wasLoaded) {
+		SubtitleFactory factory = new SubtitleFactory();
+		factory.Verbose = true;
+		factory.Encoding = encoding;
+
+		SubLib.Subtitles openedSubtitles = null;
+		try {
+			openedSubtitles = factory.Open(path);
+		}
+		catch (FileNotFoundException) {
+			New(path, wasLoaded);
+			return;
+		}
+
+		subtitles = new Subtitles(openedSubtitles);
+		textFile = factory.FileProperties;
+		
+		if (textFile.SubtitleType != SubtitleType.Unknown)
+			canTextBeSaved = true;
+	}
 	
 	private void ClearTextModified () {
 		wasTextModified = false;
