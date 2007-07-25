@@ -12,7 +12,7 @@
 
 Name:           gnome-subtitles
 Summary:        Video subtitling for the GNOME desktop
-Version:        0.5.1
+Version:        0.6
 Release:        1%{?dist}
 Group:          Applications/Multimedia
 License:        GPL
@@ -103,17 +103,24 @@ scrollkeeper-update -q || :
 %attr(0755,root,root) %{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{_datadir}/gnome/help/%{name}/C/%{name}.xml
-%{_datadir}/gnome/help/%{name}/C/legal.xml
-%{_datadir}/omf/%{name}/%{name}-C.omf
+%{_datadir}/gnome/help/%{name}/C/*
+%{_datadir}/gnome/help/%{name}/ca/%{name}.xml
+%{_datadir}/gnome/help/%{name}/sv/%{name}.xml
+%{_datadir}/omf/%{name}/%{name}-*.omf
+%{_datadir}/locale/ca/LC_MESSAGES/%{name}.mo
+%{_datadir}/locale/dz/LC_MESSAGES/%{name}.mo
+%{_datadir}/locale/es/LC_MESSAGES/%{name}.mo
+%{_datadir}/locale/sv/LC_MESSAGES/%{name}.mo
 %{_sysconfdir}/gconf/schemas/%{name}.schemas
 %docdir %{_mandir}/man1
 %{_mandir}/man1/%{name}.1.gz 
 %doc README NEWS AUTHORS COPYING CREDITS TODO
 
 
-
 %changelog
+* Wed Jul 25 2007 - Henrique Malheiro <henrique.malheiro gmail.com> - 0.6
+- Version bump.
+- Added help and translation files for ca, dz, es and sv languages.
 * Fri May 25 2007 - Henrique Malheiro <henrique.malheiro gmail.com> - 0.5.1-1
 - Removed config directive for gconf schemas files.
 - Added Required(post), Required(postrun) and BuildRequires for scrollkeeper.
