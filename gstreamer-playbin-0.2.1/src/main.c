@@ -26,6 +26,7 @@
 #include <gst/interfaces/xoverlay.h>
 
 typedef struct gstPlay gstPlay;
+typedef struct gstVideoInfo gstVideoInfo;
 
 // callbacks for the binding
 typedef void (* eosCallback) (gstPlay *play);
@@ -33,15 +34,23 @@ typedef void (* errorCallback) (gstPlay *play, const gchar * error, const gchar 
 typedef void (* bufferCallback) (gstPlay *play, gint progress);
 
 
+struct gstVideoInfo {
+	gint width;
+	gint height;
+	gfloat frame_rate;
+};
+
 // a simple structure for the created playbin
 struct gstPlay {
     GstElement *element;
     gulong xid;
 	GstXOverlay *overlay;
-	
+
 	eosCallback eos_cb;
 	errorCallback error_cb;
 	bufferCallback buffer_cb;
+
+	gstVideoInfo *video_info;
 };
 
 
@@ -131,13 +140,13 @@ void gst_binding_deinit (gstPlay *play) {
 	}
 }
 
-
 // loads a uri into the pipeline
 void gst_binding_load (gstPlay *play, char *uri) {
-	if (isValid (play)) {
-		g_object_set (G_OBJECT (play->element), "uri", uri, NULL);
-		gst_element_set_state (play->element, GST_STATE_PAUSED);
-	}
+    if (isValid (play))
+    {
+        g_object_set (G_OBJECT (play->element), "uri", uri, NULL);
+        gst_element_set_state (play->element, GST_STATE_PAUSED);
+    }
 }
 
 // plays the specified uri in the pipeline
@@ -168,6 +177,73 @@ guint64 gst_binding_get_duration (gstPlay *play) {
 	if(gst_element_query_duration (play->element, &format, &duration))
 		return duration / GST_MSECOND;
 	return 0;
+}
+
+//retrieves video information, or NULL if it's not available
+gstVideoInfo *gst_binding_get_video_info (gstPlay *play) {
+	if (!isValid (play)) return NULL;
+
+	GList *stream_info = NULL, *stream;
+	g_object_get (G_OBJECT (play->element), "stream-info", &stream_info, NULL);
+	if (!stream_info) return NULL;
+
+	/* Iterate through the streams */
+  	for (stream = stream_info; stream; stream = g_list_next (stream)) {
+  		GObject *stream_data = G_OBJECT (stream->data);
+  		gint stream_type;
+	    g_object_get (stream_data, "type", &stream_type, NULL);
+  	
+  		/* Look for the video stream */
+ 		if (stream_type == 2) {
+	  		GstObject *stream_object;
+	    	g_object_get (stream_data, "object", &stream_object, NULL);
+    	
+			GstCaps *caps;
+			g_object_get(stream_object, "caps", &caps, NULL);
+			if (!GST_IS_CAPS(caps))
+				return NULL;
+
+			gint caps_count = gst_caps_get_size (caps), caps_index;
+			GstStructure *caps_struct;
+			const GValue *caps_value;
+			gint caps_width = -1, caps_height = -1;
+			gfloat caps_frame_rate = -1;
+			for (caps_index = 0; caps_index < caps_count; caps_index++) {
+    			caps_struct = gst_caps_get_structure (caps, caps_index);
+    			
+    			/* Check if mime type is video */
+    			const gchar *mime_type;
+				mime_type = gst_structure_get_name (caps_struct);
+				if ((!mime_type) || (g_ascii_strncasecmp(mime_type, "video", 5)))
+					continue;
+    			    			
+    			/* Look for width */
+				caps_value = gst_structure_get_value (caps_struct, "width");
+    			if (caps_value && (G_VALUE_TYPE (caps_value) == G_TYPE_INT))
+    				caps_width = g_value_get_int(caps_value);
+
+    			/* Look for height */
+    			caps_value = gst_structure_get_value (caps_struct, "height");
+    			if (caps_value && (G_VALUE_TYPE (caps_value) == G_TYPE_INT))
+    				caps_height = g_value_get_int(caps_value);
+    			
+    			/* Look for frame rate */
+    			caps_value = gst_structure_get_value (caps_struct, "framerate");
+    			if (caps_value && (G_VALUE_TYPE (caps_value) == GST_TYPE_FRACTION)) {
+    				int num = caps_value->data[0].v_int, den = caps_value->data[1].v_int;
+		            caps_frame_rate = (float)num/den;    			
+    			}
+			}
+			if ((caps_width != -1) && (caps_height != -1) && (caps_frame_rate != -1)) {
+				gstVideoInfo *video_info = g_new0 (gstVideoInfo, 1);
+				video_info->width = caps_width;
+				video_info->height = caps_height;
+				video_info->frame_rate = caps_frame_rate;
+				return video_info;
+			}
+		}
+	}
+	return NULL;
 }
 
 // retrieves the position of the media file
