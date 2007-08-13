@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.2.0 on Fri Jun 22 13:33:33 2007 by noup@nouplab
+<!--Generated with glade3 3.2.0 on Fri Jul 27 11:37:29 2007 by noup@nouplab
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -733,6 +733,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
+                        <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="F5" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -751,6 +753,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoRewind"/>
+                        <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="F6" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -761,6 +765,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoForward"/>
+                        <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="F7" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -788,6 +794,7 @@
                         <property name="label" translatable="yes">Set Subtitle _Start</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSetSubtitleStart"/>
+                        <accelerator key="D" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -797,6 +804,7 @@
                         <property name="label" translatable="yes">Set Subtitle En_d</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSetSubtitleEnd"/>
+                        <accelerator key="E" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                   </widget>
@@ -1258,7 +1266,6 @@
                               <widget class="GtkToggleButton" id="videoPlayPauseButton">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <signal name="toggled" handler="OnVideoPlayPauseButtonToggled"/>
                                 <child>
                                   <widget class="GtkAlignment" id="playPauseButtonAlignment">
                                     <property name="visible">True</property>
@@ -1414,54 +1421,16 @@
                         <property name="n_columns">2</property>
                         <property name="row_spacing">2</property>
                         <child>
-                          <widget class="GtkLabel" id="startLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
-                          </widget>
-                          <packing>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="endLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="durationLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">2</property>
-                            <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkSpinButton" id="endSpinButton">
+                          <widget class="GtkSpinButton" id="startSpinButton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="adjustment">0 0 100 1 10 10</property>
                             <property name="climb_rate">1</property>
+                            <property name="numeric">True</property>
                           </widget>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
@@ -1481,16 +1450,54 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkSpinButton" id="startSpinButton">
+                          <widget class="GtkSpinButton" id="endSpinButton">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="adjustment">0 0 100 1 10 10</property>
                             <property name="climb_rate">1</property>
-                            <property name="numeric">True</property>
                           </widget>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="durationLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">2</property>
+                            <property name="bottom_attach">3</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="endLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="startLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
+                          </widget>
+                          <packing>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
