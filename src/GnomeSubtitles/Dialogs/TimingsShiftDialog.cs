@@ -96,7 +96,7 @@ public class TimingsShiftDialog : GladeDialog {
 		double videoPosition = 0;
 		if (Global.TimingModeIsTimes) {
 			subtitlePosition = subtitle.Times.Start.TotalMilliseconds;
-			videoPosition = Global.GUI.Video.Position.CurrentTime * 1000; //Times 1000 for milliseconds
+			videoPosition = Global.GUI.Video.Position.CurrentTime.TotalMilliseconds;
 		}
 		else {
 			subtitlePosition = subtitle.Frames.Start;

@@ -30,9 +30,7 @@ public class VideoFileOpenErrorDialog : FileOpenErrorDialog {
 	/* Overriden members */
 	
 	protected override string SecondaryTextFromException (Exception exception) {
-		if (exception is PlayerNotFoundException)
-			return Catalog.GetString("Unable to start the video player. Please check that MPlayer is installed.");
-		else if (exception is PlayerCouldNotOpenVideoException)
+		if (exception is PlayerCouldNotOpenVideoException)
 			return Catalog.GetString("Please check that the video file is supported.");
 		else
 			return String.Empty;

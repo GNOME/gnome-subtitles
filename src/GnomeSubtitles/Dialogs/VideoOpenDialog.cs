@@ -26,7 +26,7 @@ namespace GnomeSubtitles {
 public class VideoOpenDialog : GladeDialog {
 	protected new FileChooserDialog dialog = null;
 	private static string[] extensions = { "avi", "mpeg", "mpg", "mp4", "ogm", "divx", "xvid", "mov" };
-	private string chosenFilename = String.Empty;
+	private string chosenUri = String.Empty;
 	
 	/* Constant strings */
 	private const string gladeFilename = "VideoOpenDialog.glade";
@@ -44,9 +44,9 @@ public class VideoOpenDialog : GladeDialog {
 	}
 	
 	/* Public properties */
-	
-	public string Filename {
-		get { return chosenFilename; }
+
+	public string Uri {
+		get { return chosenUri; }
 	}
 	
 	/* Private methods */
@@ -76,7 +76,7 @@ public class VideoOpenDialog : GladeDialog {
 	
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
-			chosenFilename = (dialog as FileChooserDialog).Filename;
+			chosenUri = (dialog as FileChooserDialog).Uri;
 			actionDone = true;
 		}
 		Close();
