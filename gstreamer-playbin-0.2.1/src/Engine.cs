@@ -130,7 +130,8 @@ namespace GStreamer
 		{
 			if (!isStopped) Stop ();
 			gst_binding_load (engine, uri);
-			ChangeState (MediaStatus.Loaded);
+			//ChangeState (MediaStatus.Loaded);
+			ChangeState (MediaStatus.Paused);
 			return true;
 		}
 		

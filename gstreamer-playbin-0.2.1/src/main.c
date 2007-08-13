@@ -134,8 +134,10 @@ void gst_binding_deinit (gstPlay *play) {
 
 // loads a uri into the pipeline
 void gst_binding_load (gstPlay *play, char *uri) {
-	if (isValid (play))
+	if (isValid (play)) {
 		g_object_set (G_OBJECT (play->element), "uri", uri, NULL);
+		gst_element_set_state (play->element, GST_STATE_PAUSED);
+	}
 }
 
 // plays the specified uri in the pipeline
