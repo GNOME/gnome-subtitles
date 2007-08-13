@@ -29,7 +29,7 @@ public class VideoPosition {
 	private Label positionLabel = null;
 	private Label positionValueLabel = null;
 	private Label lengthValueLabel = null;	
-	private float position = 0;
+	private TimeSpan position = TimeSpan.Zero;
 	
 	/* Slider related */
 	private HScale slider = null;
@@ -38,9 +38,10 @@ public class VideoPosition {
 
 	/* Constants */
 	private const int userUpdateTimeout = 100; //Milliseconds
+	private TimeSpan seekIncrement = TimeSpan.FromMilliseconds(500);
 
 	/* Handlers */
-	public delegate void VideoPositionChangedHandler (float position);
+	public delegate void VideoPositionChangedHandler (TimeSpan position);
 
 	/* Events */
 	public event VideoPositionChangedHandler Changed;
@@ -57,12 +58,12 @@ public class VideoPosition {
 
 	/* Public properties */
 
-	public float StepIncrement {
-		get { return (float)slider.Adjustment.StepIncrement; }
+	public TimeSpan SeekIncrement {
+		get { return seekIncrement; }
 	}
 	
 	/// <summary>The current position, in seconds.</summary>
-	public float CurrentTime {
+	public TimeSpan CurrentTime {
 		get { return position; }
 	}
 	
@@ -76,15 +77,16 @@ public class VideoPosition {
 		DisconnectSliderSignals();
 		RemoveUserUpdateTimeout();
 		
-		position = 0;
-		UpdatePositionValues(0);
-		SetLength(0);
+		position = TimeSpan.Zero;
+		UpdatePositionValues(TimeSpan.Zero);
+		SetLength(TimeSpan.Zero);
 		
 		slider.Sensitive = false;	
 	}
 	
 	public void Enable () {
 		SetLength(player.Length);
+		// TODO DELETE SetSliderLength(TimeSpan.FromMinutes(5)); //Setting the length to a somewhat random number, because we don't know the video length yet TODO
 		slider.Sensitive = true;
 		ConnectSliderSignals();
 	}
@@ -107,8 +109,7 @@ public class VideoPosition {
 	}
 	
 	/// <summary>Handles changes in the player position.</summary>
-	/// <param name="newPosition">The new position, in seconds, or -1 if the end was reached.</param>
-	private void OnPlayerPositionChanged (float newPosition) {
+	private void OnPlayerPositionChanged (TimeSpan newPosition) {
 		position = newPosition;
 	
 		if (userUpdateTimeoutId == 0)  //There is not a manual positioning going on
@@ -120,7 +121,7 @@ public class VideoPosition {
 	
 	private bool UpdatePlayerPosition () {
 		userUpdateTimeoutId = 0;
-		player.Seek((float)slider.Value);
+		player.Seek(slider.Value);
 		return false;
 	}
 	
@@ -135,7 +136,7 @@ public class VideoPosition {
 		userUpdateTimeoutId = GLib.Timeout.Add(userUpdateTimeout, UpdatePlayerPosition);
 	}
 	
-	private void EmitVideoPositionChanged (float newPosition) {
+	private void EmitVideoPositionChanged (TimeSpan newPosition) {
 		if (Changed != null)
 			Changed(newPosition);
 	}
@@ -150,19 +151,19 @@ public class VideoPosition {
 
 	/* Private members */
 	
-	private void UpdatePositionValues (float newPosition) {
+	private void UpdatePositionValues (TimeSpan newPosition) {
 		UpdateSlider(newPosition);
 		UpdatePositionValueLabel(newPosition);
 	}
 	
-	private void UpdateSlider (float newPosition) {
+	private void UpdateSlider (TimeSpan newPosition) {
 		isPlayerUpdate = true;
-		slider.Value = newPosition;
+		slider.Value = newPosition.TotalMilliseconds;
 	}
 
-	private void UpdatePositionValueLabel (float newPosition) {
+	private void UpdatePositionValueLabel (TimeSpan newPosition) {
 		if (Global.TimingMode == TimingMode.Times)
-			positionValueLabel.Text = Util.SecondsToTimeText(newPosition);
+			positionValueLabel.Text = Util.TimeSpanToText(newPosition);
 		else {
 			double frames = SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate);
 			positionValueLabel.Text = Convert.ToInt32(frames).ToString();
@@ -174,22 +175,22 @@ public class VideoPosition {
 		positionLabel.Markup = "<b>" + mode + "</b>"; 
 	}
 	
-	private void SetLength (float length) {
+	private void SetLength (TimeSpan length) {
 		SetSliderLength(length);
 		UpdateLengthLabel(Global.TimingMode, length);
 	}
 	
-	private void UpdateLengthLabel (TimingMode timingMode, float length) {
+	private void UpdateLengthLabel (TimingMode timingMode, TimeSpan length) {
 		if (timingMode == TimingMode.Times)
-			lengthValueLabel.Text = Util.SecondsToTimeText(length);
+			lengthValueLabel.Text = Util.TimeSpanToText(length);
 		else {
 			double frames = SubLib.Synchronization.TimeToFrames(length, player.FrameRate);
 			lengthValueLabel.Text = Convert.ToInt32(frames).ToString();
 		}
 	}
 	
-	private void SetSliderLength (float length) {
-		slider.Adjustment.Upper = length;
+	private void SetSliderLength (TimeSpan length) {
+		slider.Adjustment.Upper = length.TotalMilliseconds;
 	}
 
 }

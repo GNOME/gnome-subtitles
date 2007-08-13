@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2007 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,316 +17,174 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GStreamer;
 using Gtk;
 using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Text;
 
 namespace GnomeSubtitles {
 
-public delegate float PlayerGetPositionFunc (); //Represents a function that gets the current player position
-public delegate void PlayerPositionChangedFunc (float position); //Represents a function that handles changes in the position
-public delegate void PlayerEndReachedFunc (); //Represents a function that handles reaching of the end in the player
-
 public class Player {
 	private Socket socket = null;
-	private Process process = null;
+	private Playbin playbin = null;
 	private PlayerPositionWatcher position = null;
-	
-	private string filename = String.Empty;
-	private float frameRate = 0;
-	
-	/* Events */
-	public event EventHandler EndReached = null;
+
+	/* Delegate functions */
+	private EventHandler EndReached;
 
 	public Player () {
 		CreateSocket();
-		position = new PlayerPositionWatcher(GetPosition, EmitEndReachedEvent);
+		position = new PlayerPositionWatcher(GetPosition);
 	}
-	
+
 	public Socket Widget {
 		get { return socket; }
 	}
+
+	public void Open (string videoUri) {
+		CreatePlaybin();
+		
+		playbin.EventChanged += OnEventChanged; //TODO delete
+		
+		playbin.Load(videoUri);
+		WaitForPlaybinReady();
+	}
+
 	
-	/* Public properties */
-	
-	public bool Paused {
-		get { return position.Paused; }
+	public void Close () {
+		if (playbin != null)
+			DestroyPlaybin();
 	}
 	
-	/// <summary>The aspect ratio.</summary>	
+	public PlayerTimeChangedFunc OnPositionChanged {
+		set { position.OnPlayerPositionChanged = value; }
+	}
+	
+	public EventHandler OnEndReached {
+		set { this.EndReached = value; }
+	}
+	
 	public float AspectRatio {
-		get {
-			float width = GetAsInt32("pausing_keep get_property width");
-			float height = GetAsInt32("pausing_keep get_property height");
-			return width / height;
-		}
+		get { return playbin.VideoInfo.AspectRatio; }
 	}
 	
-	/// <summary>The length of the video, in seconds.</summary>
-	public float Length {
-		get { return position.Length; }
+	public TimeSpan Length {
+		get { return playbin.Duration; }
 	}
 	
 	public float FrameRate {
-		get { return frameRate; }
-	}
-	
-	public PlayerPositionChangedFunc OnPositionChanged {
-		set { position.OnPlayerPositionChanged = value; }
-	}
-
-
-	/* Public methods */
-
-	/// <summary>Opens a video file.</summary>
-	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
-	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
-	public void Open (string filename) {
-		this.filename = filename;
-		
-		position.Stop();
-	
-		StartNewProcess(filename);
-		bool couldStart = ClearOutput();
-		if (!couldStart)
-			throw new PlayerCouldNotOpenVideoException();
-		
-		position.Enable(GetLength());
-		
-		frameRate = GetFrameRate();
-	}
-
-	/// <summary>Closes the video.</summary>
-	public void Close () {
-		position.Disable();
-		TerminateProcess();
-		
-		this.filename = String.Empty;
-		this.frameRate = 0;
-	}
-	
-	public void SeekStart () {
-		try {
-			Exec("pausing seek 0 2");
-		}
-		catch (Exception e) {
-			System.Console.Error.WriteLine("Caught exception while trying to Seek:");
-			System.Console.Error.WriteLine(e);
-		}
+		get { return playbin.VideoInfo.FrameRate; }
 	}
 	
 	public void Play () {
-		if (position.EndReached) {
-			EmitEndReachedEvent();
-			return;
-		}
-		
-		if (position.Paused) {
-			Exec("pause");
-			position.Start();
-		}
+		playbin.Play();
 	}
 	
 	public void Pause () {
-		if (position.EndReached) {
-			EmitEndReachedEvent();
-			return;
-		}
-		
-		if (!position.Paused) {
-			position.Stop();
-			Exec("pause");
-		}
+		playbin.Pause();
 	}
 	
-	public void Seek (float newPosition) {
-		Exec("pausing_keep seek " + Util.ToString(newPosition) + " 2");
-		position.Check();
+	public void Rewind (TimeSpan dec) {
+		Seek(playbin.CurrentPosition - dec);
 	}
 	
-	public void Rewind (float decrement) {
-		if (position.EndReached) { //Seek to near the end
-			float length = position.Length;
-			float nearEndPosition = (length > 5) ? length - 5 : 0;
-			Seek(nearEndPosition);
-		}
-		else {
-			Exec("pausing_keep seek -" + Util.ToString(decrement) + " 0");
-			position.Check();
-		}
+	public void Forward (TimeSpan inc) {
+		Seek(playbin.CurrentPosition + inc);
 	}
-	
-	public void Forward (float increment) {
-		if (position.EndReached) {
-			EmitEndReachedEvent();
-			return;
-		}
 
-		Exec("pausing_keep seek " + Util.ToString(increment) + " 0");
-		position.Check();
+	public void Seek (TimeSpan newPosition) {
+		playbin.Seek(newPosition);
 	}
 	
+	// newPosition in milliseconds
+	public void Seek (double newPosition) {
+		playbin.Seek(newPosition);
+	}
 
-	/* Private methods */
-	
-	private void RestartPlayer () {
-		StartNewProcess(filename);
-		ClearOutput();
-		SeekStart();
-	}
+	/* Private members */
 	
 	private void CreateSocket () {
 		socket = new Socket();
 		socket.ModifyBg(StateType.Normal, socket.Style.Black);	
 	}
 	
-	/// <summary>Starts a new MPlayer process on slave mode and idle.</summary>
-	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
-	private void StartNewProcess (string filename) {
-		/* Configure startup of new process */
-		Process newProcess = new Process();
-		newProcess.StartInfo.FileName = "mplayer";
-
-		//newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 3 -fontconfig -subfont-autoscale 2 -quiet -nomouseinput -slave " + filename;
-		newProcess.StartInfo.Arguments = "-wid " + socket.Id + " -osdlevel 0 -noautosub -quiet -nomouseinput -slave " + filename;
-		if (!newProcess.StartInfo.EnvironmentVariables.ContainsKey("TERM")) {
-			newProcess.StartInfo.EnvironmentVariables.Add("TERM", "xterm");
-		}
-		newProcess.StartInfo.UseShellExecute = false;
-		newProcess.StartInfo.RedirectStandardInput = true;
-		newProcess.StartInfo.RedirectStandardOutput = true;
-		newProcess.EnableRaisingEvents = true;
-		newProcess.Exited += OnProcessExited;
-
-		try {
-			newProcess.Start();
-		} catch (Win32Exception) {
-			throw new PlayerNotFoundException();
-		}
-		process = newProcess;
+	private void CreatePlaybin () {
+		playbin = new Playbin();
+		ConnectSignals();
+		playbin.Initiate(socket.Id);
 	}
 	
-	/// <summary>Terminates the current running process, if it exists.</summary>
-	/// <remarks>Waits for the process to end, and kills it if it doesn't.</remarks>
-	private void TerminateProcess () {
-		if (process != null) {
-			process.Exited -= OnProcessExited;
-			
-			try {
-				Exec("quit");
-			}
-			catch (IOException) {
-				//Do nothing
-			}
-			
-			bool exited = process.WaitForExit(1000); //Wait 1 second for exit
-			if (!exited) {
-				try {
-					process.Kill();
+	private void DestroyPlaybin () {
+		playbin.Dispose();
+		DisconnectSignals();
+		playbin = null;
+	}
+	
+	// TODO use different method do determine if file type is valid
+	private void WaitForPlaybinReady () {
+		bool gotVideoInfo = false;
+		bool gotDuration = false;
+
+		DateTime endTime = DateTime.Now.AddSeconds(5);
+		while (DateTime.Now < endTime) {
+			if (!gotDuration) {
+				TimeSpan duration = playbin.Duration;
+				if (duration == TimeSpan.Zero) {
+					System.Threading.Thread.Sleep(15); //milliseconds
+					continue;
 				}
-				catch (Exception) {
-					//Do nothing
+				else {
+					gotDuration = true;
+					Console.WriteLine("Got duration: " + duration);
 				}
 			}
-
-			process = null;
+		
+			if (!gotVideoInfo) {
+				EngineVideoInfo info = playbin.VideoInfo;
+				if (info == null) {
+					System.Threading.Thread.Sleep(15); //milliseconds
+					continue;
+				}
+				else {
+					gotVideoInfo = true;
+					Console.WriteLine("Got video info: " + info + " (took " + (DateTime.Now - endTime.AddSeconds(-5)).TotalSeconds + " seconds)");
+				}
+			}
+			return;
 		}
+		throw new PlayerCouldNotOpenVideoException();
 	}
 	
-	/// <summary>Gets the current position, in seconds.</summary>
-	/// <returns>The current position, in seconds, or -1 if the end has been reached.</returns>
-	private float GetPosition () {
-		try {
-			if (position.Paused)
-				return GetAsFloat("pausing get_time_pos");
-			else
-				return GetAsFloat("get_time_pos");
-		}
-		catch (FormatException) { //Reached the end
-			return -1;
-		}
-	}
-	
-	private float GetLength () {
-		if (position.Paused)
-			return GetAsFloat("pausing get_time_length");
+	/// <summary>Gets the current player position.</summary>
+	private TimeSpan GetPosition () {
+		if (playbin == null)
+			return TimeSpan.Zero;
 		else
-			return GetAsFloat("get_time_length");
-	}
-	
-	private float GetFrameRate () {
-		if (position.Paused)
-			return GetAsFloat("pausing get_property fps");
-		else
-			return GetAsFloat("get_property fps");
-	}
-	
-	/// <summary>Executes a command.</summary>
-	/// <param name="command">The command to execute.</param>
-	/// <remarks>A command is executed by writting it to the output stream.</remarks>
-	private void Exec (string command) {
-		process.StandardInput.WriteLine(command);
-	}
-	
-	private string Get (string command) {
-		Exec(command);
-
-		string line = process.StandardOutput.ReadLine();
-		int index = line.LastIndexOf("=");
-		return (index == -1 ? String.Empty : line.Substring(index + 1));
-	}
-	
-	private int GetAsInt32 (string command) {
-		string text = Get(command);
-		return Convert.ToInt32(text);
-	}
-	
-	/// <summary>Gets a float as the response to a command.</summary>
-	/// <param name="command">The command to execute.</param>
-	/// <returns>The response for the command parsed as a float.</returns>
-	/// <exception cref="FormatException">Thrown when the response cannot be parsed as a float.</exception> 
-	private float GetAsFloat (string command) {
-		string text = Get(command);
-		return (float)Convert.ToDouble(text, NumberFormatInfo.InvariantInfo);
+			return playbin.CurrentPosition;
 	}
 
-	/// <summary>Clears the current output.</summary>
-	/// <returns>Whether output could be cleared or not. In case not, it means the player could not be started correcty or may have terminated.</returns>
-	/// <remarks>This uses a hack to detect the end of the output, as the StreamReader could not detect it correctly.
-	/// It executes a command and uses the result of that command to detect the end of output.</remarks>
-	private bool ClearOutput () {
-		Exec("get_vo_fullscreen");
-		StreamReader reader = process.StandardOutput;
-		while (true) {
-			string line = reader.ReadLine();
-			if (line == null) //Got end of stream
-				return false;
-
-			if (line.StartsWith("ANS_VO_FULLSCREEN"))
-				break;
-		}
-		return true;
-	}
 	
 	/* Event members */
 	
-	private void EmitEndReachedEvent () {
-		if (EndReached != null) {
-			EndReached(this, EventArgs.Empty);
-		}
+	private void ConnectSignals () {
+		playbin.StateChanged += OnStateChanged;
+		playbin.EventChanged += OnEventChanged;
 	}
 	
-	private void OnProcessExited (object o, EventArgs args) {
-		position.Stop();
-		
-		/* Check if it is near the end, meaning playback has ended */
-		if (position.NearEndReached) {
-			position.SetEndReached();
-			RestartPlayer();
+	private void DisconnectSignals () {
+		playbin.StateChanged -= OnStateChanged;
+		playbin.EventChanged -= OnEventChanged;
+	}
+	
+	private void OnStateChanged (object o, EngineStateArgs args) {
+		if ((args.State == MediaStatus.Playing) || (args.State == MediaStatus.Paused))
+			position.Start();
+		else
+			position.Stop();
+	}
+	
+	private void OnEventChanged (object o, EngineEventArgs args) {
+		if (args.Event == MediaEvents.EndOfStream) {
+			EndReached(this, EventArgs.Empty);		
 		}
 	}
 	

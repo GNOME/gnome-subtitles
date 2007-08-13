@@ -33,6 +33,7 @@ public class Video {
 	private VideoSubtitle subtitle = null;
 	
 	private bool isLoaded = false;
+	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
 
 	/* Constant strings */
 	private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
@@ -54,7 +55,7 @@ public class Video {
 		videoImageTable.ShowAll();
 		
 		player = new Player();
-		player.EndReached += OnPlayerEndReached;
+		player.OnEndReached = OnPlayerEndReached;
 		
 		position = new VideoPosition(player);
 		subtitle = new VideoSubtitle(position);
@@ -63,6 +64,9 @@ public class Video {
 		
 		/* Set the custom icons */
 		SetCustomIcons();
+		
+		/* Connect signals */
+		ConnectPlayPauseButtonSignals();
 	}
 	
 	/* Public properties */
@@ -81,9 +85,9 @@ public class Video {
 		videoArea.Show();
 		
 		/* Required for the vBox and children to be redrawn before launching the video player */
-		Paned paned = Global.GetWidget(WidgetNames.MainPaned) as Paned;
-		paned.ResizeChildren();
-		Gdk.Window.ProcessAllUpdates();
+		/*Paned paned = Global.GetWidget(WidgetNames.MainPaned) as Paned;
+		paned.ResizeChildren(); TODO is this needed?
+		Gdk.Window.ProcessAllUpdates();*/ 
 	}
 
 	public void Hide () {
@@ -93,13 +97,11 @@ public class Video {
 	/// <summary>Opens a video file.</summary>
 	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
-	public void Open (string filename) {
+	//TODO check these exceptions on error handling
+	public void Open (string videoUri) {
 		Close();
 
-		filename = Util.QuoteFilename(filename);
-		
-		player.Open(filename);
-		player.SeekStart();
+		player.Open(videoUri);
 
 		SetControlsSensitivity(true);
 		position.Enable();
@@ -111,6 +113,9 @@ public class Video {
 	}
 	
 	public void Close () {
+		if (!isLoaded)
+			return;
+	
 		isLoaded = false;
 
 		float oldFrameRate = player.FrameRate; //Need to store this before closing the player
@@ -124,10 +129,7 @@ public class Video {
 		frame.Child.Show();
 		frame.Ratio = 1.67f;
 		
-		/* Update the PlayPause button */
-		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
-		button.Active = false;
-		
+		SilentDisablePlayPauseButton();		
 		SetControlsSensitivity(false);
 
 		Global.GUI.Menus.SetVideoSensitivity(false);
@@ -150,46 +152,39 @@ public class Video {
 	public void Quit () {
 		player.Close();
 	}
-
-	public void TogglePlayPause () {
-		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
-		button.Active = !button.Active; //Toggle() only emits the Toggled event
-	}
-	
-	public void Play () {
-		if (player.Paused)
-			player.Play();
-	}
-	
-	public void Pause () {
-		if (!player.Paused)
-			player.Pause();
-	}
 	
 	public void Rewind () {
-		player.Rewind(position.StepIncrement);
+		player.Rewind(position.SeekIncrement);
 	}
 	
 	public void Forward () {
-		player.Forward(position.StepIncrement);
+		player.Forward(position.SeekIncrement);
 	}
 	
 	/// <summary>Seeks to the specified time.</summary>
 	/// <param name="time">The time position to seek to, in seconds.</param>
-	public void Seek (float time) {
+	public void Seek (TimeSpan time) {
 		if (!isLoaded)
 			return;
 
 		player.Seek(time);
 	}
 	
-	public void SeekToSelection () {
+	public void SeekToSelection () { //TODO check out
 		Subtitle subtitle = Global.GUI.View.Selection.Subtitle;
-    	float time = (float)subtitle.Times.Start.TotalSeconds;
+    	TimeSpan time = subtitle.Times.Start;
     	Seek(time);
 	}
 	
 	/* Private methods */
+
+	private void Play () {
+		player.Play();
+	}
+	
+	private void Pause () {
+		player.Pause();
+	}
 
 	private void LoadVideoWidget (Widget widget) {
 		frame.Child = widget;
@@ -224,7 +219,32 @@ public class Video {
 		Global.GetWidget(WidgetNames.VideoSetSubtitleEndButton).Sensitive = sensitivity;
 	}
 	
+	private void SilentDisablePlayPauseButton () {
+		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		if (button.Active) {
+			playPauseToggleIsSilent = true;
+			button.Active = false;
+		}		
+	}
+	
 	/* Event members */
+	
+	private void ConnectPlayPauseButtonSignals () {
+		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		button.Toggled += OnPlayPauseButtonToggled;
+	}
+	
+	private void OnPlayPauseButtonToggled (object o, EventArgs args) {
+		if (playPauseToggleIsSilent) {
+			playPauseToggleIsSilent = false;
+			return;
+		}
+
+    	if ((o as ToggleButton).Active)
+			Play();
+		else
+			Pause();
+	}
 	
 	private void OnPlayerEndReached (object o, EventArgs args) {
 		ToggleButton playPauseButton = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;

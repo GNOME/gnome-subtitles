@@ -28,8 +28,8 @@ public class VideoSubtitle {
 	
 	/* Current subtitle */
 	private Subtitle subtitle = null;
-	private float subtitleStart = -1;
-	private float subtitleEnd = -1;
+	private TimeSpan subtitleStart = TimeSpan.Zero;
+	private TimeSpan subtitleEnd = TimeSpan.Zero;
 	
 	public VideoSubtitle (VideoPosition position) {
 		EventBox box = Global.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
@@ -47,12 +47,12 @@ public class VideoSubtitle {
 
 	/* Event members */
 	
-	private void OnVideoPositionChanged (float newPosition) {
+	private void OnVideoPositionChanged (TimeSpan newPosition) {
 		if (!(Global.IsDocumentLoaded))
 			return;
 	
 		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = Global.Document.Subtitles.FindWithTime(newPosition);
+			int foundSubtitle = Global.Document.Subtitles.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
 			if (foundSubtitle == -1)
 				UnloadSubtitle();
 			else
@@ -68,22 +68,22 @@ public class VideoSubtitle {
 	
 	/* Private methods */
 	
-	private bool IsTimeInCurrentSubtitle (float time) {
+	private bool IsTimeInCurrentSubtitle (TimeSpan time) {
 		return IsSubtitleLoaded && (time >= subtitleStart) && (time <= subtitleEnd);	
 	}
 	
 	private void LoadSubtitle (int number) {
 		subtitle = Global.Document.Subtitles[number];
-		subtitleStart = (float)subtitle.Times.Start.TotalSeconds;
-		subtitleEnd = (float)subtitle.Times.End.TotalSeconds;
+		subtitleStart = subtitle.Times.Start;
+		subtitleEnd = subtitle.Times.End;
 		SetText();
 		label.Visible = true;
 	}
 	
 	private void UnloadSubtitle () {
 		subtitle = null;
-		subtitleStart = -1;
-		subtitleEnd = -1;
+		subtitleStart = TimeSpan.Zero;
+		subtitleEnd = TimeSpan.Zero;
 		ClearText();
 		label.Visible = false;
 	}
