@@ -148,8 +148,8 @@ public class GUI {
     	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
-			string filename = dialog.Filename;
-			OpenVideo(filename);
+			string videoUri = dialog.Uri;
+			OpenVideo(videoUri);
 		}
     }
     
@@ -290,7 +290,7 @@ public class GUI {
 	/// <remarks>An error dialog is presented if an exception is caught during open.</remarks>
     private void Open (string path, int codePage, string videoFilename) {
     	try {
-    		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
+    		Encoding encoding =  CodePageToEncoding(codePage);
     		Global.CreateDocument(path, encoding);
 			view.Selection.SelectFirst(); //TODO is this needed?
 		
@@ -306,6 +306,22 @@ public class GUI {
 		}
     }
     
+    /// <summary>Creates an <see cref="Encoding" /> from a code page.</summary>
+    /// <param name="codePage">The code page.</param>
+    /// <returns>The respective <see cref="Encoding" />, or null if codePage == -1.</returns>
+    /// <exception cref="EncodingNotSupportedException">Thrown if a detected encoding is not supported by the platform.</exception>
+    private Encoding CodePageToEncoding (int codePage) {
+    	if (codePage == -1)
+    		return null;
+
+    	try {
+    		return Encoding.GetEncoding(codePage);
+    	}
+    	catch (NotSupportedException) {
+    		throw new EncodingNotSupportedException();
+    	}
+    }
+
     /// <summary>Opens a translation file, given its filename and code page.</summary>
 	/// <param name="path">The path of the translation file to open.</param>
 	/// <param name="codePage">The code page of the filename. To use autodetection, set it to -1.</param>
@@ -324,15 +340,15 @@ public class GUI {
 		}
     }
     
-    private void OpenVideo (string path) {
+    private void OpenVideo (string videoUri) {
     	Menus.SetViewVideoActivity(true);
 		try {
-			Video.Open(path);
+			Video.Open(videoUri);
 			Menus.SetVideoSensitivity(true);
 		}
 		catch (Exception exception) {
 			Video.Close();
-			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(path, exception);
+			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(videoUri, exception);
 			errorDialog.Show();
 			bool toOpenAgain = errorDialog.WaitForResponse();
 	    	if (toOpenAgain)
