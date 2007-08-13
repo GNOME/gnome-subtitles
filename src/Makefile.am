@@ -5,6 +5,7 @@ GS_DATADIR = $(srcdir)/../data
 
 ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
 SUBLIB = $(GS_BUILDDIR)/sublib.dll
+GSTPB = $(GS_BUILDDIR)/GStreamerPlaybin.dll
 
 GS_SOURCES = \
 	$(srcdir)/GnomeSubtitles/Commands/*.cs \
@@ -38,6 +39,7 @@ GS_RESOURCES = \
 
 GS_SYSTEM_REFERENCES = \
 	$(SUBLIB) \
+	$(GSTPB) \
 	Mono.Posix.dll
 
 $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)

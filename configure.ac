@@ -75,17 +75,52 @@ else
 		echo "yes"
 	else
 		echo "no"
-		AC_MSG_ERROR([SubLib not found. Place a compiled sublib.dll into the `build' dir OR extract a sublib source dir into gnome-subtitles base dir.])
+		AC_MSG_ERROR([SubLib not found. Place a compiled sublib.dll into the `build' dir OR extract a sublib source package into gnome-subtitles base dir.])
 	fi
 fi
 
 AC_SUBST(SUBLIB_DIR)
+
+echo -n "checking for gstreamer-playbin package dir... "
+for i in gstreamer-playbin*
+do
+	GSTPB_DIR=$i
+done
+if test -d $GSTPB_DIR
+then
+	echo $GSTPB_DIR
+	AC_CONFIG_SUBDIRS($GSTPB_DIR)
+else
+	echo "no"
+	GSTPB_DIR=""
+	echo -n "checking for build/GStreamerPlaybin.dll... "
+	if test -f "build/GStreamerPlaybin.dll"
+	then
+		echo "yes"
+	else
+		echo "no"
+		AC_MSG_ERROR([GStreamer-Playbin not found. Place a compiled GStreamerPlaybin.dll into the `build' dir OR extract a GStreamer-Playbin source package into gnome-subtitles base dir.])
+	fi
+	
+	echo -n "checking for build/libgstreamer_playbin.so... "
+	if test -f "build/libgstreamer_playbin.so"
+	then
+		echo "yes"
+	else
+		echo "no"
+		AC_MSG_ERROR([GStreamer-Playbin not found. Place a compiled libgstreamer_playbin.so into the `build' dir OR extract a GStreamer-Playbin source package into gnome-subtitles base dir.])
+	fi
+fi
+
+AC_SUBST(GSTPB_DIR)
+
 
 dnl pkg-config
 MONO_REQUIRED_VERSION=1.1
 GTKSHARP_REQUIRED_VERSION=2.8
 GTK_REQUIRED_VERSION=2.8
 
+PKG_CHECK_MODULES(gstreamer, [gstreamer-0.10 >= 0.10])
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gnome-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
