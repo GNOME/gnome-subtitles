@@ -217,7 +217,8 @@ public class EventHandlers {
 	}
 
 	public void OnVideoPlayPause (object o, EventArgs args) {
-		Global.GUI.Video.TogglePlayPause();
+		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		button.Active = !button.Active; //Toggle() only emits the Toggled event
 	}
 	
 	public void OnVideoRewind (object o, EventArgs args) {
@@ -234,7 +235,7 @@ public class EventHandlers {
 	
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
 		if (Global.TimingMode == TimingMode.Times) {
-			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
+			TimeSpan time = Global.GUI.Video.Position.CurrentTime;
 			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
 		}
 		else {
@@ -245,7 +246,7 @@ public class EventHandlers {
 	
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
 		if (Global.TimingMode == TimingMode.Times) {
-			TimeSpan time = TimeSpan.FromSeconds(Global.GUI.Video.Position.CurrentTime);
+			TimeSpan time = Global.GUI.Video.Position.CurrentTime;
 			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 		}
 		else {
@@ -293,16 +294,6 @@ public class EventHandlers {
     	Global.Config.PrefsWindowHeight = args.Allocation.Height;
     }
 
-
-    /* Video */
-
-	public void OnVideoPlayPauseButtonToggled (object o, EventArgs args) {
-    	if ((o as ToggleButton).Active)
-			Global.GUI.Video.Play();
-		else
-			Global.GUI.Video.Pause();
-	}
-	
     
     /*	Subtitle View	*/
     
