@@ -1,0 +1,41 @@
+This package will generate two files.   GStreamerPlaybin.dll  and  libgstreamer_playbin.so
+
+To use the library simply do the generic steps
+      ./configure
+      make
+      make install  (as root)
+
+
+This should give you the library GStreamerPlaybin.dll in the path  $prefix/lib/gstreamer-playbin
+(where $prefix was defined at ./configure. Usually   /usr/local  )
+
+
+
+The package makes use of pkg-config however the library must have the C library  libgstreamer_playbin.so  otherwise it wont work.
+libgstreamer_playbin.so can be in the standard library paths or where the executable file is.
+
+
+
+sample code:
+
+
+  using GStreamer;
+
+  public class sample
+  {
+
+      public static void Main ()
+      {
+          Playbin playbin = new Playbin ();
+          playbin.Initiate ();
+          playbin.Load ("file:///home/user/file.ogg");
+          playbin.Play ();
+
+          while (true) {}
+      }
+  }
+
+
+
+
+Enjoy!
