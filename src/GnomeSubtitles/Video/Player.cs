@@ -45,7 +45,7 @@ public class Player {
 		get { return socket; }
 	}
 	
-	public void Open (string videoUri) {
+	public void Open (Uri videoUri) {
 		playbin = new Playbin();
 	
 		/* Initialize the playbin */
@@ -57,7 +57,7 @@ public class Player {
 		playbin.EventChanged += OnPlaybinLoadEventChanged;
 		
 		/* Load the playbin */
-		playbin.Load(videoUri);
+		playbin.Load(videoUri.AbsoluteUri);
 		
 		/* Wait for the playbin to be ready (have video information) */
 		bool isReady = WaitForPlaybinReady();

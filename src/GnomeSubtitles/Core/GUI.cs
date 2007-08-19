@@ -340,9 +340,11 @@ public class GUI {
 		}
     }
     
-    private void OpenVideo (string videoUri) {
+    private void OpenVideo (string videoUriString) {
     	Menus.SetViewVideoActivity(true);
+    	Uri videoUri = null;
 		try {
+			videoUri = new Uri(videoUriString);
 			Video.Open(videoUri);
 			Menus.SetVideoSensitivity(true);
 		}

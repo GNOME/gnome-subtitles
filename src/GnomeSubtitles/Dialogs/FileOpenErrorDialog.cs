@@ -29,6 +29,9 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 	private string primaryTextStart = Catalog.GetString("Could not open the file");
 	private string actionLabel = Catalog.GetString("Open another file"); 
 
+	public FileOpenErrorDialog (Uri uri, Exception exception) : this(uri.LocalPath, exception) {
+	}
+
 	public FileOpenErrorDialog (string filename, Exception exception) {
 		Console.Error.WriteLine("File open error:\n" + exception);
 
@@ -61,6 +64,8 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 		string text = SecondaryTextFromException(exception);
 		if (text != String.Empty)
 			return text;
+		else if (exception is UriFormatException)
+			return Catalog.GetString("The file path appears to be invalid.");
 		else
 			return GetGeneralExceptionErrorMessage(exception);
 	}

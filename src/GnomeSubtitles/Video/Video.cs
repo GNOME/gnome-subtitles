@@ -98,7 +98,7 @@ public class Video {
 	
 	/// <summary>Opens a video file.</summary>
 	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
-	public void Open (string videoUri) {
+	public void Open (Uri videoUri) {
 		Close();
 
 		player.Open(videoUri);

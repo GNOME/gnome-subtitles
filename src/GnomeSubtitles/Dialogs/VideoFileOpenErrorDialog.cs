@@ -24,7 +24,7 @@ namespace GnomeSubtitles {
 
 public class VideoFileOpenErrorDialog : FileOpenErrorDialog {
 
-	public VideoFileOpenErrorDialog (string filename, Exception exception) : base(filename, exception) {
+	public VideoFileOpenErrorDialog (Uri uri, Exception exception) : base(uri, exception) {
 	}
 
 	/* Overriden members */
