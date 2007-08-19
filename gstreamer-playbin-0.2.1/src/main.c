@@ -192,7 +192,7 @@ gstVideoInfo *gst_binding_get_video_info (gstPlay *play) {
   		GObject *stream_data = G_OBJECT (stream->data);
   		gint stream_type;
 	    g_object_get (stream_data, "type", &stream_type, NULL);
-  	
+
   		/* Look for the video stream */
  		if (stream_type == 2) {
 	  		GstObject *stream_object;
@@ -200,8 +200,7 @@ gstVideoInfo *gst_binding_get_video_info (gstPlay *play) {
     	
 			GstCaps *caps;
 			g_object_get(stream_object, "caps", &caps, NULL);
-			if (!GST_IS_CAPS(caps))
-				return NULL;
+			if (!GST_IS_CAPS(caps)) return NULL;
 
 			gint caps_count = gst_caps_get_size (caps), caps_index;
 			GstStructure *caps_struct;
@@ -231,9 +230,10 @@ gstVideoInfo *gst_binding_get_video_info (gstPlay *play) {
     			caps_value = gst_structure_get_value (caps_struct, "framerate");
     			if (caps_value && (G_VALUE_TYPE (caps_value) == GST_TYPE_FRACTION)) {
     				int num = caps_value->data[0].v_int, den = caps_value->data[1].v_int;
-		            caps_frame_rate = (float)num/den;    			
-    			}
+		            caps_frame_rate = (float)num/den;
+				}
 			}
+			
 			if ((caps_width != -1) && (caps_height != -1) && (caps_frame_rate != -1)) {
 				gstVideoInfo *video_info = g_new0 (gstVideoInfo, 1);
 				video_info->width = caps_width;
