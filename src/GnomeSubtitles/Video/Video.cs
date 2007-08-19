@@ -54,8 +54,10 @@ public class Video {
 		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
 		videoImageTable.ShowAll();
 		
+		/* Set player */
 		player = new Player();
 		player.OnEndReached = OnPlayerEndReached;
+		player.OnErrorCaught = OnPlayerErrorCaught;
 		
 		position = new VideoPosition(player);
 		subtitle = new VideoSubtitle(position);
@@ -95,9 +97,7 @@ public class Video {
 	}
 	
 	/// <summary>Opens a video file.</summary>
-	/// <exception cref="PlayerNotFoundException">Thrown if the player executable was not found.</exception>
 	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
-	//TODO check these exceptions on error handling
 	public void Open (string videoUri) {
 		Close();
 
@@ -249,6 +249,14 @@ public class Video {
 	private void OnPlayerEndReached (object o, EventArgs args) {
 		ToggleButton playPauseButton = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		playPauseButton.Active = false;
+	}
+	
+	private void OnPlayerErrorCaught (string message) {
+		Console.Error.WriteLine("Caught player error: " + message);
+		Close();
+		VideoErrorDialog dialog = new VideoErrorDialog(message);
+		dialog.WaitForResponse();
+		System.Console.WriteLine("After");
 	}
 
 }
