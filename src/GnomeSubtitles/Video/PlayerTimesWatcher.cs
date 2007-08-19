@@ -23,6 +23,7 @@ using System.IO;
 
 namespace GnomeSubtitles {
 
+/* Delegates */
 public delegate TimeSpan PlayerGetTimeFunc (); //Represents a function that gets a time from the player
 public delegate void PlayerTimeChangedFunc (TimeSpan position); //Represents a function that handles changes in the position
 
