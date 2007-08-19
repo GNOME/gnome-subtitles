@@ -23,13 +23,18 @@ using System;
 
 namespace GnomeSubtitles {
 
+/* Delegates */
+public delegate void PlayerErrorCaughtFunc (string message); //Represents a function that handles a caught error
+
 public class Player {
 	private Socket socket = null;
 	private Playbin playbin = null;
 	private PlayerPositionWatcher position = null;
+	private bool playbinLoadError= false; //used to indicate whether an error has occured while loading the playbin
 
 	/* Delegate functions */
 	private EventHandler EndReached;
+	private PlayerErrorCaughtFunc ErrorCaught;
 
 	public Player () {
 		CreateSocket();
@@ -39,24 +44,49 @@ public class Player {
 	public Socket Widget {
 		get { return socket; }
 	}
-
+	
 	public void Open (string videoUri) {
-		CreatePlaybin();
+		playbin = new Playbin();
+	
+		/* Initialize the playbin */
+		if (!playbin.Initiate(socket.Id))
+			throw new PlayerCouldNotOpenVideoException();
 		
-		playbin.EventChanged += OnEventChanged; //TODO delete
+		/* Connect handlers */
+		playbin.StateChanged += OnStateChanged;
+		playbin.EventChanged += OnPlaybinLoadEventChanged;
 		
+		/* Load the playbin */
 		playbin.Load(videoUri);
-		WaitForPlaybinReady();
-	}
+		
+		/* Wait for the playbin to be ready (have video information) */
+		bool isReady = WaitForPlaybinReady();
+		playbin.EventChanged -= OnPlaybinLoadEventChanged;
+		playbinLoadError = false;
+		if (!isReady) {
+			/* An error has occurred, returning */
+			playbin.StateChanged -= OnStateChanged;
+			throw new PlayerCouldNotOpenVideoException();
+		}
 
+		/* Load was successful, connecting the normal EventChanged handler */
+		playbin.EventChanged += OnEventChanged;
+	}
 	
 	public void Close () {
-		if (playbin != null)
+		if (playbin != null) {
+			playbin.StateChanged -= OnStateChanged;
+			playbin.EventChanged -= OnEventChanged;
 			DestroyPlaybin();
+		}
 	}
 	
 	public PlayerTimeChangedFunc OnPositionChanged {
 		set { position.OnPlayerPositionChanged = value; }
+	}
+	
+	public PlayerErrorCaughtFunc OnErrorCaught {
+		set { this.ErrorCaught = value; }
 	}
 	
 	public EventHandler OnEndReached {
@@ -106,29 +136,31 @@ public class Player {
 		socket = new Socket();
 		socket.ModifyBg(StateType.Normal, socket.Style.Black);	
 	}
-	
-	private void CreatePlaybin () {
-		playbin = new Playbin();
-		ConnectSignals();
-		playbin.Initiate(socket.Id);
-	}
-	
+
 	private void DestroyPlaybin () {
+		playbinLoadError = false;
 		playbin.Dispose();
-		DisconnectSignals();
 		playbin = null;
 	}
 	
-	// TODO use different method do determine if file type is valid
-	private void WaitForPlaybinReady () {
+	/// <summary>Waits for the playbin to be ready.</summary>
+	/// <param name=""></param>
+	/// <remarks>The playbin is ready when it is able to access both the duration and video information.</remarks>
+	/// <returns>Whether the playbin is ready.</returns>
+	private bool WaitForPlaybinReady () {
 		bool gotVideoInfo = false;
 		bool gotDuration = false;
 
-		DateTime endTime = DateTime.Now.AddSeconds(5);
+		DateTime endTime = DateTime.Now.AddSeconds(5); //Total time to wait for either successful load or error
 		while (DateTime.Now < endTime) {
+			if (playbinLoadError)
+				return false;
+		
+			/* Check for duration if it hasn't been accessed yet */
 			if (!gotDuration) {
 				TimeSpan duration = playbin.Duration;
 				if (duration == TimeSpan.Zero) {
+					GLib.MainContext.Iteration(); //Because an error event may be triggered and we have to catch it
 					System.Threading.Thread.Sleep(15); //milliseconds
 					continue;
 				}
@@ -138,9 +170,11 @@ public class Player {
 				}
 			}
 		
+			/* Check for video information if it hasn't been accessed yet */
 			if (!gotVideoInfo) {
 				EngineVideoInfo info = playbin.VideoInfo;
 				if (info == null) {
+					GLib.MainContext.Iteration(); //Because an error event may be triggered and we have to catch it
 					System.Threading.Thread.Sleep(15); //milliseconds
 					continue;
 				}
@@ -149,9 +183,13 @@ public class Player {
 					Console.WriteLine("Got video info: " + info + " (took " + (DateTime.Now - endTime.AddSeconds(-5)).TotalSeconds + " seconds)");
 				}
 			}
-			return;
+			
+			/* Was able to access all info, returning */
+			return true;
 		}
-		throw new PlayerCouldNotOpenVideoException();
+		
+		/* Was not able to access any info */
+		return false;
 	}
 	
 	/// <summary>Gets the current player position.</summary>
@@ -164,17 +202,7 @@ public class Player {
 
 	
 	/* Event members */
-	
-	private void ConnectSignals () {
-		playbin.StateChanged += OnStateChanged;
-		playbin.EventChanged += OnEventChanged;
-	}
-	
-	private void DisconnectSignals () {
-		playbin.StateChanged -= OnStateChanged;
-		playbin.EventChanged -= OnEventChanged;
-	}
-	
+
 	private void OnStateChanged (object o, EngineStateArgs args) {
 		if ((args.State == MediaStatus.Playing) || (args.State == MediaStatus.Paused))
 			position.Start();
@@ -183,9 +211,20 @@ public class Player {
 	}
 	
 	private void OnEventChanged (object o, EngineEventArgs args) {
+		System.Console.WriteLine("Event " + args.Event + ": " + args.Message);
 		if (args.Event == MediaEvents.EndOfStream) {
 			EndReached(this, EventArgs.Empty);		
 		}
+		else if (args.Event == MediaEvents.Error) {
+			ErrorCaught(args.Message);
+		}
+	}
+	
+	private void OnPlaybinLoadEventChanged (object o, EngineEventArgs args) {
+		if (args.Event == MediaEvents.Error) {
+			Console.Error.WriteLine("Caught an error while loading the playbin: " + args.Message);
+			playbinLoadError = true;
+		}	
 	}
 	
 }
