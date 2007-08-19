@@ -29,11 +29,16 @@ public abstract class ErrorDialog : GladeDialog {
 	/* Strings */
 	private const string gladeFilename = "ErrorDialog.glade";
 
-	
+	/// <summary>Creates a new instance of the <see cref="ErrorDialog" /> class.</summary>
+	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overriden to add buttons.</remarks>
 	public ErrorDialog () : base(gladeFilename) {
 		dialog = base.dialog as MessageDialog;
 		
 		AddButtons();
+	}
+	
+	public ErrorDialog (string primary, string secondary) : this() {
+		SetText(primary, secondary);
 	}
 	
 	/* Protected methods */
