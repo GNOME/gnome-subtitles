@@ -35,6 +35,21 @@ public class HeadersDialog : GladeDialog {
 
 	/* Widgets */
 	
+	/* KaraokeLyricsLRC fields */
+	[WidgetAttribute] private Entry entryKaraokeLRCTitle;
+	[WidgetAttribute] private Entry entryKaraokeLRCAuthor;
+	[WidgetAttribute] private Entry entryKaraokeLRCArtist;
+	[WidgetAttribute] private Entry entryKaraokeLRCAlbum;
+	[WidgetAttribute] private Entry entryKaraokeLRCMaker;
+	[WidgetAttribute] private Entry entryKaraokeLRCVersion;
+	[WidgetAttribute] private Entry entryKaraokeLRCProgram;
+
+	/* KaraokeLyricsVKT fields */
+	[WidgetAttribute] private Entry entryKaraokeVKTFrameRate;
+	[WidgetAttribute] private Entry entryKaraokeVKTAuthor;
+	[WidgetAttribute] private Entry entryKaraokeVKTSource;
+	[WidgetAttribute] private Entry entryKaraokeVKTDate;
+
 	/* MPSub fields */
 	[WidgetAttribute] private Entry entryMPSubTitle;
 	[WidgetAttribute] private Entry entryMPSubFile;
@@ -89,12 +104,35 @@ public class HeadersDialog : GladeDialog {
 	/* Private members */
 	
 	private void LoadHeaders () {
+		LoadKaraokeLRCHeaders();
+		LoadKaraokeVKTHeaders();
 		LoadMPSubHeaders();
 		LoadSSAASSHeaders();
 		LoadSubViewer1Headers();
 		LoadSubViewer2Headers();
 	}
 	
+	private void LoadKaraokeLRCHeaders() {
+		SubtitleHeadersKaraokeLyricsLRC headers = subtitleHeaders.KaraokeLyricsLRC;
+
+		entryKaraokeLRCTitle.Text = headers.Title;
+		entryKaraokeLRCAuthor.Text = headers.Author;
+		entryKaraokeLRCArtist.Text = headers.Artist;
+		entryKaraokeLRCAlbum.Text = headers.Album;
+		entryKaraokeLRCMaker.Text = headers.Maker;
+		entryKaraokeLRCVersion.Text = headers.Version;
+		entryKaraokeLRCProgram.Text = headers.Program;
+	}
+
+	private void LoadKaraokeVKTHeaders() {
+		SubtitleHeadersKaraokeLyricsVKT headers = subtitleHeaders.KaraokeLyricsVKT;
+
+		entryKaraokeVKTFrameRate.Text = headers.FrameRate;
+		entryKaraokeVKTAuthor.Text = headers.Author;
+		entryKaraokeVKTSource.Text = headers.Source;
+		entryKaraokeVKTDate.Text = headers.Date;
+	}
+
 	private void LoadMPSubHeaders () {
 		SubtitleHeadersMPSub headers = subtitleHeaders.MPSub;
 	
@@ -156,12 +194,35 @@ public class HeadersDialog : GladeDialog {
 	}
 	
 	private void StoreHeaders () {
+		StoreKaraokeLRCHeaders();
+		StoreKaraokeVKTHeaders();
 		StoreMPSubHeaders();
 		StoreSSAASSHeaders();
 		StoreSubViewer1Headers();
 		StoreSubViewer2Headers();
 	}
 	
+	private void StoreKaraokeLRCHeaders() {
+		SubtitleHeadersKaraokeLyricsLRC headers = subtitleHeaders.KaraokeLyricsLRC;
+
+		headers.Title = entryKaraokeLRCTitle.Text;
+		headers.Author = entryKaraokeLRCAuthor.Text;
+		headers.Artist = entryKaraokeLRCArtist.Text;
+		headers.Album = entryKaraokeLRCAlbum.Text;
+		headers.Maker = entryKaraokeLRCMaker.Text;
+		headers.Version = entryKaraokeLRCVersion.Text;
+		headers.Program = entryKaraokeLRCProgram.Text;
+	}
+
+	private void StoreKaraokeVKTHeaders() {
+		SubtitleHeadersKaraokeLyricsVKT headers = subtitleHeaders.KaraokeLyricsVKT;
+
+		headers.FrameRate = entryKaraokeVKTFrameRate.Text;
+		headers.Author = entryKaraokeVKTAuthor.Text;
+		headers.Source = entryKaraokeVKTSource.Text;
+		headers.Date = entryKaraokeVKTDate.Text;
+	}
+
 	private void StoreMPSubHeaders () {
 		SubtitleHeadersMPSub headers = subtitleHeaders.MPSub;
 	
