@@ -11,7 +11,7 @@ $(sublib_DATA):
 	cp $(SUBLIB_DIR)/build/sublib.dll build
 
 $(gstpb_DATA):
-	cp $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp $(GSTPB_DIR)/src/.libs/libgstreamer_playbin.so.0.0.0 build/libgstreamer_playbin.so
+	cp $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp $(GSTPB_DIR)/src/libgstreamer_playbin.so build
 
 EXTRA_DIST = 			\
 	autogen.sh			\
