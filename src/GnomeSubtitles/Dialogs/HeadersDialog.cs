@@ -26,7 +26,7 @@ namespace GnomeSubtitles {
 
 
 public class HeadersDialog : GladeDialog {
-	private SubtitleHeaders subtitleHeaders = null;
+	private Headers headers = null;
 
 	/* Constant strings */
 	private const string gladeFilename = "HeadersDialog.glade";
@@ -96,7 +96,7 @@ public class HeadersDialog : GladeDialog {
 	
 	
 	public HeadersDialog () : base(gladeFilename) {
-		subtitleHeaders = Global.Document.Subtitles.Properties.Headers;
+		headers = Global.Document.Subtitles.Properties.Headers;
 		LoadHeaders();
 	}
 	
@@ -113,40 +113,32 @@ public class HeadersDialog : GladeDialog {
 	}
 	
 	private void LoadKaraokeLRCHeaders() {
-		SubtitleHeadersKaraokeLyricsLRC headers = subtitleHeaders.KaraokeLyricsLRC;
-
 		entryKaraokeLRCTitle.Text = headers.Title;
-		entryKaraokeLRCAuthor.Text = headers.Author;
+		entryKaraokeLRCAuthor.Text = headers.MovieAuthor;
 		entryKaraokeLRCArtist.Text = headers.Artist;
 		entryKaraokeLRCAlbum.Text = headers.Album;
-		entryKaraokeLRCMaker.Text = headers.Maker;
+		entryKaraokeLRCMaker.Text = headers.Author;
 		entryKaraokeLRCVersion.Text = headers.Version;
 		entryKaraokeLRCProgram.Text = headers.Program;
 	}
 
 	private void LoadKaraokeVKTHeaders() {
-		SubtitleHeadersKaraokeLyricsVKT headers = subtitleHeaders.KaraokeLyricsVKT;
-
 		entryKaraokeVKTFrameRate.Text = headers.FrameRate;
 		entryKaraokeVKTAuthor.Text = headers.Author;
-		entryKaraokeVKTSource.Text = headers.Source;
+		entryKaraokeVKTSource.Text = headers.VideoSource;
 		entryKaraokeVKTDate.Text = headers.Date;
 	}
 
 	private void LoadMPSubHeaders () {
-		SubtitleHeadersMPSub headers = subtitleHeaders.MPSub;
-	
 		entryMPSubTitle.Text = headers.Title;
-		entryMPSubFile.Text = headers.File;
+		entryMPSubFile.Text = headers.FileProperties;
 		entryMPSubAuthor.Text = headers.Author;
-		entryMPSubNote.Text = headers.Note;
+		entryMPSubNote.Text = headers.Comment;
 
 		comboBoxMPSubType.Active = (headers.MediaType == mpSubAudioTag ? 0 : 1); 
 	}
 	
 	private void LoadSSAASSHeaders () {
-		SubtitleHeadersSubStationAlphaASS headers = subtitleHeaders.SubStationAlphaASS;
-	
 		entrySSAASSTitle.Text = headers.Title;	
 		entrySSAASSOriginalScript.Text = headers.OriginalScript;	
 		entrySSAASSOriginalTranslation.Text = headers.OriginalTranslation;
@@ -163,26 +155,22 @@ public class HeadersDialog : GladeDialog {
 	}
 	
 	private void LoadSubViewer1Headers () {
-		SubtitleHeadersSubViewer1 headers = subtitleHeaders.SubViewer1;
-	
 		entrySubViewer1Title.Text = headers.Title;	
 	 	entrySubViewer1Author.Text = headers.Author;
-	 	entrySubViewer1Source.Text = headers.Source;
+	 	entrySubViewer1Source.Text = headers.VideoSource;
 	 	entrySubViewer1Program.Text = headers.Program;
-	 	entrySubViewer1FilePath.Text = headers.FilePath;
+	 	entrySubViewer1FilePath.Text = headers.SubtitlesSource;
 	 	
 		spinButtonSubViewer1Delay.Value = headers.Delay;
 		spinButtonSubViewer1CDTrack.Value = headers.CDTrack;
 	}
 	
 	private void LoadSubViewer2Headers () {
-		SubtitleHeadersSubViewer2 headers = subtitleHeaders.SubViewer2;
-	
 		entrySubViewer2Title.Text = headers.Title;	
 	 	entrySubViewer2Author.Text = headers.Author;
-	 	entrySubViewer2Source.Text = headers.Source;
+	 	entrySubViewer2Source.Text = headers.VideoSource;
 	 	entrySubViewer2Program.Text = headers.Program;
-	 	entrySubViewer2FilePath.Text = headers.FilePath;
+	 	entrySubViewer2FilePath.Text = headers.SubtitlesSource;
 	 	entrySubViewer2Comment.Text = headers.Comment;	
 		entrySubViewer2FontName.Text = headers.FontName;	
 		entrySubViewer2FontColor.Text = headers.FontColor;	
@@ -203,40 +191,32 @@ public class HeadersDialog : GladeDialog {
 	}
 	
 	private void StoreKaraokeLRCHeaders() {
-		SubtitleHeadersKaraokeLyricsLRC headers = subtitleHeaders.KaraokeLyricsLRC;
-
 		headers.Title = entryKaraokeLRCTitle.Text;
-		headers.Author = entryKaraokeLRCAuthor.Text;
+		headers.MovieAuthor = entryKaraokeLRCAuthor.Text;
 		headers.Artist = entryKaraokeLRCArtist.Text;
 		headers.Album = entryKaraokeLRCAlbum.Text;
-		headers.Maker = entryKaraokeLRCMaker.Text;
+		headers.Author = entryKaraokeLRCMaker.Text;
 		headers.Version = entryKaraokeLRCVersion.Text;
 		headers.Program = entryKaraokeLRCProgram.Text;
 	}
 
 	private void StoreKaraokeVKTHeaders() {
-		SubtitleHeadersKaraokeLyricsVKT headers = subtitleHeaders.KaraokeLyricsVKT;
-
 		headers.FrameRate = entryKaraokeVKTFrameRate.Text;
 		headers.Author = entryKaraokeVKTAuthor.Text;
-		headers.Source = entryKaraokeVKTSource.Text;
+		headers.VideoSource = entryKaraokeVKTSource.Text;
 		headers.Date = entryKaraokeVKTDate.Text;
 	}
 
 	private void StoreMPSubHeaders () {
-		SubtitleHeadersMPSub headers = subtitleHeaders.MPSub;
-	
 		headers.Title = entryMPSubTitle.Text;
-		headers.File = entryMPSubFile.Text;
+		headers.FileProperties = entryMPSubFile.Text;
 		headers.Author = entryMPSubAuthor.Text;
-		headers.Note = entryMPSubNote.Text;
+		headers.Comment = entryMPSubNote.Text;
 
 		headers.MediaType = (comboBoxMPSubType.Active == 0 ? mpSubAudioTag : mpSubVideoTag);
 	}
 	
 	private void StoreSSAASSHeaders () {
-		SubtitleHeadersSubStationAlphaASS headers = subtitleHeaders.SubStationAlphaASS;
-	
 		headers.Title = entrySSAASSTitle.Text;	
 		headers.OriginalScript = entrySSAASSOriginalScript.Text;	
 		headers.OriginalTranslation = entrySSAASSOriginalTranslation.Text;
@@ -253,26 +233,22 @@ public class HeadersDialog : GladeDialog {
 	}
 	
 	private void StoreSubViewer1Headers () {
-		SubtitleHeadersSubViewer1 headers = subtitleHeaders.SubViewer1;
-	
 		headers.Title = entrySubViewer1Title.Text;	
 	 	headers.Author = entrySubViewer1Author.Text;
-	 	headers.Source = entrySubViewer1Source.Text;
+	 	headers.VideoSource = entrySubViewer1Source.Text;
 	 	headers.Program = entrySubViewer1Program.Text;
-	 	headers.FilePath = entrySubViewer1FilePath.Text;
+	 	headers.SubtitlesSource = entrySubViewer1FilePath.Text;
 	 	
 		headers.Delay = spinButtonSubViewer1Delay.ValueAsInt;
 		headers.CDTrack = spinButtonSubViewer1CDTrack.ValueAsInt;
 	}
 	
 	private void StoreSubViewer2Headers () {
-		SubtitleHeadersSubViewer2 headers = subtitleHeaders.SubViewer2;
-	
 		headers.Title = entrySubViewer2Title.Text;	
 	 	headers.Author = entrySubViewer2Author.Text;
-	 	headers.Source = entrySubViewer2Source.Text;
+	 	headers.VideoSource = entrySubViewer2Source.Text;
 	 	headers.Program = entrySubViewer2Program.Text;
-	 	headers.FilePath = entrySubViewer2FilePath.Text;
+	 	headers.SubtitlesSource = entrySubViewer2FilePath.Text;
 	 	headers.Comment = entrySubViewer2Comment.Text;
 		headers.FontName = entrySubViewer2FontName.Text;	
 		headers.FontColor = entrySubViewer2FontColor.Text;
