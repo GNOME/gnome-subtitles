@@ -11,15 +11,13 @@ Dependencies
 ============
 
 Required:
-    Mono   >= 1.1 (mono to run, gmcs to build)
-    Gtk+   >= 2.8
-    Gtk#   >= 2.8
-    Gnome# >= 2.8
-    Glade# >= 2.8
-	GConf# >= 2.8
-
-Optional:
-    MPlayer >= 1.0 (runtime dependency, enables video previewing)
+    Mono      >= 1.1 (mono to run, gmcs to build)
+    Gtk+      >= 2.8
+    Gtk#      >= 2.8
+    Gnome#    >= 2.8
+    Glade#    >= 2.8
+    GConf# 	  >= 2.8
+    GStreamer >= 0.10
 
 
 Building from Source
@@ -45,8 +43,17 @@ Next, `cd' to the project dir and checkout the latest SubLib code from the
 Sourceforge.net SVN:
 	svn co https://sublib.svn.sf.net/svnroot/sublib/trunk/sublib
 
-Finally, run `./autogen.sh' to generate the build scripts (note - you'll need to
-have "gnome-common" installed).
+Finally, run `./autogen.sh' to generate the build scripts. You'll need to
+have some packages or applications installed:
+    autoconf
+    automake
+    glib-gettext
+    gnome-common
+    gnome-doc-utils
+    gtk-doc
+    intltool
+    libtool
+    pkg-config
 
 You can now proceed to "Building from Source" to build Gnome Subtitles.
 

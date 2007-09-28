@@ -1,11 +1,280 @@
-2007-08-04  Simos Xenitellis  <simos@gnome.org>
+2007-09-22 00:27  pcastro
 
-	* help/Makefile.am: Added el in DOC_LINGUAS.
+	* gstreamer-playbin-0.2.1/src: Updated file structure.
 
-2007-07-25  Simos Xenitellis  <simos@gnome.org>
+2007-09-22 00:25  pcastro
 
-	* help/el, help/el/el.po: Added Greek translation by Nick Agianniotis 
-	<nickagian@gmail.com>.
+	* Makefile.am, gstreamer-playbin-0.2.1/src/Makefile.am: Do not
+	  install libraries generated for gstreamer-playbin bindings
+	  outside the gnome-subtitles install dir.
+
+2007-09-22 00:24  pcastro
+
+	* configure.ac: Updated version for the next release, to come.
+
+2007-09-22 00:24  pcastro
+
+	* src/GnomeSubtitles/Dialogs/HeadersDialog.cs: Updated to match new
+	  header system implemented in SubLib, thanks to Cristina Yenyxe.
+
+2007-09-22 00:23  pcastro
+
+	* MAINTAINERS: Updating to follow GNOME rules at
+	  http://live.gnome.org/MaintainersCorner#maintainers .
+
+2007-09-03 16:50  ituohela
+
+	* po/ChangeLog, po/LINGUAS, po/fi.po: Added Finnish translation
+
+2007-08-20 14:58  dnylande
+
+	* po/ChangeLog, po/sv.po: sv.po: Swedish translation updated
+
+2007-08-20 02:47  pcastro
+
+	* src/Glade/HeadersDialog.glade,
+	  src/GnomeSubtitles/Dialogs/HeadersDialog.cs: Added support for
+	  the Karaoke Lyrics LRC and VKT headers in the Headers dialog, by
+	  Cristina Yenyxe.
+
+2007-08-19 04:28  pcastro
+
+	* src/GnomeSubtitles/Core/GUI.cs,
+	  src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs,
+	  src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs,
+	  src/GnomeSubtitles/Video/Player.cs,
+	  src/GnomeSubtitles/Video/Video.cs: Use the Uri class instead of a
+	  path string when handling the video location. (Should do this for
+	  subtitle files too.)
+
+2007-08-19 04:27  pcastro
+
+	* po/POTFILES.in: Added a new translation string.
+
+2007-08-19 04:08  pcastro
+
+	* gnome-subtitles.mdp: Updated project files.
+
+2007-08-19 04:08  pcastro
+
+	* src/GnomeSubtitles/Video/Video.cs: Catch errors found during
+	  video playback and report them to the user.
+
+2007-08-19 04:08  pcastro
+
+	* src/GnomeSubtitles/Video/PlayerTimesWatcher.cs: Code cleanup.
+
+2007-08-19 04:07  pcastro
+
+	* src/GnomeSubtitles/Video/Player.cs: Check for errors while
+	  loading the playbin. In that case, report a message to the user,
+	  otherwise wait for video information to be ready, and then
+	  return.
+
+2007-08-19 04:05  pcastro
+
+	* src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs: Dialog to report
+	  errors found during video playback.
+
+2007-08-19 04:04  pcastro
+
+	* src/GnomeSubtitles/Dialogs/ErrorDialog.cs: Added a contructor
+	  which allows to specify the primary and secondary text.
+
+2007-08-19 04:03  pcastro
+
+	* gstreamer-playbin-0.2.1/src/main.c: Code cleanup.
+
+2007-08-19 04:03  pcastro
+
+	* CREDITS: Updated list of contributors.
+
+2007-08-16 16:19  raphaelh
+
+	* po/ChangeLog, po/LINGUAS, po/pt_BR.po: Added Brazilian Portuguese
+	  translation
+
+2007-08-13 19:25  pcastro
+
+	* src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs,
+	  src/GnomeSubtitles/Video/VideoFiles.cs: Show video files with the
+	  OGG extension, in the Open File and Open Video
+	  dialogs. Fixes Bug 466342 – Missing ogg file in open video dialog
+	  (thanks to Miguel Filho).
+
+2007-08-13 16:16  pcastro
+
+	* gstreamer-playbin-0.2.1/src/main.c: Set the playbin status to
+	  Paused so getting the video information works.
+
+2007-08-13 16:08  pcastro
+
+	* gstreamer-playbin-0.2.1, gstreamer-playbin-0.2.1/src: Updated
+	  ignore list.
+
+2007-08-13 16:07  pcastro
+
+	* gstreamer-playbin-0.2.1/src/Engine.cs,
+	  gstreamer-playbin-0.2.1/src/main.c: Set the playbin status to
+	  Paused so getting the video information works.
+
+2007-08-13 15:49  pcastro
+
+	* gstreamer-playbin-0.2.1/src/Makefile.in: Removing unneeded files.
+
+2007-08-13 15:47  pcastro
+
+	* .: Updated ignore list.
+
+2007-08-13 15:46  pcastro
+
+	* help, help/el: Updated ignore list.
+
+2007-08-13 15:45  pcastro
+
+	* gstreamer-playbin-0.2.1, gstreamer-playbin-0.2.1/Makefile.in,
+	  gstreamer-playbin-0.2.1/aclocal.m4,
+	  gstreamer-playbin-0.2.1/configure,
+	  gstreamer-playbin-0.2.1/depcomp,
+	  gstreamer-playbin-0.2.1/install-sh,
+	  gstreamer-playbin-0.2.1/ltmain.sh,
+	  gstreamer-playbin-0.2.1/missing,
+	  gstreamer-playbin-0.2.1/src/Makefile.in: Removing unneeded files.
+
+2007-08-13 15:41  pcastro
+
+	* gstreamer-playbin-0.2.1/src,
+	  gstreamer-playbin-0.2.1/src/Makefile.in: Removing unneeded files.
+
+2007-08-13 15:37  pcastro
+
+	* gstreamer-playbin-0.2.1/config.guess,
+	  gstreamer-playbin-0.2.1/config.sub: Removing unneeded files.
+
+2007-08-13 15:34  pcastro
+
+	* gstreamer-playbin-0.2.1/AUTHORS, gstreamer-playbin-0.2.1/COPYING,
+	  gstreamer-playbin-0.2.1/ChangeLog,
+	  gstreamer-playbin-0.2.1/INSTALL, gstreamer-playbin-0.2.1/NEWS:
+	  Adding necessary files.
+
+2007-08-13 15:05  pcastro
+
+	* gstreamer-playbin-0.2.1, gstreamer-playbin-0.2.1/Makefile.am,
+	  gstreamer-playbin-0.2.1/Makefile.in,
+	  gstreamer-playbin-0.2.1/README,
+	  gstreamer-playbin-0.2.1/aclocal.m4,
+	  gstreamer-playbin-0.2.1/config.guess,
+	  gstreamer-playbin-0.2.1/config.sub,
+	  gstreamer-playbin-0.2.1/configure,
+	  gstreamer-playbin-0.2.1/configure.in,
+	  gstreamer-playbin-0.2.1/depcomp,
+	  gstreamer-playbin-0.2.1/install-sh,
+	  gstreamer-playbin-0.2.1/ltmain.sh,
+	  gstreamer-playbin-0.2.1/missing, gstreamer-playbin-0.2.1/src,
+	  gstreamer-playbin-0.2.1/src/AssemblyInfo.cs,
+	  gstreamer-playbin-0.2.1/src/Engine.cs,
+	  gstreamer-playbin-0.2.1/src/Makefile.am,
+	  gstreamer-playbin-0.2.1/src/Makefile.in,
+	  gstreamer-playbin-0.2.1/src/gstreamerplaybinwrapper.pc.in,
+	  gstreamer-playbin-0.2.1/src/main.c: Added GStreamer support using
+	  GStreamer-Playbin by the Dissent project (Still need to fixe some
+	  small things like asynchronous error handling).
+	  Fixes the following bugs:
+	  #363412 – Integration with GStreamer For Video Previewing
+	  #457760 – control buttons do not work when movie ends (thanks to
+	  Luciano A. Ferrer)
+	  #465233 – Crash on Video Rewind
+	  #457150 – Crash when toggling Play/Pause (thanks to Mario
+	  Señoranis)
+
+2007-08-13 14:54  pcastro
+
+	* src/GnomeSubtitles/Video/Player.cs,
+	  src/GnomeSubtitles/Video/PlayerPositionWatcher.cs,
+	  src/GnomeSubtitles/Video/PlayerTimesWatcher.cs,
+	  src/GnomeSubtitles/Video/Video.cs,
+	  src/GnomeSubtitles/Video/VideoPosition.cs,
+	  src/GnomeSubtitles/Video/VideoSubtitle.cs: Added GStreamer
+	  support using GStreamer-Playbin by the Dissent project (Still
+	  need to fixe some small things like asynchronous error handling).
+	  Fixes the following bugs:
+	  #363412 – Integration with GStreamer For Video Previewing
+	  #457760 – control buttons do not work when movie ends (thanks to
+	  Luciano A. Ferrer)
+	  #465233 – Crash on Video Rewind
+	  #457150 – Crash when toggling Play/Pause (thanks to Mario
+	  Señoranis)
+
+2007-08-13 14:43  pcastro
+
+	* src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs,
+	  src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs,
+	  src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs: Added GStreamer
+	  support using GStreamer-Playbin by the Dissent project.
+
+2007-08-13 14:43  pcastro
+
+	* src/GnomeSubtitles/Core/EventHandlers.cs,
+	  src/GnomeSubtitles/Core/Util.cs: Added GStreamer support using
+	  GStreamer-Playbin by the Dissent project.
+
+2007-08-13 14:43  pcastro
+
+	* src/GnomeSubtitles/Core/GUI.cs: Use video URI instead of filenam.
+	  Fixed Bug 456535 – Unable to use the Cyrillic CP1251 encoding
+	  (thanks to Danail Nedyalkov).
+
+2007-08-13 14:40  pcastro
+
+	* src/Glade/MainWindow.glade: Added keyboard shortcuts for the
+	  video operations. Fixes bug #436746 - More keyboard shortcuts.
+
+2007-08-13 14:36  pcastro
+
+	* TODO: Moved to the GNOME wiki:
+	  http://live.gnome.org/GnomeSubtitles/TODO
+
+2007-08-13 14:35  pcastro
+
+	* Makefile.am, configure.ac, gnome-subtitles.mdp,
+	  gnome-subtitles.mds, src/Makefile.am: Added GStreamer support
+	  using GStreamer-Playbin by the Dissent project.
+
+2007-08-04 00:54  simos
+
+	* m4/gtk-doc.m4, m4/intltool.m4: Reverting accidental commit on m4
+	  files
+
+2007-08-04 00:33  simos
+
+	* ChangeLog, help/Makefile.am, m4/gtk-doc.m4, m4/intltool.m4,
+	  po/ChangeLog, po/LINGUAS, po/el.po: Added Greek translation by
+	  Nick Agianniotis
+
+2007-07-25 00:09  simos
+
+	* help/el, help/el/el.po: Added Greek translation by Nick
+	  Agianniotis <nickagian@gmail.com>
+
+2007-07-11 23:02  pcastro
+
+	* src/GnomeSubtitles/Core/Document.cs,
+	  src/GnomeSubtitles/Core/Global.cs,
+	  src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs: Fixed bug with
+	  Global.document being set when errors occured while opening a
+	  file.
+	  (Bug #455923 – Crash when opening a video after an unsuccessful
+	  file open)
+
+2007-07-11 22:59  pcastro
+
+	* AUTHORS, ChangeLog, NEWS, README, TODO, configure.ac: Changed for
+	  release 0.6.
+
+2007-07-11 22:58  pcastro
+
+	* help, help/ca: Added files to SVN ignore.
 
 2007-07-04 23:16  pcastro
 

@@ -1,6 +1,45 @@
 Gnome Subtitles
 ===============
 
+
+0.7 (XX/10/2007)
+================
+
+- Added GStreamer support for video previewing, replacing MPlayer:
+  * Improved seeking precision to 500 ms
+  * Integrates better with GNOME
+  * Fixes crashes with video playback
+  * (Need to detail more)
+- Added support for the following subtitle formats:
+  * Adobe Encore DVD
+  * DKS Subtitle Format
+  * Karaoke Lyrics LRC (simple, not enhanced)
+  * Karaoke Lyrics VKT (same as above)
+  * Panimator
+  * Phoenix Japanimation Society
+  * Power DivX
+- Added video-related keyboard shortcuts
+  * (Need to specify which ones)
+- Display OGG video files in the File and Video Open dialogs
+- Allow different formats to share their headers, for making easier loading and saving them.
+
+Bug Fixes:
+- Integration with GStreamer For Video Previewing (#363412)
+- More keyboard shortcuts (#436746)
+- Crash when opening a video after an unsuccessful file open (#455923)
+- Unable to use the Cyrillic CP1251 encoding (#456535)
+- Crash when toggling Play/Pause (#457150)
+- Control buttons do not work when movie ends (#457760)
+- Crash on Video Rewind (#465233)
+- Missing OGG file in open video dialog (#466342)
+
+Translations:
+- Need to detail
+
+Thanks:
+- Danail Nedyalkov, Mario Señoranis, Luciano A. Ferrer, Miguel Filho
+
+
 0.6 (08/07/2007)
 ================
 
