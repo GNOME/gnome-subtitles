@@ -392,7 +392,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="editPreferences">
                         <property name="visible">True</property>
-                        <property name="label">Pr_eferences</property>
+                        <property name="label" translatable="yes">Pr_eferences</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditPreferences"/>
                         <child internal-child="image">
@@ -695,7 +695,7 @@
                     <child>
                       <widget class="GtkImageMenuItem" id="videoOpen">
                         <property name="visible">True</property>
-                        <property name="label">_Open</property>
+                        <property name="label" translatable="yes">_Open</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoOpen"/>
                         <child internal-child="image">
@@ -710,7 +710,7 @@
                       <widget class="GtkImageMenuItem" id="videoClose">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label">_Close</property>
+                        <property name="label" translatable="yes">_Close</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoClose"/>
                         <child internal-child="image">
@@ -1027,7 +1027,7 @@
             <child>
               <widget class="GtkToolButton" id="replaceToolButton">
                 <property name="visible">True</property>
-                <property name="label">Replace</property>
+                <property name="label" translatable="yes">Replace</property>
                 <property name="stock_id">gtk-find-and-replace</property>
                 <signal name="clicked" handler="OnSearchReplace"/>
               </widget>
