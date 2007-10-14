@@ -256,7 +256,6 @@ public class Video {
 		Close();
 		VideoErrorDialog dialog = new VideoErrorDialog(message);
 		dialog.WaitForResponse();
-		System.Console.WriteLine("After");
 	}
 
 }

@@ -166,7 +166,7 @@ public class Player {
 				}
 				else {
 					gotDuration = true;
-					Console.WriteLine("Got duration: " + duration);
+					Console.Error.WriteLine("Got duration: " + duration);
 				}
 			}
 		
@@ -180,7 +180,7 @@ public class Player {
 				}
 				else {
 					gotVideoInfo = true;
-					Console.WriteLine("Got video info: " + info + " (took " + (DateTime.Now - endTime.AddSeconds(-5)).TotalSeconds + " seconds)");
+					Console.Error.WriteLine("Got video info: " + info + " (took " + (DateTime.Now - endTime.AddSeconds(-5)).TotalSeconds + " seconds)");
 				}
 			}
 			
@@ -211,7 +211,6 @@ public class Player {
 	}
 	
 	private void OnEventChanged (object o, EngineEventArgs args) {
-		System.Console.WriteLine("Event " + args.Event + ": " + args.Message);
 		if (args.Event == MediaEvents.EndOfStream) {
 			EndReached(this, EventArgs.Empty);		
 		}
