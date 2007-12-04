@@ -1,4 +1,4 @@
-AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g
+AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
 
 noinst_PROGRAMS = libgstreamer_playbin.so
 libgstreamer_playbin_so_SOURCES = main.c
