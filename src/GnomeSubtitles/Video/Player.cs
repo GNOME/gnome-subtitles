@@ -52,8 +52,7 @@ public class Player {
 		if (!playbin.Initiate(socket.Id))
 			throw new PlayerCouldNotOpenVideoException();
 		
-		/* Connect handlers */
-		playbin.StateChanged += OnStateChanged;
+		/* Handle errors during playbin loading */
 		playbin.EventChanged += OnPlaybinLoadEventChanged;
 		
 		/* Load the playbin */
@@ -61,16 +60,20 @@ public class Player {
 		
 		/* Wait for the playbin to be ready (have video information) */
 		bool isReady = WaitForPlaybinReady();
+		
 		playbin.EventChanged -= OnPlaybinLoadEventChanged;
 		playbinLoadError = false;
 		if (!isReady) {
 			/* An error has occurred, returning */
-			playbin.StateChanged -= OnStateChanged;
 			throw new PlayerCouldNotOpenVideoException();
 		}
 
-		/* Load was successful, connecting the normal EventChanged handler */
+		/* Load was successful, connecting the normal handlers */
+		playbin.StateChanged += OnStateChanged;
 		playbin.EventChanged += OnEventChanged;
+		
+		/* Start position watcher */
+		position.Start();
 	}
 	
 	public void Close () {
@@ -166,6 +169,7 @@ public class Player {
 				}
 				else {
 					gotDuration = true;
+
 					Console.Error.WriteLine("Got duration: " + duration);
 				}
 			}
@@ -180,10 +184,11 @@ public class Player {
 				}
 				else {
 					gotVideoInfo = true;
+					
 					Console.Error.WriteLine("Got video info: " + info + " (took " + (DateTime.Now - endTime.AddSeconds(-5)).TotalSeconds + " seconds)");
 				}
 			}
-			
+
 			/* Was able to access all info, returning */
 			return true;
 		}
