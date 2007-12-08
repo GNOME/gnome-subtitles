@@ -85,11 +85,6 @@ public class Video {
 	
 	public void Show () {
 		videoArea.Show();
-		
-		/* Required for the vBox and children to be redrawn before launching the video player */
-		/*Paned paned = Global.GetWidget(WidgetNames.MainPaned) as Paned;
-		paned.ResizeChildren(); TODO is this needed?
-		Gdk.Window.ProcessAllUpdates();*/ 
 	}
 
 	public void Hide () {

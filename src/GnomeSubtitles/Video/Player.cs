@@ -81,6 +81,8 @@ public class Player {
 			playbin.StateChanged -= OnStateChanged;
 			playbin.EventChanged -= OnEventChanged;
 			DestroyPlaybin();
+			
+			position.Stop();
 		}
 	}
 	
@@ -169,7 +171,6 @@ public class Player {
 				}
 				else {
 					gotDuration = true;
-
 					Console.Error.WriteLine("Got duration: " + duration);
 				}
 			}
