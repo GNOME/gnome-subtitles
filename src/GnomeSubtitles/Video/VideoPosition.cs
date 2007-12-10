@@ -94,7 +94,8 @@ public class VideoPosition {
 	public void ToggleTimingMode (TimingMode newMode) {
 		UpdatePositionLabel(newMode);
 		UpdatePositionValueLabel(position);
-		UpdateLengthLabel(newMode, player.Length);
+		TimeSpan length = (player.IsLoaded ? player.Length : TimeSpan.Zero);
+		UpdateLengthLabel(newMode, length);
 	}
 
 	/* Event members */
@@ -165,7 +166,7 @@ public class VideoPosition {
 		if (Global.TimingMode == TimingMode.Times)
 			positionValueLabel.Text = Util.TimeSpanToText(newPosition);
 		else {
-			double frames = SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate);
+			double frames = (newPosition == TimeSpan.Zero ? 0 : SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate));
 			positionValueLabel.Text = Convert.ToInt32(frames).ToString();
 		}
 	}
@@ -184,7 +185,7 @@ public class VideoPosition {
 		if (timingMode == TimingMode.Times)
 			lengthValueLabel.Text = Util.TimeSpanToText(length);
 		else {
-			double frames = SubLib.Synchronization.TimeToFrames(length, player.FrameRate);
+			double frames = (length == TimeSpan.Zero ? 0 : SubLib.Synchronization.TimeToFrames(length, player.FrameRate));
 			lengthValueLabel.Text = Convert.ToInt32(frames).ToString();
 		}
 	}

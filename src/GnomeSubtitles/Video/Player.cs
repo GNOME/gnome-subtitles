@@ -45,32 +45,38 @@ public class Player {
 		get { return socket; }
 	}
 	
+	public bool IsLoaded {
+		get { return playbin != null; }
+	}
+	
 	public void Open (Uri videoUri) {
-		playbin = new Playbin();
+		Playbin newPlaybin = new Playbin();
 	
 		/* Initialize the playbin */
-		if (!playbin.Initiate(socket.Id))
+		if (!newPlaybin.Initiate(socket.Id))
 			throw new PlayerCouldNotOpenVideoException();
 		
 		/* Handle errors during playbin loading */
-		playbin.EventChanged += OnPlaybinLoadEventChanged;
+		newPlaybin.EventChanged += OnPlaybinLoadEventChanged;
 		
 		/* Load the playbin */
-		playbin.Load(videoUri.AbsoluteUri);
+		newPlaybin.Load(videoUri.AbsoluteUri);
 		
 		/* Wait for the playbin to be ready (have video information) */
-		bool isReady = WaitForPlaybinReady();
+		bool isReady = WaitForPlaybinReady(newPlaybin);
 		
-		playbin.EventChanged -= OnPlaybinLoadEventChanged;
+		newPlaybin.EventChanged -= OnPlaybinLoadEventChanged;
 		playbinLoadError = false;
 		if (!isReady) {
 			/* An error has occurred, returning */
 			throw new PlayerCouldNotOpenVideoException();
 		}
+		
+		this.playbin = newPlaybin;
 
 		/* Load was successful, connecting the normal handlers */
-		playbin.StateChanged += OnStateChanged;
-		playbin.EventChanged += OnEventChanged;
+		this.playbin.StateChanged += OnStateChanged;
+		this.playbin.EventChanged += OnEventChanged;
 		
 		/* Start position watcher */
 		position.Start();
@@ -149,10 +155,10 @@ public class Player {
 	}
 	
 	/// <summary>Waits for the playbin to be ready.</summary>
-	/// <param name=""></param>
+	/// <param name="newPlaybin">The playbin to wait for.</param>
 	/// <remarks>The playbin is ready when it is able to access both the duration and video information.</remarks>
 	/// <returns>Whether the playbin is ready.</returns>
-	private bool WaitForPlaybinReady () {
+	private bool WaitForPlaybinReady (Playbin newPlaybin) {
 		bool gotVideoInfo = false;
 		bool gotDuration = false;
 
@@ -163,7 +169,7 @@ public class Player {
 		
 			/* Check for duration if it hasn't been accessed yet */
 			if (!gotDuration) {
-				TimeSpan duration = playbin.Duration;
+				TimeSpan duration = newPlaybin.Duration;
 				if (duration == TimeSpan.Zero) {
 					GLib.MainContext.Iteration(); //Because an error event may be triggered and we have to catch it
 					System.Threading.Thread.Sleep(15); //milliseconds
@@ -177,7 +183,7 @@ public class Player {
 		
 			/* Check for video information if it hasn't been accessed yet */
 			if (!gotVideoInfo) {
-				EngineVideoInfo info = playbin.VideoInfo;
+				EngineVideoInfo info = newPlaybin.VideoInfo;
 				if (info == null) {
 					GLib.MainContext.Iteration(); //Because an error event may be triggered and we have to catch it
 					System.Threading.Thread.Sleep(15); //milliseconds
