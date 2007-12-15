@@ -1,3 +1,106 @@
+2007-12-10 22:13  pcastro
+
+	* src/GnomeSubtitles/Video/Player.cs,
+	  src/GnomeSubtitles/Video/VideoPosition.cs: Don't use Player to
+	  get the FrameRate and Length if it hasn't been
+	  initialized yet (it was being used unnecessarily). (Related to
+	  bug
+	  500264)
+
+2007-12-08 23:00  pcastro
+
+	* src/GnomeSubtitles/Video/Player.cs,
+	  src/GnomeSubtitles/Video/Video.cs: Stop the player position
+	  watcher when closing the player (related to bug
+	  #500264).
+	  Code cleanup.
+
+2007-12-08 21:35  pcastro
+
+	* m4/gtk-doc.m4, m4/intltool.m4: Updated m4 files.
+
+2007-12-08 21:34  pcastro
+
+	* gnome-subtitles.mdp, gnome-subtitles.mds: Updated project files.
+
+2007-12-08 21:33  pcastro
+
+	* src/GnomeSubtitles/Video/Player.cs,
+	  src/GnomeSubtitles/Video/PlayerTimesWatcher.cs: Do not start the
+	  video position watcher until the video open operation
+	  has been totally completed. Hopefully fixes bug #500264 (waiting
+	  for
+	  reporter feedback).
+
+2007-12-08 21:30  pcastro
+
+	* src/GnomeSubtitles/Execution/gnome-subtitles.in: Use $libdir in
+	  order to work on 64bit machines (which have libraries
+	  on /usr/lib64). Hopefully fixes bug #487842 (waiting for reporter
+	  feedback).
+
+2007-12-04 22:23  pcastro
+
+	* data/gnome-subtitles.1: Fixed small bug in .SH NAME, thanks to
+	  Tiago Vaz.
+
+2007-12-04 21:59  pcastro
+
+	* README: Updated dependency list.
+
+2007-12-04 21:59  pcastro
+
+	* gstreamer-playbin-0.2.1/src/Makefile.am: Fixed bug with
+	  compilation failing on 64 bit architectures.
+
+2007-11-28 21:59  cyenyxe
+
+	* MAINTAINERS: I have been restored as a maintainer.
+
+2007-11-25 23:49  ovitters
+
+	* MAINTAINERS: Fix MAINTAINERS. Remove persons who apparently
+	  commit so sparingly that the userid is unknown.
+
+2007-11-20 20:43  ymarcheg
+
+	* help/oc/oc.po, po/oc.po: Updated Occitan translation
+
+2007-11-18 21:57  pcastro
+
+	* configure.ac: Added checks for gstreamer-plugins-base.
+
+2007-10-14 17:08  pcastro
+
+	* NEWS, src/Glade/AboutDialog.glade: Added Occitan translator.
+
+2007-10-14 17:08  pcastro
+
+	* AUTHORS: Added Occitan translator.
+
+2007-10-14 17:07  pcastro
+
+	* help, help/oc: Added files to ignore list.
+
+2007-10-14 16:44  pcastro
+
+	* gstreamer-playbin-0.2.1: Added files to ignore list.
+
+2007-10-14 16:42  pcastro
+
+	* src/GnomeSubtitles/Video/Player.cs,
+	  src/GnomeSubtitles/Video/Video.cs: Removed unnecessary console
+	  prints.
+
+2007-10-14 12:58  ymarcheg
+
+	* help/Makefile.am, help/oc, help/oc/oc.po, po/LINGUAS, po/oc.po:
+	  Updated Occitan translation
+
+2007-10-12 22:29  pcastro
+
+	* ChangeLog, NEWS: Updating for the 0.7 release.
+
 2007-10-09 21:47  cyenyxe
 
 	* NEWS: Goran Sterjov added to the list of acknowledgements.

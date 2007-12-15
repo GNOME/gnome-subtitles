@@ -1,5 +1,5 @@
 AC_PREREQ(2.58)
-AC_INIT(gnome-subtitles, 0.7, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
+AC_INIT(gnome-subtitles, 0.7.1, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
 
 GNOME_COMMON_INIT
 
