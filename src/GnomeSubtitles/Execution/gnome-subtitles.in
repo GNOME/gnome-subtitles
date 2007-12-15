@@ -4,5 +4,6 @@ prefix=@prefix@
 exec_prefix=@exec_prefix@
 libdir=@libdir@
 
+export LD_LIBRARY_PATH="$libdir/gnome-subtitles:$LD_LIBRARY_PATH"
 exec -a gnome-subtitles @MONO@ $libdir/gnome-subtitles/gnome-subtitles.exe "$@"
 
