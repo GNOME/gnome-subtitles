@@ -8,10 +8,10 @@ gstpbdir = $(pkglibdir)
 gstpb_DATA = build/GStreamerPlaybin.dll build/libgstreamer_playbin.so
 
 $(sublib_DATA):
-	cp $(SUBLIB_DIR)/build/sublib.dll build
+	cp -f $(SUBLIB_DIR)/build/sublib.dll build
 
 $(gstpb_DATA):
-	cp $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp $(GSTPB_DIR)/src/libgstreamer_playbin.so build
+	cp -f $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp -f $(GSTPB_DIR)/src/libgstreamer_playbin.so build
 
 EXTRA_DIST = 			\
 	autogen.sh			\
