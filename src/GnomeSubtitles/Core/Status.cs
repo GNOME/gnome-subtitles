@@ -38,6 +38,7 @@ public class Status {
 
 	public bool Overwrite {
 		set {
+			//To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
 			string message = (value == true ? Catalog.GetString("OVR") : Catalog.GetString("INS"));
 			ClearStatus(overwriteStatus);
 			overwriteStatus.Push(0, message);
@@ -52,8 +53,11 @@ public class Status {
 	}
 	
 	public void SetPosition (SubtitleTextType textType, int lineNumber, int columnNumber) {
+		//To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 		string type = (textType == SubtitleTextType.Text ? Catalog.GetString("Text") : Catalog.GetString("Trans"));
+		//To translators: Ln corresponds to Line
 		string line = Catalog.GetString("Ln");
+		//To translators: Col corresponds to Column
 		string column = Catalog.GetString("Col");
 
 		string message = type + " " + line  + " " + lineNumber + ", " + column + " " + columnNumber;
