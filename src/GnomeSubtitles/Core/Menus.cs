@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,12 +51,13 @@ public class Menus {
 	}
 	
 	public void UpdateFromNewTranslationDocument () {
-		SetNewTranslationSensitivity(true);
+		SetTranslationSensitivity(true);
 		UpdateUndoRedoMessages();
 	}
 	
 	public void UpdateFromCloseTranslation () {
-    	SetNewTranslationSensitivity(false);
+    	SetTranslationSensitivity(false);
+    	SetViewVideoSubtitlesActivity(true);
     	UpdateUndoRedoMessages();
     }
 	
@@ -102,6 +103,16 @@ public class Menus {
     public void UpdateFromCommandActivated () {
     	UpdateUndoRedoMessages();
     }
+    
+    public void UpdateFromOpenVideo () {
+    	SetVideoSensitivity(true);
+    	SetViewVideoSubtitlesSensitivity();
+    }
+    
+    public void UpdateFromCloseVideo () {
+    	SetVideoSensitivity(false);
+    	SetViewVideoSubtitlesSensitivity(false, false);
+    }
 
 	public void SetActiveTimingMode (TimingMode mode) {
 		if (mode == TimingMode.Times)
@@ -139,19 +150,6 @@ public class Menus {
 	
 	public void SetViewVideoActivity (bool activity) {
 		SetCheckMenuItemActivity(WidgetNames.ViewVideo, activity);
-	}
-	
-	public void SetVideoSensitivity (bool sensitivity) {
-		SetSensitivity(WidgetNames.VideoClose, sensitivity);
-		SetSensitivity(WidgetNames.VideoPlayPause, sensitivity);
-		SetSensitivity(WidgetNames.VideoRewind, sensitivity);
-		SetSensitivity(WidgetNames.VideoForward, sensitivity);
-		
-		/* Set video menu dependent sensitivity if there is 1 selected subtitle. */
-		if ((Global.GUI.View.Selection.Count == 1) && sensitivity)
-			SetVideoSelectionDependentSensitivity(true);
-		else
-			SetVideoSelectionDependentSensitivity(false);
 	}
 	
 	public void AddFrameRateVideoTag (float frameRate) {
@@ -276,6 +274,7 @@ public class Menus {
 			/* View Menu */
 			SetSensitivity(WidgetNames.ViewTimes, true);
 			SetSensitivity(WidgetNames.ViewFrames, true);
+			SetViewVideoSubtitlesSensitivity();
 			/* Search Menu */
 			SetSensitivity(WidgetNames.SearchFind, true);
 			SetSensitivity(WidgetNames.SearchReplace, true);
@@ -297,6 +296,8 @@ public class Menus {
 			SetSensitivity(WidgetNames.EditCut, false);
 			SetSensitivity(WidgetNames.EditCopy, false);
 			SetSensitivity(WidgetNames.EditPaste, false);
+			/* View Menu */
+			SetViewVideoSubtitlesSensitivity();
 			/* Search Menu */
 			SetSensitivity(WidgetNames.SearchFindNext, false);
 			SetSensitivity(WidgetNames.SearchFindPrevious, false);
@@ -309,10 +310,11 @@ public class Menus {
 		}	
 	}
 	
-	private void SetNewTranslationSensitivity (bool sensitivity) {
+	private void SetTranslationSensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.FileTranslationSave, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
+		SetViewVideoSubtitlesSensitivity();
 	}
 	
 	private void SetFrameRateMenus () {
@@ -336,6 +338,27 @@ public class Menus {
 		SetToggleToolButtonActivity(WidgetNames.BoldButton, bold, Global.Handlers.OnEditFormatBold);
 		SetToggleToolButtonActivity(WidgetNames.ItalicButton, italic, Global.Handlers.OnEditFormatItalic);
 		SetToggleToolButtonActivity(WidgetNames.UnderlineButton, underline, Global.Handlers.OnEditFormatUnderline);
+	}
+	
+		
+	private void SetViewVideoSubtitlesActivity (bool isTextActive) {
+		if (isTextActive)
+			SetCheckMenuItemActivity(WidgetNames.ViewVideoSubtitlesText, true);
+		else
+			SetCheckMenuItemActivity(WidgetNames.ViewVideoSubtitlesTranslation, true);
+	}
+	
+	private void SetVideoSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.VideoClose, sensitivity);
+		SetSensitivity(WidgetNames.VideoPlayPause, sensitivity);
+		SetSensitivity(WidgetNames.VideoRewind, sensitivity);
+		SetSensitivity(WidgetNames.VideoForward, sensitivity);
+		
+		/* Set video menu dependent sensitivity if there is 1 selected subtitle. */
+		if ((Global.GUI.View.Selection.Count == 1) && sensitivity)
+			SetVideoSelectionDependentSensitivity(true);
+		else
+			SetVideoSelectionDependentSensitivity(false);
 	}
 	
 	private void SetStylesSensitivity (bool sensitivity) {
@@ -363,6 +386,18 @@ public class Menus {
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
 		}
+	}
+	
+	private void SetViewVideoSubtitlesSensitivity () {
+		bool isVideoLoaded = Global.GUI.Video.IsLoaded;
+		bool textSensitivity = isVideoLoaded && Global.IsDocumentLoaded;
+		bool translationSensitivity = isVideoLoaded && textSensitivity && Global.Document.IsTranslationLoaded;
+		SetViewVideoSubtitlesSensitivity(textSensitivity, translationSensitivity);	
+	}
+	
+	private void SetViewVideoSubtitlesSensitivity (bool textSensitivity, bool translationSensitivity) {
+		SetSensitivity(WidgetNames.ViewVideoSubtitlesText, textSensitivity);
+		SetSensitivity(WidgetNames.ViewVideoSubtitlesTranslation, translationSensitivity);
 	}
 	
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {

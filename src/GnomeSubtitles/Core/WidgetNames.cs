@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,6 +55,8 @@ public class WidgetNames {
 	public const string ViewTimes = "viewTimes";
 	public const string ViewFrames = "viewFrames";
 	public const string ViewVideo = "viewVideo";
+	public const string ViewVideoSubtitlesText = "viewVideoSubtitlesText";
+	public const string ViewVideoSubtitlesTranslation = "viewVideoSubtitlesTranslation";
 	
 	/* Search Menu */
 	public const string SearchFind = "searchFind";

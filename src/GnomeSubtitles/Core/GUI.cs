@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -153,6 +153,11 @@ public class GUI {
 		}
     }
     
+    public void CloseVideo () {
+    	Video.Close();
+    	UpdateFromCloseVideo();
+    }
+    
     /// <summary>Executes a Save operation.</summary>
     /// <remarks>If the document hasn't been saved before, a SaveAs is executed.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
@@ -266,6 +271,14 @@ public class GUI {
 		video.UpdateFromTimingMode(mode);
 	}
 	
+	public void UpdateFromOpenVideo () {
+		menus.UpdateFromOpenVideo();
+	}
+	
+	public void UpdateFromCloseVideo () {
+		menus.UpdateFromCloseVideo();
+	}
+	
 	/// <summary>Updates the various parts of the GUI based on the current selection.</summary>
 	public void UpdateFromSelection () {
 		if (view.Selection.Count == 1)
@@ -346,7 +359,7 @@ public class GUI {
 		try {
 			videoUri = new Uri(videoUriString);
 			Video.Open(videoUri);
-			Menus.SetVideoSensitivity(true);
+			UpdateFromOpenVideo();
 		}
 		catch (Exception exception) {
 			Video.Close();

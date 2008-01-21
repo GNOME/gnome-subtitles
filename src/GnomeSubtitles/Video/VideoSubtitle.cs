@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007 Pedro Castro
+ * Copyright (C) 2007-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@ public class VideoSubtitle {
 	private Subtitle subtitle = null;
 	private TimeSpan subtitleStart = TimeSpan.Zero;
 	private TimeSpan subtitleEnd = TimeSpan.Zero;
+	private bool toShowText = true;
 	
 	public VideoSubtitle (VideoPosition position) {
 		EventBox box = Global.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
@@ -40,6 +41,15 @@ public class VideoSubtitle {
 
 		position.Changed += OnVideoPositionChanged;
 	}
+	
+	/* Public properties */
+	
+	public bool ToShowText {
+		get { return toShowText; }
+		set { this.toShowText = value; }
+	}
+	
+	/* Public methods */
 
 	public void Close () {
 		UnloadSubtitle();
@@ -89,7 +99,13 @@ public class VideoSubtitle {
 	}
 	
 	private void SetText () {
-		string text = subtitle.Text.Get();
+		if (toShowText)
+			SetText(subtitle.Text.Get());
+		else
+			SetText(subtitle.Translation.Get());
+	}
+	
+	private void SetText (string text) {
 		string markup = "<span size=\"x-large\""; 
 	
 		if (subtitle.Style.Bold)
