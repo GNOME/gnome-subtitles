@@ -1,20 +1,28 @@
 # Traducció del gnome-subtitles de l'equip de Softcatalà.
-# Copyright © 2007 Free Software Foundation, Inc.
+# Copyright © 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the accerciser package.
-# Joan Duran <jodufi@gmail.com>, 2007.
+# Joan Duran <jodufi@gmail.com>, 2007, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-29 03:28+0100\n"
-"PO-Revision-Date: 2007-06-03 22:43+0100\n"
+"POT-Creation-Date: 2008-01-31 02:24+0100\n"
+"PO-Revision-Date: 2008-01-28 20:50+0100\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/Glade/AboutDialog.glade.h:1
+msgid "About Gnome Subtitles"
+msgstr "Quant al GNOME Subtitles"
+
+#: ../src/Glade/AboutDialog.glade.h:2
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Edició de subtítols de vídeo per a l'escriptori GNOME"
 
 #: ../src/Glade/EncodingsDialog.glade.h:1
 msgid "A_vailable:"
@@ -34,6 +42,11 @@ msgid "Character Coding:"
 msgstr "Codificació de caràcters:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:47
+msgid "Open File"
+msgstr "Obre un fitxer"
+
+#: ../src/Glade/FileOpenDialog.glade.h:3
 msgid "Video To Open:"
 msgstr "Vídeo a obrir:"
 
@@ -66,14 +79,27 @@ msgid "Newline Type:"
 msgstr "Tipus de salt de línia:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
+#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:83
+msgid "Save As"
+msgstr "Anomena i desa"
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:4
 msgid "Select advanced options"
 msgstr "Seleccioneu opcions avançades"
 
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
+#: ../src/Glade/FileSaveAsDialog.glade.h:5
 msgid "Subtitle Format:"
 msgstr "Format del subtítol:"
 
 #: ../src/Glade/HeadersDialog.glade.h:1
+msgid "Album:"
+msgstr "Àlbum:"
+
+#: ../src/Glade/HeadersDialog.glade.h:2
+msgid "Artist:"
+msgstr "Artista:"
+
+#: ../src/Glade/HeadersDialog.glade.h:3
 msgid ""
 "Audio\n"
 "Video\n"
@@ -81,109 +107,137 @@ msgstr ""
 "Àudio\n"
 "Vídeo\n"
 
-#: ../src/Glade/HeadersDialog.glade.h:4
+#: ../src/Glade/HeadersDialog.glade.h:6
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/Glade/HeadersDialog.glade.h:5
+#: ../src/Glade/HeadersDialog.glade.h:7
+msgid "By:"
+msgstr "Per:"
+
+#: ../src/Glade/HeadersDialog.glade.h:8
 msgid "CD Track:"
 msgstr "Pista de CD:"
 
-#: ../src/Glade/HeadersDialog.glade.h:6
+#: ../src/Glade/HeadersDialog.glade.h:9
 msgid "Collisions:"
 msgstr "Col·lisions:"
 
-#: ../src/Glade/HeadersDialog.glade.h:7
+#: ../src/Glade/HeadersDialog.glade.h:10
 msgid "Comment:"
 msgstr "Comentari:"
 
-#: ../src/Glade/HeadersDialog.glade.h:8
+#: ../src/Glade/HeadersDialog.glade.h:11
+msgid "Date:"
+msgstr "Data:"
+
+#: ../src/Glade/HeadersDialog.glade.h:12
 msgid "Delay:"
 msgstr "Retard:"
 
-#: ../src/Glade/HeadersDialog.glade.h:9
+#: ../src/Glade/HeadersDialog.glade.h:13
 msgid "File Path:"
 msgstr "Camí del fitxer:"
 
-#: ../src/Glade/HeadersDialog.glade.h:10
+#: ../src/Glade/HeadersDialog.glade.h:14
 msgid "File:"
 msgstr "Fitxer:"
 
-#: ../src/Glade/HeadersDialog.glade.h:11
+#: ../src/Glade/HeadersDialog.glade.h:15
 msgid "Font Color:"
 msgstr "Color del tipus de lletra:"
 
-#: ../src/Glade/HeadersDialog.glade.h:12
+#: ../src/Glade/HeadersDialog.glade.h:16
 msgid "Font Name:"
 msgstr "Nom del tipus de lletra:"
 
-#: ../src/Glade/HeadersDialog.glade.h:13
+#: ../src/Glade/HeadersDialog.glade.h:17
 msgid "Font Size:"
 msgstr "Mida del tipus de lletra:"
 
-#: ../src/Glade/HeadersDialog.glade.h:14
+#: ../src/Glade/HeadersDialog.glade.h:18
 msgid "Font Style:"
 msgstr "Estil del tipus de lletra:"
 
-#: ../src/Glade/HeadersDialog.glade.h:15
+#: ../src/Glade/HeadersDialog.glade.h:19
+msgid "Frame rate:"
+msgstr "Imatges per segon:"
+
+#: ../src/Glade/HeadersDialog.glade.h:20
+msgid "Headers"
+msgstr "Capçaleres"
+
+#: ../src/Glade/HeadersDialog.glade.h:21
+msgid "Karaoke Lyrics LRC"
+msgstr "Lletres de cançó per a Karaoke LRC"
+
+#: ../src/Glade/HeadersDialog.glade.h:22
+msgid "Karaoke Lyrics VKT"
+msgstr "Lletres de cançó per a Karaoke VKT"
+
+#: ../src/Glade/HeadersDialog.glade.h:23
 msgid "Note:"
 msgstr "Nota:"
 
-#: ../src/Glade/HeadersDialog.glade.h:16
+#: ../src/Glade/HeadersDialog.glade.h:24
 msgid "Original Editing:"
 msgstr "Edició original:"
 
-#: ../src/Glade/HeadersDialog.glade.h:17
+#: ../src/Glade/HeadersDialog.glade.h:25
 msgid "Original Script Checking:"
 msgstr "Correcció del guió original:"
 
-#: ../src/Glade/HeadersDialog.glade.h:18
+#: ../src/Glade/HeadersDialog.glade.h:26
 msgid "Original Script:"
 msgstr "Guió original:"
 
-#: ../src/Glade/HeadersDialog.glade.h:19
+#: ../src/Glade/HeadersDialog.glade.h:27
 msgid "Original Timing:"
 msgstr "Temporització original:"
 
-#: ../src/Glade/HeadersDialog.glade.h:20
+#: ../src/Glade/HeadersDialog.glade.h:28
 msgid "Original Translation:"
 msgstr "Traducció original:"
 
-#: ../src/Glade/HeadersDialog.glade.h:21
+#: ../src/Glade/HeadersDialog.glade.h:29
 msgid "PlayDepth:"
 msgstr "PlayDepth:"
 
-#: ../src/Glade/HeadersDialog.glade.h:22
+#: ../src/Glade/HeadersDialog.glade.h:30
 msgid "PlayResX:"
 msgstr "PlayResX:"
 
-#: ../src/Glade/HeadersDialog.glade.h:23
+#: ../src/Glade/HeadersDialog.glade.h:31
 msgid "PlayResY:"
 msgstr "PlayResY:"
 
-#: ../src/Glade/HeadersDialog.glade.h:24
+#: ../src/Glade/HeadersDialog.glade.h:32
 msgid "Program:"
 msgstr "Programa:"
 
-#: ../src/Glade/HeadersDialog.glade.h:25
+#: ../src/Glade/HeadersDialog.glade.h:33
 msgid "Script Updated By:"
 msgstr "Guió actualitzat per:"
 
-#: ../src/Glade/HeadersDialog.glade.h:26
+#: ../src/Glade/HeadersDialog.glade.h:34
 msgid "Source:"
 msgstr "Font:"
 
-#: ../src/Glade/HeadersDialog.glade.h:27
+#: ../src/Glade/HeadersDialog.glade.h:35
 msgid "Timer:"
 msgstr "Temporitzador:"
 
-#: ../src/Glade/HeadersDialog.glade.h:28
+#: ../src/Glade/HeadersDialog.glade.h:36
 msgid "Title:"
 msgstr "Títol:"
 
-#: ../src/Glade/HeadersDialog.glade.h:29
+#: ../src/Glade/HeadersDialog.glade.h:37
 msgid "Type:"
 msgstr "Tipus:"
+
+#: ../src/Glade/HeadersDialog.glade.h:38
+msgid "Version:"
+msgstr "Versió:"
 
 #: ../src/Glade/MainWindow.glade.h:1
 msgid "<b>Length</b>"
@@ -212,131 +266,177 @@ msgid "From:"
 msgstr "Des de:"
 
 #: ../src/Glade/MainWindow.glade.h:9
+msgid "Pr_eferences"
+msgstr "_Preferències"
+
+#: ../src/Glade/MainWindow.glade.h:10 ../src/Glade/SearchDialog.glade.h:1
+#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:66
+msgid "Replace"
+msgstr "Reemplaça"
+
+#: ../src/Glade/MainWindow.glade.h:11
 msgid "Report a _Bug"
 msgstr "Informa d'un _error"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.glade.h:12
 msgid "Request a _Feature"
 msgstr "_Sol·licita una característica nova"
 
-#: ../src/Glade/MainWindow.glade.h:11
-msgid "Seek _To Selection"
+#: ../src/Glade/MainWindow.glade.h:13
+msgid "Save _As"
+msgstr "_Anomena i desa"
+
+#: ../src/Glade/MainWindow.glade.h:14
+msgid "Seek _to Selection"
 msgstr "Cerca fins _a la selecció"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.glade.h:15
 msgid "Set Subtitle En_d"
 msgstr "Estableix el _final del subtítol"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.glade.h:16
 msgid "Set Subtitle _Start"
 msgstr "Estableix l'_inici del subtítol"
 
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.glade.h:18
 msgid "To:"
 msgstr "A:"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.glade.h:19
+msgid "Translatio_n"
+msgstr "_Traducció"
+
+#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:232
+msgid "Translation"
+msgstr "Traducció"
+
+#: ../src/Glade/MainWindow.glade.h:21
 msgid "Vide_o"
 msgstr "Víde_o"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.glade.h:22
+msgid "Video _Subtitles"
+msgstr "_Subtítols del vídeo"
+
+#: ../src/Glade/MainWindow.glade.h:23
 msgid "_Adjust"
 msgstr "_Ajusta"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.glade.h:24
 msgid "_After"
 msgstr "_Després"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.glade.h:25
 msgid "_Before"
 msgstr "_Abans"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.glade.h:26
 msgid "_Bold"
 msgstr "_Negreta"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.glade.h:27
+msgid "_Close"
+msgstr "_Tanca"
+
+#: ../src/Glade/MainWindow.glade.h:28
 msgid "_Contents"
 msgstr "_Continguts"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.glade.h:29
 msgid "_Delete Subtitles"
 msgstr "_Suprimeix els subtítols"
 
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "_Edit"
 msgstr "_Edita"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.glade.h:31
 msgid "_File"
 msgstr "_Fitxer"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.glade.h:32
 msgid "_Format"
 msgstr "_Format"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "_Frames"
 msgstr "_Fotogrames"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "_Headers"
 msgstr "_Capçaleres"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "_Help"
 msgstr "A_juda"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.glade.h:36
 msgid "_Input Frame Rate"
 msgstr "Freqüència dels fotogrames d'_entrada"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.glade.h:37
 msgid "_Insert Subtitle"
 msgstr "_Insereix un subtítol"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:38
 msgid "_Italic"
 msgstr "_Cursiva"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:39
+msgid "_New"
+msgstr "_Nou"
+
+#: ../src/Glade/MainWindow.glade.h:40
+msgid "_Open"
+msgstr "_Obre"
+
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "_Play / Pause"
 msgstr "_Reprodueix / fes una pausa"
 
-#: ../src/Glade/MainWindow.glade.h:33 ../src/Glade/SearchDialog.glade.h:6
+#: ../src/Glade/MainWindow.glade.h:42 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Reemplaça"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.glade.h:43
+msgid "_Save"
+msgstr "_Desa"
+
+#: ../src/Glade/MainWindow.glade.h:44
 msgid "_Search"
 msgstr "_Cerca"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Shift"
 msgstr "_Desplaça"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.glade.h:46
+msgid "_Text"
+msgstr "_Text"
+
+#: ../src/Glade/MainWindow.glade.h:47
 msgid "_Times"
 msgstr "_Temps"
 
-#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "_Timings"
 msgstr "_Temporització"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "_Underline"
 msgstr "S_ubratllat"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.glade.h:50
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:51
 msgid "_Video Frame Rate"
 msgstr "Freqüència dels fotogrames del _vídeo"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_View"
 msgstr "_Visualitza"
 
@@ -374,31 +474,31 @@ msgstr ""
 msgid "Open Bugzilla"
 msgstr "Obre el Bugzilla"
 
-#: ../src/Glade/SearchDialog.glade.h:1
+#: ../src/Glade/SearchDialog.glade.h:2
 msgid "Replace _All"
 msgstr "Ree_mplaça-ho tot"
 
-#: ../src/Glade/SearchDialog.glade.h:2
+#: ../src/Glade/SearchDialog.glade.h:3
 msgid "Replace _with:"
 msgstr "Reemplaça _amb:"
 
-#: ../src/Glade/SearchDialog.glade.h:3
+#: ../src/Glade/SearchDialog.glade.h:4
 msgid "Search _backwards"
 msgstr "Cerca cap _enrere"
 
-#: ../src/Glade/SearchDialog.glade.h:4
+#: ../src/Glade/SearchDialog.glade.h:5
 msgid "Search using a Regular _Expression"
 msgstr "Cerca utilitzant una e_xpressió regular"
 
-#: ../src/Glade/SearchDialog.glade.h:5
+#: ../src/Glade/SearchDialog.glade.h:6
 msgid "_Match case"
 msgstr "Coi_ncidència de majúscules i minúscules"
 
-#: ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/SearchDialog.glade.h:8
 msgid "_Search for:"
 msgstr "Ce_rca:"
 
-#: ../src/Glade/SearchDialog.glade.h:8
+#: ../src/Glade/SearchDialog.glade.h:9
 msgid "_Wrap around"
 msgstr "Cerca a t_ot el text"
 
@@ -420,22 +520,26 @@ msgid "Adjust"
 msgstr "Ajusta"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:5
+msgid "Adjust Timings"
+msgstr "Ajusta els temps"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:6
 msgid "All Subtitles"
 msgstr "Tots els subtítols"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:6
+#: ../src/Glade/TimingsAdjustDialog.glade.h:7
 msgid "New Start:"
 msgstr "Començament nou:"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
+#: ../src/Glade/TimingsAdjustDialog.glade.h:8
 msgid "No.:"
 msgstr "Número:"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
+#: ../src/Glade/TimingsAdjustDialog.glade.h:9
 msgid "Selected Subtitles"
 msgstr "Subtítols seleccionats"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:9
+#: ../src/Glade/TimingsAdjustDialog.glade.h:10
 msgid "Start Frame:"
 msgstr "Fotograma inicial:"
 
@@ -465,6 +569,10 @@ msgstr "Subtítols seleccionats"
 msgid "Shift"
 msgstr "Desplaça"
 
+#: ../src/Glade/TimingsShiftDialog.glade.h:10
+msgid "Shift Timings"
+msgstr "Desplaça els temps"
+
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Obre un vídeo"
@@ -493,10 +601,6 @@ msgstr "Commutació de la cursiva"
 msgid "Toggling Underline"
 msgstr "Commutació del subratllat"
 
-#: ../src/GnomeSubtitles/Commands/ChangeTextCommand.cs:26
-msgid "Editing Text"
-msgstr "Edició del text"
-
 #: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:65
 msgid "Editing From"
 msgstr "Edició des de"
@@ -509,19 +613,29 @@ msgstr "Edició a"
 msgid "Editing During"
 msgstr "Edició durant"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:70
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:290
+#: ../src/GnomeSubtitles/Commands/CommandManager.cs:118
+#: ../src/GnomeSubtitles/Core/Menus.cs:90
 msgid "Undo"
 msgstr "Desfés"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:79
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:300
+#: ../src/GnomeSubtitles/Commands/CommandManager.cs:127
+#: ../src/GnomeSubtitles/Core/Menus.cs:100
 msgid "Redo"
 msgstr "Refés"
 
 #: ../src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs:27
 msgid "Deleting Subtitles"
 msgstr "S'estan suprimint els subtítols"
+
+#: ../src/GnomeSubtitles/Commands/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Commands/InsertTextCommand.cs:26
+msgid "Editing Text"
+msgstr "Edició del text"
+
+#: ../src/GnomeSubtitles/Commands/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Commands/InsertTranslationCommand.cs:26
+msgid "Editing Translation"
+msgstr "S'està editant la traducció"
 
 #: ../src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs:27
 msgid "Inserting Subtitle"
@@ -542,6 +656,10 @@ msgstr "S'està establint l'inici del subtítol"
 #: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
 msgstr "S'està establint el final del subtítol"
+
+#: ../src/GnomeSubtitles/Core/Document.cs:198
+msgid "Unsaved Translation"
+msgstr "Traducció no desada"
 
 #. GEOSTD8, HZ not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:33
@@ -699,46 +817,38 @@ msgid "Unsaved Subtitles"
 msgstr "Subtítols no desats"
 
 #. Constant strings
-#: ../src/GnomeSubtitles/Core/Menus.cs:31
+#: ../src/GnomeSubtitles/Core/Menus.cs:32
 msgid "Video"
 msgstr "Vídeo"
 
-#: ../src/GnomeSubtitles/Core/Status.cs:43
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: ../src/GnomeSubtitles/Core/Status.cs:42
 msgid "OVR"
 msgstr "SOBR"
 
-#: ../src/GnomeSubtitles/Core/Status.cs:43
+#: ../src/GnomeSubtitles/Core/Status.cs:42
 msgid "INS"
 msgstr "INSER"
 
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:211
-msgid "No."
-msgstr "Número"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:214
-msgid "From"
-msgstr "Des de"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:215
-msgid "To"
-msgstr "A"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:216
-msgid "During"
-msgstr "Duració"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:219
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: ../src/GnomeSubtitles/Core/Status.cs:57
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:231
 msgid "Text"
 msgstr "Text"
 
-#: ../src/GnomeSubtitles/Core/VideoPosition.cs:173
-#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
-msgid "Time"
-msgstr "Temps"
+#: ../src/GnomeSubtitles/Core/Status.cs:57
+msgid "Trans"
+msgstr "Trad"
 
-#: ../src/GnomeSubtitles/Core/VideoPosition.cs:173
-msgid "Frame"
-msgstr "Fotograma"
+#. To translators: Ln corresponds to Line
+#: ../src/GnomeSubtitles/Core/Status.cs:59
+msgid "Ln"
+msgstr "Ln"
+
+#. To translators: Col corresponds to Column
+#: ../src/GnomeSubtitles/Core/Status.cs:61
+msgid "Col"
+msgstr "Col"
 
 #: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:87
 msgid "Description"
@@ -748,7 +858,7 @@ msgstr "Descripció"
 msgid "Encoding"
 msgstr "Codificació"
 
-#: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:52
 msgid ""
 "An unknown error has occured. Please report a bug and include this error "
 "name:"
@@ -756,20 +866,20 @@ msgstr ""
 "S'ha produït un error desconegut. Envieu un informe d'error incloent aquest "
 "nom d'error:"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:76
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:95
 msgid "Auto Detected"
 msgstr "Detecció automàtica"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:110
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:142
 msgid "None"
 msgstr "Cap"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:166
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:208
 #: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:59
 msgid "All Files"
 msgstr "Tots els fitxers"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:173
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:215
 msgid "All Subtitle Files"
 msgstr "Tots els fitxers de subtítols"
 
@@ -782,7 +892,15 @@ msgstr "No s'ha pogut el fitxer"
 msgid "Open another file"
 msgstr "Obre un altre fitxer"
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:198
+#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:68
+msgid "The file path appears to be invalid."
+msgstr "El camí del fitxer no és vàlid."
+
+#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:85
+msgid "Save Translation As"
+msgstr "Anomena i desa la traducció"
+
+#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:211
 msgid "System Default"
 msgstr "Valor per defecte del sistema"
 
@@ -796,12 +914,13 @@ msgid "Save to another file"
 msgstr "Desa en un altre fitxer"
 
 #: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
-msgstr "Us heu quedat sense memòria. Tanqueu alguns programes i torneu-ho a intentar."
+msgstr ""
+"Us heu quedat sense memòria. Tanqueu alguns programes i torneu-ho a intentar."
 
 #: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
 msgid "An I/O error has occured."
 msgstr "S'ha produït un error d'E/S."
 
@@ -822,41 +941,66 @@ msgstr "El fitxer especificat no és vàlid."
 msgid "Unknown"
 msgstr "Desconegut"
 
+#: ../src/GnomeSubtitles/Dialogs/FileTranslationOpenDialog.cs:26
+msgid "Open Translation File"
+msgstr "Obre un fitxer de traducció"
+
 #. Strings
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:32
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:34
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Si no ho deseu es perdran tots els canvis permanentment."
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:75
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Voleu desar els canvis dels subtítols «{0}» abans de tancar?"
-
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:76
-msgid "Close without Saving"
-msgstr "Tanca sense desar"
-
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:83
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:85
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr "Voleu desar els canvis dels subtítols «{0}» abans de crear subtítols nous?"
+msgstr ""
+"Voleu desar els canvis dels subtítols «{0}» abans de crear subtítols nous?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:84
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:86
 msgid "Create without Saving"
 msgstr "Crea sense desar"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:91
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:96
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr ""
+"Voleu desar els canvis de la traducció «{0}» abans de crear subtítols nous?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:103
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Voleu desar els canvis de la traducció «{0}» abans de crear una traducció "
+"nova?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:113
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Voleu desar els canvis dels subtítols «{0}» abans d'obrir?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:92
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:114
 msgid "Open without Saving"
 msgstr "Obre sense desar"
 
-#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:66
-msgid "Replace"
-msgstr "Reemplaça"
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:125
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Voleu desar els canvis de la traducció «{0}» abans d'obrir?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:134
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Voleu desar els canvis dels subtítols «{0}» abans de tancar?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:135
+msgid "Close without Saving"
+msgstr "Tanca sense desar"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:145
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Voleu desar els canvis de la traducció «{0}» abans de tancar?"
 
 #: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:70
 msgid "Find"
@@ -874,9 +1018,13 @@ msgstr ""
 "No s'ha pogut detectar el format del subtítol. Comproveu que el tipus de "
 "fitxer estigui implementat."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
-msgid "The encoding used is not supported by your system."
-msgstr "La codificació utilitzada no és admesa pel sistema."
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"La codificació utilitzada no és admesa pel sistema. Seleccioneu una altra "
+"codificació."
 
 #: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
@@ -891,19 +1039,52 @@ msgid "Start Time:"
 msgstr "Temps inicial:"
 
 #: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
+#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
+msgid "Time"
+msgstr "Temps"
+
+#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
 msgid "Frames"
 msgstr "Fotogrames"
 
-#: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:34
-msgid ""
-"Unable to start the video player. Please check that MPlayer is installed."
-msgstr ""
-"No s'ha pogut iniciar el reproductor de vídeo. Comproveu que l'MPlayer està instal·lat."
+#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:27
+msgid "Could not continue the video playback"
+msgstr "No es pot continuar la reproducció del vídeo"
 
-#: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:36
+#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:28
+msgid "The following error has occurred: "
+msgstr "S'ha produït l'error següent: "
+
+#: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:34
 msgid "Please check that the video file is supported."
 msgstr "Comproveu que el fitxer de vídeo està admès."
 
 #: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:65
 msgid "All Video Files"
 msgstr "Tots els fitxers de vídeo"
+
+#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
+msgid "Frame"
+msgstr "Fotograma"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:223
+msgid "No."
+msgstr "Número"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:226
+msgid "From"
+msgstr "Des de"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:227
+msgid "To"
+msgstr "A"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:228
+msgid "During"
+msgstr "Duració"
+
+#~ msgid ""
+#~ "Unable to start the video player. Please check that MPlayer is installed."
+#~ msgstr ""
+#~ "No s'ha pogut iniciar el reproductor de vídeo. Comproveu que l'MPlayer "
+#~ "està instal·lat."
