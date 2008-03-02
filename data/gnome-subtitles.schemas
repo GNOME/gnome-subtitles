@@ -25,6 +25,28 @@
 			</locale>
 		</schema>
 		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/spellcheck/active_language</key>
+			<applyto>/apps/gnome-subtitles/preferences/spellcheck/active_language</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>string</type>
+			<default></default>
+			<locale name="C">
+				<short>Active spellcheck language</short>
+				<long>The language used to check the spelling of subtitle text.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/spellcheck/autocheck</key>
+			<applyto>/apps/gnome-subtitles/preferences/spellcheck/autocheck</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>bool</type>
+			<default>FALSE</default>
+			<locale name="C">
+				<short>Autocheck spelling</short>
+				<long>Whether to automatically check the spelling of subtitle text.</long>
+			</locale>
+		</schema>
+		<schema>
 			<key>/schemas/apps/gnome-subtitles/preferences/window/width</key>
 			<applyto>/apps/gnome-subtitles/preferences/window/width</applyto>
 			<owner>gnome-subtitles</owner>

@@ -29,6 +29,7 @@ GS_RESOURCES = \
 	$(srcdir)/Glade/PreferencesDialog.glade \
 	$(srcdir)/Glade/ReportBugWindow.glade \
 	$(srcdir)/Glade/SearchDialog.glade \
+	$(srcdir)/Glade/SetLanguageDialog.glade \
 	$(srcdir)/Glade/TimingsAdjustDialog.glade \
 	$(srcdir)/Glade/TimingsShiftDialog.glade \
 	$(srcdir)/Glade/VideoOpenDialog.glade \

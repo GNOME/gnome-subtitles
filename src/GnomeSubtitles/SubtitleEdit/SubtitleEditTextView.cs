@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@ using Gtk;
 using SubLib;
 using System;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace GnomeSubtitles {
 
@@ -40,7 +41,9 @@ public abstract class SubtitleEditTextView {
 	
 	/* Other */
 	private Subtitle subtitle = null;
-	
+	private IntPtr spellTextView = IntPtr.Zero;
+
+
 	public SubtitleEditTextView (TextView textView) {
 		this.textView = textView;
 
@@ -189,7 +192,29 @@ public abstract class SubtitleEditTextView {
     	isToggleOverwriteSilent = false;
     }
 
-    
+    /* GtkSpell */
+	[DllImport ("libgtkspell.so.0")]
+	static extern IntPtr gtkspell_new_attach (IntPtr textView, string locale, IntPtr error);
+
+	[DllImport ("libgtkspell.so.0")]
+	static extern void gtkspell_detach (IntPtr obj);
+
+	[DllImport ("libgtkspell.so.0")]
+	static extern bool gtkspell_set_language (IntPtr textView, string lang, IntPtr error);
+	
+	private void GtkSpellDetach () {
+		if (spellTextView != IntPtr.Zero)
+			gtkspell_detach(spellTextView);
+	}
+	
+	private void GtkSpellAttach () {
+		spellTextView = gtkspell_new_attach(textView.Handle, null, IntPtr.Zero);
+	}
+	
+	private bool GtkSpellSetLanguage (string language) {
+		return gtkspell_set_language(spellTextView, "asdasd", IntPtr.Zero);
+	}
+	
 
 	/* Private methods */
 
@@ -275,7 +300,8 @@ public abstract class SubtitleEditTextView {
 	private void GrabFocus () {
 		textView.GrabFocus();
 	}
-
+	
+	
 	/* Event methods */
 
 	private void OnBufferChanged (object o, EventArgs args) {
@@ -333,6 +359,28 @@ public abstract class SubtitleEditTextView {
 			EmitToggleOverwrite();
 	}
 	
+	private void OnSpellToggleEnabled (object o, EventArgs args) {
+		bool enabled = Global.SpellLanguages.Enabled;
+		if (enabled) {
+			GtkSpellAttach();
+			string language = Global.SpellLanguages.ActiveLanguage;
+			GtkSpellSetLanguage(language);
+		}
+		else
+			GtkSpellDetach();
+	}
+	
+	private void OnSpellLanguageChanged (object o, EventArgs args) {
+		if (Global.SpellLanguages.Enabled) {
+			string language = Global.SpellLanguages.ActiveLanguage;
+			GtkSpellSetLanguage(language);
+		}
+	}
+	
+	private void OnDestroyed (object o, EventArgs args) {
+		GtkSpellDetach();
+	}
+	
 	[GLib.ConnectBefore]
     private void OnKeyPressed (object o, KeyPressEventArgs args) {
     	Gdk.Key key = args.Event.Key;
@@ -367,6 +415,11 @@ public abstract class SubtitleEditTextView {
 		textView.FocusOutEvent += OnFocusOut;
 		textView.KeyPressEvent += OnKeyPressed;
 		textView.ToggleOverwrite += OnToggleOverwrite;
+		TextView.Destroyed += OnDestroyed;
+		
+		/* Spell signals */
+		Global.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
+		Global.SpellLanguages.LanguageChanged += OnSpellLanguageChanged;
     }
     
     private void EmitToggleOverwrite () {

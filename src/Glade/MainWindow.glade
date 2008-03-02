@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.0 on Sun Jan 20 23:49:07 2008 
+<!--Generated with glade3 3.4.0 on Sat Mar  1 22:54:48 2008 
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -557,7 +557,7 @@
             <child>
               <widget class="GtkMenuItem" id="timings">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">_Timings</property>
+                <property name="label" translatable="yes">T_imings</property>
                 <property name="use_underline">True</property>
                 <child>
                   <widget class="GtkMenu" id="timingsMenu">
@@ -841,6 +841,40 @@
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSetSubtitleEnd"/>
                         <accelerator key="E" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+            <child>
+              <widget class="GtkMenuItem" id="tools">
+                <property name="visible">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="label" translatable="yes">_Tools</property>
+                <property name="use_underline">True</property>
+                <child>
+                  <widget class="GtkMenu" id="menu2">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <child>
+                      <widget class="GtkCheckMenuItem" id="toolsAutocheckSpelling">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="label" translatable="yes">_Autocheck Spelling</property>
+                        <property name="use_underline">True</property>
+                        <signal name="toggled" handler="OnToolsAutocheckSpelling"/>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="toolsSetLanguage">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="label" translatable="yes">_Set Language</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="OnToolsSetLanguage"/>
                       </widget>
                     </child>
                   </widget>

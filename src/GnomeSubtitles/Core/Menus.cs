@@ -41,6 +41,7 @@ public class Menus {
 	
 	public void BlankStartUp () {
 		SetBlankSensitivity();
+		SetBlankActivity();
 	}
 
 	public void UpdateFromNewDocument (bool wasLoaded) {
@@ -48,6 +49,10 @@ public class Menus {
 		SetSubtitleCountDependentSensitivity(Global.Document.Subtitles.Collection.Count);
 		SetFrameRateMenus();
 		SetActiveTimingMode(Global.TimingMode);
+		
+		SetToolsSetLanguageSensitivity(true);
+		SetToolsAutocheckSpellingSensitivity(Global.SpellLanguages.HasActiveLanguage);			
+		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Global.SpellLanguages.Enabled);
 	}
 	
 	public void UpdateFromNewTranslationDocument () {
@@ -148,6 +153,14 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchFindPrevious, true);
 	}
 	
+	public void SetToolsSetLanguageSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.ToolsSetLanguage, sensitivity);
+	}
+	
+	public void SetToolsAutocheckSpellingSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.ToolsAutocheckSpelling, sensitivity);
+	}
+	
 	public void SetViewVideoActivity (bool activity) {
 		SetCheckMenuItemActivity(WidgetNames.ViewVideo, activity);
 	}
@@ -245,6 +258,8 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchFindNext, false);
 		SetSensitivity(WidgetNames.SearchFindPrevious, false);
 		SetSensitivity(WidgetNames.SearchReplace, false);
+		/* Tools Menu */
+		SetToolsAutocheckSpellingSensitivity(false);
 		/* Toolbar */
 		SetSensitivity(WidgetNames.SaveButton, false);
 		SetSensitivity(WidgetNames.UndoButton, false);
@@ -257,6 +272,10 @@ public class Menus {
 		SetSensitivity(WidgetNames.BoldButton, false);
 		SetSensitivity(WidgetNames.ItalicButton, false);
 		SetSensitivity(WidgetNames.UnderlineButton, false);
+	}
+	
+	private void SetBlankActivity () {
+		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Global.SpellLanguages.Enabled);
 	}
 	
 	private void SetNewDocumentSensitivity (bool wasLoaded) {
@@ -278,6 +297,9 @@ public class Menus {
 			/* Search Menu */
 			SetSensitivity(WidgetNames.SearchFind, true);
 			SetSensitivity(WidgetNames.SearchReplace, true);
+			/* Tools Menu */
+			SetToolsSetLanguageSensitivity(true);
+			
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
 			SetSensitivity(WidgetNames.FindButton, true);

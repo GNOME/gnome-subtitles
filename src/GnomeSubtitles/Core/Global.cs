@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ public class Global {
 	private static Clipboards clipboards = null;
 	private static Config config = null;
 	private static Dialogs dialogs = null;
+	private static SpellLanguages spellLanguages = null;
 	
 	private static Document document = null;
 	private static TimingMode timingMode = TimingMode.Times;
@@ -69,6 +70,10 @@ public class Global {
 	
 	public static Dialogs Dialogs {
 		get { return dialogs; }
+	}
+	
+	public static SpellLanguages SpellLanguages {
+		get { return spellLanguages; }
 	}
 	
 	public static Document Document {
@@ -169,6 +174,7 @@ public class Global {
 		clipboards = new Clipboards();
 		config = new Config();
 		dialogs = new Dialogs();
+		spellLanguages = new SpellLanguages();
 
 		/* Initialize the GUI */
 		gui = new GUI(handlers, out glade);

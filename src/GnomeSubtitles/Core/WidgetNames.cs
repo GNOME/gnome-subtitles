@@ -78,6 +78,10 @@ public class WidgetNames {
 	public const string VideoSeekToSelection = "videoSeekToSelection";
 	public const string VideoSetSubtitleStart = "videoSetSubtitleStart";
 	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
+	
+	/* Tools Menu */
+	public const string ToolsAutocheckSpelling = "toolsAutocheckSpelling";
+	public const string ToolsSetLanguage = "toolsSetLanguage";
 
 
 	/* Toolbar */

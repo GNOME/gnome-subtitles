@@ -266,6 +266,17 @@ public class EventHandlers {
 		}
 	}
 	
+	/* Tools Menu */
+		
+	public void OnToolsAutocheckSpelling (object o, EventArgs args) {
+		bool enabled = (o as CheckMenuItem).Active;
+		Global.SpellLanguages.Enabled = enabled;
+	}
+	
+	public void OnToolsSetLanguage (object o, EventArgs args) {
+		new SetLanguageDialog().Show();
+	}
+	
 	
 	/*	Help Menu */
 	

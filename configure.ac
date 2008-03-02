@@ -125,6 +125,8 @@ PKG_CHECK_MODULES(gstreamer-plugins-base, [gstreamer-plugins-base-0.10 >= 0.10])
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gnome-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
+PKG_CHECK_MODULES(GTKSPELL, gtkspell-2.0)
+PKG_CHECK_MODULES(LIBENCHANT, enchant)
 
 AC_SUBST(MCS)
 
