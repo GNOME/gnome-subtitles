@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@ namespace GnomeSubtitles {
 
 public abstract class SubtitleFileChooserDialog : GladeDialog {
 	private int fixedEncoding = -1;
+	private bool isEncodingsChangeSilent = false; //used to indicate whether a change in the encodings list should be taken into account
 
 	/* Protected variables */
 	protected new FileChooserDialog dialog = null;
@@ -140,6 +141,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 	}
 
 	private void UpdateEncodingComboBox (ComboBox comboBox, string[] names) {
+		isEncodingsChangeSilent = true;
 	
 		/* Get the first elements that are not in the model */
 		int itemCount = comboBox.Model.IterNChildren();
@@ -163,11 +165,16 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 			comboBox.AppendText(item);
 		
 		FillEncodingComboBox(names);
+		
+		isEncodingsChangeSilent = false;
 	}
 	
 	#pragma warning disable 169		//Disables warning about handlers not being used
 	
 	private void OnEncodingComboBoxChanged (object o, EventArgs args) {
+		if (isEncodingsChangeSilent)
+			return;
+
 		ComboBox comboBox = o as ComboBox;
 		int itemCount = comboBox.Model.IterNChildren();
 		if (comboBox.Active == (itemCount - 1)) {
