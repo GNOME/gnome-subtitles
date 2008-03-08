@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007 Pedro Castro
+ * Copyright (C) 2007-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,7 +46,14 @@ public class SubtitleEditText : SubtitleEditTextView {
 	protected override void ExecuteDeleteCommand (int index, string text, int cursor) {
 		Global.CommandManager.Execute(new DeleteTextCommand(index, text, cursor));
 	}
-
+	
+	protected override string GetSpellActiveLanguage () {
+		return Global.SpellLanguages.ActiveTextLanguage;
+	}
+	
+	protected override void ConnectLanguageChangedSignal () {
+		Global.SpellLanguages.TextLanguageChanged += OnSpellLanguageChanged;
+	}
 }
 
 }

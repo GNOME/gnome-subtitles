@@ -69,6 +69,8 @@ public abstract class SubtitleEditTextView {
 	protected abstract string GetSubtitleTextContent (Subtitle subtitle);
 	protected abstract void ExecuteInsertCommand (int index, string insertion);
 	protected abstract void ExecuteDeleteCommand (int index, string deletion, int cursor);
+	protected abstract string GetSpellActiveLanguage ();
+	protected abstract void ConnectLanguageChangedSignal ();
 	
 	/* Events */
 	public event EventHandler ToggleOverwrite = null;
@@ -212,7 +214,10 @@ public abstract class SubtitleEditTextView {
 	}
 	
 	private bool GtkSpellSetLanguage (string language) {
-		return gtkspell_set_language(spellTextView, "asdasd", IntPtr.Zero);
+		if ((language == null) || (language == String.Empty))
+			return false;
+		else
+			return gtkspell_set_language(spellTextView, language, IntPtr.Zero);
 	}
 	
 
@@ -363,18 +368,11 @@ public abstract class SubtitleEditTextView {
 		bool enabled = Global.SpellLanguages.Enabled;
 		if (enabled) {
 			GtkSpellAttach();
-			string language = Global.SpellLanguages.ActiveLanguage;
+			string language = GetSpellActiveLanguage();
 			GtkSpellSetLanguage(language);
 		}
 		else
 			GtkSpellDetach();
-	}
-	
-	private void OnSpellLanguageChanged (object o, EventArgs args) {
-		if (Global.SpellLanguages.Enabled) {
-			string language = Global.SpellLanguages.ActiveLanguage;
-			GtkSpellSetLanguage(language);
-		}
 	}
 	
 	private void OnDestroyed (object o, EventArgs args) {
@@ -419,14 +417,20 @@ public abstract class SubtitleEditTextView {
 		
 		/* Spell signals */
 		Global.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
-		Global.SpellLanguages.LanguageChanged += OnSpellLanguageChanged;
+		ConnectLanguageChangedSignal();
     }
     
     private void EmitToggleOverwrite () {
     	if (this.ToggleOverwrite != null)
     		this.ToggleOverwrite(this, EventArgs.Empty);
     }
-
+    
+    protected void OnSpellLanguageChanged (object o, EventArgs args) {
+		if (Global.SpellLanguages.Enabled) {
+			string language = GetSpellActiveLanguage();
+			GtkSpellSetLanguage(language);
+		}
+	}
 
 }
 

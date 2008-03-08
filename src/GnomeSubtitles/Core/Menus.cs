@@ -50,8 +50,7 @@ public class Menus {
 		SetFrameRateMenus();
 		SetActiveTimingMode(Global.TimingMode);
 		
-		SetToolsSetLanguageSensitivity(true);
-		SetToolsAutocheckSpellingSensitivity(Global.SpellLanguages.HasActiveLanguage);			
+		SetToolsAutocheckSpellingSensitivity(true);
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Global.SpellLanguages.Enabled);
 	}
 	
@@ -151,10 +150,6 @@ public class Menus {
 	public void EnableFindNextPrevious () {
 		SetSensitivity(WidgetNames.SearchFindNext, true);
 		SetSensitivity(WidgetNames.SearchFindPrevious, true);
-	}
-	
-	public void SetToolsSetLanguageSensitivity (bool sensitivity) {
-		SetSensitivity(WidgetNames.ToolsSetLanguage, sensitivity);
 	}
 	
 	public void SetToolsAutocheckSpellingSensitivity (bool sensitivity) {
@@ -298,7 +293,8 @@ public class Menus {
 			SetSensitivity(WidgetNames.SearchFind, true);
 			SetSensitivity(WidgetNames.SearchReplace, true);
 			/* Tools Menu */
-			SetToolsSetLanguageSensitivity(true);
+			SetSensitivity(WidgetNames.ToolsSetTextLanguage, true);
+			SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, false);
 			
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
@@ -323,6 +319,9 @@ public class Menus {
 			/* Search Menu */
 			SetSensitivity(WidgetNames.SearchFindNext, false);
 			SetSensitivity(WidgetNames.SearchFindPrevious, false);
+			/* Tools Menu */
+			SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, false);
+			
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
@@ -336,6 +335,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.FileTranslationSave, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
+		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, sensitivity);
 		SetViewVideoSubtitlesSensitivity();
 	}
 	

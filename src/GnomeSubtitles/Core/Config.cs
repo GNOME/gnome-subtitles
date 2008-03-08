@@ -35,7 +35,8 @@ public class Config {
 	
 	/* Constant key strings */
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
-	private const string keyPrefsSpellCheckActiveLanguage = keyPrefsSpellCheck + "active_language";
+	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
+	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
 	private const string keyPrefsSpellCheckAutocheck = keyPrefsSpellCheck + "autocheck";
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsWindowHeight = keyPrefsWindow + "height";
@@ -55,9 +56,14 @@ public class Config {
 		set { SetStrings(keyPrefsEncodingsShownInMenu, value); }
 	}
 	
-	public string PrefsSpellCheckActiveLanguage {
-		get { return GetString(keyPrefsSpellCheckActiveLanguage, String.Empty); }
-		set { Set(keyPrefsSpellCheckActiveLanguage, value); }
+	public string PrefsSpellCheckActiveTextLanguage {
+		get { return GetString(keyPrefsSpellCheckActiveTextLanguage, String.Empty); }
+		set { Set(keyPrefsSpellCheckActiveTextLanguage, value); }
+	}
+	
+	public string PrefsSpellCheckActiveTranslationLanguage {
+		get { return GetString(keyPrefsSpellCheckActiveTranslationLanguage, String.Empty); }
+		set { Set(keyPrefsSpellCheckActiveTranslationLanguage, value); }
 	}
 	
 	public bool PrefsSpellCheckAutocheck {

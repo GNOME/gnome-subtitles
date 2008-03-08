@@ -273,8 +273,12 @@ public class EventHandlers {
 		Global.SpellLanguages.Enabled = enabled;
 	}
 	
-	public void OnToolsSetLanguage (object o, EventArgs args) {
-		new SetLanguageDialog().Show();
+	public void OnToolsSetTextLanguage (object o, EventArgs args) {
+		new SetLanguageDialog(SubtitleTextType.Text).Show();
+	}
+	
+	public void OnToolsSetTranslationLanguage (object o, EventArgs args) {
+		new SetLanguageDialog(SubtitleTextType.Translation).Show();
 	}
 	
 	

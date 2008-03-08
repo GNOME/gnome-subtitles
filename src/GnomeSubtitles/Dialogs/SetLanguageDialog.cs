@@ -19,6 +19,8 @@
 
 using Glade;
 using Gtk;
+using Mono.Unix;
+using SubLib;
 using System;
 
 namespace GnomeSubtitles {
@@ -26,18 +28,30 @@ namespace GnomeSubtitles {
 public class SetLanguageDialog : GladeDialog {
 	private ListStore store = null;
 	private int colNum = 0;
+	private SubtitleTextType textType;
 
 	/* Constant strings */
 	private const string gladeFilename = "SetLanguageDialog.glade";
+	
+	/* Strings */
+	private string dialogTitleText = Catalog.GetString("Set Text Language");
+	private string dialogTitleTranslation = Catalog.GetString("Set Translation Language");
+	private string introLabelText = Catalog.GetString("Select the text _language of the current subtitles.");
+	private string introLabelTranslation = Catalog.GetString("Select the translation _language of the current subtitles.");
 
 	/* Widgets */
 	
 	[WidgetAttribute] private TreeView languagesTreeView;
+	[WidgetAttribute] private Label introLabel;
 
 
-	public SetLanguageDialog () : base(gladeFilename) {
+	public SetLanguageDialog (SubtitleTextType textType) : base(gladeFilename) {
+		this.textType = textType;
+	
+		SetDialogTitle(textType);
+		SetIntroLabel(textType);
 		FillAvailableLanguages();
-		SelectActiveLanguage();
+		SelectActiveLanguage(textType);
 	}
 
 	/* Private members */
@@ -54,21 +68,20 @@ public class SetLanguageDialog : GladeDialog {
 		languagesTreeView.Model = store;
 	}
 	
-	private void SelectActiveLanguage () {
+	private void SelectActiveLanguage (SubtitleTextType textType) {
 		int count = store.IterNChildren();
 		if (count == 0)
 			return;
 		
-		int activeLanguageIndex = GetActiveLanguageIndex(count);
-		
+		int activeLanguageIndex = GetActiveLanguageIndex(textType, count);
 		
 		TreePath path = Util.IntToPath(activeLanguageIndex);
 		languagesTreeView.ScrollToCell(path, null, true, 0.5f, 0.5f);
    		languagesTreeView.SetCursor(path, null, false);
 	}
 	
-	private int GetActiveLanguageIndex (int count) {
-		int activeLanguageIndex = Global.SpellLanguages.ActiveLanguageIndex;
+	private int GetActiveLanguageIndex (SubtitleTextType textType, int count) {
+		int activeLanguageIndex = Global.SpellLanguages.GetActiveLanguageIndex(textType);
 		/* Set active language to the first if invalid */
 		if ((activeLanguageIndex == -1) || (activeLanguageIndex >= count))
 			activeLanguageIndex = 0;
@@ -78,7 +91,7 @@ public class SetLanguageDialog : GladeDialog {
 	
 	private void SetSpellLanguage () {
 		string activeLanguage = GetSelectedLanguage();
-		Global.SpellLanguages.ActiveLanguage = activeLanguage;
+		Global.SpellLanguages.SetActiveLanguage(textType, activeLanguage);
 	}
 	
 	private string GetSelectedLanguage () {
@@ -102,6 +115,14 @@ public class SetLanguageDialog : GladeDialog {
 
 		TreePath selected = paths[0];
 		return selected;
+	}
+	
+	private void SetDialogTitle (SubtitleTextType textType) {
+		dialog.Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
+	}
+	
+	private void SetIntroLabel (SubtitleTextType textType) {
+		introLabel.TextWithMnemonic = (textType == SubtitleTextType.Text ? introLabelText : introLabelTranslation);
 	}
 	
 	/* Event handlers */

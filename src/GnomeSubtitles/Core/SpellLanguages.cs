@@ -29,12 +29,12 @@ namespace GnomeSubtitles {
 public delegate void LanguageListHandler (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata);
 
 public class SpellLanguages {
-	private ArrayList languages = null;
-	private int activeLanguageIndex = -1;
 	private bool enabled = false;
-	
+	private ArrayList languages = null;
+	private int activeTextLanguageIndex = -1;
+	private int activeTranslationLanguageIndex = -1;
+
 	private LanguageListHandler languageListHandler = null;
-	
 
 	public SpellLanguages () {
 		languageListHandler = OnLanguageList;
@@ -43,8 +43,9 @@ public class SpellLanguages {
 	}
 	
 	/* Events */
-	public event EventHandler LanguageChanged = null;
 	public event EventHandler ToggleEnabled = null;
+	public event EventHandler TextLanguageChanged = null;
+	public event EventHandler TranslationLanguageChanged = null;
 	
 	
 	/* Public members */
@@ -58,33 +59,30 @@ public class SpellLanguages {
 		}
 	}
 	
-	public int ActiveLanguageIndex {
-		get { return activeLanguageIndex; }
+	public int ActiveTextLanguageIndex {
+		get { return GetActiveLanguageIndex(SubtitleTextType.Text); }
 	}
 	
-	public string ActiveLanguage {
-		get {
-			if (activeLanguageIndex == -1)
-				return String.Empty;
-			else
-				return languages[activeLanguageIndex] as string;
-		}
-		set { 
-			int index = GetActiveLanguageIndex(value);
-			activeLanguageIndex = index;
-			
-			bool isEmpty = ((index == -1) || (value == null) || (value == String.Empty));
-			string activeLanguage = (isEmpty ? String.Empty : value);
-			SetActiveLanguageInConfig(activeLanguage);
-
-			EmitLanguageChanged();
-			if (!isEmpty)
-				Global.GUI.Menus.SetToolsAutocheckSpellingSensitivity(true);
-		}
+	public int ActiveTranslationLanguageIndex {
+		get { return GetActiveLanguageIndex(SubtitleTextType.Translation); }
 	}
 	
-	public bool HasActiveLanguage {
-		get { return activeLanguageIndex != -1; }
+	public string ActiveTextLanguage {
+		get { return GetActiveLanguage(SubtitleTextType.Text); }
+		set { SetActiveLanguage(SubtitleTextType.Text, value); }
+	}
+	
+	public string ActiveTranslationLanguage {
+		get { return GetActiveLanguage(SubtitleTextType.Translation); }
+		set { SetActiveLanguage(SubtitleTextType.Translation, value); }
+	}
+	
+	public bool HasActiveTextLanguage {
+		get { return ActiveTextLanguageIndex != -1; }
+	}
+	
+	public bool HasActiveTranslationLanguage {
+		get { return ActiveTranslationLanguageIndex != -1; }
 	}
 	
 	public bool Enabled {
@@ -96,6 +94,34 @@ public class SpellLanguages {
 			}
 		}
 		get { return enabled; }
+	}
+	
+	public int GetActiveLanguageIndex (SubtitleTextType textType) {
+		if (textType == SubtitleTextType.Text)
+			return activeTextLanguageIndex;
+		else
+			return activeTranslationLanguageIndex;
+	}
+	
+	public string GetActiveLanguage (SubtitleTextType textType) {
+		int index = GetActiveLanguageIndex(textType);
+		if (index == -1)
+			return String.Empty;
+		else
+			return languages[index] as string;
+	}
+	
+	public void SetActiveLanguage (SubtitleTextType textType, string language) {
+		int index = GetLanguageIndex(language);
+		SetActiveLanguageIndex(textType, index);
+			
+		bool isEmpty = ((index == -1) || (language == null) || (language == String.Empty));
+		string activeLanguage = (isEmpty ? String.Empty : language);
+		SetActiveLanguageInConfig(textType, activeLanguage);
+
+		EmitLanguageChanged(textType);
+		if (!isEmpty)
+			Global.GUI.Menus.SetToolsAutocheckSpellingSensitivity(true);
 	}
 	
 	
@@ -118,7 +144,7 @@ public class SpellLanguages {
 			Init();
 		
 		FillLanguages();
-		GetActiveLanguageFromConfig();
+		GetActiveLanguagesFromConfig();
 	}
 	
 	private void FillLanguages () {
@@ -133,30 +159,40 @@ public class SpellLanguages {
 		languages.Sort();
 	}
 	
-	private void GetActiveLanguageFromConfig () {
-		string activeLanguage = Global.Config.PrefsSpellCheckActiveLanguage;
-		this.activeLanguageIndex = GetActiveLanguageIndex(activeLanguage);
+	private void SetActiveLanguageIndex (SubtitleTextType textType, int index) {
+		if (textType == SubtitleTextType.Text)
+			activeTextLanguageIndex = index;
+		else
+			activeTranslationLanguageIndex = index;
+	}
+	
+	private void GetActiveLanguagesFromConfig () {
+		string activeTextLanguage = Global.Config.PrefsSpellCheckActiveTextLanguage;
+		this.activeTextLanguageIndex = GetLanguageIndex(activeTextLanguage);
+		
+		string activeTranslationLanguage = Global.Config.PrefsSpellCheckActiveTranslationLanguage;
+		this.activeTranslationLanguageIndex = GetLanguageIndex(activeTranslationLanguage);
 	}
 	
 	private void GetEnabledFromConfig () {
-		this.enabled = Global.Config.PrefsSpellCheckAutocheck && this.HasActiveLanguage;
-		
-		/* Check for inconsistency */
-		if (Global.Config.PrefsSpellCheckAutocheck && (!this.HasActiveLanguage))
-			Global.Config.PrefsSpellCheckAutocheck = false;
+		this.enabled = Global.Config.PrefsSpellCheckAutocheck;
 	}
 	
-	private void SetActiveLanguageInConfig (string activeLanguage) {
-		Global.Config.PrefsSpellCheckActiveLanguage = activeLanguage;
+	private void SetActiveLanguageInConfig (SubtitleTextType textType, string activeLanguage) {
+		if (textType == SubtitleTextType.Text)
+			Global.Config.PrefsSpellCheckActiveTextLanguage = activeLanguage;
+		else
+			Global.Config.PrefsSpellCheckActiveTranslationLanguage = activeLanguage;
 	}
 	
-	private int GetActiveLanguageIndex (String activeLanguage) {
-		return languages.IndexOf(activeLanguage);
+	private int GetLanguageIndex (String language) {
+		return languages.IndexOf(language);
 	}
 	
 	private void Init () {
 		languages = new ArrayList();
-		activeLanguageIndex = -1;
+		activeTextLanguageIndex = -1;
+		activeTranslationLanguageIndex = -1;
 	}
 	
 	/* Event members */
@@ -170,9 +206,21 @@ public class SpellLanguages {
     		this.ToggleEnabled(this, EventArgs.Empty);
     }
     
-    private void EmitLanguageChanged () {
-    	if (this.LanguageChanged != null)
-    		this.LanguageChanged(this, EventArgs.Empty);
+    private void EmitLanguageChanged (SubtitleTextType textType) {
+    	if (textType == SubtitleTextType.Text)
+    		EmitTextLanguageChanged();
+    	else
+    		EmitTranslationLanguageChanged();
+    }
+    
+    private void EmitTextLanguageChanged () {
+    	if (this.TextLanguageChanged != null)
+    		this.TextLanguageChanged(this, EventArgs.Empty);
+    }
+    
+    private void EmitTranslationLanguageChanged () {
+    	if (this.TranslationLanguageChanged != null)
+    		this.TranslationLanguageChanged(this, EventArgs.Empty);
     }
 
 }
