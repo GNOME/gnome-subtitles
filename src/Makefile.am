@@ -1,9 +1,10 @@
 gnomesubtitlesdir = $(pkglibdir)
-gnomesubtitles_DATA = $(ASSEMBLY)
+gnomesubtitles_DATA = $(ASSEMBLY) $(ASSEMBLY_CONFIG)
 GS_BUILDDIR = $(srcdir)/../build
 GS_DATADIR = $(srcdir)/../data
 
 ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
+ASSEMBLY_CONFIG = $(ASSEMBLY).config
 SUBLIB = $(GS_BUILDDIR)/sublib.dll
 GSTPB = $(GS_BUILDDIR)/GStreamerPlaybin.dll
 
@@ -45,6 +46,9 @@ GS_SYSTEM_REFERENCES = \
 
 $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
 	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(GS_RESOURCES:%=-resource:%) $(GS_SOURCES)
+
+$(ASSEMBLY_CONFIG):
+	cp -f $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.config $(GS_BUILDDIR)
 
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
