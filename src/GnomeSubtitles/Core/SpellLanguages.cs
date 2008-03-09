@@ -127,13 +127,13 @@ public class SpellLanguages {
 	
 	/* LibEnchant imports */
 	
-	[DllImport ("libenchant.so.1")]
+	[DllImport ("libenchant")]
 	static extern IntPtr enchant_broker_init ();
 	
-	[DllImport ("libenchant.so.1")]
+	[DllImport ("libenchant")]
 	static extern void enchant_broker_free (IntPtr broker);
 	
-	[DllImport ("libenchant.so.1")]
+	[DllImport ("libenchant")]
 	static extern void enchant_broker_list_dicts (IntPtr broker, LanguageListHandler cb, IntPtr userdata);
 
 	

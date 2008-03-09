@@ -195,29 +195,46 @@ public abstract class SubtitleEditTextView {
     }
 
     /* GtkSpell */
-	[DllImport ("libgtkspell.so.0")]
+	[DllImport ("libgtkspell")]
 	static extern IntPtr gtkspell_new_attach (IntPtr textView, string locale, IntPtr error);
 
-	[DllImport ("libgtkspell.so.0")]
+	[DllImport ("libgtkspell")]
 	static extern void gtkspell_detach (IntPtr obj);
 
-	[DllImport ("libgtkspell.so.0")]
+	[DllImport ("libgtkspell")]
 	static extern bool gtkspell_set_language (IntPtr textView, string lang, IntPtr error);
 	
 	private void GtkSpellDetach () {
-		if (spellTextView != IntPtr.Zero)
+		if (IsGtkSpellAttached()) {
 			gtkspell_detach(spellTextView);
+			spellTextView = IntPtr.Zero;
+		}
 	}
 	
 	private void GtkSpellAttach () {
-		spellTextView = gtkspell_new_attach(textView.Handle, null, IntPtr.Zero);
+		if (!IsGtkSpellAttached()) {
+			spellTextView = gtkspell_new_attach(textView.Handle, null, IntPtr.Zero);
+		}
+	}
+	
+	private bool IsGtkSpellAttached () {
+		return (spellTextView != IntPtr.Zero);
 	}
 	
 	private bool GtkSpellSetLanguage (string language) {
-		if ((language == null) || (language == String.Empty))
+		bool isEmpty = ((language == null) || (language == String.Empty));
+		if (isEmpty) {
+			if (IsGtkSpellAttached()) {
+				GtkSpellDetach();
+			}
 			return false;
-		else
+		}
+		else {
+			if (!IsGtkSpellAttached()) {
+				GtkSpellAttach();
+			}
 			return gtkspell_set_language(spellTextView, language, IntPtr.Zero);
+		}
 	}
 	
 
@@ -424,6 +441,8 @@ public abstract class SubtitleEditTextView {
     	if (this.ToggleOverwrite != null)
     		this.ToggleOverwrite(this, EventArgs.Empty);
     }
+    
+    /* Protected members */
     
     protected void OnSpellLanguageChanged (object o, EventArgs args) {
 		if (Global.SpellLanguages.Enabled) {
