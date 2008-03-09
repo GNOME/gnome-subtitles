@@ -135,6 +135,11 @@ public class SetLanguageDialog : GladeDialog {
 	
 		Close();
 	}
+	
+	private void OnLanguageRowActivated (object o, RowActivatedArgs args) {
+		SetSpellLanguage();
+		Close();
+	}
 
 
 }
