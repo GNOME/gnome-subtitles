@@ -32,13 +32,13 @@ public class SpellLanguage : IComparable {
 	/* Static variables */
 	private static string langGroupName = "lang";
 	private static string countryGroupName = "country";
-	private static Regex regex = new Regex(@"(?<" + langGroupName + @">[a-zA-Z0-9]+)([^a-zA-Z0-9]+(?<" + countryGroupName + @">[a-zA-Z0-9]+))?$", RegexOptions.IgnoreCase);
+	private static Regex regex = new Regex(@"^(?<" + langGroupName + @">[a-zA-Z]+)(_(?<" + countryGroupName + @">[a-zA-Z]+))?$", RegexOptions.IgnoreCase);
 		
 	public SpellLanguage (String id) {
 		this.id = id;
 		this.name = GetNameFromID(id);
 	}
-	
+
 	/* Properties */
 	
 	public string ID {
@@ -69,29 +69,29 @@ public class SpellLanguage : IComparable {
 	/* Private members */
 	
 	private string GetNameFromID (string id) {
-		System.Console.WriteLine("ID: " + id);
 		string lang = null;
 		string country = null;
 		bool parsed = ParseID(id, ref lang, ref country);
-		System.Console.WriteLine("Parsed? " + parsed);
-		string builtID = null;
-		if (parsed) {
-			builtID = lang;
-			if ((country != null) && (country != String.Empty))
-				builtID += "-" + country;
-		}
-		else
-			builtID = id;
+
+		if (!parsed)
+			return GetUnknownNameFromID(id);
+		
+		string builtID = lang;
+		if ((country != null) && (country != String.Empty))
+			builtID += "-" + country;
 		
 		CultureInfo info = null;
 		try {
 			info = new CultureInfo(builtID);
 		}
-		catch (Exception e) {
-			System.Console.WriteLine(e);
-			return prefixUnknown + " (" + id + ")";
+		catch (Exception) {
+			return GetUnknownNameFromID(id);
 		}
 		return info.EnglishName;
+	}
+	
+	private string GetUnknownNameFromID (String id) {
+		return prefixUnknown + " (" + id + ")";
 	}
 	
 	private bool ParseID (string id, ref string lang, ref string country) {
@@ -99,17 +99,14 @@ public class SpellLanguage : IComparable {
 		if (!match.Success)
 			return false;
 		
-		System.Console.WriteLine("Match was successful");
 		Group langGroup = match.Groups[langGroupName];
 		if (!langGroup.Success)
 			return false;
 		
 		lang = langGroup.Value;
-		System.Console.WriteLine("Lang group was successful: " + lang);
 		
 		Group countryGroup = match.Groups[countryGroupName];
 		country = (countryGroup.Success ? countryGroup.Value : null);
-		System.Console.WriteLine("Country group was successful: " + country);
 		return true;
 	}
 

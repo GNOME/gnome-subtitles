@@ -47,7 +47,7 @@ public class SubtitleEditTranslation : SubtitleEditTextView {
 		Global.CommandManager.Execute(new DeleteTranslationCommand(index, text, cursor));
 	}
 	
-	protected override string GetSpellActiveLanguage () {
+	protected override SpellLanguage GetSpellActiveLanguage () {
 		return Global.SpellLanguages.ActiveTranslationLanguage;
 	}
 	

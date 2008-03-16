@@ -88,24 +88,22 @@ public class SetLanguageDialog : GladeDialog {
 			
 		return activeLanguageIndex;
 	}
-	
+
 	private void SetSpellLanguage () {
-		string activeLanguage = GetSelectedLanguage();
-		Global.SpellLanguages.SetActiveLanguage(textType, activeLanguage);
+		int selectedLanguageIndex = GetSelectedLanguageIndex();
+		Global.SpellLanguages.SetActiveLanguageIndex(textType, selectedLanguageIndex);
 	}
 	
-	private string GetSelectedLanguage () {
+	private int GetSelectedLanguageIndex () {
 		int count = languagesTreeView.Selection.CountSelectedRows();
 		if (count != 1)
-			return String.Empty;
+			return -1;
 			
 		TreePath path = GetSelectedPath(languagesTreeView);
 		if (path == null)
-			return String.Empty;
-		
-		TreeIter iter;
-		languagesTreeView.Model.GetIter(out iter, path);
-		return languagesTreeView.Model.GetValue(iter, colNum) as string;
+			return -1;
+			
+		return Util.PathToInt(path);
 	}
 	
 	private TreePath GetSelectedPath (TreeView tree) {

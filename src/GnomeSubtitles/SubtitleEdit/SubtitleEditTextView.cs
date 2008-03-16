@@ -69,7 +69,7 @@ public abstract class SubtitleEditTextView {
 	protected abstract string GetSubtitleTextContent (Subtitle subtitle);
 	protected abstract void ExecuteInsertCommand (int index, string insertion);
 	protected abstract void ExecuteDeleteCommand (int index, string deletion, int cursor);
-	protected abstract string GetSpellActiveLanguage ();
+	protected abstract SpellLanguage GetSpellActiveLanguage ();
 	protected abstract void ConnectLanguageChangedSignal ();
 	
 	/* Events */
@@ -221,9 +221,8 @@ public abstract class SubtitleEditTextView {
 		return (spellTextView != IntPtr.Zero);
 	}
 	
-	private bool GtkSpellSetLanguage (string language) {
-		bool isEmpty = ((language == null) || (language == String.Empty));
-		if (isEmpty) {
+	private bool GtkSpellSetLanguage (SpellLanguage language) {
+		if (language == null) {
 			if (IsGtkSpellAttached()) {
 				GtkSpellDetach();
 			}
@@ -233,7 +232,11 @@ public abstract class SubtitleEditTextView {
 			if (!IsGtkSpellAttached()) {
 				GtkSpellAttach();
 			}
-			return gtkspell_set_language(spellTextView, language, IntPtr.Zero);
+			bool result = gtkspell_set_language(spellTextView, language.ID, IntPtr.Zero);
+			if (!result)
+				GtkSpellDetach();
+			
+			return result;
 		}
 	}
 	
@@ -385,7 +388,7 @@ public abstract class SubtitleEditTextView {
 		bool enabled = Global.SpellLanguages.Enabled;
 		if (enabled) {
 			GtkSpellAttach();
-			string language = GetSpellActiveLanguage();
+			SpellLanguage language = GetSpellActiveLanguage();
 			GtkSpellSetLanguage(language);
 		}
 		else
@@ -446,7 +449,7 @@ public abstract class SubtitleEditTextView {
     
     protected void OnSpellLanguageChanged (object o, EventArgs args) {
 		if (Global.SpellLanguages.Enabled) {
-			string language = GetSpellActiveLanguage();
+			SpellLanguage language = GetSpellActiveLanguage();
 			GtkSpellSetLanguage(language);
 		}
 	}
