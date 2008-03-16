@@ -61,8 +61,8 @@ public class SetLanguageDialog : GladeDialog {
 		languagesTreeView.AppendColumn(col);
 	
 		store = new ListStore(typeof(string));
-		foreach (string language in Global.SpellLanguages.Languages) {
-			store.AppendValues(language);
+		foreach (SpellLanguage language in Global.SpellLanguages.Languages) {
+			store.AppendValues(language.Name);
 		}
 		
 		languagesTreeView.Model = store;

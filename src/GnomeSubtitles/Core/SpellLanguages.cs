@@ -198,7 +198,9 @@ public class SpellLanguages {
 	/* Event members */
 	
 	private void OnLanguageList (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata) {
-		languages.Add(langTag);
+		SpellLanguage language = new SpellLanguage(langTag);
+		if (!languages.Contains(language))
+			languages.Add(language);
 	}
 	
 	private void EmitToggleEnabled () {
