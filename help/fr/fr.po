@@ -1,0 +1,950 @@
+# French translation of gnome-subtitles documentation.
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the tomboy
+# documentation package.
+#
+# Frederic Peters <fpeters@0d.be>, 2008.
+# Claude Paroz <claude@2xlibre.net>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-subtitles documentation\n"
+"POT-Creation-Date: 2008-03-16 18:07+0000\n"
+"PO-Revision-Date: 2008-03-29 22:45+0100\n"
+"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: C/gnome-subtitles.xml:22(title)
+msgid "<application>Gnome Subtitles</application> Manual V1.0"
+msgstr "Manuel de <application>Gnome Subtitles</application> v1.0"
+
+#: C/gnome-subtitles.xml:25(year)
+msgid "2007"
+msgstr "2007"
+
+#: C/gnome-subtitles.xml:26(holder)
+msgid "Erin Bloom"
+msgstr "Erin Bloom"
+
+#: C/gnome-subtitles.xml:28(para)
+msgid "The workings of <application>Gnome Subtitles</application>"
+msgstr "Le fonctionnement de <application>Gnome Subtitles</application>"
+
+#: C/gnome-subtitles.xml:34(publishername) C/gnome-subtitles.xml:44(orgname) C/gnome-subtitles.xml:85(para)
+msgid "GNOME Documentation Project"
+msgstr "Projet de documentation GNOME"
+
+#: C/gnome-subtitles.xml:2(para)
+msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any later version published by the Free Software Foundation with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+msgstr ""
+"Permission vous est donnée de copier, distribuer et/ou modifier ce document "
+"selon les termes de la Licence GNU Free Documentation License, Version 1.1 "
+"ou ultérieure publiée par la Free Software Foundation sans section "
+"inaltérable, sans texte de première page de couverture ni texte de "
+"dernière page de couverture. Vous trouverez un exemplaire de cette licence "
+"en suivant ce <ulink type=\"help\" url=\"ghelp:fdl\">lien</ulink> ou dans le "
+"fichier COPYING-DOCS fourni avec le présent manuel."
+
+#: C/gnome-subtitles.xml:12(para)
+msgid "This manual is part of a collection of GNOME manuals distributed under the GFDL. If you want to distribute this manual separately from the collection, you can do so by adding a copy of the license to the manual, as described in section 6 of the license."
+msgstr ""
+"Ce manuel fait partie de la collection de manuels GNOME distribués selon "
+"les termes de la licence de documentation libre GNU. Si vous souhaitez "
+"distribuer ce manuel indépendamment de la collection, vous devez joindre un "
+"exemplaire de la licence au document, comme indiqué dans la section 6 de "
+"celle-ci."
+
+#: C/gnome-subtitles.xml:19(para)
+msgid "Many of the names used by companies to distinguish their products and services are claimed as trademarks. Where those names appear in any GNOME documentation, and the members of the GNOME Documentation Project are made aware of those trademarks, then the names are in capital letters or initial capital letters."
+msgstr ""
+"La plupart des noms utilisés par les entreprises pour distinguer leurs "
+"produits et services sont des marques déposées. Lorsque ces noms "
+"apparaissent dans la documentation GNOME et que les membres du projet de "
+"Documentation GNOME sont informés de l'existence de ces marques déposées, "
+"soit ces noms entiers, soit leur première lettre est en majuscule."
+
+#: C/gnome-subtitles.xml:35(para)
+msgid "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS FREE OF DEFECTS MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY, ACCURACY, AND PERFORMANCE OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS WITH YOU. SHOULD ANY DOCUMENT OR MODIFIED VERSION PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT THE INITIAL WRITER, AUTHOR OR ANY CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER; AND"
+msgstr ""
+"LE PRÉSENT DOCUMENT EST FOURNI « TEL QUEL », SANS AUCUNE GARANTIE, "
+"EXPRESSE OU IMPLICITE, Y COMPRIS, ET SANS LIMITATION, LES GARANTIES DE "
+"MARCHANDABILITÉ, D'ADÉQUATION À UN OBJECTIF PARTICULIER OU "
+"DE NON INFRACTION DU DOCUMENT OU DE SA VERSION MODIFIÉE. L'UTILISATEUR "
+"ASSUME TOUT RISQUE RELATIF À LA QUALITÉ, À LA PERTINENCE ET À LA "
+"PERFORMANCE DU DOCUMENT OU DE SA VERSION DE MISE À JOUR. SI LE DOCUMENT OU "
+"SA VERSION MODIFIÉE S'AVÉRAIT DÉFECTUEUSE, L'UTILISATEUR (ET NON LE "
+"RÉDACTEUR INITIAL, L'AUTEUR, NI TOUT AUTRE PARTICIPANT) ENDOSSERA LES "
+"COÛTS DE TOUTE INTERVENTION, RÉPARATION OU CORRECTION NÉCESSAIRE. CETTE "
+"DÉNÉGATION DE RESPONSABILITÉ CONSTITUE UNE PARTIE ESSENTIELLE DE CETTE "
+"LICENCE. AUCUNE UTILISATION DE CE DOCUMENT OU DE SA VERSION MODIFIÉE N'EST "
+"AUTORISÉE AUX TERMES DU PRÉSENT ACCORD, EXCEPTÉ SOUS CETTE DÉNÉGATION "
+"DE RESPONSABILITÉ ; "
+
+#: C/gnome-subtitles.xml:55(para)
+msgid "UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY CONTRIBUTOR, OR ANY DISTRIBUTOR OF THE DOCUMENT OR MODIFIED VERSION OF THE DOCUMENT, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO ANY PERSON FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER DAMAGES OR LOSSES ARISING OUT OF OR RELATING TO USE OF THE DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES."
+msgstr ""
+"EN AUCUNE CIRCONSTANCE ET SOUS AUCUNE INTERPRÉTATION "
+"DE LA LOI, QU'IL S'AGISSE D'UN DÉLIT CIVIL (Y COMPRIS LA NÉGLIGENCE), "
+"CONTRACTUEL OU AUTRE, L'AUTEUR, LE RÉDACTEUR INITIAL, TOUT PARTICIPANT OU "
+"TOUT DISTRIBUTEUR DE CE DOCUMENT OU DE SA VERSION MODIFIÉE, OU TOUT "
+"FOURNISSEUR DE L'UNE DE CES PARTIES NE POURRA ÊTRE TENU RESPONSABLE À "
+"L'ÉGARD DE QUICONQUE POUR TOUT DOMMAGE DIRECT, INDIRECT, PARTICULIER, OU "
+"ACCIDENTEL DE TOUT TYPE Y COMPRIS, SANS LIMITATION, LES DOMMAGES LIÉS À LA "
+"PERTE DE CLIENTÈLE, À UN ARRÊT DE TRAVAIL, À UNE DÉFAILLANCE OU UN "
+"MAUVAIS FONCTIONNEMENT INFORMATIQUE, OU À TOUT AUTRE DOMMAGE OU PERTE LIÉE "
+"À L'UTILISATION DU DOCUMENT ET DE SES VERSIONS MODIFIÉES, MÊME SI LADITE "
+"PARTIE A ÉTÉ INFORMÉE DE L'ÉVENTUALITÉ DE TELS DOMMAGES."
+
+#: C/gnome-subtitles.xml:28(para)
+msgid "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: <placeholder-1/>"
+msgstr ""
+"LE PRÉSENT DOCUMENT ET SES VERSIONS MODIFIÉES SONT FOURNIS SELON LES "
+"TERMES DE LA LICENCE DE DOCUMENTATION LIBRE GNU SACHANT QUE : "
+"<placeholder-1/>"
+
+#: C/gnome-subtitles.xml:41(firstname)
+msgid "Erin"
+msgstr "Erin"
+
+#: C/gnome-subtitles.xml:42(surname)
+msgid "Bloom"
+msgstr "Bloom"
+
+#: C/gnome-subtitles.xml:45(email)
+msgid "doc-writer2@gnome.org"
+msgstr "doc-writer2@gnome.org"
+
+#: C/gnome-subtitles.xml:79(revnumber)
+msgid "gnome-subtitles Manual V1.0"
+msgstr "Manual de gnome-subtitles v1.0"
+
+#: C/gnome-subtitles.xml:80(date)
+msgid "May 2007"
+msgstr "Mai 2007"
+
+#: C/gnome-subtitles.xml:82(para)
+msgid "Erin Bloom <email>docwriter2@gnome.org</email>"
+msgstr "Erin Bloom <email>docwriter2@gnome.org</email>"
+
+#: C/gnome-subtitles.xml:90(releaseinfo)
+msgid "This manual describes version 0.4 of gnome-subtitles"
+msgstr "Ce manuel documente la version 0.4 de gnome-subtitles."
+
+#: C/gnome-subtitles.xml:92(title)
+msgid "Feedback"
+msgstr "Votre avis"
+
+#: C/gnome-subtitles.xml:93(para)
+msgid "To report a bug or make a suggestion regarding the <application>Gnome Subtitles</application> application or this manual, follow the directions in the <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME Feedback Page</ulink>."
+msgstr ""
+"Pour rapporter une anomalie ou émettre une suggestion concernant "
+" <application>Gnome Subtitles</application> ou ce manuel, procédez "
+"comme indiqué sur la <ulink url=\"ghelp:gnome-feedback\" "
+"type=\"help\">page de réactions sur GNOME</ulink>."
+
+#: C/gnome-subtitles.xml:101(primary)
+msgid "Gnome Subtitles"
+msgstr "Gnome Subtitles"
+
+#: C/gnome-subtitles.xml:104(primary)
+msgid "gnomesubtitles"
+msgstr "gnomesubtitles"
+
+#: C/gnome-subtitles.xml:112(title)
+msgid "Introduction"
+msgstr "Introduction"
+
+#: C/gnome-subtitles.xml:113(para)
+msgid "<application>Gnome Subtitles</application> is a subtitle editor for the GNOME desktop. <application>Gnome Subtitles</application> supports the most common text-based subtitle formats and allows for subtitle editing, conversion and synchronization. Its features follow."
+msgstr ""
+"<application>Gnome Subtitles</application> est un éditeur de sous-titres pour "
+"l'environnement GNOME. <application>Gnome Subtitles</application> prend en "
+"charge les formats texte de sous-titres et permet l'édition, la conversion "
+"et la synchronisation de sous-tires. Ses fonctionnalités sont les suivantes :"
+
+#: C/gnome-subtitles.xml:119(para)
+msgid "Subtitle Formats:"
+msgstr "Formats de sous-titres :"
+
+#: C/gnome-subtitles.xml:121(para)
+msgid "Advanced Sub Station Alpha"
+msgstr "Advanced Sub Station Alpha"
+
+#: C/gnome-subtitles.xml:122(para)
+msgid "MicroDVD"
+msgstr "MicroDVD"
+
+#: C/gnome-subtitles.xml:123(para)
+msgid "MPlayer"
+msgstr "MPlayer"
+
+#: C/gnome-subtitles.xml:124(para)
+msgid "Mplayer 2"
+msgstr "Mplayer 2"
+
+#: C/gnome-subtitles.xml:125(para)
+msgid "MPSub"
+msgstr "MPSub"
+
+#: C/gnome-subtitles.xml:126(para)
+msgid "SubRip"
+msgstr "SubRip"
+
+#: C/gnome-subtitles.xml:127(para)
+msgid "Sub Station Alpha"
+msgstr "Sub Station Alpha"
+
+#: C/gnome-subtitles.xml:128(para)
+msgid "SubViewer 1.0"
+msgstr "SubViewer 1.0"
+
+#: C/gnome-subtitles.xml:129(para)
+msgid "SubViewer 2.0"
+msgstr "SubViewer 2.0"
+
+#: C/gnome-subtitles.xml:132(para)
+msgid "Built-in Video Preview"
+msgstr "Aperçu intégré de la vidéo"
+
+#: C/gnome-subtitles.xml:134(para)
+msgid "Uses mplayer as the backend"
+msgstr "Utilisation de mplayer pour la lecture"
+
+#: C/gnome-subtitles.xml:135(para)
+msgid "Video length and current position display"
+msgstr "Affichage de la durée de la vidéo et de la position actuelle"
+
+#: C/gnome-subtitles.xml:136(para)
+msgid "Set subtitle timings based on video position"
+msgstr "Synchronisation des sous-titres basée sur la position dans la vidéo"
+
+#: C/gnome-subtitles.xml:137(para)
+msgid "Automatically select video when opening subtitles"
+msgstr "Sélection automatique de la vidéo à l'ouverture des sous-titres"
+
+#: C/gnome-subtitles.xml:141(para)
+msgid "User Interface"
+msgstr "Interface utilisateur"
+
+#: C/gnome-subtitles.xml:143(para)
+msgid "WYSIWYG-What you see is what you get"
+msgstr "WYSIWYG - What you see is what you get (« Ce que vous voyez correspond à ce que vous obtenez »)"
+
+#: C/gnome-subtitles.xml:144(para)
+msgid "Edit subtitle headers"
+msgstr "Édition des en-têtes de sous-titres"
+
+#: C/gnome-subtitles.xml:145(para)
+msgid "Find and Replace, including regular expression support"
+msgstr "Rechercher et remplacer, avec la prise en charge des expressions régulières"
+
+#: C/gnome-subtitles.xml:146(para)
+msgid "Undo/Redo"
+msgstr "Annuler / Rétablir"
+
+#: C/gnome-subtitles.xml:150(para)
+msgid "Timing Operations"
+msgstr "Opérations de synchronisation"
+
+#: C/gnome-subtitles.xml:152(para)
+msgid "Auto-adjust timings based on 2 correct time/synchronization points"
+msgstr ""
+"Ajustement automatique de la synchronisation sur base de 2 temps ou "
+"points de synchronisation"
+
+#: C/gnome-subtitles.xml:153(para)
+msgid "Shift subtitles by a specified delay (which can be based on the video)"
+msgstr ""
+"Décalage des sous-titres par un délai donné (qui peut être basé sur "
+"la vidéo)"
+
+#: C/gnome-subtitles.xml:154(para)
+msgid "Convert between framerates"
+msgstr "Conversion entre différentes fréquences d'images"
+
+#: C/gnome-subtitles.xml:155(para)
+msgid "Edit times and frames"
+msgstr "Modification des temps et des images"
+
+#: C/gnome-subtitles.xml:158(para)
+msgid "Other Features"
+msgstr "Autre fonctionnalités"
+
+#: C/gnome-subtitles.xml:160(para)
+msgid "Character coding a subtitle format auto-detection (on opening)"
+msgstr "Auto-détection (à l'ouverture) du codage des caractères des sous-titres"
+
+#: C/gnome-subtitles.xml:161(para)
+msgid "Multiple character encoding choice"
+msgstr "Choix entre différents codages de caractères"
+
+#: C/gnome-subtitles.xml:162(para)
+msgid "Relaxes subtitle reading, to read subtitles that contain errors"
+msgstr ""
+"Lecture indulgente des sous-titres, pour lire des sous-titres contenant "
+"des erreurs."
+
+#: C/gnome-subtitles.xml:178(title)
+msgid "Getting Started"
+msgstr "Premiers pas"
+
+#: C/gnome-subtitles.xml:181(title)
+msgid "To Start <application>Gnome Subtitles</application>"
+msgstr "Démarrage de <application>Gnome Subtitles</application>"
+
+#: C/gnome-subtitles.xml:182(para)
+msgid "You can start <application><application>Gnome Subtitles</application></application> in the following ways:"
+msgstr ""
+"Vous pouvez démarrer <application><application>Gnome "
+"Subtitles</application></application> des manières suivantes :"
+
+#: C/gnome-subtitles.xml:186(term)
+msgid "<guimenu>Applications</guimenu> menu"
+msgstr "Menu <guimenu>Applications</guimenu>"
+
+#: C/gnome-subtitles.xml:188(para)
+msgid "Choose <menuchoice><guisubmenu>Sound &amp; Video</guisubmenu><guimenuitem>Gnome Subtitles</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez <menuchoice><guisubmenu>Son et vidéo</guisubmenu><guimenuitem>"
+"Gnome Subtitles</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:196(term)
+msgid "Command line"
+msgstr "Ligne de commande"
+
+#: C/gnome-subtitles.xml:198(para)
+msgid "Type <command>gnome-subtitles</command><replaceable>filename</replaceable> and press <keycap>Return</keycap>."
+msgstr ""
+"Saisissez <command>gnome-subtitles</command>"
+"<replaceable>nom-de-fichier</replaceable> et appuyez sur "
+"<keycap>Entrée</keycap>."
+
+#: C/gnome-subtitles.xml:199(para)
+msgid "The <replaceable>filename</replaceable> argument is optional. If specified, the application will open that file when starting."
+msgstr ""
+"Le paramètre <replaceable>nom-de-fichier</replaceable> est facultatif. Quand "
+"il est indiqué, l'application ouvre le fichier au démarrage."
+
+#: C/gnome-subtitles.xml:206(title)
+msgid "Working with Files"
+msgstr "Utilisation des fichiers"
+
+#: C/gnome-subtitles.xml:208(title) C/gnome-subtitles.xml:210(title)
+msgid "Creating a new subtitle document"
+msgstr "Création d'un nouveau fichier de sous-titres"
+
+#: C/gnome-subtitles.xml:212(para)
+msgid "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>New</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Fichier</guisubmenu><guimenuitem>Nouveau</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:217(para)
+msgid "A new file should open in the editor"
+msgstr "Un nouveau fichier devrait apparaître dans l'éditeur."
+
+#: C/gnome-subtitles.xml:222(title) C/gnome-subtitles.xml:224(title)
+msgid "Opening a file"
+msgstr "Ouverture d'un fichier"
+
+#: C/gnome-subtitles.xml:226(para)
+msgid "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Open</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Fichier</guisubmenu><guimenuitem>Ouvrir</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:231(para) C/gnome-subtitles.xml:263(para)
+msgid "The Open File window should open"
+msgstr "La fenêtre d'ouverture de fichier devrait apparaître."
+
+#: C/gnome-subtitles.xml:234(para)
+msgid "Select the subtitle file you wish to open."
+msgstr "Choisissez le fichier de sous-titres que vous voulez ouvrir."
+
+#: C/gnome-subtitles.xml:238(para)
+msgid "If you want to specify the encoding, choose the appropriate character encoding from the Encoding"
+msgstr ""
+"Si vous voulez préciser le codage de caractères, choisissez celui approprié "
+"dans la zone Codage des caractères."
+
+#: C/gnome-subtitles.xml:242(para)
+msgid "If you want to choose a video to open immediately, choose a video from the Video list."
+msgstr ""
+"Si vous voulez choisir une vidéo pour qu'elle s'ouvre immédiatement, "
+"choisissez une vidéo dans la liste des vidéos."
+
+#: C/gnome-subtitles.xml:247(para)
+msgid "When selecting a video, you can only choose from the videos in the current directory. If the video you want to open is not in the same directory as the subtitle file, you can open the video after opening the subtitle file."
+msgstr ""
+"Quand vous choisissez une vidéo, vous pouvez seulement choisir parmi les "
+"vidéos du dossier actuel. Si la vidéo que vous voulez ouvrir n'est pas "
+"dans le même répertoire que le fichier de sous-titres, vous pourrez l'ouvrir "
+"après avoir ouvert le fichier de sous-titres."
+
+#: C/gnome-subtitles.xml:253(title) C/gnome-subtitles.xml:255(title)
+msgid "Saving a file"
+msgstr "Enregistrement d'un fichier"
+
+#: C/gnome-subtitles.xml:256(para)
+msgid "You can either save a file normally, or use Save As to set different options."
+msgstr ""
+"Vous pouvez soit enregistrer un fichier normalement, soit utiliser "
+"« Enregistrer sous » pour sélectionnner différentes options."
+
+#: C/gnome-subtitles.xml:258(para)
+msgid "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Fichier</guisubmenu><guimenuitem>Enregistrer</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:266(para)
+msgid "If you are saving a new file, the Save As window will appear"
+msgstr ""
+"Si vous enregistrez un fichier pour la première fois, la fenêtre « Enregistrer sous » "
+"apparaît."
+
+#: C/gnome-subtitles.xml:268(title)
+msgid "Saving as a new file"
+msgstr "Enregistrement d'un nouveau fichier"
+
+#: C/gnome-subtitles.xml:270(para)
+msgid "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save As</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Fichier</guisubmenu><guimenuitem>Enregistrer sous"
+"</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:275(para)
+msgid "The Save As window should open"
+msgstr "La fenêtre « Enregistrer sous » devrait apparaître."
+
+#: C/gnome-subtitles.xml:277(para)
+msgid "Enter a new name for your subtitle file"
+msgstr "Saisissez un nouveau nom pour le fichier de sous-titres."
+
+#: C/gnome-subtitles.xml:278(para)
+msgid "If you would like to save the file in a different location, browse to the new location in the file browser"
+msgstr ""
+"Si vous voulez enregistrer le fichier à un emplacement différent, choisissez "
+"le nouvel emplacement dans le sélecteur de fichier."
+
+#: C/gnome-subtitles.xml:280(para)
+msgid "If you would like to save the file in a format other than the format listed in the Subtitle Format list, choose a different format."
+msgstr ""
+"Si vous voulez enregistrer le fichier dans un format différent de celui qui est"
+"affiché dans la liste des formats, choisissez un format différent."
+
+#: C/gnome-subtitles.xml:282(para)
+msgid "If you would like to save the file in a character encoding other than your default encoding which is listed, change the encoding in the character encoding list."
+msgstr ""
+"Si vous voulez enregistrer le fichier dans un codage de caractères "
+"différent de l'encodage par défaut, changez le codage dans la liste "
+"des codages de caractères."
+
+#: C/gnome-subtitles.xml:284(para)
+msgid "Click Save"
+msgstr "Cliquez sur Enregistrer."
+
+#: C/gnome-subtitles.xml:289(title)
+msgid "Selecting a character encoding"
+msgstr "Sélection d'un codage de caractères"
+
+#: C/gnome-subtitles.xml:290(para)
+msgid "If you use special characters in your subtitle file, you will want to make sure that your file is saved in an encoding that supports those characters."
+msgstr ""
+"Si vous utilisez des caractères spéciaux dans votre fichier de sous-titres, "
+"vous devrez vous assurer que votre fichier est enregistré dans un codage "
+"prenant en charge ces caractères."
+
+#: C/gnome-subtitles.xml:292(para)
+msgid "Saving a file in a character encoding that does not support the special characters will cause loss of character data. This occurs when you try to save multi-byte characters in a single byte character encoding."
+msgstr ""
+"Enregistrer un fichier dans un codage de caractères qui ne prend pas en charge les "
+"caractères spéciaux provoquera une perte de données. Cela se produit quand "
+"vous essayez d'enregistrer des caractères multi-octets dans un codage de "
+"caractères à simple octet."
+
+#: C/gnome-subtitles.xml:297(title)
+msgid "Editing subtitle headers"
+msgstr "Édition des en-têtes des sous-titres"
+
+#: C/gnome-subtitles.xml:300(para)
+msgid "Some subtitle formats have file headers that contain information about the file. You can edit these fields in <application>Gnome Subtitles</application> by"
+msgstr ""
+"Certains formats de sous-titres ont des en-têtes de fichier contenant "
+"des informations sur le fichier. Vous pouvez modifier ces champs dans "
+"<application>Gnome Subtitles</application>."
+
+#: C/gnome-subtitles.xml:303(para)
+msgid "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Headers</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez"
+"<menuchoice><guisubmenu>Fichier</guisubmenu><guimenuitem>En-têtes</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:308(para)
+msgid "The Headers window will open. It has 4 tabs on it."
+msgstr "La fenêtre En-têtes s'ouvre. Elle possède quatre onglets."
+
+#: C/gnome-subtitles.xml:310(para)
+msgid "Select the tab that corresponds to the format of your subtitle file"
+msgstr "Choisissez l'onglet correspondant au format de votre fichier de sous-titres."
+
+#: C/gnome-subtitles.xml:311(para)
+msgid "Fill in appropriate fields."
+msgstr "Remplissez les champs appropriés."
+
+#: C/gnome-subtitles.xml:312(para)
+msgid "When you are done entering header data in, click OK"
+msgstr "Quand vous avez fini d'entrer les informations d'en-tête, cliquez sur Valider."
+
+#: C/gnome-subtitles.xml:318(title)
+msgid "Working with Subtitles"
+msgstr "Utilisation des sous-titres"
+
+#: C/gnome-subtitles.xml:319(para)
+msgid "This help lists the keyboard shortcuts to accomplish tasks. All of the tasks can also be accomplished by using the Edit menu instead of keyboard shortcuts."
+msgstr ""
+"Cette aide présente les raccourcis clavier pour accomplir certaines tâches. Toutes les "
+"tâches peuvent également être réalisées en utilisant le menu Édition plutôt "
+"que les raccourcis clavier."
+
+#: C/gnome-subtitles.xml:322(title)
+msgid "Adding a Subtitle"
+msgstr "Ajout d'un sous-titre"
+
+#: C/gnome-subtitles.xml:323(para)
+msgid "New subtitles are added either before or after the current subtitle."
+msgstr "De nouveaux sous-titres sont ajoutés avant ou après le sous-titre actuel."
+
+#: C/gnome-subtitles.xml:325(title)
+msgid "To add a new subtitle after the current subtitle"
+msgstr "Pour ajouter un nouveau sous-titre après le sous-titre actuel"
+
+#: C/gnome-subtitles.xml:327(para)
+msgid "Type <keycap>Insert</keycap> or <keycap>Control-Return</keycap>"
+msgstr "Appuyez sur <keycap>Insertion</keycap> ou <keycap>Ctrl-Entrée</keycap>."
+
+#: C/gnome-subtitles.xml:331(title)
+msgid "To add a new subtitle before the current subtitle"
+msgstr "Pour ajouter un nouveau sous-titre avant le sous-titre actuel"
+
+#: C/gnome-subtitles.xml:333(para)
+msgid "Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</keycap>"
+msgstr "Appuyez sur <keycap>Maj</keycap>-<keycap>Ctrl</keycap>-<keycap>Entrée</keycap>"
+
+#: C/gnome-subtitles.xml:338(title)
+msgid "Moving between subtitles"
+msgstr "Déplacement entre les sous-titres"
+
+#: C/gnome-subtitles.xml:339(para)
+msgid "To select subtitles you can either use your mouse to click the subtitle , or, when your cursor is in the edit window, you can use keyboard shortcuts to move between subtitles"
+msgstr ""
+"Pour sélectionner des sous-titres, vous pouvez soit utiliser la souris pour "
+"cliquer sur le sous-titre, ou, quand le curseur est dans la fenêtre d'édition, "
+"vous pouvez utiliser des raccourcis clavier pour vous déplacer entre des "
+"sous-titres."
+
+#: C/gnome-subtitles.xml:343(title)
+msgid "To go to the next subtitle"
+msgstr "Pour aller au sous-titre suivant"
+
+#: C/gnome-subtitles.xml:345(para)
+msgid "Type <keycap>Control</keycap>-<keycap>Page Down</keycap>"
+msgstr "Appuyez sur <keycap>Ctrl<keycap>-<keycap>Page suivante</keycap>."
+
+#: C/gnome-subtitles.xml:349(title)
+msgid "To move to the previous subtitle"
+msgstr "Pour aller au sous-titre précédent"
+
+#: C/gnome-subtitles.xml:351(para)
+msgid "Type <keycap>Control</keycap>-<keycap>Page Up</keycap>"
+msgstr "Appuyez sur <keycap>Ctrl<keycap>-<keycap>Page précédente</keycap>."
+
+#: C/gnome-subtitles.xml:356(title)
+msgid "Removing Subtitle(s)"
+msgstr "Suppression de sous-titres"
+
+#: C/gnome-subtitles.xml:357(para)
+msgid "Type <keycap>Delete</keycap>"
+msgstr "Appuyez sur <keycap>Suppr</keycap>."
+
+#: C/gnome-subtitles.xml:360(title)
+msgid "Working with Multiple Subtitles"
+msgstr "Manipulation de plusieurs sous-titres"
+
+#: C/gnome-subtitles.xml:361(para)
+msgid "Sometimes you will want to select multiple subtitles. Use <keycap>Shift</keycap> to select sequenctial subtitles, and <keycap>Control</keycap> to select non-sequention subtitles"
+msgstr ""
+"Il est parfois souhaitable de sélectionner plusieurs sous-titres. Utilisez "
+"<keycap>Maj</keycap> pour sélectionner des sous-titres consécutifs "
+"et <keycap>Ctrl</keycap> pour des sous-titres non consécutifs."
+
+#: C/gnome-subtitles.xml:363(para)
+msgid "To select all subtitles type <keycap>Control</keycap>-<keycap>A</keycap>"
+msgstr ""
+"Pour sélectionner tous les sous-titres, appuyez sur "
+"<keycap>Ctrl</keycap>-<keycap>A</keycap>."
+
+#: C/gnome-subtitles.xml:366(title)
+msgid "Editing Text"
+msgstr "Édition de texte"
+
+#: C/gnome-subtitles.xml:367(para)
+msgid "To edit text in a subtitle"
+msgstr "Pour éditer le texte d'un sous-titre"
+
+#: C/gnome-subtitles.xml:369(para)
+msgid "Select the subtitle"
+msgstr "Sélectionnez le sous-titre."
+
+#: C/gnome-subtitles.xml:370(para)
+msgid "Click the edit window to move the cursor into the edit window"
+msgstr "Cliquez sur la fenêtre d'édition pour placer le curseur dans celle-ci."
+
+#: C/gnome-subtitles.xml:374(title)
+msgid "Text format"
+msgstr "Formatage du texte"
+
+#: C/gnome-subtitles.xml:375(para)
+msgid "A type format (bold, italics, underline) can be applied to the whole line only. Currently, if you want to have only certain characters formatted specially, you will need to edit the subtitle file in a text editor."
+msgstr ""
+"Un type de formatage (gras, italique, souligné) peut seulement être appliqué "
+"pour une ligne entière. Actuellement, si vous voulez n'avoir que certains "
+"caractères formatés particulièrement, vous devez modifier le fichier de "
+"sous-titres dans un éditeur de texte."
+
+#: C/gnome-subtitles.xml:380(title)
+msgid "Undoing and Redoing"
+msgstr "Annulation et rétablissement"
+
+#: C/gnome-subtitles.xml:381(title)
+msgid "To undo an action"
+msgstr "Pour annuler une action"
+
+#: C/gnome-subtitles.xml:381(para)
+msgid "Type <keycap>Control</keycap>- <keycap>Z</keycap>"
+msgstr "Appuyez sur <keycap>Ctrl</keycap>-<keycap>Z</keycap>."
+
+#: C/gnome-subtitles.xml:383(title)
+msgid "To redo an action"
+msgstr "Pour rétablir une action"
+
+#: C/gnome-subtitles.xml:383(para)
+msgid "Type <keycap>Control</keycap>- <keycap>Y</keycap> or <keycap>Control</keycap>-<keycap>Shift</keycap>-<keycap>Z </keycap>"
+msgstr ""
+"Appuyez sur <keycap>Ctrl</keycap>-<keycap>Y</keycap> ou "
+"<keycap>Ctrl</keycap>-<keycap>Maj</keycap>-<keycap>Z</keycap>."
+
+#: C/gnome-subtitles.xml:388(title)
+msgid "Cutting, Copying, and Pasting"
+msgstr "Couper, copier et coller"
+
+#: C/gnome-subtitles.xml:389(para)
+msgid "You can cut, copy, and paste the text in a subtitle."
+msgstr "Vous pouvez couper, copier et coller le texte d'un sous-titre."
+
+#: C/gnome-subtitles.xml:390(title)
+msgid "To copy text"
+msgstr "Pour copier du texte"
+
+#: C/gnome-subtitles.xml:390(para)
+msgid "<keycap>Control</keycap>- <keycap>C</keycap>"
+msgstr "<keycap>Ctrl</keycap>-<keycap>C</keycap>"
+
+#: C/gnome-subtitles.xml:392(title)
+msgid "To cut text"
+msgstr "Pour couper du texte"
+
+#: C/gnome-subtitles.xml:392(para)
+msgid "<keycap>Control</keycap>- <keycap>X</keycap>"
+msgstr "<keycap>Ctrl</keycap>-<keycap>X</keycap>"
+
+#: C/gnome-subtitles.xml:394(title)
+msgid "To paste text"
+msgstr "Pour coller du texte"
+
+#: C/gnome-subtitles.xml:394(para)
+msgid "<keycap>Control</keycap>- <keycap>V</keycap>"
+msgstr "<keycap>Ctrl</keycap>-<keycap>V</keycap>"
+
+#: C/gnome-subtitles.xml:421(title)
+msgid "Manipulating Subtitles"
+msgstr "Manipulation des sous-titres"
+
+#: C/gnome-subtitles.xml:423(title)
+msgid "Setting subtitle units"
+msgstr "Choix de l'unité"
+
+#: C/gnome-subtitles.xml:424(para)
+msgid "In <application>Gnome Subtitles</application> you can set and adjust subtitles in time units (minutes and seconds) or in frame units. The default unit is time."
+msgstr ""
+"Dans <application>Gnome Subtitles</application>, vous pouvez sélectionner et"
+"ajuster les sous-titres par unité de temps (minutes et secondes) ou par unité "
+"d'images. L'unité par défaut est le temps."
+
+#: C/gnome-subtitles.xml:426(title)
+msgid "To use Frame units"
+msgstr "Pour utiliser les images comme unité"
+
+#: C/gnome-subtitles.xml:427(para)
+msgid "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Frames</guimenuitem></menuchoice>."
+msgstr "Choisissez <menuchoice><guisubmenu>Affichage</guisubmenu><guimenuitem>Images</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:431(title)
+msgid "To use Time units"
+msgstr "Pour utiliser les unités de temps"
+
+#: C/gnome-subtitles.xml:432(para)
+msgid "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Times</guimenuitem></menuchoice>."
+msgstr "Choisissez <menuchoice><guisubmenu>Affichage</guisubmenu><guimenuitem>Temps</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:438(title)
+msgid "Adjusting Timings"
+msgstr "Ajustement de la synchronisation"
+
+#: C/gnome-subtitles.xml:440(para)
+msgid "If you want to adjust the timings of only some subtitles, select the subtitles that you want to adjust the timing of"
+msgstr ""
+"Si vous voulez ajuster la synchronisation de certains sous-tires seulement, "
+"sélectionnez les sous-titres que vous voulez synchroniser."
+
+#: C/gnome-subtitles.xml:442(para)
+msgid "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Adjust</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Synchronisation</guisubmenu><guimenuitem>Ajuster</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:446(para)
+msgid "Choose the new starting time of the first subtitle and the new starting time of the last subtitle"
+msgstr ""
+"Choisissez le nouveau début du premier sous-titre et la nouvelle fin du "
+"dernier sous-titre."
+
+#: C/gnome-subtitles.xml:451(title)
+msgid "Shifting Timings"
+msgstr "Décalage des synchronisations"
+
+#: C/gnome-subtitles.xml:452(para)
+msgid "Shifting timings allows you to moves one or more subtitles ahead or behind by a specific amount. Unlike the Adjust subtitles feature, Shifting subtitles does not affect the duration of the subtitles."
+msgstr ""
+"Le décalage des synchronisations permet de déplacer un ou plusieurs "
+"sous-titres d'une certaine valeur, en avant ou en arrière. Contrairement "
+"à la fonction d'ajustement des sous-titres, le décalage des sous-titres "
+"n'a pas d'incidence sur la durée des sous-titres."
+
+#: C/gnome-subtitles.xml:455(title)
+msgid "To use shift subtitles"
+msgstr "Pour décaler les sous-titres"
+
+#: C/gnome-subtitles.xml:456(para)
+msgid "Select which subtitle(s) you want to shift. If you want to shift the time/frame of one subtitle and/or all subtitles before or after a specific subtitle, select that subtitle. If you want to shift more than one specific subtitles, select all of the subtitles that you want to shift."
+msgstr ""
+"Sélectionnez le ou les sous-titres que vous voulez décaler. Si vous voulez "
+"décaler le temps ou l'image d'un ou de tous les sous-tires avant ou après "
+"un sous-titre particulier, sélectionnez ce sous-titre. Si vous voulez décaler "
+"plus d'un sous-titre particulier, sélectionnez tous les sous-titres que vous "
+"voulez décaler."
+
+#: C/gnome-subtitles.xml:459(para)
+msgid "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Shift</guimenuitem></menuchoice>."
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Synchronisation</guisubmenu><guimenuitem>Décaler</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:463(para)
+msgid "Enter in the amount of time (or frames, if you are using the frame unit) to adjust your subtitles by. If you want to move the subtitles back, enter a negative value, otherwise, enter a positive value."
+msgstr ""
+"Saisissez la durée (ou le nombre d'images, si vous utilisez cette unité) pour "
+"ajuster les sous-titres. Si vous voulez déplacer des sous-titres vers "
+"l'arrière, saisissez une valeur négative, sinon saisissez une valeur positive."
+
+#: C/gnome-subtitles.xml:466(para)
+msgid "Select how you want to shift your subtitles."
+msgstr "Sélectionnez la méthode de décalage des sous-titres."
+
+#: C/gnome-subtitles.xml:467(para)
+msgid "Click Shift to shift the subtitles."
+msgstr "Cliquez sur Décaler pour décaler les sous-titres."
+
+#: C/gnome-subtitles.xml:471(title)
+msgid "Setting the Input and Video Framerates"
+msgstr "Sélection de la fréquence d'images vidéo et en entrée"
+
+#: C/gnome-subtitles.xml:472(para)
+msgid "When you open a video, <application>Gnome Subtitles</application> does not automatically set the framerate of the video."
+msgstr ""
+"Quand vous ouvez une vidéo, <application>Gnome Subtitles</application> ne "
+"définit pas automatiquement la fréquence des images de celle-ci."
+
+#: C/gnome-subtitles.xml:473(para)
+msgid "<application>Gnome Subtitles</application> manipulates subtitles based on time, regardless of view mode. Therefore, when you change the video frame rate, <application>Gnome Subtitles</application> adjusts the frames to compensate for the change. The duration of the subtitle remains the same."
+msgstr ""
+"<application>Gnome Subtitles</application> manipule les sous-titres en fonction "
+"du temps, quel que soit le mode de visualisation. Donc, quand vous modifiez la "
+"fréquence des images de la vidéo, <application>Gnome Subtitles</application> "
+"ajuste les images pour compenser le changement. La durée des sous-titres "
+"reste la même."
+
+#: C/gnome-subtitles.xml:476(para)
+msgid "If your subtitle format uses frames to determine when a subtitle is dispayed (MicroDVD), changing the video framerate may cause your subtitles to lose their sync."
+msgstr ""
+"Si le format de sous-titres utilise les images pour déterminer quand un "
+"sous-titre doit être affiché (MicroDVD), modifier la fréquence des images "
+"de la vidéo peut causer une perte de synchronisation des sous-titres."
+
+#: C/gnome-subtitles.xml:478(title)
+msgid "To set the video framerate"
+msgstr "Pour définir la fréquence des images vidéo"
+
+#: C/gnome-subtitles.xml:479(para)
+msgid "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Video Frame Rate</guimenuitem></menuchoice> and select the appropriate framerate."
+msgstr ""
+"Choisissez <menuchoice><guisubmenu>Synchronisation</guisubmenu><guimenuitem>"
+"Fréquence des images de la vidéo</guimenuitem></menuchoice> et sélectionnez "
+"la fréquence des images appropriée."
+
+#: C/gnome-subtitles.xml:484(title)
+msgid "To set the input framerate"
+msgstr "Pour définir la fréquence des images de l'entrée"
+
+#: C/gnome-subtitles.xml:485(para)
+msgid "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Input Frame Rate</guimenuitem></menuchoice> and select the appropriate framerate."
+msgstr ""
+"Choisissez <menuchoice><guisubmenu>Synchronisation</guisubmenu><guimenuitem>"
+"Saisir la fréquence des images</guimenuitem></menuchoice> et sélectionnez "
+"la fréquence des images appropriée."
+
+#: C/gnome-subtitles.xml:494(title)
+msgid "Working with Videos"
+msgstr "Utilisation des vidéos"
+
+#: C/gnome-subtitles.xml:496(title)
+msgid "Opening and Closing a Video"
+msgstr "Ouverture et fermeture d'une vidéo"
+
+#: C/gnome-subtitles.xml:498(title)
+msgid "To open a video"
+msgstr "Pour ouvrir une vidéo"
+
+#: C/gnome-subtitles.xml:499(para)
+msgid "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Open</guimenuitem></menuchoice>"
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Vidéo</guisubmenu><guimenuitem>Ouvrir</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:506(title)
+msgid "To close a video"
+msgstr "Pour fermer une vidéo"
+
+#: C/gnome-subtitles.xml:507(para)
+msgid "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Close</guimenuitem></menuchoice>"
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Vidéo</guisubmenu><guimenuitem>Fermer</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:515(title)
+msgid "Playing back"
+msgstr "Lecture"
+
+#: C/gnome-subtitles.xml:516(para)
+msgid "<application>Gnome Subtitles</application> will play the video in the view window with your subtitles."
+msgstr ""
+"<application>Gnome Subtitles</application> lit la vidéo dans la fenêtre de "
+"visualisation avec vos sous-titres."
+
+#: C/gnome-subtitles.xml:519(title)
+msgid "Seeking to the Selection"
+msgstr "Positionnement de la sélection"
+
+#: C/gnome-subtitles.xml:520(para)
+msgid "You can go to the point in the loaded video where a subtitle starts"
+msgstr "Vous pouvez aller au point de la vidéo où un sous-titre commence."
+
+#: C/gnome-subtitles.xml:522(title)
+msgid "To seek to a subtitle"
+msgstr "Pour aller à un sous-titre"
+
+#: C/gnome-subtitles.xml:523(para)
+msgid "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Seek to Selection</guimenuitem></menuchoice>"
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Vidéo</guisubmenu><guimenuitem>Aller à la sélection"
+"</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:531(title)
+msgid "Setting the Subtitle Start or End Positions"
+msgstr "Définition du début et de la fin d'un sous-titre"
+
+#: C/gnome-subtitles.xml:532(para)
+msgid "You can set the subtitles start or end time based on the point at which the loaded video is paused"
+msgstr ""
+"Vous pouvez définir le début ou la fin d'un sous-titre en fonction du moment où "
+"la vidéo est mise en pause."
+
+#: C/gnome-subtitles.xml:534(title) C/gnome-subtitles.xml:542(title)
+msgid "To set subtitle starting time"
+msgstr "Pour définir le début d'un sous-titre"
+
+#: C/gnome-subtitles.xml:535(para)
+msgid "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle Start</guimenuitem></menuchoice>"
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Vidéo</guisubmenu><guimenuitem>Positionner le début "
+"du sous-titre</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:543(para)
+msgid "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle End</guimenuitem></menuchoice>"
+msgstr ""
+"Choisissez "
+"<menuchoice><guisubmenu>Vidéo</guisubmenu><guimenuitem>Positionner la fin "
+"du sous-titre</guimenuitem></menuchoice>."
+
+#: C/gnome-subtitles.xml:553(title)
+msgid "Where to Get Additional Support"
+msgstr "Recherche d'aide supplémentaire"
+
+#: C/gnome-subtitles.xml:555(title)
+msgid "Forums"
+msgstr "Forums"
+
+#: C/gnome-subtitles.xml:556(para)
+msgid "Questions and general discussions should be posted on the <ulink url=\"http://sourceforge.net/forum/?group_id=129996\" type=\"http\">Forum</ulink> (no registration needed)."
+msgstr ""
+"Les questions et les discussions générales devraient être soumises dans le "
+"<ulink url=\"http://sourceforge.net/forum/?group_id=129996\" "
+"type=\"http\">forum</ulink> (pas d'inscription requise)."
+
+#: C/gnome-subtitles.xml:559(title)
+msgid "Mailing List"
+msgstr "Liste de diffusion"
+
+#: C/gnome-subtitles.xml:560(para)
+msgid "You might get a quick response by asking the <ulink url=\"http://lists.sourceforge.net/lists/listinfo/gnome-subtitles-general\" type=\"http\">Mailing List</ulink> (<ulink url=\"http://sourceforge.net/mailarchive/forum.php?forum_name=gnome-subtitles-general\" type=\"http\">archives</ulink> are available)."
+msgstr ""
+"Il est possible d'obtenir une réponse rapide en interrogeant la <ulink "
+"url=\"http://lists.sourceforge.net/lists/listinfo/gnome-subtitles-general\" "
+"type=\"http\">liste de diffusion</ulink> (des <ulink "
+"url=\"http://sourceforge.net/mailarchive/forum.php?forum_name=gnome-subtitles-general\" "
+"type=\"http\">archives</ulink> sont disponibles). En anglais uniquement."
+
+#: C/gnome-subtitles.xml:563(title)
+msgid "Bugs and Features"
+msgstr "Anomalies et fonctionnalités"
+
+#: C/gnome-subtitles.xml:564(para)
+msgid "Bugs and Feature Requests can be reported at the official <ulink url=\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles\" type=\"http\">Gnome Bugzilla</ulink>."
+msgstr ""
+"Les anomalies et les demandes de fonctionnalité peuvent être envoyées sur le"
+"<ulink url=\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles\" "
+"type=\"http\">Bugzilla</ulink> officiel de GNOME."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: C/gnome-subtitles.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+"Frédéric Péters <fpeters@0d.be>, 2008\n"
+"Claude Paroz <claude@2xlibre.net>, 2008"
+
