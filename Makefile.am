@@ -3,14 +3,14 @@ SUBDIRS = $(SUBLIB_DIR) $(GSTPB_DIR) . src data po help
 ACLOCAL_AMFLAGS = -I m4
 
 sublibdir = $(pkglibdir)
-sublib_DATA = build/sublib.dll
+sublib_SCRIPTS = build/sublib.dll
 gstpbdir = $(pkglibdir)
-gstpb_DATA = build/GStreamerPlaybin.dll build/libgstreamer_playbin.so
+gstpb_SCRIPTS = build/GStreamerPlaybin.dll build/libgstreamer_playbin.so
 
-$(sublib_DATA):
+$(sublib_SCRIPTS):
 	cp -f $(SUBLIB_DIR)/build/sublib.dll build
 
-$(gstpb_DATA):
+$(gstpb_SCRIPTS):
 	cp -f $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp -f $(GSTPB_DIR)/src/libgstreamer_playbin.so build
 
 EXTRA_DIST = 			\

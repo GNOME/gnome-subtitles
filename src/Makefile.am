@@ -1,5 +1,6 @@
 gnomesubtitlesdir = $(pkglibdir)
-gnomesubtitles_DATA = $(ASSEMBLY) $(ASSEMBLY_CONFIG)
+gnomesubtitles_SCRIPTS = $(ASSEMBLY)
+gnomesubtitles_DATA = $(ASSEMBLY_CONFIG)
 GS_BUILDDIR = $(srcdir)/../build
 GS_DATADIR = $(srcdir)/../data
 
@@ -53,4 +54,4 @@ $(ASSEMBLY_CONFIG):
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
 CLEANFILES = $(bin_SCRIPTS) $(ASSEMBLY) $(ASSEMBLY).mdb
-EXTRA_DIST = $(GS_SOURCES) $(GS_RESOURCES)
+EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG)
