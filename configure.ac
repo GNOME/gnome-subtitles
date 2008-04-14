@@ -1,5 +1,5 @@
 AC_PREREQ(2.58)
-AC_INIT(gnome-subtitles, 0.7.2, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
+AC_INIT(gnome-subtitles, 0.8, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
 
 GNOME_COMMON_INIT
 
@@ -57,30 +57,6 @@ then
 	mkdir build
 fi
 
-echo -n "checking for sublib package dir... "
-for i in sublib*
-do
-	SUBLIB_DIR=$i
-done
-if test -d $SUBLIB_DIR
-then
-	echo $SUBLIB_DIR
-	AC_CONFIG_SUBDIRS($SUBLIB_DIR)
-else
-	echo "no"
-	SUBLIB_DIR=""
-	echo -n "checking for build/sublib.dll... "
-	if test -f "build/sublib.dll"
-	then
-		echo "yes"
-	else
-		echo "no"
-		AC_MSG_ERROR([SubLib not found. Place a compiled sublib.dll into the `build' dir OR extract a sublib source package into gnome-subtitles base dir.])
-	fi
-fi
-
-AC_SUBST(SUBLIB_DIR)
-
 echo -n "checking for gstreamer-playbin package dir... "
 for i in gstreamer-playbin*
 do
@@ -125,6 +101,11 @@ PKG_CHECK_MODULES(gstreamer-plugins-base, [gstreamer-plugins-base-0.10 >= 0.10])
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gnome-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
+
+dnl SubLib
+SUBLIB_REQUIRED_VERSION=0.9
+PKG_CHECK_MODULES(SUBLIB, sublib >= $SUBLIB_REQUIRED_VERSION)
+
 
 AC_SUBST(MCS)
 

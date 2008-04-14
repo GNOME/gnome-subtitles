@@ -1,14 +1,9 @@
-SUBDIRS = $(SUBLIB_DIR) $(GSTPB_DIR) . src data po help
+SUBDIRS = $(GSTPB_DIR) . src data po help
 
 ACLOCAL_AMFLAGS = -I m4
 
-sublibdir = $(pkglibdir)
-sublib_SCRIPTS = build/sublib.dll
 gstpbdir = $(pkglibdir)
 gstpb_SCRIPTS = build/GStreamerPlaybin.dll build/libgstreamer_playbin.so
-
-$(sublib_SCRIPTS):
-	cp -f $(SUBLIB_DIR)/build/sublib.dll build
 
 $(gstpb_SCRIPTS):
 	cp -f $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp -f $(GSTPB_DIR)/src/libgstreamer_playbin.so build
@@ -28,5 +23,3 @@ DISTCLEANFILES = 		\
 	intltool-merge 		\
 	intltool-update		\
 	gnome-doc-utils.make
-	
-	
