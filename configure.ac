@@ -97,7 +97,6 @@ GTKSHARP_REQUIRED_VERSION=2.8
 GTK_REQUIRED_VERSION=2.8
 
 PKG_CHECK_MODULES(gstreamer, [gstreamer-0.10 >= 0.10])
-PKG_CHECK_MODULES(gstreamer-plugins-base, [gstreamer-plugins-base-0.10 >= 0.10])
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gnome-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
