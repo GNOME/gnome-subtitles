@@ -21,6 +21,7 @@ Required:
     GStreamer-plugins-base >= 0.10
     GtkSpell  >= 2.0
     Enchant   >= 1.3
+    SubLib    >= 0.8
 
 
 Building from Source
@@ -42,12 +43,7 @@ Building from SVN
 Checkout the latest code from the GNOME SVN:
 	svn co http://svn.gnome.org/svn/gnome-subtitles/trunk gnome-subtitles
 
-Next, `cd' to the project dir and checkout the latest SubLib code from the
-Sourceforge.net SVN:
-	svn co https://sublib.svn.sf.net/svnroot/sublib/trunk/sublib
-
-Finally, run `./autogen.sh' to generate the build scripts. You'll need to
-have some packages or applications installed:
+Run `./autogen.sh' to generate the build scripts. Some packages are required:
     autoconf
     automake
     glib-gettext

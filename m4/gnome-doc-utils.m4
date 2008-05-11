@@ -26,6 +26,10 @@ AC_ARG_ENABLE([scrollkeeper],
 	enable_scrollkeeper=yes)
 AM_CONDITIONAL([ENABLE_SK],[test "$gdu_cv_have_gdu" = "yes" -a "$enable_scrollkeeper" = "yes"])
 
+dnl disable scrollkeeper automatically for distcheck
+DISTCHECK_CONFIGURE_FLAGS="--disable-scrollkeeper $DISTCHECK_CONFIGURE_FLAGS"
+AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
+
 AM_CONDITIONAL([HAVE_GNOME_DOC_UTILS],[test "$gdu_cv_have_gdu" = "yes"])
 ])
 

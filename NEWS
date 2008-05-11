@@ -4,9 +4,41 @@ Gnome Subtitles
 0.8
 ===
 
+- Added spell checking support:
+  * Highlights spelling errors while typing
+  * Uses Enchant in order to support multiple spell checking backends
+  * Allows to spell check subtitles and translation in different languages
+- Added support for the following subtitle formats:
+  * AQ Title
+  * MacSUB
+  * Sofni
+  * SubCreator 1.x
+  * ViPlay Subtitle File
+- Allow to show the translation with the video, besides the original subtitles
+- Fixed a crash that happened when closing the Encoding Selection dialog
+- Improved the auto-detection of subtitle formats
+- Do not package SubLib anymore, it should be installed as a package of its own
+
 Bug fixes:
 - Spellchecker support (#462317)
+- Selecting translation to show on top of movie (#495551)
+- Some strings are hard to translate (#510808)
 - Crash on close of "Add or remove" encoding dialog (#520804)
+- Files are installed with wrong permissions (#524765)
+
+Translations:
+- Joan Duran (ca)
+- Philip Withnall (en_GB)
+- Jorge González (es)
+- Ilkka Tuohela (fi)
+- Alexandre Imache, Claude Paroz, Frederic Peters, Stéphane Raimbault (fr)
+- Yair Hershkovitz (he)
+- Yannig Marchegay (oc)
+- António Lima (pt)
+- Daniel Nylander (sv)
+
+Thanks:
+- Julian Sikorski, Mathias Brodala, Marcin Zajaczkowski, Nazar Kulyk
 
 
 0.7.2 (06/01/2008)
