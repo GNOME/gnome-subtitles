@@ -55,11 +55,10 @@ public class AboutDialog : GladeDialog {
 	}
 		
 	private void SetInfo () {
-		dialog.Name = "Gnome Subtitles";
+		dialog.Name = "Gnome Subtitles"; //TODO Deprecated property, need to change to ProgramName. Scheduled for substitution when gtk# 2.12 is available in all major distros. 
 		dialog.Comments += "\n\nUsing SubLib " + Global.Execution.SubLibVersion;
 		dialog.Version = Global.Execution.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
-		dialog.CheckResize(); //TODO used for artifacts not to appear when the dialog is first displayed (they disappear when refreshing the window)
 	}
 
 	/* Event members */
