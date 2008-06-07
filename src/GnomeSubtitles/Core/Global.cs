@@ -129,7 +129,7 @@ public class Global {
 		execution.QuitProgram();
 	}
 	
-	public static void CreateDocument (string path) {
+	public static void CreateDocumentNew (string path) {
 		bool wasLoaded = IsDocumentLoaded;
 		document = new Document(path, wasLoaded);
 		
@@ -138,10 +138,11 @@ public class Global {
 		GUI.UpdateFromNewDocument(wasLoaded);		
 	}
 	
-	public static void CreateDocument (string path, Encoding encoding) {
+	public static void CreateDocumentOpen (string path, Encoding encoding) {
 		bool wasLoaded = IsDocumentLoaded;
 		document = new Document(path, encoding, wasLoaded);
 
+		CommandManager.Clear();
 		TimingMode = document.TextFile.TimingMode;
 		GUI.UpdateFromDocumentModified(false);
 		GUI.UpdateFromNewDocument(wasLoaded);

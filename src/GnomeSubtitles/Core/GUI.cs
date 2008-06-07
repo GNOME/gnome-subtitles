@@ -118,10 +118,12 @@ public class GUI {
     	if (!ToCreateNewAfterWarning())
     		return;
 
-		if (path == String.Empty)
+		if (path == String.Empty) {
+			//To translators: this is the filename for new files (before being saved)
 			path = Catalog.GetString("Unsaved Subtitles");
+		}
 
-		Global.CreateDocument(path);
+		Global.CreateDocumentNew(path);
 
 		if (Global.Document.Subtitles.Count == 0) {
 			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
@@ -304,7 +306,7 @@ public class GUI {
     private void Open (string path, int codePage, string videoFilename) {
     	try {
     		Encoding encoding =  CodePageToEncoding(codePage);
-    		Global.CreateDocument(path, encoding);
+    		Global.CreateDocumentOpen(path, encoding);
 			view.Selection.SelectFirst(); //TODO is this needed?
 		
 			if (videoFilename != String.Empty)
