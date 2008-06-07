@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ public class TimingsShiftDialog : GladeDialog {
 	[WidgetAttribute] private SpinButton spinButton;
 	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;
 	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
-	[WidgetAttribute] private RadioButton selectedSubtitleToFirstRadioButton;
-	[WidgetAttribute] private RadioButton selectedSubtitleToLastRadioButton;
+	[WidgetAttribute] private RadioButton fromFirstSubtitleToSelectionRadioButton;
+	[WidgetAttribute] private RadioButton fromSelectionToLastSubtitleRadioButton;
 
 	public TimingsShiftDialog () : base(gladeFilename, true, true){
 		InitSpinButton();
@@ -76,8 +76,8 @@ public class TimingsShiftDialog : GladeDialog {
 	
 	private void UpdateFromSelection () {
 		bool sensitive = (Global.GUI.View.Selection.Count == 1);
-		selectedSubtitleToFirstRadioButton.Sensitive = sensitive;
-		selectedSubtitleToLastRadioButton.Sensitive = sensitive;
+		fromFirstSubtitleToSelectionRadioButton.Sensitive = sensitive;
+		fromSelectionToLastSubtitleRadioButton.Sensitive = sensitive;
 		
 		if ((!sensitive) && (!allSubtitlesRadioButton.Active) && (!selectedSubtitlesRadioButton.Active))
 			selectedSubtitlesRadioButton.Active = true;
@@ -116,7 +116,7 @@ public class TimingsShiftDialog : GladeDialog {
 			return SelectionIntended.All;
 		else if (selectedSubtitlesRadioButton.Active)
 			return SelectionIntended.Simple;
-		else if (selectedSubtitleToFirstRadioButton.Active)
+		else if (fromFirstSubtitleToSelectionRadioButton.Active)
 			return SelectionIntended.SimpleToFirst;
 		else
 			return SelectionIntended.SimpleToLast;
