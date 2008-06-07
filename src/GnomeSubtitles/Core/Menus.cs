@@ -26,7 +26,6 @@ using System.Globalization;
 namespace GnomeSubtitles {
 
 public class Menus {
-	private Tooltips tooltips = new Tooltips();
 
 	/* Constant strings */
 	private string videoTagText = Catalog.GetString("Video");
@@ -36,7 +35,6 @@ public class Menus {
 	public Menus () {
 		(Global.GetWidget(WidgetNames.Toolbar) as Toolbar).UnsetStyle(); //Unset toolbar style that was set in Glade
 		SetToolbarHomogeneity();
-		tooltips.Enable();
 	}
 	
 	public void BlankStartUp () {
@@ -514,20 +512,36 @@ public class Menus {
 	
 	private void UpdateUndoRedoMessages () {
     	CommandManager commandManager = Global.CommandManager;
+    	
+    	/* Update undo messages */
+    	ToolButton undoButton = Global.GetWidget(WidgetNames.UndoButton) as ToolButton;
     	if (commandManager.CanUndo) {
     		string undoDescription = commandManager.UndoDescription;
-    		ToolButton undoButton = Global.GetWidget(WidgetNames.UndoButton) as ToolButton;
-    		undoButton.SetTooltip(tooltips, undoDescription, null);
+			SetTooltip(undoButton, undoDescription);
     		MenuItem undoMenuItem = Global.GetWidget(WidgetNames.EditUndo) as MenuItem;
     		(undoMenuItem.Child as Label).Text = undoDescription;
     	}
+		else
+			ClearTooltip(undoButton);
+		
+		/* Update redo messages */
+		ToolButton redoButton = Global.GetWidget(WidgetNames.RedoButton) as ToolButton;
     	if (commandManager.CanRedo) {
 	    	string redoDescription = commandManager.RedoDescription;
-    		ToolButton redoButton = Global.GetWidget(WidgetNames.RedoButton) as ToolButton;
-    		redoButton.SetTooltip(tooltips, redoDescription, null);
+    		SetTooltip(redoButton, redoDescription);
     		MenuItem redoMenuItem = Global.GetWidget(WidgetNames.EditRedo) as MenuItem;
     		(redoMenuItem.Child as Label).Text = redoDescription;
     	}
+    	else
+    		ClearTooltip(redoButton);
+    }
+    
+    private void SetTooltip (Widget widget, string text) {
+    	widget.TooltipText = text;
+    }
+    
+    private void ClearTooltip (Widget widget) {
+    	SetTooltip(widget, null);
     }
 
 }
