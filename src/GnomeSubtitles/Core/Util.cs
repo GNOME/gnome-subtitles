@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -120,6 +120,21 @@ public class Util {
 		return OpenUrl("http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles");
 	}
 	
+	public static bool IsPathValid (TreePath path) {
+		if (path == null)
+			return false;
+		
+		try {
+			if ((path.Indices == null) || (path.Indices.Length == 0))
+				return false;
+		}
+		catch (Exception) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/// <summary>Returns the index of a <see cref="TreePath" />.</summary>
 	public static int PathToInt (TreePath path) {
 		return path.Indices[0];
@@ -131,14 +146,14 @@ public class Util {
 	}
 	
 	/// <summary>Returns an array of <see cref="TreePath" /> from an array of ints.</summary>
-	public static TreePath[] IntsToPaths (int[] indexes) {
-		if (indexes == null)
+	public static TreePath[] IntsToPaths (int[] indices) {
+		if (indices == null)
 			return null;
 		
-		int length = indexes.Length;
+		int length = indices.Length;
 		TreePath[] paths = new TreePath[length];
 		for (int position = 0 ; position < length ; position++) {
-			int index = indexes[position];
+			int index = indices[position];
 			TreePath path = IntToPath(index);
 			paths[position] = path;
 		}

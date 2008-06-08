@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -333,25 +333,18 @@ public class SubtitleSelection {
 	}
 	
 	/// <summary>Scrolls to the specified path and optionally aligns it to the center of the <see cref="TreeView" />.</summary>
-	/// <remarks>This is the original Gtk scroll.</remarks>
     /// <param name="path">The path to scroll to.</param>
     /// <param name="toAlign">Whether to align the path to the center.</param>
-	/// TODO Scheduled for using as default when Gnome hits 2.18
 	private void ScrollToCell (TreePath path, bool align) {
 		tree.ScrollToCell(path, null, align, 0.5f, 0.5f);
 	}
 	
 	/// <summary>Scrolls to the specified path, in case it isn't currently visible, centering the row on the center of the <see cref="TreeView" /></summary>
-    /// <remarks>This basically does the same as <see cref="TreeView.ScrollToCell" />. It is used because the default one was showing warnings at runtime.
-    /// It seems that recent GTK versions don't show those warnings anymore though.</remarks>
-	/// TODO Scheduled for removal when Gnome hits 2.18
     private void Scroll (TreePath path, bool align) {
     	TreePath startPath, endPath;
-    	bool hasEmptySpace;
-    	bool arePathsValid = GetVisibleRange(out startPath, out endPath, out hasEmptySpace);
-    	if (!arePathsValid)
-    		return;
-    	else if (hasEmptySpace) {
+
+    	bool arePathsValid = tree.GetVisibleRange(out startPath, out endPath);
+    	if ((!arePathsValid) || (!Util.IsPathValid(startPath)) || (!Util.IsPathValid(endPath))) {
     		ScrollToCell(path, align);
     		return;
     	}
@@ -363,73 +356,6 @@ public class SubtitleSelection {
 			return;
 		else
 			ScrollToCell(path, align);
-    }
-
-	/// <summary>Scrolls to the first path if none of the paths is currently visible.</summary>
-	/// TODO Scheduled for update when Gnome hits 2.18
-	/*private void Scroll (TreePath[] paths, bool align) {
-		if (paths.Length == 0)
-			return; 
-		else if (paths.Length == 1) {
-			Scroll(paths[0], align);
-			return;
-		}
-		
-		TreePath startPath, endPath;
-		bool hasEmptySpace;
-		bool arePathsValid = GetVisibleRange(out startPath, out endPath, out hasEmptySpace);
-		if (!arePathsValid)
-			return;
-		else if (hasEmptySpace) {
-			Scroll(paths[0], align);
-			return;
-		}
-
-		int startIndice = startPath.Indices[0];
-		int endIndice = endPath.Indices[0];
-		
-		//Check if any of the paths is currently visible
-		foreach (TreePath path in paths) {
-			int pathIndice = path.Indices[0];
-			if ((pathIndice >= startIndice) && (pathIndice <= endIndice))
-				return;
-		}
-		Scroll(paths[0], align); //No path is currently visible, scroll to the first one
-	}*/
-	
-	/// <summary>Only needed because the one in GTK was showing some warnings,
-	/// which don't seem to appear anymore on recent GTK versions.</summary>
-	/// TODO Scheduled to be removed when Gnome hits 2.18
-	private bool GetVisibleRange (out TreePath start, out TreePath end, out bool hasEmptySpace) {
-    	start = null;
-    	end = null;
-    	hasEmptySpace = false;
-    
-    	Gdk.Rectangle visible = tree.VisibleRect;
-    	int x, top, bottom;
-    	tree.TreeToWidgetCoords(0, visible.Top, out x, out top);
-    	tree.TreeToWidgetCoords(0, visible.Bottom, out x, out bottom);
-
-    	TreePath startPath, endPath;
-    	bool isStartPathValid = tree.GetPathAtPos(0, top, out startPath);
-    	bool isEndPathValid = tree.GetPathAtPos(0, bottom, out endPath);
-    	
-    	if (!isEndPathValid) {
-    		hasEmptySpace = true;
-    		if (isStartPathValid) {
-    			int lastPath = Global.Document.Subtitles.Count - 1;
-    			endPath = new TreePath(lastPath.ToString());
-    		}
-    		else
-    			return false;
-    	}
-    	else if (!isStartPathValid) {
-    		hasEmptySpace = true;
-    		startPath = new TreePath("0");
-    	}
-    	start = startPath;
-   		end = endPath;
-   		return true;
     }
     
 }
