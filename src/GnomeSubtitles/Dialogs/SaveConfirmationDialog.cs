@@ -38,7 +38,7 @@ public class SaveConfirmationDialog {
 		this.textType = textType;
 	
 		string message = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>\n\n" + secondaryText;
-		string fileName = (textType == SubtitleTextType.Text ? Global.Document.TextFile.Filename : Global.Document.TranslationFile.Filename); //TODO problem here
+		string fileName = (textType == SubtitleTextType.Text ? Global.Document.TextFile.Filename : Global.Document.TranslationFile.Filename);
 		dialog = new MessageDialog(Global.GUI.Window, DialogFlags.Modal, MessageType.Warning,
 			ButtonsType.None, message, fileName);
 	

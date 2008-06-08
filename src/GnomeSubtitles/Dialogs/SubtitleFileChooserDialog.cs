@@ -41,7 +41,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 
 	/* Widgets */
 	
-	[WidgetAttribute] private ComboBox encodingComboBox;
+	[WidgetAttribute] private ComboBox encodingComboBox = null;
 
 	protected SubtitleFileChooserDialog (string filename, bool persistent) : base(filename, persistent, true) {
 		dialog = base.dialog as FileChooserDialog;

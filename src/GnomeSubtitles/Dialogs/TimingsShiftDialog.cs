@@ -32,12 +32,12 @@ public class TimingsShiftDialog : GladeDialog {
 	private const string gladeFilename = "TimingsShiftDialog.glade";
 
 	/* Widgets */
-	[WidgetAttribute] private Label timingModeLabel;
-	[WidgetAttribute] private SpinButton spinButton;
-	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;
-	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
-	[WidgetAttribute] private RadioButton fromFirstSubtitleToSelectionRadioButton;
-	[WidgetAttribute] private RadioButton fromSelectionToLastSubtitleRadioButton;
+	[WidgetAttribute] private Label timingModeLabel = null;
+	[WidgetAttribute] private SpinButton spinButton = null;
+	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;
+	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton = null;
+	[WidgetAttribute] private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
+	[WidgetAttribute] private RadioButton fromSelectionToLastSubtitleRadioButton = null;
 
 	public TimingsShiftDialog () : base(gladeFilename, true, true){
 		InitSpinButton();

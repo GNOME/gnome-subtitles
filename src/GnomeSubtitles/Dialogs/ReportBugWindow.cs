@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,8 +31,8 @@ public class BugReportWindow {
 	private const string gladeFilename = "ReportBugWindow.glade";
 
 	/* Widgets */
-	[WidgetAttribute] private Window window;
-	[WidgetAttribute] private TextView bugTextView;
+	[WidgetAttribute] private Window window = null;
+	[WidgetAttribute] private TextView bugTextView = null;
 	
 	public BugReportWindow (Exception exception, string bugInfo) {
 		Application.Init();

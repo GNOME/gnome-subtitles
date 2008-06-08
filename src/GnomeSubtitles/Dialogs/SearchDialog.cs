@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,24 +43,24 @@ public class SearchDialog : GladeDialog {
 
 	/* Widgets */
 	
-	[WidgetAttribute] private Entry findEntry;
-	[WidgetAttribute] private Entry replaceEntry;
-	[WidgetAttribute] private Label replaceLabel;
-	[WidgetAttribute] private Table table;
+	[WidgetAttribute] private Entry findEntry = null;
+	[WidgetAttribute] private Entry replaceEntry = null;
+	[WidgetAttribute] private Label replaceLabel = null;
+	[WidgetAttribute] private Table table = null;
 	
-	[WidgetAttribute] private CheckButton matchCaseCheckButton;	
-	[WidgetAttribute] private CheckButton backwardsCheckButton;
-	[WidgetAttribute] private CheckButton regexCheckButton;
-	[WidgetAttribute] private CheckButton wrapCheckButton;
+	[WidgetAttribute] private CheckButton matchCaseCheckButton = null;	
+	[WidgetAttribute] private CheckButton backwardsCheckButton = null;
+	[WidgetAttribute] private CheckButton regexCheckButton = null;
+	[WidgetAttribute] private CheckButton wrapCheckButton = null;
 	
-	[WidgetAttribute] private Button buttonReplaceAll;
-	[WidgetAttribute] private Button buttonReplace;
-	[WidgetAttribute] private Button buttonFind;
+	[WidgetAttribute] private Button buttonReplaceAll = null;
+	[WidgetAttribute] private Button buttonReplace = null;
+	[WidgetAttribute] private Button buttonFind = null;
 
 	public SearchDialog () : base(gladeFilename, true, true) {
 	}
 	
-	public bool ShowReplace {
+	public bool ShowReplace2 {
 		set {
 			if (value == true) {
 				dialog.Title = Catalog.GetString("Replace");
@@ -107,7 +107,26 @@ public class SearchDialog : GladeDialog {
 		get { return wrapCheckButton.Active; }
 	}
 	
-	public override void Show() { //TODO add ShowReplace here?
+	public override void Show () {
+		Show(false);
+	}
+	
+	public void Show (bool useReplace) {
+		if (useReplace) {
+			dialog.Title = Catalog.GetString("Replace");
+			table.RowSpacing = 12;
+		}
+		else {
+			dialog.Title = Catalog.GetString("Find");
+			table.RowSpacing = 0;
+		}
+		
+		replaceEntry.Visible = useReplace;
+		replaceLabel.Visible = useReplace;
+		
+		buttonReplaceAll.Visible = useReplace;
+		buttonReplace.Visible = useReplace;
+		
 		LoadDialogValues();
 		base.Show();
 	}

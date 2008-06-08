@@ -26,7 +26,8 @@ using System.Globalization;
 namespace GnomeSubtitles {
 
 public class Menus {
-	private Tooltips tooltips = new Tooltips(); //TODO Deprecated class, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
+	#pragma warning disable 612 //TODO Tooltips has been deprecated
+	private Tooltips tooltips = new Tooltips(); //TODO Tooltips has been deprecated, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
 
 	/* Constant strings */
 	private string videoTagText = Catalog.GetString("Video");

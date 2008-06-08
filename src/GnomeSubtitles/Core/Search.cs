@@ -91,8 +91,7 @@ public class Search {
 	private void InitDialog (bool showReplace) {
 		dialog = Global.Dialogs.SearchDialog;
 	
-		dialog.ShowReplace = showReplace;
-		dialog.Show();
+		dialog.Show(showReplace);
 	}
 
 	/// <summary>Finds text in the subtitles using the specified direction and the options set in the Find dialog.</summary>

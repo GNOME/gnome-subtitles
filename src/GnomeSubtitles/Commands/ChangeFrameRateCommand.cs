@@ -33,7 +33,7 @@ public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 		SetFrameRate(storedFrameRate);
 		storedFrameRate = previousFrameRate;
 		
-		UpdateMenuItem(); //TODO: is this needed? Need to refactor this
+		UpdateMenuItem();
 		return true;
 	}
 	

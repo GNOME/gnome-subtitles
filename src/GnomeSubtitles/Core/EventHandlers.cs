@@ -25,7 +25,6 @@ using System;
 
 namespace GnomeSubtitles {
 
-/* TODO: Think about splitting this and using different methods in glade */
 public class EventHandlers {
 
 	public EventHandlers () {
@@ -173,7 +172,6 @@ public class EventHandlers {
 	
 	/* Search Menu */
 	
-		
 	public void OnSearchFind (object o, EventArgs args) {
 		Global.GUI.View.Search.ShowFind();
 	}

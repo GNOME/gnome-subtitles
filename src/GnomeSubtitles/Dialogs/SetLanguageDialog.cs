@@ -41,8 +41,8 @@ public class SetLanguageDialog : GladeDialog {
 
 	/* Widgets */
 	
-	[WidgetAttribute] private TreeView languagesTreeView;
-	[WidgetAttribute] private Label introLabel;
+	[WidgetAttribute] private TreeView languagesTreeView = null;
+	[WidgetAttribute] private Label introLabel = null;
 
 
 	public SetLanguageDialog (SubtitleTextType textType) : base(gladeFilename) {

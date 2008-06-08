@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,7 +53,8 @@ public class AboutDialog : GladeDialog {
 	private void AboutDialogOpenEmail (Gtk.AboutDialog about, string email) {
 		Util.OpenSendEmail(email);
 	}
-		
+	
+	#pragma warning disable 618 //TODO Name has been deprecated
 	private void SetInfo () {
 		dialog.Name = "Gnome Subtitles"; //TODO Deprecated property, need to change to ProgramName. Scheduled for substitution when gtk# 2.12 is available in all major distros. 
 		dialog.Comments += "\n\nUsing SubLib " + Global.Execution.SubLibVersion;

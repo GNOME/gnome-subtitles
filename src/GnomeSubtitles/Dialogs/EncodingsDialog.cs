@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007 Pedro Castro
+ * Copyright (C) 2007-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,11 +36,10 @@ public class EncodingsDialog : GladeDialog {
 
 	/* Widgets */
 	
-	[WidgetAttribute] private TreeView availableTreeView;
-	[WidgetAttribute] private TreeView shownTreeView;
-	[WidgetAttribute] private Button buttonAdd;
-	[WidgetAttribute] private Button buttonRemove;
-
+	[WidgetAttribute] private TreeView availableTreeView = null;
+	[WidgetAttribute] private TreeView shownTreeView = null;
+	[WidgetAttribute] private Button buttonAdd = null;
+	[WidgetAttribute] private Button buttonRemove = null;
 
 	public EncodingsDialog () : base(gladeFilename) {
 		FillAvailableEncodings();

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,16 +34,16 @@ public class TimingsAdjustDialog : GladeDialog {
 	
 	/* Widgets */
 	
-	[WidgetAttribute] private Label firstSubtitleStartLabel;
-	[WidgetAttribute] private Label firstSubtitleNoInputLabel;
-	[WidgetAttribute] private Label firstSubtitleStartInputLabel;
-	[WidgetAttribute] private SpinButton firstSubtitleNewStartSpinButton;
-	[WidgetAttribute] private Label lastSubtitleStartLabel;
-	[WidgetAttribute] private Label lastSubtitleNoInputLabel;
-	[WidgetAttribute] private Label lastSubtitleStartInputLabel;
-	[WidgetAttribute] private SpinButton lastSubtitleNewStartSpinButton;
-	[WidgetAttribute] private RadioButton allSubtitlesRadioButton;	
-	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton;
+	[WidgetAttribute] private Label firstSubtitleStartLabel = null;
+	[WidgetAttribute] private Label firstSubtitleNoInputLabel = null;
+	[WidgetAttribute] private Label firstSubtitleStartInputLabel = null;
+	[WidgetAttribute] private SpinButton firstSubtitleNewStartSpinButton = null;
+	[WidgetAttribute] private Label lastSubtitleStartLabel = null;
+	[WidgetAttribute] private Label lastSubtitleNoInputLabel = null;
+	[WidgetAttribute] private Label lastSubtitleStartInputLabel = null;
+	[WidgetAttribute] private SpinButton lastSubtitleNewStartSpinButton = null;
+	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;	
+	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton = null;
 	
 
 	public TimingsAdjustDialog () : base(gladeFilename){

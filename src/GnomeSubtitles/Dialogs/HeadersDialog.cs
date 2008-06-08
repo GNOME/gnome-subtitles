@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,63 +36,63 @@ public class HeadersDialog : GladeDialog {
 	/* Widgets */
 	
 	/* KaraokeLyricsLRC fields */
-	[WidgetAttribute] private Entry entryKaraokeLRCTitle;
-	[WidgetAttribute] private Entry entryKaraokeLRCAuthor;
-	[WidgetAttribute] private Entry entryKaraokeLRCArtist;
-	[WidgetAttribute] private Entry entryKaraokeLRCAlbum;
-	[WidgetAttribute] private Entry entryKaraokeLRCMaker;
-	[WidgetAttribute] private Entry entryKaraokeLRCVersion;
-	[WidgetAttribute] private Entry entryKaraokeLRCProgram;
+	[WidgetAttribute] private Entry entryKaraokeLRCTitle = null;
+	[WidgetAttribute] private Entry entryKaraokeLRCAuthor = null;
+	[WidgetAttribute] private Entry entryKaraokeLRCArtist = null;
+	[WidgetAttribute] private Entry entryKaraokeLRCAlbum = null;
+	[WidgetAttribute] private Entry entryKaraokeLRCMaker = null;
+	[WidgetAttribute] private Entry entryKaraokeLRCVersion = null;
+	[WidgetAttribute] private Entry entryKaraokeLRCProgram = null;
 
 	/* KaraokeLyricsVKT fields */
-	[WidgetAttribute] private Entry entryKaraokeVKTFrameRate;
-	[WidgetAttribute] private Entry entryKaraokeVKTAuthor;
-	[WidgetAttribute] private Entry entryKaraokeVKTSource;
-	[WidgetAttribute] private Entry entryKaraokeVKTDate;
+	[WidgetAttribute] private Entry entryKaraokeVKTFrameRate = null;
+	[WidgetAttribute] private Entry entryKaraokeVKTAuthor = null;
+	[WidgetAttribute] private Entry entryKaraokeVKTSource = null;
+	[WidgetAttribute] private Entry entryKaraokeVKTDate = null;
 
 	/* MPSub fields */
-	[WidgetAttribute] private Entry entryMPSubTitle;
-	[WidgetAttribute] private Entry entryMPSubFile;
-	[WidgetAttribute] private Entry entryMPSubAuthor;
-	[WidgetAttribute] private Entry entryMPSubNote;
-	[WidgetAttribute] private ComboBox comboBoxMPSubType;
+	[WidgetAttribute] private Entry entryMPSubTitle = null;
+	[WidgetAttribute] private Entry entryMPSubFile = null;
+	[WidgetAttribute] private Entry entryMPSubAuthor = null;
+	[WidgetAttribute] private Entry entryMPSubNote = null;
+	[WidgetAttribute] private ComboBox comboBoxMPSubType = null;
 
 	/* SubStationAlphaASS fields */
-	[WidgetAttribute] private Entry entrySSAASSTitle;
-	[WidgetAttribute] private Entry entrySSAASSOriginalScript;
-	[WidgetAttribute] private Entry entrySSAASSOriginalTranslation;
-	[WidgetAttribute] private Entry entrySSAASSOriginalEditing;
-	[WidgetAttribute] private Entry entrySSAASSOriginalTiming;
-	[WidgetAttribute] private Entry entrySSAASSOriginalScriptChecking;
-	[WidgetAttribute] private Entry entrySSAASSScriptUpdatedBy;
-	[WidgetAttribute] private Entry entrySSAASSCollisions;
-	[WidgetAttribute] private Entry entrySSAASSTimer;
-	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayResX;
-	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayResY;
-	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayDepth;
+	[WidgetAttribute] private Entry entrySSAASSTitle = null;
+	[WidgetAttribute] private Entry entrySSAASSOriginalScript = null;
+	[WidgetAttribute] private Entry entrySSAASSOriginalTranslation = null;
+	[WidgetAttribute] private Entry entrySSAASSOriginalEditing = null;
+	[WidgetAttribute] private Entry entrySSAASSOriginalTiming = null;
+	[WidgetAttribute] private Entry entrySSAASSOriginalScriptChecking = null;
+	[WidgetAttribute] private Entry entrySSAASSScriptUpdatedBy = null;
+	[WidgetAttribute] private Entry entrySSAASSCollisions = null;
+	[WidgetAttribute] private Entry entrySSAASSTimer = null;
+	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayResX = null;
+	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayResY = null;
+	[WidgetAttribute] private SpinButton spinButtonSSAASSPlayDepth = null;
 	
 	/* SubViewer1 fields */
-	[WidgetAttribute] private Entry entrySubViewer1Title;
-	[WidgetAttribute] private Entry entrySubViewer1Author;
-	[WidgetAttribute] private Entry entrySubViewer1Source;
-	[WidgetAttribute] private Entry entrySubViewer1Program;
-	[WidgetAttribute] private Entry entrySubViewer1FilePath;
-	[WidgetAttribute] private SpinButton spinButtonSubViewer1Delay;
-	[WidgetAttribute] private SpinButton spinButtonSubViewer1CDTrack;
+	[WidgetAttribute] private Entry entrySubViewer1Title = null;
+	[WidgetAttribute] private Entry entrySubViewer1Author = null;
+	[WidgetAttribute] private Entry entrySubViewer1Source = null;
+	[WidgetAttribute] private Entry entrySubViewer1Program = null;
+	[WidgetAttribute] private Entry entrySubViewer1FilePath = null;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer1Delay = null;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer1CDTrack = null;
 	
 	/* SubViewer2 fields */
-	[WidgetAttribute] private Entry entrySubViewer2Title;
-	[WidgetAttribute] private Entry entrySubViewer2Author;
-	[WidgetAttribute] private Entry entrySubViewer2Source;
-	[WidgetAttribute] private Entry entrySubViewer2Program;
-	[WidgetAttribute] private Entry entrySubViewer2FilePath;
-	[WidgetAttribute] private Entry entrySubViewer2Comment;
-	[WidgetAttribute] private Entry entrySubViewer2FontName;
-	[WidgetAttribute] private Entry entrySubViewer2FontColor;
-	[WidgetAttribute] private Entry entrySubViewer2FontStyle;
-	[WidgetAttribute] private SpinButton spinButtonSubViewer2Delay;
-	[WidgetAttribute] private SpinButton spinButtonSubViewer2CDTrack;
-	[WidgetAttribute] private SpinButton spinButtonSubViewer2FontSize;
+	[WidgetAttribute] private Entry entrySubViewer2Title = null;
+	[WidgetAttribute] private Entry entrySubViewer2Author = null;
+	[WidgetAttribute] private Entry entrySubViewer2Source = null;
+	[WidgetAttribute] private Entry entrySubViewer2Program = null;
+	[WidgetAttribute] private Entry entrySubViewer2FilePath = null;
+	[WidgetAttribute] private Entry entrySubViewer2Comment = null;
+	[WidgetAttribute] private Entry entrySubViewer2FontName = null;
+	[WidgetAttribute] private Entry entrySubViewer2FontColor = null;
+	[WidgetAttribute] private Entry entrySubViewer2FontStyle = null;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer2Delay = null;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer2CDTrack = null;
+	[WidgetAttribute] private SpinButton spinButtonSubViewer2FontSize = null;
 	
 	
 	public HeadersDialog () : base(gladeFilename) {

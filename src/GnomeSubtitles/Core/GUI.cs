@@ -51,7 +51,7 @@ public class GUI {
 		menus = new Menus();
 		status = new Status();
 
-		glade.Autoconnect(handlers); //TODO think about using separate connections for different parts of the GUI
+		glade.Autoconnect(handlers);
 		
 		window.Visible = true;
     }
@@ -307,7 +307,7 @@ public class GUI {
     	try {
     		Encoding encoding =  CodePageToEncoding(codePage);
     		Global.CreateDocumentOpen(path, encoding);
-			view.Selection.SelectFirst(); //TODO is this needed?
+			view.Selection.SelectFirst();
 		
 			if (videoFilename != String.Empty)
 				OpenVideo(videoFilename);
