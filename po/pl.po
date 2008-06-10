@@ -1,19 +1,28 @@
-# Polish translation for GNOME-Subtitles based on translation by Joan Duran
-# Copyright © 2007 Free Software Foundation, Inc.
-# This file is distributed under the same license as the accerciser package.
+# translation of pl.po to Polish
 # Tomasz Sałaciński <tsalacinski@gmail.com>, 2007
+# Piotr Drąg <piotrdrag@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-subtitles\n"
+"Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-29 03:28+0100\n"
-"PO-Revision-Date: 2007-06-03 22:43+0100\n"
-"Last-Translator: Tomasz Sałaciński <tsalacinski@gmail.com>\n"
+"POT-Creation-Date: 2008-06-10 13:57+0000\n"
+"PO-Revision-Date: 2008-06-10 17:37+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms:  nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../src/Glade/AboutDialog.glade.h:1
+msgid "About Gnome Subtitles"
+msgstr "O programie GNOME Subtitles"
+
+#: ../src/Glade/AboutDialog.glade.h:2
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Napisy do filmów dla środowiska GNOME"
 
 #: ../src/Glade/EncodingsDialog.glade.h:1
 msgid "A_vailable:"
@@ -25,7 +34,7 @@ msgstr "Kodowania znaków"
 
 #: ../src/Glade/EncodingsDialog.glade.h:3
 msgid "Shown in menu:"
-msgstr "Pokazane w menu:"
+msgstr "Wyświetlane w menu:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:1
 #: ../src/Glade/FileSaveAsDialog.glade.h:1
@@ -33,8 +42,13 @@ msgid "Character Coding:"
 msgstr "Kodowanie znaków:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:46
+msgid "Open File"
+msgstr "Otwórz plik"
+
+#: ../src/Glade/FileOpenDialog.glade.h:3
 msgid "Video To Open:"
-msgstr "Plik wideo do otwarcia:"
+msgstr "Plik filmu do otwarcia:"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:1
 msgid "<b>Character Coding:</b>"
@@ -54,7 +68,7 @@ msgstr "<b>Format napisów:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:5
 msgid "<b>Timing Mode:</b>"
-msgstr "<b>Tryb koordynacji czasu:</b>"
+msgstr "<b>Tryb dopasowania czasu:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:6
 msgid "File Properties"
@@ -65,124 +79,165 @@ msgid "Newline Type:"
 msgstr "Typ nowej linii:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
+#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:83
+msgid "Save As"
+msgstr "Zapisz jako"
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:4
 msgid "Select advanced options"
 msgstr "Wybierz zaawansowane opcje"
 
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
+#: ../src/Glade/FileSaveAsDialog.glade.h:5
 msgid "Subtitle Format:"
 msgstr "Format napisów:"
 
 #: ../src/Glade/HeadersDialog.glade.h:1
+msgid "Album:"
+msgstr "Album:"
+
+#: ../src/Glade/HeadersDialog.glade.h:2
+msgid "Artist:"
+msgstr "Artysta:"
+
+#: ../src/Glade/HeadersDialog.glade.h:3
 msgid ""
 "Audio\n"
 "Video\n"
 msgstr ""
-"Audio\n"
-"Wídeo\n"
+"Dźwięk\n"
+"Obraz\n"
 
-#: ../src/Glade/HeadersDialog.glade.h:4
+#: ../src/Glade/HeadersDialog.glade.h:6
 msgid "Author:"
 msgstr "Autor:"
 
-#: ../src/Glade/HeadersDialog.glade.h:5
-msgid "CD Track:"
-msgstr "Nr. ścieżki CD:"
+#: ../src/Glade/HeadersDialog.glade.h:7
+msgid "By:"
+msgstr "Przez:"
 
-#: ../src/Glade/HeadersDialog.glade.h:6
+#: ../src/Glade/HeadersDialog.glade.h:8
+msgid "CD Track:"
+msgstr "Ścieżka CD:"
+
+#: ../src/Glade/HeadersDialog.glade.h:9
 msgid "Collisions:"
 msgstr "Kolizje:"
 
-#: ../src/Glade/HeadersDialog.glade.h:7
+#: ../src/Glade/HeadersDialog.glade.h:10
 msgid "Comment:"
 msgstr "Komentarz:"
 
-#: ../src/Glade/HeadersDialog.glade.h:8
+#: ../src/Glade/HeadersDialog.glade.h:11
+msgid "Date:"
+msgstr "Data:"
+
+#: ../src/Glade/HeadersDialog.glade.h:12
 msgid "Delay:"
 msgstr "Opóźnienie:"
 
-#: ../src/Glade/HeadersDialog.glade.h:9
+#: ../src/Glade/HeadersDialog.glade.h:13
 msgid "File Path:"
 msgstr "Ścieżka do pliku:"
 
-#: ../src/Glade/HeadersDialog.glade.h:10
+#: ../src/Glade/HeadersDialog.glade.h:14
 msgid "File:"
 msgstr "Plik:"
 
-#: ../src/Glade/HeadersDialog.glade.h:11
+#: ../src/Glade/HeadersDialog.glade.h:15
 msgid "Font Color:"
 msgstr "Kolor czcionki:"
 
-#: ../src/Glade/HeadersDialog.glade.h:12
+#: ../src/Glade/HeadersDialog.glade.h:16
 msgid "Font Name:"
 msgstr "Nazwa czcionki:"
 
-#: ../src/Glade/HeadersDialog.glade.h:13
+#: ../src/Glade/HeadersDialog.glade.h:17
 msgid "Font Size:"
 msgstr "Rozmiar czcionki:"
 
-#: ../src/Glade/HeadersDialog.glade.h:14
+#: ../src/Glade/HeadersDialog.glade.h:18
 msgid "Font Style:"
 msgstr "Styl czcionki:"
 
-#: ../src/Glade/HeadersDialog.glade.h:15
-msgid "Note:"
-msgstr "Notatka:"
+#: ../src/Glade/HeadersDialog.glade.h:19
+msgid "Frame rate:"
+msgstr "Ilość klatek na sekundę:"
 
-#: ../src/Glade/HeadersDialog.glade.h:16
+#: ../src/Glade/HeadersDialog.glade.h:20
+msgid "Headers"
+msgstr "Nagłówki"
+
+#: ../src/Glade/HeadersDialog.glade.h:21
+msgid "Karaoke Lyrics LRC"
+msgstr "Teksty karaoke LRC"
+
+#: ../src/Glade/HeadersDialog.glade.h:22
+msgid "Karaoke Lyrics VKT"
+msgstr "Teksty karaoke VKT"
+
+#: ../src/Glade/HeadersDialog.glade.h:23
+msgid "Note:"
+msgstr "Uwaga:"
+
+#: ../src/Glade/HeadersDialog.glade.h:24
 msgid "Original Editing:"
 msgstr "Oryginalna edycja:"
 
-#: ../src/Glade/HeadersDialog.glade.h:17
+#: ../src/Glade/HeadersDialog.glade.h:25
 msgid "Original Script Checking:"
 msgstr "Oryginalne sprawdzanie skryptu:"
 
-#: ../src/Glade/HeadersDialog.glade.h:18
+#: ../src/Glade/HeadersDialog.glade.h:26
 msgid "Original Script:"
 msgstr "Oryginalny skrypt:"
 
-#: ../src/Glade/HeadersDialog.glade.h:19
+#: ../src/Glade/HeadersDialog.glade.h:27
 msgid "Original Timing:"
-msgstr "Oryginalne dopasowanie:"
+msgstr "Oryginalne dopasowanie czasu:"
 
-#: ../src/Glade/HeadersDialog.glade.h:20
+#: ../src/Glade/HeadersDialog.glade.h:28
 msgid "Original Translation:"
 msgstr "Oryginalne tłumaczenie:"
 
-#: ../src/Glade/HeadersDialog.glade.h:21
+#: ../src/Glade/HeadersDialog.glade.h:29
 msgid "PlayDepth:"
 msgstr "Głębokość:"
 
-#: ../src/Glade/HeadersDialog.glade.h:22
+#: ../src/Glade/HeadersDialog.glade.h:30
 msgid "PlayResX:"
 msgstr "Szerokość:"
 
-#: ../src/Glade/HeadersDialog.glade.h:23
+#: ../src/Glade/HeadersDialog.glade.h:31
 msgid "PlayResY:"
 msgstr "Wysokość:"
 
-#: ../src/Glade/HeadersDialog.glade.h:24
+#: ../src/Glade/HeadersDialog.glade.h:32
 msgid "Program:"
 msgstr "Program:"
 
-#: ../src/Glade/HeadersDialog.glade.h:25
+#: ../src/Glade/HeadersDialog.glade.h:33
 msgid "Script Updated By:"
-msgstr "Skrypt uaktualniony przez:"
+msgstr "Skrypt zaktualizowany przez:"
 
-#: ../src/Glade/HeadersDialog.glade.h:26
+#: ../src/Glade/HeadersDialog.glade.h:34
 msgid "Source:"
 msgstr "Źródło:"
 
-#: ../src/Glade/HeadersDialog.glade.h:27
+#: ../src/Glade/HeadersDialog.glade.h:35
 msgid "Timer:"
 msgstr "Czas:"
 
-#: ../src/Glade/HeadersDialog.glade.h:28
+#: ../src/Glade/HeadersDialog.glade.h:36
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: ../src/Glade/HeadersDialog.glade.h:29
+#: ../src/Glade/HeadersDialog.glade.h:37
 msgid "Type:"
 msgstr "Typ:"
+
+#: ../src/Glade/HeadersDialog.glade.h:38
+msgid "Version:"
+msgstr "Wersja:"
 
 #: ../src/Glade/MainWindow.glade.h:1
 msgid "<b>Length</b>"
@@ -199,11 +254,11 @@ msgstr "Czas trwania:"
 
 #: ../src/Glade/MainWindow.glade.h:5
 msgid "Find Ne_xt"
-msgstr "Znajdź następny"
+msgstr "_Znajdź następny"
 
 #: ../src/Glade/MainWindow.glade.h:6
 msgid "Find Pre_vious"
-msgstr "Znajdź poprzedni"
+msgstr "Z_najdź poprzedni"
 
 #. This is the start time/frame of a subtitle.
 #: ../src/Glade/MainWindow.glade.h:8
@@ -211,145 +266,206 @@ msgid "From:"
 msgstr "Od:"
 
 #: ../src/Glade/MainWindow.glade.h:9
-msgid "Report a _Bug"
-msgstr "Zgłoś błąd"
-
-#: ../src/Glade/MainWindow.glade.h:10
-msgid "Request a _Feature"
-msgstr "Zgłoś pomysł na nową cechę programu"
-
-#: ../src/Glade/MainWindow.glade.h:11
-msgid "Seek _To Selection"
-msgstr "Przewiń do zaznaczenia"
-
-#: ../src/Glade/MainWindow.glade.h:12
-msgid "Set Subtitle En_d"
-msgstr "Ustaw koniec napisów"
-
-#: ../src/Glade/MainWindow.glade.h:13
-msgid "Set Subtitle _Start"
-msgstr "Ustaw początek napisów"
-
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:15
-msgid "To:"
-msgstr "Do:"
-
-#: ../src/Glade/MainWindow.glade.h:16
-msgid "Vide_o"
-msgstr "Odtwarzacz"
-
-#: ../src/Glade/MainWindow.glade.h:17
-msgid "_Adjust"
-msgstr "_Dopasuj czas"
-
-#: ../src/Glade/MainWindow.glade.h:18
-msgid "_After"
-msgstr "_Za zaznaczeniem"
-
-#: ../src/Glade/MainWindow.glade.h:19
-msgid "_Before"
-msgstr "_Przed zaznaczeniem"
-
-#: ../src/Glade/MainWindow.glade.h:20
-msgid "_Bold"
-msgstr "_Pogrubiony"
-
-#: ../src/Glade/MainWindow.glade.h:21
-msgid "_Contents"
-msgstr "_Zawartość"
-
-#: ../src/Glade/MainWindow.glade.h:22
-msgid "_Delete Subtitles"
-msgstr "_Usuń napisy"
-
-#: ../src/Glade/MainWindow.glade.h:23
-msgid "_Edit"
-msgstr "_Edycja"
-
-#: ../src/Glade/MainWindow.glade.h:24
-msgid "_File"
-msgstr "_Plik"
-
-#: ../src/Glade/MainWindow.glade.h:25
-msgid "_Format"
-msgstr "_Format"
-
-#: ../src/Glade/MainWindow.glade.h:26
-msgid "_Frames"
-msgstr "Widok klatek"
-
-#: ../src/Glade/MainWindow.glade.h:27
-msgid "_Headers"
-msgstr "_Nagłówki"
-
-#: ../src/Glade/MainWindow.glade.h:28
-msgid "_Help"
-msgstr "_Pomoc"
-
-#: ../src/Glade/MainWindow.glade.h:29
-msgid "_Input Frame Rate"
-msgstr "_Początkowa ilość klatek na sekundę"
-
-#: ../src/Glade/MainWindow.glade.h:30
-msgid "_Insert Subtitle"
-msgstr "_Wstaw napisy"
-
-#: ../src/Glade/MainWindow.glade.h:31
-msgid "_Italic"
-msgstr "_Kursywa"
-
-#: ../src/Glade/MainWindow.glade.h:32
-msgid "_Play / Pause"
-msgstr "_Odtwarzanie / Pauza"
-
-#: ../src/Glade/MainWindow.glade.h:33 ../src/Glade/SearchDialog.glade.h:6
-msgid "_Replace"
-msgstr "_Znajdź i zamień"
-
-#: ../src/Glade/MainWindow.glade.h:34
-msgid "_Search"
-msgstr "_Wyszukiwanie"
-
-#: ../src/Glade/MainWindow.glade.h:35
-msgid "_Shift"
-msgstr "_Przesuń napisy"
-
-#: ../src/Glade/MainWindow.glade.h:36
-msgid "_Times"
-msgstr "_Widok czasu"
-
-#: ../src/Glade/MainWindow.glade.h:37
-msgid "_Timings"
-msgstr "_Koordynacja"
-
-#: ../src/Glade/MainWindow.glade.h:38
-msgid "_Underline"
-msgstr "P_odkreślenie"
-
-#: ../src/Glade/MainWindow.glade.h:395
 msgid "Pr_eferences"
 msgstr "Pr_eferencje"
 
+#: ../src/Glade/MainWindow.glade.h:10 ../src/Glade/SearchDialog.glade.h:1
+#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:66
+#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:116
+msgid "Replace"
+msgstr "Zamień"
+
+#: ../src/Glade/MainWindow.glade.h:11
+msgid "Report a _Bug"
+msgstr "Zgłoś _błąd"
+
+#: ../src/Glade/MainWindow.glade.h:12
+msgid "Request a _Feature"
+msgstr "Zgłoś nową _funkcję"
+
+#: ../src/Glade/MainWindow.glade.h:13
+msgid "Save _As"
+msgstr "Zapisz j_ako..."
+
+#: ../src/Glade/MainWindow.glade.h:14
+msgid "Seek _to Selection"
+msgstr "Przewiń _do zaznaczenia"
+
+#: ../src/Glade/MainWindow.glade.h:15
+msgid "Set Subtitle En_d"
+msgstr "Ustaw _koniec napisów"
+
+#: ../src/Glade/MainWindow.glade.h:16
+msgid "Set Subtitle _Start"
+msgstr "U_staw początek napisów"
+
+# New untranslated messages
+#: ../src/Glade/MainWindow.glade.h:17
+msgid "Set Translatio_n Language"
+msgstr "Ustaw język tłumacze_nia"
+
+#: ../src/Glade/MainWindow.glade.h:18
+msgid "Set _Text Language"
+msgstr "Us_taw język tekstu"
+
+#: ../src/Glade/MainWindow.glade.h:19
+msgid "T_imings"
+msgstr "Dopasowan_ie czasu"
+
+#. This is the end time/frame of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:21
+msgid "To:"
+msgstr "Do:"
+
+# New untranslated messages
+#: ../src/Glade/MainWindow.glade.h:22
+msgid "Translatio_n"
+msgstr "Tłumacze_nie"
+
+#: ../src/Glade/MainWindow.glade.h:23
+msgid "Vide_o"
+msgstr "_Film"
+
+#: ../src/Glade/MainWindow.glade.h:24
+msgid "Video _Subtitles"
+msgstr "Napi_sy do filmów"
+
+#: ../src/Glade/MainWindow.glade.h:25
+msgid "_Adjust"
+msgstr "_Dopasuj"
+
+#: ../src/Glade/MainWindow.glade.h:26
+msgid "_After"
+msgstr "Z_a"
+
+#: ../src/Glade/MainWindow.glade.h:27
+msgid "_Autocheck Spelling"
+msgstr "_Automatyczne sprawdzanie pisowni"
+
+#: ../src/Glade/MainWindow.glade.h:28
+msgid "_Before"
+msgstr "_Przed"
+
+#: ../src/Glade/MainWindow.glade.h:29
+msgid "_Bold"
+msgstr "Pogru_bione"
+
+#: ../src/Glade/MainWindow.glade.h:30
+msgid "_Close"
+msgstr "Za_mknij"
+
+#: ../src/Glade/MainWindow.glade.h:31
+msgid "_Contents"
+msgstr "_Zawartość"
+
+#: ../src/Glade/MainWindow.glade.h:32
+msgid "_Delete Subtitles"
+msgstr "_Usuń napisy"
+
+#: ../src/Glade/MainWindow.glade.h:33
+msgid "_Edit"
+msgstr "_Edycja"
+
+#: ../src/Glade/MainWindow.glade.h:34
+msgid "_File"
+msgstr "_Plik"
+
+#: ../src/Glade/MainWindow.glade.h:35
+msgid "_Format"
+msgstr "_Format"
+
+#: ../src/Glade/MainWindow.glade.h:36
+msgid "_Frames"
+msgstr "_Klatki"
+
+#: ../src/Glade/MainWindow.glade.h:37
+msgid "_Headers"
+msgstr "_Nagłówki"
+
+#: ../src/Glade/MainWindow.glade.h:38
+msgid "_Help"
+msgstr "_Pomoc"
+
 #: ../src/Glade/MainWindow.glade.h:39
-msgid "_Video"
-msgstr "_Okno odtwarzacza wideo"
+msgid "_Input Frame Rate"
+msgstr "Początkowa _ilość klatek na sekundę"
 
 #: ../src/Glade/MainWindow.glade.h:40
-msgid "_Video Frame Rate"
-msgstr "Docelo_wa ilość klatek na sekundę"
+msgid "_Insert Subtitle"
+msgstr "Wstaw nap_isy"
 
 #: ../src/Glade/MainWindow.glade.h:41
+msgid "_Italic"
+msgstr "_Kursywa"
+
+#: ../src/Glade/MainWindow.glade.h:42
+msgid "_New"
+msgstr "_Nowe"
+
+#: ../src/Glade/MainWindow.glade.h:43
+msgid "_Open"
+msgstr "_Otwórz"
+
+#: ../src/Glade/MainWindow.glade.h:44
+msgid "_Play / Pause"
+msgstr "_Odtwórz/wstrzymaj"
+
+#: ../src/Glade/MainWindow.glade.h:45 ../src/Glade/SearchDialog.glade.h:7
+msgid "_Replace"
+msgstr "_Zamień"
+
+#: ../src/Glade/MainWindow.glade.h:46
+msgid "_Save"
+msgstr "Zapi_sz"
+
+#: ../src/Glade/MainWindow.glade.h:47
+msgid "_Search"
+msgstr "_Znajdź"
+
+#: ../src/Glade/MainWindow.glade.h:48
+msgid "_Shift"
+msgstr "_Przesuń napisy"
+
+#: ../src/Glade/MainWindow.glade.h:49
+msgid "_Text"
+msgstr "_Tekst"
+
+#: ../src/Glade/MainWindow.glade.h:50
+msgid "_Times"
+msgstr "_Czas"
+
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Tools"
+msgstr "_Narzędzia"
+
+# New untranslated messages
+#: ../src/Glade/MainWindow.glade.h:52
+msgid "_Translation"
+msgstr "_Tłumaczenie"
+
+#: ../src/Glade/MainWindow.glade.h:53
+msgid "_Underline"
+msgstr "P_odkreślenie"
+
+#: ../src/Glade/MainWindow.glade.h:54
+msgid "_Video"
+msgstr "_Film"
+
+#: ../src/Glade/MainWindow.glade.h:55
+msgid "_Video Frame Rate"
+msgstr "_Ilość klatek na sekundę filmu"
+
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "_View"
 msgstr "_Widok"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
 msgid "<b>Video</b>"
-msgstr "<b>Odtwarzacz</b>"
+msgstr "<b>Film</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
 msgid "Automatically choose video to open"
-msgstr "Automatycznie załaduj plik wideo z filmem"
+msgstr "Automatycznie wybierz film do otwarcia"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
 msgid "Preferences"
@@ -367,43 +483,47 @@ msgid ""
 msgstr ""
 "Wystąpił błąd.\n"
 "\n"
-"Aby zgłosić ten błąd, <b>otwórz Bugzillę</b> i wklej poniższy "
-"<b>log</b> do opisu błędu.\n"
+"Aby zgłosić ten błąd, <b>otwórz Bugzillę</b> i wklej następujący "
+"<b>dziennik</b> do opisu błędu.\n"
 "\n"
-"Jeśli ten błąd jest powiązany z <b>plikiem napisów</b>, proszę dołącz go, "
-"jeśli to jest możliwe."
+"Jeśli błąd jest związany z <b>plikiem napisów</b>, dołącz je, jeśli to "
+"możliwe."
 
 #: ../src/Glade/ReportBugWindow.glade.h:6
 msgid "Open Bugzilla"
 msgstr "Otwórz Bugzillę"
 
-#: ../src/Glade/SearchDialog.glade.h:1
-msgid "Replace _All"
-msgstr "Zamień wszy_stko"
-
 #: ../src/Glade/SearchDialog.glade.h:2
-msgid "Replace _with:"
-msgstr "Zamień n_a:"
+msgid "Replace _All"
+msgstr "Z_amień wszystko"
 
 #: ../src/Glade/SearchDialog.glade.h:3
+msgid "Replace _with:"
+msgstr "Zamień _na:"
+
+#: ../src/Glade/SearchDialog.glade.h:4
 msgid "Search _backwards"
 msgstr "Wyszukiwanie _wstecz"
 
-#: ../src/Glade/SearchDialog.glade.h:4
+#: ../src/Glade/SearchDialog.glade.h:5
 msgid "Search using a Regular _Expression"
 msgstr "Szukaj używając wyraż_enia regularnego"
 
-#: ../src/Glade/SearchDialog.glade.h:5
+#: ../src/Glade/SearchDialog.glade.h:6
 msgid "_Match case"
-msgstr "Rozróżnianie małych i wielkich liter"
-
-#: ../src/Glade/SearchDialog.glade.h:7
-msgid "_Search for:"
-msgstr "Wyszukiwany tekst:"
+msgstr "Rozróżnianie _małych i wielkich liter"
 
 #: ../src/Glade/SearchDialog.glade.h:8
+msgid "_Search for:"
+msgstr "Wy_szukaj:"
+
+#: ../src/Glade/SearchDialog.glade.h:9
 msgid "_Wrap around"
-msgstr "Automatyczny powrót do początku"
+msgstr "Automatyczny po_wrót do początku"
+
+#: ../src/Glade/SetLanguageDialog.glade.h:1
+msgid "Set language"
+msgstr "Ustaw język"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:1
 #: ../src/Glade/TimingsShiftDialog.glade.h:1
@@ -412,76 +532,81 @@ msgstr "<b>Zastosuj dla</b>"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:2
 msgid "<b>First Subtitle</b>"
-msgstr "<b>Początek</b>"
+msgstr "<b>Początek napisów</b>"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:3
 msgid "<b>Last Subtitle</b>"
-msgstr "<b>Koniec</b>"
+msgstr "<b>Koniec napisów</b>"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:4
 msgid "Adjust"
 msgstr "Dopasuj"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:5
-msgid "All Subtitles"
-msgstr "Wszystkich napisów"
+msgid "Adjust Timings"
+msgstr "Dopasuj czas"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:6
+msgid "All Subtitles"
+msgstr "Wszystkie napisy"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:7
 msgid "New Start:"
 msgstr "Nowy początek:"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
+#: ../src/Glade/TimingsAdjustDialog.glade.h:8
 msgid "No.:"
 msgstr "Numer:"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
-msgid "Selected Subtitles"
-msgstr "Zaznaczonych napisów"
-
 #: ../src/Glade/TimingsAdjustDialog.glade.h:9
+msgid "Selected Subtitles"
+msgstr "Zaznaczone napisy"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:10
 msgid "Start Frame:"
 msgstr "Początkowa klatka:"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:2
 msgid "<b>Frames</b>"
-msgstr "<b>Ilość klatek</b>"
+msgstr "<b>Klatki</b>"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:3
 msgid "All subtitles"
-msgstr "Wszystkich napisów"
-
-msgid "Shift timings"
-msgstr "Przesuń napisy"
+msgstr "Wszystkie napisy"
 
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:5
-msgid "Selected subtitle to first"
-msgstr "Od zaznaczenia do początku"
+msgid "From first subtitle to selection"
+msgstr "Od pierwszego napisu do zaznaczenia"
 
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:7
-msgid "Selected subtitle to last"
-msgstr "Od zaznaczenia do końca"
+msgid "From selection to last subtitle"
+msgstr "Od zaznaczenia do ostatniego napisu"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:8
 msgid "Selected subtitles"
-msgstr "Zaznaczonych napisów"
+msgstr "Zaznaczone napisy"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:9
 msgid "Shift"
 msgstr "Przesuń"
 
+#: ../src/Glade/TimingsShiftDialog.glade.h:10
+msgid "Shift Timings"
+msgstr "Przesuń czas"
+
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
-msgstr "Otwórz plik wideo"
+msgstr "Otwórz film"
 
 #: ../src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs:26
 msgid "Adjusting timings"
-msgstr "Dostosuj czas"
+msgstr "Dopasowywanie czasu"
 
 #: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:46
 msgid "Changing Input Frame Rate"
-msgstr "Zmiana wejściowych klatek na sekundę"
+msgstr "Zmienianie początkowej ilości klatek na sekundę"
 
 #: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:65
 msgid "Changing Video Frame Rate"
@@ -489,53 +614,59 @@ msgstr "Zmiana ilości klatek na sekundę pliku wideo"
 
 #: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:55
 msgid "Toggling Bold"
-msgstr "Zmiana na pogrubiony"
+msgstr "Zmienianie na pogrubiony"
 
 #: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:66
 msgid "Toggling Italic"
-msgstr "Zmiana na kursywę"
+msgstr "Zmienianie na kursywę"
 
 #: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:77
 msgid "Toggling Underline"
-msgstr "Zmiana na podkreślenie"
-
-#: ../src/GnomeSubtitles/Commands/ChangeTextCommand.cs:26
-msgid "Editing Text"
-msgstr "Edycja tekstu"
+msgstr "Zmienianie na podkreślenie"
 
 #: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:65
 msgid "Editing From"
-msgstr "Edytuj od"
+msgstr "Zmodyfikuj od"
 
 #: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:89
 msgid "Editing To"
-msgstr "Edytuj do"
+msgstr "Zmodyfikuj do"
 
 #: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:111
 msgid "Editing During"
-msgstr "Edytuj podczas"
+msgstr "Zmodyfikuj podczas"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:70
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:290
+#: ../src/GnomeSubtitles/Commands/CommandManager.cs:118
+#: ../src/GnomeSubtitles/Core/Menus.cs:94
 msgid "Undo"
 msgstr "Cofnij"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:79
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:300
+#: ../src/GnomeSubtitles/Commands/CommandManager.cs:127
+#: ../src/GnomeSubtitles/Core/Menus.cs:104
 msgid "Redo"
 msgstr "Ponów"
 
 #: ../src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs:27
 msgid "Deleting Subtitles"
-msgstr "Kasowanie napisów"
+msgstr "Usuwanie napisów"
+
+#: ../src/GnomeSubtitles/Commands/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Commands/InsertTextCommand.cs:26
+msgid "Editing Text"
+msgstr "Modyfikowanie tekstu"
+
+#: ../src/GnomeSubtitles/Commands/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Commands/InsertTranslationCommand.cs:26
+msgid "Editing Translation"
+msgstr "Modyfikowanie tłumaczenia"
 
 #: ../src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs:27
 msgid "Inserting Subtitle"
-msgstr "Wstawianie napisow"
+msgstr "Wstawianie napisów"
 
 #: ../src/GnomeSubtitles/Commands/ReplaceAllCommand.cs:29
 msgid "Replacing All"
-msgstr "Zamiania wszystkiego"
+msgstr "Zamienianie wszystkiego"
 
 #: ../src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs:28
 msgid "Shifting timings"
@@ -543,11 +674,16 @@ msgstr "Przesuwanie czasu"
 
 #: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr "S'està establint l'inici del subtítol"
+msgstr "Ustawianie początku napisów"
 
 #: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr "S'està establint el final del subtítol"
+msgstr "Ustawianie końca napisów"
+
+# New untranslated messages
+#: ../src/GnomeSubtitles/Core/Document.cs:198
+msgid "Unsaved Translation"
+msgstr "Niezapisane tłumaczenie"
 
 #. GEOSTD8, HZ not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:33
@@ -606,7 +742,7 @@ msgstr "Hebrajskie"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:79
 #: ../src/GnomeSubtitles/Core/Encodings.cs:103
 msgid "Turkish"
-msgstr "Turecki"
+msgstr "Tureckie"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:42
 #: ../src/GnomeSubtitles/Core/Encodings.cs:85
@@ -619,7 +755,7 @@ msgstr "Celtyckie"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:46
 msgid "Romanian"
-msgstr "Romańskie"
+msgstr "Rumuńskie"
 
 #. ISO-8859-8-I not used
 #. Added
@@ -643,7 +779,7 @@ msgstr "Chińskie tradycyjne"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:61
 msgid "Cyrillic/Russian"
-msgstr "Cyrylica/Rosyjskie"
+msgstr "Cyrylica/rosyjskie"
 
 #. ARMSCII-8 not used
 #. Added
@@ -685,7 +821,7 @@ msgstr "Francuskie kanadyjskie"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:93
 msgid "Cyrillic/Ukrainian"
-msgstr "Cyrylica/Ukraińskie"
+msgstr "Cyrylica/ukraińskie"
 
 #. TCVN, TIS-620, UHC, VISCII not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:99
@@ -698,84 +834,87 @@ msgstr "Wietnamskie"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:118
 msgid "Current Locale"
-msgstr "Kodowanie systemowe"
+msgstr "Bieżące ustawienie regionalne"
 
-#: ../src/GnomeSubtitles/Core/GUI.cs:122
+#. To translators: this is the filename for new files (before being saved)
+#: ../src/GnomeSubtitles/Core/GUI.cs:123
 msgid "Unsaved Subtitles"
-msgstr "Nie zapisane napisy"
+msgstr "Niezapisane napisy"
 
+#. TODO Tooltips has been deprecated
+#. TODO Tooltips has been deprecated, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
 #. Constant strings
-#: ../src/GnomeSubtitles/Core/Menus.cs:31
+#: ../src/GnomeSubtitles/Core/Menus.cs:33
 msgid "Video"
-msgstr "Wideo"
+msgstr "Film"
 
-#: ../src/GnomeSubtitles/Core/Status.cs:43
+#: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
+#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:60
+#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:67
+#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:75
+#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:79
+#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:88
+msgid "Unknown"
+msgstr "Nieznany"
+
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: ../src/GnomeSubtitles/Core/Status.cs:42
 msgid "OVR"
-msgstr "NAD"
+msgstr "ZAS"
 
-#: ../src/GnomeSubtitles/Core/Status.cs:43
+#: ../src/GnomeSubtitles/Core/Status.cs:42
 msgid "INS"
 msgstr "WST"
 
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:211
-msgid "No."
-msgstr "Nr."
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:214
-msgid "From"
-msgstr "Od"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:215
-msgid "To"
-msgstr "Do"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:216
-msgid "During"
-msgstr "Czas trwania"
-
-#: ../src/GnomeSubtitles/Core/SubtitleView.cs:219
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: ../src/GnomeSubtitles/Core/Status.cs:57
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:231
 msgid "Text"
 msgstr "Tekst"
 
-#: ../src/GnomeSubtitles/Core/VideoPosition.cs:173
-#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
-msgid "Time"
-msgstr "Czas"
+# New untranslated messages
+#: ../src/GnomeSubtitles/Core/Status.cs:57
+msgid "Trans"
+msgstr "Tłumaczenie"
 
-#: ../src/GnomeSubtitles/Core/VideoPosition.cs:173
-msgid "Frame"
-msgstr "Klatka"
+#. To translators: Ln corresponds to Line
+#: ../src/GnomeSubtitles/Core/Status.cs:59
+msgid "Ln"
+msgstr "Wiersz"
 
-#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:87
+#. To translators: Col corresponds to Column
+#: ../src/GnomeSubtitles/Core/Status.cs:61
+msgid "Col"
+msgstr "Kolumna"
+
+#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:86
 msgid "Description"
 msgstr "Opis"
 
-#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:91
+#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:90
 msgid "Encoding"
 msgstr "Kodowanie"
 
-#: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:52
 msgid ""
 "An unknown error has occured. Please report a bug and include this error "
 "name:"
-msgstr ""
-"Wystąpił nieznany błąd. Proszę zgłosić ten błąd wraz "
-"jego nazwą:"
+msgstr "Wystąpił nieznany błąd. Proszę zgłosić błąd wraz jego nazwą:"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:76
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:94
 msgid "Auto Detected"
 msgstr "Automatyczne wykrywanie"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:110
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:141
 msgid "None"
-msgstr "Żaden"
+msgstr "Brak"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:166
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:207
 #: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:59
 msgid "All Files"
 msgstr "Wszystkie pliki"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:173
+#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:214
 msgid "All Subtitle Files"
 msgstr "Wszystkie pliki z napisami"
 
@@ -788,7 +927,16 @@ msgstr "Nie można otworzyć pliku"
 msgid "Open another file"
 msgstr "Otwórz inny plik"
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:198
+#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:68
+msgid "The file path appears to be invalid."
+msgstr "Ścieżka do pliku wydaje się być nieprawidłowa."
+
+# New untranslated messages
+#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:85
+msgid "Save Translation As"
+msgstr "Zapisz tłumaczenie jako"
+
+#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:211
 msgid "System Default"
 msgstr "Domyślne systemowe"
 
@@ -802,73 +950,109 @@ msgid "Save to another file"
 msgstr "Zapisz do innego pliku"
 
 #: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
-msgstr "Zabrakło pamięci. Proszę zamknąć trochę programów i spróbować jeszcze raz."
+msgstr "Brak pamięci. Zamknij kilka programów i spróbuj jeszcze raz."
 
 #: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
 msgid "An I/O error has occured."
 msgstr "Wystąpił błąd wejścia/wyjścia."
 
 #: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:63
 msgid "You do not have the permissions necessary to save the file."
-msgstr "Nie masz wystarczających uprawnień, aby zapisać ten plik."
+msgstr "Nie posiadasz wystarczających uprawnień, aby zapisać ten plik."
 
 #: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:65
 #: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
-msgstr "Wskazany plik jest niewłaściwy."
+msgstr "Podany plik jest nieprawidłowy."
 
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:60
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:67
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:75
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:79
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:88
-msgid "Unknown"
-msgstr "Nieznany"
+# New untranslated messages
+#: ../src/GnomeSubtitles/Dialogs/FileTranslationOpenDialog.cs:26
+msgid "Open Translation File"
+msgstr "Otwórz plik tłumaczenia"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:32
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:34
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Jeśli nie zapiszesz, wszystkie zmiany zostaną bezpowrotnie utracone."
+msgstr ""
+"Jeżeli dokument nie zostanie zapisany, wszystkie zmiany zostaną bezpowrotnie "
+"utracone."
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:75
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Zapisać zmiany do pliku \"{0}\" przed zamknięciem?"
-
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:76
-msgid "Close without Saving"
-msgstr "Zamknij bez zapisywania"
-
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:83
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:85
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr "Zapisać zmiany do pliku \"{0}\" przed tworzeniem nowego pliku?"
+msgstr "Zapisać zmiany do pliku \"{0}\" przed utworzeniem nowych napisów?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:84
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:86
 msgid "Create without Saving"
-msgstr "Zamknij bez zapisywania"
+msgstr "Utwórz bez zapisywania"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:91
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:96
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr ""
+"Zapisać zmiany do tłumaczenia \"{0}\" przed utworzeniem nowych napisów?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:103
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr "Zapisać zmiany do tłumaczenia \"{0}\" przed utworzeniem nowego pliku?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:113
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Zapisać zmiany do pliku \"{0}\" przed otwarciem pliku?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:92
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:114
 msgid "Open without Saving"
+msgstr "Otwórz bez zapisywania"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:125
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Zapisać zmiany do tłumaczenia \"{0}\" przed otwarciem pliku?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:134
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Zapisać zmiany do pliku \"{0}\" przed zamknięciem?"
+
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:135
+msgid "Close without Saving"
 msgstr "Zamknij bez zapisywania"
 
-#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:66
-msgid "Replace"
-msgstr "Znajdź i zamień"
+#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:145
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Zapisać zmiany do tłumaczenia \"{0}\" przed zamknięciem?"
 
 #: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:70
+#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:120
 msgid "Find"
 msgstr "Znajdź"
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:137
+#. Strings
+#: ../src/GnomeSubtitles/Dialogs/SetLanguageDialog.cs:37
+msgid "Set Text Language"
+msgstr "Ustaw język tekstu"
+
+# New untranslated messages
+#: ../src/GnomeSubtitles/Dialogs/SetLanguageDialog.cs:38
+msgid "Set Translation Language"
+msgstr "Ustaw język tłumaczenia"
+
+#: ../src/GnomeSubtitles/Dialogs/SetLanguageDialog.cs:39
+msgid "Select the text _language of the current subtitles."
+msgstr "_Wybierz język tekstu bieżących napisów."
+
+#: ../src/GnomeSubtitles/Dialogs/SetLanguageDialog.cs:40
+msgid "Select the translation _language of the current subtitles."
+msgstr "_Wybierz język tłumaczenia bieżących napisów."
+
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:138
 msgid "Add or Remove..."
 msgstr "Dodaj lub usuń..."
 
@@ -877,16 +1061,20 @@ msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
-"Nie mogę wykryć formatu napisów. Proszę sprawdzić, czy ten format "
-"jest obsługiwany."
+"Nie można wykryć formatu napisów. Sprawdź, czy ten typ pliku jest "
+"obsługiwany."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
-msgid "The encoding used is not supported by your system."
-msgstr "Użyte kodowanie znaków nie jest wspierane przez twój system."
+#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"Użyte kodowanie znaków nie jest obsługiwane przez system. Wybierz inne "
+"kodowanie."
 
 #: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
-msgstr "Nie masz wystarczających uprawnień, aby otworzyć ten plik."
+msgstr "Nie posiadasz wystarczających uprawnień, aby otworzyć ten plik."
 
 #: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:49
 msgid "The file could not be found."
@@ -897,42 +1085,51 @@ msgid "Start Time:"
 msgstr "Czas początkowy:"
 
 #: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
+#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
+msgid "Time"
+msgstr "Czas"
+
+#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
 msgid "Frames"
-msgstr "Ilość klatek"
+msgstr "Klatki"
+
+#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:27
+msgid "Could not continue the video playback"
+msgstr "Nie można kontynuować odtwarzania filmu"
+
+#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:28
+msgid "The following error has occurred: "
+msgstr "Wystąpił następujący błąd: "
 
 #: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:34
-msgid ""
-"Unable to start the video player. Please check that MPlayer is installed."
-msgstr ""
-"Nie mogę uruchomić odtwarzacza wideo. Proszę sprawdzić, czy MPlayer jest zainstalowany."
-
-#: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:36
 msgid "Please check that the video file is supported."
-msgstr "Proszę sprawdzić, czy ten plik wideo jest możliwy do otwarcia."
+msgstr "Sprawdź, czy ten plik filmu jest obsługiwany."
 
 #: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:65
 msgid "All Video Files"
-msgstr "Wszystkie pliki wideo"
+msgstr "Wszystkie pliki filmów"
+
+#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
+msgid "Frame"
+msgstr "Klatka"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:223
+msgid "No."
+msgstr "Nr"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:226
+msgid "From"
+msgstr "Od"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:227
+msgid "To"
+msgstr "Do"
+
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:228
+msgid "During"
+msgstr "Czas trwania"
 
 # New untranslated messages
-
+#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:232
 msgid "Translation"
 msgstr "Tłumaczenie"
-
-msgid "_New"
-msgstr "_Nowe"
-
-msgid "_Open"
-msgstr "_Otwórz"
-
-msgid "_Save"
-msgstr "_Zapisz"
-
-msgid "Save _As"
-msgstr "Zapisz j_ako..."
-
-msgid "_Close"
-msgstr "_Zamknij"
-
-msgid "Open File"
-msgstr "Otwórz plik"
