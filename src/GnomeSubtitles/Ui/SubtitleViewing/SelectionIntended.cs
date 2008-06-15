@@ -17,12 +17,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System;
+namespace GnomeSubtitles.Ui.SubtitleView {
 
-namespace GnomeSubtitles.Ui.Video.Exception {
+/// <summary>
+/// Represents an intended selection.
+/// </summary>
+public enum SelectionIntended {
 
-public class PlayerCouldNotOpenVideoException : ApplicationException {
-
+	/// <summary>Use the current selection.</summary>
+	Simple,
+	
+	/// <summary>Use the current selection to the first subtitle.</summary>
+	SimpleToFirst,
+	
+	/// <summary>Use the current selection to the last subtitle.</summary>
+	SimpleToLast,
+	
+	/// <summary>A range of subtitles is selected.</summary>
+	Range,
+	
+	/// <summary>All subtitles are selected.</summary>
+	All
 }
 
 }
