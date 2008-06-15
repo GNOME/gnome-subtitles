@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ using SubLib;
 using System;
 using System.Text.RegularExpressions;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 /// <summary>Represents a search environment.</summary>
 /// <remarks>The search dialog is kept as a reference, and created on its first use.</remarks>
@@ -86,7 +86,7 @@ public class Search {
 		}			
 	}
 
-	/* Private methods */
+	#region Private methods
 	
 	private void InitDialog (bool showReplace) {
 		dialog = Global.Dialogs.SearchDialog;
@@ -170,6 +170,8 @@ public class Search {
 			Match match = dialog.ForwardRegex.Match(selection); //Either forward and backward regexes work
 			return (match.Success && (match.Length == selection.Length));
 	}
+	
+	#endregion
 
 }
 

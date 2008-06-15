@@ -23,7 +23,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using SubLib;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 /* Delegates */
 public delegate void LanguageListHandler (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata);

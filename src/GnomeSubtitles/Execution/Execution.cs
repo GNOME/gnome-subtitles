@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,16 +22,19 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Execution {
 
 public class Execution {
 	private Program program = null;
 	private bool initialized = false;
 
-	/* Constant strings */
+	#region Constant strings
+	
 	private const string applicationName = "Gnome Subtitles";
 	private const string applicationID = "gnome-subtitles";
 	private const string subLibAssemblyName = "sublib";
+	
+	#endregion
 	
 	private string[] args = null;
 	
@@ -39,7 +42,7 @@ public class Execution {
 		this.args = args;
 	}
 	
-	/* Public properties */
+	#region Public properties
 	
 	public bool Initialized {
 		get { return initialized; }
@@ -117,7 +120,9 @@ public class Execution {
 		get { return applicationID; }
 	}
 	
-	/* Public methods */
+	#endregion
+	
+	#region Public methods
 	
 	public void Init () {
 		program = new Program(applicationID, Version, Gnome.Modules.UI, args);
@@ -132,7 +137,9 @@ public class Execution {
 		program.Quit();
 	}
 	
-	/* Private methods */
+	#endregion
+	
+	#region Private methods
 	
 	private string RemoveTrailingZeros (string version) {
 		while (version.EndsWith(".0")) {
@@ -140,6 +147,8 @@ public class Execution {
 		}
 		return version;
 	}
+
+	#endregion
 	
 }
 

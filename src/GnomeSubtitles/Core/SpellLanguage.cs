@@ -22,7 +22,7 @@ using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 public class SpellLanguage : IComparable {
 	private string id = null;

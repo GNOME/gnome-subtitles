@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2007 Pedro Castro
+ * Copyright (C) 2006-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,12 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Command;
 using Mono.Unix;
 using SubLib;
 using System.IO;
 using System.Text;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 public class Document {
 	private Subtitles subtitles = null;

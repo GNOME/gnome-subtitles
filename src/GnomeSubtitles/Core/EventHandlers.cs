@@ -23,7 +23,7 @@ using Mono.Unix;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 public class EventHandlers {
 

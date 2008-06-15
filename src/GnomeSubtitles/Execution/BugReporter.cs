@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007 Pedro Castro
+ * Copyright (C) 2007-2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Execution {
 
 public class BugReporter {
 
@@ -38,7 +38,7 @@ public class BugReporter {
 		}
 	}
 	
-	/* Private members */
+	#region Private members
 	
 	private static void RunBugBuddy (Exception exception, string bugInfo) {
 		string path = WriteBugInfo(exception, bugInfo);
@@ -83,6 +83,8 @@ public class BugReporter {
 		int number = random.Next(10000);
 		return Path.GetTempPath() + Path.DirectorySeparatorChar + number + ".tmp";
 	}
+	
+	#endregion
 
 }
 

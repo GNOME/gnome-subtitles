@@ -22,7 +22,7 @@ using System;
 using System.Globalization;
 using SubLib;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 public class Util {
   

@@ -17,6 +17,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Command;
+using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Execution;
+using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
 using SubLib;
@@ -24,12 +28,12 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 public class Global {
 	private static Glade.XML glade = null;
 	
-	private static GnomeSubtitles.GUI gui = null;
+	private static MainUi ui = null;
 	private static Execution execution = null;
 	private static EventHandlers handlers = null;
 	private static CommandManager commandManager = null;

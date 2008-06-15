@@ -20,7 +20,7 @@
 using GConf;
 using System;
 
-namespace GnomeSubtitles {
+namespace GnomeSubtitles.Core {
 
 public class Config {
 	private Client client = null;
