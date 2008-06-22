@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles.Ui.Video {
+namespace GnomeSubtitles.Ui.VideoPreview {
 
 //TODO change name to SubtitleOverlay
 public class VideoSubtitle {
@@ -34,10 +35,10 @@ public class VideoSubtitle {
 	private bool toShowText = true;
 	
 	public VideoSubtitle (VideoPosition position) {
-		EventBox box = Global.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
+		EventBox box = Base.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
 		box.ModifyBg(StateType.Normal, box.Style.Black);
 
-		label = Global.GetWidget(WidgetNames.VideoSubtitleLabel) as Label;
+		label = Base.GetWidget(WidgetNames.VideoSubtitleLabel) as Label;
 		label.ModifyFg(StateType.Normal, new Gdk.Color(255, 255, 0));
 
 		position.Changed += OnVideoPositionChanged;
@@ -59,11 +60,11 @@ public class VideoSubtitle {
 	/* Event members */
 	
 	private void OnVideoPositionChanged (TimeSpan newPosition) {
-		if (!(Global.IsDocumentLoaded))
+		if (!(Base.IsDocumentLoaded))
 			return;
 	
 		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = Global.Document.Subtitles.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
+			int foundSubtitle = Base.Document.Subtitles.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
 			if (foundSubtitle == -1)
 				UnloadSubtitle();
 			else
@@ -84,7 +85,7 @@ public class VideoSubtitle {
 	}
 	
 	private void LoadSubtitle (int number) {
-		subtitle = Global.Document.Subtitles[number];
+		subtitle = Base.Document.Subtitles[number];
 		subtitleStart = subtitle.Times.Start;
 		subtitleEnd = subtitle.Times.End;
 		SetText();

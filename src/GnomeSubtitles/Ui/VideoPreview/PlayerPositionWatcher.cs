@@ -21,7 +21,7 @@ using GStreamer;
 using System;
 using System.IO;
 
-namespace GnomeSubtitles.Ui.Video {
+namespace GnomeSubtitles.Ui.VideoPreview {
 
 /* Delegates */
 public delegate TimeSpan PlayerGetTimeFunc (); //Represents a function that gets a time from the player

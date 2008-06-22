@@ -19,7 +19,7 @@
 
 using Gtk;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 	private bool reselect = false;
@@ -34,10 +34,10 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 			return false;
 		
 		if (reselect)
-			Global.GUI.View.Selection.Select(Path, true, true);
+			Base.Ui.View.Selection.Select(Path, true, true);
 		else {
-			Global.GUI.View.Selection.ScrollToFocus(Path, true);
-			Global.GUI.View.Refresh();
+			Base.Ui.View.Selection.ScrollToFocus(Path, true);
+			Base.Ui.View.Refresh();
 		}
 		
 		PostProcess();
@@ -46,7 +46,7 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 
 	public override void Undo () {
 		ChangeValues();
-		Global.GUI.View.Selection.Select(Path, true, true);
+		Base.Ui.View.Selection.Select(Path, true, true);
 		PostProcess();
 	}
 	

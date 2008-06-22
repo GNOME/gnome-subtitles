@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui.VideoPreview;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -62,7 +64,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		videoLabel.Visible = true;
 		videoComboBox.Visible = true;
 		
-		autoChooseVideoFile = Global.Config.PrefsVideoAutoChooseFile;
+		autoChooseVideoFile = Base.Config.PrefsVideoAutoChooseFile;
 		videoComboBox.RowSeparatorFunc = SeparatorFunc;
 		
 		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
@@ -84,8 +86,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	/* Protected members */
 	
 	protected virtual string GetStartFolder () {
-		if (Global.IsDocumentLoaded && Global.Document.TextFile.IsPathRooted)
-			return Global.Document.TextFile.Directory;
+		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
+			return Base.Document.TextFile.Directory;
 		else
 			return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 	}

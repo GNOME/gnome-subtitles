@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Ui.VideoPreview.Exception;
 using GStreamer;
 using Gtk;
 using System;
 
-namespace GnomeSubtitles.Ui.Video {
+namespace GnomeSubtitles.Ui.VideoPreview {
 
 /* Delegates */
 public delegate void PlayerErrorCaughtFunc (string message); //Represents a function that handles a caught error

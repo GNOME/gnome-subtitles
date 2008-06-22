@@ -17,6 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Ui.View;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -47,7 +50,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	
 
 	public TimingsAdjustDialog () : base(gladeFilename){
-		timingMode = Global.TimingMode; 
+		timingMode = Base.TimingMode; 
 		SetSpinButtons();
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();
@@ -71,7 +74,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	}	
 
 	private void SetApplyToAll () {
-		SubtitleCollection collection = Global.Document.Subtitles.Collection;
+		SubtitleCollection collection = Base.Document.Subtitles.Collection;
 		
 		int firstNo = 1;
 		int lastNo = collection.Count;		
@@ -79,8 +82,8 @@ public class TimingsAdjustDialog : GladeDialog {
 	}
 	
 	private void SetApplyToSelection () {
-		TreePath firstPath = Global.GUI.View.Selection.FirstPath;
-		TreePath lastPath = Global.GUI.View.Selection.LastPath;
+		TreePath firstPath = Core.Base.Ui.View.Selection.FirstPath;
+		TreePath lastPath = Core.Base.Ui.View.Selection.LastPath;
 		
 		int firstNo = firstPath.Indices[0] + 1;
 		int lastNo = lastPath.Indices[0] + 1;
@@ -89,13 +92,13 @@ public class TimingsAdjustDialog : GladeDialog {
 	}
 	
 	private void SetApplyToSelectionSensitivity () {
-		int selectionCount = Global.GUI.View.Selection.Count;
+		int selectionCount = Core.Base.Ui.View.Selection.Count;
 		if (selectionCount < 2)
 			selectedSubtitlesRadioButton.Sensitive = false;
 	}
 
 	private void UpdateInputValues (int firstNo, int lastNo) {
-		SubtitleCollection collection = Global.Document.Subtitles.Collection;
+		SubtitleCollection collection = Base.Document.Subtitles.Collection;
 		Subtitle firstSubtitle = collection.Get(firstNo - 1);
 		Subtitle lastSubtitle = collection.Get(lastNo - 1);
 	
@@ -135,12 +138,12 @@ public class TimingsAdjustDialog : GladeDialog {
 			if (timingMode == TimingMode.Times) {
 				TimeSpan firstTime = TimeSpan.Parse(firstSubtitleNewStartSpinButton.Text);
 				TimeSpan lastTime = TimeSpan.Parse(lastSubtitleNewStartSpinButton.Text);
-				Global.CommandManager.Execute(new AdjustTimingsCommand(firstTime, lastTime, selectionIntended));
+				Base.CommandManager.Execute(new AdjustTimingsCommand(firstTime, lastTime, selectionIntended));
 			}
 			else {
 				int firstFrame = (int)firstSubtitleNewStartSpinButton.Value;
 				int lastFrame = (int)lastSubtitleNewStartSpinButton.Value;
-				Global.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionIntended));
+				Base.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionIntended));
 			}
 		}
 		Close();

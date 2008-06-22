@@ -17,10 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Core.Command;
 using Gtk;
 using SubLib;
 
-namespace GnomeSubtitles.Ui.SubtitleEdit {
+namespace GnomeSubtitles.Ui.Edit {
 
 public class SubtitleEditTranslation : SubtitleEditTextView {
 
@@ -40,19 +42,19 @@ public class SubtitleEditTranslation : SubtitleEditTextView {
 	}
 
 	protected override void ExecuteInsertCommand (int index, string text) {
-		Global.CommandManager.Execute(new InsertTranslationCommand(index, text));
+		Base.CommandManager.Execute(new InsertTranslationCommand(index, text));
 	}
 
 	protected override void ExecuteDeleteCommand (int index, string text, int cursor) {
-		Global.CommandManager.Execute(new DeleteTranslationCommand(index, text, cursor));
+		Base.CommandManager.Execute(new DeleteTranslationCommand(index, text, cursor));
 	}
 	
 	protected override SpellLanguage GetSpellActiveLanguage () {
-		return Global.SpellLanguages.ActiveTranslationLanguage;
+		return Base.SpellLanguages.ActiveTranslationLanguage;
 	}
 	
 	protected override void ConnectLanguageChangedSignal () {
-		Global.SpellLanguages.TranslationLanguageChanged += OnSpellLanguageChanged;
+		Base.SpellLanguages.TranslationLanguageChanged += OnSpellLanguageChanged;
 	}
 
 }

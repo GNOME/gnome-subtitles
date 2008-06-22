@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using System;
 using SubLib;
 
-namespace GnomeSubtitles.Ui.SubtitleView {
+namespace GnomeSubtitles.Ui.View {
 
 public class Subtitles : SubLib.Subtitles {
 	private ListStore model = new ListStore(typeof(Subtitle));
@@ -163,11 +164,11 @@ public class Subtitles : SubLib.Subtitles {
 	}
 
 	private void OnRowInserted (object o, RowInsertedArgs args) {
-		Global.GUI.UpdateFromSubtitleCount();
+		Core.Base.Ui.UpdateFromSubtitleCount();
 	}
 	
 	private void OnRowDeleted (object o, RowDeletedArgs args) {
-		Global.GUI.UpdateFromSubtitleCount();
+		Core.Base.Ui.UpdateFromSubtitleCount();
 	}
 
 

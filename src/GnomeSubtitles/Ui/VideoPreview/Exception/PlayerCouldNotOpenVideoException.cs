@@ -19,7 +19,7 @@
 
 using System;
 
-namespace GnomeSubtitles.Ui.Video.Exception {
+namespace GnomeSubtitles.Ui.VideoPreview.Exception {
 
 public class PlayerCouldNotOpenVideoException : ApplicationException {
 

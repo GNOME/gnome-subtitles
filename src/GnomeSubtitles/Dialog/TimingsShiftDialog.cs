@@ -17,6 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Ui.View;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -52,7 +55,7 @@ public class TimingsShiftDialog : GladeDialog {
 	/* Private methods */
 	
 	private void UpdateContents (bool initializing) {
-		UpdateFromTimingMode(Global.TimingMode, initializing);
+		UpdateFromTimingMode(Base.TimingMode, initializing);
 		UpdateFromSelection();
 		UpdateSpinButtonValue();
 	}
@@ -75,7 +78,7 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 	
 	private void UpdateFromSelection () {
-		bool sensitive = (Global.GUI.View.Selection.Count == 1);
+		bool sensitive = (Core.Base.Ui.View.Selection.Count == 1);
 		fromFirstSubtitleToSelectionRadioButton.Sensitive = sensitive;
 		fromSelectionToLastSubtitleRadioButton.Sensitive = sensitive;
 		
@@ -84,23 +87,23 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 	
 	private void UpdateSpinButtonValue () {
-		if (!Global.GUI.Video.IsLoaded) {
+		if (!Core.Base.Ui.Video.IsLoaded) {
 			SetSpinButtonValue(0);
 			return;
 		}
 		
-		TreePath path = Global.GUI.View.Selection.FirstPath;
-		Subtitle subtitle = Global.Document.Subtitles[path];
+		TreePath path = Core.Base.Ui.View.Selection.FirstPath;
+		Subtitle subtitle = Base.Document.Subtitles[path];
 
 		double subtitlePosition = 0;
 		double videoPosition = 0;
-		if (Global.TimingModeIsTimes) {
+		if (Base.TimingModeIsTimes) {
 			subtitlePosition = subtitle.Times.Start.TotalMilliseconds;
-			videoPosition = Global.GUI.Video.Position.CurrentTime.TotalMilliseconds;
+			videoPosition = Core.Base.Ui.Video.Position.CurrentTime.TotalMilliseconds;
 		}
 		else {
 			subtitlePosition = subtitle.Frames.Start;
-			videoPosition = Global.GUI.Video.Position.CurrentFrames;
+			videoPosition = Core.Base.Ui.Video.Position.CurrentFrames;
 		}
 
 		double difference = videoPosition - subtitlePosition;
@@ -134,11 +137,11 @@ public class TimingsShiftDialog : GladeDialog {
 			
 			if (timingMode == TimingMode.Times) {
 				TimeSpan time = TimeSpan.Parse(spinButton.Text);
-				Global.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
+				Base.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
 			}
 			else {
 				int frames = (int)spinButton.Value;
-				Global.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
+				Base.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
 			}
 		}
 		Hide();

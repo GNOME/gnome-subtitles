@@ -20,7 +20,7 @@
 using Mono.Unix;
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class VideoSetSubtitleStartCommand : ChangeStartCommand {
 	private static string description = Catalog.GetString("Setting Subtitle Start");

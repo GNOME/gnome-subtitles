@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Mono.Unix;
 
 namespace GnomeSubtitles.Dialog {
@@ -29,8 +30,8 @@ public class FileTranslationOpenDialog : FileOpenDialog {
 	/* Public members */
 	
 	protected override string GetStartFolder () {
-		if (Global.IsDocumentLoaded && Global.Document.IsTranslationLoaded && Global.Document.TranslationFile.IsPathRooted)
-			return Global.Document.TranslationFile.Directory;
+		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.TranslationFile.IsPathRooted)
+			return Base.Document.TranslationFile.Directory;
 		else
 			return base.GetStartFolder();
 	}

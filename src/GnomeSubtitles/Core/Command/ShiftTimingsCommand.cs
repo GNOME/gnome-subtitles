@@ -17,13 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.SubtitleView;
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	private static string description = Catalog.GetString("Shifting timings");
@@ -64,18 +64,18 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	/* Private Members */
 
 	private void ShiftTimesAll () {
-		Global.Document.Subtitles.ShiftTimings(time);
+		Base.Document.Subtitles.ShiftTimings(time);
 		time = time.Negate();
 	}
 	
 	private void ShiftFramesAll () {
-		Global.Document.Subtitles.ShiftTimings(frames);
+		Base.Document.Subtitles.ShiftTimings(frames);
 		frames = -frames;
 	}
 	
 	private void ShiftTimesSimple () {
 		foreach (TreePath path in Paths) {
-			Subtitle subtitle = Global.Document.Subtitles[path];
+			Subtitle subtitle = Base.Document.Subtitles[path];
 			subtitle.Times.Shift(time);
 		}
 		time = time.Negate();
@@ -83,7 +83,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 
 	private void ShiftFramesSimple () {
 		foreach (TreePath path in Paths) {
-			Subtitle subtitle = Global.Document.Subtitles[path];
+			Subtitle subtitle = Base.Document.Subtitles[path];
 			subtitle.Frames.Shift(frames);
 		}
 		frames = -frames;
@@ -93,7 +93,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
 		
-		Global.Document.Subtitles.ShiftTimings(time, firstSubtitle, lastSubtitle);
+		Base.Document.Subtitles.ShiftTimings(time, firstSubtitle, lastSubtitle);
 		time = time.Negate();
 	}
 	
@@ -101,7 +101,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
 		
-		Global.Document.Subtitles.ShiftTimings(frames, firstSubtitle, lastSubtitle);
+		Base.Document.Subtitles.ShiftTimings(frames, firstSubtitle, lastSubtitle);
 		frames = -frames;
 	}
 }

@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using System;
 
@@ -57,8 +58,8 @@ public class AboutDialog : GladeDialog {
 	#pragma warning disable 618 //TODO Name has been deprecated
 	private void SetInfo () {
 		dialog.Name = "Gnome Subtitles"; //TODO Deprecated property, need to change to ProgramName. Scheduled for substitution when gtk# 2.12 is available in all major distros. 
-		dialog.Comments += "\n\nUsing SubLib " + Global.Execution.SubLibVersion;
-		dialog.Version = Global.Execution.Version;
+		dialog.Comments += "\n\nUsing SubLib " + Base.ExecutionContext.SubLibVersion;
+		dialog.Version = Base.ExecutionContext.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
 	}
 

@@ -87,7 +87,7 @@ public class SpellLanguages {
 		set {
 			if (value != enabled) {
 				enabled = value;
-				Global.Config.PrefsSpellCheckAutocheck = value;
+				Base.Config.PrefsSpellCheckAutocheck = value;
 				EmitToggleEnabled();
 			}
 		}
@@ -140,7 +140,7 @@ public class SpellLanguages {
 
 		EmitLanguageChanged(textType);
 		if (!isEmpty)
-			Global.GUI.Menus.SetToolsAutocheckSpellingSensitivity(true);
+			Base.Ui.Menus.SetToolsAutocheckSpellingSensitivity(true);
 	}
 	
 	/* LibEnchant imports */
@@ -179,22 +179,22 @@ public class SpellLanguages {
 	}
 	
 	private void GetActiveLanguagesFromConfig () {
-		string activeTextLanguage = Global.Config.PrefsSpellCheckActiveTextLanguage;
+		string activeTextLanguage = Base.Config.PrefsSpellCheckActiveTextLanguage;
 		this.activeTextLanguageIndex = GetLanguageIndex(activeTextLanguage);
 		
-		string activeTranslationLanguage = Global.Config.PrefsSpellCheckActiveTranslationLanguage;
+		string activeTranslationLanguage = Base.Config.PrefsSpellCheckActiveTranslationLanguage;
 		this.activeTranslationLanguageIndex = GetLanguageIndex(activeTranslationLanguage);
 	}
 	
 	private void GetEnabledFromConfig () {
-		this.enabled = Global.Config.PrefsSpellCheckAutocheck;
+		this.enabled = Base.Config.PrefsSpellCheckAutocheck;
 	}
 	
 	private void SetActiveLanguageInConfig (SubtitleTextType textType, string activeLanguage) {
 		if (textType == SubtitleTextType.Text)
-			Global.Config.PrefsSpellCheckActiveTextLanguage = activeLanguage;
+			Base.Config.PrefsSpellCheckActiveTextLanguage = activeLanguage;
 		else
-			Global.Config.PrefsSpellCheckActiveTranslationLanguage = activeLanguage;
+			Base.Config.PrefsSpellCheckActiveTranslationLanguage = activeLanguage;
 	}
 	
 	private int GetLanguageIndex (string languageID) {

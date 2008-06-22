@@ -21,7 +21,7 @@ using Gtk;
 using Mono.Unix;
 using SubLib;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 	private static string description = Catalog.GetString("Inserting Subtitle");
@@ -42,17 +42,17 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 
 	public override bool Execute () {
 		InsertNew();
-		subtitle = Global.Document.Subtitles[newPath];
+		subtitle = Base.Document.Subtitles[newPath];
 		return true;
 	}
 	
 	public override void Undo () {
 		bool selectNext = ((Path != null) && (Path.Compare(newPath) == 1));
-		Global.GUI.View.Remove(newPath, selectNext);
+		Base.Ui.View.Remove(newPath, selectNext);
 	}
 
 	public override void Redo () {
-		Global.GUI.View.Insert(subtitle, newPath);
+		Base.Ui.View.Insert(subtitle, newPath);
 	}
 	
 	/* Methods to be extended */
@@ -64,7 +64,7 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 
 public class InsertSubtitleAfterCommand : InsertSubtitleCommand {
 
-	public InsertSubtitleAfterCommand () : base(Global.GUI.View.Selection.LastPath) {
+	public InsertSubtitleAfterCommand () : base(Base.Ui.View.Selection.LastPath) {
 	}
 	
 	protected override TreePath GetNewPath () {
@@ -72,14 +72,14 @@ public class InsertSubtitleAfterCommand : InsertSubtitleCommand {
 	}
 	
 	protected override void InsertNew () {
-		Global.GUI.View.InsertNewAfter(Path);
+		Base.Ui.View.InsertNewAfter(Path);
 	}
 
 }
 
 public class InsertSubtitleBeforeCommand : InsertSubtitleCommand {
 
-	public InsertSubtitleBeforeCommand () : base(Global.GUI.View.Selection.FirstPath) {
+	public InsertSubtitleBeforeCommand () : base(Base.Ui.View.Selection.FirstPath) {
 	}
 
 	protected override TreePath GetNewPath () {
@@ -87,7 +87,7 @@ public class InsertSubtitleBeforeCommand : InsertSubtitleCommand {
 	}
 	
 	protected override void InsertNew () {
-		Global.GUI.View.InsertNewBefore(Path);
+		Base.Ui.View.InsertNewBefore(Path);
 	}
 
 }
@@ -102,7 +102,7 @@ public class InsertFirstSubtitleCommand : InsertSubtitleCommand {
 	}
 	
 	protected override void InsertNew () {
-		Global.GUI.View.InsertNewAt(NewPath);
+		Base.Ui.View.InsertNewAt(NewPath);
 	}
 
 }

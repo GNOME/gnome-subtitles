@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using System;
 using SubLib;
 
-namespace GnomeSubtitles.Ui.SubtitleView {
+namespace GnomeSubtitles.Ui.View {
 
 public class SubtitleSelection {
 
@@ -112,7 +113,7 @@ public class SubtitleSelection {
 			TreePath[] range = new TreePath[2];
     		range[0] = firstPath;
     		
-    		int count = Global.Document.Subtitles.Count;
+    		int count = Base.Document.Subtitles.Count;
     		range[1] = Util.IntToPath(count - 1);
     		return range;
 		}
@@ -120,7 +121,7 @@ public class SubtitleSelection {
     
     /// <summary>The selected subtitle. If there is more than one selected, the first is returned.</summary>
     public Subtitle Subtitle {
-    	get { return Global.Document.Subtitles[Path]; }
+    	get { return Base.Document.Subtitles[Path]; }
     }
 
     /// <summary>The number of selected paths.</summary>
@@ -211,20 +212,20 @@ public class SubtitleSelection {
 			return;		
 		}
 		Select(path, align, reselect);
-		Global.GUI.Edit.TextFocusOnSelection(start, end, textType);		
+		Core.Base.Ui.Edit.TextFocusOnSelection(start, end, textType);		
 	}
     
     /// <summary>Selects the first subtitle.</summary>
     /// <remarks>The subtitle is only selected if it exists.</remarks>
     public void SelectFirst () {
-    	if (Global.Document.Subtitles.Count > 0)
+    	if (Base.Document.Subtitles.Count > 0)
     		Select(TreePath.NewFirst(), false, false);
     }
     
     /// <summary>Selects the last subtitle.</summary>
     /// <remarks>The subtitle is only selected if it exists.</remarks>
     public void SelectLast () {
-    	int count = Global.Document.Subtitles.Count;
+    	int count = Base.Document.Subtitles.Count;
     	if (count > 0)
     		Select(Util.IntToPath(count - 1), false, false);
     }
@@ -237,7 +238,7 @@ public class SubtitleSelection {
     		return;
     	}    
     	TreePath path = LastPath;
-    	if (path.Indices[0] == (Global.Document.Subtitles.Count - 1)) //this is the last existing path
+    	if (path.Indices[0] == (Base.Document.Subtitles.Count - 1)) //this is the last existing path
     		return;
     	
     	TreePath next = Util.PathNext(path);
@@ -287,7 +288,7 @@ public class SubtitleSelection {
 	}
 	
 	private void OnSelectionChanged (object o, EventArgs args) {
-		Global.GUI.UpdateFromSelection();
+		Base.Ui.UpdateFromSelection();
 	}
 	
 	/* Private members */

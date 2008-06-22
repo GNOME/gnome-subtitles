@@ -17,6 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Ui;
 using Gnome;
 using Gtk;
 using Mono.Unix;
@@ -35,39 +38,39 @@ public class EventHandlers {
 	/* File Menu */
 	
 	public void OnFileNew (object o, EventArgs args) {
-		Global.GUI.New(String.Empty);
+		Base.Ui.New(String.Empty);
 	}
 	
 	public void OnFileOpen (object o, EventArgs args) {
-		Global.GUI.Open();
+		Base.Ui.Open();
 	}
 	
 	public void OnFileSave (object o, EventArgs args) {
-		Global.GUI.Save();
+		Base.Ui.Save();
 	}
 	
 	public void OnFileSaveAs (object o, EventArgs args) {
-		Global.GUI.SaveAs();
+		Base.Ui.SaveAs();
 	}
 	
 	public void OnFileTranslationNew (object o, EventArgs args) {
-		Global.GUI.TranslationNew();
+		Base.Ui.TranslationNew();
 	}
 	
 	public void OnFileTranslationOpen (object o, EventArgs args) {
-		Global.GUI.TranslationOpen();
+		Base.Ui.TranslationOpen();
 	}
 	
 	public void OnFileTranslationSave (object o, EventArgs args) {
-		Global.GUI.TranslationSave();
+		Base.Ui.TranslationSave();
 	}
 	
 	public void OnFileTranslationSaveAs (object o, EventArgs args) {
-		Global.GUI.TranslationSaveAs();
+		Base.Ui.TranslationSaveAs();
 	}
 	
 	public void OnFileTranslationClose (object o, EventArgs args) {
-		Global.GUI.TranslationClose();
+		Base.Ui.TranslationClose();
 	}
 	
 	public void OnFileHeaders (object o, EventArgs args) {
@@ -79,61 +82,61 @@ public class EventHandlers {
 	}
 
     public void OnFileQuit (object o, EventArgs args) {
-		Global.GUI.Quit();
+		Base.Ui.Quit();
 	}
 	
 	
 	/* Edit Menu */
 	
 	public void OnEditUndo (object o, EventArgs args) {
-		Global.CommandManager.Undo();
+		Base.CommandManager.Undo();
 	}
 	
 	public void OnEditRedo (object o, EventArgs args) {
-		Global.CommandManager.Redo();
+		Base.CommandManager.Redo();
 	}
 	
 	public void OnEditCopy (object o, EventArgs args) {
-		Global.Clipboards.Copy();
+		Base.Clipboards.Copy();
 	}
 	
 	public void OnEditCut (object o, EventArgs args) {
-		Global.Clipboards.Cut();
+		Base.Clipboards.Cut();
 	}
 	
 	public void OnEditPaste (object o, EventArgs args) {
-		Global.Clipboards.Paste();
+		Base.Clipboards.Paste();
 	}
 	
 	public void OnEditFormatBold (object o, EventArgs args) {
 		bool newBoldValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);  	
-		Global.CommandManager.Execute(new ChangeBoldStyleCommand(newBoldValue));
+		Base.CommandManager.Execute(new ChangeBoldStyleCommand(newBoldValue));
 	}
 	
 	public void OnEditFormatItalic (object o, EventArgs args) {
 		bool newItalicValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
-		Global.CommandManager.Execute(new ChangeItalicStyleCommand(newItalicValue));
+		Base.CommandManager.Execute(new ChangeItalicStyleCommand(newItalicValue));
 	}
 	
 	public void OnEditFormatUnderline (object o, EventArgs args) {
 		bool newUnderlineValue = ((o is CheckMenuItem) ? (o as CheckMenuItem).Active : (o as ToggleToolButton).Active);
-		Global.CommandManager.Execute(new ChangeUnderlineStyleCommand(newUnderlineValue));
+		Base.CommandManager.Execute(new ChangeUnderlineStyleCommand(newUnderlineValue));
 	}
 	
 	public void OnEditInsertSubtitleBefore (object o, EventArgs args) {
-		Global.CommandManager.Execute(new InsertSubtitleBeforeCommand());
+		Base.CommandManager.Execute(new InsertSubtitleBeforeCommand());
 	}
 	
 	public void OnEditInsertSubtitleAfter (object o, EventArgs args) {
-		if (Global.Document.Subtitles.Count == 0)
-			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
+		if (Base.Document.Subtitles.Count == 0)
+			Base.CommandManager.Execute(new InsertFirstSubtitleCommand());
 		else
-			Global.CommandManager.Execute(new InsertSubtitleAfterCommand());
+			Base.CommandManager.Execute(new InsertSubtitleAfterCommand());
 	}
 	
 	public void OnEditDeleteSubtitles (object o, EventArgs args) {
-		if (Global.GUI.View.Selection.Count > 0)
-			Global.CommandManager.Execute(new DeleteSubtitlesCommand());
+		if (Base.Ui.View.Selection.Count > 0)
+			Base.CommandManager.Execute(new DeleteSubtitlesCommand());
 	}
 
 	public void OnEditPreferences (object o, EventArgs args) {
@@ -144,48 +147,48 @@ public class EventHandlers {
 	
 	public void OnViewTimes (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.TimingMode = TimingMode.Times;
+			Base.TimingMode = TimingMode.Times;
 	}
 
 	public void OnViewFrames (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.TimingMode = TimingMode.Frames;
+			Base.TimingMode = TimingMode.Frames;
 	}
 	
 	public void OnViewVideo (object o, EventArgs args) {
 		if ((o as CheckMenuItem).Active)
-			Global.GUI.Video.Show();
+			Base.Ui.Video.Show();
 		else
-			Global.GUI.Video.Hide();
+			Base.Ui.Video.Hide();
 	}
 	
 		
 	public void OnViewVideoSubtitlesText (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.GUI.Video.Subtitle.ToShowText = true;
+			Base.Ui.Video.Subtitle.ToShowText = true;
 	}
 	
 	public void OnViewVideoSubtitlesTranslation (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Global.GUI.Video.Subtitle.ToShowText = false;
+			Base.Ui.Video.Subtitle.ToShowText = false;
 	}
 	
 	/* Search Menu */
 	
 	public void OnSearchFind (object o, EventArgs args) {
-		Global.GUI.View.Search.ShowFind();
+		Base.Ui.View.Search.ShowFind();
 	}
 	
 	public void OnSearchFindNext (object o, EventArgs args) {
-		Global.GUI.View.Search.FindNext();
+		Base.Ui.View.Search.FindNext();
 	}
 	
 	public void OnSearchFindPrevious (object o, EventArgs args) {
-		Global.GUI.View.Search.FindPrevious();
+		Base.Ui.View.Search.FindPrevious();
 	}
 	
 	public void OnSearchReplace (object o, EventArgs args) {
-		Global.GUI.View.Search.ShowReplace();
+		Base.Ui.View.Search.ShowReplace();
 	}
 	
 	/*	Timings Menu */
@@ -194,7 +197,7 @@ public class EventHandlers {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
 			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
-			Global.CommandManager.Execute(new ChangeInputFrameRateCommand(frameRate));
+			Base.CommandManager.Execute(new ChangeInputFrameRateCommand(frameRate));
 		}
 	}
 	
@@ -202,7 +205,7 @@ public class EventHandlers {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
 			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
-			Global.CommandManager.Execute(new ChangeVideoFrameRateCommand(frameRate));
+			Base.CommandManager.Execute(new ChangeVideoFrameRateCommand(frameRate));
 		}
 	}
 	
@@ -211,56 +214,56 @@ public class EventHandlers {
 	}
 	
 	public void OnTimingsShift (object o, EventArgs args) {
-		Global.Dialogs.TimingsShiftDialog.Show();
+		Base.Dialogs.TimingsShiftDialog.Show();
 	}
 	
 	
 	/* Video Menu */
 		
 	public void OnVideoOpen (object o, EventArgs args) {
-		Global.GUI.OpenVideo();
+		Base.Ui.OpenVideo();
 	}
 	
 	public void OnVideoClose (object o, EventArgs args) {
-		Global.GUI.CloseVideo();
+		Base.Ui.CloseVideo();
 	}
 
 	public void OnVideoPlayPause (object o, EventArgs args) {
-		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		ToggleButton button = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		button.Active = !button.Active; //Toggle() only emits the Toggled event
 	}
 	
 	public void OnVideoRewind (object o, EventArgs args) {
-		Global.GUI.Video.Rewind();
+		Base.Ui.Video.Rewind();
 	}
 	
 	public void OnVideoForward (object o, EventArgs args) {
-		Global.GUI.Video.Forward();
+		Base.Ui.Video.Forward();
 	}
 	
 	public void OnVideoSeekToSelection (object o, EventArgs args) {
-		Global.GUI.Video.SeekToSelection();	
+		Base.Ui.Video.SeekToSelection();	
 	}
 	
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
-		if (Global.TimingMode == TimingMode.Times) {
-			TimeSpan time = Global.GUI.Video.Position.CurrentTime;
-			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
+		if (Base.TimingMode == TimingMode.Times) {
+			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
 		}
 		else {
-			int frames = Global.GUI.Video.Position.CurrentFrames;
-			Global.CommandManager.Execute(new VideoSetSubtitleStartCommand(frames));
+			int frames = Base.Ui.Video.Position.CurrentFrames;
+			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(frames));
 		}
 	}
 	
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
-		if (Global.TimingMode == TimingMode.Times) {
-			TimeSpan time = Global.GUI.Video.Position.CurrentTime;
-			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
+		if (Base.TimingMode == TimingMode.Times) {
+			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 		}
 		else {
-			int frames = Global.GUI.Video.Position.CurrentFrames;
-			Global.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
+			int frames = Base.Ui.Video.Position.CurrentFrames;
+			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 		}
 	}
 	
@@ -268,7 +271,7 @@ public class EventHandlers {
 		
 	public void OnToolsAutocheckSpelling (object o, EventArgs args) {
 		bool enabled = (o as CheckMenuItem).Active;
-		Global.SpellLanguages.Enabled = enabled;
+		Base.SpellLanguages.Enabled = enabled;
 	}
 	
 	public void OnToolsSetTextLanguage (object o, EventArgs args) {
@@ -285,7 +288,7 @@ public class EventHandlers {
 	public void OnHelpContents (object o, EventArgs args) {
 		try {
 			const string filename = "gnome-subtitles.xml";
-			Gnome.Help.DisplayDesktopOnScreen(Gnome.Program.Get(), Global.Execution.SystemHelpDir, filename, null, Global.GUI.Window.Screen);
+			Gnome.Help.DisplayDesktopOnScreen(Gnome.Program.Get(), Base.ExecutionContext.SystemHelpDir, filename, null, Base.Ui.Window.Screen);
 		}
 		catch (Exception e) {
 			System.Console.Error.WriteLine(e);
@@ -302,27 +305,27 @@ public class EventHandlers {
 	}
 	
 	public void OnHelpAbout (object o, EventArgs args) {
-		new AboutDialog().Show();
+		new Dialog.AboutDialog().Show();
 	}
 	
 	
 	/*	Window	*/
 	
 	public void OnWindowDelete (object o, DeleteEventArgs args) {
-    	Global.GUI.Quit();
+    	Base.Ui.Quit();
     	args.RetVal = true;
     }
     
     public void OnSizeAllocated (object o, SizeAllocatedArgs args) {
-    	Global.Config.PrefsWindowWidth = args.Allocation.Width;
-    	Global.Config.PrefsWindowHeight = args.Allocation.Height;
+    	Base.Config.PrefsWindowWidth = args.Allocation.Width;
+    	Base.Config.PrefsWindowHeight = args.Allocation.Height;
     }
 
     
     /*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
-    	Global.GUI.Video.SeekToSelection();
+    	Base.Ui.Video.SeekToSelection();
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {
@@ -337,24 +340,24 @@ public class EventHandlers {
     /*	Command Manager */
 
     private void OnUndoToggled (object o, EventArgs args) {
-    	Global.GUI.Menus.UpdateFromUndoToggled();
+    	Base.Ui.Menus.UpdateFromUndoToggled();
     }
     
     private void OnRedoToggled (object o, EventArgs args) {
-    	Global.GUI.Menus.UpdateFromRedoToggled();
+    	Base.Ui.Menus.UpdateFromRedoToggled();
     }
     
     private void OnCommandActivated (object o, CommandActivatedArgs args) {
-    	Global.GUI.Menus.UpdateFromCommandActivated();
-    	Global.Document.UpdateFromCommandActivated(args.Target);
+    	Base.Ui.Menus.UpdateFromCommandActivated();
+    	Base.Document.UpdateFromCommandActivated(args.Target);
     }
     
     /* Private members */
     
     private void ConnectSignals () {
-    	Global.CommandManager.UndoToggled += OnUndoToggled;
-    	Global.CommandManager.RedoToggled += OnRedoToggled;
-    	Global.CommandManager.CommandActivated += OnCommandActivated;
+    	Base.CommandManager.UndoToggled += OnUndoToggled;
+    	Base.CommandManager.RedoToggled += OnRedoToggled;
+    	Base.CommandManager.CommandActivated += OnCommandActivated;
     }
 
 }

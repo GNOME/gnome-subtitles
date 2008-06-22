@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
 using SubLib;
@@ -37,8 +38,8 @@ public class SaveConfirmationDialog {
 		this.textType = textType;
 	
 		string message = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>\n\n" + secondaryText;
-		string fileName = (textType == SubtitleTextType.Text ? Global.Document.TextFile.Filename : Global.Document.TranslationFile.Filename);
-		dialog = new MessageDialog(Global.GUI.Window, DialogFlags.Modal, MessageType.Warning,
+		string fileName = (textType == SubtitleTextType.Text ? Base.Document.TextFile.Filename : Base.Document.TranslationFile.Filename);
+		dialog = new MessageDialog(Core.Base.Ui.Window, DialogFlags.Modal, MessageType.Warning,
 			ButtonsType.None, message, fileName);
 	
 		dialog.AddButton(rejectLabel, ResponseType.Reject);
@@ -64,9 +65,9 @@ public class SaveConfirmationDialog {
 			toClose = true;
 		else if (response == ResponseType.Accept) {
 			if (textType == SubtitleTextType.Text)
-				toClose = Global.GUI.Save();
+				toClose = Core.Base.Ui.Save();
 			else
-				toClose = Global.GUI.TranslationSave();
+				toClose = Core.Base.Ui.TranslationSave();
 		}
 	}
 	

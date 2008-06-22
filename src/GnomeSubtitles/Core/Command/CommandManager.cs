@@ -20,10 +20,10 @@
 using Mono.Unix;
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class CommandManager {
-	private int limit = 40;
+	private int limit = -1;
 	private Command[] commands = null;
 
 	private int undoCount = 0;
@@ -33,6 +33,13 @@ public class CommandManager {
 	public event EventHandler UndoToggled;
 	public event EventHandler RedoToggled;
 	public event CommandActivatedHandler CommandActivated;
+	
+	#region Constants
+	private const int defaultLimit = 40;
+	#endregion
+
+	public CommandManager () : this(defaultLimit) {
+	}
 
 	public CommandManager (int undoLimit) {
 		limit = undoLimit;

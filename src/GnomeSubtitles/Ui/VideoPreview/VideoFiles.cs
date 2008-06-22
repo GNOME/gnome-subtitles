@@ -22,7 +22,7 @@ using System.Collections;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace GnomeSubtitles.Ui.Video {
+namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class VideoFiles {
 	private static Regex videoFilesRegex = new Regex(@"^.*\.((avi)|(mpeg)|(mpg)|(mp4)|(ogm)|(divx)|(xvid)|(mov)|(ogg))$");

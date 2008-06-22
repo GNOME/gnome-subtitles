@@ -17,6 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Ui.Edit;
+using GnomeSubtitles.Ui.VideoPreview;
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib;
@@ -39,11 +45,11 @@ public class MainUi {
 	private const string iconFilename = "gnome-subtitles.png";
 	
 	public MainUi (EventHandlers handlers, out Glade.XML glade) {
-		glade = new Glade.XML(null, gladeFilename, null, Global.Execution.TranslationDomain);
+		glade = new Glade.XML(null, gladeFilename, null, Base.ExecutionContext.TranslationDomain);
 		
 		window = glade.GetWidget("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
-		window.SetDefaultSize(Global.Config.PrefsWindowWidth, Global.Config.PrefsWindowHeight);
+		window.SetDefaultSize(Base.Config.PrefsWindowWidth, Base.Config.PrefsWindowHeight);
 		
 		video = new Video();
 		view = new SubtitleView();
@@ -88,10 +94,10 @@ public class MainUi {
     /// <summary>Starts the GUI</summary>
     /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
     public void Start () {
-    	string[] args = Global.Execution.Args;
+    	string[] args = Base.ExecutionContext.Args;
     	if (args.Length > 0) {
     		string subtitleFile = args[0];
-    		string videoFile = Global.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : String.Empty;
+    		string videoFile = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : String.Empty;
 			Open(subtitleFile, -1, videoFile);
 		}
 		else
@@ -102,7 +108,7 @@ public class MainUi {
     public void Quit () {
 		if (ToCloseAfterWarning()) {
 			video.Quit();
-			Global.Quit();
+			Base.Quit();
 		}
     }
     
@@ -123,10 +129,10 @@ public class MainUi {
 			path = Catalog.GetString("Unsaved Subtitles");
 		}
 
-		Global.CreateDocumentNew(path);
+		Base.CreateDocumentNew(path);
 
-		if (Global.Document.Subtitles.Count == 0) {
-			Global.CommandManager.Execute(new InsertFirstSubtitleCommand());
+		if (Base.Document.Subtitles.Count == 0) {
+			Base.CommandManager.Execute(new InsertFirstSubtitleCommand());
 		}
     }
     
@@ -164,8 +170,8 @@ public class MainUi {
     /// <remarks>If the document hasn't been saved before, a SaveAs is executed.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
     public bool Save () {
-    	if (Global.Document.CanTextBeSaved) { //Check if document can be saved or needs a SaveAs
-			Save(Global.Document.TextFile);
+    	if (Base.Document.CanTextBeSaved) { //Check if document can be saved or needs a SaveAs
+			Save(Base.Document.TextFile);
 			return true;
 		}
 		else
@@ -176,7 +182,7 @@ public class MainUi {
     /// <remarks>After saving, the timing mode is set to the timing mode of the subtitle format using when saving.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
     public bool SaveAs () {
-		FileSaveAsDialog dialog = Global.Dialogs.FileSaveAsDialog;
+		FileSaveAsDialog dialog = Base.Dialogs.FileSaveAsDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
 		if (properties != null) {
 			Save(properties);
@@ -192,7 +198,7 @@ public class MainUi {
     	if (!ToCreateNewTranslationAfterWarning())
     		return;
 
-		Global.Document.NewTranslation();
+		Base.Document.NewTranslation();
     }
     
     /// <summary>Shows the open translation dialog and possibly opens a file.</summary>
@@ -213,8 +219,8 @@ public class MainUi {
     /// <remarks>If the translation hasn't been saved before, a TranslationSaveAs is executed.</remarks>
     /// <returns>Whether the translation file was saved or not.</returns>
     public bool TranslationSave () {
-    	if (Global.Document.CanTranslationBeSaved) { //Check if translation can be saved or needs a SaveAs
-			SaveTranslation(Global.Document.TranslationFile);
+    	if (Base.Document.CanTranslationBeSaved) { //Check if translation can be saved or needs a SaveAs
+			SaveTranslation(Base.Document.TranslationFile);
 			return true;
 		}
 		else
@@ -224,7 +230,7 @@ public class MainUi {
     /// <summary>Executes a translation SaveAs operation.</summary>
     /// <returns>Whether the translation file was saved or not.</returns>
     public bool TranslationSaveAs () {
-		FileSaveAsDialog dialog = Global.Dialogs.TranslationSaveAsDialog;
+		FileSaveAsDialog dialog = Base.Dialogs.TranslationSaveAsDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
 		if (properties != null) {
 			SaveTranslation(properties);
@@ -240,13 +246,13 @@ public class MainUi {
     	if (!ToCloseTranslationAfterWarning())
     		return;
 
-		Global.Document.CloseTranslation();
+		Base.Document.CloseTranslation();
     }
 
 	public void UpdateFromDocumentModified (bool modified) {
 		string prefix = (modified ? "*" : String.Empty);
-		window.Title = prefix + Global.Document.TextFile.Filename +
-			" - " + Global.Execution.ApplicationName;
+		window.Title = prefix + Base.Document.TextFile.Filename +
+			" - " + Base.ExecutionContext.ApplicationName;
 	}
 	
 	public void UpdateFromNewDocument (bool wasLoaded) {
@@ -291,7 +297,7 @@ public class MainUi {
 	
 	/// <summary>Updates the various parts of the GUI based on the current subtitle count.</summary>
 	public void UpdateFromSubtitleCount () {
-		int count = Global.Document.Subtitles.Collection.Count;
+		int count = Base.Document.Subtitles.Collection.Count;
 		menus.UpdateFromSubtitleCount(count);
 	}
 
@@ -306,7 +312,7 @@ public class MainUi {
     private void Open (string path, int codePage, string videoFilename) {
     	try {
     		Encoding encoding =  CodePageToEncoding(codePage);
-    		Global.CreateDocumentOpen(path, encoding);
+    		Base.CreateDocumentOpen(path, encoding);
 			view.Selection.SelectFirst();
 		
 			if (videoFilename != String.Empty)
@@ -344,7 +350,7 @@ public class MainUi {
     private void OpenTranslation (string path, int codePage) {
     	try {
     		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
-    		Global.Document.OpenTranslation(path, encoding);
+    		Base.Document.OpenTranslation(path, encoding);
 		}
 		catch (Exception exception) {
 			SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(path, exception);
@@ -375,7 +381,7 @@ public class MainUi {
     
     private void Save (FileProperties fileProperties) {
 		try {
-			Global.Document.Save(fileProperties);
+			Base.Document.Save(fileProperties);
 		}
 		catch (Exception exception) {
 			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception);
@@ -388,7 +394,7 @@ public class MainUi {
 	
 	private void SaveTranslation (FileProperties fileProperties) {
 		try {
-			Global.Document.SaveTranslation(fileProperties);
+			Base.Document.SaveTranslation(fileProperties);
 		}
 		catch (Exception exception) {
 			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception); //TODO check messages for translation
@@ -412,7 +418,7 @@ public class MainUi {
 		Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
 		SubtitleType subtitleType = dialog.SubtitleType;			
 		NewlineType newlineType = dialog.NewlineType;
-		TimingMode timingMode = Global.TimingMode;
+		TimingMode timingMode = Base.TimingMode;
 		return new FileProperties(path, encoding, subtitleType, timingMode, newlineType);
 	}
 	
@@ -446,12 +452,12 @@ public class MainUi {
 
 	/// <summary>Whether there are unsaved normal changes.</summary>
 	private bool ExistTextUnsavedChanges () {
-		return Global.IsDocumentLoaded && Global.Document.WasTextModified;
+		return Base.IsDocumentLoaded && Base.Document.WasTextModified;
 	}
 	
 	/// <summary>Whether there are unsaved translation changes.</summary>
 	private bool ExistTranslationUnsavedChanges () {
-		return Global.IsDocumentLoaded && Global.Document.IsTranslationLoaded && Global.Document.WasTranslationModified;
+		return Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.WasTranslationModified;
 	}
 
 	/// <summary>Whether the program should be closed, after choosing the respective confirmation dialog.</summary>

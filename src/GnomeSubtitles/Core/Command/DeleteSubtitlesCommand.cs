@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	private static string description = Catalog.GetString("Deleting Subtitles");
@@ -33,12 +34,12 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 
 	
 	public override bool Execute () {
-		Global.GUI.View.Remove(Paths);
+		Base.Ui.View.Remove(Paths);
 		return true;
 	}
 	
 	public override void Undo () {
-		Global.GUI.View.Insert(subtitles, Paths, Focus);	
+		Base.Ui.View.Insert(subtitles, Paths, Focus);	
 	}
 	
 	public override void Redo () {
@@ -52,7 +53,7 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 		subtitles = new Subtitle[count];
 		for (int index = 0 ; index < count ; index++) {
 			TreePath path = Paths[index];
-			subtitles[index] = Global.Document.Subtitles[path];
+			subtitles[index] = Base.Document.Subtitles[path];
 		}	
 	}
 

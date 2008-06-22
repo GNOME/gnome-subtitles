@@ -18,6 +18,7 @@
  */
 
 using Glade;
+using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
 using SubLib;
@@ -69,7 +70,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	protected override int GetFixedEncoding () {
 		try {
-			return Global.Document.TextFile.Encoding.CodePage;
+			return Base.Document.TextFile.Encoding.CodePage;
 		}
 		catch (NullReferenceException) {
 			return -1;
@@ -87,7 +88,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	}
 	
 	private void UpdateContents () {
-		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Global.Document.TextFile : Global.Document.TranslationFile);
+		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
 	
 		if (fileProperties.IsPathRooted)
 			dialog.SetCurrentFolder(fileProperties.Directory);
@@ -112,7 +113,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	}
 
 	private void SetActiveFormat () {
-		SubtitleType subtitleType = Global.Document.TextFile.SubtitleType; //The type of the subtitle file
+		SubtitleType subtitleType = Base.Document.TextFile.SubtitleType; //The type of the subtitle file
 		int position = FindSubtitleTypePosition(subtitleType);
 		if (position != -1) {
 			formatComboBox.Active = position;
@@ -120,7 +121,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		}
 		
 		/* The current subtitle type was not found, trying the most common based on the TimingMode */
-		TimingMode timingMode = Global.TimingMode;
+		TimingMode timingMode = Base.TimingMode;
 		
 		/* If timing mode is Frames, set to MicroDVD */
 		if (timingMode == TimingMode.Frames) {
@@ -220,7 +221,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	private void SetActiveNewlineType () {
 		NewlineType systemNewline = GetSystemNewlineType();
-		NewlineType documentNewline = Global.Document.TextFile.NewlineType;
+		NewlineType documentNewline = Base.Document.TextFile.NewlineType;
 		NewlineType newlineToMakeActive = (documentNewline != NewlineType.Unknown ? documentNewline : systemNewline);
 		int item = GetNewlineTypePosition(newlineToMakeActive);
 		newlineTypeComboBox.Active = item;	

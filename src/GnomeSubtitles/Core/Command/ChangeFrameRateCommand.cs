@@ -17,9 +17,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Ui.View;
 using Mono.Unix;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 	private float storedFrameRate = 0;
@@ -49,15 +50,15 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override float GetFrameRate () {
-		return Global.Document.Subtitles.Properties.OriginalFrameRate;
+		return Base.Document.Subtitles.Properties.OriginalFrameRate;
 	}
 	
 	protected override void SetFrameRate (float frameRate) {
-		Global.Document.Subtitles.ChangeOriginalFrameRate(frameRate);
+		Base.Document.Subtitles.ChangeOriginalFrameRate(frameRate);
 	}
 	
 	protected override void UpdateMenuItem () {
-		Global.GUI.Menus.UpdateActiveInputFrameRateMenuItem();
+		Base.Ui.Menus.UpdateActiveInputFrameRateMenuItem();
 	}
 }
 
@@ -68,15 +69,15 @@ public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override float GetFrameRate () {
-		return Global.Document.Subtitles.Properties.CurrentFrameRate;
+		return Base.Document.Subtitles.Properties.CurrentFrameRate;
 	}
 	
 	protected override void SetFrameRate (float frameRate) {
-		Global.Document.Subtitles.ChangeFrameRate(frameRate);
+		Base.Document.Subtitles.ChangeFrameRate(frameRate);
 	}
 	
 	protected override void UpdateMenuItem () {
-		Global.GUI.Menus.UpdateActiveVideoFrameRateMenuItem();
+		Base.Ui.Menus.UpdateActiveVideoFrameRateMenuItem();
 	}
 }
 

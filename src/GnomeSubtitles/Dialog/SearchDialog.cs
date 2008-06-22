@@ -166,7 +166,7 @@ public class SearchDialog : GladeDialog {
 	/// <summary>Sets the text in the Find entry.</summary>
 	/// <remarks>Updating the text will select it and grab the focus to the entry.</remarks>
 	private void SetFindEntryText () {
-		string currentSelection = Global.GUI.Edit.SelectedTextContent;
+		string currentSelection = Core.Base.Ui.Edit.SelectedTextContent;
 		string textToUse = (currentSelection != String.Empty ? currentSelection : text);
 		findEntry.Text = textToUse;
 		findEntry.SelectRegion(0, textToUse.Length);
@@ -192,7 +192,7 @@ public class SearchDialog : GladeDialog {
 	private void Find () {
 		HandleValuesChange();
 		
-		bool found = Global.GUI.View.Search.Find();
+		bool found = Core.Base.Ui.View.Search.Find();
 		if (found)
 			buttonReplace.Sensitive = true;
 	}
@@ -200,7 +200,7 @@ public class SearchDialog : GladeDialog {
 	private void Replace () {
 		HandleValuesChange();
 		
-		bool foundNext = Global.GUI.View.Search.Replace();
+		bool foundNext = Core.Base.Ui.View.Search.Replace();
 		if (!foundNext) //No other text was found to replace, after replacing this one
 			buttonReplace.Sensitive = false;
 	}
@@ -208,7 +208,7 @@ public class SearchDialog : GladeDialog {
 	private void ReplaceAll () {
 		HandleValuesChange();
 		
-		Global.GUI.View.Search.ReplaceAll();
+		Core.Base.Ui.View.Search.ReplaceAll();
 	}
 	
 	private void UpdateRegex() {

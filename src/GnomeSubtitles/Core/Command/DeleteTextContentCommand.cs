@@ -17,12 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.SubtitleEdit;
+using GnomeSubtitles.Ui.Edit;
 using Mono.Unix;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class DeleteTextContentCommand : FixedSingleSelectionCommand {
 	private int index; //The start offset of the deleted text
@@ -66,14 +66,14 @@ public abstract class DeleteTextContentCommand : FixedSingleSelectionCommand {
 	}
 	
 	public override void Undo () {
-		Global.GUI.View.Selection.Select(Path, true, false);
+		Base.Ui.View.Selection.Select(Path, true, false);
 		SubtitleEditTextView textView = GetTextView();
 		textView.InsertText(index, text);
 		PostProcess();
 	}
 	
 	public override void Redo () {
-		Global.GUI.View.Selection.Select(Path, true, false);
+		Base.Ui.View.Selection.Select(Path, true, false);
 		SubtitleEditTextView textView = GetTextView();
 		textView.DeleteText(index, index + text.Length);
 		PostProcess();
@@ -82,7 +82,7 @@ public abstract class DeleteTextContentCommand : FixedSingleSelectionCommand {
 	/* Protected members */
 	
 	protected override void PostProcess () {
-		Global.GUI.View.RedrawPath(Path);
+		Base.Ui.View.RedrawPath(Path);
 	}
 	
 	protected int GetIndex () {

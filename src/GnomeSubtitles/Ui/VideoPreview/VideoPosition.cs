@@ -17,12 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles.Ui.Video {
+namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class VideoPosition {
 	private Player player = null;
@@ -47,10 +48,10 @@ public class VideoPosition {
 	public event VideoPositionChangedHandler Changed;
 
 	public VideoPosition (Player player) {
-		slider = Global.GetWidget(WidgetNames.VideoSlider) as HScale;
-		positionLabel = Global.GetWidget(WidgetNames.VideoPositionLabel) as Label;
-		positionValueLabel = Global.GetWidget(WidgetNames.VideoPositionValueLabel) as Label;
-		lengthValueLabel = Global.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
+		slider = Base.GetWidget(WidgetNames.VideoSlider) as HScale;
+		positionLabel = Base.GetWidget(WidgetNames.VideoPositionLabel) as Label;
+		positionValueLabel = Base.GetWidget(WidgetNames.VideoPositionValueLabel) as Label;
+		lengthValueLabel = Base.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
 
 		this.player = player;
 		player.OnPositionChanged = OnPlayerPositionChanged;
@@ -163,7 +164,7 @@ public class VideoPosition {
 	}
 
 	private void UpdatePositionValueLabel (TimeSpan newPosition) {
-		if (Global.TimingMode == TimingMode.Times)
+		if (Base.TimingMode == TimingMode.Times)
 			positionValueLabel.Text = Util.TimeSpanToText(newPosition);
 		else {
 			double frames = (newPosition == TimeSpan.Zero ? 0 : SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate));
@@ -178,7 +179,7 @@ public class VideoPosition {
 	
 	private void SetLength (TimeSpan length) {
 		SetSliderLength(length);
-		UpdateLengthLabel(Global.TimingMode, length);
+		UpdateLengthLabel(Base.TimingMode, length);
 	}
 	
 	private void UpdateLengthLabel (TimingMode timingMode, TimeSpan length) {

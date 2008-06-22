@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -61,7 +62,7 @@ public class SetLanguageDialog : GladeDialog {
 		languagesTreeView.AppendColumn(col);
 	
 		store = new ListStore(typeof(string));
-		foreach (SpellLanguage language in Global.SpellLanguages.Languages) {
+		foreach (SpellLanguage language in Base.SpellLanguages.Languages) {
 			store.AppendValues(language.Name);
 		}
 		
@@ -81,7 +82,7 @@ public class SetLanguageDialog : GladeDialog {
 	}
 	
 	private int GetActiveLanguageIndex (SubtitleTextType textType, int count) {
-		int activeLanguageIndex = Global.SpellLanguages.GetActiveLanguageIndex(textType);
+		int activeLanguageIndex = Base.SpellLanguages.GetActiveLanguageIndex(textType);
 		/* Set active language to the first if invalid */
 		if ((activeLanguageIndex == -1) || (activeLanguageIndex >= count))
 			activeLanguageIndex = 0;
@@ -91,7 +92,7 @@ public class SetLanguageDialog : GladeDialog {
 
 	private void SetSpellLanguage () {
 		int selectedLanguageIndex = GetSelectedLanguageIndex();
-		Global.SpellLanguages.SetActiveLanguageIndex(textType, selectedLanguageIndex);
+		Base.SpellLanguages.SetActiveLanguageIndex(textType, selectedLanguageIndex);
 	}
 	
 	private int GetSelectedLanguageIndex () {

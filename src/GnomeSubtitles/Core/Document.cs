@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Command;
+using GnomeSubtitles.Core.Command;
 using Mono.Unix;
 using SubLib;
 using System.IO;
@@ -26,7 +26,7 @@ using System.Text;
 namespace GnomeSubtitles.Core {
 
 public class Document {
-	private Subtitles subtitles = null;
+	private Ui.View.Subtitles subtitles = null;
 	private bool wasTextModified = false;
 	private bool wasTranslationModified = false;
 
@@ -58,7 +58,7 @@ public class Document {
 		get { return translationFile != null; }
 	}
 
-	public Subtitles Subtitles {
+	public Ui.View.Subtitles Subtitles {
 		get { return subtitles; }
 	}
 	
@@ -87,7 +87,7 @@ public class Document {
 		textFile = saver.FileProperties;		
 		canTextBeSaved = true;
 
-		Global.GUI.Menus.SetActiveTimingMode(textFile.TimingMode);
+		Base.Ui.Menus.SetActiveTimingMode(textFile.TimingMode);
 		
 		ClearTextModified();
 		return true;
@@ -98,13 +98,13 @@ public class Document {
 		ClearTranslationStatus();
 		CreateNewTranslationFileProperties();
 
-		Global.GUI.UpdateFromNewTranslationDocument();
+		Base.Ui.UpdateFromNewTranslationDocument();
 	}
 	
 	public void CloseTranslation () {
 		RemoveTranslationFromSubtitles();
 		ClearTranslationStatus();
-		Global.GUI.UpdateFromCloseTranslation();
+		Base.Ui.UpdateFromCloseTranslation();
 	}
 
 	public void OpenTranslation (string path, Encoding encoding) {
@@ -124,7 +124,7 @@ public class Document {
 			canTranslationBeSaved = true;
 	
 		translationFile = newTranslationFile;
-		Global.GUI.UpdateFromNewTranslationDocument();
+		Base.Ui.UpdateFromNewTranslationDocument();
 	}
 	
 	public bool SaveTranslation (FileProperties newFileProperties) {
@@ -141,11 +141,11 @@ public class Document {
 	public void UpdateFromCommandActivated (CommandTarget target) {
 		if ((target == CommandTarget.Normal) && (!wasTextModified)) {
 			wasTextModified = true;
-			Global.GUI.UpdateFromDocumentModified(true);
+			Base.Ui.UpdateFromDocumentModified(true);
 		}
 		else if ((target == CommandTarget.Translation) && (!wasTranslationModified)) {
 			wasTranslationModified = true;
-			Global.GUI.UpdateFromDocumentModified(true);
+			Base.Ui.UpdateFromDocumentModified(true);
 		}
 	}
 
@@ -157,7 +157,7 @@ public class Document {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		
-		subtitles = new Subtitles(factory.New());
+		subtitles = new Ui.View.Subtitles(factory.New());
 		textFile = new FileProperties(path);
 	}
 	
@@ -176,7 +176,7 @@ public class Document {
 			return;
 		}
 
-		subtitles = new Subtitles(openedSubtitles);
+		subtitles = new Ui.View.Subtitles(openedSubtitles);
 		textFile = factory.FileProperties;
 		
 		if (textFile.SubtitleType != SubtitleType.Unknown)
@@ -186,13 +186,13 @@ public class Document {
 	private void ClearTextModified () {
 		wasTextModified = false;
 		if (!wasTranslationModified) //Update the GUI if translation is also not in modified state
-			Global.GUI.UpdateFromDocumentModified(false);
+			Base.Ui.UpdateFromDocumentModified(false);
 	}
 	
 	private void ClearTranslationModified () {
 		wasTranslationModified = false;
 		if (!wasTextModified) //Update the GUI if text is also not in modified state
-			Global.GUI.UpdateFromDocumentModified(false);
+			Base.Ui.UpdateFromDocumentModified(false);
 	}
 	
 	private void CreateNewTranslationFileProperties () {
@@ -211,7 +211,7 @@ public class Document {
 		translationFile = null;
 		canTranslationBeSaved = false;
 		
-		Global.CommandManager.ClearTarget(CommandTarget.Translation);
+		Base.CommandManager.ClearTarget(CommandTarget.Translation);
 		ClearTranslationModified();
 	}
 	

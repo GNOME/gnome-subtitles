@@ -49,24 +49,24 @@ public class Clipboards {
 	}
 
 	public void OnOwnerChange (object o, OwnerChangeArgs args) {
-    	Window window = Global.GUI.Window;
+    	Window window = Base.Ui.Window;
 
     	if ((!window.IsActive) || (args.Event.Owner == 0) || (!ValidWidgetHasFocus()))
-    		Global.GUI.Menus.SetCutCopySensitivity(false);
+    		Base.Ui.Menus.SetCutCopySensitivity(false);
     	else {
-    		Global.GUI.Menus.SetCutCopySensitivity(true);    	
+    		Base.Ui.Menus.SetCutCopySensitivity(true);    	
     	}
     }
     
     public bool ValidWidgetHasFocus () {
     	SpinButton start, end, duration;
     	TextView textEdit, translationEdit;
-    	Global.GUI.Edit.GetEditableWidgets (out start, out end, out duration, out textEdit, out translationEdit);
+    	Base.Ui.Edit.GetEditableWidgets (out start, out end, out duration, out textEdit, out translationEdit);
     	return start.HasFocus || end.HasFocus || duration.HasFocus || textEdit.HasFocus || translationEdit.HasFocus;
     }
     
     public void Copy () {
-    	Widget widget = Global.GUI.Window.Focus;
+    	Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)
     		(widget as SpinButton).CopyClipboard();
     	else if (widget is TextView)
@@ -74,7 +74,7 @@ public class Clipboards {
     }
     
     public void Cut () {
-		Widget widget = Global.GUI.Window.Focus;
+		Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)
     		(widget as SpinButton).CutClipboard();
     	else if (widget is TextView)
@@ -82,7 +82,7 @@ public class Clipboards {
     }
     
     public void Paste () {
-		Widget widget = Global.GUI.Window.Focus;
+		Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)
     		(widget as SpinButton).PasteClipboard();
     	else if (widget is TextView)

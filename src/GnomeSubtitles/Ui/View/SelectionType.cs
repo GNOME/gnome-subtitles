@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-namespace GnomeSubtitles.Ui.SubtitleView {
+namespace GnomeSubtitles.Ui.View {
 
 /// <summary>
 /// Represents a selection type.

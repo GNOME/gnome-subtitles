@@ -17,11 +17,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.SubtitleView;
+using GnomeSubtitles.Ui.View;
 using Mono.Unix;
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	private static string description = Catalog.GetString("Adjusting timings");
@@ -58,7 +58,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 
 	private void AdjustAllSubtitlesTime () {
-		Subtitles subtitles = Global.Document.Subtitles;
+		Subtitles subtitles = Base.Document.Subtitles;
 		
 		TimeSpan oldFirstTime = subtitles[0].Times.Start;
 		TimeSpan oldLastTime = subtitles[subtitles.Count - 1].Times.Start;
@@ -70,7 +70,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 	
 	private void AdjustAllSubtitlesFrames () {
-		Subtitles subtitles = Global.Document.Subtitles;
+		Subtitles subtitles = Base.Document.Subtitles;
 		
 		int oldFirstFrame = subtitles[0].Frames.Start;
 		int oldLastFrame = subtitles[subtitles.Count - 1].Frames.Start;
@@ -82,7 +82,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 	
 	private void AdjustSubtitlesTime () {
-		Subtitles subtitles = Global.Document.Subtitles;
+		Subtitles subtitles = Base.Document.Subtitles;
 		
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
@@ -97,7 +97,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	}
 	
 	private void AdjustSubtitlesFrames () {
-		Subtitles subtitles = Global.Document.Subtitles;
+		Subtitles subtitles = Base.Document.Subtitles;
 		
 		int firstSubtitle = Util.PathToInt(Paths[0]);
 		int lastSubtitle = Util.PathToInt(Paths[Paths.Length - 1]);

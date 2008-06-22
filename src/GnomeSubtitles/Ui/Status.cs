@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
 using SubLib;
@@ -29,9 +30,9 @@ public class Status {
 	private Statusbar overwriteStatus = null;
 
 	public Status () {
-		//messageStatus = Global.GetWidget(WidgetNames.MessageStatusbar) as Gtk.Statusbar;
-		positionStatus = Global.GetWidget(WidgetNames.PositionStatusbar) as Gtk.Statusbar;
-		overwriteStatus = Global.GetWidget(WidgetNames.OverwriteStatusbar) as Gtk.Statusbar;
+		//messageStatus = Base.GetWidget(WidgetNames.MessageStatusbar) as Gtk.Statusbar;
+		positionStatus = Base.GetWidget(WidgetNames.PositionStatusbar) as Gtk.Statusbar;
+		overwriteStatus = Base.GetWidget(WidgetNames.OverwriteStatusbar) as Gtk.Statusbar;
 	}
 
 	/* Public properties */

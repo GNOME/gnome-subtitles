@@ -18,6 +18,7 @@
  */
 
 using Glade;
+using GnomeSubtitles.Core;
 using Gtk;
 using System;
 
@@ -41,7 +42,7 @@ public class PreferencesDialog : GladeDialog {
 	/* Private members */
 	
 	private void LoadValues () {
-		videoAutoChooseFileCheckButton.Active = Global.Config.PrefsVideoAutoChooseFile;
+		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
 	}
 	
 	/* Event handlers */
@@ -53,7 +54,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 	
 	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
-		Global.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
+		Base.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
 	}
 
 }

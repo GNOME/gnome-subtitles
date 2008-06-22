@@ -19,7 +19,7 @@
 
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class CommandActivatedArgs : EventArgs {
 	private CommandTarget target;

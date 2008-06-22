@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	private bool styleValue;
@@ -32,7 +33,7 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	
 	protected override bool ChangeValues () {
 		foreach (TreePath path in Paths) {
-			Subtitle subtitle = Global.Document.Subtitles[path];
+			Subtitle subtitle = Base.Document.Subtitles[path];
 			SetStyle(subtitle, styleValue);
 		}
 		ToggleStyleValue();

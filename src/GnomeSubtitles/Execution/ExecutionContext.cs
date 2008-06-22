@@ -24,7 +24,7 @@ using System.Reflection;
 
 namespace GnomeSubtitles.Execution {
 
-public class Execution {
+public class ExecutionContext {
 	private Program program = null;
 	private bool initialized = false;
 
@@ -38,7 +38,7 @@ public class Execution {
 	
 	private string[] args = null;
 	
-	public Execution (string[] args) {
+	public ExecutionContext (string[] args) {
 		this.args = args;
 	}
 	

@@ -19,12 +19,12 @@
 
 using Gtk;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class SingleSelectionCommand : Command {
 	private TreePath path = null;
 	
-	public SingleSelectionCommand (string description, bool canGroup) : this(description, canGroup, Global.GUI.View.Selection.Path) {
+	public SingleSelectionCommand (string description, bool canGroup) : this(description, canGroup, Base.Ui.View.Selection.Path) {
 	}
 
 	public SingleSelectionCommand (string description, bool canGroup, TreePath path) : base(description, canGroup) {

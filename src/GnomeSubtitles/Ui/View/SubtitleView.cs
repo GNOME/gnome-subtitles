@@ -17,12 +17,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using System;
 using SubLib;
 
-namespace GnomeSubtitles.Ui.SubtitleView {
+namespace GnomeSubtitles.Ui.View {
 
 public class SubtitleView {
 	private Subtitles subtitles = null; //A reference to Global.Subtitles, kept here because it's often accessed by CellRenderers.
@@ -40,7 +42,7 @@ public class SubtitleView {
 
 	
 	public SubtitleView() {
-		tree = Global.GetWidget(WidgetNames.SubtitleView) as TreeView;
+		tree = Base.GetWidget(WidgetNames.SubtitleView) as TreeView;
 		selection = new SubtitleSelection(tree);
 		search = new Search();
 
@@ -72,7 +74,7 @@ public class SubtitleView {
     		SetTranslationVisible(false);
     	}
 
-    	Load(Global.Document.Subtitles);
+    	Load(Base.Document.Subtitles);
     }
     
     public void UpdateFromNewTranslationDocument () {
@@ -287,7 +289,7 @@ public class SubtitleView {
 
 	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames)
+		if (Base.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Start.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Start);
@@ -295,7 +297,7 @@ public class SubtitleView {
 	
 	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames)
+		if (Base.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.End.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.End);
@@ -303,7 +305,7 @@ public class SubtitleView {
 	
 	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
-		if (Global.TimingModeIsFrames)
+		if (Base.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Duration.ToString();
 		else
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Duration);

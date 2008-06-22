@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Dialog;
 using Gtk;
 using SubLib;
 using System;
@@ -43,7 +45,7 @@ public class Search {
 	}
 
 	public bool Find () {
-		Global.GUI.Menus.EnableFindNextPrevious();
+		Base.Ui.Menus.EnableFindNextPrevious();
 		
 		if (dialog.Backwards)
 			return FindPrevious();
@@ -68,13 +70,13 @@ public class Search {
 			return Find();
 		
 		string replacement = dialog.Replacement;
-		Global.GUI.Edit.ReplaceSelection(replacement);
+		Base.Ui.Edit.ReplaceSelection(replacement);
 		
 		return Find();
 	}
 	
 	public void ReplaceAll () {
-		Global.CommandManager.Execute(new ReplaceAllCommand(dialog.ForwardRegex, dialog.Replacement));
+		Base.CommandManager.Execute(new ReplaceAllCommand(dialog.ForwardRegex, dialog.Replacement));
 	}
 	
 	/// <summary>Does some cleanup to make sure the dialog is like a brand new one.</summary>
@@ -89,7 +91,7 @@ public class Search {
 	#region Private methods
 	
 	private void InitDialog (bool showReplace) {
-		dialog = Global.Dialogs.SearchDialog;
+		dialog = Base.Dialogs.SearchDialog;
 	
 		dialog.Show(showReplace);
 	}
@@ -113,7 +115,7 @@ public class Search {
 
 		/* Search */
 		SubtitleSearchOptions options = new SubtitleSearchOptions(regex, textType, subtitle, index, dialog.Wrap, backwards);
-		SubtitleSearchResults results = Global.Document.Subtitles.Find(options);
+		SubtitleSearchResults results = Base.Document.Subtitles.Find(options);
 		
 		/* If no text was found, return */
 		if (results == null)
@@ -122,7 +124,7 @@ public class Search {
 		/* Text was found, selecting it */
 		int start, end;
 		GetIndexesToSelect(results.Index, results.Index + results.Length, backwards, out start, out end);
-		Global.GUI.View.Selection.Select(Util.IntToPath(results.Subtitle), true, true, start, end, results.TextType);
+		Base.Ui.View.Selection.Select(Util.IntToPath(results.Subtitle), true, true, start, end, results.TextType);
 		return true;
 	}
 
@@ -133,8 +135,8 @@ public class Search {
 	/// <remarks>If no subtitle is being edited, both indexes are set to zero.
 	/// If no text is selected, both indexes are set to the position of the cursor.</remarks>
 	private void GetTextContentSelectionIndexes (out int start, out int end, out SubtitleTextType textType) {
-		if (Global.GUI.Edit.Enabled && Global.GUI.Edit.TextOrTranslationIsFocus)
-			Global.GUI.Edit.GetTextSelectionBounds(out start, out end, out textType);
+		if (Base.Ui.Edit.Enabled && Base.Ui.Edit.TextOrTranslationIsFocus)
+			Base.Ui.Edit.GetTextSelectionBounds(out start, out end, out textType);
 		else {
 			start = 0;
 			end = 0;
@@ -155,7 +157,7 @@ public class Search {
 	
 	/// <summary>The currently focused subtitle, or 0 if none is.</summary>
 	private int GetFocusedSubtitle() {
-			TreePath focus = Global.GUI.View.Selection.Focus;
+			TreePath focus = Base.Ui.View.Selection.Focus;
 			if (focus != null)
 				return Util.PathToInt(focus);
 			else
@@ -163,7 +165,7 @@ public class Search {
 	}
 	
 	private bool SelectionMatchesSearch () {
-			string selection = Global.GUI.Edit.SelectedTextContent;
+			string selection = Base.Ui.Edit.SelectedTextContent;
 			if (selection == String.Empty)
 				return false;
 			

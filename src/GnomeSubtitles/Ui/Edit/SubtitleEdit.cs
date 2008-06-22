@@ -17,12 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using System;
 using System.Collections;
 using SubLib;
 
-namespace GnomeSubtitles.Ui.SubtitleEdit {
+namespace GnomeSubtitles.Ui.Edit {
 
 public class SubtitleEdit {
 
@@ -37,10 +38,10 @@ public class SubtitleEdit {
 	
 
 	public SubtitleEdit() {
-		hBox = Global.GetWidget(WidgetNames.SubtitleEdit) as HBox;
+		hBox = Base.GetWidget(WidgetNames.SubtitleEdit) as HBox;
 		spinButtons = new SubtitleEditSpinButtons();
-		textEdit = new SubtitleEditText(Global.GetWidget(WidgetNames.SubtitleEditText) as TextView);
-		translationEdit = new SubtitleEditTranslation(Global.GetWidget(WidgetNames.SubtitleEditTranslation) as TextView);
+		textEdit = new SubtitleEditText(Base.GetWidget(WidgetNames.SubtitleEditText) as TextView);
+		translationEdit = new SubtitleEditTranslation(Base.GetWidget(WidgetNames.SubtitleEditTranslation) as TextView);
 		
 		ConnectSignals();
     }
@@ -99,7 +100,7 @@ public class SubtitleEdit {
     }
     
     public void UpdateFromNewDocument (bool wasLoaded) {
-		spinButtons.UpdateFromTimingMode(Global.TimingMode, subtitle);
+		spinButtons.UpdateFromTimingMode(Base.TimingMode, subtitle);
 		translationEdit.Visible = false;
 	}
 	

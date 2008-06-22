@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -64,9 +65,9 @@ public class Executable {
     }
 
 	public static void Main (string[] args) {
-		Execution execution = new Execution(args);
-		SetProcessName(execution.ExecutableName);
-		Global.Run(execution);
+		ExecutionContext executionContext = new ExecutionContext(args);
+		SetProcessName(executionContext.ExecutableName);
+		Base.Run(executionContext);
 	}
 	
 	#endregion

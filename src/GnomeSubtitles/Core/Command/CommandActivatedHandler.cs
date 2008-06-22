@@ -19,7 +19,7 @@
 
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public delegate void CommandActivatedHandler (object o, CommandActivatedArgs args);
 

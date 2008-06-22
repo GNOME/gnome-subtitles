@@ -21,7 +21,7 @@ using Mono.Unix;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	private TimeSpan storedTime;
@@ -31,12 +31,12 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	protected Subtitle subtitle = null;
 	
 	public ChangeTimingCommand (int frames, string description): base(description, true, true) {
-		this.subtitle = Global.Document.Subtitles[Path];
+		this.subtitle = Base.Document.Subtitles[Path];
 		this.storedFrames = frames;
 	}
 	
 	public ChangeTimingCommand (TimeSpan time, string description): base(description, true, true) {
-		this.subtitle = Global.Document.Subtitles[Path];
+		this.subtitle = Base.Document.Subtitles[Path];
 		this.storedTime = time;
 	}
 

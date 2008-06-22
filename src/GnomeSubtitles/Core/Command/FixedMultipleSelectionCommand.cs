@@ -17,10 +17,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.SubtitleView;
+using GnomeSubtitles.Ui.View;
 using Gtk;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 /// <summary>Represents a <see cref="Command" /> in which the selection never changes during execution/undo/redo.</summary>
 public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
@@ -50,18 +50,18 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 		
 		switch (SelectionType) {
 			case SelectionType.All:
-				Global.GUI.View.Selection.SelectAll();
+				Base.Ui.View.Selection.SelectAll();
 				break;
 			case SelectionType.Range:
-				Global.GUI.View.Selection.SelectRange(Paths, Focus, true);
+				Base.Ui.View.Selection.SelectRange(Paths, Focus, true);
 				break;
 			case SelectionType.Simple:
-				Global.GUI.View.Selection.ScrollToFocus(Focus, true);
+				Base.Ui.View.Selection.ScrollToFocus(Focus, true);
 				break;
 		}
-		Global.GUI.View.Refresh();
+		Base.Ui.View.Refresh();
 		if (reselect)
-			Global.GUI.UpdateFromSelection();
+			Base.Ui.UpdateFromSelection();
 		
 		PostProcess();
 		return true;
@@ -72,17 +72,17 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 
 		switch (SelectionType) {
 			case SelectionType.All:
-				Global.GUI.View.Selection.SelectAll();
+				Base.Ui.View.Selection.SelectAll();
 				break;
 			case SelectionType.Range:
-				Global.GUI.View.Selection.SelectRange(Paths, Focus, true);
+				Base.Ui.View.Selection.SelectRange(Paths, Focus, true);
 				break;
 			case SelectionType.Simple:
-				Global.GUI.View.Selection.Select(Paths, Focus, true);
+				Base.Ui.View.Selection.Select(Paths, Focus, true);
 				break;
 		}
 
-		Global.GUI.View.Refresh();
+		Base.Ui.View.Refresh();
 		PostProcess();
 	}
 

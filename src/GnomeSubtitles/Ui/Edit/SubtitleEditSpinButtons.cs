@@ -17,11 +17,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Core.Command;
 using Gtk;
 using SubLib;
 using System;
 
-namespace GnomeSubtitles.Ui.SubtitleEdit {
+namespace GnomeSubtitles.Ui.Edit {
 
 public class SubtitleEditSpinButtons {
 	private TimingMode timingMode = TimingMode.Frames; //Need to store to prevent from connecting more than 1 handler to the spin buttons. Default is Frames because it's going to be set to Times in the constructor.
@@ -34,9 +36,9 @@ public class SubtitleEditSpinButtons {
 
 	public SubtitleEditSpinButtons () {
 		/* Assign */
-		startSpinButton = Global.GetWidget(WidgetNames.StartSpinButton) as SpinButton;
-		endSpinButton = Global.GetWidget(WidgetNames.EndSpinButton) as SpinButton;
-		durationSpinButton = Global.GetWidget(WidgetNames.DurationSpinButton) as SpinButton;
+		startSpinButton = Base.GetWidget(WidgetNames.StartSpinButton) as SpinButton;
+		endSpinButton = Base.GetWidget(WidgetNames.EndSpinButton) as SpinButton;
+		durationSpinButton = Base.GetWidget(WidgetNames.DurationSpinButton) as SpinButton;
 		
 		/* Initialize */
 		startSpinButton.WidthRequest = Util.SpinButtonTimeWidth(startSpinButton); //Only need to set one of the spin buttons' width
@@ -169,24 +171,24 @@ public class SubtitleEditSpinButtons {
    	}
    	
 	private void OnStartValueChanged (object o, EventArgs args) {
-		if (Global.TimingModeIsFrames)
-			Global.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value));
+		if (Base.TimingModeIsFrames)
+			Base.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value));
 		else
-			Global.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value)));
+			Base.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value)));
 	}
 	
 	private void OnEndValueChanged (object o, EventArgs args) {
-		if (Global.TimingModeIsFrames)
-			Global.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value));
+		if (Base.TimingModeIsFrames)
+			Base.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value));
 		else
-			Global.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value)));
+			Base.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value)));
 	}
 	
 	private void OnDurationValueChanged (object o, EventArgs args) {
-		if (Global.TimingModeIsFrames)
-			Global.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value));
+		if (Base.TimingModeIsFrames)
+			Base.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value));
 		else
-			Global.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
+			Base.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
 	}
 	
 	private void OnTimeInput (object o, InputArgs args) {

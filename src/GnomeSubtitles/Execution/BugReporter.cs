@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Dialog;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -52,12 +54,12 @@ public class BugReporter {
 	}
 	
 	private static string GetBugInfo (Exception exception) {
-		return "Gnome Subtitles version: " + Global.Execution.Version + "\n"
-			+ "SubLib version: " + Global.Execution.SubLibVersion + "\n"
-			+ "GtkSharp version: " + Global.Execution.GtkSharpVersion + "\n"
-			+ "GnomeSharp version: " + Global.Execution.GnomeSharpVersion + "\n"
-			+ "GladeSharp version: " + Global.Execution.GladeSharpVersion + "\n"
-			+ "GConfSharp version: " + Global.Execution.GConfSharpVersion + "\n\n"
+		return "Gnome Subtitles version: " + Base.ExecutionContext.Version + "\n"
+			+ "SubLib version: " + Base.ExecutionContext.SubLibVersion + "\n"
+			+ "GtkSharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
+			+ "GnomeSharp version: " + Base.ExecutionContext.GnomeSharpVersion + "\n"
+			+ "GladeSharp version: " + Base.ExecutionContext.GladeSharpVersion + "\n"
+			+ "GConfSharp version: " + Base.ExecutionContext.GConfSharpVersion + "\n\n"
 			+ "Stack trace:" + "\n"
 			+ exception.ToString();
 	}

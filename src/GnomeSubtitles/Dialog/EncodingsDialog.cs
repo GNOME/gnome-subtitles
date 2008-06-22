@@ -17,6 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Dialog;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -70,7 +72,7 @@ public class EncodingsDialog : GladeDialog {
 	private void FillShownEncodings () {
 		SetColumns(shownTreeView);
 		
-		chosenNames = Global.Config.PrefsEncodingsShownInMenu;
+		chosenNames = Base.Config.PrefsEncodingsShownInMenu;
 		
 		ListStore store = new ListStore(typeof(string), typeof(string));
 		foreach (string shownEncoding in chosenNames) {
@@ -173,7 +175,7 @@ public class EncodingsDialog : GladeDialog {
 		
 	private void UpdateShownEncodingsPrefs () {
 		chosenNames = GetShownNames();
-		Global.Config.PrefsEncodingsShownInMenu = chosenNames;
+		Base.Config.PrefsEncodingsShownInMenu = chosenNames;
 	}
 	
 	

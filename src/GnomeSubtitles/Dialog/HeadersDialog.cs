@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using System;
 using Glade;
 using Gtk;
@@ -95,7 +96,7 @@ public class HeadersDialog : GladeDialog {
 	
 	
 	public HeadersDialog () : base(gladeFilename) {
-		headers = Global.Document.Subtitles.Properties.Headers;
+		headers = Base.Document.Subtitles.Properties.Headers;
 		LoadHeaders();
 	}
 	

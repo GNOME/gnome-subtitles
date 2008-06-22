@@ -17,12 +17,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Dialog;
 using Gtk;
 using SubLib;
 using System;
 using System.Text.RegularExpressions;
 
-namespace GnomeSubtitles.Ui.Video {
+namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class Video {
 	private HBox videoArea = null;
@@ -40,7 +42,7 @@ public class Video {
 	private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
 
 	public Video () {
-		videoArea = Global.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
+		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
 		
 		/* Create the video Frame */
 		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
@@ -50,7 +52,7 @@ public class Video {
 		videoFrameEventBox.ModifyBg(StateType.Normal, videoFrameEventBox.Style.Black);
 
 		/* Attach the video frame */
-		Table videoImageTable = Global.GetWidget("videoImageTable") as Table;
+		Table videoImageTable = Base.GetWidget("videoImageTable") as Table;
 		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
 		videoImageTable.ShowAll();
 		
@@ -106,7 +108,7 @@ public class Video {
 		position.Enable();
 		frame.Ratio = player.AspectRatio;
 		
-		Global.GUI.Menus.AddFrameRateVideoTag(player.FrameRate);
+		Core.Base.Ui.Menus.AddFrameRateVideoTag(player.FrameRate);
 		
 		isLoaded = true;
 	}
@@ -131,7 +133,7 @@ public class Video {
 		SilentDisablePlayPauseButton();		
 		SetControlsSensitivity(false);
 
-		Global.GUI.Menus.RemoveFrameRateVideoTag(oldFrameRate);
+		Core.Base.Ui.Menus.RemoveFrameRateVideoTag(oldFrameRate);
 	}
 
 	public void UpdateFromTimingMode (TimingMode newMode) {
@@ -169,7 +171,7 @@ public class Video {
 	}
 	
 	public void SeekToSelection () { //TODO check out
-		Subtitle subtitle = Global.GUI.View.Selection.Subtitle;
+		Subtitle subtitle = Core.Base.Ui.View.Selection.Subtitle;
     	TimeSpan time = subtitle.Times.Start;
     	Seek(time);
 	}
@@ -193,32 +195,32 @@ public class Video {
 	private void SetCustomIcons () {
 		/* Set the icon for the SetSubtitleStart button */
 		Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
-		Image image = Global.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
+		Image image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
 		image.FromPixbuf = pixbuf;
 
 		/* Set the icon for the SetSubtitleEnd button */
 		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
-		image = Global.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
+		image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
 		image.FromPixbuf = pixbuf;
 	}
 
 	private void SetControlsSensitivity (bool sensitivity) {
-		Global.GetWidget(WidgetNames.VideoTimingsVBox).Sensitive = sensitivity;
-		Global.GetWidget(WidgetNames.VideoPlaybackHBox).Sensitive = sensitivity;
+		Base.GetWidget(WidgetNames.VideoTimingsVBox).Sensitive = sensitivity;
+		Base.GetWidget(WidgetNames.VideoPlaybackHBox).Sensitive = sensitivity;
 		
-		if ((Global.GUI.View.Selection.Count == 1) && sensitivity)
+		if ((Core.Base.Ui.View.Selection.Count == 1) && sensitivity)
 			SetSelectionDependentControlsSensitivity(true);
 		else
 			SetSelectionDependentControlsSensitivity(false);
 	}
 	
 	private void SetSelectionDependentControlsSensitivity (bool sensitivity) {
-		Global.GetWidget(WidgetNames.VideoSetSubtitleStartButton).Sensitive = sensitivity;
-		Global.GetWidget(WidgetNames.VideoSetSubtitleEndButton).Sensitive = sensitivity;
+		Base.GetWidget(WidgetNames.VideoSetSubtitleStartButton).Sensitive = sensitivity;
+		Base.GetWidget(WidgetNames.VideoSetSubtitleEndButton).Sensitive = sensitivity;
 	}
 	
 	private void SilentDisablePlayPauseButton () {
-		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		ToggleButton button = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		if (button.Active) {
 			playPauseToggleIsSilent = true;
 			button.Active = false;
@@ -228,7 +230,7 @@ public class Video {
 	/* Event members */
 	
 	private void ConnectPlayPauseButtonSignals () {
-		ToggleButton button = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		ToggleButton button = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		button.Toggled += OnPlayPauseButtonToggled;
 	}
 	
@@ -245,7 +247,7 @@ public class Video {
 	}
 	
 	private void OnPlayerEndReached (object o, EventArgs args) {
-		ToggleButton playPauseButton = Global.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
+		ToggleButton playPauseButton = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		playPauseButton.Active = false;
 	}
 	

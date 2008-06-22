@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -46,7 +47,7 @@ public class FilePropertiesDialog : GladeDialog {
 	/* Private methods */
 	
 	private void FillLabelValues () {
-		FileProperties properties = Global.Document.TextFile;
+		FileProperties properties = Base.Document.TextFile;
 		
 		FillName(properties.Filename);
 		FillPath(properties.Directory);

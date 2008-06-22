@@ -20,7 +20,7 @@
 using Gdk;
 using Gtk;
 
-namespace GnomeSubtitles.Ui.SubtitleView {
+namespace GnomeSubtitles.Ui.View {
 
 /// <summary>Provides a cell renderer that centers text with multiple lines.</summary>
 //TODO It looks like the Alignment property can now be used. It requires GTK# 2.10.

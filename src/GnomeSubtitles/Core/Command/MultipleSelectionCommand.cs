@@ -17,10 +17,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.SubtitleView;
+using GnomeSubtitles.Ui.View;
 using Gtk;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public abstract class MultipleSelectionCommand : Command {
 	private TreePath[] paths = null;
@@ -40,20 +40,20 @@ public abstract class MultipleSelectionCommand : Command {
 		if (setPaths) {
 			switch (selectionIntended) {
 				case SelectionIntended.Simple:
-					this.paths = Global.GUI.View.Selection.Paths;
-					this.focus = Global.GUI.View.Selection.Focus;
+					this.paths = Base.Ui.View.Selection.Paths;
+					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 				case SelectionIntended.Range:
-					this.paths = Global.GUI.View.Selection.Range;
-					this.focus = Global.GUI.View.Selection.Focus;
+					this.paths = Base.Ui.View.Selection.Range;
+					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 				case SelectionIntended.SimpleToFirst:
-					this.paths = Global.GUI.View.Selection.PathsToFirst;
-					this.focus = Global.GUI.View.Selection.Focus;
+					this.paths = Base.Ui.View.Selection.PathsToFirst;
+					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 				case SelectionIntended.SimpleToLast:
-					this.paths = Global.GUI.View.Selection.PathsToLast;
-					this.focus = Global.GUI.View.Selection.Focus;
+					this.paths = Base.Ui.View.Selection.PathsToLast;
+					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 			}
 		}

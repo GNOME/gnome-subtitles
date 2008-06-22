@@ -17,13 +17,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using SubLib;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-namespace GnomeSubtitles.Ui.SubtitleEdit {
+namespace GnomeSubtitles.Ui.Edit {
 
 public abstract class SubtitleEditTextView {
 	private TextView textView = null;
@@ -91,7 +92,7 @@ public abstract class SubtitleEditTextView {
     
     /// <summary>The visibility of the scrolled window this <see cref="TextView" /> is inside of.</summary>
     public bool Visible {
-    	set { Global.GetWidget(WidgetNames.SubtitleEditTranslationScrolledWindow).Visible = value; }
+    	set { Base.GetWidget(WidgetNames.SubtitleEditTranslationScrolledWindow).Visible = value; }
     }
     
     public bool OverwriteStatus {
@@ -300,11 +301,11 @@ public abstract class SubtitleEditTextView {
 		GetLineColumn(out line, out column);
 		
 		/* Update the status bar */
-		Global.GUI.Status.SetPosition(GetTextType(), line, column);
+		Core.Base.Ui.Status.SetPosition(GetTextType(), line, column);
 	}
     
 	private void UpdateOverwriteStatus () {
-		Global.GUI.Status.Overwrite = textView.Overwrite;
+		Core.Base.Ui.Status.Overwrite = textView.Overwrite;
 	}
 	
 	private void PlaceCursor (int index) {
@@ -367,12 +368,12 @@ public abstract class SubtitleEditTextView {
     	UpdateLineColStatus();
 		UpdateOverwriteStatus();
 		
-		Global.GUI.Menus.SetPasteSensitivity(true);
+		Core.Base.Ui.Menus.SetPasteSensitivity(true);
 	}
 	
 	private void OnFocusOut (object o, FocusOutEventArgs args) {
-		Global.GUI.Menus.SetPasteSensitivity(false);
-    	Global.GUI.Status.ClearEditRelatedStatus();
+		Core.Base.Ui.Menus.SetPasteSensitivity(false);
+    	Core.Base.Ui.Status.ClearEditRelatedStatus();
 	}
 	
 	private void OnToggleOverwrite (object o, EventArgs args) {
@@ -385,7 +386,7 @@ public abstract class SubtitleEditTextView {
 	}
 	
 	private void OnSpellToggleEnabled (object o, EventArgs args) {
-		bool enabled = Global.SpellLanguages.Enabled;
+		bool enabled = Base.SpellLanguages.Enabled;
 		if (enabled) {
 			GtkSpellAttach();
 			SpellLanguage language = GetSpellActiveLanguage();
@@ -408,12 +409,12 @@ public abstract class SubtitleEditTextView {
     	if ((modifier & controlModifier) == controlModifier) { //Control was pressed
     		switch (key) {
     			case Gdk.Key.Page_Up:
-    				Global.GUI.View.Selection.SelectPrevious();
+    				Core.Base.Ui.View.Selection.SelectPrevious();
 					GrabFocus();
     				args.RetVal = true;
     				break;
     			case Gdk.Key.Page_Down:
-					Global.GUI.View.Selection.SelectNext();
+					Core.Base.Ui.View.Selection.SelectNext();
 					GrabFocus();
     				args.RetVal = true;
     				break;
@@ -436,7 +437,7 @@ public abstract class SubtitleEditTextView {
 		TextView.Destroyed += OnDestroyed;
 		
 		/* Spell signals */
-		Global.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
+		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
 		ConnectLanguageChangedSignal();
     }
     
@@ -448,7 +449,7 @@ public abstract class SubtitleEditTextView {
     /* Protected members */
     
     protected void OnSpellLanguageChanged (object o, EventArgs args) {
-		if (Global.SpellLanguages.Enabled) {
+		if (Base.SpellLanguages.Enabled) {
 			SpellLanguage language = GetSpellActiveLanguage();
 			GtkSpellSetLanguage(language);
 		}

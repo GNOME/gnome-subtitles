@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Glade;
 using Gtk;
 using Mono.Unix;
@@ -70,7 +71,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 	protected void SetEncodingComboBox () {
 		AddInitialEncodingComboBoxItems(encodingComboBox);
 		encodingComboBox.RowSeparatorFunc = SeparatorFunc;
-		FillEncodingComboBox(Global.Config.PrefsEncodingsShownInMenu);
+		FillEncodingComboBox(Base.Config.PrefsEncodingsShownInMenu);
 	}
 		
 	protected bool SeparatorFunc (TreeModel model, TreeIter iter) {

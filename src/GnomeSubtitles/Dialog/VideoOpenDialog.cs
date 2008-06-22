@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
 using System;
@@ -35,8 +36,8 @@ public class VideoOpenDialog : GladeDialog {
 	public VideoOpenDialog () : base(gladeFilename) {
 		dialog = base.dialog as FileChooserDialog;
 
-		if (Global.IsDocumentLoaded && Global.Document.TextFile.IsPathRooted)
-			dialog.SetCurrentFolder(Global.Document.TextFile.Directory);
+		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
+			dialog.SetCurrentFolder(Base.Document.TextFile.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 

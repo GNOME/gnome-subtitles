@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Command;
+using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
 using GnomeSubtitles.Execution;
 using GnomeSubtitles.Ui;
@@ -30,11 +30,11 @@ using System.Text;
 
 namespace GnomeSubtitles.Core {
 
-public class Global {
+public class Base {
 	private static Glade.XML glade = null;
 	
 	private static MainUi ui = null;
-	private static Execution execution = null;
+	private static ExecutionContext executionContext = null;
 	private static EventHandlers handlers = null;
 	private static CommandManager commandManager = null;
 	private static Clipboards clipboards = null;
@@ -48,12 +48,12 @@ public class Global {
 	
 	/* Public properties */
 	
-	public static GnomeSubtitles.GUI GUI {
-		get { return gui; }
+	public static MainUi Ui {
+		get { return ui; }
 	}
 	
-	public static Execution Execution {
-		get { return execution; }
+	public static ExecutionContext ExecutionContext {
+		get { return executionContext; }
 	}
 	
 	public static EventHandlers Handlers {
@@ -93,7 +93,7 @@ public class Global {
 		set {
 			if (timingMode != value) {
 				timingMode = value;
-				Global.GUI.UpdateFromTimingMode(value);
+				ui.UpdateFromTimingMode(value);
 			}		
 		}
 	}
@@ -111,13 +111,13 @@ public class Global {
 	
 	/// <summary>Runs the main GUI, after initialization.</summary>
 	/// <returns>Whether running the application completed without fatal errors.</returns> 
-	public static bool Run (Execution execution) {
+	public static bool Run (ExecutionContext executionContext) {
 		try {
-			if (!Init(execution))
-				throw new Exception("The Global environment was already initialized.");
+			if (!Init(executionContext))
+				throw new Exception("The Base environment was already initialized.");
 			
-			gui.Start();
-			execution.RunProgram();
+			ui.Start();
+			executionContext.RunProgram();
 
 			return true;
 		}
@@ -130,7 +130,7 @@ public class Global {
 	
 	/// <summary>Quits the program.</summary>
 	public static void Quit () {
-		execution.QuitProgram();
+		executionContext.QuitProgram();
 	}
 	
 	public static void CreateDocumentNew (string path) {
@@ -138,8 +138,8 @@ public class Global {
 		document = new Document(path, wasLoaded);
 		
 		CommandManager.Clear();
-		GUI.UpdateFromDocumentModified(false);
-		GUI.UpdateFromNewDocument(wasLoaded);		
+		Ui.UpdateFromDocumentModified(false);
+		Ui.UpdateFromNewDocument(wasLoaded);		
 	}
 	
 	public static void CreateDocumentOpen (string path, Encoding encoding) {
@@ -148,8 +148,8 @@ public class Global {
 
 		CommandManager.Clear();
 		TimingMode = document.TextFile.TimingMode;
-		GUI.UpdateFromDocumentModified(false);
-		GUI.UpdateFromNewDocument(wasLoaded);
+		Ui.UpdateFromDocumentModified(false);
+		Ui.UpdateFromNewDocument(wasLoaded);
 	}
 	
 	public static Widget GetWidget (string name) {
@@ -158,19 +158,19 @@ public class Global {
 
 	/* Private members */
 	
-	/// <summary>Initializes the global program structure.</summary>
+	/// <summary>Initializes the base program structure.</summary>
 	/// <remarks>Nothing is done if initialization has already occured. The core value is checked for this,
 	/// if it's null then initialization hasn't occured yet.</remarks>
 	/// <returns>Whether initialization succeeded.</returns>
-	private static bool Init (Execution exec) {
-		if (exec.Initialized)
+	private static bool Init (ExecutionContext newExecutionContext) {
+		if ((executionContext != null) && (executionContext.Initialized))
 			return false;
 
-		execution = exec;
-		execution.Init();
+		executionContext = newExecutionContext;
+		executionContext.Init();
 		
 		/* Initialize Command manager */
-		commandManager = new CommandManager(25);
+		commandManager = new CommandManager();
 		
 		/* Initialize handlers */
 		handlers = new EventHandlers();
@@ -182,9 +182,9 @@ public class Global {
 		spellLanguages = new SpellLanguages();
 
 		/* Initialize the GUI */
-		gui = new GUI(handlers, out glade);
+		ui = new MainUi(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
-		Catalog.Init(Global.Execution.TranslationDomain, Global.Execution.SystemShareLocaleDir);
+		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.SystemShareLocaleDir);
 
 		return true;
 	}
@@ -193,8 +193,8 @@ public class Global {
 	private static void Kill () {
 		try {
 	   		clipboards.WatchPrimaryChanges = false;
-    		execution.QuitProgram();
-			gui.Kill();
+    		executionContext.QuitProgram();
+			ui.Kill();
 		}
 		catch (Exception) {
 			; //Nothing to do if there were errors while killing the window 

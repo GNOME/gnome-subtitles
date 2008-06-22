@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
 using Glade;
 using Gtk;
 using SubLib;
@@ -36,7 +37,7 @@ public class BugReportWindow {
 	
 	public BugReportWindow (Exception exception, string bugInfo) {
 		Application.Init();
-		Glade.XML glade = new Glade.XML(null, gladeFilename, null, Global.Execution.TranslationDomain);
+		Glade.XML glade = new Glade.XML(null, gladeFilename, null, Base.ExecutionContext.TranslationDomain);
 		glade.Autoconnect(this);
 
 		bugTextView.Buffer.Text = bugInfo;

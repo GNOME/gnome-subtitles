@@ -17,8 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System;
+using GnomeSubtitles.Core;
 using Gtk;
+using System;
 
 namespace GnomeSubtitles.Dialog {
 
@@ -26,7 +27,7 @@ public class GladeDialog {
 	private Glade.XML glade = null;
 	
 	/* protected variables */
-	protected Dialog dialog = null;
+	protected Gtk.Dialog dialog = null;
 	protected bool actionDone = false;
 	
 
@@ -81,16 +82,16 @@ public class GladeDialog {
 	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
 	/// sets the icon and also sets the dialog as transient for the main window.</summary>
 	protected void Init (string filename, bool persistent, bool autoconnect) {
-		glade = new Glade.XML(null, filename, null, Global.Execution.TranslationDomain);
+		glade = new Glade.XML(null, filename, null, Base.ExecutionContext.TranslationDomain);
 		
 		if (autoconnect)
 			Autoconnect();
 		else
 			glade.BindFields(this);
 
-		dialog = glade.GetWidget("dialog") as Dialog;
+		dialog = glade.GetWidget("dialog") as Gtk.Dialog;
 		
-		Window window = Global.GUI.Window;
+		Window window = Core.Base.Ui.Window;
 		dialog.TransientFor = window;
 		dialog.Icon = window.Icon;
 		

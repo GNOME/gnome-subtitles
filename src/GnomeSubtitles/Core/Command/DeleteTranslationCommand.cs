@@ -17,11 +17,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.SubtitleEdit;
+using GnomeSubtitles.Ui.Edit;
 using Mono.Unix;
 using SubLib;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class DeleteTranslationCommand : DeleteTextContentCommand {
 	private static string description = Catalog.GetString("Editing Translation"); //Must be equal to InsertTranslationCommand
@@ -31,7 +31,7 @@ public class DeleteTranslationCommand : DeleteTextContentCommand {
 	}
 	
 	protected override SubtitleEditTextView GetTextView () {
-		return Global.GUI.Edit.TranslationEdit;
+		return Base.Ui.Edit.TranslationEdit;
 	}
 
 }

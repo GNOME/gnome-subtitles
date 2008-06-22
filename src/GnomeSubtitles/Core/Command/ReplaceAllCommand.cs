@@ -17,13 +17,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib;
 using System;
 using System.Text.RegularExpressions;
 
-namespace GnomeSubtitles.Command {
+namespace GnomeSubtitles.Core.Command {
 
 public class ReplaceAllCommand : MultipleSelectionCommand {
 	private static string description = Catalog.GetString("Replacing All");
@@ -41,7 +42,7 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 
 
 	public override bool Execute () {
-		int count = Global.Document.Subtitles.ReplaceAll(regex, replacement, out subtitles, out texts);
+		int count = Base.Document.Subtitles.ReplaceAll(regex, replacement, out subtitles, out texts);
 		if (count == 0)
 			return false;
 		
@@ -49,21 +50,21 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 		if (Paths.Length > 0)
 			Focus = Paths[0];
 		
-		Global.GUI.View.Selection.Select(Paths, Focus, true);
+		Base.Ui.View.Selection.Select(Paths, Focus, true);
 		return true;
 	}
 	
 	public override void Undo () {
 		for (int position = 0 ; position < subtitles.Length ; position++) {
 			int index = subtitles[position];
-			Subtitle subtitle = Global.Document.Subtitles[index];
+			Subtitle subtitle = Base.Document.Subtitles[index];
 			string oldText = subtitle.Text.Get();
 			string newText = texts[position];
 			subtitle.Text.Set(newText);
 			texts[position] = oldText;
 		}
 	
-		Global.GUI.View.Selection.Select(Paths, Focus, true);
+		Base.Ui.View.Selection.Select(Paths, Focus, true);
 	}
 	
 	public override void Redo () {
