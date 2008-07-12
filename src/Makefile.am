@@ -9,19 +9,19 @@ ASSEMBLY_CONFIG = $(ASSEMBLY).config
 GSTPB = $(GS_BUILDDIR)/GStreamerPlaybin.dll
 
 GS_SOURCES = \
-	$(srcdir)/GnomeSubtitles/Commands/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
-	$(srcdir)/GnomeSubtitles/Dialogs/*.cs \
-	$(srcdir)/GnomeSubtitles/Exception/*.cs \
+	$(srcdir)/GnomeSubtitles/Core/Command/*.cs \
+	$(srcdir)/GnomeSubtitles/Dialog/*.cs \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs \
-	$(srcdir)/GnomeSubtitles/SubtitleEdit/*.cs \
-	$(srcdir)/GnomeSubtitles/SubtitleView/*.cs \
-	$(srcdir)/GnomeSubtitles/Video/*.cs
+	$(srcdir)/GnomeSubtitles/Ui/*.cs \
+	$(srcdir)/GnomeSubtitles/Ui/Edit/*.cs \
+	$(srcdir)/GnomeSubtitles/Ui/VideoPreview/*.cs \
+	$(srcdir)/GnomeSubtitles/Ui/VideoPreview/Exception/*.cs \
+	$(srcdir)/GnomeSubtitles/Ui/View/*.cs
 
 GS_RESOURCES = \
 	$(srcdir)/Glade/AboutDialog.glade \
 	$(srcdir)/Glade/EncodingsDialog.glade \
-	$(srcdir)/Glade/ErrorDialog.glade \
 	$(srcdir)/Glade/FileOpenDialog.glade \
 	$(srcdir)/Glade/FilePropertiesDialog.glade \
 	$(srcdir)/Glade/FileSaveAsDialog.glade \
@@ -53,3 +53,4 @@ bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
 CLEANFILES = $(bin_SCRIPTS) $(ASSEMBLY) $(ASSEMBLY).mdb
 EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG)
+
