@@ -189,6 +189,13 @@ public class Util {
 	public static string ToString (float number) {
 		return number.ToString(NumberFormatInfo.InvariantInfo);
 	}
+	
+	public static string GetFormattedText (string text, params object[] args) {
+		if ((args == null) || (args.Length == 0))
+			return text;
+		else
+			return String.Format(text, args);
+	}
 
 }
 
