@@ -397,7 +397,7 @@ public class MainUi {
 			Base.Document.SaveTranslation(fileProperties);
 		}
 		catch (Exception exception) {
-			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception); //TODO check messages for translation
+			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception);
 			errorDialog.Show();
 			bool toSaveAgain = errorDialog.WaitForResponse();
 	    	if (toSaveAgain)
