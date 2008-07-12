@@ -42,6 +42,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private const string gladeFilename = "FileOpenDialog.glade";
 
 	/* Widgets */
+	[WidgetAttribute] private ComboBox encodingComboBox = null;
 	[WidgetAttribute] private ComboBox videoComboBox = null;
 	[WidgetAttribute] private Label videoLabel = null;
 	
@@ -69,8 +70,6 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		
 		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
 		dialog.SelectionChanged += OnSelectionChanged;
-
-	
 	}
 	
 	/* Public properties */
@@ -92,11 +91,15 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 	}
 	
-	protected override void AddInitialEncodingComboBoxItems (ComboBox comboBox) {
-		comboBox.AppendText(Catalog.GetString("Auto Detected"));
-		comboBox.AppendText("-");
+	protected override void AddInitialEncodingComboBoxItems () {
+		encodingComboBox.AppendText(Catalog.GetString("Auto Detected"));
+		encodingComboBox.AppendText("-");
 	}
-	
+
+	protected override ComboBox GetEncodingComboBox () {
+		return encodingComboBox;
+	}
+
 	/* Private members */
 	
 	private void FillVideoComboBoxBasedOnCurrentFolder () {
@@ -253,7 +256,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoFilename = videoFiles[videoFileIndex] as string;
 			}			
-			actionDone = true;
+			returnValue = true;
 		}
 		Close();
 	}

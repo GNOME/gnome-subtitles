@@ -30,6 +30,7 @@ namespace GnomeSubtitles.Dialog {
 public abstract class SubtitleFileChooserDialog : GladeDialog {
 	private int fixedEncoding = -1;
 	private bool isEncodingsChangeSilent = false; //used to indicate whether a change in the encodings list should be taken into account
+	private ComboBox encodingComboBox = null;
 
 	/* Protected variables */
 	protected new FileChooserDialog dialog = null;
@@ -40,9 +41,6 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 	
 	protected EncodingDescription[] encodings = null;
 
-	/* Widgets */
-	
-	[WidgetAttribute] private ComboBox encodingComboBox = null;
 
 	protected SubtitleFileChooserDialog (string filename, bool persistent) : base(filename, persistent, true) {
 		dialog = base.dialog as FileChooserDialog;
@@ -69,7 +67,9 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 	/* Protected members */
 
 	protected void SetEncodingComboBox () {
-		AddInitialEncodingComboBoxItems(encodingComboBox);
+		encodingComboBox = GetEncodingComboBox();
+
+		AddInitialEncodingComboBoxItems();		
 		encodingComboBox.RowSeparatorFunc = SeparatorFunc;
 		FillEncodingComboBox(Base.Config.PrefsEncodingsShownInMenu);
 	}
@@ -89,8 +89,12 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 		return -1;
 	}
 	
-	protected virtual void AddInitialEncodingComboBoxItems (ComboBox comboBox) {
+	protected virtual void AddInitialEncodingComboBoxItems () {
 	}
+	
+	/* Abstract members */
+	
+	protected abstract ComboBox GetEncodingComboBox ();
 	
 	
 	

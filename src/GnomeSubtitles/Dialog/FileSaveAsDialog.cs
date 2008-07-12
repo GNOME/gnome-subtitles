@@ -39,6 +39,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	
 	/* Widgets */
 	
+	[WidgetAttribute] private ComboBox encodingComboBox = null;
 	[WidgetAttribute] private ComboBox formatComboBox = null;
 	[WidgetAttribute] private ComboBox newlineTypeComboBox = null;
 
@@ -75,6 +76,10 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 		catch (NullReferenceException) {
 			return -1;
 		}
+	}
+	
+	protected override ComboBox GetEncodingComboBox () {
+		return encodingComboBox;
 	}
 	
 	/* Private members */
@@ -292,7 +297,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 			
 			int encodingIndex = GetActiveEncodingComboBoxItem();
 			chosenEncoding = encodings[encodingIndex];
-			actionDone = true;
+			returnValue = true;
 			
 			chosenNewlineType = GetChosenNewlineType();
 		}
