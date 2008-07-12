@@ -78,7 +78,7 @@ public class VideoOpenDialog : GladeDialog {
 	private void OnResponse (object o, ResponseArgs args) {
 		if (args.ResponseId == ResponseType.Ok) {
 			chosenUri = (dialog as FileChooserDialog).Uri;
-			actionDone = true;
+			returnValue = true;
 		}
 		Close();
 	}

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,26 +18,48 @@
  */
 
 using Gtk;
-using Mono.Unix;
-using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public abstract class ErrorDialog : MessageDialog {
+public abstract class BaseDialog {
+	
+	#region Protected variables
+	protected Gtk.Dialog dialog = null;
+	protected bool returnValue = false;
+	#endregion
 
-	/// <summary>Creates a new instance of the <see cref="ErrorDialog" /> class.</summary>
-	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overriden to add buttons.</remarks>
-	public ErrorDialog () : base(MessageType.Error) {
+	public BaseDialog () {
+
 	}
 	
-	public ErrorDialog (string primary, string secondary) : base(MessageType.Error, primary, secondary) {
+	
+	#region Public methods
+	
+	public virtual void Show () {
+		dialog.Visible = true;
 	}
 	
+	public void Close() {
+		dialog.Destroy();
+	}
 	
-	#region Protected methods
-
-	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
+	public void Hide () {
+		dialog.Visible = false;
+	}
+	
+	public bool WaitForResponse () {
+		dialog.Run();
+		return returnValue;
+	}
+	
+	#endregion
+	
+	
+	#region Events
+	
+	protected void OnDeleteDoHide (object o, DeleteEventArgs args) {
+		Hide();
+		args.RetVal = true;
 	}
 	
 	#endregion

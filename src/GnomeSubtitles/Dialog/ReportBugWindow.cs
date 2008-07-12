@@ -65,7 +65,7 @@ public class BugReportWindow {
 	}
 	
 	private void OnOpenWebForm (object o, EventArgs args) {
-		if (!Util.OpenBugReport())
+		if (!Core.Util.OpenBugReport())
 			Console.Error.WriteLine("Could not open web form");
 	}
 	

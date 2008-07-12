@@ -48,11 +48,11 @@ public class AboutDialog : GladeDialog {
 	}
 	
 	private void AboutDialogOpenUrl (Gtk.AboutDialog about, string url) {
-		Util.OpenUrl(url);
+		Core.Util.OpenUrl(url);
 	}
 	
 	private void AboutDialogOpenEmail (Gtk.AboutDialog about, string email) {
-		Util.OpenSendEmail(email);
+		Core.Util.OpenSendEmail(email);
 	}
 	
 	#pragma warning disable 618 //TODO Name has been deprecated

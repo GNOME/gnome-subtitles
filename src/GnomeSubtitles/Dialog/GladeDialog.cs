@@ -23,19 +23,14 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class GladeDialog {
+public class GladeDialog : BaseDialog {
 	private Glade.XML glade = null;
-	
-	/* protected variables */
-	protected Gtk.Dialog dialog = null;
-	protected bool actionDone = false;
-	
 
 	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class.</summary>
 	/// <remarks>The dialog isn't initialized. A call to <see cref="Init" /> is required to initialize this class.
 	/// This is useful if one needs to do some operations before creating the dialog.</remarks>
 	protected GladeDialog () {
-	}	
+	}
 
 	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class, given the filename of the dialog
 	/// and persistency possibility.</summary>
@@ -46,23 +41,6 @@ public class GladeDialog {
 
 	protected GladeDialog (string filename, bool persistent, bool autoconnect) {
 		Init(filename, persistent, autoconnect);
-	}
-	
-	public bool WaitForResponse () {
-		dialog.Run();
-		return actionDone;
-	}
-		
-	public virtual void Show () {
-		dialog.Visible = true;
-	}
-	
-	public void Close() {
-		dialog.Destroy();
-	}
-	
-	public void Hide () {
-		dialog.Visible = false;
 	}
 	
 	/* Protected members */
@@ -91,23 +69,14 @@ public class GladeDialog {
 
 		dialog = glade.GetWidget("dialog") as Gtk.Dialog;
 		
-		Window window = Core.Base.Ui.Window;
-		dialog.TransientFor = window;
-		dialog.Icon = window.Icon;
+		Util.SetBaseWindowToUi(dialog);
 		
 		if (persistent)
-			dialog.DeleteEvent += OnDelete;
+			dialog.DeleteEvent += OnDeleteDoHide;
 	}
 	
 	protected void Autoconnect () {
 		glade.Autoconnect(this);
-	}
-
-	/* Event members */
-	
-	private void OnDelete (object o, DeleteEventArgs args) {
-		Hide();
-		args.RetVal = true;
 	}
 
 }

@@ -61,7 +61,7 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 	
 	private void InitSpinButton () {
-		spinButton.WidthRequest = Util.SpinButtonTimeWidth(spinButton);
+		spinButton.WidthRequest = Core.Util.SpinButtonTimeWidth(spinButton);
 		spinButton.Alignment = 0.5f;
 	}
 
@@ -70,7 +70,7 @@ public class TimingsShiftDialog : GladeDialog {
 			return;
 			
 		timingMode = newTimingMode;	
-		Util.SetSpinButtonTimingMode(spinButton, timingMode, true);
+		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode, true);
 		
 		string label = (timingMode == TimingMode.Times ? Catalog.GetString("Time") : Catalog.GetString("Frames"));
 		string markup = "<b>" + label + "</b>";

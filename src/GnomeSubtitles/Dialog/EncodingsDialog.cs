@@ -105,7 +105,7 @@ public class EncodingsDialog : GladeDialog {
 		if (path == null)
 			return;
 		
-		int encodingNumber = Util.PathToInt(path);
+		int encodingNumber = Core.Util.PathToInt(path);
 		EncodingDescription desc = Encodings.All[encodingNumber];
 		
 		AddToShownEncodings(desc);	

@@ -76,7 +76,7 @@ public class SetLanguageDialog : GladeDialog {
 		
 		int activeLanguageIndex = GetActiveLanguageIndex(textType, count);
 		
-		TreePath path = Util.IntToPath(activeLanguageIndex);
+		TreePath path = Core.Util.IntToPath(activeLanguageIndex);
 		languagesTreeView.ScrollToCell(path, null, true, 0.5f, 0.5f);
    		languagesTreeView.SetCursor(path, null, false);
 	}
@@ -104,7 +104,7 @@ public class SetLanguageDialog : GladeDialog {
 		if (path == null)
 			return -1;
 			
-		return Util.PathToInt(path);
+		return Core.Util.PathToInt(path);
 	}
 	
 	private TreePath GetSelectedPath (TreeView tree) {

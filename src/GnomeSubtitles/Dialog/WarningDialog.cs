@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2008 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,24 +23,13 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public abstract class ErrorDialog : MessageDialog {
+public abstract class WarningDialog : MessageDialog {
+	
+	public WarningDialog () : base(MessageType.Warning) {
+	}
 
-	/// <summary>Creates a new instance of the <see cref="ErrorDialog" /> class.</summary>
-	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overriden to add buttons.</remarks>
-	public ErrorDialog () : base(MessageType.Error) {
+	public WarningDialog (string primary, string secondary) : base(MessageType.Warning, primary, secondary) {
 	}
-	
-	public ErrorDialog (string primary, string secondary) : base(MessageType.Error, primary, secondary) {
-	}
-	
-	
-	#region Protected methods
-
-	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
-	}
-	
-	#endregion
 
 }
 

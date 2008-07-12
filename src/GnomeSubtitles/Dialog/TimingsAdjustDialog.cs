@@ -58,7 +58,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	}
 	
 	private void SetSpinButtons () {
-		int width = Util.SpinButtonTimeWidth(firstSubtitleNewStartSpinButton);
+		int width = Core.Util.SpinButtonTimeWidth(firstSubtitleNewStartSpinButton);
 		firstSubtitleNewStartSpinButton.WidthRequest = width;
 		lastSubtitleNewStartSpinButton.WidthRequest = width;
 	}
@@ -69,8 +69,8 @@ public class TimingsAdjustDialog : GladeDialog {
 			firstSubtitleStartLabel.Text = startLabel;
 			lastSubtitleStartLabel.Text = startLabel;
 		}
-		Util.SetSpinButtonTimingMode(firstSubtitleNewStartSpinButton, timingMode, false);
-		Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode, false);
+		Core.Util.SetSpinButtonTimingMode(firstSubtitleNewStartSpinButton, timingMode, false);
+		Core.Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode, false);
 	}	
 
 	private void SetApplyToAll () {
@@ -112,9 +112,9 @@ public class TimingsAdjustDialog : GladeDialog {
 			lastSubtitleNewStartSpinButton.Value = lastSubtitle.Frames.Start;
 		}
 		else {
-			firstSubtitleStartInputLabel.Text = Util.TimeSpanToText(firstSubtitle.Times.Start);
+			firstSubtitleStartInputLabel.Text = Core.Util.TimeSpanToText(firstSubtitle.Times.Start);
 			firstSubtitleNewStartSpinButton.Value = firstSubtitle.Times.Start.TotalMilliseconds;
-			lastSubtitleStartInputLabel.Text = Util.TimeSpanToText(lastSubtitle.Times.Start);
+			lastSubtitleStartInputLabel.Text = Core.Util.TimeSpanToText(lastSubtitle.Times.Start);
 			lastSubtitleNewStartSpinButton.Value = lastSubtitle.Times.Start.TotalMilliseconds;
 		}
 	}
