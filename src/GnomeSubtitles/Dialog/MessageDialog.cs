@@ -26,27 +26,22 @@ namespace GnomeSubtitles.Dialog {
 	public abstract class MessageDialog : BaseDialog {
 		protected new Gtk.MessageDialog dialog = null;
 
-		public MessageDialog (MessageType messageType) : this(messageType, null, null, null) {
+		public MessageDialog (MessageType messageType) : base() {
+			Init(messageType, null, null);
 		}
 
-		public MessageDialog (MessageType messageType, string primaryText, params object[]primaryTextArgs) : this(messageType, primaryText, null, primaryTextArgs) {
+		public MessageDialog (MessageType messageType, string primaryText, params object[]primaryTextArgs) : base() {
+			Init(messageType, primaryText, null, primaryTextArgs) ;
 		}
 
-		public MessageDialog (MessageType messageType, string primaryText, string secondaryText) : this(messageType, primaryText, secondaryText, null) {
+		public MessageDialog (MessageType messageType, string primaryText, string secondaryText) : base() {
+			Init(messageType, primaryText, secondaryText);
 		}
 		
 		public MessageDialog (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) : base() {
-			dialog = new Gtk.MessageDialog(Base.Ui.Window, DialogFlags.Modal, messageType, ButtonsType.None, primaryText, primaryTextArgs);
-			base.dialog = dialog;
-			
-			dialog.Response += OnResponse;
-
-			SetSecondaryText(secondaryText);
-
-			Util.SetBaseWindowToUi(dialog);
-			AddButtons();
+			Init(messageType, primaryText, secondaryText, primaryTextArgs);
 		}
-		
+
 		
 		#region Protected methods
 	
@@ -80,6 +75,21 @@ namespace GnomeSubtitles.Dialog {
 
 		#endregion
 		
+		#region Private members
+		
+		private void Init (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) {
+			dialog = new Gtk.MessageDialog(Base.Ui.Window, DialogFlags.Modal, messageType, ButtonsType.None, primaryText, primaryTextArgs);
+			base.dialog = dialog;
+			
+			dialog.Response += OnResponse;
+
+			SetSecondaryText(secondaryText);
+
+			Util.SetBaseWindowToUi(dialog);
+			AddButtons();
+		}
+		
+		#endregion
 		
 		#region Abstract methods
 		
