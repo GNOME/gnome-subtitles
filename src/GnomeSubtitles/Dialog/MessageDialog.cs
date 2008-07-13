@@ -56,8 +56,10 @@ namespace GnomeSubtitles.Dialog {
 		}
 	
 		protected void SetPrimaryText (string text, params object[] textArgs) {
-			if (text != null)
-				dialog.Text = Core.Util.GetFormattedText(text, textArgs);
+			if (text != null) {
+				string primaryText = Core.Util.GetFormattedText(text, textArgs); 
+				dialog.Markup = GetMarkupPrimaryText(primaryText);
+			}
 		}
 		
 		protected void SetPrimaryText (string text) {
@@ -78,7 +80,7 @@ namespace GnomeSubtitles.Dialog {
 		#region Private members
 		
 		private void Init (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) {
-			string formattedPrimaryText = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>";
+			string formattedPrimaryText = GetMarkupPrimaryText(primaryText);
 		
 			dialog = new Gtk.MessageDialog(Base.Ui.Window, DialogFlags.Modal, messageType, ButtonsType.None, formattedPrimaryText, primaryTextArgs);
 			base.dialog = dialog;
@@ -89,6 +91,10 @@ namespace GnomeSubtitles.Dialog {
 
 			Util.SetBaseWindowToUi(dialog);
 			AddButtons();
+		}
+		
+		private string GetMarkupPrimaryText (string primaryText) {
+			return "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>";
 		}
 		
 		#endregion
