@@ -19,6 +19,7 @@
 
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
+using Mono.Unix;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -27,23 +28,30 @@ using System.IO;
 namespace GnomeSubtitles.Execution {
 
 public class BugReporter {
+	private static string noBugBuddyPrimaryMessage = Catalog.GetString("Could not open Bug Buddy, the bug reporting tool.");
+	private static string noBugBuddySecondaryMessage = Catalog.GetString("Bug information has been printed to the console.");
 
 	public static void Report (Exception exception) {
-		Console.Error.WriteLine(exception);
-		string bugInfo = GetBugInfo(exception);
+		Report(exception.ToString());
+	}
+
+	public static void Report (string message) {
+		string bugInfo = GetBugInfo(message);
+		Console.Error.WriteLine(bugInfo);
 
 		try {
-			RunBugBuddy(exception, bugInfo);
+			RunBugBuddy(bugInfo);
 		}
-		catch (Win32Exception) { //Could not run bug buddy, opening the custom error dialog
-			new BugReportWindow(exception, bugInfo);
+		catch (Exception) {
+			BasicErrorDialog errorDialog = new BasicErrorDialog(noBugBuddyPrimaryMessage, noBugBuddySecondaryMessage);
+			errorDialog.Show();
 		}
 	}
-	
+
 	#region Private members
 	
-	private static void RunBugBuddy (Exception exception, string bugInfo) {
-		string path = WriteBugInfo(exception, bugInfo);
+	private static void RunBugBuddy (string bugInfo) {
+		string path = WriteBugInfo(bugInfo);
 
 		Process process = new Process();
 		process.StartInfo.FileName = "bug-buddy";
@@ -53,7 +61,7 @@ public class BugReporter {
 		process.Start();
 	}
 	
-	private static string GetBugInfo (Exception exception) {
+	private static string GetBugInfo (string message) {
 		return "Gnome Subtitles version: " + Base.ExecutionContext.Version + "\n"
 			+ "SubLib version: " + Base.ExecutionContext.SubLibVersion + "\n"
 			+ "GtkSharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
@@ -61,10 +69,10 @@ public class BugReporter {
 			+ "GladeSharp version: " + Base.ExecutionContext.GladeSharpVersion + "\n"
 			+ "GConfSharp version: " + Base.ExecutionContext.GConfSharpVersion + "\n\n"
 			+ "Stack trace:" + "\n"
-			+ exception.ToString();
+			+ message;
 	}
 	
-	private static string WriteBugInfo (Exception exception, string bugInfo) {
+	private static string WriteBugInfo (string bugInfo) {
 		string path = GetTempPath();
 		File.WriteAllText(path, bugInfo);
 		return path;
