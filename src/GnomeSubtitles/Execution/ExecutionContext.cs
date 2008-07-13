@@ -29,11 +29,9 @@ public class ExecutionContext {
 	private bool initialized = false;
 
 	#region Constant strings
-	
 	private const string applicationName = "Gnome Subtitles";
 	private const string applicationID = "gnome-subtitles";
 	private const string subLibAssemblyName = "sublib";
-	
 	#endregion
 	
 	private string[] args = null;
