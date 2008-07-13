@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GLib;
 using GnomeSubtitles.Core;
 using System;
 using System.Runtime.InteropServices;
@@ -65,9 +66,36 @@ public class Executable {
     }
 
 	public static void Main (string[] args) {
+		ExceptionManager.UnhandledException += OnUnhandledException;
+
 		ExecutionContext executionContext = new ExecutionContext(args);
 		SetProcessName(executionContext.ExecutableName);
 		Base.Run(executionContext);
+	}
+	
+	#endregion
+	
+	#region Private members
+
+	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
+	private static void Kill () {
+		try {
+	   		Base.Kill();
+		}
+		catch (Exception) {
+			; //Nothing to do if there were errors while killing the window 
+		}
+	}
+
+	#endregion
+	
+	#region Events
+	
+	private static void OnUnhandledException (UnhandledExceptionArgs args) {
+		if (args.ExceptionObject is Exception)
+			BugReporter.Report(args.ExceptionObject as Exception);
+
+		Kill();
 	}
 	
 	#endregion

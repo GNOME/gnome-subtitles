@@ -109,28 +109,24 @@ public class Base {
 
 	/* Public methods */
 	
-	/// <summary>Runs the main GUI, after initialization.</summary>
-	/// <returns>Whether running the application completed without fatal errors.</returns> 
-	public static bool Run (ExecutionContext executionContext) {
-		try {
-			if (!Init(executionContext))
-				throw new Exception("The Base environment was already initialized.");
+	/// <summary>Runs the main GUI, after initialization.</summary> 
+	public static void Run (ExecutionContext executionContext) {
+		if (!Init(executionContext))
+			throw new Exception("The Base environment was already initialized.");
 			
-			ui.Start();
-			executionContext.RunProgram();
-
-			return true;
-		}
-		catch (Exception exception) {
-			Kill();
-			BugReporter.Report(exception);
-			return false;
-		}
+		ui.Start();
+		executionContext.RunProgram();
 	}
 	
 	/// <summary>Quits the program.</summary>
 	public static void Quit () {
 		executionContext.QuitProgram();
+	}
+	
+	public static void Kill () {
+		clipboards.WatchPrimaryChanges = false;
+    	executionContext.QuitProgram();
+		ui.Kill();
 	}
 	
 	public static void CreateDocumentNew (string path) {
@@ -187,18 +183,6 @@ public class Base {
 		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.SystemShareLocaleDir);
 
 		return true;
-	}
-	
-	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
-	private static void Kill () {
-		try {
-	   		clipboards.WatchPrimaryChanges = false;
-    		executionContext.QuitProgram();
-			ui.Kill();
-		}
-		catch (Exception) {
-			; //Nothing to do if there were errors while killing the window 
-		}
 	}
 
 }
