@@ -78,7 +78,9 @@ namespace GnomeSubtitles.Dialog {
 		#region Private members
 		
 		private void Init (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) {
-			dialog = new Gtk.MessageDialog(Base.Ui.Window, DialogFlags.Modal, messageType, ButtonsType.None, primaryText, primaryTextArgs);
+			string formattedPrimaryText = "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>";
+		
+			dialog = new Gtk.MessageDialog(Base.Ui.Window, DialogFlags.Modal, messageType, ButtonsType.None, formattedPrimaryText, primaryTextArgs);
 			base.dialog = dialog;
 			
 			dialog.Response += OnResponse;

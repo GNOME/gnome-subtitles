@@ -291,8 +291,8 @@ public class EventHandlers {
 			Gnome.Help.DisplayDesktopOnScreen(Gnome.Program.Get(), Base.ExecutionContext.SystemHelpDir, filename, null, Base.Ui.Window.Screen);
 		}
 		catch (Exception e) {
-			System.Console.Error.WriteLine(e);
-			//TODO show an error message
+			BasicErrorDialog errorDialog = new BasicErrorDialog(Catalog.GetString("The Gnome Subtitles Manual could not be found."), Catalog.GetString("Please verify that your installation has been completed successfully."));
+			errorDialog.Show();
 		}
 	}
 
