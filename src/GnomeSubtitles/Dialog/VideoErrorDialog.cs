@@ -23,20 +23,12 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class VideoErrorDialog : ErrorDialog {
+public class VideoErrorDialog : BasicErrorDialog {
 	private static string primary = Catalog.GetString("Could not continue the video playback");
 	private static string secondaryInitial = Catalog.GetString("The following error has occurred: ");
 	
 	public VideoErrorDialog (string secondary) : base(primary, secondaryInitial + secondary) {
 	}
-
-	
-	/* Protected methods */
-	
-	protected override void AddButtons () {
-		dialog.AddButton(Stock.Ok, ResponseType.Ok);
-	}
-	
 
 }
 
