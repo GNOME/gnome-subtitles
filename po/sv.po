@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-24 11:35+0200\n"
-"PO-Revision-Date: 2008-06-24 11:37+0100\n"
+"POT-Creation-Date: 2008-08-25 19:57+0200\n"
+"PO-Revision-Date: 2008-08-25 19:58+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgid "Character Coding:"
 msgstr "Teckenkodning:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:48
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:49
 msgid "Open File"
 msgstr "Öppna fil"
 
@@ -79,7 +79,7 @@ msgid "Newline Type:"
 msgstr "Nyradstyp:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:89
 msgid "Save As"
 msgstr "Spara som"
 
@@ -470,24 +470,6 @@ msgstr "Välj automatiskt video att öppna"
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: ../src/Glade/ReportBugWindow.glade.h:1
-msgid ""
-"An Error has occured.\n"
-"\n"
-"To report this bug, please <b>Open the Bugzilla</b> and paste the following <b>log</b> into the bug description.\n"
-"\n"
-"If the bug is related to a <b>subtitle file</b>, please attach it if possible."
-msgstr ""
-"Ett fel har inträffat.\n"
-"\n"
-"För att rapportera det här felet kan du <b>Öppna Bugzilla</b> och klistra in följande <b>logg</b> i felbeskrivningsfältet.\n"
-"\n"
-"Om felet relaterar till en <b>undertextfil</b> bör du bifoga filen om möjligt."
-
-#: ../src/Glade/ReportBugWindow.glade.h:6
-msgid "Open Bugzilla"
-msgstr "Öppna Bugzilla"
-
 #: ../src/Glade/SearchDialog.glade.h:2
 msgid "Replace _All"
 msgstr "Ersätt _alla"
@@ -830,6 +812,14 @@ msgstr "Vietnamesisk"
 msgid "Current Locale"
 msgstr "Aktuell lokalanpassning"
 
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+msgid "The Gnome Subtitles Manual could not be found."
+msgstr "Handboken för Gnome-undertexter kunde inte hittas."
+
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+msgid "Please verify that your installation has been completed successfully."
+msgstr "Verifiera att din installation har genomförts korrekt."
+
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
@@ -847,24 +837,24 @@ msgstr "Beskrivning"
 msgid "Encoding"
 msgstr "Kodning"
 
-#: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:53
+#: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:40
 msgid "An unknown error has occured. Please report a bug and include this error name:"
 msgstr "Ett okänt fel har inträffat. Rapportera felet och inkludera detta felnamn:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:96
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:95
 msgid "Auto Detected"
 msgstr "Identifiera automatiskt"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:143
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:146
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:209
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:212
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Alla filer"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:216
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:219
 msgid "All Subtitle Files"
 msgstr "Alla undertextfiler"
 
@@ -881,11 +871,11 @@ msgstr "Öppna en annan fil"
 msgid "The file path appears to be invalid."
 msgstr "Filsökvägen verkar vara ogiltig."
 
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:86
+#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:91
 msgid "Save Translation As"
 msgstr "Spara översättning som"
 
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:217
 msgid "System Default"
 msgstr "Systemstandard"
 
@@ -921,54 +911,53 @@ msgstr "Angiven fil är ogiltig."
 msgid "Open Translation File"
 msgstr "Öppna översättningsfil"
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:34
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:32
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Om du inte sparar kommer alla dina ändringar att gå förlorade."
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr "Spara ändringarna i undertexten \"{0}\" innan nya undertexter skapas?"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:86
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
 msgstr "Skapa utan att spara"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:96
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:110
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr "Spara ändringarna i översättningen \"{0}\" innan nya undertexter skapas?"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:103
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:117
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr "Spara ändringarna i översättningen \"{0}\" innan ny översättning skapas?"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:113
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:127
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Spara ändringarna i undertexten \"{0}\" innan öppning?"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:114
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:128
 msgid "Open without Saving"
 msgstr "Öppna utan att spara"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:125
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:148
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
 msgstr "Spara ändringarna i översättningen \"{0}\" innan öppning?"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:134
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:157
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr "Spara ändringarna i undertexten \"{0}\" innan stängning?"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:158
 msgid "Close without Saving"
 msgstr "Stäng utan att spara"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:145
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:177
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Spara ändringarna i översättningen \"{0}\" innan stängning?"
@@ -995,7 +984,7 @@ msgstr "Välj textss_pråket för de aktuella undertexterna."
 msgid "Select the translation _language of the current subtitles."
 msgstr "Välj översättningssprå_ket för de aktuella undertexterna."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:139
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
 msgid "Add or Remove..."
 msgstr "Lägg till eller ta bort..."
 
@@ -1043,6 +1032,14 @@ msgstr "Försäkra dig om att videofilen stöds."
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Alla videofiler"
+
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
+msgid "Could not open Bug Buddy, the bug reporting tool."
+msgstr "Kunde inte öppna Bug Buddy, felrapporteringsverktyget."
+
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
+msgid "Bug information has been printed to the console."
+msgstr "Felsökningsinformation har skrivits ut till konsollen."
 
 #. To translators: this is the filename for new files (before being saved)
 #: ../src/GnomeSubtitles/Ui/MainUi.cs:129
@@ -1115,6 +1112,24 @@ msgstr "Översättning"
 msgid "Frame"
 msgstr "Bildruta"
 
+#~ msgid ""
+#~ "An Error has occured.\n"
+#~ "\n"
+#~ "To report this bug, please <b>Open the Bugzilla</b> and paste the "
+#~ "following <b>log</b> into the bug description.\n"
+#~ "\n"
+#~ "If the bug is related to a <b>subtitle file</b>, please attach it if "
+#~ "possible."
+#~ msgstr ""
+#~ "Ett fel har inträffat.\n"
+#~ "\n"
+#~ "För att rapportera det här felet kan du <b>Öppna Bugzilla</b> och klistra "
+#~ "in följande <b>logg</b> i felbeskrivningsfältet.\n"
+#~ "\n"
+#~ "Om felet relaterar till en <b>undertextfil</b> bör du bifoga filen om "
+#~ "möjligt."
+#~ msgid "Open Bugzilla"
+#~ msgstr "Öppna Bugzilla"
 #~ msgid "Selected subtitle to first"
 #~ msgstr "Markerad undertext till första"
 #~ msgid "Selected subtitle to last"
