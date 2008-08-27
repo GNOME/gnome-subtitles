@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-09 08:51+0300\n"
-"PO-Revision-Date: 2008-03-09 09:00+0300\n"
+"POT-Creation-Date: 2008-08-27 15:12+0300\n"
+"PO-Revision-Date: 2008-08-27 15:00+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgid "Character Coding:"
 msgstr "Merkistökoodaus:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:49
 msgid "Open File"
 msgstr "Avaa tiedosto"
 
@@ -81,7 +81,7 @@ msgid "Newline Type:"
 msgstr "Rivinvaihdon tyyppi:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:83
+#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:89
 msgid "Save As"
 msgstr "Tallenna nimellä"
 
@@ -272,7 +272,8 @@ msgid "Pr_eferences"
 msgstr "_Asetukset"
 
 #: ../src/Glade/MainWindow.glade.h:10 ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:116
 msgid "Replace"
 msgstr "Korvaa"
 
@@ -469,28 +470,6 @@ msgstr "Valitse avattava video automaattisesti"
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: ../src/Glade/ReportBugWindow.glade.h:1
-msgid ""
-"An Error has occured.\n"
-"\n"
-"To report this bug, please <b>Open the Bugzilla</b> and paste the following "
-"<b>log</b> into the bug description.\n"
-"\n"
-"If the bug is related to a <b>subtitle file</b>, please attach it if "
-"possible."
-msgstr ""
-"Tapahtui virhe.\n"
-"\n"
-"Voit raportoida tämän vian kohdasa <b>Avaa bugzilla</b> ja liittämällä "
-"seuraava <b>loki</b> virheen kuvaukseen.\n"
-"\n"
-"Jos vika liittyy <b>tekstitystiedostoon</b>, liitä myös se jos vain "
-"mahdollista."
-
-#: ../src/Glade/ReportBugWindow.glade.h:6
-msgid "Open Bugzilla"
-msgstr "Avaa bugzilla"
-
 #: ../src/Glade/SearchDialog.glade.h:2
 msgid "Replace _All"
 msgstr "Korvaa k_aikki"
@@ -518,6 +497,10 @@ msgstr "_Etsi:"
 #: ../src/Glade/SearchDialog.glade.h:9
 msgid "_Wrap around"
 msgstr "_Jatka alusta"
+
+#: ../src/Glade/SetLanguageDialog.glade.h:1
+msgid "Set language"
+msgstr "Aseta kieli"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:1
 #: ../src/Glade/TimingsShiftDialog.glade.h:1
@@ -570,13 +553,13 @@ msgstr "Kaikki tekstitykset"
 
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:5
-msgid "Selected subtitle to first"
-msgstr "Valittu tekstitys ensin"
+msgid "From first subtitle to selection"
+msgstr "Ensimmäisestä tekstityksestä valintaan"
 
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:7
-msgid "Selected subtitle to last"
-msgstr "Valittu tekstitys viimeiseksi"
+msgid "From selection to last subtitle"
+msgstr "Valinnasta viimeiseen tekstitykseen"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:8
 msgid "Selected subtitles"
@@ -594,87 +577,87 @@ msgstr "Siirrä ajoituksia"
 msgid "Open Video"
 msgstr "Avaa video"
 
-#: ../src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:27
 msgid "Adjusting timings"
 msgstr "Säädetään ajoituksia"
 
-#: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:46
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:47
 msgid "Changing Input Frame Rate"
 msgstr "Muutetaan syötteen ruutunopetta"
 
-#: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:65
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:66
 msgid "Changing Video Frame Rate"
 msgstr "Muutetaan videon ruutunopetta"
 
-#: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:55
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
 msgstr "Korostus päälle/pois"
 
-#: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:66
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
 msgid "Toggling Italic"
 msgstr "Kursiivi päälle/pois"
 
-#: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:77
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
 msgid "Toggling Underline"
 msgstr "Alleviivaus päälle/pois"
 
-#: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:65
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:65
 msgid "Editing From"
 msgstr "Muokkauksen alkukohta"
 
-#: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:89
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:89
 msgid "Editing To"
 msgstr "Muokkauksen loppukohta"
 
-#: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:111
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:111
 msgid "Editing During"
 msgstr "Muokkaus väliltä"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:118
-#: ../src/GnomeSubtitles/Core/Menus.cs:94
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:125
+#: ../src/GnomeSubtitles/Ui/Menus.cs:96
 msgid "Undo"
 msgstr "Peru"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:127
-#: ../src/GnomeSubtitles/Core/Menus.cs:104
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:134
+#: ../src/GnomeSubtitles/Ui/Menus.cs:106
 msgid "Redo"
 msgstr "Tee uudestaan"
 
-#: ../src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
 msgid "Deleting Subtitles"
 msgstr "Poistetaan tekstityksiä"
 
-#: ../src/GnomeSubtitles/Commands/DeleteTextCommand.cs:26
-#: ../src/GnomeSubtitles/Commands/InsertTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
 msgid "Editing Text"
 msgstr "Muokataan tekstiä"
 
-#: ../src/GnomeSubtitles/Commands/DeleteTranslationCommand.cs:26
-#: ../src/GnomeSubtitles/Commands/InsertTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
 msgid "Editing Translation"
 msgstr "Muokataan käännöstä"
 
-#: ../src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:27
 msgid "Inserting Subtitle"
 msgstr "Lisätään tekstitystä"
 
-#: ../src/GnomeSubtitles/Commands/ReplaceAllCommand.cs:29
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:30
 msgid "Replacing All"
 msgstr "Korvataan kaikki"
 
-#: ../src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs:28
+#: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:29
 msgid "Shifting timings"
 msgstr "Siiretään ajoitusta"
 
-#: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
 msgstr "Asetetaan tekstityksen alkukohta"
 
-#: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:45
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
 msgstr "Asetetaan tekstityksen loppukohta"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:198
+#: ../src/GnomeSubtitles/Core/Document.cs:199
 msgid "Unsaved Translation"
 msgstr "Tallentamaton käännös"
 
@@ -829,53 +812,32 @@ msgstr "Vietnam"
 msgid "Current Locale"
 msgstr "Nykyinen maa-asetusto"
 
-#: ../src/GnomeSubtitles/Core/GUI.cs:122
-msgid "Unsaved Subtitles"
-msgstr "Tallentamattomat tekstitykset"
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+msgid "The Gnome Subtitles Manual could not be found."
+msgstr "Gnomen tekstitystyökalun ohjetta ei löydy."
 
-#. Constant strings
-#: ../src/GnomeSubtitles/Core/Menus.cs:32
-msgid "Video"
-msgstr "Video"
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+msgid "Please verify that your installation has been completed successfully."
+msgstr "Tarkista, että ohjelman asennus tapahtui virheettömästi."
 
-#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
-#: ../src/GnomeSubtitles/Core/Status.cs:42
-msgid "OVR"
-msgstr "OVR"
+#: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
+msgid "Unknown"
+msgstr "Tuntematon"
 
-#: ../src/GnomeSubtitles/Core/Status.cs:42
-msgid "INS"
-msgstr "INS"
-
-#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
-#: ../src/GnomeSubtitles/Core/Status.cs:57
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:231
-msgid "Text"
-msgstr "Teksti"
-
-#: ../src/GnomeSubtitles/Core/Status.cs:57
-msgid "Trans"
-msgstr "Käännös"
-
-#. To translators: Ln corresponds to Line
-#: ../src/GnomeSubtitles/Core/Status.cs:59
-msgid "Ln"
-msgstr "Rivi"
-
-#. To translators: Col corresponds to Column
-#: ../src/GnomeSubtitles/Core/Status.cs:61
-msgid "Col"
-msgstr "Sarake"
-
-#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:87
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
 msgid "Description"
 msgstr "Kuvaus"
 
-#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:91
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
 msgid "Encoding"
 msgstr "Koodaus"
 
-#: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:52
+#: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:40
 msgid ""
 "An unknown error has occured. Please report a bug and include this error "
 "name:"
@@ -883,151 +845,160 @@ msgstr ""
 "Tapahtui tuntematon virhe. Tee vikailmoitus ja liitä siihen seuraava virheen "
 "nimi:"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:95
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:95
 msgid "Auto Detected"
 msgstr "Automaattinen tunnistus"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:146
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:208
-#: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:215
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:219
 msgid "All Subtitle Files"
 msgstr "Kaikki tekstitystiedostot"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:29
 msgid "Could not open the file"
 msgstr "Tiedostoa ei voitu avata"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:30
+#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:30
 msgid "Open another file"
 msgstr "Avaa toinen tiedosto"
 
-#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:68
 msgid "The file path appears to be invalid."
 msgstr "Tiedoston polku näyttää olevan virheellinen."
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:91
 msgid "Save Translation As"
 msgstr "Tallenna käännös nimellä"
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:211
+#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:217
 msgid "System Default"
 msgstr "Järjestelmän oletus"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:32
+#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "Tiedostoa ei voitu tallentaa"
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:33
 msgid "Save to another file"
 msgstr "Tallenna toiseen tiedostoon"
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Muistisi loppui. Sulje joitain ohjelmia ja yritä uudestaan."
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:43
 msgid "An I/O error has occured."
 msgstr "Tapahtui I/O-virhe."
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:63
 msgid "You do not have the permissions necessary to save the file."
 msgstr "Oikeutesi eivät riitä tiedoston tallentamiseen."
 
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:65
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
 msgstr "Annettu tiedosto on virheellinen."
 
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:60
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:67
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:75
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:79
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:88
-msgid "Unknown"
-msgstr "Tuntematon"
-
-#: ../src/GnomeSubtitles/Dialogs/FileTranslationOpenDialog.cs:26
+#: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Avaa käännöstiedosto"
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:34
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:32
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Jos et tallenna, hukataan kaikki muutoksesi pysyvästi."
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
 "Tallennetaanko muutokset tekstitykseen \"{0}\" ennen uusien tekstitysten "
 "luomista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:86
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
 msgstr "Luo tallentamatta"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:96
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:110
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr ""
 "Tallennetaanko muutokset käännökseen \"{0}\"ennen uusien tekstitysten "
 "luomista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:103
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:117
 #, csharp-format
 msgid ""
 "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr ""
 "Tallennetaanko muutokset käännökseen \"{0}\"ennen uuden käännöksen luomista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:113
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:127
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Tallennetaanko muutokset tekstitykseen \"{0}\" ennen avaamista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:114
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:128
 msgid "Open without Saving"
 msgstr "Avaa tallentamatta"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:125
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:148
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
 msgstr "Tallennetaanko muutokset käännökseen \"{0}\" ennen avaamista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:134
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:157
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr "Tallennetaanko muutokset tekstitykseen \"{0}\" ennen sulkemista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:158
 msgid "Close without Saving"
 msgstr "Sulje tallentamatta"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:145
+#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:177
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Tallennetaanko muutokset käännökseen \"{0}\" ennen sulkemista?"
 
-#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:70
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:70
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:120
 msgid "Find"
 msgstr "Etsi"
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:138
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
+msgid "Set Text Language"
+msgstr "Aseta _tekstin kieli"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
+msgid "Set Translation Language"
+msgstr "Aseta _käännöksen kieli"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
+msgid "Select the text _language of the current subtitles."
+msgstr "Valitse tämänhetkisten _tekstitysten kieli."
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
+msgid "Select the translation _language of the current subtitles."
+msgstr "Valitse tämänhetkisten tekstitysten _käännöskieli."
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
 msgid "Add or Remove..."
 msgstr "Lisää tai korvaa..."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:37
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
@@ -1035,7 +1006,7 @@ msgstr ""
 "Tekstityksen muotoa ei voitu tunnistaa. Tarkista, että tiedoston tyyppi on "
 "tuettu."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
@@ -1043,63 +1014,144 @@ msgstr ""
 "Järjestelmäsi ei tue käytettyä merkistökoodausta. Valitse joku muu "
 "merkistökoodaus."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Oikeutesi eivät riitä tiedoston avaamiseen."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:49
 msgid "The file could not be found."
 msgstr "Tiedostoa ei löydy"
 
-#: ../src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
 msgid "Start Time:"
 msgstr "Aloitusaika"
 
-#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
-#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:176
 msgid "Time"
 msgstr "Aika"
 
-#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
 msgid "Frames"
 msgstr "Ruudut"
 
-#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:27
+#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:27
 msgid "Could not continue the video playback"
 msgstr "Videon toistoa ei voitu jatkaa"
 
-#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:28
+#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:28
 msgid "The following error has occurred: "
 msgstr "Tapahtui seuraava virhe: "
 
-#: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:34
+#: ../src/GnomeSubtitles/Dialog/VideoFileOpenErrorDialog.cs:35
 msgid "Please check that the video file is supported."
 msgstr "Tarkista, että videotiedosto on tuettu."
 
-#: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Kaikki videotiedostot"
 
-#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
-msgid "Frame"
-msgstr "Ruutu"
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
+msgid "Could not open Bug Buddy, the bug reporting tool."
+msgstr "Vikaraportointityökalua bug buddyä ei voitu avata."
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:223
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
+msgid "Bug information has been printed to the console."
+msgstr "Tiedot viasta on tulostettu päätteeseen."
+
+#. To translators: this is the filename for new files (before being saved)
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:129
+msgid "Unsaved Subtitles"
+msgstr "Tallentamattomat tekstitykset"
+
+#. TODO Tooltips has been deprecated
+#. TODO Tooltips has been deprecated, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
+#. Constant strings
+#: ../src/GnomeSubtitles/Ui/Menus.cs:35
+msgid "Video"
+msgstr "Video"
+
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "OVR"
+msgstr "OVR"
+
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "INS"
+msgstr "INS"
+
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:233
+msgid "Text"
+msgstr "Teksti"
+
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+msgid "Trans"
+msgstr "Käännös"
+
+#. To translators: Ln corresponds to Line
+#: ../src/GnomeSubtitles/Ui/Status.cs:60
+msgid "Ln"
+msgstr "Rivi"
+
+#. To translators: Col corresponds to Column
+#: ../src/GnomeSubtitles/Ui/Status.cs:62
+msgid "Col"
+msgstr "Sarake"
+
+#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:223
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
 msgid "No."
 msgstr "Nr."
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:228
 msgid "From"
 msgstr "Alkaen"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:227
+#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:227
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "To"
 msgstr "Saakka"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:228
+#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:228
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "During"
 msgstr "Aikana"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:234
 msgid "Translation"
 msgstr "Käännös"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:176
+msgid "Frame"
+msgstr "Ruutu"
+
+#~ msgid ""
+#~ "An Error has occured.\n"
+#~ "\n"
+#~ "To report this bug, please <b>Open the Bugzilla</b> and paste the "
+#~ "following <b>log</b> into the bug description.\n"
+#~ "\n"
+#~ "If the bug is related to a <b>subtitle file</b>, please attach it if "
+#~ "possible."
+#~ msgstr ""
+#~ "Tapahtui virhe.\n"
+#~ "\n"
+#~ "Voit raportoida tämän vian kohdasa <b>Avaa bugzilla</b> ja liittämällä "
+#~ "seuraava <b>loki</b> virheen kuvaukseen.\n"
+#~ "\n"
+#~ "Jos vika liittyy <b>tekstitystiedostoon</b>, liitä myös se jos vain "
+#~ "mahdollista."
+
+#~ msgid "Open Bugzilla"
+#~ msgstr "Avaa bugzilla"
+
+#~ msgid "Selected subtitle to first"
+#~ msgstr "Valittu tekstitys ensin"
+
+#~ msgid "Selected subtitle to last"
+#~ msgstr "Valittu tekstitys viimeiseksi"
