@@ -32,6 +32,13 @@ public class SubtitleEditSpinButtons {
 	private SpinButton startSpinButton = null;
 	private SpinButton endSpinButton = null;
 	private SpinButton durationSpinButton = null;
+	
+	/* Constants */
+	private const int maxTime = 86399999; //milliseconds
+	private const int timeStepIncrement = 100; //milliseconds
+	private const int maxFrames = 3000000;
+	private const int framesStepIncrement = 1;
+	
 
 
 	public SubtitleEditSpinButtons () {
@@ -98,29 +105,31 @@ public class SubtitleEditSpinButtons {
    	}
 	
 	private void SetFramesMode () {
-		SetFramesMode(startSpinButton);
-	    SetFramesMode(endSpinButton);
-	    SetFramesMode(durationSpinButton);
+		SetFramesMode(startSpinButton, false);
+	    SetFramesMode(endSpinButton, false);
+	    SetFramesMode(durationSpinButton, true);
 	}
 	
 	private void SetTimesMode () {
-	    SetTimesMode(startSpinButton);
-	    SetTimesMode(endSpinButton);
-	    SetTimesMode(durationSpinButton);
+	    SetTimesMode(startSpinButton, false);
+	    SetTimesMode(endSpinButton, false);
+	    SetTimesMode(durationSpinButton, true);
 	}
     
-    private void SetTimesMode (SpinButton spinButton) {
+    private void SetTimesMode (SpinButton spinButton, bool allowNegatives) {
     	spinButton.Input += OnTimeInput;
 		spinButton.Output += OnTimeOutput;
-		spinButton.Adjustment.StepIncrement = 100;
-		spinButton.Adjustment.Upper = 86399999;
+		spinButton.Adjustment.StepIncrement = timeStepIncrement;
+		spinButton.Adjustment.Upper = maxTime;
+		spinButton.Adjustment.Lower = (allowNegatives ? -maxTime : 0);
 	}
 	
-	private void SetFramesMode (SpinButton spinButton) {
+	private void SetFramesMode (SpinButton spinButton, bool allowNegatives) {
 		spinButton.Input -= OnTimeInput;
     	spinButton.Output -= OnTimeOutput;
-    	spinButton.Adjustment.StepIncrement = 1;
-    	spinButton.Adjustment.Upper = 3000000;
+    	spinButton.Adjustment.StepIncrement = framesStepIncrement;
+    	spinButton.Adjustment.Upper = maxFrames;
+    	spinButton.Adjustment.Lower = (allowNegatives ? -maxFrames : 0);
 	}
 	
 	private void LoadStartTiming (Subtitle subtitle) {
