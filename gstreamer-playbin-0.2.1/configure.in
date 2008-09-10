@@ -37,7 +37,7 @@ fi
 
 
 PKG_CHECK_MODULES(gstreamer, [gstreamer-0.10 >= 0.10])
-
+PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-0.10 >= 0.10])
 AC_SUBST(gstreamer_CFLAGS)
 AC_SUBST(gstreamer_LIBS)
 
