@@ -93,12 +93,12 @@ public class WidgetNames {
 	public const string CutButton = "cutToolButton";
 	public const string CopyButton = "copyToolButton";
 	public const string PasteButton = "pasteToolButton";
-	public const string FindButton = "findToolButton";
-	public const string ReplaceButton = "replaceToolButton";
+	public const string InsertSubtitleButton = "insertSubtitleToolButton";
+	public const string DeleteSubtitlesButton = "deleteSubtitlesToolButton";
 	public const string BoldButton = "boldToolButton";
 	public const string ItalicButton = "italicToolButton";
 	public const string UnderlineButton = "underlineToolButton";
-	
+		
 	/* Video */
 	public const string VideoAreaHBox = "videoAreaHBox";
 	public const string VideoTimingsVBox = "videoTimingsVBox";

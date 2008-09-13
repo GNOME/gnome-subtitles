@@ -216,6 +216,7 @@ public class Menus {
 		SetStylesSensitivity(sensitivity);
 		SetSensitivity(WidgetNames.EditDeleteSubtitles, sensitivity);
 		SetSensitivity(WidgetNames.EditInsertSubtitleBefore, sensitivity);
+		SetSensitivity(WidgetNames.DeleteSubtitlesButton, sensitivity);
 	}
 	
 	/// <summary>Sets the sensitivity depending on exactly 1 selected subtitle.</summary>
@@ -264,8 +265,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.CutButton, false);
 		SetSensitivity(WidgetNames.CopyButton, false);
 		SetSensitivity(WidgetNames.PasteButton, false);
-		SetSensitivity(WidgetNames.FindButton, false);
-		SetSensitivity(WidgetNames.ReplaceButton, false);
+		SetSensitivity(WidgetNames.InsertSubtitleButton, false);
 		SetSensitivity(WidgetNames.BoldButton, false);
 		SetSensitivity(WidgetNames.ItalicButton, false);
 		SetSensitivity(WidgetNames.UnderlineButton, false);
@@ -300,8 +300,8 @@ public class Menus {
 			
 			/* Toolbar */
 			SetSensitivity(WidgetNames.SaveButton, true);
-			SetSensitivity(WidgetNames.FindButton, true);
-			SetSensitivity(WidgetNames.ReplaceButton, true);
+			SetSensitivity(WidgetNames.InsertSubtitleButton, true);
+			SetSensitivity(WidgetNames.DeleteSubtitlesButton, true);
 			/* Common for Format Menu and Toolbar*/
 			SetStylesSensitivity(true);
 		}
@@ -327,6 +327,7 @@ public class Menus {
 			/* Toolbar */
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
+			SetSensitivity(WidgetNames.DeleteSubtitlesButton, false);
 			SetSensitivity(WidgetNames.CutButton, false);
 			SetSensitivity(WidgetNames.CopyButton, false);
 			SetSensitivity(WidgetNames.PasteButton, false);

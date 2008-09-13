@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sun Jun  8 00:08:15 2008 
+<!--Generated with glade3 3.4.5 on Sat Sep 13 01:12:39 2008 
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -378,7 +378,7 @@
                         <child internal-child="image">
                           <widget class="GtkImage" id="deleteSubtitlesMenuItemImage">
                             <property name="visible">True</property>
-                            <property name="stock">gtk-delete</property>
+                            <property name="stock">gtk-remove</property>
                             <property name="icon_size">1</property>
                           </widget>
                         </child>
@@ -1103,10 +1103,12 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkToolButton" id="findToolButton">
+              <widget class="GtkToolButton" id="insertSubtitleToolButton">
                 <property name="visible">True</property>
-                <property name="stock_id">gtk-find</property>
-                <signal name="clicked" handler="OnSearchFind"/>
+                <property name="sensitive">False</property>
+                <property name="label" translatable="yes">Insert</property>
+                <property name="stock_id">gtk-add</property>
+                <signal name="clicked" handler="OnEditInsertSubtitleAfter"/>
               </widget>
               <packing>
                 <property name="expand">False</property>
@@ -1114,11 +1116,12 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkToolButton" id="replaceToolButton">
+              <widget class="GtkToolButton" id="deleteSubtitlesToolButton">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">Replace</property>
-                <property name="stock_id">gtk-find-and-replace</property>
-                <signal name="clicked" handler="OnSearchReplace"/>
+                <property name="sensitive">False</property>
+                <property name="label" translatable="yes">Delete</property>
+                <property name="stock_id">gtk-remove</property>
+                <signal name="clicked" handler="OnEditDeleteSubtitles"/>
               </widget>
               <packing>
                 <property name="expand">False</property>
