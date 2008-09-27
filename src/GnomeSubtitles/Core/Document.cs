@@ -19,7 +19,8 @@
 
 using GnomeSubtitles.Core.Command;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core;
+using SubLib.Core.Domain;
 using System.IO;
 using System.Text;
 
@@ -112,7 +113,7 @@ public class Document {
 		factory.Verbose = true;
 		factory.Encoding = encoding;
 
-		SubLib.Subtitles openedTranslation = factory.Open(path);
+		SubLib.Core.Domain.Subtitles openedTranslation = factory.Open(path);
 		FileProperties newTranslationFile = factory.FileProperties;
 		AddExtraSubtitles(openedTranslation);
 
@@ -167,7 +168,7 @@ public class Document {
 		factory.Verbose = true;
 		factory.Encoding = encoding;
 
-		SubLib.Subtitles openedSubtitles = null;
+		SubLib.Core.Domain.Subtitles openedSubtitles = null;
 		try {
 			openedSubtitles = factory.Open(path);
 		}
@@ -215,7 +216,7 @@ public class Document {
 		ClearTranslationModified();
 	}
 	
-	private void AddExtraSubtitles (SubLib.Subtitles translation) {
+	private void AddExtraSubtitles (SubLib.Core.Domain.Subtitles translation) {
 		int extraCount = translation.Collection.Count - subtitles.Collection.Count;
 		if (extraCount > 0)
 			subtitles.AddExtra(extraCount);	

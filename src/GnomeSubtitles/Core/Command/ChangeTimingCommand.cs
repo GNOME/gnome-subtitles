@@ -18,7 +18,7 @@
  */
 
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Core.Command {

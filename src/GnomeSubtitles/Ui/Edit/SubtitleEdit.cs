@@ -21,7 +21,7 @@ using GnomeSubtitles.Core;
 using Gtk;
 using System;
 using System.Collections;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Ui.Edit {
 

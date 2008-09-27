@@ -22,7 +22,7 @@ using GnomeSubtitles.Ui.VideoPreview;
 using Glade;
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 using System.Collections;
 using System.IO;

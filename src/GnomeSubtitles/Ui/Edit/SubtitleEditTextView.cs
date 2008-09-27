@@ -19,7 +19,7 @@
 
 using GnomeSubtitles.Core;
 using Gtk;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
@@ -263,7 +263,7 @@ public abstract class SubtitleEditTextView {
 			textView.Buffer.RemoveTag(tag, start, end);
     }
     
-	private void LoadTags (SubLib.Style style) {
+	private void LoadTags (SubLib.Core.Domain.Style style) {
     	subtitleTags.Clear();
     	if (style.Bold)
     		subtitleTags.Add(boldTag);

@@ -22,7 +22,7 @@ using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using System;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Ui.View {
 

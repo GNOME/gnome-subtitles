@@ -20,7 +20,7 @@
 using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Ui {
 

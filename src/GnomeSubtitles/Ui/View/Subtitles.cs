@@ -19,16 +19,16 @@
 
 using GnomeSubtitles.Core;
 using Gtk;
+using SubLib.Core.Domain;
 using System;
-using SubLib;
 
 namespace GnomeSubtitles.Ui.View {
 
-public class Subtitles : SubLib.Subtitles {
+public class Subtitles : SubLib.Core.Domain.Subtitles {
 	private ListStore model = new ListStore(typeof(Subtitle));
 	
 	
-	public Subtitles (SubLib.Subtitles subtitles)
+	public Subtitles (SubLib.Core.Domain.Subtitles subtitles)
 			: base(subtitles.Collection, subtitles.Properties) {
 
 		LoadModelFromCollection();

@@ -21,7 +21,7 @@ using Gtk;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Core {
 

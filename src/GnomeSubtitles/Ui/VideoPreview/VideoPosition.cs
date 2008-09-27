@@ -20,7 +20,8 @@
 using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core;
+using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
@@ -69,7 +70,7 @@ public class VideoPosition {
 	}
 	
 	public int CurrentFrames {
-		get { return Convert.ToInt32(SubLib.Synchronization.TimeToFrames(position, player.FrameRate)); }
+		get { return Convert.ToInt32(Synchronization.TimeToFrames(position, player.FrameRate)); }
 	}
 	
 	/* Public methods */
@@ -167,7 +168,7 @@ public class VideoPosition {
 		if (Base.TimingMode == TimingMode.Times)
 			positionValueLabel.Text = Util.TimeSpanToText(newPosition);
 		else {
-			double frames = (newPosition == TimeSpan.Zero ? 0 : SubLib.Synchronization.TimeToFrames(newPosition, player.FrameRate));
+			double frames = (newPosition == TimeSpan.Zero ? 0 : Synchronization.TimeToFrames(newPosition, player.FrameRate));
 			positionValueLabel.Text = Convert.ToInt32(frames).ToString();
 		}
 	}
@@ -186,7 +187,7 @@ public class VideoPosition {
 		if (timingMode == TimingMode.Times)
 			lengthValueLabel.Text = Util.TimeSpanToText(length);
 		else {
-			double frames = (length == TimeSpan.Zero ? 0 : SubLib.Synchronization.TimeToFrames(length, player.FrameRate));
+			double frames = (length == TimeSpan.Zero ? 0 : Synchronization.TimeToFrames(length, player.FrameRate));
 			lengthValueLabel.Text = Convert.ToInt32(frames).ToString();
 		}
 	}

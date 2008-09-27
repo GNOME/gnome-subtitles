@@ -19,7 +19,7 @@
 
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Core.Command {
 

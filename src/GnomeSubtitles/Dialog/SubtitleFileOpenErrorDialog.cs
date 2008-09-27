@@ -18,7 +18,7 @@
  */
 
 using Mono.Unix;
-using SubLib;
+using SubLib.Exceptions;
 using System;
 using System.IO;
 using System.Security;

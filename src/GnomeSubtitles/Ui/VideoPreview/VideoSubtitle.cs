@@ -19,7 +19,7 @@
 
 using GnomeSubtitles.Core;
 using Gtk;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {

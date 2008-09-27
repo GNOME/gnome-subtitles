@@ -20,7 +20,7 @@
 using GnomeSubtitles.Core;
 using Gtk;
 using System;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Ui.View {
 

@@ -20,7 +20,7 @@
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
 using Gtk;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 using System.Text.RegularExpressions;
 

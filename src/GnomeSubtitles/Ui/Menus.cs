@@ -21,7 +21,7 @@ using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 using System.Globalization;
 

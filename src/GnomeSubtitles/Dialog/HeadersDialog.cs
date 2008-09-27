@@ -21,7 +21,7 @@ using GnomeSubtitles.Core;
 using System;
 using Glade;
 using Gtk;
-using SubLib;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Dialog {
 

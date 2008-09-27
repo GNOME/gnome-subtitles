@@ -20,7 +20,7 @@
 using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 using System.Text.RegularExpressions;
 

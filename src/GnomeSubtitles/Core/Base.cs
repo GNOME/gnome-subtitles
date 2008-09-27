@@ -23,7 +23,7 @@ using GnomeSubtitles.Execution;
 using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
-using SubLib;
+using SubLib.Core.Domain;
 using System;
 using System.IO;
 using System.Text;
