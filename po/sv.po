@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-24 19:07+0200\n"
-"PO-Revision-Date: 2008-09-24 19:07+0100\n"
+"POT-Creation-Date: 2008-10-01 08:07+0200\n"
+"PO-Revision-Date: 2008-10-01 08:07+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -424,6 +424,7 @@ msgid "_Search"
 msgstr "_Sök"
 
 #: ../src/Glade/MainWindow.glade.h:49
+#: ../src/Glade/TimingsShiftDialog.glade.h:10
 msgid "_Shift"
 msgstr "_Förskjut"
 
@@ -554,31 +555,27 @@ msgstr "Startruta:"
 msgid "<b>Frames</b>"
 msgstr "<b>Bildrutor</b>"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "All subtitles"
-msgstr "Alla undertexter"
-
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:5
-msgid "From first subtitle to selection"
-msgstr "Från första undertexten till markering"
+#: ../src/Glade/TimingsShiftDialog.glade.h:4
+msgid "From _first subtitle to selection"
+msgstr "Från _första undertexten till markering"
 
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
+#: ../src/Glade/TimingsShiftDialog.glade.h:6
+msgid "From selection to _last subtitle"
+msgstr "Från markering till _sista undertexten"
+
 #: ../src/Glade/TimingsShiftDialog.glade.h:7
-msgid "From selection to last subtitle"
-msgstr "Från markering till sista undertexten"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "Selected subtitles"
-msgstr "Markerade undertexter"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "Shift"
-msgstr "Förskjut"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
 msgid "Shift Timings"
 msgstr "Förskjut tider"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:8
+msgid "_All subtitles"
+msgstr "_Alla undertexter"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:9
+msgid "_Selected subtitles"
+msgstr "_Markerade undertexter"
 
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
@@ -664,7 +661,7 @@ msgstr "Ställer in undertextstart"
 msgid "Setting Subtitle End"
 msgstr "Ställer in undertextslut"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:199
+#: ../src/GnomeSubtitles/Core/Document.cs:200
 msgid "Unsaved Translation"
 msgstr "Osparad översättning"
 
@@ -1016,7 +1013,7 @@ msgid "Start Time:"
 msgstr "Starttid:"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:176
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:177
 msgid "Time"
 msgstr "Tid"
 
@@ -1049,7 +1046,7 @@ msgid "Bug information has been printed to the console."
 msgstr "Felsökningsinformation har skrivits ut till konsollen."
 
 #. To translators: this is the filename for new files (before being saved)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:129
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:130
 msgid "Unsaved Subtitles"
 msgstr "Osparade undertexter"
 
@@ -1115,10 +1112,12 @@ msgstr "Längd"
 msgid "Translation"
 msgstr "Översättning"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:176
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:177
 msgid "Frame"
 msgstr "Bildruta"
 
+#~ msgid "Shift"
+#~ msgstr "Förskjut"
 #~ msgid ""
 #~ "An Error has occured.\n"
 #~ "\n"
