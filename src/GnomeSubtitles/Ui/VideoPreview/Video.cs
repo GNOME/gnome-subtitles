@@ -20,6 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
 using Gtk;
+using SubLib.Core;
 using SubLib.Core.Domain;
 using System;
 using System.Text.RegularExpressions;
@@ -85,6 +86,10 @@ public class Video {
 	
 	public bool IsLoaded {
 		get { return isLoaded; }
+	}
+	
+	public float FrameRate {
+		get { return player.FrameRate; }
 	}
 	
 	/* Public methods */
@@ -168,6 +173,14 @@ public class Video {
 			return;
 
 		player.Seek(time);
+	}
+	
+	public void Seek (int frames) {
+		if (!isLoaded)
+			return;
+
+		TimeSpan time = Synchronization.FramesToTime(frames, this.FrameRate);
+		Seek(time);
 	}
 	
 	public void SeekToSelection () { //TODO check out
