@@ -70,7 +70,8 @@ public class TimingsShiftDialog : GladeDialog {
 			return;
 			
 		timingMode = newTimingMode;	
-		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode, true);
+		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode);
+		Core.Util.SetSpinButtonMaxAdjustment(spinButton, timingMode, true);
 		
 		string label = (timingMode == TimingMode.Times ? Catalog.GetString("Time") : Catalog.GetString("Frames"));
 		string markup = "<b>" + label + "</b>";
@@ -136,7 +137,7 @@ public class TimingsShiftDialog : GladeDialog {
 			SelectionIntended selectionIntended = GetSelectionIntended();
 			
 			if (timingMode == TimingMode.Times) {
-				TimeSpan time = TimeSpan.Parse(spinButton.Text);
+				TimeSpan time = TimeSpan.Parse(spinButton.Text); //TODO use value that holds milliseconds
 				Base.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
 			}
 			else {

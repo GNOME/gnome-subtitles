@@ -69,8 +69,10 @@ public class TimingsAdjustDialog : GladeDialog {
 			firstSubtitleStartLabel.Text = startLabel;
 			lastSubtitleStartLabel.Text = startLabel;
 		}
-		Core.Util.SetSpinButtonTimingMode(firstSubtitleNewStartSpinButton, timingMode, false);
-		Core.Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode, false);
+		Core.Util.SetSpinButtonTimingMode(firstSubtitleNewStartSpinButton, timingMode);
+		Core.Util.SetSpinButtonMaxAdjustment(firstSubtitleNewStartSpinButton, timingMode, false);
+		Core.Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode);
+		Core.Util.SetSpinButtonMaxAdjustment(lastSubtitleNewStartSpinButton, timingMode, false);
 	}	
 
 	private void SetApplyToAll () {
