@@ -79,23 +79,34 @@ public class Util {
 		args.RetVal = 1;
 	}
 	
-	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode, bool canNegate) {
+	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode) {
 		if (timingMode == TimingMode.Frames) {
 			spinButton.Input -= OnTimeInput;
 			spinButton.Output -= OnTimeOutput;
-			spinButton.Adjustment.StepIncrement = 1;
-    		spinButton.Adjustment.Upper = 3000000;
-    		if (canNegate)
-    			spinButton.Adjustment.Lower = -3000000;
 		}
 		else {
 			spinButton.Input += OnTimeInput;
 			spinButton.Output += OnTimeOutput;
-			spinButton.Adjustment.StepIncrement = 100;
-			spinButton.Adjustment.Upper = 86399999;
-			if (canNegate)
-				spinButton.Adjustment.Lower = -86399999;
 		}
+	}
+	
+	public static void SetSpinButtonAdjustment (SpinButton spinButton, TimeSpan upperLimit, bool canNegate) {
+		spinButton.Adjustment.StepIncrement = 100; //milliseconds
+		spinButton.Adjustment.Upper = (upperLimit != TimeSpan.Zero ? upperLimit.TotalMilliseconds : 86399999);
+		spinButton.Adjustment.Lower = (canNegate ? -spinButton.Adjustment.Upper : 0); 
+	}
+	
+	public static void SetSpinButtonAdjustment (SpinButton spinButton, int upperLimit, bool canNegate) {
+		spinButton.Adjustment.StepIncrement = 1; //frame
+		spinButton.Adjustment.Upper = (upperLimit != 0 ? upperLimit : 3000000);
+		spinButton.Adjustment.Lower = (canNegate ? -spinButton.Adjustment.Upper : 0); 
+	}
+	
+	public static void SetSpinButtonMaxAdjustment (SpinButton spinButton, TimingMode timingMode, bool toNegate) {
+		if (timingMode == TimingMode.Times)
+			SetSpinButtonAdjustment(spinButton, TimeSpan.Zero, toNegate);
+		else
+			SetSpinButtonAdjustment(spinButton, 0, toNegate);
 	}
 	
 	public static bool OpenUrl (string url) {
