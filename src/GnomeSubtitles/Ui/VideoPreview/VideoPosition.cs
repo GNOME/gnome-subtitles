@@ -73,6 +73,14 @@ public class VideoPosition {
 		get { return Convert.ToInt32(Synchronization.TimeToFrames(position, player.FrameRate)); }
 	}
 	
+	public TimeSpan Length {
+		get { return player.Length; }
+	}
+	
+	public int LengthInFrames {
+		get { return Convert.ToInt32(Synchronization.TimeToFrames(player.Length, player.FrameRate)); }
+	}
+	
 	/* Public methods */
 	
 	public void Disable () {
