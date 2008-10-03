@@ -241,6 +241,10 @@ public class EventHandlers {
 		Base.Ui.Video.Forward();
 	}
 	
+	public void OnVideoSeekTo (object o, EventArgs args) {
+		new VideoSeekToDialog().Show();
+	}
+	
 	public void OnVideoSeekToSelection (object o, EventArgs args) {
 		Base.Ui.Video.SeekToSelection();	
 	}

@@ -378,6 +378,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoPlayPause, sensitivity);
 		SetSensitivity(WidgetNames.VideoRewind, sensitivity);
 		SetSensitivity(WidgetNames.VideoForward, sensitivity);
+		SetSensitivity(WidgetNames.VideoSeekTo, sensitivity);
 		
 		/* Set video menu dependent sensitivity if there is 1 selected subtitle. */
 		if ((Core.Base.Ui.View.Selection.Count == 1) && sensitivity)
