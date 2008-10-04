@@ -217,6 +217,10 @@ public class EventHandlers {
 		Base.Dialogs.TimingsShiftDialog.Show();
 	}
 	
+	public void OnTimingsSynchronize (object o, EventArgs args) {
+		Base.Dialogs.TimingsSynchronizeDialog.Show();
+	}
+	
 	
 	/* Video Menu */
 		
