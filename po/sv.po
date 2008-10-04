@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-01 08:07+0200\n"
-"PO-Revision-Date: 2008-10-01 08:07+0100\n"
+"POT-Creation-Date: 2008-10-05 00:37+0200\n"
+"PO-Revision-Date: 2008-10-05 00:38+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -295,19 +295,19 @@ msgstr "Spola _till markering"
 
 #: ../src/Glade/MainWindow.glade.h:16
 msgid "Set Subtitle En_d"
-msgstr "Ställ in underte_xtslut"
+msgstr "Ange underte_xtslut"
 
 #: ../src/Glade/MainWindow.glade.h:17
-msgid "Set Subtitle _Start"
-msgstr "Ställ in undertext_start"
+msgid "Set Subtitle St_art"
+msgstr "Ange undertext_start"
 
 #: ../src/Glade/MainWindow.glade.h:18
 msgid "Set Translatio_n Language"
-msgstr "Ställ in översättni_ngsspråk"
+msgstr "Ange översättni_ngsspråk"
 
 #: ../src/Glade/MainWindow.glade.h:19
 msgid "Set _Text Language"
-msgstr "Ställ in _textspråk"
+msgstr "Ange _textspråk"
 
 #: ../src/Glade/MainWindow.glade.h:20
 msgid "T_imings"
@@ -424,39 +424,43 @@ msgid "_Search"
 msgstr "_Sök"
 
 #: ../src/Glade/MainWindow.glade.h:49
+msgid "_Seek to..."
+msgstr "_Spola till..."
+
+#: ../src/Glade/MainWindow.glade.h:50
 #: ../src/Glade/TimingsShiftDialog.glade.h:10
 msgid "_Shift"
 msgstr "_Förskjut"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.glade.h:51
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_Times"
 msgstr "_Tider"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_Tools"
 msgstr "Verkt_yg"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Translation"
 msgstr "_Översättning"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Underline"
 msgstr "_Understruken"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Video Frame Rate"
 msgstr "Bildfrekvens för _video"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_View"
 msgstr "_Visa"
 
@@ -508,7 +512,7 @@ msgstr "_Börja om från början"
 
 #: ../src/Glade/SetLanguageDialog.glade.h:1
 msgid "Set language"
-msgstr "Ställ in språk"
+msgstr "Ange språk"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:1
 #: ../src/Glade/TimingsShiftDialog.glade.h:1
@@ -655,11 +659,11 @@ msgstr "Förskjuter tider"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr "Ställer in undertextstart"
+msgstr "Anger undertextstart"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr "Ställer in undertextslut"
+msgstr "Anger undertextslut"
 
 #: ../src/GnomeSubtitles/Core/Document.cs:200
 msgid "Unsaved Translation"
@@ -816,11 +820,11 @@ msgstr "Vietnamesisk"
 msgid "Current Locale"
 msgstr "Aktuell lokalanpassning"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:299
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Handboken för Gnome-undertexter kunde inte hittas."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:299
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifiera att din installation har genomförts korrekt."
 
@@ -974,11 +978,11 @@ msgstr "Sök"
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
 msgid "Set Text Language"
-msgstr "Ställ in textspråk"
+msgstr "Ange textspråk"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
 msgid "Set Translation Language"
-msgstr "Ställ in översättningsspråk"
+msgstr "Ange översättningsspråk"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
 msgid "Select the text _language of the current subtitles."
@@ -1012,12 +1016,12 @@ msgstr "Filen kunde inte hittas."
 msgid "Start Time:"
 msgstr "Starttid:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:177
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:76
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:185
 msgid "Time"
 msgstr "Tid"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:76
 msgid "Frames"
 msgstr "Bildrutor"
 
@@ -1112,7 +1116,7 @@ msgstr "Längd"
 msgid "Translation"
 msgstr "Översättning"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:177
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:185
 msgid "Frame"
 msgstr "Bildruta"
 
