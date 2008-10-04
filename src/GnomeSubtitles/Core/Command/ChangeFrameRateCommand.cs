@@ -19,6 +19,7 @@
 
 using GnomeSubtitles.Ui.View;
 using Mono.Unix;
+using SubLib.Core.Timing;
 
 namespace GnomeSubtitles.Core.Command {
 
@@ -54,7 +55,8 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override void SetFrameRate (float frameRate) {
-		Base.Document.Subtitles.ChangeOriginalFrameRate(frameRate);
+		FrameRateOperator frameRateOp = new FrameRateOperator(Base.Document.Subtitles);
+		frameRateOp.ChangeOriginal(frameRate);
 	}
 	
 	protected override void UpdateMenuItem () {
@@ -73,7 +75,8 @@ public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
 	}
 	
 	protected override void SetFrameRate (float frameRate) {
-		Base.Document.Subtitles.ChangeFrameRate(frameRate);
+		FrameRateOperator frameRateOp = new FrameRateOperator(Base.Document.Subtitles);
+		frameRateOp.ChangeCurrent(frameRate);
 	}
 	
 	protected override void UpdateMenuItem () {

@@ -19,6 +19,7 @@
 
 using GnomeSubtitles.Ui.View;
 using Mono.Unix;
+using SubLib.Core.Timing;
 using System;
 
 namespace GnomeSubtitles.Core.Command {
@@ -63,7 +64,8 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 		TimeSpan oldFirstTime = subtitles[0].Times.Start;
 		TimeSpan oldLastTime = subtitles[subtitles.Count - 1].Times.Start;
 		
-		subtitles.AdjustTimings(firstTime, lastTime);
+		AdjustOperator adjustOp = new AdjustOperator(subtitles);
+		adjustOp.Adjust(firstTime, lastTime);
 		
 		firstTime = oldFirstTime;
 		lastTime = oldLastTime;
@@ -75,7 +77,8 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 		int oldFirstFrame = subtitles[0].Frames.Start;
 		int oldLastFrame = subtitles[subtitles.Count - 1].Frames.Start;
 		
-		subtitles.AdjustTimings(firstFrame, lastFrame);
+		AdjustOperator adjustOp = new AdjustOperator(subtitles);
+		adjustOp.Adjust(firstFrame, lastFrame);
 		
 		firstFrame = oldFirstFrame;
 		lastFrame = oldLastFrame;
@@ -90,7 +93,8 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 		TimeSpan oldFirstTime = subtitles[firstSubtitle].Times.Start;
 		TimeSpan oldLastTime = subtitles[lastSubtitle].Times.Start;
 		
-		subtitles.AdjustTimings(firstSubtitle, firstTime, lastSubtitle, lastTime);
+		AdjustOperator adjustOp = new AdjustOperator(subtitles);
+		adjustOp.Adjust(firstSubtitle, firstTime, lastSubtitle, lastTime);
 		
 		firstTime = oldFirstTime;
 		lastTime = oldLastTime;
@@ -105,7 +109,8 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 		int oldFirstFrame = subtitles[firstSubtitle].Frames.Start;
 		int oldLastFrame = subtitles[lastSubtitle].Frames.Start;
 		
-		subtitles.AdjustTimings(firstSubtitle, firstFrame, lastSubtitle, lastFrame);
+		AdjustOperator adjustOp = new AdjustOperator(subtitles);
+		adjustOp.Adjust(firstSubtitle, firstFrame, lastSubtitle, lastFrame);
 		
 		firstFrame = oldFirstFrame;
 		lastFrame = oldLastFrame;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sat Oct  4 00:07:06 2008 
+<!--Generated with glade3 3.4.5 on Sat Oct  4 21:12:26 2008 
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -233,8 +233,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Z" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="Y" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="Z" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -512,8 +512,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F3" modifiers="" signal="activate"/>
+                        <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -523,8 +523,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F3" modifiers="GDK_SHIFT_MASK" signal="activate"/>
+                        <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -699,6 +699,14 @@
                       </widget>
                     </child>
                     <child>
+                      <widget class="GtkMenuItem" id="timingsSynchronize">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">_Synchronize</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="OnTimingsSynchronize"/>
+                      </widget>
+                    </child>
+                    <child>
                       <widget class="GtkMenuItem" id="timingsAdjust">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
@@ -711,7 +719,7 @@
                       <widget class="GtkMenuItem" id="timingsShift">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
-                        <property name="label" translatable="yes">_Shift</property>
+                        <property name="label" translatable="yes">Sh_ift</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnTimingsShift"/>
                       </widget>
@@ -769,8 +777,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
-                        <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F5" modifiers="" signal="activate"/>
+                        <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -789,8 +797,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoRewind"/>
-                        <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F6" modifiers="" signal="activate"/>
+                        <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -801,8 +809,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoForward"/>
-                        <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F7" modifiers="" signal="activate"/>
+                        <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -1550,31 +1558,39 @@
                         <property name="n_columns">2</property>
                         <property name="row_spacing">2</property>
                         <child>
-                          <widget class="GtkSpinButton" id="startSpinButton">
+                          <widget class="GtkLabel" id="startLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="adjustment">0 0 100 1 10 10</property>
-                            <property name="climb_rate">1</property>
-                            <property name="numeric">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
                           </widget>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkSpinButton" id="durationSpinButton">
+                          <widget class="GtkLabel" id="endLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="adjustment">0 0 100 1 10 10</property>
-                            <property name="climb_rate">1</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
                           </widget>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="durationLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
+                          </widget>
+                          <packing>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
@@ -1594,39 +1610,31 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="durationLabel">
+                          <widget class="GtkSpinButton" id="durationSpinButton">
                             <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">0 0 100 1 10 10</property>
+                            <property name="climb_rate">1</property>
                           </widget>
                           <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="endLabel">
+                          <widget class="GtkSpinButton" id="startSpinButton">
                             <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">0 0 100 1 10 10</property>
+                            <property name="climb_rate">1</property>
+                            <property name="numeric">True</property>
                           </widget>
                           <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="startLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
-                          </widget>
-                          <packing>
-                            <property name="x_options">GTK_FILL</property>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>

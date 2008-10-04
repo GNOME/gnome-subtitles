@@ -22,6 +22,7 @@ using GnomeSubtitles.Dialog;
 using Gtk;
 using SubLib.Core;
 using SubLib.Core.Domain;
+using SubLib.Core.Timing;
 using System;
 using System.Text.RegularExpressions;
 
@@ -144,6 +145,10 @@ public class Video {
 	public void UpdateFromTimingMode (TimingMode newMode) {
 		position.ToggleTimingMode(newMode);
 	}
+	
+	public void UpdateFromNewDocument (bool wasLoaded) {
+    	subtitle.UpdateFromNewDocument(wasLoaded);
+    }
 
 	/// <summary>Updates the controls for a subtitle selection change.</summary>
 	/// <param name="isSingle">Whether there is only 1 selected subtitle.</param>
@@ -179,7 +184,7 @@ public class Video {
 		if (!isLoaded)
 			return;
 
-		TimeSpan time = Synchronization.FramesToTime(frames, this.FrameRate);
+		TimeSpan time = SyncUtil.FramesToTime(frames, this.FrameRate);
 		Seek(time);
 	}
 	

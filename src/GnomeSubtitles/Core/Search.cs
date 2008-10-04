@@ -21,6 +21,7 @@ using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
 using Gtk;
 using SubLib.Core.Domain;
+using SubLib.Core.Search;
 using System;
 using System.Text.RegularExpressions;
 
@@ -115,7 +116,8 @@ public class Search {
 
 		/* Search */
 		SubtitleSearchOptions options = new SubtitleSearchOptions(regex, textType, subtitle, index, dialog.Wrap, backwards);
-		SubtitleSearchResults results = Base.Document.Subtitles.Find(options);
+		SearchOperator searchOp = new SearchOperator(Base.Document.Subtitles);
+		SubtitleSearchResults results = searchOp.Find(options);
 		
 		/* If no text was found, return */
 		if (results == null)

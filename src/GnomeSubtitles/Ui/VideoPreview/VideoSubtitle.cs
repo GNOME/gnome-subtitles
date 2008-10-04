@@ -20,6 +20,7 @@
 using GnomeSubtitles.Core;
 using Gtk;
 using SubLib.Core.Domain;
+using SubLib.Core.Search;
 using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
@@ -27,6 +28,7 @@ namespace GnomeSubtitles.Ui.VideoPreview {
 //TODO change name to SubtitleOverlay
 public class VideoSubtitle {
 	private Label label = null;
+	private SearchOperator searchOp = null;
 	
 	/* Current subtitle */
 	private Subtitle subtitle = null;
@@ -56,6 +58,10 @@ public class VideoSubtitle {
 	public void Close () {
 		UnloadSubtitle();
 	}
+	
+	public void UpdateFromNewDocument (bool wasLoaded) {
+    	searchOp = new SearchOperator(Base.Document.Subtitles);
+    }
 
 	/* Event members */
 	
@@ -64,7 +70,7 @@ public class VideoSubtitle {
 			return;
 	
 		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = Base.Document.Subtitles.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
+			int foundSubtitle = searchOp.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
 			if (foundSubtitle == -1)
 				UnloadSubtitle();
 			else

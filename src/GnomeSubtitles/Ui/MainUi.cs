@@ -260,6 +260,7 @@ public class MainUi {
 		view.UpdateFromNewDocument(wasLoaded);
 		edit.UpdateFromNewDocument(wasLoaded);
 		menus.UpdateFromNewDocument(wasLoaded);
+		video.UpdateFromNewDocument(wasLoaded);
 	}
 	
 	public void UpdateFromNewTranslationDocument () {

@@ -21,6 +21,7 @@ using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
+using SubLib.Core.Timing;
 using System;
 
 namespace GnomeSubtitles.Core.Command {
@@ -64,12 +65,14 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	/* Private Members */
 
 	private void ShiftTimesAll () {
-		Base.Document.Subtitles.ShiftTimings(time);
+		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
+		shiftOp.Shift(time);
 		time = time.Negate();
 	}
 	
 	private void ShiftFramesAll () {
-		Base.Document.Subtitles.ShiftTimings(frames);
+		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
+		shiftOp.Shift(frames);
 		frames = -frames;
 	}
 	
@@ -93,7 +96,8 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
 		
-		Base.Document.Subtitles.ShiftTimings(time, firstSubtitle, lastSubtitle);
+		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
+		shiftOp.Shift(time, firstSubtitle, lastSubtitle);
 		time = time.Negate();
 	}
 	
@@ -101,7 +105,8 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
 		
-		Base.Document.Subtitles.ShiftTimings(frames, firstSubtitle, lastSubtitle);
+		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
+		shiftOp.Shift(frames, firstSubtitle, lastSubtitle);
 		frames = -frames;
 	}
 }

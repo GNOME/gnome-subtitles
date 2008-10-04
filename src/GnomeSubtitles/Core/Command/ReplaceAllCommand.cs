@@ -21,6 +21,7 @@ using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
+using SubLib.Core.Search;
 using System;
 using System.Text.RegularExpressions;
 
@@ -42,7 +43,8 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 
 
 	public override bool Execute () {
-		int count = Base.Document.Subtitles.ReplaceAll(regex, replacement, out subtitles, out texts);
+		SearchOperator searchOp = new SearchOperator(Base.Document.Subtitles);
+		int count = searchOp.ReplaceAll(regex, replacement, out subtitles, out texts);
 		if (count == 0)
 			return false;
 		
