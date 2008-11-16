@@ -32,6 +32,7 @@ GS_RESOURCES = \
 	$(srcdir)/Glade/SetLanguageDialog.glade \
 	$(srcdir)/Glade/TimingsAdjustDialog.glade \
 	$(srcdir)/Glade/TimingsShiftDialog.glade \
+	$(srcdir)/Glade/TimingsSynchronizeDialog.glade \
 	$(srcdir)/Glade/VideoOpenDialog.glade \
 	$(srcdir)/Glade/VideoSeekToDialog.glade \
 	$(GS_DATADIR)/gnome-subtitles.png \
