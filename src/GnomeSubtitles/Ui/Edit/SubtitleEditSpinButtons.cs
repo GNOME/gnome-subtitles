@@ -117,16 +117,16 @@ public class SubtitleEditSpinButtons {
 	}
     
     private void SetTimesMode (SpinButton spinButton, bool allowNegatives) {
-    	spinButton.Input += OnTimeInput;
-		spinButton.Output += OnTimeOutput;
+    	spinButton.Input += Util.OnTimeInput;
+		spinButton.Output += Util.OnTimeOutput;
 		spinButton.Adjustment.StepIncrement = timeStepIncrement;
 		spinButton.Adjustment.Upper = maxTime;
 		spinButton.Adjustment.Lower = (allowNegatives ? -maxTime : 0);
 	}
 	
 	private void SetFramesMode (SpinButton spinButton, bool allowNegatives) {
-		spinButton.Input -= OnTimeInput;
-    	spinButton.Output -= OnTimeOutput;
+		spinButton.Input -= Util.OnTimeInput;
+    	spinButton.Output -= Util.OnTimeOutput;
     	spinButton.Adjustment.StepIncrement = framesStepIncrement;
     	spinButton.Adjustment.Upper = maxFrames;
     	spinButton.Adjustment.Lower = (allowNegatives ? -maxFrames : 0);
@@ -198,25 +198,6 @@ public class SubtitleEditSpinButtons {
 			Base.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value));
 		else
 			Base.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
-	}
-	
-	private void OnTimeInput (object o, InputArgs args) {
-		SpinButton spinButton = o as SpinButton;
-		try {
-			args.NewValue = Util.TimeTextToMilliseconds(spinButton.Text);
-		}
-		catch (Exception) {
-			args.NewValue = spinButton.Value;
-		}
-		args.RetVal = 1;
-	}
-	
-	private void OnTimeOutput (object o, OutputArgs args) {
-		SpinButton spinButton = o as SpinButton;
-		spinButton.Numeric = false;
-		spinButton.Text = Util.MillisecondsToTimeText((int)spinButton.Value);
-		spinButton.Numeric = true;
-		args.RetVal = 1;
 	}
 
 }
