@@ -101,6 +101,13 @@ PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gnome-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
 
+dnl Check gtk-sharp version
+PKG_CHECK_MODULES(GTKSHARP_INVALID, gtk-sharp-2.0 >= 2.12.2 gtk-sharp-2.0 <= 2.12.6, gtksharp_invalid=true, gtksharp_invalid=false)
+
+if test "x$gtksharp_invalid" = "xtrue"; then
+ 	AC_MSG_ERROR([gtk-sharp versions between 2.12.2 and 2.12.6 (inclusive) are not supported.])
+fi
+
 dnl SubLib
 SUBLIB_REQUIRED_VERSION=0.9
 PKG_CHECK_MODULES(SUBLIB, sublib >= $SUBLIB_REQUIRED_VERSION)
