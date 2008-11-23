@@ -47,7 +47,7 @@ public class WidgetNames {
 	public const string EditFormatBold = "editFormatBold";
 	public const string EditFormatItalic = "editFormatItalic";
 	public const string EditFormatUnderline = "editFormatUnderline";
-	public const string EditInsertSubtitle = "editInsertSubtitle";
+	public const string EditInsertSubtitleMenu = "editInsertSubtitleMenu";
 	public const string EditInsertSubtitleBefore = "editInsertSubtitleBefore";
 	public const string EditDeleteSubtitles = "editDeleteSubtitles";
 	
@@ -65,8 +65,8 @@ public class WidgetNames {
 	public const string SearchReplace = "searchReplace";
 
 	/* Timings Menu */
-	public const string TimingsInputFrameRate = "timingsInputFrameRate";
-	public const string TimingsVideoFrameRate = "timingsVideoFrameRate";
+	public const string TimingsInputFrameRateMenu = "timingsInputFrameRateMenu";
+	public const string TimingsVideoFrameRateMenu = "timingsVideoFrameRateMenu";
 	public const string TimingsAdjust = "timingsAdjust";
 	public const string TimingsShift = "timingsShift";
 	
