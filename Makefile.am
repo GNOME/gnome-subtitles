@@ -1,12 +1,12 @@
-SUBDIRS = $(GSTPB_DIR) . src data po help
+SUBDIRS = src data po help
 
 ACLOCAL_AMFLAGS = -I m4
 
 gstpbdir = $(pkglibdir)
-gstpb_SCRIPTS = build/GStreamerPlaybin.dll build/libgstreamer_playbin.so
+gstpb_SCRIPTS = build/libgstreamer_playbin.so
 
 $(gstpb_SCRIPTS):
-	cp -f $(GSTPB_DIR)/src/GStreamerPlaybin.dll build && cp -f $(GSTPB_DIR)/src/libgstreamer_playbin.so build
+	cp -f src/libgstreamer_playbin.so build
 
 EXTRA_DIST = 			\
 	autogen.sh			\
