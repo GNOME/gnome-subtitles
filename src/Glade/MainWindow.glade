@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sun Nov 16 00:28:03 2008 
+<!--Generated with glade3 3.4.5 on Sun Nov 23 16:19:23 2008 
 	Version: 3.0.1
 	Date: Thu Dec  7 16:42:10 2006
 	User: noup
@@ -233,8 +233,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Z" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="Y" modifiers="GDK_CONTROL_MASK" signal="activate"/>
+                        <accelerator key="Z" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -283,7 +283,7 @@
                         <property name="label" translatable="yes">_Format</property>
                         <property name="use_underline">True</property>
                         <child>
-                          <widget class="GtkMenu" id="formatMenu">
+                          <widget class="GtkMenu" id="editFormatMenu">
                             <child>
                               <widget class="GtkCheckMenuItem" id="editFormatBold">
                                 <property name="visible">True</property>
@@ -454,7 +454,7 @@
                         <property name="label" translatable="yes">Video _Subtitles</property>
                         <property name="use_underline">True</property>
                         <child>
-                          <widget class="GtkMenu" id="menu1">
+                          <widget class="GtkMenu" id="viewVideoSubtitlesMenu">
                             <property name="visible">True</property>
                             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                             <child>
@@ -512,8 +512,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F3" modifiers="" signal="activate"/>
+                        <accelerator key="G" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -523,8 +523,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F3" modifiers="GDK_SHIFT_MASK" signal="activate"/>
+                        <accelerator key="G" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -567,7 +567,7 @@
                         <property name="label" translatable="yes">_Input Frame Rate</property>
                         <property name="use_underline">True</property>
                         <child>
-                          <widget class="GtkMenu" id="inputFrameRateMenu">
+                          <widget class="GtkMenu" id="timingsInputFrameRateMenu">
                             <child>
                               <widget class="GtkRadioMenuItem" id="timingsInputFrameRate23">
                                 <property name="visible">True</property>
@@ -633,7 +633,7 @@
                         <property name="label" translatable="yes">_Video Frame Rate</property>
                         <property name="use_underline">True</property>
                         <child>
-                          <widget class="GtkMenu" id="videoFrameRateMenu">
+                          <widget class="GtkMenu" id="timingsVideoFrameRateMenu">
                             <child>
                               <widget class="GtkRadioMenuItem" id="timingsVideoFrameRate23">
                                 <property name="visible">True</property>
@@ -777,8 +777,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
-                        <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F5" modifiers="" signal="activate"/>
+                        <accelerator key="P" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -797,8 +797,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoRewind"/>
-                        <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F6" modifiers="" signal="activate"/>
+                        <accelerator key="K" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -809,8 +809,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnVideoForward"/>
-                        <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                         <accelerator key="F7" modifiers="" signal="activate"/>
+                        <accelerator key="L" modifiers="GDK_CONTROL_MASK" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -1009,6 +1009,9 @@
                 <property name="stock_id">gtk-new</property>
                 <signal name="clicked" handler="OnFileNew"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="openToolButton">
@@ -1017,6 +1020,9 @@
                 <property name="stock_id">gtk-open</property>
                 <signal name="clicked" handler="OnFileOpen"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="saveToolButton">
@@ -1026,6 +1032,9 @@
                 <property name="stock_id">gtk-save</property>
                 <signal name="clicked" handler="OnFileSave"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator1">
@@ -1039,6 +1048,9 @@
                 <property name="stock_id">gtk-undo</property>
                 <signal name="clicked" handler="OnEditUndo"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="redoToolButton">
@@ -1047,6 +1059,9 @@
                 <property name="stock_id">gtk-redo</property>
                 <signal name="clicked" handler="OnEditRedo"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator2">
@@ -1060,6 +1075,9 @@
                 <property name="stock_id">gtk-cut</property>
                 <signal name="clicked" handler="OnEditCut"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="copyToolButton">
@@ -1068,6 +1086,9 @@
                 <property name="stock_id">gtk-copy</property>
                 <signal name="clicked" handler="OnEditCopy"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="pasteToolButton">
@@ -1076,6 +1097,9 @@
                 <property name="stock_id">gtk-paste</property>
                 <signal name="clicked" handler="OnEditPaste"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator3">
@@ -1090,6 +1114,9 @@
                 <property name="stock_id">gtk-add</property>
                 <signal name="clicked" handler="OnEditInsertSubtitleAfter"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToolButton" id="deleteSubtitlesToolButton">
@@ -1099,6 +1126,9 @@
                 <property name="stock_id">gtk-remove</property>
                 <signal name="clicked" handler="OnEditDeleteSubtitles"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkSeparatorToolItem" id="toolbarSeparator4">
@@ -1112,6 +1142,9 @@
                 <property name="stock_id">gtk-bold</property>
                 <signal name="toggled" handler="OnEditFormatBold"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToggleToolButton" id="italicToolButton">
@@ -1120,6 +1153,9 @@
                 <property name="stock_id">gtk-italic</property>
                 <signal name="toggled" handler="OnEditFormatItalic"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
             <child>
               <widget class="GtkToggleToolButton" id="underlineToolButton">
@@ -1128,6 +1164,9 @@
                 <property name="stock_id">gtk-underline</property>
                 <signal name="toggled" handler="OnEditFormatUnderline"/>
               </widget>
+              <packing>
+                <property name="homogeneous">True</property>
+              </packing>
             </child>
           </widget>
           <packing>
@@ -1488,31 +1527,39 @@
                         <property name="n_columns">2</property>
                         <property name="row_spacing">2</property>
                         <child>
-                          <widget class="GtkSpinButton" id="startSpinButton">
+                          <widget class="GtkLabel" id="startLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="adjustment">0 0 100 1 10 0</property>
-                            <property name="climb_rate">1</property>
-                            <property name="numeric">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
                           </widget>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkSpinButton" id="durationSpinButton">
+                          <widget class="GtkLabel" id="endLabel">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="adjustment">0 0 100 1 10 0</property>
-                            <property name="climb_rate">1</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
                           </widget>
                           <packing>
-                            <property name="left_attach">1</property>
-                            <property name="right_attach">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="durationLabel">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
+                          </widget>
+                          <packing>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
+                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
@@ -1532,39 +1579,31 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="durationLabel">
+                          <widget class="GtkSpinButton" id="durationSpinButton">
                             <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">0 0 100 1 10 0</property>
+                            <property name="climb_rate">1</property>
                           </widget>
                           <packing>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                             <property name="top_attach">2</property>
                             <property name="bottom_attach">3</property>
-                            <property name="x_options">GTK_FILL</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="GtkLabel" id="endLabel">
+                          <widget class="GtkSpinButton" id="startSpinButton">
                             <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
+                            <property name="can_focus">True</property>
+                            <property name="adjustment">0 0 100 1 10 0</property>
+                            <property name="climb_rate">1</property>
+                            <property name="numeric">True</property>
                           </widget>
                           <packing>
-                            <property name="top_attach">1</property>
-                            <property name="bottom_attach">2</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options"></property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="startLabel">
-                            <property name="visible">True</property>
-                            <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
-                          </widget>
-                          <packing>
-                            <property name="x_options">GTK_FILL</property>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                             <property name="y_options"></property>
                           </packing>
                         </child>
