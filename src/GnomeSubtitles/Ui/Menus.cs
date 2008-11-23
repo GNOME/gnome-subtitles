@@ -173,20 +173,24 @@ public class Menus {
 		SetMenuItemText(menuItemName, menuItemText);	
 	}
 	
-	public void RemoveFrameRateVideoTag (float frameRate) {
-		if (frameRate <= 0)
-			return;
-
-		string menuItemName = FrameRateToMenuItem(frameRate, "Video");
-		string menuItemText = GetMenuItemText(menuItemName);
-		
-		int lastSpaceIndex = menuItemText.LastIndexOf(' ');
-		if (lastSpaceIndex < 0)
-			return;
-		
-		string frameRateText = menuItemText.Substring(0, lastSpaceIndex);
-		SetMenuItemText(menuItemName, frameRateText);
+	public void RemoveFrameRateVideoTag () {
+		Menu menu = Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu;
+		foreach (Widget child in menu.Children) {
+			if (!(child is MenuItem))
+				continue;
+			
+			MenuItem menuItem = child as MenuItem;
+			string text = GetMenuItemText(menuItem);
+			string videoTagSuffix = GetVideoTagSuffix();
+			
+			int tagIndex = text.LastIndexOf(videoTagSuffix);
+			if (tagIndex > 0) {
+				text = text.Substring(0, tagIndex);
+				SetMenuItemText(menuItem, text);
+			}
+		}
 	}
+
 	
 	/* Static members */
 	
@@ -285,7 +289,7 @@ public class Menus {
 			SetSensitivity(WidgetNames.FileTranslationNew, true);
 			SetSensitivity(WidgetNames.FileTranslationOpen, true);
 			/* Edit Menu */
-			SetMenuSensitivity(WidgetNames.EditInsertSubtitle, true);
+			SetMenuSensitivity(WidgetNames.EditInsertSubtitleMenu, true);
 			SetSensitivity(WidgetNames.EditDeleteSubtitles, true);
 			/* View Menu */
 			SetSensitivity(WidgetNames.ViewTimes, true);
@@ -344,12 +348,12 @@ public class Menus {
 	
 	private void SetFrameRateMenus () {
 		if (Base.TimingMode == TimingMode.Frames) {
-			SetMenuSensitivity(WidgetNames.TimingsInputFrameRate, true);
-			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRate, true);
+			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
+			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
 		}
 		else {
-			SetMenuSensitivity(WidgetNames.TimingsInputFrameRate, false);
-			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRate, true);
+			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, false);
+			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
 		}
 		
 		UpdateActiveInputFrameRateMenuItem();
@@ -450,9 +454,8 @@ public class Menus {
 			widget.Sensitive = isSensitive;
 	}
 	
-	private void SetMenuSensitivity (string menuItemName, bool sensitivity) {
-		MenuItem menuItem = Base.GetWidget(menuItemName) as MenuItem;
-		Menu menu = menuItem.Submenu as Menu;
+	private void SetMenuSensitivity (string menuName, bool sensitivity) {
+		Menu menu = Base.GetWidget(menuName) as Menu;
 		foreach (Widget widget in menu)
 			widget.Sensitive = sensitivity;	
 	}
@@ -499,14 +502,26 @@ public class Menus {
 	
 	private string GetMenuItemText (string menuItemName) {
 		MenuItem menuItem = Base.GetWidget(menuItemName) as MenuItem;
+		return GetMenuItemText(menuItem);
+	}
+	
+	private string GetMenuItemText (MenuItem menuItem) {
 		Label label = menuItem.Child as Label;
 		return label.Text;
 	}
 	
 	private void SetMenuItemText (string menuItemName, string text) {
 		MenuItem menuItem = Base.GetWidget(menuItemName) as MenuItem;
+		SetMenuItemText(menuItem, text);
+	}
+	
+	private void SetMenuItemText (MenuItem menuItem, string text) {
 		Label label = menuItem.Child as Label;
 		label.Text = text;	
+	}
+	
+	private string GetVideoTagSuffix () {
+		return " (" + videoTagText + ")";
 	}
 	
 	private void SetToolbarHomogeneity () {
