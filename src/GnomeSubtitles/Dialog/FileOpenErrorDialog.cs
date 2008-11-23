@@ -47,20 +47,12 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 		actionButton.Image = new Image(Stock.Open, IconSize.Button);
 		dialog.AddButton(Stock.Ok, ResponseType.Ok);
 	}
-
-
-	/* Abstract methods */
 	
-	protected abstract string SecondaryTextFromException (Exception exception);
-
-	
-	/* Private methods */
-	
-	private string GetPrimaryText (string filename) {
+	protected virtual string GetPrimaryText (string filename) {
 		return primaryTextStart + " " + filename + ".";
 	}
 	
-	private string GetSecondaryText (Exception exception) {
+	protected virtual string GetSecondaryText (Exception exception) {
 		string text = SecondaryTextFromException(exception);
 		if (text != String.Empty)
 			return text;
@@ -69,6 +61,11 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 		else
 			return GetGeneralExceptionErrorMessage(exception);
 	}
+
+
+	/* Abstract methods */
+	
+	protected abstract string SecondaryTextFromException (Exception exception);
 
 }
 

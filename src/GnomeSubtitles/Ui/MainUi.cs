@@ -366,19 +366,9 @@ public class MainUi {
     private void OpenVideo (string videoUriString) {
     	Menus.SetViewVideoActivity(true);
     	Uri videoUri = null;
-		try {
-			videoUri = new Uri(videoUriString);
-			Video.Open(videoUri);
-			UpdateFromOpenVideo();
-		}
-		catch (Exception exception) {
-			Video.Close();
-			VideoFileOpenErrorDialog errorDialog = new VideoFileOpenErrorDialog(videoUri, exception);
-			errorDialog.Show();
-			bool toOpenAgain = errorDialog.WaitForResponse();
-	    	if (toOpenAgain)
-	    		OpenVideo();
-		}
+
+		videoUri = new Uri(videoUriString);
+		Video.Open(videoUri);
     }
     
     private void Save (FileProperties fileProperties) {

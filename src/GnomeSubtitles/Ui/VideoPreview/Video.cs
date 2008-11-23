@@ -20,6 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
 using Gtk;
+using GStreamer;
 using SubLib.Core;
 using SubLib.Core.Domain;
 using SubLib.Core.Timing;
@@ -46,32 +47,13 @@ public class Video {
 	public Video () {
 		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
 		
-		/* Create the video Frame */
-		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
-		frame.Shadow = ShadowType.None;
-		EventBox videoFrameEventBox = new EventBox();
-		videoFrameEventBox.Add(frame);
-		videoFrameEventBox.ModifyBg(StateType.Normal, videoFrameEventBox.Style.Black);
-
-		/* Attach the video frame */
-		Table videoImageTable = Base.GetWidget("videoImageTable") as Table;
-		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
-		videoImageTable.ShowAll();
-		
-		/* Set player */
-		player = new Player();
-		player.OnEndReached = OnPlayerEndReached;
-		player.OnErrorCaught = OnPlayerErrorCaught;
+		InitializeVideoFrame();
+		InitializePlayer();
 		
 		position = new VideoPosition(player);
 		subtitle = new VideoSubtitle(position);
-	
-		LoadVideoWidget(player.Widget);
-		
-		/* Set the custom icons */
+
 		SetCustomIcons();
-		
-		/* Connect signals */
 		ConnectPlayPauseButtonSignals();
 	}
 	
@@ -109,24 +91,15 @@ public class Video {
 		Close();
 
 		player.Open(videoUri);
-
-		SetControlsSensitivity(true);
-		position.Enable();
-		frame.Ratio = player.AspectRatio;
-		
-		Core.Base.Ui.Menus.AddFrameRateVideoTag(player.FrameRate);
-		
-		isLoaded = true;
 	}
 	
 	public void Close () {
 		if (!isLoaded)
 			return;
 	
+		System.Console.WriteLine("Closing...");
 		isLoaded = false;
 
-		float oldFrameRate = player.FrameRate; //Need to store this before closing the player
-	
 		player.Close();
 		subtitle.Close();
 		position.Disable();
@@ -139,7 +112,7 @@ public class Video {
 		SilentDisablePlayPauseButton();		
 		SetControlsSensitivity(false);
 
-		Core.Base.Ui.Menus.RemoveFrameRateVideoTag(oldFrameRate);
+		Core.Base.Ui.Menus.RemoveFrameRateVideoTag();
 	}
 
 	public void UpdateFromTimingMode (TimingMode newMode) {
@@ -204,12 +177,6 @@ public class Video {
 		player.Pause();
 	}
 
-	private void LoadVideoWidget (Widget widget) {
-		frame.Child = widget;
-		widget.Realize();
-		widget.Show();
-	}
-
 	private void SetCustomIcons () {
 		/* Set the icon for the SetSubtitleStart button */
 		Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
@@ -220,6 +187,31 @@ public class Video {
 		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
 		image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
 		image.FromPixbuf = pixbuf;
+	}
+	
+	private void InitializeVideoFrame () {
+		/* Create frame */
+		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
+		frame.Shadow = ShadowType.None;
+		
+		/* Create event box */
+		EventBox videoFrameEventBox = new EventBox();
+		videoFrameEventBox.Add(frame);
+		videoFrameEventBox.ModifyBg(StateType.Normal, videoFrameEventBox.Style.Black);
+	
+		/* Attach event box */
+		Table videoImageTable = Base.GetWidget("videoImageTable") as Table;
+		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
+		videoImageTable.ShowAll();
+	}
+	
+	private void InitializePlayer () {
+		player = new Player(frame);
+		
+		player.FoundVideoInfo += OnPlayerFoundVideoInfo;
+		player.StateChanged += OnPlayerStateChanged;
+		player.EndOfStream += OnPlayerEndOfStream;
+		player.Error += OnPlayerError;
 	}
 
 	private void SetControlsSensitivity (bool sensitivity) {
@@ -264,16 +256,30 @@ public class Video {
 			Pause();
 	}
 	
-	private void OnPlayerEndReached (object o, EventArgs args) {
+	private void OnPlayerFoundVideoInfo (VideoInfoEventArgs args) {
+		Core.Base.Ui.Menus.AddFrameRateVideoTag(player.FrameRate);
+	}
+	
+	private void OnPlayerStateChanged (StateEventArgs args) {
+		if (args.State == MediaStatus.Loaded) {
+			SetControlsSensitivity(true);
+			position.Enable();
+			isLoaded = true;
+			Base.Ui.UpdateFromOpenVideo();
+		}
+	}
+	
+	private void OnPlayerEndOfStream () {
 		ToggleButton playPauseButton = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		playPauseButton.Active = false;
 	}
 	
-	private void OnPlayerErrorCaught (string message) {
-		Console.Error.WriteLine("Caught player error: " + message);
+	private void OnPlayerError (Uri videoUri, Exception e) {
 		Close();
-		VideoErrorDialog dialog = new VideoErrorDialog(message);
-		dialog.WaitForResponse();
+		VideoErrorDialog dialog = new VideoErrorDialog(videoUri, e);
+		bool toOpenAnother = dialog.WaitForResponse();
+		if (toOpenAnother)
+			Base.Ui.OpenVideo();
 	}
 
 }

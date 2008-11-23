@@ -18,6 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
+using GStreamer;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core;
@@ -56,7 +57,8 @@ public class VideoPosition {
 		lengthValueLabel = Base.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
 
 		this.player = player;
-		player.OnPositionChanged = OnPlayerPositionChanged;
+		player.PositionChanged += OnPlayerPositionChanged;
+		player.FoundDuration += OnPlayerFoundDuration;
 	}
 
 	/* Public properties */
@@ -74,12 +76,12 @@ public class VideoPosition {
 		get { return Convert.ToInt32(SyncUtil.TimeToFrames(position, player.FrameRate)); }
 	}
 	
-	public TimeSpan Length {
-		get { return player.Length; }
+	public TimeSpan Duration {
+		get { return player.Duration; }
 	}
 	
-	public int LengthInFrames {
-		get { return Convert.ToInt32(SyncUtil.TimeToFrames(player.Length, player.FrameRate)); }
+	public int DurationInFrames {
+		get { return Convert.ToInt32(SyncUtil.TimeToFrames(player.Duration, player.FrameRate)); }
 	}
 	
 	/* Public methods */
@@ -95,17 +97,15 @@ public class VideoPosition {
 		slider.Sensitive = false;	
 	}
 	
+	//TODO delete
 	public void Enable () {
-		SetLength(player.Length);
-		// TODO DELETE SetSliderLength(TimeSpan.FromMinutes(5)); //Setting the length to a somewhat random number, because we don't know the video length yet TODO
-		slider.Sensitive = true;
-		ConnectSliderSignals();
+		
 	}
 	
 	public void ToggleTimingMode (TimingMode newMode) {
 		UpdatePositionLabel(newMode);
 		UpdatePositionValueLabel(position);
-		TimeSpan length = (player.IsLoaded ? player.Length : TimeSpan.Zero);
+		TimeSpan length = player.Duration;
 		UpdateLengthLabel(newMode, length);
 	}
 
@@ -129,6 +129,12 @@ public class VideoPosition {
 
 		UpdatePositionValueLabel(newPosition);
 		EmitVideoPositionChanged(newPosition);
+	}
+	
+	private void OnPlayerFoundDuration (TimeSpan duration) {
+		SetLength(duration);
+		slider.Sensitive = true;
+		ConnectSliderSignals();
 	}
 	
 	private bool UpdatePlayerPosition () {

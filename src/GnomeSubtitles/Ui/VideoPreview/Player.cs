@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.VideoPreview.Exception;
+using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using GStreamer;
 using Gtk;
 using System;
@@ -25,98 +25,84 @@ using System;
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 /* Delegates */
-public delegate void PlayerErrorCaughtFunc (string message); //Represents a function that handles a caught error
+public delegate void PlayerErrorEventHandler (Uri videoUri, Exception e);
+public delegate void VideoDurationEventHandler (TimeSpan duration);
 
 public class Player {
+	private AspectFrame frame = null;
 	private Socket socket = null;
 	private Playbin playbin = null;
 	private PlayerPositionWatcher position = null;
-	private bool playbinLoadError= false; //used to indicate whether an error has occured while loading the playbin
+	private bool hasFoundDuration = false;
+	private Uri videoUri = null;
 
-	/* Delegate functions */
-	private EventHandler EndReached;
-	private PlayerErrorCaughtFunc ErrorCaught;
+	public Player (AspectFrame aspectFrame) {
+		this.frame = aspectFrame;
 
-	public Player () {
-		CreateSocket();
+		InitializeSocket();
+		InitializePositionWatcher();
+		InitializePlaybin();
+	}
+	
+	private void InitializePlaybin () {
+		playbin = new Playbin();
+		
+		if (!playbin.Initiate(socket.Id))
+			throw new PlayerCouldNotInitiateEngineException();
+		
+		playbin.Error += OnPlaybinError;
+		playbin.EndOfStream += OnPlaybinEndOfStream;
+		playbin.StateChanged += OnPlaybinStateChanged;
+		playbin.FoundVideoInfo += OnPlaybinFoundVideoInfo;
+		playbin.FoundTag += OnPlaybinFoundTag;
+	}
+	
+	private void InitializePositionWatcher () {
 		position = new PlayerPositionWatcher(GetPosition);
+		position.Changed += OnPositionWatcherChanged;		
 	}
+	
+	/* Events */
+	public event PlayerErrorEventHandler Error;
+	public event EndOfStreamEventHandler EndOfStream;
+	public event StateEventHandler StateChanged;
+	public event PositionChangedEventHandler PositionChanged;
+	public event VideoInfoEventHandler FoundVideoInfo;
+	public event VideoDurationEventHandler FoundDuration;
+	
 
-	public Socket Widget {
-		get { return socket; }
-	}
-	
-	public bool IsLoaded {
-		get { return playbin != null; }
-	}
-	
-	public void Open (Uri videoUri) {
-		Playbin newPlaybin = new Playbin();
-	
-		/* Initialize the playbin */
-		if (!newPlaybin.Initiate(socket.Id))
-			throw new PlayerCouldNotOpenVideoException();
-		
-		/* Handle errors during playbin loading */
-		newPlaybin.EventChanged += OnPlaybinLoadEventChanged;
-		
-		/* Load the playbin */
-		newPlaybin.Load(videoUri.AbsoluteUri);
-		
-		/* Wait for the playbin to be ready (have video information) */
-		bool isReady = WaitForPlaybinReady(newPlaybin);
-		
-		newPlaybin.EventChanged -= OnPlaybinLoadEventChanged;
-		playbinLoadError = false;
-		if (!isReady) {
-			/* An error has occurred, returning */
-			throw new PlayerCouldNotOpenVideoException();
-		}
-		
-		this.playbin = newPlaybin;
+	/* Properties */
 
-		/* Load was successful, connecting the normal handlers */
-		this.playbin.StateChanged += OnStateChanged;
-		this.playbin.EventChanged += OnEventChanged;
-		
-		/* Start position watcher */
-		position.Start();
-	}
-	
-	public void Close () {
-		if (playbin != null) {
-			playbin.StateChanged -= OnStateChanged;
-			playbin.EventChanged -= OnEventChanged;
-			DestroyPlaybin();
-			
-			position.Stop();
-		}
-	}
-	
-	public PlayerTimeChangedFunc OnPositionChanged {
-		set { position.OnPlayerPositionChanged = value; }
-	}
-	
-	public PlayerErrorCaughtFunc OnErrorCaught {
-		set { this.ErrorCaught = value; }
-	}
-	
-	public EventHandler OnEndReached {
-		set { this.EndReached = value; }
+	public TimeSpan Duration {
+		get { return playbin.Duration; }
 	}
 	
 	public float AspectRatio {
 		get { return playbin.VideoInfo.AspectRatio; }
 	}
 	
-	public TimeSpan Length {
-		get { return playbin.Duration; }
-	}
-	
 	public float FrameRate {
 		get { return playbin.VideoInfo.FrameRate; }
 	}
+
+
+	/* Public methods */
 	
+	public void Open (Uri videoUri) {
+		this.videoUri = videoUri;
+	
+		/* Load the playbin */
+		playbin.Load(videoUri.AbsoluteUri);
+	}
+	
+	public void Close () {
+		position.Stop();
+		playbin.Unload();
+
+		videoUri = null;
+		hasFoundDuration = false;
+	}
+
 	public void Play () {
 		playbin.Play();
 	}
@@ -137,106 +123,85 @@ public class Player {
 		playbin.Seek(newPosition);
 	}
 	
-	// newPosition in milliseconds
 	public void Seek (double newPosition) {
-		playbin.Seek(newPosition);
+		playbin.Seek(newPosition); // newPosition in milliseconds
 	}
+	
+	public void Dispose () {
+		Close();
+		playbin.Dispose();
+	}
+
 
 	/* Private members */
 	
-	private void CreateSocket () {
+	private void InitializeSocket () {
 		socket = new Socket();
-		socket.ModifyBg(StateType.Normal, socket.Style.Black);	
-	}
+		socket.ModifyBg(StateType.Normal, socket.Style.Black);
 
-	private void DestroyPlaybin () {
-		playbinLoadError = false;
-		playbin.Dispose();
-		playbin = null;
-	}
-	
-	/// <summary>Waits for the playbin to be ready.</summary>
-	/// <param name="newPlaybin">The playbin to wait for.</param>
-	/// <remarks>The playbin is ready when it is able to access both the duration and video information.</remarks>
-	/// <returns>Whether the playbin is ready.</returns>
-	private bool WaitForPlaybinReady (Playbin newPlaybin) {
-		bool gotVideoInfo = false;
-		bool gotDuration = false;
+		frame.Child = socket;
 
-		DateTime endTime = DateTime.Now.AddSeconds(5); //Total time to wait for either successful load or error
-		while (DateTime.Now < endTime) {
-			if (playbinLoadError)
-				return false;
-		
-			/* Check for duration if it hasn't been accessed yet */
-			if (!gotDuration) {
-				TimeSpan duration = newPlaybin.Duration;
-				if (duration == TimeSpan.Zero) {
-					GLib.MainContext.Iteration(); //Because an error event may be triggered and we have to catch it
-					System.Threading.Thread.Sleep(15); //milliseconds
-					continue;
-				}
-				else {
-					gotDuration = true;
-					Console.Error.WriteLine("Got duration: " + duration);
-				}
-			}
-		
-			/* Check for video information if it hasn't been accessed yet */
-			if (!gotVideoInfo) {
-				EngineVideoInfo info = newPlaybin.VideoInfo;
-				if (info == null) {
-					GLib.MainContext.Iteration(); //Because an error event may be triggered and we have to catch it
-					System.Threading.Thread.Sleep(15); //milliseconds
-					continue;
-				}
-				else {
-					gotVideoInfo = true;
-					
-					Console.Error.WriteLine("Got video info: " + info + " (took " + (DateTime.Now - endTime.AddSeconds(-5)).TotalSeconds + " seconds)");
-				}
-			}
-
-			/* Was able to access all info, returning */
-			return true;
-		}
-		
-		/* Was not able to access any info */
-		return false;
+		socket.Realize();
+		socket.Show();
 	}
 	
 	/// <summary>Gets the current player position.</summary>
 	private TimeSpan GetPosition () {
-		if (playbin == null)
-			return TimeSpan.Zero;
-		else
-			return playbin.CurrentPosition;
+		return playbin.CurrentPosition;
 	}
 
 	
 	/* Event members */
+	
+	private void OnPlaybinError (ErrorEventArgs args) {
+		if (Error != null)
+			Error(videoUri, new PlayerEngineException(args.Error, args.Debug));
+	}
+	
+	private void OnPlaybinEndOfStream () {
+		position.Stop();
+		if (EndOfStream != null)
+			EndOfStream();
+	}
+	
+	private void OnPlaybinStateChanged (StateEventArgs args) {
+		switch (args.State) {
+			case MediaStatus.Playing:
+				position.Start();
+				break;
+			case MediaStatus.Paused:
+				position.Start();
+				break;
+			default:
+				position.Stop();
+				break;
+		}
 
-	private void OnStateChanged (object o, EngineStateArgs args) {
-		if ((args.State == MediaStatus.Playing) || (args.State == MediaStatus.Paused))
-			position.Start();
-		else
-			position.Stop();
+		if (StateChanged != null)
+			StateChanged(args);
 	}
 	
-	private void OnEventChanged (object o, EngineEventArgs args) {
-		if (args.Event == MediaEvents.EndOfStream) {
-			EndReached(this, EventArgs.Empty);		
-		}
-		else if (args.Event == MediaEvents.Error) {
-			ErrorCaught(args.Message);
-		}
+	private void OnPositionWatcherChanged (TimeSpan time) {
+		if (PositionChanged != null)
+			PositionChanged(time);
+	}
+
+	private void OnPlaybinFoundVideoInfo (VideoInfoEventArgs args) {
+		Console.Error.WriteLine("Got video info: " + args.VideoInfo.ToString());
+		frame.Ratio = args.VideoInfo.AspectRatio;
+
+		if (FoundVideoInfo != null)
+			FoundVideoInfo(args);
 	}
 	
-	private void OnPlaybinLoadEventChanged (object o, EngineEventArgs args) {
-		if (args.Event == MediaEvents.Error) {
-			Console.Error.WriteLine("Caught an error while loading the playbin: " + args.Message);
-			playbinLoadError = true;
-		}	
+	private void OnPlaybinFoundTag (TagEventArgs args) {
+		if ((!hasFoundDuration) && (FoundDuration != null) && (playbin.Duration != TimeSpan.Zero)) {
+			TimeSpan duration = playbin.Duration;
+			Console.Error.WriteLine("Got video duration: " + duration);
+			
+			hasFoundDuration = true;
+			FoundDuration(duration);
+		}
 	}
 	
 }

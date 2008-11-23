@@ -52,12 +52,12 @@ public class VideoSeekToDialog : GladeDialog {
 		
 		if (timingMode == TimingMode.Times) {
 			Core.Util.SetSpinButtonTimingMode(spinButton, Base.TimingMode);
-			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.Length, false);
+			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.Duration, false);
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentTime.TotalMilliseconds);
 		}
 		else {
 			Core.Util.SetSpinButtonTimingMode(spinButton, Base.TimingMode);
-			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.LengthInFrames, false);
+			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.DurationInFrames, false);
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentFrames);
 			
 			positionLabel.TextWithMnemonic = Catalog.GetString("Seek to _frame:");

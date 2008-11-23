@@ -25,24 +25,23 @@ namespace GnomeSubtitles.Ui.VideoPreview {
 
 /* Delegates */
 public delegate TimeSpan PlayerGetTimeFunc (); //Represents a function that gets a time from the player
-public delegate void PlayerTimeChangedFunc (TimeSpan position); //Represents a function that handles changes in the position
+public delegate void PositionChangedEventHandler (TimeSpan position); //Represents a function that handles changes in the position
 
 public class PlayerPositionWatcher {
 	private uint timeoutId = 0;
 	
+	/* Events */
+	public event PositionChangedEventHandler Changed;
+	
 	/* Delegate functions */
 	private PlayerGetTimeFunc PlayerGetPosition;
-	private PlayerTimeChangedFunc PlayerPositionChanged;
+
 	
 	/* Constants */
 	private const int timeout = 100; //milliseconds
 
 	public PlayerPositionWatcher (PlayerGetTimeFunc playerGetPositionFunc) {
 		PlayerGetPosition = playerGetPositionFunc;
-	}
-
-	public PlayerTimeChangedFunc OnPlayerPositionChanged {
-		set { PlayerPositionChanged = value; }
 	}
 
 	
@@ -78,8 +77,8 @@ public class PlayerPositionWatcher {
 	}
 		
 	private void EmitPositionChanged (TimeSpan position) {
-		if (PlayerPositionChanged != null)
-			PlayerPositionChanged(position);
+		if (Changed != null)
+			Changed(position);
 	}
 
 }

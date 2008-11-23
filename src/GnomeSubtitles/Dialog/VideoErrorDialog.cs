@@ -17,17 +17,32 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gtk;
+using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using Mono.Unix;
 using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class VideoErrorDialog : BasicErrorDialog {
-	private static string primary = Catalog.GetString("Could not continue the video playback");
-	private static string secondaryInitial = Catalog.GetString("The following error has occurred: ");
+public class VideoErrorDialog : FileOpenErrorDialog {
+
+	/* Strings */
+	private string primaryTextStart = Catalog.GetString("Could not play the file");
+
+	public VideoErrorDialog (Uri uri, Exception exception) : base(uri, exception) {
+		Console.Error.WriteLine("Video error: " + exception.ToString());
+	}
+
+	/* Overriden members */
 	
-	public VideoErrorDialog (string secondary) : base(primary, secondaryInitial + secondary) {
+	protected override string GetPrimaryText (string filename) {
+		return primaryTextStart + " " + filename + ".";
+	}
+	
+	protected override string SecondaryTextFromException (Exception exception) {
+		if (exception is PlayerEngineException)
+			return (exception as PlayerEngineException).Error;
+		else
+			return String.Empty;
 	}
 
 }
