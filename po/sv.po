@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-22 17:20+0200\n"
-"PO-Revision-Date: 2008-10-22 17:21+0100\n"
+"POT-Creation-Date: 2008-11-27 21:11+0100\n"
+"PO-Revision-Date: 2008-11-27 21:11+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -588,9 +588,42 @@ msgstr "_Markerade undertexter"
 msgid "_Shift"
 msgstr "_Förskjut"
 
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+msgid "Add from video"
+msgstr "Lägg till från video"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+msgid "Add sync points by selecting a subtitle and setting the video to its correct position."
+msgstr "Lägg till synkroniseringspuntker genom att välja en undertext och ställa in videon till dess korrekta position."
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+#: ../src/Glade/VideoSeekToDialog.glade.h:4
+msgid "gtk-cancel"
+msgstr "Avbryt"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "gtk-ok"
+msgstr "OK"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+msgid "gtk-remove"
+msgstr "Ta bort"
+
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Öppna video"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:1
+msgid "Seek To"
+msgstr "Spola till"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:2
+msgid "Seek to _time:"
+msgstr "Spola _till tid:"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:3
+msgid "_Seek"
+msgstr "_Spola"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -882,7 +915,7 @@ msgstr "Kunde inte öppna filen"
 msgid "Open another file"
 msgstr "Öppna en annan fil"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:60
 msgid "The file path appears to be invalid."
 msgstr "Filsökvägen verkar vara ogiltig."
 
@@ -1024,7 +1057,7 @@ msgid "Start Time:"
 msgstr "Starttid:"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:76
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:186
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:192
 msgid "Time"
 msgstr "Tid"
 
@@ -1032,21 +1065,18 @@ msgstr "Tid"
 msgid "Frames"
 msgstr "Bildrutor"
 
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:27
-msgid "Could not continue the video playback"
-msgstr "Kunde inte fortsätta videouppspelningen"
-
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:28
-msgid "The following error has occurred: "
-msgstr "Följande fel har inträffat: "
-
-#: ../src/GnomeSubtitles/Dialog/VideoFileOpenErrorDialog.cs:35
-msgid "Please check that the video file is supported."
-msgstr "Försäkra dig om att videofilen stöds."
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:29
+msgid "Could not play the file"
+msgstr "Kunde inte spela upp filen"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Alla videofiler"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:63
+msgid "Seek to _frame:"
+msgstr "Spola till _bildruta:"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
@@ -1123,47 +1153,16 @@ msgstr "Längd"
 msgid "Translation"
 msgstr "Översättning"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:186
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:192
 msgid "Frame"
 msgstr "Bildruta"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "Add from video"
-msgstr "Lägg till från video"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "Add sync points by selecting a subtitle and setting the video to its correct position."
-msgstr "Lägg till synkroniseringspuntker genom att välja en undertext och ställa in videon till dess korrekta position."
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-#: ../src/Glade/VideoSeekToDialog.glade.h:4
-msgid "gtk-cancel"
-msgstr "Avbryt"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "gtk-ok"
-msgstr "OK"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "gtk-remove"
-msgstr "Ta bort"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:1
-msgid "Seek To"
-msgstr "Spola till"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek to _time:"
-msgstr "Spola _till tid:"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:3
-msgid "_Seek"
-msgstr "_Spola"
-
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:63
-msgid "Seek to _frame:"
-msgstr "Spola till _bildruta:"
-
+#~ msgid "Could not continue the video playback"
+#~ msgstr "Kunde inte fortsätta videouppspelningen"
+#~ msgid "The following error has occurred: "
+#~ msgstr "Följande fel har inträffat: "
+#~ msgid "Please check that the video file is supported."
+#~ msgstr "Försäkra dig om att videofilen stöds."
 #~ msgid ""
 #~ "An Error has occured.\n"
 #~ "\n"
