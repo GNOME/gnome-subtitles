@@ -19,7 +19,9 @@
 
 using Gtk;
 using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.Threading;
 using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Core {
@@ -114,14 +116,16 @@ public class Util {
 			return false;
 
 		try {
-			Gnome.Url.Show(url);
+			Process process = Process.Start(url);
+			Thread.Sleep(250);
+			return (!process.HasExited);
 		}
-		catch (Exception) { //Exceptions for Url.Show are not documented in the gtk-sharp api
+		catch (Exception) {
 			return false;
 		}
-		
-		return true;
 	}
+	
+	
 	
 	public static bool OpenSendEmail (string email) {
 		return OpenUrl("mailto:" + email);

@@ -65,7 +65,6 @@ public class BugReporter {
 		return "Gnome Subtitles version: " + Base.ExecutionContext.Version + "\n"
 			+ "SubLib version: " + Base.ExecutionContext.SubLibVersion + "\n"
 			+ "GtkSharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
-			+ "GnomeSharp version: " + Base.ExecutionContext.GnomeSharpVersion + "\n"
 			+ "GladeSharp version: " + Base.ExecutionContext.GladeSharpVersion + "\n"
 			+ "GConfSharp version: " + Base.ExecutionContext.GConfSharpVersion + "\n\n"
 			+ "Stack trace:" + "\n"

@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gnome;
+using Gtk;
 using System;
 using System.IO;
 using System.Reflection;
@@ -25,8 +25,8 @@ using System.Reflection;
 namespace GnomeSubtitles.Execution {
 
 public class ExecutionContext {
-	private Program program = null;
 	private bool initialized = false;
+	private bool running = false;
 
 	#region Constant strings
 	private const string applicationName = "Gnome Subtitles";
@@ -69,10 +69,6 @@ public class ExecutionContext {
 	public string GtkSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gtk-sharp").GetName().Version.ToString()); }
 	}
-	
-	public string GnomeSharpVersion {
-		get { return RemoveTrailingZeros(Assembly.Load("gnome-sharp").GetName().Version.ToString()); }
-	}
 
 	public string GladeSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("glade-sharp").GetName().Version.ToString()); }
@@ -87,33 +83,6 @@ public class ExecutionContext {
 		set { args = value; }
 	}
 	
-	public string SystemShareDir {
-		get { 
-			string path = program.LocateFile(FileDomain.Datadir, String.Empty, true, null);
-			if ((path != null) && (path != String.Empty))
-				return path;
-			else
-				return program.GnomeDatadir;
-		}
-	}
-	
-	public string SystemShareLocaleDir {
-		get { return Path.Combine(SystemShareDir, "locale"); }
-	}
-	
-	public string SystemHelpDir {
-		get {
-			string path = program.LocateFile(FileDomain.Help, applicationID, true, null);
-			if ((path != null) && (path != String.Empty))
-				return path;
-			else {
-				return Path.Combine(SystemShareDir,
-							Path.Combine("gnome",
-							Path.Combine("help", applicationID)));
-			}
-		}
-	}
-	
 	public string TranslationDomain {
 		get { return applicationID; }
 	}
@@ -122,17 +91,24 @@ public class ExecutionContext {
 	
 	#region Public methods
 	
-	public void Init () {
-		program = new Program(applicationID, Version, Gnome.Modules.UI, args);
-		initialized = true;
+	public void InitApplication () {
+		if (!initialized) {	
+			initialized = true;
+			Application.Init();
+		}
 	}
 	
-	public void RunProgram () {
-		program.Run();
+	public void RunApplication () {
+		if (initialized && (!running)) {
+			running = true;
+			Application.Run();
+		}
 	}
 	
-	public void QuitProgram () {
-		program.Quit();
+	public void QuitApplication () {
+		initialized = false;
+		running = false;
+		Application.Quit();
 	}
 	
 	#endregion

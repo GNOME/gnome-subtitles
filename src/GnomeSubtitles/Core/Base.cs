@@ -115,18 +115,18 @@ public class Base {
 			throw new Exception("The Base environment was already initialized.");
 			
 		ui.Start();
-		executionContext.RunProgram();
+		executionContext.RunApplication();
 	}
 	
 	/// <summary>Quits the program.</summary>
 	public static void Quit () {
-		executionContext.QuitProgram();
+		executionContext.QuitApplication();
 	}
 	
 	public static void Kill () {
 		clipboards.WatchPrimaryChanges = false;
-    	executionContext.QuitProgram();
 		ui.Kill();
+		executionContext.QuitApplication();
 	}
 	
 	public static void CreateDocumentNew (string path) {
@@ -163,7 +163,7 @@ public class Base {
 			return false;
 
 		executionContext = newExecutionContext;
-		executionContext.Init();
+		executionContext.InitApplication();
 		
 		/* Initialize Command manager */
 		commandManager = new CommandManager();
@@ -180,7 +180,7 @@ public class Base {
 		/* Initialize the GUI */
 		ui = new MainUi(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
-		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.SystemShareLocaleDir);
+		Catalog.Init(ExecutionContext.TranslationDomain, ConfigureDefines.LocaleDir);
 
 		return true;
 	}

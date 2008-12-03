@@ -68,7 +68,7 @@ AC_SUBST(gstreamer_CFLAGS)
 AC_SUBST(gstreamer_LIBS)
 
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
-PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gnome-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
+PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
 
 dnl Check gtk-sharp version
@@ -98,5 +98,6 @@ data/gnome-subtitles.desktop
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
+src/GnomeSubtitles/Execution/ConfigureDefines.cs
 help/Makefile
 po/Makefile.in])
