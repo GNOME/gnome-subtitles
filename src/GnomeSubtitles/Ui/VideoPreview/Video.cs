@@ -263,7 +263,6 @@ public class Video {
 	private void OnPlayerStateChanged (StateEventArgs args) {
 		if (args.State == MediaStatus.Loaded) {
 			SetControlsSensitivity(true);
-			position.Enable();
 			isLoaded = true;
 			Base.Ui.UpdateFromOpenVideo();
 		}
