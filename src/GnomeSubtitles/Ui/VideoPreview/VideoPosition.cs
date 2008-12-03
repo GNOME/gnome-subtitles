@@ -97,11 +97,6 @@ public class VideoPosition {
 		slider.Sensitive = false;	
 	}
 	
-	//TODO delete
-	public void Enable () {
-		
-	}
-	
 	public void ToggleTimingMode (TimingMode newMode) {
 		UpdatePositionLabel(newMode);
 		UpdatePositionValueLabel(position);
