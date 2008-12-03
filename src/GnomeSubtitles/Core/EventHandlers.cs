@@ -20,7 +20,6 @@
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
 using GnomeSubtitles.Ui;
-using Gnome;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -294,12 +293,8 @@ public class EventHandlers {
 	/*	Help Menu */
 	
 	public void OnHelpContents (object o, EventArgs args) {
-		try {
-			const string filename = "gnome-subtitles.xml";
-			Gnome.Help.DisplayDesktopOnScreen(Gnome.Program.Get(), Base.ExecutionContext.SystemHelpDir, filename, null, Base.Ui.Window.Screen);
-		}
-		catch (Exception e) {
-			Console.Error.WriteLine(e);
+		const string arg = "ghelp:gnome-subtitles";
+		if ((!Util.OpenUrl("gnome-help " + arg)) && (!Util.OpenUrl("yelp " + arg))) {
 			BasicErrorDialog errorDialog = new BasicErrorDialog(Catalog.GetString("The Gnome Subtitles Manual could not be found."), Catalog.GetString("Please verify that your installation has been completed successfully."));
 			errorDialog.Show();
 		}
