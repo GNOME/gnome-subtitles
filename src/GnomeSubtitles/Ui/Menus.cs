@@ -28,8 +28,6 @@ using System.Globalization;
 namespace GnomeSubtitles.Ui {
 
 public class Menus {
-	#pragma warning disable 612 //TODO Tooltips has been deprecated
-	private Tooltips tooltips = new Tooltips(); //TODO Tooltips has been deprecated, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
 
 	/* Constant strings */
 	private string videoTagText = Catalog.GetString("Video");
@@ -38,7 +36,6 @@ public class Menus {
 
 	public Menus () {
 		SetToolbarHomogeneity(); //TODO needed until homogeneity definition in glade starts working
-		tooltips.Enable();
 	}
 	
 	public void BlankStartUp () {
@@ -557,12 +554,12 @@ public class Menus {
     		ClearTooltip(redoButton);
     }
     
-    private void SetTooltip (ToolButton toolButton, string text) {
-    	toolButton.SetTooltip(tooltips, text, null);
+    private void SetTooltip (Widget widget, string text) {
+    	widget.TooltipText = text;
     }
     
-    private void ClearTooltip (ToolButton toolButton) {
-    	SetTooltip(toolButton, null);
+    private void ClearTooltip (Widget widget) {
+    	SetTooltip(widget, null);
     }
 
 }
