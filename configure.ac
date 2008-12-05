@@ -59,8 +59,8 @@ fi
 
 dnl pkg-config
 MONO_REQUIRED_VERSION=1.1
-GTKSHARP_REQUIRED_VERSION=2.8
-GTK_REQUIRED_VERSION=2.8
+GTKSHARP_REQUIRED_VERSION=2.12
+GTK_REQUIRED_VERSION=2.12
 
 PKG_CHECK_MODULES(gstreamer, [gstreamer-0.10 >= 0.10])
 PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-0.10 >= 0.10])
