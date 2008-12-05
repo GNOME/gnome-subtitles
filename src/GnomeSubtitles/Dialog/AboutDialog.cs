@@ -55,9 +55,8 @@ public class AboutDialog : GladeDialog {
 		Core.Util.OpenSendEmail(email);
 	}
 	
-	#pragma warning disable 618 //TODO Name has been deprecated
 	private void SetInfo () {
-		dialog.Name = "Gnome Subtitles"; //TODO Deprecated property, need to change to ProgramName. Scheduled for substitution when gtk# 2.12 is available in all major distros. 
+		dialog.ProgramName = "Gnome Subtitles"; 
 		dialog.Comments += "\n\nUsing SubLib " + Base.ExecutionContext.SubLibVersion;
 		dialog.Version = Base.ExecutionContext.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
