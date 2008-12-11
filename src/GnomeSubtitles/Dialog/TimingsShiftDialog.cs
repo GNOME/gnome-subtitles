@@ -28,6 +28,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
+//TODO set spinButton limits according to selection type
 public class TimingsShiftDialog : GladeDialog {
 	private TimingMode timingMode = TimingMode.Frames;
 
