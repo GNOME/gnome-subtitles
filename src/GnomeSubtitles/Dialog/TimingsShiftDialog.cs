@@ -133,11 +133,11 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 	
 	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
+		if ((args.ResponseId == ResponseType.Ok) && (spinButton.Value != 0)) {
 			SelectionIntended selectionIntended = GetSelectionIntended();
 			
 			if (timingMode == TimingMode.Times) {
-				TimeSpan time = TimeSpan.Parse(spinButton.Text); //TODO use value that holds milliseconds
+				TimeSpan time = TimeSpan.FromMilliseconds(spinButton.Value);
 				Base.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
 			}
 			else {
