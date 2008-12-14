@@ -25,8 +25,7 @@ using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
-//TODO change name to SubtitleOverlay
-public class VideoSubtitle {
+public class SubtitleOverlay {
 	private Label label = null;
 	private SearchOperator searchOp = null;
 	
@@ -36,7 +35,7 @@ public class VideoSubtitle {
 	private TimeSpan subtitleEnd = TimeSpan.Zero;
 	private bool toShowText = true;
 	
-	public VideoSubtitle (VideoPosition position) {
+	public SubtitleOverlay (VideoPosition position) {
 		EventBox box = Base.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
 		box.ModifyBg(StateType.Normal, box.Style.Black);
 

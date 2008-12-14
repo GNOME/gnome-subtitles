@@ -35,7 +35,7 @@ public class Video {
 	
 	private Player player = null;
 	private VideoPosition position = null;
-	private VideoSubtitle subtitle = null;
+	private SubtitleOverlay subtitle = null;
 	
 	private bool isLoaded = false;
 	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
@@ -51,7 +51,7 @@ public class Video {
 		InitializePlayer();
 		
 		position = new VideoPosition(player);
-		subtitle = new VideoSubtitle(position);
+		subtitle = new SubtitleOverlay(position);
 
 		SetCustomIcons();
 		ConnectPlayPauseButtonSignals();
@@ -63,7 +63,7 @@ public class Video {
 		get { return position; }
 	}
 	
-	public VideoSubtitle Subtitle {
+	public SubtitleOverlay Subtitle {
 		get { return subtitle; }
 	}
 	
