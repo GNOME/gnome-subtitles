@@ -222,16 +222,25 @@ public class SubtitleView {
     }
 	
     private void CreateColumns() {
+    	/* Number column */
     	numberCol = CreateColumn(Catalog.GetString("No."), ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
-    		
+    	
+    	/* Start, end and duration columns */
     	int timeWidth = ColumnWidth("00:00:00.000");
     	startCol = CreateColumn(Catalog.GetString("From"), timeWidth, new CellRendererText(), RenderStartCell);
     	endCol = CreateColumn(Catalog.GetString("To"), timeWidth, new CellRendererText(), RenderEndCell);
     	durationCol = CreateColumn(Catalog.GetString("During"), timeWidth, new CellRendererText(), RenderDurationCell);
     	
+    	/* Text column */
     	int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
-    	textCol = CreateColumn(Catalog.GetString("Text"), textWidth, new CellRendererCenteredText(), RenderTextCell);
-    	translationCol = CreateColumn(Catalog.GetString("Translation"), textWidth, new CellRendererCenteredText(), RenderTranslationCell);
+    	CellRendererText textCellRenderer = new CellRendererText();
+    	textCellRenderer.Alignment = Pango.Alignment.Center;
+    	textCol = CreateColumn(Catalog.GetString("Text"), textWidth, textCellRenderer, RenderTextCell);
+    	
+    	/* Translation column */
+    	CellRendererText translationCellRenderer = new CellRendererText();
+    	translationCellRenderer.Alignment = Pango.Alignment.Center;
+    	translationCol = CreateColumn(Catalog.GetString("Translation"), textWidth, translationCellRenderer, RenderTranslationCell);
     	SetTranslationVisible(false);
 
     	tree.AppendColumn(numberCol);

@@ -24,9 +24,13 @@ namespace GnomeSubtitles.Ui.View {
 
 /// <summary>Provides a cell renderer that centers text with multiple lines.</summary>
 //TODO It looks like the Alignment property can now be used. It requires GTK# 2.10.
-public class CellRendererCenteredText : CellRendererText {
+public class CellRendererCenteredText2 : CellRendererText {
 
-	protected override void Render (Drawable window, Widget widget, Rectangle backgroundArea,
+	public CellRendererCenteredText2 () : base() {
+		//this.Alignment = Pango.Alignment.Center;	
+	}
+
+	/*protected override void Render (Drawable window, Widget widget, Rectangle backgroundArea,
 			Rectangle cellArea, Rectangle exposeArea, CellRendererState flags) {
 
 		int xOffset, yOffset, width, height;
@@ -57,7 +61,7 @@ public class CellRendererCenteredText : CellRendererText {
 		Gtk.Style.PaintLayout(widget.Style, window, state, true, cellArea, widget,
 			"cellrenderertext", cellArea.X + xOffset, cellArea.Y + yOffset, layout);
 			
-	}
+	}*/
 
 }
 
