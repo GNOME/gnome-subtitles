@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-11 23:11+0000\n"
-"PO-Revision-Date: 2008-10-29 22:45-0100\n"
+"POT-Creation-Date: 2008-12-28 17:34+0000\n"
+"PO-Revision-Date: 2008-12-15 20:13-0100\n"
 "Last-Translator: António Lima <amrlima@gmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -588,9 +588,46 @@ msgstr "Legendas _Seleccionadas"
 msgid "_Shift"
 msgstr "_Alterar"
 
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+msgid "Add from video"
+msgstr "Adicionar a partir de vídeo"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+msgid ""
+"Add sync points by selecting a subtitle and setting the video to its correct "
+"position."
+msgstr ""
+"Adicionar pontos de sincronização seleccionado uma legenda e definindo o "
+"vídeo para a sua posição correcta."
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+#: ../src/Glade/VideoSeekToDialog.glade.h:4
+msgid "gtk-cancel"
+msgstr "gtk-cancelar"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "gtk-ok"
+msgstr "gtk-ok"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+msgid "gtk-remove"
+msgstr "gtk-remover"
+
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Abrir Vídeo"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:1
+msgid "Seek To"
+msgstr "Avançar Para"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:2
+msgid "Seek to _time:"
+msgstr "Avançar para _tempo:"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:3
+msgid "_Seek"
+msgstr "_Avançar"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -629,12 +666,12 @@ msgid "Editing During"
 msgstr "A Editar Durante"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:125
-#: ../src/GnomeSubtitles/Ui/Menus.cs:96
+#: ../src/GnomeSubtitles/Ui/Menus.cs:93
 msgid "Undo"
 msgstr "Desfazer"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:134
-#: ../src/GnomeSubtitles/Ui/Menus.cs:106
+#: ../src/GnomeSubtitles/Ui/Menus.cs:103
 msgid "Redo"
 msgstr "Refazer"
 
@@ -827,11 +864,11 @@ msgstr "Vietnamita"
 msgid "Current Locale"
 msgstr "Configuração Regional Actual"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:303
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Não foi possível encontrar o Manual do Gnome Subtitles."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:303
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Certifique-se de que a instalação terminou com sucesso."
 
@@ -886,7 +923,7 @@ msgstr "Não foi possível abrir o ficheiro"
 msgid "Open another file"
 msgstr "Abrir outro ficheiro"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:60
 msgid "The file path appears to be invalid."
 msgstr "O caminho do ficheiro parece ser inválido."
 
@@ -1040,30 +1077,27 @@ msgstr "Não foi possível encontrar o ficheiro."
 msgid "Start Time:"
 msgstr "Tempo Inicial:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:76
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:186
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:77
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
 msgid "Time"
 msgstr "Tempo"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:76
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:77
 msgid "Frames"
 msgstr "Frames"
 
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:27
-msgid "Could not continue the video playback"
-msgstr "Não foi possível continuar a reprodução do vídeo"
-
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:28
-msgid "The following error has occurred: "
-msgstr "O correu o seguinte erro: "
-
-#: ../src/GnomeSubtitles/Dialog/VideoFileOpenErrorDialog.cs:35
-msgid "Please check that the video file is supported."
-msgstr "Por favor verifique se o ficheiro de vídeo é suportado."
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:29
+msgid "Could not play the file"
+msgstr "Não foi possível reproduzir o ficheiro"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Todos os Ficheiros de Vídeo"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:63
+msgid "Seek to _frame:"
+msgstr "Procurar para _frame:"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
@@ -1078,10 +1112,8 @@ msgstr "A informação do erro foi impressa na consola."
 msgid "Unsaved Subtitles"
 msgstr "Legendas Não Gravadas"
 
-#. TODO Tooltips has been deprecated
-#. TODO Tooltips has been deprecated, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
 #. Constant strings
-#: ../src/GnomeSubtitles/Ui/Menus.cs:35
+#: ../src/GnomeSubtitles/Ui/Menus.cs:33
 msgid "Video"
 msgstr "Vídeo"
 
@@ -1097,7 +1129,7 @@ msgstr "INS"
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
 #: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:231
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:233
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
 msgid "Text"
 msgstr "Texto"
 
@@ -1115,34 +1147,44 @@ msgstr "Ln"
 msgid "Col"
 msgstr "Col"
 
+#. Number column
 #: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:223
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
 msgid "No."
 msgstr "No."
 
 #: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:226
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:228
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "From"
 msgstr "A partir de"
 
 #: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:227
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "To"
 msgstr "Até"
 
 #: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:228
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
 msgid "During"
 msgstr "Durante"
 
 #: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:232
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:234
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
 msgid "Translation"
 msgstr "Tradução"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:186
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
 msgid "Frame"
 msgstr "Frame"
+
+#~ msgid "Could not continue the video playback"
+#~ msgstr "Não foi possível continuar a reprodução do vídeo"
+
+#~ msgid "The following error has occurred: "
+#~ msgstr "O correu o seguinte erro: "
+
+#~ msgid "Please check that the video file is supported."
+#~ msgstr "Por favor verifique se o ficheiro de vídeo é suportado."
 
 #~ msgid ""
 #~ "An Error has occured.\n"
