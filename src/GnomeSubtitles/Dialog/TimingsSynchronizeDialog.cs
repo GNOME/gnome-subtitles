@@ -28,7 +28,7 @@ namespace GnomeSubtitles.Dialog {
 
 public class TimingsSynchronizeDialog : GladeDialog {
 	private TimingMode timingMode = TimingMode.Times; 
-	private SyncPoints syncPoints = new SyncPoints();
+	private GnomeSubtitles.Core.SyncPoints syncPoints = new GnomeSubtitles.Core.SyncPoints();
 	private TreeViewColumn numberCol = null;
 	private TreeViewColumn currentStartCol = null;
 	private TreeViewColumn correctStartCol = null;
@@ -38,8 +38,11 @@ public class TimingsSynchronizeDialog : GladeDialog {
 	
 	/* Widgets */
 	[WidgetAttribute] private TreeView tree = null;
+	[WidgetAttribute] private Button buttonRemove = null;
 
 	public TimingsSynchronizeDialog () : base(gladeFilename){
+		this.timingMode = Base.TimingMode;
+	
 		CreateColumns();
 		SetModel();
 		ConnectHandlers();
@@ -98,7 +101,8 @@ public class TimingsSynchronizeDialog : GladeDialog {
 	}
 	
 	private void OnSelectionChanged (object o, EventArgs args) {
-		System.Console.WriteLine(o);
+		TreeSelection selection = (o as TreeSelection);
+		buttonRemove.Sensitive = (selection.CountSelectedRows() > 0); 
 	}
 	
 	private void OnAdd (object o, EventArgs args) {
