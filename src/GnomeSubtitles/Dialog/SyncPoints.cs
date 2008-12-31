@@ -88,7 +88,6 @@ public class SyncPoints {
 	private void Insert (int index, SyncPoint syncPoint) {
 		collection.Insert(index, syncPoint);
 		model.SetValue(model.Insert(index), 0, syncPoint);
-		System.Console.WriteLine("Inserted at " + index); //TODO remove
 	}
 	
 	private void Replace (int index, SyncPoint syncPoint) {
@@ -97,7 +96,6 @@ public class SyncPoints {
 		TreeIter iter;
 		model.GetIterFromString(out iter, index.ToString());
 		model.SetValue(iter, 0, syncPoint);
-		System.Console.WriteLine("Replaced at " + index); //TODO remove
 	}
 	
 	private void Add (SyncPoint syncPoint) {
