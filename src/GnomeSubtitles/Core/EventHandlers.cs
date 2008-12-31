@@ -217,7 +217,7 @@ public class EventHandlers {
 	}
 	
 	public void OnTimingsSynchronize (object o, EventArgs args) {
-		Base.Dialogs.TimingsSynchronizeDialog.Show();
+		new TimingsSynchronizeDialog().Show();
 	}
 	
 	

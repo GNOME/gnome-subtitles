@@ -67,6 +67,7 @@ public class WidgetNames {
 	/* Timings Menu */
 	public const string TimingsInputFrameRateMenu = "timingsInputFrameRateMenu";
 	public const string TimingsVideoFrameRateMenu = "timingsVideoFrameRateMenu";
+	public const string TimingsSynchronize = "timingsSynchronize";
 	public const string TimingsAdjust = "timingsAdjust";
 	public const string TimingsShift = "timingsShift";
 	

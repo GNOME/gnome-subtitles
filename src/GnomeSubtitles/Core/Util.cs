@@ -28,6 +28,26 @@ namespace GnomeSubtitles.Core {
 
 public class Util {
   
+  	//TODO move to other util?
+  	public static int ColumnWidth (Widget widget, string text) {
+  		int margins = 10;
+  		return TextWidth(widget, text, margins); 
+    }
+    
+    public static TreeViewColumn CreateTreeViewColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
+		cell.Xalign = 0.5f;
+		cell.Yalign = 0;
+		TreeViewColumn column = new TreeViewColumn();
+		column.Alignment = 0.5f;
+		column.Title = title;
+		column.FixedWidth = width;
+		column.Sizing = TreeViewColumnSizing.Fixed;
+		column.Resizable = true;
+		column.PackStart(cell, true);
+		column.SetCellDataFunc(cell, dataFunction);
+		return column;
+	}
+  
     public static int TextWidth (Widget widget, string text, int margins) {
     	Pango.Layout layout = widget.CreatePangoLayout(text);
     	int width, height;

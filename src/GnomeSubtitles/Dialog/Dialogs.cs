@@ -26,7 +26,6 @@ public class Dialogs {
 	private FileSaveAsDialog translationSaveAsDialog = null;
 	private SearchDialog searchDialog = null;
 	private TimingsShiftDialog timingsShiftDialog = null;
-	private TimingsSynchronizeDialog timingsSynchronizeDialog = null;
 	
 	public FileSaveAsDialog FileSaveAsDialog {
 		get {
@@ -63,17 +62,6 @@ public class Dialogs {
 			return timingsShiftDialog;		
 		}
 	}
-
-	public TimingsSynchronizeDialog TimingsSynchronizeDialog {
-		get {
-			if (timingsSynchronizeDialog == null)
-				timingsSynchronizeDialog = new TimingsSynchronizeDialog();
-			
-			return timingsSynchronizeDialog;		
-		}
-	}
-
-
 
 }
 

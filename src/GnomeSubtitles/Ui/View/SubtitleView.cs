@@ -223,24 +223,24 @@ public class SubtitleView {
 	
     private void CreateColumns() {
     	/* Number column */
-    	numberCol = CreateColumn(Catalog.GetString("No."), ColumnWidth("000"), new CellRendererText(), RenderNumberCell);
+    	numberCol = Util.CreateTreeViewColumn(Catalog.GetString("No."), Util.ColumnWidth(tree, "000"), new CellRendererText(), RenderNumberCell);
     	
     	/* Start, end and duration columns */
-    	int timeWidth = ColumnWidth("00:00:00.000");
-    	startCol = CreateColumn(Catalog.GetString("From"), timeWidth, new CellRendererText(), RenderStartCell);
-    	endCol = CreateColumn(Catalog.GetString("To"), timeWidth, new CellRendererText(), RenderEndCell);
-    	durationCol = CreateColumn(Catalog.GetString("During"), timeWidth, new CellRendererText(), RenderDurationCell);
+    	int timeWidth = Util.ColumnWidth(tree, "00:00:00.000");
+    	startCol = Util.CreateTreeViewColumn(Catalog.GetString("From"), timeWidth, new CellRendererText(), RenderStartCell);
+    	endCol = Util.CreateTreeViewColumn(Catalog.GetString("To"), timeWidth, new CellRendererText(), RenderEndCell);
+    	durationCol = Util.CreateTreeViewColumn(Catalog.GetString("During"), timeWidth, new CellRendererText(), RenderDurationCell);
     	
     	/* Text column */
-    	int textWidth = ColumnWidth("0123456789012345678901234567890123456789");
+    	int textWidth = Util.ColumnWidth(tree, "0123456789012345678901234567890123456789");
     	CellRendererText textCellRenderer = new CellRendererText();
     	textCellRenderer.Alignment = Pango.Alignment.Center;
-    	textCol = CreateColumn(Catalog.GetString("Text"), textWidth, textCellRenderer, RenderTextCell);
+    	textCol = Util.CreateTreeViewColumn(Catalog.GetString("Text"), textWidth, textCellRenderer, RenderTextCell);
     	
     	/* Translation column */
     	CellRendererText translationCellRenderer = new CellRendererText();
     	translationCellRenderer.Alignment = Pango.Alignment.Center;
-    	translationCol = CreateColumn(Catalog.GetString("Translation"), textWidth, translationCellRenderer, RenderTranslationCell);
+    	translationCol = Util.CreateTreeViewColumn(Catalog.GetString("Translation"), textWidth, translationCellRenderer, RenderTranslationCell);
     	SetTranslationVisible(false);
 
     	tree.AppendColumn(numberCol);
@@ -251,25 +251,6 @@ public class SubtitleView {
     	tree.AppendColumn(translationCol);
     	tree.AppendColumn(new TreeViewColumn()); //Appending to leave empty space to the right 
     }
-
-	private TreeViewColumn CreateColumn (string title, int width, CellRenderer cell, TreeCellDataFunc dataFunction) {
-		cell.Xalign = 0.5f;
-		cell.Yalign = 0;
-		TreeViewColumn column = new TreeViewColumn();
-		column.Alignment = 0.5f;
-		column.Title = title;
-		column.FixedWidth = width;
-		column.Sizing = TreeViewColumnSizing.Fixed;
-		column.Resizable = true;
-		column.PackStart(cell, true);
-		column.SetCellDataFunc(cell, dataFunction);
-		return column;
-	}
-
-	private int ColumnWidth (string text) {
-		const int margins = 10;
-		return Util.TextWidth(tree, text, margins);
-	}
 	
 	private void SetTranslationVisible (bool visible) {
 		translationCol.Visible = visible;

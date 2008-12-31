@@ -257,6 +257,8 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchFindNext, false);
 		SetSensitivity(WidgetNames.SearchFindPrevious, false);
 		SetSensitivity(WidgetNames.SearchReplace, false);
+		/* Timings Menu */
+		SetSensitivity(WidgetNames.TimingsSynchronize, false);
 		/* Tools Menu */
 		SetToolsAutocheckSpellingSensitivity(false);
 		/* Toolbar */
@@ -295,6 +297,8 @@ public class Menus {
 			/* Search Menu */
 			SetSensitivity(WidgetNames.SearchFind, true);
 			SetSensitivity(WidgetNames.SearchReplace, true);
+			/* Timings Menu */
+			SetSensitivity(WidgetNames.TimingsSynchronize, true);
 			/* Tools Menu */
 			SetSensitivity(WidgetNames.ToolsSetTextLanguage, true);
 			SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, false);
