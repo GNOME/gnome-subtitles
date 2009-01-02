@@ -26,7 +26,7 @@ namespace GnomeSubtitles.Dialog {
 
 public class VideoOpenDialog : GladeDialog {
 	protected new FileChooserDialog dialog = null;
-	private static string[] extensions = { "avi", "mpeg", "mpg", "mp4", "ogm", "divx", "xvid", "mov", "ogg" };
+	private static string[] extensions = { "avi", "mpeg", "mpg", "mp4", "ogm", "divx", "xvid", "mov", "ogg", "mkv" };
 	private string chosenUri = String.Empty;
 	
 	/* Constant strings */
