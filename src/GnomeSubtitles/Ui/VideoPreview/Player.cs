@@ -165,17 +165,11 @@ public class Player {
 	}
 	
 	private void OnPlaybinStateChanged (StateEventArgs args) {
-		switch (args.State) {
-			case MediaStatus.Playing:
-				position.Start();
-				break;
-			case MediaStatus.Paused:
-				position.Start();
-				break;
-			default:
-				position.Stop();
-				break;
-		}
+		if (args.State == MediaStatus.Unloaded)
+			position.Stop();
+		else
+			position.Start();
+
 
 		if (StateChanged != null)
 			StateChanged(args);

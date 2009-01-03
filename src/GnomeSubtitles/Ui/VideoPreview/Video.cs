@@ -97,7 +97,6 @@ public class Video {
 		if (!isLoaded)
 			return;
 	
-		System.Console.WriteLine("Closing...");
 		isLoaded = false;
 
 		player.Close();
