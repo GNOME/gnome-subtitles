@@ -251,7 +251,7 @@ namespace GStreamer
 		{
 			get
 			{
-				if (!isPlaying && !isPaused)
+				if (isUnloaded)
 					return TimeSpan.Zero;
 				
 				double pos = (double) gst_binding_get_position (engine);
@@ -463,7 +463,6 @@ namespace GStreamer
 		
 		// private convenience properties
 		bool isPlaying { get{ return status == MediaStatus.Playing; } }
-		bool isPaused { get{ return status == MediaStatus.Paused; } }
 		bool isUnloaded { get{ return status == MediaStatus.Unloaded; } }
 
 
