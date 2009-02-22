@@ -1,14 +1,14 @@
 # gnome-subtitles' Portuguese translation
-# Copyright © 2008 gnome-subtitles
+# Copyright © 2008, 2009 gnome-subtitles
 # This file is distributed under the same license as the gnome-subtitles package.
-# António Lima <amrlima@gmail.com>, 2008
+# António Lima <amrlima@gmail.com>, 2008, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-28 17:34+0000\n"
-"PO-Revision-Date: 2008-12-15 20:13-0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
+"POT-Creation-Date: 2008-12-31 01:37+0000\n"
+"PO-Revision-Date: 2009-01-20 22:48-0100\n"
 "Last-Translator: António Lima <amrlima@gmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -415,7 +415,8 @@ msgstr "_Abrir"
 msgid "_Play / Pause"
 msgstr "_Reproduzir / Parar"
 
-#: ../src/Glade/MainWindow.glade.h:47 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Substituir"
 
@@ -589,27 +590,26 @@ msgid "_Shift"
 msgstr "_Alterar"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "Add from video"
-msgstr "Adicionar a partir de vídeo"
+msgid "Add sync point"
+msgstr "Adicionar ponto de sincronização"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid ""
-"Add sync points by selecting a subtitle and setting the video to its correct "
-"position."
-msgstr ""
-"Adicionar pontos de sincronização seleccionado uma legenda e definindo o "
-"vídeo para a sua posição correcta."
+msgid "Add sync points by selecting a subtitle and setting the video to its correct position."
+msgstr "Adicionar pontos de sincronização seleccionado uma legenda e definindo o vídeo para a sua posição correcta."
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-#: ../src/Glade/VideoSeekToDialog.glade.h:4
-msgid "gtk-cancel"
-msgstr "gtk-cancelar"
+msgid "Synchronize Timings"
+msgstr "Sincronizar Temporizações"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "gtk-close"
+msgstr "gtk-close"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
 msgid "gtk-ok"
 msgstr "gtk-ok"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "gtk-remove"
 msgstr "gtk-remover"
 
@@ -628,6 +628,10 @@ msgstr "Avançar para _tempo:"
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
 msgid "_Seek"
 msgstr "_Avançar"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:4
+msgid "gtk-cancel"
+msgstr "gtk-cancelar"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -890,12 +894,8 @@ msgid "Encoding"
 msgstr "Codificação"
 
 #: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Ocorreu um erro desconhecido. Por favor reporte o erro e inclua este nome de "
-"erro:"
+msgid "An unknown error has occured. Please report a bug and include this error name:"
+msgstr "Ocorreu um erro desconhecido. Por favor reporte o erro e inclua este nome de erro:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:95
 msgid "Auto Detected"
@@ -947,8 +947,7 @@ msgstr "Gravar noutro ficheiro"
 #: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:59
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
-msgstr ""
-"Ficou sem memória. Por favor feche algumas aplicações e tente novamente."
+msgstr "Ficou sem memória. Por favor feche algumas aplicações e tente novamente."
 
 #: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:61
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:43
@@ -975,8 +974,7 @@ msgstr "Se não gravar, todas as alterações serão perdidas para sempre."
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr ""
-"Gravar as alterações para as legendas \" {0}\" antes de criar novas legendas?"
+msgstr "Gravar as alterações para as legendas \" {0}\" antes de criar novas legendas?"
 
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -985,15 +983,12 @@ msgstr "Criar sem Gravar"
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:110
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr ""
-"Gravar as alterações à tradução  \"{0}\" antes de criar novas legendas?"
+msgstr "Gravar as alterações à tradução  \"{0}\" antes de criar novas legendas?"
 
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:117
 #, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Gravar as alterações à tradução  \"{0}\" antes de criar uma nova tradução?"
+msgid "Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr "Gravar as alterações à tradução  \"{0}\" antes de criar uma nova tradução?"
 
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:127
 #, csharp-format
@@ -1050,20 +1045,12 @@ msgid "Add or Remove..."
 msgstr "Adicionar ou Remover..."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"Não foi possível detectar o formato da legenda. Por favor verifique se o "
-"tipo de ficheiro é suportado."
+msgid "Unable to detect the subtitle format. Please check that the file type is supported."
+msgstr "Não foi possível detectar o formato da legenda. Por favor verifique se o tipo de ficheiro é suportado."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr ""
-"A codificação utilizada não é suportada pelo seu sistema. Por favor escolha "
-"outra codificação."
+msgid "The encoding used is not supported by your system. Please choose another encoding."
+msgstr "A codificação utilizada não é suportada pelo seu sistema. Por favor escolha outra codificação."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
@@ -1177,15 +1164,14 @@ msgstr "Tradução"
 msgid "Frame"
 msgstr "Frame"
 
+#~ msgid "Add from video"
+#~ msgstr "Adicionar a partir de vídeo"
 #~ msgid "Could not continue the video playback"
 #~ msgstr "Não foi possível continuar a reprodução do vídeo"
-
 #~ msgid "The following error has occurred: "
 #~ msgstr "O correu o seguinte erro: "
-
 #~ msgid "Please check that the video file is supported."
 #~ msgstr "Por favor verifique se o ficheiro de vídeo é suportado."
-
 #~ msgid ""
 #~ "An Error has occured.\n"
 #~ "\n"
@@ -1202,12 +1188,10 @@ msgstr "Frame"
 #~ "\n"
 #~ "Se o erro está relacionado com um <b>ficheiro de legenda</b>, se possível "
 #~ "anexe esse ficheiro."
-
 #~ msgid "Open Bugzilla"
 #~ msgstr "Abrir o Bugzilla"
-
 #~ msgid "Selected subtitle to first"
 #~ msgstr "Legenda seleccionada para inicial"
-
 #~ msgid "Selected subtitle to last"
 #~ msgstr "Legenda seleccionada para final"
+
