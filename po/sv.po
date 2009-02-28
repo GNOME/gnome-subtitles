@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-03 10:05+0100\n"
-"PO-Revision-Date: 2009-01-03 10:06+0100\n"
+"POT-Creation-Date: 2009-02-28 23:55+0100\n"
+"PO-Revision-Date: 2009-02-28 23:55+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -1072,6 +1072,20 @@ msgstr "Tid"
 msgid "Frames"
 msgstr "Bildrutor"
 
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:55
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+msgid "No."
+msgstr "Nr"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:59
+msgid "Current Start"
+msgstr "Aktuell början"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:60
+msgid "Correct Start"
+msgstr "Korrekt början"
+
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:29
 msgid "Could not play the file"
@@ -1114,7 +1128,6 @@ msgstr "INF"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:231
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
 msgid "Text"
 msgstr "Text"
@@ -1133,35 +1146,25 @@ msgstr "Rad"
 msgid "Col"
 msgstr "Kol"
 
-#. Number column
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:223
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
-msgid "No."
-msgstr "Nr"
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
+msgid "Frame"
+msgstr "Bildruta"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:226
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "From"
 msgstr "Från"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:227
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "To"
 msgstr "Till"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:228
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
 msgid "During"
 msgstr "Längd"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:232
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
 msgid "Translation"
 msgstr "Översättning"
-
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
-msgid "Frame"
-msgstr "Bildruta"
 
 #~ msgid "Add from video"
 #~ msgstr "Lägg till från video"
