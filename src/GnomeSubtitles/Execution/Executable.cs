@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,8 @@ public class Executable {
 	[DllImport("libc")]
 	private static extern void setproctitle(byte [] fmt, byte [] str_arg); //Used in BSD's
 
-	#region Public methods
+
+	/* Public members */
 
 	public static bool SetProcessNamePrctl (string name) {
 		try {
@@ -73,9 +74,7 @@ public class Executable {
 		Base.Run(executionContext);
 	}
 	
-	#endregion
-	
-	#region Private members
+	/* Private members */
 
 	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
 	private static void Kill () {
@@ -87,9 +86,8 @@ public class Executable {
 		}
 	}
 
-	#endregion
 	
-	#region Events
+	/* Event members */
 	
 	private static void OnUnhandledException (UnhandledExceptionArgs args) {
 		if (args.ExceptionObject is Exception)
@@ -97,8 +95,6 @@ public class Executable {
 
 		Kill();
 	}
-	
-	#endregion
 
 }
 
