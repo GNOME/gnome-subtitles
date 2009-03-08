@@ -117,7 +117,7 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		
 		TreePath path = selectedPaths[0];
 		int subtitleNumber = Core.Util.PathToInt(path);
-		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
+		Subtitle subtitle = Base.Ui.View.Selection.Subtitle; //TODO refactor: change to FirstSubtitle?
 		
 		/* Get current start */
 		Timing currentTiming = new Timing(subtitle.Frames.Start, subtitle.Times.Start);

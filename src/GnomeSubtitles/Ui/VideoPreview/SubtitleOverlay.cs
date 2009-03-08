@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,15 +35,16 @@ public class SubtitleOverlay {
 	private TimeSpan subtitleEnd = TimeSpan.Zero;
 	private bool toShowText = true;
 	
-	public SubtitleOverlay (VideoPosition position) {
+	public SubtitleOverlay () {
 		EventBox box = Base.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
 		box.ModifyBg(StateType.Normal, box.Style.Black);
 
 		label = Base.GetWidget(WidgetNames.VideoSubtitleLabel) as Label;
 		label.ModifyFg(StateType.Normal, new Gdk.Color(255, 255, 0));
 
-		position.Changed += OnVideoPositionChanged;
+		Base.InitFinished += OnBaseInitFinished;
 	}
+
 	
 	/* Public properties */
 	
@@ -57,25 +58,7 @@ public class SubtitleOverlay {
 	public void Close () {
 		UnloadSubtitle();
 	}
-	
-	public void UpdateFromNewDocument (bool wasLoaded) {
-    	searchOp = new SearchOperator(Base.Document.Subtitles);
-    }
 
-	/* Event members */
-	
-	private void OnVideoPositionChanged (TimeSpan newPosition) {
-		if (!(Base.IsDocumentLoaded))
-			return;
-	
-		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = searchOp.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
-			if (foundSubtitle == -1)
-				UnloadSubtitle();
-			else
-				LoadSubtitle(foundSubtitle);
-		}
-	}
 	
 	/* Private properties */
 	
@@ -130,6 +113,32 @@ public class SubtitleOverlay {
 	
 	private void ClearText () {
 		label.Text = String.Empty;
+	}
+
+	
+	/* Event members */
+	
+	private void OnBaseInitFinished () {
+		Base.Ui.Video.Position.Changed += OnVideoPositionChanged;
+		
+		Base.DocumentLoaded += OnBaseDocumentLoaded;
+	}
+	
+	private void OnBaseDocumentLoaded (Document document) {
+		searchOp = new SearchOperator(document.Subtitles);
+	}
+	
+	private void OnVideoPositionChanged (TimeSpan newPosition) {
+		if (!(Base.IsDocumentLoaded))
+			return;
+	
+		if (!(IsTimeInCurrentSubtitle(newPosition))) {
+			int foundSubtitle = searchOp.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
+			if (foundSubtitle == -1)
+				UnloadSubtitle();
+			else
+				LoadSubtitle(foundSubtitle);
+		}
 	}
 	
 }

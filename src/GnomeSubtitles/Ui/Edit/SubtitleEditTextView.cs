@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ public abstract class SubtitleEditTextView {
     	textView.Buffer.TagTable.Add(italicTag);
     	textView.Buffer.TagTable.Add(underlineTag);
 
-    	ConnectSignals();
+		Base.InitFinished += OnBaseInitFinished;
 	}
 	
 	/* Abstract members */
@@ -90,11 +90,6 @@ public abstract class SubtitleEditTextView {
     	get { return textView.IsFocus; }    
     }
     
-    /// <summary>The visibility of the scrolled window this <see cref="TextView" /> is inside of.</summary>
-    public bool Visible {
-    	set { Base.GetWidget(WidgetNames.SubtitleEditTranslationScrolledWindow).Visible = value; }
-    }
-    
     public bool OverwriteStatus {
     	get { return textView.Overwrite; }
     }
@@ -115,10 +110,6 @@ public abstract class SubtitleEditTextView {
 	
 	/* Public methods */
 	
-	public void ClearFields () {
-		SetText(String.Empty);	
-	}
-		
 	public void LoadSubtitle (Subtitle subtitle) {
 		this.subtitle = subtitle;
 		LoadTags(subtitle.Style);
@@ -187,13 +178,6 @@ public abstract class SubtitleEditTextView {
 			return false;
 		}
 	}
-    
-    /// <summary>Toggles the overwrite status without emitting its event.</summary>
-    public void ToggleOverwriteSilent () {
-    	isToggleOverwriteSilent = true;
-    	textView.Overwrite = !textView.Overwrite;
-    	isToggleOverwriteSilent = false;
-    }
 
     /* GtkSpell */
 	[DllImport ("libgtkspell")]
@@ -327,8 +311,19 @@ public abstract class SubtitleEditTextView {
 		textView.GrabFocus();
 	}
 	
+	private ScrolledWindow GetScrolledWindow () {
+		return textView.Parent as ScrolledWindow;
+	}
 	
-	/* Event methods */
+	
+	/* Event members */
+	
+	/// <summary>Toggles the overwrite status without emitting its event.</summary>
+    protected void ToggleOverwriteSilent () {
+    	isToggleOverwriteSilent = true;
+    	textView.Overwrite = !textView.Overwrite;
+    	isToggleOverwriteSilent = false;
+    }
 
 	private void OnBufferChanged (object o, EventArgs args) {
 		if (!isBufferChangeSilent)
@@ -385,7 +380,7 @@ public abstract class SubtitleEditTextView {
 			EmitToggleOverwrite();
 	}
 	
-	private void OnSpellToggleEnabled (object o, EventArgs args) {
+	private void OnSpellToggleEnabled () {
 		bool enabled = Base.SpellLanguages.Enabled;
 		if (enabled) {
 			GtkSpellAttach();
@@ -422,7 +417,7 @@ public abstract class SubtitleEditTextView {
     	}
     }
 
-    private void ConnectSignals () {
+    private void OnBaseInitFinished () {
 		/* Buffer signals */
 		textView.Buffer.Changed += OnBufferChanged;
 		textView.Buffer.MarkSet += OnBufferMarkSet;
@@ -439,6 +434,15 @@ public abstract class SubtitleEditTextView {
 		/* Spell signals */
 		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
 		ConnectLanguageChangedSignal();
+		
+		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
+    }
+    
+    private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+    	if (subtitle != null)
+    		LoadSubtitle(subtitle);
+    	else
+    		ClearFields();
     }
     
     private void EmitToggleOverwrite () {
@@ -448,12 +452,21 @@ public abstract class SubtitleEditTextView {
     
     /* Protected members */
     
-    protected void OnSpellLanguageChanged (object o, EventArgs args) {
+    protected void OnSpellLanguageChanged () {
 		if (Base.SpellLanguages.Enabled) {
 			SpellLanguage language = GetSpellActiveLanguage();
 			GtkSpellSetLanguage(language);
 		}
 	}
+	
+	protected void SetVisibility (bool visible) {
+		GetScrolledWindow().Visible = visible;
+	}
+	
+	protected void ClearFields () {
+		SetText(String.Empty);	
+	}
+
 
 }
 

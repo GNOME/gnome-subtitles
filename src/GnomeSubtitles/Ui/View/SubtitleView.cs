@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,9 @@ using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Ui.View {
 
+/* Delegates */
+public delegate void SubtitleCountChangedHandler (int count);
+
 public class SubtitleView {
 	private Subtitles subtitles = null; //A reference to Global.Subtitles, kept here because it's often accessed by CellRenderers.
 
@@ -47,7 +50,14 @@ public class SubtitleView {
 		search = new Search();
 
 		CreateColumns();
+		SetEmptyModel();
+		
+		Base.InitFinished += OnBaseInitFinished;
     }
+    
+	/* Events */
+	
+	public event SubtitleCountChangedHandler SubtitleCountChanged;
 
 	/* Public properties */
 
@@ -60,35 +70,6 @@ public class SubtitleView {
     }
     
     /* Public methods */ 
-    
-    /// <summary>Used in a blank startup. A blank startup refers to when no document is loaded.</summary>
-    public void BlankStartUp () {
-    	tree.Model = new ListStore(typeof(Subtitle));
-    }
-    
-	public void UpdateFromNewDocument (bool wasLoaded) {
-    	if (!wasLoaded)
-    		tree.Sensitive = true;
-    	else {
-    		search.Clear();
-    		SetTranslationVisible(false);
-    	}
-
-    	Load(Base.Document.Subtitles);
-    }
-    
-    public void UpdateFromNewTranslationDocument () {
-    	SetTranslationVisible(true);
-    	Refresh();
-    }
-    
-    public void UpdateFromCloseTranslation () {
-    	SetTranslationVisible(false);
-    }
-    
-	public void UpdateFromTimingMode (TimingMode mode) {
-		Refresh();
-	}
 	
 	/// <summary>Instructs the <see cref="TreeView" /> to redraw a row.</summary>
 	/// <remarks>This is useful when a row changes its width, for instance.</remarks>
@@ -219,6 +200,9 @@ public class SubtitleView {
    		this.subtitles = subtitles;
    		tree.Model = subtitles.Model;
     	Refresh();
+    	
+    	tree.Model.RowInserted += OnModelRowInserted;
+    	tree.Model.RowDeleted += OnModelRowDeleted;
     }
 	
     private void CreateColumns() {
@@ -331,6 +315,65 @@ public class SubtitleView {
 		else
 			renderer.Underline = Pango.Underline.None;
 	}
+	
+	/* Event members */
+	
+	private void OnBaseInitFinished () {
+		Base.DocumentLoaded += OnBaseDocumentLoaded;
+		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
+		Base.TranslationLoaded += OnBaseTranslationLoaded;
+		Base.TranslationUnloaded += OnBaseTranslationUnloaded;
+		Base.TimingModeChanged += OnBaseTimingModeChanged;
+	}
+	
+	private void OnBaseDocumentLoaded (Document document) {
+   		tree.Sensitive = true;
+    	Load(document.Subtitles);
+    }
+    
+    private void OnBaseDocumentUnloaded (Document document) {
+    	if (document == null)
+    		return;
+    	
+    	tree.Sensitive = false;
+    	search.Clear();
+   		SetTranslationVisible(false);
+   		SetEmptyModel();
+    	
+    	tree.Model.RowInserted -= OnModelRowInserted;
+		tree.Model.RowDeleted -= OnModelRowDeleted;
+    }
+    
+	private void OnModelRowInserted (object o, RowInsertedArgs args) {
+		EmitSubtitleCountChangedEvent();
+	}
+	
+	private void OnModelRowDeleted (object o, RowDeletedArgs args) {
+		EmitSubtitleCountChangedEvent();
+	}
+
+        
+    private void OnBaseTranslationLoaded () {
+    	SetTranslationVisible(true);
+    	Refresh();
+    }
+    
+    private void OnBaseTranslationUnloaded () {
+    	SetTranslationVisible(false);
+    }
+    
+    private void OnBaseTimingModeChanged (TimingMode timingMode) {
+    	Refresh();
+    }
+	
+	private void EmitSubtitleCountChangedEvent () {
+		if (SubtitleCountChanged != null)
+			SubtitleCountChanged(subtitles.Count);
+	}
+
+    private void SetEmptyModel () {
+    	tree.Model = new ListStore(typeof(Subtitle));
+    }
 		
 }
 

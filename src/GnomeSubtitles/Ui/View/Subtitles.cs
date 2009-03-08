@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,12 +28,10 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	private ListStore model = new ListStore(typeof(Subtitle));
 	
 	
-	public Subtitles (SubLib.Core.Domain.Subtitles subtitles)
-			: base(subtitles.Collection, subtitles.Properties) {
-
+	public Subtitles (SubLib.Core.Domain.Subtitles subtitles) : base(subtitles.Collection, subtitles.Properties) {
 		LoadModelFromCollection();
-		ConnectHandlers();
 	}
+
 	
 	/* Indexers */
 	
@@ -153,22 +151,6 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 		int startIndex = (Count == 0) ? 0 : Count - 1;
 		for (int index = startIndex ; index < startIndex + count ; index++)
 			AddNewAfter(index);
-	}
-	
-	
-	/* Event members */
-	
-	private void ConnectHandlers () {
-		model.RowInserted += OnRowInserted;
-		model.RowDeleted += OnRowDeleted;
-	}
-
-	private void OnRowInserted (object o, RowInsertedArgs args) {
-		Core.Base.Ui.UpdateFromSubtitleCount();
-	}
-	
-	private void OnRowDeleted (object o, RowDeletedArgs args) {
-		Core.Base.Ui.UpdateFromSubtitleCount();
 	}
 
 

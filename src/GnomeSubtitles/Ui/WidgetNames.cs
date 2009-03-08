@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ public class WidgetNames {
 	public const string FileTranslationSave = "fileTranslationSave";
 	public const string FileTranslationSaveAs = "fileTranslationSaveAs";
 	public const string FileTranslationClose = "fileTranslationClose";
+	public const string FileClose = "fileClose";
 	
 	/* Edit Menu */
 	public const string EditUndo = "editUndo";

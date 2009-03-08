@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,9 +59,11 @@ public class MainUi {
 		status = new Status();
 
 		glade.Autoconnect(handlers);
+		Base.InitFinished += OnBaseInitFinished;
 		
 		window.Visible = true;
     }
+    
 
 	/* Public properties */
 
@@ -98,19 +100,21 @@ public class MainUi {
     	string[] args = Base.ExecutionContext.Args;
     	if (args.Length > 0) {
     		string subtitleFile = args[0];
-    		string videoFile = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : String.Empty;
-			Open(subtitleFile, -1, videoFile);
+    		Uri videoUri = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : null;
+			Open(subtitleFile, -1, videoUri);
 		}
-		else
-			BlankStartUp();
+    }
+    
+    /// <summary>Closes the open file.</summary>
+    public void Close () {
+		if (ToCloseAfterWarning())
+			Base.CloseDocument();
     }
     
     /// <summary>Quits the application.</summary>
     public void Quit () {
-		if (ToCloseAfterWarning()) {
-			video.Quit();
+		if (ToCloseAfterWarning())
 			Base.Quit();
-		}
     }
     
 	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
@@ -126,15 +130,11 @@ public class MainUi {
     		return;
 
 		if (path == String.Empty) {
-			//To translators: this is the filename for new files (before being saved)
+			//To translators: this is the filename for new files (before being saved for the first time)
 			path = Catalog.GetString("Unsaved Subtitles");
 		}
 
-		Base.CreateDocumentNew(path);
-
-		if (Base.Document.Subtitles.Count == 0) {
-			Base.CommandManager.Execute(new InsertFirstSubtitleCommand());
-		}
+		Base.NewDocument(path);
     }
     
     /// <summary>Shows the open dialog and possibly opens a subtitle.</summary>
@@ -143,12 +143,12 @@ public class MainUi {
     public void Open () {
     	FileOpenDialog dialog = new FileOpenDialog();
     	dialog.Show();
-    	bool toOpen = dialog.WaitForResponse();
-    	if (toOpen && ToOpenAfterWarning()) {
+    	bool gotOpenResponse = dialog.WaitForResponse();
+    	if (gotOpenResponse && ToOpenAfterWarning()) {
     		string filename = dialog.Filename;
     		int codePage = (dialog.HasChosenEncoding ? dialog.ChosenEncoding.CodePage : -1);
-    		string videoFilename = dialog.VideoFilename;
-    		Open(filename, codePage, videoFilename);
+    		Uri videoUri = dialog.VideoUri;
+    		Open(filename, codePage, videoUri);
     	}
     }
         
@@ -157,14 +157,9 @@ public class MainUi {
     	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
-			string videoUri = dialog.Uri;
-			OpenVideo(videoUri);
+			Menus.SetViewVideoActivity(true);
+			Base.OpenVideo(dialog.Uri);
 		}
-    }
-    
-    public void CloseVideo () {
-    	Video.Close();
-    	UpdateFromCloseVideo();
     }
     
     /// <summary>Executes a Save operation.</summary>
@@ -199,7 +194,7 @@ public class MainUi {
     	if (!ToCreateNewTranslationAfterWarning())
     		return;
 
-		Base.Document.NewTranslation();
+		Base.NewTranslation();
     }
     
     /// <summary>Shows the open translation dialog and possibly opens a file.</summary>
@@ -247,78 +242,21 @@ public class MainUi {
     	if (!ToCloseTranslationAfterWarning())
     		return;
 
-		Base.Document.CloseTranslation();
+		Base.CloseTranslation();
     }
 
-	public void UpdateFromDocumentModified (bool modified) {
-		string prefix = (modified ? "*" : String.Empty);
-		window.Title = prefix + Base.Document.TextFile.Filename +
-			" - " + Base.ExecutionContext.ApplicationName;
-	}
-	
-	public void UpdateFromNewDocument (bool wasLoaded) {
-		view.UpdateFromNewDocument(wasLoaded);
-		edit.UpdateFromNewDocument(wasLoaded);
-		menus.UpdateFromNewDocument(wasLoaded);
-		video.UpdateFromNewDocument(wasLoaded);
-	}
-	
-	public void UpdateFromNewTranslationDocument () {
-		view.UpdateFromNewTranslationDocument();
-		edit.UpdateFromNewTranslationDocument();
-		menus.UpdateFromNewTranslationDocument();
-	}
-	
-	public void UpdateFromCloseTranslation () {
-		view.UpdateFromCloseTranslation();
-		edit.UpdateFromCloseTranslation();
-		menus.UpdateFromCloseTranslation();
-	}
-	
-	public void UpdateFromTimingMode (TimingMode mode) {
-		view.UpdateFromTimingMode(mode);
-		edit.UpdateFromTimingMode(mode);
-		video.UpdateFromTimingMode(mode);
-	}
-	
-	public void UpdateFromOpenVideo () {
-		menus.UpdateFromOpenVideo();
-	}
-	
-	public void UpdateFromCloseVideo () {
-		menus.UpdateFromCloseVideo();
-	}
-	
-	/// <summary>Updates the various parts of the GUI based on the current selection.</summary>
-	public void UpdateFromSelection () {
-		if (view.Selection.Count == 1)
-			UpdateFromSelection(view.Selection.Subtitle);
-		else
-			UpdateFromSelection(view.Selection.Paths);
-	}
-	
-	/// <summary>Updates the various parts of the GUI based on the current subtitle count.</summary>
-	public void UpdateFromSubtitleCount () {
-		int count = Base.Document.Subtitles.Collection.Count;
-		menus.UpdateFromSubtitleCount(count);
-	}
 
-	
 	/* Private members */
 	
 	/// <summary>Opens a subtitle file, given its filename, code page and video filename.</summary>
 	/// <param name="path">The path of the subtitles file to open.</param>
 	/// <param name="codePage">The code page of the filename. To use autodetection, set it to -1.</param>
-	/// <param name="videoFilename">The videoFilename to open. If <see cref="String.Empty" />, no video will be opened.</param>
+	/// <param name="videoUri">The URI of the video to open. If null, no video will be opened.</param>
 	/// <remarks>An error dialog is presented if an exception is caught during open.</remarks>
-    private void Open (string path, int codePage, string videoFilename) {
+    private void Open (string path, int codePage, Uri videoUri) {
     	try {
-    		Encoding encoding =  CodePageToEncoding(codePage);
-    		Base.CreateDocumentOpen(path, encoding);
-			view.Selection.SelectFirst();
-		
-			if (videoFilename != String.Empty)
-				OpenVideo(videoFilename);
+    		Encoding encoding = CodePageToEncoding(codePage);
+    		Base.Open(path, encoding, videoUri);
 		}
 		catch (Exception exception) {
 			SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(path, exception);
@@ -333,6 +271,7 @@ public class MainUi {
     /// <param name="codePage">The code page.</param>
     /// <returns>The respective <see cref="Encoding" />, or null if codePage == -1.</returns>
     /// <exception cref="EncodingNotSupportedException">Thrown if a detected encoding is not supported by the platform.</exception>
+    //TODO move to util
     private Encoding CodePageToEncoding (int codePage) {
     	if (codePage == -1)
     		return null;
@@ -352,7 +291,7 @@ public class MainUi {
     private void OpenTranslation (string path, int codePage) {
     	try {
     		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
-    		Base.Document.OpenTranslation(path, encoding);
+    		Base.OpenTranslation(path, encoding);
 		}
 		catch (Exception exception) {
 			SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(path, exception);
@@ -362,15 +301,7 @@ public class MainUi {
 				Open();
 		}
     }
-    
-    private void OpenVideo (string videoUriString) {
-    	Menus.SetViewVideoActivity(true);
-    	Uri videoUri = null;
 
-		videoUri = new Uri(videoUriString);
-		Video.Open(videoUri);
-    }
-    
     private void Save (FileProperties fileProperties) {
 		try {
 			Base.Document.Save(fileProperties);
@@ -380,7 +311,7 @@ public class MainUi {
 			errorDialog.Show();
 			bool toSaveAgain = errorDialog.WaitForResponse();
 	    	if (toSaveAgain)
-	    		SaveAs();			
+	    		SaveAs();	
 		}
 	}
 	
@@ -413,34 +344,6 @@ public class MainUi {
 		TimingMode timingMode = Base.TimingMode;
 		return new FileProperties(path, encoding, subtitleType, timingMode, newlineType);
 	}
-	
-	/// <summary>Executes a blank startup operation.</summary>
-	/// <remarks>This is used when no document is loaded.</remarks>
-	private void BlankStartUp () {
-    	menus.BlankStartUp();
-    	view.BlankStartUp();
-    	edit.BlankStartUp();
-    }
-		
-	/// <summary>Updates the GUI from the specified selected Subtitle.</summary>
-	/// <param name="subtitle">The subtitle that is currently selected.</param>
-	/// <remarks>This is only used when there is only one selected path. When there are zero or more than one
-	/// paths selected, <see cref="UpdateFromSelection(TreePath[])" /> must be used.</remarks>
-	private void UpdateFromSelection (Subtitle subtitle) {
-		menus.UpdateFromSelection(subtitle);
-		edit.UpdateFromSelection(subtitle);
-		video.UpdateFromSelection(true);
-	}
-
-	/// <summary>Updates the GUI from the specified selected paths.</summary>
-	/// <param name="paths">The paths from which the GUI should be updated.</param>
-	/// <remarks>This is only used when there are either zero or more than one selected paths. When there is only
-	/// one path selected, <see cref="UpdateFromSelection(Subtitle)" /> must be used.</remarks>
-	private void UpdateFromSelection (TreePath[] paths) {
-		menus.UpdateFromSelection(paths);
-		edit.Enabled = false;
-		video.UpdateFromSelection(false);
-	}    
 
 	/// <summary>Whether there are unsaved normal changes.</summary>
 	private bool ExistTextUnsavedChanges () {
@@ -523,6 +426,35 @@ public class MainUi {
    		else
     		return true; 
 	}
+	
+	private void UpdateTitleModificationStatus (bool modified) {
+		string prefix = (modified ? "*" : String.Empty);
+		window.Title = prefix + Base.Document.TextFile.Filename +
+			" - " + Base.ExecutionContext.ApplicationName;
+	}
+	
+	/* Event members */
+	
+	private void OnBaseInitFinished () {
+		Base.DocumentLoaded += OnBaseDocumentLoaded;
+		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
+	}
+	
+	private void OnBaseDocumentLoaded (Document document) {
+   		document.ModificationStatusChanged += OnBaseDocumentModificationStatusChanged;
+    }
+    
+    private void OnBaseDocumentUnloaded (Document document) {
+    	if (document != null) {
+    		document.ModificationStatusChanged -= OnBaseDocumentModificationStatusChanged;
+    	}
+    	UpdateTitleModificationStatus(false);
+    }
+    
+    private void OnBaseDocumentModificationStatusChanged (bool modified) {
+    	UpdateTitleModificationStatus(modified);
+	}
+
 
 }
 

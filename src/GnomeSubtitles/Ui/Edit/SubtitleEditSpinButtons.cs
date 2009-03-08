@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,6 @@ public class SubtitleEditSpinButtons {
 	private const int timeStepIncrement = 100; //milliseconds
 	private const int maxFrames = 3000000;
 	private const int framesStepIncrement = 1;
-	
 
 
 	public SubtitleEditSpinButtons () {
@@ -49,39 +48,23 @@ public class SubtitleEditSpinButtons {
 		
 		/* Initialize */
 		startSpinButton.WidthRequest = Util.SpinButtonTimeWidth(startSpinButton); //Only need to set one of the spin buttons' width
-    	startSpinButton.Alignment = 0.5f;
-    	endSpinButton.Alignment = 0.5f;
-    	durationSpinButton.Alignment = 0.5f; 
     	
     	/* Set timing mode to Times */
     	SetTimingMode(TimingMode.Times); //Initial timing mode is Times
+    	
+    	Base.InitFinished += OnBaseInitFinished;
 	}
 	
 	/* Public methods */
-	
-	public void UpdateFromTimingMode (TimingMode mode, Subtitle subtitle) {
-		if (mode == timingMode)
-			return;
 
-		SetTimingMode(mode);
-		LoadTimings(subtitle);
-	}
-
-	public void LoadTimings (Subtitle subtitle) {
+	public void LoadTimings () {
+		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
     	if (subtitle == null)
     		return;
 
 		LoadStartTiming(subtitle);
 		LoadEndTiming(subtitle);
 		LoadDurationTiming(subtitle);
-    }
-    
-    public void ClearFields () {
-        DisconnectSpinButtonsChangedSignals();
-		startSpinButton.Text = String.Empty;
-		endSpinButton.Text = String.Empty;
-		durationSpinButton.Text = String.Empty;
-    	ConnectSpinButtonsChangedSignals();
     }
     
     public void GetWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton, out SpinButton durationSpinButton) {
@@ -165,6 +148,15 @@ public class SubtitleEditSpinButtons {
     	durationSpinButton.ValueChanged += OnDurationValueChanged;
     }
     
+	private void ClearFields () {
+        DisconnectSpinButtonsChangedSignals();
+		startSpinButton.Text = String.Empty;
+		endSpinButton.Text = String.Empty;
+		durationSpinButton.Text = String.Empty;
+    	ConnectSpinButtonsChangedSignals();
+    }
+    
+    
     /* Event methods */
     
 	private void ConnectSpinButtonsChangedSignals () {
@@ -199,6 +191,26 @@ public class SubtitleEditSpinButtons {
 		else
 			Base.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
 	}
+	
+	private void OnBaseInitFinished () {
+		Base.TimingModeChanged += OnBaseTimingModeChanged;
+		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
+	}
+	
+	private void OnBaseTimingModeChanged (TimingMode newTimingMode) {
+    	if (timingMode == newTimingMode)
+			return;
+
+		SetTimingMode(newTimingMode);
+		LoadTimings();
+    }
+    
+    private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+    	if (subtitle != null)
+    		LoadTimings();
+    	else
+    		ClearFields();
+    }
 
 }
 

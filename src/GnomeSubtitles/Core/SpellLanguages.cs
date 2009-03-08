@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,9 +43,9 @@ public class SpellLanguages {
 	}
 	
 	/* Events */
-	public event EventHandler ToggleEnabled = null;
-	public event EventHandler TextLanguageChanged = null;
-	public event EventHandler TranslationLanguageChanged = null;
+	public event BasicEventHandler ToggleEnabled = null;
+	public event BasicEventHandler TextLanguageChanged = null;
+	public event BasicEventHandler TranslationLanguageChanged = null;
 	
 	
 	/* Public members */
@@ -139,8 +139,6 @@ public class SpellLanguages {
 		SetActiveLanguageInConfig(textType, activeLanguageID);
 
 		EmitLanguageChanged(textType);
-		if (!isEmpty)
-			Base.Ui.Menus.SetToolsAutocheckSpellingSensitivity(true);
 	}
 	
 	/* LibEnchant imports */
@@ -222,7 +220,7 @@ public class SpellLanguages {
 	
 	private void EmitToggleEnabled () {
     	if (this.ToggleEnabled != null)
-    		this.ToggleEnabled(this, EventArgs.Empty);
+    		this.ToggleEnabled();
     }
     
     private void EmitLanguageChanged (SubtitleTextType textType) {
@@ -234,12 +232,12 @@ public class SpellLanguages {
     
     private void EmitTextLanguageChanged () {
     	if (this.TextLanguageChanged != null)
-    		this.TextLanguageChanged(this, EventArgs.Empty);
+    		this.TextLanguageChanged();
     }
     
     private void EmitTranslationLanguageChanged () {
     	if (this.TranslationLanguageChanged != null)
-    		this.TranslationLanguageChanged(this, EventArgs.Empty);
+    		this.TranslationLanguageChanged();
     }
 
 }

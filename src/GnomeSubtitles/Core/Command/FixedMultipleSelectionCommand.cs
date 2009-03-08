@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 		}
 		Base.Ui.View.Refresh();
 		if (reselect)
-			Base.Ui.UpdateFromSelection();
+			Base.Ui.View.Selection.Reselect(); //TODO Check why this is needed
 		
 		PostProcess();
 		return true;

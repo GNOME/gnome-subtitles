@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ public class Video {
 	
 	private Player player = null;
 	private VideoPosition position = null;
-	private SubtitleOverlay subtitle = null;
+	private SubtitleOverlay overlay = null;
 	
 	private bool isLoaded = false;
 	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
@@ -51,10 +51,10 @@ public class Video {
 		InitializePlayer();
 		
 		position = new VideoPosition(player);
-		subtitle = new SubtitleOverlay(position);
+		overlay = new SubtitleOverlay();
 
 		SetCustomIcons();
-		ConnectPlayPauseButtonSignals();
+		Base.InitFinished += OnBaseInitFinished;
 	}
 	
 	/* Public properties */
@@ -63,8 +63,8 @@ public class Video {
 		get { return position; }
 	}
 	
-	public SubtitleOverlay Subtitle {
-		get { return subtitle; }
+	public SubtitleOverlay Overlay {
+		get { return overlay; }
 	}
 	
 	public bool IsLoaded {
@@ -100,7 +100,7 @@ public class Video {
 		isLoaded = false;
 
 		player.Close();
-		subtitle.Close();
+		overlay.Close();
 		position.Disable();
 		
 		/* Update the frame */
@@ -112,23 +112,6 @@ public class Video {
 		SetControlsSensitivity(false);
 
 		Core.Base.Ui.Menus.RemoveFrameRateVideoTag();
-	}
-
-	public void UpdateFromTimingMode (TimingMode newMode) {
-		position.ToggleTimingMode(newMode);
-	}
-	
-	public void UpdateFromNewDocument (bool wasLoaded) {
-    	subtitle.UpdateFromNewDocument(wasLoaded);
-    }
-
-	/// <summary>Updates the controls for a subtitle selection change.</summary>
-	/// <param name="isSingle">Whether there is only 1 selected subtitle.</param>
-	public void UpdateFromSelection (bool isSingle) {
-		if (isSingle && IsLoaded)
-			SetSelectionDependentControlsSensitivity(true);
-		else
-			SetSelectionDependentControlsSensitivity(false);
 	}
 	
 	public void Quit () {
@@ -161,7 +144,7 @@ public class Video {
 	}
 	
 	public void SeekToSelection () { //TODO check out
-		Subtitle subtitle = Core.Base.Ui.View.Selection.Subtitle;
+		Subtitle subtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
     	TimeSpan time = subtitle.Times.Start;
     	Seek(time);
 	}
@@ -238,9 +221,11 @@ public class Video {
 	
 	/* Event members */
 	
-	private void ConnectPlayPauseButtonSignals () {
+	private void OnBaseInitFinished () {
 		ToggleButton button = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		button.Toggled += OnPlayPauseButtonToggled;
+		
+		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
 	}
 	
 	private void OnPlayPauseButtonToggled (object o, EventArgs args) {
@@ -263,7 +248,8 @@ public class Video {
 		if (args.State == MediaStatus.Loaded) {
 			SetControlsSensitivity(true);
 			isLoaded = true;
-			Base.Ui.UpdateFromOpenVideo();
+			
+			Base.UpdateFromVideoLoaded(player.VideoUri);
 		}
 	}
 	
@@ -278,6 +264,13 @@ public class Video {
 		bool toOpenAnother = dialog.WaitForResponse();
 		if (toOpenAnother)
 			Base.Ui.OpenVideo();
+	}
+
+	private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+		if ((subtitle != null) && IsLoaded)
+			SetSelectionDependentControlsSensitivity(true);
+		else
+			SetSelectionDependentControlsSensitivity(false);
 	}
 
 }

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,18 +24,28 @@ using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Ui.View {
 
+/* Delegates */
+public delegate void SubtitleSelectionChangedHandler (TreePath[] paths, Subtitle subtitle);
+
 public class SubtitleSelection {
 
 	private TreeView tree = null;
 	private TreeSelection selection = null;
+	//TODO use this subtitle, and don't store it in individual widgets
+	private Subtitle subtitle = null; //The selected subtitle, if only 1 row is selected
 
 	public SubtitleSelection (TreeView tree) {
 		this.tree = tree;
 		this.selection = tree.Selection;
 		
 		selection.Mode = SelectionMode.Multiple;
-		ConnectSelectionChanged();
+		
+		Base.InitFinished += OnBaseInitFinished;
 	}
+	
+	/* Events */
+	
+	public SubtitleSelectionChangedHandler Changed;
 
 	/* Public properties */
     
@@ -121,7 +131,17 @@ public class SubtitleSelection {
     
     /// <summary>The selected subtitle. If there is more than one selected, the first is returned.</summary>
     public Subtitle Subtitle {
-    	get { return Base.Document.Subtitles[Path]; }
+    	get { return subtitle; }
+    }
+    
+    public Subtitle FirstSubtitle {
+    	get {
+    		TreePath path = this.FirstPath;
+    		if (path != null)
+    			return Base.Document.Subtitles[path];
+    		else
+    			return null;
+    	}
     }
 
     /// <summary>The number of selected paths.</summary>
@@ -264,6 +284,11 @@ public class SubtitleSelection {
 	public void SelectAll () {
 		selection.SelectAll();
 	}
+	
+	//TODO Check why this is needed
+    public void Reselect () {
+    	EmitChangedEvent();
+    }
 
 	/// <summary>Scrolls to the specified path and optionally aligns it to the center of the <see cref="TreeView" />.</summary>
 	/// <remarks>This should only be used to scroll to the input focus.</remarks>
@@ -271,24 +296,6 @@ public class SubtitleSelection {
     /// <param name="toAlign">Whether to align the path to the center.</param>
 	public void ScrollToFocus (TreePath focus, bool align) {
 		Scroll(focus, align);	
-	}
-
-    /* Event members */
-	
-	private void DisconnectSelectionChanged () {
-		selection.Changed -= OnSelectionChanged;
-	}
-	
-	private void ConnectSelectionChanged () {
-		selection.Changed += OnSelectionChanged;
-	}
-	
-	private void EmitSelectionChanged () {
-		OnSelectionChanged(tree.Selection, EventArgs.Empty);
-	}
-	
-	private void OnSelectionChanged (object o, EventArgs args) {
-		Base.Ui.UpdateFromSelection();
 	}
 	
 	/* Private members */
@@ -300,7 +307,7 @@ public class SubtitleSelection {
 	/// <param name="focus">The path to give input focus to. It must be one of the specified paths or null, in which case no focus will be given.</param>
 	/// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
 	private void Select (TreePath[] paths, SelectionType selectionType, TreePath focus, bool align) {
-		DisconnectSelectionChanged();
+		DisconnectSelectionChangedSignal();
 		
 		if (focus != null)
 			SetFocus(focus, align);
@@ -315,8 +322,8 @@ public class SubtitleSelection {
 			selection.SelectRange(paths[0], paths[1]);
 		}
 		
-		ConnectSelectionChanged();		
-		EmitSelectionChanged();
+		ConnectSelectionChangedSignal();		
+		OnSelectionChanged(this, EventArgs.Empty); //Need to simulate this event because the signal was disabled during selection change
    	}
 	   	
    	/// <summary>Sets the input to the specified path and selects it, possibly aligning it to the center.</summary>
@@ -358,6 +365,35 @@ public class SubtitleSelection {
 		else
 			ScrollToCell(path, align);
     }
+    
+	/* Event members */
+	
+	private void OnBaseInitFinished () {
+		ConnectSelectionChangedSignal();
+		Base.DocumentLoaded += OnBaseDocumentLoaded;
+	}
+	
+	private void OnBaseDocumentLoaded (Document document) {
+		SelectFirst();
+	}
+	
+	private void ConnectSelectionChangedSignal () {
+		selection.Changed += OnSelectionChanged;
+	}
+	
+	private void DisconnectSelectionChangedSignal () {
+		selection.Changed -= OnSelectionChanged;
+	}
+	
+	private void OnSelectionChanged (object o, EventArgs args) {
+		subtitle = (this.Count == 1 ? Base.Document.Subtitles[Path] : null);
+		EmitChangedEvent();
+	}
+	
+	private void EmitChangedEvent () {
+		if (Changed != null)
+			Changed(Paths, subtitle);
+	}
     
 }
 

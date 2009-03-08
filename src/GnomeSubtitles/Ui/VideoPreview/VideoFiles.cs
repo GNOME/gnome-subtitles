@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,17 +43,17 @@ public class VideoFiles {
 		return videoFiles;
 	}
 	
-	public static string FindMatchingVideo (string file) {
+	public static Uri FindMatchingVideo (string file) {
 		ArrayList videoFiles = GetVideoFilesAtPath(Path.GetDirectoryName(file));
 		string filename = Path.GetFileNameWithoutExtension(file);
 		
 		foreach (string videoFile in videoFiles) {
 			string video = Path.GetFileNameWithoutExtension(videoFile);
 			if (video == filename)
-				return videoFile;
+				return new Uri(videoFile);
 		}
 
-		return String.Empty;
+		return null;
 	}
 
 

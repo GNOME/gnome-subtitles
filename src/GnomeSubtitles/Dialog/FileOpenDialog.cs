@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	private ArrayList videoFiles = null; //The full paths of the video files in the current fir
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
 	
-	private string chosenVideoFilename = String.Empty;
+	private Uri chosenVideoUri = null;
 	private bool autoChooseVideoFile = true;
 
 	/* Constant strings */
@@ -75,11 +75,11 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	/* Public properties */
 	
 	public bool HasVideoFilename {
-		get { return chosenVideoFilename != String.Empty; }
+		get { return chosenVideoUri != null; }
 	}
 	
-	public string VideoFilename {
-		get { return chosenVideoFilename; }
+	public Uri VideoUri {
+		get { return chosenVideoUri; }
 	}
 	
 	/* Protected members */
@@ -254,7 +254,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			}
 			if (videoComboBox.Active > 0) {
 				int videoFileIndex = videoComboBox.Active - 2;
-				chosenVideoFilename = videoFiles[videoFileIndex] as string;
+				chosenVideoUri = new Uri(videoFiles[videoFileIndex] as string);
 			}			
 			returnValue = true;
 		}

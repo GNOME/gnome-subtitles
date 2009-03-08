@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,9 @@ using System.Text;
 
 namespace GnomeSubtitles.Core {
 
+/* Delegates */
+public delegate void DocumentModificationStatusChangedHandler (bool modified);
+
 public class Document {
 	private Ui.View.Subtitles subtitles = null;
 	private bool wasTextModified = false;
@@ -37,16 +40,22 @@ public class Document {
 	private bool canTranslationBeSaved = false; //Whether the translation document can be saved with existing translationFile properties
 
 
-	public Document (string path, bool wasLoaded) {
-		New(path, wasLoaded);
+	public Document (string path) {
+		New(path);
+		ConnectInitSignals();
 	}
 	
-	public Document (string path, Encoding encoding, bool wasLoaded) {
-		Open(path, encoding, wasLoaded);
+	public Document (string path, Encoding encoding) {
+		Open(path, encoding);
+		ConnectInitSignals();
 	}
+	
+	/* Events */
+	
+	public event DocumentModificationStatusChangedHandler ModificationStatusChanged;
 	
 	/* Public properties */
-
+	
 	public FileProperties TextFile {
 		get { return textFile; }
 	}
@@ -79,6 +88,7 @@ public class Document {
 		get { return wasTranslationModified; }
 	}
 	
+
 	/* Public methods */
 
 	public bool Save (FileProperties newFileProperties) {
@@ -87,28 +97,22 @@ public class Document {
 		
 		textFile = saver.FileProperties;		
 		canTextBeSaved = true;
-
-		Base.Ui.Menus.SetActiveTimingMode(textFile.TimingMode);
-		
+	
 		ClearTextModified();
 		return true;
 	}
 
 	public void NewTranslation () {
-		RemoveTranslationFromSubtitles();
-		ClearTranslationStatus();
-		CreateNewTranslationFileProperties();
+		if (this.IsTranslationLoaded)
+			CloseTranslation();
 
-		Base.Ui.UpdateFromNewTranslationDocument();
-	}
-	
-	public void CloseTranslation () {
-		RemoveTranslationFromSubtitles();
-		ClearTranslationStatus();
-		Base.Ui.UpdateFromCloseTranslation();
+		CreateNewTranslationFileProperties();
 	}
 
 	public void OpenTranslation (string path, Encoding encoding) {
+		if (this.IsTranslationLoaded)
+			CloseTranslation();
+
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		factory.Encoding = encoding;
@@ -120,14 +124,21 @@ public class Document {
 		Translations translations = new Translations();
 		translations.Import(subtitles, openedTranslation);
 
-		ClearTranslationStatus();
 		if (newTranslationFile.SubtitleType != SubtitleType.Unknown)
 			canTranslationBeSaved = true;
 	
 		translationFile = newTranslationFile;
-		Base.Ui.UpdateFromNewTranslationDocument();
 	}
 	
+	public void Close () {
+		DisconnectInitSignals();		
+	}
+	
+	public void CloseTranslation () {
+		RemoveTranslationFromSubtitles();
+		ClearTranslationStatus();
+	}
+	  
 	public bool SaveTranslation (FileProperties newFileProperties) {
 		SubtitleSaver saver = new SubtitleSaver();
 		saver.Save(subtitles, newFileProperties, SubtitleTextType.Translation);
@@ -138,23 +149,12 @@ public class Document {
 		ClearTranslationModified();
 		return true;
 	}
-	
-	public void UpdateFromCommandActivated (CommandTarget target) {
-		if ((target == CommandTarget.Normal) && (!wasTextModified)) {
-			wasTextModified = true;
-			Base.Ui.UpdateFromDocumentModified(true);
-		}
-		else if ((target == CommandTarget.Translation) && (!wasTranslationModified)) {
-			wasTranslationModified = true;
-			Base.Ui.UpdateFromDocumentModified(true);
-		}
-	}
 
 
 	/* Private methods */
 	
 	/* Used in the object construction */
-	private void New (string path, bool wasLoaded) {
+	private void New (string path) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		
@@ -163,7 +163,7 @@ public class Document {
 	}
 	
 	/* Used in the object construction */
-	private void Open (string path, Encoding encoding, bool wasLoaded) {
+	private void Open (string path, Encoding encoding) {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		factory.Encoding = encoding;
@@ -173,7 +173,7 @@ public class Document {
 			openedSubtitles = factory.Open(path);
 		}
 		catch (FileNotFoundException) {
-			New(path, wasLoaded);
+			New(path);
 			return;
 		}
 
@@ -183,17 +183,17 @@ public class Document {
 		if (textFile.SubtitleType != SubtitleType.Unknown)
 			canTextBeSaved = true;
 	}
-	
+
 	private void ClearTextModified () {
 		wasTextModified = false;
-		if (!wasTranslationModified) //Update the GUI if translation is also not in modified state
-			Base.Ui.UpdateFromDocumentModified(false);
+		if (!wasTranslationModified) //Emit the event if translation is also not in modified state
+			EmitModificationStatusChangedEvent(false);
 	}
-	
+
 	private void ClearTranslationModified () {
 		wasTranslationModified = false;
-		if (!wasTextModified) //Update the GUI if text is also not in modified state
-			Base.Ui.UpdateFromDocumentModified(false);
+		if (!wasTextModified) //Emit the event if text is also not in modified state
+			EmitModificationStatusChangedEvent(false);
 	}
 	
 	private void CreateNewTranslationFileProperties () {
@@ -212,7 +212,6 @@ public class Document {
 		translationFile = null;
 		canTranslationBeSaved = false;
 		
-		Base.CommandManager.ClearTarget(CommandTarget.Translation);
 		ClearTranslationModified();
 	}
 	
@@ -220,6 +219,32 @@ public class Document {
 		int extraCount = translation.Collection.Count - subtitles.Collection.Count;
 		if (extraCount > 0)
 			subtitles.AddExtra(extraCount);	
+	}
+	
+	/* Event members */
+	
+	private void ConnectInitSignals () {
+		Base.CommandManager.CommandActivated += OnCommandManagerCommandActivated;
+	}
+	
+	private void DisconnectInitSignals () {
+		Base.CommandManager.CommandActivated -= OnCommandManagerCommandActivated;
+	}
+	
+	private void OnCommandManagerCommandActivated (object o, CommandActivatedArgs args) {
+    	if ((args.Target == CommandTarget.Normal) && (!wasTextModified)) {
+			wasTextModified = true;
+			EmitModificationStatusChangedEvent(true);
+		}
+		else if ((args.Target == CommandTarget.Translation) && (!wasTranslationModified)) {
+			wasTranslationModified = true;
+			EmitModificationStatusChangedEvent(true);
+		}
+    }
+    	
+	private void EmitModificationStatusChangedEvent (bool modified) {
+		if (ModificationStatusChanged != null)
+			ModificationStatusChanged(modified);
 	}
 
 }

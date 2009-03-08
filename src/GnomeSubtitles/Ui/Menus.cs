@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,92 +36,10 @@ public class Menus {
 
 	public Menus () {
 		SetToolbarHomogeneity(); //TODO needed until homogeneity definition in glade starts working
-	}
-	
-	public void BlankStartUp () {
-		SetBlankSensitivity();
+		SetDocumentSensitivity(false);
 		SetBlankActivity();
-	}
-
-	public void UpdateFromNewDocument (bool wasLoaded) {
-		SetNewDocumentSensitivity(wasLoaded);
-		SetSubtitleCountDependentSensitivity(Base.Document.Subtitles.Collection.Count);
-		SetFrameRateMenus();
-		SetActiveTimingMode(Base.TimingMode);
-		
-		SetToolsAutocheckSpellingSensitivity(true);
-		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
-	}
 	
-	public void UpdateFromNewTranslationDocument () {
-		SetTranslationSensitivity(true);
-		UpdateUndoRedoMessages();
-	}
-	
-	public void UpdateFromCloseTranslation () {
-    	SetTranslationSensitivity(false);
-    	SetViewVideoSubtitlesActivity(true);
-    	UpdateUndoRedoMessages();
-    }
-	
-	public void UpdateFromSelection (Subtitle subtitle) { 
-		SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
-		SetNonZeroSelectionDependentSensitivity(true);
-		SetOneSelectionDependentSensitivity(true);
-	}
-	
-	public void UpdateFromSelection (TreePath[] paths) {
-		SetOneSelectionDependentSensitivity(false);
-	
-		if (paths.Length == 0)
-			UpdateFromNoSelection();
-		else
-			UpdateFromSelectedPaths(paths);
-	}
-	
-	public void UpdateFromSubtitleCount (int count) {
-		SetSubtitleCountDependentSensitivity(count);
-	}
-	
-	public void UpdateFromUndoToggled()  {
-   		Widget button = Base.GetWidget(WidgetNames.UndoButton);
-   		button.Sensitive = !button.Sensitive;
-    		
-		MenuItem menuItem = Base.GetWidget(WidgetNames.EditUndo) as MenuItem;
-		menuItem.Sensitive = !menuItem.Sensitive;
-		if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = Catalog.GetString("Undo");
-	}
-    
-     public void UpdateFromRedoToggled () {
-    	Widget button = Base.GetWidget(WidgetNames.RedoButton);
-    	button.Sensitive = !button.Sensitive;
-    		
-		MenuItem menuItem = Base.GetWidget(WidgetNames.EditRedo) as MenuItem;
-    	menuItem.Sensitive = !menuItem.Sensitive;
-    	if (!menuItem.Sensitive)
-			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
-    }
-    
-    public void UpdateFromCommandActivated () {
-    	UpdateUndoRedoMessages();
-    }
-    
-    public void UpdateFromOpenVideo () {
-    	SetVideoSensitivity(true);
-    	SetViewVideoSubtitlesSensitivity();
-    }
-    
-    public void UpdateFromCloseVideo () {
-    	SetVideoSensitivity(false);
-    	SetViewVideoSubtitlesSensitivity(false, false);
-    }
-
-	public void SetActiveTimingMode (TimingMode mode) {
-		if (mode == TimingMode.Times)
-			SetCheckMenuItemActivity(WidgetNames.ViewTimes, true);
-		else
-			SetCheckMenuItemActivity(WidgetNames.ViewFrames, true);
+		Base.InitFinished += OnBaseInitFinished;
 	}
 	
 	public void SetCutCopySensitivity (bool sensitivity) {
@@ -149,10 +67,6 @@ public class Menus {
 	public void EnableFindNextPrevious () {
 		SetSensitivity(WidgetNames.SearchFindNext, true);
 		SetSensitivity(WidgetNames.SearchFindPrevious, true);
-	}
-	
-	public void SetToolsAutocheckSpellingSensitivity (bool sensitivity) {
-		SetSensitivity(WidgetNames.ToolsAutocheckSpelling, sensitivity);
 	}
 	
 	public void SetViewVideoActivity (bool activity) {
@@ -199,18 +113,6 @@ public class Menus {
 
 	/* Private members */
 	
-	private void UpdateFromNoSelection () {
-		SetNonZeroSelectionDependentSensitivity(false);
-		SetStylesActivity(false, false, false);
-	}
-	
-	private void UpdateFromSelectedPaths (TreePath[] paths) {
-		SetNonZeroSelectionDependentSensitivity(true);
-		bool bold, italic, underline;
-		GetGlobalStyles(paths, out bold, out italic, out underline);
-		SetStylesActivity(bold, italic, underline);		
-	}
-	
 	/// <summary>Sets the sensitivity depending on 1 or more selected subtitles.</summary>
 	/// <param name="sensitivity">Whether the items are set sensitive.</param>
 	private void SetNonZeroSelectionDependentSensitivity (bool sensitivity) {
@@ -241,102 +143,65 @@ public class Menus {
 		}	
 	}
 	
-	private void SetBlankSensitivity () {
-		/* File Menu */
-		SetSensitivity(WidgetNames.FileSave, false);
-		SetSensitivity(WidgetNames.FileSaveAs, false);
-		SetSensitivity(WidgetNames.FileHeaders, false);
-		/* Edit Menu */
-		SetSensitivity(WidgetNames.EditUndo, false);
-		SetSensitivity(WidgetNames.EditRedo, false);	
-		SetSensitivity(WidgetNames.EditCut, false);
-		SetSensitivity(WidgetNames.EditCopy, false);
-		SetSensitivity(WidgetNames.EditPaste, false);
-		/* Search Menu */
-		SetSensitivity(WidgetNames.SearchFind, false);
-		SetSensitivity(WidgetNames.SearchFindNext, false);
-		SetSensitivity(WidgetNames.SearchFindPrevious, false);
-		SetSensitivity(WidgetNames.SearchReplace, false);
-		/* Timings Menu */
-		SetSensitivity(WidgetNames.TimingsSynchronize, false);
-		/* Tools Menu */
-		SetToolsAutocheckSpellingSensitivity(false);
-		/* Toolbar */
-		SetSensitivity(WidgetNames.SaveButton, false);
-		SetSensitivity(WidgetNames.UndoButton, false);
-		SetSensitivity(WidgetNames.RedoButton, false);
-		SetSensitivity(WidgetNames.CutButton, false);
-		SetSensitivity(WidgetNames.CopyButton, false);
-		SetSensitivity(WidgetNames.PasteButton, false);
-		SetSensitivity(WidgetNames.InsertSubtitleButton, false);
-		SetSensitivity(WidgetNames.BoldButton, false);
-		SetSensitivity(WidgetNames.ItalicButton, false);
-		SetSensitivity(WidgetNames.UnderlineButton, false);
-	}
-	
 	private void SetBlankActivity () {
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
 	}
 	
-	private void SetNewDocumentSensitivity (bool wasLoaded) {
-		if (!wasLoaded) {	
-			/* File Menu */
-			SetSensitivity(WidgetNames.FileSave, true);
-			SetSensitivity(WidgetNames.FileSaveAs, true);
-			SetSensitivity(WidgetNames.FileHeaders, true);
-			SetSensitivity(WidgetNames.FileProperties, true);
-			SetSensitivity(WidgetNames.FileTranslationNew, true);
-			SetSensitivity(WidgetNames.FileTranslationOpen, true);
-			/* Edit Menu */
-			SetMenuSensitivity(WidgetNames.EditInsertSubtitleMenu, true);
-			SetSensitivity(WidgetNames.EditDeleteSubtitles, true);
-			/* View Menu */
-			SetSensitivity(WidgetNames.ViewTimes, true);
-			SetSensitivity(WidgetNames.ViewFrames, true);
-			SetViewVideoSubtitlesSensitivity();
-			/* Search Menu */
-			SetSensitivity(WidgetNames.SearchFind, true);
-			SetSensitivity(WidgetNames.SearchReplace, true);
-			/* Timings Menu */
-			SetSensitivity(WidgetNames.TimingsSynchronize, true);
-			/* Tools Menu */
-			SetSensitivity(WidgetNames.ToolsSetTextLanguage, true);
-			SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, false);
-			
-			/* Toolbar */
-			SetSensitivity(WidgetNames.SaveButton, true);
-			SetSensitivity(WidgetNames.InsertSubtitleButton, true);
-			SetSensitivity(WidgetNames.DeleteSubtitlesButton, true);
-			/* Common for Format Menu and Toolbar*/
-			SetStylesSensitivity(true);
-		}
-		else {
-			/* File Menu */
-			SetSensitivity(WidgetNames.FileTranslationSave, false);
-			SetSensitivity(WidgetNames.FileTranslationSaveAs, false);
-			SetSensitivity(WidgetNames.FileTranslationClose, false);
-			/* Edit Menu */
+	private void SetDocumentSensitivity (bool documentLoaded) {
+		/* Set Sensitivity that is equal to the document loaded status */
+
+		/* File Menu */
+		SetSensitivity(WidgetNames.FileSave, documentLoaded);
+		SetSensitivity(WidgetNames.FileSaveAs, documentLoaded);
+		SetSensitivity(WidgetNames.FileHeaders, documentLoaded);
+		SetSensitivity(WidgetNames.FileProperties, documentLoaded);
+		SetSensitivity(WidgetNames.FileTranslationNew, documentLoaded);
+		SetSensitivity(WidgetNames.FileTranslationOpen, documentLoaded);
+		SetSensitivity(WidgetNames.FileClose, documentLoaded);
+		/* Edit Menu */
+		SetMenuSensitivity(WidgetNames.EditInsertSubtitleMenu, documentLoaded);
+		/* View Menu */
+		SetSensitivity(WidgetNames.ViewTimes, documentLoaded); //TODO always visible
+		SetSensitivity(WidgetNames.ViewFrames, documentLoaded); //TODO always visible
+		SetViewVideoSubtitlesSensitivity();
+		/* Search Menu */
+		SetSensitivity(WidgetNames.SearchFind, documentLoaded);
+		SetSensitivity(WidgetNames.SearchReplace, documentLoaded);
+		/* Timings Menu */
+		SetSensitivity(WidgetNames.TimingsSynchronize, documentLoaded);
+		/* Tools Menu */
+		SetToolsAutocheckSpellingSensitivity(documentLoaded);
+		SetSensitivity(WidgetNames.ToolsSetTextLanguage, documentLoaded);
+		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, documentLoaded);
+		/* Toolbar */
+		SetSensitivity(WidgetNames.SaveButton, documentLoaded);
+		SetSensitivity(WidgetNames.InsertSubtitleButton, documentLoaded);
+		
+		/* Set sensitivity that only applies to when the document is not loaded */
+		
+		if (!documentLoaded) {
+			/* Edit menu */
+			SetSensitivity(WidgetNames.EditDeleteSubtitles, false);
 			SetSensitivity(WidgetNames.EditUndo, false);
 			SetSensitivity(WidgetNames.EditRedo, false);
 			SetSensitivity(WidgetNames.EditCut, false);
 			SetSensitivity(WidgetNames.EditCopy, false);
 			SetSensitivity(WidgetNames.EditPaste, false);
-			/* View Menu */
-			SetViewVideoSubtitlesSensitivity();
-			/* Search Menu */
+			/* Search menu */
 			SetSensitivity(WidgetNames.SearchFindNext, false);
 			SetSensitivity(WidgetNames.SearchFindPrevious, false);
-			/* Tools Menu */
-			SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, false);
-			
+			/* Timings Menu */
+			SetSensitivity(WidgetNames.TimingsShift, false);
 			/* Toolbar */
+			SetSensitivity(WidgetNames.DeleteSubtitlesButton, false);
 			SetSensitivity(WidgetNames.UndoButton, false);
 			SetSensitivity(WidgetNames.RedoButton, false);
-			SetSensitivity(WidgetNames.DeleteSubtitlesButton, false);
 			SetSensitivity(WidgetNames.CutButton, false);
 			SetSensitivity(WidgetNames.CopyButton, false);
 			SetSensitivity(WidgetNames.PasteButton, false);
-		}	
+			/* Common for Format Menu and Toolbar */
+			SetStylesSensitivity(false);
+		}
 	}
 	
 	private void SetTranslationSensitivity (bool sensitivity) {
@@ -345,6 +210,10 @@ public class Menus {
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
 		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, sensitivity);
 		SetViewVideoSubtitlesSensitivity();
+	}
+		
+	private void SetToolsAutocheckSpellingSensitivity (bool sensitivity) {
+		SetSensitivity(WidgetNames.ToolsAutocheckSpelling, sensitivity);
 	}
 	
 	private void SetFrameRateMenus () {
@@ -370,6 +239,12 @@ public class Menus {
 		SetToggleToolButtonActivity(WidgetNames.UnderlineButton, underline, Base.Handlers.OnEditFormatUnderline);
 	}
 	
+	private void SetActiveTimingMode (TimingMode mode) {
+		if (mode == TimingMode.Times)
+			SetCheckMenuItemActivity(WidgetNames.ViewTimes, true);
+		else
+			SetCheckMenuItemActivity(WidgetNames.ViewFrames, true);
+	}	
 		
 	private void SetViewVideoSubtitlesActivity (bool isTextActive) {
 		if (isTextActive)
@@ -420,7 +295,7 @@ public class Menus {
 	}
 	
 	private void SetViewVideoSubtitlesSensitivity () {
-		bool isVideoLoaded = Core.Base.Ui.Video.IsLoaded;
+		bool isVideoLoaded = (Base.Ui != null) && Base.Ui.Video.IsLoaded;
 		bool textSensitivity = isVideoLoaded && Base.IsDocumentLoaded;
 		bool translationSensitivity = isVideoLoaded && textSensitivity && Base.Document.IsTranslationLoaded;
 		SetViewVideoSubtitlesSensitivity(textSensitivity, translationSensitivity);	
@@ -564,6 +439,113 @@ public class Menus {
     
     private void ClearTooltip (Widget widget) {
     	SetTooltip(widget, null);
+    }
+
+	/* Event members */
+	
+	private void OnBaseInitFinished () {
+		Base.DocumentLoaded += OnBaseDocumentLoaded;
+		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
+		Base.VideoLoaded += OnBaseVideoLoaded;
+		Base.VideoUnloaded += OnBaseVideoUnloaded;
+		Base.TranslationLoaded += OnBaseTranslationLoaded;
+		Base.TranslationUnloaded += OnBaseTranslationUnloaded;
+		Base.Ui.View.Selection.Changed += OnSubtitleViewSelectionChanged;
+		Base.Ui.View.SubtitleCountChanged += OnSubtitleViewCountChanged;
+		Base.SpellLanguages.TextLanguageChanged += OnSpellLanguagesLanguageChanged;
+		Base.SpellLanguages.TranslationLanguageChanged += OnSpellLanguagesLanguageChanged;
+		Base.CommandManager.UndoToggled += OnCommandManagerUndoToggled;
+		Base.CommandManager.RedoToggled += OnCommandManagerRedoToggled;
+		Base.CommandManager.CommandActivated += OnCommandManagerCommandActivated;
+	}
+	
+	private void OnBaseDocumentLoaded (Document document) {
+		SetDocumentSensitivity(true);
+		SetFrameRateMenus();
+		SetActiveTimingMode(Base.TimingMode);
+		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
+	}
+	
+	private void OnBaseDocumentUnloaded (Document document) {
+		SetDocumentSensitivity(false);
+	}
+	
+	private void OnBaseVideoLoaded (Uri videoUri) {
+		SetVideoSensitivity(true);
+    	SetViewVideoSubtitlesSensitivity();
+	}
+
+	private void OnBaseVideoUnloaded () {
+		SetVideoSensitivity(false);
+    	SetViewVideoSubtitlesSensitivity(false, false);
+	}
+
+	private void OnSubtitleViewCountChanged (int count) {
+		SetSubtitleCountDependentSensitivity(count);
+	}
+	
+	private void OnBaseTranslationLoaded () {
+		SetTranslationSensitivity(true);
+		UpdateUndoRedoMessages();
+	}
+	
+	private void OnBaseTranslationUnloaded () {
+		SetTranslationSensitivity(false);
+    	SetViewVideoSubtitlesActivity(true);
+    	UpdateUndoRedoMessages();
+	}
+	
+	private void OnSubtitleViewSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+		if (subtitle != null) {
+			/* One subtitle selected */
+			SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
+			SetNonZeroSelectionDependentSensitivity(true);
+			SetOneSelectionDependentSensitivity(true);
+		}
+		else {
+			SetOneSelectionDependentSensitivity(false);
+	
+			if (paths.Length == 0) {
+				/* No selection */
+				SetNonZeroSelectionDependentSensitivity(false);
+				SetStylesActivity(false, false, false);
+			}
+			else {
+				/* Multiple paths selected */
+				SetNonZeroSelectionDependentSensitivity(true);
+				bool bold, italic, underline;
+				GetGlobalStyles(paths, out bold, out italic, out underline);
+				SetStylesActivity(bold, italic, underline);	
+			}
+		}
+	}
+	
+	private void OnSpellLanguagesLanguageChanged () {
+		SetToolsAutocheckSpellingSensitivity(true);
+	}
+		
+	private void OnCommandManagerUndoToggled (object o, EventArgs args)  {
+   		Widget button = Base.GetWidget(WidgetNames.UndoButton);
+   		button.Sensitive = !button.Sensitive;
+    		
+		MenuItem menuItem = Base.GetWidget(WidgetNames.EditUndo) as MenuItem;
+		menuItem.Sensitive = !menuItem.Sensitive;
+		if (!menuItem.Sensitive)
+			(menuItem.Child as Label).Text = Catalog.GetString("Undo");
+	}
+    
+	private void OnCommandManagerRedoToggled (object o, EventArgs args) {
+    	Widget button = Base.GetWidget(WidgetNames.RedoButton);
+    	button.Sensitive = !button.Sensitive;
+    		
+		MenuItem menuItem = Base.GetWidget(WidgetNames.EditRedo) as MenuItem;
+    	menuItem.Sensitive = !menuItem.Sensitive;
+    	if (!menuItem.Sensitive)
+			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
+    }
+    
+    private void OnCommandManagerCommandActivated (object o, CommandActivatedArgs args) {
+    	UpdateUndoRedoMessages();
     }
 
 }

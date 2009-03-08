@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,9 +33,6 @@ public class SubtitleEdit {
 	private SubtitleEditText textEdit = null;
 	private SubtitleEditTranslation translationEdit = null;
 
-	/* Other */
-	private Subtitle subtitle = null;
-	
 
 	public SubtitleEdit() {
 		hBox = Base.GetWidget(WidgetNames.SubtitleEdit) as HBox;
@@ -43,7 +40,7 @@ public class SubtitleEdit {
 		textEdit = new SubtitleEditText(Base.GetWidget(WidgetNames.SubtitleEditText) as TextView);
 		translationEdit = new SubtitleEditTranslation(Base.GetWidget(WidgetNames.SubtitleEditTranslation) as TextView);
 		
-		ConnectSignals();
+		Base.InitFinished += OnBaseInitFinished;
     }
 
 
@@ -52,13 +49,8 @@ public class SubtitleEdit {
     public bool Enabled {
     	get { return hBox.Sensitive; }
     	set {
-			if (hBox.Sensitive == value)
-				return;
-
-			if (value == false)
-				ClearFields();
-
-			hBox.Sensitive = value;
+			if (hBox.Sensitive != value)
+				hBox.Sensitive = value;
     	}
     }
     
@@ -95,39 +87,6 @@ public class SubtitleEdit {
     	translationEdit = this.translationEdit.TextView;
     }
 	
-	public void BlankStartUp () {
-    	ClearFields();
-    }
-    
-    public void UpdateFromNewDocument (bool wasLoaded) {
-		spinButtons.UpdateFromTimingMode(Base.TimingMode, subtitle);
-		translationEdit.Visible = false;
-	}
-	
-	public void UpdateFromNewTranslationDocument () {
-		if (Enabled)
-			translationEdit.LoadSubtitle(subtitle);
-
-    	translationEdit.Visible = true;
-    }
-    
-    public void UpdateFromCloseTranslation () {
-    	translationEdit.ClearFields();
-    	translationEdit.Visible = false;
-    }
-	
-	public void UpdateFromSelection (Subtitle subtitle) {
-	   	this.Enabled = true;
-    	this.subtitle = subtitle;
-    	spinButtons.LoadTimings(subtitle);
-    	textEdit.LoadSubtitle(subtitle);
-    	translationEdit.LoadSubtitle(subtitle);
-    }
-
-	public void UpdateFromTimingMode (TimingMode mode) {
-		spinButtons.UpdateFromTimingMode(mode, subtitle);
-	}
-	
 	public bool GetTextSelectionBounds (out int start, out int end, out SubtitleTextType textType) {
     	if (textEdit.IsFocus) {
     		textType = SubtitleTextType.Text;
@@ -159,30 +118,16 @@ public class SubtitleEdit {
     		translationEdit.ReplaceSelection(replacement);
     }
 
-
-    /* Private Methods */
-
-    private void ClearFields () {
-    	spinButtons.ClearFields();
-    	textEdit.ClearFields();
-    	translationEdit.ClearFields();
-    }
-
-
-    /* Event methods */
     
-    private void OnTextViewToggleOverwrite (object o, EventArgs args) {
-    	/* Reflect the update to the other respective TextView */
-    	if (o == textEdit)
-    		translationEdit.ToggleOverwriteSilent();
-    	else
-    		textEdit.ToggleOverwriteSilent();
+    /* Event members */
+    
+    private void OnBaseInitFinished () {
+    	Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
     }
-
-    private void ConnectSignals () {
-    	textEdit.ToggleOverwrite += OnTextViewToggleOverwrite;
-    	translationEdit.ToggleOverwrite += OnTextViewToggleOverwrite;
-    }
+    
+    private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+		this.Enabled = (subtitle != null);
+	}
 
 }
 

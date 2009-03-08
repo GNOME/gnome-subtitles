@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +44,8 @@ public class CommandManager {
 	public CommandManager (int undoLimit) {
 		limit = undoLimit;
 		commands = new Command[undoLimit];
+		
+		Base.InitFinished += OnBaseInitFinished;
 	}
 	
 	public void Clear () {
@@ -53,63 +55,7 @@ public class CommandManager {
 		iterator = 0;
 	}
 	
-	public void ClearTarget (CommandTarget target) {
-
-		/* Create new collection of commands */
-		Command[] newCommands = new Command[limit];
-		int newIterator = 0;
-		int newUndoCount = 0;
-		int newRedoCount = 0;
-		
-		/* Go through the undo commands */
-		if (undoCount > 0) {
-			int lastUndoIter = iterator - undoCount;
-			if (lastUndoIter < 0)
-				lastUndoIter = limit + lastUndoIter;
-	
-			int undoIter = lastUndoIter;
-			while (undoIter != iterator) {
-				Command undoCommand = commands[undoIter];
-				if (undoCommand.Target != target) {
-					newCommands[newIterator] = undoCommand;
-					newIterator++;
-					newUndoCount++;
-				}		
-				undoIter = (undoIter == limit - 1 ? 0 : undoIter + 1);
-			}
-		}
-		
-		/* Go through the redo commands */
-		if (redoCount > 0) {
-			int redoIter = iterator;
-			int newRedoIterator = newIterator; //Because newIterator cannot be changed now
-			for (int redoNum = 0 ; redoNum < redoCount ; redoNum++) {
-				Command redoCommand = commands[redoIter];
-				if (redoCommand.Target != target) {
-					newCommands[newRedoIterator] = redoCommand;
-					newRedoIterator++;
-					newRedoCount++;				
-				}			
-				redoIter = (redoIter == limit - 1 ? 0 : redoIter + 1);
-			}
-		}
-		
-		/* Check whether to toggle undo and redo */
-		bool toToggleUndo = ((undoCount > 0) && (newUndoCount == 0));
-		bool toToggleRedo = ((redoCount > 0) && (newRedoCount == 0));
-		
-		/* Update state */
-		commands = newCommands;
-		undoCount = newUndoCount;
-		redoCount = newRedoCount;
-		iterator = newIterator;
-		
-		/* Issue possible events */
-		if (toToggleUndo)
-			EmitUndoToggled();
-		if (toToggleRedo)
-			EmitRedoToggled();
-	}
+	/* Public properties */
 	
 	public bool CanUndo {
 		get { return undoCount > 0; }
@@ -287,6 +233,74 @@ public class CommandManager {
 	
 	private void ClearRedo () {
 		redoCount = 0;
+	}
+	
+	private void ClearTarget (CommandTarget target) {
+
+		/* Create new collection of commands */
+		Command[] newCommands = new Command[limit];
+		int newIterator = 0;
+		int newUndoCount = 0;
+		int newRedoCount = 0;
+		
+		/* Go through the undo commands */
+		if (undoCount > 0) {
+			int lastUndoIter = iterator - undoCount;
+			if (lastUndoIter < 0)
+				lastUndoIter = limit + lastUndoIter;
+	
+			int undoIter = lastUndoIter;
+			while (undoIter != iterator) {
+				Command undoCommand = commands[undoIter];
+				if (undoCommand.Target != target) {
+					newCommands[newIterator] = undoCommand;
+					newIterator++;
+					newUndoCount++;
+				}		
+				undoIter = (undoIter == limit - 1 ? 0 : undoIter + 1);
+			}
+		}
+		
+		/* Go through the redo commands */
+		if (redoCount > 0) {
+			int redoIter = iterator;
+			int newRedoIterator = newIterator; //Because newIterator cannot be changed now
+			for (int redoNum = 0 ; redoNum < redoCount ; redoNum++) {
+				Command redoCommand = commands[redoIter];
+				if (redoCommand.Target != target) {
+					newCommands[newRedoIterator] = redoCommand;
+					newRedoIterator++;
+					newRedoCount++;				
+				}			
+				redoIter = (redoIter == limit - 1 ? 0 : redoIter + 1);
+			}
+		}
+		
+		/* Check whether to toggle undo and redo */
+		bool toToggleUndo = ((undoCount > 0) && (newUndoCount == 0));
+		bool toToggleRedo = ((redoCount > 0) && (newRedoCount == 0));
+		
+		/* Update state */
+		commands = newCommands;
+		undoCount = newUndoCount;
+		redoCount = newRedoCount;
+		iterator = newIterator;
+		
+		/* Issue possible events */
+		if (toToggleUndo)
+			EmitUndoToggled();
+		if (toToggleRedo)
+			EmitRedoToggled();
+	}
+	
+	/* Event members */
+	
+	private void OnBaseInitFinished () {
+		Base.TranslationUnloaded += OnBaseTranslationUnloaded;
+	}
+	
+	private void OnBaseTranslationUnloaded () {
+		ClearTarget(CommandTarget.Translation);
 	}
 
 }

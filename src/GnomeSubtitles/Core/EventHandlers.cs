@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,11 +28,6 @@ using System;
 namespace GnomeSubtitles.Core {
 
 public class EventHandlers {
-
-	public EventHandlers () {
-		ConnectSignals();
-    }
-
 
 	/* File Menu */
 	
@@ -78,6 +73,10 @@ public class EventHandlers {
 	
 	public void OnFileProperties (object o, EventArgs args) {
 		new FilePropertiesDialog().Show();
+	}
+	
+	public void OnFileClose (object o, EventArgs args) {
+		Base.Ui.Close();
 	}
 
     public void OnFileQuit (object o, EventArgs args) {
@@ -164,12 +163,12 @@ public class EventHandlers {
 		
 	public void OnViewVideoSubtitlesText (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Base.Ui.Video.Subtitle.ToShowText = true;
+			Base.Ui.Video.Overlay.ToShowText = true;
 	}
 	
 	public void OnViewVideoSubtitlesTranslation (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)
-			Base.Ui.Video.Subtitle.ToShowText = false;
+			Base.Ui.Video.Overlay.ToShowText = false;
 	}
 	
 	/* Search Menu */
@@ -228,7 +227,7 @@ public class EventHandlers {
 	}
 	
 	public void OnVideoClose (object o, EventArgs args) {
-		Base.Ui.CloseVideo();
+		Base.CloseVideo();
 	}
 
 	public void OnVideoPlayPause (object o, EventArgs args) {
@@ -338,30 +337,6 @@ public class EventHandlers {
     		OnEditDeleteSubtitles(o, EventArgs.Empty);
 		else if (key == Gdk.Key.Insert)
 			OnEditInsertSubtitleAfter(o, EventArgs.Empty);
-    }
-    
-    
-    /*	Command Manager */
-
-    private void OnUndoToggled (object o, EventArgs args) {
-    	Base.Ui.Menus.UpdateFromUndoToggled();
-    }
-    
-    private void OnRedoToggled (object o, EventArgs args) {
-    	Base.Ui.Menus.UpdateFromRedoToggled();
-    }
-    
-    private void OnCommandActivated (object o, CommandActivatedArgs args) {
-    	Base.Ui.Menus.UpdateFromCommandActivated();
-    	Base.Document.UpdateFromCommandActivated(args.Target);
-    }
-    
-    /* Private members */
-    
-    private void ConnectSignals () {
-    	Base.CommandManager.UndoToggled += OnUndoToggled;
-    	Base.CommandManager.RedoToggled += OnRedoToggled;
-    	Base.CommandManager.CommandActivated += OnCommandActivated;
     }
 
 }

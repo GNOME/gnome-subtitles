@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ public class VideoPosition {
 	private const int userUpdateTimeout = 100; //Milliseconds
 	private TimeSpan seekIncrement = TimeSpan.FromMilliseconds(500);
 
-	/* Handlers */
+	/* Delegates */
 	public delegate void VideoPositionChangedHandler (TimeSpan position);
 
 	/* Events */
@@ -57,9 +57,9 @@ public class VideoPosition {
 		lengthValueLabel = Base.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
 
 		this.player = player;
-		player.PositionChanged += OnPlayerPositionChanged;
-		player.FoundDuration += OnPlayerFoundDuration;
+		Base.InitFinished += OnBaseInitFinished;
 	}
+
 
 	/* Public properties */
 
@@ -96,13 +96,7 @@ public class VideoPosition {
 		
 		slider.Sensitive = false;	
 	}
-	
-	public void ToggleTimingMode (TimingMode newMode) {
-		UpdatePositionLabel(newMode);
-		UpdatePositionValueLabel(position);
-		TimeSpan length = player.Duration;
-		UpdateLengthLabel(newMode, length);
-	}
+
 
 	/* Event members */
 	
@@ -160,6 +154,20 @@ public class VideoPosition {
 	
 	private void DisconnectSliderSignals () {
 		slider.ValueChanged -= OnSliderValueChanged;
+	}
+	
+	private void OnBaseInitFinished () {
+		player.PositionChanged += OnPlayerPositionChanged;
+		player.FoundDuration += OnPlayerFoundDuration;
+
+		Base.TimingModeChanged += OnBaseTimingModeChanged;
+	}
+	
+	private void OnBaseTimingModeChanged (TimingMode timingMode) {
+		UpdatePositionLabel(timingMode);
+		UpdatePositionValueLabel(position);
+		TimeSpan length = player.Duration;
+		UpdateLengthLabel(timingMode, length);
 	}
 
 	/* Private members */
