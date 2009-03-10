@@ -69,10 +69,6 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchFindPrevious, true);
 	}
 	
-	public void SetViewVideoActivity (bool activity) {
-		SetCheckMenuItemActivity(WidgetNames.ViewVideo, activity);
-	}
-	
 	public void AddFrameRateVideoTag (float frameRate) {
 		if (frameRate <= 0)
 			return;
@@ -147,6 +143,10 @@ public class Menus {
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
 	}
 	
+	private void SetViewVideoActivity (bool activity) {
+		SetCheckMenuItemActivity(WidgetNames.ViewVideo, activity);
+	}
+
 	private void SetDocumentSensitivity (bool documentLoaded) {
 		/* Set Sensitivity that is equal to the document loaded status */
 
@@ -473,6 +473,7 @@ public class Menus {
 	private void OnBaseVideoLoaded (Uri videoUri) {
 		SetVideoSensitivity(true);
     	SetViewVideoSubtitlesSensitivity();
+    	SetViewVideoActivity(true);
 	}
 
 	private void OnBaseVideoUnloaded () {

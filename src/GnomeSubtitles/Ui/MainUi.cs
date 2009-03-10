@@ -157,7 +157,6 @@ public class MainUi {
     	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
-			Menus.SetViewVideoActivity(true);
 			Base.OpenVideo(dialog.Uri);
 		}
     }
