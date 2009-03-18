@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2008-12-31 01:37+0000\n"
-"PO-Revision-Date: 2009-01-22 00:14-0300\n"
+"POT-Creation-Date: 2009-03-08 19:42+0000\n"
+"PO-Revision-Date: 2009-03-18 19:11+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -470,6 +470,11 @@ msgstr "Frecuencia de los fotogramas del _vídeo"
 msgid "_View"
 msgstr "_Ver"
 
+#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "gtk-close"
+msgstr "gtk-close"
+
 #: ../src/Glade/PreferencesDialog.glade.h:1
 msgid "<b>Video</b>"
 msgstr "<b>Vídeo</b>"
@@ -592,10 +597,15 @@ msgid "_Shift"
 msgstr "_Desplazar"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+#| msgid "<b>Path:</b>"
+msgid "<b>Status</b>"
+msgstr "<b>Estado</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
 msgid "Add sync point"
 msgstr "Añadir punto de sincronización"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
 msgid ""
 "Add sync points by selecting a subtitle and setting the video to its correct "
 "position."
@@ -603,19 +613,19 @@ msgstr ""
 "Añadir puntos de sincronización seleccionando un subtítulo y estableciendo "
 "el video a su posición correcta."
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "Message"
+msgstr "Mensaje"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
 msgid "Synchronize Timings"
 msgstr "Sincronizar tiempos"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "gtk-close"
-msgstr "gtk-close"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:7
 msgid "gtk-ok"
 msgstr "gtk-ok"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:8
 msgid "gtk-remove"
 msgstr "gtk-remove"
 
@@ -1098,6 +1108,22 @@ msgstr "Tiempo"
 msgid "Frames"
 msgstr "Fotogramas"
 
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:55
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+msgid "No."
+msgstr "Número"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:59
+#| msgid "Current Locale"
+msgid "Current Start"
+msgstr "Inicio actual"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:60
+#| msgid "New Start:"
+msgid "Correct Start"
+msgstr "Inicio correcto"
+
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:29
 msgid "Could not play the file"
@@ -1140,7 +1166,6 @@ msgstr "INSER"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:231
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
 msgid "Text"
 msgstr "Texto"
@@ -1159,35 +1184,25 @@ msgstr "Ln"
 msgid "Col"
 msgstr "Col"
 
-#. Number column
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:223
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
-msgid "No."
-msgstr "Número"
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
+msgid "Frame"
+msgstr "Fotograma"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:226
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "From"
 msgstr "Desde"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:227
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "To"
 msgstr "A"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:228
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
 msgid "During"
 msgstr "Duración"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:232
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
 msgid "Translation"
 msgstr "Traducción"
-
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
-msgid "Frame"
-msgstr "Fotograma"
 
 #~ msgid "Could not continue the video playback"
 #~ msgstr "No se pudo continuar la reproducción del vídeo"
