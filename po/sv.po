@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-28 23:55+0100\n"
-"PO-Revision-Date: 2009-02-28 23:55+0100\n"
+"POT-Creation-Date: 2009-03-24 10:18+0100\n"
+"PO-Revision-Date: 2009-03-24 10:20+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -467,6 +467,11 @@ msgstr "Bildfrekvens för _video"
 msgid "_View"
 msgstr "_Visa"
 
+#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "gtk-close"
+msgstr "Stäng"
+
 #: ../src/Glade/PreferencesDialog.glade.h:1
 msgid "<b>Video</b>"
 msgstr "<b>Video</b>"
@@ -589,26 +594,30 @@ msgid "_Shift"
 msgstr "_Förskjut"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+msgid "<b>Status</b>"
+msgstr "<b>Status</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
 msgid "Add sync point"
 msgstr "Lägg till synkroniseringspunkt"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
 msgid "Add sync points by selecting a subtitle and setting the video to its correct position."
 msgstr "Lägg till synkroniseringspuntker genom att välja en undertext och ställa in videon till dess korrekta position."
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "Message"
+msgstr "Meddelande"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
 msgid "Synchronize Timings"
 msgstr "Synkronisera tider"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "gtk-close"
-msgstr "Stäng"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:7
 msgid "gtk-ok"
 msgstr "OK"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:8
 msgid "gtk-remove"
 msgstr "Ta bort"
 
@@ -668,13 +677,13 @@ msgstr "Redigerar till"
 msgid "Editing During"
 msgstr "Redigerar längd"
 
-#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:125
-#: ../src/GnomeSubtitles/Ui/Menus.cs:93
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: ../src/GnomeSubtitles/Ui/Menus.cs:535
 msgid "Undo"
 msgstr "Ångra"
 
-#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:134
-#: ../src/GnomeSubtitles/Ui/Menus.cs:103
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: ../src/GnomeSubtitles/Ui/Menus.cs:545
 msgid "Redo"
 msgstr "Gör om"
 
@@ -867,11 +876,11 @@ msgstr "Vietnamesisk"
 msgid "Current Locale"
 msgstr "Aktuell lokalanpassning"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:297
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Handboken för Gnome-undertexter kunde inte hittas."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:297
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifiera att din installation har genomförts korrekt."
 
@@ -1064,7 +1073,7 @@ msgid "Start Time:"
 msgstr "Starttid:"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:77
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Time"
 msgstr "Tid"
 
@@ -1074,7 +1083,7 @@ msgstr "Bildrutor"
 
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:55
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:210
 msgid "No."
 msgstr "Nr"
 
@@ -1107,8 +1116,8 @@ msgstr "Kunde inte öppna Bug Buddy, felrapporteringsverktyget."
 msgid "Bug information has been printed to the console."
 msgstr "Felsökningsinformation har skrivits ut till konsollen."
 
-#. To translators: this is the filename for new files (before being saved)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:130
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:134
 msgid "Unsaved Subtitles"
 msgstr "Osparade undertexter"
 
@@ -1128,7 +1137,7 @@ msgstr "INF"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:222
 msgid "Text"
 msgstr "Text"
 
@@ -1146,23 +1155,23 @@ msgstr "Rad"
 msgid "Col"
 msgstr "Kol"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Frame"
 msgstr "Bildruta"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:214
 msgid "From"
 msgstr "Från"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:215
 msgid "To"
 msgstr "Till"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
 msgid "During"
 msgstr "Längd"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:227
 msgid "Translation"
 msgstr "Översättning"
 
