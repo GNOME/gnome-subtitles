@@ -20,7 +20,7 @@ Dependencies
     GStreamer-Plugins-Base >= 0.10
     GtkSpell  	>= 2.0
     Enchant   	>= 1.3
-    SubLib    	>= 0.8
+    SubLib    	>= 0.9
 
 
 Building from Source
@@ -39,6 +39,7 @@ The INSTALL file contains detailed information on this subject.
 Building from SVN
 =================
 
+
 Checkout the latest code from the GNOME SVN:
 	svn co http://svn.gnome.org/svn/gnome-subtitles/trunk gnome-subtitles
 
@@ -55,3 +56,6 @@ Run `./autogen.sh' to generate the build scripts. Some packages are required:
 
 You can now proceed to "Building from Source" to build Gnome Subtitles.
 
+Note that, regarding the required dependencies, SubLib SVN version may be needed
+when building Gnome Subtitles from the SVN. Information on building SubLib from
+the SVN is available at: http://sublib.sourceforge.net/development.
