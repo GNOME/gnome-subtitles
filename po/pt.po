@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-01 23:33+0000\n"
-"PO-Revision-Date: 2009-02-25 22:13-0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
+"POT-Creation-Date: 2009-03-31 14:02+0000\n"
+"PO-Revision-Date: 2009-03-31 20:11-0100\n"
 "Last-Translator: António Lima <amrlima@gmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -415,7 +415,8 @@ msgstr "_Abrir"
 msgid "_Play / Pause"
 msgstr "_Reproduzir / Parar"
 
-#: ../src/Glade/MainWindow.glade.h:47 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Substituir"
 
@@ -589,32 +590,24 @@ msgid "_Shift"
 msgstr "_Alterar"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+msgid "<b>Status</b>"
+msgstr "<b>Estado</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
 msgid "Add sync point"
 msgstr "Adicionar ponto de sincronização"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid ""
-"Add sync points by selecting a subtitle and setting the video to its correct "
-"position."
-msgstr ""
-"Adicionar pontos de sincronização seleccionado uma legenda e definindo o "
-"vídeo para a sua posição correcta."
-
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-msgid "Synchronize Timings"
-msgstr "Sincronizar Temporizações"
+msgid "Add sync points by selecting a subtitle and setting the video to its correct position."
+msgstr "Adicionar pontos de sincronização seleccionado uma legenda e definindo o vídeo para a sua posição correcta."
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "gtk-close"
-msgstr "gtk-close"
+msgid "Message"
+msgstr "Mensagem"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "gtk-ok"
-msgstr "gtk-ok"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
-msgid "gtk-remove"
-msgstr "gtk-remover"
+msgid "Synchronize Timings"
+msgstr "Sincronizar Temporizações"
 
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
@@ -631,10 +624,6 @@ msgstr "Avançar para _tempo:"
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
 msgid "_Seek"
 msgstr "_Avançar"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:4
-msgid "gtk-cancel"
-msgstr "gtk-cancelar"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -672,13 +661,13 @@ msgstr "A Editar Para"
 msgid "Editing During"
 msgstr "A Editar Durante"
 
-#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:125
-#: ../src/GnomeSubtitles/Ui/Menus.cs:93
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: ../src/GnomeSubtitles/Ui/Menus.cs:535
 msgid "Undo"
 msgstr "Desfazer"
 
-#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:134
-#: ../src/GnomeSubtitles/Ui/Menus.cs:103
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: ../src/GnomeSubtitles/Ui/Menus.cs:545
 msgid "Redo"
 msgstr "Refazer"
 
@@ -871,11 +860,11 @@ msgstr "Vietnamita"
 msgid "Current Locale"
 msgstr "Configuração Regional Actual"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:297
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Não foi possível encontrar o Manual do Gnome Subtitles."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:297
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Certifique-se de que a instalação terminou com sucesso."
 
@@ -897,12 +886,8 @@ msgid "Encoding"
 msgstr "Codificação"
 
 #: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Ocorreu um erro desconhecido. Por favor reporte o erro e inclua este nome de "
-"erro:"
+msgid "An unknown error has occured. Please report a bug and include this error name:"
+msgstr "Ocorreu um erro desconhecido. Por favor reporte o erro e inclua este nome de erro:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:95
 msgid "Auto Detected"
@@ -954,8 +939,7 @@ msgstr "Gravar noutro ficheiro"
 #: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:59
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
-msgstr ""
-"Ficou sem memória. Por favor feche algumas aplicações e tente novamente."
+msgstr "Ficou sem memória. Por favor feche algumas aplicações e tente novamente."
 
 #: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:61
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:43
@@ -982,8 +966,7 @@ msgstr "Se não gravar, todas as alterações serão perdidas para sempre."
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr ""
-"Gravar as alterações para as legendas \" {0}\" antes de criar novas legendas?"
+msgstr "Gravar as alterações para as legendas \" {0}\" antes de criar novas legendas?"
 
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -992,15 +975,12 @@ msgstr "Criar sem Gravar"
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:110
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr ""
-"Gravar as alterações à tradução  \"{0}\" antes de criar novas legendas?"
+msgstr "Gravar as alterações à tradução  \"{0}\" antes de criar novas legendas?"
 
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:117
 #, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Gravar as alterações à tradução  \"{0}\" antes de criar uma nova tradução?"
+msgid "Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr "Gravar as alterações à tradução  \"{0}\" antes de criar uma nova tradução?"
 
 #: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:127
 #, csharp-format
@@ -1057,20 +1037,12 @@ msgid "Add or Remove..."
 msgstr "Adicionar ou Remover..."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"Não foi possível detectar o formato da legenda. Por favor verifique se o "
-"tipo de ficheiro é suportado."
+msgid "Unable to detect the subtitle format. Please check that the file type is supported."
+msgstr "Não foi possível detectar o formato da legenda. Por favor verifique se o tipo de ficheiro é suportado."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr ""
-"A codificação utilizada não é suportada pelo seu sistema. Por favor escolha "
-"outra codificação."
+msgid "The encoding used is not supported by your system. Please choose another encoding."
+msgstr "A codificação utilizada não é suportada pelo seu sistema. Por favor escolha outra codificação."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
@@ -1085,7 +1057,7 @@ msgid "Start Time:"
 msgstr "Tempo Inicial:"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:77
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Time"
 msgstr "Tempo"
 
@@ -1095,7 +1067,7 @@ msgstr "Frames"
 
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:55
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:210
 msgid "No."
 msgstr "No."
 
@@ -1128,8 +1100,8 @@ msgstr "Incapaz de abrir o Bug Buddy, a ferramenta de reporte de erros."
 msgid "Bug information has been printed to the console."
 msgstr "A informação do erro foi impressa na consola."
 
-#. To translators: this is the filename for new files (before being saved)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:130
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:134
 msgid "Unsaved Subtitles"
 msgstr "Legendas Não Gravadas"
 
@@ -1149,7 +1121,7 @@ msgstr "INS"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:222
 msgid "Text"
 msgstr "Texto"
 
@@ -1167,38 +1139,42 @@ msgstr "Ln"
 msgid "Col"
 msgstr "Col"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:187
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Frame"
 msgstr "Frame"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:214
 msgid "From"
 msgstr "A partir de"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:215
 msgid "To"
 msgstr "Até"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
 msgid "During"
 msgstr "Durante"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:227
 msgid "Translation"
 msgstr "Tradução"
 
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
+#~ msgid "gtk-ok"
+#~ msgstr "gtk-ok"
+#~ msgid "gtk-remove"
+#~ msgstr "gtk-remover"
+#~ msgid "gtk-cancel"
+#~ msgstr "gtk-cancelar"
 #~ msgid "Add from video"
 #~ msgstr "Adicionar a partir de vídeo"
-
 #~ msgid "Could not continue the video playback"
 #~ msgstr "Não foi possível continuar a reprodução do vídeo"
-
 #~ msgid "The following error has occurred: "
 #~ msgstr "O correu o seguinte erro: "
-
 #~ msgid "Please check that the video file is supported."
 #~ msgstr "Por favor verifique se o ficheiro de vídeo é suportado."
-
 #~ msgid ""
 #~ "An Error has occured.\n"
 #~ "\n"
@@ -1215,12 +1191,10 @@ msgstr "Tradução"
 #~ "\n"
 #~ "Se o erro está relacionado com um <b>ficheiro de legenda</b>, se possível "
 #~ "anexe esse ficheiro."
-
 #~ msgid "Open Bugzilla"
 #~ msgstr "Abrir o Bugzilla"
-
 #~ msgid "Selected subtitle to first"
 #~ msgstr "Legenda seleccionada para inicial"
-
 #~ msgid "Selected subtitle to last"
 #~ msgstr "Legenda seleccionada para final"
+
