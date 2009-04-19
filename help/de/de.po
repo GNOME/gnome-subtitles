@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2009-04-17 09:53+0000\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2009-04-18 13:44+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -221,7 +221,7 @@ msgstr "Untertitelformate:"
 
 #: C/gnome-subtitles.xml:121(para)
 msgid "Advanced Sub Station Alpha"
-msgstr ""
+msgstr "Advanced Sub Station Alpha"
 
 #: C/gnome-subtitles.xml:122(para)
 msgid "MicroDVD"
@@ -244,9 +244,8 @@ msgid "SubRip"
 msgstr "SubRip"
 
 #: C/gnome-subtitles.xml:127(para)
-#, fuzzy
 msgid "Sub Station Alpha"
-msgstr "YCbCr-Sub-Sampling"
+msgstr "Sub Station Alpha"
 
 #: C/gnome-subtitles.xml:128(para)
 msgid "SubViewer 1.0"
@@ -266,7 +265,7 @@ msgstr "Verwendet mplayer als Backend"
 
 #: C/gnome-subtitles.xml:135(para)
 msgid "Video length and current position display"
-msgstr ""
+msgstr "Anzeige der Videolänge und der aktuellen Position"
 
 #: C/gnome-subtitles.xml:136(para)
 msgid "Set subtitle timings based on video position"
@@ -303,11 +302,13 @@ msgstr "Synchronisationen"
 
 #: C/gnome-subtitles.xml:152(para)
 msgid "Auto-adjust timings based on 2 correct time/synchronization points"
-msgstr ""
+msgstr "Automatische Synchronisation anhand zweier korrekter Bezugspunkte"
 
 #: C/gnome-subtitles.xml:153(para)
 msgid "Shift subtitles by a specified delay (which can be based on the video)"
 msgstr ""
+"Verschieben von Untertiteln anhand eines vorgegebenen Versatzwertes (auch "
+"basierend auf den Werten des Videos)"
 
 #: C/gnome-subtitles.xml:154(para)
 msgid "Convert between framerates"
@@ -315,7 +316,7 @@ msgstr "Bildraten umwandeln"
 
 #: C/gnome-subtitles.xml:155(para)
 msgid "Edit times and frames"
-msgstr ""
+msgstr "Bearbeiten anhand von Zeitangaben und Bildpositionen"
 
 #: C/gnome-subtitles.xml:158(para)
 msgid "Other Features"
@@ -323,15 +324,15 @@ msgstr "Weitere Funktionsmerkmale"
 
 #: C/gnome-subtitles.xml:160(para)
 msgid "Character coding a subtitle format auto-detection (on opening)"
-msgstr ""
+msgstr "Automatische Erkennung der Zeichenkodierung der Untertitel beim Öffnen"
 
 #: C/gnome-subtitles.xml:161(para)
 msgid "Multiple character encoding choice"
-msgstr ""
+msgstr "Auswahl aus mehreren Zeichenkodierungen"
 
 #: C/gnome-subtitles.xml:162(para)
 msgid "Relaxes subtitle reading, to read subtitles that contain errors"
-msgstr ""
+msgstr "Vereinfachtes Lesen von Untertiteln, falls diese fehlerhaft sind"
 
 #: C/gnome-subtitles.xml:178(title)
 msgid "Getting Started"
@@ -370,15 +371,15 @@ msgid ""
 "Type <command>gnome-subtitles</command><replaceable>filename</replaceable> "
 "and press <keycap>Return</keycap>."
 msgstr ""
-"Geben Sie den Befehl <command>gnome-subtitles</command><replaceable>filename</"
-"replaceable> ein und drücken Sie die <keycap>Eingabetaste</keycap>."
+"Geben Sie den Befehl <command>gnome-subtitles</command><replaceable> "
+"Dateiname</replaceable> ein und drücken Sie die <keycap>Eingabetaste</keycap>."
 
 #: C/gnome-subtitles.xml:199(para)
 msgid ""
 "The <replaceable>filename</replaceable> argument is optional. If specified, "
 "the application will open that file when starting."
 msgstr ""
-"Das Argument <replaceable>filename</replaceable> ist optional. Falls Sie es "
+"Das Argument <replaceable>Dateiname</replaceable> ist optional. Falls Sie es "
 "angeben, öffnet die Anwendung diese Datei beim Start."
 
 #: C/gnome-subtitles.xml:206(title)
@@ -426,12 +427,16 @@ msgid ""
 "If you want to specify the encoding, choose the appropriate character "
 "encoding from the Encoding"
 msgstr ""
+"Falls Sie die Zeichenkodierung angeben wollen, wählen Sie den entsprechenden "
+"Eintrag in »Zeichenkodierung« aus."
 
 #: C/gnome-subtitles.xml:242(para)
 msgid ""
 "If you want to choose a video to open immediately, choose a video from the "
 "Video list."
 msgstr ""
+"Wenn Sie ein ein Video unmittelbar öffnen wollen, wählen Sie eines aus der "
+"Videoliste aus."
 
 #: C/gnome-subtitles.xml:247(para)
 msgid ""
@@ -439,6 +444,10 @@ msgid ""
 "directory. If the video you want to open is not in the same directory as the "
 "subtitle file, you can open the video after opening the subtitle file."
 msgstr ""
+"Bei der Auswahl eines Videos können Sie nur Dateien aus dem gegenwärtig "
+"geöffneten Ordner wählen. Falls sich das gewünschte Video nicht im gleichen "
+"Ordner wie die Untertiteldatei befindet, können Sie es nach dem Öffnen der "
+"Untertiteldatei auswählen."
 
 #: C/gnome-subtitles.xml:253(title) C/gnome-subtitles.xml:255(title)
 msgid "Saving a file"
@@ -448,13 +457,15 @@ msgstr "Speichern einer Datei"
 msgid ""
 "You can either save a file normally, or use Save As to set different options."
 msgstr ""
+"Sie können eine Datei entweder normal speichern oder mit  »Speichern unter« "
+"weitere Optionen wählen."
 
 #: C/gnome-subtitles.xml:258(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save</"
 "guimenuitem></menuchoice>."
 msgstr ""
-"Wählen Sie<menuchoice><guisubmenu>Datei</guisubmenu><guimenuitem>Speichern</"
+"Wählen Sie <menuchoice><guisubmenu>Datei</guisubmenu><guimenuitem>Speichern</"
 "guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:266(para)
@@ -477,7 +488,7 @@ msgstr ""
 
 #: C/gnome-subtitles.xml:275(para)
 msgid "The Save As window should open"
-msgstr ""
+msgstr "Das Fenster »Speichern unter« wird geöffnet."
 
 #: C/gnome-subtitles.xml:277(para)
 msgid "Enter a new name for your subtitle file"
@@ -488,12 +499,16 @@ msgid ""
 "If you would like to save the file in a different location, browse to the new "
 "location in the file browser"
 msgstr ""
+"Falls Sie die Datei an einem anderen Ort speichern wollen, wählen Sie den "
+"neuen Ort im Dateiauswahldialog aus."
 
 #: C/gnome-subtitles.xml:280(para)
 msgid ""
 "If you would like to save the file in a format other than the format listed "
 "in the Subtitle Format list, choose a different format."
 msgstr ""
+"Falls Sie die Datei in einem Format speichern wollen, das nicht in der Liste "
+"der Untertitelformate aufgeführt ist, wählen Sie ein anderes Format aus."
 
 #: C/gnome-subtitles.xml:282(para)
 msgid ""
@@ -501,11 +516,13 @@ msgid ""
 "default encoding which is listed, change the encoding in the character "
 "encoding list."
 msgstr ""
+"Falls Sie die Datei nicht in der angezeigten Standard-Zeichenkodierung "
+"speichern wollen, ändern Sie die Kodierung in der Liste der "
+"Zeichenkodierungen wie gewünscht."
 
 #: C/gnome-subtitles.xml:284(para)
-#, fuzzy
 msgid "Click Save"
-msgstr "Speichern unter"
+msgstr "Klicken Sie auf <guilabel>Speichern</guilabel>."
 
 #: C/gnome-subtitles.xml:289(title)
 msgid "Selecting a character encoding"
@@ -569,6 +586,8 @@ msgstr "Füllen Sie die entsprechenden Felder aus."
 #: C/gnome-subtitles.xml:312(para)
 msgid "When you are done entering header data in, click OK"
 msgstr ""
+"Sobald Sie mit der Eingabe der Kopfzeilen fertig sind, klicken Sie auf "
+"<guilabel>OK</guilabel>."
 
 #: C/gnome-subtitles.xml:318(title)
 msgid "Working with Subtitles"
@@ -579,6 +598,9 @@ msgid ""
 "This help lists the keyboard shortcuts to accomplish tasks. All of the tasks "
 "can also be accomplished by using the Edit menu instead of keyboard shortcuts."
 msgstr ""
+"Nachfolgend werden zu bestimmten Aufgaben zugeordnete Tastenkürzel "
+"aufgelistet. Alle diese Aufgaben erreichen Sie auch über das Menü "
+"<guimenu>Bearbeiten</guimenu>."
 
 #: C/gnome-subtitles.xml:322(title)
 msgid "Adding a Subtitle"
@@ -650,7 +672,7 @@ msgstr "Drücken Sie <keycap>Entf</keycap>"
 
 #: C/gnome-subtitles.xml:360(title)
 msgid "Working with Multiple Subtitles"
-msgstr ""
+msgstr "Arbeiten mit mehreren Untertiteln"
 
 #: C/gnome-subtitles.xml:361(para)
 msgid ""
@@ -658,6 +680,10 @@ msgid ""
 "keycap> to select sequenctial subtitles, and <keycap>Control</keycap> to "
 "select non-sequention subtitles"
 msgstr ""
+"Gelegentlich möchten Sie vielleicht mehrere Untertitel auswählen. Drücken Sie "
+"dazu die <keycap>Umschalttaste</keycap>, oder die <keycap>Strg</keycap>-"
+"Taste, falls Sie nicht unmittelbar aufeinanderfolgende Untertitel auswählen "
+"wollen."
 
 #: C/gnome-subtitles.xml:363(para)
 msgid "To select all subtitles type <keycap>Control</keycap>-<keycap>A</keycap>"
@@ -758,9 +784,8 @@ msgid "Manipulating Subtitles"
 msgstr "Bearbeiten von Untertiteln"
 
 #: C/gnome-subtitles.xml:423(title)
-#, fuzzy
 msgid "Setting subtitle units"
-msgstr "Anfangszeit setzen"
+msgstr "Festlegen der Bearbeitungsbasis für Untertitel"
 
 #: C/gnome-subtitles.xml:424(para)
 msgid ""
@@ -768,31 +793,35 @@ msgid ""
 "subtitles in time units (minutes and seconds) or in frame units. The default "
 "unit is time."
 msgstr ""
+"In <application>Gnome Subtitles</application> können Sie Untertitel entweder "
+"anhand von Zeiten (Minuten und Sekunden) oder anhand von Bildeinheiten "
+"bearbeiten. Vorgabe ist die Bearbeitung anhand von Zeiten."
 
 #: C/gnome-subtitles.xml:426(title)
-#, fuzzy
 msgid "To use Frame units"
-msgstr "Die rechte Maustaste wird verwendet zum"
+msgstr "Verwendung von Bildern"
 
 #: C/gnome-subtitles.xml:427(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Frames</"
 "guimenuitem></menuchoice>."
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Ansicht</guisubmenu><guimenuitem>Bild</"
+"guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:431(title)
-#, fuzzy
 msgid "To use Time units"
-msgstr "Die rechte Maustaste wird verwendet zum"
+msgstr "Verwendung von Zeiten"
 
 #: C/gnome-subtitles.xml:432(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Times</"
 "guimenuitem></menuchoice>."
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Ansicht</guisubmenu><guimenuitem>Zeiten</"
+"guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:438(title)
-#, fuzzy
 msgid "Adjusting Timings"
 msgstr "Synchronisation korrigieren"
 
@@ -801,6 +830,8 @@ msgid ""
 "If you want to adjust the timings of only some subtitles, select the "
 "subtitles that you want to adjust the timing of"
 msgstr ""
+"Falls Sie die Synchronisation nur für bestimmte Untertitel ändern wollen, "
+"wählen Sie die gewünschten Untertitel aus."
 
 #: C/gnome-subtitles.xml:442(para)
 msgid ""
@@ -815,11 +846,12 @@ msgid ""
 "Choose the new starting time of the first subtitle and the new starting time "
 "of the last subtitle"
 msgstr ""
+"Wählen Sie den neuen Startzeitpunkt des ersten Untertitels und den "
+"Startzeitpunkt des letzten Untertitels aus."
 
 #: C/gnome-subtitles.xml:451(title)
-#, fuzzy
 msgid "Shifting Timings"
-msgstr "Zeiten verschieben"
+msgstr "Synchronisation verschieben"
 
 #: C/gnome-subtitles.xml:452(para)
 msgid ""
@@ -827,11 +859,14 @@ msgid ""
 "a specific amount. Unlike the Adjust subtitles feature, Shifting subtitles "
 "does not affect the duration of the subtitles."
 msgstr ""
+"Das Verschieben der Synchronisation ermöglicht Ihnen das Verschieben von "
+"einem oder mehreren Untertiteln nach vorn oder zurück um einen bestimmten "
+"Wert. Im Gegensatz zum Korrigieren der Synchronisation ändert das Verschieben "
+"der Synchronisation die Laufzeit der Untertitel nicht."
 
 #: C/gnome-subtitles.xml:455(title)
-#, fuzzy
 msgid "To use shift subtitles"
-msgstr "Die rechte Maustaste wird verwendet zum"
+msgstr "Verschieben von Untertiteln"
 
 #: C/gnome-subtitles.xml:456(para)
 msgid ""
@@ -840,12 +875,19 @@ msgid ""
 "subtitle, select that subtitle. If you want to shift more than one specific "
 "subtitles, select all of the subtitles that you want to shift."
 msgstr ""
+"Wählen Sie aus, welchen oder welche Untertitel Sie verschieben wollen. Falls "
+"Sie Sie die Position eines und/oder aller Untertitel vor oder nach einem "
+"bestimmten Untertitel ändern wollen, wählen Sie diesen Untertitel aus. Falls "
+"Sie mehrere Untertitel verschieben wollen, wählen Sie alle gewünschten "
+"Untertitel aus."
 
 #: C/gnome-subtitles.xml:459(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Shift</"
 "guimenuitem></menuchoice>."
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Synchronisation</"
+"guisubmenu><guimenuitem>Verschieben</guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:463(para)
 msgid ""
@@ -853,15 +895,20 @@ msgid ""
 "adjust your subtitles by. If you want to move the subtitles back, enter a "
 "negative value, otherwise, enter a positive value."
 msgstr ""
+"Geben Sie Zeit- oder Bildwerte ein, um Ihre Untertitel anzupassen. Falls Sie "
+"ihre Untertitel zurück verschieben wollen, geben Sie einen negativen Wert "
+"ein, anderenfalls einen positiven Wert."
 
 #: C/gnome-subtitles.xml:466(para)
 msgid "Select how you want to shift your subtitles."
 msgstr ""
+"Wählen Sie aus, auf welche Weise Sie Ihre Untertitel verschieben wollen."
 
 #: C/gnome-subtitles.xml:467(para)
-#, fuzzy
 msgid "Click Shift to shift the subtitles."
-msgstr "Änderungen an \"{0}\" vor dem Öffnen speichern?"
+msgstr ""
+"Klicken Sie auf <guilabel>Verschieben</guilabel>, um die Untertitel zu "
+"verschieben."
 
 #: C/gnome-subtitles.xml:471(title)
 msgid "Setting the Input and Video Framerates"
@@ -882,6 +929,11 @@ msgid ""
 "rate, <application>Gnome Subtitles</application> adjusts the frames to "
 "compensate for the change. The duration of the subtitle remains the same."
 msgstr ""
+"<application>Gnome Subtitles</application> bearbeitet Untertitel auf der "
+"Basis von Zeiten, unabhängig vom Ansichtsmodus. Daher ändert "
+"<application>Gnome Subtitles</application> die Bildpositionen, wenn Sie die "
+"Bildrate ändern, um die Änderungen auszugleichen. Die Laufzeit der Untertitel "
+"ändert sich dadurch nicht."
 
 #: C/gnome-subtitles.xml:476(para)
 msgid ""
@@ -889,6 +941,9 @@ msgid ""
 "(MicroDVD), changing the video framerate may cause your subtitles to lose "
 "their sync."
 msgstr ""
+"Wenn Ihr Video sich zur Anzeige der Untertitel an den Bildern orientiert (bei "
+"MicroDVD), dann könnte die Änderung der Bildrate dazu führen, dass die "
+"Synchronisation der Untertitel verlorengeht."
 
 #: C/gnome-subtitles.xml:478(title)
 msgid "To set the video framerate"
@@ -899,6 +954,9 @@ msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Video Frame "
 "Rate</guimenuitem></menuchoice> and select the appropriate framerate."
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Synchronisation</"
+"guisubmenu><guimenuitem>Video-Bildrate</guimenuitem></menuchoice> und wählen "
+"Sie die entsprechende Bildrate aus."
 
 #: C/gnome-subtitles.xml:484(title)
 msgid "To set the input framerate"
@@ -909,6 +967,9 @@ msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Input Frame "
 "Rate</guimenuitem></menuchoice> and select the appropriate framerate."
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Synchronisation</"
+"guisubmenu><guimenuitem>Originalbildrate</guimenuitem></menuchoice> und "
+"wählen Sie die entsprechende Bildrate aus."
 
 #: C/gnome-subtitles.xml:494(title)
 msgid "Working with Videos"
@@ -927,6 +988,8 @@ msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Open</"
 "guimenuitem></menuchoice>"
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Öffnen</"
+"guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:506(title)
 msgid "To close a video"
@@ -937,6 +1000,8 @@ msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Close</"
 "guimenuitem></menuchoice>"
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Schließen</"
+"guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:515(title)
 msgid "Playing back"
@@ -947,52 +1012,62 @@ msgid ""
 "<application>Gnome Subtitles</application> will play the video in the view "
 "window with your subtitles."
 msgstr ""
+"<application>Gnome Subtitles</application> spielt das Video im "
+"Ansichtsfenster mit Ihren Untertiteln ab."
 
 #: C/gnome-subtitles.xml:519(title)
-#, fuzzy
 msgid "Seeking to the Selection"
-msgstr "Springe z_u Auswahl"
+msgstr "Die Auswahl durchsuchen"
 
 #: C/gnome-subtitles.xml:520(para)
 msgid "You can go to the point in the loaded video where a subtitle starts"
 msgstr ""
+"Sie können zu einem Punkt im geöffneten Video springen, an dem ein Untertitel "
+"beginnt."
 
 #: C/gnome-subtitles.xml:522(title)
-#, fuzzy
 msgid "To seek to a subtitle"
-msgstr "Springe z_u Auswahl"
+msgstr "Nach einem Untertitel suchen"
 
 #: C/gnome-subtitles.xml:523(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Seek to "
 "Selection</guimenuitem></menuchoice>"
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Springe zu "
+"Auswahl</guimenuitem></menuchoice>."
 
 #: C/gnome-subtitles.xml:531(title)
 msgid "Setting the Subtitle Start or End Positions"
-msgstr ""
+msgstr "Festlegen der Start- und Endzeitpunkte für Untertitel"
 
 #: C/gnome-subtitles.xml:532(para)
 msgid ""
 "You can set the subtitles start or end time based on the point at which the "
 "loaded video is paused"
 msgstr ""
+"Sie können die Start- und Endzeitpunkte für Untertitel anhand des Zeitpunktes "
+"setzen, an dem die Wiedergabe eines geöffneten Videos unterbrochen wurde."
 
 #: C/gnome-subtitles.xml:534(title) C/gnome-subtitles.xml:542(title)
 msgid "To set subtitle starting time"
-msgstr ""
+msgstr "Festlegen des Startzeitpunktes für Untertitel"
 
 #: C/gnome-subtitles.xml:535(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
 "Start</guimenuitem></menuchoice>"
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Anfangszeit "
+"setzen</guimenuitem></menuchoice>"
 
 #: C/gnome-subtitles.xml:543(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
 "End</guimenuitem></menuchoice>"
 msgstr ""
+"Wählen Sie <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Endzeit "
+"setzen</guimenuitem></menuchoice>"
 
 #: C/gnome-subtitles.xml:553(title)
 msgid "Where to Get Additional Support"
@@ -1024,6 +1099,11 @@ msgid ""
 "forum.php?forum_name=gnome-subtitles-general\" type=\"http\">archives</ulink> "
 "are available)."
 msgstr ""
+"Möglicherweise erhalten Sie bei einer Anfrage in der <ulink url=\"http://"
+"lists.sourceforge.net/lists/listinfo/gnome-subtitles-general\" type=\"http"
+"\">Mailingliste</ulink> eine schnellere Antwort. Ein Archiv dieser "
+"Mailingliste finden Sie <ulink url=\"http://sourceforge.net/mailarchive/forum."
+"php?forum_name=gnome-subtitles-general\" type=\"http\">hier</ulink>."
 
 #: C/gnome-subtitles.xml:563(title)
 msgid "Bugs and Features"
