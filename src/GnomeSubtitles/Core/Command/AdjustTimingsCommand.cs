@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,13 +30,13 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 	private int firstFrame, lastFrame;
 	private bool useTimes = true;
 
-	public AdjustTimingsCommand (TimeSpan firstTime, TimeSpan lastTime, SelectionIntended selectionIntended) : base(description, false, selectionIntended, true) {
+	public AdjustTimingsCommand (TimeSpan firstTime, TimeSpan lastTime, SelectionIntended selectionIntended) : base(description, false, selectionIntended, null, true) {
 		this.firstTime = firstTime;
 		this.lastTime = lastTime;
 		useTimes = true;
 	}
 	
-	public AdjustTimingsCommand (int firstFrame, int lastFrame, SelectionIntended selectionIntended) : base(description, false, selectionIntended, true) {
+	public AdjustTimingsCommand (int firstFrame, int lastFrame, SelectionIntended selectionIntended) : base(description, false, selectionIntended, null, true) {
 		this.firstFrame = firstFrame;
 		this.lastFrame = lastFrame;
 		useTimes = false;

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ namespace GnomeSubtitles.Core.Command {
 public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	private bool styleValue;
 
-	public ChangeStyleCommand (string description, bool newStyleValue) : base(description, false, SelectionIntended.Simple, true) {
+	public ChangeStyleCommand (string description, bool newStyleValue) : base(description, false, SelectionIntended.Simple, null, true) {
 		this.styleValue = newStyleValue;
 	}
 	

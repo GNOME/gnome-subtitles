@@ -30,8 +30,9 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 	/// <param name="description">The description of the command.</param>
 	/// <param name="canGroup">Whether to possibly group the command with the previous command.</param>
 	/// <param name="selectionIntended">The intended selection.</param>
+	/// <param name="paths">The paths to select, or null to use auto selection.</param>
 	/// <param name="reselect">Whether to reselect the command when executing. Note that this doesn't apply to Undo nor to Redo.</param>
-	public FixedMultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, bool reselect) : base(description, canGroup, selectionIntended) {
+	public FixedMultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, TreePath[] paths, bool reselect) : base(description, canGroup, selectionIntended, paths) {
 		this.reselect = reselect;		
 	}
 	

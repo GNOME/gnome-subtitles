@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,12 +32,12 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	private int frames;
 	private bool useTimes = true;
 
-	public ShiftTimingsCommand (TimeSpan time, SelectionIntended selectionIntended) : base(description, false, selectionIntended, true) {
+	public ShiftTimingsCommand (TimeSpan time, SelectionIntended selectionIntended) : base(description, false, selectionIntended, null, true) {
 		this.time = time;
 		useTimes = true;
 	}
 	
-	public ShiftTimingsCommand (int frames, SelectionIntended selectionIntended) : base(description, false, selectionIntended, true) {
+	public ShiftTimingsCommand (int frames, SelectionIntended selectionIntended) : base(description, false, selectionIntended, null, true) {
 		this.frames = frames;
 		useTimes = false;
 	}

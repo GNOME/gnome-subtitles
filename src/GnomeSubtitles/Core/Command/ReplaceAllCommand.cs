@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 	private Regex regex = null;
 	private string replacement = String.Empty;
 
-	public ReplaceAllCommand (Regex regex, string replacement) : base(description, false, SelectionIntended.Simple, false) {
+	public ReplaceAllCommand (Regex regex, string replacement) : base(description, false, SelectionIntended.Simple, null, false) {
 		this.regex = regex;
 		this.replacement = replacement;
 	}

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,32 +28,38 @@ public abstract class MultipleSelectionCommand : Command {
 	private SelectionType selectionType;
 	
 	
-	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended) : this(description, canGroup, selectionIntended, true) {
+	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, TreePath[] paths) : this(description, canGroup, selectionIntended, paths, true) {
 	}
 	
 	/// <summary>Base constructor for classes that inherit <see cref="MultipleSelectionCommand" />.</summary>
 	/// <param name="description">The description of the command.</param>
 	/// <param name="canGroup">Whether to possibly group the command with the previous command.</param>
 	/// <param name="selectionIntended">The intended selection.</param>
+	/// <param name="paths">The paths to select, or null to use auto selection if setPaths is enabled.</param>
 	/// <param name="setPaths">Whether to set the paths based on the current selection and the selectionType</param>
-	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, bool setPaths) : base(description, canGroup) {
+	public MultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, TreePath[] paths, bool setPaths) : base(description, canGroup) {
 		if (setPaths) {
 			switch (selectionIntended) {
 				case SelectionIntended.Simple:
-					this.paths = Base.Ui.View.Selection.Paths;
+					this.paths = (paths != null ? paths : Base.Ui.View.Selection.Paths);
 					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 				case SelectionIntended.Range:
-					this.paths = Base.Ui.View.Selection.Range;
+					this.paths = (paths != null ? paths : Base.Ui.View.Selection.Range);
 					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 				case SelectionIntended.SimpleToFirst:
-					this.paths = Base.Ui.View.Selection.PathsToFirst;
+					this.paths = (paths != null ? paths : Base.Ui.View.Selection.PathsToFirst);
 					this.focus = Base.Ui.View.Selection.Focus;
 					break;
 				case SelectionIntended.SimpleToLast:
-					this.paths = Base.Ui.View.Selection.PathsToLast;
+					this.paths = (paths != null ? paths : Base.Ui.View.Selection.PathsToLast);
 					this.focus = Base.Ui.View.Selection.Focus;
+					break;
+				default:
+					if (paths != null)
+						this.paths = paths;
+
 					break;
 			}
 		}
