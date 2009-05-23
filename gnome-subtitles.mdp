@@ -1,16 +1,20 @@
-<Project name="gnome-subtitles" fileversion="2.0" language="C#" clr-version="Net_2_0" ctype="DotNetProject">
+<Project name="gnome-subtitles" fileversion="2.0" language="C#" clr-version="Net_2_0" targetFramework="2.0" ctype="DotNetProject">
+  <Policies>
+    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Native" />
+  </Policies>
   <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
-      <Output directory="build" assemblyKeyFile="." assembly="gnome-subtitles" />
+      <Output directory="build" assemblyKeyFile="/home/noup/Workspace/gnome-subtitles/." assembly="gnome-subtitles" />
       <Build debugmode="True" target="WinExe" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="GnomeSubtitles.Execution.Executable" generatexmldocumentation="False" win32Icon="." ctype="CSharpCompilerParameters" />
+      <EnvironmentVariables />
+      <CodeGeneration compiler="Mcs" warninglevel="3" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
     <Configuration name="Release" ctype="DotNetProjectConfiguration">
       <Output directory="build" assembly="gnome-subtitles" />
       <Build debugmode="False" target="WinExe" />
       <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
-      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="GnomeSubtitles.Execution.Executable" generatexmldocumentation="False" win32Icon="." ctype="CSharpCompilerParameters" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
     </Configuration>
   </Configurations>
   <Contents>
@@ -139,20 +143,20 @@
     <File name="src/GnomeSubtitles/Execution/ConfigureDefines.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Ui/VideoPreview/SubtitleOverlay.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Core/SyncPoints.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/DialogScope.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
-    <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <ProjectReference type="Gac" localcopy="True" refto="glade-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <ProjectReference type="Gac" localcopy="True" refto="gconf-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <ProjectReference type="Assembly" localcopy="True" refto="../sublib/build/sublib.dll" />
+    <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="gconf-sharp, Version=2.24.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Gac" localcopy="True" refto="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </References>
+  <LanguageParameters StartupObject="GnomeSubtitles.Execution.Executable" ApplicationIcon="." ctype="CSharpProjectParameters" />
   <Deployment.LinuxDeployData generateScript="False" />
-  <DeployTargets />
-  <DeploymentInformation strategy="File">
-    <excludeFiles />
-  </DeploymentInformation>
+  <DeploymentInformation strategy="File" />
 </Project>

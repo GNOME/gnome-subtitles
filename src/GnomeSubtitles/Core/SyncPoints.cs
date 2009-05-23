@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,20 +54,31 @@ public class SyncPoints {
 	
 	/* Public methods */
 	
-	public void InsertSorted (SyncPoint syncPoint) {
-		for (int index = 0 ; index < collection.Count ; index++) {
-			SyncPoint existing = collection[index] as SyncPoint;
-			if (syncPoint.SubtitleNumber == existing.SubtitleNumber) { //Found an existing sync point for this subtitle number
-				Replace(index, syncPoint);
-				return;
-			}
-			else if (syncPoint.SubtitleNumber < existing.SubtitleNumber) { //The new sync point comes before the current
-				Insert(index, syncPoint);
-				return;
-			}
+	public int Add (SyncPoint syncPoint) {
+		bool didReplace = collection.Add(syncPoint);
+		int index = collection.IndexOf(syncPoint);
+		if (didReplace) {
+			Replace(index, syncPoint); //Replace existing
+			return index;
 		}
-		/* Inserting in the end */
-		Add(syncPoint);
+		else if (collection[collection.Count - 1].SubtitleNumber == syncPoint.SubtitleNumber) {
+			Append(syncPoint); //Append to the end
+			return collection.Count - 1;
+		}
+		else {
+			Insert(index, syncPoint); //Insert in position, not replacing
+			return index;
+		}
+	}
+	
+	public void Remove (TreePath[] paths) {
+		foreach (TreePath path in paths) {
+			TreeIter iter;
+			model.GetIter(out iter, path);
+			model.Remove(ref iter);
+			
+			collection.Remove(Util.PathToInt(path));
+		}
 	}
 	
 	public IEnumerator GetEnumerator () {
@@ -86,20 +97,16 @@ public class SyncPoints {
 	
 		
 	private void Insert (int index, SyncPoint syncPoint) {
-		collection.Insert(index, syncPoint);
 		model.SetValue(model.Insert(index), 0, syncPoint);
 	}
 	
 	private void Replace (int index, SyncPoint syncPoint) {
-		collection.Replace(index, syncPoint);
-		
 		TreeIter iter;
 		model.GetIterFromString(out iter, index.ToString());
 		model.SetValue(iter, 0, syncPoint);
 	}
 	
-	private void Add (SyncPoint syncPoint) {
-		collection.Add(syncPoint);
+	private void Append (SyncPoint syncPoint) {
 		model.AppendValues(syncPoint);
 	}
 
