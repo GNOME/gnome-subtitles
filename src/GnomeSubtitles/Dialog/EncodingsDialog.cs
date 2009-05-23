@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -196,10 +196,6 @@ public class EncodingsDialog : GladeDialog {
 	private void OnShownSelectionChanged (object o, EventArgs args) {
 		bool sensitive = (shownTreeView.Selection.CountSelectedRows() == 1);
 		buttonRemove.Sensitive = sensitive;
-	}
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		Close();
 	}
 	
 	private void OnAvailableRowActivated (object o, RowActivatedArgs args) {

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,10 +28,8 @@ namespace GnomeSubtitles.Dialog {
 public abstract class SaveConfirmationDialog : WarningDialog {
 	private SubtitleTextType textType;
 	
-	#region Strings
+	/* Strings */
 	private string secondaryText = Catalog.GetString("If you don't save, all your changes will be permanently lost.");
-	#endregion
-
 
 	public SaveConfirmationDialog (string primaryText, SubtitleTextType textType) : base() {
 		this.textType = textType;
@@ -41,14 +39,12 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 	}
 	
 	
-	#region Abstract methods
+	/* Abstract methods */
 	
 	protected abstract string GetRejectLabel ();
 	
-	#endregion
-	
 
-	#region Protected methods
+	/* Protected methods */
 	
 	protected override void AddButtons () {
 		string rejectLabel = GetRejectLabel();
@@ -57,26 +53,23 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 		dialog.AddButton(Stock.Save, ResponseType.Accept);
 	}
 	
-	#endregion
 	
-	
-	#region Events
-	
-	protected override void OnResponse (object o, ResponseArgs args) {
-		Close();
+	/* Event members */
 
-		ResponseType response = args.ResponseId;
+	protected override bool ProcessResponse (ResponseType response) {
+		Hide();
+
 		if (response == ResponseType.Reject)
-			returnValue = true;
+			setReturnValue(true);
 		else if (response == ResponseType.Accept) {
 			if (textType == SubtitleTextType.Text)
-				returnValue = Core.Base.Ui.Save();
+				setReturnValue(Core.Base.Ui.Save());
 			else
-				returnValue = Core.Base.Ui.TranslationSave();
+				setReturnValue(Core.Base.Ui.TranslationSave());
 		}
+
+		return false;
 	}
-	
-	#endregion
 
 }
 
@@ -84,10 +77,9 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 
 public class SaveSubtitlesOnNewFileConfirmationDialog : SaveConfirmationDialog {
 
-	#region Strings
+	/* Strings */
 	private static string primaryText = Catalog.GetString("Save the changes to subtitles \"{0}\" before creating new subtitles?");
 	private static string rejectLabel = Catalog.GetString("Create without Saving");
-	#endregion
 
 	public SaveSubtitlesOnNewFileConfirmationDialog () : base(primaryText, SubtitleTextType.Text) {
 	}
@@ -96,14 +88,13 @@ public class SaveSubtitlesOnNewFileConfirmationDialog : SaveConfirmationDialog {
 	}
 	
 	
-	#region Protected methods
+	/* Protected methods */
 	
 	protected override string GetRejectLabel ()
 	{
 		return rejectLabel;
 	}
-	
-	#endregion
+
 }
 
 public class SaveTranslationOnNewFileConfirmationDialog : SaveSubtitlesOnNewFileConfirmationDialog {
@@ -133,14 +124,13 @@ public class SaveSubtitlesOnOpenFileConfirmationDialog : SaveConfirmationDialog 
 	public SaveSubtitlesOnOpenFileConfirmationDialog (string primaryText, SubtitleTextType textType) : base (primaryText, textType) {
 	}
 	
-	#region Protected methods
+	/* Protected methods */
 	
 	protected override string GetRejectLabel ()
 	{
 		return rejectLabel;
 	}
-	
-	#endregion
+
 }
 
 //This works both for file open and translation open
@@ -163,14 +153,13 @@ public class SaveSubtitlesOnCloseFileConfirmationDialog : SaveConfirmationDialog
 	public SaveSubtitlesOnCloseFileConfirmationDialog (string primaryText, SubtitleTextType textType) : base(primaryText, textType) {
 	}
 	
-	#region Protected methods
+	/* Protected methods */
 	
 	protected override string GetRejectLabel ()
 	{
 		return rejectLabel;
 	}
-	
-	#endregion
+
 }
 
 public class SaveTranslationOnCloseConfirmationDialog : SaveSubtitlesOnCloseFileConfirmationDialog {

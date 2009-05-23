@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,12 +37,17 @@ public class VideoSeekToDialog : GladeDialog {
 	[WidgetAttribute] private SpinButton spinButton = null;
 	[WidgetAttribute] private Label positionLabel = null;
 
-	public VideoSeekToDialog () : base(gladeFilename, true, true){
+	public VideoSeekToDialog () : base(gladeFilename){
 		this.timingMode = Base.TimingMode;
 	
 		InitSpinButton();
 	}
 
+	/* Public properties */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Video; }
+	}
 	
 	/* Private methods */
 
@@ -75,9 +80,9 @@ public class VideoSeekToDialog : GladeDialog {
 	private void OnClear (object o, EventArgs args) {
 		SetSpinButtonValue(0);
 	}
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
 			if (timingMode == TimingMode.Times) {
 				TimeSpan position = TimeSpan.FromMilliseconds(spinButton.Value); //TODO move to Util
 				Base.Ui.Video.Seek(position);
@@ -86,7 +91,7 @@ public class VideoSeekToDialog : GladeDialog {
 				Base.Ui.Video.Seek(Convert.ToInt32(spinButton.Value));
 			}
 		}
-		Close();
+		return false;
 	}
 
 }

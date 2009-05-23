@@ -49,7 +49,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
 	}
 	
-	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename, false) {
+	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename) {
 		dialog.Title = title;
 		
 		if (toEnableVideo)
@@ -73,6 +73,10 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	}
 	
 	/* Public properties */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Singleton; }
+	}
 	
 	public bool HasVideoFilename {
 		get { return chosenVideoUri != null; }
@@ -81,7 +85,8 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	public Uri VideoUri {
 		get { return chosenVideoUri; }
 	}
-	
+
+
 	/* Protected members */
 	
 	protected virtual string GetStartFolder () {
@@ -242,9 +247,9 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	
 	
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
 			chosenFilename = dialog.Filename;
 			int activeEncodingComboBoxItem = GetActiveEncodingComboBoxItem();
 			if (activeEncodingComboBoxItem > 0) {
@@ -256,9 +261,9 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoUri = new Uri(videoFiles[videoFileIndex] as string);
 			}			
-			returnValue = true;
+			setReturnValue(true);
 		}
-		Close();
+		return false;
 	}
 	
 	private void OnCurrentFolderChanged (object o, EventArgs args) {

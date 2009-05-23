@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,46 +23,87 @@ namespace GnomeSubtitles.Dialog {
 
 public abstract class BaseDialog {
 	
-	#region Protected variables
-	protected Gtk.Dialog dialog = null;
-	protected bool returnValue = false;
-	#endregion
+	private Gtk.Dialog dialog = null;
+	private bool returnValue = false;
 
 	public BaseDialog () {
-
 	}
-	
-	
-	#region Public methods
-	
+
+	/* Properties */
+
+	public virtual DialogScope Scope {
+		get { return DialogScope.Singleton; }
+	}
+
+	public virtual bool Visible {
+		get { return dialog.Visible; }
+		set { 
+			if (value)
+				Show();
+			else
+				Hide();
+		}
+	}
+
+	/* Public Methods */
+
 	public virtual void Show () {
 		dialog.Visible = true;
 	}
-	
-	public void Close() {
-		dialog.Destroy();
-	}
-	
-	public void Hide () {
+
+	public virtual void Hide () {
 		dialog.Visible = false;
 	}
+
+	public virtual void Destroy () {
+		dialog.Destroy();
+	}
+
 	
-	public bool WaitForResponse () {
+
+	//TODO check if this is needed
+	public virtual bool WaitForResponse () {
 		dialog.Run();
 		return returnValue;
 	}
-	
-	#endregion
-	
-	
-	#region Events
-	
-	protected void OnDeleteDoHide (object o, DeleteEventArgs args) {
-		Hide();
-		args.RetVal = true;
+
+	protected virtual bool ProcessResponse (Gtk.ResponseType response) {
+		return false;
 	}
+
+
+	/* Protected members */
+
+	protected void Init (Gtk.Dialog dialog) {
+		this.dialog = dialog;
+		Util.SetBaseWindowFromUi(dialog);
+		dialog.Response += OnResponse;
+	}
+
+	protected Gtk.Dialog getDialog () {
+		return dialog;
+	}
+
+	protected void setReturnValue (bool returnValue) {
+		this.returnValue = returnValue;
+	}
+
 	
-	#endregion
+	/* Event members */
+
+	protected void OnResponse (object o, ResponseArgs args) {
+		bool keepVisible = ProcessResponse(args.ResponseId);
+		if (keepVisible && (args.ResponseId != ResponseType.DeleteEvent))
+			return;
+
+		if (this.Scope == DialogScope.Singleton)
+			Destroy();
+		else {
+			Hide();
+			args.RetVal = true;
+		}
+	}
+
 
 }
 

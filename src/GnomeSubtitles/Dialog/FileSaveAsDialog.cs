@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	[WidgetAttribute] private ComboBox formatComboBox = null;
 	[WidgetAttribute] private ComboBox newlineTypeComboBox = null;
 
-	public FileSaveAsDialog (SubtitleTextType textType) : base(gladeFilename, true) {
+	public FileSaveAsDialog (SubtitleTextType textType) : base(gladeFilename) {
 		this.textType = textType;
 		SetTitle();
 		FillFormatComboBox();
@@ -51,6 +51,10 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	}
 	
 	/* Public properties */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Document; }
+	}
 	
 	public SubtitleType SubtitleType {
 		get { return chosenSubtitleType; }
@@ -288,20 +292,20 @@ public class FileSaveAsDialog : SubtitleFileChooserDialog {
 	/* Event members */
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
 			int formatIndex = formatComboBox.Active;
 			chosenSubtitleType = subtitleTypes[formatIndex].Type;
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
 			
 			int encodingIndex = GetActiveEncodingComboBoxItem();
 			chosenEncoding = encodings[encodingIndex];
-			returnValue = true;
+			setReturnValue(true);
 			
 			chosenNewlineType = GetChosenNewlineType();
 		}
-		Hide();
+		return false;
 	}
 
 	private void OnFormatChanged (object o, EventArgs args) {

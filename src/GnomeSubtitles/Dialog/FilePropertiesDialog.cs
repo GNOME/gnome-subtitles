@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,13 +97,6 @@ public class FilePropertiesDialog : GladeDialog {
 	
 	private void FillTimingMode (TimingMode mode) {
 		timingModeValueLabel.Text = mode.ToString();
-	}
-
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		Close();
 	}
 	
 }

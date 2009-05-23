@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ namespace GnomeSubtitles.Dialog {
 		}
 
 		
-		#region Protected methods
+		/* Protected methods */
 	
 		protected void SetText (string primaryText, string secondaryText, params object[] primaryTextArgs) {
 			SetPrimaryText(primaryText, primaryTextArgs);
@@ -75,48 +75,37 @@ namespace GnomeSubtitles.Dialog {
 			SetSecondaryText(text, null);
 		}
 
-		#endregion
 		
-		#region Private members
+		/* Private members */
 		
 		private void Init (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) {
 			string formattedPrimaryText = GetMarkupPrimaryText(primaryText);
-		
+
 			dialog = new Gtk.MessageDialog(Base.Ui.Window, DialogFlags.Modal, messageType, ButtonsType.None, formattedPrimaryText, primaryTextArgs);
-			base.dialog = dialog;
-			
-			dialog.Response += OnResponse;
+			base.Init(dialog);
 
 			SetSecondaryText(secondaryText);
-
-			Util.SetBaseWindowToUi(dialog);
 			AddButtons();
 		}
 		
 		private string GetMarkupPrimaryText (string primaryText) {
 			return "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>";
 		}
-		
-		#endregion
-		
-		#region Abstract methods
+
+
+		/* Abstract methods */
 		
 		protected abstract void AddButtons ();
-		
-		#endregion
 
 		
-		#region Event members
-	
-		protected virtual void OnResponse (object o, ResponseArgs args) {
-			ResponseType response = args.ResponseId;
+		/* Event members */
+
+		protected override bool ProcessResponse (ResponseType response) {
 			if (response == ResponseType.Accept) {
-				returnValue = true;
+				setReturnValue(true);
 			}
-			Close();
+			return false;
 		}
-		
-		#endregion
 		
 	}
 

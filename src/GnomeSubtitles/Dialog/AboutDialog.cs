@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 public class AboutDialog : GladeDialog {
-	private new Gtk.AboutDialog dialog = null;
+	private Gtk.AboutDialog dialog = null;
 
 	/* Constant strings */
 	private const string gladeFilename = "AboutDialog.glade";
@@ -33,9 +33,9 @@ public class AboutDialog : GladeDialog {
 
 	public AboutDialog () {
 		SetHooks();
-		Init(gladeFilename);
+		Init(gladeFilename, true);
 	
-		dialog = base.dialog as Gtk.AboutDialog;
+		dialog = getDialog() as Gtk.AboutDialog;
 		SetInfo();
 	}
 	
@@ -60,21 +60,6 @@ public class AboutDialog : GladeDialog {
 		dialog.Comments += "\n\nUsing SubLib " + Base.ExecutionContext.SubLibVersion;
 		dialog.Version = Base.ExecutionContext.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
-	}
-
-	/* Event members */
-
-	#pragma warning disable 169             //Disables warning about handlers not being used
-
-	private void OnResponse (object o, ResponseArgs args) {
-		switch (args.ResponseId) {
-			case ResponseType.Close:
-				Close();
-				break;
-			case ResponseType.Cancel:
-				Close();
-				break;
-		}
 	}
 
 }

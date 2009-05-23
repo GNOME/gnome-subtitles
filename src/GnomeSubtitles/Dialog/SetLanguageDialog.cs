@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -117,27 +117,27 @@ public class SetLanguageDialog : GladeDialog {
 	}
 	
 	private void SetDialogTitle (SubtitleTextType textType) {
-		dialog.Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
+		getDialog().Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
 	}
 	
 	private void SetIntroLabel (SubtitleTextType textType) {
 		introLabel.TextWithMnemonic = (textType == SubtitleTextType.Text ? introLabelText : introLabelTranslation);
 	}
 	
-	/* Event handlers */
+	/* Event members */
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok)
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
 			SetSpellLanguage();
-	
-		Close();
+		}
+		return false;
 	}
 	
 	private void OnLanguageRowActivated (object o, RowActivatedArgs args) {
 		SetSpellLanguage();
-		Close();
+		Destroy();
 	}
 
 

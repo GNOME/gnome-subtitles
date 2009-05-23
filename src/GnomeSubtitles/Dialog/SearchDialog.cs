@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,28 +57,15 @@ public class SearchDialog : GladeDialog {
 	[WidgetAttribute] private Button buttonReplace = null;
 	[WidgetAttribute] private Button buttonFind = null;
 
-	public SearchDialog () : base(gladeFilename, true, true) {
+	public SearchDialog () : base(gladeFilename) {
 	}
-	
-	public bool ShowReplace2 {
-		set {
-			if (value == true) {
-				dialog.Title = Catalog.GetString("Replace");
-				table.RowSpacing = 12;
-			}
-			else {
-				dialog.Title = Catalog.GetString("Find");
-				table.RowSpacing = 0;
-			}
-		
-			replaceEntry.Visible = value;
-			replaceLabel.Visible = value;
-		
-			buttonReplaceAll.Visible = value;
-			buttonReplace.Visible = value;
-		}
+
+	/* Properties */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Document; }
 	}
-	
+
 	public Regex ForwardRegex {
 		get { return forwardRegex; }
 	}
@@ -106,18 +93,20 @@ public class SearchDialog : GladeDialog {
 	public bool Wrap {
 		get { return wrapCheckButton.Active; }
 	}
-	
+
+	/* Methods */
+
 	public override void Show () {
 		Show(false);
 	}
 	
 	public void Show (bool useReplace) {
 		if (useReplace) {
-			dialog.Title = Catalog.GetString("Replace");
+			getDialog().Title = Catalog.GetString("Replace");
 			table.RowSpacing = 12;
 		}
 		else {
-			dialog.Title = Catalog.GetString("Find");
+			getDialog().Title = Catalog.GetString("Find");
 			table.RowSpacing = 0;
 		}
 		
@@ -131,30 +120,25 @@ public class SearchDialog : GladeDialog {
 		base.Show();
 	}
 	
-	
-	/* Private properties */
-		
-	private bool ValuesHaveChanged {
-		get {
-			if (!valuesMayHaveChanged)
-				return false;
-			if (text != findEntry.Text)
-				return true;
-			if (matchCase != matchCaseCheckButton.Active)
-				return true;
-			if (backwards != backwardsCheckButton.Active)
-				return true;
-			if (useRegex != regexCheckButton.Active)
-				return true;
-			if (wrap != wrapCheckButton.Active)
-				return true;
-			
-			return false;
-		}
-	}
-	
 	/* Private methods */
 	
+	private bool ValuesHaveChanged () {
+		if (!valuesMayHaveChanged)
+			return false;
+		if (text != findEntry.Text)
+			return true;
+		if (matchCase != matchCaseCheckButton.Active)
+			return true;
+		if (backwards != backwardsCheckButton.Active)
+			return true;
+		if (useRegex != regexCheckButton.Active)
+			return true;
+		if (wrap != wrapCheckButton.Active)
+			return true;
+		
+		return false;
+	}
+
 	private void LoadDialogValues () {
 		SetFindEntryText();
 		matchCaseCheckButton.Active = matchCase;
@@ -182,7 +166,7 @@ public class SearchDialog : GladeDialog {
 	}
 	
 	private void HandleValuesChange () {
-		bool updateRegex = ValuesHaveChanged; //Need to be before SaveDialogValues, as the values will be changed
+		bool updateRegex = ValuesHaveChanged(); //Need to be before SaveDialogValues, as the values will be changed
 		SaveDialogValues();
 		if (updateRegex)
 			UpdateRegex();
@@ -225,21 +209,23 @@ public class SearchDialog : GladeDialog {
 	
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
-	private void OnResponse (object o, ResponseArgs args) {
-		SearchDialogResponse response = (SearchDialogResponse)args.ResponseId;
-		switch (response) {
+	protected override bool ProcessResponse (ResponseType response) {
+		SearchDialogResponse searchResponse = (SearchDialogResponse)response;
+		switch (searchResponse) {
 			case SearchDialogResponse.Find:
 				Find();
-				break;
+				return true;
 			case SearchDialogResponse.Replace:
 				Replace();
-				break;
+				return true;
 			case SearchDialogResponse.ReplaceAll:
 				ReplaceAll();
-				break;
+				return true;
 			case SearchDialogResponse.Close:
 				Hide();
-				break;
+				return false;
+			default:
+				return false;
 		}
 	}
 

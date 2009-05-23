@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -259,15 +259,13 @@ public class HeadersDialog : GladeDialog {
 		headers.FontSize = spinButtonSubViewer2FontSize.ValueAsInt;
 	}
 	
-	/* Event handlers */
+	/* Event members */
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
 			StoreHeaders();
 		}
-		Close();
+		return false;
 	}
 
 }

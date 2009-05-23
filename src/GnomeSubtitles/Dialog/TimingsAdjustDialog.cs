@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -121,20 +121,12 @@ public class TimingsAdjustDialog : GladeDialog {
 		}
 	}
 
+	/* Event members */
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnToggleAllSubtitles (object o, EventArgs args) {
-		if ((o as RadioButton).Active)
-			SetApplyToAll();
-	}
-	
-	private void OnToggleSelectedSubtitles (object o, EventArgs args) {
-		if ((o as RadioButton).Active)
-			SetApplyToSelection();
-	}
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
 			SelectionIntended selectionIntended = (allSubtitlesRadioButton.Active ? SelectionIntended.All : SelectionIntended.Range);
 			
 			if (timingMode == TimingMode.Times) {
@@ -148,7 +140,17 @@ public class TimingsAdjustDialog : GladeDialog {
 				Base.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionIntended));
 			}
 		}
-		Close();
+		return false;
+	}
+	
+	private void OnToggleAllSubtitles (object o, EventArgs args) {
+		if ((o as RadioButton).Active)
+			SetApplyToAll();
+	}
+	
+	private void OnToggleSelectedSubtitles (object o, EventArgs args) {
+		if ((o as RadioButton).Active)
+			SetApplyToSelection();
 	}
 
 }

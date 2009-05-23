@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,10 +43,20 @@ public class TimingsShiftDialog : GladeDialog {
 	[WidgetAttribute] private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
 	[WidgetAttribute] private RadioButton fromSelectionToLastSubtitleRadioButton = null;
 
-	public TimingsShiftDialog () : base(gladeFilename, true, true){
+	public TimingsShiftDialog () : base(gladeFilename){
 		InitSpinButton();
 		UpdateContents(true);
 	}
+
+
+	/* Properties */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Document; }
+	}
+
+
+	/* Methods */
 
 	public override void Show () {
 		UpdateContents(false);
@@ -132,9 +142,9 @@ public class TimingsShiftDialog : GladeDialog {
 	private void OnClear (object o, EventArgs args) {
 		SetSpinButtonValue(0);
 	}
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if ((args.ResponseId == ResponseType.Ok) && (spinButton.Value != 0)) {
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if ((response == ResponseType.Ok) && (spinButton.Value != 0)) {
 			SelectionIntended selectionIntended = GetSelectionIntended();
 			
 			if (timingMode == TimingMode.Times) {
@@ -146,7 +156,7 @@ public class TimingsShiftDialog : GladeDialog {
 				Base.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
 			}
 		}
-		Hide();
+		return false;
 	}
 
 }

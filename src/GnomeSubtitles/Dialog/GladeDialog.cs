@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class GladeDialog : BaseDialog {
+public abstract class GladeDialog : BaseDialog {
 	private Glade.XML glade = null;
 
 	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class.</summary>
@@ -32,34 +32,23 @@ public class GladeDialog : BaseDialog {
 	protected GladeDialog () {
 	}
 
-	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class, given the filename of the dialog
-	/// and persistency possibility.</summary>
+	/// <summary>Creates a new instance of the <see cref="GladeDialog" /> class, given the filename of the dialog.</summary>
 	/// <param name="filename">The filename of the dialog.</param>
-	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
-	protected GladeDialog (string filename) : this(filename, false, true) {
+	protected GladeDialog (string filename) : this(filename, true) {
 	}
 
-	protected GladeDialog (string filename, bool persistent, bool autoconnect) {
-		Init(filename, persistent, autoconnect);
+	protected GladeDialog (string filename, bool autoconnect) {
+		Init(filename, autoconnect);
 	}
 	
 	/* Protected members */
 	
-	/// <summary>Constructs the dialog in the specified filename.</param> 
-	/// <param name="filename">The filename of the dialog.</param>
-	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
-	/// sets the icon and also sets the dialog as transient for the main window.</summary>
-	protected void Init (string filename) {
-		Init(filename, false, true);
-	}
-	
 	/// <summary>Constructs the dialog with the specified filename, and possibly sets it as persistent.</param> 
 	/// <param name="filename">The filename of the dialog.</param>
-	/// <param name="persistent">Whether the dialog should persist when closed. In that case, it is just hidden.</param>
 	/// <param name="autoconnect">Whether to autoconnect the event handlers.</param>
 	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
 	/// sets the icon and also sets the dialog as transient for the main window.</summary>
-	protected void Init (string filename, bool persistent, bool autoconnect) {
+	protected void Init (string filename, bool autoconnect) {
 		glade = new Glade.XML(null, filename, null, Base.ExecutionContext.TranslationDomain);
 		
 		if (autoconnect)
@@ -67,14 +56,9 @@ public class GladeDialog : BaseDialog {
 		else
 			glade.BindFields(this);
 
-		dialog = glade.GetWidget("dialog") as Gtk.Dialog;
-		
-		Util.SetBaseWindowToUi(dialog);
-		
-		if (persistent)
-			dialog.DeleteEvent += OnDeleteDoHide;
+		base.Init(glade.GetWidget("dialog") as Gtk.Dialog);
 	}
-	
+
 	protected void Autoconnect () {
 		glade.Autoconnect(this);
 	}

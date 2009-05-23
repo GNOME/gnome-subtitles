@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public class VideoOpenDialog : GladeDialog {
 	
 	
 	public VideoOpenDialog () : base(gladeFilename) {
-		dialog = base.dialog as FileChooserDialog;
+		dialog = getDialog() as FileChooserDialog;
 
 		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
 			dialog.SetCurrentFolder(Base.Document.TextFile.Directory);
@@ -72,17 +72,19 @@ public class VideoOpenDialog : GladeDialog {
 		/* Set active filter */
 		dialog.Filter = videoFilesFilter;
 	}
+
+	/* Event members */
 	
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
-	private void OnResponse (object o, ResponseArgs args) {
-		if (args.ResponseId == ResponseType.Ok) {
-			if (dialog.Uri != null)
-				chosenUri = new Uri(dialog.Uri);
 
-			returnValue = true;
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Ok) {
+			if (dialog.Uri != null) {
+				chosenUri = new Uri(dialog.Uri);
+			}
+			setReturnValue(true);
 		}
-		Close();
+		return false;
 	}
 
 }
