@@ -78,9 +78,15 @@ public class SubtitleSelection {
     }
     
     /// <summary>The selected path.</summary>
-    /// <remarks>If there is more than one path selected, the first is returned.</remarks>
+    /// <remarks>If there is more than one path selected, null is returned.</remarks>
 	public TreePath Path {
-    	get { return FirstPath; }
+    	get {
+    		TreePath[] paths = Paths;
+    		if (paths.Length == 1)
+    			return paths[0];
+    		else
+    			return null;
+    	}
     }
 
 	/// <summary>The range of selected subtitles, an array with 2 positions containing the first and last paths of the selection.</summary>
@@ -129,11 +135,11 @@ public class SubtitleSelection {
 		}
 	}
     
-    /// <summary>The selected subtitle. If there is more than one selected, the first is returned.</summary>
     public Subtitle Subtitle {
     	get { return subtitle; }
     }
     
+    /// <summary>The selected subtitle. If there is more than one selected, the first is returned.</summary>
     public Subtitle FirstSubtitle {
     	get {
     		TreePath path = this.FirstPath;
