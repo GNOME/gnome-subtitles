@@ -324,8 +324,8 @@ public class EventHandlers {
     	Base.Config.PrefsWindowHeight = args.Allocation.Height;
     }
 
-    
-    /*	Subtitle View	*/
+
+		/*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
     	Base.Ui.Video.SeekToSelection();
