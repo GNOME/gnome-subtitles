@@ -139,7 +139,7 @@ public class Video {
 		if (!isLoaded)
 			return;
 
-		TimeSpan time = SyncUtil.FramesToTime(frames, this.FrameRate);
+		TimeSpan time = TimingUtil.FramesToTime(frames, this.FrameRate);
 		Seek(time);
 	}
 	
@@ -162,13 +162,13 @@ public class Video {
 	private void SetCustomIcons () {
 		/* Set the icon for the SetSubtitleStart button */
 		Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
-		Image image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
-		image.FromPixbuf = pixbuf;
+		Image image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;	
+		image.Pixbuf = pixbuf;
 
 		/* Set the icon for the SetSubtitleEnd button */
 		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
 		image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
-		image.FromPixbuf = pixbuf;
+		image.Pixbuf = pixbuf;
 	}
 	
 	private void InitializeVideoFrame () {
