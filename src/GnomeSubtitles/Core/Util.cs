@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,8 +40,12 @@ public class Util {
 		TreeViewColumn column = new TreeViewColumn();
 		column.Alignment = 0.5f;
 		column.Title = title;
-		column.FixedWidth = width;
-		column.Sizing = TreeViewColumnSizing.Fixed;
+		
+		if (width != -1) {
+			column.FixedWidth = width;
+			column.Sizing = TreeViewColumnSizing.Fixed;
+		}
+		
 		column.Resizable = true;
 		column.PackStart(cell, true);
 		column.SetCellDataFunc(cell, dataFunction);
