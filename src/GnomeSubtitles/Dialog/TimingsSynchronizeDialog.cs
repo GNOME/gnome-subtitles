@@ -58,11 +58,19 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		
 		UpdateStatusMessage();
 	}
-	
+
+	/* Overriden members */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Document; }
+	}
+
 	public override void Destroy () {
 		Base.Ui.View.Selection.Changed -= OnUiViewSelectionChanged;
 		base.Destroy();
 	}
+
+	
 	
 	/* Private methods */
 	

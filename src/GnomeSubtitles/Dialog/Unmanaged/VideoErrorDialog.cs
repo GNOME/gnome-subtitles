@@ -17,40 +17,32 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
-using GnomeSubtitles.Core;
-using Gtk;
+using GnomeSubtitles.Ui.VideoPreview.Exceptions;
+using Mono.Unix;
 using System;
 
-namespace GnomeSubtitles.Dialog {
+namespace GnomeSubtitles.Dialog.Unmanaged {
 
-public class PreferencesDialog : GladeDialog {
+public class VideoErrorDialog : FileOpenErrorDialog {
 
-	/* Constant strings */
-	private const string gladeFilename = "PreferencesDialog.glade";
+	/* Strings */
+	private string primaryTextStart = Catalog.GetString("Could not play the file");
 
-	/* Widgets */
-	
-	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
-
-
-	private PreferencesDialog () : base(gladeFilename, false) {
-		LoadValues();
-		Autoconnect();
+	public VideoErrorDialog (Uri uri, Exception exception) : base(uri, exception) {
+		Console.Error.WriteLine("Video error: " + exception.ToString());
 	}
 
-	/* Private members */
+	/* Overriden members */
 	
-	private void LoadValues () {
-		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
+	protected override string GetPrimaryText (string filename) {
+		return primaryTextStart + " " + filename + ".";
 	}
 	
-	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
-
-	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
-		Base.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
+	protected override string SecondaryTextFromException (Exception exception) {
+		if (exception is PlayerEngineException)
+			return (exception as PlayerEngineException).Error;
+		else
+			return String.Empty;
 	}
 
 }

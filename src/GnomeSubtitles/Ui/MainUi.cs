@@ -20,6 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Dialog.Unmanaged;
 using GnomeSubtitles.Ui.Edit;
 using GnomeSubtitles.Ui.VideoPreview;
 using GnomeSubtitles.Ui.View;
@@ -141,7 +142,7 @@ public class MainUi {
     /// <remarks>If there's a document currently open with unsaved changes, a warning dialog
     /// is shown before opening the new file.</remarks>
     public void Open () {
-    	FileOpenDialog dialog = new FileOpenDialog();
+		FileOpenDialog dialog = Base.Dialogs.Get(typeof(FileOpenDialog)) as FileOpenDialog;
     	dialog.Show();
     	bool gotOpenResponse = dialog.WaitForResponse();
     	if (gotOpenResponse && ToOpenAfterWarning()) {
@@ -153,7 +154,8 @@ public class MainUi {
     }
         
     public void OpenVideo () {
-    	VideoOpenDialog dialog = new VideoOpenDialog();
+		
+    	VideoOpenDialog dialog = Base.Dialogs.Get(typeof(VideoOpenDialog)) as VideoOpenDialog;
     	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
 		if (toOpen) {
@@ -177,7 +179,7 @@ public class MainUi {
     /// <remarks>After saving, the timing mode is set to the timing mode of the subtitle format using when saving.</remarks>
     /// <returns>Whether the file was saved or not.</returns>
     public bool SaveAs () {
-		FileSaveAsDialog dialog = Base.Dialogs.FileSaveAsDialog;
+		FileSaveAsDialog dialog = Base.Dialogs.Get(typeof(FileSaveAsDialog)) as FileSaveAsDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
 		if (properties != null) {
 			Save(properties);
@@ -200,7 +202,7 @@ public class MainUi {
     /// <remarks>If there's a translation currently open with unsaved changes, a warning dialog
     /// is shown before opening the new file.</remarks>
     public void TranslationOpen () {
-    	FileOpenDialog dialog = new FileTranslationOpenDialog();
+    	FileOpenDialog dialog = Base.Dialogs.Get(typeof(FileTranslationOpenDialog)) as FileOpenDialog;
     	dialog.Show();
     	bool toOpen = dialog.WaitForResponse();
     	if (toOpen && ToOpenTranslationAfterWarning()) {
@@ -225,7 +227,7 @@ public class MainUi {
     /// <summary>Executes a translation SaveAs operation.</summary>
     /// <returns>Whether the translation file was saved or not.</returns>
     public bool TranslationSaveAs () {
-		FileSaveAsDialog dialog = Base.Dialogs.TranslationSaveAsDialog;
+		TranslationSaveAsDialog dialog = Base.Dialogs.Get(typeof(TranslationSaveAsDialog)) as TranslationSaveAsDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
 		if (properties != null) {
 			SaveTranslation(properties);
@@ -330,7 +332,7 @@ public class MainUi {
 	/// <summary>Displays a SaveAs dialog and gets the chosen options as <cref="FileProperties" />.</summary>
 	/// <param name="dialog">The dialog to display.</param>
 	/// <returns>The chosen file properties, or null in case SaveAs was canceled.</returns>
-	private FileProperties ShowSaveAsDialog (FileSaveAsDialog dialog) {
+	private FileProperties ShowSaveAsDialog (SubtitleFileSaveAsDialog dialog) {
 		dialog.Show();
 		bool toSaveAs = dialog.WaitForResponse();
 		if (!toSaveAs)

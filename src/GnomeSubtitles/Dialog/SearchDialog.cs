@@ -60,11 +60,13 @@ public class SearchDialog : GladeDialog {
 	public SearchDialog () : base(gladeFilename) {
 	}
 
-	/* Properties */
+	/* Overriden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Document; }
 	}
+
+	/* Properties */
 
 	public Regex ForwardRegex {
 		get { return forwardRegex; }
@@ -102,11 +104,11 @@ public class SearchDialog : GladeDialog {
 	
 	public void Show (bool useReplace) {
 		if (useReplace) {
-			getDialog().Title = Catalog.GetString("Replace");
+			GetDialog().Title = Catalog.GetString("Replace");
 			table.RowSpacing = 12;
 		}
 		else {
-			getDialog().Title = Catalog.GetString("Find");
+			GetDialog().Title = Catalog.GetString("Find");
 			table.RowSpacing = 0;
 		}
 		

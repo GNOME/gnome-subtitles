@@ -43,7 +43,7 @@ public class VideoSeekToDialog : GladeDialog {
 		InitSpinButton();
 	}
 
-	/* Public properties */
+	/* Overriden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Video; }

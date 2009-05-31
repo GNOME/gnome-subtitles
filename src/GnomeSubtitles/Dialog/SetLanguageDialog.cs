@@ -26,7 +26,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class SetLanguageDialog : GladeDialog {
+public abstract class SetLanguageDialog : GladeDialog {
 	private ListStore store = null;
 	private int colNum = 0;
 	private SubtitleTextType textType;
@@ -46,7 +46,7 @@ public class SetLanguageDialog : GladeDialog {
 	[WidgetAttribute] private Label introLabel = null;
 
 
-	public SetLanguageDialog (SubtitleTextType textType) : base(gladeFilename) {
+	protected SetLanguageDialog (SubtitleTextType textType) : base(gladeFilename) {
 		this.textType = textType;
 	
 		SetDialogTitle(textType);
@@ -117,7 +117,7 @@ public class SetLanguageDialog : GladeDialog {
 	}
 	
 	private void SetDialogTitle (SubtitleTextType textType) {
-		getDialog().Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
+		GetDialog().Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
 	}
 	
 	private void SetIntroLabel (SubtitleTextType textType) {

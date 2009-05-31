@@ -21,9 +21,9 @@ using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FileSaveAsDialog : SubtitleFileSaveAsDialog {
+public class TranslationSaveAsDialog : SubtitleFileSaveAsDialog {
 	
-	public FileSaveAsDialog () : base(SubtitleTextType.Text) {
+	public TranslationSaveAsDialog () : base(SubtitleTextType.Translation) {
 	}
 
 }

@@ -23,7 +23,7 @@ using Mono.Unix;
 using SubLib.Core.Domain;
 using System;
 
-namespace GnomeSubtitles.Dialog {
+namespace GnomeSubtitles.Dialog.Unmanaged {
 
 public abstract class SaveConfirmationDialog : WarningDialog {
 	private SubtitleTextType textType;
@@ -60,12 +60,12 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 		Hide();
 
 		if (response == ResponseType.Reject)
-			setReturnValue(true);
+			SetReturnValue(true);
 		else if (response == ResponseType.Accept) {
 			if (textType == SubtitleTextType.Text)
-				setReturnValue(Core.Base.Ui.Save());
+				SetReturnValue(Core.Base.Ui.Save());
 			else
-				setReturnValue(Core.Base.Ui.TranslationSave());
+				SetReturnValue(Core.Base.Ui.TranslationSave());
 		}
 
 		return false;

@@ -48,13 +48,11 @@ public class TimingsShiftDialog : GladeDialog {
 		UpdateContents(true);
 	}
 
-
-	/* Properties */
+	/* Overriden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Document; }
 	}
-
 
 	/* Methods */
 

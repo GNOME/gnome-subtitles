@@ -43,7 +43,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 
 
 	protected SubtitleFileChooserDialog (string filename) : base(filename) {
-		dialog = getDialog() as FileChooserDialog;
+		dialog = GetDialog() as FileChooserDialog;
 		
 		fixedEncoding = GetFixedEncoding();
 		SetEncodingComboBox();
@@ -183,7 +183,7 @@ public abstract class SubtitleFileChooserDialog : GladeDialog {
 		ComboBox comboBox = o as ComboBox;
 		int itemCount = comboBox.Model.IterNChildren();
 		if (comboBox.Active == (itemCount - 1)) {
-			EncodingsDialog dialog = new EncodingsDialog();
+			EncodingsDialog dialog = Base.Dialogs.Get(typeof(EncodingsDialog)) as EncodingsDialog;
 			dialog.Show();
 			dialog.WaitForResponse();
 			UpdateEncodingComboBox(comboBox, dialog.ChosenNames);

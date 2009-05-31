@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,32 +17,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.VideoPreview.Exceptions;
+using Gtk;
 using Mono.Unix;
 using System;
 
-namespace GnomeSubtitles.Dialog {
+namespace GnomeSubtitles.Dialog.Unmanaged {
 
-public class VideoErrorDialog : FileOpenErrorDialog {
-
-	/* Strings */
-	private string primaryTextStart = Catalog.GetString("Could not play the file");
-
-	public VideoErrorDialog (Uri uri, Exception exception) : base(uri, exception) {
-		Console.Error.WriteLine("Video error: " + exception.ToString());
+public abstract class WarningDialog : MessageDialog {
+	
+	public WarningDialog () : base(MessageType.Warning) {
 	}
 
-	/* Overriden members */
-	
-	protected override string GetPrimaryText (string filename) {
-		return primaryTextStart + " " + filename + ".";
-	}
-	
-	protected override string SecondaryTextFromException (Exception exception) {
-		if (exception is PlayerEngineException)
-			return (exception as PlayerEngineException).Error;
-		else
-			return String.Empty;
+	public WarningDialog (string primary, string secondary) : base(MessageType.Warning, primary, secondary) {
 	}
 
 }

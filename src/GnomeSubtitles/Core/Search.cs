@@ -92,7 +92,7 @@ public class Search {
 	#region Private methods
 	
 	private void InitDialog (bool showReplace) {
-		dialog = Base.Dialogs.SearchDialog;
+		dialog = Base.Dialogs.Get(typeof(SearchDialog)) as SearchDialog;
 	
 		dialog.Show(showReplace);
 	}

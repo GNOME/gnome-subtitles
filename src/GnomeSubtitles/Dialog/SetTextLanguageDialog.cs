@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,24 +17,14 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gtk;
-using Mono.Unix;
-using System;
+using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Dialog {
 
-public class BasicErrorDialog : ErrorDialog {
-
-	public BasicErrorDialog (string primary, string secondary) : base(primary, secondary) {
+public class SetTextLanguageDialog : SetLanguageDialog {
+	
+	public SetTextLanguageDialog () : base(SubtitleTextType.Text) {
 	}
-
-	
-	/* Protected methods */
-	
-	protected override void AddButtons () {
-		dialog.AddButton(Stock.Ok, ResponseType.Ok);
-	}
-	
 
 }
 

@@ -34,7 +34,7 @@ public class VideoOpenDialog : GladeDialog {
 	
 	
 	public VideoOpenDialog () : base(gladeFilename) {
-		dialog = getDialog() as FileChooserDialog;
+		dialog = GetDialog() as FileChooserDialog;
 
 		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
 			dialog.SetCurrentFolder(Base.Document.TextFile.Directory);
@@ -82,7 +82,7 @@ public class VideoOpenDialog : GladeDialog {
 			if (dialog.Uri != null) {
 				chosenUri = new Uri(dialog.Uri);
 			}
-			setReturnValue(true);
+			SetReturnValue(true);
 		}
 		return false;
 	}

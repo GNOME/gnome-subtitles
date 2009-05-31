@@ -1,6 +1,6 @@
 <Project name="gnome-subtitles" fileversion="2.0" language="C#" clr-version="Net_2_0" targetFramework="2.0" ctype="DotNetProject">
   <Policies>
-    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Native" />
+    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Unix" />
   </Policies>
   <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
@@ -40,21 +40,15 @@
     <File name="data/gnome-subtitles.png" subtype="Code" buildaction="EmbedAsResource" />
     <File name="data/gnome-subtitles-logo.png" subtype="Code" buildaction="EmbedAsResource" />
     <File name="src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/FileOpenDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/VideoOpenDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="data/video-set-subtitle-start-16x.png" subtype="Code" buildaction="EmbedAsResource" />
     <File name="data/video-set-subtitle-end-16x.png" subtype="Code" buildaction="EmbedAsResource" />
     <File name="src/GnomeSubtitles/Dialog/PreferencesDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/EncodingsDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Execution/BugReporter.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/ErrorDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Core/Config.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Core/Base.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Core/Util.cs" subtype="Code" buildaction="Compile" />
@@ -72,7 +66,6 @@
     <File name="src/Glade/TimingsAdjustDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="src/Glade/TimingsShiftDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="src/Glade/VideoOpenDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
-    <File name="src/GnomeSubtitles/Dialog/VideoErrorDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/SetLanguageDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Glade/SetLanguageDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="src/GnomeSubtitles/Execution/gnome-subtitles.exe.config" subtype="Code" buildaction="EmbedAsResource" />
@@ -130,8 +123,6 @@
     <File name="src/GnomeSubtitles/Dialog/MessageDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/Util.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/BaseDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/WarningDialog.cs" subtype="Code" buildaction="Compile" />
-    <File name="src/GnomeSubtitles/Dialog/BasicErrorDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs" subtype="Code" buildaction="Compile" />
     <File name="src/Glade/VideoSeekToDialog.glade" subtype="Code" buildaction="EmbedAsResource" />
     <File name="src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs" subtype="Code" buildaction="Compile" />
@@ -145,16 +136,30 @@
     <File name="src/GnomeSubtitles/Core/SyncPoints.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs" subtype="Code" buildaction="Compile" />
     <File name="src/GnomeSubtitles/Dialog/DialogScope.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged" subtype="Directory" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/BasicErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/TranslationSaveAsDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/Unmanaged/WarningDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/SetTextLanguageDialog.cs" subtype="Code" buildaction="Compile" />
+    <File name="src/GnomeSubtitles/Dialog/SetTranslationLanguageDialog.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <ProjectReference type="Assembly" localcopy="True" refto="../sublib/build/sublib.dll" />
     <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <ProjectReference type="Gac" localcopy="True" refto="gconf-sharp, Version=2.24.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <ProjectReference type="Gac" localcopy="True" refto="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <ProjectReference type="Assembly" localcopy="True" specificVersion="False" refto="../sublib/build/sublib.dll" />
+    <ProjectReference type="Gac" localcopy="True" refto="gconf-sharp, Version=2.24.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </References>
   <LanguageParameters StartupObject="GnomeSubtitles.Execution.Executable" ApplicationIcon="." ctype="CSharpProjectParameters" />
   <Deployment.LinuxDeployData generateScript="False" />

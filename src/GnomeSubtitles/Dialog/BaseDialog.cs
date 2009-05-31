@@ -80,11 +80,11 @@ public abstract class BaseDialog {
 		dialog.Response += OnResponse;
 	}
 
-	protected Gtk.Dialog getDialog () {
+	protected Gtk.Dialog GetDialog () {
 		return dialog;
 	}
 
-	protected void setReturnValue (bool returnValue) {
+	protected void SetReturnValue (bool returnValue) {
 		this.returnValue = returnValue;
 	}
 

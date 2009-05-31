@@ -19,6 +19,7 @@
 
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Dialog.Unmanaged;
 using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
@@ -68,11 +69,11 @@ public class EventHandlers {
 	}
 	
 	public void OnFileHeaders (object o, EventArgs args) {
-		new HeadersDialog().Show();
+		Base.Dialogs.Get(typeof(HeadersDialog)).Show();
 	}
 	
 	public void OnFileProperties (object o, EventArgs args) {
-		new FilePropertiesDialog().Show();
+		Base.Dialogs.Get(typeof(FilePropertiesDialog)).Show();
 	}
 	
 	public void OnFileClose (object o, EventArgs args) {
@@ -138,7 +139,7 @@ public class EventHandlers {
 	}
 
 	public void OnEditPreferences (object o, EventArgs args) {
-		new PreferencesDialog().Show();
+		Base.Dialogs.Get(typeof(PreferencesDialog)).Show();
 	}
 
 	/* View Menu */
@@ -208,15 +209,15 @@ public class EventHandlers {
 	}
 	
 	public void OnTimingsAdjust (object o, EventArgs args) {
-		new TimingsAdjustDialog().Show();	
+		Base.Dialogs.Get(typeof(TimingsAdjustDialog)).Show();
 	}
 	
 	public void OnTimingsShift (object o, EventArgs args) {
-		Base.Dialogs.TimingsShiftDialog.Show();
+		Base.Dialogs.Get(typeof(TimingsShiftDialog)).Show();
 	}
 	
 	public void OnTimingsSynchronize (object o, EventArgs args) {
-		new TimingsSynchronizeDialog().Show();
+		Base.Dialogs.Get(typeof(TimingsSynchronizeDialog)).Show();
 	}
 	
 	
@@ -244,7 +245,7 @@ public class EventHandlers {
 	}
 	
 	public void OnVideoSeekTo (object o, EventArgs args) {
-		new VideoSeekToDialog().Show();
+		Base.Dialogs.Get(typeof(VideoSeekToDialog)).Show();
 	}
 	
 	public void OnVideoSeekToSelection (object o, EventArgs args) {
@@ -281,11 +282,11 @@ public class EventHandlers {
 	}
 	
 	public void OnToolsSetTextLanguage (object o, EventArgs args) {
-		new SetLanguageDialog(SubtitleTextType.Text).Show();
+		Base.Dialogs.Get(typeof(SetTextLanguageDialog)).Show();
 	}
 	
 	public void OnToolsSetTranslationLanguage (object o, EventArgs args) {
-		new SetLanguageDialog(SubtitleTextType.Translation).Show();
+		Base.Dialogs.Get(typeof(SetTranslationLanguageDialog)).Show();
 	}
 	
 	
@@ -308,7 +309,7 @@ public class EventHandlers {
 	}
 	
 	public void OnHelpAbout (object o, EventArgs args) {
-		new Dialog.AboutDialog().Show();
+		Base.Dialogs.Get(typeof(Dialog.AboutDialog)).Show();
 	}
 	
 	

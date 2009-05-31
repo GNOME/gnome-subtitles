@@ -102,7 +102,7 @@ namespace GnomeSubtitles.Dialog {
 
 		protected override bool ProcessResponse (ResponseType response) {
 			if (response == ResponseType.Accept) {
-				setReturnValue(true);
+				SetReturnValue(true);
 			}
 			return false;
 		}

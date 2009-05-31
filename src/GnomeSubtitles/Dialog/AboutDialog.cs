@@ -35,7 +35,7 @@ public class AboutDialog : GladeDialog {
 		SetHooks();
 		Init(gladeFilename, true);
 	
-		dialog = getDialog() as Gtk.AboutDialog;
+		dialog = GetDialog() as Gtk.AboutDialog;
 		SetInfo();
 	}
 	

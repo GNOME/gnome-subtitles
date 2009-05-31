@@ -18,7 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
-using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Dialog.Unmanaged;
 using Gtk;
 using GStreamer;
 using SubLib.Core;

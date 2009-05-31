@@ -261,7 +261,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoUri = new Uri(videoFiles[videoFileIndex] as string);
 			}			
-			setReturnValue(true);
+			SetReturnValue(true);
 		}
 		return false;
 	}
