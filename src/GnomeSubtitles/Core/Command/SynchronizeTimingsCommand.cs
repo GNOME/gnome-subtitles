@@ -31,7 +31,7 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 
 	private SyncPoints syncPoints = null;
 	private bool toSyncAll = false;
-	private TimeSpan[] lastTimes = null;
+	private Times[] lastTimes = null;
 
 	public SynchronizeTimingsCommand (SyncPoints syncPoints, bool toSyncAll, SelectionIntended selectionIntended, TreePath[] pathRange) : base(description, false, selectionIntended, pathRange, true) {
 		this.syncPoints = syncPoints;
@@ -43,7 +43,7 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 		
 		if (lastTimes == null) {
 			int[] subtitleRange = GetSubtitleRange(subtitles);
-			TimeSpan[] timesToStore = GetCurrentTimes(subtitleRange, subtitles);
+			Times[] timesToStore = GetCurrentTimes(subtitleRange, subtitles);
 			SynchronizeOperator syncOp = new SynchronizeOperator(subtitles);
 			if (!syncOp.Sync(syncPoints.Collection, toSyncAll))
 				return false;
@@ -52,7 +52,7 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 		}
 		else {
 			int[] subtitleRange = GetSubtitleRange(subtitles);
-			TimeSpan[] timesToStore = GetCurrentTimes(subtitleRange, subtitles);
+			Times[] timesToStore = GetCurrentTimes(subtitleRange, subtitles);
 			
 			if (subtitleRange == null)
 				return false;
@@ -61,21 +61,23 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 			int subtitleTo = subtitleRange[1];
 			for (int index = subtitleFrom; index <= subtitleTo ; index++) {
 				Subtitle subtitle = subtitles[index];
-				subtitle.Times.Start = lastTimes[index - subtitleFrom];
+				Times timesToUse = lastTimes[index - subtitleFrom];
+				subtitle.Times.Start = timesToUse.Start;
+				subtitle.Times.End = timesToUse.End;
 			}
 			lastTimes = timesToStore;
 		}
 		return true;
 	}
 	
-	private TimeSpan[] GetCurrentTimes (int[] subtitleRange, Ui.View.Subtitles subtitles) {
+	private Times[] GetCurrentTimes (int[] subtitleRange, Ui.View.Subtitles subtitles) {
 		int subtitleFrom = subtitleRange[0];
 		int subtitleTo = subtitleRange[1];
-		TimeSpan[] currentTimes = new TimeSpan[subtitleTo - subtitleFrom + 1];
+		Times[] currentTimes = new Times[subtitleTo - subtitleFrom + 1];
 		
 		for (int index = subtitleFrom; index <= subtitleTo ; index++) {
 			Subtitle subtitle = subtitles[index];
-			currentTimes[index - subtitleFrom] = subtitle.Times.Start;
+			currentTimes[index - subtitleFrom] = subtitle.Times.Clone();
 		}
 		
 		return currentTimes;
