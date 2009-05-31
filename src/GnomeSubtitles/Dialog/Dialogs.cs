@@ -40,8 +40,10 @@ public class Dialogs {
 				return null;
 
 			dialog = newDialog as BaseDialog;
-			if (dialog.Scope != DialogScope.Singleton)
+			if (dialog.Scope != DialogScope.Singleton) {
 				dialogs[dialogType] = dialog;
+				dialog.Destroyed += OnDialogDestroyed;
+			}
 		}
 		return dialog;
 	}
@@ -62,7 +64,6 @@ public class Dialogs {
 			BaseDialog dialog = dialogs[type] as BaseDialog;
 			if ((dialog.Scope == DialogScope.Singleton) || (dialog.Scope == DialogScope.Document)) {
 				dialog.Destroy();
-				dialogs.Remove(type);
 			}
 		}
 	}
@@ -76,9 +77,12 @@ public class Dialogs {
 			BaseDialog dialog = dialogs[type] as BaseDialog;
 			if (dialog.Scope == DialogScope.Video) {
 				dialog.Destroy();
-				dialogs.Remove(type);
 			}
 		}
+	}
+
+	private void OnDialogDestroyed (object o, EventArgs args) {
+		dialogs.Remove(o.GetType());
 	}
 
 }

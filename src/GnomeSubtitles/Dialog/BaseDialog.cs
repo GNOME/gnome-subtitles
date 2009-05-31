@@ -18,6 +18,7 @@
  */
 
 using Gtk;
+using System;
 
 namespace GnomeSubtitles.Dialog {
 
@@ -28,6 +29,11 @@ public abstract class BaseDialog {
 
 	public BaseDialog () {
 	}
+
+	/* Events */
+	
+	public event EventHandler Destroyed;
+
 
 	/* Properties */
 
@@ -57,6 +63,7 @@ public abstract class BaseDialog {
 
 	public virtual void Destroy () {
 		dialog.Destroy();
+		EmitDestroyedEvent();
 	}
 
 	
@@ -77,7 +84,9 @@ public abstract class BaseDialog {
 	protected void Init (Gtk.Dialog dialog) {
 		this.dialog = dialog;
 		Util.SetBaseWindowFromUi(dialog);
+		
 		dialog.Response += OnResponse;
+		dialog.DeleteEvent += OnDeleteEvent;
 	}
 
 	protected Gtk.Dialog GetDialog () {
@@ -103,6 +112,16 @@ public abstract class BaseDialog {
 			args.RetVal = true;
 		}
 	}
+
+	private void OnDeleteEvent (object o, DeleteEventArgs args) {
+		args.RetVal = true;
+	}
+
+	private void EmitDestroyedEvent () {
+		if (Destroyed != null) {
+			Destroyed(this, EventArgs.Empty);
+		}
+	}	
 
 
 }
