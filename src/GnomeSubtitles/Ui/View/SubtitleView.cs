@@ -203,6 +203,8 @@ public class SubtitleView {
     	
     	tree.Model.RowInserted += OnModelRowInserted;
     	tree.Model.RowDeleted += OnModelRowDeleted;
+
+		EmitSubtitleCountChangedEvent();
     }
 	
     private void CreateColumns() {
