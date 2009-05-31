@@ -376,13 +376,8 @@ public class SubtitleSelection {
 	
 	private void OnBaseInitFinished () {
 		ConnectSelectionChangedSignal();
-		Base.DocumentLoaded += OnBaseDocumentLoaded;
 	}
-	
-	private void OnBaseDocumentLoaded (Document document) {
-		SelectFirst();
-	}
-	
+
 	private void ConnectSelectionChangedSignal () {
 		selection.Changed += OnSelectionChanged;
 	}
