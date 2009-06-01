@@ -248,8 +248,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="Z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -368,6 +368,7 @@
                                 <property name="label" translatable="yes">_After</property>
                                 <property name="visible">True</property>
                                 <property name="sensitive">False</property>
+                                <property name="use_underline">True</property>
                                 <property name="use_stock">False</property>
                                 <signal name="activate" handler="OnEditInsertSubtitleAfter"/>
                                 <accelerator key="Return" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -531,8 +532,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate"/>
+                        <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -542,8 +543,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
+                        <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -802,8 +803,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
-                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F5" signal="activate"/>
+                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -821,8 +822,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoRewind"/>
-                        <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F6" signal="activate"/>
+                        <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoRewindImage">
                             <property name="visible">True</property>
@@ -840,8 +841,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoForward"/>
-                        <accelerator key="i" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F7" signal="activate"/>
+                        <accelerator key="i" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoForwardImage">
                             <property name="visible">True</property>
@@ -861,6 +862,7 @@
                         <property name="label" translatable="yes">_Seek to...</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoSeekTo"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -966,6 +968,7 @@
                       <widget class="GtkImageMenuItem" id="helpContents">
                         <property name="label" translatable="yes">_Contents</property>
                         <property name="visible">True</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnHelpContents"/>
                         <accelerator key="F1" signal="activate"/>
