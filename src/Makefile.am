@@ -14,6 +14,7 @@ libgstreamer_playbin_so_LDFLAGS = $(gstreamer_LIBS) -lgstinterfaces-0.10 -shared
 
 GS_SOURCES = \
 	$(srcdir)/External/GStreamerPlaybin/*.cs \
+	$(srcdir)/External/NCharDet/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/Command/*.cs \
 	$(srcdir)/GnomeSubtitles/Dialog/*.cs \
@@ -23,7 +24,16 @@ GS_SOURCES = \
 	$(srcdir)/GnomeSubtitles/Ui/Edit/*.cs \
 	$(srcdir)/GnomeSubtitles/Ui/VideoPreview/*.cs \
 	$(srcdir)/GnomeSubtitles/Ui/VideoPreview/Exceptions/*.cs \
-	$(srcdir)/GnomeSubtitles/Ui/View/*.cs
+	$(srcdir)/GnomeSubtitles/Ui/View/*.cs \
+	$(srcdir)/SubLib/Core/*.cs \
+	$(srcdir)/SubLib/Core/Domain/*.cs \
+	$(srcdir)/SubLib/Core/Search/*.cs \
+	$(srcdir)/SubLib/Core/Timing/*.cs \
+	$(srcdir)/SubLib/Exceptions/*.cs \
+	$(srcdir)/SubLib/IO/*.cs \
+	$(srcdir)/SubLib/IO/Input/*.cs \
+	$(srcdir)/SubLib/IO/Output/*.cs \
+	$(srcdir)/SubLib/IO/SubtitleFormats/*.cs
 
 GS_RESOURCES = \
 	$(srcdir)/Glade/AboutDialog.glade \

@@ -63,7 +63,6 @@ public class BugReporter {
 	
 	private static string GetBugInfo (string message) {
 		return "Gnome Subtitles version: " + Base.ExecutionContext.Version + "\n"
-			+ "SubLib version: " + Base.ExecutionContext.SubLibVersion + "\n"
 			+ "GtkSharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
 			+ "GladeSharp version: " + Base.ExecutionContext.GladeSharpVersion + "\n"
 			+ "GConfSharp version: " + Base.ExecutionContext.GConfSharpVersion + "\n\n"

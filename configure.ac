@@ -78,12 +78,7 @@ if test "x$gtksharp_invalid" = "xtrue"; then
  	AC_MSG_ERROR([gtk-sharp versions between 2.12.2 and 2.12.6 (inclusive) are not supported.])
 fi
 
-dnl SubLib
-SUBLIB_REQUIRED_VERSION=0.9
-PKG_CHECK_MODULES(SUBLIB, sublib >= $SUBLIB_REQUIRED_VERSION)
 PKG_PROG_PKG_CONFIG()
-SUBLIB_DLL_DIR="`$PKG_CONFIG --variable=libdir sublib`/sublib"
-AC_SUBST(SUBLIB_DLL_DIR)
 
 AC_SUBST(MCS)
 

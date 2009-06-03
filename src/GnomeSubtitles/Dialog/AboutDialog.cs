@@ -56,8 +56,6 @@ public class AboutDialog : GladeDialog {
 	}
 	
 	private void SetInfo () {
-		dialog.ProgramName = "Gnome Subtitles"; 
-		dialog.Comments += "\n\nUsing SubLib " + Base.ExecutionContext.SubLibVersion;
 		dialog.Version = Base.ExecutionContext.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
 	}

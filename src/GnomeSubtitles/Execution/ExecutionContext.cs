@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,11 +28,9 @@ public class ExecutionContext {
 	private bool initialized = false;
 	private bool running = false;
 
-	#region Constant strings
+	/* Constant strings */
 	private const string applicationName = "Gnome Subtitles";
 	private const string applicationID = "gnome-subtitles";
-	private const string subLibAssemblyName = "sublib";
-	#endregion
 	
 	private string[] args = null;
 	
@@ -40,7 +38,7 @@ public class ExecutionContext {
 		this.args = args;
 	}
 	
-	#region Public properties
+	/* Public properties */
 	
 	public bool Initialized {
 		get { return initialized; }
@@ -62,10 +60,6 @@ public class ExecutionContext {
 		get { return RemoveTrailingZeros(Assembly.GetExecutingAssembly().GetName().Version.ToString()); }
 	}
 
-	public string SubLibVersion {
-		get { return RemoveTrailingZeros(Assembly.ReflectionOnlyLoad(subLibAssemblyName).GetName().Version.ToString()); }
-	}
-	
 	public string GtkSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gtk-sharp").GetName().Version.ToString()); }
 	}
@@ -87,9 +81,8 @@ public class ExecutionContext {
 		get { return applicationID; }
 	}
 	
-	#endregion
-	
-	#region Public methods
+
+	/* Public methods */
 	
 	public void InitApplication () {
 		if (!initialized) {	
@@ -111,9 +104,8 @@ public class ExecutionContext {
 		Application.Quit();
 	}
 	
-	#endregion
-	
-	#region Private methods
+
+	/* Private methods */
 	
 	private string RemoveTrailingZeros (string version) {
 		while (version.EndsWith(".0")) {
@@ -122,8 +114,6 @@ public class ExecutionContext {
 		return version;
 	}
 
-	#endregion
-	
 }
 
 }
