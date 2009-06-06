@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2009 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ using System.Text.RegularExpressions;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatSubRip : SubtitleFormat {
-	private static Regex styleExpression = new Regex(@"</?[^ubi\n]*[ubi]\w*>", RegexOptions.IgnoreCase);
+	private static Regex styleExpression = new Regex(@"</?\w*>", RegexOptions.IgnoreCase);
     
     internal SubtitleFormatSubRip () {
 		name = "SubRip";
