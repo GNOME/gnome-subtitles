@@ -14,13 +14,11 @@ Dependencies
     Gtk+      	>= 2.8
     Gtk-Sharp	>= 2.8
     Glade-Sharp >= 2.8
-    Gnome-Sharp >= 2.8
     GConf-Sharp >= 2.8
     GStreamer 	>= 0.10
     GStreamer-Plugins-Base >= 0.10
     GtkSpell  	>= 2.0
     Enchant   	>= 1.3
-    SubLib    	>= 0.9
 
 
 Building from Source
@@ -36,12 +34,11 @@ it and run it with `mono gnome-subtitles.exe'.
 The INSTALL file contains detailed information on this subject.
 
 
-Building from SVN
+Building from Git
 =================
 
-
-Checkout the latest code from the GNOME SVN:
-	svn co http://svn.gnome.org/svn/gnome-subtitles/trunk gnome-subtitles
+Get the latest code from the GNOME Git repository:
+	git clone git://git.gnome.org/gnome-subtitles
 
 Run `./autogen.sh' to generate the build scripts. Some packages are required:
     autoconf
@@ -55,7 +52,6 @@ Run `./autogen.sh' to generate the build scripts. Some packages are required:
     pkg-config
 
 You can now proceed to "Building from Source" to build Gnome Subtitles.
+See http://live.gnome.org/Git/Developers for more information on how to use the
+GNOME Git repository.
 
-Note that, regarding the required dependencies, SubLib SVN version may be needed
-when building Gnome Subtitles from the SVN. Information on building SubLib from
-the SVN is available at: http://sublib.sourceforge.net/development.
