@@ -37,10 +37,8 @@ public class SynchronizeOperator {
 		if (!AreSyncArgsValid(pointsToUse))
 			return false;
 
-		System.Console.WriteLine("Here");
 		SyncPoint previous = pointsToUse[0];
 		for (int index = 1 ; index < pointsToUse.Count ; index++) {
-			System.Console.WriteLine(index);
 			SyncPoint current = pointsToUse[index];
 			SyncUtil.Sync(subtitles, previous, current);
 		
@@ -81,10 +79,9 @@ public class SynchronizeOperator {
 	}
 	
 	private bool AreSyncArgsValid (SyncPoints syncPoints) {
-		System.Console.WriteLine(1);
 		if ((syncPoints == null) || (syncPoints.Count < 2) || (syncPoints[syncPoints.Count - 1].SubtitleNumber > subtitles.Collection.Count))
 			return false;
-		System.Console.WriteLine(2);
+
 		SyncPoint previous = syncPoints[0];
 		for (int index = 1 ; index < syncPoints.Count ; index++) {
 			SyncPoint current = syncPoints[index];

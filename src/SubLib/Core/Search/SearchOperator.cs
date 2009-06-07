@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,6 @@ public class SearchOperator {
 	/// <param name="options">The search options.</param>
 	/// <returns>The search results, or null in case no results were found.</returns>
 	public SubtitleSearchResults Find (SubtitleSearchOptions options) {
-		System.Console.WriteLine("Finding " + options.Regex.ToString() + " from subtitle " + options.StartSubtitle + ", index " + options.StartIndex + ", type " + options.TextType);
 		if (options.Backwards)
 			return FindBackward(options);
 		else

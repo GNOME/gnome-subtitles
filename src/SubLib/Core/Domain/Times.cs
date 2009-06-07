@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2009 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -110,7 +110,6 @@ public class Times {
 	}
 	
 	internal void Scale (double factor, TimeSpan baseTime) {
-		System.Console.WriteLine("Factor " + factor + " baseTime " + baseTime);
 		double baseMilliseconds = baseTime.TotalMilliseconds;
 	
 		double start = PreciseStart.TotalMilliseconds;
@@ -121,8 +120,6 @@ public class Times {
 		double newEnd = baseMilliseconds + ((end - baseMilliseconds) * factor);
 		PreciseEnd = TimeSpan.FromMilliseconds(newEnd);
 
-		System.Console.WriteLine("Start " + start + ", newStart " + newStart + ", end " + end + ", newEnd " + newEnd);
-		
 		subtitle.UpdateFramesFromTimes();	
 	}
 
