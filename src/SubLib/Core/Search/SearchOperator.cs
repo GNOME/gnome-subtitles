@@ -44,47 +44,53 @@ public class SearchOperator {
 		else
 			return FindForward(options);	
 	}
-	
+
 	/// <summary>Replaces all occurences of some text with the specified replacement.</summary>
 	/// <param name="regex">A regular expression used to find the text to be replaced.</param>
 	/// <param name="replacement">The text that will be used as a replacement.</param>
-	/// <param name="replacedSubtitles">The numbers of the subtitles that were replaced.</param>
-	/// <param name="oldTexts">The texts of the subtitles that were replaced, before replacement was done.</param>
+	/// <param name="lineBreak">The line break to use between multiple lines of text in each subtitle.</param>
 	/// <remarks>The newline (\n) char is used as the line break.</remarks>
-	/// <returns>The number of replaced subtitles.</returns>
-	public int ReplaceAll (Regex regex, string replacement, out int[] replacedSubtitles, out string[] oldTexts) {
-		return ReplaceAll(regex, replacement, "\n", out replacedSubtitles, out oldTexts);
+	/// <returns>The previous text of the replaced subtitles.</returns>
+	public ArrayList ReplaceAll (Regex regex, string replacement) {
+		return ReplaceAll(regex, replacement, "\n");
 	}
 
 	/// <summary>Replaces all occurences of some text with the specified replacement.</summary>
 	/// <param name="regex">A regular expression used to find the text to be replaced.</param>
 	/// <param name="replacement">The text that will be used as a replacement.</param>
 	/// <param name="lineBreak">The line break to use between multiple lines of text in each subtitle.</param>
-	/// <param name="replacedSubtitles">The numbers of the subtitles that were replaced.</param>
-	/// <param name="oldTexts">The texts of the subtitles that were replaced, before replacement was done.</param>
-	/// <remarks>The newline (\n) char is used as the line break.</remarks>
-	/// <returns>The number of replaced subtitles.</returns>
-	public int ReplaceAll (Regex regex, string replacement, string lineBreak, out int[] replacedSubtitles, out string[] oldTexts) {
+	/// <returns>The previous text of the replaced subtitles.</returns>
+	public ArrayList ReplaceAll (Regex regex, string replacement, string lineBreak) {
 		ArrayList replaced = new ArrayList();
-		ArrayList texts = new ArrayList();
 		MatchEvaluationCounter counter = new MatchEvaluationCounter(replacement);
-		int subtitleNumber = 0;
-		foreach (Subtitle subtitle in subtitles.Collection) {
+
+		for (int subtitleNumber = 0 ; subtitleNumber < subtitles.Collection.Count ; subtitleNumber++) {
+			Subtitle subtitle = subtitles.Collection[subtitleNumber];
+
+			/* Handle text */
 			string oldText = subtitle.Text.Get(lineBreak);
-			counter.EvaluationOccured = false;
-			string newText = regex.Replace(oldText, counter.Evaluator);
-			if (counter.EvaluationOccured) {
-				replaced.Add(subtitleNumber);
-				texts.Add(oldText);
-				subtitle.Text.Set(newText, lineBreak, false);				
-				counter.EvaluationOccured = false;			
+			string newText = ReplaceText(oldText, regex, replacement, counter);
+			string textToStore = null;
+			if (newText != null) {
+				subtitle.Text.Set(newText, lineBreak, false);
+				textToStore = oldText;
 			}
-			subtitleNumber++;
+
+			/* Handle translation */
+			string oldTranslation = subtitle.Translation.Get(lineBreak);
+			string newTranslation = ReplaceText(oldTranslation, regex, replacement, counter);
+			string translationToStore = null;
+			if (newTranslation != null) {
+				subtitle.Translation.Set(newTranslation, lineBreak, false);
+				translationToStore = oldTranslation;
+			}
+
+			if ((textToStore != null) || (translationToStore != null)) {
+				replaced.Add(new SubtitleReplaceResult(subtitleNumber, textToStore, translationToStore));
+			}
 		}
 
-		replacedSubtitles = (int[])replaced.ToArray(typeof(int));
-		oldTexts = (string[])texts.ToArray(typeof(string));
-		return counter.Count;	
+		return replaced;
 	}
 	
 	/// <summary>Finds the subtitle that contains the specified time position.</summary>
@@ -302,6 +308,12 @@ public class SearchOperator {
 			return new SubtitleSearchResults(subtitleNumber, textType, match.Index, match.Length);
 		else
 			return null;
+	}
+
+	private string ReplaceText (string text, Regex regex, string replacement, MatchEvaluationCounter counter) {
+		counter.EvaluationOccured = false;
+		string newText = regex.Replace(text, counter.Evaluator);
+		return (counter.EvaluationOccured ? newText : null);
 	}
 	
 	

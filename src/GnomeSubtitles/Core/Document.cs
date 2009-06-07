@@ -240,6 +240,11 @@ public class Document {
 			wasTranslationModified = true;
 			EmitModificationStatusChangedEvent(true);
 		}
+		else if ((args.Target == CommandTarget.NormalAndTranslation) && ((!wasTextModified) || (!wasTranslationModified))) {
+			wasTextModified = true;			
+			wasTranslationModified = true;
+			EmitModificationStatusChangedEvent(true);
+		}
     }
     	
 	private void EmitModificationStatusChangedEvent (bool modified) {

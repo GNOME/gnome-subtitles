@@ -23,16 +23,15 @@ using Mono.Unix;
 using SubLib.Core.Domain;
 using SubLib.Core.Search;
 using System;
+using System.Collections;
 using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Core.Command {
 
 public class ReplaceAllCommand : MultipleSelectionCommand {
 	private static string description = Catalog.GetString("Replacing All");
-	
-	private int[] subtitles = null;
-	private string[] texts  = null;
-	
+
+	private ArrayList replacedSubtitles = null;
 	private Regex regex = null;
 	private string replacement = String.Empty;
 
@@ -44,38 +43,80 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 
 	public override bool Execute () {
 		SearchOperator searchOp = new SearchOperator(Base.Document.Subtitles);
-		int count = searchOp.ReplaceAll(regex, replacement, out subtitles, out texts);
-		if (count == 0)
+		replacedSubtitles = searchOp.ReplaceAll(regex, replacement);
+		if (replacedSubtitles.Count  == 0)
 			return false;
-		
-		Paths = Util.IntsToPaths(subtitles);
+
+		TreePath[] paths = null;
+		CommandTarget target = CommandTarget.Normal;
+		GetCommandData(out paths, out target);
+
+		SetCommandTarget(target);
+		Paths = paths;
 		if (Paths.Length > 0)
 			Focus = Paths[0];
 		
 		Base.Ui.View.Selection.Select(Paths, Focus, true);
 		return true;
 	}
+
 	
 	public override void Undo () {
-		for (int position = 0 ; position < subtitles.Length ; position++) {
-			int index = subtitles[position];
-			Subtitle subtitle = Base.Document.Subtitles[index];
-			string oldText = subtitle.Text.Get();
-			string newText = texts[position];
-			subtitle.Text.Set(newText);
-			texts[position] = oldText;
+		ArrayList newReplacedSubtitles = new ArrayList();
+
+		/* Get values before replacing */
+		foreach (SubtitleReplaceResult replacedSubtitle in replacedSubtitles) {
+			Subtitle subtitle = Base.Document.Subtitles[replacedSubtitle.Number];
+			string oldText = (replacedSubtitle.Text != null ? subtitle.Text.Get() : null);
+			string oldTranslation = (replacedSubtitle.Translation != null ? subtitle.Translation.Get() : null);
+			newReplacedSubtitles.Add(new SubtitleReplaceResult(replacedSubtitle.Number, oldText, oldTranslation));
 		}
-	
+
+		/* Replace the values */
+		foreach (SubtitleReplaceResult replacedSubtitle in replacedSubtitles) {
+			Subtitle subtitle = Base.Document.Subtitles[replacedSubtitle.Number];
+
+			if (replacedSubtitle.Text != null)
+				subtitle.Text.Set(replacedSubtitle.Text);
+
+			if (replacedSubtitle.Translation != null)
+				subtitle.Translation.Set(replacedSubtitle.Translation);
+		}
+
+		replacedSubtitles = newReplacedSubtitles;
 		Base.Ui.View.Selection.Select(Paths, Focus, true);
 	}
 	
 	public override void Redo () {
 		Undo();
 	}
-	
+
+	/* Private members */
 
 
+	private void GetCommandData (out TreePath[] paths, out CommandTarget target) {
+		ArrayList foundPaths = new ArrayList();		
+		bool foundText = false;
+		bool foundTranslation = false;
+		
+		foreach (SubtitleReplaceResult replacedSubtitle in replacedSubtitles) {
+			foundPaths.Add(Util.IntToPath(replacedSubtitle.Number));
 
+			if ((!foundText) && (replacedSubtitle.Text != null))
+				foundText = true;
+
+			if ((!foundTranslation) && (replacedSubtitle.Translation != null))
+				foundTranslation = true;
+		}
+		paths = foundPaths.ToArray(typeof(TreePath)) as TreePath[];
+
+		if (foundText && foundTranslation)
+			target = CommandTarget.NormalAndTranslation;
+		else if (foundText)
+			target = CommandTarget.Normal;
+		else
+			target = CommandTarget.Translation;
+	}
 
 }
 
