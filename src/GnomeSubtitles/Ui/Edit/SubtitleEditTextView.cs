@@ -374,7 +374,7 @@ public abstract class SubtitleEditTextView {
 	private void OnToggleOverwrite (object o, EventArgs args) {
 		/* Update the GUI overwrite status */
     	UpdateOverwriteStatus();
-	
+
 		/* Emit the toggle event */
 		if (!isToggleOverwriteSilent)
 			EmitToggleOverwrite();

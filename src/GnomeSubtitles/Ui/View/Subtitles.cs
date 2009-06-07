@@ -147,9 +147,16 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	
 	/// <summary>Loads possible extra subtitles at the end of the model.</summary>
 	/// <remarks>Extra subtitles exist if subtitles were added to the base collection.</remarks>
-	public void AddExtra (int count) {
-		int startIndex = (Count == 0) ? 0 : Count - 1;
-		for (int index = startIndex ; index < startIndex + count ; index++)
+	public void AddExtra (int extraCount) {
+		if (extraCount <= 0)
+			return;
+
+		int lastIndex = Count + extraCount - 1;
+
+		if (Count == 0)
+			AddNewAt(0);
+		
+		for (int index = Count - 1 ; index < lastIndex ; index++)
 			AddNewAfter(index);
 	}
 
