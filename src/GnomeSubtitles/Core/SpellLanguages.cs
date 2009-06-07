@@ -135,7 +135,7 @@ public class SpellLanguages {
 		else
 			activeTranslationLanguageIndex = index;
 
-		String activeLanguageID = (isEmpty ? String.Empty : activeLanguage.ID);
+		string activeLanguageID = (isEmpty ? String.Empty : activeLanguage.ID);
 		SetActiveLanguageInConfig(textType, activeLanguageID);
 
 		EmitLanguageChanged(textType);

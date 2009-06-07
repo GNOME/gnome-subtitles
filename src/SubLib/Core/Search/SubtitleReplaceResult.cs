@@ -24,10 +24,10 @@ namespace SubLib.Core.Search {
 
 public class SubtitleReplaceResult {
 	private int number = -1;
-	private String text = String.Empty;
-	private String translation = String.Empty;
+	private string text = String.Empty;
+	private string translation = String.Empty;
 
-	public SubtitleReplaceResult (int number, String text, String translation) {
+	public SubtitleReplaceResult (int number, string text, string translation) {
 		this.number = number;
 		this.text = text;
 		this.translation = translation;
@@ -39,11 +39,11 @@ public class SubtitleReplaceResult {
 		get { return number; }
 	}
 
-	public String Text {
+	public string Text {
 		get { return text; }
 	}
 
-	public String Translation {
+	public string Translation {
 		get { return translation; }
 	}
 

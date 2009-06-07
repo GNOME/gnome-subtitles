@@ -99,7 +99,7 @@ public class TimingsSynchronizeDialog : GladeDialog {
 	}
 	
 	private void UpdateStatusMessage () {
-		String message = String.Empty;
+		string message = String.Empty;
 		switch (syncPoints.Collection.Count) {
 			case 0:
 				message = Catalog.GetString("Add sync points by selecting subtitles and adjusting the video to their correct position. At least 2 points are needed.");
@@ -108,7 +108,7 @@ public class TimingsSynchronizeDialog : GladeDialog {
 				message = Catalog.GetString("Add 1 more sync point to start synchronizing. Adding more points will improve accuracy.");
 				break;
 			default:
-				String allSubtitlesSyncMessage = Catalog.GetString("Synchronization is ready. All subtitles will be synchronized.");
+				string allSubtitlesSyncMessage = Catalog.GetString("Synchronization is ready. All subtitles will be synchronized.");
 				if (syncAllSubtitlesCheckButton.Active)
 					message = allSubtitlesSyncMessage;
 				else {
@@ -152,14 +152,14 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		
 		SyncPoint first = syncPoints.Collection.Get(0);
 		if (first.SubtitleNumber > 0) {
-			String firstInterval = "1" + (first.SubtitleNumber > 1 ? "-" + first.SubtitleNumber : String.Empty);
+			string firstInterval = "1" + (first.SubtitleNumber > 1 ? "-" + first.SubtitleNumber : String.Empty);
 			intervals.Add(firstInterval);
 		}
 		
 		SyncPoint last = syncPoints.Collection.Get(syncPoints.Collection.Count - 1);
 		int lastSubtitleNumber = subtitles.Count - 1;
 		if (last.SubtitleNumber < lastSubtitleNumber) {
-			String lastInterval = (last.SubtitleNumber < lastSubtitleNumber - 1 ? (last.SubtitleNumber + 2) + "-" : String.Empty) + (lastSubtitleNumber + 1);
+			string lastInterval = (last.SubtitleNumber < lastSubtitleNumber - 1 ? (last.SubtitleNumber + 2) + "-" : String.Empty) + (lastSubtitleNumber + 1);
 			intervals.Add(lastInterval);
 		}
 		

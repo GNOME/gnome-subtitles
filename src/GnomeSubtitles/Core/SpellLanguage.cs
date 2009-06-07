@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008 Pedro Castro
+ * Copyright (C) 2008-2009 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ public class SpellLanguage : IComparable {
 	private static string countryGroupName = "country";
 	private static Regex regex = new Regex(@"^(?<" + langGroupName + @">[a-zA-Z]+)(_(?<" + countryGroupName + @">[a-zA-Z]+))?$", RegexOptions.IgnoreCase);
 		
-	public SpellLanguage (String id) {
+	public SpellLanguage (string id) {
 		this.id = id;
 		this.name = GetNameFromID(id);
 	}
@@ -90,7 +90,7 @@ public class SpellLanguage : IComparable {
 		return info.EnglishName;
 	}
 	
-	private string GetUnknownNameFromID (String id) {
+	private string GetUnknownNameFromID (string id) {
 		return prefixUnknown + " (" + id + ")";
 	}
 	
