@@ -181,7 +181,9 @@ public class CommandManager {
 	}
 	
 	private void EmitCommandActivated (Command command) {
-		CommandActivated(this, new CommandActivatedArgs(command.Target));
+		if (CommandActivated != null) {
+			CommandActivated(this, new CommandActivatedArgs(command.Target));
+		}
 	}
 	
 	private Command GetNextCommand () {
