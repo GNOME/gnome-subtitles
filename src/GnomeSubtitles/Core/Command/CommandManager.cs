@@ -35,7 +35,7 @@ public class CommandManager {
 	public event CommandActivatedHandler CommandActivated;
 	
 	#region Constants
-	private const int defaultLimit = 40;
+	private const int defaultLimit = 50;
 	#endregion
 
 	public CommandManager () : this(defaultLimit) {
