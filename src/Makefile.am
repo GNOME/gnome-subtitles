@@ -68,5 +68,5 @@ $(ASSEMBLY_CONFIG):
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
 CLEANFILES = $(bin_SCRIPTS) $(ASSEMBLY) $(ASSEMBLY).mdb
-EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG) main.c
+EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG)
 
