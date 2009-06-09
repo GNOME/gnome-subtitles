@@ -1,6 +1,87 @@
 Gnome Subtitles
 ===============
 
+
+0.9 (09/06/09)
+==============
+
+- New interactive Synchronize Timings dialog:
+  * Allows to synchronize using multiple sync points
+  * Each sync point represents the correct time of a subtitle
+  * Shows help message to ease the synchronization task
+  * Can synchronize all subtitles based on a set of sync points
+- New Seek To dialog that allows to seek the video to a specified time/frame
+- More polished user interface, by removing the border relief in video-related
+  buttons and decreasing their size
+- Allow to close a file without quitting the application (File Close)
+- Replace All now replaces translations too, besides the normal subtitle text
+- Don't change the timing mode, after saving a file, to reflect the timing mode
+  of the subtitle format chosen for saving
+- Added Insert and Delete Subtitles toolbar buttons, removed Find and Replace
+  from the toolbar
+- Added MIME Type association to the SubRip, MPSub, SubStation Alpha and
+  MicroDVD subtitle formats
+- Improved handling of text formatting tags in SubRip files
+- Show Matroska Video files (MKV) when listing video files
+- Fixed crash on opening a translation file with no subtitles loaded
+- SubLib merged into Gnome Subtitles, making both easier to maintain and package
+- Major refactoring of the video playback engine:
+  * GStreamer Playbin (code from the FuseMC project) has been incorporated into
+    the project source tree
+  * Gstreamer Playbin no longer builds as a separate package (no separate dll,
+    although the .so lib is still built separately)
+  * GStreamer events are now received asynchronously, which means the user
+    interface adapts to the video in an asynchronous/non-blocking way
+- Fixed some bugs in the video playback engine:
+  * Loading a file when the previously loaded file wasn't played
+  * Video position not being correctly updated after loading the video and
+    before starting playback
+- Display an error dialog when the help contents cannot be opened
+- Fixed the use of Bug Buddy for bug reporting
+- Changes in the project dependencies:
+  * Requires gtk, gtk-sharp, glade-sharp and gconf-sharp 2.12 or higher
+  * No longer requires gnome-sharp nor sublib
+
+Translations:
+- Djihed Afifi (ar)
+- Joan Duran (ca)
+- Kamil Paral, Lucas Lommer, Petr Kovar, Rinu (cs)
+- Joe Hansen, Kristian Kjærgaard (da)
+- Felix Braun, Mario Blättermann (de)
+- Gabriel Ruiz, Jorge González (es)
+- Ilkka Tuohela (fi)
+- Kjartan Maraas (nb)
+- Yannig Marchegay (oc)
+- Piotr Drąg (pl)
+- António Lima (pt)
+- César Veiga, Fábio Nogueira, Henrique P Machado, Leonardo Ferreira
+  Fontenelle (pt_BR)
+- Nickolay V. Shmyrev (ru)
+- Daniel Nylander (sv)
+
+Bug fixes:
+- The file with a movie is not always automatically selected (#417975)
+- Improvements to selection types in timings dialogs (#430737)
+- Add support for viewing and correcting line length (#430961)
+- Synchronize subtitles using multiple sync points (#471393)
+- Allow to seek to a specified time instant (#504560)
+- Configure script doesn't check for gstreamer-plugins-base headers (#520171)
+- Make frequently-used menu items accessible in the toolbar (#530833)
+- German Translation (#534748)
+- Parallel build fails (#534889)
+- Crash when trying to open a file (#540009)
+- Suboptimal parsing of SRT-file (#552221)
+- Strings like 'gtk-cancel' and so should not be translatable (#576197)
+- Build error (#577127)
+
+Contributors:
+- Arx Cruz, Lucas Lommer
+
+Additional thanks:
+- Adam Dixon, Julian Sikorski, Luciano A. Ferrer, Marcin Zajaczkowski,
+  Satoshi Tanabe
+
+
 0.8 (11/05/08)
 ==============
 
@@ -37,7 +118,7 @@ Translations:
 - António Lima (pt)
 - Daniel Nylander (sv)
 
-Thanks:
+Additional thanks:
 - Julian Sikorski, Mathias Brodala, Marcin Zajaczkowski, Nazar Kulyk
 
 
@@ -51,7 +132,7 @@ Translations:
 - Djihed Afifi (ar)
 - Yannig Marchegay (oc)
 
-Thanks:
+Additional thanks:
 - Tiago Bortoletto Vaz
 
 
@@ -72,7 +153,7 @@ Bug fixes:
 Translations:
 - Yannig Marchegay (oc)
 
-Thanks:
+Additional thanks:
 - Damien Carbery, Karel Hudan, Luciano A. Ferrer, Stanislaw Pitucha,
   Tiago Bortoletto Vaz
 
@@ -120,7 +201,7 @@ Translations:
 - Raphael Higino (pt_BR)
 - Daniel Nylander (sv)
 
-Thanks:
+Additional thanks:
 - Danail Nedyalkov, Goran Sterjov, Luciano A. Ferrer, Mario Señoranis
   Miguel Filho
 
@@ -154,7 +235,7 @@ Translations:
 - Jorge González, Paulino Padial (es)
 - Daniel Nylander (sv)
 
-Thanks:
+Additional thanks:
 - Marcin Simonides, Thilo Pfennig
 
 
@@ -167,7 +248,7 @@ Thanks:
 Bug Fixes:
 - Add an abstract with the role attribute set to "description" (#439274)
 
-Thanks:
+Additional thanks:
 - Erin Bloom, Marcin Simonides, Thilo Pfennig
 
 
@@ -196,7 +277,7 @@ Bug Fixes:
 - Video menu short cut keys (#436745)
 - Exceptions not handled when saving a file (#438446)
 
-Thanks:
+Additional thanks:
 - Erin Bloom, Luciano Ferrer
 
 
@@ -235,7 +316,7 @@ Bug fixes:
 - Can't load srt subtitles - detected encoding is not supported (#417303)
 - MPlayer fails for each second file (#417869)
 
-Thanks:
+Additional thanks:
 - Marcin Simonides, Marcin Zajaczkowski, Marco Lackovic, Phalanx747,
   Tiago Bortoletto Vaz
 
@@ -265,7 +346,7 @@ Bug fixes:
 - Video file is reported as not supported but MPlayer supports it (#417848)
 - Video previewing doesn't function correctly (#421883)
 
-Thanks:
+Additional thanks:
 - Carlos Doki, Malte Skoruppa, Marcin Zajaczkowski, Phalanx747, Rafal Slubowski,
   Sebastian Porta
 
@@ -282,7 +363,7 @@ Thanks:
 Bug fixes:
 - Application crashes at exit when MPlayer has already finished (#416895)
 
-Thanks:
+Additional thanks:
 - Marcin Zajaczkowski
 
 
@@ -313,7 +394,7 @@ Thanks:
 Bug fixes:
 - App crashes when selection float value with , as a decimal separator (#402201)
 
-Thanks:
+Additional thanks:
 - Stefan A. Keel (Sak), for the artwork on the new custom icons
 
 
@@ -388,9 +469,11 @@ Bug fixes:
   subtitles/synchronization points
 - Added dialog to edit the subtitle file headers
 - Fixed crash when using the latest version of Mono (1.1.17.1)
-- Use of Gnome's default toolbar style (thanks to Osmo Salomaa)
+- Use of Gnome's default toolbar style
 - Changed the build procedure to bundle SubLib with Gnome Subtitles
 
+Additional thanks:
+- Osmo Salomaa
 
 0.0.1 (01/09/2006)
 ==================
