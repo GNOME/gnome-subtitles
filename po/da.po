@@ -2,15 +2,16 @@
 # Copyright (C) 2008 Gnome Subtitles, Kristian Kjærgaard, Joe Hansen.
 # This file is distributed under the same license as the Gnome-subtitles package.
 # Kristian Kjærgaard <kkjaergaard@gmail.com>, 2008.
-# Joe Hansen <joedalton2@yahoo.dk>, 2008.
+# Joe Hansen <joedalton2@yahoo.dk>, 2008, 2009.
 #
+# Der er ikke anvendt accenter.
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 03:50+0000\n"
-"PO-Revision-Date: 2008-11-26 00:01+0200\n"
-"Last-Translator: Kristian Kjærgaard <kkjaergaard@gmail.com>\n"
+"POT-Creation-Date: 2009-06-11 01:12+0200\n"
+"PO-Revision-Date: 2009-06-05 13:01+01:00\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +84,7 @@ msgid "Newline Type:"
 msgstr "Nylinjetype:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
 msgid "Save As"
 msgstr "Gem som"
 
@@ -311,9 +312,10 @@ msgstr "Søg _til udvælgelse"
 msgid "Set Subtitle En_d"
 msgstr "Indstil slutning på un_dertekst"
 
+# ændret fra for undertekst til af undertekst.
 #: ../src/Glade/MainWindow.glade.h:17
-msgid "Set Subtitle _Start"
-msgstr "Indstil _start for undertekst"
+msgid "Set Subtitle St_art"
+msgstr "Indstil st_art af undertekst"
 
 #: ../src/Glade/MainWindow.glade.h:18
 msgid "Set Translatio_n Language"
@@ -324,152 +326,160 @@ msgid "Set _Text Language"
 msgstr "Indstil _tekstsprog"
 
 #: ../src/Glade/MainWindow.glade.h:20
+msgid "Sh_ift"
+msgstr "Sk_ift"
+
+#: ../src/Glade/MainWindow.glade.h:21
 msgid "T_imings"
 msgstr "T_idstagninger"
 
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.glade.h:23
 msgid "To:"
 msgstr "Til:"
 
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.glade.h:24
 msgid "Translatio_n"
 msgstr "Oversætte_lse"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.glade.h:25
 msgid "Vide_o"
 msgstr "Vide_o"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.glade.h:26
 msgid "Video _Subtitles"
 msgstr "Video-undertek_ster"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.glade.h:27
 msgid "_Adjust"
 msgstr "_Juster"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.glade.h:28
 msgid "_After"
 msgstr "_Efter"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.glade.h:29
 msgid "_Autocheck Spelling"
 msgstr "_Automatisk tjek af stavning"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "_Before"
 msgstr "_Før"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.glade.h:31
 msgid "_Bold"
 msgstr "_Fed"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:32
 msgid "_Close"
 msgstr "_Luk"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "_Contents"
 msgstr "_Indhold"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "_Delete Subtitles"
 msgstr "_Slet undertekster"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "_Edit"
 msgstr "_Rediger"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.glade.h:36
 msgid "_File"
 msgstr "_Fil"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.glade.h:37
 msgid "_Format"
 msgstr "_Format"
 
 # Kun _en_ billedrate
-#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/MainWindow.glade.h:38
 msgid "_Frames"
 msgstr "_Billedrate"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:39
 msgid "_Headers"
 msgstr "_Filhoveder"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.glade.h:40
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "_Input Frame Rate"
 msgstr "_Indtast billedrate"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:42
 msgid "_Insert Subtitle"
 msgstr "_Indsæt undertekst"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.glade.h:43
 msgid "_Italic"
 msgstr "_Kursiv"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.glade.h:44
 msgid "_New"
 msgstr "_Ny"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Open"
 msgstr "_Åbn"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.glade.h:46
 msgid "_Play / Pause"
 msgstr "_Afspil / pause"
 
-#: ../src/Glade/MainWindow.glade.h:46 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:47 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Erstat"
 
-#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "_Save"
 msgstr "_Gem"
 
-#: ../src/Glade/MainWindow.glade.h:48
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "_Search"
 msgstr "_Søg"
 
-#: ../src/Glade/MainWindow.glade.h:49
-msgid "_Shift"
-msgstr "_Skift"
-
 #: ../src/Glade/MainWindow.glade.h:50
+msgid "_Seek to..."
+msgstr "_Søg til..."
+
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Synchronize"
+msgstr "_Synkroniser"
+
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_Text"
 msgstr "_Tekst"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_Times"
 msgstr "_Gange"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Tools"
 msgstr "_Værktøjer"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Translation"
 msgstr "_Oversættelse"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "_Underline"
 msgstr "_Understregning"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Video Frame Rate"
 msgstr "_Videobilledrate"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_View"
 msgstr "_Vis"
 
@@ -486,8 +496,7 @@ msgid "Preferences"
 msgstr "Indstillinger"
 
 #: ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:66
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:116
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
 msgid "Replace"
 msgstr "Erstat"
 
@@ -568,46 +577,82 @@ msgstr "Startbillede:"
 msgid "<b>Frames</b>"
 msgstr "<b>Billeder</b>"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "All subtitles"
-msgstr "Alle undertekster"
-
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:5
-msgid "From first subtitle to selection"
-msgstr "Fra første undertekst til den valgte"
+#: ../src/Glade/TimingsShiftDialog.glade.h:4
+msgid "From _first subtitle to selection"
+msgstr "Fra _første undertekst til den valgte"
 
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:7
-msgid "From selection to last subtitle"
-msgstr "Fra den valgte til sidste undertekst"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "Selected subtitles"
-msgstr "Valgte undertekster"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "Shift"
-msgstr "Skift"
+#: ../src/Glade/TimingsShiftDialog.glade.h:6
+msgid "From selection to _last subtitle"
+msgstr "Fra den val_gte til sidste undertekst"
 
 # bemærk at Shift ikke er tasten Skift
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
+#: ../src/Glade/TimingsShiftDialog.glade.h:7
 msgid "Shift Timings"
 msgstr "Skiftetidspunkter"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:8
+msgid "_All subtitles"
+msgstr "_Alle undertekster"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:9
+msgid "_Selected subtitles"
+msgstr "Valgte undertek_ster"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:10
+msgid "_Shift"
+msgstr "_Skift"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+msgid "<b>Options</b>"
+msgstr "<b>Indstillinger</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+msgid "<b>Status</b>"
+msgstr "<b>Status</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+msgid "<b>Sync Points</b>"
+msgstr "<b>Synkroniseringspunkter</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "Synchroni_ze all subtitles"
+msgstr "S_ynkroniser alle undertekster"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+msgid "Synchronize Timings"
+msgstr "Synkroniser tidspunkter"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "gtk-add"
+msgstr "gtk-add"
 
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Åbn video"
 
-#: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:27
+#: ../src/Glade/VideoSeekToDialog.glade.h:1
+msgid "Seek To"
+msgstr "Søg til"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:2
+msgid "Seek to _time:"
+msgstr "Søg til _tid:"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:3
+msgid "_Seek"
+msgstr "_Søg"
+
+#: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
 msgstr "Justerer tidspunkter"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:47
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
 msgid "Changing Input Frame Rate"
 msgstr "Ændrer billedrate for inddata"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:66
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
 msgid "Changing Video Frame Rate"
 msgstr "Ændrer billedrate for video"
 
@@ -635,13 +680,13 @@ msgstr "Redigerer til"
 msgid "Editing During"
 msgstr "Redigeringsvarighed"
 
-#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:125
-#: ../src/GnomeSubtitles/Ui/Menus.cs:96
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: ../src/GnomeSubtitles/Ui/Menus.cs:535
 msgid "Undo"
 msgstr "Fortryd"
 
-#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:134
-#: ../src/GnomeSubtitles/Ui/Menus.cs:106
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: ../src/GnomeSubtitles/Ui/Menus.cs:545
 msgid "Redo"
 msgstr "Omgør"
 
@@ -663,13 +708,18 @@ msgstr "Redigerer oversættelse"
 msgid "Inserting Subtitle"
 msgstr "Indsætter undertekst"
 
-#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
 msgstr "Erstatter alle"
 
-#: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:29
+#: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
 msgstr "Skifter tidspunkter"
+
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+#, fuzzy
+msgid "Synchronizing timings"
+msgstr "Synkroniser tidspunkter"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
@@ -679,7 +729,7 @@ msgstr "Indstiller begyndelse for undertekst"
 msgid "Setting Subtitle End"
 msgstr "Indstiller afslutning for undertekst"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:199
+#: ../src/GnomeSubtitles/Core/Document.cs:200
 msgid "Unsaved Translation"
 msgstr "Ugemt oversættelse"
 
@@ -834,11 +884,11 @@ msgstr "Vietnamesisk"
 msgid "Current Locale"
 msgstr "Nuværende sprog"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Manualen for Gnome undertekster kunne ikke lokaliseres."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:295
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Undersøg venligst om din installation er fuldstændig."
 
@@ -859,139 +909,28 @@ msgstr "Beskrivelse"
 msgid "Encoding"
 msgstr "Kodning"
 
-#: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"En ukendt fejl opstod. Anmeld venligst en fejlrapport og inkluder dette "
-"fejlnavn:"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:95
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:100
 msgid "Auto Detected"
 msgstr "Autodetekteret"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:217
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:219
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:224
 msgid "All Subtitle Files"
 msgstr "Alle undertekstfiler"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:29
-msgid "Could not open the file"
-msgstr "Kunne ikke åbne filen"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:30
-msgid "Open another file"
-msgstr "Åbn en anden fil"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:68
-msgid "The file path appears to be invalid."
-msgstr "Filstien virker ugyldig."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:91
-msgid "Save Translation As"
-msgstr "Gem oversættelse som"
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:217
-msgid "System Default"
-msgstr "Systemstandard"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:32
-msgid "Could not save the file"
-msgstr "Kunne ikke gemme filen"
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:33
-msgid "Save to another file"
-msgstr "Gem til anden fil"
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr "Du er løbet tør for hukommelse. Luk venligst nogle programmer og forsøg igen."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
-msgstr "En I/O-fejl er opstået."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:63
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Du har ikke de nødvendige rettigheder for at kunne gemme filen."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:65
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr "Den angivne fil er ugyldig."
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Åbn oversættelsesfil"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:32
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Hvis du ikke gemmer vil alle dine ændringer blive tabt."
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:88
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr "Gem ændringerne til undertekster \"{0}\" før oprettelse af nye undertekster?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:89
-msgid "Create without Saving"
-msgstr "Opret uden at gemme"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:110
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr "Gem ændringerne til oversættelse \"{0}\" før oprettelse af nye undertekster?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:117
-#, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Gem ændringerne til oversættelse \"{0}\" før oprettelse af en ny oversættelse?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:127
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr "Gem ændringerne til undertekster \"{0}\" før åbning?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:128
-msgid "Open without Saving"
-msgstr "Åbn uden at gemme"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:148
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr "Gem ændringer til oversættelse \"{0}\" før åbning?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:157
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Gem ændringer til undertekster \"{0}\" før lukning?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:158
-msgid "Close without Saving"
-msgstr "Luk uden at gemme"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:177
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr "Gem ændringerne til oversættelse \"{0}\" før lukning?"
-
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:70
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
 msgstr "Find"
 
@@ -1016,7 +955,196 @@ msgstr "Vælg oversættelses_sproget for de nuværende undertekster."
 msgid "Add or Remove..."
 msgstr "Tilføj eller fjern..."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
+msgid "Save Translation As"
+msgstr "Gem oversættelse som"
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:223
+msgid "System Default"
+msgstr "Systemstandard"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
+msgid "Start Time:"
+msgstr "Starttid:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+msgid "Time"
+msgstr "Til"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid "Frames"
+msgstr "Billeder"
+
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+msgid "Subtitle No."
+msgstr "Undertekst nr."
+
+#. Start (current and correct) columns
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
+msgid "Current Start"
+msgstr "Nuværende start"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
+msgid "Correct Start"
+msgstr "Korrekt start"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+msgid ""
+"Add sync points by selecting subtitles and adjusting the video to their "
+"correct position. At least 2 points are needed."
+msgstr ""
+"Tilføj synkroniseringspunkter ved at vælge undertekster og justere videoen "
+"til deres korrekte position. Mindst 2 punkter kræves."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+msgid ""
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
+msgstr ""
+"Tilføj 1 yderligere synkroniseringspunkt for at påbegynde synkronisering. "
+"Tilføjelse af flere punkter vil forøge præcisionen."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+msgid "Synchronization is ready. All subtitles will be synchronized."
+msgstr "Synkronisering er klar. Alle undertekster vil blive synkroniseret."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0}."
+msgstr ""
+"Synkronisering er klar. De følgende undertekster vil ikke blive "
+"synkroniseret: {0}."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0} and {1}."
+msgstr ""
+"Synkronisering er klar. De følgende undertekster vil ikke blive "
+"synkroniseret: {0} og {1}."
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+msgid "All Video Files"
+msgstr "Alle videofiler"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
+msgid "Seek to _frame:"
+msgstr "Søg til _billed:"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
+msgid ""
+"An unknown error has occured. Please report a bug and include this error "
+"name:"
+msgstr ""
+"En ukendt fejl opstod. Anmeld venligst en fejlrapport og inkluder dette "
+"fejlnavn:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+msgid "Could not open the file"
+msgstr "Kunne ikke åbne filen"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+msgid "Open another file"
+msgstr "Åbn en anden fil"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+msgid "The file path appears to be invalid."
+msgstr "Filstien virker ugyldig."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "Kunne ikke gemme filen"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "Gem til anden fil"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr ""
+"Du er løbet tør for hukommelse. Luk venligst nogle programmer og forsøg igen."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occured."
+msgstr "En I/O-fejl er opstået."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Du har ikke de nødvendige rettigheder for at kunne gemme filen."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "Den angivne fil er ugyldig."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Hvis du ikke gemmer vil alle dine ændringer blive tabt."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr ""
+"Gem ændringerne til undertekster \"{0}\" før oprettelse af nye undertekster?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
+msgid "Create without Saving"
+msgstr "Opret uden at gemme"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr ""
+"Gem ændringerne til oversættelse \"{0}\" før oprettelse af nye undertekster?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Gem ændringerne til oversættelse \"{0}\" før oprettelse af en ny "
+"oversættelse?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:118
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "Gem ændringerne til undertekster \"{0}\" før åbning?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:119
+msgid "Open without Saving"
+msgstr "Åbn uden at gemme"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:138
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Gem ændringer til oversættelse \"{0}\" før åbning?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Gem ændringer til undertekster \"{0}\" før lukning?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:148
+msgid "Close without Saving"
+msgstr "Luk uden at gemme"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:166
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Gem ændringerne til oversættelse \"{0}\" før lukning?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
@@ -1024,7 +1152,7 @@ msgstr ""
 "Ikke i stand til at afgøre undertekstformatet. Undersøg venligst om filtypen "
 "er understøttet."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
@@ -1032,42 +1160,18 @@ msgstr ""
 "Den anvendte kodning er ikke understøttet af dit system. Vælg venligst en "
 "anden kodning."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Du har ikke de nødvendige tilladelser til at åbne filen."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
 msgid "The file could not be found."
 msgstr "Filen kunne ikke findes."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
-msgid "Start Time:"
-msgstr "Starttid:"
-
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:176
-msgid "Time"
-msgstr "Til"
-
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:75
-msgid "Frames"
-msgstr "Billeder"
-
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:27
-msgid "Could not continue the video playback"
-msgstr "Kunne ikke fortsætte video-afspilningen"
-
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:28
-msgid "The following error has occurred: "
-msgstr "Den følgende fejl er opstået: "
-
-#: ../src/GnomeSubtitles/Dialog/VideoFileOpenErrorDialog.cs:35
-msgid "Please check that the video file is supported."
-msgstr "Undersøg venligst at videofilen er understøttet."
-
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
-msgid "All Video Files"
-msgstr "Alle videofiler"
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
+msgid "Could not play the file"
+msgstr "Kunne ikke åbne filen"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
@@ -1077,15 +1181,13 @@ msgstr "Kunne ikke åbne fejlrapporteringsværktøjet Fejl-Frede."
 msgid "Bug information has been printed to the console."
 msgstr "Fejlsøgningsinformation er blevet skrevet til konsolen."
 
-#. To translators: this is the filename for new files (before being saved)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:129
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:135
 msgid "Unsaved Subtitles"
 msgstr "Ugemte undertekster"
 
-#. TODO Tooltips has been deprecated
-#. TODO Tooltips has been deprecated, scheduled for substitution when gtk# 2.12 is available in all major distros (use SVN revision 968)
 #. Constant strings
-#: ../src/GnomeSubtitles/Ui/Menus.cs:35
+#: ../src/GnomeSubtitles/Ui/Menus.cs:33
 msgid "Video"
 msgstr "Video"
 
@@ -1100,8 +1202,7 @@ msgstr "IND"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:231
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:233
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:224
 msgid "Text"
 msgstr "Tekst"
 
@@ -1119,31 +1220,36 @@ msgstr "L"
 msgid "Col"
 msgstr "Kol"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:223
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+msgid "Frame"
+msgstr "Billedrate"
+
+#. Number column
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:212
 msgid "No."
 msgstr "Nr."
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:226
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:228
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
 msgid "From"
 msgstr "Fra"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:227
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:217
 msgid "To"
 msgstr "Til"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:228
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:218
 msgid "During"
 msgstr "Under"
 
-#: ../src/GnomeSubtitles/Ui/SubtitleView/SubtitleView.cs:232
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:234
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Oversættelse"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:176
-msgid "Frame"
-msgstr "Billedrate"
+#~ msgid "Could not continue the video playback"
+#~ msgstr "Kunne ikke fortsætte video-afspilningen"
+
+#~ msgid "The following error has occurred: "
+#~ msgstr "Den følgende fejl er opstået: "
+
+#~ msgid "Please check that the video file is supported."
+#~ msgstr "Undersøg venligst at videofilen er understøttet."
