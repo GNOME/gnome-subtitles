@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-31 16:02+0200\n"
-"PO-Revision-Date: 2009-03-31 15:59+0200\n"
-"Last-Translator: Petr Kovar <pknbe@volny.cz>\n"
+"POT-Creation-Date: 2009-06-21 21:13+0200\n"
+"PO-Revision-Date: 2009-06-21 04:31+0100\n"
+"Last-Translator: Rinu <rinucz@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgid "Newline Type:"
 msgstr ""
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
 msgid "Save As"
 msgstr "Uložit jako"
 
@@ -484,8 +484,7 @@ msgid "Preferences"
 msgstr "Možnosti"
 
 #: ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:66
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:116
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
 msgid "Replace"
 msgstr "Nahradit"
 
@@ -593,28 +592,31 @@ msgid "_Shift"
 msgstr "Po_sunout"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+#, fuzzy
+msgid "<b>Options</b>"
+msgstr "<b>Video</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
 msgid "<b>Status</b>"
 msgstr "<b>Stav</b>"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "Add sync point"
-msgstr "Přidat synchronizační bod"
-
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-msgid ""
-"Add sync points by selecting a subtitle and setting the video to its correct "
-"position."
-msgstr ""
-"Přidat synchronizační bod výběrem titulku a jeho nastavení do správné pozice "
-"vzhledem k videu."
+#, fuzzy
+msgid "<b>Sync Points</b>"
+msgstr "<b>Stav</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "Message"
-msgstr "Zpráva"
+#, fuzzy
+msgid "Synchroni_ze all subtitles"
+msgstr "_Všechny titulky"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
 msgid "Synchronize Timings"
 msgstr "Synchronizace časování"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "gtk-add"
+msgstr ""
 
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
@@ -699,13 +701,18 @@ msgstr "Úprava překladu"
 msgid "Inserting Subtitle"
 msgstr "Vložení titulku"
 
-#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:31
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
 msgstr "Nahrazení všech"
 
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
 msgstr "Posun časování"
+
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+#, fuzzy
+msgid "Synchronizing timings"
+msgstr "Synchronizace časování"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
@@ -870,11 +877,11 @@ msgstr "Vietnamské"
 msgid "Current Locale"
 msgstr "Aktuální kódování"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:297
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
 msgid "The Gnome Subtitles Manual could not be found."
-msgstr "Příručka n nástroji Gnome Subtitles nebyla nalezena."
+msgstr "Příručka k nástroji Gnome Subtitles nebyla nalezena."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:297
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Zkontrolujte prosím, zda byla instalace úspěšně dokončena."
 
@@ -895,139 +902,29 @@ msgstr "Popis"
 msgid "Encoding"
 msgstr "Kódování"
 
-#: ../src/GnomeSubtitles/Dialog/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Vyskytla se neznámá chyba. Nahlaste ji prosím a připojte název této chyby:"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:95
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:100
 msgid "Auto Detected"
 msgstr "Automaticky detekované"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
 #, fuzzy
 msgid "None"
 msgstr "Žádné"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:217
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Všechny soubory"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:219
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:224
 msgid "All Subtitle Files"
 msgstr "Všechny soubory s titulky"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:29
-msgid "Could not open the file"
-msgstr "Nelze otevřít soubor"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:30
-msgid "Open another file"
-msgstr "Otevřít jiný soubor"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenErrorDialog.cs:60
-msgid "The file path appears to be invalid."
-msgstr "Cesta k požadovanému souboru se zdá být neplatná."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:91
-msgid "Save Translation As"
-msgstr "Uložit překlad jako"
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs:217
-msgid "System Default"
-msgstr "Výchozí nastavení systému"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:32
-msgid "Could not save the file"
-msgstr "Nelze uložit soubor"
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:33
-msgid "Save to another file"
-msgstr "Ulož do jiného souboru"
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr "Došlo k přetečení paměti. Zavřete prosím program a zkuste to znovu."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
-msgstr "Vyskytla se chyba I/O."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:63
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Nemáte potřebné oprávnění k uložení tohoto souboru."
-
-#: ../src/GnomeSubtitles/Dialog/FileSaveErrorDialog.cs:65
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr "Vybraný soubor je neplatný."
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Otevřít soubor s překladem"
 
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:32
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Pokud změny neuložíte, dojde k jejich nenávratné ztrátě."
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:88
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr "Uložit změny titulků \"{0}\" před vytvořením nových?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:89
-msgid "Create without Saving"
-msgstr "Vytvořit bez uložení"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:110
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr "Uložit změny překladu \"{0}\" před vytvořením nových titulků?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:117
-#, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Chcete změny uložit do překladu \"{0}\" předtím, než vytvoříte nový překlad?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:127
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr "Chcete před otevřením uložit změny do titulků \"{0}\"?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:128
-msgid "Open without Saving"
-msgstr "Otevřít bez uložení"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:148
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr "Chcete před otevřením uložit změny do překladu \"{0}\"?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:157
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Chcete před zavřením uložit změny do titulků \"{0}\"?"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:158
-msgid "Close without Saving"
-msgstr "Zavřít bez uložení"
-
-#: ../src/GnomeSubtitles/Dialog/SaveConfirmationDialog.cs:177
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr "Chcete před uzavřením změny uložit do překladu \"{0}\"?"
-
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:70
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
 msgstr "Najít"
 
@@ -1052,14 +949,195 @@ msgstr "Vyberte _jazyk překladu aktuálních titulků."
 msgid "Add or Remove..."
 msgstr "Přidat nebo odstranit..."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
+msgid "Save Translation As"
+msgstr "Uložit překlad jako"
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:223
+msgid "System Default"
+msgstr "Výchozí nastavení systému"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
+msgid "Start Time:"
+msgstr "Čas začátku:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+msgid "Time"
+msgstr "Čas"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid "Frames"
+msgstr "Snímky"
+
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+#, fuzzy
+msgid "Subtitle No."
+msgstr "Formát titulků:"
+
+#. Start (current and correct) columns
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
+msgid "Current Start"
+msgstr "Aktuální začátek"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
+msgid "Correct Start"
+msgstr "Správný začátek"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+#, fuzzy
+msgid ""
+"Add sync points by selecting subtitles and adjusting the video to their "
+"correct position. At least 2 points are needed."
+msgstr ""
+"Přidat synchronizační bod výběrem titulku a jeho nastavení do správné pozice "
+"vzhledem k videu."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+msgid ""
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+msgid "Synchronization is ready. All subtitles will be synchronized."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0}."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0} and {1}."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+msgid "All Video Files"
+msgstr "Všechny video soubory"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
+#, fuzzy
+msgid "Seek to _frame:"
+msgstr "Přejít na _rámec:"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
+msgid ""
+"An unknown error has occured. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Vyskytla se neznámá chyba. Nahlaste ji prosím a připojte název této chyby:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+msgid "Could not open the file"
+msgstr "Nelze otevřít soubor"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+msgid "Open another file"
+msgstr "Otevřít jiný soubor"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+msgid "The file path appears to be invalid."
+msgstr "Cesta k požadovanému souboru se zdá být neplatná."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "Nelze uložit soubor"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "Ulož do jiného souboru"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr "Došlo k přetečení paměti. Zavřete prosím program a zkuste to znovu."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occured."
+msgstr "Vyskytla se chyba I/O."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Nemáte potřebné oprávnění k uložení tohoto souboru."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "Vybraný soubor je neplatný."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Pokud změny neuložíte, dojde k jejich nenávratné ztrátě."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr "Uložit změny titulků \"{0}\" před vytvořením nových?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
+msgid "Create without Saving"
+msgstr "Vytvořit bez uložení"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr "Uložit změny překladu \"{0}\" před vytvořením nových titulků?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Chcete změny uložit do překladu \"{0}\" předtím, než vytvoříte nový překlad?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:118
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "Chcete před otevřením uložit změny do titulků \"{0}\"?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:119
+msgid "Open without Saving"
+msgstr "Otevřít bez uložení"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:138
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Chcete před otevřením uložit změny do překladu \"{0}\"?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Chcete před zavřením uložit změny do titulků \"{0}\"?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:148
+msgid "Close without Saving"
+msgstr "Zavřít bez uložení"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:166
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Chcete před uzavřením změny uložit do překladu \"{0}\"?"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
 "Nebylo možné určit formát titulků. Prosím, vyberte podporovaný typ souboru."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
@@ -1067,54 +1145,18 @@ msgstr ""
 "Použité kódování není podporováno Vaším systémem. Prosím, vyberte jiný typ "
 "kódování."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
 msgstr "K otevření souboru nemáte potřebné oprávnění."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
 msgid "The file could not be found."
 msgstr "Soubor nelze najít."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
-msgid "Start Time:"
-msgstr "Čas začátku:"
-
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:77
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
-msgid "Time"
-msgstr "Čas"
-
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:77
-msgid "Frames"
-msgstr "Snímky"
-
-#. Number column
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:55
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:210
-msgid "No."
-msgstr "Číslo"
-
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:59
-msgid "Current Start"
-msgstr "Aktuální začátek"
-
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:60
-msgid "Correct Start"
-msgstr "Správný začátek"
-
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/VideoErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
 msgid "Could not play the file"
 msgstr "Nelze přehrát soubor"
-
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
-msgid "All Video Files"
-msgstr "Všechny video soubory"
-
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:63
-#, fuzzy
-msgid "Seek to _frame:"
-msgstr "Přejít na _rámec:"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
@@ -1122,10 +1164,10 @@ msgstr "Nelze spustit nástroj pro oznamování chyb Bug Buddy."
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
 msgid "Bug information has been printed to the console."
-msgstr "Informace o chybě byla vypsána do konzoly."
+msgstr "Informace o chybě byla vypsána do terminálu."
 
 #. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:134
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:135
 msgid "Unsaved Subtitles"
 msgstr "Neuložené titulky"
 
@@ -1145,7 +1187,7 @@ msgstr "VLO"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:222
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:224
 msgid "Text"
 msgstr "Text"
 
@@ -1167,18 +1209,29 @@ msgstr "Sloupec"
 msgid "Frame"
 msgstr "Snímek"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:214
+#. Number column
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:212
+msgid "No."
+msgstr "Číslo"
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
 msgid "From"
 msgstr "Od"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:215
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:217
 msgid "To"
 msgstr "Do"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:218
 msgid "During"
 msgstr "Doba trvání"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:227
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Překlad"
+
+#~ msgid "Add sync point"
+#~ msgstr "Přidat synchronizační bod"
+
+#~ msgid "Message"
+#~ msgstr "Zpráva"
