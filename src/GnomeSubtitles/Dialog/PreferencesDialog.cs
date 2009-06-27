@@ -34,7 +34,7 @@ public class PreferencesDialog : GladeDialog {
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 
 
-	private PreferencesDialog () : base(gladeFilename, false) {
+	public PreferencesDialog () : base(gladeFilename, false) {
 		LoadValues();
 		Autoconnect();
 	}
