@@ -48,11 +48,6 @@ public class TimingsShiftDialog : GladeDialog {
 		UpdateContents(true);
 	}
 
-	/* Overriden members */
-
-	public override DialogScope Scope {
-		get { return DialogScope.Document; }
-	}
 
 	/* Methods */
 
@@ -66,7 +61,7 @@ public class TimingsShiftDialog : GladeDialog {
 	private void UpdateContents (bool initializing) {
 		UpdateFromTimingMode(Base.TimingMode, initializing);
 		UpdateFromSelection();
-		UpdateSpinButtonValue();
+		UpdateSpinButtonValue(initializing);
 	}
 	
 	private void InitSpinButton () {
@@ -88,15 +83,14 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 	
 	private void UpdateFromSelection () {
-		bool sensitive = (Core.Base.Ui.View.Selection.Count == 1);
-		fromFirstSubtitleToSelectionRadioButton.Sensitive = sensitive;
-		fromSelectionToLastSubtitleRadioButton.Sensitive = sensitive;
-		
-		if ((!sensitive) && (!allSubtitlesRadioButton.Active) && (!selectedSubtitlesRadioButton.Active))
-			selectedSubtitlesRadioButton.Active = true;
+		int selectionCount = Core.Base.Ui.View.Selection.Count;
+		fromFirstSubtitleToSelectionRadioButton.Sensitive = (selectionCount == 1);
+		fromSelectionToLastSubtitleRadioButton.Sensitive = (selectionCount == 1);
+
+		selectedSubtitlesRadioButton.Active = true;
 	}
 	
-	private void UpdateSpinButtonValue () {
+	private void UpdateSpinButtonValue (bool initializing) {
 		if (!Core.Base.Ui.Video.IsLoaded) {
 			SetSpinButtonValue(0);
 			return;
