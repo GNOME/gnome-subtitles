@@ -76,12 +76,10 @@ public class TimingsAdjustDialog : GladeDialog {
 	}
 
 	private void SetSelectionType () {
-		int selectionCount = Core.Base.Ui.View.Selection.Count;
-		int subtitleCount = Core.Base.Document.Subtitles.Count;
-		if ((selectionCount >= 2) && (selectionCount < subtitleCount))
-			selectedRangeRadioButton.Active = true;
+		if (Core.Base.Ui.View.Selection.Count < 2)
+			allSubtitlesRadioButton.Active = true;
 		else
-			SetApplyToAll(); //It's already selected by default, only need to set values
+			SetApplyToSelection(); //It's already selected by default, only need to set values
 	}
 
 	private void SetApplyToAll () {
