@@ -46,7 +46,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	[WidgetAttribute] private Label lastSubtitleStartInputLabel = null;
 	[WidgetAttribute] private SpinButton lastSubtitleNewStartSpinButton = null;
 	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;	
-	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton = null;
+	[WidgetAttribute] private RadioButton selectedRangeRadioButton = null;
 	
 
 	public TimingsAdjustDialog () : base(gladeFilename){
@@ -54,7 +54,7 @@ public class TimingsAdjustDialog : GladeDialog {
 		SetSpinButtons();
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();
-		SetApplyToAll();
+		SetSelectionType();
 	}
 	
 	private void SetSpinButtons () {
@@ -73,7 +73,16 @@ public class TimingsAdjustDialog : GladeDialog {
 		Core.Util.SetSpinButtonMaxAdjustment(firstSubtitleNewStartSpinButton, timingMode, false);
 		Core.Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode);
 		Core.Util.SetSpinButtonMaxAdjustment(lastSubtitleNewStartSpinButton, timingMode, false);
-	}	
+	}
+
+	private void SetSelectionType () {
+		int selectionCount = Core.Base.Ui.View.Selection.Count;
+		int subtitleCount = Core.Base.Document.Subtitles.Count;
+		if ((selectionCount >= 2) && (selectionCount < subtitleCount))
+			selectedRangeRadioButton.Active = true;
+		else
+			SetApplyToAll(); //It's already selected by default, only need to set values
+	}
 
 	private void SetApplyToAll () {
 		SubtitleCollection collection = Base.Document.Subtitles.Collection;
@@ -96,7 +105,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	private void SetApplyToSelectionSensitivity () {
 		int selectionCount = Core.Base.Ui.View.Selection.Count;
 		if (selectionCount < 2)
-			selectedSubtitlesRadioButton.Sensitive = false;
+			selectedRangeRadioButton.Sensitive = false;
 	}
 
 	private void UpdateInputValues (int firstNo, int lastNo) {
