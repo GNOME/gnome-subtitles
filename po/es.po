@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2009-06-06 17:18+0000\n"
-"PO-Revision-Date: 2009-06-10 21:21+0200\n"
+"POT-Creation-Date: 2009-06-28 22:01+0000\n"
+"PO-Revision-Date: 2009-06-30 20:57+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -553,8 +553,9 @@ msgid "No.:"
 msgstr "Núm.:"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:9
-msgid "Selected Subtitles"
-msgstr "Subtítulos seleccionados"
+#| msgid "Selected Subtitles"
+msgid "Selected Range"
+msgstr "Rango seleccionado"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:10
 msgid "Start Frame:"
@@ -591,7 +592,6 @@ msgid "_Shift"
 msgstr "_Desplazar"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-#| msgid "<b>Video</b>"
 msgid "<b>Options</b>"
 msgstr "<b>Opciones</b>"
 
@@ -600,12 +600,10 @@ msgid "<b>Status</b>"
 msgstr "<b>Estado</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-#| msgid "<b>Status</b>"
 msgid "<b>Sync Points</b>"
 msgstr "<b>Puntos de sincronización</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-#| msgid "_All subtitles"
 msgid "Synchroni_ze all subtitles"
 msgstr "Sincroni_zar todos los subtítulos"
 
@@ -614,7 +612,6 @@ msgid "Synchronize Timings"
 msgstr "Sincronizar tiempos"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
-#| msgid "gtk-ok"
 msgid "gtk-add"
 msgstr "gtk-add"
 
@@ -698,7 +695,7 @@ msgstr "Editando la traducción"
 msgid "Inserting Subtitle"
 msgstr "Insertando subtítulos"
 
-#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:31
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
 msgstr "Reemplazando todo"
 
@@ -707,7 +704,6 @@ msgid "Shifting timings"
 msgstr "Desplazando los tiempos"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
-#| msgid "Synchronize Timings"
 msgid "Synchronizing timings"
 msgstr "Sincronizando tiempos"
 
@@ -957,18 +953,17 @@ msgstr "Valor predeterminado del sistema"
 msgid "Start Time:"
 msgstr "Tiempo de inicio:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
 #: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Time"
 msgstr "Tiempo"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
 msgid "Frames"
 msgstr "Fotogramas"
 
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
-#| msgid "Subtitle Format:"
 msgid "Subtitle No."
 msgstr "Subtítulo no."
 
@@ -982,9 +977,6 @@ msgid "Correct Start"
 msgstr "Inicio correcto"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
-#| msgid ""
-#| "Add sync points by selecting a subtitle and setting the video to its "
-#| "correct position."
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
