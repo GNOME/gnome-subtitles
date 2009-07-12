@@ -20,6 +20,7 @@
 using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using GStreamer;
 using Gtk;
+using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
@@ -35,6 +36,10 @@ public class Player {
 	private PlayerPositionWatcher position = null;
 	private bool hasFoundDuration = false;
 	private Uri videoUri = null;
+	private VideoInfo videoInfo = null;
+
+	/* Constants */
+	public const float DefaultAspectRatio = 1.67f;
 
 	public Player (AspectFrame aspectFrame) {
 		this.frame = aspectFrame;
@@ -85,23 +90,23 @@ public class Player {
 	}
 
 	public bool HasVideoInfo {
-		get { return playbin.VideoInfo != null; }
+		get { return videoInfo != null; }
 	}
 	
 	public float AspectRatio {
-		get { return playbin.VideoInfo.AspectRatio; }
+		get { return videoInfo.AspectRatio; }
 	}
 	
 	public float FrameRate {
-		get { return playbin.VideoInfo.FrameRate; }
+		get { return videoInfo.FrameRate; }
 	}
 
 	public bool HasAudio {
-		get { return playbin.VideoInfo.HasAudio; }
+		get { return videoInfo.HasAudio; }
 	}
 
 	public bool HasVideo {
-		get { return playbin.VideoInfo.HasVideo; }
+		get { return videoInfo.HasVideo; }
 	}
 	
 	public Uri VideoUri {
@@ -124,6 +129,7 @@ public class Player {
 
 		videoUri = null;
 		hasFoundDuration = false;
+		videoInfo = null;
 	}
 
 	public void Play () {
@@ -204,7 +210,15 @@ public class Player {
 
 	private void OnPlaybinFoundVideoInfo (VideoInfoEventArgs args) {
 		Console.Error.WriteLine("Got video info: " + args.VideoInfo.ToString());
-		frame.Ratio = args.VideoInfo.AspectRatio;
+		this.videoInfo = args.VideoInfo;
+
+		/* Set defaults if there is no video */
+		if (!videoInfo.HasVideo) {
+			videoInfo.FrameRate = SubtitleConstants.DefaultFrameRate;
+			videoInfo.AspectRatio = DefaultAspectRatio;
+		}
+
+		frame.Ratio = videoInfo.AspectRatio;
 
 		if (FoundVideoInfo != null)
 			FoundVideoInfo(args);

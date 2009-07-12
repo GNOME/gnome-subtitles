@@ -532,7 +532,8 @@ namespace GStreamer
     {
     	int width;
 		int height;
-    	float frame_rate;
+		float aspect_ratio;    	
+		float frame_rate;
 		bool has_audio;
 		bool has_video;
 		
@@ -544,8 +545,14 @@ namespace GStreamer
     	
     	public int Width { get{ return width; } }
        	public int Height { get{ return height; } }
-       	public float AspectRatio { get { return (float)width/height; } }
-    	public float FrameRate { get{ return frame_rate; } }
+       	public float AspectRatio {
+			get { return aspect_ratio; }
+			set { aspect_ratio = value; }
+		}
+    	public float FrameRate {
+			get{ return frame_rate; }
+			set {this.frame_rate = value;}
+		}
 		public bool HasAudio { get{ return has_audio; } }
 		public bool HasVideo { get{ return has_video; } }
     	

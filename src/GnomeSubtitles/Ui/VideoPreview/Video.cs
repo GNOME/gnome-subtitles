@@ -118,7 +118,7 @@ public class Video {
 		/* Update the frame */
 		frame.Child.Hide();
 		frame.Child.Show();
-		frame.Ratio = 1.67f;
+		frame.Ratio = Player.DefaultAspectRatio;
 		
 		SilentDisablePlayPauseButton();		
 		SetControlsSensitivity(false);

@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,7 +89,8 @@ public class SubtitleConstants {
 	/// <summary>The maximum number of sentences that should be allowed per subtitle.</summary>
 	/// <remarks>The value of this property is 2.</remarks>
 	public const int MaxSentencesPerSubtitle = 2;
-	
+
+	public const float DefaultFrameRate = 25;
 }
 
 }

@@ -45,6 +45,7 @@ typedef void (* tagCallback) (gstTag *tag);
 struct gstVideoInfo {
 	gint width;
 	gint height;
+	gfloat aspect_ratio;
 	gfloat frame_rate;
 	gboolean has_audio;
 	gboolean has_video;
@@ -483,6 +484,7 @@ gboolean gst_binding_load_video_info (gstPlay *play) {
 			if ((caps_width != -1) && (caps_height != -1) && (caps_frame_rate != -1)) {
 				play->video_info->width = caps_width;
 				play->video_info->height = caps_height;
+				play->video_info->aspect_ratio = ((float)caps_width)/((float)caps_height);
 				play->video_info->frame_rate = caps_frame_rate;
 				return TRUE;
 			}
