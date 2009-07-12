@@ -558,7 +558,7 @@ namespace GStreamer
     	
     	public override string ToString ()
     	{
-    		return "width=" + width + ", height=" + height + ", frame_rate=" + frame_rate + ", has_audio=" + has_audio + ", has_video=" + has_video;
+    		return "width=" + width + ", height=" + height + ", aspect_Ratio=" + aspect_ratio + ", frame_rate=" + frame_rate + ", has_audio=" + has_audio + ", has_video=" + has_video;
     	}
 
     }
