@@ -474,6 +474,10 @@ public class Menus {
 		SetVideoSensitivity(true);
     	SetViewVideoSubtitlesSensitivity();
     	SetViewVideoActivity(true);
+
+		if (Base.Ui.Video.HasVideo) {
+			AddFrameRateVideoTag(Base.Ui.Video.FrameRate);
+		}
 	}
 
 	private void OnBaseVideoUnloaded () {

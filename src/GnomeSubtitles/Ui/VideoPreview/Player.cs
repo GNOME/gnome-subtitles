@@ -69,12 +69,23 @@ public class Player {
 	public event PositionChangedEventHandler PositionChanged;
 	public event VideoInfoEventHandler FoundVideoInfo;
 	public event VideoDurationEventHandler FoundDuration;
-	
 
 	/* Properties */
 
+	public MediaStatus State {
+		get { return playbin.CurrentStatus; }
+	}
+
+	public bool HasDuration {
+		get { return playbin.Duration != TimeSpan.Zero; }
+	}
+
 	public TimeSpan Duration {
 		get { return playbin.Duration; }
+	}
+
+	public bool HasVideoInfo {
+		get { return playbin.VideoInfo != null; }
 	}
 	
 	public float AspectRatio {
@@ -83,6 +94,14 @@ public class Player {
 	
 	public float FrameRate {
 		get { return playbin.VideoInfo.FrameRate; }
+	}
+
+	public bool HasAudio {
+		get { return playbin.VideoInfo.HasAudio; }
+	}
+
+	public bool HasVideo {
+		get { return playbin.VideoInfo.HasVideo; }
 	}
 	
 	public Uri VideoUri {
@@ -94,7 +113,7 @@ public class Player {
 	
 	public void Open (Uri videoUri) {
 		this.videoUri = videoUri;
-	
+
 		/* Load the playbin */
 		playbin.Load(videoUri.AbsoluteUri);
 	}
@@ -173,7 +192,6 @@ public class Player {
 			position.Stop();
 		else
 			position.Start();
-
 
 		if (StateChanged != null)
 			StateChanged(args);

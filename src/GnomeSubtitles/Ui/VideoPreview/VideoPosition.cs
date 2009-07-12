@@ -119,9 +119,9 @@ public class VideoPosition {
 		UpdatePositionValueLabel(newPosition);
 		EmitVideoPositionChanged(newPosition);
 	}
-	
-	private void OnPlayerFoundDuration (TimeSpan duration) {
-		SetLength(duration);
+
+	private void OnBaseVideoLoaded (Uri videoUri) {
+		SetLength(Base.Ui.Video.Duration);
 		slider.Sensitive = true;
 		ConnectSliderSignals();
 	}
@@ -157,10 +157,10 @@ public class VideoPosition {
 	}
 	
 	private void OnBaseInitFinished () {
-		player.PositionChanged += OnPlayerPositionChanged;
-		player.FoundDuration += OnPlayerFoundDuration;
+		Base.TimingModeChanged += OnBaseTimingModeChanged;		
+		Base.VideoLoaded += OnBaseVideoLoaded;
 
-		Base.TimingModeChanged += OnBaseTimingModeChanged;
+		player.PositionChanged += OnPlayerPositionChanged;
 	}
 	
 	private void OnBaseTimingModeChanged (TimingMode timingMode) {

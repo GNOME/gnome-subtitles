@@ -46,6 +46,8 @@ struct gstVideoInfo {
 	gint width;
 	gint height;
 	gfloat frame_rate;
+	gboolean has_audio;
+	gboolean has_video;
 };
 
 
@@ -83,6 +85,8 @@ struct gstPlay {
 //Declarations
 static void setup_vis (gstPlay *play);
 gboolean gst_binding_load_video_info (gstPlay *play);
+gboolean gst_binding_has_video (gstPlay *play);
+gboolean gst_binding_has_audio (gstPlay *play);
 
 
 static GstBusSyncReply
@@ -382,7 +386,14 @@ gboolean gst_binding_has_video (gstPlay *play) {
 	else return TRUE;
 }
 
-
+gboolean gst_binding_has_audio (gstPlay *play) {
+	if (!isValid (play)) return FALSE;
+	
+	gint cur_audio;
+	g_object_get (play->element, "current-audio", &cur_audio, NULL);
+	if (cur_audio == -1) return FALSE;
+	else return TRUE;
+}
 
 //returns the tag information
 gstTag *gst_binding_get_tag (gstPlay *play) {
@@ -404,11 +415,24 @@ gstVideoInfo *gst_binding_get_video_info (gstPlay *play) {
 //retrieves video information, or NULL if it's not available
 gboolean gst_binding_load_video_info (gstPlay *play) {
 	if (!isValid (play)) return FALSE;
-
+	
 	GList *stream_info = NULL, *stream;
 	g_object_get (G_OBJECT (play->element), "stream-info", &stream_info, NULL);
 	if (!stream_info) return FALSE;
-
+	
+	/* Initialize video info structure */
+	if (play->video_info == NULL) {
+		play->video_info = g_new0 (gstVideoInfo, 1);
+	}
+	
+	/* Check if audio or video is available */
+	play->video_info->has_video = gst_binding_has_video(play);
+	play->video_info->has_audio = gst_binding_has_audio(play);
+	
+	/* Only check for video details if a video stream is present */
+	if (!play->video_info->has_video)
+		return play->video_info->has_audio;
+	
 	/* Iterate through the streams */
   	for (stream = stream_info; stream; stream = g_list_next (stream)) {
   		GObject *stream_data = G_OBJECT (stream->data);
@@ -457,7 +481,6 @@ gboolean gst_binding_load_video_info (gstPlay *play) {
 			}
 			
 			if ((caps_width != -1) && (caps_height != -1) && (caps_frame_rate != -1)) {
-				play->video_info = g_new0 (gstVideoInfo, 1);
 				play->video_info->width = caps_width;
 				play->video_info->height = caps_height;
 				play->video_info->frame_rate = caps_frame_rate;

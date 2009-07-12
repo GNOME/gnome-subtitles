@@ -74,6 +74,18 @@ public class Video {
 	public float FrameRate {
 		get { return player.FrameRate; }
 	}
+
+	public TimeSpan Duration {
+		get { return player.Duration; }
+	}
+
+	public bool HasAudio {
+		get { return (player != null) && (player.HasAudio); }
+	}
+
+	public bool HasVideo {
+		get { return (player != null) && (player.HasVideo); }
+	}
 	
 	/* Public methods */
 	
@@ -192,6 +204,7 @@ public class Video {
 		
 		player.FoundVideoInfo += OnPlayerFoundVideoInfo;
 		player.StateChanged += OnPlayerStateChanged;
+		player.FoundDuration += OnPlayerFoundDuration;
 		player.EndOfStream += OnPlayerEndOfStream;
 		player.Error += OnPlayerError;
 	}
@@ -218,6 +231,19 @@ public class Video {
 			button.Active = false;
 		}		
 	}
+
+	private void handlePlayerLoading () {
+		if (isLoaded || (!isPlayerLoadComplete()))
+			return;
+
+		isLoaded = true;
+		SetControlsSensitivity(true);
+		Base.UpdateFromVideoLoaded(player.VideoUri);
+	}
+
+	private bool isPlayerLoadComplete () {
+		return (player != null) && (player.State != MediaStatus.Unloaded) && (player.HasVideoInfo) && (player.HasDuration);
+	}
 	
 	/* Event members */
 	
@@ -241,16 +267,17 @@ public class Video {
 	}
 	
 	private void OnPlayerFoundVideoInfo (VideoInfoEventArgs args) {
-		Core.Base.Ui.Menus.AddFrameRateVideoTag(player.FrameRate);
+		handlePlayerLoading();
 	}
 	
 	private void OnPlayerStateChanged (StateEventArgs args) {
 		if (args.State == MediaStatus.Loaded) {
-			SetControlsSensitivity(true);
-			isLoaded = true;
-			
-			Base.UpdateFromVideoLoaded(player.VideoUri);
+			handlePlayerLoading();
 		}
+	}
+
+	private void OnPlayerFoundDuration (TimeSpan duration) {
+		handlePlayerLoading();
 	}
 	
 	private void OnPlayerEndOfStream () {

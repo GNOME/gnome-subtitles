@@ -533,6 +533,8 @@ namespace GStreamer
     	int width;
 		int height;
     	float frame_rate;
+		bool has_audio;
+		bool has_video;
 		
 		public VideoInfo (IntPtr ptr)
 		{
@@ -544,10 +546,12 @@ namespace GStreamer
        	public int Height { get{ return height; } }
        	public float AspectRatio { get { return (float)width/height; } }
     	public float FrameRate { get{ return frame_rate; } }
+		public bool HasAudio { get{ return has_audio; } }
+		public bool HasVideo { get{ return has_video; } }
     	
     	public override string ToString ()
     	{
-    		return "width=" + width + ", height=" + height + ", frame_rate=" + frame_rate;
+    		return "width=" + width + ", height=" + height + ", frame_rate=" + frame_rate + ", has_audio=" + has_audio + ", has_video=" + has_video;
     	}
 
     }

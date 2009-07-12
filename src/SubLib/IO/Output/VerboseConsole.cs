@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2009 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,12 +31,12 @@ internal class VerboseConsole {
 	
 	internal static void Write (string text) {
 		if (verbose)
-			Console.Write(text);
+			Console.Error.Write(text);
 	}
 	
 	internal static void WriteLine (string text) {
 		if (verbose)
-			Console.WriteLine(text);
+			Console.Error.WriteLine(text);
 	}
 
 }
