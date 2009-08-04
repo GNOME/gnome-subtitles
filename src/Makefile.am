@@ -10,7 +10,8 @@ ASSEMBLY_CONFIG = $(ASSEMBLY).config
 AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
 noinst_PROGRAMS = libgstreamer_playbin.so
 libgstreamer_playbin_so_SOURCES = $(srcdir)/External/GStreamerPlaybin/main.c
-libgstreamer_playbin_so_LDFLAGS = $(gstreamer_LIBS) -lgstinterfaces-0.10 -shared -Wl,--as-needed,-soname,libgstreamer_playbin.so
+libgstreamer_playbin_so_LDFLAGS = -shared -Wl,--as-needed,-soname,libgstreamer_playbin.so
+libgstreamer_playbin_so_LDADD = -lgstinterfaces-0.10 $(gstreamer_LIBS)
 
 GS_SOURCES = \
 	$(srcdir)/External/GStreamerPlaybin/*.cs \
