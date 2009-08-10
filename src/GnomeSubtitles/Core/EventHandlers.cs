@@ -25,10 +25,12 @@ using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
 using System;
+using System.Text;
 
 namespace GnomeSubtitles.Core {
 
 public class EventHandlers {
+
 
 	/* File Menu */
 	
@@ -83,8 +85,8 @@ public class EventHandlers {
     public void OnFileQuit (object o, EventArgs args) {
 		Base.Ui.Quit();
 	}
-	
-	
+
+
 	/* Edit Menu */
 	
 	public void OnEditUndo (object o, EventArgs args) {
@@ -142,6 +144,7 @@ public class EventHandlers {
 		Base.Dialogs.Get(typeof(PreferencesDialog)).Show();
 	}
 
+
 	/* View Menu */
 	
 	public void OnViewTimes (object o, EventArgs args) {
@@ -171,7 +174,8 @@ public class EventHandlers {
 		if ((o as RadioMenuItem).Active)
 			Base.Ui.Video.Overlay.ToShowText = false;
 	}
-	
+
+
 	/* Search Menu */
 	
 	public void OnSearchFind (object o, EventArgs args) {
@@ -189,7 +193,8 @@ public class EventHandlers {
 	public void OnSearchReplace (object o, EventArgs args) {
 		Base.Ui.View.Search.ShowReplace();
 	}
-	
+
+
 	/*	Timings Menu */
 	
 	public void OnTimingsInputFrameRate (object o, EventArgs args) {
@@ -219,8 +224,8 @@ public class EventHandlers {
 	public void OnTimingsSynchronize (object o, EventArgs args) {
 		Base.Dialogs.Get(typeof(TimingsSynchronizeDialog)).Show();
 	}
-	
-	
+
+
 	/* Video Menu */
 		
 	public void OnVideoOpen (object o, EventArgs args) {
@@ -273,7 +278,8 @@ public class EventHandlers {
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 		}
 	}
-	
+
+
 	/* Tools Menu */
 		
 	public void OnToolsAutocheckSpelling (object o, EventArgs args) {
@@ -326,7 +332,23 @@ public class EventHandlers {
     }
 
 
-		/*	Subtitle View	*/
+	/* Subtitle Area */
+
+	public void OnSubtitleAreaDragDataReceived (object o, DragDataReceivedArgs args) {
+		string uriString = Encoding.UTF8.GetString(args.SelectionData.Data);
+		bool success = false;
+		Uri fileUri;
+
+		if (Uri.TryCreate(uriString, UriKind.Absolute, out fileUri) && (args.Info == DragDrop.DragDropTargetUriList)) {
+			Base.Ui.Open(fileUri.AbsolutePath);
+			success = true;
+		}
+
+		Gtk.Drag.Finish(args.Context, success, false, args.Time);
+	}
+
+
+	/*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
     	Base.Ui.Video.SeekToSelection();
@@ -339,6 +361,22 @@ public class EventHandlers {
 		else if (key == Gdk.Key.Insert)
 			OnEditInsertSubtitleAfter(o, EventArgs.Empty);
     }
+
+
+	/* Video Area */
+
+	public void OnVideoAreaDragDataReceived (object o, DragDataReceivedArgs args) {
+		string uriString = Encoding.UTF8.GetString(args.SelectionData.Data);
+		bool success = false;
+		Uri fileUri;
+
+		if (Uri.TryCreate(uriString, UriKind.Absolute, out fileUri) && (args.Info == DragDrop.DragDropTargetUriList)) {
+			Base.OpenVideo(fileUri);
+			success = true;
+		}
+
+		Gtk.Drag.Finish(args.Context, success, false, args.Time);
+	}
 
 }
 

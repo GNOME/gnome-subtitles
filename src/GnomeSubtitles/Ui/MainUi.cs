@@ -41,7 +41,7 @@ public class MainUi {
 	private SubtitleView view = null;
 	private SubtitleEdit edit = null;
 	private Status status = null;
-	
+
 	/* Constant strings */
 	private const string gladeFilename = "MainWindow.glade";
 	private const string iconFilename = "gnome-subtitles.png";
@@ -52,7 +52,7 @@ public class MainUi {
 		window = glade.GetWidget("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
 		window.SetDefaultSize(Base.Config.PrefsWindowWidth, Base.Config.PrefsWindowHeight);
-		
+
 		video = new Video();
 		view = new SubtitleView();
 		edit = new SubtitleEdit();
@@ -151,6 +151,16 @@ public class MainUi {
     		Uri videoUri = dialog.VideoUri;
     		Open(filename, codePage, videoUri);
     	}
+    }
+
+	/// <summary>Opens a subtitle.</summary>
+	/// <param name="filename">The path of the subtitles file to open.</param>
+    /// <remarks>If there's a document currently open with unsaved changes, a warning dialog
+    /// is shown before opening the new file.</remarks>
+    public void Open (string filename) {
+		if (ToOpenAfterWarning()) {
+			Open(filename, -1, null);
+		}
     }
         
     public void OpenVideo () {

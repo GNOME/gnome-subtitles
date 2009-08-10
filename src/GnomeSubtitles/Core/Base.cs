@@ -44,6 +44,7 @@ public class Base {
 	private static EventHandlers handlers = null;
 	private static CommandManager commandManager = null;
 	private static Clipboards clipboards = null;
+	private static DragDrop dragDrop = null;
 	private static Config config = null;
 	private static Dialogs dialogs = null;
 	private static SpellLanguages spellLanguages = null;
@@ -83,6 +84,10 @@ public class Base {
 	
 	public static Clipboards Clipboards {
 		get { return clipboards; }
+	}
+
+	public static DragDrop DragDrop {
+		get { return dragDrop; }
 	}
 	
 	public static Config Config {
@@ -261,6 +266,7 @@ public class Base {
 		
 		/* Initialize misc */
 		clipboards = new Clipboards();
+		dragDrop = new DragDrop();
 		config = new Config();
 		dialogs = new Dialogs();
 		spellLanguages = new SpellLanguages();

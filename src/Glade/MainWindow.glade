@@ -1250,6 +1250,7 @@
                 <property name="height_request">200</property>
                 <property name="border_width">5</property>
                 <property name="spacing">7</property>
+                <signal name="drag_data_received" handler="OnVideoAreaDragDataReceived"/>
                 <child>
                   <widget class="GtkVBox" id="videoTimingsVBox">
                     <property name="visible">True</property>
@@ -1578,6 +1579,7 @@
                 <property name="visible">True</property>
                 <property name="border_width">4</property>
                 <property name="spacing">5</property>
+                <signal name="drag_data_received" handler="OnSubtitleAreaDragDataReceived"/>
                 <child>
                   <widget class="GtkScrolledWindow" id="subtitleViewScrolledWindow">
                     <property name="visible">True</property>
