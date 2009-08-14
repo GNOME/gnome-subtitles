@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-29 18:21+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
+"POT-Creation-Date: 2009-06-28 22:01+0000\n"
+"PO-Revision-Date: 2009-08-14 13:51+0200\n"
 "Last-Translator: Mark Krapivner <mark125@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,11 +24,11 @@ msgstr "אודות כתוביות GNOME"
 
 #: ../src/Glade/AboutDialog.glade.h:2
 msgid "Video subtitling for the GNOME desktop"
-msgstr ""
+msgstr "יצירת כתוביות עבור שולחן העבודה GNOME"
 
 #: ../src/Glade/EncodingsDialog.glade.h:1
 msgid "A_vailable:"
-msgstr ""
+msgstr "ז_מינים:"
 
 #: ../src/Glade/EncodingsDialog.glade.h:2
 msgid "Character codings"
@@ -43,7 +44,7 @@ msgid "Character Coding:"
 msgstr "קידוד תווים:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:49
 msgid "Open File"
 msgstr "פתח קובץ"
 
@@ -65,7 +66,7 @@ msgstr "<b>נתיב:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:4
 msgid "<b>Subtitle Format:</b>"
-msgstr ""
+msgstr "<b>סוג כתוביות:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:5
 msgid "<b>Timing Mode:</b>"
@@ -73,24 +74,24 @@ msgstr ""
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:6
 msgid "File Properties"
-msgstr ""
+msgstr "מאפייני קובץ"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:2
 msgid "Newline Type:"
 msgstr ""
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:83
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
 msgid "Save As"
 msgstr "שמור בשם"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:4
 msgid "Select advanced options"
-msgstr ""
+msgstr "בחר אפשרויות מתקדמות"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:5
 msgid "Subtitle Format:"
-msgstr ""
+msgstr "סוג כתוביות:"
 
 #: ../src/Glade/HeadersDialog.glade.h:1
 msgid "Album:"
@@ -105,6 +106,8 @@ msgid ""
 "Audio\n"
 "Video\n"
 msgstr ""
+"קול\n"
+"וידאו\n"
 
 #: ../src/Glade/HeadersDialog.glade.h:6
 msgid "Author:"
@@ -124,7 +127,7 @@ msgstr ""
 
 #: ../src/Glade/HeadersDialog.glade.h:10
 msgid "Comment:"
-msgstr ""
+msgstr "הערה:"
 
 #: ../src/Glade/HeadersDialog.glade.h:11
 msgid "Date:"
@@ -136,7 +139,7 @@ msgstr ""
 
 #: ../src/Glade/HeadersDialog.glade.h:13
 msgid "File Path:"
-msgstr ""
+msgstr "נתיב קובץ:"
 
 #: ../src/Glade/HeadersDialog.glade.h:14
 msgid "File:"
@@ -246,196 +249,227 @@ msgstr "<b>משך זמן</b>"
 msgid "<b>Time</b>"
 msgstr "<b>זמן</b>"
 
+#: ../src/Glade/MainWindow.glade.h:3
+msgid "Delete"
+msgstr ""
+
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:4
+#: ../src/Glade/MainWindow.glade.h:5
 msgid "During:"
 msgstr "במשך:"
 
-#: ../src/Glade/MainWindow.glade.h:5
+#: ../src/Glade/MainWindow.glade.h:6
 msgid "Find Ne_xt"
 msgstr "חפש את ה_בא"
 
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.glade.h:7
 msgid "Find Pre_vious"
 msgstr "חפש את הקו_דם"
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.glade.h:9
 msgid "From:"
 msgstr "מתחיל:"
 
-#: ../src/Glade/MainWindow.glade.h:9
-msgid "Pr_eferences"
-msgstr "ה_עדפות"
-
-#: ../src/Glade/MainWindow.glade.h:10 ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:66
-msgid "Replace"
-msgstr "החלף"
+#: ../src/Glade/MainWindow.glade.h:10
+msgid "Insert"
+msgstr ""
 
 #: ../src/Glade/MainWindow.glade.h:11
+msgid "Pr_eferences"
+msgstr "הע_דפות"
+
+#: ../src/Glade/MainWindow.glade.h:12
 msgid "Report a _Bug"
 msgstr "דווח על _באג"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.glade.h:13
 msgid "Request a _Feature"
 msgstr "בקש _תכונה"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.glade.h:14
 msgid "Save _As"
 msgstr "שמור _בשם"
 
-#: ../src/Glade/MainWindow.glade.h:14
-msgid "Seek _to Selection"
-msgstr "עבור _לקטע המסומן"
-
 #: ../src/Glade/MainWindow.glade.h:15
+msgid "Seek _to Selection"
+msgstr "קפוץ _לקטע המסומן"
+
+#: ../src/Glade/MainWindow.glade.h:16
 msgid "Set Subtitle En_d"
 msgstr ""
 
-#: ../src/Glade/MainWindow.glade.h:16
-msgid "Set Subtitle _Start"
+#: ../src/Glade/MainWindow.glade.h:17
+#| msgid "Selected Subtitles"
+msgid "Set Subtitle St_art"
+msgstr "קבע את הת_חלת הכתוביות"
+
+#: ../src/Glade/MainWindow.glade.h:18
+#| msgid "Save Translation As"
+msgid "Set Translatio_n Language"
+msgstr "קביעת שפת התרגו_ם"
+
+#: ../src/Glade/MainWindow.glade.h:19
+msgid "Set _Text Language"
 msgstr ""
 
+#: ../src/Glade/MainWindow.glade.h:20
+msgid "Sh_ift"
+msgstr ""
+
+#: ../src/Glade/MainWindow.glade.h:21
+#| msgid "_Timings"
+msgid "T_imings"
+msgstr "ת_זמונים"
+
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.glade.h:23
 msgid "To:"
 msgstr "נגמר:"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.glade.h:24
 msgid "Translatio_n"
 msgstr "תר_גום"
 
-#: ../src/Glade/MainWindow.glade.h:20
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:232
-msgid "Translation"
-msgstr "תרגום"
-
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.glade.h:25
 msgid "Vide_o"
 msgstr "ויד_או"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.glade.h:26
 msgid "Video _Subtitles"
-msgstr ""
+msgstr "_כתוביות וידאו"
 
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.glade.h:27
 msgid "_Adjust"
 msgstr "_התאם"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.glade.h:28
 msgid "_After"
 msgstr "_אחרי"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.glade.h:29
+msgid "_Autocheck Spelling"
+msgstr "בדיקת איות _אוטומטית"
+
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "_Before"
 msgstr "_לפני"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.glade.h:31
 msgid "_Bold"
 msgstr "_מודגש"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.glade.h:32
 msgid "_Close"
 msgstr "_סגור"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "_Contents"
 msgstr "_תוכן העניינים"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "_Delete Subtitles"
 msgstr "_מחק כתוביות"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "_Edit"
 msgstr "_עריכה"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:36
 msgid "_File"
 msgstr "_קובץ"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:37
 msgid "_Format"
 msgstr "_עיצוב"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.glade.h:38
 msgid "_Frames"
-msgstr ""
+msgstr "_פריימים"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.glade.h:39
 msgid "_Headers"
 msgstr ""
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.glade.h:40
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "_Input Frame Rate"
 msgstr ""
 
-#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/MainWindow.glade.h:42
 msgid "_Insert Subtitle"
 msgstr "_הכנס כתוביות"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:43
 msgid "_Italic"
 msgstr "_נטוי"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.glade.h:44
 msgid "_New"
 msgstr "_חדש"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Open"
 msgstr "_פתח"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:46
 msgid "_Play / Pause"
 msgstr "_נגן / השהה"
 
-#: ../src/Glade/MainWindow.glade.h:42 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_החלף"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "_Save"
 msgstr "_שמור"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "_Search"
 msgstr "_חיפוש"
 
-#: ../src/Glade/MainWindow.glade.h:45
-msgid "_Shift"
-msgstr ""
+#: ../src/Glade/MainWindow.glade.h:50
+msgid "_Seek to..."
+msgstr "_קפוץ ל..."
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Synchronize"
+msgstr "_סנכרון"
+
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_Text"
 msgstr "_טקסט"
 
-#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_Times"
 msgstr ""
 
-#: ../src/Glade/MainWindow.glade.h:48
-msgid "_Timings"
-msgstr "_תזמונים"
+#: ../src/Glade/MainWindow.glade.h:54
+msgid "_Tools"
+msgstr "_כלים"
 
-#: ../src/Glade/MainWindow.glade.h:49
+#: ../src/Glade/MainWindow.glade.h:55
+#| msgid "Translation"
+msgid "_Translation"
+msgstr "_תרגום"
+
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "_Underline"
 msgstr "_קו תחתי"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Video"
 msgstr "_וידאו"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Video Frame Rate"
-msgstr ""
+msgstr "קצב הצגת תמונות ב_ווידאו"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_View"
 msgstr "_תצוגה"
 
@@ -445,26 +479,16 @@ msgstr "<b>וידאו</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
 msgid "Automatically choose video to open"
-msgstr ""
+msgstr "בר אוטומטית איזה וידאו לפתוח"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
 msgid "Preferences"
 msgstr "העדפות"
 
-#: ../src/Glade/ReportBugWindow.glade.h:1
-msgid ""
-"An Error has occured.\n"
-"\n"
-"To report this bug, please <b>Open the Bugzilla</b> and paste the following "
-"<b>log</b> into the bug description.\n"
-"\n"
-"If the bug is related to a <b>subtitle file</b>, please attach it if "
-"possible."
-msgstr ""
-
-#: ../src/Glade/ReportBugWindow.glade.h:6
-msgid "Open Bugzilla"
-msgstr ""
+#: ../src/Glade/SearchDialog.glade.h:1
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
+msgid "Replace"
+msgstr "החלף"
 
 #: ../src/Glade/SearchDialog.glade.h:2
 msgid "Replace _All"
@@ -493,6 +517,10 @@ msgstr "_חפש:"
 #: ../src/Glade/SearchDialog.glade.h:9
 msgid "_Wrap around"
 msgstr "_גלוש מסביב"
+
+#: ../src/Glade/SetLanguageDialog.glade.h:1
+msgid "Set language"
+msgstr ""
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:1
 #: ../src/Glade/TimingsShiftDialog.glade.h:1
@@ -528,128 +556,177 @@ msgid "No.:"
 msgstr "מספר:"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:9
-msgid "Selected Subtitles"
-msgstr "כתוביות מסומנות"
+#| msgid "Selected Subtitles"
+msgid "Selected Range"
+msgstr "טווח מסומן"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:10
 msgid "Start Frame:"
-msgstr ""
+msgstr "פריים התחלתי:"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:2
 msgid "<b>Frames</b>"
-msgstr ""
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "All subtitles"
-msgstr "כל הכתוביות"
+msgstr "<b>פריימים</b>"
 
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:5
-msgid "Selected subtitle to first"
+#: ../src/Glade/TimingsShiftDialog.glade.h:4
+msgid "From _first subtitle to selection"
 msgstr ""
 
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
+#: ../src/Glade/TimingsShiftDialog.glade.h:6
+msgid "From selection to _last subtitle"
+msgstr ""
+
 #: ../src/Glade/TimingsShiftDialog.glade.h:7
-msgid "Selected subtitle to last"
+msgid "Shift Timings"
 msgstr ""
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "Selected subtitles"
-msgstr "כתוביות מסומנות"
+#| msgid "All subtitles"
+msgid "_All subtitles"
+msgstr "_כל הכתוביות"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "Shift"
-msgstr ""
+#| msgid "Selected subtitles"
+msgid "_Selected subtitles"
+msgstr "כתוביות _מסומנות"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:10
-msgid "Shift Timings"
+msgid "_Shift"
 msgstr ""
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+#| msgid "<b>Video</b>"
+msgid "<b>Options</b>"
+msgstr "<b>אפשרויות</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+#| msgid "<b>Path:</b>"
+msgid "<b>Status</b>"
+msgstr "<b>מצב</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+#| msgid "<b>Apply to</b>"
+msgid "<b>Sync Points</b>"
+msgstr "<b>נקודות סנכרון</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+#| msgid "All subtitles"
+msgid "Synchroni_ze all subtitles"
+msgstr "סנכר_ון כל הכתוביות"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+msgid "Synchronize Timings"
+msgstr ""
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "gtk-add"
+msgstr "gtk-add"
 
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "פתח וידאו"
 
-#: ../src/GnomeSubtitles/Commands/AdjustTimingsCommand.cs:26
+#: ../src/Glade/VideoSeekToDialog.glade.h:1
+msgid "Seek To"
+msgstr "קפוץ ל"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:2
+#| msgid "Seek _to Selection"
+msgid "Seek to _time:"
+msgstr "קפוץ ל_זמן:"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:3
+#| msgid "_Save"
+msgid "_Seek"
+msgstr "_קפוץ"
+
+#: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:46
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
 msgid "Changing Input Frame Rate"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeFrameRateCommand.cs:65
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
 msgid "Changing Video Frame Rate"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:55
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:66
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
 msgid "Toggling Italic"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeStyleCommand.cs:77
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
 msgid "Toggling Underline"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:65
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:65
 msgid "Editing From"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:89
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:89
 msgid "Editing To"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ChangeTimingCommand.cs:111
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:111
 msgid "Editing During"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:118
-#: ../src/GnomeSubtitles/Core/Menus.cs:90
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: ../src/GnomeSubtitles/Ui/Menus.cs:535
 msgid "Undo"
 msgstr "בטל"
 
-#: ../src/GnomeSubtitles/Commands/CommandManager.cs:127
-#: ../src/GnomeSubtitles/Core/Menus.cs:100
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: ../src/GnomeSubtitles/Ui/Menus.cs:545
 msgid "Redo"
 msgstr "בצע שוב"
 
-#: ../src/GnomeSubtitles/Commands/DeleteSubtitlesCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
 msgid "Deleting Subtitles"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/DeleteTextCommand.cs:26
-#: ../src/GnomeSubtitles/Commands/InsertTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
 msgid "Editing Text"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/DeleteTranslationCommand.cs:26
-#: ../src/GnomeSubtitles/Commands/InsertTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
 msgid "Editing Translation"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/InsertSubtitleCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:27
 msgid "Inserting Subtitle"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/ReplaceAllCommand.cs:29
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
 msgstr "מחליף הכל"
 
-#: ../src/GnomeSubtitles/Commands/ShiftTimingsCommand.cs:28
+#: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+msgid "Synchronizing timings"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Commands/VideoSetSubtitleTimingCommand.cs:45
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Core/Document.cs:198
+#: ../src/GnomeSubtitles/Core/Document.cs:200
 msgid "Unsaved Translation"
 msgstr ""
 
@@ -719,7 +796,7 @@ msgstr "נורדית"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:44
 msgid "Celtic"
-msgstr ""
+msgstr "קלטית"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:46
 msgid "Romanian"
@@ -804,262 +881,341 @@ msgstr "ויאטנמית"
 msgid "Current Locale"
 msgstr "מיקום נוכחי"
 
-#: ../src/GnomeSubtitles/Core/GUI.cs:122
-msgid "Unsaved Subtitles"
-msgstr "כתוביות לא שמורות"
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#| msgid "The file could not be found."
+msgid "The Gnome Subtitles Manual could not be found."
+msgstr "לא ניתן למצוא את המדריך של Gnome Subtitles."
 
-#. Constant strings
-#: ../src/GnomeSubtitles/Core/Menus.cs:32
-msgid "Video"
-msgstr "וידאו"
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+msgid "Please verify that your installation has been completed successfully."
+msgstr "נא לוודא שההתקנה הושלמה בהצלחה."
 
-#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
-#: ../src/GnomeSubtitles/Core/Status.cs:42
-msgid "OVR"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Core/Status.cs:42
-msgid "INS"
-msgstr ""
-
-#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
-#: ../src/GnomeSubtitles/Core/Status.cs:57
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:231
-msgid "Text"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Core/Status.cs:57
-msgid "Trans"
-msgstr ""
-
-#. To translators: Ln corresponds to Line
-#: ../src/GnomeSubtitles/Core/Status.cs:59
-msgid "Ln"
-msgstr ""
-
-#. To translators: Col corresponds to Column
-#: ../src/GnomeSubtitles/Core/Status.cs:61
-msgid "Col"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:87
-msgid "Description"
-msgstr "תיאור"
-
-#: ../src/GnomeSubtitles/Dialogs/EncodingsDialog.cs:91
-msgid "Encoding"
-msgstr "קידוד"
-
-#: ../src/GnomeSubtitles/Dialogs/ErrorDialog.cs:52
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:95
-msgid "Auto Detected"
-msgstr "מזוהה אוטומטית"
-
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:142
-msgid "None"
-msgstr "ללא"
-
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:208
-#: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:59
-msgid "All Files"
-msgstr "כל הקבצים"
-
-#: ../src/GnomeSubtitles/Dialogs/FileOpenDialog.cs:215
-msgid "All Subtitle Files"
-msgstr "כל קבצי הכתוביות"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:29
-msgid "Could not open the file"
-msgstr "לא ניתן לפתוח את הקובץ"
-
-#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:30
-msgid "Open another file"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileOpenErrorDialog.cs:68
-msgid "The file path appears to be invalid."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:85
-msgid "Save Translation As"
-msgstr "שמור תרגום בשם"
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveAsDialog.cs:211
-msgid "System Default"
-msgstr "ברירת המחדל של המערכת"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:32
-msgid "Could not save the file"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:33
-msgid "Save to another file"
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:63
-msgid "You do not have the permissions necessary to save the file."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FileSaveErrorDialog.cs:65
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:60
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:67
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:75
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:79
-#: ../src/GnomeSubtitles/Dialogs/FilePropertiesDialog.cs:88
+#: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: ../src/GnomeSubtitles/Dialogs/FileTranslationOpenDialog.cs:26
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
+msgid "Description"
+msgstr "תיאור"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
+msgid "Encoding"
+msgstr "קידוד"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:100
+msgid "Auto Detected"
+msgstr "מזוהה אוטומטית"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
+msgid "None"
+msgstr "ללא"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:217
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
+msgid "All Files"
+msgstr "כל הקבצים"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:224
+msgid "All Subtitle Files"
+msgstr "כל קבצי הכתוביות"
+
+#: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "פתח קובץ תרגום"
 
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
+msgid "Find"
+msgstr "חפש"
+
 #. Strings
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:34
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
+msgid "Set Text Language"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
+#| msgid "Save Translation As"
+msgid "Set Translation Language"
+msgstr "קביעת שפת התרגום"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
+msgid "Select the text _language of the current subtitles."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
+msgid "Select the translation _language of the current subtitles."
+msgstr "בחר את _שפת התרגום של הכתוביות הנוכחיות."
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
+msgid "Add or Remove..."
+msgstr "הוסף או הסר..."
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
+msgid "Save Translation As"
+msgstr "שמור תרגום בשם"
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:223
+msgid "System Default"
+msgstr "ברירת המחדל של המערכת"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
+msgid "Start Time:"
+msgstr "זמן התחלה:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+msgid "Time"
+msgstr "זמן"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
+msgid "Frames"
+msgstr "פריימים"
+
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+#| msgid "All Subtitles"
+msgid "Subtitle No."
+msgstr "מספר כתובית"
+
+#. Start (current and correct) columns
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
+#| msgid "Current Locale"
+msgid "Current Start"
+msgstr "התחלה נוכחית"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
+#| msgid "New Start:"
+msgid "Correct Start"
+msgstr "התחלה מדויקת"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+msgid "Add sync points by selecting subtitles and adjusting the video to their correct position. At least 2 points are needed."
+msgstr "הוסף נקודות סנכרון על ידי בחירת כתוביות והתאמת הווידאו למיקום המדויק שלהם. נדרשות לפחות שתי נקודות."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+msgid "Add 1 more sync point to start synchronizing. Adding more points will improve accuracy."
+msgstr "הוסף נקודת סנכרון נוספת כדי להתחיל את הסנכרון. הוספת עוד נקודות משפרת את הדיוק."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+msgid "Synchronization is ready. All subtitles will be synchronized."
+msgstr "הסנכרון מוכן. כל הכתוביות יסונכרנו."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#, csharp-format
+msgid "Synchronization is ready. The following subtitles will not be synchronized: {0}."
+msgstr "הסנכרון מוכן. הכתוביות הבאות לא יסונכרנו: {0}."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#, csharp-format
+msgid "Synchronization is ready. The following subtitles will not be synchronized: {0} and {1}."
+msgstr "הסנכרון מוכן. הכתוביות הבאות לא יסונכרנו: {0} ו־{1}."
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+msgid "All Video Files"
+msgstr "כל קבצי הוידאו"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
+msgid "Seek to _frame:"
+msgstr "קפוץ ל_פריים:"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
+msgid "An unknown error has occured. Please report a bug and include this error name:"
+msgstr "התרחשה שגיאה לא ידועה. נא לדווח על באג הכולל את שם השגיאה הבא:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+msgid "Could not open the file"
+msgstr "לא ניתן לפתוח את הקובץ"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+msgid "Open another file"
+msgstr "פתח קובץ נוסף"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+msgid "The file path appears to be invalid."
+msgstr "נראה שנתיב הקובץ לא תקין."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "לא ניתן לשמור את הקובץ"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "שמור לקובץ אחר"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr "נגמר לך הזיכרון. נא לסגור מספר יישומים ולנסות שוב."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occured."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+msgid "You do not have the permissions necessary to save the file."
+msgstr "אין לך את ההרשאות הנדרשות כדי לשמור את הקובץ."
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "הקובץ שצוין לא תקין."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "ללא שמירה, כל השינויים שלך יאבדו לתמיד."
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:85
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr "לשמור את השינויים לכתוביות \"{0}\" לפני יצירת כתוביות חדשות?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:86
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
 msgid "Create without Saving"
 msgstr "צור ללא שמירה"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:96
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr "לשמור את השינויים לתרגום \"{0}\" לפני יצירת כתוביות חדשות?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:103
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
 #, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
+msgid "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr "לשמור את השינויים לתרגום \"{0}\" לפני יצירת חדש?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:113
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:118
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "לשמור את השינויים לכתוביות \"{0}\" לפני הפתיחה?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:114
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:119
 msgid "Open without Saving"
 msgstr "פתח ללא שמירה"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:125
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:138
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
 msgstr "לשמור את השינויים לתרגום \"{0}\" לפני הפתיחה?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:134
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:147
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr "לשמור את השינויים לכתוביות \"{0}\" לפני הסגירה?"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:148
 msgid "Close without Saving"
 msgstr "סגור ללא שמירה"
 
-#: ../src/GnomeSubtitles/Dialogs/SaveConfirmationDialog.cs:145
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:166
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "לשמור את השינויים לתרגום \"{0}\" לפני הסגירה?"
 
-#: ../src/GnomeSubtitles/Dialogs/SearchDialog.cs:70
-msgid "Find"
-msgstr "חפש"
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
+msgid "Unable to detect the subtitle format. Please check that the file type is supported."
+msgstr "לא ניתן לזהות את סוג הכתוביות. נא לבדוק שסוג קובץ זה נתמך."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileChooserDialog.cs:137
-msgid "Add or Remove..."
-msgstr "הוסף או הסר..."
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
+msgid "The encoding used is not supported by your system. Please choose another encoding."
+msgstr "הקידוד שבשימוש לא נתמך על ידי המערכת. נא לבחור קידוד אחר."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr ""
-
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
-msgstr ""
+msgstr "אין לך את ההרשאות המתאימות לפתיחת הקובץ."
 
-#: ../src/GnomeSubtitles/Dialogs/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
 msgid "The file could not be found."
 msgstr "לא ניתן למצוא את הקובץ."
 
-#: ../src/GnomeSubtitles/Dialogs/TimingsAdjustDialog.cs:65
-msgid "Start Time:"
-msgstr "זמן התחלה:"
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
+#| msgid "Could not open the file"
+msgid "Could not play the file"
+msgstr "לא ניתן לנגן את הקובץ"
 
-#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
-#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
-msgid "Time"
-msgstr "זמן"
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
+msgid "Could not open Bug Buddy, the bug reporting tool."
+msgstr "לא ניתן לפתוח את Bug Buddy, כלי דיווח הבאגים."
 
-#: ../src/GnomeSubtitles/Dialogs/TimingsShiftDialog.cs:72
-msgid "Frames"
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
+msgid "Bug information has been printed to the console."
 msgstr ""
 
-#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:27
-msgid "Could not continue the video playback"
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:135
+msgid "Unsaved Subtitles"
+msgstr "כתוביות לא שמורות"
+
+#. Constant strings
+#: ../src/GnomeSubtitles/Ui/Menus.cs:33
+msgid "Video"
+msgstr "וידאו"
+
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "OVR"
 msgstr ""
 
-#: ../src/GnomeSubtitles/Dialogs/VideoErrorDialog.cs:28
-msgid "The following error has occurred: "
-msgstr "התרחשה השגיאה הבא:"
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "INS"
+msgstr ""
 
-#: ../src/GnomeSubtitles/Dialogs/VideoFileOpenErrorDialog.cs:34
-msgid "Please check that the video file is supported."
-msgstr "נא לבדוק שקובץ הווידאו ניתמך."
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:224
+msgid "Text"
+msgstr ""
 
-#: ../src/GnomeSubtitles/Dialogs/VideoOpenDialog.cs:65
-msgid "All Video Files"
-msgstr "כל קבצי הוידאו"
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+msgid "Trans"
+msgstr ""
 
-#: ../src/GnomeSubtitles/Video/VideoPosition.cs:175
+#. To translators: Ln corresponds to Line
+#: ../src/GnomeSubtitles/Ui/Status.cs:60
+msgid "Ln"
+msgstr "שורה"
+
+#. To translators: Col corresponds to Column
+#: ../src/GnomeSubtitles/Ui/Status.cs:62
+msgid "Col"
+msgstr "עמודה"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Frame"
-msgstr ""
+msgstr "פריים"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:223
+#. Number column
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:212
 msgid "No."
 msgstr "מספר"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
 msgid "From"
 msgstr "מתחיל"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:227
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:217
 msgid "To"
 msgstr "נגמר"
 
-#: ../src/GnomeSubtitles/SubtitleView/SubtitleView.cs:228
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:218
 msgid "During"
 msgstr "במשך"
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
+msgid "Translation"
+msgstr "תרגום"
+
+#~ msgid "The following error has occurred: "
+#~ msgstr "התרחשה השגיאה הבא:"
+#~ msgid "Please check that the video file is supported."
+#~ msgstr "נא לבדוק שקובץ הווידאו ניתמך."
+
