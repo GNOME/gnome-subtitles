@@ -1,0 +1,124 @@
+Gnome Subtitles
+=============================
+http://gnome-subtitles.sf.net
+
+
+RELEASE PROCEDURE
+=================
+
+	1.  Revise base project files
+	2.  Set shell variables
+	3.  Copy SubLib
+	4.  Create source package
+	5.  Commit changes and tag
+	6.  Create screenshots
+	7.  Release sources
+	8.  Update websites
+	9.  Notify
+	10. Packages
+
+
+1. Revise base project files
+============================
+
+	- CREDITS
+	- README
+	- NEWS
+	- TODO
+	- configure.ac: ACINIT
+	- ChangeLog using svn2log:
+		svn log -v --xml http://svn.gnome.org/svn/gnome-subtitles/trunk | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o ChangeLog
+	- po ChangeLog using svn2log:
+		svn log -v --xml http://svn.gnome.org/svn/gnome-subtitles/trunk/po | svn2log.py -s -O -H -p '/(branches/[^/]+|trunk)/' -o po/ChangeLog
+
+
+2. Set shell variables
+======================
+
+	- GS_VERSION="0.X"
+
+
+3. Copy SubLib
+==============
+
+	- Extract the latest SubLib sources to the project dir
+	- Delete all files inside sublib/docs
+
+
+4. Create source package
+========================
+
+	- Autogen autotools files with:
+		autogen.sh
+	- Package with:
+		make dist
+	- Test package with:
+		tar xzf gnome-subtitles-$GS_VERSION.tar.gz && cd gnome-subtitles-$GS_VERSION && ./configure && make
+		make check
+
+
+5. Commit changes and tag
+=========================
+
+	- Commit changes for the release
+	- Tag the release with:
+		svn copy svn+ssh://pcastro@svn.gnome.org/svn/gnome-subtitles/trunk svn+ssh://pcastro@svn.gnome.org/svn/gnome-subtitles/tags/gnome-subtitles-$GS_VERSION -m "Tagging the $GS_VERSION release."
+	- Check new version in:
+		http://svn.gnome.org/viewcvs/gnome-subtitles/tags
+
+
+6. Create Screenshots
+=====================
+
+	- Screenshots are to be created for the windows or dialogs that have changed
+	- Create screenshots with:
+		gnome-screenshot --window --include-border --delay=5 --border-effect=shadow
+	- Flatten images with white background
+	- Screenshots for sf.net project page:
+		- Rescale to maximum 640x480 with cubic method
+		- Sharpen with a factor of 25
+
+
+7. Release sources
+===================
+
+	- Add to File Release System in Sourceforge
+	- Verify integrity
+	- Build the source package using the "Test package with" commands above
+
+
+8. Update websites
+==================
+
+	- Gnome Subtitles website:
+		About
+		Download
+		Screenshots
+	- Sourceforge project page:
+		Summary
+		Screenshots
+	- Freshmeat project page
+		Release
+		Project info
+		Screenshot
+	- Gnome Files page
+		New release
+		Project info
+	- Gnome Bugzilla
+		Add new version
+
+
+9. Notify
+=========
+
+	- Gnome Subtitles News
+	- Update the Sourceforge project news
+	- Send Email Release Notice in the File Release System
+	- Send mail to the Gnome Announce mailing list
+	- Send mail to the Gnome Subtitles mailing list
+
+10. Packages
+============
+
+	- Make changes to the Gentoo ebuild
+	- Notify packagers
