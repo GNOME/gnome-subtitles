@@ -8,10 +8,10 @@ ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
 ASSEMBLY_CONFIG = $(ASSEMBLY).config
 
 AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
-noinst_PROGRAMS = libgstreamer_playbin.so
-libgstreamer_playbin_so_SOURCES = $(srcdir)/External/GStreamerPlaybin/main.c
-libgstreamer_playbin_so_LDFLAGS = -shared -Wl,--as-needed,-soname,libgstreamer_playbin.so
-libgstreamer_playbin_so_LDADD = -lgstinterfaces-0.10 $(gstreamer_LIBS)
+gnomesubtitles_LTLIBRARIES = libgstreamer_playbin.la
+libgstreamer_playbin_la_SOURCES = $(srcdir)/External/GStreamerPlaybin/main.c
+libgstreamer_playbin_la_LIBADD = $(gstreamer_LIBS) -lgstinterfaces-0.10
+libgstreamer_playbin_la_LIBTOOLFLAGS = --tag=disable-static 
 
 GS_SOURCES = \
 	$(srcdir)/External/GStreamerPlaybin/*.cs \

@@ -3,10 +3,6 @@ SUBDIRS = src data po help
 ACLOCAL_AMFLAGS = -I m4
 
 gstpbdir = $(pkglibdir)
-gstpb_SCRIPTS = build/libgstreamer_playbin.so
-
-$(gstpb_SCRIPTS):
-	cp -f src/libgstreamer_playbin.so build
 
 dist-hook:
 	@if test -d "$(srcdir)/.git"; \
