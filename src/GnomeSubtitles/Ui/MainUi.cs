@@ -438,10 +438,12 @@ public class MainUi {
     		return true; 
 	}
 	
-	private void UpdateTitleModificationStatus (bool modified) {
-		string prefix = (modified ? "*" : String.Empty);
-		window.Title = prefix + Base.Document.TextFile.Filename +
-			" - " + Base.ExecutionContext.ApplicationName;
+	private void UpdateTitleModificationStatus (bool showFilename, bool modified) {
+		if (showFilename) {
+			string prefix = (modified ? "*" : String.Empty);
+			window.Title = prefix + Base.Document.TextFile.Filename + " - " + Base.ExecutionContext.ApplicationName;
+		}
+		else window.Title = Base.ExecutionContext.ApplicationName;
 	}
 	
 	/* Event members */
@@ -452,6 +454,7 @@ public class MainUi {
 	}
 	
 	private void OnBaseDocumentLoaded (Document document) {
+		UpdateTitleModificationStatus(true, false);
    		document.ModificationStatusChanged += OnBaseDocumentModificationStatusChanged;
     }
     
@@ -459,11 +462,11 @@ public class MainUi {
     	if (document != null) {
     		document.ModificationStatusChanged -= OnBaseDocumentModificationStatusChanged;
     	}
-    	UpdateTitleModificationStatus(false);
+    	UpdateTitleModificationStatus(false, false);
     }
     
     private void OnBaseDocumentModificationStatusChanged (bool modified) {
-    	UpdateTitleModificationStatus(modified);
+    	UpdateTitleModificationStatus(true, modified);
 	}
 
 
