@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-21 21:13+0200\n"
-"PO-Revision-Date: 2009-06-21 04:31+0100\n"
+"POT-Creation-Date: 2009-11-04 21:54+0100\n"
+"PO-Revision-Date: 2009-11-03 01:43+0100\n"
 "Last-Translator: Rinu <rinucz@gmail.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-03-06 09:32+0000\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Language: Czech\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../src/Glade/AboutDialog.glade.h:1
@@ -80,7 +79,7 @@ msgstr "Vlastnosti souboru"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:2
 msgid "Newline Type:"
-msgstr ""
+msgstr "Typ nové řádky:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
@@ -101,7 +100,7 @@ msgstr "Album:"
 
 #: ../src/Glade/HeadersDialog.glade.h:2
 msgid "Artist:"
-msgstr "Autor:"
+msgstr "Umělec:"
 
 #: ../src/Glade/HeadersDialog.glade.h:3
 msgid ""
@@ -294,7 +293,6 @@ msgid "Save _As"
 msgstr "Uložit _jako"
 
 #: ../src/Glade/MainWindow.glade.h:15
-#, fuzzy
 msgid "Seek _to Selection"
 msgstr "Přejí_t na výběr"
 
@@ -325,7 +323,7 @@ msgstr "Č_asování"
 #. This is the end time/frame of a subtitle.
 #: ../src/Glade/MainWindow.glade.h:23
 msgid "To:"
-msgstr "Příjemce:"
+msgstr "Do:"
 
 #: ../src/Glade/MainWindow.glade.h:24
 msgid "Translatio_n"
@@ -397,7 +395,7 @@ msgstr "_Nápověda"
 
 #: ../src/Glade/MainWindow.glade.h:41
 msgid "_Input Frame Rate"
-msgstr "Vlož_it snímkovací frekvenci"
+msgstr "Vlož_it snímkovou frekvenci"
 
 #: ../src/Glade/MainWindow.glade.h:42
 msgid "_Insert Subtitle"
@@ -465,7 +463,7 @@ msgstr "_Video"
 
 #: ../src/Glade/MainWindow.glade.h:58
 msgid "_Video Frame Rate"
-msgstr "Snímkovací frekvence _videa"
+msgstr "Snímková frekvence _videa"
 
 #: ../src/Glade/MainWindow.glade.h:59
 msgid "_View"
@@ -481,7 +479,7 @@ msgstr "Vybrat automaticky video k otevření"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
 msgid "Preferences"
-msgstr "Možnosti"
+msgstr "Předvolby"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -535,7 +533,7 @@ msgstr "<b>Poslední titulek</b>"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:4
 msgid "Adjust"
-msgstr "Upravit"
+msgstr "Přizpůsobit"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:5
 msgid "Adjust Timings"
@@ -554,8 +552,8 @@ msgid "No.:"
 msgstr "Číslo:"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:9
-msgid "Selected Subtitles"
-msgstr "Vybrané titulky"
+msgid "Selected Range"
+msgstr "Vybraný rozsah"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:10
 msgid "Start Frame:"
@@ -573,7 +571,7 @@ msgstr "Od _prvního titulku k výběru"
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:6
 msgid "From selection to _last subtitle"
-msgstr "Od pos_ledního titulku k výběru"
+msgstr "Od výběru k pos_lednímu titulku"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:7
 msgid "Shift Timings"
@@ -592,27 +590,24 @@ msgid "_Shift"
 msgstr "Po_sunout"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-#, fuzzy
 msgid "<b>Options</b>"
-msgstr "<b>Video</b>"
+msgstr "<b>Možnosti</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
 msgid "<b>Status</b>"
-msgstr "<b>Stav</b>"
+msgstr "<b>Status</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-#, fuzzy
 msgid "<b>Sync Points</b>"
-msgstr "<b>Stav</b>"
+msgstr "<b>Synch. body</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-#, fuzzy
 msgid "Synchroni_ze all subtitles"
-msgstr "_Všechny titulky"
+msgstr "Synchroni_zovat všechny titulky"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
 msgid "Synchronize Timings"
-msgstr "Synchronizace časování"
+msgstr "Synchronizovat časování"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "gtk-add"
@@ -623,17 +618,14 @@ msgid "Open Video"
 msgstr "Otevřít video"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:1
-#, fuzzy
 msgid "Seek To"
 msgstr "Přejít na"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-#, fuzzy
 msgid "Seek to _time:"
 msgstr "Přejí_t na čas:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
-#, fuzzy
 msgid "_Seek"
 msgstr "_Přejít"
 
@@ -643,23 +635,23 @@ msgstr "Přizpůsobení časování"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
 msgid "Changing Input Frame Rate"
-msgstr "Změna vstupní snímkovací frekvence"
+msgstr "Změna vstupní snímkové frekvence"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
 msgid "Changing Video Frame Rate"
-msgstr "Změna snímkovací frekvence videa"
+msgstr "Změna snímkové frekvence videa"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
-msgstr ""
+msgstr "Ztučnění"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
 msgid "Toggling Italic"
-msgstr ""
+msgstr "Kurzíva"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
 msgid "Toggling Underline"
-msgstr ""
+msgstr "Podtržení"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:65
 msgid "Editing From"
@@ -667,19 +659,19 @@ msgstr "Upravit od"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:89
 msgid "Editing To"
-msgstr "Upravit k"
+msgstr "Upravit do"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:111
 msgid "Editing During"
 msgstr "Upravit během"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:535
+#: ../src/GnomeSubtitles/Ui/Menus.cs:539
 msgid "Undo"
 msgstr "Vrátit změny"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:545
+#: ../src/GnomeSubtitles/Ui/Menus.cs:549
 msgid "Redo"
 msgstr "Znovu"
 
@@ -710,7 +702,6 @@ msgid "Shifting timings"
 msgstr "Posun časování"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
-#, fuzzy
 msgid "Synchronizing timings"
 msgstr "Synchronizace časování"
 
@@ -788,7 +779,7 @@ msgstr "Turecké"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:42
 #: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Nordic"
-msgstr "Severské"
+msgstr "Skandinávské"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:44
 msgid "Celtic"
@@ -820,7 +811,7 @@ msgstr "Čínské tradiční"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:61
 msgid "Cyrillic/Russian"
-msgstr "Cyrilice/ruské"
+msgstr "Cyrilice/Ruské"
 
 #. ARMSCII-8 not used
 #. Added
@@ -862,7 +853,7 @@ msgstr "Francouzsko-kanadské"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:93
 msgid "Cyrillic/Ukrainian"
-msgstr "Cyrilice/ukrajinské"
+msgstr "Cyrilice/Ukrajinské"
 
 #. TCVN, TIS-620, UHC, VISCII not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:99
@@ -875,15 +866,15 @@ msgstr "Vietnamské"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:118
 msgid "Current Locale"
-msgstr "Aktuální kódování"
+msgstr "Aktuální lokalizace"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Příručka k nástroji Gnome Subtitles nebyla nalezena."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
 msgid "Please verify that your installation has been completed successfully."
-msgstr "Zkontrolujte prosím, zda byla instalace úspěšně dokončena."
+msgstr "Zkontrolujte, prosím, zda byla instalace úspěšně dokončena."
 
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
@@ -907,7 +898,6 @@ msgid "Auto Detected"
 msgstr "Automaticky detekované"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
-#, fuzzy
 msgid "None"
 msgstr "Žádné"
 
@@ -939,15 +929,15 @@ msgstr "Nastavit jazyk překladu"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
 msgid "Select the text _language of the current subtitles."
-msgstr "Vyberte _jazyk textu aktuálních titulků."
+msgstr "Vyberte _jazyk textu aktuálně otevřených titulků."
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
 msgid "Select the translation _language of the current subtitles."
-msgstr "Vyberte _jazyk překladu aktuálních titulků."
+msgstr "Vyberte _jazyk překladu aktuálně otevřených titulků."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
 msgid "Add or Remove..."
-msgstr "Přidat nebo odstranit..."
+msgstr "Přidat nebo odebrat..."
 
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
 msgid "Save Translation As"
@@ -959,22 +949,21 @@ msgstr "Výchozí nastavení systému"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
 msgid "Start Time:"
-msgstr "Čas začátku:"
+msgstr "Počáteční čas:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
 #: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Time"
 msgstr "Čas"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
 msgid "Frames"
 msgstr "Snímky"
 
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
-#, fuzzy
 msgid "Subtitle No."
-msgstr "Formát titulků:"
+msgstr "Titulek č."
 
 #. Start (current and correct) columns
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
@@ -983,26 +972,27 @@ msgstr "Aktuální začátek"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
 msgid "Correct Start"
-msgstr "Správný začátek"
+msgstr "Opravený začátek"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
-#, fuzzy
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
 msgstr ""
-"Přidat synchronizační bod výběrem titulku a jeho nastavení do správné pozice "
-"vzhledem k videu."
+"Přidejte synchronizační body výběrem řádků a označením požadované pozice ve "
+"videu k dosažení změny pozice řádku. Jsou potřeba alespoň 2 body."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
 msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
 msgstr ""
+"Aby mohla synchronizace začít, přidejte ještě jeden sychronizační bod. "
+"Přidáním dalších bodů se zvýší přesnost."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
 msgid "Synchronization is ready. All subtitles will be synchronized."
-msgstr ""
+msgstr "Synchronizace je připravena. Všechny titulky budou synchronizovány."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
 #, csharp-format
@@ -1010,6 +1000,8 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
 msgstr ""
+"Synchronizace je připravena. Následující titulky nebudou synchronizovány: "
+"{0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
 #, csharp-format
@@ -1017,15 +1009,16 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
+"Synchronizace je připravena. Následující titulky nebudou synchronizovány: "
+"{0} a {1}."
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Všechny video soubory"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
-#, fuzzy
 msgid "Seek to _frame:"
-msgstr "Přejít na _rámec:"
+msgstr "Přejít ke _snímku:"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
@@ -1193,17 +1186,17 @@ msgstr "Text"
 
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
 msgid "Trans"
-msgstr "Překlad"
+msgstr "Překl"
 
 #. To translators: Ln corresponds to Line
 #: ../src/GnomeSubtitles/Ui/Status.cs:60
 msgid "Ln"
-msgstr "Řádek"
+msgstr "Řád"
 
 #. To translators: Col corresponds to Column
 #: ../src/GnomeSubtitles/Ui/Status.cs:62
 msgid "Col"
-msgstr "Sloupec"
+msgstr "Sl"
 
 #: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Frame"
@@ -1212,7 +1205,7 @@ msgstr "Snímek"
 #. Number column
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:212
 msgid "No."
-msgstr "Číslo"
+msgstr "Č."
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
 msgid "From"
@@ -1224,14 +1217,8 @@ msgstr "Do"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:218
 msgid "During"
-msgstr "Doba trvání"
+msgstr "Trvání"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Překlad"
-
-#~ msgid "Add sync point"
-#~ msgstr "Přidat synchronizační bod"
-
-#~ msgid "Message"
-#~ msgstr "Zpráva"
