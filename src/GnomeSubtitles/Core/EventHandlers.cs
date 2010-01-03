@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -351,7 +351,7 @@ public class EventHandlers {
 	/*	Subtitle View	*/
     
     public void OnRowActivated (object o, RowActivatedArgs args) {
-    	Base.Ui.Video.SeekToSelection();
+    	Base.Ui.Video.SeekToPath(args.Path);
     }
     
     public void OnSubtitleViewKeyPressed (object o, KeyPressEventArgs args) {

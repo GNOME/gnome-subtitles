@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -221,7 +221,7 @@ public class SubtitleSelection {
    		}
    		if ((!reselect) && (Count == 1) && (selection.PathIsSelected(path))) //No reselection is required and path is already the only selected path
    			return;
-   		
+
 		SetFocus(path, align);
 	}
 	
@@ -371,6 +371,11 @@ public class SubtitleSelection {
 		else
 			ScrollToCell(path, align);
     }
+
+	public void Activate (TreePath path, bool align, bool reselect) {
+		Select(path, align, reselect);
+		tree.ActivateRow(path, null);
+	}
     
 	/* Event members */
 	

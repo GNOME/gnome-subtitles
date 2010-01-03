@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2009 Pedro Castro
+ * Copyright (C) 2008-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -202,6 +202,14 @@ public class TimingsSynchronizeDialog : GladeDialog {
 	private void OnSelectionChanged (object o, EventArgs args) {
 		TreeSelection selection = (o as TreeSelection);
 		buttonRemove.Sensitive = (selection.CountSelectedRows() > 0); 
+	}
+
+	private void OnRowActivated (object o, RowActivatedArgs args) {
+		SyncPoint syncPoint = syncPoints[args.Path];
+		int subtitleNumber = syncPoint.SubtitleNumber;
+		if (subtitleNumber < Base.Document.Subtitles.Count) {
+			Base.Ui.View.Selection.Activate(Core.Util.IntToPath(syncPoint.SubtitleNumber), true, false);
+		}
 	}
 	
 	private void OnAdd (object o, EventArgs args) {

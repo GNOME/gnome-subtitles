@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -154,8 +154,15 @@ public class Video {
 		TimeSpan time = TimingUtil.FramesToTime(frames, this.FrameRate);
 		Seek(time);
 	}
+
+	public void SeekToPath (TreePath path) {
+		Subtitle subtitle = Base.Document.Subtitles[path];
+		if (subtitle != null) {
+			Seek(subtitle.Times.Start);
+		}
+	}
 	
-	public void SeekToSelection () { //TODO check out
+	public void SeekToSelection () {
 		Subtitle subtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
     	TimeSpan time = subtitle.Times.Start;
     	Seek(time);

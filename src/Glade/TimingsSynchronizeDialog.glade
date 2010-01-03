@@ -11,6 +11,7 @@
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialogVBox">
         <property name="visible">True</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <child>
           <widget class="GtkFrame" id="syncPointsFrame">
@@ -25,6 +26,7 @@
                 <child>
                   <widget class="GtkVBox" id="syncPointsFrameVBox">
                     <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
                     <property name="spacing">5</property>
                     <child>
                       <widget class="GtkScrolledWindow" id="syncPointsScrolledWindow">
@@ -38,6 +40,7 @@
                           <widget class="GtkTreeView" id="syncPointsTree">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <signal name="row_activated" handler="OnRowActivated"/>
                           </widget>
                         </child>
                       </widget>
@@ -52,7 +55,7 @@
                         <property name="visible">True</property>
                         <child>
                           <widget class="GtkButton" id="buttonAdd">
-                            <property name="label" translatable="yes">gtk-add</property>
+                            <property name="label">gtk-add</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
@@ -123,6 +126,7 @@
                 <child>
                   <widget class="GtkVBox" id="optionsFrameVBox">
                     <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
                     <child>
                       <widget class="GtkCheckButton" id="syncAllSubtitlesCheckButton">
                         <property name="label" translatable="yes">Synchroni_ze all subtitles</property>
