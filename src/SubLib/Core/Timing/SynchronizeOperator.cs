@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2008-2009 Pedro Castro
+ * Copyright (C) 2008-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,13 +34,14 @@ public class SynchronizeOperator {
 	
 	public bool Sync (SyncPoints syncPoints, bool toSyncAll) {
 		SyncPoints pointsToUse = AdaptForOperation(syncPoints, toSyncAll);
-		if (!AreSyncArgsValid(pointsToUse))
+		if (!AreSyncArgsValid(pointsToUse)) {
 			return false;
-
+		}
 		SyncPoint previous = pointsToUse[0];
 		for (int index = 1 ; index < pointsToUse.Count ; index++) {
+			bool syncLast = (index == pointsToUse.Count - 1);
 			SyncPoint current = pointsToUse[index];
-			SyncUtil.Sync(subtitles, previous, current);
+			SyncUtil.Sync(subtitles, previous, current, syncLast);
 		
 			previous = current;
 		}
@@ -50,29 +51,49 @@ public class SynchronizeOperator {
 	
 	
 	/* Private members */
-	
+
 	private SyncPoints AdaptForOperation (SyncPoints syncPoints, bool toSyncAll) {
-		if ((syncPoints == null) || (!toSyncAll))
+		if ((syncPoints == null) || (!toSyncAll) || (toSyncAll && (syncPoints.Count < 2)))
 			return syncPoints;
 		
 		SyncPoints adapted = syncPoints.Clone();
-		
+
 		/* Add the first subtitle if possible */
 		int firstSubtitleNumber = 0;
 		if ((subtitles.Collection.Count > 0) && (!adapted.Contains(firstSubtitleNumber))) {
+			SyncPoint firstSyncPoint = adapted[0];
+			Subtitle firstSyncSubtitle = subtitles.Collection[firstSyncPoint.SubtitleNumber];
 			Subtitle firstSubtitle = subtitles.Collection[firstSubtitleNumber];
-			Domain.Timing firstSubtitleTiming = new Domain.Timing(firstSubtitle.Frames.Start, firstSubtitle.Times.Start);
-			SyncPoint firstSyncPoint = new SyncPoint(firstSubtitleNumber, firstSubtitleTiming, firstSubtitleTiming);
-			adapted.Add(firstSyncPoint);
+
+			double scaleFactor = firstSyncPoint.Correct.Time.TotalMilliseconds / firstSyncSubtitle.Times.Start.TotalMilliseconds;
+			TimeSpan firstSubtitleNewTime = SyncUtil.Scale(firstSubtitle.Times.PreciseStart, TimeSpan.Zero, scaleFactor);
+			int firstSubtitleNewFrame = (int)TimingUtil.TimeToFrames(firstSubtitleNewTime, subtitles.Properties.CurrentFrameRate);
+			Domain.Timing firstSubtitleNewTiming = new Domain.Timing(firstSubtitleNewFrame, firstSubtitleNewTime);
+			
+			Domain.Timing firstSubtitleCurrentTiming = new Domain.Timing(firstSubtitle.Frames.Start, firstSubtitle.Times.Start);
+			SyncPoint newFirstSyncPoint = new SyncPoint(firstSubtitleNumber, firstSubtitleCurrentTiming, firstSubtitleNewTiming);
+			adapted.Add(newFirstSyncPoint);
 		}
 		
 		/* Add last subtitle if possible */
 		int lastSubtitleNumber = subtitles.Collection.Count - 1;
 		if ((subtitles.Collection.Count > 1) && (!adapted.Contains(lastSubtitleNumber))) {
-			Subtitle lastSubtitle = subtitles.Collection[lastSubtitleNumber - 1];
-			Domain.Timing lastSubtitleTiming = new Domain.Timing(lastSubtitle.Frames.Start, lastSubtitle.Times.Start);
-			SyncPoint lastSyncPoint = new SyncPoint(lastSubtitleNumber, lastSubtitleTiming, lastSubtitleTiming);
-			adapted.Add(lastSyncPoint);
+
+			/* Calculate sync factor using the last 2 sync points */
+			SyncPoint penultSyncPoint = adapted[adapted.Count - 2];			
+			SyncPoint lastSyncPoint = adapted[adapted.Count - 1];
+			Subtitle penultSyncPointSubtitle = subtitles.Collection[penultSyncPoint.SubtitleNumber];
+			Subtitle lastSyncPointSubtitle = subtitles.Collection[lastSyncPoint.SubtitleNumber];
+			double factor = (lastSyncPoint.Correct.Time - penultSyncPoint.Correct.Time).TotalMilliseconds / (lastSyncPointSubtitle.Times.PreciseStart - penultSyncPointSubtitle.Times.PreciseStart).TotalMilliseconds;
+
+			/* Calculate new time */
+			Subtitle lastSubtitle = subtitles.Collection[lastSubtitleNumber];
+			TimeSpan lastSubtitleNewTime = SyncUtil.Scale(lastSubtitle.Times.Start, lastSyncPoint.Correct.Time, factor);
+			int lastSubtitleNewFrame = (int)TimingUtil.TimeToFrames(lastSubtitleNewTime, subtitles.Properties.CurrentFrameRate);
+			Domain.Timing lastSubtitleNewTiming = new Domain.Timing(lastSubtitleNewFrame, lastSubtitleNewTime);
+			Domain.Timing lastSubtitleCurrentTiming = new Domain.Timing(lastSubtitle.Frames.Start, lastSubtitle.Times.Start);
+			SyncPoint newLastSyncPoint = new SyncPoint(lastSubtitleNumber, lastSubtitleCurrentTiming, lastSubtitleNewTiming);
+			adapted.Add(newLastSyncPoint);
 		}
 		
 		return adapted;

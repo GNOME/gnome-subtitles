@@ -40,7 +40,7 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 
 	protected override bool ChangeValues () {
 		Ui.View.Subtitles subtitles = Base.Document.Subtitles;
-		
+
 		if (lastTimes == null) {
 			int[] subtitleRange = GetSubtitleRange(subtitles);
 			Times[] timesToStore = GetCurrentTimes(subtitleRange, subtitles);

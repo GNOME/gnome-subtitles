@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using SubLib.Core.Timing;
 using System;
 
 namespace SubLib.Core.Domain {
@@ -110,15 +111,8 @@ public class Times {
 	}
 	
 	internal void Scale (double factor, TimeSpan baseTime) {
-		double baseMilliseconds = baseTime.TotalMilliseconds;
-	
-		double start = PreciseStart.TotalMilliseconds;
-		double newStart = baseMilliseconds + ((start - baseMilliseconds) * factor);
-		PreciseStart = TimeSpan.FromMilliseconds(newStart);
-		
-		double end = PreciseEnd.TotalMilliseconds;
-		double newEnd = baseMilliseconds + ((end - baseMilliseconds) * factor);
-		PreciseEnd = TimeSpan.FromMilliseconds(newEnd);
+		PreciseStart = SyncUtil.Scale(PreciseStart, baseTime, factor);
+		PreciseEnd = SyncUtil.Scale(PreciseEnd, baseTime, factor);
 
 		subtitle.UpdateFramesFromTimes();	
 	}

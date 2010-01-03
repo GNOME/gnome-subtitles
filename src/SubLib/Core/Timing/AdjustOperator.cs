@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ public class AdjustOperator {
 	/// <param name="endTime">The correct start time for the last subtitle.</param>
 	/// <returns>Whether the subtitles could be adjusted.</returns>
 	public bool Adjust (int startIndex, TimeSpan startTime, int endIndex, TimeSpan endTime) {
-		return SyncUtil.Sync(subtitles, startIndex, startTime, endIndex, endTime);
+		return SyncUtil.Sync(subtitles, startIndex, startTime, endIndex, endTime, true);
 	}
 	
 	/// <summary>Auto adjusts the subtitles given the correct frames for the first and last subtitle.</summary>
@@ -77,7 +77,7 @@ public class AdjustOperator {
 	/// <param name="endFrame">The correct start frame for the last subtitle.</param>
 	/// <returns>Whether the subtitles could be adjusted.</returns>
 	public bool Adjust (int startIndex, int startFrame, int endIndex, int endFrame) {
-		return SyncUtil.Sync(subtitles, startIndex, startFrame, endIndex, endFrame);
+		return SyncUtil.Sync(subtitles, startIndex, startFrame, endIndex, endFrame, true);
 	}
 
 }

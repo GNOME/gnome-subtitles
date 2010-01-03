@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2009 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using SubLib.Core.Timing;
 using System;
 
 namespace SubLib.Core.Domain {
@@ -104,10 +105,11 @@ public class Frames {
 		set { end = start + value; }
 	}
 	
-	internal void Scale (double factor, int baseFrame) {	
-		PreciseStart = baseFrame + ((PreciseStart - baseFrame) * factor);
-		PreciseEnd = baseFrame + ((PreciseEnd - baseFrame) * factor);
+	internal void Scale (double factor, int baseFrame) {
 		
+		PreciseStart = SyncUtil.Scale(PreciseStart, baseFrame, factor);
+		PreciseEnd = SyncUtil.Scale(PreciseEnd, baseFrame, factor);
+
 		subtitle.UpdateTimesFromFrames();	
 	}
 
