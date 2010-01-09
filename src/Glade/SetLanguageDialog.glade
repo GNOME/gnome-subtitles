@@ -12,11 +12,13 @@
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialogVBox">
         <property name="visible">True</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <widget class="GtkVBox" id="vBox">
             <property name="visible">True</property>
             <property name="border_width">5</property>
+            <property name="orientation">vertical</property>
             <property name="spacing">11</property>
             <child>
               <widget class="GtkLabel" id="introLabel">
