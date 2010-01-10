@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 using Glade;
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui.Component;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -28,7 +29,11 @@ using System.Text;
 
 namespace GnomeSubtitles.Dialog {
 
-public abstract class SubtitleFileSaveAsDialog : SubtitleFileChooserDialog {
+public abstract class SubtitleFileSaveAsDialog : GladeDialog {
+	protected FileChooserDialog dialog = null;
+
+	private string chosenFilename = String.Empty;
+	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
 	private SubtitleTextType textType;
 	private SubtitleType chosenSubtitleType;
 	private SubtitleTypeInfo[] subtitleTypes = null;
@@ -36,16 +41,23 @@ public abstract class SubtitleFileSaveAsDialog : SubtitleFileChooserDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "FileSaveAsDialog.glade";
-	
+
+	/* Components */
+	private EncodingComboBox encodingComboBox = null;
+
 	/* Widgets */
-	
-	[WidgetAttribute] private ComboBox encodingComboBox = null;
+	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox formatComboBox = null;
 	[WidgetAttribute] private ComboBox newlineTypeComboBox = null;
 
+
 	protected SubtitleFileSaveAsDialog (SubtitleTextType textType) : base(gladeFilename) {
+		dialog = GetDialog() as FileChooserDialog;
+
 		this.textType = textType;
 		SetTitle();
+		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, false, null, GetFixedEncoding());
+
 		FillFormatComboBox();
 		FillNewlineTypeComboBox();
 	}
@@ -57,7 +69,15 @@ public abstract class SubtitleFileSaveAsDialog : SubtitleFileChooserDialog {
 	}
 
 	/* Public properties */
-	
+
+	public EncodingDescription Encoding {
+		get { return chosenEncoding; }
+	}
+
+	public string Filename {
+		get { return chosenFilename; }
+	}
+
 	public SubtitleType SubtitleType {
 		get { return chosenSubtitleType; }
 	}
@@ -72,21 +92,7 @@ public abstract class SubtitleFileSaveAsDialog : SubtitleFileChooserDialog {
 		UpdateContents();
 		base.Show();		
 	}
-	
-	/* Protected methods */
-	
-	protected override int GetFixedEncoding () {
-		try {
-			return Base.Document.TextFile.Encoding.CodePage;
-		}
-		catch (NullReferenceException) {
-			return -1;
-		}
-	}
-	
-	protected override ComboBox GetEncodingComboBox () {
-		return encodingComboBox;
-	}
+
 	
 	/* Private members */
 	
@@ -95,7 +101,15 @@ public abstract class SubtitleFileSaveAsDialog : SubtitleFileChooserDialog {
 			dialog.Title = Catalog.GetString("Save As");
 		else
 			dialog.Title = Catalog.GetString("Save Translation As");
-	
+	}
+
+	private int GetFixedEncoding () {
+		try {
+			return Base.Document.TextFile.Encoding.CodePage;
+		}
+		catch (NullReferenceException) {
+			return -1;
+		}
 	}
 	
 	private void UpdateContents () {
@@ -300,9 +314,8 @@ public abstract class SubtitleFileSaveAsDialog : SubtitleFileChooserDialog {
 			int formatIndex = formatComboBox.Active;
 			chosenSubtitleType = subtitleTypes[formatIndex].Type;
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
-			
-			int encodingIndex = GetActiveEncodingComboBoxItem();
-			chosenEncoding = encodings[encodingIndex];
+
+			chosenEncoding = encodingComboBox.ChosenEncoding;
 			SetReturnValue(true);
 			
 			chosenNewlineType = GetChosenNewlineType();
