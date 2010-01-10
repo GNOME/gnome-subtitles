@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ public class EncodingsDialog : GladeDialog {
 		
 		ListStore store = new ListStore(typeof(string), typeof(string));
 		foreach (string shownEncoding in chosenNames) {
-			EncodingDescription desc = new EncodingDescription();
+			EncodingDescription desc = EncodingDescription.Empty;
 			if (Encodings.Find(shownEncoding, ref desc))
 				store.AppendValues(desc.Description, desc.Name);
 		}

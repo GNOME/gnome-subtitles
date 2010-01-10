@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -121,7 +121,7 @@ public class Encodings {
 			int codePage = defaultEncoding.CodePage;
 		
 			string name = String.Empty;
-			EncodingDescription tempDesc = new EncodingDescription();
+			EncodingDescription tempDesc = EncodingDescription.Empty;
 			if (Find(codePage, ref tempDesc))
 				name = tempDesc.Name;
 			else
@@ -158,7 +158,7 @@ public class Encodings {
 	}
 	
 	public static string GetEncodingName (int codePage) {
-		EncodingDescription desc = new EncodingDescription();
+		EncodingDescription desc = EncodingDescription.Empty;
 		if (Find(codePage, ref desc))
 			return desc.Name;
 

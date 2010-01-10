@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@ public struct EncodingDescription : IComparable {
 	private int codePage;
 	private string name;
 	private string description;
+	private static EncodingDescription emptyEncodingDescription = new EncodingDescription(-1, "-1", "-1");
 	
 	public EncodingDescription (int codePage, string name, string description) {
 		this.codePage = codePage;
@@ -55,6 +56,12 @@ public struct EncodingDescription : IComparable {
 		}
 		else
 			throw new ArgumentException("Object is not EncodingDescription");    
+	}
+
+	/* Static members */
+
+	public static EncodingDescription Empty {
+		get { return emptyEncodingDescription; }
 	}
 	
 }
