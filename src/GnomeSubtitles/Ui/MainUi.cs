@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -102,7 +102,8 @@ public class MainUi {
     	if (args.Length > 0) {
     		string subtitleFile = args[0];
     		Uri videoUri = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : null;
-			Open(subtitleFile, -1, videoUri);
+			int codePage = GetFileOpenCodePageFromConfig();
+			Open(subtitleFile, codePage, videoUri);
 		}
     }
     
@@ -147,7 +148,7 @@ public class MainUi {
     	bool gotOpenResponse = dialog.WaitForResponse();
     	if (gotOpenResponse && ToOpenAfterWarning()) {
     		string filename = dialog.Filename;
-    		int codePage = (dialog.HasChosenEncoding ? dialog.ChosenEncoding.CodePage : -1);
+    		int codePage = (dialog.Encoding.Equals(EncodingDescription.Empty) ? -1 : dialog.Encoding.CodePage);
     		Uri videoUri = dialog.VideoUri;
     		Open(filename, codePage, videoUri);
     	}
@@ -217,7 +218,7 @@ public class MainUi {
     	bool toOpen = dialog.WaitForResponse();
     	if (toOpen && ToOpenTranslationAfterWarning()) {
     		string filename = dialog.Filename;
-    		int codePage = (dialog.HasChosenEncoding ? dialog.ChosenEncoding.CodePage : -1);
+    		int codePage = (dialog.Encoding.Equals(EncodingDescription.Empty) ? -1 : dialog.Encoding.CodePage);
     		OpenTranslation(filename, codePage);
     	}
     }
@@ -349,7 +350,7 @@ public class MainUi {
 			return null;
 		
 		string path = dialog.Filename;
-		Encoding encoding = Encoding.GetEncoding(dialog.ChosenEncoding.CodePage);
+		Encoding encoding = Encoding.GetEncoding(dialog.Encoding.CodePage);
 		SubtitleType subtitleType = dialog.SubtitleType;			
 		NewlineType newlineType = dialog.NewlineType;
 		TimingMode timingMode = Base.TimingMode;
@@ -445,7 +446,20 @@ public class MainUi {
 		}
 		else window.Title = Base.ExecutionContext.ApplicationName;
 	}
-	
+
+	private int GetFileOpenCodePageFromConfig () {
+		switch (Base.Config.PrefsDefaultsFileOpenEncoding) {
+			case ConfigFileOpenEncoding.CurrentLocale: return Encodings.SystemDefault.CodePage;
+			case ConfigFileOpenEncoding.Fixed:
+				string encodingName = Base.Config.PrefsDefaultsFileOpenEncodingFixed;
+				EncodingDescription encodingDescription = EncodingDescription.Empty;
+				Encodings.Find(encodingName, ref encodingDescription);
+				return encodingDescription.CodePage;
+			default: return -1; //Also accounts for Auto Detect
+		}
+	}
+
+
 	/* Event members */
 	
 	private void OnBaseInitFinished () {

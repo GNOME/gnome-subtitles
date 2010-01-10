@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui.Component;
 using GnomeSubtitles.Ui.VideoPreview;
 using Glade;
 using Gtk;
@@ -31,27 +32,37 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FileOpenDialog : SubtitleFileChooserDialog {
-	private ArrayList videoFiles = null; //The full paths of the video files in the current fir
+public class FileOpenDialog : GladeDialog {
+	protected FileChooserDialog dialog = null;
+
+	private string chosenFilename = String.Empty;
+	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
+	private ArrayList videoFiles = null; //The full paths of the video files in the current dir
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
-	
 	private Uri chosenVideoUri = null;
 	private bool autoChooseVideoFile = true;
 
 	/* Constant strings */
 	private const string gladeFilename = "FileOpenDialog.glade";
 
+	/* Components */
+	private EncodingComboBox encodingComboBox = null;
+
 	/* Widgets */
-	[WidgetAttribute] private ComboBox encodingComboBox = null;
+	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox videoComboBox = null;
 	[WidgetAttribute] private Label videoLabel = null;
+	
 	
 	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
 	}
 	
 	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename) {
+		dialog = GetDialog() as FileChooserDialog;
 		dialog.Title = title;
-		
+
+		InitEncodingComboBox();
+
 		if (toEnableVideo)
 			EnableVideo();
 	
@@ -60,22 +71,38 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 
 		SetFilters();
 	}
-	
-	private void EnableVideo () {
-		videoLabel.Visible = true;
-		videoComboBox.Visible = true;
-		
-		autoChooseVideoFile = Base.Config.PrefsVideoAutoChooseFile;
-		videoComboBox.RowSeparatorFunc = SeparatorFunc;
-		
-		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
-		dialog.SelectionChanged += OnSelectionChanged;
+
+	private void InitEncodingComboBox () {
+		int fixedEncoding = -1;
+		ConfigFileOpenEncoding encodingConfig = Base.Config.PrefsDefaultsFileOpenEncoding;
+		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
+			string encodingName = Base.Config.PrefsDefaultsFileOpenEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			fixedEncoding = encodingDescription.CodePage;
+		}
+
+		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, true, null, fixedEncoding);
+
+		/* Only need to handle the case of currentLocale, as Fixed is handled before and AutoDetect is the default behaviour */
+		if (encodingConfig == ConfigFileOpenEncoding.CurrentLocale)
+			encodingComboBox.ActiveSelection = (int)encodingConfig;
 	}
-	
-	/* Public properties */
+
+	/* Overriden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Singleton; }
+	}
+
+	/* Public properties */
+
+	public EncodingDescription Encoding {
+		get { return chosenEncoding; }
+	}
+
+	public string Filename {
+		get { return chosenFilename; }
 	}
 	
 	public bool HasVideoFilename {
@@ -95,15 +122,7 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 		else
 			return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 	}
-	
-	protected override void AddInitialEncodingComboBoxItems () {
-		encodingComboBox.AppendText(Catalog.GetString("Auto Detected"));
-		encodingComboBox.AppendText("-");
-	}
 
-	protected override ComboBox GetEncodingComboBox () {
-		return encodingComboBox;
-	}
 
 	/* Private members */
 	
@@ -207,6 +226,17 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 			return filename;
 	}
 	
+	private void EnableVideo () {
+		videoLabel.Visible = true;
+		videoComboBox.Visible = true;
+		
+		autoChooseVideoFile = Base.Config.PrefsVideoAutoChooseFile;
+		videoComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
+		
+		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
+		dialog.SelectionChanged += OnSelectionChanged;
+	}
+	
 	private void SetFilters () {
 		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
 		FileFilter[] filters = new FileFilter[types.Length + 2];
@@ -251,12 +281,17 @@ public class FileOpenDialog : SubtitleFileChooserDialog {
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
 			chosenFilename = dialog.Filename;
-			int activeEncodingComboBoxItem = GetActiveEncodingComboBoxItem();
-			if (activeEncodingComboBoxItem > 0) {
-				int encodingIndex = activeEncodingComboBoxItem - 2;
-				chosenEncoding = encodings[encodingIndex];
-				hasChosenEncoding = true;
+			chosenEncoding = encodingComboBox.ChosenEncoding;
+
+			if (Base.Config.PrefsDefaultsFileOpenEncodingOption == ConfigFileOpenEncodingOption.RememberLastUsed) {
+				int activeAction = encodingComboBox.ActiveSelection;
+				ConfigFileOpenEncoding activeOption = (ConfigFileOpenEncoding)Enum.ToObject(typeof(ConfigFileOpenEncoding), activeAction);
+				if (((int)activeOption) >= ((int)ConfigFileOpenEncoding.Fixed))
+					Base.Config.PrefsDefaultsFileOpenEncodingFixed = chosenEncoding.Name;
+				else
+					Base.Config.PrefsDefaultsFileOpenEncoding = activeOption;
 			}
+
 			if (videoComboBox.Active > 0) {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoUri = new Uri(videoFiles[videoFileIndex] as string);

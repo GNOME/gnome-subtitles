@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,10 @@ using System;
 
 namespace GnomeSubtitles.Core {
 
+/* Enumerations */
+public enum ConfigFileOpenEncodingOption { AutoDetect = 0, RememberLastUsed = 1, CurrentLocale = 3, Specific = 4 }; //Values match ordering where the options are used
+public enum ConfigFileOpenEncoding { AutoDetect = 0, CurrentLocale = 2, Fixed = 3 };
+
 public class Config {
 	private Client client = null;
 	
@@ -32,7 +36,8 @@ public class Config {
 	private const string keyPrefsSpellCheck = keyPrefs + "spellcheck/";
 	private const string keyPrefsVideo = keyPrefs + "video/";
 	private const string keyPrefsWindow = keyPrefs + "window/";
-	
+	private const string keyPrefsDefaults = keyPrefs + "defaults/";
+
 	/* Constant key strings */
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
@@ -41,6 +46,8 @@ public class Config {
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsWindowHeight = keyPrefsWindow + "height";
 	private const string keyPrefsWindowWidth = keyPrefsWindow + "width";
+	private const string keyPrefsDefaultsFileOpenEncodingOption = keyPrefsDefaults + "file_open_encoding_option";
+	private const string keyPrefsDefaultsFileOpenEncoding = keyPrefsDefaults + "file_open_encoding";
 
 	public Config () {
 		client = new Client();
@@ -85,6 +92,22 @@ public class Config {
 		get { return GetInt(keyPrefsWindowWidth, 690, 200, true, 0, false); }
 		set { Set(keyPrefsWindowWidth, value); }
 	}
+
+	public ConfigFileOpenEncodingOption PrefsDefaultsFileOpenEncodingOption {
+		get { return (ConfigFileOpenEncodingOption)GetEnumValue(keyPrefsDefaultsFileOpenEncodingOption, ConfigFileOpenEncodingOption.AutoDetect); }
+		set { Set(keyPrefsDefaultsFileOpenEncodingOption, value.ToString()); }
+	}
+
+	public ConfigFileOpenEncoding PrefsDefaultsFileOpenEncoding {
+		get { return (ConfigFileOpenEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileOpenEncoding, ConfigFileOpenEncoding.Fixed); }
+		set { Set(keyPrefsDefaultsFileOpenEncoding, value.ToString()); }
+	}
+
+	/* Uses the same key as PrefsDefaultsFileOpenEncoding but is used when there's a specific encoding set */
+	public string PrefsDefaultsFileOpenEncodingFixed {
+		get { return GetString(keyPrefsDefaultsFileOpenEncoding, "ISO-8859-15"); }
+		set { Set(keyPrefsDefaultsFileOpenEncoding, value); }
+	}
 	
 	/* Private members */
 	
@@ -92,7 +115,8 @@ public class Config {
 		try {
 			return (string)client.Get(key);
 		}
-		catch (Exception) {
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
 			return defaultValue;
 		}
 	}
@@ -101,7 +125,8 @@ public class Config {
 		try {
 			return (bool)client.Get(key);
 		}
-		catch (Exception) {
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
 			return defaultValue;
 		}
 	}
@@ -126,7 +151,8 @@ public class Config {
 			
 			return number;
 		}
-		catch (Exception) {
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
 			return defaultValue;
 		}
 	}
@@ -142,9 +168,32 @@ public class Config {
 		catch (Exception e) {
 			Console.Error.WriteLine(e);
 			return defaultValue;
-		}	
+		}
 	}
-	
+
+	/* Gets an enum value from a field which can hold a value not included in the enum (basically assumes an exception
+		can occur). */
+	private Enum GetEnumValueFromSuperset (string key, Enum defaultValue) {
+		try {
+			string stringValue = (string)client.Get(key);
+			return (Enum)Enum.Parse(defaultValue.GetType(), stringValue);
+		}
+		catch (Exception) {
+			return defaultValue;
+		}
+	}
+
+	private Enum GetEnumValue (string key, Enum defaultValue) {
+		try {
+			string stringValue = (string)client.Get(key);
+			return (Enum)Enum.Parse(defaultValue.GetType(), stringValue);
+		}
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
+			return defaultValue;
+		}
+	}
+
 	private void SetStrings (string key, string[] values) {
 		if (values.Length == 0) {
 			string[] newValues = { String.Empty };
@@ -153,7 +202,7 @@ public class Config {
 		else
 			Set(key, values);
 	}
-	
+
 	private void Set (string key, object val) {
 		try {
 			client.Set(key, val);
