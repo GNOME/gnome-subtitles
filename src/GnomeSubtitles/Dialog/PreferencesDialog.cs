@@ -33,10 +33,12 @@ public class PreferencesDialog : GladeDialog {
 
 	/* Components */
 	private EncodingComboBox fileOpenEncoding = null;
+	private EncodingComboBox fileSaveEncoding = null;
 
 	/* Widgets */
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
+	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
 
 	public PreferencesDialog () : base(gladeFilename, false) {
 		LoadValues();
@@ -47,6 +49,7 @@ public class PreferencesDialog : GladeDialog {
 	
 	private void LoadValues () {
 		SetDefaultsFileOpenEncoding();
+		SetDefaultsFileSaveEncoding();
 
 
 		/* Video Auto choose file */
@@ -57,7 +60,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	private void SetDefaultsFileOpenEncoding () {
-		string[] fileOpenAdditionalActions = { Catalog.GetString("Remember Last Used") };
+		string[] additionalActions = { Catalog.GetString("Remember Last Used") };
 		int fixedEncoding = -1;
 		ConfigFileOpenEncodingOption fileOpenEncodingOption = Base.Config.PrefsDefaultsFileOpenEncodingOption;
 		if (fileOpenEncodingOption == ConfigFileOpenEncodingOption.Specific) {
@@ -67,11 +70,29 @@ public class PreferencesDialog : GladeDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileOpenEncoding = new EncodingComboBox(fileOpenEncodingComboBox, true, fileOpenAdditionalActions, fixedEncoding);
+		fileOpenEncoding = new EncodingComboBox(fileOpenEncodingComboBox, true, additionalActions, fixedEncoding);
 		if (fileOpenEncodingOption != ConfigFileOpenEncodingOption.Specific) {
 			fileOpenEncoding.ActiveSelection = (int)fileOpenEncodingOption;
 		}
 		fileOpenEncoding.SelectionChanged += OnDefaultsFileOpenEncodingChanged;
+	}
+
+	private void SetDefaultsFileSaveEncoding () {
+		string[] additionalActions = { Catalog.GetString("Keep Existing"), Catalog.GetString("Remember Last Used") }; //TODO change label
+		int fixedEncoding = -1;
+		ConfigFileSaveEncodingOption fileSaveEncodingOption = Base.Config.PrefsDefaultsFileSaveEncodingOption;
+		if (fileSaveEncodingOption == ConfigFileSaveEncodingOption.Specific) {
+			string encodingName = Base.Config.PrefsDefaultsFileSaveEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			fixedEncoding = encodingDescription.CodePage;
+		}
+
+		fileSaveEncoding = new EncodingComboBox(fileSaveEncodingComboBox, false, additionalActions, fixedEncoding);
+		if (fileSaveEncodingOption != ConfigFileSaveEncodingOption.Specific) {
+			fileSaveEncoding.ActiveSelection = (int)fileSaveEncodingOption;
+		}
+		fileSaveEncoding.SelectionChanged += OnDefaultsFileSaveEncodingChanged;
 	}
 
 	
@@ -82,7 +103,7 @@ public class PreferencesDialog : GladeDialog {
 	private void OnDefaultsFileOpenEncodingChanged (object o, EventArgs args) {
 		int active = fileOpenEncoding.ActiveSelection;
 		ConfigFileOpenEncodingOption activeOption = (ConfigFileOpenEncodingOption)Enum.ToObject(typeof(ConfigFileOpenEncodingOption), active);
-		if (((int)activeOption) > ((int)ConfigFileOpenEncodingOption.Specific))
+		if (((int)activeOption) > ((int)ConfigFileOpenEncodingOption.Specific)) //Positions higher than specific are always specific too
 			activeOption = ConfigFileOpenEncodingOption.Specific;
 
 		Base.Config.PrefsDefaultsFileOpenEncodingOption = activeOption;
@@ -94,12 +115,36 @@ public class PreferencesDialog : GladeDialog {
 			}
 		}
 		else {
-			/* If encoding option is current locale, encoding holds current locale too, otherwise it just holds auto detect */
+			/* If encoding is current locale, encoding holds current locale too, otherwise it just holds auto detect */
 			ConfigFileOpenEncoding encodingToStore = ConfigFileOpenEncoding.AutoDetect;
 			if (activeOption == ConfigFileOpenEncodingOption.CurrentLocale) {
 				encodingToStore = ConfigFileOpenEncoding.CurrentLocale;
 			}
 			Base.Config.PrefsDefaultsFileOpenEncoding = encodingToStore;
+		}
+	}
+
+	private void OnDefaultsFileSaveEncodingChanged (object o, EventArgs args) {
+		int active = fileSaveEncoding.ActiveSelection;
+		ConfigFileSaveEncodingOption activeOption = (ConfigFileSaveEncodingOption)Enum.ToObject(typeof(ConfigFileSaveEncodingOption), active);
+		if (((int)activeOption) > ((int)ConfigFileOpenEncodingOption.Specific)) //Positions higher than specific are always specific too
+			activeOption = ConfigFileSaveEncodingOption.Specific;
+
+		Base.Config.PrefsDefaultsFileSaveEncodingOption = activeOption;
+		/* If encoding is specific, encodingOption=Specific and encoding holds the encoding name */
+		if (activeOption == ConfigFileSaveEncodingOption.Specific) {
+			EncodingDescription chosenEncoding = fileSaveEncoding.ChosenEncoding;
+			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
+				Base.Config.PrefsDefaultsFileSaveEncodingFixed = chosenEncoding.Name;
+			}
+		}
+		else {
+			/* If encoding option is current locale, encoding holds current locale too, otherwise it just holds keep existing */
+			ConfigFileSaveEncoding encodingToStore = ConfigFileSaveEncoding.KeepExisting;
+			if (activeOption == ConfigFileSaveEncodingOption.CurrentLocale) {
+				encodingToStore = ConfigFileSaveEncoding.CurrentLocale;
+			}
+			Base.Config.PrefsDefaultsFileSaveEncoding = encodingToStore;
 		}
 	}
 

@@ -25,6 +25,8 @@ namespace GnomeSubtitles.Core {
 /* Enumerations */
 public enum ConfigFileOpenEncodingOption { AutoDetect = 0, RememberLastUsed = 1, CurrentLocale = 3, Specific = 4 }; //Values match ordering where the options are used
 public enum ConfigFileOpenEncoding { AutoDetect = 0, CurrentLocale = 2, Fixed = 3 };
+public enum ConfigFileSaveEncodingOption { KeepExisting = 0, RememberLastUsed = 1, CurrentLocale = 3, Specific = 4 }; //Values match ordering where the options are used
+public enum ConfigFileSaveEncoding { KeepExisting = -1, CurrentLocale = 0, Fixed = 1 }; //KeepExisting=-1 because it doesn't appear
 
 public class Config {
 	private Client client = null;
@@ -48,6 +50,8 @@ public class Config {
 	private const string keyPrefsWindowWidth = keyPrefsWindow + "width";
 	private const string keyPrefsDefaultsFileOpenEncodingOption = keyPrefsDefaults + "file_open_encoding_option";
 	private const string keyPrefsDefaultsFileOpenEncoding = keyPrefsDefaults + "file_open_encoding";
+	private const string keyPrefsDefaultsFileSaveEncodingOption = keyPrefsDefaults + "file_save_encoding_option";
+	private const string keyPrefsDefaultsFileSaveEncoding = keyPrefsDefaults + "file_save_encoding";
 
 	public Config () {
 		client = new Client();
@@ -108,6 +112,24 @@ public class Config {
 		get { return GetString(keyPrefsDefaultsFileOpenEncoding, "ISO-8859-15"); }
 		set { Set(keyPrefsDefaultsFileOpenEncoding, value); }
 	}
+
+	public ConfigFileSaveEncodingOption PrefsDefaultsFileSaveEncodingOption {
+		get { return (ConfigFileSaveEncodingOption)GetEnumValue(keyPrefsDefaultsFileSaveEncodingOption, ConfigFileSaveEncodingOption.KeepExisting); }
+		set { Set(keyPrefsDefaultsFileSaveEncodingOption, value.ToString()); }
+	}
+
+	public ConfigFileSaveEncoding PrefsDefaultsFileSaveEncoding {
+		get { return (ConfigFileSaveEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveEncoding, ConfigFileSaveEncoding.Fixed); }
+		set { Set(keyPrefsDefaultsFileSaveEncoding, value.ToString()); }
+	}
+
+	/* Uses the same key as PrefsDefaultsFileSaveEncoding but is used when there's a specific encoding set */
+	public string PrefsDefaultsFileSaveEncodingFixed {
+		get { return GetString(keyPrefsDefaultsFileSaveEncoding, "ISO-8859-15"); }
+		set { Set(keyPrefsDefaultsFileSaveEncoding, value); }
+	}
+
+
 	
 	/* Private members */
 	

@@ -56,17 +56,35 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 		this.textType = textType;
 		SetTitle();
-		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, false, null, GetFixedEncoding());
+
+		InitEncodingComboBox();
 
 		FillFormatComboBox();
 		FillNewlineTypeComboBox();
 	}
 
+	private void InitEncodingComboBox () {
+		int fixedEncoding = GetFixedEncoding();
+		ConfigFileSaveEncoding encodingConfig = Base.Config.PrefsDefaultsFileSaveEncoding;
+		if (encodingConfig == ConfigFileSaveEncoding.Fixed) {
+			string encodingName = Base.Config.PrefsDefaultsFileSaveEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			fixedEncoding = encodingDescription.CodePage;
+		}
+
+		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, false, null, fixedEncoding);
+
+		/* Only need to handle the case of currentLocale, as Fixed and Keep Existent is handled before */
+		if (encodingConfig == ConfigFileSaveEncoding.CurrentLocale)
+			encodingComboBox.ActiveSelection = (int)encodingConfig;
+	}
+
 	/* Overriden members */
 
-	public override DialogScope Scope {
+	/*public override DialogScope Scope {
 		get { return DialogScope.Document; }
-	}
+	}*/
 
 	/* Public properties */
 
@@ -316,9 +334,23 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
 
 			chosenEncoding = encodingComboBox.ChosenEncoding;
-			SetReturnValue(true);
-			
+			if (Base.Config.PrefsDefaultsFileSaveEncodingOption == ConfigFileSaveEncodingOption.RememberLastUsed) {
+				int activeAction = encodingComboBox.ActiveSelection;
+				System.Console.WriteLine("Active action: " + activeAction);
+				ConfigFileSaveEncoding activeOption = (ConfigFileSaveEncoding)Enum.ToObject(typeof(ConfigFileSaveEncoding), activeAction);
+				if (((int)activeOption) >= ((int)ConfigFileSaveEncoding.Fixed)) {
+					System.Console.WriteLine("Chosen encoding: " + chosenEncoding.Name);
+					Base.Config.PrefsDefaultsFileSaveEncodingFixed = chosenEncoding.Name;
+				}
+				else {
+					System.Console.WriteLine("Active option: " + activeOption);
+					Base.Config.PrefsDefaultsFileSaveEncoding = activeOption;
+				}
+			}
+
 			chosenNewlineType = GetChosenNewlineType();
+
+			SetReturnValue(true);
 		}
 		return false;
 	}

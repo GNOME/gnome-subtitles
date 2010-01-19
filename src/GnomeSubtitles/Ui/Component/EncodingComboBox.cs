@@ -67,10 +67,10 @@ public class EncodingComboBox {
 	public EncodingDescription ChosenEncoding {
 		get {
 			int active = comboBox.Active;
-			if (hasAutoDetect)
-				return (active == 0 ? EncodingDescription.Empty : (EncodingDescription)encodings[active - (actionCount + 1)]); //1 for break line
+			if (active < actionCount) //An action is active
+				return EncodingDescription.Empty;
 			else
-				return (EncodingDescription)encodings[active];
+				return (EncodingDescription)encodings[active - (actionCount > 0 ? actionCount + 1 : 0)]; //1 for break line
 		}
 	}
 
