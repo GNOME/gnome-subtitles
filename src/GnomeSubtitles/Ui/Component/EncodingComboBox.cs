@@ -75,7 +75,12 @@ public class EncodingComboBox {
 	}
 
 	public bool IsChosenCurrentLocale {
-		get { return comboBox.Active == actionCount + 1; }
+		get {
+			if (actionCount > 0)
+				return comboBox.Active == actionCount + 1;
+			else
+				return comboBox.Active == 0;
+		}
 	}
 
 	public int ActiveSelection {

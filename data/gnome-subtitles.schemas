@@ -14,17 +14,6 @@
 			</locale>
 		</schema>
 		<schema>
-			<key>/schemas/apps/gnome-subtitles/preferences/encodings/fallback</key>
-			<applyto>/apps/gnome-subtitles/preferences/encodings/fallback</applyto>
-			<owner>gnome-subtitles</owner>
-			<type>string</type>
-			<default>ISO-8859-15</default>
-			<locale name="C">
-				<short>Auto detection fallback encoding</short>
-				<long>Encoding to use when auto detection fails.</long>
-			</locale>
-		</schema>
-		<schema>
 			<key>/schemas/apps/gnome-subtitles/preferences/video/auto_choose_file</key>
 			<applyto>/apps/gnome-subtitles/preferences/video/auto_choose_file</applyto>
 			<owner>gnome-subtitles</owner>
@@ -110,6 +99,39 @@
 			<locale name="C">
 				<short>File Open encoding</short>
 				<long>Encoding to use when opening files. Besides the actual encoding, used when "RememberLastUsed" or "Specific" are set in the file_open_encoding_option key, other possible values are "AutoDetect" and "CurrentLocale".</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/defaults/file_open_fallback</key>
+			<applyto>/apps/gnome-subtitles/preferences/defaults/file_open_fallback</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>string</type>
+			<default>ISO-8859-15</default>
+			<locale name="C">
+				<short>Auto detection fallback encoding</short>
+				<long>Encoding to use when auto detection fails.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/defaults/file_save_encoding_option</key>
+			<applyto>/apps/gnome-subtitles/preferences/defaults/file_save_encoding_option</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>string</type>
+			<default>KeepExisting</default>
+			<locale name="C">
+				<short>File Save encoding option</short>
+				<long>Encoding option to use by default when saving files. Possible values are: "KeepExisting" to use the existing file's encoding, "RememberLastUsed" to remember the last used encoding, "CurrentLocale" to use the current locale, and "Specific" to use a specific encoding. The encoding for "RememberLastUsed" and "Specific" is stored in the file_save_encoding key.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/defaults/file_save_encoding</key>
+			<applyto>/apps/gnome-subtitles/preferences/defaults/file_save_encoding</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>string</type>
+			<default></default>
+			<locale name="C">
+				<short>File Save encoding</short>
+				<long>Encoding to use when saving files. Besides the actual encoding, used when "RememberLastUsed" or "Specific" are set in the file_save_encoding_option key, another possible value is "CurrentLocale".</long>
 			</locale>
 		</schema>
 	</schemalist>

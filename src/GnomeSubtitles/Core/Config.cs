@@ -25,6 +25,7 @@ namespace GnomeSubtitles.Core {
 /* Enumerations */
 public enum ConfigFileOpenEncodingOption { AutoDetect = 0, RememberLastUsed = 1, CurrentLocale = 3, Specific = 4 }; //Values match ordering where the options are used
 public enum ConfigFileOpenEncoding { AutoDetect = 0, CurrentLocale = 2, Fixed = 3 };
+public enum ConfigFileOpenFallbackEncoding { CurrentLocale = 0, Fixed = 1 };
 public enum ConfigFileSaveEncodingOption { KeepExisting = 0, RememberLastUsed = 1, CurrentLocale = 3, Specific = 4 }; //Values match ordering where the options are used
 public enum ConfigFileSaveEncoding { KeepExisting = -1, CurrentLocale = 0, Fixed = 1 }; //KeepExisting=-1 because it doesn't appear
 
@@ -50,6 +51,7 @@ public class Config {
 	private const string keyPrefsWindowWidth = keyPrefsWindow + "width";
 	private const string keyPrefsDefaultsFileOpenEncodingOption = keyPrefsDefaults + "file_open_encoding_option";
 	private const string keyPrefsDefaultsFileOpenEncoding = keyPrefsDefaults + "file_open_encoding";
+	private const string keyPrefsDefaultsFileOpenFallbackEncoding = keyPrefsDefaults + "file_open_fallback";
 	private const string keyPrefsDefaultsFileSaveEncodingOption = keyPrefsDefaults + "file_save_encoding_option";
 	private const string keyPrefsDefaultsFileSaveEncoding = keyPrefsDefaults + "file_save_encoding";
 
@@ -111,6 +113,17 @@ public class Config {
 	public string PrefsDefaultsFileOpenEncodingFixed {
 		get { return GetString(keyPrefsDefaultsFileOpenEncoding, "ISO-8859-15"); }
 		set { Set(keyPrefsDefaultsFileOpenEncoding, value); }
+	}
+
+	public ConfigFileOpenFallbackEncoding PrefsDefaultsFileOpenFallbackEncoding {
+		get { return (ConfigFileOpenFallbackEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileOpenFallbackEncoding, ConfigFileOpenFallbackEncoding.Fixed); }
+		set { Set(keyPrefsDefaultsFileOpenFallbackEncoding, value.ToString()); }
+	}
+
+	/* Uses the same key as PrefsDefaultsFileOpenFallbackEncoding but is used when there's a specific encoding set */
+	public string PrefsDefaultsFileOpenFallbackEncodingFixed {
+		get { return GetString(keyPrefsDefaultsFileOpenFallbackEncoding, "ISO-8859-15"); }
+		set { Set(keyPrefsDefaultsFileOpenFallbackEncoding, value); }
 	}
 
 	public ConfigFileSaveEncodingOption PrefsDefaultsFileSaveEncodingOption {

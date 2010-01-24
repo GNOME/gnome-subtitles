@@ -33,12 +33,15 @@ public class PreferencesDialog : GladeDialog {
 
 	/* Components */
 	private EncodingComboBox fileOpenEncoding = null;
+	private EncodingComboBox fileOpenFallbackEncoding = null;
 	private EncodingComboBox fileSaveEncoding = null;
 
 	/* Widgets */
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
+	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
+
 
 	public PreferencesDialog () : base(gladeFilename, false) {
 		LoadValues();
@@ -49,14 +52,11 @@ public class PreferencesDialog : GladeDialog {
 	
 	private void LoadValues () {
 		SetDefaultsFileOpenEncoding();
+		SetDefaultsFileOpenFallbackEncoding();
 		SetDefaultsFileSaveEncoding();
-
 
 		/* Video Auto choose file */
 		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
-
-		
-		
 	}
 
 	private void SetDefaultsFileOpenEncoding () {
@@ -75,6 +75,20 @@ public class PreferencesDialog : GladeDialog {
 			fileOpenEncoding.ActiveSelection = (int)fileOpenEncodingOption;
 		}
 		fileOpenEncoding.SelectionChanged += OnDefaultsFileOpenEncodingChanged;
+	}
+
+	private void SetDefaultsFileOpenFallbackEncoding () {
+		int fixedEncoding = -1;
+		ConfigFileOpenFallbackEncoding fileOpenFallbackEncodingConfig = Base.Config.PrefsDefaultsFileOpenFallbackEncoding;
+		if (fileOpenFallbackEncodingConfig == ConfigFileOpenFallbackEncoding.Fixed) {
+			string encodingName = Base.Config.PrefsDefaultsFileOpenFallbackEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			fixedEncoding = encodingDescription.CodePage;
+		}
+
+		fileOpenFallbackEncoding = new EncodingComboBox(fileOpenFallbackEncodingComboBox, false, null, fixedEncoding);
+		fileOpenFallbackEncoding.SelectionChanged += OnDefaultsFileOpenFallbackEncodingChanged;
 	}
 
 	private void SetDefaultsFileSaveEncoding () {
@@ -121,6 +135,17 @@ public class PreferencesDialog : GladeDialog {
 				encodingToStore = ConfigFileOpenEncoding.CurrentLocale;
 			}
 			Base.Config.PrefsDefaultsFileOpenEncoding = encodingToStore;
+		}
+	}
+
+	private void OnDefaultsFileOpenFallbackEncodingChanged (object o, EventArgs args) {
+		if (fileOpenFallbackEncoding.IsChosenCurrentLocale)
+			Base.Config.PrefsDefaultsFileOpenFallbackEncoding = ConfigFileOpenFallbackEncoding.CurrentLocale;
+		else {
+			EncodingDescription chosenEncoding = fileOpenFallbackEncoding.ChosenEncoding;
+			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
+				Base.Config.PrefsDefaultsFileOpenFallbackEncodingFixed = chosenEncoding.Name;
+			}
 		}
 	}
 

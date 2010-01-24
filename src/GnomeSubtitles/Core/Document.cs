@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -116,6 +116,7 @@ public class Document {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		factory.Encoding = encoding;
+		factory.FallbackEncoding = GetFallbackEncoding();
 
 		SubLib.Core.Domain.Subtitles openedTranslation = factory.Open(path);
 		FileProperties newTranslationFile = factory.FileProperties;
@@ -167,6 +168,7 @@ public class Document {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		factory.Encoding = encoding;
+		factory.FallbackEncoding = GetFallbackEncoding();
 
 		SubLib.Core.Domain.Subtitles openedSubtitles = null;
 		try {
@@ -219,6 +221,18 @@ public class Document {
 		int extraCount = translation.Collection.Count - subtitles.Collection.Count;
 		if (extraCount > 0)
 			subtitles.AddExtra(extraCount);	
+	}
+
+	private Encoding GetFallbackEncoding () {
+		ConfigFileOpenFallbackEncoding fallbackEncodingConfig = Base.Config.PrefsDefaultsFileOpenFallbackEncoding;
+		if (fallbackEncodingConfig == ConfigFileOpenFallbackEncoding.CurrentLocale)
+			return Encoding.GetEncoding(Encodings.SystemDefault.CodePage);
+		else {
+			string encodingName = Base.Config.PrefsDefaultsFileOpenFallbackEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			return Encoding.GetEncoding(encodingDescription.CodePage);
+		}
 	}
 	
 	/* Event members */
