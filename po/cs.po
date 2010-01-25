@@ -4,15 +4,14 @@
 # This file is distributed under the same license as the gnome-subtitles package.
 # Rinu <rinu@seznam.cz>, 2009.
 # Lucas Lommer <llomer@svn.gnome.org>, 2009.
-# Marek Černocký <marek@manet.cz>, 2009.
-
+# Marek Černocký <marek@manet.cz>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2009-11-04 20:56+0000\n"
-"PO-Revision-Date: 2009-11-15 17:50+0100\n"
+"POT-Creation-Date: 2010-01-24 21:43+0000\n"
+"PO-Revision-Date: 2010-01-22 18:17+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +47,7 @@ msgid "Character Coding:"
 msgstr "Kódování znaků:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "Otevřít soubor"
 
@@ -82,10 +81,10 @@ msgstr "Vlastnosti souboru"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:2
 msgid "Newline Type:"
-msgstr "Typ nové řádky:"
+msgstr "Typ zakončení řádku:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:119
 msgid "Save As"
 msgstr "Uložit jako"
 
@@ -473,16 +472,48 @@ msgid "_View"
 msgstr "Zo_brazit"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "<b>Video</b>"
-msgstr "<b>Video</b>"
+msgid "<b>File _Open</b>"
+msgstr "<b>_Otevírání souboru</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "Automatically choose video to open"
-msgstr "Vybrat automaticky video k otevření"
+msgid "<b>File _Save As</b>"
+msgstr "<b>Ukládání souboru jako</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
+msgid "<b>Translation</b>"
+msgstr "<b>Překlad</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:4
+msgid "Automatically choose _video file to open"
+msgstr "Automaticky zvolit _video, které se má otevřít"
+
+#: ../src/Glade/PreferencesDialog.glade.h:5
+msgid "Ch_aracter coding to use:"
+msgstr "Použít kódování zn_aků:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:6
+msgid "Character coding to use:"
+msgstr "Použít kódování znaků:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:7
+msgid "If character coding auto detection fails, use:"
+msgstr "Když selže automatická detekce kódování znaků, použít:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:8
+msgid "Newline type to use:"
+msgstr "Použít zakončení řádku:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "Preferences"
 msgstr "Předvolby"
+
+#: ../src/Glade/PreferencesDialog.glade.h:10
+msgid "Subtitle _format to use:"
+msgstr "Použít _formát titulků:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:11
+msgid "When saving subtitles, also save translation"
+msgstr "Když se ukládají titulky, uložit i překlad"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -612,10 +643,6 @@ msgstr "Synchroni_zovat všechny titulky"
 msgid "Synchronize Timings"
 msgstr "Synchronizovat časování"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
-msgid "gtk-add"
-msgstr "gtk-add"
-
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Otevřít video"
@@ -716,7 +743,7 @@ msgstr "Nastavení startu titulku"
 msgid "Setting Subtitle End"
 msgstr "Nastavení konce titulku"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:200
+#: ../src/GnomeSubtitles/Core/Document.cs:202
 msgid "Unsaved Translation"
 msgstr "Neuložený překlad"
 
@@ -896,26 +923,31 @@ msgstr "Popis"
 msgid "Encoding"
 msgstr "Kódování"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:100
-msgid "Auto Detected"
-msgstr "Automaticky detekované"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
 msgid "None"
 msgstr "Žádné"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:217
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Všechny soubory"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:224
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
 msgid "All Subtitle Files"
 msgstr "Všechny soubory s titulky"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Otevřít soubor s překladem"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:95
+msgid "Remember Last Used"
+msgstr "Zapamatovat naposledy použité"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:95
+msgid "Keep Existing"
+msgstr "Zachovat stávající"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
@@ -938,15 +970,11 @@ msgstr "Vyberte _jazyk textu aktuálně otevřených titulků."
 msgid "Select the translation _language of the current subtitles."
 msgstr "Vyberte _jazyk překladu aktuálně otevřených titulků."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
-msgid "Add or Remove..."
-msgstr "Přidat nebo odebrat…"
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:121
 msgid "Save Translation As"
 msgstr "Uložit překlad jako"
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:223
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:255
 msgid "System Default"
 msgstr "Výchozí nastavení systému"
 
@@ -1162,8 +1190,16 @@ msgstr "Nelze spustit nástroj pro oznamování chyb Bug Buddy."
 msgid "Bug information has been printed to the console."
 msgstr "Informace o chybě byla vypsána do terminálu."
 
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
+msgid "Add or Remove..."
+msgstr "Přidat nebo odebrat…"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+msgid "Auto Detected"
+msgstr "Automaticky detekované"
+
 #. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:135
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:136
 msgid "Unsaved Subtitles"
 msgstr "Neuložené titulky"
 
