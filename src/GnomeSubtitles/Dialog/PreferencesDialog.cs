@@ -22,6 +22,7 @@ using GnomeSubtitles.Core;
 using GnomeSubtitles.Ui.Component;
 using Gtk;
 using Mono.Unix;
+using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Dialog {
@@ -35,12 +36,14 @@ public class PreferencesDialog : GladeDialog {
 	private EncodingComboBox fileOpenEncoding = null;
 	private EncodingComboBox fileOpenFallbackEncoding = null;
 	private EncodingComboBox fileSaveEncoding = null;
+	private SubtitleFormatComboBox fileSaveFormat = null;
 
 	/* Widgets */
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
+	[WidgetAttribute] private ComboBox fileSaveFormatComboBox = null;
 
 
 	public PreferencesDialog () : base(gladeFilename, false) {
@@ -54,6 +57,7 @@ public class PreferencesDialog : GladeDialog {
 		SetDefaultsFileOpenEncoding();
 		SetDefaultsFileOpenFallbackEncoding();
 		SetDefaultsFileSaveEncoding();
+		SetDefaultsFileSaveFormat();
 
 		/* Video Auto choose file */
 		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
@@ -109,6 +113,21 @@ public class PreferencesDialog : GladeDialog {
 		fileSaveEncoding.SelectionChanged += OnDefaultsFileSaveEncodingChanged;
 	}
 
+	private void SetDefaultsFileSaveFormat () {
+		string[] additionalActions = { Catalog.GetString("Keep Existing"), Catalog.GetString("Remember Last Used") }; //TODO change label
+		SubtitleType fixedFormat = SubtitleType.Unknown;
+		ConfigFileSaveFormatOption fileSaveFormatOption = Base.Config.PrefsDefaultsFileSaveFormatOption;
+		if (fileSaveFormatOption == ConfigFileSaveFormatOption.Specific) {
+			fixedFormat = Base.Config.PrefsDefaultsFileSaveFormatFixed;
+		}
+
+		fileSaveFormat = new SubtitleFormatComboBox(fileSaveFormatComboBox, fixedFormat, additionalActions);
+		if (fileSaveFormatOption != ConfigFileSaveFormatOption.Specific) {
+			fileSaveFormat.ActiveSelection = (int)fileSaveFormatOption;
+		}
+		fileSaveFormat.SelectionChanged += OnDefaultsFileSaveFormatChanged;
+	}
+
 	
 	/* Event members */
 
@@ -152,7 +171,7 @@ public class PreferencesDialog : GladeDialog {
 	private void OnDefaultsFileSaveEncodingChanged (object o, EventArgs args) {
 		int active = fileSaveEncoding.ActiveSelection;
 		ConfigFileSaveEncodingOption activeOption = (ConfigFileSaveEncodingOption)Enum.ToObject(typeof(ConfigFileSaveEncodingOption), active);
-		if (((int)activeOption) > ((int)ConfigFileOpenEncodingOption.Specific)) //Positions higher than specific are always specific too
+		if (((int)activeOption) > ((int)ConfigFileSaveEncodingOption.Specific)) //Positions higher than specific are always specific too
 			activeOption = ConfigFileSaveEncodingOption.Specific;
 
 		Base.Config.PrefsDefaultsFileSaveEncodingOption = activeOption;
@@ -170,6 +189,26 @@ public class PreferencesDialog : GladeDialog {
 				encodingToStore = ConfigFileSaveEncoding.CurrentLocale;
 			}
 			Base.Config.PrefsDefaultsFileSaveEncoding = encodingToStore;
+		}
+	}
+
+	private void OnDefaultsFileSaveFormatChanged (object o, EventArgs args) {
+		int active = fileSaveFormat.ActiveSelection;
+		ConfigFileSaveFormatOption activeOption = (ConfigFileSaveFormatOption)Enum.ToObject(typeof(ConfigFileSaveFormatOption), active);
+		if (((int)activeOption) > ((int)ConfigFileSaveFormatOption.Specific)) //Positions higher than specific are always specific too
+			activeOption = ConfigFileSaveFormatOption.Specific;
+
+		Base.Config.PrefsDefaultsFileSaveFormatOption = activeOption;
+		/* If format is specific, formatOption=Specific and format holds the format name */
+		if (activeOption == ConfigFileSaveFormatOption.Specific) {
+			SubtitleType chosenFormat = fileSaveFormat.ChosenSubtitleType;
+			if (!chosenFormat.Equals(SubtitleType.Unknown)) {
+				Base.Config.PrefsDefaultsFileSaveFormatFixed = chosenFormat;
+			}
+		}
+		else {
+			/* If encoding option is keep existing or remember last, use keep existing */
+			Base.Config.PrefsDefaultsFileSaveFormat = ConfigFileSaveFormat.KeepExisting;
 		}
 	}
 

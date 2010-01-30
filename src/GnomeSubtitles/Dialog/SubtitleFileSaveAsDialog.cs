@@ -36,7 +36,6 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
 	private SubtitleTextType textType;
 	private SubtitleType chosenSubtitleType;
-	private SubtitleTypeInfo[] subtitleTypes = null;
 	private NewlineType chosenNewlineType;
 
 	/* Constant strings */
@@ -44,10 +43,11 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 	/* Components */
 	private EncodingComboBox encodingComboBox = null;
+	private SubtitleFormatComboBox formatComboBox = null;
 
 	/* Widgets */
 	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox formatComboBox = null;
+	[WidgetAttribute] private ComboBox subtitleFormatComboBox = null;
 	[WidgetAttribute] private ComboBox newlineTypeComboBox = null;
 
 
@@ -58,33 +58,12 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 		SetTitle();
 
 		InitEncodingComboBox();
+		InitFormatComboBox();
 
-		FillFormatComboBox();
 		FillNewlineTypeComboBox();
+		UpdateContents(); //TODO check 
 	}
 
-	private void InitEncodingComboBox () {
-		int fixedEncoding = GetFixedEncoding();
-		ConfigFileSaveEncoding encodingConfig = Base.Config.PrefsDefaultsFileSaveEncoding;
-		if (encodingConfig == ConfigFileSaveEncoding.Fixed) {
-			string encodingName = Base.Config.PrefsDefaultsFileSaveEncodingFixed;
-			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
-			fixedEncoding = encodingDescription.CodePage;
-		}
-
-		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, false, null, fixedEncoding);
-
-		/* Only need to handle the case of currentLocale, as Fixed and Keep Existent is handled before */
-		if (encodingConfig == ConfigFileSaveEncoding.CurrentLocale)
-			encodingComboBox.ActiveSelection = (int)encodingConfig;
-	}
-
-	/* Overriden members */
-
-	/*public override DialogScope Scope {
-		get { return DialogScope.Document; }
-	}*/
 
 	/* Public properties */
 
@@ -103,16 +82,40 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	public NewlineType NewlineType {
 		get { return chosenNewlineType; }
 	}
-	
-	/* Public methods */
-	
-	public override void Show () {
-		UpdateContents();
-		base.Show();		
-	}
 
 	
 	/* Private members */
+	
+	private void InitEncodingComboBox () {
+		int fixedEncoding = GetFixedEncoding();
+		ConfigFileSaveEncoding encodingConfig = Base.Config.PrefsDefaultsFileSaveEncoding;
+		if (encodingConfig == ConfigFileSaveEncoding.Fixed) {
+			string encodingName = Base.Config.PrefsDefaultsFileSaveEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			fixedEncoding = encodingDescription.CodePage;
+		}
+
+		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, false, null, fixedEncoding);
+
+		/* Only need to handle the case of currentLocale, as Fixed and Keep Existent is handled before */
+		if (encodingConfig == ConfigFileSaveEncoding.CurrentLocale)
+			encodingComboBox.ActiveSelection = (int)encodingConfig;
+	}
+
+	private void InitFormatComboBox () {
+		SubtitleType fixedSubtitleType = GetFixedSubtitleType();
+		ConfigFileSaveFormat formatConfig = Base.Config.PrefsDefaultsFileSaveFormat;
+		if (formatConfig == ConfigFileSaveFormat.Fixed) {
+			fixedSubtitleType = Base.Config.PrefsDefaultsFileSaveFormatFixed;
+		}
+		/* Check if fixed subtitle type has been correctly identified */
+		if (fixedSubtitleType == SubtitleType.Unknown) {
+			fixedSubtitleType = SubtitleType.SubRip;
+		}
+
+		this.formatComboBox = new SubtitleFormatComboBox(subtitleFormatComboBox, fixedSubtitleType, null);
+	}
 	
 	private void SetTitle () {
 		if (textType == SubtitleTextType.Text)
@@ -129,6 +132,15 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			return -1;
 		}
 	}
+
+	private SubtitleType GetFixedSubtitleType () {
+		try {
+			return Base.Document.TextFile.SubtitleType;
+		}
+		catch (NullReferenceException) {
+			return SubtitleType.Unknown;
+		}
+	}
 	
 	private void UpdateContents () {
 		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
@@ -143,57 +155,9 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
 		   while in the constructor. After constructing it works fine. */
 
-		SetActiveFormat();
 		SetActiveNewlineType();
 	}
-
-	private void FillFormatComboBox () {
-		subtitleTypes = Subtitles.AvailableTypesSorted;
-		
-		foreach (SubtitleTypeInfo typeInfo in subtitleTypes) {
-			formatComboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
-		}	
-	}
-
-	private void SetActiveFormat () {
-		SubtitleType subtitleType = Base.Document.TextFile.SubtitleType; //The type of the subtitle file
-		int position = FindSubtitleTypePosition(subtitleType);
-		if (position != -1) {
-			formatComboBox.Active = position;
-			return;
-		}
-		
-		/* The current subtitle type was not found, trying the most common based on the TimingMode */
-		TimingMode timingMode = Base.TimingMode;
-		
-		/* If timing mode is Frames, set to MicroDVD */
-		if (timingMode == TimingMode.Frames) {
-			position = FindSubtitleTypePosition(SubtitleType.MicroDVD);
-			if (position != -1) {
-				formatComboBox.Active = position;
-				return;
-			}
-		}
-		
-		/* If SubRip subtitle type is found, use it */
-		position = FindSubtitleTypePosition(SubtitleType.SubRip);
-		if (position != -1) {
-			formatComboBox.Active = position;
-			return;
-		}
-		
-		/* All options tried to no aval, selecting the first */
-		formatComboBox.Active = 0;
-	}
 	
-	private int FindSubtitleTypePosition (SubtitleType type) {
-		for (int position = 0 ; position < subtitleTypes.Length ; position++) {
-			SubtitleType current = subtitleTypes[position].Type;
-			if (current == type)
-				return position;
-		}
-		return -1;
-	}
 	
 	private string UpdateFilenameExtension (string filename, SubtitleType type) {
 		SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
@@ -206,7 +170,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			return filename;
 		else if (index == -1) //filename doesn't have an extension, appending
 			return filename + newExtensionDotted;
-		else if (IsSubtitleExtension(extensionDotted))  { //filename's extension is a subtitle extension
+		else if (Subtitles.IsSubtitleExtension(extensionDotted))  { //filename's extension is a subtitle extension
 			int dotIndex = index - 1;
 			return filename.Substring(0, dotIndex) + newExtensionDotted;
 		}
@@ -226,15 +190,6 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			return filename + "." + typeInfo.PreferredExtension;
 	}
 	
-	private bool IsSubtitleExtension (string dottedExtension) {
-		string extension = dottedExtension.Substring(1); //Remove the starting dot
-		foreach (SubtitleTypeInfo type in subtitleTypes) {
-			if (type.HasExtension(extension))
-				return true;
-		}
-		return false;
-	}
-
 	/// <summary>Returns the extension for the specified filename.</summary>
 	private string GetFilenameExtension (string filename, out int index) {
 		int dotIndex = filename.LastIndexOf('.');
@@ -329,26 +284,31 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			int formatIndex = formatComboBox.Active;
-			chosenSubtitleType = subtitleTypes[formatIndex].Type;
-			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
 
+			/* Check chosen encoding */
 			chosenEncoding = encodingComboBox.ChosenEncoding;
 			if (Base.Config.PrefsDefaultsFileSaveEncodingOption == ConfigFileSaveEncodingOption.RememberLastUsed) {
 				int activeAction = encodingComboBox.ActiveSelection;
-				System.Console.WriteLine("Active action: " + activeAction);
 				ConfigFileSaveEncoding activeOption = (ConfigFileSaveEncoding)Enum.ToObject(typeof(ConfigFileSaveEncoding), activeAction);
 				if (((int)activeOption) >= ((int)ConfigFileSaveEncoding.Fixed)) {
-					System.Console.WriteLine("Chosen encoding: " + chosenEncoding.Name);
 					Base.Config.PrefsDefaultsFileSaveEncodingFixed = chosenEncoding.Name;
 				}
 				else {
-					System.Console.WriteLine("Active option: " + activeOption);
 					Base.Config.PrefsDefaultsFileSaveEncoding = activeOption;
 				}
 			}
 
+			/* Check chosen subtitle format */
+			chosenSubtitleType = formatComboBox.ChosenSubtitleType;
+			if (Base.Config.PrefsDefaultsFileSaveFormatOption == ConfigFileSaveFormatOption.RememberLastUsed) {
+				Base.Config.PrefsDefaultsFileSaveFormatFixed = chosenSubtitleType;
+			}
+
+			/* Check chosen newline type */
 			chosenNewlineType = GetChosenNewlineType();
+
+			/* Check chosen filename */
+			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
 
 			SetReturnValue(true);
 		}
@@ -356,7 +316,6 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	}
 
 	private void OnFormatChanged (object o, EventArgs args) {
-		SubtitleType type = subtitleTypes[formatComboBox.Active].Type;
 		string filename = dialog.Filename;
 		if ((filename == null) || (filename == String.Empty))
 			return;
@@ -366,7 +325,8 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			filename = filename.Substring(folder.Length + 1);
 		}
 
-		filename = UpdateFilenameExtension(filename, type);
+		SubtitleType subtitleType = formatComboBox.ChosenSubtitleType;
+		filename = UpdateFilenameExtension(filename, subtitleType);
 		dialog.CurrentName = filename;
 	}
 

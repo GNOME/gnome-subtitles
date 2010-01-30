@@ -18,6 +18,7 @@
  */
 
 using GConf;
+using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Core {
@@ -28,6 +29,8 @@ public enum ConfigFileOpenEncoding { AutoDetect = 0, CurrentLocale = 2, Fixed = 
 public enum ConfigFileOpenFallbackEncoding { CurrentLocale = 0, Fixed = 1 };
 public enum ConfigFileSaveEncodingOption { KeepExisting = 0, RememberLastUsed = 1, CurrentLocale = 3, Specific = 4 }; //Values match ordering where the options are used
 public enum ConfigFileSaveEncoding { KeepExisting = -1, CurrentLocale = 0, Fixed = 1 }; //KeepExisting=-1 because it doesn't appear
+public enum ConfigFileSaveFormatOption { KeepExisting = 0, RememberLastUsed = 1, Specific = 3 }; //Values match ordering where the options are used
+public enum ConfigFileSaveFormat { KeepExisting = -1, Fixed = 0 }; //KeepExisting=-1 because it doesn't appear
 
 public class Config {
 	private Client client = null;
@@ -54,6 +57,8 @@ public class Config {
 	private const string keyPrefsDefaultsFileOpenFallbackEncoding = keyPrefsDefaults + "file_open_fallback";
 	private const string keyPrefsDefaultsFileSaveEncodingOption = keyPrefsDefaults + "file_save_encoding_option";
 	private const string keyPrefsDefaultsFileSaveEncoding = keyPrefsDefaults + "file_save_encoding";
+	private const string keyPrefsDefaultsFileSaveFormatOption = keyPrefsDefaults + "file_save_format_option";
+	private const string keyPrefsDefaultsFileSaveFormat = keyPrefsDefaults + "file_save_format";
 
 	public Config () {
 		client = new Client();
@@ -142,6 +147,21 @@ public class Config {
 		set { Set(keyPrefsDefaultsFileSaveEncoding, value); }
 	}
 
+	public ConfigFileSaveFormatOption PrefsDefaultsFileSaveFormatOption {
+		get { return (ConfigFileSaveFormatOption)GetEnumValue(keyPrefsDefaultsFileSaveFormatOption, ConfigFileSaveFormatOption.KeepExisting); }
+		set { Set(keyPrefsDefaultsFileSaveFormatOption, value.ToString()); }
+	}
+
+	public ConfigFileSaveFormat PrefsDefaultsFileSaveFormat {
+		get { return (ConfigFileSaveFormat)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveFormat, ConfigFileSaveFormat.Fixed); }
+		set { Set(keyPrefsDefaultsFileSaveFormat, value.ToString()); }
+	}
+
+	/* Uses the same key as PrefsDefaultsFileSaveFormat but is used when there's a specific format set */
+	public SubtitleType PrefsDefaultsFileSaveFormatFixed {
+		get { return (SubtitleType)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveFormat, SubtitleType.SubRip); }
+		set { Set(keyPrefsDefaultsFileSaveFormat, value.ToString()); }
+	}
 
 	
 	/* Private members */

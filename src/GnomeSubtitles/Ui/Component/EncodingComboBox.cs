@@ -52,6 +52,11 @@ public class EncodingComboBox {
 
 	public EncodingComboBox (ComboBox comboBox, bool hasAutoDetect) : this(comboBox, hasAutoDetect, null, -1) {
 	}
+
+
+	/* Events */
+	
+	public event EventHandler SelectionChanged;
 	
 
 	/* Public properties */
@@ -87,10 +92,6 @@ public class EncodingComboBox {
 		get { return comboBox.Active; }
 		set { SetActiveItem(value, false); }
 	}
-
-	/* Events */
-	
-	public event EventHandler SelectionChanged;
 
 
 	/* Private members */

@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,10 @@ namespace SubLib.Core.Domain {
 public class Subtitles {
 	private SubtitleCollection collection = null;
 	private SubtitleProperties properties = null;
+
+	/* Variable cache */
+	private static SubtitleTypeInfo[] availableTypes = null;
+	private static SubtitleTypeInfo[] availableTypesSorted = null;
 	
 	/// <summary>A collection which contains the subtitles.</summary>
 	public SubtitleCollection Collection {
@@ -47,21 +51,27 @@ public class Subtitles {
 	/// <summary>Information about the available subtitle types.</summary>
 	public static SubtitleTypeInfo[] AvailableTypes {
 		get {
-			SubtitleFormat[] formats = BuiltInSubtitleFormats.SubtitleFormats;
-			SubtitleTypeInfo[] types = new SubtitleTypeInfo[formats.Length];
-			for (int count = 0 ; count < formats.Length ; count++)
-				types[count] = new SubtitleTypeInfo(formats[count]);
-
-			return types;	
+			if (availableTypes == null) {
+				SubtitleFormat[] formats = BuiltInSubtitleFormats.SubtitleFormats;
+				SubtitleTypeInfo[] types = new SubtitleTypeInfo[formats.Length];
+				for (int index = 0 ; index < formats.Length ; index++) {
+					types[index] = new SubtitleTypeInfo(formats[index]);
+				}
+				availableTypes = types;
+			}
+			return availableTypes;
 		}
 	}
 
 	/// <summary>Information about the available subtitle types, sorted by their names.</summary>
 	public static SubtitleTypeInfo[] AvailableTypesSorted {
 		get {
-			SubtitleTypeInfo[] types = AvailableTypes;
-			Array.Sort(types);
-			return types;	
+			if (availableTypesSorted == null) {
+				SubtitleTypeInfo[] types = AvailableTypes;
+				Array.Sort(types);
+				availableTypesSorted = types;
+			}
+			return availableTypesSorted;	
 		}
 	}
 	
@@ -72,6 +82,16 @@ public class Subtitles {
 		SubtitleFormat format = BuiltInSubtitleFormats.GetFormat(type);
 		return new SubtitleTypeInfo(format);
 	}
+
+	public static bool IsSubtitleExtension (string dottedExtension) {
+		string extension = dottedExtension.Substring(1); //Remove the starting dot
+		foreach (SubtitleTypeInfo type in AvailableTypes) {
+			if (type.HasExtension(extension))
+				return true;
+		}
+		return false;
+	}
+
 	
 	public override string ToString(){
 		return Collection.ToString() + "\n-------------------------------------------\n" + Properties.ToString();

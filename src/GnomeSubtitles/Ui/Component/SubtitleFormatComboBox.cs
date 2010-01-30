@@ -1,0 +1,164 @@
+/*
+ * This file is part of Gnome Subtitles.
+ * Copyright (C) 2006-2010 Pedro Castro
+ *
+ * Gnome Subtitles is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Gnome Subtitles is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+using Gtk;
+using SubLib.Core.Domain;
+using System;
+
+namespace GnomeSubtitles.Ui.Component {
+
+public class SubtitleFormatComboBox {
+
+	private ComboBox comboBox = null;
+	private SubtitleTypeInfo[] subtitleTypes = null;
+	private string[] additionalActions = null; //
+	private SubtitleType fixedSubtitleType = SubtitleType.Unknown; //A subtitle type that must be selected
+
+	public SubtitleFormatComboBox (ComboBox comboBox, SubtitleType fixedSubtitleType, string[] additionalActions) {
+		this.comboBox = comboBox;
+		this.fixedSubtitleType = fixedSubtitleType;
+		this.additionalActions = additionalActions;
+
+		InitComboBoxModel();
+		SetComboBox();
+		ConnectHandlers();
+	}
+
+	/* Events */
+
+	public event EventHandler SelectionChanged;
+
+
+	/* Public properties */
+
+	public bool HasChosenAction {
+		get { return comboBox.Active < GetActionCount(); }
+	}
+
+	public int ChosenAction {
+		get { return (HasChosenAction ? comboBox.Active : -1); }
+	}
+
+	public SubtitleType ChosenSubtitleType {
+		get {
+			int active = comboBox.Active;
+			int actionCount = GetActionCount();
+			if (active < actionCount) //An action is active
+				return SubtitleType.Unknown;
+			else
+				return subtitleTypes[active - (actionCount > 0 ? actionCount + 1 : 0)].Type; //1 for break line
+		}
+	}
+
+	public int ActiveSelection {
+		get { return comboBox.Active; }
+		set { SetActiveItem(value, false); }
+	}
+
+
+	/* Private members */
+
+	private void InitComboBoxModel () {
+		ComboBoxUtil.InitComboBox(comboBox);
+	}
+
+	private void SetComboBox () {
+		subtitleTypes = Subtitles.AvailableTypesSorted;
+		FillComboBox();
+	}
+
+	private void FillComboBox () {
+		DisconnectComboBoxChangedSignal();
+
+		(comboBox.Model as ListStore).Clear();
+
+		int currentItem = 0;
+		int activeItem = 0;
+
+		/* Add additional actions */
+		if (additionalActions != null) {
+			foreach (string additionalAction in additionalActions) {
+				comboBox.AppendText(additionalAction);
+				currentItem++;
+			}
+		}
+
+		if (currentItem != 0) {
+			comboBox.AppendText("-");
+			currentItem++;
+		}
+
+		/* Add subtitle formats */
+		foreach (SubtitleTypeInfo typeInfo in subtitleTypes) {
+			comboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
+			if (typeInfo.Type == fixedSubtitleType) {
+				activeItem = currentItem;
+			}
+			currentItem++;
+		}
+
+		SetActiveItem(activeItem, false); //Don't use silent change because the signal is already disabled
+
+		ConnectComboBoxChangedSignal();
+	}
+
+	private void SetActiveItem (int item, bool silent) {
+		int itemCount = comboBox.Model.IterNChildren();
+		if (itemCount == 0)
+			return;
+
+		if (silent)
+			DisconnectComboBoxChangedSignal();
+
+		comboBox.Active = item;
+
+		if (silent)
+			ConnectComboBoxChangedSignal();
+	}
+
+	private int GetActionCount () {
+		return (additionalActions != null ? additionalActions.Length : 0);
+	}
+
+
+	/* Event members */
+	
+	#pragma warning disable 169		//Disables warning about handlers not being used
+
+	private void ConnectHandlers () {
+		comboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
+	}
+
+	private void ConnectComboBoxChangedSignal () {
+		comboBox.Changed += OnComboBoxChanged;
+	}
+
+	private void DisconnectComboBoxChangedSignal () {
+		comboBox.Changed -= OnComboBoxChanged;
+	}
+
+	private void OnComboBoxChanged (object o, EventArgs args) {
+		if (SelectionChanged != null) {
+			SelectionChanged(o, args);
+		}
+	}
+
+}
+
+}
