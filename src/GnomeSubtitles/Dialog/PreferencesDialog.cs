@@ -37,6 +37,7 @@ public class PreferencesDialog : GladeDialog {
 	private EncodingComboBox fileOpenFallbackEncoding = null;
 	private EncodingComboBox fileSaveEncoding = null;
 	private SubtitleFormatComboBox fileSaveFormat = null;
+	private NewlineTypeComboBox fileSaveNewline = null;
 
 	/* Widgets */
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
@@ -44,6 +45,7 @@ public class PreferencesDialog : GladeDialog {
 	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveFormatComboBox = null;
+	[WidgetAttribute] private ComboBox fileSaveNewlineComboBox = null;
 
 
 	public PreferencesDialog () : base(gladeFilename, false) {
@@ -58,6 +60,7 @@ public class PreferencesDialog : GladeDialog {
 		SetDefaultsFileOpenFallbackEncoding();
 		SetDefaultsFileSaveEncoding();
 		SetDefaultsFileSaveFormat();
+		SetDefaultsFileSaveNewline();
 
 		/* Video Auto choose file */
 		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
@@ -126,6 +129,21 @@ public class PreferencesDialog : GladeDialog {
 			fileSaveFormat.ActiveSelection = (int)fileSaveFormatOption;
 		}
 		fileSaveFormat.SelectionChanged += OnDefaultsFileSaveFormatChanged;
+	}
+
+	private void SetDefaultsFileSaveNewline () {
+		string[] additionalActions = { Catalog.GetString("Remember Last Used") }; //TODO change label
+		NewlineType newlineTypeToSelect = NewlineType.Unknown;
+		ConfigFileSaveNewlineOption fileSaveNewlineOption = Base.Config.PrefsDefaultsFileSaveNewlineOption;
+		if (fileSaveNewlineOption == ConfigFileSaveNewlineOption.Specific) {
+			newlineTypeToSelect = Base.Config.PrefsDefaultsFileSaveNewline;
+		}
+
+		fileSaveNewline = new NewlineTypeComboBox(fileSaveNewlineComboBox, newlineTypeToSelect, additionalActions);
+		if (fileSaveNewlineOption != ConfigFileSaveNewlineOption.Specific) {
+			fileSaveNewline.ActiveSelection = (int)fileSaveNewlineOption;
+		}
+		fileSaveNewline.SelectionChanged += OnDefaultsFileSaveNewlineChanged;
 	}
 
 	
@@ -207,8 +225,28 @@ public class PreferencesDialog : GladeDialog {
 			}
 		}
 		else {
-			/* If encoding option is keep existing or remember last, use keep existing */
+			/* If format option is keep existing or remember last, use keep existing */
 			Base.Config.PrefsDefaultsFileSaveFormat = ConfigFileSaveFormat.KeepExisting;
+		}
+	}
+
+	private void OnDefaultsFileSaveNewlineChanged (object o, EventArgs args) {
+		int active = fileSaveNewline.ActiveSelection;
+		ConfigFileSaveNewlineOption activeOption = (ConfigFileSaveNewlineOption)Enum.ToObject(typeof(ConfigFileSaveNewlineOption), active);
+		if (((int)activeOption) > ((int)ConfigFileSaveNewlineOption.Specific)) //Positions higher than specific are always specific too
+			activeOption = ConfigFileSaveNewlineOption.Specific;
+
+		Base.Config.PrefsDefaultsFileSaveNewlineOption = activeOption;
+		/* If newline is specific, newlineOption=Specific and newline holds the newline type name */
+		if (activeOption == ConfigFileSaveNewlineOption.Specific) {
+			NewlineType chosenNewlineType = fileSaveNewline.ChosenNewlineType;
+			if (!chosenNewlineType.Equals(NewlineType.Unknown)) {
+				Base.Config.PrefsDefaultsFileSaveNewline = chosenNewlineType;
+			}
+		}
+		else {
+			/* If newline option is remember last, use the system default */
+			Base.Config.PrefsDefaultsFileSaveNewline = Core.Util.GetSystemNewlineType();
 		}
 	}
 

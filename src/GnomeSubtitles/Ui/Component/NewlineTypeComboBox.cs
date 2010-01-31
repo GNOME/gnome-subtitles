@@ -18,25 +18,25 @@
  */
 
 using Gtk;
+using Mono.Unix;
 using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Ui.Component {
 
-public class SubtitleFormatComboBox {
+public class NewlineTypeComboBox {
 
 	private ComboBox comboBox = null;
-	private SubtitleTypeInfo[] subtitleTypes = null;
-	private string[] additionalActions = null; //
-	private SubtitleType fixedSubtitleType = SubtitleType.Unknown; //A subtitle type that must be selected
+	private NewlineType newlineTypeToSelect = NewlineType.Unknown;
+	private string[] additionalActions = null;
 
-	public SubtitleFormatComboBox (ComboBox comboBox, SubtitleType fixedSubtitleType, string[] additionalActions) {
+	public NewlineTypeComboBox (ComboBox comboBox, NewlineType newlineTypeToSelect, string[] additionalActions) {
 		this.comboBox = comboBox;
-		this.fixedSubtitleType = fixedSubtitleType;
+		this.newlineTypeToSelect = newlineTypeToSelect;
 		this.additionalActions = additionalActions;
 
 		InitComboBoxModel();
-		SetComboBox();
+		FillComboBox();
 		ConnectHandlers();
 	}
 
@@ -55,14 +55,16 @@ public class SubtitleFormatComboBox {
 		get { return (HasChosenAction ? comboBox.Active : -1); }
 	}
 
-	public SubtitleType ChosenSubtitleType {
+	public NewlineType ChosenNewlineType {
 		get {
 			int active = comboBox.Active;
 			int actionCount = GetActionCount();
 			if (active < actionCount) //An action is active
-				return SubtitleType.Unknown;
-			else
-				return subtitleTypes[active - (actionCount > 0 ? actionCount + 1 : 0)].Type; //1 for break line
+				return NewlineType.Unknown;
+			else {
+				int newlineTypePosition = active - (actionCount > 0 ? actionCount + 1 : 0) + 1; //plus 1 because NewlineType 0 is unknown
+				return (NewlineType)Enum.ToObject(typeof(NewlineType), newlineTypePosition);
+			}
 		}
 	}
 
@@ -78,18 +80,10 @@ public class SubtitleFormatComboBox {
 		ComboBoxUtil.InitComboBox(comboBox);
 	}
 
-	private void SetComboBox () {
-		subtitleTypes = Subtitles.AvailableTypesSorted;
-		FillComboBox();
-	}
-
 	private void FillComboBox () {
 		DisconnectComboBoxChangedSignal();
 
 		(comboBox.Model as ListStore).Clear();
-
-		int currentItem = 0;
-		int activeItem = 0;
 
 		bool hasAdditionalActions = (additionalActions != null) && (additionalActions.Length > 0);
 
@@ -99,19 +93,25 @@ public class SubtitleFormatComboBox {
 				comboBox.AppendText(additionalAction);
 			}
 			comboBox.AppendText("-");
-			currentItem += additionalActions.Length + 1;
 		}
 
-		/* Add subtitle formats */
-		foreach (SubtitleTypeInfo typeInfo in subtitleTypes) {
-			comboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
-			if (typeInfo.Type == fixedSubtitleType) {
-				activeItem = currentItem;
-			}
-			currentItem++;
-		}
+		/* Prepare newline types to add */
+		string mac = "Macintosh";
+		string unix = "Unix";
+		string windows = "Windows";
+		string systemDefault = " (" + Catalog.GetString("System Default") + ")";
+		NewlineType systemNewline = Core.Util.GetSystemNewlineType();
+		SetSystemNewlineSuffix(systemNewline, ref mac, ref unix, ref windows, systemDefault);
 
-		SetActiveItem(activeItem, false); //Don't use silent change because the signal is already disabled
+		/* Add newline types */
+		comboBox.AppendText(mac);
+		comboBox.AppendText(unix);
+		comboBox.AppendText(windows);
+
+		if (newlineTypeToSelect != NewlineType.Unknown) {
+			int activeItem = (int)newlineTypeToSelect - 1 + (hasAdditionalActions ? additionalActions.Length + 1 : 0);
+			SetActiveItem(activeItem, false); //Don't use silent change because the signal is already disabled
+		}
 
 		ConnectComboBoxChangedSignal();
 	}
@@ -134,6 +134,19 @@ public class SubtitleFormatComboBox {
 		return (additionalActions != null ? additionalActions.Length : 0);
 	}
 
+	private void SetSystemNewlineSuffix (NewlineType newline, ref string mac, ref string unix, ref string windows, string suffix) {
+		switch (newline) {
+			case NewlineType.Macintosh:
+				mac += suffix;
+				break;
+			case NewlineType.Unix:
+				unix += suffix;
+				break;
+			case NewlineType.Windows:
+				windows += suffix;
+				break;
+		}
+	}
 
 	/* Event members */
 	

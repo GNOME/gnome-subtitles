@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -234,6 +234,19 @@ public class Util {
 			return text;
 		else
 			return String.Format(text, args);
+	}
+
+	public static NewlineType GetSystemNewlineType () {
+		switch (Environment.NewLine) {
+			case "\n":
+				return NewlineType.Unix;
+			case "\r":
+				return NewlineType.Macintosh;
+			case "\r\n":
+				return NewlineType.Windows;
+			default:
+				return NewlineType.Unknown;
+		}
 	}
 
 }

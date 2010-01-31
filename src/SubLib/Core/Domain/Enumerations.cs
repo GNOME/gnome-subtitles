@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -107,15 +107,16 @@ public enum SubtitleType {
 public enum NewlineType { 
 	/// <summary>Unknown newline type.</summary>
 	Unknown ,
+
+	/// <summary>Macintosh newline type.</summary>
+    Macintosh,
 	
 	/// <summary>Unix newline type.</summary>
 	Unix,
 	
 	/// <summary>Windows newline type.</summary>
-	Windows,
-	
-	/// <summary>Macintosh newline type.</summary>
-    Macintosh,
+	Windows
+
 };
 
 /// <summary>

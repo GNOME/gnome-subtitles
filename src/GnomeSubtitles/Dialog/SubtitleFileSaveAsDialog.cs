@@ -42,8 +42,9 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	private const string gladeFilename = "FileSaveAsDialog.glade";
 
 	/* Components */
-	private EncodingComboBox encodingComboBox = null;
-	private SubtitleFormatComboBox formatComboBox = null;
+	private EncodingComboBox encodingComboBoxComponent = null;
+	private SubtitleFormatComboBox formatComboBoxComponent = null;
+	private NewlineTypeComboBox newlineComboBoxComponent = null;
 
 	/* Widgets */
 	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
@@ -59,9 +60,10 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 		InitEncodingComboBox();
 		InitFormatComboBox();
+		InitNewlineComboBox();
 
-		FillNewlineTypeComboBox();
-		UpdateContents(); //TODO check 
+		SetDialogFromFileProperties();
+		ConnectHandlers();
 	}
 
 
@@ -96,11 +98,11 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, false, null, fixedEncoding);
+		this.encodingComboBoxComponent = new EncodingComboBox(fileEncodingComboBox, false, null, fixedEncoding);
 
 		/* Only need to handle the case of currentLocale, as Fixed and Keep Existent is handled before */
 		if (encodingConfig == ConfigFileSaveEncoding.CurrentLocale)
-			encodingComboBox.ActiveSelection = (int)encodingConfig;
+			encodingComboBoxComponent.ActiveSelection = (int)encodingConfig;
 	}
 
 	private void InitFormatComboBox () {
@@ -114,7 +116,16 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			fixedSubtitleType = SubtitleType.SubRip;
 		}
 
-		this.formatComboBox = new SubtitleFormatComboBox(subtitleFormatComboBox, fixedSubtitleType, null);
+		this.formatComboBoxComponent = new SubtitleFormatComboBox(subtitleFormatComboBox, fixedSubtitleType, null);
+	}
+
+	private void InitNewlineComboBox () {
+		NewlineType newlineTypeToSelect = Base.Config.PrefsDefaultsFileSaveNewline;
+		/* If no newline type set, or system default unknown, use Unix */
+		if (newlineTypeToSelect == NewlineType.Unknown)
+			newlineTypeToSelect = NewlineType.Unix;
+
+		this.newlineComboBoxComponent = new NewlineTypeComboBox(newlineTypeComboBox, newlineTypeToSelect, null);
 	}
 	
 	private void SetTitle () {
@@ -142,7 +153,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 		}
 	}
 	
-	private void UpdateContents () {
+	private void SetDialogFromFileProperties () {
 		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
 	
 		if (fileProperties.IsPathRooted)
@@ -152,10 +163,9 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			
 		dialog.CurrentName = fileProperties.Filename;
 
+		//TODO
 		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
 		   while in the constructor. After constructing it works fine. */
-
-		SetActiveNewlineType();
 	}
 	
 	
@@ -202,93 +212,23 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			return String.Empty;
 		}
 	}
-	
-	private void FillNewlineTypeComboBox () {
-		string mac = "Macintosh";
-		string unix = "Unix";
-		string windows = "Windows";
-		string systemDefault = " (" + Catalog.GetString("System Default") + ")";
-		
-		NewlineType systemNewline = GetSystemNewlineType();
-		SetSystemNewlineSuffix(systemNewline, ref mac, ref unix, ref windows, systemDefault);
-		
-		newlineTypeComboBox.AppendText(mac);
-		newlineTypeComboBox.AppendText(unix);
-		newlineTypeComboBox.AppendText(windows);
-	}
-	
-	private void SetActiveNewlineType () {
-		NewlineType systemNewline = GetSystemNewlineType();
-		NewlineType documentNewline = Base.Document.TextFile.NewlineType;
-		NewlineType newlineToMakeActive = (documentNewline != NewlineType.Unknown ? documentNewline : systemNewline);
-		int item = GetNewlineTypePosition(newlineToMakeActive);
-		newlineTypeComboBox.Active = item;	
-	}
-	
-	private NewlineType GetSystemNewlineType () {
-		switch (Environment.NewLine) {
-			case "\n":
-				return NewlineType.Unix;
-			case "\r":
-				return NewlineType.Macintosh;
-			case "\r\n":
-				return NewlineType.Windows;
-			default:
-				return NewlineType.Unknown;
-		}
-	}
-	
-	private void SetSystemNewlineSuffix (NewlineType newline, ref string mac, ref string unix, ref string windows, string suffix) {
-		switch (newline) {
-			case NewlineType.Macintosh:
-				mac += suffix;
-				break;
-			case NewlineType.Unix:
-				unix += suffix;
-				break;
-			case NewlineType.Windows:
-				windows += suffix;
-				break;
-		}
-	}
-	
-	private int GetNewlineTypePosition (NewlineType newline) {
-		switch (newline) {
-			case NewlineType.Macintosh:
-				return 0;
-			case NewlineType.Unix:
-				return 1;
-			case NewlineType.Windows:
-				return 2;
-			default:
-				return 1;
-		}	
-	}
-	
-	private NewlineType GetChosenNewlineType () {
-		switch (newlineTypeComboBox.Active) {
-			case 0:
-				return NewlineType.Macintosh;
-			case 1:
-				return NewlineType.Unix;
-			case 2:
-				return NewlineType.Windows;
-			default:
-				return NewlineType.Unix;
-		}
-	}
+
 
 	/* Event members */
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
+	private void ConnectHandlers () {
+		this.formatComboBoxComponent.SelectionChanged += OnFormatChanged;
+	}
+
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
 
 			/* Check chosen encoding */
-			chosenEncoding = encodingComboBox.ChosenEncoding;
+			chosenEncoding = encodingComboBoxComponent.ChosenEncoding;
 			if (Base.Config.PrefsDefaultsFileSaveEncodingOption == ConfigFileSaveEncodingOption.RememberLastUsed) {
-				int activeAction = encodingComboBox.ActiveSelection;
+				int activeAction = encodingComboBoxComponent.ActiveSelection;
 				ConfigFileSaveEncoding activeOption = (ConfigFileSaveEncoding)Enum.ToObject(typeof(ConfigFileSaveEncoding), activeAction);
 				if (((int)activeOption) >= ((int)ConfigFileSaveEncoding.Fixed)) {
 					Base.Config.PrefsDefaultsFileSaveEncodingFixed = chosenEncoding.Name;
@@ -299,13 +239,16 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			}
 
 			/* Check chosen subtitle format */
-			chosenSubtitleType = formatComboBox.ChosenSubtitleType;
+			chosenSubtitleType = formatComboBoxComponent.ChosenSubtitleType;
 			if (Base.Config.PrefsDefaultsFileSaveFormatOption == ConfigFileSaveFormatOption.RememberLastUsed) {
 				Base.Config.PrefsDefaultsFileSaveFormatFixed = chosenSubtitleType;
 			}
 
 			/* Check chosen newline type */
-			chosenNewlineType = GetChosenNewlineType();
+			chosenNewlineType = newlineComboBoxComponent.ChosenNewlineType;
+			if (Base.Config.PrefsDefaultsFileSaveNewlineOption == ConfigFileSaveNewlineOption.RememberLastUsed) {
+				Base.Config.PrefsDefaultsFileSaveNewline = chosenNewlineType;
+			}
 
 			/* Check chosen filename */
 			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
@@ -325,7 +268,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			filename = filename.Substring(folder.Length + 1);
 		}
 
-		SubtitleType subtitleType = formatComboBox.ChosenSubtitleType;
+		SubtitleType subtitleType = formatComboBoxComponent.ChosenSubtitleType;
 		filename = UpdateFilenameExtension(filename, subtitleType);
 		dialog.CurrentName = filename;
 	}

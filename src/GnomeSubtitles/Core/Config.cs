@@ -31,6 +31,7 @@ public enum ConfigFileSaveEncodingOption { KeepExisting = 0, RememberLastUsed = 
 public enum ConfigFileSaveEncoding { KeepExisting = -1, CurrentLocale = 0, Fixed = 1 }; //KeepExisting=-1 because it doesn't appear
 public enum ConfigFileSaveFormatOption { KeepExisting = 0, RememberLastUsed = 1, Specific = 3 }; //Values match ordering where the options are used
 public enum ConfigFileSaveFormat { KeepExisting = -1, Fixed = 0 }; //KeepExisting=-1 because it doesn't appear
+public enum ConfigFileSaveNewlineOption { RememberLastUsed = 0, Specific = 2 }; //Values match ordering where the options are used
 
 public class Config {
 	private Client client = null;
@@ -59,6 +60,8 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveEncoding = keyPrefsDefaults + "file_save_encoding";
 	private const string keyPrefsDefaultsFileSaveFormatOption = keyPrefsDefaults + "file_save_format_option";
 	private const string keyPrefsDefaultsFileSaveFormat = keyPrefsDefaults + "file_save_format";
+	private const string keyPrefsDefaultsFileSaveNewlineOption = keyPrefsDefaults + "file_save_newline_option";
+	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
 
 	public Config () {
 		client = new Client();
@@ -161,6 +164,16 @@ public class Config {
 	public SubtitleType PrefsDefaultsFileSaveFormatFixed {
 		get { return (SubtitleType)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveFormat, SubtitleType.SubRip); }
 		set { Set(keyPrefsDefaultsFileSaveFormat, value.ToString()); }
+	}
+
+	public ConfigFileSaveNewlineOption PrefsDefaultsFileSaveNewlineOption {
+		get { return (ConfigFileSaveNewlineOption)GetEnumValue(keyPrefsDefaultsFileSaveNewlineOption, ConfigFileSaveNewlineOption.Specific); }
+		set { Set(keyPrefsDefaultsFileSaveNewlineOption, value.ToString()); }
+	}
+
+	public NewlineType PrefsDefaultsFileSaveNewline {
+		get { return (NewlineType)GetEnumValue(keyPrefsDefaultsFileSaveNewline, Core.Util.GetSystemNewlineType()); }
+		set { Set(keyPrefsDefaultsFileSaveNewline, value.ToString()); }
 	}
 
 	
