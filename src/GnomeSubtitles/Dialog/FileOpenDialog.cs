@@ -294,7 +294,7 @@ public class FileOpenDialog : GladeDialog {
 
 			if (videoComboBox.Active > 0) {
 				int videoFileIndex = videoComboBox.Active - 2;
-				chosenVideoUri = new Uri(videoFiles[videoFileIndex] as string);
+				chosenVideoUri = new Uri("file://" + videoFiles[videoFileIndex] as string);
 			}			
 			SetReturnValue(true);
 		}

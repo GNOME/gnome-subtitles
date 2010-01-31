@@ -34,7 +34,7 @@ public class VideoFiles {
 	
 		if ((path == null) || (path == String.Empty))
 			return videoFiles;
-		
+
 		string[] allFiles = Directory.GetFiles(path, "*.*");
 		foreach (string file in allFiles) {
 			if (videoFilesRegex.IsMatch(file))
