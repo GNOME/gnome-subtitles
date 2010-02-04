@@ -4,14 +4,15 @@
 # This file is distributed under the same license as the gnome-subtitles package.
 #
 # Felix Braun <Felix.Braun@mail.McGill.ca>, 2008.
-# Mario Blättermann <mariobl@gnome.org>, 2009.
+# Mario Blättermann <mariobl@gnome.org>, 2009, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-subtitles HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-19 11:02+0200\n"
-"PO-Revision-Date: 2009-07-19 11:02+0100\n"
+"Project-Id-Version: gnome-subtitles master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"subtitles&component=general\n"
+"POT-Creation-Date: 2010-01-31 17:56+0000\n"
+"PO-Revision-Date: 2010-02-04 13:31+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +45,7 @@ msgid "Character Coding:"
 msgstr "Zeichenkodierung:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "Datei öffnen"
 
@@ -66,7 +67,7 @@ msgstr "<b>Pfad:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:4
 msgid "<b>Subtitle Format:</b>"
-msgstr "<b>Untertitel-Format:</b>"
+msgstr "<b>Untertitelformat:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:5
 msgid "<b>Timing Mode:</b>"
@@ -81,7 +82,7 @@ msgid "Newline Type:"
 msgstr "Zeilenvorschub:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
 msgid "Save As"
 msgstr "Speichern unter"
 
@@ -91,7 +92,7 @@ msgstr "Fortgeschrittene Optionen"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:5
 msgid "Subtitle Format:"
-msgstr "Untertitel-Format:"
+msgstr "Untertitelformat:"
 
 #: ../src/Glade/HeadersDialog.glade.h:1
 msgid "Album:"
@@ -293,11 +294,11 @@ msgstr "Speichern _unter"
 
 #: ../src/Glade/MainWindow.glade.h:15
 msgid "Seek _to Selection"
-msgstr "Springe z_u Auswahl"
+msgstr "Z_u Auswahl springen"
 
 #: ../src/Glade/MainWindow.glade.h:16
 msgid "Set Subtitle En_d"
-msgstr "Setze _Ende des Untertitels"
+msgstr "_Ende des Untertitels setzen"
 
 #: ../src/Glade/MainWindow.glade.h:17
 msgid "Set Subtitle St_art"
@@ -469,16 +470,56 @@ msgid "_View"
 msgstr "_Ansicht"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "<b>Video</b>"
-msgstr "<b>Video</b>"
+#| msgid "<b>Options</b>"
+msgid "<b>File _Open</b>"
+msgstr "<b>Datei ö_ffnen</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "Automatically choose video to open"
-msgstr "Video automatisch auswählen"
+#| msgid "<b>Frames</b>"
+msgid "<b>File _Save As</b>"
+msgstr "<b>Datei _speichern unter</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
+#| msgid "Translation"
+msgid "<b>Translation</b>"
+msgstr "<b>Übersetzung</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:4
+#| msgid "Automatically choose video to open"
+msgid "Automatically choose _video file to open"
+msgstr "Zu öffnende _Videodatei automatisch auswählen"
+
+#: ../src/Glade/PreferencesDialog.glade.h:5
+#| msgid "Character codings"
+msgid "Ch_aracter coding to use:"
+msgstr "Zu verwendende Zeichen_kodierung:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:6
+#| msgid "Character codings"
+msgid "Character coding to use:"
+msgstr "Zu verwendende Zeichenkodierung:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:7
+msgid "If character coding auto detection fails, use:"
+msgstr "Wenn automatische Erkennung der Zeichenkodierung scheitert:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:8
+#| msgid "Newline Type:"
+msgid "Newline type to use:"
+msgstr "Art des Zeilenvorschubs:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "Preferences"
 msgstr "Einstellungen"
+
+#: ../src/Glade/PreferencesDialog.glade.h:10
+#| msgid "Subtitle Format:"
+msgid "Subtitle _format to use:"
+msgstr "Zu verwendendes Untertitelformat:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:11
+msgid "When saving subtitles, also save translation"
+msgstr "Beim Speichern von Untertiteln auch die Übersetzung speichern"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -499,7 +540,7 @@ msgstr "_Rückwärts suchen"
 
 #: ../src/Glade/SearchDialog.glade.h:5
 msgid "Search using a Regular _Expression"
-msgstr "Mit einem Re_gulärausdruck suchen"
+msgstr "Mit einem re_gulären Ausdruck suchen"
 
 #: ../src/Glade/SearchDialog.glade.h:6
 msgid "_Match case"
@@ -608,10 +649,6 @@ msgstr "_Alle Untertitel synchronisieren"
 msgid "Synchronize Timings"
 msgstr "Zeiten synchronisieren"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
-msgid "gtk-add"
-msgstr "gtk-add"
-
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Video öffnen"
@@ -686,19 +723,19 @@ msgstr "Text bearbeiten"
 #: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
 #: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
 msgid "Editing Translation"
-msgstr "Übersetzung bearbeiten"
+msgstr "Übersetzung wird bearbeitet"
 
 #: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:27
 msgid "Inserting Subtitle"
-msgstr "Füge Untertitel ein"
+msgstr "Untertitel werden eingefügt"
 
 #: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
-msgstr "Alles ersetzen"
+msgstr "Alles wird ersetzt"
 
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
-msgstr "Zeiten verschieben"
+msgstr "Zeiten werden verschoben"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
 msgid "Synchronizing timings"
@@ -706,13 +743,13 @@ msgstr "Zeiten werden synchronisiert"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr "Anfangszeit setzen"
+msgstr "Anfangszeit wird gesetzt"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr "Endzeit setzen"
+msgstr "Endzeit wird gesetzt"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:200
+#: ../src/GnomeSubtitles/Core/Document.cs:202
 msgid "Unsaved Translation"
 msgstr "Übersetzung noch nicht gespeichert"
 
@@ -806,7 +843,7 @@ msgstr "Unicode"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:59
 #: ../src/GnomeSubtitles/Core/Encodings.cs:60
 msgid "Chinese Traditional"
-msgstr "Chinesisch (Langzeichen)"
+msgstr "Chinesisch (traditionell)"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:61
 msgid "Cyrillic/Russian"
@@ -835,7 +872,7 @@ msgstr "Koreanisch"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:72
 #: ../src/GnomeSubtitles/Core/Encodings.cs:73
 msgid "Chinese Simplified"
-msgstr "Chinesisch (Kurzzeichen)"
+msgstr "Chinesisch (vereinfacht)"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:80
 msgid "Portuguese"
@@ -867,11 +904,11 @@ msgstr "Vietnamesisch"
 msgid "Current Locale"
 msgstr "aktuelle Kodierung"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Das Handbuch wurde nicht gefunden."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:298
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
 msgid "Please verify that your installation has been completed successfully."
 msgstr ""
 "Bitte stellen Sie sicher, dass die Installation erfolgreich durchgeführt "
@@ -894,26 +931,34 @@ msgstr "Beschreibung"
 msgid "Encoding"
 msgstr "Zeichenkodierung"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:100
-msgid "Auto Detected"
-msgstr "Automatisch erkannt"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
 msgid "None"
 msgstr "Kein"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:217
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:224
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
 msgid "All Subtitle Files"
 msgstr "Alle Untertitel"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Übersetzungsdatei öffnen"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:70
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:135
+msgid "Remember Last Used"
+msgstr "Zuletzt benutzte wählen"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:120
+msgid "Keep Existing"
+msgstr "Vorhandene behalten"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
@@ -936,17 +981,9 @@ msgstr "Wählen Sie die _Originalsprache der aktuellen Untertitel."
 msgid "Select the translation _language of the current subtitles."
 msgstr "Wählen Sie die Ü_bersetzungssprache der aktuellen Untertitel."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
-msgid "Add or Remove..."
-msgstr "Hinzufügen oder Entfernen..."
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
 msgid "Save Translation As"
 msgstr "Übersetzung speichern unter"
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:223
-msgid "System Default"
-msgstr "Systemstandard"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
 msgid "Start Time:"
@@ -1165,8 +1202,16 @@ msgstr ""
 msgid "Bug information has been printed to the console."
 msgstr "Die Fehlerinformationen wurden auf der Konsole ausgegeben."
 
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+msgid "Add or Remove..."
+msgstr "Hinzufügen oder Entfernen..."
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
+msgid "Auto Detected"
+msgstr "Automatisch erkannt"
+
 #. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:135
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:136
 msgid "Unsaved Subtitles"
 msgstr "Untertitel noch nicht gespeichert"
 
@@ -1228,6 +1273,15 @@ msgstr "Dauer"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Übersetzung"
+
+#~ msgid "<b>Video</b>"
+#~ msgstr "<b>Video</b>"
+
+#~ msgid "gtk-add"
+#~ msgstr "gtk-add"
+
+#~ msgid "System Default"
+#~ msgstr "Systemstandard"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
