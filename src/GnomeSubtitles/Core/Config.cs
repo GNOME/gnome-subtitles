@@ -124,7 +124,7 @@ public class Config {
 	}
 
 	public ConfigFileOpenFallbackEncoding PrefsDefaultsFileOpenFallbackEncoding {
-		get { return (ConfigFileOpenFallbackEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileOpenFallbackEncoding, ConfigFileOpenFallbackEncoding.Fixed); }
+		get { return (ConfigFileOpenFallbackEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileOpenFallbackEncoding, ConfigFileOpenFallbackEncoding.CurrentLocale); }
 		set { Set(keyPrefsDefaultsFileOpenFallbackEncoding, value.ToString()); }
 	}
 

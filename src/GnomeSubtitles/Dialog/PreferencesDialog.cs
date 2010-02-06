@@ -40,6 +40,7 @@ public class PreferencesDialog : GladeDialog {
 	private NewlineTypeComboBox fileSaveNewline = null;
 
 	/* Widgets */
+	[WidgetAttribute] private CheckButton translationSaveCheckButton = null;
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
@@ -144,6 +145,18 @@ public class PreferencesDialog : GladeDialog {
 			fileSaveNewline.ActiveSelection = (int)fileSaveNewlineOption;
 		}
 		fileSaveNewline.SelectionChanged += OnDefaultsFileSaveNewlineChanged;
+	}
+
+	private void ResetDialogToDefaults () {
+		translationSaveCheckButton.Active = true;
+
+		fileOpenEncoding.ActiveSelection = 0; //Auto detect
+		fileOpenFallbackEncoding.ActiveSelection = 0; //Current Locale
+		videoAutoChooseFileCheckButton.Active = true;
+
+		fileSaveEncoding.ActiveSelection = 0; //Keep Existing
+		fileSaveFormat.ActiveSelection = 0; //Keep Existing
+		fileSaveNewline.ChosenNewlineType = Core.Util.GetSystemNewlineType();
 	}
 
 	
@@ -252,6 +265,15 @@ public class PreferencesDialog : GladeDialog {
 
 	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
 		Base.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
+	}
+
+	protected override bool ProcessResponse (ResponseType response) {
+		if (response == ResponseType.Cancel) {
+			ResetDialogToDefaults();
+			return true;
+		}
+		else
+			return false;
 	}
 
 }

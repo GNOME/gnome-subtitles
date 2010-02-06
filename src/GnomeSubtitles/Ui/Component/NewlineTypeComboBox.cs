@@ -66,6 +66,11 @@ public class NewlineTypeComboBox {
 				return (NewlineType)Enum.ToObject(typeof(NewlineType), newlineTypePosition);
 			}
 		}
+		set {
+			int actionCount = GetActionCount();
+			int position = (int)value - 1 + (actionCount > 0 ? actionCount + 1 : 0);
+			this.ActiveSelection = position;	
+		}
 	}
 
 	public int ActiveSelection {
@@ -147,6 +152,7 @@ public class NewlineTypeComboBox {
 				break;
 		}
 	}
+
 
 	/* Event members */
 	
