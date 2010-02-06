@@ -155,17 +155,13 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	
 	private void SetDialogFromFileProperties () {
 		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
-	
+
 		if (fileProperties.IsPathRooted)
 			dialog.SetCurrentFolder(fileProperties.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 			
 		dialog.CurrentName = fileProperties.Filename;
-
-		//TODO
-		/* There seems to be a bug in GTK that makes the dialog return null for currentFolder and currentFilename
-		   while in the constructor. After constructing it works fine. */
 	}
 	
 	
