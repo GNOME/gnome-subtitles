@@ -44,6 +44,7 @@ public class Config {
 	private const string keyPrefsVideo = keyPrefs + "video/";
 	private const string keyPrefsWindow = keyPrefs + "window/";
 	private const string keyPrefsDefaults = keyPrefs + "defaults/";
+	private const string keyPrefsTranslation = keyPrefs + "translation/";
 
 	/* Constant key strings */
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
@@ -62,6 +63,7 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveFormat = keyPrefsDefaults + "file_save_format";
 	private const string keyPrefsDefaultsFileSaveNewlineOption = keyPrefsDefaults + "file_save_newline_option";
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
+	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
 
 	public Config () {
 		client = new Client();
@@ -174,6 +176,11 @@ public class Config {
 	public NewlineType PrefsDefaultsFileSaveNewline {
 		get { return (NewlineType)GetEnumValue(keyPrefsDefaultsFileSaveNewline, Core.Util.GetSystemNewlineType()); }
 		set { Set(keyPrefsDefaultsFileSaveNewline, value.ToString()); }
+	}
+
+	public bool PrefsTranslationSaveAll {
+		get { return GetBool(keyPrefsTranslationSaveAll, true); }
+		set { Set(keyPrefsTranslationSaveAll, value); }
 	}
 
 	

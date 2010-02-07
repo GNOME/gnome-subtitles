@@ -176,7 +176,7 @@ public class MainUi {
     
     /// <summary>Executes a Save operation.</summary>
     /// <remarks>If the document hasn't been saved before, a SaveAs is executed.</remarks>
-    /// <returns>Whether the file was saved or not.</returns>
+    /// <returns>Whether the file was saved.</returns>
     public bool Save () {
     	if (Base.Document.CanTextBeSaved) { //Check if document can be saved or needs a SaveAs
 			Save(Base.Document.TextFile);
@@ -188,7 +188,7 @@ public class MainUi {
 
     /// <summary>Executes a SaveAs operation.</summary>
     /// <remarks>After saving, the timing mode is set to the timing mode of the subtitle format using when saving.</remarks>
-    /// <returns>Whether the file was saved or not.</returns>
+    /// <returns>Whether the file was saved.</returns>
     public bool SaveAs () {
 		FileSaveAsDialog dialog = Base.Dialogs.Get(typeof(FileSaveAsDialog)) as FileSaveAsDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
@@ -322,8 +322,10 @@ public class MainUi {
 			FileSaveErrorDialog errorDialog = new FileSaveErrorDialog(fileProperties.Path, exception);
 			errorDialog.Show();
 			bool toSaveAgain = errorDialog.WaitForResponse();
-	    	if (toSaveAgain)
-	    		SaveAs();	
+	    	if (toSaveAgain) {
+	    		SaveAs();
+				return;
+			}
 		}
 	}
 	

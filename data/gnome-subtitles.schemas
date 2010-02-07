@@ -14,6 +14,17 @@
 			</locale>
 		</schema>
 		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/translation/save_all</key>
+			<applyto>/apps/gnome-subtitles/preferences/translation/save_all</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>bool</type>
+			<default>TRUE</default>
+			<locale name="C">
+				<short>Save translation when saving subtitles</short>
+				<long>Whether to save existing translations when saving subtitles.</long>
+			</locale>
+		</schema>
+		<schema>
 			<key>/schemas/apps/gnome-subtitles/preferences/video/auto_choose_file</key>
 			<applyto>/apps/gnome-subtitles/preferences/video/auto_choose_file</applyto>
 			<owner>gnome-subtitles</owner>

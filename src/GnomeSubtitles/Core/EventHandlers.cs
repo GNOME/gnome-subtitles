@@ -44,10 +44,18 @@ public class EventHandlers {
 	
 	public void OnFileSave (object o, EventArgs args) {
 		Base.Ui.Save();
+
+		if (Base.Config.PrefsTranslationSaveAll) {
+			OnFileTranslationSave(o, args);
+		}
 	}
 	
 	public void OnFileSaveAs (object o, EventArgs args) {
 		Base.Ui.SaveAs();
+		
+		if (Base.Config.PrefsTranslationSaveAll) {
+			OnFileTranslationSave(o, args);
+		}
 	}
 	
 	public void OnFileTranslationNew (object o, EventArgs args) {
