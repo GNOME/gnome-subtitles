@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-01-31 17:56+0000\n"
-"PO-Revision-Date: 2010-02-04 13:31+0100\n"
+"POT-Creation-Date: 2010-02-07 22:48+0000\n"
+"PO-Revision-Date: 2010-02-08 00:47+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -470,56 +470,60 @@ msgid "_View"
 msgstr "_Ansicht"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-#| msgid "<b>Options</b>"
-msgid "<b>File _Open</b>"
-msgstr "<b>Datei ö_ffnen</b>"
+#| msgid "<b>File _Open</b>"
+msgid "<b>File Open</b>"
+msgstr "<b>Datei öffnen</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-#| msgid "<b>Frames</b>"
-msgid "<b>File _Save As</b>"
-msgstr "<b>Datei _speichern unter</b>"
+#| msgid "<b>File _Save As</b>"
+msgid "<b>File Save As</b>"
+msgstr "<b>Datei speichern unter</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
-#| msgid "Translation"
 msgid "<b>Translation</b>"
 msgstr "<b>Übersetzung</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
-#| msgid "Automatically choose video to open"
-msgid "Automatically choose _video file to open"
+#| msgid "Automatically choose _video file to open"
+msgid "Automatically choose the _video file to open"
 msgstr "Zu öffnende _Videodatei automatisch auswählen"
 
 #: ../src/Glade/PreferencesDialog.glade.h:5
-#| msgid "Character codings"
 msgid "Ch_aracter coding to use:"
 msgstr "Zu verwendende Zeichen_kodierung:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:6
-#| msgid "Character codings"
-msgid "Character coding to use:"
-msgstr "Zu verwendende Zeichenkodierung:"
+#| msgid "Character coding to use:"
+msgid "Character c_oding to use:"
+msgstr "Zu verwendende Zeichenk_odierung:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "If character coding auto detection fails, use:"
-msgstr "Wenn automatische Erkennung der Zeichenkodierung scheitert:"
+#| msgid "If character coding auto detection fails, use:"
+msgid "If auto detection _fails, use:"
+msgstr "Wenn automatische Erkennung der Zeichenkodierung s_cheitert:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
-#| msgid "Newline Type:"
-msgid "Newline type to use:"
-msgstr "Art des Zeilenvorschubs:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "Preferences"
 msgstr "Einstellungen"
 
+#: ../src/Glade/PreferencesDialog.glade.h:9
+#| msgid "When saving subtitles, also save translation"
+msgid "When saving subtitles, also save their _translation"
+msgstr "Beim Speichern von Untertiteln auch die _Übersetzung speichern"
+
 #: ../src/Glade/PreferencesDialog.glade.h:10
-#| msgid "Subtitle Format:"
-msgid "Subtitle _format to use:"
-msgstr "Zu verwendendes Untertitelformat:"
+#| msgid "Newline type to use:"
+msgid "_Newline type to use:"
+msgstr "Art des Zeile_nvorschubs:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "When saving subtitles, also save translation"
-msgstr "Beim Speichern von Untertiteln auch die Übersetzung speichern"
+msgid "_Reset to defaults"
+msgstr "Auf _Vorgabe zurücksetzen"
+
+#: ../src/Glade/PreferencesDialog.glade.h:12
+#| msgid "Subtitle _format to use:"
+msgid "_Subtitle format to use:"
+msgstr "Zu _verwendendes Untertitelformat:"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -904,11 +908,11 @@ msgstr "Vietnamesisch"
 msgid "Current Locale"
 msgstr "aktuelle Kodierung"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Das Handbuch wurde nicht gefunden."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "Please verify that your installation has been completed successfully."
 msgstr ""
 "Bitte stellen Sie sicher, dass die Installation erfolgreich durchgeführt "
@@ -948,15 +952,15 @@ msgstr "Alle Untertitel"
 msgid "Open Translation File"
 msgstr "Übersetzungsdatei öffnen"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:70
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:120
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:139
 msgid "Remember Last Used"
 msgstr "Zuletzt benutzte wählen"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
 msgid "Keep Existing"
 msgstr "Vorhandene behalten"
 
