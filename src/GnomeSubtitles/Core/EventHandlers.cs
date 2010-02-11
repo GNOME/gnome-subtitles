@@ -45,7 +45,7 @@ public class EventHandlers {
 	public void OnFileSave (object o, EventArgs args) {
 		Base.Ui.Save();
 
-		if (Base.Config.PrefsTranslationSaveAll) {
+		if (Base.Document.IsTranslationLoaded && Base.Config.PrefsTranslationSaveAll) {
 			OnFileTranslationSave(o, args);
 		}
 	}
@@ -53,7 +53,7 @@ public class EventHandlers {
 	public void OnFileSaveAs (object o, EventArgs args) {
 		Base.Ui.SaveAs();
 		
-		if (Base.Config.PrefsTranslationSaveAll) {
+		if (Base.Document.IsTranslationLoaded && Base.Config.PrefsTranslationSaveAll) {
 			OnFileTranslationSave(o, args);
 		}
 	}
