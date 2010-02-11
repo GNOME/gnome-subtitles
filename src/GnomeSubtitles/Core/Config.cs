@@ -48,10 +48,11 @@ public class Config {
 
 	/* Constant key strings */
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
+	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
+	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
 	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
 	private const string keyPrefsSpellCheckAutocheck = keyPrefsSpellCheck + "autocheck";
-	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsWindowHeight = keyPrefsWindow + "height";
 	private const string keyPrefsWindowWidth = keyPrefsWindow + "width";
 	private const string keyPrefsDefaultsFileOpenEncodingOption = keyPrefsDefaults + "file_open_encoding_option";
@@ -63,7 +64,7 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveFormat = keyPrefsDefaults + "file_save_format";
 	private const string keyPrefsDefaultsFileSaveNewlineOption = keyPrefsDefaults + "file_save_newline_option";
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
-	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
+	
 
 	public Config () {
 		client = new Client();
@@ -174,7 +175,7 @@ public class Config {
 	}
 
 	public NewlineType PrefsDefaultsFileSaveNewline {
-		get { return (NewlineType)GetEnumValue(keyPrefsDefaultsFileSaveNewline, Core.Util.GetSystemNewlineType()); }
+		get { return (NewlineType)GetEnumValue(keyPrefsDefaultsFileSaveNewline, NewlineType.Windows); }
 		set { Set(keyPrefsDefaultsFileSaveNewline, value.ToString()); }
 	}
 

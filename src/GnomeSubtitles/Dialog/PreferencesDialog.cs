@@ -159,7 +159,7 @@ public class PreferencesDialog : GladeDialog {
 
 		fileSaveEncoding.ActiveSelection = 0; //Keep Existing
 		fileSaveFormat.ActiveSelection = 0; //Keep Existing
-		fileSaveNewline.ChosenNewlineType = Core.Util.GetSystemNewlineType();
+		fileSaveNewline.ChosenNewlineType = NewlineType.Windows;
 	}
 
 	

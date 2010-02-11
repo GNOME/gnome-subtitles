@@ -167,5 +167,27 @@
 				<long>Subtitle format to use when saving files. Besides the actual format, used when "RememberLastUsed" or "Specific" are set in the file_save_format_option key, other possible values are "KeepExisting" and "CurrentLocale".</long>
 			</locale>
 		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/defaults/file_save_newline_option</key>
+			<applyto>/apps/gnome-subtitles/preferences/defaults/file_save_newline_option</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>string</type>
+			<default>Specific</default>
+			<locale name="C">
+				<short>File Save newline option</short>
+				<long>Newline option to use by default when saving files. Possible values are: "RememberLastUsed" to remember the last used newline type, and "Specific" to use a specific newline type. The newline type for "RememberLastUsed" and "Specific" is stored in the file_save_newline key.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/defaults/file_save_newline</key>
+			<applyto>/apps/gnome-subtitles/preferences/defaults/file_save_newline</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>string</type>
+			<default>Windows</default>
+			<locale name="C">
+				<short>File Save newline</short>
+				<long>Newline type to use when saving files.</long>
+			</locale>
+		</schema>
 	</schemalist>
 </gconfschemafile>
