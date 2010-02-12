@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
-"POT-Creation-Date: 2010-01-21 09:47+0000\n"
+"POT-Creation-Date: 2010-02-11 23:21+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
@@ -83,7 +83,7 @@ msgid "Newline Type:"
 msgstr "Zvrst nove vrstice:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
 msgid "Save As"
 msgstr "Shrani kot"
 
@@ -472,48 +472,52 @@ msgid "_View"
 msgstr "_Pogled"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "<b>File _Open</b>"
-msgstr "<b>Datoteko _Odpri</b>"
+msgid "<b>File Open</b>"
+msgstr "<b>Odpri datoteko</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "<b>File _Save As</b>"
-msgstr "<b>Datoteko _Shrani kot</b>"
+msgid "<b>File Save As</b>"
+msgstr "<b>Shrani datoteko kot</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
 msgid "<b>Translation</b>"
 msgstr "<b>Prevod</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
-msgid "Automatically choose _video file to open"
-msgstr "Samodejno izberi _video datoteko za odpiranje"
+msgid "Automatically choose the _video file to open"
+msgstr "Samodejen izbor _video datoteke za odpiranje"
 
 #: ../src/Glade/PreferencesDialog.glade.h:5
 msgid "Ch_aracter coding to use:"
 msgstr "Zn_akovno kodiranje za uporabo:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:6
-msgid "Character coding to use:"
-msgstr "Znakovno kodiranje za uporabo:"
+msgid "Character c_oding to use:"
+msgstr "Nabor _znakov za uporabo:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "If character coding auto detection fails, use:"
-msgstr "V primeru da znakovno kodiranje spodleti, uporabi:"
+msgid "If auto detection _fails, use:"
+msgstr "V primeru da samodejno zaznavanje _spodleti, uporabi:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
-msgid "Newline type to use:"
-msgstr "Vrsta nove vrstice za uporabo:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "Preferences"
 msgstr "Možnosti"
 
+#: ../src/Glade/PreferencesDialog.glade.h:9
+msgid "When saving subtitles, also save their _translation"
+msgstr "Ob shranjevanju podnapisov shrani tudi _prevod"
+
 #: ../src/Glade/PreferencesDialog.glade.h:10
-msgid "Subtitle _format to use:"
-msgstr "_Oblika podnapisov za uporabo:"
+msgid "_Newline type to use:"
+msgstr "Vrsta _nove vrstice za uporabo"
 
 #: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "When saving subtitles, also save translation"
-msgstr "Ob shranjevanju podnapisov shrani tudi prevod"
+msgid "_Reset to defaults"
+msgstr "_Ponastavi na privzeto"
+
+#: ../src/Glade/PreferencesDialog.glade.h:12
+msgid "_Subtitle format to use:"
+msgstr "Oblika p_odnapisov za uporabo:"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -743,7 +747,7 @@ msgstr "Nastavitev začetka podnapisov"
 msgid "Setting Subtitle End"
 msgstr "Nastavitev konca podnapisov"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:200
+#: ../src/GnomeSubtitles/Core/Document.cs:202
 msgid "Unsaved Translation"
 msgstr "Neshranjen prevod"
 
@@ -898,11 +902,11 @@ msgstr "Vietnamsko"
 msgid "Current Locale"
 msgstr "Trenutne jezikovne nastavitve"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Priročnika programa podnapisov ni mogoče najti."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Potrditi je treba, da je bila vaša namestitev uspešno dokončana ..."
 
@@ -940,12 +944,15 @@ msgstr "Vse datoteke s podnapisi"
 msgid "Open Translation File"
 msgstr "Odpri prevajalno datoteko"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:139
 msgid "Remember Last Used"
 msgstr "Zapomni si zadnje uporabljeno"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
 msgid "Keep Existing"
 msgstr "Obdrži obstoječe"
 
@@ -970,13 +977,9 @@ msgstr "Izberite jezik _besedila trenutnih podnapisov"
 msgid "Select the translation _language of the current subtitles."
 msgstr "Izberite jezik prevajanja trenutnih podnapisov."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:121
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
 msgid "Save Translation As"
 msgstr "Shrani prevod kot"
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:255
-msgid "System Default"
-msgstr "Sistemsko privzeto"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
 msgid "Start Time:"
@@ -1162,11 +1165,11 @@ msgstr "Ni mogoče odpreti Bug Buddy, orodja za poročanje o hroščih."
 msgid "Bug information has been printed to the console."
 msgstr "Podrobnosti o hrošču so bile natisnjene v konzolo."
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:170
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
 msgid "Add or Remove..."
 msgstr "Dodaj ali odstrani ..."
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:178
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
 msgid "Auto Detected"
 msgstr "Samodejno zaznano"
 
@@ -1234,6 +1237,8 @@ msgstr "Med"
 msgid "Translation"
 msgstr "Prevod"
 
+#~ msgid "System Default"
+#~ msgstr "Sistemsko privzeto"
 #~ msgid "<b>Video</b>"
 #~ msgstr "<b>Slika</b>"
 #~ msgid "gtk-add"
