@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2009 Pedro Castro
+ * Copyright (C) 2008-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,12 +35,10 @@ public class VideoSeekToDialog : GladeDialog {
 
 	/* Widgets */
 	[WidgetAttribute] private SpinButton spinButton = null;
-	[WidgetAttribute] private Label positionLabel = null;
 
 	public VideoSeekToDialog () : base(gladeFilename){
-		this.timingMode = Base.TimingMode;
-	
 		InitSpinButton();
+		spinButton.SelectRegion(0, spinButton.Text.Length);
 	}
 
 	/* Overriden members */
@@ -48,27 +46,35 @@ public class VideoSeekToDialog : GladeDialog {
 	public override DialogScope Scope {
 		get { return DialogScope.Video; }
 	}
+
+	public override void Show () {
+		SetSpinButtonFromTimingMode();
+		base.Show ();
+	}
+
 	
 	/* Private methods */
 
 	private void InitSpinButton () {
 		spinButton.WidthRequest = Core.Util.SpinButtonTimeWidth(spinButton);
 		spinButton.Alignment = 0.5f;
-		
+	}
+
+	private void SetSpinButtonFromTimingMode () {
+		if (this.timingMode == Base.TimingMode)
+			return;
+
+		this.timingMode = Base.TimingMode;
+		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode);
+
 		if (timingMode == TimingMode.Times) {
-			Core.Util.SetSpinButtonTimingMode(spinButton, Base.TimingMode);
 			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.Duration, false);
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentTime.TotalMilliseconds);
 		}
 		else {
-			Core.Util.SetSpinButtonTimingMode(spinButton, Base.TimingMode);
 			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.DurationInFrames, false);
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentFrames);
-			
-			positionLabel.TextWithMnemonic = Catalog.GetString("Seek to _frame:");
 		}
-		
-		spinButton.SelectRegion(0, spinButton.Text.Length);
 	}
 	
 	private void SetSpinButtonValue (double newValue) {
