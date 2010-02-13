@@ -99,18 +99,18 @@ public class Util {
 	
 	public static void OnTimeOutput (object o, OutputArgs args) {
 		SpinButton spinButton = o as SpinButton;
-		spinButton.Numeric = false;
 		spinButton.Text = MillisecondsToTimeText((int)spinButton.Value);
-		spinButton.Numeric = true;
 		args.RetVal = 1;
 	}
 	
 	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode) {
 		if (timingMode == TimingMode.Frames) {
+			spinButton.Numeric = true;
 			spinButton.Input -= OnTimeInput;
 			spinButton.Output -= OnTimeOutput;
 		}
 		else {
+			spinButton.Numeric = false;
 			spinButton.Input += OnTimeInput;
 			spinButton.Output += OnTimeOutput;
 		}

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -100,16 +100,17 @@ public class SubtitleEditSpinButtons {
 	}
     
     private void SetTimesMode (SpinButton spinButton, bool allowNegatives) {
-    	spinButton.Input += Util.OnTimeInput;
-		spinButton.Output += Util.OnTimeOutput;
+		Util.SetSpinButtonTimingMode(spinButton, TimingMode.Times);
+
 		spinButton.Adjustment.StepIncrement = timeStepIncrement;
 		spinButton.Adjustment.Upper = maxTime;
 		spinButton.Adjustment.Lower = (allowNegatives ? -maxTime : 0);
 	}
-	
+
+	//TODO use Util.SetSpinButtonAdjustment
 	private void SetFramesMode (SpinButton spinButton, bool allowNegatives) {
-		spinButton.Input -= Util.OnTimeInput;
-    	spinButton.Output -= Util.OnTimeOutput;
+		Util.SetSpinButtonTimingMode(spinButton, TimingMode.Frames);
+
     	spinButton.Adjustment.StepIncrement = framesStepIncrement;
     	spinButton.Adjustment.Upper = maxFrames;
     	spinButton.Adjustment.Lower = (allowNegatives ? -maxFrames : 0);
