@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-02-07 22:48+0000\n"
-"PO-Revision-Date: 2010-02-08 00:47+0100\n"
+"POT-Creation-Date: 2010-02-13 03:09+0000\n"
+"PO-Revision-Date: 2010-02-14 12:22+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -470,12 +470,10 @@ msgid "_View"
 msgstr "_Ansicht"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-#| msgid "<b>File _Open</b>"
 msgid "<b>File Open</b>"
 msgstr "<b>Datei öffnen</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-#| msgid "<b>File _Save As</b>"
 msgid "<b>File Save As</b>"
 msgstr "<b>Datei speichern unter</b>"
 
@@ -484,7 +482,6 @@ msgid "<b>Translation</b>"
 msgstr "<b>Übersetzung</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
-#| msgid "Automatically choose _video file to open"
 msgid "Automatically choose the _video file to open"
 msgstr "Zu öffnende _Videodatei automatisch auswählen"
 
@@ -493,12 +490,10 @@ msgid "Ch_aracter coding to use:"
 msgstr "Zu verwendende Zeichen_kodierung:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:6
-#| msgid "Character coding to use:"
 msgid "Character c_oding to use:"
 msgstr "Zu verwendende Zeichenk_odierung:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
-#| msgid "If character coding auto detection fails, use:"
 msgid "If auto detection _fails, use:"
 msgstr "Wenn automatische Erkennung der Zeichenkodierung s_cheitert:"
 
@@ -507,12 +502,10 @@ msgid "Preferences"
 msgstr "Einstellungen"
 
 #: ../src/Glade/PreferencesDialog.glade.h:9
-#| msgid "When saving subtitles, also save translation"
 msgid "When saving subtitles, also save their _translation"
 msgstr "Beim Speichern von Untertiteln auch die _Übersetzung speichern"
 
 #: ../src/Glade/PreferencesDialog.glade.h:10
-#| msgid "Newline type to use:"
 msgid "_Newline type to use:"
 msgstr "Art des Zeile_nvorschubs:"
 
@@ -521,7 +514,6 @@ msgid "_Reset to defaults"
 msgstr "Auf _Vorgabe zurücksetzen"
 
 #: ../src/Glade/PreferencesDialog.glade.h:12
-#| msgid "Subtitle _format to use:"
 msgid "_Subtitle format to use:"
 msgstr "Zu _verwendendes Untertitelformat:"
 
@@ -662,8 +654,8 @@ msgid "Seek To"
 msgstr "Springe zu"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek to _time:"
-msgstr "Springe z_u Zeitpunkt:"
+msgid "Seek _video to:"
+msgstr "Springe im Video z_u:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
 msgid "_Seek"
@@ -1027,8 +1019,8 @@ msgstr ""
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
 msgid ""
-"Add 1 more sync point to start synchronizing. Adding more points will improve "
-"accuracy."
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
 msgstr ""
 "Fügen Sie einen weiteren Synchronisationspunkt zum Starten der "
 "Synchronisation hinzu. Das Hinzufügen weiterer Punkte erhöht die Genauigkeit."
@@ -1059,13 +1051,10 @@ msgstr ""
 msgid "All Video Files"
 msgstr "Alle Videodateien"
 
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
-msgid "Seek to _frame:"
-msgstr "Springe zu _Bild:"
-
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
-"An unknown error has occured. Please report a bug and include this error name:"
+"An unknown error has occured. Please report a bug and include this error "
+"name:"
 msgstr ""
 "Ein unbekannter Fehler ist aufgetreten. Bitte melden Sie diesen Fehler und "
 "fügen Sie diese Beschreibung hinzu:"
@@ -1122,7 +1111,8 @@ msgstr "Wenn Sie nicht speichern, gehen alle Änderungen verloren."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr "Änderungen an \"{0}\" speichern, bevor ein neues Projekt angelegt wird?"
+msgstr ""
+"Änderungen an \"{0}\" speichern, bevor ein neues Projekt angelegt wird?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
 msgid "Create without Saving"
@@ -1131,7 +1121,8 @@ msgstr "Neu anlegen, ohne zu speichern"
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr "Änderungen an \"{0}\" speichern, bevor ein neues Projekt angelegt wird?"
+msgstr ""
+"Änderungen an \"{0}\" speichern, bevor ein neues Projekt angelegt wird?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
 #, csharp-format
@@ -1181,8 +1172,8 @@ msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr ""
-"Diese Zeichenkodierung ist auf Ihrem System nicht verfügbar. Bitte wählen Sie "
-"eine andere Kodierung."
+"Diese Zeichenkodierung ist auf Ihrem System nicht verfügbar. Bitte wählen "
+"Sie eine andere Kodierung."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
@@ -1277,6 +1268,9 @@ msgstr "Dauer"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Übersetzung"
+
+#~ msgid "Seek to _frame:"
+#~ msgstr "Springe zu _Bild:"
 
 #~ msgid "<b>Video</b>"
 #~ msgstr "<b>Video</b>"
