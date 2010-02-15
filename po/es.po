@@ -5,20 +5,20 @@
 #
 # Paulino Padial <devnull.tst@gmail.com>, 2007.
 # Gabriel Ruiz <debianmaster@gmail.com>, 2008
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2009, 2010.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-01-21 09:47+0000\n"
-"PO-Revision-Date: 2010-01-26 19:40+0100\n"
+"POT-Creation-Date: 2010-02-13 03:09+0000\n"
+"PO-Revision-Date: 2010-02-15 11:28+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/Glade/AboutDialog.glade.h:1
 msgid "About Gnome Subtitles"
@@ -83,7 +83,7 @@ msgid "Newline Type:"
 msgstr "Tipo de salto de linea:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
 msgid "Save As"
 msgstr "Guardar como"
 
@@ -471,56 +471,60 @@ msgid "_View"
 msgstr "_Ver"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-#| msgid "<b>Options</b>"
-msgid "<b>File _Open</b>"
-msgstr "<b>Archivo: _Abrir</b>"
+#| msgid "<b>File _Open</b>"
+msgid "<b>File Open</b>"
+msgstr "<b>Archivo Abrir</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-#| msgid "<b>Frames</b>"
-msgid "<b>File _Save As</b>"
-msgstr "<b>Archivo: Guardar _como</b>"
+#| msgid "<b>File _Save As</b>"
+msgid "<b>File Save As</b>"
+msgstr "<b>Archivo Guardar como</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
-#| msgid "Translation"
 msgid "<b>Translation</b>"
 msgstr "<b>Transición</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
-#| msgid "Automatically choose video to open"
-msgid "Automatically choose _video file to open"
+#| msgid "Automatically choose _video file to open"
+msgid "Automatically choose the _video file to open"
 msgstr "Seleccionar un _vídeo para abrir automáticamente"
 
 #: ../src/Glade/PreferencesDialog.glade.h:5
-#| msgid "Character codings"
 msgid "Ch_aracter coding to use:"
 msgstr "C_odificación de caracteres que usar:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:6
-#| msgid "Character codings"
-msgid "Character coding to use:"
-msgstr "Codificación de caracteres que usar:"
+#| msgid "Character coding to use:"
+msgid "Character c_oding to use:"
+msgstr "C_odificación de caracteres que usar:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "If character coding auto detection fails, use:"
-msgstr "Si la autodetección de la codificación de caracteres falla, usar:"
+#| msgid "If character coding auto detection fails, use:"
+msgid "If auto detection _fails, use:"
+msgstr "Si la autodetección de la codificación de caracteres _falla, usar:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
-#| msgid "Newline Type:"
-msgid "Newline type to use:"
-msgstr "Tipo de salto de linea que usar:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "Preferences"
 msgstr "Preferencias"
 
+#: ../src/Glade/PreferencesDialog.glade.h:9
+#| msgid "When saving subtitles, also save translation"
+msgid "When saving subtitles, also save their _translation"
+msgstr "Al guardar los subtítulos, también guardar la _traducción"
+
 #: ../src/Glade/PreferencesDialog.glade.h:10
-#| msgid "Subtitle Format:"
-msgid "Subtitle _format to use:"
-msgstr "_Formato del subtítulo que usar:"
+#| msgid "Newline type to use:"
+msgid "_Newline type to use:"
+msgstr "Tipo de _salto de linea que usar:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "When saving subtitles, also save translation"
-msgstr "Al guardar los subtítulos, también guardar la traducción"
+msgid "_Reset to defaults"
+msgstr "_Restablecer valores predeterminados"
+
+#: ../src/Glade/PreferencesDialog.glade.h:12
+#| msgid "Subtitle _format to use:"
+msgid "_Subtitle format to use:"
+msgstr "Formato del _subtítulo que usar:"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -659,7 +663,8 @@ msgid "Seek To"
 msgstr "I_r a"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek to _time:"
+#| msgid "Seek to _time:"
+msgid "Seek _video to:"
 msgstr "Ir al _tiempo:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
@@ -750,7 +755,7 @@ msgstr "Estableciendo inicio del subtitulo"
 msgid "Setting Subtitle End"
 msgstr "Estableciendo final del subtitulo"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:200
+#: ../src/GnomeSubtitles/Core/Document.cs:202
 msgid "Unsaved Translation"
 msgstr "Traducción sin guardar"
 
@@ -905,11 +910,11 @@ msgstr "Vietnamita"
 msgid "Current Locale"
 msgstr "Configuración actual"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "No se pudo encontrar el manual de Subtítulos de GNOME."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifique que su instalación se completó satisfactoriamente."
 
@@ -947,12 +952,15 @@ msgstr "Todos los archivos de subtítulos"
 msgid "Open Translation File"
 msgstr "Abrir archivo de traducción"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:139
 msgid "Remember Last Used"
 msgstr "Recordar lo último usado"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
 msgid "Keep Existing"
 msgstr "Mantener lo existente"
 
@@ -977,13 +985,9 @@ msgstr "Seleccionar el i_dioma del texto de los subtítulos actuales."
 msgid "Select the translation _language of the current subtitles."
 msgstr "Seleccionar el i_dioma de la traducción de los subtítulos actuales."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:121
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
 msgid "Save Translation As"
 msgstr "Guardar traducción como"
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:255
-msgid "System Default"
-msgstr "Valor predeterminado del sistema"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
 msgid "Start Time:"
@@ -1054,10 +1058,6 @@ msgstr ""
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Todos los archivos de vídeo"
-
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
-msgid "Seek to _frame:"
-msgstr "Ir al _fotograma:"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
@@ -1205,11 +1205,11 @@ msgstr "No se pudo abrir Bug Buddy, la herramienta de informe de errores."
 msgid "Bug information has been printed to the console."
 msgstr "La información del error se ha imprimido en la consola."
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:170
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
 msgid "Add or Remove..."
 msgstr "Añadir o quitar..."
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:178
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
 msgid "Auto Detected"
 msgstr "Detección automática"
 
@@ -1276,6 +1276,12 @@ msgstr "Duración"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Traducción"
+
+#~ msgid "System Default"
+#~ msgstr "Valor predeterminado del sistema"
+
+#~ msgid "Seek to _frame:"
+#~ msgstr "Ir al _fotograma:"
 
 #~ msgid "<b>Video</b>"
 #~ msgstr "<b>Vídeo</b>"
