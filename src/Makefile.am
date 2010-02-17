@@ -22,7 +22,7 @@ GS_SOURCES = \
 	$(srcdir)/GnomeSubtitles/Dialog/Unmanaged/*.cs \
 	$(srcdir)/GnomeSubtitles/Execution/*.cs \
 	$(srcdir)/GnomeSubtitles/Ui/*.cs \
-	$(srcdir)/GnomeSubtitles/Ui/Component/*.cs \	
+	$(srcdir)/GnomeSubtitles/Ui/Component/*.cs \
 	$(srcdir)/GnomeSubtitles/Ui/Edit/*.cs \
 	$(srcdir)/GnomeSubtitles/Ui/VideoPreview/*.cs \
 	$(srcdir)/GnomeSubtitles/Ui/VideoPreview/Exceptions/*.cs \
