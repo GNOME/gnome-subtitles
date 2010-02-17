@@ -1,16 +1,16 @@
 # Danish translation Gnome Subtitles.
-# Copyright (C) 2008 Gnome Subtitles, Kristian Kjærgaard, Joe Hansen.
+# Copyright (C) 2010 Gnome Subtitles, Kristian Kjærgaard, Joe Hansen.
 # This file is distributed under the same license as the Gnome-subtitles package.
 # Kristian Kjærgaard <kkjaergaard@gmail.com>, 2008.
-# Joe Hansen <joedalton2@yahoo.dk>, 2008, 2009.
+# Joe Hansen <joedalton2@yahoo.dk>, 2008, 2009, 2010.
 #
 # Der er ikke anvendt accenter.
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-02 00:08+0200\n"
-"PO-Revision-Date: 2009-06-05 13:01+01:00\n"
+"POT-Creation-Date: 2010-02-17 21:00+0100\n"
+"PO-Revision-Date: 2010-02-02 13:01+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Om Gnome-undertekster"
 
 #: ../src/Glade/AboutDialog.glade.h:2
 msgid "Video subtitling for the GNOME desktop"
-msgstr "Videotekstning til Gnome-skrivebordet"
+msgstr "Videotekstning til GNOME-skrivebordet"
 
 #: ../src/Glade/EncodingsDialog.glade.h:1
 msgid "A_vailable:"
@@ -47,7 +47,7 @@ msgid "Character Coding:"
 msgstr "Tegnsæt:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "Åbn fil"
 
@@ -84,7 +84,7 @@ msgid "Newline Type:"
 msgstr "Nylinjetype:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:95
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
 msgid "Save As"
 msgstr "Gem som"
 
@@ -484,16 +484,60 @@ msgid "_View"
 msgstr "_Vis"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "<b>Video</b>"
-msgstr "<b>Video</b>"
+#, fuzzy
+msgid "<b>File Open</b>"
+msgstr "<b>Fil _åbn</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "Automatically choose video to open"
-msgstr "Vælg automatisk video der skal åbnes"
+#, fuzzy
+msgid "<b>File Save As</b>"
+msgstr "<b>Fil _gem som</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
+msgid "<b>Translation</b>"
+msgstr "<b>Oversættelse</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:4
+#, fuzzy
+msgid "Automatically choose the _video file to open"
+msgstr "Vælg automatisk _videofil der skal åbnes"
+
+#: ../src/Glade/PreferencesDialog.glade.h:5
+msgid "Ch_aracter coding to use:"
+msgstr "_Tegnsæt der skal bruges:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:6
+#, fuzzy
+msgid "Character c_oding to use:"
+msgstr "Tegnsæt der skal bruges:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:7
+#, fuzzy
+msgid "If auto detection _fails, use:"
+msgstr "Hvis automatisk registrering af tegnsæt mislykkes så brug:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "Preferences"
 msgstr "Indstillinger"
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
+#, fuzzy
+msgid "When saving subtitles, also save their _translation"
+msgstr "Når der gemmes undertekster så gem også oversættelse"
+
+#: ../src/Glade/PreferencesDialog.glade.h:10
+#, fuzzy
+msgid "_Newline type to use:"
+msgstr "Nylinjetype der skal bruges:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:11
+msgid "_Reset to defaults"
+msgstr ""
+
+#: ../src/Glade/PreferencesDialog.glade.h:12
+#, fuzzy
+msgid "_Subtitle format to use:"
+msgstr "Undertekst_format der skal bruges:"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -624,10 +668,6 @@ msgstr "S_ynkroniser alle undertekster"
 msgid "Synchronize Timings"
 msgstr "Synkroniser tidspunkter"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
-msgid "gtk-add"
-msgstr "gtk-add"
-
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
 msgstr "Åbn video"
@@ -637,7 +677,8 @@ msgid "Seek To"
 msgstr "Søg til"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek to _time:"
+#, fuzzy
+msgid "Seek _video to:"
 msgstr "Søg til _tid:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
@@ -728,7 +769,7 @@ msgstr "Indstiller begyndelse for undertekst"
 msgid "Setting Subtitle End"
 msgstr "Indstiller afslutning for undertekst"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:200
+#: ../src/GnomeSubtitles/Core/Document.cs:202
 msgid "Unsaved Translation"
 msgstr "Ugemt oversættelse"
 
@@ -883,11 +924,11 @@ msgstr "Vietnamesisk"
 msgid "Current Locale"
 msgstr "Nuværende sprog"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Manualen for Gnome undertekster kunne ikke lokaliseres."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:304
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Undersøg venligst om din installation er fuldstændig."
 
@@ -908,26 +949,34 @@ msgstr "Beskrivelse"
 msgid "Encoding"
 msgstr "Kodning"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:100
-msgid "Auto Detected"
-msgstr "Autodetekteret"
-
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:151
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:217
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:224
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
 msgid "All Subtitle Files"
 msgstr "Alle undertekstfiler"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Åbn oversættelsesfil"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:139
+msgid "Remember Last Used"
+msgstr "Husk sidst brugte"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+msgid "Keep Existing"
+msgstr "Behold eksisterende"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
@@ -950,17 +999,9 @@ msgstr "Vælg tekst_sproget for de nuværende undertekster."
 msgid "Select the translation _language of the current subtitles."
 msgstr "Vælg oversættelses_sproget for de nuværende undertekster."
 
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileChooserDialog.cs:143
-msgid "Add or Remove..."
-msgstr "Tilføj eller fjern..."
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
 msgid "Save Translation As"
 msgstr "Gem oversættelse som"
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:223
-msgid "System Default"
-msgstr "Systemstandard"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
 msgid "Start Time:"
@@ -1030,10 +1071,6 @@ msgstr ""
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
 msgstr "Alle videofiler"
-
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
-msgid "Seek to _frame:"
-msgstr "Søg til _billed:"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
@@ -1180,8 +1217,20 @@ msgstr "Kunne ikke åbne fejlrapporteringsværktøjet Fejl-Frede."
 msgid "Bug information has been printed to the console."
 msgstr "Fejlsøgningsinformation er blevet skrevet til konsolen."
 
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+msgid "Add or Remove..."
+msgstr "Tilføj eller fjern..."
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
+msgid "Auto Detected"
+msgstr "Autodetekteret"
+
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+msgid "System Default"
+msgstr "Systemstandard"
+
 #. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:135
+#: ../src/GnomeSubtitles/Ui/MainUi.cs:136
 msgid "Unsaved Subtitles"
 msgstr "Ugemte undertekster"
 
@@ -1243,6 +1292,15 @@ msgstr "Under"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "Translation"
 msgstr "Oversættelse"
+
+#~ msgid "Seek to _frame:"
+#~ msgstr "Søg til _billed:"
+
+#~ msgid "<b>Video</b>"
+#~ msgstr "<b>Video</b>"
+
+#~ msgid "gtk-add"
+#~ msgstr "gtk-add"
 
 #~ msgid "Could not continue the video playback"
 #~ msgstr "Kunne ikke fortsætte video-afspilningen"
