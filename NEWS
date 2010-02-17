@@ -1,6 +1,61 @@
 Gnome Subtitles
 ===============
 
+1.0 (18/02/10)
+===================
+
+- Added drag-and-drop support for loading subtitle and video files
+- Allow to set new options in the preferences:
+  * Whether to save the translation when saving subtitles
+  * Default and fallback character codings for opening files
+  * Default subtitle format, character coding and newline type for saving files
+  * Allow to remember the last used settings
+- Fixed timings synchronization issue when "Sync All Subtitles" was used
+- Activating (double-clicking) a sync point in the synchronization dialog now
+  selects the corresponding subtitle and seeks the video to its position
+- Allow to edit spinbutton's time text up to millisecond precision
+- Wrap the subtitle text to fit the video area
+- Changed the default newline type to Windows (CR+LF) to improve compatibility
+  with other platforms (including external video players)
+- Fixed support for video filenames with special characters
+- Fixed bug with the title bar showing the previously loaded file
+- Fixed bug with the timings "seek to" dialog not reflecting timing mode changes
+- Fixed use of LDADD when building
+- Use libtool to produce shared libraries
+
+Translations:
+- Alexander Shopov, Svetoslav Stefanov (bg)
+- Marek Černocký, Petr Kovar, Rinu (cs)
+- Joe Hansen (da)
+- Mario Blättermann (de)
+- Jorge González (es)
+- Antón Méixome, Lois (gl)
+- Mark Krapivner (he)
+- Claudio Arseni (it)
+- Piotr Drąg (pl)
+- António Lima (pt)
+- Andrej Žnidaršič, Matej Urbančič (sl)
+- Daniel Nylander (sv)
+
+Bug fixes:
+- Set defaultsubtitle format, character coding and newline type in
+  preferences (#504656)
+- Option to save Translation when saving Subtitles (#511167)
+- The ability to manually change "from", "to" and "during" fields (#549060)
+- Selecting subtitles in the Synchronize dialog (#585064)
+- Ability to open files drag-dropping them onto the window (#585477)
+- Use libtool to produce shared libraries (#592784)
+- Title app bar shows previous srt played/viewed information (#596355)
+- Crash when using video files with special characters (#608631)
+- Srt files saved as Unix text (LF) (#609345)
+- Window collapses the screen with a large subtitle (#610170)
+
+Contributors:
+- Arx Cruz, Ildar Mulyukov, Peter Alfredsen
+
+Additional thanks:
+- A. Luz, Federico, Frederico Camara, ΙΟΑΝΝΗΣ ΜΠΟΥΡΔΑΚΗΣ, Yann Basly
+
 
 0.9.1 (18/07/09)
 ================
