@@ -111,6 +111,9 @@ public class ExecutionContext {
 		while (version.EndsWith(".0")) {
 			version = version.Remove(version.Length - 2);
 		}
+		if (!version.Contains(".")) {
+			version += ".0";
+		}
 		return version;
 	}
 
