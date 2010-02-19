@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
-"POT-Creation-Date: 2010-02-11 23:21+0000\n"
+"POT-Creation-Date: 2010-02-17 22:58+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
@@ -656,8 +656,8 @@ msgid "Seek To"
 msgstr "Išči do"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek to _time:"
-msgstr "Išči do _časa:"
+msgid "Seek _video to:"
+msgstr "Išči _video na:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
 msgid "_Seek"
@@ -1034,10 +1034,6 @@ msgstr "Usklajevanje je pripravljeno. Sledeči podnapisi ne bodo usklajeni: {0} 
 msgid "All Video Files"
 msgstr "Vse video datoteke"
 
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:68
-msgid "Seek to _frame:"
-msgstr "Iskanje do _sličice:"
-
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid "An unknown error has occured. Please report a bug and include this error name:"
 msgstr "Prišlo je do neznane napake. Pošljite poročilo o napaki in vključite to ime napake:"
@@ -1173,6 +1169,10 @@ msgstr "Dodaj ali odstrani ..."
 msgid "Auto Detected"
 msgstr "Samodejno zaznano"
 
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+msgid "System Default"
+msgstr "Sistemsko privzeto"
+
 #. To translators: this is the filename for new files (before being saved for the first time)
 #: ../src/GnomeSubtitles/Ui/MainUi.cs:136
 msgid "Unsaved Subtitles"
@@ -1237,8 +1237,8 @@ msgstr "Med"
 msgid "Translation"
 msgstr "Prevod"
 
-#~ msgid "System Default"
-#~ msgstr "Sistemsko privzeto"
+#~ msgid "Seek to _frame:"
+#~ msgstr "Iskanje do _sličice:"
 #~ msgid "<b>Video</b>"
 #~ msgstr "<b>Slika</b>"
 #~ msgid "gtk-add"
