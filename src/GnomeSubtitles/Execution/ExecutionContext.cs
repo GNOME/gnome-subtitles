@@ -55,6 +55,11 @@ public class ExecutionContext {
 	public string ExecutableName {
 		get { return applicationID; }
 	}
+
+	//Unix only
+	public string LocaleDir {
+		get { return System.AppDomain.CurrentDomain.BaseDirectory + "../../share/locale"; }
+	}
 	
 	public string Version {
 		get { return RemoveTrailingZeros(Assembly.GetExecutingAssembly().GetName().Version.ToString()); }

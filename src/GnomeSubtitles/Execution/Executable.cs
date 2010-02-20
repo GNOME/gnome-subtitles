@@ -70,6 +70,7 @@ public class Executable {
 		ExceptionManager.UnhandledException += OnUnhandledException;
 
 		ExecutionContext executionContext = new ExecutionContext(args);
+
 		SetProcessName(executionContext.ExecutableName);
 		Base.Run(executionContext);
 	}

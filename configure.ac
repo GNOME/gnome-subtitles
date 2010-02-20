@@ -94,6 +94,5 @@ data/gnome-subtitles.desktop
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
-src/GnomeSubtitles/Execution/ConfigureDefines.cs
 help/Makefile
 po/Makefile.in])

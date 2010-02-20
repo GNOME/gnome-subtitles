@@ -274,7 +274,7 @@ public class Base {
 		/* Initialize the GUI */
 		ui = new MainUi(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
-		Catalog.Init(ExecutionContext.TranslationDomain, ConfigureDefines.LocaleDir);
+		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.LocaleDir);
 		
 		EmitInitFinishedEvent();
 	}
