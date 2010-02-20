@@ -71,7 +71,11 @@ public class Executable {
 
 		ExecutionContext executionContext = new ExecutionContext(args);
 
-		SetProcessName(executionContext.ExecutableName);
+		/* If on unix, set process name to gnome-subtitles instead of mono default */
+		if (executionContext.PlatformIsUnix) {
+			SetProcessName(executionContext.ExecutableName);
+		}
+
 		Base.Run(executionContext);
 	}
 	

@@ -31,11 +31,35 @@ public class ExecutionContext {
 	/* Constant strings */
 	private const string applicationName = "Gnome Subtitles";
 	private const string applicationID = "gnome-subtitles";
+
+	/* Dynamic variables */
+	private string localeDir = String.Empty;
+	private bool platformIsWindows = false;
+	private bool platformIsUnix = false;
 	
 	private string[] args = null;
 	
 	public ExecutionContext (string[] args) {
 		this.args = args;
+
+		SetDynamicVariables();
+	}
+
+	private void SetDynamicVariables () {
+		this.localeDir = System.AppDomain.CurrentDomain.BaseDirectory + "../../share/locale";
+
+		/* Handle platform */
+		switch (Environment.OSVersion.Platform) {
+			case PlatformID.Win32NT:
+			case PlatformID.Win32S:
+			case PlatformID.Win32Windows:
+			case PlatformID.WinCE:
+				platformIsWindows = true;
+				break;
+			case PlatformID.Unix:
+				platformIsUnix = true;
+				break;
+		}
 	}
 	
 	/* Public properties */
@@ -58,7 +82,7 @@ public class ExecutionContext {
 
 	//Unix only
 	public string LocaleDir {
-		get { return System.AppDomain.CurrentDomain.BaseDirectory + "../../share/locale"; }
+		get { return localeDir; }
 	}
 	
 	public string Version {
@@ -84,6 +108,14 @@ public class ExecutionContext {
 	
 	public string TranslationDomain {
 		get { return applicationID; }
+	}
+
+	public bool PlatformIsWindows {
+		get { return platformIsWindows; }
+	}
+
+	public bool PlatformIsUnix {
+		get { return platformIsUnix; }
 	}
 	
 
