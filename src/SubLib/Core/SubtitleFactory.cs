@@ -127,9 +127,7 @@ public class SubtitleFactory {
 	/// <returns>The opened lines turned into subtitles.</returns>
 	/// <exception cref="EncodingNotSupportedException">Thrown if a detected encoding is not supported by the platform.</exception>
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if a subtitle format could not be detected.</exception>
-	public Subtitles OpenPlain (string path, bool withCharacterNames, 
-		                            TimingMode timingMode,
-		                            string lineSeparator) {
+	public Subtitles OpenPlain (string path, bool withCharacterNames, TimingMode timingMode, string lineSeparator) {
 		string text = String.Empty;
 		Encoding fileEncoding = null;	
 		
