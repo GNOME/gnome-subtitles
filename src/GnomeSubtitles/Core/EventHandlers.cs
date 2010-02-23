@@ -348,7 +348,7 @@ public class EventHandlers {
 		Uri fileUri;
 
 		if (Uri.TryCreate(uriString, UriKind.Absolute, out fileUri) && (args.Info == DragDrop.DragDropTargetUriList)) {
-			Base.Ui.Open(fileUri.AbsolutePath);
+			Base.Ui.Open(fileUri.LocalPath);
 			success = true;
 		}
 
