@@ -7,7 +7,7 @@
 			<owner>gnome-subtitles</owner>
 			<type>list</type>
 			<list_type>string</list_type>
-			<default>[ISO-8859-15]</default>
+			<default>[ISO-8859-1]</default>
 			<locale name="C">
 				<short>Encodings shown in menu</short>
 				<long>List of encodings shown in the File Open/Save dialogs.</long>
@@ -117,7 +117,7 @@
 			<applyto>/apps/gnome-subtitles/preferences/defaults/file_open_fallback</applyto>
 			<owner>gnome-subtitles</owner>
 			<type>string</type>
-			<default>CurrentLocale</default>
+			<default>ISO-8859-1</default>
 			<locale name="C">
 				<short>Auto detection fallback encoding</short>
 				<long>Encoding to use when auto detection fails.</long>
