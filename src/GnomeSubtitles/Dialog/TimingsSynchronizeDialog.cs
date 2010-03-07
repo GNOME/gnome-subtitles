@@ -213,7 +213,8 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		SyncPoint syncPoint = syncPoints[args.Path];
 		int subtitleNumber = syncPoint.SubtitleNumber;
 		if (subtitleNumber < Base.Document.Subtitles.Count) {
-			Base.Ui.View.Selection.Activate(Core.Util.IntToPath(syncPoint.SubtitleNumber), true, false);
+			Base.Ui.View.Selection.Select(Core.Util.IntToPath(syncPoint.SubtitleNumber), true, true);
+			Base.Ui.Video.Seek(syncPoint.Correct.Time);
 		}
 	}
 	
