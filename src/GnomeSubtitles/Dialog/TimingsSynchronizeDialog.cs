@@ -165,6 +165,11 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		
 		return intervals;
 	}
+
+	private bool CanSynchronize () {
+		return (syncPoints.Collection.Count > 0)
+			&& (syncPoints.Collection.Get(syncPoints.Collection.Count - 1).SubtitleNumber < Base.Document.Subtitles.Count);
+	}
     
     /* Cell Renderers */
 
@@ -266,17 +271,19 @@ public class TimingsSynchronizeDialog : GladeDialog {
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			bool toSyncAll = syncAllSubtitlesCheckButton.Active;
-			SelectionIntended selectionIntended = (toSyncAll ? SelectionIntended.All : SelectionIntended.Range);
-			
-			TreePath[] pathRange = null;
-			if (selectionIntended == SelectionIntended.Range) {
-				pathRange = new TreePath[2];
-				pathRange[0] = Core.Util.IntToPath(syncPoints.Collection[0].SubtitleNumber);
-				pathRange[1] = Core.Util.IntToPath(syncPoints.Collection[syncPoints.Collection.Count - 1].SubtitleNumber);
+			if (CanSynchronize()) {
+				bool toSyncAll = syncAllSubtitlesCheckButton.Active;
+				SelectionIntended selectionIntended = (toSyncAll ? SelectionIntended.All : SelectionIntended.Range);
+				
+				TreePath[] pathRange = null;
+				if (selectionIntended == SelectionIntended.Range) {
+					pathRange = new TreePath[2];
+					pathRange[0] = Core.Util.IntToPath(syncPoints.Collection[0].SubtitleNumber);
+					pathRange[1] = Core.Util.IntToPath(syncPoints.Collection[syncPoints.Collection.Count - 1].SubtitleNumber);
+				}
+				
+				Base.CommandManager.Execute(new SynchronizeTimingsCommand(syncPoints, toSyncAll, selectionIntended, pathRange));
 			}
-			
-			Base.CommandManager.Execute(new SynchronizeTimingsCommand(syncPoints, toSyncAll, selectionIntended, pathRange));
 			return true;
 		}
 		else
