@@ -2,7 +2,7 @@ include $(top_srcdir)/gnome-doc-utils.make
 
 DOC_MODULE = gnome-subtitles
 DOC_ENTITIES = legal.xml
-DOC_LINGUAS = ca de el es fr oc sv
+DOC_LINGUAS = ca de el es fr oc sl sv
 DOC_FIGURES = 
 
 dist-hook: doc-dist-hook
