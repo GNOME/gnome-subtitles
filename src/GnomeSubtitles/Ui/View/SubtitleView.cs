@@ -192,6 +192,11 @@ public class SubtitleView {
 		return true;
 	}
 
+	/// <summary>Selects the subtitle below of current selected</summary>	
+	public bool SelectNextSubtitle () {
+		selection.SelectNext();
+		return true;
+	}		
     
     /* Private members */
     

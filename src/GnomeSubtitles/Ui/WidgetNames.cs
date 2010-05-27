@@ -114,6 +114,8 @@ public class WidgetNames {
 	public const string VideoSetSubtitleStartButtonImage = "videoSetSubtitleStartButtonImage";
 	public const string VideoSetSubtitleEndButton = "videoSetSubtitleEndButton";
 	public const string VideoSetSubtitleEndButtonImage = "videoSetSubtitleEndButtonImage";
+	public const string VideoSetSubtitleStartEndButton = "videoSetSubtitleStartEndButton";
+	public const string VideoSetSubtitleStartEndButtonImage = "videoSetSubtitleStartEndButtonImage";
 	public const string VideoFrame = "videoFrame";
 	public const string VideoPlaybackHBox = "videoPlaybackHBox";
 	public const string VideoSlider = "videoSlider";

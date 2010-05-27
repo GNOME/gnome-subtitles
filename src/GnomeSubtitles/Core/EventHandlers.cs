@@ -287,6 +287,18 @@ public class EventHandlers {
 		}
 	}
 
+	public void OnVideoSetSubtitleStartEnd (object o, EventArgs args) {
+		if (Base.TimingMode == TimingMode.Times) {
+			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
+			Base.Ui.View.SelectNextSubtitle();
+		}
+		else {
+			int frames = Base.Ui.Video.Position.CurrentFrames;
+			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
+			Base.Ui.View.SelectNextSubtitle();
+		}
+	}		
 
 	/* Tools Menu */
 		

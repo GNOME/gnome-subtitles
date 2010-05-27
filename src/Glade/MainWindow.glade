@@ -1376,6 +1376,27 @@
                             <property name="position">1</property>
                           </packing>
                         </child>
+                        <child>
+                          <widget class="GtkButton" id="videoSetSubtitleStartEndButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="relief">none</property>
+                            <signal name="pressed" handler="OnVideoSetSubtitleStart"/>
+                            <signal name="released" handler="OnVideoSetSubtitleStartEnd"/>
+                            <child>
+                              <widget class="GtkImage" id="videoSetSubtitleStartEndButtonImage">
+                                <property name="visible">True</property>
+                                <property name="xpad">7</property>
+                                <property name="ypad">4</property>
+                                <property name="stock">gtk-missing-image</property>
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
                       </widget>
                       <packing>
                         <property name="expand">False</property>

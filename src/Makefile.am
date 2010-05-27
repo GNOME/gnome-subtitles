@@ -56,7 +56,8 @@ GS_RESOURCES = \
 	$(GS_DATADIR)/gnome-subtitles.png \
 	$(GS_DATADIR)/gnome-subtitles-logo.png \
 	$(GS_DATADIR)/video-set-subtitle-end-16x.png \
-	$(GS_DATADIR)/video-set-subtitle-start-16x.png
+	$(GS_DATADIR)/video-set-subtitle-start-16x.png\
+	$(GS_DATADIR)/video-set-subtitle-start-end-30x.png
 
 GS_SYSTEM_REFERENCES = \
 	Mono.Posix.dll

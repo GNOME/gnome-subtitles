@@ -43,6 +43,7 @@ public class Video {
 	/* Constant strings */
 	private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
 	private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
+	private const string videoSetSubtitleStartEndIconFilename = "video-set-subtitle-start-end-30x.png";
 
 	public Video () {
 		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
@@ -188,6 +189,11 @@ public class Video {
 		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
 		image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
 		image.Pixbuf = pixbuf;
+			
+		/* Set the icon for the SetSubtitleStartEnd button */
+		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartEndIconFilename);
+		image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButtonImage) as Image;
+		image.Pixbuf = pixbuf;
 	}
 	
 	private void InitializeVideoFrame () {
@@ -229,6 +235,7 @@ public class Video {
 	private void SetSelectionDependentControlsSensitivity (bool sensitivity) {
 		Base.GetWidget(WidgetNames.VideoSetSubtitleStartButton).Sensitive = sensitivity;
 		Base.GetWidget(WidgetNames.VideoSetSubtitleEndButton).Sensitive = sensitivity;
+		Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButton).Sensitive = sensitivity;
 	}
 	
 	private void SilentDisablePlayPauseButton () {
