@@ -9,7 +9,6 @@
     <child>
       <widget class="GtkVBox" id="mainWindowVBox">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <widget class="GtkMenuBar" id="menubar">
             <property name="visible">True</property>
@@ -249,8 +248,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="Z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -533,8 +532,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate"/>
+                        <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -544,8 +543,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
+                        <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -804,8 +803,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
-                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F5" signal="activate"/>
+                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -823,8 +822,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoRewind"/>
-                        <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F6" signal="activate"/>
+                        <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoRewindImage">
                             <property name="visible">True</property>
@@ -842,8 +841,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoForward"/>
-                        <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F7" signal="activate"/>
+                        <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoForwardImage">
                             <property name="visible">True</property>
@@ -1246,7 +1245,6 @@
         <child>
           <widget class="GtkVPaned" id="mainPaned">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
             <child>
               <widget class="GtkHBox" id="videoAreaHBox">
                 <property name="height_request">200</property>
@@ -1258,12 +1256,10 @@
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
                     <property name="border_width">4</property>
-                    <property name="orientation">vertical</property>
                     <property name="spacing">8</property>
                     <child>
                       <widget class="GtkVBox" id="videoTimingsPositionVBox">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <property name="spacing">1</property>
                         <child>
                           <widget class="GtkLabel" id="videoControlsPositionLabel">
@@ -1328,10 +1324,16 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkHBox" id="videoTimingsSubtitlingHBox">
+                      <widget class="GtkTable" id="table1">
                         <property name="visible">True</property>
-                        <property name="spacing">2</property>
+                        <property name="n_rows">2</property>
+                        <property name="n_columns">2</property>
+                        <property name="column_spacing">1</property>
+                        <property name="row_spacing">4</property>
                         <property name="homogeneous">True</property>
+                        <child>
+                          <placeholder/>
+                        </child>
                         <child>
                           <widget class="GtkButton" id="videoSetSubtitleStartButton">
                             <property name="visible">True</property>
@@ -1348,11 +1350,6 @@
                               </widget>
                             </child>
                           </widget>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">0</property>
-                          </packing>
                         </child>
                         <child>
                           <widget class="GtkButton" id="videoSetSubtitleEndButton">
@@ -1371,9 +1368,8 @@
                             </child>
                           </widget>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">1</property>
+                            <property name="left_attach">1</property>
+                            <property name="right_attach">2</property>
                           </packing>
                         </child>
                         <child>
@@ -1394,7 +1390,8 @@
                             </child>
                           </widget>
                           <packing>
-                            <property name="position">2</property>
+                            <property name="top_attach">1</property>
+                            <property name="bottom_attach">2</property>
                           </packing>
                         </child>
                       </widget>
@@ -1425,7 +1422,6 @@
                   <widget class="GtkVBox" id="videoPreviewVBox">
                     <property name="visible">True</property>
                     <property name="border_width">4</property>
-                    <property name="orientation">vertical</property>
                     <property name="spacing">7</property>
                     <child>
                       <widget class="GtkTable" id="videoImageTable">
@@ -1433,7 +1429,6 @@
                         <child>
                           <widget class="GtkVBox" id="videoImageVBox">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <child>
                               <widget class="GtkEventBox" id="videoSubtitleEventBox">
                                 <property name="visible">True</property>
@@ -1607,7 +1602,6 @@
               <widget class="GtkVBox" id="subtitleAreaVBox">
                 <property name="visible">True</property>
                 <property name="border_width">4</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <signal name="drag_data_received" handler="OnSubtitleAreaDragDataReceived"/>
                 <child>
