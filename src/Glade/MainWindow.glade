@@ -816,7 +816,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="videoRewind">
-                        <property name="label">R_ewind</property>
+                        <property name="label" translatable="yes">R_ewind</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
@@ -835,7 +835,7 @@
                     </child>
                     <child>
                       <widget class="GtkImageMenuItem" id="videoForward">
-                        <property name="label">_Forward</property>
+                        <property name="label" translatable="yes">_Forward</property>
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="use_underline">True</property>
@@ -1048,7 +1048,7 @@
             <child>
               <widget class="GtkToolButton" id="newToolButton">
                 <property name="visible">True</property>
-                <property name="tooltip">New File</property>
+                <property name="tooltip" translatable="yes">New File</property>
                 <property name="stock_id">gtk-new</property>
                 <signal name="clicked" handler="OnFileNew"/>
               </widget>
@@ -1060,7 +1060,7 @@
             <child>
               <widget class="GtkToolButton" id="openToolButton">
                 <property name="visible">True</property>
-                <property name="tooltip">Open File</property>
+                <property name="tooltip" translatable="yes">Open File</property>
                 <property name="stock_id">gtk-open</property>
                 <signal name="clicked" handler="OnFileOpen"/>
               </widget>
@@ -1073,7 +1073,7 @@
               <widget class="GtkToolButton" id="saveToolButton">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
-                <property name="tooltip">Save File</property>
+                <property name="tooltip" translatable="yes">Save File</property>
                 <property name="stock_id">gtk-save</property>
                 <signal name="clicked" handler="OnFileSave"/>
               </widget>
