@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,7 +87,10 @@ public class TimingsShiftDialog : GladeDialog {
 		fromFirstSubtitleToSelectionRadioButton.Sensitive = (selectionCount == 1);
 		fromSelectionToLastSubtitleRadioButton.Sensitive = (selectionCount == 1);
 
-		selectedSubtitlesRadioButton.Active = true;
+		if (selectionCount > 0)
+			selectedSubtitlesRadioButton.Active = true;
+		else
+			selectedSubtitlesRadioButton.Sensitive = false;
 	}
 	
 	private void UpdateSpinButtonValue (bool initializing) {
