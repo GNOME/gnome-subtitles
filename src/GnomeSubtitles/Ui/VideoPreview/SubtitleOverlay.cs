@@ -26,13 +26,10 @@ using System;
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class SubtitleOverlay {
-	private Label label = null;
-	private SearchOperator searchOp = null;
+	private Label label = null;	
 	
 	/* Current subtitle */
-	private Subtitle subtitle = null;
-	private TimeSpan subtitleStart = TimeSpan.Zero;
-	private TimeSpan subtitleEnd = TimeSpan.Zero;
+	private Subtitle subtitle = null;	
 	private bool toShowText = true;
 	
 	public SubtitleOverlay () {
@@ -58,32 +55,18 @@ public class SubtitleOverlay {
 	public void Close () {
 		UnloadSubtitle();
 	}
-
 	
-	/* Private properties */
-	
-	private bool IsSubtitleLoaded {
-		get { return subtitle != null; }
-	}
 	
 	/* Private methods */
 	
-	private bool IsTimeInCurrentSubtitle (TimeSpan time) {
-		return IsSubtitleLoaded && (time >= subtitleStart) && (time <= subtitleEnd);	
-	}
-	
 	private void LoadSubtitle (int number) {
-		subtitle = Base.Document.Subtitles[number];
-		subtitleStart = subtitle.Times.Start;
-		subtitleEnd = subtitle.Times.End;
+		subtitle = Base.Document.Subtitles[number];		
 		SetText();
 		label.Visible = true;
 	}
 	
 	private void UnloadSubtitle () {
-		subtitle = null;
-		subtitleStart = TimeSpan.Zero;
-		subtitleEnd = TimeSpan.Zero;
+		subtitle = null;		
 		ClearText();
 		label.Visible = false;
 	}
@@ -114,31 +97,17 @@ public class SubtitleOverlay {
 	private void ClearText () {
 		label.Text = String.Empty;
 	}
-
 	
-	/* Event members */
-	
-	private void OnBaseInitFinished () {
-		Base.Ui.Video.Position.Changed += OnVideoPositionChanged;
+	/* Event members */		
 		
-		Base.DocumentLoaded += OnBaseDocumentLoaded;
+	
+	private void OnBaseInitFinished () {			
+			Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;		
 	}
 	
-	private void OnBaseDocumentLoaded (Document document) {
-		searchOp = new SearchOperator(document.Subtitles);
-	}
-	
-	private void OnVideoPositionChanged (TimeSpan newPosition) {
-		if (!(Base.IsDocumentLoaded))
-			return;
-	
-		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = searchOp.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
-			if (foundSubtitle == -1)
-				UnloadSubtitle();
-			else
-				LoadSubtitle(foundSubtitle);
-		}
+	private void OnCurrentSubtitleChanged(int indexSubtitle) {
+			if( indexSubtitle == -1 ) UnloadSubtitle();
+			else LoadSubtitle(indexSubtitle);		
 	}
 	
 }

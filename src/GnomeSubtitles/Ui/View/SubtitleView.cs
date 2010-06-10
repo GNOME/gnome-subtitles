@@ -70,6 +70,14 @@ public class SubtitleView {
     }
     
     /* Public methods */ 
+		
+	public void SetAutoSelectSubtitles(){
+		CheckMenuItem item = Base.GetWidget(WidgetNames.VideoAutoSelectSubtitles) as CheckMenuItem;
+		bool follow = item.Active;
+		if( follow ) Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;
+		else Base.Ui.Video.Tracker.SubtitleChanged -= OnCurrentSubtitleChanged;
+	}		
+
 	
 	/// <summary>Instructs the <see cref="TreeView" /> to redraw a row.</summary>
 	/// <remarks>This is useful when a row changes its width, for instance.</remarks>
@@ -377,6 +385,10 @@ public class SubtitleView {
 	private void EmitSubtitleCountChangedEvent () {
 		if (SubtitleCountChanged != null)
 			SubtitleCountChanged(subtitles.Count);
+	}
+	
+	private void OnCurrentSubtitleChanged(int indexSubtitle) {			
+			if( indexSubtitle != -1 ) selection.SelectToIndex(indexSubtitle);		
 	}
 
     private void SetEmptyModel () {

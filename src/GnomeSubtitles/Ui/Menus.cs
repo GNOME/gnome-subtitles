@@ -284,13 +284,17 @@ public class Menus {
 	private void SetVideoSelectionDependentSensitivity (bool sensitivity) {
 		if (Core.Base.Ui.Video.IsLoaded && sensitivity) {
 			SetSensitivity(WidgetNames.VideoSeekToSelection, true);
+			SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, true);
+			SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, true);
 		}
 		else {
 			SetSensitivity(WidgetNames.VideoSeekToSelection, false);
+			SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
+			SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, false);
 		}
 	}
 	

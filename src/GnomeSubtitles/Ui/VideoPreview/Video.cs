@@ -36,6 +36,7 @@ public class Video {
 	private Player player = null;
 	private VideoPosition position = null;
 	private SubtitleOverlay overlay = null;
+	private SubtitleTracker tracker = null;
 	
 	private bool isLoaded = false;
 	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
@@ -53,6 +54,7 @@ public class Video {
 		
 		position = new VideoPosition(player);
 		overlay = new SubtitleOverlay();
+		tracker = new SubtitleTracker();
 
 		SetCustomIcons();
 		Base.InitFinished += OnBaseInitFinished;
@@ -66,6 +68,10 @@ public class Video {
 	
 	public SubtitleOverlay Overlay {
 		get { return overlay; }
+	}
+		
+	public SubtitleTracker Tracker {
+		get { return tracker; }
 	}
 	
 	public bool IsLoaded {
@@ -114,7 +120,9 @@ public class Video {
 
 		player.Close();
 		overlay.Close();
+		tracker.Close();
 		position.Disable();
+		
 		
 		/* Update the frame */
 		frame.Child.Hide();
@@ -167,6 +175,11 @@ public class Video {
 		Subtitle subtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
     	TimeSpan time = subtitle.Times.Start;
     	Seek(time);
+	}
+	
+	public void SelectNearestSubtitle () {		
+		int index = tracker.FindSubtitleNearPosition(position.CurrentTime);
+		Base.Ui.View.Selection.SelectToIndex(index);
 	}
 	
 	/* Private methods */

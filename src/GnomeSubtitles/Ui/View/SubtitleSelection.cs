@@ -241,6 +241,14 @@ public class SubtitleSelection {
 		Core.Base.Ui.Edit.TextFocusOnSelection(start, end, textType);		
 	}
     
+	/// <summary>Selects the subtitle based in your index.</summary>
+    /// <remarks>The subtitle is only selected if it exists.</remarks>
+    public void SelectToIndex (int index) {
+    	if (Base.Document.Subtitles.Count > 0 && index > 0){			
+    		Select(Util.IntToPath(index), false, false);
+		}
+    }
+		
     /// <summary>Selects the first subtitle.</summary>
     /// <remarks>The subtitle is only selected if it exists.</remarks>
     public void SelectFirst () {

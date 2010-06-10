@@ -114,7 +114,39 @@ public class SearchOperator {
 		}
 		return -1; // No subtitles were found 
 	}
-
+		
+	/// <summary>Finds the subtitle more near of specified time position.</summary>
+	/// <param name="time">The time position, in seconds.</param>
+	/// <returns>The found subtitle number, or -1 if no subtitle was found.</returns>
+	public int FindNearTime (float time) {
+		SubtitleCollection collection = subtitles.Collection;
+		if( time < collection[0].Times.Start.Seconds ) return 0;
+		if (collection.Count == 0)
+			return -1;
+		
+		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count ; subtitleNumber++) {
+			Subtitle subtitle = collection[subtitleNumber];
+			Subtitle nextSubtitle;
+			if( subtitleNumber != collection.Count -1 ) nextSubtitle = collection[subtitleNumber+1];
+			else nextSubtitle = collection[collection.Count-1];
+			
+			double start = subtitle.Times.Start.TotalSeconds;
+			if (time < start)
+				continue;
+			
+			double end = subtitle.Times.End.TotalSeconds;
+			if (time <= end)
+				return subtitleNumber;
+			
+			double nextSubtitleStart = nextSubtitle.Times.Start.TotalSeconds;
+			if( time > end && time < nextSubtitleStart ){					
+					if( time - end < nextSubtitleStart - time ) return subtitleNumber;
+					else return subtitleNumber+1;
+			}
+			
+		}
+		return -1; // No subtitles were found 
+	}
 	
 	/* Private members */
 	

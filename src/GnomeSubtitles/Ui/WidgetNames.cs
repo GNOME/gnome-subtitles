@@ -79,6 +79,8 @@ public class WidgetNames {
 	public const string VideoForward = "videoForward";
 	public const string VideoSeekTo = "videoSeekTo";
 	public const string VideoSeekToSelection = "videoSeekToSelection";
+	public const string VideoSelectNearestSubtitle = "videoSelectNearestSubtitle";
+	public const string VideoAutoSelectSubtitles = "videoAutoSelectSubtitles";
 	public const string VideoSetSubtitleStart = "videoSetSubtitleStart";
 	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
 	

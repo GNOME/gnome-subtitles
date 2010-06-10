@@ -264,7 +264,15 @@ public class EventHandlers {
 	public void OnVideoSeekToSelection (object o, EventArgs args) {
 		Base.Ui.Video.SeekToSelection();	
 	}
-	
+		
+	public void OnVideoSelectNearestSubtitle(object o, EventArgs args) {
+		Base.Ui.Video.SelectNearestSubtitle();
+	}
+		
+	public void OnVideoAutoSelectSubtitles(object o, EventArgs args) {
+		Base.Ui.View.SetAutoSelectSubtitles();
+ 	}
+		
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
