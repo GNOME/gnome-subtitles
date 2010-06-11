@@ -178,8 +178,8 @@ public class Video {
 	}
 	
 	public void SelectNearestSubtitle () {		
-		int index = tracker.FindSubtitleNearPosition(position.CurrentTime);
-		Base.Ui.View.Selection.SelectToIndex(index);
+		int indexToSelect = tracker.FindSubtitleNearPosition(position.CurrentTime);
+		Base.Ui.View.Selection.Select(indexToSelect, false, false);
 	}
 	
 	/* Private methods */

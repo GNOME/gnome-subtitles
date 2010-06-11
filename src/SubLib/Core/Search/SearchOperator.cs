@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -110,7 +110,7 @@ public class SearchOperator {
 			
 			double end = subtitle.Times.End.TotalSeconds;
 			if (time <= end)
-				return subtitleNumber;
+				return subtitleNumber; //TODO optimize: else return -1;
 		}
 		return -1; // No subtitles were found 
 	}
@@ -120,32 +120,37 @@ public class SearchOperator {
 	/// <returns>The found subtitle number, or -1 if no subtitle was found.</returns>
 	public int FindNearTime (float time) {
 		SubtitleCollection collection = subtitles.Collection;
-		if( time < collection[0].Times.Start.Seconds ) return 0;
 		if (collection.Count == 0)
 			return -1;
-		
-		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count ; subtitleNumber++) {
+
+		/* Check if before the first subtitle */
+		if (time < collection[0].Times.Start.Seconds)
+			return 0;
+
+		/* Iterate subtitles two by two - the last subtitle is handled in pair and individually afterwards */
+		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count - 1 ; subtitleNumber++) {
 			Subtitle subtitle = collection[subtitleNumber];
-			Subtitle nextSubtitle;
-			if( subtitleNumber != collection.Count -1 ) nextSubtitle = collection[subtitleNumber+1];
-			else nextSubtitle = collection[collection.Count-1];
 			
+			/* Continue iterating if didn't reach subtitle start yet */
 			double start = subtitle.Times.Start.TotalSeconds;
 			if (time < start)
 				continue;
 			
+			/* Check if time is contained by the subtitle */
 			double end = subtitle.Times.End.TotalSeconds;
 			if (time <= end)
 				return subtitleNumber;
-			
+				
+			/* Check if contained between this and the next subtitle, and which is nearest */
+			int nextSubtitleIndex = subtitleNumber + 1;
+			Subtitle nextSubtitle = collection[nextSubtitleIndex];
 			double nextSubtitleStart = nextSubtitle.Times.Start.TotalSeconds;
-			if( time > end && time < nextSubtitleStart ){					
-					if( time - end < nextSubtitleStart - time ) return subtitleNumber;
-					else return subtitleNumber+1;
-			}
-			
+			if (time < nextSubtitleStart)
+				return ((time - end) < (nextSubtitleStart - time)) ? subtitleNumber : nextSubtitleIndex;
 		}
-		return -1; // No subtitles were found 
+		
+		/* If no rule matched before, time must be after last subtitle */
+		return collection.Count - 1;
 	}
 	
 	/* Private members */

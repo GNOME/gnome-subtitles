@@ -37,11 +37,12 @@ public class SubtitleSelection {
 	public SubtitleSelection (TreeView tree) {
 		this.tree = tree;
 		this.selection = tree.Selection;
-		
+
 		selection.Mode = SelectionMode.Multiple;
-		
+
 		Base.InitFinished += OnBaseInitFinished;
 	}
+
 	
 	/* Events */
 	
@@ -225,6 +226,16 @@ public class SubtitleSelection {
 		SetFocus(path, align);
 	}
 	
+	/// <summary>Selects the specified index, possibly aligning it to the center and/or reselecting it.</summary>
+	/// <param name="index">The index of the subtitle to select.</param>
+    /// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
+    /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param>
+    /// <remarks>The subtitle is only selected if it exists. The input focus will be placed on the path.</remarks>
+    public void Select (int index, bool align, bool reselect) {
+    	if ((index >= 0) && (index < Base.Document.Subtitles.Count))
+    		Select(Util.IntToPath(index), false, false);
+	}
+	
 	/// <summary>Selects a <see cref="TreePath" />, activates it and selects text in the subtitle it refers to.</summary>
 	/// <param name="path">The path to select. If it's null, all paths will be unselected.</param>
     /// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
@@ -240,14 +251,6 @@ public class SubtitleSelection {
 		Select(path, align, reselect);
 		Core.Base.Ui.Edit.TextFocusOnSelection(start, end, textType);		
 	}
-    
-	/// <summary>Selects the subtitle based in your index.</summary>
-    /// <remarks>The subtitle is only selected if it exists.</remarks>
-    public void SelectToIndex (int index) {
-    	if (Base.Document.Subtitles.Count > 0 && index > 0){			
-    		Select(Util.IntToPath(index), false, false);
-		}
-    }
 		
     /// <summary>Selects the first subtitle.</summary>
     /// <remarks>The subtitle is only selected if it exists.</remarks>

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,13 +70,14 @@ public class SubtitleView {
     }
     
     /* Public methods */ 
-		
+	
 	public void SetAutoSelectSubtitles(){
-		CheckMenuItem item = Base.GetWidget(WidgetNames.VideoAutoSelectSubtitles) as CheckMenuItem;
-		bool follow = item.Active;
-		if( follow ) Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;
-		else Base.Ui.Video.Tracker.SubtitleChanged -= OnCurrentSubtitleChanged;
-	}		
+		CheckMenuItem autoSelectSubtitles = Base.GetWidget(WidgetNames.VideoAutoSelectSubtitles) as CheckMenuItem;
+		if (autoSelectSubtitles.Active)
+			Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;
+		else
+			Base.Ui.Video.Tracker.SubtitleChanged -= OnCurrentSubtitleChanged;
+	}
 
 	
 	/// <summary>Instructs the <see cref="TreeView" /> to redraw a row.</summary>
@@ -387,8 +388,8 @@ public class SubtitleView {
 			SubtitleCountChanged(subtitles.Count);
 	}
 	
-	private void OnCurrentSubtitleChanged(int indexSubtitle) {			
-			if( indexSubtitle != -1 ) selection.SelectToIndex(indexSubtitle);		
+	private void OnCurrentSubtitleChanged (int subtitleIndex) {			
+		selection.Select(subtitleIndex, false, false);
 	}
 
     private void SetEmptyModel () {

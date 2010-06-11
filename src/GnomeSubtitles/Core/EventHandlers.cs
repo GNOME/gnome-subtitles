@@ -261,15 +261,16 @@ public class EventHandlers {
 		Base.Dialogs.Get(typeof(VideoSeekToDialog)).Show();
 	}
 	
+	//TODO allow to seek when multiple subtitles are selected (use first)
 	public void OnVideoSeekToSelection (object o, EventArgs args) {
 		Base.Ui.Video.SeekToSelection();	
 	}
 		
-	public void OnVideoSelectNearestSubtitle(object o, EventArgs args) {
+	public void OnVideoSelectNearestSubtitle (object o, EventArgs args) {
 		Base.Ui.Video.SelectNearestSubtitle();
 	}
 		
-	public void OnVideoAutoSelectSubtitles(object o, EventArgs args) {
+	public void OnVideoAutoSelectSubtitles (object o, EventArgs args) {
 		Base.Ui.View.SetAutoSelectSubtitles();
  	}
 		

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -169,6 +169,8 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchReplace, documentLoaded);
 		/* Timings Menu */
 		SetSensitivity(WidgetNames.TimingsSynchronize, documentLoaded);
+		/* Video Menu */
+		SetVideoDocumentLoadedSensitivity(documentLoaded);
 		/* Tools Menu */
 		SetToolsAutocheckSpellingSensitivity(documentLoaded);
 		SetSensitivity(WidgetNames.ToolsSetTextLanguage, documentLoaded);
@@ -177,7 +179,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.SaveButton, documentLoaded);
 		SetSensitivity(WidgetNames.InsertSubtitleButton, documentLoaded);
 		
-		/* Set sensitivity that only applies to when the document is not loaded */
+		/* Set sensitivity that only applies when the document is not loaded */
 		
 		if (!documentLoaded) {
 			/* Edit menu */
@@ -259,6 +261,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoRewind, sensitivity);
 		SetSensitivity(WidgetNames.VideoForward, sensitivity);
 		SetSensitivity(WidgetNames.VideoSeekTo, sensitivity);
+		SetVideoDocumentLoadedSensitivity(Base.IsDocumentLoaded);
 		
 		/* Set video menu dependent sensitivity if there is 1 selected subtitle. */
 		if ((Core.Base.Ui.View.Selection.Count == 1) && sensitivity)
@@ -282,16 +285,14 @@ public class Menus {
 	/// <param name="sensitivity">Whether to set the menu items sensitive.</param>
 	/// <remarks>The menu items are only set sensitive if the video is loaded.</remarks>
 	private void SetVideoSelectionDependentSensitivity (bool sensitivity) {
-		if (Core.Base.Ui.Video.IsLoaded && sensitivity) {
+		if (Core.Base.Ui.Video.IsLoaded && sensitivity) {//TODO improve this
 			SetSensitivity(WidgetNames.VideoSeekToSelection, true);
-			SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, true);
 			SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, true);
 		}
 		else {
 			SetSensitivity(WidgetNames.VideoSeekToSelection, false);
-			SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
 			SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, false);
@@ -308,6 +309,12 @@ public class Menus {
 	private void SetViewVideoSubtitlesSensitivity (bool textSensitivity, bool translationSensitivity) {
 		SetSensitivity(WidgetNames.ViewVideoSubtitlesText, textSensitivity);
 		SetSensitivity(WidgetNames.ViewVideoSubtitlesTranslation, translationSensitivity);
+	}
+	
+	private void SetVideoDocumentLoadedSensitivity (bool isDocumentLoaded) {
+		bool sensitivity = isDocumentLoaded && (Base.Ui != null) && Base.Ui.Video.IsLoaded;
+		SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, sensitivity);
+		SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, sensitivity);
 	}
 	
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {

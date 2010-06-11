@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,7 +49,8 @@ public class SubtitleOverlay {
 		get { return toShowText; }
 		set { this.toShowText = value; }
 	}
-	
+
+
 	/* Public methods */
 
 	public void Close () {
@@ -97,19 +98,21 @@ public class SubtitleOverlay {
 	private void ClearText () {
 		label.Text = String.Empty;
 	}
-	
+
+
 	/* Event members */		
-		
-	
-	private void OnBaseInitFinished () {			
-			Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;		
+
+	private void OnBaseInitFinished () {
+		Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;		
 	}
-	
-	private void OnCurrentSubtitleChanged(int indexSubtitle) {
-			if( indexSubtitle == -1 ) UnloadSubtitle();
-			else LoadSubtitle(indexSubtitle);		
+
+	private void OnCurrentSubtitleChanged (int indexSubtitle) {
+		if (indexSubtitle == -1)
+			UnloadSubtitle();
+		else
+			LoadSubtitle(indexSubtitle);		
 	}
-	
+
 }
 
 }
