@@ -1399,7 +1399,10 @@
                             <property name="receives_default">False</property>
                             <property name="relief">none</property>
                             <signal name="pressed" handler="OnVideoSetSubtitleStart"/>
+                            <signal name="grab_focus" handler="OnVideoSetSubtitleStartEndByKey"/>
                             <signal name="released" handler="OnVideoSetSubtitleStartEnd"/>
+                            <signal name="key_release_event" handler="OnVideoSetSubtitleStartEnd"/>
+                            <accelerator key="x" signal="grab-focus" modifiers="GDK_CONTROL_MASK | GDK_MOD1_MASK"/>
                             <child>
                               <widget class="GtkImage" id="videoSetSubtitleStartEndButtonImage">
                                 <property name="visible">True</property>
