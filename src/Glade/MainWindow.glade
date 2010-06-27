@@ -248,8 +248,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="Z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -532,8 +532,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="F3" signal="activate"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -543,8 +543,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -803,8 +803,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
-                        <accelerator key="F5" signal="activate"/>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F5" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -822,8 +822,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoRewind"/>
-                        <accelerator key="F6" signal="activate"/>
                         <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F6" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoRewindImage">
                             <property name="visible">True</property>
@@ -841,8 +841,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoForward"/>
-                        <accelerator key="F7" signal="activate"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F7" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoForwardImage">
                             <property name="visible">True</property>
@@ -882,8 +882,8 @@
                         <property name="label" translatable="yes">Seek _to Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -893,8 +893,8 @@
                         <property name="label" translatable="yes">Select Nearest Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSelectNearestSubtitle"/>
-                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -903,8 +903,8 @@
                         <property name="label" translatable="yes">Auto Select Subtitles</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="OnVideoAutoSelectSubtitles"/>
-                        <accelerator key="j" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="j" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -1002,6 +1002,14 @@
                             <property name="icon-size">1</property>
                           </widget>
                         </child>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkMenuItem" id="helpKeyboardShortcuts">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">_Keyboard Shortcuts</property>
+                        <property name="use_underline">True</property>
+                        <signal name="activate" handler="OnHelpKeyboardShortcuts"/>
                       </widget>
                     </child>
                     <child>

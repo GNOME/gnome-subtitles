@@ -30,7 +30,7 @@ using System.Text;
 namespace GnomeSubtitles.Core {
 
 public class EventHandlers {
-	private bool buttonStartEndKeyPressed = false;
+	private bool buttonStartEndKeyPressed = false; //Used to match grab focus and key release events
 	
 	/* File Menu */
 	
@@ -347,6 +347,10 @@ public class EventHandlers {
 			BasicErrorDialog errorDialog = new BasicErrorDialog(Catalog.GetString("The Gnome Subtitles Manual could not be found."), Catalog.GetString("Please verify that your installation has been completed successfully."));
 			errorDialog.Show();
 		}
+	}
+	
+	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
+		Util.OpenUrl("http://live.gnome.org/GnomeSubtitles/KeyboardShortcuts");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
