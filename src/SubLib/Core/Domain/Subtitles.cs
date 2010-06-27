@@ -28,13 +28,16 @@ namespace SubLib.Core.Domain {
 
 /// <summary>Represents the root class of all the subtitles.</summary>
 /// <remarks>A <see cref="Subtitles" /> class is created using the <see cref="SubtitleFactory" />.</remarks>
-public class Subtitles {
+public class Subtitles : ICloneable {
 	private SubtitleCollection collection = null;
 	private SubtitleProperties properties = null;
 
 	/* Variable cache */
 	private static SubtitleTypeInfo[] availableTypes = null;
 	private static SubtitleTypeInfo[] availableTypesSorted = null;
+
+
+	/* Public properties */
 	
 	/// <summary>A collection which contains the subtitles.</summary>
 	public SubtitleCollection Collection {
@@ -74,6 +77,9 @@ public class Subtitles {
 			return availableTypesSorted;	
 		}
 	}
+
+
+	/* Public methods */
 	
 	/// <summary>Get information about an available subtitle type.</summary>
 	/// <param name="type">The subtitle type.</param>
@@ -91,12 +97,18 @@ public class Subtitles {
 		}
 		return false;
 	}
-
 	
 	public override string ToString(){
 		return Collection.ToString() + "\n-------------------------------------------\n" + Properties.ToString();
 	}
-	
+
+	public object Clone() {
+		SubtitleProperties propertiesClone = this.properties.Clone() as SubtitleProperties;
+		SubtitleCollection collectionClone = this.collection.Clone(propertiesClone);
+		return new Subtitles(collectionClone, propertiesClone);
+	}
+
+
 	/* Internal members */
 
 	/// <summary>Initializes a new instance of the <see cref="Subtitles" /> class.</summary>

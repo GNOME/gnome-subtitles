@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,6 +48,7 @@ public class Base {
 	private static Config config = null;
 	private static Dialogs dialogs = null;
 	private static SpellLanguages spellLanguages = null;
+	private static Backup backup = null;
 	
 	private static Document document = null;
 	private static Uri videoUri = null;
@@ -100,6 +101,10 @@ public class Base {
 	
 	public static SpellLanguages SpellLanguages {
 		get { return spellLanguages; }
+	}
+	
+	public static Backup Backup {
+		get { return backup; }	
 	}
 	
 	public static Document Document {
@@ -270,6 +275,7 @@ public class Base {
 		config = new Config();
 		dialogs = new Dialogs();
 		spellLanguages = new SpellLanguages();
+		backup = new Backup();
 
 		/* Initialize the GUI */
 		ui = new MainUi(handlers, out glade);

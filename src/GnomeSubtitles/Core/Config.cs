@@ -45,6 +45,7 @@ public class Config {
 	private const string keyPrefsWindow = keyPrefs + "window/";
 	private const string keyPrefsDefaults = keyPrefs + "defaults/";
 	private const string keyPrefsTranslation = keyPrefs + "translation/";
+	private const string keyPrefsBackup = keyPrefs + "backup/";
 
 	/* Constant key strings */
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
@@ -64,7 +65,9 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveFormat = keyPrefsDefaults + "file_save_format";
 	private const string keyPrefsDefaultsFileSaveNewlineOption = keyPrefsDefaults + "file_save_newline_option";
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
-	
+	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
+	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
+
 
 	public Config () {
 		client = new Client();
@@ -183,6 +186,18 @@ public class Config {
 		get { return GetBool(keyPrefsTranslationSaveAll, true); }
 		set { Set(keyPrefsTranslationSaveAll, value); }
 	}
+	
+	//Even though the default in gconf schema is true, if gconf is not working we're using false
+	public bool PrefsBackupAutoBackup {
+		get { return GetBool(keyPrefsBackupAutoBackup, false); }
+		set { Set(keyPrefsBackupAutoBackup, value); }
+	}
+ 
+	/* Backup time in seconds */
+	public int PrefsBackupBackupTime {
+		get { return GetInt(keyPrefsBackupBackupTime, 120, 30, true, 0, false); }
+		set { Set(keyPrefsBackupBackupTime, value); }
+	}
 
 	
 	/* Private members */
@@ -247,8 +262,7 @@ public class Config {
 		}
 	}
 
-	/* Gets an enum value from a field which can hold a value not included in the enum (basically assumes an exception
-		can occur). */
+	/* Gets an enum value from a field which can hold a value not included in the enum (basically assumes an exception can occur). */
 	private Enum GetEnumValueFromSuperset (string key, Enum defaultValue) {
 		try {
 			string stringValue = (string)client.Get(key);

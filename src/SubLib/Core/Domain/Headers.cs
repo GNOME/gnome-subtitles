@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ using System.Text;
 namespace SubLib.Core.Domain {
 	
 /// <summary>Represents the headers of the supported subtitle formats.</summary>
-public class Headers {
+public class Headers : ICloneable {
 
 	private string title = String.Empty;
 	private string author = String.Empty;
@@ -57,6 +57,9 @@ public class Headers {
 	private int fontSize = 24;
 	private int delay = 0;
 	private int cdTrack = 0;
+
+	
+	/* Public properties */
 	
 	/// <summary>The movie's title.</summary>
 	public string Title {
@@ -319,6 +322,13 @@ public class Headers {
 			catch (Exception) {
 			}
 		 }
+	}
+
+
+	/* Public methods */
+	
+	public object Clone () {
+		return this.MemberwiseClone();
 	}
 	
 }

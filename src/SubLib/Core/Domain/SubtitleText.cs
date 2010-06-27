@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ namespace SubLib.Core.Domain {
 
 //TODO this can be optimized
 /// <summary>Represents the text of a subtitle.</summary>	
-public class SubtitleText {
+public class SubtitleText : ICloneable {
 	private ArrayList lines = new ArrayList();
 
 	/// <summary>Initializes a new instance of the <see cref="SubtitleText" /> class
@@ -49,11 +49,17 @@ public class SubtitleText {
 	public SubtitleText() {
 	}
 	
+	
+	/* Public properties */
+	
 	/// <summary>Whether there is no text.</summary>
 	public bool IsEmpty {
 		get { return (lines.Count == 0); }
 	}
+
 	
+	/* Public methods */
+
 	/// <summary>Gets the specified text line.</summary>
 	/// <param name="index">The zero-based line number index.</param>
 	/// <returns>The specified text line.</returns>
@@ -181,6 +187,15 @@ public class SubtitleText {
   		return result;
 	}
 	
+	public object Clone() {
+		SubtitleText clone = new SubtitleText();
+		foreach (string line in lines) {
+			clone.lines.Add(line);
+		}
+		return clone;
+	}
+
+
 	/* Private Methods */
 	
 	private string ReplaceLineIfEmpty (string textLine, string replacement) {

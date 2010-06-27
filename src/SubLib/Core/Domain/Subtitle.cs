@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2009 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,6 +76,12 @@ public class Subtitle {
 			: this(properties, new SubtitleText(), new Style()){
 	}
 	
+	private Subtitle () {
+	}
+	
+	
+	/* Public properties */
+	
 	/// <summary>The subtitle's text.</summary>
 	public SubtitleText Text {
 		get { return text; }
@@ -107,16 +113,35 @@ public class Subtitle {
 	public Frames Frames {
 		get { return frames; }
 	}
+	
+	/* Public methods */
+	
+	/// <summary></summary>
+	/// <remarks>SubtitleProperties is not cloned and should be set afterwards.</remarks>
+	public Subtitle Clone (SubtitleProperties propertiesClone) {
+		Subtitle subtitleClone = new Subtitle();
+		
+		Times timesClone = this.times.Clone(subtitleClone);
+		Frames framesClone = this.frames.Clone(subtitleClone);
+		SubtitleText textClone = this.text.Clone() as SubtitleText;
+		SubtitleText translationClone = (this.translation != null ? this.translation.Clone() as SubtitleText : null);
+		Style styleClone = this.style.Clone() as Style;
+		subtitleClone.SetFieldsForDeepClone(propertiesClone, timesClone, framesClone, textClone, translationClone, styleClone);
+		
+		return subtitleClone;
+	}
 		
 	public override string ToString () {
   		return "* " + Times + " (" + Frames + ") " + Style + "\n" + Text.ToString();
 	}
+	
 	
 	/* Internal properties */
 	
 	internal SubtitleProperties Properties {
 		set { properties = value; }
 	}
+	
 	
 	/* Internal methods */
 
@@ -174,6 +199,18 @@ public class Subtitle {
 	
 	internal void ClearTranslation () {
 		translation = null;
+	}
+	
+	
+	/* Private methods */
+	
+	private void SetFieldsForDeepClone (SubtitleProperties properties, Times times, Frames frames, SubtitleText text, SubtitleText translation, Style style) {
+		this.properties = properties;
+		this.times = times;
+		this.frames = frames;
+		this.text = text;
+		this.translation = translation;
+		this.style = style;
 	}
 
 }

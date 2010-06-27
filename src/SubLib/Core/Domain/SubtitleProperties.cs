@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ namespace SubLib.Core.Domain {
 /// <remarks>This class acts as a container which allows you to get and set a 
 /// variety of properties. Some of these properties are used in syncronization
 /// and timing calculations.</remarks>
-public class SubtitleProperties {
+public class SubtitleProperties : ICloneable {
 	private Headers headers = new Headers();
 	
 	private float originalFrameRate = 25;
@@ -52,6 +52,8 @@ public class SubtitleProperties {
 	}
 	
 	
+	/* Public properties */
+	
 	/// <summary>The headers used in some subtitle formats.</summary>
 	public Headers Headers {
 		get { return headers; }
@@ -71,9 +73,17 @@ public class SubtitleProperties {
 		get { return currentFrameRate; }
 	}
 	
+	
+	/* Public methods */
+	
 	public override string ToString () {
 		return "Original FPS = " + originalFrameRate + ", Current FPS = " + currentFrameRate + "\n" + headers.ToString();
 	}
+	
+	public object Clone() {
+		return new SubtitleProperties(this.Headers.Clone() as Headers, this.OriginalFrameRate, this.CurrentFrameRate);
+	}
+	
 	
 	/* Internal members */
 	

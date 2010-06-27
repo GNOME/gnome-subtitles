@@ -189,5 +189,27 @@
 				<long>Newline type to use when saving files.</long>
 			</locale>
 		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/backup/auto_backup</key>
+			<applyto>/apps/gnome-subtitles/preferences/backup/auto_backup</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>bool</type>
+			<default>TRUE</default>
+			<locale name="C">
+				<short>Auto backup</short>
+				<long>Whether to automatically backup files. A copy of the file will be periodically saved with a ~ suffix.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/backup/backup_time</key>
+			<applyto>/apps/gnome-subtitles/preferences/backup/backup_time</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>int</type>
+			<default>120</default>
+			<locale name="C">
+				<short>Backup time</short>
+				<long>Time interval, in seconds, to automatically backup files. A minimum of 30 seconds is recommended.</long>
+			</locale>
+		</schema>
 	</schemalist>
 </gconfschemafile>

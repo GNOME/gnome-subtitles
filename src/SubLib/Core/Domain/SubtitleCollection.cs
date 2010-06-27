@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,18 +24,17 @@ namespace SubLib.Core.Domain {
 	
 /// <summary>A container that represents all the subtitles.</summary>
 public class SubtitleCollection {
-	private ArrayList subtitles = new ArrayList();
+	private ArrayList subtitles = new ArrayList(); 
+
+
+	/* Public properties */
 	
 	/// <summary>The number of subtitles in the collection.</summary>
 	public int Count {
 		get { return subtitles.Count; }
 	}
-	
-	/// <summary>Returns an enumerator that can iterate through the collection.</summary>
-	/// <returns>An <see cref="IEnumerator" /> for the entire <see cref="SubtitleCollection" />.</returns>
-	public IEnumerator GetEnumerator () {
-		return subtitles.GetEnumerator();
-	}
+
+	/* Indexers */
 	
 	public Subtitle this [int index] {
 		get {
@@ -46,6 +45,24 @@ public class SubtitleCollection {
 				return null;
 			}
 		}
+	}
+
+
+	/* Public methods */
+
+	public SubtitleCollection Clone (SubtitleProperties propertiesClone) {
+		SubtitleCollection collectionClone = new SubtitleCollection();
+		foreach (Subtitle subtitle in this.subtitles) {
+			Subtitle subtitleClone = subtitle.Clone(propertiesClone);
+			collectionClone.Add(subtitleClone);
+		}
+		return collectionClone;
+	}
+
+	/// <summary>Returns an enumerator that can iterate through the collection.</summary>
+	/// <returns>An <see cref="IEnumerator" /> for the entire <see cref="SubtitleCollection" />.</returns>
+	public IEnumerator GetEnumerator () {
+		return subtitles.GetEnumerator();
 	}
 	
 	/// <summary>Returns the subtitle at the specified index.</summary>
@@ -155,7 +172,8 @@ public class SubtitleCollection {
 		}
 		return result;
 	}
-	
+
+
 	/* Internal methods */
 	
 	internal void SetPropertiesForAll (SubtitleProperties properties) {

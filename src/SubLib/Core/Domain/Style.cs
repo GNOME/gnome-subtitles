@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ using System.Collections;
 namespace SubLib.Core.Domain {
 	
 /// <summary>Represents a text style, including Bold, Italic and Underline.</summary>
-public class Style {
+public class Style : ICloneable {
 	private bool bold = false;
 	private bool italic = false;
 	private bool underline = false;
@@ -42,6 +42,9 @@ public class Style {
 		this.italic = italic;
 		this.underline = underline;
 	}
+
+
+	/* Public properties */
 	
 	/// <summary>Whether the style is bold.</summary>
 	public bool Bold {
@@ -75,6 +78,13 @@ public class Style {
   		if (Underline)
   			result += " underline";
   		return result;
+	}
+	
+	
+	/* Public methods */
+
+	public object Clone() {
+		return this.MemberwiseClone();
 	}
 
 }

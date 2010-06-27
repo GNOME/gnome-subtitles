@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ namespace SubLib.Core.Domain {
 
 /// <summary>Represents the properties of a file.</summary>
 /// <remarks>This includes all that's necessary to work with files, in relation to <see cref="Subtitles" />.</remarks>
-public class FileProperties {
+public class FileProperties : ICloneable {
 	/* Used for reading and writing */
 	private string path = String.Empty; //The path of the file
 	private Encoding encoding = null; //The character coding of the file
@@ -75,6 +75,9 @@ public class FileProperties {
 	public FileProperties (string path) : this(path, null, SubtitleType.Unknown, TimingMode.Times) {
 	}
 
+
+	/* Public properties */
+
 	/// <summary>The file's path.</summary>
 	public string Path {
 		get { return path; }
@@ -122,6 +125,13 @@ public class FileProperties {
 	public NewlineType NewlineType {
 		get { return newlineType; }
 		set { newlineType = value; }
+	}
+	
+	
+	/* Public methods */
+	
+	public object Clone () {
+		return this.MemberwiseClone();
 	}
 
 }

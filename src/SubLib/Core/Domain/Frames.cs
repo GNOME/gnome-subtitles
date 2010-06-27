@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2009 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,8 @@ public class Frames {
 	private double end = 0;
 	private Subtitle subtitle = null;
 	
+	
+	/* Public properties */
 	
 	/// <summary>The start frame.</summary>
 	/// <remarks>Upon setting the start frame, the start time (<see cref="Times.Start">Times.Start</see>) is also updated based on
@@ -62,6 +64,8 @@ public class Frames {
 		set { End = Start + value; }
 	}
 	
+	/* Public methods */
+	
 	/// <summary>Shifts the subtitle with a specified amount of frames.</summary>
 	/// <param name="frames">The number of frames to shift the subtitle with, which can be positive or negative.</param>
 	public void Shift (int frames) {
@@ -70,12 +74,18 @@ public class Frames {
 		subtitle.UpdateTimesFromFrames();
 	}
 	
-	
 	public override string ToString() {
   		return Start + "->" + End;
 	}
-	
-	/* Internal members */
+
+	public Frames Clone (Subtitle subtitleClone) {
+		Frames clone = this.MemberwiseClone() as Frames;
+		clone.SetFieldsForDeepClone(subtitleClone);
+		return clone;	
+	}
+
+
+		/* Internal members */
 		
 	internal Frames (Subtitle subtitle) {
 		this.subtitle = subtitle;
@@ -111,6 +121,12 @@ public class Frames {
 		PreciseEnd = SyncUtil.Scale(PreciseEnd, baseFrame, factor);
 
 		subtitle.UpdateTimesFromFrames();	
+	}
+	
+	/* Private members */
+	
+	private void SetFieldsForDeepClone (Subtitle subtitle) {
+		this.subtitle = subtitle;
 	}
 
 }

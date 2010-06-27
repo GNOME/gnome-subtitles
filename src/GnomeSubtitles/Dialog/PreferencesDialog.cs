@@ -42,11 +42,13 @@ public class PreferencesDialog : GladeDialog {
 	/* Widgets */
 	[WidgetAttribute] private CheckButton translationSaveAllCheckButton = null;
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
+	[WidgetAttribute] private CheckButton autoBackupCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveFormatComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveNewlineComboBox = null;
+	[WidgetAttribute] private SpinButton autoBackupTimeSpinButton = null;
 
 
 	public PreferencesDialog () : base(gladeFilename, false) {
@@ -60,6 +62,7 @@ public class PreferencesDialog : GladeDialog {
 		/* Translation Save All */
 		translationSaveAllCheckButton.Active = Base.Config.PrefsTranslationSaveAll;
 
+		/* Defaults */
 		SetDefaultsFileOpenEncoding();
 		SetDefaultsFileOpenFallbackEncoding();
 		SetDefaultsFileSaveEncoding();
@@ -68,6 +71,9 @@ public class PreferencesDialog : GladeDialog {
 
 		/* Video Auto choose file */
 		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
+		
+		/* Auto Backup */
+		SetAutoBackup();
 	}
 
 	private void SetDefaultsFileOpenEncoding () {
@@ -149,6 +155,12 @@ public class PreferencesDialog : GladeDialog {
 		}
 		fileSaveNewline.SelectionChanged += OnDefaultsFileSaveNewlineChanged;
 	}
+	
+	private void SetAutoBackup () {
+		bool autoBackupEnabled = Base.Config.PrefsBackupAutoBackup;
+		autoBackupCheckButton.Active = autoBackupEnabled;
+		autoBackupTimeSpinButton.Sensitive = autoBackupEnabled;
+	}
 
 	private void ResetDialogToDefaults () {
 		translationSaveAllCheckButton.Active = true;
@@ -160,6 +172,8 @@ public class PreferencesDialog : GladeDialog {
 		fileSaveEncoding.ActiveSelection = 0; //Keep Existing
 		fileSaveFormat.ActiveSelection = 0; //Keep Existing
 		fileSaveNewline.ChosenNewlineType = NewlineType.Windows;
+		
+		autoBackupCheckButton.Active = true;
 	}
 
 	
@@ -272,6 +286,20 @@ public class PreferencesDialog : GladeDialog {
 
 	private void OnTranslationSaveAllToggled (object o, EventArgs args) {
 		Base.Config.PrefsTranslationSaveAll = translationSaveAllCheckButton.Active;
+	}
+	
+	private void OnAutoBackupToggled (object o, EventArgs args) {
+		bool isActive = (o as CheckButton).Active;
+		
+		Base.Config.PrefsBackupAutoBackup = isActive;
+		autoBackupTimeSpinButton.Sensitive = isActive;
+		
+		Base.Backup.ReCheck();
+	}
+	
+	private void OnAutoBackupTimeSpinButonValueChanged (object o, EventArgs args) {
+		Base.Config.PrefsBackupBackupTime = (o as SpinButton).ValueAsInt * 60; //seconds
+		Base.Backup.ReCheck();
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {
