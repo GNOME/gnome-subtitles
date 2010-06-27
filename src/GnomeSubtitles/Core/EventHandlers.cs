@@ -30,8 +30,8 @@ using System.Text;
 namespace GnomeSubtitles.Core {
 
 public class EventHandlers {
-
-	private bool PressStartEndKey = false;
+	private bool buttonStartEndKeyPressed = false;
+	
 	/* File Menu */
 	
 	public void OnFileNew (object o, EventArgs args) {
@@ -308,27 +308,18 @@ public class EventHandlers {
 			Base.Ui.View.SelectNextSubtitle();
 		}
 	}
-	//todo change the function name	here and on glade to better name
-	public void OnVideoSetSubtitleStartEndByKey (object o, EventArgs args) {			
-		if( PressStartEndKey == false ){
+
+	public void OnVideoSetSubtitleStartEndGrabFocus (object o, EventArgs args) {			
+		if (!buttonStartEndKeyPressed) {
 			OnVideoSetSubtitleStart(o, args);
-			PressStartEndKey = true;
+			buttonStartEndKeyPressed = true;
 		}
 	}
-	//todo change the function name	here and on glade to a better name
-	public void OnVideoSetSubtitleStartEnd (object o, KeyReleaseEventArgs args) {			
-		if( PressStartEndKey == true ){
-			if (Base.TimingMode == TimingMode.Times) {
-				TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-				Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
-				Base.Ui.View.SelectNextSubtitle();
-			}
-			else {
-				int frames = Base.Ui.Video.Position.CurrentFrames;
-				Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
-				Base.Ui.View.SelectNextSubtitle();
-			}
-				PressStartEndKey = false;
+
+	public void OnVideoSetSubtitleStartEndKeyRelease (object o, KeyReleaseEventArgs args) {			
+		if (buttonStartEndKeyPressed){
+			OnVideoSetSubtitleStartEnd(o, args);
+			buttonStartEndKeyPressed = false;
 		}
 	}
 
