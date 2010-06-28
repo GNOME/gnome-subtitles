@@ -274,6 +274,10 @@ public class EventHandlers {
 		Base.Ui.View.SetAutoSelectSubtitles();
  	}
 		
+	public void OnVideoLoopSelectionPlayback (object o, EventArgs args) {
+		Base.Ui.Video.SetLoopSelectionPlayback();
+ 	}
+		
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;

@@ -138,6 +138,14 @@ public class Video {
 	public void Quit () {
 		player.Close();
 	}
+		
+	public void SetLoopSelectionPlayback(){
+			CheckMenuItem loopSelectionPlayback = Base.GetWidget(WidgetNames.VideoLoopSelectionPlayback) as CheckMenuItem;
+		if (loopSelectionPlayback.Active)
+			Base.Ui.Video.Position.Changed += OnVideoPositionChanged;
+		else
+			Base.Ui.Video.Position.Changed -= OnVideoPositionChanged;
+	}
 	
 	public void Rewind () {
 		player.Rewind(position.SeekIncrement);
@@ -278,7 +286,7 @@ public class Video {
 		ToggleButton button = Base.GetWidget(WidgetNames.VideoPlayPauseButton) as ToggleButton;
 		button.Toggled += OnPlayPauseButtonToggled;
 		
-		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
+		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;		
 	}
 	
 	private void OnPlayPauseButtonToggled (object o, EventArgs args) {
@@ -322,9 +330,25 @@ public class Video {
 
 	private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
 		if ((subtitle != null) && IsLoaded)
-			SetSelectionDependentControlsSensitivity(true);
+			SetSelectionDependentControlsSensitivity(true);			
 		else
 			SetSelectionDependentControlsSensitivity(false);
+	}
+	
+	private void OnVideoPositionChanged (TimeSpan position) {
+			
+			
+			Subtitle firstSubtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
+			Subtitle lastSubtitle = Core.Base.Ui.View.Selection.LastSubtitle;
+			
+			if( firstSubtitle != null ){
+				
+				double startTime = firstSubtitle.Times.Start.TotalSeconds;
+				double endTime = lastSubtitle.Times.End.TotalSeconds;
+				
+				if( position.TotalSeconds < startTime || position.TotalSeconds > endTime )
+					SeekToSelection();
+			}
 	}
 
 }

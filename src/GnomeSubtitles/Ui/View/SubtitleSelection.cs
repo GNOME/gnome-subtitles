@@ -150,6 +150,17 @@ public class SubtitleSelection {
     			return null;
     	}
     }
+		
+	/// <summary>The last selected subtitle. If there is only one selected, the first is returned.</summary>
+    public Subtitle LastSubtitle {
+    	get {
+    		TreePath path = this.LastPath;
+    		if (path != null)
+    			return Base.Document.Subtitles[path];
+    		else
+    			return null;
+    	}
+    }
 
     /// <summary>The number of selected paths.</summary>
     public int Count {

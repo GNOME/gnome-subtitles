@@ -358,7 +358,7 @@ public class SubtitleView {
    		SetEmptyModel();
     	
     	tree.Model.RowInserted -= OnModelRowInserted;
-		tree.Model.RowDeleted -= OnModelRowDeleted;
+		tree.Model.RowDeleted -= OnModelRowDeleted;		
     }
     
 	private void OnModelRowInserted (object o, RowInsertedArgs args) {

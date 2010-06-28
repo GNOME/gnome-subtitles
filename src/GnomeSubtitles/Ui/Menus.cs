@@ -314,6 +314,7 @@ public class Menus {
 	private void SetVideoDocumentLoadedSensitivity (bool isDocumentLoaded) {
 		bool sensitivity = isDocumentLoaded && (Base.Ui != null) && Base.Ui.Video.IsLoaded;
 		SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, sensitivity);
+		SetSensitivity(WidgetNames.VideoLoopSelectionPlayback, sensitivity);
 		SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, sensitivity);
 	}
 	

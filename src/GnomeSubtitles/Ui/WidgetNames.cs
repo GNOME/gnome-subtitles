@@ -81,6 +81,7 @@ public class WidgetNames {
 	public const string VideoSeekToSelection = "videoSeekToSelection";
 	public const string VideoSelectNearestSubtitle = "videoSelectNearestSubtitle";
 	public const string VideoAutoSelectSubtitles = "videoAutoSelectSubtitles";
+	public const string VideoLoopSelectionPlayback = "videoLoopSelectionPlayback";
 	public const string VideoSetSubtitleStart = "videoSetSubtitleStart";
 	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
 	
