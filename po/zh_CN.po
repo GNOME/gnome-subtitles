@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles VERSION\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-02-20 23:01+0000\n"
-"PO-Revision-Date: 2010-02-17 22:41+0800\n"
-"Last-Translator: yjwork <yjwork@189.cn>\n"
+"POT-Creation-Date: 2010-06-27 21:06+0000\n"
+"PO-Revision-Date: 2010-07-15 13:37+0800\n"
+"Last-Translator: 微尘 <squeeze@189.cn>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,23 @@ msgid "About Gnome Subtitles"
 msgstr "关于 GNOME Subtitles"
 
 #: ../src/Glade/AboutDialog.glade.h:2
+msgid ""
+"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gnome Subtitles is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+msgstr ""
+
+#: ../src/Glade/AboutDialog.glade.h:15
 msgid "Video subtitling for the GNOME desktop"
 msgstr "GNOME 桌面下的视频字幕编辑器"
 
@@ -42,7 +59,7 @@ msgstr "在菜单中显示："
 msgid "Character Coding:"
 msgstr "字符编码："
 
-#: ../src/Glade/FileOpenDialog.glade.h:2
+#: ../src/Glade/FileOpenDialog.glade.h:2 ../src/Glade/MainWindow.glade.h:13
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "打开文件"
@@ -249,271 +266,314 @@ msgid "<b>Time</b>"
 msgstr "<b>时间</b>"
 
 #: ../src/Glade/MainWindow.glade.h:3
+msgid "Auto Select Subtitles"
+msgstr "自动选择字幕"
+
+#: ../src/Glade/MainWindow.glade.h:4
 msgid "Delete"
 msgstr "删除"
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:5
+#: ../src/Glade/MainWindow.glade.h:6
 msgid "During:"
 msgstr "间隔："
 
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.glade.h:7
 msgid "Find Ne_xt"
 msgstr "查找下一个(_X)"
 
-#: ../src/Glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:8
 msgid "Find Pre_vious"
 msgstr "查找上一个(_V)"
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.glade.h:10
 msgid "From:"
 msgstr "从："
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.glade.h:11
 msgid "Insert"
 msgstr "插入"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.glade.h:12
+msgid "New File"
+msgstr "新建文件"
+
+#: ../src/Glade/MainWindow.glade.h:14
 msgid "Pr_eferences"
 msgstr "属性(_E)"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.glade.h:15
+msgid "R_ewind"
+msgstr "回放(_E)"
+
+#: ../src/Glade/MainWindow.glade.h:16
 msgid "Report a _Bug"
 msgstr "报告BUG(_B)"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.glade.h:17
 msgid "Request a _Feature"
 msgstr "功能需求(_F)"
 
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.glade.h:18
+msgid "Save File"
+msgstr "保存文件"
+
+#: ../src/Glade/MainWindow.glade.h:19
 msgid "Save _As"
 msgstr "另存为(_A)"
 
-#: ../src/Glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.glade.h:20
 msgid "Seek _to Selection"
 msgstr "定位至时间轴(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.glade.h:21
+msgid "Select Nearest Subtitle"
+msgstr "选择最近的字幕"
+
+#: ../src/Glade/MainWindow.glade.h:22
 msgid "Set Subtitle En_d"
 msgstr "设为字幕结尾时间(_D)"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.glade.h:23
 msgid "Set Subtitle St_art"
 msgstr "设为字幕开始时间(_A)"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.glade.h:24
 msgid "Set Translatio_n Language"
 msgstr "设置译文语言(_N)"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.glade.h:25
 msgid "Set _Text Language"
 msgstr "设置文本语言(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.glade.h:26
 msgid "Sh_ift"
 msgstr "顺延(_I)"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.glade.h:27
 msgid "T_imings"
 msgstr "时间轴(_I)"
 
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.glade.h:29
 msgid "To:"
 msgstr "到："
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "Translatio_n"
 msgstr "翻译(_N)"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.glade.h:31
 msgid "Vide_o"
 msgstr "视频(_O)"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.glade.h:32
 msgid "Video _Subtitles"
 msgstr "视频字幕(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "_Adjust"
 msgstr "调整(_A)"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "_After"
 msgstr "之后(_A)"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "_Autocheck Spelling"
 msgstr "_拼写检查"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.glade.h:36
 msgid "_Before"
 msgstr "之前(_B)"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:37
 msgid "_Bold"
 msgstr "粗体(_B)"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:38
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.glade.h:39
 msgid "_Contents"
 msgstr "索引(_C)"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.glade.h:40
 msgid "_Delete Subtitles"
 msgstr "删除字幕(_D)"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "_Edit"
 msgstr "编辑(_E)"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.glade.h:42
 msgid "_File"
 msgstr "文件(_F)"
 
-#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/MainWindow.glade.h:43
 msgid "_Format"
 msgstr "字体格式(_F)"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:44
+msgid "_Forward"
+msgstr "前进(_F)"
+
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Frames"
 msgstr "帧(_F)"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.glade.h:46
 msgid "_Headers"
 msgstr "标注(_H)"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:47
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "_Input Frame Rate"
 msgstr "帧速率(_I)"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "_Insert Subtitle"
 msgstr "插入字幕(_I)"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.glade.h:50
 msgid "_Italic"
 msgstr "斜体字 (_I)"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_New"
 msgstr "新建(_N)"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Play / Pause"
 msgstr "播放/暂停(_P)"
 
-#: ../src/Glade/MainWindow.glade.h:47 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:55 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "替换(_R)"
 
-#: ../src/Glade/MainWindow.glade.h:48
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:49
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Search"
 msgstr "查找(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Seek to..."
 msgstr "定位到...(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "同步(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.glade.h:60
 msgid "_Text"
 msgstr "文本(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Times"
 msgstr "时间(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Tools"
 msgstr "工具(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Translation"
 msgstr "翻译(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Underline"
 msgstr "下划线(_U)"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Video"
 msgstr "视频(_V)"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Video Frame Rate"
 msgstr "视频帧(_V)"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_View"
 msgstr "视图(_V)"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
+#, fuzzy
+#| msgid "<b>Status</b>"
+msgid "<b>Backup</b>"
+msgstr "<b>状态</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:2
 msgid "<b>File Open</b>"
 msgstr "<b>打开文件</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:2
+#: ../src/Glade/PreferencesDialog.glade.h:3
 msgid "<b>File Save As</b>"
 msgstr "<b>文件另存为</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:3
+#: ../src/Glade/PreferencesDialog.glade.h:4
 msgid "<b>Translation</b>"
 msgstr "<b>翻译</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:4
+#: ../src/Glade/PreferencesDialog.glade.h:5
 msgid "Automatically choose the _video file to open"
 msgstr "自动选择视频文件打开(_V)"
 
-#: ../src/Glade/PreferencesDialog.glade.h:5
+#: ../src/Glade/PreferencesDialog.glade.h:6
 msgid "Ch_aracter coding to use:"
 msgstr "字符编码(_A)："
 
-#: ../src/Glade/PreferencesDialog.glade.h:6
+#: ../src/Glade/PreferencesDialog.glade.h:7
 msgid "Character c_oding to use:"
 msgstr "使用字符编码(_O)："
 
-#: ../src/Glade/PreferencesDialog.glade.h:7
+#: ../src/Glade/PreferencesDialog.glade.h:8
+msgid "Create a _backup copy of files every"
+msgstr ""
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "If auto detection _fails, use:"
 msgstr "如果无法自动侦测,使用(_F)："
 
-#: ../src/Glade/PreferencesDialog.glade.h:8
+#: ../src/Glade/PreferencesDialog.glade.h:10
 msgid "Preferences"
 msgstr "属性"
 
-#: ../src/Glade/PreferencesDialog.glade.h:9
+#: ../src/Glade/PreferencesDialog.glade.h:11
 msgid "When saving subtitles, also save their _translation"
 msgstr "保存字幕同时，保存翻译(_T)"
 
-#: ../src/Glade/PreferencesDialog.glade.h:10
+#: ../src/Glade/PreferencesDialog.glade.h:12
 msgid "_Newline type to use:"
 msgstr "使用换行类型（_N)："
 
-#: ../src/Glade/PreferencesDialog.glade.h:11
+#: ../src/Glade/PreferencesDialog.glade.h:13
 msgid "_Reset to defaults"
 msgstr "恢复到默认值(_R)"
 
-#: ../src/Glade/PreferencesDialog.glade.h:12
+#: ../src/Glade/PreferencesDialog.glade.h:14
 msgid "_Subtitle format to use:"
 msgstr "使用字幕格式(_S)："
+
+#: ../src/Glade/PreferencesDialog.glade.h:15
+msgid "minutes"
+msgstr ""
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -696,12 +756,12 @@ msgid "Editing During"
 msgstr "编辑间隔"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:539
+#: ../src/GnomeSubtitles/Ui/Menus.cs:550
 msgid "Undo"
 msgstr "撤销"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:549
+#: ../src/GnomeSubtitles/Ui/Menus.cs:560
 msgid "Redo"
 msgstr "重做"
 
@@ -898,11 +958,11 @@ msgstr "越南"
 msgid "Current Locale"
 msgstr "本地设置"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "找不到 Gnome Subtitles 手册。"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
 msgid "Please verify that your installation has been completed successfully."
 msgstr "请确认您的安装已成功完成。"
 
@@ -940,15 +1000,15 @@ msgstr "所有字幕文件"
 msgid "Open Translation File"
 msgstr "打开翻译文件"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:74
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:139
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:145
 msgid "Remember Last Used"
 msgstr "记住上次使用"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
 msgid "Keep Existing"
 msgstr "保持现状"
 
@@ -1205,7 +1265,7 @@ msgstr "插入模式"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:224
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
 msgid "Text"
 msgstr "文本"
 
@@ -1228,23 +1288,23 @@ msgid "Frame"
 msgstr "帧"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:212
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
 msgid "No."
 msgstr "序号"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "From"
 msgstr "起点"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:217
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "To"
 msgstr "终点"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:218
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
 msgid "During"
 msgstr "间隔"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
 msgid "Translation"
 msgstr "翻译"
 
