@@ -244,7 +244,7 @@ public class SubtitleSelection {
     /// <remarks>The subtitle is only selected if it exists. The input focus will be placed on the path.</remarks>
     public void Select (int index, bool align, bool reselect) {
     	if ((index >= 0) && (index < Base.Document.Subtitles.Count))
-    		Select(Util.IntToPath(index), false, false);
+    		Select(Util.IntToPath(index), align, reselect);
 	}
 	
 	/// <summary>Selects a <see cref="TreePath" />, activates it and selects text in the subtitle it refers to.</summary>
@@ -359,7 +359,7 @@ public class SubtitleSelection {
    	/// <param name="align">Whether to align the path to the center if it isn't visible.</param>
    	/// <remarks>The path is selected and the input </remarks>
    	private void SetFocus (TreePath path, bool align) {
-		ScrollToFocus(path, true);
+		ScrollToFocus(path, align);
    		tree.SetCursor(path, null, false);
    	}
 	
