@@ -271,11 +271,11 @@ public class EventHandlers {
 	}
 		
 	public void OnVideoAutoSelectSubtitles (object o, EventArgs args) {
-		Base.Ui.View.SetAutoSelectSubtitles();
+		Base.Ui.View.SetAutoSelectSubtitles((o as CheckMenuItem).Active);
  	}
 		
 	public void OnVideoLoopSelectionPlayback (object o, EventArgs args) {
-		Base.Ui.Video.SetLoopSelectionPlayback();
+		Base.Ui.Video.SetLoopSelectionPlayback((o as CheckMenuItem).Active);
  	}
 		
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {

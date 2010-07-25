@@ -139,12 +139,11 @@ public class Video {
 		player.Close();
 	}
 		
-	public void SetLoopSelectionPlayback(){
-			CheckMenuItem loopSelectionPlayback = Base.GetWidget(WidgetNames.VideoLoopSelectionPlayback) as CheckMenuItem;
-		if (loopSelectionPlayback.Active)
-			Base.Ui.Video.Position.Changed += OnVideoPositionChanged;
+	public void SetLoopSelectionPlayback (bool enabled){
+		if (enabled)
+			Base.Ui.Video.Position.Changed += OnVideoPositionChangedLoopPlayback;
 		else
-			Base.Ui.Video.Position.Changed -= OnVideoPositionChanged;
+			Base.Ui.Video.Position.Changed -= OnVideoPositionChangedLoopPlayback;
 	}
 	
 	public void Rewind () {
@@ -187,7 +186,7 @@ public class Video {
 	
 	public void SelectNearestSubtitle () {		
 		int indexToSelect = tracker.FindSubtitleNearPosition(position.CurrentTime);
-		Base.Ui.View.Selection.Select(indexToSelect, false, false);
+		Base.Ui.View.Selection.Select(indexToSelect, true, true);
 	}
 	
 	/* Private methods */
@@ -335,20 +334,19 @@ public class Video {
 			SetSelectionDependentControlsSensitivity(false);
 	}
 	
-	private void OnVideoPositionChanged (TimeSpan position) {
-			
-			
-			Subtitle firstSubtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
-			Subtitle lastSubtitle = Core.Base.Ui.View.Selection.LastSubtitle;
-			
-			if( firstSubtitle != null ){
-				
-				double startTime = firstSubtitle.Times.Start.TotalSeconds;
-				double endTime = lastSubtitle.Times.End.TotalSeconds;
-				
-				if( position.TotalSeconds < startTime || position.TotalSeconds > endTime )
-					SeekToSelection();
-			}
+	/// <summary>Do loop playback when it's enabled, seeking to current selection on video position change.</summary>
+	private void OnVideoPositionChangedLoopPlayback (TimeSpan position) {
+		if (!(Base.IsDocumentLoaded))
+			return;
+
+		Subtitle firstSubtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
+		if (firstSubtitle == null)
+			return;
+
+		Subtitle lastSubtitle = Core.Base.Ui.View.Selection.LastSubtitle;
+
+		if ((position < firstSubtitle.Times.Start) || (position > lastSubtitle.Times.End))
+			SeekToSelection();
 	}
 
 }

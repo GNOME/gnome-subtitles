@@ -289,13 +289,11 @@ public class Menus {
 			SetSensitivity(WidgetNames.VideoSeekToSelection, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, true);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, true);
-			SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, true);
 		}
 		else {
 			SetSensitivity(WidgetNames.VideoSeekToSelection, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleStart, false);
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
-			SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, false);
 		}
 	}
 	

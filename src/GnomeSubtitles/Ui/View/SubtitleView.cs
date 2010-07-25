@@ -71,9 +71,8 @@ public class SubtitleView {
     
     /* Public methods */ 
 	
-	public void SetAutoSelectSubtitles(){
-		CheckMenuItem autoSelectSubtitles = Base.GetWidget(WidgetNames.VideoAutoSelectSubtitles) as CheckMenuItem;
-		if (autoSelectSubtitles.Active)
+	public void SetAutoSelectSubtitles (bool active) {
+		if (active)
 			Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;
 		else
 			Base.Ui.Video.Tracker.SubtitleChanged -= OnCurrentSubtitleChanged;
@@ -388,8 +387,8 @@ public class SubtitleView {
 			SubtitleCountChanged(subtitles.Count);
 	}
 	
-	private void OnCurrentSubtitleChanged (int subtitleIndex) {			
-		selection.Select(subtitleIndex, false, false);
+	private void OnCurrentSubtitleChanged (int subtitleIndex) {		
+		selection.Select(subtitleIndex, false, false, true);
 	}
 
     private void SetEmptyModel () {

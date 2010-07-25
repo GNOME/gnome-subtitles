@@ -225,16 +225,23 @@ public class SubtitleSelection {
     /// <param name="path">The path to select. If it's null, all paths will be unselected.</param>
     /// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
     /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param>
+    /// <param name="checkAllPaths">If multiple paths are selected and reselect isn't required, check if the current path is contained in the selection.
+    /// If the subtitle is within the selection but we want to guarantee that only that single subtitle is selected, set this to false.</param>
     /// <remarks>The input focus will be placed on the path.</remarks>
-    public void Select (TreePath path, bool align, bool reselect) {
+    public void Select (TreePath path, bool align, bool reselect, bool checkAllPaths) {
    		if (path == null) {
    			UnselectAll();
    			return;
    		}
-   		if ((!reselect) && (Count == 1) && (selection.PathIsSelected(path))) //No reselection is required and path is already the only selected path
+   		
+   		if ((!reselect) && (checkAllPaths || (Count == 1)) && (selection.PathIsSelected(path))) //No reselection is required and path is already the only selected path
    			return;
 
 		SetFocus(path, align);
+	}
+	
+	public void Select (TreePath path, bool align, bool reselect) {
+		Select(path, align, reselect, false);
 	}
 	
 	/// <summary>Selects the specified index, possibly aligning it to the center and/or reselecting it.</summary>
@@ -242,9 +249,13 @@ public class SubtitleSelection {
     /// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
     /// <param name="reselect">Whether to reselect the path if it's already the only selected path.</param>
     /// <remarks>The subtitle is only selected if it exists. The input focus will be placed on the path.</remarks>
-    public void Select (int index, bool align, bool reselect) {
+    public void Select (int index, bool align, bool reselect, bool checkAllPaths) {
     	if ((index >= 0) && (index < Base.Document.Subtitles.Count))
-    		Select(Util.IntToPath(index), align, reselect);
+    		Select(Util.IntToPath(index), align, reselect, checkAllPaths);
+	}
+	
+	public void Select (int index, bool align, bool reselect) {
+		Select(index, align, reselect, false);
 	}
 	
 	/// <summary>Selects a <see cref="TreePath" />, activates it and selects text in the subtitle it refers to.</summary>

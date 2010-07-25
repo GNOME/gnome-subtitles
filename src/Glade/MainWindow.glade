@@ -817,7 +817,7 @@
                     <child>
                       <widget class="GtkCheckMenuItem" id="videoLoopSelectionPlayback">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Loop Selection Playback</property>
+                        <property name="label" translatable="yes">_Loop Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="OnVideoLoopSelectionPlayback"/>
                         <accelerator key="F11" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -909,7 +909,7 @@
                     <child>
                       <widget class="GtkCheckMenuItem" id="videoAutoSelectSubtitles">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">Auto Select Subtitles</property>
+                        <property name="label" translatable="yes">Auto Select Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="toggled" handler="OnVideoAutoSelectSubtitles"/>
                         <accelerator key="j" signal="activate" modifiers="GDK_CONTROL_MASK"/>
