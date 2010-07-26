@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-06-27 21:06+0000\n"
-"PO-Revision-Date: 2010-06-28 22:16+0100\n"
+"POT-Creation-Date: 2010-07-25 23:36+0000\n"
+"PO-Revision-Date: 2010-07-26 20:06+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -287,7 +287,7 @@ msgid "<b>Time</b>"
 msgstr "<b>Zeit</b>"
 
 #: ../src/Glade/MainWindow.glade.h:3
-msgid "Auto Select Subtitles"
+msgid "Auto Select Subtitle"
 msgstr "Untertitel automatisch auswählen"
 
 #: ../src/Glade/MainWindow.glade.h:4
@@ -470,67 +470,71 @@ msgid "_Keyboard Shortcuts"
 msgstr "Tasten_kombinationen"
 
 #: ../src/Glade/MainWindow.glade.h:52
+msgid "_Loop Selection"
+msgstr "Sch_leifenauswahl"
+
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_New"
 msgstr "_Neu"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Open"
 msgstr "_Öffnen"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Play / Pause"
 msgstr "Ab_spielen / Pause"
 
-#: ../src/Glade/MainWindow.glade.h:55 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:56 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Ersetzen"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Save"
 msgstr "_Speichern"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Search"
 msgstr "_Suchen"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Seek to..."
 msgstr "_Springe zu …"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Synchronisieren"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Times"
 msgstr "_Zeiten"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Tools"
 msgstr "_Werkzeuge"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Translation"
 msgstr "_Übersetzung"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Underline"
 msgstr "_Unterstreichen"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Video Frame Rate"
 msgstr "_Bildrate"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_View"
 msgstr "_Ansicht"
 
@@ -775,12 +779,12 @@ msgid "Editing During"
 msgstr "Zeitspanne bearbeiten"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:550
+#: ../src/GnomeSubtitles/Ui/Menus.cs:549
 msgid "Undo"
 msgstr "Rückgängig"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:560
+#: ../src/GnomeSubtitles/Ui/Menus.cs:559
 msgid "Redo"
 msgstr "Wiederherstellen"
 
@@ -977,11 +981,11 @@ msgstr "Vietnamesisch"
 msgid "Current Locale"
 msgstr "aktuelle Kodierung"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Das Handbuch wurde nicht gefunden."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "Please verify that your installation has been completed successfully."
 msgstr ""
 "Bitte stellen Sie sicher, dass die Installation erfolgreich durchgeführt "
@@ -1304,7 +1308,7 @@ msgstr "EIN"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:237
 msgid "Text"
 msgstr "Text"
 
@@ -1327,23 +1331,23 @@ msgid "Frame"
 msgstr "Bild"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
 msgid "No."
 msgstr "Nr."
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "From"
 msgstr "Von"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "To"
 msgstr "Bis"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "During"
 msgstr "Dauer"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:242
 msgid "Translation"
 msgstr "Übersetzung"
 
