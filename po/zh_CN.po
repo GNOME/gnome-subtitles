@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles VERSION\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-06-27 21:06+0000\n"
-"PO-Revision-Date: 2010-07-15 13:37+0800\n"
+"POT-Creation-Date: 2010-07-25 23:36+0000\n"
+"PO-Revision-Date: 2010-07-31 09:29+0800\n"
 "Last-Translator: 微尘 <squeeze@189.cn>\n"
-"Language-Team: \n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,6 +37,16 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
 msgstr ""
+"Gnome Subtitles 是自由软件；您可以按照自由软件基金会所发表的 GNU GPL 协议自由"
+"发放和/或修改它；GPL 协议应该采用第二版或以后的任何版本。\n"
+"\n"
+"Gnome Subtitles 发表的目的是希望它能够对您有用，但我们没有任何保证；对于以任"
+"何用途使用它所造成的任何直接或间接后果都不承担任何责任。请参看GNU GPL 协议中"
+"的细节。\n"
+"\n"
+"您应该在收到 Nautilus 的同时收到了 GNU GPL 协议的副本；如果您没有收到的话，请"
+"给自由软件基金会写信，地址是 51 Franklin Street, Fifth Floor, Boston, MA "
+"02110-1301 USA"
 
 #: ../src/Glade/AboutDialog.glade.h:15
 msgid "Video subtitling for the GNOME desktop"
@@ -266,7 +276,8 @@ msgid "<b>Time</b>"
 msgstr "<b>时间</b>"
 
 #: ../src/Glade/MainWindow.glade.h:3
-msgid "Auto Select Subtitles"
+#| msgid "Auto Select Subtitles"
+msgid "Auto Select Subtitle"
 msgstr "自动选择字幕"
 
 #: ../src/Glade/MainWindow.glade.h:4
@@ -442,82 +453,84 @@ msgstr "插入字幕(_I)"
 
 #: ../src/Glade/MainWindow.glade.h:50
 msgid "_Italic"
-msgstr "斜体字 (_I)"
+msgstr "斜体字(_I)"
 
 #: ../src/Glade/MainWindow.glade.h:51
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "键盘快捷键(_K)"
 
 #: ../src/Glade/MainWindow.glade.h:52
+msgid "_Loop Selection"
+msgstr "循环选区(_L)"
+
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_New"
 msgstr "新建(_N)"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Play / Pause"
 msgstr "播放/暂停(_P)"
 
-#: ../src/Glade/MainWindow.glade.h:55 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:56 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "替换(_R)"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Search"
 msgstr "查找(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Seek to..."
 msgstr "定位到...(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "同步(_S)"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Text"
 msgstr "文本(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Times"
 msgstr "时间(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Tools"
 msgstr "工具(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Translation"
 msgstr "翻译(_T)"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Underline"
 msgstr "下划线(_U)"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Video"
 msgstr "视频(_V)"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Video Frame Rate"
 msgstr "视频帧(_V)"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_View"
 msgstr "视图(_V)"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-#, fuzzy
-#| msgid "<b>Status</b>"
 msgid "<b>Backup</b>"
-msgstr "<b>状态</b>"
+msgstr "<b>备份</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
 msgid "<b>File Open</b>"
@@ -545,7 +558,7 @@ msgstr "使用字符编码(_O)："
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "Create a _backup copy of files every"
-msgstr ""
+msgstr "为每个文件创建备份(_B)"
 
 #: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "If auto detection _fails, use:"
@@ -573,7 +586,7 @@ msgstr "使用字幕格式(_S)："
 
 #: ../src/Glade/PreferencesDialog.glade.h:15
 msgid "minutes"
-msgstr ""
+msgstr "分钟"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -756,12 +769,12 @@ msgid "Editing During"
 msgstr "编辑间隔"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:550
+#: ../src/GnomeSubtitles/Ui/Menus.cs:549
 msgid "Undo"
 msgstr "撤销"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:560
+#: ../src/GnomeSubtitles/Ui/Menus.cs:559
 msgid "Redo"
 msgstr "重做"
 
@@ -958,11 +971,11 @@ msgstr "越南"
 msgid "Current Locale"
 msgstr "本地设置"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "找不到 Gnome Subtitles 手册。"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "Please verify that your installation has been completed successfully."
 msgstr "请确认您的安装已成功完成。"
 
@@ -1265,7 +1278,7 @@ msgstr "插入模式"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:237
 msgid "Text"
 msgstr "文本"
 
@@ -1288,23 +1301,23 @@ msgid "Frame"
 msgstr "帧"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
 msgid "No."
 msgstr "序号"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "From"
 msgstr "起点"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "To"
 msgstr "终点"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "During"
 msgstr "间隔"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:242
 msgid "Translation"
 msgstr "翻译"
 
