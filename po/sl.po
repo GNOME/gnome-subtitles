@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
-"POT-Creation-Date: 2010-06-28 20:18+0000\n"
+"POT-Creation-Date: 2010-07-31 01:30+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
@@ -283,8 +283,8 @@ msgid "<b>Time</b>"
 msgstr "<b>Čas</b>"
 
 #: ../src/Glade/MainWindow.glade.h:3
-msgid "Auto Select Subtitles"
-msgstr "Samodejno izberi podnapise"
+msgid "Auto Select Subtitle"
+msgstr "Samodejno izberi podnapis"
 
 #: ../src/Glade/MainWindow.glade.h:4
 msgid "Delete"
@@ -466,68 +466,72 @@ msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
 #: ../src/Glade/MainWindow.glade.h:52
+msgid "_Loop Selection"
+msgstr "_Predvajaj izbor v zanki"
+
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_New"
 msgstr "_Nov"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Open"
 msgstr "_Odpri"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Play / Pause"
 msgstr "_Predvajaj / Premor"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:56
 #: ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Zamenjaj"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Save"
 msgstr "_Shrani"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Search"
 msgstr "_Išči"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Seek to..."
 msgstr "_Išči do ..."
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Uskladi"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Text"
 msgstr "_Besedilo"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Times"
 msgstr "_Čas"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Tools"
 msgstr "_Orodja"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Translation"
 msgstr "_Prevod"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Underline"
 msgstr "Po_dčrtano"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Video Frame Rate"
 msgstr "Hitrost sličic _videa"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_View"
 msgstr "_Pogled"
 
@@ -772,12 +776,12 @@ msgid "Editing During"
 msgstr "Urejanje med"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:550
+#: ../src/GnomeSubtitles/Ui/Menus.cs:549
 msgid "Undo"
 msgstr "Razveljavi"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:560
+#: ../src/GnomeSubtitles/Ui/Menus.cs:559
 msgid "Redo"
 msgstr "Uveljavi"
 
@@ -974,11 +978,11 @@ msgstr "Vietnamsko"
 msgid "Current Locale"
 msgstr "Trenutna jezikovna oznaka"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Priročnika Gnome podnapisov ni mogoče najti."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Potrdite, da je bila vaša namestitev uspešno dokončana."
 
@@ -1266,7 +1270,7 @@ msgstr "Vstavi"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:237
 msgid "Text"
 msgstr "Besedilo"
 
@@ -1289,23 +1293,23 @@ msgid "Frame"
 msgstr "Sličica"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
 msgid "No."
 msgstr "Št."
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "From"
 msgstr "Od"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "To"
 msgstr "Do"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "During"
 msgstr "Med"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:242
 msgid "Translation"
 msgstr "Prevod"
 
