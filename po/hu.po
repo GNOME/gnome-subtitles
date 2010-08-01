@@ -6,10 +6,10 @@
 # Laszlo Csordas <csola48 at gmail dot com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-subtitles-master-po-hu-20191_1.merged\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
-"POT-Creation-Date: 2010-05-02 16:24+0000\n"
-"PO-Revision-Date: 2010-05-22 16:01+0200\n"
+"Project-Id-Version: gnome-subtitles master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-08-01 16:23+0200\n"
+"PO-Revision-Date: 2010-08-01 16:40+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,26 @@ msgid "About Gnome Subtitles"
 msgstr "A Gnome Subtitles névjegye"
 
 #: ../src/Glade/AboutDialog.glade.h:2
+msgid ""
+"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gnome Subtitles is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+msgstr ""
+"A Gnome Subtitles szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software Foundation által kiadott GNU General Public License második (vagy bármely későbbi) változatában foglaltak alapján."
+"A Gnome Subtitles programot abban a reményben terjesztjük, hogy hasznos lesz, de nem vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További részletekért tanulmányozza a GNU GPL licencet."
+"A Gnome Subtitles programhoz a GNU General Public License egy példánya is jár, ha nem kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA."
+
+#: ../src/Glade/AboutDialog.glade.h:15
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Videók feliratozása GNOME környezetben"
 
@@ -46,7 +66,7 @@ msgstr "Megjelenítés a menüben:"
 msgid "Character Coding:"
 msgstr "Karakterkódolás:"
 
-#: ../src/Glade/FileOpenDialog.glade.h:2
+#: ../src/Glade/FileOpenDialog.glade.h:2 ../src/Glade/MainWindow.glade.h:13
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "Fájl megnyitása"
@@ -253,271 +273,316 @@ msgid "<b>Time</b>"
 msgstr "<b>Idő</b>"
 
 #: ../src/Glade/MainWindow.glade.h:3
+msgid "Auto Select Subtitle"
+msgstr "Felirat automatikus kiválasztása"
+
+#: ../src/Glade/MainWindow.glade.h:4
 msgid "Delete"
 msgstr "Törlés"
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:5
+#: ../src/Glade/MainWindow.glade.h:6
 msgid "During:"
 msgstr "Időtartam:"
 
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.glade.h:7
 msgid "Find Ne_xt"
 msgstr "Kö_vetkező keresése"
 
-#: ../src/Glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:8
 msgid "Find Pre_vious"
 msgstr "_Előző keresése"
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.glade.h:10
 msgid "From:"
 msgstr "Kezdete:"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.glade.h:11
 msgid "Insert"
 msgstr "Beszúrás"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.glade.h:12
+msgid "New File"
+msgstr "Új fájl"
+
+#: ../src/Glade/MainWindow.glade.h:14
 msgid "Pr_eferences"
 msgstr "B_eállítások"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.glade.h:15
+msgid "R_ewind"
+msgstr "_Vissza"
+
+#: ../src/Glade/MainWindow.glade.h:16
 msgid "Report a _Bug"
 msgstr "_Hiba jelentése"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.glade.h:17
 msgid "Request a _Feature"
 msgstr "_Funkció igénylése"
 
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.glade.h:18
+msgid "Save File"
+msgstr "Fájl mentése"
+
+#: ../src/Glade/MainWindow.glade.h:19
 msgid "Save _As"
 msgstr "Men_tés másként"
 
-#: ../src/Glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.glade.h:20
 msgid "Seek _to Selection"
 msgstr "U_grás a kijelölthöz"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.glade.h:21
+msgid "Select Nearest Subtitle"
+msgstr "Legközelebbi felirat kiválasztása"
+
+#: ../src/Glade/MainWindow.glade.h:22
 msgid "Set Subtitle En_d"
 msgstr "F_eliratvég beállítása"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.glade.h:23
 msgid "Set Subtitle St_art"
 msgstr "_Feliratkezdet beállítása"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.glade.h:24
 msgid "Set Translatio_n Language"
 msgstr "_Fordítás nyelvének beállítása"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.glade.h:25
 msgid "Set _Text Language"
 msgstr "_Szöveg nyelvének beállítása"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.glade.h:26
 msgid "Sh_ift"
 msgstr "_Eltolás"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.glade.h:27
 msgid "T_imings"
 msgstr "_Időzítés"
 
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.glade.h:29
 msgid "To:"
 msgstr "Vége:"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "Translatio_n"
 msgstr "_Fordítás"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.glade.h:31
 msgid "Vide_o"
 msgstr "_Videó"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.glade.h:32
 msgid "Video _Subtitles"
 msgstr "Vi_deofeliratok"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "_Adjust"
 msgstr "_Igazítás"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "_After"
 msgstr "_Mögé"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "_Autocheck Spelling"
 msgstr "_Automatikus helyesírás-ellenőrzés"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.glade.h:36
 msgid "_Before"
 msgstr "_Elé"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:37
 msgid "_Bold"
 msgstr "_Félkövér"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:38
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.glade.h:39
 msgid "_Contents"
 msgstr "_Tartalom"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.glade.h:40
 msgid "_Delete Subtitles"
 msgstr "Fel_irat törlése"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "_Edit"
 msgstr "S_zerkesztés"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.glade.h:42
 msgid "_File"
 msgstr "_Fájl"
 
-#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/MainWindow.glade.h:43
 msgid "_Format"
 msgstr "F_ormátum"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:44
+msgid "_Forward"
+msgstr "Elő_re"
+
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Frames"
 msgstr "_Képkocka"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.glade.h:46
 msgid "_Headers"
 msgstr "Fejlé_cek"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:47
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "_Input Frame Rate"
 msgstr "B_emeneti képkockasebesség"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "_Insert Subtitle"
 msgstr "Fe_lirat beszúrása"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.glade.h:50
 msgid "_Italic"
 msgstr "_Dőlt"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Keyboard Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: ../src/Glade/MainWindow.glade.h:52
+msgid "_Loop Selection"
+msgstr "Kijelölés is_métlése"
+
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_New"
 msgstr "Ú_j"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Play / Pause"
 msgstr "_Lejátszás / Szünet"
 
-#: ../src/Glade/MainWindow.glade.h:47 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:56 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Csere"
 
-#: ../src/Glade/MainWindow.glade.h:48
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Save"
 msgstr "M_entés"
 
-#: ../src/Glade/MainWindow.glade.h:49
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Search"
 msgstr "_Keresés"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Seek to..."
 msgstr "_Ugrás…"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Szinkronizálás"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Text"
 msgstr "_Szöveg"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Times"
 msgstr "_Idő"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Tools"
 msgstr "_Eszközök"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Translation"
 msgstr "_Fordítás"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Underline"
 msgstr "_Aláhúzott"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Video"
 msgstr "_Videó"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Video Frame Rate"
 msgstr "_Videó képkockasebessége"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_View"
 msgstr "_Nézet"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
+msgid "<b>Backup</b>"
+msgstr "<b>Biztonsági mentés</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:2
 msgid "<b>File Open</b>"
 msgstr "<b>Fájl megnyitása</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:2
+#: ../src/Glade/PreferencesDialog.glade.h:3
 msgid "<b>File Save As</b>"
 msgstr "<b>Fájl mentése másként</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:3
+#: ../src/Glade/PreferencesDialog.glade.h:4
 msgid "<b>Translation</b>"
 msgstr "<b>Fordítás</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:4
+#: ../src/Glade/PreferencesDialog.glade.h:5
 msgid "Automatically choose the _video file to open"
 msgstr "Megnyitandó vid_eofájl automatikus kiválasztása"
 
-#: ../src/Glade/PreferencesDialog.glade.h:5
+#: ../src/Glade/PreferencesDialog.glade.h:6
 msgid "Ch_aracter coding to use:"
 msgstr "_Használandó karakterkódolás:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:6
+#: ../src/Glade/PreferencesDialog.glade.h:7
 msgid "Character c_oding to use:"
 msgstr "H_asználandó karakterkódolás:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:7
+#: ../src/Glade/PreferencesDialog.glade.h:8
+msgid "Create a _backup copy of files every"
+msgstr "Bi_ztonsági másolat készítése a fájlokról"
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "If auto detection _fails, use:"
 msgstr "Ha az automatikus felismerés sikertelen, akkor:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:8
+#: ../src/Glade/PreferencesDialog.glade.h:10
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: ../src/Glade/PreferencesDialog.glade.h:9
+#: ../src/Glade/PreferencesDialog.glade.h:11
 msgid "When saving subtitles, also save their _translation"
 msgstr "_Feliratok mentése a hozzájuk tartozó fordítással együtt"
 
-#: ../src/Glade/PreferencesDialog.glade.h:10
+#: ../src/Glade/PreferencesDialog.glade.h:12
 msgid "_Newline type to use:"
 msgstr "Használandó _soremeléstípus:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:11
+#: ../src/Glade/PreferencesDialog.glade.h:13
 msgid "_Reset to defaults"
 msgstr "_Visszaállítás alapértelmezésekre"
 
-#: ../src/Glade/PreferencesDialog.glade.h:12
+#: ../src/Glade/PreferencesDialog.glade.h:14
 msgid "_Subtitle format to use:"
 msgstr "Használandó feliratf_ormátum:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:15
+msgid "minutes"
+msgstr "percenként"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -700,12 +765,12 @@ msgid "Editing During"
 msgstr "Időtartam szerkesztése"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:539
+#: ../src/GnomeSubtitles/Ui/Menus.cs:549
 msgid "Undo"
 msgstr "Újra"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:549
+#: ../src/GnomeSubtitles/Ui/Menus.cs:559
 msgid "Redo"
 msgstr "Vissza"
 
@@ -902,11 +967,11 @@ msgstr "Vietnami"
 msgid "Current Locale"
 msgstr "Jelenlegi locale"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "A Gnome Subtitles kézikönyve nem található."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:312
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Ellenőrizze, hogy a program telepítése sikeres volt-e."
 
@@ -944,15 +1009,15 @@ msgstr "Minden feliratfájl"
 msgid "Open Translation File"
 msgstr "Fordítási fájl megnyitása"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:74
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:139
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:145
 msgid "Remember Last Used"
 msgstr "Utoljára használt megjegyzése"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:106
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
 msgid "Keep Existing"
 msgstr "Létező megtartása"
 
@@ -1012,7 +1077,9 @@ msgstr "Helyes kezdet"
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
-msgstr "Vegyen fel szinkronizációs pontokat feliratok kijelölésével, és állítsa be a videót a megfelelő pozíciójukra. Legalább 2 pont szükséges."
+msgstr ""
+"Vegyen fel szinkronizációs pontokat feliratok kijelölésével, és állítsa be a "
+"videót a megfelelő pozíciójukra. Legalább 2 pont szükséges."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
 msgid ""
@@ -1032,8 +1099,8 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
 msgstr ""
-"A szinkronizálás megkezdhető. A következő feliratok nem lesznek szinkronizálva: "
-"{0}."
+"A szinkronizálás megkezdhető. A következő feliratok nem lesznek "
+"szinkronizálva: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
 #, csharp-format
@@ -1041,8 +1108,8 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
-"A szinkronizálás megkezdhető. A következő feliratok nem lesznek szinkronizálva: "
-"{0} és {1}."
+"A szinkronizálás megkezdhető. A következő feliratok nem lesznek "
+"szinkronizálva: {0} és {1}."
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Video Files"
@@ -1052,7 +1119,9 @@ msgstr "Minden videofájl"
 msgid ""
 "An unknown error has occured. Please report a bug and include this error "
 "name:"
-msgstr "Ismeretlen hiba történt. Jelentse a hibát, és vegye fel a következő hibaüzenetet:"
+msgstr ""
+"Ismeretlen hiba történt. Jelentse a hibát, és vegye fel a következő "
+"hibaüzenetet:"
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
@@ -1104,7 +1173,9 @@ msgstr "Ha nem ment, akkor minden változtatás véglegesen elvész."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba az új felirat létrehozása előtt?"
+msgstr ""
+"Menti a felirat változtatásait a(z) „{0}” fájlba az új felirat létrehozása "
+"előtt?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
 msgid "Create without Saving"
@@ -1152,7 +1223,9 @@ msgstr "Menti a(z) „{0}” fordítás változtatásait a bezárás előtt?"
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
-msgstr "A feliratformátum nem ismerhető fel. Ellenőrizze, hogy a fájltípus támogatott-e."
+msgstr ""
+"A feliratformátum nem ismerhető fel. Ellenőrizze, hogy a fájltípus "
+"támogatott-e."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
@@ -1214,7 +1287,7 @@ msgstr "BESZ"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:224
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:237
 msgid "Text"
 msgstr "Szöveg"
 
@@ -1237,23 +1310,23 @@ msgid "Frame"
 msgstr "Képkocka"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:212
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
 msgid "No."
 msgstr "Szám"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:216
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "From"
 msgstr "Kezdete"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:217
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "To"
 msgstr "Vége"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:218
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "During"
 msgstr "Időtartam"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:242
 msgid "Translation"
 msgstr "Fordítás"
 
