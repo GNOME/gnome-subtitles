@@ -2,15 +2,17 @@
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd.
 # Copyright (c) 2009, 2010 the author(s) of gnome-subtitles.
 # This file is distributed under the same license as the gnome-subtitles package.
+#
 # Rinu <rinu@seznam.cz>, 2009.
 # Lucas Lommer <llomer@svn.gnome.org>, 2009.
 # Marek Černocký <marek@manet.cz>, 2009, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 21:38+0200\n"
-"PO-Revision-Date: 2010-06-25 00:30+0200\n"
+"POT-Creation-Date: 2010-08-04 08:43+0200\n"
+"PO-Revision-Date: 2010-07-17 10:37+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -282,7 +284,8 @@ msgid "<b>Time</b>"
 msgstr "<b>Čas</b>"
 
 #: ../src/Glade/MainWindow.glade.h:3
-msgid "Auto Select Subtitles"
+#, fuzzy
+msgid "Auto Select Subtitle"
 msgstr "Automaticky vybrat titulky"
 
 #: ../src/Glade/MainWindow.glade.h:4
@@ -462,77 +465,81 @@ msgstr "_Kurzíva"
 
 #: ../src/Glade/MainWindow.glade.h:51
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klávesové zkratky"
 
 #: ../src/Glade/MainWindow.glade.h:52
+#, fuzzy
+msgid "_Loop Selection"
+msgstr "Přejí_t na výběr"
+
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_New"
 msgstr "_Nový"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Play / Pause"
 msgstr "_Přehrávat / Pozastavit"
 
-#: ../src/Glade/MainWindow.glade.h:55 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:56 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "Nah_radit"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Save"
 msgstr "_Uložit"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Search"
 msgstr "_Hledat"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Seek to..."
 msgstr "_Přejít na…"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Synchronizovat"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Times"
 msgstr "Ča_sy"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Translation"
 msgstr "_Překlad"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Underline"
 msgstr "Po_dtržené"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Video Frame Rate"
 msgstr "Snímková frekvence _videa"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_View"
 msgstr "Zo_brazit"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-#, fuzzy
 msgid "<b>Backup</b>"
-msgstr "<b>Status</b>"
+msgstr "<b>Zálohování</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
 msgid "<b>File Open</b>"
@@ -560,7 +567,7 @@ msgstr "Použít kód_ování znaků:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "Create a _backup copy of files every"
-msgstr ""
+msgstr "Vytvořit _záložní kopii souborů každých"
 
 #: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "If auto detection _fails, use:"
@@ -588,7 +595,7 @@ msgstr "Použít _formát titulků:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:15
 msgid "minutes"
-msgstr ""
+msgstr "minut"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -771,12 +778,12 @@ msgid "Editing During"
 msgstr "Upravit během"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:550
+#: ../src/GnomeSubtitles/Ui/Menus.cs:549
 msgid "Undo"
 msgstr "Vrátit změny"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:560
+#: ../src/GnomeSubtitles/Ui/Menus.cs:559
 msgid "Redo"
 msgstr "Znovu"
 
@@ -973,11 +980,11 @@ msgstr "Vietnamské"
 msgid "Current Locale"
 msgstr "Aktuální lokalizace"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Příručka k nástroji Gnome Subtitles nebyla nalezena."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:347
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Zkontrolujte, prosím, zda byla instalace úspěšně dokončena."
 
@@ -1293,7 +1300,7 @@ msgstr "VLO"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:238
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:237
 msgid "Text"
 msgstr "Text"
 
@@ -1316,22 +1323,22 @@ msgid "Frame"
 msgstr "Snímek"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:226
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:225
 msgid "No."
 msgstr "Č."
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:229
 msgid "From"
 msgstr "Od"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:230
 msgid "To"
 msgstr "Do"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:232
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:231
 msgid "During"
 msgstr "Trvání"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:242
 msgid "Translation"
 msgstr "Překlad"
