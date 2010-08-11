@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-01 00:54+0300\n"
-"PO-Revision-Date: 2010-08-01 01:12+0200\n"
+"POT-Creation-Date: 2010-08-11 12:58+0300\n"
+"PO-Revision-Date: 2010-08-11 13:21+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -38,6 +38,19 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
 msgstr ""
+"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gnome Subtitles is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
 
 #: ../src/Glade/AboutDialog.glade.h:15
 msgid "Video subtitling for the GNOME desktop"
@@ -204,7 +217,7 @@ msgstr "עריכה מקורית:"
 
 #: ../src/Glade/HeadersDialog.glade.h:25
 msgid "Original Script Checking:"
-msgstr ""
+msgstr "בדיקת התסריט המקורי:"
 
 #: ../src/Glade/HeadersDialog.glade.h:26
 msgid "Original Script:"
@@ -224,11 +237,11 @@ msgstr "עומק הנגינה:"
 
 #: ../src/Glade/HeadersDialog.glade.h:30
 msgid "PlayResX:"
-msgstr ""
+msgstr "רזולוציית הנגינה ב־X:"
 
 #: ../src/Glade/HeadersDialog.glade.h:31
 msgid "PlayResY:"
-msgstr ""
+msgstr "רזולוציית הנגינה ב־Y:"
 
 #: ../src/Glade/HeadersDialog.glade.h:32
 msgid "Program:"
@@ -418,9 +431,8 @@ msgid "_Format"
 msgstr "עי_צוב"
 
 #: ../src/Glade/MainWindow.glade.h:44
-#, fuzzy
 msgid "_Forward"
-msgstr "_עיצוב"
+msgstr "_קדימה"
 
 #: ../src/Glade/MainWindow.glade.h:45
 msgid "_Frames"
@@ -451,9 +463,8 @@ msgid "_Keyboard Shortcuts"
 msgstr "קיצורי _מקשים"
 
 #: ../src/Glade/MainWindow.glade.h:52
-#, fuzzy
 msgid "_Loop Selection"
-msgstr "קפוץ _לקטע המסומן"
+msgstr "_לולאה על הבחירה"
 
 #: ../src/Glade/MainWindow.glade.h:53
 msgid "_New"
@@ -717,9 +728,8 @@ msgid "Seek To"
 msgstr "מעבר אל"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-#, fuzzy
 msgid "Seek _video to:"
-msgstr "קפוץ ל_זמן:"
+msgstr "מעבר ל_זמן:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
 msgid "_Seek"
@@ -739,27 +749,27 @@ msgstr "שינוי קצב השקופיות של הווידאו"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
-msgstr ""
+msgstr "הדגשה/ביטול הדגשה"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
 msgid "Toggling Italic"
-msgstr ""
+msgstr "הטיה/ביטול הטיה"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
 msgid "Toggling Underline"
-msgstr ""
+msgstr "סימון/ביטול קו תחתי"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:65
 msgid "Editing From"
-msgstr ""
+msgstr "תחילת העריכה"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:89
 msgid "Editing To"
-msgstr ""
+msgstr "עריכה אל"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:111
 msgid "Editing During"
-msgstr ""
+msgstr "עריכה במשך"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
 #: ../src/GnomeSubtitles/Ui/Menus.cs:549
@@ -773,21 +783,21 @@ msgstr "ביצוע שוב"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
 msgid "Deleting Subtitles"
-msgstr ""
+msgstr "מחיקת כתוביות"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
 #: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
 msgid "Editing Text"
-msgstr ""
+msgstr "עריכת טקסט"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
 #: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
 msgid "Editing Translation"
-msgstr ""
+msgstr "עריכת תרגומים"
 
 #: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:27
 msgid "Inserting Subtitle"
-msgstr ""
+msgstr "הוספת כתוביות"
 
 #: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
@@ -795,23 +805,23 @@ msgstr "הכול מוחלף"
 
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
-msgstr ""
+msgstr "הזחת הזמנים"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
 msgid "Synchronizing timings"
-msgstr ""
+msgstr "סנכרון הזמנים"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr ""
+msgstr "הגדרת תחילת הכתוביות"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr ""
+msgstr "הגדרת סיום הכתוביות"
 
 #: ../src/GnomeSubtitles/Core/Document.cs:202
 msgid "Unsaved Translation"
-msgstr ""
+msgstr "תרגום שלא נשמר"
 
 #. GEOSTD8, HZ not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:33
@@ -1011,12 +1021,12 @@ msgstr "פתיחת קובץ תרגום"
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:145
 msgid "Remember Last Used"
-msgstr ""
+msgstr "שמירת האחרון שהיה בשימוש"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
 msgid "Keep Existing"
-msgstr ""
+msgstr "השארת הנוכחי"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
@@ -1033,7 +1043,7 @@ msgstr "הגדרת שפת התרגום"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
 msgid "Select the text _language of the current subtitles."
-msgstr ""
+msgstr "בחירת _שפת הכתוביות הנוכחיות."
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
 msgid "Select the translation _language of the current subtitles."
