@@ -324,25 +324,32 @@ public class SearchOperator {
 	
 	private SubtitleSearchResults FindInTextContent (int subtitleNumber, string lineBreak, Regex regex, SubtitleTextType textType) {
 		SubtitleText text = subtitles.GetSubtitleText(subtitleNumber, textType);
-		return MatchValues(regex.Match(text.Get(lineBreak)), subtitleNumber, textType);
+		return MatchValues(regex.Match(text.Get(lineBreak)), subtitleNumber, textType, 0);
 	}
 	
 	private SubtitleSearchResults FindInTextContentFromIndex (int subtitleNumber, string lineBreak, Regex regex, int startIndex, SubtitleTextType textType) {
 		SubtitleText text = subtitles.GetSubtitleText(subtitleNumber, textType);
-		return MatchValues(regex.Match(text.Get(lineBreak), startIndex), subtitleNumber, textType);
+		return MatchValues(regex.Match(text.Get(lineBreak), startIndex), subtitleNumber, textType, 0);
 	}
 	
 	private SubtitleSearchResults FindInTextContentTillIndex (int subtitleNumber, string lineBreak, Regex regex, int endIndex, SubtitleTextType textType, bool backwards) {
 		SubtitleText text = subtitles.GetSubtitleText(subtitleNumber, textType);
-		string matchText = text.Get(lineBreak);
-		int startIndex = (backwards ? matchText.Length : 0);
-		int length = (backwards ? matchText.Length - endIndex : endIndex);		
-		return MatchValues(regex.Match(text.Get(lineBreak), startIndex, length), subtitleNumber, textType);
+		string subtitleText = text.Get(lineBreak);
+
+		if (backwards) {
+			string subtitleTextSubstring = subtitleText.Substring(endIndex);
+			return MatchValues(regex.Match(subtitleTextSubstring), subtitleNumber, textType, endIndex);
+		}
+		else {
+			string subtitleTextSubstring = subtitleText.Substring(0, endIndex);
+			return MatchValues(regex.Match(subtitleTextSubstring), subtitleNumber, textType, 0);
+		}
 	}
 	
-	private SubtitleSearchResults MatchValues (Match match, int subtitleNumber, SubtitleTextType textType) {
-		if (match.Success)
-			return new SubtitleSearchResults(subtitleNumber, textType, match.Index, match.Length);
+	private SubtitleSearchResults MatchValues (Match match, int subtitleNumber, SubtitleTextType textType, int charsBeforeMatchInput) {
+		if (match.Success) {
+			return new SubtitleSearchResults(subtitleNumber, textType, match.Index + charsBeforeMatchInput, match.Length);
+		}
 		else
 			return null;
 	}
