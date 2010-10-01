@@ -6,7 +6,7 @@ libdir=@libdir@
 
 sublibdir=@SUBLIB_DLL_DIR@
 
-export LD_LIBRARY_PATH="$libdir/gnome-subtitles:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=$libdir/gnome-subtitles${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 export MONO_PATH=$sublibdir:$MONO_PATH
 exec -a gnome-subtitles @MONO@ $libdir/gnome-subtitles/gnome-subtitles.exe "$@"
 
