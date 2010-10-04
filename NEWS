@@ -1,6 +1,55 @@
 Gnome Subtitles
 ===============
 
+1.1
+==============
+
+From: Sun 03
+- Quick subtitle timing during playback (#547984)
+- Periodically backup subtitle files
+- Allow to:
+ * Seek the video to the position of the selected subtitle (show feature name and shortcut)
+ * Select the subtitle for the current video position
+ * Follow subtitles (subtitles are automatically selected as the movie is playing)
+ * Subtitle loop
+- Fixed problem opening subtitles with drag-and-drop having spaces in their path
+- Use ISO-8859-1 as default character coding added to the encodings list and as fallback
+- When activating a sync point, seek to the sync point time instead of the subtitle time
+
+
+Translations:
+- Lucas Lommer, Marek Černocký, Petr Kovar (cs)
+- Mario Blättermann (de)
+- Jorge González (es)
+- Bruno Brouard, Claude Paroz (fr)
+- Fran Diéguez (gl)
+- Yaron Shahrabani (he)
+- Gabor Kelemen, Laszlo Csordas (hu)
+- Piotr Drąg (pl)
+- António Lima (pt)
+- Daniel Șerbănescu (ro)
+- Andrej Žnidaršič (sl)
+- Baris Cicek, Serkan Yılmaz (tr)
+- Aron Xu (zh_CN)
+
+Bug fixes:
+- Automatically select subtitles on video playback (#453220)
+- Quick subtitle timing during playback (#547984)
+- Periodically backup subtitle files (#565360)
+- Subtitle loop (#601195)
+- Seek Subtitle->Time; Time->Subtitle with kb shortcut; Follow subs. (#605402)
+- Bug in help (#612400)
+- Untranslated strings (#619364)
+- Crash when shifting selected subtitles (#620027)
+- Crash when searching backwards (#628427)
+
+Contributors:
+- Arx Cruz, Valmir Sena
+
+Additional thanks:
+- A. G. Luz, Carlos Troncoso, Daniel, Gabor Kelemen, Marcin Zajaczkowski
+
+
 1.0 (18/02/10)
 ===================
 
