@@ -110,12 +110,12 @@ public class SyncUtil {
 		return baseFrame + ((currentFrame - baseFrame) * factor);
 	}
 	
-	/* Private members */
-	
 	public static bool AreSyncPointsValid (Subtitles subtitles, SyncPoint start, SyncPoint end) {
 		return AreSyncArgsValid(subtitles, start.SubtitleNumber, start.Correct.Time, end.SubtitleNumber, end.Correct.Time)
 			&& AreSyncArgsValid(subtitles, start.SubtitleNumber, start.Correct.Frame, end.SubtitleNumber, end.Correct.Frame);
 	}
+	
+	/* Private members */
 	
 	private static bool AreSyncArgsValid (Subtitles subtitles, int startIndex, TimeSpan startTime, int endIndex, TimeSpan endTime) {
 		if (!AreSyncIndicesValid(subtitles, startIndex, endIndex))
