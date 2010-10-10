@@ -60,16 +60,25 @@ public class SynchronizeOperator {
 
 		/* Add the first subtitle if possible */
 		int firstSubtitleNumber = 0;
-		if ((subtitles.Collection.Count > 0) && (!adapted.Contains(firstSubtitleNumber))) {
+		if ((subtitles.Collection.Count > 1) && (!adapted.Contains(firstSubtitleNumber))) {
+			
+			/* Calculate sync shift and factor using the last 2 sync points */
 			SyncPoint firstSyncPoint = adapted[0];
-			Subtitle firstSyncSubtitle = subtitles.Collection[firstSyncPoint.SubtitleNumber];
+			SyncPoint secondSyncPoint = adapted[1];
+			Subtitle firstSyncPointSubtitle = subtitles.Collection[firstSyncPoint.SubtitleNumber];
+			Subtitle secondSyncPointSubtitle = subtitles.Collection[secondSyncPoint.SubtitleNumber];
+			TimeSpan shift = firstSyncPoint.Correct.Time - firstSyncPointSubtitle.Times.PreciseStart;
+			double factor = (secondSyncPoint.Correct.Time - firstSyncPoint.Correct.Time).TotalMilliseconds / (secondSyncPointSubtitle.Times.PreciseStart - firstSyncPointSubtitle.Times.PreciseStart).TotalMilliseconds;
+			
+			/* Calculate new time */
 			Subtitle firstSubtitle = subtitles.Collection[firstSubtitleNumber];
-
-			double scaleFactor = firstSyncPoint.Correct.Time.TotalMilliseconds / firstSyncSubtitle.Times.Start.TotalMilliseconds;
-			TimeSpan firstSubtitleNewTime = SyncUtil.Scale(firstSubtitle.Times.PreciseStart, TimeSpan.Zero, scaleFactor);
+			TimeSpan firstSubtitleNewTime = firstSubtitle.Times.Start + shift; //Apply shift
+			firstSubtitleNewTime = SyncUtil.Scale(firstSubtitleNewTime, TimeSpan.Zero, factor);
+			if (firstSubtitleNewTime < TimeSpan.Zero) { //Can't have negative start
+				firstSubtitleNewTime = TimeSpan.Zero;
+			}
 			int firstSubtitleNewFrame = (int)TimingUtil.TimeToFrames(firstSubtitleNewTime, subtitles.Properties.CurrentFrameRate);
 			Domain.Timing firstSubtitleNewTiming = new Domain.Timing(firstSubtitleNewFrame, firstSubtitleNewTime);
-			
 			Domain.Timing firstSubtitleCurrentTiming = new Domain.Timing(firstSubtitle.Frames.Start, firstSubtitle.Times.Start);
 			SyncPoint newFirstSyncPoint = new SyncPoint(firstSubtitleNumber, firstSubtitleCurrentTiming, firstSubtitleNewTiming);
 			adapted.Add(newFirstSyncPoint);
@@ -79,16 +88,18 @@ public class SynchronizeOperator {
 		int lastSubtitleNumber = subtitles.Collection.Count - 1;
 		if ((subtitles.Collection.Count > 1) && (!adapted.Contains(lastSubtitleNumber))) {
 
-			/* Calculate sync factor using the last 2 sync points */
+			/* Calculate sync shift and factor using the last 2 sync points */
 			SyncPoint penultSyncPoint = adapted[adapted.Count - 2];			
 			SyncPoint lastSyncPoint = adapted[adapted.Count - 1];
 			Subtitle penultSyncPointSubtitle = subtitles.Collection[penultSyncPoint.SubtitleNumber];
 			Subtitle lastSyncPointSubtitle = subtitles.Collection[lastSyncPoint.SubtitleNumber];
+			TimeSpan shift = penultSyncPoint.Correct.Time - penultSyncPointSubtitle.Times.PreciseStart;
 			double factor = (lastSyncPoint.Correct.Time - penultSyncPoint.Correct.Time).TotalMilliseconds / (lastSyncPointSubtitle.Times.PreciseStart - penultSyncPointSubtitle.Times.PreciseStart).TotalMilliseconds;
 
 			/* Calculate new time */
 			Subtitle lastSubtitle = subtitles.Collection[lastSubtitleNumber];
-			TimeSpan lastSubtitleNewTime = SyncUtil.Scale(lastSubtitle.Times.Start, lastSyncPoint.Correct.Time, factor);
+			TimeSpan lastSubtitleNewTime = lastSubtitle.Times.Start + shift; //Apply shift
+			lastSubtitleNewTime = SyncUtil.Scale(lastSubtitleNewTime, penultSyncPoint.Correct.Time, factor);
 			int lastSubtitleNewFrame = (int)TimingUtil.TimeToFrames(lastSubtitleNewTime, subtitles.Properties.CurrentFrameRate);
 			Domain.Timing lastSubtitleNewTiming = new Domain.Timing(lastSubtitleNewFrame, lastSubtitleNewTime);
 			Domain.Timing lastSubtitleCurrentTiming = new Domain.Timing(lastSubtitle.Frames.Start, lastSubtitle.Times.Start);
