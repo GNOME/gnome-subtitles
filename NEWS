@@ -1,23 +1,25 @@
 Gnome Subtitles
 ===============
 
-1.1
+1.1 (31/10/10)
 ==============
 
-From: Sun 03
-- Quick subtitle timing during playback (#547984)
-- Periodically backup subtitle files
-- Allow to:
- * Seek the video to the position of the selected subtitle (show feature name and shortcut)
- * Select the subtitle for the current video position
- * Follow subtitles (subtitles are automatically selected as the movie is playing)
- * Subtitle loop
-- Fixed problem opening subtitles with drag-and-drop having spaces in their path
-- Use ISO-8859-1 as default character coding added to the encodings list and as fallback
-- When activating a sync point, seek to the sync point time instead of the subtitle time
-
+- New feature for quickly setting times with a single button: pressing sets the
+  start time, releasing sets the end time, then moves to the next subtitle
+- Periodically backup subtitle files, configurable in the preferences
+- New features for video seeking and subtitle selection:
+  * Video->Loop Selection - loop the video playback to the selected subtitles
+  * Video->Seek to Selection - seek the video to the selected subtitle
+  * Video->Select Nearest Subtitle - select the subtitle for the video position
+  * Video->Auto Select Subtitle - auto select subtitles as the video is playing
+- Changes in the Timings Synchronize dialog:
+  * Fixed a bug using the Synchronize All Subtitles option
+  * Activating a sync point now seeks to its new time instead of the old one
+- Fixed a bug drag-and-dropping files with spaces in their path
+- Use ISO-8859-1 as the fallback and default encoding in the File Open list
 
 Translations:
+- Carles Ferrando, Joan Duran (ca@valencia)
 - Lucas Lommer, Marek Černocký, Petr Kovar (cs)
 - Mario Blättermann (de)
 - Jorge González (es)
@@ -25,9 +27,10 @@ Translations:
 - Fran Diéguez (gl)
 - Yaron Shahrabani (he)
 - Gabor Kelemen, Laszlo Csordas (hu)
+- A S Alam (pa)
 - Piotr Drąg (pl)
 - António Lima (pt)
-- Daniel Șerbănescu (ro)
+- Daniel Șerbănescu, Lucian Grijincu (ro)
 - Andrej Žnidaršič (sl)
 - Baris Cicek, Serkan Yılmaz (tr)
 - Aron Xu (zh_CN)
@@ -41,6 +44,7 @@ Bug fixes:
 - Bug in help (#612400)
 - Untranslated strings (#619364)
 - Crash when shifting selected subtitles (#620027)
+- Synchronize timings for all subtitles (#622248)
 - Crash when searching backwards (#628427)
 
 Contributors:
@@ -51,7 +55,7 @@ Additional thanks:
 
 
 1.0 (18/02/10)
-===================
+==============
 
 - Added drag-and-drop support for loading subtitle and video files
 - Allow to set new options in the preferences:
