@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ internal class SubtitleFormatAdobeEncoreDVD : SubtitleFormat {
 		extensions = new string[] { "txt" };
 		lineBreak = "\n";
 		
-		format = @"(\d+\s+)?\d+(\s*[:;]\s*\d+){3}\s+\d+(\s*[:;]\s*\d+){3}\s*.+";
+		format = @"\d+([:;]\d+){3} +\d+([:;]\d+){3} +.";
 		
 		subtitleIn = @"(\d+\s+)?(?<StartHours>\d+)\s*[:;]\s*(?<StartMinutes>\d+)\s*[:;]\s*(?<StartSeconds>\d+)\s*[:;]\s*(?<StartMillisecondsAsFrames>\d+)\s+(?<EndHours>\d+)\s*[:;]\s*(?<EndMinutes>\d+)\s*[:;]\s*(?<EndSeconds>\d+)\s*[:;]\s*(?<EndMillisecondsAsFrames>\d+)\s+(?<Text>((.(?!(\d+\s+)?\d+(\s*[:;]\s*\d+){3}))*\n)+)";
 
