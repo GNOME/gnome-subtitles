@@ -117,16 +117,16 @@ internal class SubtitleOutput {
 				return FormatedField(startMilliseconds, 3, match);
 			case "StartMillisecondsAsFramesPAL":
 				int startMillisecondsAsFramesPAL = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.Start.Milliseconds, 25);
-				return FormatedField(startMillisecondsAsFramesPAL, match);
+				return FormatedField(startMillisecondsAsFramesPAL, 2, match);
 			case "StartMillisecondsAsFramesNTSC":
 				int startMillisecondsAsFramesNTSC = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.Start.Milliseconds, 29.97F);
-				return FormatedField(startMillisecondsAsFramesNTSC, match);
+				return FormatedField(startMillisecondsAsFramesNTSC, 2, match);
 			case "EndMillisecondsAsFramesPAL":
 				int endMillisecondsAsFramesPAL = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.End.Milliseconds, 25);
-				return FormatedField(endMillisecondsAsFramesPAL, match);
+				return FormatedField(endMillisecondsAsFramesPAL, 2, match);
 			case "EndMillisecondsAsFramesNTSC":
 				int endMillisecondsAsFramesNTSC = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.End.Milliseconds, 29.97F);
-				return FormatedField(endMillisecondsAsFramesNTSC, match);
+				return FormatedField(endMillisecondsAsFramesNTSC, 2, match);
 			case "StartElapsedTime":
 				TimeSpan previousTime = (previousSubtitle == null ? TimeSpan.Zero : previousSubtitle.Times.End);
 				TimeSpan startElapsedTime = subtitle.Times.Start - previousTime;
