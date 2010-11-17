@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,7 +49,8 @@ internal static class BuiltInSubtitleFormats {
         new SubtitleFormatPowerDivX(),
         new SubtitleFormatKaraokeLyricsVKT(),
         new SubtitleFormatKaraokeLyricsLRC(),
-        new SubtitleFormatAdobeEncoreDVD()
+        new SubtitleFormatAdobeEncoreDVD(),
+        new SubtitleFormatFABSubtitler()
 	};
 	
 	internal static SubtitleFormat[] SubtitleFormats {

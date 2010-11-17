@@ -98,7 +98,10 @@ public enum SubtitleType {
     KaraokeLyricsLRC,
 
     /// <summary>Adobe Encore DVD subtitle type.</summary>
-	AdobeEncoreDVD
+	AdobeEncoreDVD,
+	
+	/// <summary>FAB Subtitler subtitle type.</summary>
+	FABSubtitler
 };
 
 /// <summary>
