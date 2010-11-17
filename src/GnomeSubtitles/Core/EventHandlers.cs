@@ -205,14 +205,6 @@ public class EventHandlers {
 
 	/*	Timings Menu */
 	
-	public void OnTimingsInputFrameRate (object o, EventArgs args) {
-		RadioMenuItem menuItem = o as RadioMenuItem;
-		if (menuItem.Active) {
-			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
-			Base.CommandManager.Execute(new ChangeInputFrameRateCommand(frameRate));
-		}
-	}
-	
 	public void OnTimingsVideoFrameRate (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {

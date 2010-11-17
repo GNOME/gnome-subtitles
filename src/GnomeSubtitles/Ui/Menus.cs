@@ -54,9 +54,12 @@ public class Menus {
 		SetSensitivity(WidgetNames.PasteButton, sensitivity);
 	}
 	
-	public void UpdateActiveInputFrameRateMenuItem () {
+	public void UpdateActiveInputFrameRateMenuItem (bool toggleHandlers) {
 		float inputFrameRate = Base.Document.Subtitles.Properties.OriginalFrameRate;
-		SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, Base.Handlers.OnTimingsInputFrameRate);
+		if (toggleHandlers)
+			SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, OnTimingsInputFrameRateToggled);
+		else
+			SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true);
 	}
 	
 	public void UpdateActiveVideoFrameRateMenuItem () {
@@ -218,18 +221,27 @@ public class Menus {
 		SetSensitivity(WidgetNames.ToolsAutocheckSpelling, sensitivity);
 	}
 	
-	private void SetFrameRateMenus () {
-		if (Base.TimingMode == TimingMode.Frames) {
-			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
-			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
+	private void SetFrameRateMenus (bool documentLoaded) {
+		if (documentLoaded) {
+			if (Base.TimingMode == TimingMode.Frames) {
+				UpdateActiveInputFrameRateMenuItem(false);
+				SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
+				SetInputFrameRateMenuHandlers(true);
+				
+				SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
+				UpdateActiveVideoFrameRateMenuItem();
+			}
+			else {
+				UpdateActiveInputFrameRateMenuItem(false);
+				SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, false);
+
+				SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
+				UpdateActiveVideoFrameRateMenuItem();
+			}
 		}
 		else {
-			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, false);
-			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
+			SetInputFrameRateMenuHandlers(false);
 		}
-		
-		UpdateActiveInputFrameRateMenuItem();
-		UpdateActiveVideoFrameRateMenuItem();
 	}
 	
 	private void SetStylesActivity (bool bold, bool italic, bool underline) {
@@ -471,13 +483,14 @@ public class Menus {
 	
 	private void OnBaseDocumentLoaded (Document document) {
 		SetDocumentSensitivity(true);
-		SetFrameRateMenus();
+		SetFrameRateMenus(true);
 		SetActiveTimingMode(Base.TimingMode);
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
 	}
 	
 	private void OnBaseDocumentUnloaded (Document document) {
 		SetDocumentSensitivity(false);
+		SetFrameRateMenus(false);
 	}
 	
 	private void OnBaseVideoLoaded (Uri videoUri) {
@@ -562,6 +575,25 @@ public class Menus {
     private void OnCommandManagerCommandActivated (object o, CommandActivatedArgs args) {
     	UpdateUndoRedoMessages();
     }
+    
+    	
+	private void OnTimingsInputFrameRateToggled (object o, EventArgs args) {
+		RadioMenuItem menuItem = o as RadioMenuItem;
+		if (menuItem.Active) {
+			float frameRate = Menus.FrameRateFromMenuItem((menuItem.Child as Label).Text);
+			Base.CommandManager.Execute(new ChangeInputFrameRateCommand(frameRate));
+		}
+	}
+
+	private void SetInputFrameRateMenuHandlers (bool activate) {
+		Menu menu = Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu;
+		foreach (RadioMenuItem menuItem in menu.Children) {
+			if (activate)
+				menuItem.Toggled += OnTimingsInputFrameRateToggled;
+			else 
+				menuItem.Toggled -= OnTimingsInputFrameRateToggled;
+		}
+	}
 
 }
 
