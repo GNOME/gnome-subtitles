@@ -241,6 +241,7 @@ public class Menus {
 		}
 		else {
 			SetInputFrameRateMenuHandlers(false);
+			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
 		}
 	}
 	
