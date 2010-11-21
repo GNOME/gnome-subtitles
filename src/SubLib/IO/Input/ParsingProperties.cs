@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2010 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ namespace SubLib.IO.Input {
 internal class ParsingProperties {
 	private Headers headers = new Headers();
 	private TimingMode timingMode = TimingMode.Times;
-	private float originalFrameRate = 25;
+	private float inputFrameRate = 25;
 	
 	public Headers Headers {
 		get { return headers; }
@@ -35,9 +35,9 @@ internal class ParsingProperties {
 		set { timingMode = value; }
 	}
 	
-	public float OriginalFrameRate {
-		get { return originalFrameRate; }
-		set { originalFrameRate = value; }
+	public float InputFrameRate {
+		get { return inputFrameRate; }
+		set { inputFrameRate = value; }
 	}
 
 }

@@ -169,6 +169,7 @@ public class Document {
 		factory.Verbose = true;
 		factory.Encoding = encoding;
 		factory.FallbackEncoding = GetFallbackEncoding();
+		factory.InputFrameRate = Base.Ui.Menus.TimingsInputFrameRateActive;
 
 		SubLib.Core.Domain.Subtitles openedSubtitles = null;
 		try {

@@ -24,6 +24,8 @@ using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
 
+/* Note: it's not clear whether FAB Subtitler supports framerates besides PAL and NTSC. Because of that, all framerates
+   are supported here. The user should use the subtitle input and output framerate options accordingly. */
 internal class SubtitleFormatFABSubtitler : SubtitleFormat {
 	
 	internal SubtitleFormatFABSubtitler () {
@@ -37,26 +39,7 @@ internal class SubtitleFormatFABSubtitler : SubtitleFormat {
 		
 		subtitleIn = @"(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*:\s*(?<StartMillisecondsAsFrames>\d+)\s+(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*:\s*(?<EndMillisecondsAsFrames>\d+).*(\n(?<Text>(.*(?!\n\d+(\s*:\s*\d+){2})\n?)*.))?";
 		
-		subtitleOut = null;
-	}
-	
-	internal override void GlobalInputGetProperties (string text, ParsingProperties properties) {
-		properties.OriginalFrameRate = 25; //Framerate has to be PAL or NTSC, defaulting to PAL
-	}
-	
-	internal override string GetDynamicSubtitleOut (SubtitleProperties properties) {
-		bool isFrameRatePAL = IsFrameRatePAL(properties.CurrentFrameRate);
-		string suf = GetFrameRateSuffix(isFrameRatePAL);
-		return "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>:<<StartMillisecondsAsFrames" + suf + ">>  <<EndHours>>:<<EndMinutes>>:<<EndSeconds>>:<<EndMillisecondsAsFrames" + suf + ">>\n<<Text>>\n";
-	}
-	
-	/// <summary>Returns whether the frame rate is closer to PAL (25) or to NTSC (29.97).</summary>
-	private bool IsFrameRatePAL (float frameRate) {
-		return (Math.Abs(frameRate - 25) <= Math.Abs(frameRate - 29.97));
-	}
-	
-	private string GetFrameRateSuffix (bool isFrameRatePAL) {
-		return (isFrameRatePAL ? "PAL" : "NTSC");
+		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>:<<StartMillisecondsAsFrames>>  <<EndHours>>:<<EndMinutes>>:<<EndSeconds>>:<<EndMillisecondsAsFrames>>\n<<Text>>\n";;
 	}
 
 }

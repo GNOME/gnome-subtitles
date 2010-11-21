@@ -52,10 +52,9 @@ public class SubtitleSaver {
 
 		string text = output.Build(subtitles.Collection, subtitles.Properties, properties);
 		FileInputOutput.WriteFile(properties.Path, text, properties.Encoding);
-
 		
 		fileProperties = GetUpdatedFileProperties(properties); 
-		VerboseConsole.WriteLine("[*] Saved " + textType + " " + properties.Path + " with encoding " + properties.Encoding + " and format " + format.Name);
+		VerboseConsole.WriteLine("[*] Saved " + textType + " \"" + properties.Path + "\" with encoding \"" + properties.Encoding + "\", format \"" + format.Name + "\" and frame rate \"" + subtitles.Properties.CurrentFrameRate + "\"");
 	}
 	
 	/* Private methods */

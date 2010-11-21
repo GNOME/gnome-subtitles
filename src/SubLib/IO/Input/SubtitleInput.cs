@@ -91,7 +91,7 @@ internal class SubtitleInput {
 		
 		/* Check if no codepage was detected */
 		if (codePages.Length == 0) {
-			VerboseConsole.WriteLine("No encoding was automatically detected. Using the fall-back encoding: " + fallbackEncoding.WebName);
+			VerboseConsole.WriteLine("No encoding was automatically detected. Using the fall-back encoding \"" + fallbackEncoding.WebName + "\"");
 			string text;
 			if (isSubtitleFile)
 				text = TestEncoding(fileStream, fallbackEncoding, out usedFormat);
@@ -183,7 +183,7 @@ internal class SubtitleInput {
 	}
 		
 	private string TestEncoding (FileStream fileStream, Encoding encoding) {
-		VerboseConsole.WriteLine("Trying the encoding " + encoding.WebName);
+		VerboseConsole.WriteLine("Trying the encoding \"" + encoding.WebName + "\"");
 		/* Get the text */
 		string text = FileInputOutput.ReadFile(fileStream, encoding, true);
 		
@@ -195,7 +195,7 @@ internal class SubtitleInput {
 		if (subtitleType == SubtitleType.Unknown)
 			VerboseConsole.WriteLine("Trying to autodetect the subtitle format.");
 		else
-			VerboseConsole.WriteLine("Trying the subtitle format " + subtitleType);
+			VerboseConsole.WriteLine("Trying the subtitle format \"" + subtitleType + "\"");
 
 		SubtitleFormat subtitleFormat = null;
 		if (subtitleType == SubtitleType.Unknown)

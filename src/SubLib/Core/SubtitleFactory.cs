@@ -37,6 +37,7 @@ public class SubtitleFactory {
 	
 	private Encoding encoding = null; //The encoding to be used to open a file 
 	private Encoding fallbackEncoding = Encoding.GetEncoding(1252); //The encoding to fall back to when no encoding is detected
+	private float inputFrameRate = 25; //The frame rate to be used to open a frame-based file
 	
 	private SubtitleType subtitleType = SubtitleType.Unknown;
 	
@@ -89,6 +90,12 @@ public class SubtitleFactory {
 		set { subtitleType = value; }
 	}
 	
+	/// <summary>The frame rate of the subtitle being opened, for frame-based files.</summary>
+	public float InputFrameRate {
+		get { return inputFrameRate; }
+		set { inputFrameRate = value; }
+	}
+	
 	/// <summary>Creates new empty <see cref="Subtitles" />.</summary>
 	/// <returns>The newly created subtitles.</returns>
 	public Subtitles New () {
@@ -119,7 +126,7 @@ public class SubtitleFactory {
 		if (IsTextEmpty(text))
 			return EmptySubtitles(path);
 		else
-			return ParsedSubtitles(path, fileEncoding, format, text);
+			return ParsedSubtitles(path, fileEncoding, format, inputFrameRate, text);
 	}
 	
 	/// <summary>Creates <see cref="Subtitles" /> by opening the plain text file at the specified path.</summary>
@@ -148,10 +155,10 @@ public class SubtitleFactory {
 		
 	/* Private members */
 		
-	private Subtitles ParsedSubtitles (string path, Encoding fileEncoding, SubtitleFormat format, string text) {
+	private Subtitles ParsedSubtitles (string path, Encoding fileEncoding, SubtitleFormat format, float inputFrameRate, string text) {
 		SubtitleCollection collection = null;
 		SubtitleParser subtitleParser = new SubtitleParser(includeIncompleteSubtitles);
-		ParsingProperties parsingProperties = subtitleParser.Parse(text, format, out collection, out incompleteSubtitles);
+		ParsingProperties parsingProperties = subtitleParser.Parse(text, format, inputFrameRate, out collection, out incompleteSubtitles);
 		
 		SubtitleProperties subtitleProperties = new SubtitleProperties(parsingProperties);
 		collection.SetPropertiesForAll(subtitleProperties);
@@ -159,14 +166,13 @@ public class SubtitleFactory {
 		Subtitles subtitles = new Subtitles(collection, subtitleProperties);
 		CompleteTimingsAfterParsing(subtitles, parsingProperties);
 		
-		fileProperties = new FileProperties(path, fileEncoding, format.Type , parsingProperties.TimingMode);
+		fileProperties = new FileProperties(path, fileEncoding, format.Type, parsingProperties.TimingMode);
 
-		VerboseConsole.WriteLine("[*] opened " + path + " with encoding " + fileEncoding + " and format " + format.Name);
+		VerboseConsole.WriteLine("[*] Opened \"" + path + "\" with encoding \"" + fileEncoding + "\", format \"" + format.Name + "\", timing mode \"" + parsingProperties.TimingMode + "\" and frame rate \"" + subtitleProperties.CurrentFrameRate + "\" (input frame rate was \"" + inputFrameRate + "\")");
 		return subtitles;
 	}
 	
-	private Subtitles ParsedSubtitlesPlain (string path, Encoding fileEncoding, string text, bool withCharacterNames,
-		                                        TimingMode timingMode, string lineSeparator) {
+	private Subtitles ParsedSubtitlesPlain (string path, Encoding fileEncoding, string text, bool withCharacterNames, TimingMode timingMode, string lineSeparator) {
 		SubtitleCollection collection = null;
 		PlainTextParser plainParser = new PlainTextParser(withCharacterNames, lineSeparator);
 		ParsingProperties parsingProperties = plainParser.Parse(text, timingMode, fileEncoding, out collection);
@@ -179,7 +185,7 @@ public class SubtitleFactory {
 		
 		fileProperties = new FileProperties(path, fileEncoding, parsingProperties.TimingMode);
 		
-		VerboseConsole.WriteLine("[*] opened " + path + " with encoding " + fileEncoding);
+		VerboseConsole.WriteLine("[*] Opened " + path + " with encoding " + fileEncoding);
 		return subtitles;
 	}
 		

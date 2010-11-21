@@ -50,12 +50,13 @@ internal class SubtitleParser {
 	/// <summary>Parses the specified text, using the specified format.</summary>
 	/// <remarks>The created <see cref="SubtitleCollection" /> will have its <see cref="SubtitleProperties" /> property set to null.
 	/// It is mandatory to use <see cref="SubtitleCollection.SetPropertiesForAll" /> after.</remarks>
-	internal ParsingProperties Parse (string text, SubtitleFormat format, 
+	internal ParsingProperties Parse (string text, SubtitleFormat format, float inputFrameRate,
 			out SubtitleCollection collection, out IncompleteSubtitleCollection incompleteSubtitles){
 		
 		collection = new SubtitleCollection();
 		incompleteSubtitles = new IncompleteSubtitleCollection();
 		ParsingProperties properties = new ParsingProperties();
+		properties.InputFrameRate = inputFrameRate;
 
 		Regex subtitleRegex = null;
 		int bodyIndex = 0;
@@ -260,7 +261,7 @@ internal class SubtitleParser {
 		//Used to detect if a subtitles' timing mode is Frames in the case of a format that supports both
 		else if (ParseGroup(match, "TimingModeFrames", ref floatResult)) {
 			properties.TimingMode = TimingMode.Frames;
-			properties.OriginalFrameRate = floatResult;
+			properties.InputFrameRate = floatResult;
 		}
 		else {
 			return false;
@@ -379,7 +380,7 @@ internal class SubtitleParser {
 			isTimeDefined = true;
 		}
 		if (ParseGroup(match, "StartMillisecondsAsFrames", ref result)) {
-			startTime += TimingUtil.FramesToTime(result, properties.OriginalFrameRate);
+			startTime += TimingUtil.FramesToTime(result, properties.InputFrameRate);
 			isTimeDefined = true;
 		}
 		
@@ -425,7 +426,7 @@ internal class SubtitleParser {
 			isTimeDefined = true;
 		}
 		if (ParseGroup(match, "EndMillisecondsAsFrames", ref result)) {
-			endTime += TimingUtil.FramesToTime(result, properties.OriginalFrameRate);
+			endTime += TimingUtil.FramesToTime(result, properties.InputFrameRate);
 			isTimeDefined = true;
 		}
 		if (ParseGroup(match, "EndElapsedTime", ref floatResult)) {

@@ -32,6 +32,7 @@ internal class SubtitleOutput {
 	private SubtitleFormat format = null;
 	private SubtitleTextType textType = SubtitleTextType.Text;
 	
+	private SubtitleProperties subtitleProperties = null;
 	private Subtitle subtitle = null;
 	private Subtitle previousSubtitle = null;
 	private int subtitleNumber = 1;
@@ -42,6 +43,7 @@ internal class SubtitleOutput {
 	}
 
 	internal string Build (SubtitleCollection collection, SubtitleProperties subtitleProperties, FileProperties fileProperties) {
+		this.subtitleProperties = subtitleProperties;
 		StringBuilder output = new StringBuilder();
 		if (format.HasHeaders)
 			output.Append(format.HeadersToString(subtitleProperties, fileProperties));
@@ -115,12 +117,18 @@ internal class SubtitleOutput {
 			case "StartMilliseconds":
 				int startMilliseconds = subtitle.Times.Start.Milliseconds;
 				return FormatedField(startMilliseconds, 3, match);
+			case "StartMillisecondsAsFrames":
+				int startMillisecondsAsFrames = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.Start.Milliseconds, this.subtitleProperties.CurrentFrameRate);
+				return FormatedField(startMillisecondsAsFrames, 2, match);
 			case "StartMillisecondsAsFramesPAL":
 				int startMillisecondsAsFramesPAL = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.Start.Milliseconds, 25);
 				return FormatedField(startMillisecondsAsFramesPAL, 2, match);
 			case "StartMillisecondsAsFramesNTSC":
 				int startMillisecondsAsFramesNTSC = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.Start.Milliseconds, 29.97F);
 				return FormatedField(startMillisecondsAsFramesNTSC, 2, match);
+			case "EndMillisecondsAsFrames":
+				int endMillisecondsAsFrames = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.End.Milliseconds, this.subtitleProperties.CurrentFrameRate);
+				return FormatedField(endMillisecondsAsFrames, 2, match);
 			case "EndMillisecondsAsFramesPAL":
 				int endMillisecondsAsFramesPAL = (int)TimingUtil.TimeMillisecondsToFrames(subtitle.Times.End.Milliseconds, 25);
 				return FormatedField(endMillisecondsAsFramesPAL, 2, match);

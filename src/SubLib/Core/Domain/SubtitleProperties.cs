@@ -48,7 +48,7 @@ public class SubtitleProperties : ICloneable {
 	/// class, with defaults for all properties.</summary>
 	internal SubtitleProperties (ParsingProperties properties) {
 		headers = properties.Headers;
-		originalFrameRate = properties.OriginalFrameRate;
+		originalFrameRate = properties.InputFrameRate;
 	}
 	
 	

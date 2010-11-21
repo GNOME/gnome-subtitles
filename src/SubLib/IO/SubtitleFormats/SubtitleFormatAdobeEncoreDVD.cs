@@ -51,7 +51,7 @@ internal class SubtitleFormatAdobeEncoreDVD : SubtitleFormat {
 	internal override void GlobalInputGetProperties (string text, ParsingProperties properties) {
 		bool isFrameRatePAL = inputRegexPAL.Match(text).Success;
 		float frameRate = (isFrameRatePAL ? 25 : 29.97F);
-		properties.OriginalFrameRate = frameRate;
+		properties.InputFrameRate = frameRate;
 	}
 
 	/* Private members */
