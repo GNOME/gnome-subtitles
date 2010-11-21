@@ -206,6 +206,7 @@ public class Menus {
 			SetSensitivity(WidgetNames.SearchFindNext, false);
 			SetSensitivity(WidgetNames.SearchFindPrevious, false);
 			/* Timings Menu */
+			SetSensitivity(WidgetNames.TimingsAdjust, false);
 			SetSensitivity(WidgetNames.TimingsShift, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.DeleteSubtitlesButton, false);
@@ -255,6 +256,7 @@ public class Menus {
 			SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu, false, OnTimingsInputFrameRateToggled);
 			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
 			SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu, false, OnTimingsVideoFrameRateToggled);
+			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, false);
 		}
 	}
 	
