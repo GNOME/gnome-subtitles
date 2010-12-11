@@ -11,6 +11,7 @@ AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
 gnomesubtitles_LTLIBRARIES = libgstreamer_playbin.la
 libgstreamer_playbin_la_SOURCES = $(srcdir)/External/GStreamerPlaybin/main.c
 libgstreamer_playbin_la_LIBADD = $(gstreamer_LIBS) -lgstinterfaces-0.10
+libgstreamer_playbin_la_LDFLAGS = -module -avoid-version
 libgstreamer_playbin_la_LIBTOOLFLAGS = --tag=disable-static 
 
 GS_SOURCES = \
