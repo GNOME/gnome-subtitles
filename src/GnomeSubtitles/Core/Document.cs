@@ -21,6 +21,7 @@ using GnomeSubtitles.Core.Command;
 using Mono.Unix;
 using SubLib.Core;
 using SubLib.Core.Domain;
+using System;
 using System.IO;
 using System.Text;
 
@@ -31,6 +32,7 @@ public delegate void DocumentModificationStatusChangedHandler (bool modified);
 
 public class Document {
 	private Ui.View.Subtitles subtitles = null;
+	private bool isTranslationLoaded = false; //Whether a translation document is loaded, either using New or Open Translation
 	private bool wasTextModified = false;
 	private bool wasTranslationModified = false;
 
@@ -40,8 +42,8 @@ public class Document {
 	private bool canTranslationBeSaved = false; //Whether the translation document can be saved with existing translationFile properties
 
 
-	public Document (string path) {
-		New(path);
+	public Document () {
+		New();
 		ConnectInitSignals();
 	}
 	
@@ -57,7 +59,14 @@ public class Document {
 	/* Public properties */
 	
 	public FileProperties TextFile {
-		get { return textFile; }
+		get {
+			/*Note: this must be changed if the unsaved text filename is to be dynamically generated on Save time.
+			  For now its creation is enforced as its name is shown in the title bar. */
+			if (textFile == null) {
+				textFile = CreateNewTextFileProperties();
+			}
+			return textFile;
+		}
 	}
 	
 	public FileProperties TranslationFile {
@@ -65,6 +74,16 @@ public class Document {
 	}
 	
 	public bool IsTranslationLoaded {
+		get { return isTranslationLoaded; }
+	}
+	
+	/* Whether the text file properties is set */
+	public bool HasTextFileProperties {
+		get { return textFile != null; }
+	}
+	
+	/* Whether the translation file properties is set */
+	public bool HasTranslationFileProperties {
 		get { return translationFile != null; }
 	}
 
@@ -88,6 +107,24 @@ public class Document {
 		get { return wasTranslationModified; }
 	}
 	
+	public string UnsavedTextFilename {
+		get {
+			//To translators: this is the filename for new files (before being saved for the first time)
+			return Catalog.GetString("Unsaved Subtitles");
+		}
+	}
+	
+	public string UnsavedTranslationFilename {
+		get {
+			string filename = (((textFile == null) || (textFile.Filename == String.Empty)) ? this.UnsavedTextFilename : textFile.FilenameWithoutExtension);
+			string language = (Base.SpellLanguages.HasActiveTranslationLanguage ? Base.SpellLanguages.ActiveTranslationLanguage.ID : String.Empty);
+			//To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+			string translatedString = (language != String.Empty ? Catalog.GetString("{0} ({1} translation)") : Catalog.GetString("{0} (translation)"));
+			object[] args = {filename, language};			
+			return Core.Util.GetFormattedText(translatedString, args);
+		}
+	}
+	
 
 	/* Public methods */
 
@@ -97,16 +134,16 @@ public class Document {
 		
 		textFile = saver.FileProperties;		
 		canTextBeSaved = true;
-	
+
 		ClearTextModified();
 		return true;
 	}
 
 	public void NewTranslation () {
-		if (this.IsTranslationLoaded)
+		if (this.isTranslationLoaded) {
 			CloseTranslation();
-
-		CreateNewTranslationFileProperties();
+		}
+		this.isTranslationLoaded = true;
 	}
 
 	public void OpenTranslation (string path, Encoding encoding) {
@@ -128,7 +165,8 @@ public class Document {
 		if (newTranslationFile.SubtitleType != SubtitleType.Unknown)
 			canTranslationBeSaved = true;
 	
-		translationFile = newTranslationFile;
+		this.translationFile = newTranslationFile;
+		this.isTranslationLoaded = true;
 	}
 	
 	public void Close () {
@@ -154,15 +192,20 @@ public class Document {
 
 	/* Private methods */
 	
-	/* Used in the object construction */
+	/* Used in the object construction. Path is used when running from the command line specifying an inexistent file. */
 	private void New (string path) {
+		New();
+		textFile = new FileProperties(path);
+	}
+
+	/* Used in the object construction */
+	private void New () {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
 		
 		subtitles = new Ui.View.Subtitles(factory.New());
-		textFile = new FileProperties(path);
 	}
-	
+
 	/* Used in the object construction */
 	private void Open (string path, Encoding encoding) {
 		SubtitleFactory factory = new SubtitleFactory();
@@ -199,21 +242,16 @@ public class Document {
 			EmitModificationStatusChangedEvent(false);
 	}
 	
-	private void CreateNewTranslationFileProperties () {
-		string filename = Catalog.GetString("Unsaved Translation");
-		string path = (textFile.IsPathRooted ? Path.Combine(textFile.Directory, filename) : filename);
-		translationFile = new FileProperties(path, textFile.Encoding, textFile.SubtitleType, textFile.TimingMode, textFile.NewlineType);
-	}
-	
 	private void RemoveTranslationFromSubtitles () {
 		Translations translations = new Translations();
 		translations.Clear(subtitles);
 	}
 	
 	private void ClearTranslationStatus () {
-		wasTranslationModified = false;
-		translationFile = null;
-		canTranslationBeSaved = false;
+		this.isTranslationLoaded = false;
+		this.wasTranslationModified = false;
+		this.translationFile = null;
+		this.canTranslationBeSaved = false;
 		
 		ClearTranslationModified();
 	}
@@ -235,6 +273,12 @@ public class Document {
 			return Encoding.GetEncoding(encodingDescription.CodePage);
 		}
 	}
+	
+	private FileProperties CreateNewTextFileProperties () {
+		return new FileProperties(this.UnsavedTextFilename);
+	}
+	
+	
 	
 	/* Event members */
 	

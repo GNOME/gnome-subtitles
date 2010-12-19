@@ -34,8 +34,15 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 	public SaveConfirmationDialog (string primaryText, SubtitleTextType textType) : base() {
 		this.textType = textType;
 	
-		string fileName = (textType == SubtitleTextType.Text ? Base.Document.TextFile.Filename : Base.Document.TranslationFile.Filename);
-		SetText(primaryText, secondaryText, fileName);
+		string filename = String.Empty;
+		if (textType == SubtitleTextType.Text)
+			filename = Base.Document.TextFile.Filename;
+		else if (Base.Document.HasTranslationFileProperties)
+			filename = Base.Document.TranslationFile.Filename;
+		else
+			filename = Base.Document.UnsavedTranslationFilename;
+		
+		SetText(primaryText, secondaryText, filename);
 	}
 	
 	

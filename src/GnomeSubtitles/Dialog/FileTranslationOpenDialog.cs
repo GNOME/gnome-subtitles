@@ -30,7 +30,7 @@ public class FileTranslationOpenDialog : FileOpenDialog {
 	/* Public members */
 	
 	protected override string GetStartFolder () {
-		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.TranslationFile.IsPathRooted)
+		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted)
 			return Base.Document.TranslationFile.Directory;
 		else
 			return base.GetStartFolder();

@@ -126,17 +126,12 @@ public class MainUi {
 
 	/// <summary>Creates a new subtitles document for the specified path.</summary>
 	/// <param name="path">The subtitles' filename. If it's an empty string, 'Unsaved Subtitles' will be used instead.</param>
-	/// <remarks>If there's a document opened with unsaved changes, a warning dialog is shown.</remarks>
-    public void New (string path) {
+	/// <remarks>If there's a document open with unsaved changes, a warning dialog is shown.</remarks>
+    public void New () {
     	if (!ToCreateNewAfterWarning())
     		return;
-
-		if (path == String.Empty) {
-			//To translators: this is the filename for new files (before being saved for the first time)
-			path = Catalog.GetString("Unsaved Subtitles");
-		}
-
-		Base.NewDocument(path);
+		else
+			Base.NewDocument();
     }
     
     /// <summary>Shows the open dialog and possibly opens a subtitle.</summary>

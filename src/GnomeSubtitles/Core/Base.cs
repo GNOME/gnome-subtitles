@@ -164,11 +164,11 @@ public class Base {
 		executionContext.QuitApplication();
 	}
 	
-	public static void NewDocument (string path) {
+	public static void NewDocument () {
 		if (IsDocumentLoaded)
 			CloseDocument();
 			
-		document = new Document(path);
+		document = new Document();
 		EmitDocumentLoadedEvent();
 		
 		if (document.Subtitles.Count == 0)

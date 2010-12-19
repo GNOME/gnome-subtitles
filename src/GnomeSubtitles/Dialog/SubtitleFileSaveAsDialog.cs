@@ -154,14 +154,20 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	}
 	
 	private void SetDialogFromFileProperties () {
-		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
-
-		if (fileProperties.IsPathRooted)
-			dialog.SetCurrentFolder(fileProperties.Directory);
+		/* Set folder */
+		if ((textType == SubtitleTextType.Translation) && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted)
+			dialog.SetCurrentFolder(Base.Document.TranslationFile.Directory);
+		else if (Base.Document.HasTextFileProperties && Base.Document.TextFile.IsPathRooted)
+			dialog.SetCurrentFolder(Base.Document.TextFile.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-			
-		dialog.CurrentName = fileProperties.Filename;
+		
+		/* Set filename */
+		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
+		if ((fileProperties != null) && (fileProperties.Filename != String.Empty))
+			dialog.CurrentName = fileProperties.Filename;
+		else
+			dialog.CurrentName = (textType == SubtitleTextType.Text ? Base.Document.UnsavedTextFilename : Base.Document.UnsavedTranslationFilename);
 	}
 	
 	

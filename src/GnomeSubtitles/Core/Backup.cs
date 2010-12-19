@@ -68,9 +68,10 @@ public class Backup {
 	}
 	
 	private bool DoBackup() {
-		if (!Base.IsDocumentLoaded)
+		if (!Base.IsDocumentLoaded) {
 			return true;
-		
+		}
+
 		BackupThreadArgs backupThreadArgs = new BackupThreadArgs();
 		if (Base.Document.CanTextBeSaved) {
 			backupThreadArgs.TextFilePropertiesClone = Base.Document.TextFile.Clone() as SubLib.Core.Domain.FileProperties;

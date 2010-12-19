@@ -35,7 +35,7 @@ public class EventHandlers {
 	/* File Menu */
 	
 	public void OnFileNew (object o, EventArgs args) {
-		Base.Ui.New(String.Empty);
+		Base.Ui.New();
 	}
 	
 	public void OnFileOpen (object o, EventArgs args) {
