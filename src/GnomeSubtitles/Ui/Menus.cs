@@ -187,7 +187,6 @@ public class Menus {
 		/* Tools Menu */
 		SetToolsAutocheckSpellingSensitivity(documentLoaded);
 		SetSensitivity(WidgetNames.ToolsSetTextLanguage, documentLoaded);
-		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, documentLoaded);
 		/* Toolbar */
 		SetSensitivity(WidgetNames.SaveButton, documentLoaded);
 		SetSensitivity(WidgetNames.InsertSubtitleButton, documentLoaded);
