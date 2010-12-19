@@ -90,6 +90,12 @@ public class FileProperties : ICloneable {
 		get { return System.IO.Path.GetFileName(path); }
 	}
 	
+	/// <summary>The file's filename without its extension.</summary>
+	/// <remarks>See <see cref="System.IO.Path.GetFileNameWithoutExtension" /> for more information.</remarks>
+	public string FilenameWithoutExtension {
+		get { return System.IO.Path.GetFileNameWithoutExtension(path); }
+	}
+	
 	/// <summary>The file's directory.</summary>
 	/// <remarks>See <see cref="System.IO.Path.GetDirectoryName" /> for more information.</remarks>
 	public string Directory {
