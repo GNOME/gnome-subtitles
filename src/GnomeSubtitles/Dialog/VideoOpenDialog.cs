@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,6 @@ namespace GnomeSubtitles.Dialog {
 
 public class VideoOpenDialog : GladeDialog {
 	protected FileChooserDialog dialog = null;
-	private static string[] extensions = { "avi", "mpeg", "mpg", "mp4", "ogm", "divx", "xvid", "mov", "ogg", "mkv" };
 	private Uri chosenUri = null;
 	
 	/* Constant strings */
@@ -52,7 +51,6 @@ public class VideoOpenDialog : GladeDialog {
 	
 	/* Private methods */
 
-	/* TODO check how other players are setting up the filters, possibly using MIME types. */
 	private void SetFilters () {
 
 		/* First filter corresponds to all files */
@@ -64,9 +62,7 @@ public class VideoOpenDialog : GladeDialog {
 		/* Second filter corresponds to video files */
 		FileFilter videoFilesFilter = new FileFilter();
 		videoFilesFilter.Name = Catalog.GetString("All Video Files");
-		foreach (string extension in extensions) {
-			videoFilesFilter.AddPattern("*." + extension);
-		}
+		videoFilesFilter.AddMimeType("video/*");
 		dialog.AddFilter(videoFilesFilter);
 		
 		/* Set active filter */
