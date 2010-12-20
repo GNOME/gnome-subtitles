@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-07-25 23:36+0000\n"
-"PO-Revision-Date: 2010-07-26 20:06+0100\n"
+"POT-Creation-Date: 2010-12-19 16:45+0000\n"
+"PO-Revision-Date: 2010-12-20 13:01+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -779,12 +779,12 @@ msgid "Editing During"
 msgstr "Zeitspanne bearbeiten"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:549
+#: ../src/GnomeSubtitles/Ui/Menus.cs:584
 msgid "Undo"
 msgstr "Rückgängig"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:559
+#: ../src/GnomeSubtitles/Ui/Menus.cs:594
 msgid "Redo"
 msgstr "Wiederherstellen"
 
@@ -826,9 +826,21 @@ msgstr "Anfangszeit wird gesetzt"
 msgid "Setting Subtitle End"
 msgstr "Endzeit wird gesetzt"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:202
-msgid "Unsaved Translation"
-msgstr "Übersetzung noch nicht gespeichert"
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Core/Document.cs:113
+msgid "Unsaved Subtitles"
+msgstr "Untertitel noch nicht gespeichert"
+
+#. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} ({1} translation)"
+msgstr "{0} ({1}-Übersetzung)"
+
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} (translation)"
+msgstr "{0} (Übersetzung)"
 
 #. GEOSTD8, HZ not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:33
@@ -981,11 +993,11 @@ msgstr "Vietnamesisch"
 msgid "Current Locale"
 msgstr "aktuelle Kodierung"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:335
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Das Handbuch wurde nicht gefunden."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:335
 msgid "Please verify that your installation has been completed successfully."
 msgstr ""
 "Bitte stellen Sie sicher, dass die Installation erfolgreich durchgeführt "
@@ -1188,51 +1200,51 @@ msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Wenn Sie nicht speichern, gehen alle Änderungen verloren."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr "Änderungen an \"{0}\" speichern, bevor ein neues Projekt angelegt wird?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
 msgstr "Neu anlegen, ohne zu speichern"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr "Änderungen an \"{0}\" speichern, bevor ein neues Projekt angelegt wird?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
 #, csharp-format
 msgid ""
 "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr ""
 "Änderungen an \"{0}\" speichern, bevor eine neue Übersetzung angelegt wird?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:118
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Änderungen an \"{0}\" vor dem Öffnen speichern?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
 msgid "Open without Saving"
 msgstr "Öffnen, ohne zu speichern"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
 msgstr "Änderungen an \"{0}\" vor dem Öffnen speichern?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:147
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr "Änderungen an \"{0}\" vor dem Schließen speichern?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
 msgid "Close without Saving"
 msgstr "Schließen, ohne zu speichern"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:166
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Änderungen an \"{0}\" vor dem Schließen speichern?"
@@ -1286,11 +1298,6 @@ msgstr "Automatisch erkannt"
 #: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
 msgid "System Default"
 msgstr "Systemstandard"
-
-#. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:136
-msgid "Unsaved Subtitles"
-msgstr "Untertitel noch nicht gespeichert"
 
 #. Constant strings
 #: ../src/GnomeSubtitles/Ui/Menus.cs:33
@@ -1350,6 +1357,9 @@ msgstr "Dauer"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:242
 msgid "Translation"
 msgstr "Übersetzung"
+
+#~ msgid "Unsaved Translation"
+#~ msgstr "Übersetzung noch nicht gespeichert"
 
 #~ msgid "Seek to _frame:"
 #~ msgstr "Springe zu _Bild:"
