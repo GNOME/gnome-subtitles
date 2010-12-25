@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles&component=general\n"
-"POT-Creation-Date: 2010-07-31 01:30+0000\n"
+"POT-Creation-Date: 2010-12-22 18:57+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -776,12 +777,12 @@ msgid "Editing During"
 msgstr "Urejanje med"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:549
+#: ../src/GnomeSubtitles/Ui/Menus.cs:584
 msgid "Undo"
 msgstr "Razveljavi"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:559
+#: ../src/GnomeSubtitles/Ui/Menus.cs:594
 msgid "Redo"
 msgstr "Uveljavi"
 
@@ -823,9 +824,21 @@ msgstr "Nastavitev začetka podnapisov"
 msgid "Setting Subtitle End"
 msgstr "Nastavitev konca podnapisov"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:202
-msgid "Unsaved Translation"
-msgstr "Neshranjen prevod"
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Core/Document.cs:113
+msgid "Unsaved Subtitles"
+msgstr "Neshranjeni podnapisi"
+
+#. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} ({1} translation)"
+msgstr "{0} ({1} prevod)"
+
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} (translation)"
+msgstr "{0} (prevod)"
 
 #. GEOSTD8, HZ not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:33
@@ -978,11 +991,11 @@ msgstr "Vietnamsko"
 msgid "Current Locale"
 msgstr "Trenutna jezikovna oznaka"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:335
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Priročnika Gnome podnapisov ni mogoče najti."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:335
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Potrdite, da je bila vaša namestitev uspešno dokončana."
 
@@ -1008,7 +1021,7 @@ msgid "None"
 msgstr "Brez"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
 msgid "All Files"
 msgstr "Vse datoteke"
 
@@ -1106,7 +1119,7 @@ msgstr "Usklajevanje je pripravljeno. Naslednji podnapisi ne bodo usklajeni: {0}
 msgid "Synchronization is ready. The following subtitles will not be synchronized: {0} and {1}."
 msgstr "Usklajevanje je pripravljeno. Naslednji podnapisi ne bodo usklajeni: {0} in {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
 msgid "All Video Files"
 msgstr "Vse video datoteke"
 
@@ -1161,49 +1174,49 @@ msgid "If you don't save, all your changes will be permanently lost."
 msgstr "V kolikor sprememb ne shranite, bodo trajno izgubljene."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr "Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov shranjene?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
 msgstr "Ustvari brez shranjevanja"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr "Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov shranjene?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred ustvarjanjem novega prevoda shranjene?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:118
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Ali naj bodo spremembe podnapisa \"{0}\" pred odpiranjem shranjene?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
 msgid "Open without Saving"
 msgstr "Odpri brez shranjevanja"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
 msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred odpiranjem shranjene?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:147
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr "Ali naj bodo spremembe podnapisov \"{0}\" pred zapiranjem shranjene?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
 msgid "Close without Saving"
 msgstr "Zapri brez shranjevanja"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:166
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred zapiranjem shranjene?"
@@ -1248,11 +1261,6 @@ msgstr "Samodejno zaznano"
 #: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
 msgid "System Default"
 msgstr "Sistemsko privzeto"
-
-#. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:136
-msgid "Unsaved Subtitles"
-msgstr "Neshranjeni podnapisi"
 
 #. Constant strings
 #: ../src/GnomeSubtitles/Ui/Menus.cs:33
@@ -1313,6 +1321,8 @@ msgstr "Med"
 msgid "Translation"
 msgstr "Prevod"
 
+#~ msgid "Unsaved Translation"
+#~ msgstr "Neshranjen prevod"
 #~ msgid "Seek to _frame:"
 #~ msgstr "Iskanje do _sličice:"
 #~ msgid "<b>Video</b>"
