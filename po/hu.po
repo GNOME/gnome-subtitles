@@ -8,16 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-01 16:23+0200\n"
-"PO-Revision-Date: 2010-08-01 16:40+0200\n"
+"POT-Creation-Date: 2010-12-26 18:46+0100\n"
+"PO-Revision-Date: 2010-12-26 18:48+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Hungarian\n"
-"X-Poedit-Country: HUNGARY\n"
-"X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -41,9 +39,15 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
 msgstr ""
-"A Gnome Subtitles szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software Foundation által kiadott GNU General Public License második (vagy bármely későbbi) változatában foglaltak alapján."
-"A Gnome Subtitles programot abban a reményben terjesztjük, hogy hasznos lesz, de nem vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További részletekért tanulmányozza a GNU GPL licencet."
-"A Gnome Subtitles programhoz a GNU General Public License egy példánya is jár, ha nem kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA."
+"A Gnome Subtitles szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
+"Software Foundation által kiadott GNU General Public License második (vagy "
+"bármely későbbi) változatában foglaltak alapján.A Gnome Subtitles programot "
+"abban a reményben terjesztjük, hogy hasznos lesz, de nem vállalunk SEMMIFÉLE "
+"GARANCIÁT, még olyan értelemben sem, hogy a program alkalmas-e a KÖZREADÁSRA "
+"vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További részletekért tanulmányozza a "
+"GNU GPL licencet.A Gnome Subtitles programhoz a GNU General Public License "
+"egy példánya is jár, ha nem kapta meg, írjon a Free Software Foundation Inc.-"
+"nek. Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: ../src/Glade/AboutDialog.glade.h:15
 msgid "Video subtitling for the GNOME desktop"
@@ -765,12 +769,12 @@ msgid "Editing During"
 msgstr "Időtartam szerkesztése"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:549
+#: ../src/GnomeSubtitles/Ui/Menus.cs:584
 msgid "Undo"
 msgstr "Újra"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:559
+#: ../src/GnomeSubtitles/Ui/Menus.cs:594
 msgid "Redo"
 msgstr "Vissza"
 
@@ -812,9 +816,21 @@ msgstr "Feliratkezdet beállítása"
 msgid "Setting Subtitle End"
 msgstr "Feliratvég beállítása"
 
-#: ../src/GnomeSubtitles/Core/Document.cs:202
-msgid "Unsaved Translation"
-msgstr "Nem mentett fordítás"
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Core/Document.cs:113
+msgid "Unsaved Subtitles"
+msgstr "Mentetlen feliratok"
+
+#. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} ({1} translation)"
+msgstr "{0} ({1} fordítás)"
+
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} (translation)"
+msgstr "{0} (fordítás)"
 
 #. GEOSTD8, HZ not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:33
@@ -967,11 +983,11 @@ msgstr "Vietnami"
 msgid "Current Locale"
 msgstr "Jelenlegi locale"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:335
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "A Gnome Subtitles kézikönyve nem található."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:351
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:335
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Ellenőrizze, hogy a program telepítése sikeres volt-e."
 
@@ -997,7 +1013,7 @@ msgid "None"
 msgstr "Egyik sem"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:60
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
 msgid "All Files"
 msgstr "Minden fájl"
 
@@ -1111,7 +1127,7 @@ msgstr ""
 "A szinkronizálás megkezdhető. A következő feliratok nem lesznek "
 "szinkronizálva: {0} és {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
 msgid "All Video Files"
 msgstr "Minden videofájl"
 
@@ -1170,51 +1186,51 @@ msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ha nem ment, akkor minden változtatás véglegesen elvész."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:81
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
 "Menti a felirat változtatásait a(z) „{0}” fájlba az új felirat létrehozása "
 "előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
 msgstr "Létrehozás mentés nélkül"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:101
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr "Menti a(z) „{0}” fordítás változtatásait az új felirat létrehozása előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr "Menti a(z) „{0}” fordítás változtatásait az új fordítás létrehozása előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:118
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba a megnyitás előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
 msgid "Open without Saving"
 msgstr "Megnyitás mentés nélkül"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
 msgstr "Menti a fordítás változtatásait a(z) „{0}” fájlba a megnyitás előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:147
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba bezárás előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
 msgid "Close without Saving"
 msgstr "Bezárás mentés nélkül"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:166
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Menti a(z) „{0}” fordítás változtatásait a bezárás előtt?"
@@ -1265,11 +1281,6 @@ msgstr "Automatikusan felismert"
 #: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
 msgid "System Default"
 msgstr "Rendszer alapértelmezése"
-
-#. To translators: this is the filename for new files (before being saved for the first time)
-#: ../src/GnomeSubtitles/Ui/MainUi.cs:136
-msgid "Unsaved Subtitles"
-msgstr "Mentetlen feliratok"
 
 #. Constant strings
 #: ../src/GnomeSubtitles/Ui/Menus.cs:33
