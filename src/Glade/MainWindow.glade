@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <glade-interface>
   <!-- interface-requires gtk+ 2.16 -->
   <!-- interface-naming-policy toplevel-contextual -->
@@ -456,6 +456,18 @@
                     </child>
                     <child>
                       <widget class="GtkSeparatorMenuItem" id="viewSeparator1">
+                        <property name="visible">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkCheckMenuItem" id="viewLineLengths">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">_Line Lengths</property>
+                        <property name="use_underline">True</property>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="GtkSeparatorMenuItem" id="viewSeparator2">
                         <property name="visible">True</property>
                       </widget>
                     </child>

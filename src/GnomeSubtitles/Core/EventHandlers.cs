@@ -170,8 +170,7 @@ public class EventHandlers {
 			Base.Ui.Video.Show();
 		else
 			Base.Ui.Video.Hide();
-	}
-	
+	}	
 		
 	public void OnViewVideoSubtitlesText (object o, EventArgs args) {
 		if ((o as RadioMenuItem).Active)

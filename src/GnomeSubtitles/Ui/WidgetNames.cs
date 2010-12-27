@@ -55,6 +55,7 @@ public class WidgetNames {
 	/* View Menu */
 	public const string ViewTimes = "viewTimes";
 	public const string ViewFrames = "viewFrames";
+	public const string ViewLineLengths = "viewLineLengths";
 	public const string ViewVideo = "viewVideo";
 	public const string ViewVideoSubtitlesText = "viewVideoSubtitlesText";
 	public const string ViewVideoSubtitlesTranslation = "viewVideoSubtitlesTranslation";

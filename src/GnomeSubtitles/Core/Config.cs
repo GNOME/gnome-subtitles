@@ -42,6 +42,7 @@ public class Config {
 	private const string keyPrefsEncodings = keyPrefs + "encodings/";
 	private const string keyPrefsSpellCheck = keyPrefs + "spellcheck/";
 	private const string keyPrefsVideo = keyPrefs + "video/";
+	private const string keyPrefsView = keyPrefs + "view/";
 	private const string keyPrefsWindow = keyPrefs + "window/";
 	private const string keyPrefsDefaults = keyPrefs + "defaults/";
 	private const string keyPrefsTranslation = keyPrefs + "translation/";
@@ -51,6 +52,7 @@ public class Config {
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
 	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
+	private const string keyPrefsViewLineLengths = keyPrefsView + "line_lengths";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
 	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
 	private const string keyPrefsSpellCheckAutocheck = keyPrefsSpellCheck + "autocheck";
@@ -101,6 +103,11 @@ public class Config {
 	public bool PrefsVideoAutoChooseFile {
 		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
 		set { Set(keyPrefsVideoAutoChooseFile, value); }
+	}
+	
+	public bool PrefsViewLineLengths {
+		get { return GetBool(keyPrefsViewLineLengths, true); }
+		set { Set(keyPrefsViewLineLengths, value); }
 	}
 	
 	public int PrefsWindowHeight {

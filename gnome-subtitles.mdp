@@ -2,7 +2,6 @@
   <Policies>
     <TextStylePolicy FileWidth="120" TabWidth="4" RemoveTrailingWhitespace="True" EolMarker="Unix" inheritsSet="Mono" inheritsScope="text/plain" />
   </Policies>
-  <Deployment.LinuxDeployData generateScript="False" />
   <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <Output directory="build" assembly="gnome-subtitles" assemblyKeyFile="/home/noup/Workspace/gnome-subtitles/." />
@@ -262,5 +261,6 @@
     <ProjectReference type="Gac" localcopy="True" refto="gconf-sharp, Version=2.24.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </References>
   <LanguageParameters StartupObject="GnomeSubtitles.Execution.Executable" ApplicationIcon="." ctype="CSharpProjectParameters" />
+  <Deployment.LinuxDeployData generateScript="False" />
   <DeploymentInformation strategy="File" />
 </Project>

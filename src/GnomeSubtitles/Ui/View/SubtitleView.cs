@@ -234,12 +234,12 @@ public class SubtitleView {
     	int textWidth = Util.ColumnWidth(tree, "0123456789012345678901234567890123456789");
     	CellRendererText textCellRenderer = new CellRendererText();
     	textCellRenderer.Alignment = Pango.Alignment.Center;
-    	textCol = Util.CreateTreeViewColumn(Catalog.GetString("Text"), textWidth, textCellRenderer, RenderTextCell);
+    	textCol = Util.CreateTreeViewColumn(Catalog.GetString("Text"), textWidth, textCellRenderer, RenderSubtitleTextCell);
     	
     	/* Translation column */
     	CellRendererText translationCellRenderer = new CellRendererText();
     	translationCellRenderer.Alignment = Pango.Alignment.Center;
-    	translationCol = Util.CreateTreeViewColumn(Catalog.GetString("Translation"), textWidth, translationCellRenderer, RenderTranslationCell);
+    	translationCol = Util.CreateTreeViewColumn(Catalog.GetString("Translation"), textWidth, translationCellRenderer, RenderTranslationTextCell);
     	SetTranslationVisible(false);
 
     	tree.AppendColumn(numberCol);
@@ -300,36 +300,57 @@ public class SubtitleView {
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Duration);
 	}
 	
-	private void RenderTextCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+	private void RenderSubtitleTextCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
 		Subtitle subtitle = subtitles[iter];
-		CellRendererText renderer = cell as CellRendererText;		
-		renderer.Text = subtitle.Text.GetReplaceEmptyLines(" "); //Replace empty lines with a space so Pango doesn't complain
-		SetRendererStyle(renderer, subtitle);
+		RenderTextCell(cell as CellRendererText, iter, subtitle.Text, subtitle.Style);
 	}
 	
-	private void RenderTranslationCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+	private void RenderTranslationTextCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
 		Subtitle subtitle = subtitles[iter];
-		CellRendererText renderer = cell as CellRendererText;		
-		renderer.Text = subtitle.Translation.GetReplaceEmptyLines(" "); //Replace empty lines with a space so Pango doesn't complain
-		SetRendererStyle(renderer, subtitle);		
+		RenderTextCell(cell as CellRendererText, iter, subtitle.Translation, subtitle.Style);
 	}
-	
-	private void SetRendererStyle (CellRendererText renderer, Subtitle subtitle) {
-		if (subtitle.Style.Italic)
-			renderer.Style = Pango.Style.Italic;
-		else
-			renderer.Style = Pango.Style.Normal;
-			
-		if (subtitle.Style.Bold)
-			renderer.Weight = (int)Pango.Weight.Bold;
-		else
-			renderer.Weight = (int)Pango.Weight.Normal;
 
-		if (subtitle.Style.Underline)
-			renderer.Underline = Pango.Underline.Single;
-		else
-			renderer.Underline = Pango.Underline.None;
+	private void RenderTextCell (CellRendererText renderer, TreeIter iter, SubtitleText subtitleText, SubLib.Core.Domain.Style subtitleStyle) {
+		
+		/* If there's no text, return empty text without line count */
+		if (subtitleText.IsEmpty) {
+			renderer.Text = String.Empty;
+			return;
+		}
+		
+		string textMarkup = String.Empty;
+		string stylePrefix = String.Empty;
+		string styleSuffix = String.Empty;
+		GetStyleMarkup(subtitleStyle, ref stylePrefix, ref styleSuffix);
+		
+		bool first = true;
+		bool viewLineLengths = Base.Ui.Menus.ViewLineLengthsEnabled;
+		foreach (string line in subtitleText) {
+			textMarkup += (first ? String.Empty : "\n") + stylePrefix + line + styleSuffix + (viewLineLengths ? " <span size=\"small\"><sup>(" + line.Length + ")</sup></span>" : String.Empty);
+			if (first)
+				first = false;
+		}
+
+		renderer.Markup = textMarkup;
 	}
+
+	private void GetStyleMarkup (SubLib.Core.Domain.Style subtitleStyle, ref string prefix, ref string suffix) {
+		if (subtitleStyle.Italic) {
+			prefix += "<i>";
+			suffix = "</i>" + suffix;
+		}
+			
+		if (subtitleStyle.Bold) {
+			prefix += "<b>";
+			suffix = "</b>" + suffix;
+		}
+		
+		if (subtitleStyle.Underline) {
+			prefix += "<u>";
+			suffix = "</u>" + suffix;
+		}
+	}
+	
 	
 	/* Event members */
 	

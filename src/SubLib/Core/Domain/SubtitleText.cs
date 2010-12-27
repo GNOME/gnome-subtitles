@@ -54,7 +54,11 @@ public class SubtitleText : ICloneable {
 	
 	/// <summary>Whether there is no text.</summary>
 	public bool IsEmpty {
-		get { return (lines.Count == 0); }
+		get { return ((lines.Count == 0) || ((lines.Count == 1) && ((lines[0] as string).Length == 0))); }
+	}
+		
+	public IEnumerator GetEnumerator () {
+		return lines.GetEnumerator();
 	}
 
 	
