@@ -159,7 +159,9 @@ public class PreferencesDialog : GladeDialog {
 	private void SetAutoBackup () {
 		bool autoBackupEnabled = Base.Config.PrefsBackupAutoBackup;
 		autoBackupCheckButton.Active = autoBackupEnabled;
+		
 		autoBackupTimeSpinButton.Sensitive = autoBackupEnabled;
+		autoBackupTimeSpinButton.Value = (int)Base.Config.PrefsBackupBackupTime / 60; //Minutes
 	}
 
 	private void ResetDialogToDefaults () {
