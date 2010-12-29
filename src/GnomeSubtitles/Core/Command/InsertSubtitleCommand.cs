@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -103,6 +103,21 @@ public class InsertFirstSubtitleCommand : InsertSubtitleCommand {
 	
 	protected override void InsertNew () {
 		Base.Ui.View.InsertNewAt(NewPath);
+	}
+
+}
+
+public class InsertLastSubtitleCommand : InsertSubtitleCommand {
+	
+	public InsertLastSubtitleCommand () : base(Util.IntToPath(Base.Document.Subtitles.Count - 1)) {
+	}
+	
+	protected override TreePath GetNewPath () {
+		return Util.IntToPath(Base.Document.Subtitles.Count);
+	}
+	
+	protected override void InsertNew () {
+		Base.Ui.View.InsertNewAfter(Path);
 	}
 
 }
