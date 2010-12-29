@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2010 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -90,10 +90,7 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	public void AddNewAt (int index) {
 		Collection.AddNewAt(index, Properties);
 		Subtitle newSubtitle = this[index];
-		if (index == 0)
-			model.AppendValues(newSubtitle);
-		else
-			model.SetValue(model.Insert(index), 0, newSubtitle);
+		model.SetValue(model.Insert(index), 0, newSubtitle);
 	}
 	
 	/// <summary>Removes a subtitle from the collection, given its <see cref="TreePath" />.</summary>
