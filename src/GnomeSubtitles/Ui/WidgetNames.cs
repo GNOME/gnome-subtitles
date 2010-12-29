@@ -49,7 +49,6 @@ public class WidgetNames {
 	public const string EditFormatItalic = "editFormatItalic";
 	public const string EditFormatUnderline = "editFormatUnderline";
 	public const string EditInsertSubtitleMenu = "editInsertSubtitleMenu";
-	public const string EditInsertSubtitleBefore = "editInsertSubtitleBefore";
 	public const string EditDeleteSubtitles = "editDeleteSubtitles";
 	
 	/* View Menu */

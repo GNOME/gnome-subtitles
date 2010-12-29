@@ -133,7 +133,10 @@ public class EventHandlers {
 	}
 	
 	public void OnEditInsertSubtitleBefore (object o, EventArgs args) {
-		Base.CommandManager.Execute(new InsertSubtitleBeforeCommand());
+		if ((Base.Document.Subtitles.Count == 0) || (Base.Ui.View.Selection.Count == 0))
+			Base.CommandManager.Execute(new InsertFirstSubtitleCommand());
+		else 
+			Base.CommandManager.Execute(new InsertSubtitleBeforeCommand());
 	}
 	
 	public void OnEditInsertSubtitleAfter (object o, EventArgs args) {

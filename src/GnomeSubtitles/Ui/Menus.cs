@@ -134,7 +134,6 @@ public class Menus {
 	private void SetNonZeroSelectionDependentSensitivity (bool sensitivity) {
 		SetStylesSensitivity(sensitivity);
 		SetSensitivity(WidgetNames.EditDeleteSubtitles, sensitivity);
-		SetSensitivity(WidgetNames.EditInsertSubtitleBefore, sensitivity);
 		SetSensitivity(WidgetNames.DeleteSubtitlesButton, sensitivity);
 	}
 	
