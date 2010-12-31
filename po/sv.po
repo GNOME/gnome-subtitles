@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 14:50+0100\n"
+"POT-Creation-Date: 2010-12-31 12:21+0100\n"
 "PO-Revision-Date: 2010-12-31 12:20+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -72,8 +72,7 @@ msgstr "Visas i menyn:"
 msgid "Character Coding:"
 msgstr "Teckenkodning:"
 
-#: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/FileOpenDialog.glade.h:2 ../src/Glade/MainWindow.glade.h:13
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "Öppna fil"
@@ -482,8 +481,7 @@ msgstr "_Öppna"
 msgid "_Play / Pause"
 msgstr "_Spela upp / Gör paus"
 
-#: ../src/Glade/MainWindow.glade.h:57
-#: ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:57 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Ersätt"
 
@@ -777,12 +775,12 @@ msgid "Editing During"
 msgstr "Redigerar längd"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:597
+#: ../src/GnomeSubtitles/Ui/Menus.cs:596
 msgid "Undo"
 msgstr "Ångra"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:607
+#: ../src/GnomeSubtitles/Ui/Menus.cs:606
 msgid "Redo"
 msgstr "Gör om"
 
@@ -991,11 +989,11 @@ msgstr "Vietnamesisk"
 msgid "Current Locale"
 msgstr "Aktuell lokalanpassning"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:336
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:339
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Handboken för Gnome-undertexter kunde inte hittas."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:336
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:339
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifiera att din installation har genomförts korrekt."
 
@@ -1098,12 +1096,20 @@ msgid "Correct Start"
 msgstr "Korrekt början"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
-msgid "Add sync points by selecting subtitles and adjusting the video to their correct position. At least 2 points are needed."
-msgstr "Lägg till synkroniseringspunkter genom att välja undertexter och justera videon till deras korrekta position. Minst 2 punkter krävs."
+msgid ""
+"Add sync points by selecting subtitles and adjusting the video to their "
+"correct position. At least 2 points are needed."
+msgstr ""
+"Lägg till synkroniseringspunkter genom att välja undertexter och justera "
+"videon till deras korrekta position. Minst 2 punkter krävs."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
-msgid "Add 1 more sync point to start synchronizing. Adding more points will improve accuracy."
-msgstr "Lägg till en synkroniseringspunkt till för att påbörja synkroniseringen. Lägga till flera punkter över precisionen."
+msgid ""
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
+msgstr ""
+"Lägg till en synkroniseringspunkt till för att påbörja synkroniseringen. "
+"Lägga till flera punkter över precisionen."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
 msgid "Synchronization is ready. All subtitles will be synchronized."
@@ -1111,21 +1117,32 @@ msgstr "Synkroniseringen är färdig. Alla undertexter kommer att synkroniseras.
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
 #, csharp-format
-msgid "Synchronization is ready. The following subtitles will not be synchronized: {0}."
-msgstr "Synkroniseringen är färdig. Följande undertexter kommer inte att synkroniseras: {0}."
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0}."
+msgstr ""
+"Synkroniseringen är färdig. Följande undertexter kommer inte att "
+"synkroniseras: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
 #, csharp-format
-msgid "Synchronization is ready. The following subtitles will not be synchronized: {0} and {1}."
-msgstr "Synkroniseringen är färdig. Följande undertexter kommer inte att synkroniseras: {0} och {1}."
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0} and {1}."
+msgstr ""
+"Synkroniseringen är färdig. Följande undertexter kommer inte att "
+"synkroniseras: {0} och {1}."
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
 msgid "All Video Files"
 msgstr "Alla videofiler"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
-msgid "An unknown error has occured. Please report a bug and include this error name:"
-msgstr "Ett okänt fel har inträffat. Rapportera felet och inkludera detta felnamn:"
+msgid ""
+"An unknown error has occured. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Ett okänt fel har inträffat. Rapportera felet och inkludera detta felnamn:"
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
@@ -1186,12 +1203,15 @@ msgstr "Skapa utan att spara"
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr "Spara ändringarna i översättningen \"{0}\" innan nya undertexter skapas?"
+msgstr ""
+"Spara ändringarna i översättningen \"{0}\" innan nya undertexter skapas?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
 #, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr "Spara ändringarna i översättningen \"{0}\" innan ny översättning skapas?"
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Spara ändringarna i översättningen \"{0}\" innan ny översättning skapas?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
 #, csharp-format
@@ -1222,12 +1242,18 @@ msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Spara ändringarna i översättningen \"{0}\" innan stängning?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
-msgid "Unable to detect the subtitle format. Please check that the file type is supported."
-msgstr "Kunde inte identifiera undertextformatet. Försäkra dig om att filtypen stöds."
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"Kunde inte identifiera undertextformatet. Försäkra dig om att filtypen stöds."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
-msgid "The encoding used is not supported by your system. Please choose another encoding."
-msgstr "Teckenkodningen som används stöds inte av ditt system. Välj en annan kodning."
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"Teckenkodningen som används stöds inte av ditt system. Välj en annan kodning."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
@@ -1323,30 +1349,43 @@ msgstr "Översättning"
 
 #~ msgid "Unsaved Translation"
 #~ msgstr "Osparad översättning"
+
 #~ msgid "Seek to _frame:"
 #~ msgstr "Spola till _bildruta:"
+
 #~ msgid "<b>Video</b>"
 #~ msgstr "<b>Video</b>"
+
 #~ msgid "gtk-add"
 #~ msgstr "Lägg till"
+
 #~ msgid "gtk-close"
 #~ msgstr "Stäng"
+
 #~ msgid "Add sync point"
 #~ msgstr "Lägg till synkroniseringspunkt"
+
 #~ msgid "Message"
 #~ msgstr "Meddelande"
+
 #~ msgid "gtk-remove"
 #~ msgstr "Ta bort"
+
 #~ msgid "gtk-cancel"
 #~ msgstr "Avbryt"
+
 #~ msgid "Add from video"
 #~ msgstr "Lägg till från video"
+
 #~ msgid "Could not continue the video playback"
 #~ msgstr "Kunde inte fortsätta videouppspelningen"
+
 #~ msgid "The following error has occurred: "
 #~ msgstr "Följande fel har inträffat: "
+
 #~ msgid "Please check that the video file is supported."
 #~ msgstr "Försäkra dig om att videofilen stöds."
+
 #~ msgid ""
 #~ "An Error has occured.\n"
 #~ "\n"
@@ -1363,14 +1402,17 @@ msgstr "Översättning"
 #~ "\n"
 #~ "Om felet relaterar till en <b>undertextfil</b> bör du bifoga filen om "
 #~ "möjligt."
+
 #~ msgid "Open Bugzilla"
 #~ msgstr "Öppna Bugzilla"
+
 #~ msgid "Selected subtitle to first"
 #~ msgstr "Markerad undertext till första"
+
 #~ msgid "Selected subtitle to last"
 #~ msgstr "Markerad undertext till sista"
+
 #~ msgid ""
 #~ "Unable to start the video player. Please check that MPlayer is installed."
 #~ msgstr ""
 #~ "Kunde inte starta videospelaren. Kontrollera att MPlayer är installerad."
-
