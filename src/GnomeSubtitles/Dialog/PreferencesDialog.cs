@@ -299,7 +299,7 @@ public class PreferencesDialog : GladeDialog {
 		Base.Backup.ReCheck();
 	}
 	
-	private void OnAutoBackupTimeSpinButonValueChanged (object o, EventArgs args) {
+	private void OnAutoBackupTimeSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsBackupBackupTime = (o as SpinButton).ValueAsInt * 60; //seconds
 		Base.Backup.ReCheck();
 	}
