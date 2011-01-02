@@ -6,15 +6,15 @@
 # Paulino Padial <devnull.tst@gmail.com>, 2007.
 # Gabriel Ruiz <debianmaster@gmail.com>, 2008
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2010.
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&component=general\n"
-"POT-Creation-Date: 2010-12-28 23:29+0000\n"
-"PO-Revision-Date: 2010-12-29 22:53+0100\n"
+"POT-Creation-Date: 2011-01-02 04:27+0000\n"
+"PO-Revision-Date: 2011-01-02 11:26+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -554,50 +554,64 @@ msgid "<b>File Save As</b>"
 msgstr "<b>Archivo Guardar como</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
+#| msgid "<b>Options</b>"
+msgid "<b>Reaction Delay</b>"
+msgstr "<b>Retardo de reacción</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:5
 msgid "<b>Translation</b>"
 msgstr "<b>Transición</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:5
+#: ../src/Glade/PreferencesDialog.glade.h:6
 msgid "Automatically choose the _video file to open"
 msgstr "Seleccionar un _vídeo para abrir automáticamente"
 
-#: ../src/Glade/PreferencesDialog.glade.h:6
+#: ../src/Glade/PreferencesDialog.glade.h:7
 msgid "Ch_aracter coding to use:"
 msgstr "C_odificación de caracteres que usar:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:7
+#: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "Character c_oding to use:"
 msgstr "C_odificación de caracteres que usar:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:8
+#: ../src/Glade/PreferencesDialog.glade.h:9
 msgid "Create a _backup copy of files every"
 msgstr "Crear una copia de _respaldo de los archivos cada"
 
-#: ../src/Glade/PreferencesDialog.glade.h:9
+#: ../src/Glade/PreferencesDialog.glade.h:10
 msgid "If auto detection _fails, use:"
 msgstr "Si la autodetección de la codificación de caracteres _falla, usar:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:10
+#: ../src/Glade/PreferencesDialog.glade.h:11
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: ../src/Glade/PreferencesDialog.glade.h:11
+#: ../src/Glade/PreferencesDialog.glade.h:12
+msgid "Subtract"
+msgstr "Sustraer"
+
+#: ../src/Glade/PreferencesDialog.glade.h:13
 msgid "When saving subtitles, also save their _translation"
 msgstr "Al guardar los subtítulos, también guardar la _traducción"
 
-#: ../src/Glade/PreferencesDialog.glade.h:12
+#: ../src/Glade/PreferencesDialog.glade.h:14
 msgid "_Newline type to use:"
 msgstr "Tipo de _salto de linea que usar:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:13
+#: ../src/Glade/PreferencesDialog.glade.h:15
 msgid "_Reset to defaults"
 msgstr "_Restablecer valores predeterminados"
 
-#: ../src/Glade/PreferencesDialog.glade.h:14
+#: ../src/Glade/PreferencesDialog.glade.h:16
 msgid "_Subtitle format to use:"
 msgstr "Formato del _subtítulo que usar:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:15
+#: ../src/Glade/PreferencesDialog.glade.h:17
+msgid "milliseconds when setting subtitle start/end on playback"
+msgstr ""
+"milisegundos al establecer el inicio/final de los subtítulos al reproducir"
+
+#: ../src/Glade/PreferencesDialog.glade.h:18
 msgid "minutes"
 msgstr "minutos"
 
@@ -782,12 +796,12 @@ msgid "Editing During"
 msgstr "Editando duración"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:597
+#: ../src/GnomeSubtitles/Ui/Menus.cs:596
 msgid "Undo"
 msgstr "Deshacer"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:607
+#: ../src/GnomeSubtitles/Ui/Menus.cs:606
 msgid "Redo"
 msgstr "Rehacer"
 
@@ -996,11 +1010,11 @@ msgstr "Vietnamita"
 msgid "Current Locale"
 msgstr "Configuración actual"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:334
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:358
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "No se pudo encontrar el manual de Subtítulos de GNOME."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:334
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:358
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifique que su instalación se completó satisfactoriamente."
 
@@ -1038,15 +1052,15 @@ msgstr "Todos los archivos de subtítulos"
 msgid "Open Translation File"
 msgstr "Abrir archivo de traducción"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:80
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:145
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "Remember Last Used"
 msgstr "Recordar lo último usado"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:112
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:130
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:135
 msgid "Keep Existing"
 msgstr "Mantener lo existente"
 
