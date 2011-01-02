@@ -188,7 +188,8 @@ public class PreferencesDialog : GladeDialog {
 		fileSaveFormat.ActiveSelection = 0; //Keep Existing
 		fileSaveNewline.ChosenNewlineType = NewlineType.Windows;
 		
-		autoBackupCheckButton.Active = true; //FIXME defaults plus time
+		autoBackupCheckButton.Active = true;
+		autoBackupTimeSpinButton.Value = 2;
 		
 		reactionDelayCheckButton.Active = true;
 		reactionDelaySpinButton.Value = 200;
