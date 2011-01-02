@@ -61,7 +61,8 @@ GS_RESOURCES = \
 	$(GS_DATADIR)/video-set-subtitle-start-end-30x.png
 
 GS_SYSTEM_REFERENCES = \
-	Mono.Posix.dll
+	Mono.Posix.dll \
+	System.Web.dll
 
 $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
 	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(SUBLIB_LIBS) $(GS_RESOURCES:%=-resource:%) $(GS_SOURCES)
