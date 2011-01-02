@@ -36,6 +36,28 @@
 			</locale>
 		</schema>
 		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/video/apply_reaction_delay</key>
+			<applyto>/apps/gnome-subtitles/preferences/video/apply_reaction_delay</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>bool</type>
+			<default>TRUE</default>
+			<locale name="C">
+				<short>Apply reaction delay</short>
+				<long>Whether to apply a reaction delay when setting the start or end times of a subtitle with the video playing.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/video/reaction_delay</key>
+			<applyto>/apps/gnome-subtitles/preferences/video/reaction_delay</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>int</type>
+			<default>200</default>
+			<locale name="C">
+				<short>Reaction delay</short>
+				<long>Time, in milliseconds, to subtract from the start or end times when setting them with the video playing.</long>
+			</locale>
+		</schema>
+		<schema>
 			<key>/schemas/apps/gnome-subtitles/preferences/view/line_lengths</key>
 			<applyto>/apps/gnome-subtitles/preferences/view/line_lengths</applyto>
 			<owner>gnome-subtitles</owner>

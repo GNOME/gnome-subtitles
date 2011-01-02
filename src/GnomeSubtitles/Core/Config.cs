@@ -52,6 +52,8 @@ public class Config {
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
 	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
+	private const string keyPrefsVideoApplyReactionDelay = keyPrefsVideo + "apply_reaction_delay";
+	private const string keyPrefsVideoReactionDelay = keyPrefsVideo + "reaction_delay";
 	private const string keyPrefsViewLineLengths = keyPrefsView + "line_lengths";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
 	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
@@ -69,7 +71,12 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
 	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
 	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
-
+	
+	/* Cached values */
+	private bool isValuePrefsVideoApplyReactionDelayCached = false;
+	private bool valuePrefsVideoApplyReactionDelay = false;
+	private int valuePrefsVideoReactionDelay = -1;
+	
 
 	public Config () {
 		client = new Client();
@@ -103,6 +110,34 @@ public class Config {
 	public bool PrefsVideoAutoChooseFile {
 		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
 		set { Set(keyPrefsVideoAutoChooseFile, value); }
+	}
+	
+	public bool PrefsVideoApplyReactionDelay {
+		get {
+			if (!isValuePrefsVideoApplyReactionDelayCached) {
+				this.valuePrefsVideoApplyReactionDelay = GetBool(keyPrefsVideoApplyReactionDelay, false);
+				this.isValuePrefsVideoApplyReactionDelayCached = true;
+			}
+			return valuePrefsVideoApplyReactionDelay;
+		}
+		set {
+			Set(keyPrefsVideoApplyReactionDelay, value);
+			this.valuePrefsVideoApplyReactionDelay = value;
+			this.isValuePrefsVideoApplyReactionDelayCached = true;
+		}
+	}
+
+	public int PrefsVideoReactionDelay {
+		get {
+			if (this.valuePrefsVideoReactionDelay == -1) {
+				this.valuePrefsVideoReactionDelay = GetInt(keyPrefsVideoReactionDelay, 200, 0, true, 2000, true);
+			}
+			return this.valuePrefsVideoReactionDelay;
+		}
+		set {
+			Set(keyPrefsVideoReactionDelay, value);
+			this.valuePrefsVideoReactionDelay = value;
+		}
 	}
 	
 	public bool PrefsViewLineLengths {

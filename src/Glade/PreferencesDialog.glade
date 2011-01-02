@@ -65,86 +65,61 @@
               </packing>
             </child>
             <child>
-              <widget class="GtkFrame" id="frame1">
+              <widget class="GtkFrame" id="frame5">
                 <property name="visible">True</property>
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">none</property>
                 <child>
-                  <widget class="GtkAlignment" id="alignment1">
+                  <widget class="GtkAlignment" id="alignment5">
                     <property name="visible">True</property>
                     <property name="left_padding">12</property>
                     <child>
-                      <widget class="GtkVBox" id="vbox4">
+                      <widget class="GtkHBox" id="hbox2">
                         <property name="visible">True</property>
-                        <property name="spacing">5</property>
+                        <property name="spacing">3</property>
                         <child>
-                          <widget class="GtkTable" id="table2">
-                            <property name="visible">True</property>
-                            <property name="n_rows">2</property>
-                            <property name="n_columns">2</property>
-                            <property name="column_spacing">5</property>
-                            <property name="row_spacing">5</property>
-                            <child>
-                              <widget class="GtkLabel" id="label6">
-                                <property name="visible">True</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Character c_oding to use:</property>
-                                <property name="use_underline">True</property>
-                              </widget>
-                              <packing>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="GtkComboBox" id="fileOpenEncodingComboBox">
-                                <property name="visible">True</property>
-                              </widget>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="GtkLabel" id="label7">
-                                <property name="visible">True</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">If auto detection _fails, use:</property>
-                                <property name="use_underline">True</property>
-                              </widget>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="GtkComboBox" id="fileOpenFallbackEncodingComboBox">
-                                <property name="visible">True</property>
-                              </widget>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                          </widget>
-                          <packing>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="GtkCheckButton" id="videoAutoChooseFileCheckButton">
-                            <property name="label" translatable="yes">Automatically choose the _video file to open</property>
+                          <widget class="GtkCheckButton" id="reactionDelayCheckButton">
+                            <property name="label" translatable="yes">Subtract</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="use_underline">True</property>
                             <property name="draw_indicator">True</property>
-                            <signal name="toggled" handler="OnVideoAutoChooseFileToggled"/>
+                            <signal name="toggled" handler="OnReactionDelayToggled"/>
                           </widget>
                           <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkSpinButton" id="reactionDelaySpinButton">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="max_length">4</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="width_chars">4</property>
+                            <property name="invisible_char_set">True</property>
+                            <property name="adjustment">2000 0 2000 50 100 0</property>
+                            <property name="numeric">True</property>
+                            <signal name="value_changed" handler="OnReactionDelaySpinButtonValueChanged"/>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
                             <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="label11">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">milliseconds when setting subtitle start/end on playback</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                       </widget>
@@ -152,11 +127,10 @@
                   </widget>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label3">
+                  <widget class="GtkLabel" id="label12">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">&lt;b&gt;File Open&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Reaction Delay&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
-                    <property name="use_underline">True</property>
                   </widget>
                   <packing>
                     <property name="type">label_item</property>
@@ -272,6 +246,109 @@
               </packing>
             </child>
             <child>
+              <widget class="GtkFrame" id="frame1">
+                <property name="visible">True</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">none</property>
+                <child>
+                  <widget class="GtkAlignment" id="alignment1">
+                    <property name="visible">True</property>
+                    <property name="left_padding">12</property>
+                    <child>
+                      <widget class="GtkVBox" id="vbox4">
+                        <property name="visible">True</property>
+                        <property name="spacing">5</property>
+                        <child>
+                          <widget class="GtkTable" id="table2">
+                            <property name="visible">True</property>
+                            <property name="n_rows">2</property>
+                            <property name="n_columns">2</property>
+                            <property name="column_spacing">5</property>
+                            <property name="row_spacing">5</property>
+                            <child>
+                              <widget class="GtkLabel" id="label6">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">Character c_oding to use:</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                              <packing>
+                                <property name="x_options">GTK_FILL</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkComboBox" id="fileOpenEncodingComboBox">
+                                <property name="visible">True</property>
+                              </widget>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="right_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkLabel" id="label7">
+                                <property name="visible">True</property>
+                                <property name="xalign">0</property>
+                                <property name="label" translatable="yes">If auto detection _fails, use:</property>
+                                <property name="use_underline">True</property>
+                              </widget>
+                              <packing>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                                <property name="x_options">GTK_FILL</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkComboBox" id="fileOpenFallbackEncodingComboBox">
+                                <property name="visible">True</property>
+                              </widget>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="right_attach">2</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkCheckButton" id="videoAutoChooseFileCheckButton">
+                            <property name="label" translatable="yes">Automatically choose the _video file to open</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="OnVideoAutoChooseFileToggled"/>
+                          </widget>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label3">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">&lt;b&gt;File Open&lt;/b&gt;</property>
+                    <property name="use_markup">True</property>
+                    <property name="use_underline">True</property>
+                  </widget>
+                  <packing>
+                    <property name="type">label_item</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
               <widget class="GtkFrame" id="frame4">
                 <property name="visible">True</property>
                 <property name="label_xalign">0</property>
@@ -344,7 +421,7 @@
                 </child>
               </widget>
               <packing>
-                <property name="position">3</property>
+                <property name="position">4</property>
               </packing>
             </child>
           </widget>

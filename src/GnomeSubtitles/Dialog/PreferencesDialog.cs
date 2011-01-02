@@ -43,12 +43,14 @@ public class PreferencesDialog : GladeDialog {
 	[WidgetAttribute] private CheckButton translationSaveAllCheckButton = null;
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private CheckButton autoBackupCheckButton = null;
+	[WidgetAttribute] private CheckButton reactionDelayCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveFormatComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveNewlineComboBox = null;
 	[WidgetAttribute] private SpinButton autoBackupTimeSpinButton = null;
+	[WidgetAttribute] private SpinButton reactionDelaySpinButton = null;
 
 
 	public PreferencesDialog () : base(gladeFilename, false) {
@@ -74,6 +76,9 @@ public class PreferencesDialog : GladeDialog {
 		
 		/* Auto Backup */
 		SetAutoBackup();
+		
+		/* Reaction Delay */
+		SetReactionDelay();
 	}
 
 	private void SetDefaultsFileOpenEncoding () {
@@ -161,7 +166,15 @@ public class PreferencesDialog : GladeDialog {
 		autoBackupCheckButton.Active = autoBackupEnabled;
 		
 		autoBackupTimeSpinButton.Sensitive = autoBackupEnabled;
-		autoBackupTimeSpinButton.Value = (int)Base.Config.PrefsBackupBackupTime / 60; //Minutes
+		autoBackupTimeSpinButton.Value = Base.Config.PrefsBackupBackupTime / 60; //Minutes
+	}
+	
+	private void SetReactionDelay () {
+		bool reactionDelayEnabled = Base.Config.PrefsVideoApplyReactionDelay;
+		reactionDelayCheckButton.Active = reactionDelayEnabled;
+
+		reactionDelaySpinButton.Sensitive = reactionDelayEnabled;
+		reactionDelaySpinButton.Value = Base.Config.PrefsVideoReactionDelay;
 	}
 
 	private void ResetDialogToDefaults () {
@@ -175,10 +188,13 @@ public class PreferencesDialog : GladeDialog {
 		fileSaveFormat.ActiveSelection = 0; //Keep Existing
 		fileSaveNewline.ChosenNewlineType = NewlineType.Windows;
 		
-		autoBackupCheckButton.Active = true;
+		autoBackupCheckButton.Active = true; //FIXME defaults plus time
+		
+		reactionDelayCheckButton.Active = true;
+		reactionDelaySpinButton.Value = 200;
 	}
 
-	
+
 	/* Event members */
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
@@ -302,6 +318,17 @@ public class PreferencesDialog : GladeDialog {
 	private void OnAutoBackupTimeSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsBackupBackupTime = (o as SpinButton).ValueAsInt * 60; //seconds
 		Base.Backup.ReCheck();
+	}
+	
+	private void OnReactionDelayToggled (object o, EventArgs args) {
+		bool isActive = (o as CheckButton).Active;
+
+		Base.Config.PrefsVideoApplyReactionDelay = isActive;
+		reactionDelaySpinButton.Sensitive = isActive;
+	}
+
+	private void OnReactionDelaySpinButtonValueChanged (object o, EventArgs args) {
+		Base.Config.PrefsVideoReactionDelay = (o as SpinButton).ValueAsInt;
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {

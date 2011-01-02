@@ -78,6 +78,10 @@ public class Video {
 		get { return isLoaded; }
 	}
 	
+	public bool IsStatePlaying {
+		get { return player.State == MediaStatus.Playing; }
+	}
+	
 	public float FrameRate {
 		get { return player.FrameRate; }
 	}

@@ -24,6 +24,7 @@ using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
+using SubLib.Core.Timing;
 using System;
 using System.Text;
 
@@ -269,10 +270,16 @@ public class EventHandlers {
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+			}
 			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
 		}
 		else {
 			int frames = Base.Ui.Video.Position.CurrentFrames;
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.PrefsVideoReactionDelay, Base.Ui.Video.FrameRate);
+			}
 			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(frames));
 		}			
 	}
@@ -280,10 +287,16 @@ public class EventHandlers {
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 		}
 		else {
 			int frames = Base.Ui.Video.Position.CurrentFrames;
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.PrefsVideoReactionDelay, Base.Ui.Video.FrameRate);
+			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 		}
 	}
@@ -291,11 +304,17 @@ public class EventHandlers {
 	public void OnVideoSetSubtitleStartEnd (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 			Base.Ui.View.SelectNextSubtitle();
 		}
 		else {
 			int frames = Base.Ui.Video.Position.CurrentFrames;
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.PrefsVideoReactionDelay, Base.Ui.Video.FrameRate);
+			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 			Base.Ui.View.SelectNextSubtitle();
 		}
