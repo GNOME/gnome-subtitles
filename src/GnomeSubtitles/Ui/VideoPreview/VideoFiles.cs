@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ using System.Text.RegularExpressions;
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class VideoFiles {
-	private static Regex videoFilesRegex = new Regex(@"^.*\.((avi)|(mpeg)|(mpg)|(mp4)|(ogm)|(divx)|(xvid)|(mov)|(ogg)|(mkv))$");
+	private static Regex videoFilesRegex = new Regex(@"^.*\.((3g2)|(3gp)|(asf)|(avi)|(bdm)|(cpi)|(divx)|(flv)|(m4v)|(mkv)|(mod)|(mov)|(mp3)|(mp4)|(mpeg)|(mpg)|(mts)|(ogg)|(ogm)|(rm)|(rmvb)|(spx)|(vob)|(wav)|(wma)|(wmv)|(xvid))$");
 
 	/* Public methods */
 
