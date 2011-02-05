@@ -97,7 +97,7 @@ public class SubtitleTypeInfo : IComparable {
 	///	</list>
 	///	</returns>
 	public int CompareTo (object obj) {
-		return Name.CompareTo((obj as SubtitleTypeInfo).Name);
+		return type.ToString().CompareTo((obj as SubtitleTypeInfo).Type.ToString());
 	}
 
 	/* Internal members */
