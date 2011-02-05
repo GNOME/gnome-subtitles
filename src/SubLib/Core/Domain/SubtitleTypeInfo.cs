@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,16 +26,19 @@ namespace SubLib.Core.Domain {
 public class SubtitleTypeInfo : IComparable {
 	private string name;
 	private SubtitleType type;
+	private SubtitleMode mode;
 	private string[] extensions;
 
 
 	/// <summary>Initializes a new instance of the <see cref="SubtitleTypeInfo" /> class.</summary>
 	/// <param name="name">The name of the subtitle type.</param>
 	/// <param name="type">The subtitle type.</param>
+	/// <param name="mode">The subtitle mode.</param>
 	/// <param name="extensions">The extensions the subtitle type uses.</param>
-	public SubtitleTypeInfo (string name, SubtitleType type, string[] extensions) {
+	public SubtitleTypeInfo (string name, SubtitleType type, SubtitleMode mode, string[] extensions) {
 		this.name = name;
 		this.type = type;
+		this.mode = mode;
 		this.extensions = extensions;
 	}
 	
@@ -47,6 +50,11 @@ public class SubtitleTypeInfo : IComparable {
 	/// <summary>The subtitle type.</summary>
 	public SubtitleType Type {
 		get { return type; }
+	}
+	
+	/// <summary>The subtitle mode.</summary>
+	public SubtitleMode Mode {
+		get { return mode; }
 	}
 	
 	/// <summary>The extensions the subtitle type uses.</summary>
@@ -94,7 +102,7 @@ public class SubtitleTypeInfo : IComparable {
 
 	/* Internal members */
 	
-	internal SubtitleTypeInfo (SubtitleFormat format) : this(format.Name, format.Type, format.Extensions) {
+	internal SubtitleTypeInfo (SubtitleFormat format) : this(format.Name, format.Type, format.Mode, format.Extensions) {
 	}
 
 	/* Private members */

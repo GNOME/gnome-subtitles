@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2010 Pedro Castro
+ * Copyright (C) 2005-2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -137,7 +137,7 @@ public enum SubtitleTextType {
 /// <summary>
 /// Represents the timing mode used by a subtitle format.
 /// </summary>
-internal enum SubtitleMode {
+public enum SubtitleMode {
 	/// <summary>Time based timing mode.</summary>
 	Times,
 	
