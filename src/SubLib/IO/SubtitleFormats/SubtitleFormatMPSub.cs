@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ internal class SubtitleFormatMPSub : SubtitleFormat {
 		extensions = new string[] { "sub" };
 		lineBreak = "\n";
 
-		format = @"TITLE\s*=(\n?(?!FORMAT).*(?!FORMAT))*[.\n]FORMAT\s*=\s*(TIME|\d+)\s*(\n?(?!\d+(.\d+)?[^\d\n]+\d+(.\d+)?).*(?!\d+(.\d+)?[^\d\n]+\d+(.\d+)?))*[.\n]\d+(.\d+)?[^\d\n]+\d+(.\d+)?";
+		format = @"TITLE\s*=.*\n(.*\n)*FORMAT\s*=.*\n(.*\n)*[ \f\r\t\v]*\n\d+(\.\d+)? \d+(\.\d+)?\s+.+";
 
 		subtitleInTimesMode = @"(?<StartElapsedTime>\d+(\.\d*)?)[^\d\n](?<EndElapsedTime>\d+(\.\d*)?).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
 		subtitleInFramesMode = @"(?<StartElapsedFrames>\d+)[^\d\n](?<EndElapsedFrames>\d+).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
