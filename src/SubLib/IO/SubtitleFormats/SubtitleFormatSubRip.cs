@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2009 Pedro Castro
+ * Copyright (C) 2005-2009,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ internal class SubtitleFormatSubRip : SubtitleFormat {
     	extensions = new string[] { "srt" };
 		lineBreak = "\n";
 		
-		format = @"\d+[ \f\r\t\v]*\n\d+(\s*:\s*\d+){2}\s*,\s*\d+\s*-->\s*\d+(\s*:\s*\d+){2}\s*,\d+[ \f\r\t\v]*\n.+";
+		format = @"\d+[ \f\r\t\v]*\n\d+(\s*:\s*\d+){2}\s*[,.]\s*\d+\s*-->\s*\d+(\s*:\s*\d+){2}\s*[,.]\d+[ \f\r\t\v]*\n.+"; //Dot is here to support buggy SubRip files
 
 		subtitleIn = @"(\d*[^\n]*\n)?((?<StartHours>\d+)[^\d\n]+)?(?<StartMinutes>\d+)[^\d\n]+(?<StartSeconds>\d+)([^\d\n](?<StartMilliseconds>\d+))?[^\d\n]+((?<EndHours>\d+)[^\d\n]+)?(?<EndMinutes>\d+)[^\d\n]+(?<EndSeconds>\d+)([^\d\n](?<EndMilliseconds>\d+))?[^\d\n]*(\n(?<Text>(.*(?!\n[ \f\r\t\v]*\d+[ \f\r\t\v]*\n\d+(\s*:\s*\d+){2})\n?)*.))?";
 		
