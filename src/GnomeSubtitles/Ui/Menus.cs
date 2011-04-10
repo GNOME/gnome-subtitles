@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -141,6 +141,8 @@ public class Menus {
 	/// <param name="sensitivity">Whether the items are set sensitive.</param>
 	private void SetOneSelectionDependentSensitivity (bool sensitivity) {
 		SetVideoSelectionDependentSensitivity(sensitivity);
+		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && Base.Document.IsTranslationLoaded);
+		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && Base.Document.IsTranslationLoaded);
 	}
 	
 	private void SetSubtitleCountDependentSensitivity (int count) {
@@ -234,6 +236,10 @@ public class Menus {
 		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
 		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, sensitivity);
+		
+		bool oneSubtitleSelected = (Core.Base.Ui.View.Selection.Count == 1);
+		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && oneSubtitleSelected);
+		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && oneSubtitleSelected);
 		SetViewVideoSubtitlesSensitivity();
 	}
 		

@@ -89,6 +89,8 @@ public class WidgetNames {
 	public const string ToolsAutocheckSpelling = "toolsAutocheckSpelling";
 	public const string ToolsSetTextLanguage = "toolsSetTextLanguage";
 	public const string ToolsSetTranslationLanguage = "toolsSetTranslationLanguage";
+	public const string ToolsTranslateText = "toolsTranslateText";
+	public const string ToolsTranslateTranslation = "toolsTranslateTranslation";
 
 
 	/* Toolbar */
