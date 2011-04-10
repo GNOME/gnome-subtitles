@@ -369,7 +369,7 @@ public class EventHandlers {
 	}
 	
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
-		Util.OpenUrl("http://live.gnome.org/GnomeSubtitles/KeyboardShortcuts");
+		Util.OpenUrl("http://gnome-subtitles.sourceforge.net/shortcuts");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
