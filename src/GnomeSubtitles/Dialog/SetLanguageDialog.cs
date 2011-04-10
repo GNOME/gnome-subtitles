@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2009 Pedro Castro
+ * Copyright (C) 2008-2009,2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -131,12 +131,14 @@ public abstract class SetLanguageDialog : GladeDialog {
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
 			SetSpellLanguage();
+			SetReturnValue(true);
 		}
 		return false;
 	}
 	
 	private void OnLanguageRowActivated (object o, RowActivatedArgs args) {
 		SetSpellLanguage();
+		SetReturnValue(true);
 		Destroy();
 	}
 
