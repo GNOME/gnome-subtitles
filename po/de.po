@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-10 21:26+0000\n"
-"PO-Revision-Date: 2011-04-13 22:34+0100\n"
+"POT-Creation-Date: 2011-04-19 11:07+0000\n"
+"PO-Revision-Date: 2011-04-19 20:26+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@freenet.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -844,6 +844,16 @@ msgstr "Zeiten werden verschoben"
 msgid "Synchronizing timings"
 msgstr "Zeiten werden synchronisiert"
 
+#. initially, it's the former text replaced by translation
+#. direction of translation
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
+msgid "Translating"
+msgstr "Übersetzung"
+
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
+msgid "Could not translate the chosen subtitle."
+msgstr "Der gewählte Untertitel konnte nicht übersetzt werden."
+
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
 msgstr "Anfangszeit wird gesetzt"
@@ -1166,10 +1176,6 @@ msgstr ""
 "Bereit zum Synchronisieren. Die folgenden Untertitel werden nicht "
 "synchronisiert: {0} und {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
-msgid "All Video Files"
-msgstr "Alle Videodateien"
-
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
 "An unknown error has occured. Please report a bug and include this error name:"
@@ -1303,6 +1309,10 @@ msgstr "Die Datei wurde nicht gefunden."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
 msgid "Could not play the file"
 msgstr "Datei konnte nicht wiedergegeben werden"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
+msgid "All Video Files"
+msgstr "Alle Videodateien"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
