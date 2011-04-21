@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-10 21:26+0000\n"
-"PO-Revision-Date: 2011-04-11 17:02+0200\n"
+"POT-Creation-Date: 2011-04-19 11:07+0000\n"
+"PO-Revision-Date: 2011-04-21 19:28+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -360,12 +360,10 @@ msgid "Set Subtitle St_art"
 msgstr "Establecer el i_nicio del subtítulo"
 
 #: ../src/Glade/MainWindow.glade.h:24
-#| msgid "Set Text Language"
 msgid "Set T_ext Language"
 msgstr "_Establecer idioma del texto"
 
 #: ../src/Glade/MainWindow.glade.h:25
-#| msgid "Set Translation Language"
 msgid "Set Translati_on Language"
 msgstr "Establecer idi_oma de traducción"
 
@@ -383,12 +381,10 @@ msgid "To:"
 msgstr "Hasta:"
 
 #: ../src/Glade/MainWindow.glade.h:30
-#| msgid "Unsaved Translation"
 msgid "Translate Translatio_n → Text"
 msgstr "Traducir traducció_n → Texto"
 
 #: ../src/Glade/MainWindow.glade.h:31
-#| msgid "Unsaved Translation"
 msgid "Translate _Text → Translation"
 msgstr "_Traducir texto → Traducción"
 
@@ -846,6 +842,18 @@ msgstr "Desplazando los tiempos"
 msgid "Synchronizing timings"
 msgstr "Sincronizando tiempos"
 
+#. initially, it's the former text replaced by translation
+#. direction of translation
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
+#| msgid "Translation"
+msgid "Translating"
+msgstr "Traduciéndose"
+
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
+#| msgid "Could not save the file"
+msgid "Could not translate the chosen subtitle."
+msgstr "No se pudo traducir el subtítulo seleccionado."
+
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
 msgstr "Estableciendo inicio del subtitulo"
@@ -1166,10 +1174,6 @@ msgstr ""
 "La sincronización está preparada. No se sincronizarán los siguientes "
 "subtítulos: {0} y {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
-msgid "All Video Files"
-msgstr "Todos los archivos de vídeo"
-
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
 "An unknown error has occured. Please report a bug and include this error "
@@ -1231,8 +1235,8 @@ msgstr "Si no guarda ahora, se perderán todos sus cambios."
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear subtítulos "
-"nuevos?"
+"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear "
+"subtítulos nuevos?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -1307,6 +1311,10 @@ msgstr "No se pudo encontrar el archivo."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
 msgid "Could not play the file"
 msgstr "No se pudo reproducir el archivo"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
+msgid "All Video Files"
+msgstr "Todos los archivos de vídeo"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
