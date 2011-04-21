@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-10 21:26+0000\n"
-"PO-Revision-Date: 2011-04-17 10:56+0200\n"
+"POT-Creation-Date: 2011-04-19 11:07+0000\n"
+"PO-Revision-Date: 2011-04-21 09:40+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -358,12 +358,10 @@ msgid "Set Subtitle St_art"
 msgstr "Nastavit z_ačátek titulku"
 
 #: ../src/Glade/MainWindow.glade.h:24
-#| msgid "Set Text Language"
 msgid "Set T_ext Language"
 msgstr "Nastavit jazyk t_extu"
 
 #: ../src/Glade/MainWindow.glade.h:25
-#| msgid "Set Translation Language"
 msgid "Set Translati_on Language"
 msgstr "Nastavit jazyk překlad_u"
 
@@ -381,12 +379,10 @@ msgid "To:"
 msgstr "Do:"
 
 #: ../src/Glade/MainWindow.glade.h:30
-#| msgid "Unsaved Translation"
 msgid "Translate Translatio_n → Text"
 msgstr "Přeložit Pře_klad → Text"
 
 #: ../src/Glade/MainWindow.glade.h:31
-#| msgid "Unsaved Translation"
 msgid "Translate _Text → Translation"
 msgstr "Přeložit _Text → Překlad"
 
@@ -843,6 +839,18 @@ msgstr "Posun časování"
 msgid "Synchronizing timings"
 msgstr "Synchronizace časování"
 
+#. initially, it's the former text replaced by translation
+#. direction of translation
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
+#| msgid "Translation"
+msgid "Translating"
+msgstr "Překládání"
+
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
+#| msgid "Could not save the file"
+msgid "Could not translate the chosen subtitle."
+msgstr "Zvolené titulky nelze přeložit."
+
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
 msgstr "Nastavení startu titulku"
@@ -1162,10 +1170,6 @@ msgstr ""
 "Synchronizace je připravena. Následující titulky nebudou synchronizovány: "
 "{0} a {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
-msgid "All Video Files"
-msgstr "Všechny video soubory"
-
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
 "An unknown error has occured. Please report a bug and include this error "
@@ -1296,6 +1300,10 @@ msgstr "Soubor nelze najít."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
 msgid "Could not play the file"
 msgstr "Nelze přehrát soubor"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
+msgid "All Video Files"
+msgstr "Všechny video soubory"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
