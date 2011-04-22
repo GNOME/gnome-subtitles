@@ -106,7 +106,7 @@ public class SubtitleCollection {
 		if (subtitleEnd < TimeSpan.Zero)
 			subtitleEnd = TimeSpan.FromSeconds(0);
 
-		TimeSpan subtitleStart = subtitleEnd - TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
+		TimeSpan subtitleStart = subtitleEnd - TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		if (subtitleStart < TimeSpan.Zero)
 			subtitleStart = TimeSpan.FromSeconds(0);
 
@@ -129,7 +129,7 @@ public class SubtitleCollection {
 			return false;
 		
 		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(SubtitleConstants.MinTimeBetweenSubtitles);
-		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
+		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index + 1);
 		return true;
@@ -146,7 +146,7 @@ public class SubtitleCollection {
 			return false;
 		
 		TimeSpan subtitleStart = TimeSpan.FromSeconds(0);
-		TimeSpan subtitleEnd = TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
+		TimeSpan subtitleEnd = TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index);
 		return true;
@@ -165,7 +165,7 @@ public class SubtitleCollection {
 			return false;
 
 		TimeSpan subtitleStart = start;
-		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
+		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index);
 		return true;

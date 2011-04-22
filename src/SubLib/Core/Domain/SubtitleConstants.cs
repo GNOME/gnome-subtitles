@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2009,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -65,6 +65,10 @@ public class SubtitleConstants {
 	/// <summary>The maximum duration of a full single-line subtitle, in seconds.</summary>
 	/// <remarks>The value of this property is 3.5.</remarks>
 	public const float MaxSingleLineSubtitleDuration = 3.5f;
+	
+	/// <summary>The average duration of a subtitle, in seconds.</summary>
+	/// <remarks>The value of this property is 1.5.</remarks>
+	public const float AverageSubtitleDuration = 1.5f;
 	
 	/// <summary>The maximum duration of a full two-line subtitle, in seconds.</summary>
 	/// <remarks>The value of this property is 6.</remarks>
