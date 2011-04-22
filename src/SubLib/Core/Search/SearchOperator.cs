@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -124,7 +124,7 @@ public class SearchOperator {
 			return -1;
 
 		/* Check if before the first subtitle */
-		if (time < collection[0].Times.Start.Seconds)
+		if (time < collection[0].Times.Start.TotalSeconds)
 			return 0;
 
 		/* Iterate subtitles two by two - the last subtitle is handled in pair and individually afterwards */
