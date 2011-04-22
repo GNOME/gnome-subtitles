@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -129,6 +129,20 @@ public class SubtitleView {
 			return false;
 		
 		subtitles.AddNewAt(index);
+		selection.Select(path, true, true);
+		return true;
+	}
+	
+	/// <summary>Inserts a new subtitle at the specified <see cref="TreePath" />, with the specified start time.</summary>
+	/// <param name="path">The path at which the new subtitle will be inserted.</param>
+	/// <param name="start">The time at which the new subtitle should start.</para>
+	/// <returns>Whether insertion was successful.</returns>
+	public bool InsertNewAt (TreePath path, TimeSpan start) {  //TODO merge nicely with existing subtitles (subtract times accordingly)
+		int index = Util.PathToInt(path);
+		if (!(subtitles.Collection.Contains(index) || (index == subtitles.Count)))
+			return false;
+
+		subtitles.AddNewAt(index, start);
 		selection.Select(path, true, true);
 		return true;
 	}

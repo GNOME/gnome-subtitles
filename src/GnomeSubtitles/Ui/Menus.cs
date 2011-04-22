@@ -357,6 +357,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, sensitivity);
 		SetSensitivity(WidgetNames.VideoLoopSelectionPlayback, sensitivity);
 		SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, sensitivity);
+		SetSensitivity(WidgetNames.EditInsertSubtitleAtVideoPosition, sensitivity);
 	}
 	
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {
@@ -367,7 +368,7 @@ public class Menus {
 		CheckMenuItem menuItem = Base.GetWidget(menuItemName) as CheckMenuItem;
 		menuItem.Toggled -= handler;
 		menuItem.Active = isActive;
-		menuItem.Toggled += handler;		
+		menuItem.Toggled += handler;
 	}
 	
 	private void SetToggleToolButtonActivity (string toggleToolButtonName, bool isActive, EventHandler handler) {

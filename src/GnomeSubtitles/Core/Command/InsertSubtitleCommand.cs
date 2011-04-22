@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
+using System;
 
 namespace GnomeSubtitles.Core.Command {
 
@@ -120,6 +121,34 @@ public class InsertLastSubtitleCommand : InsertSubtitleCommand {
 		Base.Ui.View.InsertNewAfter(Path);
 	}
 
+}
+
+public class InsertSubtitleAtVideoPositionCommand : InsertSubtitleCommand {
+	private TimeSpan subtitleTime = TimeSpan.Zero;
+
+	public InsertSubtitleAtVideoPositionCommand () : base(null) {
+	}
+
+	protected override TreePath GetNewPath () {
+		subtitleTime = Base.Ui.Video.Position.CurrentTime;
+		if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
+			subtitleTime -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+		}
+	
+		if (Base.Document.Subtitles.Count == 0)
+			return TreePath.NewFirst();
+			
+		int index = Base.Ui.Video.Tracker.FindSubtitleNearPosition(subtitleTime);
+		Subtitle nearestSubtitle = Base.Document.Subtitles[index];
+		if (subtitleTime < nearestSubtitle.Times.Start)
+			return Util.IntToPath(index);
+		else
+			return Util.PathNext(Util.IntToPath(index));
+	}
+
+	protected override void InsertNew () {
+		Base.Ui.View.InsertNewAt(NewPath, subtitleTime);
+	}
 }
 
 }

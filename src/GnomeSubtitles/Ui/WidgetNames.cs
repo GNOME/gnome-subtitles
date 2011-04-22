@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ public class WidgetNames {
 	public const string EditFormatItalic = "editFormatItalic";
 	public const string EditFormatUnderline = "editFormatUnderline";
 	public const string EditInsertSubtitleMenu = "editInsertSubtitleMenu";
+	public const string EditInsertSubtitleAtVideoPosition = "editInsertSubtitleAtVideoPosition";
 	public const string EditDeleteSubtitles = "editDeleteSubtitles";
 	
 	/* View Menu */

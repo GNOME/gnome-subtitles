@@ -149,6 +149,10 @@ public class EventHandlers {
 			Base.CommandManager.Execute(new InsertLastSubtitleCommand());
 	}
 	
+	public void OnEditInsertSubtitleAtVideoPosition (object o, EventArgs args) {
+		Base.CommandManager.Execute(new InsertSubtitleAtVideoPositionCommand());
+	}
+	
 	public void OnEditDeleteSubtitles (object o, EventArgs args) {
 		if (Base.Ui.View.Selection.Count > 0)
 			Base.CommandManager.Execute(new DeleteSubtitlesCommand());

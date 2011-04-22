@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2010 Pedro Castro
+ * Copyright (C) 2005-2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -147,6 +147,25 @@ public class SubtitleCollection {
 		
 		TimeSpan subtitleStart = TimeSpan.FromSeconds(0);
 		TimeSpan subtitleEnd = TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
+		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
+		Add(subtitle, index);
+		return true;
+	}
+	
+	/// <summary>Creates a subtitle and adds it to the collection, inserting it at the specified index
+	/// and with the specified start time.</summary>
+	/// <remarks>The newly created subtitle's duration will be
+	/// <see cref="SubtitleConstants.MaxSingleLineSubtitleDuration" />.</remarks>
+	/// <param name="index">The zero-based index at which the subtitle should be inserted.</param>
+	/// <param name="subtitleProperties">The SubtitleProperties of the subtitles.</param>
+	/// <param name="start">The time at which the new subtitle will start</para>
+	/// <returns>True if the subtitle could be added, false otherwise.</returns>
+	public bool AddNewAt (int index, SubtitleProperties subtitleProperties, TimeSpan start) {
+		if ((index < 0) || (index > Count))
+			return false;
+
+		TimeSpan subtitleStart = start;
+		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.MaxSingleLineSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index);
 		return true;

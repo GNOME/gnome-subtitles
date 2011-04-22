@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,6 +89,12 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	/// <summary>Creates a subtitle and adds it to the specified position of the list.</summary>
 	public void AddNewAt (int index) {
 		Collection.AddNewAt(index, Properties);
+		Subtitle newSubtitle = this[index];
+		model.SetValue(model.Insert(index), 0, newSubtitle);
+	}
+	
+	public void AddNewAt (int index, TimeSpan start) {
+		Collection.AddNewAt(index, Properties, start);
 		Subtitle newSubtitle = this[index];
 		model.SetValue(model.Insert(index), 0, newSubtitle);
 	}
