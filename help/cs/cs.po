@@ -1,12 +1,13 @@
 # Czech translation for gnome-subtitles help.
 # Copyright (C) 2010 gnome-subtitles's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-subtitles help.
-# Marek Černocký <marek@manet.cz>, 2010.
+# Marek Černocký <marek@manet.cz>, 2010, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
-"POT-Creation-Date: 2010-05-02 16:24+0000\n"
-"PO-Revision-Date: 2010-05-03 23:16+0200\n"
+"POT-Creation-Date: 2011-04-30 18:19+0000\n"
+"PO-Revision-Date: 2011-05-01 09:15+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -753,15 +754,56 @@ msgstr "Jak vložit text"
 msgid "<keycap>Control</keycap>- <keycap>V</keycap>"
 msgstr "<keycap>Control</keycap>- <keycap>V</keycap>"
 
-#: C/gnome-subtitles.xml:421(title)
+#: C/gnome-subtitles.xml:398(title)
+msgid "Automatic Translation of Text"
+msgstr "Automatický překlad textu"
+
+#: C/gnome-subtitles.xml:399(para)
+msgid ""
+"To automatically translate the subtitle or translation text, using Google "
+"Translate:"
+msgstr ""
+"Když chcete automaticky přeložit titulek nebo text překladu pomocí Google "
+"Translate:"
+
+#: C/gnome-subtitles.xml:401(para)
+msgid "Make sure you're connected to the Internet"
+msgstr "Ujistěte se, že jste připojeni k Internetu"
+
+#: C/gnome-subtitles.xml:402(para)
+#| msgid "Select the subtitle file you wish to open."
+msgid "Select the subtitle that you want to translate"
+msgstr "Vyberte titulek, který chcete přeložit"
+
+#: C/gnome-subtitles.xml:404(para)
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Headers</"
+#| "guimenuitem></menuchoice>."
+msgid ""
+"Go to <menuchoice><guisubmenu>Tools</guisubmenu><guimenuitem>Translate Text/"
+"Translate Translation</guimenuitem></menuchoice>"
+msgstr ""
+"Přejděte na <menuchoice><guisubmenu>Nástroje</"
+"guisubmenu><guimenuitem>Přeložit text/Přeložit překlad</guimenuitem></"
+"menuchoice>."
+
+#: C/gnome-subtitles.xml:410(para)
+msgid ""
+"If the subtitle or translation languages are not set, pop-up dialogs will "
+"appear for you to select them"
+msgstr ""
+"Pokud není nastaven jazyk titulku nebo překladu, objeví se dialogové okno, "
+"ve kterém tak můžete učinit"
+
+#: C/gnome-subtitles.xml:437(title)
 msgid "Manipulating Subtitles"
 msgstr "Zacházení s titulky"
 
-#: C/gnome-subtitles.xml:423(title)
+#: C/gnome-subtitles.xml:439(title)
 msgid "Setting subtitle units"
 msgstr "Nastavení jednotek titulků"
 
-#: C/gnome-subtitles.xml:424(para)
+#: C/gnome-subtitles.xml:440(para)
 msgid ""
 "In <application>Gnome Subtitles</application> you can set and adjust "
 "subtitles in time units (minutes and seconds) or in frame units. The default "
@@ -771,11 +813,11 @@ msgstr ""
 "přizpůsobovat titulky v časových jednotkách (minuty a sekundy) nebo v "
 "počtech snímků. Výchozí jednotkou jsou časové."
 
-#: C/gnome-subtitles.xml:426(title)
+#: C/gnome-subtitles.xml:442(title)
 msgid "To use Frame units"
 msgstr "Jak použít jako jednotky snímky"
 
-#: C/gnome-subtitles.xml:427(para)
+#: C/gnome-subtitles.xml:443(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Frames</"
 "guimenuitem></menuchoice>."
@@ -783,11 +825,11 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Zobrazit</"
 "guisubmenu><guimenuitem>Snímky</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:431(title)
+#: C/gnome-subtitles.xml:447(title)
 msgid "To use Time units"
 msgstr "Jak použít jako jednotky čas"
 
-#: C/gnome-subtitles.xml:432(para)
+#: C/gnome-subtitles.xml:448(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Times</"
 "guimenuitem></menuchoice>."
@@ -795,11 +837,11 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Zobrazit</guisubmenu><guimenuitem>Časy</"
 "guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:438(title)
+#: C/gnome-subtitles.xml:454(title)
 msgid "Adjusting Timings"
 msgstr "Přizpůsobení časování"
 
-#: C/gnome-subtitles.xml:440(para)
+#: C/gnome-subtitles.xml:456(para)
 msgid ""
 "If you want to adjust the timings of only some subtitles, select the "
 "subtitles that you want to adjust the timing of"
@@ -807,7 +849,7 @@ msgstr ""
 "Pokud chcete časování přizpůsobit jen pro některé titulky, tak tyto titulky "
 "vyberte ."
 
-#: C/gnome-subtitles.xml:442(para)
+#: C/gnome-subtitles.xml:458(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Adjust</"
 "guimenuitem></menuchoice>."
@@ -815,7 +857,7 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Časování</"
 "guisubmenu><guimenuitem>Přizpůsobit</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:446(para)
+#: C/gnome-subtitles.xml:462(para)
 msgid ""
 "Choose the new starting time of the first subtitle and the new starting time "
 "of the last subtitle"
@@ -823,11 +865,11 @@ msgstr ""
 "Zvolte nový počáteční čas prvního titulku a nový počáteční čas posledního "
 "titulku."
 
-#: C/gnome-subtitles.xml:451(title)
+#: C/gnome-subtitles.xml:467(title)
 msgid "Shifting Timings"
 msgstr "Posun časování"
 
-#: C/gnome-subtitles.xml:452(para)
+#: C/gnome-subtitles.xml:468(para)
 msgid ""
 "Shifting timings allows you to moves one or more subtitles ahead or behind "
 "by a specific amount. Unlike the Adjust subtitles feature, Shifting "
@@ -837,11 +879,11 @@ msgstr ""
 "zpátky o zadanou hodnotu. Na rozdíl od funkce Přizpůsobení, posun nemá vliv "
 "na dobu, po kterou trvá zobrazení titulku."
 
-#: C/gnome-subtitles.xml:455(title)
+#: C/gnome-subtitles.xml:471(title)
 msgid "To use shift subtitles"
 msgstr "Jak použít posun titulků"
 
-#: C/gnome-subtitles.xml:456(para)
+#: C/gnome-subtitles.xml:472(para)
 msgid ""
 "Select which subtitle(s) you want to shift. If you want to shift the time/"
 "frame of one subtitle and/or all subtitles before or after a specific "
@@ -853,7 +895,7 @@ msgstr ""
 "vyberte tento titulek. Pokud chcete posunou více než jeden konkrétní "
 "titulek, vyberte všechny titulky, které chcete posouvat."
 
-#: C/gnome-subtitles.xml:459(para)
+#: C/gnome-subtitles.xml:475(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Shift</"
 "guimenuitem></menuchoice>."
@@ -861,7 +903,7 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Časování</guisubmenu><guimenuitem>Posun</"
 "guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:463(para)
+#: C/gnome-subtitles.xml:479(para)
 msgid ""
 "Enter in the amount of time (or frames, if you are using the frame unit) to "
 "adjust your subtitles by. If you want to move the subtitles back, enter a "
@@ -871,19 +913,19 @@ msgstr ""
 "kolik chcete snímky přizpůsobit. Pokud chcete titulky posunout zpět, zadejte "
 "zápornou hodnotu, v opačném případě kladnou."
 
-#: C/gnome-subtitles.xml:466(para)
+#: C/gnome-subtitles.xml:482(para)
 msgid "Select how you want to shift your subtitles."
 msgstr "Vyberte, jak chcete své titulky posunout."
 
-#: C/gnome-subtitles.xml:467(para)
+#: C/gnome-subtitles.xml:483(para)
 msgid "Click Shift to shift the subtitles."
 msgstr "Klikněte na Posunout, aby se titulky posunuly."
 
-#: C/gnome-subtitles.xml:471(title)
+#: C/gnome-subtitles.xml:487(title)
 msgid "Setting the Input and Video Framerates"
 msgstr "Nastavení snímkové frekvence vstupu a videa"
 
-#: C/gnome-subtitles.xml:472(para)
+#: C/gnome-subtitles.xml:488(para)
 msgid ""
 "When you open a video, <application>Gnome Subtitles</application> does not "
 "automatically set the framerate of the video."
@@ -891,7 +933,7 @@ msgstr ""
 "Když otevíráte video, aplikace <application>Gnome Subtitles</application> "
 "nenastaví snímkovou frekvenci videa automaticky."
 
-#: C/gnome-subtitles.xml:473(para)
+#: C/gnome-subtitles.xml:489(para)
 msgid ""
 "<application>Gnome Subtitles</application> manipulates subtitles based on "
 "time, regardless of view mode. Therefore, when you change the video frame "
@@ -904,7 +946,7 @@ msgstr ""
 "application> snímky, aby vykompenzovala změnu. Doba zobrazení titulků "
 "zůstává stejná."
 
-#: C/gnome-subtitles.xml:476(para)
+#: C/gnome-subtitles.xml:492(para)
 msgid ""
 "If your subtitle format uses frames to determine when a subtitle is dispayed "
 "(MicroDVD), changing the video framerate may cause your subtitles to lose "
@@ -914,11 +956,11 @@ msgstr ""
 "zobrazit (MicroDVD), může změna snímkové frekvence způsobit rozjetí "
 "synchronizace vašich titulků."
 
-#: C/gnome-subtitles.xml:478(title)
+#: C/gnome-subtitles.xml:494(title)
 msgid "To set the video framerate"
 msgstr "Jak nastavit snímkovou frekvenci videa"
 
-#: C/gnome-subtitles.xml:479(para)
+#: C/gnome-subtitles.xml:495(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Video Frame "
 "Rate</guimenuitem></menuchoice> and select the appropriate framerate."
@@ -927,11 +969,11 @@ msgstr ""
 "guisubmenu><guimenuitem>Snímková frekvence videa</guimenuitem></menuchoice> "
 "a vyberte příslušnou snímkovou frekvenci."
 
-#: C/gnome-subtitles.xml:484(title)
+#: C/gnome-subtitles.xml:500(title)
 msgid "To set the input framerate"
 msgstr "Jak nastavit snímkovou frekvenci vstupu"
 
-#: C/gnome-subtitles.xml:485(para)
+#: C/gnome-subtitles.xml:501(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Input Frame "
 "Rate</guimenuitem></menuchoice> and select the appropriate framerate."
@@ -940,19 +982,19 @@ msgstr ""
 "guisubmenu><guimenuitem>Snímková frekvence vstupu</guimenuitem></menuchoice> "
 "a vyberte příslušnou snímkovou rychlost."
 
-#: C/gnome-subtitles.xml:494(title)
+#: C/gnome-subtitles.xml:510(title)
 msgid "Working with Videos"
 msgstr "Práce s videi"
 
-#: C/gnome-subtitles.xml:496(title)
+#: C/gnome-subtitles.xml:512(title)
 msgid "Opening and Closing a Video"
 msgstr "Otevření a zavření videa"
 
-#: C/gnome-subtitles.xml:498(title)
+#: C/gnome-subtitles.xml:514(title)
 msgid "To open a video"
 msgstr "Jak otevřít video"
 
-#: C/gnome-subtitles.xml:499(para)
+#: C/gnome-subtitles.xml:515(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Open</"
 "guimenuitem></menuchoice>"
@@ -960,11 +1002,11 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Otevřít</"
 "guimenuitem></menuchoice>"
 
-#: C/gnome-subtitles.xml:506(title)
+#: C/gnome-subtitles.xml:522(title)
 msgid "To close a video"
 msgstr "Jak zavřít video"
 
-#: C/gnome-subtitles.xml:507(para)
+#: C/gnome-subtitles.xml:523(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Close</"
 "guimenuitem></menuchoice>"
@@ -972,11 +1014,11 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Zavřít</"
 "guimenuitem></menuchoice>"
 
-#: C/gnome-subtitles.xml:515(title)
+#: C/gnome-subtitles.xml:531(title)
 msgid "Playing back"
 msgstr "Přehrávání"
 
-#: C/gnome-subtitles.xml:516(para)
+#: C/gnome-subtitles.xml:532(para)
 msgid ""
 "<application>Gnome Subtitles</application> will play the video in the view "
 "window with your subtitles."
@@ -984,19 +1026,19 @@ msgstr ""
 "Aplikace <application>Gnome Subtitles</application> přehrává video v "
 "zobrazovacím okně s vašimi titulky."
 
-#: C/gnome-subtitles.xml:519(title)
+#: C/gnome-subtitles.xml:535(title)
 msgid "Seeking to the Selection"
 msgstr "Přesun na výběr"
 
-#: C/gnome-subtitles.xml:520(para)
+#: C/gnome-subtitles.xml:536(para)
 msgid "You can go to the point in the loaded video where a subtitle starts"
 msgstr "V načteném videu můžete přejít na místo, kde začínají titulky"
 
-#: C/gnome-subtitles.xml:522(title)
+#: C/gnome-subtitles.xml:538(title)
 msgid "To seek to a subtitle"
 msgstr "Jak se přesunout na titulek"
 
-#: C/gnome-subtitles.xml:523(para)
+#: C/gnome-subtitles.xml:539(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Seek to "
 "Selection</guimenuitem></menuchoice>"
@@ -1004,11 +1046,11 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Přejít na "
 "výběr</guimenuitem></menuchoice>"
 
-#: C/gnome-subtitles.xml:531(title)
+#: C/gnome-subtitles.xml:547(title)
 msgid "Setting the Subtitle Start or End Positions"
 msgstr "Nastavení počáteční a konečné pozice titulku"
 
-#: C/gnome-subtitles.xml:532(para)
+#: C/gnome-subtitles.xml:548(para)
 msgid ""
 "You can set the subtitles start or end time based on the point at which the "
 "loaded video is paused"
@@ -1016,11 +1058,11 @@ msgstr ""
 "Můžete nastavit počáteční a konečný čas titulků na základě bodu, ve kterém "
 "je načtené video pozastavené."
 
-#: C/gnome-subtitles.xml:534(title)
+#: C/gnome-subtitles.xml:550(title)
 msgid "To set subtitle starting time"
 msgstr "Jak nastavit počáteční čas titulku"
 
-#: C/gnome-subtitles.xml:535(para)
+#: C/gnome-subtitles.xml:551(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
 "Start</guimenuitem></menuchoice>"
@@ -1028,12 +1070,11 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Nastavit "
 "začátek titulku</guimenuitem></menuchoice>"
 
-#: C/gnome-subtitles.xml:542(title)
-#| msgid "To set subtitle starting time"
+#: C/gnome-subtitles.xml:558(title)
 msgid "To set subtitle ending time"
 msgstr "Jak nastavit koncový čas titulku"
 
-#: C/gnome-subtitles.xml:543(para)
+#: C/gnome-subtitles.xml:559(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
 "End</guimenuitem></menuchoice>"
@@ -1041,15 +1082,15 @@ msgstr ""
 "Přejděte na <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Nastavit "
 "konec titulku</guimenuitem></menuchoice>"
 
-#: C/gnome-subtitles.xml:553(title)
+#: C/gnome-subtitles.xml:569(title)
 msgid "Where to Get Additional Support"
 msgstr "Kde získat další podporu"
 
-#: C/gnome-subtitles.xml:555(title)
+#: C/gnome-subtitles.xml:571(title)
 msgid "Forums"
 msgstr "Diskuzní fóra"
 
-#: C/gnome-subtitles.xml:556(para)
+#: C/gnome-subtitles.xml:572(para)
 msgid ""
 "Questions and general discussions should be posted on the <ulink url="
 "\"http://sourceforge.net/forum/?group_id=129996\" type=\"http\">Forum</"
@@ -1059,11 +1100,11 @@ msgstr ""
 "sourceforge.net/forum/?group_id=129996\" type=\"http\">diskuzního fóra</"
 "ulink> (registrace není zapotřebí)."
 
-#: C/gnome-subtitles.xml:559(title)
+#: C/gnome-subtitles.xml:575(title)
 msgid "Mailing List"
 msgstr "Poštovní konference"
 
-#: C/gnome-subtitles.xml:560(para)
+#: C/gnome-subtitles.xml:576(para)
 msgid ""
 "You might get a quick response by asking the <ulink url=\"http://lists."
 "sourceforge.net/lists/listinfo/gnome-subtitles-general\" type=\"http"
@@ -1077,11 +1118,11 @@ msgstr ""
 "sourceforge.net/mailarchive/forum.php?forum_name=gnome-subtitles-general\" "
 "type=\"http\">archiv</ulink>)."
 
-#: C/gnome-subtitles.xml:563(title)
+#: C/gnome-subtitles.xml:579(title)
 msgid "Bugs and Features"
 msgstr "Hlášení chyb a přání"
 
-#: C/gnome-subtitles.xml:564(para)
+#: C/gnome-subtitles.xml:580(para)
 msgid ""
 "Bugs and Feature Requests can be reported at the official <ulink url="
 "\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles\" type=\"http"
