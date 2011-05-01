@@ -1,6 +1,6 @@
 /*
 
-	Copyright (c)  Goran Sterjov, Pedro Castro
+	Copyright (C) 2007 Goran Sterjov, Pedro Castro
 
     This file is part of the GStreamer Playbin Wrapper.
     Derived from Fuse.
