@@ -158,6 +158,21 @@ public class Video {
 		player.Forward(position.SeekIncrement);
 	}
 	
+	public void SpeedUp () {
+	    player.SpeedUp();
+	    UpdateSpeedControls(player.Speed);
+	}
+	
+	public void SpeedDown () {
+	    player.SpeedDown();
+	    UpdateSpeedControls(player.Speed);
+	}
+	
+	public void SpeedReset () {
+	    player.SpeedReset();
+	    UpdateSpeedControls(player.Speed);
+	}
+	
 	/// <summary>Seeks to the specified time.</summary>
 	/// <param name="time">The time position to seek to, in seconds.</param>
 	public void Seek (TimeSpan time) {
@@ -201,6 +216,13 @@ public class Video {
 	
 	private void Pause () {
 		player.Pause();
+	}
+	
+	private void UpdateSpeedControls (float speed) {
+		(Base.GetWidget(WidgetNames.VideoSpeedButton) as Button).Label = String.Format("{0:0.0}x", speed);
+		
+		Base.GetWidget(WidgetNames.VideoSpeedDownButton).Sensitive = (speed > Player.DefaultMinSpeed);
+		Base.GetWidget(WidgetNames.VideoSpeedUpButton).Sensitive = (speed < Player.DefaultMaxSpeed);
 	}
 
 	private void SetCustomIcons () {

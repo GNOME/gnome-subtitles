@@ -1,6 +1,7 @@
 /*
 
 	Copyright (C) 2007 Goran Sterjov, Pedro Castro
+	Copyright (C) 2011 Pedro Castro
 
     This file is part of the GStreamer Playbin Wrapper.
     Derived from Fuse.
@@ -341,20 +342,20 @@ guint64 gst_binding_get_position (gstPlay *play) {
 }
 
 // set the position of the media file
-void gst_binding_set_position (gstPlay *play, gint64 time_sec) {
+void gst_binding_set_position (gstPlay *play, gint64 time_sec, float speed) {
 	if (!isValid (play)) return;
 	
-	gst_element_seek (play->element, 1.0, GST_FORMAT_TIME, GST_SEEK_FLAG_FLUSH,
+	gst_element_seek (play->element, speed, GST_FORMAT_TIME, GST_SEEK_FLAG_FLUSH,
 					  GST_SEEK_TYPE_SET, time_sec * GST_MSECOND,
 					  GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
 }
 
 
 // set the position of the media file
-void gst_binding_set_track (gstPlay *play, gint64 track_number) {
+void gst_binding_set_track (gstPlay *play, gint64 track_number, float speed) {
 	if (!isValid (play)) return;
 	
-	gst_element_seek (play->element, 1.0, gst_format_get_by_nick ("track"),
+	gst_element_seek (play->element, speed, gst_format_get_by_nick ("track"),
 	      GST_SEEK_FLAG_FLUSH, GST_SEEK_TYPE_SET, track_number - 1,
 	      GST_SEEK_TYPE_NONE, -1);
 }

@@ -126,6 +126,9 @@ public class WidgetNames {
 	public const string VideoPlaybackHBox = "videoPlaybackHBox";
 	public const string VideoSlider = "videoSlider";
 	public const string VideoPlayPauseButton = "videoPlayPauseButton";
+	public const string VideoSpeedButton = "videoSpeedButton";
+	public const string VideoSpeedUpButton = "videoSpeedUpButton";
+	public const string VideoSpeedDownButton = "videoSpeedDownButton";
 
 
 	/* Subtitle area */

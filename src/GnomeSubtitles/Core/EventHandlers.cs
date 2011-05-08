@@ -250,6 +250,18 @@ public class EventHandlers {
 		Base.Ui.Video.Forward();
 	}
 	
+	public void OnVideoSpeedUp (object o, EventArgs args) {
+	    Base.Ui.Video.SpeedUp();
+	} 
+	
+	public void OnVideoSpeedDown (object o, EventArgs args) {
+	    Base.Ui.Video.SpeedDown();
+	}
+	
+	public void OnVideoSpeed (object o, EventArgs args) {
+	    Base.Ui.Video.SpeedReset();
+	} 
+	
 	public void OnVideoSeekTo (object o, EventArgs args) {
 		Base.Dialogs.Get(typeof(VideoSeekToDialog)).Show();
 	}

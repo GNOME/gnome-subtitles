@@ -1,6 +1,7 @@
 /*
 
 	Copyright (C) 2007 Goran Sterjov, Pedro Castro
+	Copyright (C) 2011 Pedro Castro
 
     This file is part of the GStreamer Playbin Wrapper.
     Derived from Fuse.
@@ -38,7 +39,7 @@ namespace GStreamer
 	public delegate void ErrorEventHandler (ErrorEventArgs args);
 	public delegate void BufferEventHandler (BufferEventArgs args);
 	public delegate void EndOfStreamEventHandler ();
-	
+
 	public delegate void StateEventHandler (StateEventArgs args);
 	public delegate void VideoInfoEventHandler (VideoInfoEventArgs args);
 	public delegate void TagEventHandler (TagEventArgs args);
@@ -212,24 +213,23 @@ namespace GStreamer
 		/// <summary>
 		/// Seeks to the nearest millisecond on the media file.
 		/// </summary>
-		public void Seek (TimeSpan time)
+		public void Seek (TimeSpan time, float speed)
 		{
 			if (isUnloaded)
 				return;
 			
-			gst_binding_set_position (engine, (ulong) time.TotalMilliseconds);
+			gst_binding_set_position (engine, (ulong) time.TotalMilliseconds, speed);
 		}
 		
 		
 		/// <summary>
 		/// Seeks to the nearest millisecond on the media file.
 		/// </summary>
-		public void Seek (double milliseconds)
+		public void Seek (double milliseconds, float speed)
 		{
 			TimeSpan time = TimeSpan.FromMilliseconds (milliseconds);
-			Seek (time);
+			Seek (time, speed);
 		}
-		
 		
 		/// <summary>
 		/// Seeks to the specified track number.
@@ -491,7 +491,7 @@ namespace GStreamer
 		[DllImport("gstreamer_playbin")]
 		static extern int gst_binding_get_volume (HandleRef play);
 		[DllImport("gstreamer_playbin")]
-		static extern void gst_binding_set_position (HandleRef play, ulong pos);
+		static extern void gst_binding_set_position (HandleRef play, ulong pos, float speed);
 		[DllImport("gstreamer_playbin")]
 		static extern void gst_binding_set_track (HandleRef play, ulong track_number);
 		[DllImport("gstreamer_playbin")]

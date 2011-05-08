@@ -1653,6 +1653,76 @@
                           </packing>
                         </child>
                         <child>
+                          <widget class="GtkHBox" id="speedHBox">
+                            <property name="visible">True</property>
+                            <child>
+                              <widget class="GtkButton" id="videoSpeedDownButton">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="relief">none</property>
+                                <signal name="clicked" handler="OnVideoSpeedDown"/>
+                                <accelerator key="minus" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                                <child>
+                                  <widget class="GtkImage" id="videoSpeedDownButtonImage">
+                                    <property name="visible">True</property>
+                                    <property name="stock">gtk-remove</property>
+                                    <property name="icon-size">1</property>
+                                  </widget>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkButton" id="videoSpeedButton">
+                                <property name="label">1.0x</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="relief">none</property>
+                                <property name="focus_on_click">False</property>
+                                <signal name="clicked" handler="OnVideoSpeed"/>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkButton" id="videoSpeedUpButton">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="relief">none</property>
+                                <signal name="clicked" handler="OnVideoSpeedUp"/>
+                                <accelerator key="plus" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                                <child>
+                                  <widget class="GtkImage" id="videoSpeedUpButtonImage">
+                                    <property name="visible">True</property>
+                                    <property name="stock">gtk-add</property>
+                                    <property name="icon-size">1</property>
+                                  </widget>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
                           <widget class="GtkHScale" id="videoSlider">
                             <property name="visible">True</property>
                             <property name="adjustment">0 0 100 0.5 10 10</property>
@@ -1660,7 +1730,7 @@
                             <property name="value_pos">bottom</property>
                           </widget>
                           <packing>
-                            <property name="position">1</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                       </widget>
