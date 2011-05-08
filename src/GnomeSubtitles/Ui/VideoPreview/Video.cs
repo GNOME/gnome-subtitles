@@ -133,7 +133,8 @@ public class Video {
 		frame.Child.Show();
 		frame.Ratio = Player.DefaultAspectRatio;
 		
-		SilentDisablePlayPauseButton();		
+		SilentDisablePlayPauseButton();
+		UpdateSpeedControls(1);
 		SetControlsSensitivity(false);
 
 		Core.Base.Ui.Menus.RemoveFrameRateVideoTag();
