@@ -62,6 +62,10 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		return true;
 	}
 	
+	protected override void PostProcess () {
+		Base.Ui.Video.SeekToSelection();
+	}
+	
 	/* Private Members */
 
 	private void ShiftTimesAll () {

@@ -55,6 +55,10 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 		storedTime = previousTime;
 		return true;
 	}
+	
+	protected override void PostProcess () {
+		Base.Ui.Video.SeekToSelection();
+	}
 
 	protected abstract TimeSpan GetPreviousTime ();
 	protected abstract void SetTime (TimeSpan storedTime);
