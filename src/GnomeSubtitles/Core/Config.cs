@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,6 +47,7 @@ public class Config {
 	private const string keyPrefsDefaults = keyPrefs + "defaults/";
 	private const string keyPrefsTranslation = keyPrefs + "translation/";
 	private const string keyPrefsBackup = keyPrefs + "backup/";
+	private const string keyPrefsTimings = keyPrefs + "timings/";
 
 	/* Constant key strings */
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
@@ -71,11 +72,15 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
 	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
 	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
+	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step";
+	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step";
 	
 	/* Cached values */
 	private bool isValuePrefsVideoApplyReactionDelayCached = false;
 	private bool valuePrefsVideoApplyReactionDelay = false;
 	private int valuePrefsVideoReactionDelay = -1;
+	private int valuePrefsTimingsTimeStep = -1;
+	private int valuePrefsTimingsFramesStep = -1;
 	
 
 	public Config () {
@@ -235,10 +240,37 @@ public class Config {
 		set { Set(keyPrefsBackupAutoBackup, value); }
 	}
  
-	/* Backup time in seconds */
 	public int PrefsBackupBackupTime {
 		get { return GetInt(keyPrefsBackupBackupTime, 120, 30, true, 0, false); }
 		set { Set(keyPrefsBackupBackupTime, value); }
+	}
+	
+	/* Time in milliseconds */
+	public int PrefsTimingsTimeStep {
+		get {
+			if (this.valuePrefsTimingsTimeStep == -1) {
+				this.valuePrefsTimingsTimeStep = GetInt(keyPrefsTimingsTimeStep, 100, 1, true, 0, false);
+			}
+			return this.valuePrefsTimingsTimeStep;
+		}
+		set {
+			Set(keyPrefsTimingsTimeStep, value);
+			this.valuePrefsTimingsTimeStep = value;
+		}
+	}
+	
+	/* Time in milliseconds */
+	public int PrefsTimingsFramesStep {
+		get {
+			if (this.valuePrefsTimingsFramesStep == -1) {
+				this.valuePrefsTimingsFramesStep = GetInt(keyPrefsTimingsFramesStep, 2, 1, true, 0, false);
+			}
+			return this.valuePrefsTimingsFramesStep;
+		}
+		set {
+			Set(keyPrefsTimingsFramesStep, value);
+			this.valuePrefsTimingsFramesStep = value;
+		}
 	}
 
 	

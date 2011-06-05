@@ -244,5 +244,27 @@
 				<long>Time interval, in seconds, to automatically backup files. A minimum of 30 seconds is recommended.</long>
 			</locale>
 		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/timings/time_step</key>
+			<applyto>/apps/gnome-subtitles/preferences/timings/time_step</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>int</type>
+			<default>100</default>
+			<locale name="C">
+				<short>Time step increment</short>
+				<long>Time, in milliseconds, to add or subtract when adjusting times in spinbutton controls (e.g., start, end and duration).</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/timings/frames_step</key>
+			<applyto>/apps/gnome-subtitles/preferences/timings/frames_step</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>int</type>
+			<default>2</default>
+			<locale name="C">
+				<short>Frames step increment</short>
+				<long>Frames to add or subtract when adjusting frames in spinbutton controls (e.g., start, end and duration).</long>
+			</locale>
+		</schema>
 	</schemalist>
 </gconfschemafile>
