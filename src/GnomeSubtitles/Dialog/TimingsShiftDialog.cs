@@ -29,6 +29,7 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 //TODO set spinButton limits according to selection type
+//FIXME show informative message about the Ctrl+Shift++ shortcuts
 public class TimingsShiftDialog : GladeDialog {
 	private TimingMode timingMode = TimingMode.Frames;
 

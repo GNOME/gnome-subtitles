@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2009,2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,6 +60,10 @@ public class SubtitleEdit {
     
     public SubtitleEditTranslation TranslationEdit {
     	get { return translationEdit; }
+    }
+    
+    public SubtitleEditSpinButtons SpinButtons {
+    	get { return spinButtons; }
     }
     
     /// <summary>The current text selection, either text or translation. An empty string if no text is selected.</summary>

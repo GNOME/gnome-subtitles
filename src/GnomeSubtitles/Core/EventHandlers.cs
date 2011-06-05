@@ -21,6 +21,7 @@ using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
 using GnomeSubtitles.Dialog.Unmanaged;
 using GnomeSubtitles.Ui;
+using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -33,6 +34,7 @@ namespace GnomeSubtitles.Core {
 public class EventHandlers {
 	private bool buttonStartEndKeyPressed = false; //Used to match grab focus and key release events
 	
+
 	/* File Menu */
 	
 	public void OnFileNew (object o, EventArgs args) {
@@ -458,6 +460,81 @@ public class EventHandlers {
 		}
 
 		Gtk.Drag.Finish(args.Context, success, false, args.Time);
+	}
+	
+	
+	/* Global Accelerators */
+
+	public void OnGlobalSubtitleStartIncrease (object o, EventArgs args) {
+		if (Base.Ui.View.Selection.Count == 1) {
+			Base.Ui.Edit.SpinButtons.StartSpinButtonIncreaseStep();
+		}
+	}
+	
+	public void OnGlobalSubtitleStartDecrease (object o, EventArgs args) {
+		/* Do nothing if there isn't only 1 subtitle selected */
+		if (Base.Ui.View.Selection.Count != 1)
+			return;
+		
+		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
+		if ((Base.TimingModeIsTimes && (subtitle.Times.Start >= TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep)))
+				|| (!Base.TimingModeIsTimes) && (subtitle.Frames.Start >= Base.Config.PrefsTimingsFramesStep)){
+
+			Base.Ui.Edit.SpinButtons.StartSpinButtonDecreaseStep();
+		}
+	}
+	
+	public void OnGlobalSubtitleEndIncrease (object o, EventArgs args) {
+		if (Base.Ui.View.Selection.Count == 1) {
+			Base.Ui.Edit.SpinButtons.EndSpinButtonIncreaseStep();
+		}
+	}
+	
+	public void OnGlobalSubtitleEndDecrease (object o, EventArgs args) {
+		/* Do nothing if there isn't only 1 subtitle selected */
+		if (Base.Ui.View.Selection.Count != 1)
+			return;
+		
+		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
+		if ((Base.TimingModeIsTimes && (subtitle.Times.End >= TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep)))
+				|| (!Base.TimingModeIsTimes) && (subtitle.Frames.End >= Base.Config.PrefsTimingsFramesStep)){
+
+			Base.Ui.Edit.SpinButtons.EndSpinButtonDecreaseStep();
+		}
+	}
+	
+	public void OnGlobalSelectionShiftIncrease (object o, EventArgs args) {
+		/* Do nothing if no subtitles are selected */
+		if (Base.Ui.View.Selection.Count == 0)
+			return;
+		
+		if (Base.TimingModeIsTimes) {
+			Base.CommandManager.Execute(new ShiftTimingsCommand(TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep), SelectionIntended.Simple));
+		}
+		else {
+			Base.CommandManager.Execute(new ShiftTimingsCommand(Base.Config.PrefsTimingsFramesStep, SelectionIntended.Simple));
+		}
+	}
+	
+	public void OnGlobalSelectionShiftDecrease (object o, EventArgs args) {
+		Subtitle firstSelectedSubtitle = Base.Ui.View.Selection.FirstSubtitle;
+		
+		/* Do nothing if no subtitles are selected */
+		if (firstSelectedSubtitle == null)
+			return;
+		
+		if (Base.TimingModeIsTimes) {
+			TimeSpan timeStep = TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep);
+			if (firstSelectedSubtitle.Times.Start >= timeStep) {
+				Base.CommandManager.Execute(new ShiftTimingsCommand(timeStep.Negate(), SelectionIntended.Simple));
+			}
+		}
+		else {
+			int framesStep = Base.Config.PrefsTimingsFramesStep;
+			if (firstSelectedSubtitle.Frames.Start >= framesStep) {
+				Base.CommandManager.Execute(new ShiftTimingsCommand(-framesStep, SelectionIntended.Simple));
+			}
+		}
 	}
 
 }

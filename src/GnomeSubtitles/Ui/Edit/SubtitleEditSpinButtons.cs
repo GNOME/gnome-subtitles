@@ -70,6 +70,22 @@ public class SubtitleEditSpinButtons {
     	endSpinButton = this.endSpinButton;
     	durationSpinButton = this.durationSpinButton;
     }
+    
+    public void StartSpinButtonIncreaseStep () {
+    	startSpinButton.Spin(SpinType.StepForward, 0); //0 uses the defined stepIncrement
+    }
+
+    public void StartSpinButtonDecreaseStep () {
+    	startSpinButton.Spin(SpinType.StepBackward, 0); //0 uses the defined stepIncrement
+    }
+    
+    public void EndSpinButtonIncreaseStep () {
+    	endSpinButton.Spin(SpinType.StepForward, 0); //0 uses the defined stepIncrement
+    }
+
+    public void EndSpinButtonDecreaseStep () {
+    	endSpinButton.Spin(SpinType.StepBackward, 0); //0 uses the defined stepIncrement
+    }
 
 
 	/* Private methods */

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +44,7 @@ public class Base {
 	private static EventHandlers handlers = null;
 	private static CommandManager commandManager = null;
 	private static Clipboards clipboards = null;
+	private static GlobalAccelerators globalAccelerators = null;
 	private static DragDrop dragDrop = null;
 	private static Config config = null;
 	private static Dialogs dialogs = null;
@@ -85,6 +86,10 @@ public class Base {
 	
 	public static Clipboards Clipboards {
 		get { return clipboards; }
+	}
+	
+	public static GlobalAccelerators GlobalAccelerators {
+		get { return globalAccelerators; }
 	}
 
 	public static DragDrop DragDrop {
@@ -271,6 +276,7 @@ public class Base {
 		
 		/* Initialize misc */
 		clipboards = new Clipboards();
+		globalAccelerators = new GlobalAccelerators();
 		dragDrop = new DragDrop();
 		config = new Config();
 		dialogs = new Dialogs();
