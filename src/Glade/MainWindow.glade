@@ -1661,7 +1661,7 @@
                                 <property name="receives_default">True</property>
                                 <property name="relief">none</property>
                                 <signal name="clicked" handler="OnVideoSpeedDown"/>
-                                <accelerator key="less" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                                <accelerator key="F8" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                                 <child>
                                   <widget class="GtkImage" id="videoSpeedDownButtonImage">
                                     <property name="visible">True</property>
@@ -1699,7 +1699,7 @@
                                 <property name="receives_default">True</property>
                                 <property name="relief">none</property>
                                 <signal name="clicked" handler="OnVideoSpeedUp"/>
-                                <accelerator key="greater" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                                <accelerator key="F8" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                                 <child>
                                   <widget class="GtkImage" id="videoSpeedUpButtonImage">
                                     <property name="visible">True</property>
