@@ -199,8 +199,16 @@ public class Video {
 	}
 	
 	public void SeekToSelection () {
+		SeekToSelection(false);
+	}
+	
+	public void SeekToSelection (bool allowRewind) {
 		Subtitle subtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
     	TimeSpan time = subtitle.Times.Start;
+    	if (allowRewind && Base.Config.PrefsVideoSeekOnChange) {
+    		TimeSpan rewind = TimeSpan.FromMilliseconds(Base.Config.PrefsVideoSeekOnChangeRewind);
+    		time = (time >= rewind ? time - rewind : TimeSpan.Zero);
+    	}
     	Seek(time);
 	}
 	

@@ -58,6 +58,28 @@
 			</locale>
 		</schema>
 		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/video/seek_on_change</key>
+			<applyto>/apps/gnome-subtitles/preferences/video/seek_on_change</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>bool</type>
+			<default>TRUE</default>
+			<locale name="C">
+				<short>Seek the video on subtitles change</short>
+				<long>Whether to seek the video to the start of the first subtitle when one or more subtitles are changed.</long>
+			</locale>
+		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/video/seek_on_change_rewind</key>
+			<applyto>/apps/gnome-subtitles/preferences/video/seek_on_change_rewind</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>int</type>
+			<default>500</default>
+			<locale name="C">
+				<short>Seek on change rewind</short>
+				<long>Time, in milliseconds, to rewind the video when seeking on subtitles change.</long>
+			</locale>
+		</schema>
+		<schema>
 			<key>/schemas/apps/gnome-subtitles/preferences/view/line_lengths</key>
 			<applyto>/apps/gnome-subtitles/preferences/view/line_lengths</applyto>
 			<owner>gnome-subtitles</owner>

@@ -55,6 +55,8 @@ public class Config {
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsVideoApplyReactionDelay = keyPrefsVideo + "apply_reaction_delay";
 	private const string keyPrefsVideoReactionDelay = keyPrefsVideo + "reaction_delay";
+	private const string keyPrefsVideoSeekOnChange = keyPrefsVideo + "seek_on_change"; //FIXME add option to the Preferences Dialog
+	private const string keyPrefsVideoSeekOnChangeRewind = keyPrefsVideo + "seek_on_change_rewind";
 	private const string keyPrefsViewLineLengths = keyPrefsView + "line_lengths";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
 	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
@@ -72,13 +74,16 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
 	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
 	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
-	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step";
+	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step"; //FIXME add option to the Preferences Dialog
 	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step";
 	
 	/* Cached values */
 	private bool isValuePrefsVideoApplyReactionDelayCached = false;
 	private bool valuePrefsVideoApplyReactionDelay = false;
 	private int valuePrefsVideoReactionDelay = -1;
+	private bool isValuePrefsVideoSeekOnChangeCached = false;
+	private bool valuePrefsVideoSeekOnChange = false;
+	private int valuePrefsVideoSeekOnChangeRewind = -1;
 	private int valuePrefsTimingsTimeStep = -1;
 	private int valuePrefsTimingsFramesStep = -1;
 	
@@ -142,6 +147,35 @@ public class Config {
 		set {
 			Set(keyPrefsVideoReactionDelay, value);
 			this.valuePrefsVideoReactionDelay = value;
+		}
+	}
+	
+	public bool PrefsVideoSeekOnChange {
+		get {
+			if (!isValuePrefsVideoSeekOnChangeCached) {
+				this.valuePrefsVideoSeekOnChange = GetBool(keyPrefsVideoSeekOnChange, true);
+				this.isValuePrefsVideoSeekOnChangeCached = true;
+			}
+			return valuePrefsVideoSeekOnChange;
+		}
+		set {
+			Set(keyPrefsVideoSeekOnChange, value);
+			this.valuePrefsVideoSeekOnChange = value;
+			this.isValuePrefsVideoSeekOnChangeCached = true;
+		}
+	}
+
+	//FIXME apply this to other changes
+	public int PrefsVideoSeekOnChangeRewind {
+		get {
+			if (this.valuePrefsVideoSeekOnChangeRewind == -1) {
+				this.valuePrefsVideoSeekOnChangeRewind = GetInt(keyPrefsVideoSeekOnChangeRewind, 500, 0, true, 2000, true);
+			}
+			return this.valuePrefsVideoSeekOnChangeRewind;
+		}
+		set {
+			Set(keyPrefsVideoSeekOnChangeRewind, value);
+			this.valuePrefsVideoSeekOnChangeRewind = value;
 		}
 	}
 	
@@ -249,7 +283,7 @@ public class Config {
 	public int PrefsTimingsTimeStep {
 		get {
 			if (this.valuePrefsTimingsTimeStep == -1) {
-				this.valuePrefsTimingsTimeStep = GetInt(keyPrefsTimingsTimeStep, 100, 1, true, 0, false);
+				this.valuePrefsTimingsTimeStep = GetInt(keyPrefsTimingsTimeStep, 100, 1, true, 2000, true);
 			}
 			return this.valuePrefsTimingsTimeStep;
 		}
@@ -259,11 +293,10 @@ public class Config {
 		}
 	}
 	
-	/* Time in milliseconds */
 	public int PrefsTimingsFramesStep {
 		get {
 			if (this.valuePrefsTimingsFramesStep == -1) {
-				this.valuePrefsTimingsFramesStep = GetInt(keyPrefsTimingsFramesStep, 2, 1, true, 0, false);
+				this.valuePrefsTimingsFramesStep = GetInt(keyPrefsTimingsFramesStep, 2, 1, true, 60, true);
 			}
 			return this.valuePrefsTimingsFramesStep;
 		}
