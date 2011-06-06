@@ -188,23 +188,23 @@ public class SubtitleEditSpinButtons {
    	
 	private void OnStartValueChanged (object o, EventArgs args) {
 		if (Base.TimingModeIsFrames)
-			Base.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value));
+			Base.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value, true));
 		else
-			Base.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value)));
+			Base.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value), true));
 	}
 	
 	private void OnEndValueChanged (object o, EventArgs args) {
 		if (Base.TimingModeIsFrames)
-			Base.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value));
+			Base.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value, true));
 		else
-			Base.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value)));
+			Base.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value), true));
 	}
 	
 	private void OnDurationValueChanged (object o, EventArgs args) {
 		if (Base.TimingModeIsFrames)
-			Base.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value));
+			Base.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value, true));
 		else
-			Base.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value)));
+			Base.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value), true));
 	}
 	
 	private void OnBaseInitFinished () {

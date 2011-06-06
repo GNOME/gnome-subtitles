@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,11 +25,11 @@ namespace GnomeSubtitles.Core.Command {
 public class VideoSetSubtitleStartCommand : ChangeStartCommand {
 	private static string description = Catalog.GetString("Setting Subtitle Start");
 
-	public VideoSetSubtitleStartCommand (int frames) : base(frames) {
+	public VideoSetSubtitleStartCommand (int frames) : base(frames, false) {
 		SetCommandProperties();
 	}
 	
-	public VideoSetSubtitleStartCommand (TimeSpan time) : base(time) {
+	public VideoSetSubtitleStartCommand (TimeSpan time) : base(time, false) {
 		SetCommandProperties();
 	}
 	
@@ -44,11 +44,11 @@ public class VideoSetSubtitleStartCommand : ChangeStartCommand {
 public class VideoSetSubtitleEndCommand : ChangeEndCommand {
 	private static string description = Catalog.GetString("Setting Subtitle End");
 
-	public VideoSetSubtitleEndCommand (int frames) : base(frames) {
+	public VideoSetSubtitleEndCommand (int frames) : base(frames, false) {
 		SetCommandProperties();
 	}
 	
-	public VideoSetSubtitleEndCommand (TimeSpan time) : base(time) {
+	public VideoSetSubtitleEndCommand (TimeSpan time) : base(time, false) {
 		SetCommandProperties();
 	}
 	

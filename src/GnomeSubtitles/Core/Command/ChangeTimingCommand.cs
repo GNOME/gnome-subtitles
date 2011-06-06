@@ -26,18 +26,21 @@ namespace GnomeSubtitles.Core.Command {
 public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	private TimeSpan storedTime;
 	private int storedFrames = -1;
+	private bool seekAfterChange = false; //FIXME put this in upper classes
 	
 	/* Protected variables */
 	protected Subtitle subtitle = null;
 	
-	public ChangeTimingCommand (int frames, string description): base(description, true, true) {
+	public ChangeTimingCommand (int frames, string description, bool seekAfterChange): base(description, true, true) {
 		this.subtitle = Base.Document.Subtitles[Path];
 		this.storedFrames = frames;
+		this.seekAfterChange = seekAfterChange;
 	}
 	
-	public ChangeTimingCommand (TimeSpan time, string description): base(description, true, true) {
+	public ChangeTimingCommand (TimeSpan time, string description, bool seekAfterChange): base(description, true, true) {
 		this.subtitle = Base.Document.Subtitles[Path];
 		this.storedTime = time;
+		this.seekAfterChange = seekAfterChange;
 	}
 
 	public override bool CanGroupWith (Command command) {
@@ -57,7 +60,9 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	}
 	
 	protected override void PostProcess () {
-		Base.Ui.Video.SeekToSelection(true);
+		if (this.seekAfterChange) {
+			Base.Ui.Video.SeekToSelection(true);
+		}
 	}
 
 	protected abstract TimeSpan GetPreviousTime ();
@@ -68,10 +73,10 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 public class ChangeStartCommand : ChangeTimingCommand {
 	private static string description = Catalog.GetString("Editing From");
 
-	public ChangeStartCommand (int frames): base(frames, description) {
+	public ChangeStartCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
 	
-	public ChangeStartCommand (TimeSpan time): base(time, description) {
+	public ChangeStartCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
 	
 	/* Overriden methods */
@@ -92,10 +97,10 @@ public class ChangeStartCommand : ChangeTimingCommand {
 public class ChangeEndCommand : ChangeTimingCommand {
 	private static string description = Catalog.GetString("Editing To");
 
-	public ChangeEndCommand (int frames): base(frames, description) {
+	public ChangeEndCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
 	
-	public ChangeEndCommand (TimeSpan time): base(time, description) {
+	public ChangeEndCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
@@ -114,10 +119,10 @@ public class ChangeEndCommand : ChangeTimingCommand {
 public class ChangeDurationCommand : ChangeTimingCommand {
 	private static string description = Catalog.GetString("Editing During");
 
-	public ChangeDurationCommand (int frames): base(frames, description) {
+	public ChangeDurationCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
 	
-	public ChangeDurationCommand (TimeSpan time): base(time, description) {
+	public ChangeDurationCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
