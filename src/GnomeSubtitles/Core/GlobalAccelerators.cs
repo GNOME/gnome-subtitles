@@ -39,14 +39,14 @@ public class GlobalAccelerators {
 		
 		Base.Ui.Window.AddAccelGroup(this.accelGroup);
 
-		AddAccelerator((uint)Gdk.Key.e, Gdk.ModifierType.ControlMask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleStartIncrease);
-		AddAccelerator((uint)Gdk.Key.d, Gdk.ModifierType.ControlMask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleStartDecrease);
+		AddAccelerator((uint)Gdk.Key.KP_Add, Gdk.ModifierType.ControlMask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleStartIncrease);
+		AddAccelerator((uint)Gdk.Key.KP_Subtract, Gdk.ModifierType.ControlMask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleStartDecrease);
 		
-		AddAccelerator((uint)Gdk.Key.e, Gdk.ModifierType.ControlMask | Gdk.ModifierType.Mod1Mask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleEndIncrease);
-		AddAccelerator((uint)Gdk.Key.d, Gdk.ModifierType.ControlMask | Gdk.ModifierType.Mod1Mask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleEndDecrease);
+		AddAccelerator((uint)Gdk.Key.KP_Add, Gdk.ModifierType.Mod1Mask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleEndIncrease);
+		AddAccelerator((uint)Gdk.Key.KP_Subtract, Gdk.ModifierType.Mod1Mask, AccelFlags.Visible, Base.Handlers.OnGlobalSubtitleEndDecrease);
 		
-		AddAccelerator((uint)Gdk.Key.e, Gdk.ModifierType.ControlMask | Gdk.ModifierType.ShiftMask, AccelFlags.Visible, Base.Handlers.OnGlobalSelectionShiftIncrease); //Ctrl Shift + is actually Ctrl *
-		AddAccelerator((uint)Gdk.Key.d, Gdk.ModifierType.ControlMask | Gdk.ModifierType.ShiftMask, AccelFlags.Visible, Base.Handlers.OnGlobalSelectionShiftDecrease); //Ctrl Shift - is actually Ctrl _
+		AddAccelerator((uint)Gdk.Key.KP_Add, Gdk.ModifierType.ShiftMask, AccelFlags.Visible, Base.Handlers.OnGlobalSelectionShiftIncrease);
+		AddAccelerator((uint)Gdk.Key.KP_Subtract, Gdk.ModifierType.ShiftMask, AccelFlags.Visible, Base.Handlers.OnGlobalSelectionShiftDecrease);
 	}
 	
 	private void AddAccelerator (uint key, ModifierType modifiers, AccelFlags accelFlags, EventHandler handler) {
