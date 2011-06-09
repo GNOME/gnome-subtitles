@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,37 +24,40 @@ using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Core.Command {
 
-public class DeleteSubtitlesCommand : MultipleSelectionCommand {
-	private static string description = Catalog.GetString("Deleting Subtitles");
-	private Subtitle[] subtitles = null;
+public class SplitSubtitlesCommand : MultipleSelectionCommand {
+	private static string description = Catalog.GetString("Splitting subtitles");
+	//private Subtitle[] originalSubtitles = null;
 	
-	public DeleteSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
-		StoreSubtitles(); //FIXME move to Execute
+	public SplitSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
+		
 	}
 
-	
 	public override bool Execute () {
-		Base.Ui.View.Remove(Paths);
+	//	this.originalSubtitles = GetSelectedSubtitles();
+		
+		
 		return true;
 	}
 	
 	public override void Undo () {
-		Base.Ui.View.Insert(subtitles, Paths, Focus);	
+		
+	}
+
+	public override void Redo () {
+		Undo();
 	}
 	
-	public override void Redo () {
-		Execute();
-	}
-		
+	
 	/* Private members */
 
-	private void StoreSubtitles () {
+	private Subtitle[] GetSelectedSubtitles () {
 		int count = Paths.Length;
-		subtitles = new Subtitle[count];
+		Subtitle[] subtitles = new Subtitle[count];
 		for (int index = 0 ; index < count ; index++) {
 			TreePath path = Paths[index];
 			subtitles[index] = Base.Document.Subtitles[path];
-		}	
+		}
+		return subtitles;
 	}
 
 }

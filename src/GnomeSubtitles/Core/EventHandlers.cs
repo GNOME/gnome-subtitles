@@ -135,6 +135,16 @@ public class EventHandlers {
 		Base.CommandManager.Execute(new ChangeUnderlineStyleCommand(newUnderlineValue));
 	}
 	
+	public void OnEditSplit (object o, EventArgs args) {
+		Console.WriteLine ("OnEditSplit");
+		
+		
+	}
+	
+	public void OnEditMerge (object o, EventArgs args) {
+		Console.WriteLine ("OnEditMerge");
+	}
+	
 	public void OnEditInsertSubtitleBefore (object o, EventArgs args) {
 		if ((Base.Document.Subtitles.Count == 0) || (Base.Ui.View.Selection.Count == 0))
 			Base.CommandManager.Execute(new InsertFirstSubtitleCommand());
