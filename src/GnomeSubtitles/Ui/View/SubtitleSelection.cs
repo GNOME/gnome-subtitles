@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -344,7 +344,7 @@ public class SubtitleSelection {
 	/// <param name="paths">The paths to select. If <see cref="SelectionType" /> is Range this must be an array 
 	/// with length 2 containing the first and last paths in the range. This value must be validated before calling this method.</param>
 	/// <param name="focus">The path to give input focus to. It must be one of the specified paths or null, in which case no focus will be given.</param>
-	/// <param name="align">Whether to align the selected path to the center if the path isn't visible and scrolling is needed.</param>
+	/// <param name="align">Whether to align the focused path to the center if the path isn't visible and scrolling is needed.</param>
 	private void Select (TreePath[] paths, SelectionType selectionType, TreePath focus, bool align) {
 		DisconnectSelectionChangedSignal();
 		

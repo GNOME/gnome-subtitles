@@ -157,7 +157,7 @@ public class SubtitleView {
 	/// <summary>Inserts a collection of subtitles in the specified paths.</summary>
 	/// <param name="subtitles">The subtitles to insert.</param>
 	/// <param name="paths">The paths corresponding to each of the subtitles. There must be the same number of paths as there are for subtitles.</param>
-	/// <param name="focus">The tree that should be given the focus.</param>
+	/// <param name="focus">The path that should be given the focus.</param>
 	public void Insert (Subtitle[] subtitles, TreePath[] paths, TreePath focus) {
 		for (int index = 0 ; index < subtitles.Length ; index++) {
 			Subtitle subtitle = subtitles[index];
