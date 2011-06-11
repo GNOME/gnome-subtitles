@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2010 Pedro Castro
+ * Copyright (C) 2005-2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -157,6 +157,10 @@ public class SubtitleText : ICloneable {
 		return GetTrimLines("\n");
 	}
 	
+	public string[] GetLines () {
+		return (string[])lines.ToArray(typeof(String));
+	}
+	
 	/// <summary>Sets the subtitle text using the specified line break and trimming option.</summary>
 	/// <param name="text">The subtitle text.</param>
 	/// <param name="lineBreak">The text substring used to split the text in lines.</param>
@@ -179,6 +183,14 @@ public class SubtitleText : ICloneable {
 	/// <param name="text">The subtitle text.</param>
 	public void Set (string text) {
 		Set(text, "\n", false);
+	}
+	
+	public void Add (string[] newLines) {
+		foreach (string newLine in newLines) {
+			string trimmedLine = newLine.Trim();
+			if (trimmedLine != String.Empty)
+				lines.Add(trimmedLine);
+		}
 	}
 	
 	public override string ToString() {
