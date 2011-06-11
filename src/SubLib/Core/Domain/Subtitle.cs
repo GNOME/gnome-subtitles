@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2010 Pedro Castro
+ * Copyright (C) 2005-2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,6 +98,10 @@ public class Subtitle {
 		}
 	}
 	
+	public bool HasTranslation {
+		get { return this.translation != null; }
+	}
+	
 	/// <summary>The subtitle's text style.</summary>
 	public Style Style {
 		get { return style; }
@@ -139,7 +143,7 @@ public class Subtitle {
 	/* Internal properties */
 	
 	internal SubtitleProperties Properties {
-		set { properties = value; }
+		set { this.properties = value; }
 	}
 	
 	
