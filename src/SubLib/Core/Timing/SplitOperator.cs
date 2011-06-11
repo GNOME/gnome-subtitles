@@ -25,43 +25,60 @@ namespace SubLib.Core.Timing {
 /// <summary>Performs split operations.</summary>
 public class SplitOperator {
 	private Subtitles subtitles = null;
+	private int timeBetweenSubtitles = -1;
 	
-	public SplitOperator (Subtitles subtitles) {
+	public SplitOperator (Subtitles subtitles, int timeBetweenSubtitles) {
 		this.subtitles = subtitles;
+		this.timeBetweenSubtitles = timeBetweenSubtitles;
 	}
 
 	/* Public members */
 	
-	
-	/// <summary>Changes the current frame rate of the subtitles.</summary>
-	/// <param name="frameRate">The new frame rate to be used.</param>
-	/// <remarks>This changes the frame rate currently being used with the subtitles, which is sometimes
-	/// refered to as the output frame rate.</remarks>
-	public void ChangeCurrent (float frameRate) {
-		float currentFrameRate = subtitles.Properties.CurrentFrameRate;
-		if (currentFrameRate != frameRate) {
-			subtitles.Properties.SetCurrentFrameRate(frameRate);
-			subtitles.UpdateFramesFromTimes(frameRate);
-		}
+	public Subtitle Split (Subtitle subtitle) {
+		if (!isOperationValid(subtitle))
+			return null;
+		
+		Subtitle subtitle2 = Split(subtitle, this.subtitles.Properties, this.timeBetweenSubtitles);
+		return subtitle2;
 	}
 	
-	/// <summary>Updates the subtitles' frames using the specified frame rate as the one they had when they were opened.</summary>
-	/// <param name="frameRate">The original subtitles' frame rate.</param>
-	/// <remarks>This results on having the subtitles with the frames they would have if they had been opened with this frame rate.
-	/// The original frame rate is sometimes refered to as the input frame rate.</remarks>
-	public void ChangeOriginal (float frameRate) {
-		SubtitleProperties properties = subtitles.Properties;
-		float originalFrameRate = properties.OriginalFrameRate;
-		float currentFrameRate = properties.CurrentFrameRate;
+	
+	/* Private members */
+	
+	/// <summary>Splits a subtitle in two halves. The subtitle passed as parameter is turned into the first half and the second half is returned.</summary>
+	/// <param name="subtitle">The subtitle to split</param>
+	/// <param name="subtitleProperties">The subtitle properties</param>
+	/// <param name="timeBetweenSubtitles">Time between the 2 subtitles, in milliseconds</param>
+	private Subtitle Split (Subtitle subtitle, SubtitleProperties subtitleProperties, int timeBetweenSubtitles) {
+		Subtitle subtitle2 = subtitle.Clone(subtitleProperties);
+		
+		/* Change timings */
+		int originalStart = (int)subtitle.Times.Start.TotalMilliseconds;
+		int originalEnd = (int)subtitle.Times.End.TotalMilliseconds;
 
-		if (originalFrameRate != frameRate) {
-			float conversionFrameRate = currentFrameRate * originalFrameRate / frameRate;
-			subtitles.UpdateFramesFromTimes(conversionFrameRate);
-			subtitles.UpdateTimesFromFrames(currentFrameRate);
-			properties.SetOriginalFrameRate(frameRate);
+		if ((originalEnd - originalStart) <= timeBetweenSubtitles) {
+			/* Not possible to have the predefined time between subtitle, subtitle 2 will start at subtitle's end time */
+			int originalMiddle = (originalStart + originalEnd) / 2;
+			TimeSpan newSubtitleEnd = TimeSpan.FromMilliseconds(originalMiddle);
+			subtitle.Times.End = newSubtitleEnd;
+			subtitle2.Times.Start = newSubtitleEnd;
 		}
+		else {
+			int newSubtitleEnd = (originalStart + originalEnd - timeBetweenSubtitles) / 2;
+			int subtitle2Start = newSubtitleEnd + timeBetweenSubtitles;
+			subtitle.Times.End = TimeSpan.FromMilliseconds(newSubtitleEnd);
+			subtitle2.Times.Start = TimeSpan.FromMilliseconds(subtitle2Start);
+		}
+		
+		/* Change text */
+		//FIXME divide text in half
+	
+		return subtitle2;
 	}
-
+	
+	private bool isOperationValid (Subtitle subtitle) {
+		return subtitle.Times.End >= subtitle.Times.Start;
+	}
 }
 
 }

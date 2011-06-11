@@ -21,43 +21,80 @@ using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
+using SubLib.Core.Timing;
+using System.Collections;
 
 namespace GnomeSubtitles.Core.Command {
 
 public class SplitSubtitlesCommand : MultipleSelectionCommand {
 	private static string description = Catalog.GetString("Splitting subtitles");
-	//private Subtitle[] originalSubtitles = null;
+	private Subtitle[] subtitlesBefore = null;
+	private TreePath[] pathsAfter = null;
+	private Subtitle[] subtitlesAfter = null;
 	
 	public SplitSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
-		
 	}
 
 	public override bool Execute () {
-	//	this.originalSubtitles = GetSelectedSubtitles();
+		GnomeSubtitles.Ui.View.Subtitles subtitles = Base.Document.Subtitles;
+		ArrayList pathsBefore = new ArrayList();
+		ArrayList subtitlesBefore = new ArrayList();
+		ArrayList pathsAfter = new ArrayList();
 		
+		SplitOperator splitOperator = new SplitOperator(subtitles, 100); //FIXME 100
 		
-		return true;
+		foreach (TreePath path in Paths) {
+			int subtitleIndex = Util.PathToInt(path) + subtitlesBefore.Count; //need to account for subtitles already added in this loop
+			Subtitle subtitle = subtitles[subtitleIndex];
+			Subtitle subtitleClone = subtitle.Clone(subtitles.Properties);
+			Subtitle subtitle2 = splitOperator.Split(subtitle);
+			if (subtitle2 != null) {
+				pathsAfter.Add(Util.IntToPath(subtitleIndex));
+				pathsAfter.Add(Util.IntToPath(subtitleIndex + 1));
+
+				pathsBefore.Add(path);
+				subtitlesBefore.Add(subtitleClone);
+
+				subtitles.Add(subtitle2, subtitleIndex + 1);
+			}
+		}
+		
+		/* If any subtitle was changed, the command was successful */
+		if (subtitlesBefore.Count == 0)
+			return false;
+		else {
+			this.subtitlesBefore = (Subtitle[])subtitlesBefore.ToArray(typeof(Subtitle));
+			this.Paths = (TreePath[])pathsBefore.ToArray(typeof(TreePath));
+			this.pathsAfter = (TreePath[])pathsAfter.ToArray(typeof(TreePath));
+			Base.Ui.View.Selection.Select(this.pathsAfter, null, true);
+			return true;
+		}
 	}
 	
 	public override void Undo () {
-		
+		if (this.subtitlesAfter == null) {
+			this.subtitlesAfter = GetSubtitlesAfter(Base.Document.Subtitles, this.pathsAfter);
+		}
+		Base.Document.Subtitles.Remove(this.pathsAfter);
+		Base.Ui.View.Insert(this.subtitlesBefore, this.Paths, null);
 	}
 
 	public override void Redo () {
-		Undo();
+		Base.Document.Subtitles.Remove(this.Paths);
+		Base.Ui.View.Insert(this.subtitlesAfter, this.pathsAfter, null);
 	}
 	
 	
 	/* Private members */
 
-	private Subtitle[] GetSelectedSubtitles () {
-		int count = Paths.Length;
-		Subtitle[] subtitles = new Subtitle[count];
-		for (int index = 0 ; index < count ; index++) {
-			TreePath path = Paths[index];
-			subtitles[index] = Base.Document.Subtitles[path];
+	private Subtitle[] GetSubtitlesAfter (GnomeSubtitles.Ui.View.Subtitles subtitles, TreePath[] pathsAfter) {
+		Subtitle[] subtitlesAfter = new Subtitle[pathsAfter.Length];
+		for (int index = 0 ; index < pathsAfter.Length ; index++) {
+			TreePath path = pathsAfter[index];
+			int subtitleIndex = Util.PathToInt(path);
+			subtitlesAfter[index] = subtitles[subtitleIndex];
 		}
-		return subtitles;
+		return subtitlesAfter;
 	}
 
 }
