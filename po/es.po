@@ -5,17 +5,17 @@
 #
 # Paulino Padial <devnull.tst@gmail.com>, 2007.
 # Gabriel Ruiz <debianmaster@gmail.com>, 2008
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-22 12:31+0000\n"
-"PO-Revision-Date: 2011-04-24 11:09+0200\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"POT-Creation-Date: 2011-06-09 18:47+0000\n"
+"PO-Revision-Date: 2011-06-10 09:51+0200\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -489,67 +489,77 @@ msgid "_Loop Selection"
 msgstr "_Bucle en la selección"
 
 #: ../src/Glade/MainWindow.glade.h:57
+#| msgid "_Before"
+msgid "_Merge"
+msgstr "_Mezclar"
+
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_New"
 msgstr "_Nuevo"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 msgid "_Play / Pause"
 msgstr "_Reproducir / pausar"
 
-#: ../src/Glade/MainWindow.glade.h:60 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:61 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "_Reemplazar"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Save"
 msgstr "_Guardar"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Search"
 msgstr "_Buscar"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Seek to..."
 msgstr "I_r a..."
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
+#| msgid "_Shift"
+msgid "_Split"
+msgstr "_Dividir"
+
+#: ../src/Glade/MainWindow.glade.h:66
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Sincronizar"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_Times"
 msgstr "_Tiempos"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:69
 msgid "_Tools"
 msgstr "_Herramientas"
 
-#: ../src/Glade/MainWindow.glade.h:68
+#: ../src/Glade/MainWindow.glade.h:70
 msgid "_Translation"
 msgstr "_Traducción"
 
-#: ../src/Glade/MainWindow.glade.h:69
+#: ../src/Glade/MainWindow.glade.h:71
 msgid "_Underline"
 msgstr "_Subrayado"
 
-#: ../src/Glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.glade.h:72
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: ../src/Glade/MainWindow.glade.h:71
+#: ../src/Glade/MainWindow.glade.h:73
 msgid "_Video Frame Rate"
 msgstr "Frecuencia de los fotogramas del _vídeo"
 
-#: ../src/Glade/MainWindow.glade.h:72
+#: ../src/Glade/MainWindow.glade.h:74
 msgid "_View"
 msgstr "_Ver"
 
@@ -794,15 +804,15 @@ msgstr "Cambiando a cursiva"
 msgid "Toggling Underline"
 msgstr "Cambiando a subrayado"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:65
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
 msgid "Editing From"
 msgstr "Editando desde"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:89
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
 msgid "Editing To"
 msgstr "Editando hasta"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:111
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
 msgid "Editing During"
 msgstr "Editando duración"
 
@@ -1031,11 +1041,11 @@ msgstr "Vietnamita"
 msgid "Current Locale"
 msgstr "Configuración actual"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:370
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "No se pudo encontrar el manual de Subtítulos de GNOME."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:370
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifique que su instalación se completó satisfactoriamente."
 
@@ -1114,12 +1124,12 @@ msgstr "Guardar traducción como"
 msgid "Start Time:"
 msgstr "Tiempo de inicio:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
 #: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Time"
 msgstr "Tiempo"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
 msgid "Frames"
 msgstr "Fotogramas"
 
@@ -1237,8 +1247,8 @@ msgstr "Si no guarda ahora, se perderán todos sus cambios."
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear "
-"subtítulos nuevos?"
+"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear subtítulos "
+"nuevos?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
