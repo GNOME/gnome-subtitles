@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2009,2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	private Subtitle[] subtitles = null;
 	
 	public DeleteSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
-		StoreSubtitles(); //FIXME move to Execute
+		StoreSubtitles(); //TODO move to Execute
 	}
 
 	

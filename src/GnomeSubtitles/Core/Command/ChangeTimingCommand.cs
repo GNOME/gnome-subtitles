@@ -26,7 +26,7 @@ namespace GnomeSubtitles.Core.Command {
 public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	private TimeSpan storedTime;
 	private int storedFrames = -1;
-	private bool seekAfterChange = false; //FIXME put this in upper classes
+	private bool seekAfterChange = false; //TODO put this in upper classes
 	
 	/* Protected variables */
 	protected Subtitle subtitle = null;
