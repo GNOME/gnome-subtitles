@@ -84,6 +84,11 @@ public class SubtitleView {
 	public void RedrawPath (TreePath path) {
 		subtitles.Model.EmitRowChanged(path, TreeIter.Zero);
 	}
+	
+	public void RedrawPaths (TreePath[] paths) {
+		foreach (TreePath path in paths)
+			RedrawPath(path);
+	}
 
 	/// <summary>Refreshes the view.</summary>
 	/// <remarks>This is currently limited to a <see cref="TreeView.QueueDraw()" />.</remarks>
@@ -166,6 +171,16 @@ public class SubtitleView {
 			this.subtitles.Add(subtitle, pathIndex);
 		}
 		selection.Select(paths, focus, true);
+	}
+	
+	public void Insert (Subtitle[] subtitles, TreePath firstPath, TreePath focus) {
+		for (int index = 0, pathIndex = Util.PathToInt(firstPath) ; index < subtitles.Length  ; index++, pathIndex++) {
+			Subtitle subtitle = subtitles[index];
+			this.subtitles.Add(subtitle, pathIndex);		
+		}
+		TreePath lastPath = Util.IntToPath(Util.PathToInt(firstPath) + subtitles.Length - 1);
+		TreePath[] pathRange = new TreePath[]{firstPath, lastPath};
+		selection.SelectRange(pathRange, focus, true);
 	}
 	
 	/// <summary>Removes the subtitle at the specified path and selects the next or previous subtitle afterwards.</summary>
