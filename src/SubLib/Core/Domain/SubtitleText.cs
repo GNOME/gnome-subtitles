@@ -63,6 +63,10 @@ public class SubtitleText : ICloneable {
 
 	
 	/* Public methods */
+	
+	public void Clear () {
+		lines.Clear();
+	}
 
 	/// <summary>Gets the specified text line.</summary>
 	/// <param name="index">The zero-based line number index.</param>
@@ -173,7 +177,7 @@ public class SubtitleText : ICloneable {
 		string spaceDelimiter = (toTrimLines ? @"\s*" : String.Empty);
 		string regexPattern = spaceDelimiter + @escapedLineBreak + spaceDelimiter;
 		string[] textLines = Regex.Split(text, regexPattern);
-		lines.Clear();
+		Clear();
 		foreach (string textLine in textLines)
 			lines.Add(textLine);
 	}
@@ -183,6 +187,11 @@ public class SubtitleText : ICloneable {
 	/// <param name="text">The subtitle text.</param>
 	public void Set (string text) {
 		Set(text, "\n", false);
+	}
+	
+	public void Set (string[] newLines) {
+		Clear();
+		Add(newLines);
 	}
 	
 	public void Add (string[] newLines) {
