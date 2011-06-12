@@ -340,6 +340,7 @@
                     <child>
                       <widget class="GtkMenuItem" id="editSplit">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="label" translatable="yes">_Split</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditSplit"/>
@@ -349,6 +350,7 @@
                     <child>
                       <widget class="GtkMenuItem" id="editMerge">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="label" translatable="yes">_Merge</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditMerge"/>
@@ -911,7 +913,7 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoSeekTo"/>
-                        <accelerator key="m" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="t" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoSeekToImage">
                             <property name="visible">True</property>
