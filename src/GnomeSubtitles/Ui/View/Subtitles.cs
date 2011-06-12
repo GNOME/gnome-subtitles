@@ -148,6 +148,22 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 		return true;
 	}
 	
+	public bool RemoveRange (TreePath firstPath, TreePath lastPath) {
+		if ((firstPath == null) || (lastPath == null))
+			return false;
+			
+		int firstSubtitleNumber = Util.PathToInt(firstPath);
+		int lastSubtitleNumber = Util.PathToInt(lastPath);
+		if ((firstSubtitleNumber < 0) || (firstSubtitleNumber > lastSubtitleNumber) || (lastSubtitleNumber >= Collection.Count))
+			return false;
+			
+		for (int index = firstSubtitleNumber ; index <= lastSubtitleNumber ; index++) {
+			if (!Remove(firstSubtitleNumber)) //the index is constant as subtitles are removed
+				return false;
+		}
+		return true;
+	}
+	
 	/// <summary>Loads possible extra subtitles at the end of the model.</summary>
 	/// <remarks>Extra subtitles exist if subtitles were added to the base collection.</remarks>
 	public void AddExtra (int extraCount) {
