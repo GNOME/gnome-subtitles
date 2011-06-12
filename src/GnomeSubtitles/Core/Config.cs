@@ -56,7 +56,7 @@ public class Config {
 	private const string keyPrefsVideoApplyReactionDelay = keyPrefsVideo + "apply_reaction_delay";
 	private const string keyPrefsVideoReactionDelay = keyPrefsVideo + "reaction_delay";
 	private const string keyPrefsVideoSeekOnChange = keyPrefsVideo + "seek_on_change"; //FIXME add option to the Preferences Dialog
-	private const string keyPrefsVideoSeekOnChangeRewind = keyPrefsVideo + "seek_on_change_rewind";
+	private const string keyPrefsVideoSeekOnChangeRewind = keyPrefsVideo + "seek_on_change_rewind"; //FIXME add option to the Preferences Dialog
 	private const string keyPrefsViewLineLengths = keyPrefsView + "line_lengths";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
 	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
@@ -75,7 +75,8 @@ public class Config {
 	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
 	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
 	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step"; //FIXME add option to the Preferences Dialog
-	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step";
+	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step"; //FIXME add option to the Preferences Dialog
+	private const string keyPrefsTimingsTimeBetweenSubtitles = keyPrefsTimings + "time_between_subs"; //FIXME add option to the Preferences Dialog
 	
 	/* Cached values */
 	private bool isValuePrefsVideoApplyReactionDelayCached = false;
@@ -86,6 +87,7 @@ public class Config {
 	private int valuePrefsVideoSeekOnChangeRewind = -1;
 	private int valuePrefsTimingsTimeStep = -1;
 	private int valuePrefsTimingsFramesStep = -1;
+	private int valuePrefsTimingsTimeBetweenSubtitles = -1;
 	
 
 	public Config () {
@@ -165,7 +167,7 @@ public class Config {
 		}
 	}
 
-	//FIXME apply this to other changes
+	//FIXME use this in other commands
 	public int PrefsVideoSeekOnChangeRewind {
 		get {
 			if (this.valuePrefsVideoSeekOnChangeRewind == -1) {
@@ -303,6 +305,19 @@ public class Config {
 		set {
 			Set(keyPrefsTimingsFramesStep, value);
 			this.valuePrefsTimingsFramesStep = value;
+		}
+	}
+	
+	public int PrefsTimingsTimeBetweenSubtitles {
+		get {
+			if (this.valuePrefsTimingsTimeBetweenSubtitles == -1) {
+				this.valuePrefsTimingsTimeBetweenSubtitles = GetInt(keyPrefsTimingsTimeBetweenSubtitles, 100, 0, true, 5000, true);
+			}
+			return this.valuePrefsTimingsTimeBetweenSubtitles;
+		}
+		set {
+			Set(keyPrefsTimingsTimeBetweenSubtitles, value);
+			this.valuePrefsTimingsTimeBetweenSubtitles = value;
 		}
 	}
 

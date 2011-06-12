@@ -136,12 +136,11 @@ public class EventHandlers {
 	}
 	
 	public void OnEditSplit (object o, EventArgs args) {
-		Console.WriteLine ("OnEditSplit");
 		Base.CommandManager.Execute(new SplitSubtitlesCommand());
 	}
 	
 	public void OnEditMerge (object o, EventArgs args) {
-		Console.WriteLine ("OnEditMerge");
+		Base.CommandManager.Execute(new MergeSubtitlesCommand());
 	}
 	
 	public void OnEditInsertSubtitleBefore (object o, EventArgs args) {

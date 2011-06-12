@@ -51,6 +51,8 @@ public class WidgetNames {
 	public const string EditInsertSubtitleMenu = "editInsertSubtitleMenu";
 	public const string EditInsertSubtitleAtVideoPosition = "editInsertSubtitleAtVideoPosition";
 	public const string EditDeleteSubtitles = "editDeleteSubtitles";
+	public const string EditSplit = "editSplit";
+	public const string EditMerge = "editMerge";
 	
 	/* View Menu */
 	public const string ViewTimes = "viewTimes";

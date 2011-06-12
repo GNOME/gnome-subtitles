@@ -41,7 +41,7 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 		ArrayList subtitlesBefore = new ArrayList();
 		ArrayList pathsAfter = new ArrayList();
 		
-		SplitOperator splitOperator = new SplitOperator(subtitles, 100); //FIXME 100
+		SplitOperator splitOperator = new SplitOperator(subtitles, Base.Config.PrefsTimingsTimeBetweenSubtitles);
 		
 		foreach (TreePath path in Paths) {
 			int subtitleIndex = Util.PathToInt(path) + subtitlesBefore.Count; //need to account for subtitles already added in this loop
@@ -66,7 +66,9 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 			this.subtitlesBefore = (Subtitle[])subtitlesBefore.ToArray(typeof(Subtitle));
 			this.Paths = (TreePath[])pathsBefore.ToArray(typeof(TreePath));
 			this.pathsAfter = (TreePath[])pathsAfter.ToArray(typeof(TreePath));
-			Base.Ui.View.Selection.Select(this.pathsAfter, null, true);
+			Base.Ui.View.RedrawPaths(this.pathsAfter);
+			Base.Ui.View.Selection.Select(this.pathsAfter, this.pathsAfter[0], true);
+			PostProcess();
 			return true;
 		}
 	}
@@ -76,12 +78,20 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 			this.subtitlesAfter = GetSubtitlesAfter(Base.Document.Subtitles, this.pathsAfter);
 		}
 		Base.Document.Subtitles.Remove(this.pathsAfter);
-		Base.Ui.View.Insert(this.subtitlesBefore, this.Paths, null);
+		Base.Ui.View.Insert(this.subtitlesBefore, this.Paths, this.FirstPath);
+		PostProcess();
 	}
 
 	public override void Redo () {
 		Base.Document.Subtitles.Remove(this.Paths);
-		Base.Ui.View.Insert(this.subtitlesAfter, this.pathsAfter, null);
+		Base.Ui.View.Insert(this.subtitlesAfter, this.pathsAfter, this.pathsAfter[0]);
+		PostProcess();
+	}
+	
+	/* Protected members */
+	
+	protected void PostProcess () {
+		Base.Ui.Video.SeekToSelection(true);
 	}
 	
 	

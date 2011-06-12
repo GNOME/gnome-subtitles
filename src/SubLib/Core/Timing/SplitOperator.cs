@@ -70,14 +70,47 @@ public class SplitOperator {
 			subtitle2.Times.Start = TimeSpan.FromMilliseconds(subtitle2Start);
 		}
 		
-		/* Change text */
-		//FIXME divide text in half
-	
+		/* Change subtitle text */
+		string[] textLines = subtitle.Text.GetLines();
+		if (textLines.Length == 1)
+			subtitle2.Text.Clear();
+		else if (textLines.Length > 1) {
+			string[] textLinesHalf1 = null;
+			string[] textLinesHalf2 = null;
+			SplitArray(textLines, ref textLinesHalf1, ref textLinesHalf2);
+			subtitle.Text.Set(textLinesHalf1);
+			subtitle2.Text.Set(textLinesHalf2);
+		}
+		
+		/* Change translation text */
+		if (subtitle.HasTranslation) {
+			string[] translationLines = subtitle.Translation.GetLines();
+			if (translationLines.Length == 1)
+				subtitle2.Translation.Clear();
+			else if (translationLines.Length > 1) {
+				string[] translationLinesHalf1 = null;
+				string[] translationLinesHalf2 = null;
+				SplitArray(translationLines, ref translationLinesHalf1, ref translationLinesHalf2);
+				subtitle.Translation.Set(translationLinesHalf1);
+				subtitle2.Translation.Set(translationLinesHalf2);
+			}
+		}
+		
 		return subtitle2;
 	}
 	
 	private bool isOperationValid (Subtitle subtitle) {
 		return subtitle.Times.End >= subtitle.Times.Start;
+	}
+	
+	private void SplitArray<T> (T[] array, ref T[] half1, ref T[] half2) {
+		int arrayLength = array.Length;
+		int half1Length = arrayLength / 2;
+		int half2Length = arrayLength - half1Length;
+		half1 = new T[half1Length];
+		half2 = new T[half2Length];
+		Array.Copy(array, 0, half1, 0, half1Length);
+		Array.Copy(array, half1Length, half2, 0, half2Length);
 	}
 }
 

@@ -288,5 +288,16 @@
 				<long>Frames to add or subtract when adjusting frames in spinbutton controls (e.g., start, end and duration).</long>
 			</locale>
 		</schema>
+		<schema>
+			<key>/schemas/apps/gnome-subtitles/preferences/timings/time_between_subs</key>
+			<applyto>/apps/gnome-subtitles/preferences/timings/time_between_subs</applyto>
+			<owner>gnome-subtitles</owner>
+			<type>int</type>
+			<default>100</default>
+			<locale name="C">
+				<short>Time between subtitles</short>
+				<long>Recommended time between subtitles, in milliseconds, used for example when splitting a subtitle in two.</long>
+			</locale>
+		</schema>
 	</schemalist>
 </gconfschemafile>

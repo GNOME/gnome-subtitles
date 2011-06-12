@@ -130,10 +130,13 @@ public class Menus {
 	/* Private members */
 	
 	/// <summary>Sets the sensitivity depending on 1 or more selected subtitles.</summary>
+	/// <param name="selectionCount">The number of selected subtitles.</param>
 	/// <param name="sensitivity">Whether the items are set sensitive.</param>
-	private void SetNonZeroSelectionDependentSensitivity (bool sensitivity) {
+	private void SetNonZeroSelectionDependentSensitivity (int selectionCount, bool sensitivity) {
 		SetStylesSensitivity(sensitivity);
 		SetSensitivity(WidgetNames.EditDeleteSubtitles, sensitivity);
+		SetSensitivity(WidgetNames.EditSplit, sensitivity);
+		SetSensitivity(WidgetNames.EditMerge, selectionCount >= 2);
 		SetSensitivity(WidgetNames.DeleteSubtitlesButton, sensitivity);
 	}
 	
@@ -173,8 +176,8 @@ public class Menus {
 	}
 
 	private void SetDocumentSensitivity (bool documentLoaded) {
-		/* Set Sensitivity that is equal to the document loaded status */
-
+		/* Set Sensitivity that corresponds to the document loaded status */
+	
 		/* File Menu */
 		SetSensitivity(WidgetNames.FileSave, documentLoaded);
 		SetSensitivity(WidgetNames.FileSaveAs, documentLoaded);
@@ -203,7 +206,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.SaveButton, documentLoaded);
 		SetSensitivity(WidgetNames.InsertSubtitleButton, documentLoaded);
 		
-		/* Set sensitivity that only applies when the document is not loaded */
+		/* Set sensitivity that's only applicable when the document is not loaded */
 		
 		if (!documentLoaded) {
 			/* Edit menu */
@@ -213,6 +216,8 @@ public class Menus {
 			SetSensitivity(WidgetNames.EditCut, false);
 			SetSensitivity(WidgetNames.EditCopy, false);
 			SetSensitivity(WidgetNames.EditPaste, false);
+			SetSensitivity(WidgetNames.EditSplit, false);
+			SetSensitivity(WidgetNames.EditMerge, false);
 			/* Search menu */
 			SetSensitivity(WidgetNames.SearchFindNext, false);
 			SetSensitivity(WidgetNames.SearchFindPrevious, false);
@@ -568,20 +573,21 @@ public class Menus {
 		if (subtitle != null) {
 			/* One subtitle selected */
 			SetStylesActivity(subtitle.Style.Bold, subtitle.Style.Italic, subtitle.Style.Underline);
-			SetNonZeroSelectionDependentSensitivity(true);
+			SetNonZeroSelectionDependentSensitivity(1, true);
 			SetOneSelectionDependentSensitivity(true);
 		}
 		else {
 			SetOneSelectionDependentSensitivity(false);
+			int selectionCount = paths.Length;
 	
-			if (paths.Length == 0) {
+			if (selectionCount == 0) {
 				/* No selection */
-				SetNonZeroSelectionDependentSensitivity(false);
+				SetNonZeroSelectionDependentSensitivity(selectionCount, false);
 				SetStylesActivity(false, false, false);
 			}
 			else {
 				/* Multiple paths selected */
-				SetNonZeroSelectionDependentSensitivity(true);
+				SetNonZeroSelectionDependentSensitivity(selectionCount, true);
 				bool bold, italic, underline;
 				GetGlobalStyles(paths, out bold, out italic, out underline);
 				SetStylesActivity(bold, italic, underline);	
