@@ -104,13 +104,30 @@ public class SplitOperator {
 	}
 	
 	private void SplitArray<T> (T[] array, ref T[] half1, ref T[] half2) {
+		if (array == null) {
+			half1 = null;
+			half2 = null;
+			return;
+		}
+		
 		int arrayLength = array.Length;
-		int half1Length = arrayLength / 2;
-		int half2Length = arrayLength - half1Length;
-		half1 = new T[half1Length];
-		half2 = new T[half2Length];
-		Array.Copy(array, 0, half1, 0, half1Length);
-		Array.Copy(array, half1Length, half2, 0, half2Length);
+		if (arrayLength == 0) {
+			half1 = new T[0];
+			half2 = new T[0];
+		}
+		else if (arrayLength == 1) {
+			half1 = new T[1];
+			half1[0] = array[0];
+			half2 = new T[0];
+		}
+		else {
+			int half1Length = (int)Math.Round(arrayLength / 2d);
+			int half2Length = arrayLength - half1Length;
+			half1 = new T[half1Length];
+			half2 = new T[half2Length];
+			Array.Copy(array, 0, half1, 0, half1Length);
+			Array.Copy(array, half1Length, half2, 0, half2Length);
+		}
 	}
 }
 
