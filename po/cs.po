@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-22 12:31+0000\n"
-"PO-Revision-Date: 2011-04-24 11:53+0200\n"
+"POT-Creation-Date: 2011-06-09 18:47+0000\n"
+"PO-Revision-Date: 2011-06-13 12:37+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -487,67 +487,77 @@ msgid "_Loop Selection"
 msgstr "Výběr _smyčky"
 
 #: ../src/Glade/MainWindow.glade.h:57
+#| msgid "_Before"
+msgid "_Merge"
+msgstr "S_loučit"
+
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_New"
 msgstr "_Nový"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 msgid "_Play / Pause"
 msgstr "_Přehrávat / Pozastavit"
 
-#: ../src/Glade/MainWindow.glade.h:60 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:61 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "Nah_radit"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Save"
 msgstr "_Uložit"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "_Search"
 msgstr "_Hledat"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Seek to..."
 msgstr "_Přejít na…"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
+#| msgid "_Shift"
+msgid "_Split"
+msgstr "_Rozdělit"
+
+#: ../src/Glade/MainWindow.glade.h:66
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Synchronizovat"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "_Times"
 msgstr "Ča_sy"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:69
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: ../src/Glade/MainWindow.glade.h:68
+#: ../src/Glade/MainWindow.glade.h:70
 msgid "_Translation"
 msgstr "_Překlad"
 
-#: ../src/Glade/MainWindow.glade.h:69
+#: ../src/Glade/MainWindow.glade.h:71
 msgid "_Underline"
 msgstr "Po_dtržené"
 
-#: ../src/Glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.glade.h:72
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:71
+#: ../src/Glade/MainWindow.glade.h:73
 msgid "_Video Frame Rate"
 msgstr "Snímková frekvence _videa"
 
-#: ../src/Glade/MainWindow.glade.h:72
+#: ../src/Glade/MainWindow.glade.h:74
 msgid "_View"
 msgstr "Zo_brazit"
 
@@ -791,15 +801,15 @@ msgstr "Kurzíva"
 msgid "Toggling Underline"
 msgstr "Podtržení"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:65
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
 msgid "Editing From"
 msgstr "Upravit od"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:89
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
 msgid "Editing To"
 msgstr "Upravit do"
 
-#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:111
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
 msgid "Editing During"
 msgstr "Upravit během"
 
@@ -1028,11 +1038,11 @@ msgstr "Vietnamské"
 msgid "Current Locale"
 msgstr "Aktuální lokalizace"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:370
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Příručka k nástroji Gnome Subtitles nebyla nalezena."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:370
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Zkontrolujte, prosím, zda byla instalace úspěšně dokončena."
 
@@ -1111,12 +1121,12 @@ msgstr "Uložit překlad jako"
 msgid "Start Time:"
 msgstr "Počáteční čas:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
 #: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Time"
 msgstr "Čas"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
 msgid "Frames"
 msgstr "Snímky"
 
@@ -1385,9 +1395,3 @@ msgstr "Trvání"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:256
 msgid "Translation"
 msgstr "Překlad"
-
-#~ msgid "Set Translatio_n Language"
-#~ msgstr "_Nastavit jazyk překladu"
-
-#~ msgid "Set _Text Language"
-#~ msgstr "Nas_tavit jazyk textu"
