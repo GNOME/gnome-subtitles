@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,8 +27,6 @@ namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class SubtitleTracker {
 	private SearchOperator searchOp = null;
-	private TimeSpan subtitleStart = TimeSpan.Zero;
-	private TimeSpan subtitleEnd = TimeSpan.Zero;
 	private int currentSubtitleIndex = 0;
 	private Subtitle subtitle = null;
 
@@ -53,29 +51,24 @@ public class SubtitleTracker {
  	}
 		
 	public void Close(){
-		if (IsSubtitleLoaded)
+		if (IsSubtitleLoaded())
 			UnSetCurrentSubtitle();
-	}
-
-
-	/* Private properties */
-	
-	private bool IsSubtitleLoaded {
-		get { return subtitle != null; }
 	}
 
 
 	/* Private methods */
 	
+	private bool IsSubtitleLoaded () {
+		return this.subtitle != null;
+	}
+	
 	private bool IsTimeInCurrentSubtitle (TimeSpan time) {
-		return IsSubtitleLoaded && (time >= subtitleStart) && (time <= subtitleEnd);	
+		return IsSubtitleLoaded() && (time >= this.subtitle.Times.Start) && (time <= this.subtitle.Times.End);
 	}
 	
 	private void SetCurrentSubtitle (int index) {
 		if (index != currentSubtitleIndex) {
-			subtitle = Base.Document.Subtitles[index];
-			subtitleStart = subtitle.Times.Start;
-			subtitleEnd = subtitle.Times.End;			
+			subtitle = Base.Document.Subtitles[index];	
 			currentSubtitleIndex = index;			
 		}
 	}
@@ -83,9 +76,7 @@ public class SubtitleTracker {
 	private void UnSetCurrentSubtitle () {
 		if (currentSubtitleIndex != -1) {
 			currentSubtitleIndex = -1;				
-			subtitle = null;
-			subtitleStart = TimeSpan.Zero;
-			subtitleEnd = TimeSpan.Zero;			
+			subtitle = null;			
 		}
 	}
 
@@ -103,7 +94,7 @@ public class SubtitleTracker {
 	}
 	
 	private void OnBaseDocumentLoaded (Document document) {
-		searchOp = new SearchOperator(document.Subtitles);
+		this.searchOp = new SearchOperator(document.Subtitles);
 	}
 
 	private void OnVideoPositionChanged (TimeSpan newPosition) {
