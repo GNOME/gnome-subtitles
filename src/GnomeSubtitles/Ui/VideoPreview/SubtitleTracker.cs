@@ -34,7 +34,7 @@ public class SubtitleTracker {
 	public delegate void VideoCurrentSubtitleChangedHandler (int indexSubtitle);
 		
 	/* Events */
-	public event VideoCurrentSubtitleChangedHandler SubtitleChanged;
+	public event VideoCurrentSubtitleChangedHandler CurrentSubtitleChanged;
 
 
 	public SubtitleTracker () {
@@ -81,8 +81,8 @@ public class SubtitleTracker {
 	}
 
 	private void EmitCurrentSubtitleChanged(int newIndex) {
-		if (SubtitleChanged != null)
-			SubtitleChanged(newIndex);
+		if (CurrentSubtitleChanged != null)
+			CurrentSubtitleChanged(newIndex);
 	}
 
 

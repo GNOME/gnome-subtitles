@@ -73,9 +73,9 @@ public class SubtitleView {
 	
 	public void SetAutoSelectSubtitles (bool active) {
 		if (active)
-			Base.Ui.Video.Tracker.SubtitleChanged += OnCurrentSubtitleChanged;
+			Base.Ui.Video.Tracker.CurrentSubtitleChanged += OnCurrentSubtitleChanged;
 		else
-			Base.Ui.Video.Tracker.SubtitleChanged -= OnCurrentSubtitleChanged;
+			Base.Ui.Video.Tracker.CurrentSubtitleChanged -= OnCurrentSubtitleChanged;
 	}
 
 	
