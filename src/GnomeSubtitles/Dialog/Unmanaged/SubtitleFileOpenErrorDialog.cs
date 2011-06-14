@@ -47,6 +47,8 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 			return Catalog.GetString("The specified file is invalid.");
 		else if (exception is FileNotFoundException)
 			return Catalog.GetString("The file could not be found.");
+		else if (exception is FileTooLargeException)
+			return Catalog.GetString("The file appears to be too large for a text-based subtitle file.");
 		else
 			return String.Empty;
 	}

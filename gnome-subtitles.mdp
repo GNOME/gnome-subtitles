@@ -2,6 +2,7 @@
   <Policies>
     <TextStylePolicy FileWidth="120" TabWidth="4" RemoveTrailingWhitespace="True" EolMarker="Unix" inheritsSet="Mono" inheritsScope="text/plain" />
   </Policies>
+  <Deployment.LinuxDeployData generateScript="False" />
   <Configurations active="Debug">
     <Configuration name="Debug" ctype="DotNetProjectConfiguration">
       <Output directory="build" assembly="gnome-subtitles" assemblyKeyFile="/home/noup/Workspace/gnome-subtitles/." />
@@ -258,6 +259,7 @@
     <File subtype="Code" buildaction="Compile" name="src/SubLib/Core/Timing/SplitOperator.cs" />
     <File subtype="Code" buildaction="Compile" name="src/SubLib/Core/Timing/MergeOperator.cs" />
     <File subtype="Code" buildaction="Compile" name="src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs" />
+    <File subtype="Code" buildaction="Compile" name="src/SubLib/Exceptions/FileTooLargeException.cs" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
@@ -271,6 +273,5 @@
     <ProjectReference type="Gac" localcopy="True" refto="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   </References>
   <LanguageParameters StartupObject="GnomeSubtitles.Execution.Executable" ApplicationIcon="." ctype="CSharpProjectParameters" />
-  <Deployment.LinuxDeployData generateScript="False" />
   <DeploymentInformation strategy="File" />
 </Project>

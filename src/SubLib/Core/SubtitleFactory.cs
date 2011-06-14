@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,12 @@
  */
 
 using SubLib.Core.Domain;
+using SubLib.Exceptions;
 using SubLib.IO.SubtitleFormats;
 using SubLib.IO.Input;
 using SubLib.IO.Output;
 using System;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -38,8 +40,12 @@ public class SubtitleFactory {
 	private Encoding encoding = null; //The encoding to be used to open a file 
 	private Encoding fallbackEncoding = Encoding.GetEncoding(1252); //The encoding to fall back to when no encoding is detected
 	private float inputFrameRate = 25; //The frame rate to be used to open a frame-based file
+	private int maxFileSize = 1000000; //The size limit for a subtitle file, in bytes
 	
 	private SubtitleType subtitleType = SubtitleType.Unknown;
+	
+	
+	/* Public properties */
 	
 	/// <summary>The incomplete subtitles that were found when opening a file.</summary>
 	/// <remarks>This is only used when <see cref="IncludeIncompleteSubtitles" /> is set.</remarks>
@@ -96,6 +102,16 @@ public class SubtitleFactory {
 		set { inputFrameRate = value; }
 	}
 	
+	/// <summary>The file size limit for subtitle files, in bytes.</summary>
+	/// <remarks>Defaults to 1,000,000 bytes (1MB). Setting the value to -1 disables validation.</remarks>
+	public int MaxFileSize {
+		get { return maxFileSize; }
+		set { maxFileSize = value; }
+	}
+	
+	
+	/* Public methods */
+	
 	/// <summary>Creates new empty <see cref="Subtitles" />.</summary>
 	/// <returns>The newly created subtitles.</returns>
 	public Subtitles New () {
@@ -112,7 +128,14 @@ public class SubtitleFactory {
 	public Subtitles Open (string path){
 		SubtitleFormat format = null;
 		string text = String.Empty;
-		Encoding fileEncoding = null;	
+		Encoding fileEncoding = null;
+		
+		if (maxFileSize != -1) {
+			FileInfo info = new FileInfo(path);
+			if (info.Length > maxFileSize) {
+				throw new FileTooLargeException(String.Format("The file size ({0:n} bytes) is larger than the maximum limit ({1:n} bytes).", info.Length, maxFileSize));
+			}
+		}
 		
 		SubtitleInput input = new SubtitleInput(fallbackEncoding, subtitleType);
 		if (encoding == null) {
