@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,6 +63,7 @@ public class VideoOpenDialog : GladeDialog {
 		FileFilter videoFilesFilter = new FileFilter();
 		videoFilesFilter.Name = Catalog.GetString("All Video Files");
 		videoFilesFilter.AddMimeType("video/*");
+		videoFilesFilter.AddMimeType("application/vnd.rn-realmedia-vbr"); //support for rmvb files
 		dialog.AddFilter(videoFilesFilter);
 		
 		/* Set active filter */
