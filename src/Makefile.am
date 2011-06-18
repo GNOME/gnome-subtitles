@@ -69,6 +69,7 @@ $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
 
 $(ASSEMBLY_CONFIG):
 	cp -f $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.config $(GS_BUILDDIR)
+	cp -f $(srcdir)/.libs/libgstreamer_playbin.so $(GS_BUILDDIR)
 
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
