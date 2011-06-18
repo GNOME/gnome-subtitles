@@ -53,18 +53,27 @@ public class VideoOpenDialog : GladeDialog {
 
 	private void SetFilters () {
 
-		/* First filter corresponds to all files */
-		FileFilter allFilesFilter = new FileFilter();
-		allFilesFilter.Name = Catalog.GetString("All Files");
-		allFilesFilter.AddPattern("*");
-		dialog.AddFilter(allFilesFilter);
-		
-		/* Second filter corresponds to video files */
+		/* Video files */
 		FileFilter videoFilesFilter = new FileFilter();
 		videoFilesFilter.Name = Catalog.GetString("All Video Files");
 		videoFilesFilter.AddMimeType("video/*");
-		videoFilesFilter.AddMimeType("application/vnd.rn-realmedia-vbr"); //support for rmvb files
+		videoFilesFilter.AddMimeType("application/vnd.rn-realmedia"); //support for real media files (currently includes rmvb)
+		videoFilesFilter.AddMimeType("application/vnd.rn-realmedia-vbr"); //this should be the real mime type for rmvb files
 		dialog.AddFilter(videoFilesFilter);
+		
+		/* Audio files */
+		FileFilter audioFilesFilter = new FileFilter();
+		audioFilesFilter.Name = Catalog.GetString("All Audio Files");
+		audioFilesFilter.AddMimeType("audio/*");
+		audioFilesFilter.AddMimeType("application/ogg");
+		dialog.AddFilter(audioFilesFilter);
+
+		
+		/* All files */
+		FileFilter allFilesFilter = new FileFilter();
+		allFilesFilter.Name = Catalog.GetString("All Files");
+		allFilesFilter.AddPattern("*");
+		dialog.AddFilter(allFilesFilter);		
 		
 		/* Set active filter */
 		dialog.Filter = videoFilesFilter;
