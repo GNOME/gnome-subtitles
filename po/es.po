@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-06-09 18:47+0000\n"
-"PO-Revision-Date: 2011-06-10 09:51+0200\n"
+"POT-Creation-Date: 2011-06-18 15:05+0000\n"
+"PO-Revision-Date: 2011-06-19 11:19+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -489,7 +489,6 @@ msgid "_Loop Selection"
 msgstr "_Bucle en la selección"
 
 #: ../src/Glade/MainWindow.glade.h:57
-#| msgid "_Before"
 msgid "_Merge"
 msgstr "_Mezclar"
 
@@ -522,7 +521,6 @@ msgid "_Seek to..."
 msgstr "I_r a..."
 
 #: ../src/Glade/MainWindow.glade.h:65
-#| msgid "_Shift"
 msgid "_Split"
 msgstr "_Dividir"
 
@@ -817,12 +815,12 @@ msgid "Editing During"
 msgstr "Editando duración"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:603
+#: ../src/GnomeSubtitles/Ui/Menus.cs:609
 msgid "Undo"
 msgstr "Deshacer"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:613
+#: ../src/GnomeSubtitles/Ui/Menus.cs:619
 msgid "Redo"
 msgstr "Rehacer"
 
@@ -844,6 +842,11 @@ msgstr "Editando la traducción"
 msgid "Inserting Subtitle"
 msgstr "Insertando subtítulos"
 
+#: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
+#| msgid "Deleting Subtitles"
+msgid "Merging subtitles"
+msgstr "Mezclando subtítulos"
+
 #: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
 msgstr "Reemplazando todo"
@@ -851,6 +854,11 @@ msgstr "Reemplazando todo"
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
 msgstr "Desplazando los tiempos"
+
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#| msgid "Deleting Subtitles"
+msgid "Splitting subtitles"
+msgstr "Dividiendo subtítulos"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
 msgid "Synchronizing timings"
@@ -1041,11 +1049,11 @@ msgstr "Vietnamita"
 msgid "Current Locale"
 msgstr "Configuración actual"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:392
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "No se pudo encontrar el manual de Subtítulos de GNOME."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:392
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Verifique que su instalación se completó satisfactoriamente."
 
@@ -1071,7 +1079,7 @@ msgid "None"
 msgstr "Ninguno"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
 msgid "All Files"
 msgstr "Todos los archivos"
 
@@ -1247,8 +1255,8 @@ msgstr "Si no guarda ahora, se perderán todos sus cambios."
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear subtítulos "
-"nuevos?"
+"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear "
+"subtítulos nuevos?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -1319,14 +1327,24 @@ msgstr "No tiene los permisos necesarios para abrir el archivo."
 msgid "The file could not be found."
 msgstr "No se pudo encontrar el archivo."
 
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr ""
+"El archivo parece ser demasiado largo para un archivo de texto de subtítulos."
+
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
 msgid "Could not play the file"
 msgstr "No se pudo reproducir el archivo"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
 msgid "All Video Files"
 msgstr "Todos los archivos de vídeo"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#| msgid "All Video Files"
+msgid "All Audio Files"
+msgstr "Todos los archivos de sonido"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
@@ -1364,7 +1382,7 @@ msgstr "INSER"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:251
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
 msgid "Text"
 msgstr "Texto"
 
@@ -1387,23 +1405,23 @@ msgid "Frame"
 msgstr "Fotograma"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:239
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
 msgid "No."
 msgstr "Número"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "From"
 msgstr "Desde"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:244
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "To"
 msgstr "Hasta"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:245
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
 msgid "During"
 msgstr "Duración"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:256
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
 msgid "Translation"
 msgstr "Traducción"
 
