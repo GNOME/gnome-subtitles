@@ -310,7 +310,7 @@ public class Config {
 	public int PrefsTimingsTimeBetweenSubtitles {
 		get {
 			if (this.valuePrefsTimingsTimeBetweenSubtitles == -1) {
-				this.valuePrefsTimingsTimeBetweenSubtitles = GetInt(keyPrefsTimingsTimeBetweenSubtitles, 100, 0, true, 5000, true);
+				this.valuePrefsTimingsTimeBetweenSubtitles = GetInt(keyPrefsTimingsTimeBetweenSubtitles, 100, 0, true, 2000, true);
 			}
 			return this.valuePrefsTimingsTimeBetweenSubtitles;
 		}
