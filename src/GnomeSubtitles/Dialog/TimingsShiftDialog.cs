@@ -66,7 +66,7 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 	
 	private void InitSpinButton () {
-		spinButton.WidthRequest = Core.Util.SpinButtonTimeWidth(spinButton);
+		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
 	}
 

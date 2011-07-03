@@ -45,7 +45,9 @@ public class SubtitleEditSpinButtons {
 		durationSpinButton = Base.GetWidget(WidgetNames.DurationSpinButton) as SpinButton;
 		
 		/* Initialize */
-		startSpinButton.WidthRequest = Util.SpinButtonTimeWidth(startSpinButton); //Only need to set one of the spin buttons' width
+		startSpinButton.WidthChars = Util.SpinButtonTimeWidthChars;
+		endSpinButton.WidthChars = Util.SpinButtonTimeWidthChars;
+		durationSpinButton.WidthChars = Util.SpinButtonTimeWidthChars;
     	
     	/* Set timing mode to Times */
     	SetTimingMode(TimingMode.Times); //Initial timing mode is Times

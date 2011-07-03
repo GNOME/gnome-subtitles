@@ -27,6 +27,7 @@ using SubLib.Core.Domain;
 namespace GnomeSubtitles.Core {
 
 public class Util {
+	public static int SpinButtonTimeWidthChars = 11; //00:00:00.000 actually has 12 chars, but some have lower width
   
   	//TODO move to other util?
   	public static int ColumnWidth (Widget widget, string text) {
@@ -52,6 +53,7 @@ public class Util {
 		return column;
 	}
   
+  	//TODO stop using this? Doesn't seem to be working for spin buttons anymore (which were updated OTM)
     public static int TextWidth (Widget widget, string text, int margins) {
     	Pango.Layout layout = widget.CreatePangoLayout(text);
     	int width, height;
@@ -80,10 +82,6 @@ public class Util {
 	
 	public static int TimeTextToMilliseconds (string text) {
 		return (int)TimeSpan.Parse(text).TotalMilliseconds;	
-	}
-	
-	public static int SpinButtonTimeWidth (SpinButton spinButton) {
-		return TextWidth(spinButton, "00:00:00,000", 25);
 	}
 	
 	public static void OnTimeInput (object o, InputArgs args) {
@@ -148,8 +146,6 @@ public class Util {
 			return false;
 		}
 	}
-	
-	
 	
 	public static bool OpenSendEmail (string email) {
 		return OpenUrl("mailto:" + email);

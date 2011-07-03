@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2010 Pedro Castro
+ * Copyright (C) 2008-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ public class VideoSeekToDialog : GladeDialog {
 	/* Private methods */
 
 	private void InitSpinButton () {
-		spinButton.WidthRequest = Core.Util.SpinButtonTimeWidth(spinButton);
+		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
 	}
 
