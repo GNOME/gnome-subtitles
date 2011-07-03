@@ -167,11 +167,10 @@ public class Config {
 		}
 	}
 
-	//FIXME use this in other commands
 	public int PrefsVideoSeekOnChangeRewind {
 		get {
 			if (this.valuePrefsVideoSeekOnChangeRewind == -1) {
-				this.valuePrefsVideoSeekOnChangeRewind = GetInt(keyPrefsVideoSeekOnChangeRewind, 500, 0, true, 2000, true);
+				this.valuePrefsVideoSeekOnChangeRewind = GetInt(keyPrefsVideoSeekOnChangeRewind, 200, 0, true, 2000, true);
 			}
 			return this.valuePrefsVideoSeekOnChangeRewind;
 		}
