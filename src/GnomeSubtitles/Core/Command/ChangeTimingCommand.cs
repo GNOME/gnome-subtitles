@@ -71,7 +71,7 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 }
 
 public class ChangeStartCommand : ChangeTimingCommand {
-	private static string description = Catalog.GetString("Editing From");
+	private static string description = Catalog.GetString("Editing Start");
 
 	public ChangeStartCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
@@ -95,7 +95,7 @@ public class ChangeStartCommand : ChangeTimingCommand {
 }
 
 public class ChangeEndCommand : ChangeTimingCommand {
-	private static string description = Catalog.GetString("Editing To");
+	private static string description = Catalog.GetString("Editing End");
 
 	public ChangeEndCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
@@ -117,7 +117,7 @@ public class ChangeEndCommand : ChangeTimingCommand {
 }
 
 public class ChangeDurationCommand : ChangeTimingCommand {
-	private static string description = Catalog.GetString("Editing During");
+	private static string description = Catalog.GetString("Editing Duration");
 
 	public ChangeDurationCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}

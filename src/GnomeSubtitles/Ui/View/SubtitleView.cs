@@ -255,9 +255,9 @@ public class SubtitleView {
     	
     	/* Start, end and duration columns */
     	int timeWidth = Util.ColumnWidth(tree, "00:00:00.000");
-    	startCol = Util.CreateTreeViewColumn(Catalog.GetString("From"), timeWidth, new CellRendererText(), RenderStartCell);
-    	endCol = Util.CreateTreeViewColumn(Catalog.GetString("To"), timeWidth, new CellRendererText(), RenderEndCell);
-    	durationCol = Util.CreateTreeViewColumn(Catalog.GetString("During"), timeWidth, new CellRendererText(), RenderDurationCell);
+    	startCol = Util.CreateTreeViewColumn(Catalog.GetString("Start"), timeWidth, new CellRendererText(), RenderStartCell);
+    	endCol = Util.CreateTreeViewColumn(Catalog.GetString("End"), timeWidth, new CellRendererText(), RenderEndCell);
+    	durationCol = Util.CreateTreeViewColumn(Catalog.GetString("Duration"), timeWidth, new CellRendererText(), RenderDurationCell);
     	
     	/* Text column */
     	int textWidth = Util.ColumnWidth(tree, "0123456789012345678901234567890123456789");
