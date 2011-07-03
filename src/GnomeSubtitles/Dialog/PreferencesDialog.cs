@@ -31,7 +31,7 @@ public class PreferencesDialog : GladeDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "PreferencesDialog.glade";
-
+	
 	/* Components */
 	private EncodingComboBox fileOpenEncoding = null;
 	private EncodingComboBox fileOpenFallbackEncoding = null;
@@ -99,7 +99,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	private void SetDefaultsFileOpenEncoding () {
-		string[] additionalActions = { Catalog.GetString("Remember Last Used") };
+		string[] additionalActions = { Catalog.GetString("Remember the last used encoding") };
 		int fixedEncoding = -1;
 		ConfigFileOpenEncodingOption fileOpenEncodingOption = Base.Config.PrefsDefaultsFileOpenEncodingOption;
 		if (fileOpenEncodingOption == ConfigFileOpenEncodingOption.Specific) {
@@ -131,7 +131,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	private void SetDefaultsFileSaveEncoding () {
-		string[] additionalActions = { Catalog.GetString("Keep Existing"), Catalog.GetString("Remember Last Used") }; //TODO change label
+		string[] additionalActions = { Catalog.GetString("Keep the encoding used on file open"), Catalog.GetString("Remember the last used encoding") };
 		int fixedEncoding = -1;
 		ConfigFileSaveEncodingOption fileSaveEncodingOption = Base.Config.PrefsDefaultsFileSaveEncodingOption;
 		if (fileSaveEncodingOption == ConfigFileSaveEncodingOption.Specific) {
@@ -149,7 +149,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	private void SetDefaultsFileSaveFormat () {
-		string[] additionalActions = { Catalog.GetString("Keep Existing"), Catalog.GetString("Remember Last Used") }; //TODO change label
+		string[] additionalActions = { Catalog.GetString("Keep the format used on file open"), Catalog.GetString("Remember the last used format") };
 		SubtitleType fixedFormat = SubtitleType.Unknown;
 		ConfigFileSaveFormatOption fileSaveFormatOption = Base.Config.PrefsDefaultsFileSaveFormatOption;
 		if (fileSaveFormatOption == ConfigFileSaveFormatOption.Specific) {
@@ -164,7 +164,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	private void SetDefaultsFileSaveNewline () {
-		string[] additionalActions = { Catalog.GetString("Remember Last Used") }; //TODO change label
+		string[] additionalActions = { Catalog.GetString("Remember the last used type") };
 		NewlineType newlineTypeToSelect = NewlineType.Unknown;
 		ConfigFileSaveNewlineOption fileSaveNewlineOption = Base.Config.PrefsDefaultsFileSaveNewlineOption;
 		if (fileSaveNewlineOption == ConfigFileSaveNewlineOption.Specific) {
