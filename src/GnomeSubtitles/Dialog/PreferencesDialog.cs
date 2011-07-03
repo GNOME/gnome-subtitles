@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +44,7 @@ public class PreferencesDialog : GladeDialog {
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private CheckButton autoBackupCheckButton = null;
 	[WidgetAttribute] private CheckButton reactionDelayCheckButton = null;
+	[WidgetAttribute] private CheckButton videoSeekCheckButton = null;
 	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
@@ -51,7 +52,8 @@ public class PreferencesDialog : GladeDialog {
 	[WidgetAttribute] private ComboBox fileSaveNewlineComboBox = null;
 	[WidgetAttribute] private SpinButton autoBackupTimeSpinButton = null;
 	[WidgetAttribute] private SpinButton reactionDelaySpinButton = null;
-
+	[WidgetAttribute] private SpinButton videoSeekRewindSpinButton = null;
+	[WidgetAttribute] private SpinButton subtitleSplitSpinButton = null;
 
 	public PreferencesDialog () : base(gladeFilename, false) {
 		LoadValues();
@@ -61,6 +63,11 @@ public class PreferencesDialog : GladeDialog {
 	/* Private members */
 	
 	private void LoadValues () {
+		LoadValuesFilesTab();
+		LoadValuesEditingTab();
+	}
+
+	private void LoadValuesFilesTab () {
 		/* Translation Save All */
 		translationSaveAllCheckButton.Active = Base.Config.PrefsTranslationSaveAll;
 
@@ -76,6 +83,16 @@ public class PreferencesDialog : GladeDialog {
 		
 		/* Auto Backup */
 		SetAutoBackup();
+	}
+	
+	private void LoadValuesEditingTab () {	
+		/* Video Seeking */
+		videoSeekCheckButton.Active = Base.Config.PrefsVideoSeekOnChange;
+		videoSeekRewindSpinButton.Value = Base.Config.PrefsVideoSeekOnChangeRewind;
+		videoSeekRewindSpinButton.Sensitive = videoSeekCheckButton.Active;
+		
+		/* Subtitle Splitting */
+		subtitleSplitSpinButton.Value = Base.Config.PrefsTimingsTimeBetweenSubtitles;		
 		
 		/* Reaction Delay */
 		SetReactionDelay();
@@ -193,6 +210,11 @@ public class PreferencesDialog : GladeDialog {
 		
 		reactionDelayCheckButton.Active = true;
 		reactionDelaySpinButton.Value = 200;
+		
+		videoSeekCheckButton.Active = true;
+		videoSeekRewindSpinButton.Value = 200;
+		
+		subtitleSplitSpinButton.Value = 100;
 	}
 
 
@@ -330,6 +352,21 @@ public class PreferencesDialog : GladeDialog {
 
 	private void OnReactionDelaySpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsVideoReactionDelay = (o as SpinButton).ValueAsInt;
+	}
+	
+	private void OnVideoSeekToggled (object o, EventArgs args) {
+		bool isActive = (o as CheckButton).Active;
+
+		Base.Config.PrefsVideoSeekOnChange = isActive;
+		videoSeekRewindSpinButton.Sensitive = isActive;
+	}
+	
+	private void OnVideoSeekRewindSpinButtonValueChanged (object o, EventArgs args) {
+		Base.Config.PrefsVideoSeekOnChangeRewind = (o as SpinButton).ValueAsInt;
+	}
+	
+	private void OnSubtitleSplitSpinButtonValueChanged (object o, EventArgs args) {
+		Base.Config.PrefsTimingsTimeBetweenSubtitles = (o as SpinButton).ValueAsInt;
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {

@@ -55,8 +55,8 @@ public class Config {
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
 	private const string keyPrefsVideoApplyReactionDelay = keyPrefsVideo + "apply_reaction_delay";
 	private const string keyPrefsVideoReactionDelay = keyPrefsVideo + "reaction_delay";
-	private const string keyPrefsVideoSeekOnChange = keyPrefsVideo + "seek_on_change"; //FIXME add option to the Preferences Dialog
-	private const string keyPrefsVideoSeekOnChangeRewind = keyPrefsVideo + "seek_on_change_rewind"; //FIXME add option to the Preferences Dialog
+	private const string keyPrefsVideoSeekOnChange = keyPrefsVideo + "seek_on_change";
+	private const string keyPrefsVideoSeekOnChangeRewind = keyPrefsVideo + "seek_on_change_rewind";
 	private const string keyPrefsViewLineLengths = keyPrefsView + "line_lengths";
 	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
 	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
@@ -74,9 +74,9 @@ public class Config {
 	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
 	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
 	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
-	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step"; //FIXME add option to the Preferences Dialog
-	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step"; //FIXME add option to the Preferences Dialog
-	private const string keyPrefsTimingsTimeBetweenSubtitles = keyPrefsTimings + "time_between_subs"; //FIXME add option to the Preferences Dialog
+	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step"; //Not editable in the Preferences dialog
+	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step"; //Not editable in the Preferences dialog
+	private const string keyPrefsTimingsTimeBetweenSubtitles = keyPrefsTimings + "time_between_subs";
 	
 	/* Cached values */
 	private bool isValuePrefsVideoApplyReactionDelayCached = false;
