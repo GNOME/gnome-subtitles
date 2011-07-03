@@ -342,15 +342,6 @@ public class Config {
 			return defaultValue;
 		}
 	}
-
-	/* private int GetInt (string key, int defaultValue) {
-		try {
-			return (int)client.Get(key);
-		}
-		catch (Exception) {
-			return defaultValue;
-		}
-	}*/
 	
 	private int GetInt (string key, int defaultValue, int lowerLimit, bool useLowerLimit, int upperLimit, bool useUpperLimit) {
 		try {
