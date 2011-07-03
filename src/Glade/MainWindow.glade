@@ -247,8 +247,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <signal name="activate" handler="OnEditRedo"/>
-                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="Z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="Y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -586,8 +586,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext"/>
-                        <accelerator key="F3" signal="activate"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate"/>
                       </widget>
                     </child>
                     <child>
@@ -597,8 +597,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious"/>
-                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -842,8 +842,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoPlayPause"/>
-                        <accelerator key="F5" signal="activate"/>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F5" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoPlayPauseImage">
                             <property name="visible">True</property>
@@ -870,8 +870,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoRewind"/>
-                        <accelerator key="F6" signal="activate"/>
                         <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F6" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoRewindImage">
                             <property name="visible">True</property>
@@ -889,8 +889,8 @@
                         <property name="use_underline">True</property>
                         <property name="use_stock">False</property>
                         <signal name="activate" handler="OnVideoForward"/>
-                        <accelerator key="F7" signal="activate"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F7" signal="activate"/>
                         <child internal-child="image">
                           <widget class="GtkImage" id="videoForwardImage">
                             <property name="visible">True</property>
@@ -930,8 +930,8 @@
                         <property name="label" translatable="yes">Seek _to Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -941,8 +941,8 @@
                         <property name="label" translatable="yes">Select Nearest Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSelectNearestSubtitle"/>
-                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </widget>
                     </child>
                     <child>
@@ -1814,6 +1814,7 @@
                         <property name="visible">True</property>
                         <property name="n_rows">3</property>
                         <property name="n_columns">2</property>
+                        <property name="column_spacing">4</property>
                         <property name="row_spacing">2</property>
                         <child>
                           <widget class="GtkSpinButton" id="startSpinButton">
@@ -1865,8 +1866,10 @@
                         <child>
                           <widget class="GtkLabel" id="durationLabel">
                             <property name="visible">True</property>
+                            <property name="tooltip" translatable="yes">Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start and end timings.
+Shift+Plus/Minus (on the numpad) shifts timings.</property>
                             <property name="xalign">0</property>
-                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">During:</property>
+                            <property name="label" translatable="yes" comments="This is the duration of a subtitle.">Duration:</property>
                           </widget>
                           <packing>
                             <property name="top_attach">2</property>
@@ -1878,6 +1881,8 @@
                         <child>
                           <widget class="GtkLabel" id="endLabel">
                             <property name="visible">True</property>
+                            <property name="tooltip" translatable="yes">Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start and end timings.
+Shift+Plus/Minus (on the numpad) shifts timings.</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes" comments="This is the end time/frame of a subtitle.">To:</property>
                           </widget>
@@ -1891,6 +1896,8 @@
                         <child>
                           <widget class="GtkLabel" id="startLabel">
                             <property name="visible">True</property>
+                            <property name="tooltip" translatable="yes">Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start and end timings.
+Shift+Plus/Minus (on the numpad) shifts timings.</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">From:</property>
                           </widget>
