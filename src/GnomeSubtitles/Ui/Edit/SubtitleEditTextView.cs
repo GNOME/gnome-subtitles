@@ -429,7 +429,8 @@ public abstract class SubtitleEditTextView {
 		textView.FocusOutEvent += OnFocusOut;
 		textView.KeyPressEvent += OnKeyPressed;
 		textView.ToggleOverwrite += OnToggleOverwrite;
-		TextView.Destroyed += OnDestroyed;
+		textView.Destroyed += OnDestroyed;
+		
 		
 		/* Spell signals */
 		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
