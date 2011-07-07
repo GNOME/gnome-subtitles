@@ -5,22 +5,22 @@
 #
 # Paulino Padial <devnull.tst@gmail.com>, 2007.
 # Gabriel Ruiz <debianmaster@gmail.com>, 2008
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-07-04 17:22+0000\n"
-"PO-Revision-Date: 2011-07-06 10:58+0200\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2011-07-06 09:01+0000\n"
+"PO-Revision-Date: 2011-07-07 07:05+0200\n"
+"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: ../src/Glade/AboutDialog.glade.h:1
 msgid "About Gnome Subtitles"
@@ -390,6 +390,9 @@ msgid ""
 "and end timings.\n"
 "Shift+Plus/Minus (on the numpad) shifts timings."
 msgstr ""
+"Consejo: use Ctrl +/- y Alt +/- (en el teclado numérico) para ajustar los "
+"tiempos de inicio y final.\n"
+"Mayús +/- (en el teclado numérico) cambia los tiempos."
 
 #: ../src/Glade/MainWindow.glade.h:33
 msgid "Translate Translatio_n → Text"
@@ -573,38 +576,33 @@ msgid "<b>Backup</b>"
 msgstr "<b>Respaldo</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-#, fuzzy
 #| msgid "<b>File Open</b>"
 msgid "<b>File Open Dialog</b>"
-msgstr "<b>Archivo Abrir</b>"
+msgstr "<b>Diálogo de abrir archivo</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
-#, fuzzy
 #| msgid "<b>File Save As</b>"
 msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Archivo Guardar como</b>"
+msgstr "<b>Diálogo de guardar cómo</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
 msgid "<b>Reaction Delay</b>"
 msgstr "<b>Retardo de reacción</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:5
-#, fuzzy
 #| msgid "<b>Subtitle Format:</b>"
 msgid "<b>Subtitle Splitting</b>"
-msgstr "<b>Formato del subtítulo:</b>"
+msgstr "<b>Particionado de subtítulos</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:6
-#, fuzzy
 #| msgid "<b>Translation</b>"
 msgid "<b>Translation File Saving</b>"
-msgstr "<b>Transición</b>"
+msgstr "<b>Guardado de archivo de traducción</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
-#, fuzzy
 #| msgid "<b>Video</b>"
 msgid "<b>Video Seeking</b>"
-msgstr "<b>Vídeo</b>"
+msgstr "<b>Búsqueda en el vídeo</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "Automatically choose the _video file to open"
@@ -614,6 +612,8 @@ msgstr "Seleccionar un _vídeo para abrir automáticamente"
 msgid ""
 "Automatically seek the video to the first subtitle when changing timings"
 msgstr ""
+"Buscar automáticamente en el vídeo el primer subtítulo donde se cambian los "
+"tiempos"
 
 #: ../src/Glade/PreferencesDialog.glade.h:10
 msgid "Ch_aracter coding to use:"
@@ -640,7 +640,6 @@ msgid "If auto detection _fails, use:"
 msgstr "Si la autodetección de la codificación de caracteres _falla, usar:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:16
-#| msgid "_Save"
 msgid "Leave"
 msgstr "Salir"
 
@@ -649,10 +648,9 @@ msgid "Preferences"
 msgstr "Preferencias"
 
 #: ../src/Glade/PreferencesDialog.glade.h:18
-#, fuzzy
 #| msgid "_Seek"
 msgid "Seek"
-msgstr "I_r a"
+msgstr "Buscar"
 
 #: ../src/Glade/PreferencesDialog.glade.h:19
 msgid "Subtract"
@@ -680,7 +678,7 @@ msgstr "minutos"
 
 #: ../src/Glade/PreferencesDialog.glade.h:25
 msgid "ms before the actual start to help review new timings"
-msgstr ""
+msgstr "ms antes del inicio actual para ayudar a revisar los nuevos tiempos"
 
 #: ../src/Glade/PreferencesDialog.glade.h:26
 msgid "ms between subtitles when splitting"
@@ -778,6 +776,8 @@ msgid ""
 "<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
 "to shift timings from the main window.</i></small>"
 msgstr ""
+"<small><i>Consejo: use Mayús +/- (en el teclado numérico)\n"
+"para cambiar los tiempos de la ventana principal.</i></small>"
 
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:6
@@ -1325,8 +1325,8 @@ msgstr "Si no guarda ahora, se perderán todos sus cambios."
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear subtítulos "
-"nuevos?"
+"¿Quiere guardar los cambios en los subtítulos «{0}» antes de crear "
+"subtítulos nuevos?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -1479,7 +1479,6 @@ msgid "No."
 msgstr "Número"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
-#| msgid "New Start:"
 msgid "Start"
 msgstr "Inicio"
 
