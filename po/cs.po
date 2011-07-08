@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-06-09 18:47+0000\n"
-"PO-Revision-Date: 2011-06-13 12:37+0200\n"
+"POT-Creation-Date: 2011-07-03 19:03+0000\n"
+"PO-Revision-Date: 2011-07-08 19:42+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -297,21 +297,22 @@ msgstr "Smazat"
 
 #. This is the duration of a subtitle.
 #: ../src/Glade/MainWindow.glade.h:7
-msgid "During:"
-msgstr "Doba trvání:"
+#| msgid "During:"
+msgid "Duration:"
+msgstr "Doba:"
 
-#: ../src/Glade/MainWindow.glade.h:8
+#. This is the end time/frame of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:9
+msgid "End:"
+msgstr "Konec:"
+
+#: ../src/Glade/MainWindow.glade.h:10
 msgid "Find Ne_xt"
 msgstr "Hledat _následující"
 
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.glade.h:11
 msgid "Find Pre_vious"
 msgstr "Hledat _předchozí"
-
-#. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:11
-msgid "From:"
-msgstr "Od:"
 
 #: ../src/Glade/MainWindow.glade.h:12
 msgid "Insert"
@@ -373,191 +374,200 @@ msgstr "Nastavit jazyk překlad_u"
 msgid "Sh_ift"
 msgstr "Pos_un"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#. This is the start time/frame of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:29
+#| msgid "New Start:"
+msgid "Start:"
+msgstr "Začátek:"
+
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "T_imings"
 msgstr "Č_asování"
 
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:30
-msgid "To:"
-msgstr "Do:"
-
 #: ../src/Glade/MainWindow.glade.h:31
+msgid ""
+"Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
+"and end timings.\n"
+"Shift+Plus/Minus (on the numpad) shifts timings."
+msgstr ""
+"Tip: použijte Ctrl+plus/mínus a Alt+plus/mínus (na číselné klávesnici) k "
+"úpravě počátečního a koncového času.\n"
+"Shift+plus/minus (opět na číselné klávesnici) posune časování."
+
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "Translate Translatio_n → Text"
 msgstr "Přeložit Pře_klad → Text"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "Translate _Text → Translation"
 msgstr "Přeložit _Text → Překlad"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "Translatio_n"
 msgstr "Přek_lad"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.glade.h:36
 msgid "Vide_o"
 msgstr "Vide_o"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.glade.h:37
 msgid "Video _Subtitles"
 msgstr "Titulky _videa"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.glade.h:38
 msgid "_Adjust"
 msgstr "_Přizpůsobit"
 
-#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/MainWindow.glade.h:39
 msgid "_After"
 msgstr "Z_a"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:40
 msgid "_Autocheck Spelling"
 msgstr "_Automaticky kontrolovat pravopis"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "_Before"
 msgstr "Pře_d"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:42
 msgid "_Bold"
 msgstr "_Tučně"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:43
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.glade.h:44
 msgid "_Contents"
 msgstr "_Obsah"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Delete Subtitles"
 msgstr "S_mazat titulky"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.glade.h:46
 msgid "_Edit"
 msgstr "_Upravit"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.glade.h:47
 msgid "_File"
 msgstr "_Soubor"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "_Format"
 msgstr "_Formát"
 
-#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "_Forward"
 msgstr "Posunout _vpřed"
 
-#: ../src/Glade/MainWindow.glade.h:48
+#: ../src/Glade/MainWindow.glade.h:50
 msgid "_Frames"
 msgstr "_Snímky"
 
-#: ../src/Glade/MainWindow.glade.h:49
+#: ../src/Glade/MainWindow.glade.h:51
 msgid "_Headers"
 msgstr "_Hlavičky"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:53
 msgid "_Input Frame Rate"
 msgstr "Vs_tupní snímková frekvence"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "_Insert Subtitle"
 msgstr "Vlož_it titulek"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "_Italic"
 msgstr "_Kurzíva"
 
-#: ../src/Glade/MainWindow.glade.h:54
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "_Line Lengths"
 msgstr "Dé_lky řádků"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Loop Selection"
 msgstr "Výběr _smyčky"
 
-#: ../src/Glade/MainWindow.glade.h:57
-#| msgid "_Before"
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Merge"
 msgstr "S_loučit"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:60
 msgid "_New"
 msgstr "_Nový"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:61
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "_Play / Pause"
 msgstr "_Přehrávat / Pozastavit"
 
-#: ../src/Glade/MainWindow.glade.h:61 ../src/Glade/SearchDialog.glade.h:7
+#: ../src/Glade/MainWindow.glade.h:63 ../src/Glade/SearchDialog.glade.h:7
 msgid "_Replace"
 msgstr "Nah_radit"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:64
 msgid "_Save"
 msgstr "_Uložit"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "_Search"
 msgstr "_Hledat"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "_Seek to..."
 msgstr "_Přejít na…"
 
-#: ../src/Glade/MainWindow.glade.h:65
-#| msgid "_Shift"
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "_Split"
 msgstr "_Rozdělit"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:68
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Synchronizovat"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:69
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/Glade/MainWindow.glade.h:68
+#: ../src/Glade/MainWindow.glade.h:70
 msgid "_Times"
 msgstr "Ča_sy"
 
-#: ../src/Glade/MainWindow.glade.h:69
+#: ../src/Glade/MainWindow.glade.h:71
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: ../src/Glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.glade.h:72
 msgid "_Translation"
 msgstr "_Překlad"
 
-#: ../src/Glade/MainWindow.glade.h:71
+#: ../src/Glade/MainWindow.glade.h:73
 msgid "_Underline"
 msgstr "Po_dtržené"
 
-#: ../src/Glade/MainWindow.glade.h:72
+#: ../src/Glade/MainWindow.glade.h:74
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:73
+#: ../src/Glade/MainWindow.glade.h:75
 msgid "_Video Frame Rate"
 msgstr "Snímková frekvence _videa"
 
-#: ../src/Glade/MainWindow.glade.h:74
+#: ../src/Glade/MainWindow.glade.h:76
 msgid "_View"
 msgstr "Zo_brazit"
 
@@ -566,72 +576,119 @@ msgid "<b>Backup</b>"
 msgstr "<b>Zálohování</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "<b>File Open</b>"
-msgstr "<b>Otevírání souboru</b>"
+#| msgid "<b>File Open</b>"
+msgid "<b>File Open Dialog</b>"
+msgstr "<b>Dialogové okno otevírání</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
-msgid "<b>File Save As</b>"
-msgstr "<b>Ukládání souboru jako</b>"
+#| msgid "<b>File Save As</b>"
+msgid "<b>File Save As Dialog</b>"
+msgstr "<b>Dialogové okno uložení jako</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
 msgid "<b>Reaction Delay</b>"
 msgstr "<b>Reakční prodleva</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:5
-msgid "<b>Translation</b>"
-msgstr "<b>Překlad</b>"
+#| msgid "<b>Subtitle Format:</b>"
+msgid "<b>Subtitle Splitting</b>"
+msgstr "<b>Rozdělování titulků</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:6
+#| msgid "<b>Translation</b>"
+msgid "<b>Translation File Saving</b>"
+msgstr "<b>Ukládání souborů s překlady</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:7
+#| msgid "<b>File Open</b>"
+msgid "<b>Video Seeking</b>"
+msgstr "<b>Přesun ve videu</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "Automatically choose the _video file to open"
 msgstr "Automaticky zvolit _video, které se má otevřít"
 
-#: ../src/Glade/PreferencesDialog.glade.h:7
+#: ../src/Glade/PreferencesDialog.glade.h:9
+msgid ""
+"Automatically seek the video to the first subtitle when changing timings"
+msgstr "Při změně časování ve videu automaticky přejít na první titulek"
+
+#: ../src/Glade/PreferencesDialog.glade.h:10
 msgid "Ch_aracter coding to use:"
 msgstr "Použít kódování zn_aků:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:8
+#: ../src/Glade/PreferencesDialog.glade.h:11
 msgid "Character c_oding to use:"
 msgstr "Použít kód_ování znaků:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:9
+#: ../src/Glade/PreferencesDialog.glade.h:12
 msgid "Create a _backup copy of files every"
 msgstr "Vytvořit _záložní kopii souborů každých"
 
-#: ../src/Glade/PreferencesDialog.glade.h:10
+#: ../src/Glade/PreferencesDialog.glade.h:13
+#| msgid "Editing To"
+msgid "Editing"
+msgstr "Úpravy"
+
+#: ../src/Glade/PreferencesDialog.glade.h:14
+#| msgid "File:"
+msgid "Files"
+msgstr "Soubory"
+
+#: ../src/Glade/PreferencesDialog.glade.h:15
 msgid "If auto detection _fails, use:"
 msgstr "Když _selže automatická detekce, použít:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:11
+#: ../src/Glade/PreferencesDialog.glade.h:16
+#| msgid "_Save"
+msgid "Leave"
+msgstr "Opustit"
+
+#: ../src/Glade/PreferencesDialog.glade.h:17
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: ../src/Glade/PreferencesDialog.glade.h:12
+#: ../src/Glade/PreferencesDialog.glade.h:18
+#| msgid "_Seek"
+msgid "Seek"
+msgstr "Přejít"
+
+#: ../src/Glade/PreferencesDialog.glade.h:19
 msgid "Subtract"
 msgstr "Odečíst"
 
-#: ../src/Glade/PreferencesDialog.glade.h:13
+#: ../src/Glade/PreferencesDialog.glade.h:20
 msgid "When saving subtitles, also save their _translation"
 msgstr "Když se ukládají titulky, uložit i _překlad"
 
-#: ../src/Glade/PreferencesDialog.glade.h:14
+#: ../src/Glade/PreferencesDialog.glade.h:21
 msgid "_Newline type to use:"
 msgstr "Použít zako_nčení řádku:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:15
+#: ../src/Glade/PreferencesDialog.glade.h:22
 msgid "_Reset to defaults"
 msgstr "V_rátit na výchozí"
 
-#: ../src/Glade/PreferencesDialog.glade.h:16
+#: ../src/Glade/PreferencesDialog.glade.h:23
 msgid "_Subtitle format to use:"
 msgstr "Použít _formát titulků:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:17
-msgid "milliseconds when setting subtitle start/end on playback"
-msgstr "milisekund od nastavení začátku/konce titulku při přehrávání"
-
-#: ../src/Glade/PreferencesDialog.glade.h:18
+#: ../src/Glade/PreferencesDialog.glade.h:24
 msgid "minutes"
 msgstr "minut"
+
+#: ../src/Glade/PreferencesDialog.glade.h:25
+msgid "ms before the actual start to help review new timings"
+msgstr "ms před aktuální začátek kvůli přehledu o novém časování"
+
+#: ../src/Glade/PreferencesDialog.glade.h:26
+msgid "ms between subtitles when splitting"
+msgstr "ms mezi titulky při rozdělování"
+
+#: ../src/Glade/PreferencesDialog.glade.h:27
+#| msgid "milliseconds when setting subtitle start/end on playback"
+msgid "ms when setting subtitle start/end on playback"
+msgstr "ms od nastavení začátku/konce titulku při přehrávání"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -715,29 +772,37 @@ msgstr "Počáteční snímek:"
 msgid "<b>Frames</b>"
 msgstr "<b>Snímky</b>"
 
+#: ../src/Glade/TimingsShiftDialog.glade.h:3
+msgid ""
+"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
+"to shift timings from the main window.</i></small>"
+msgstr ""
+"<small><i>Tip: použijte Shift+plus/mínus (na číselné klávesnici)\n"
+"pro posun časování z hlavního okna.</i></small>"
+
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:4
+#: ../src/Glade/TimingsShiftDialog.glade.h:6
 msgid "From _first subtitle to selection"
 msgstr "Od _prvního titulku k výběru"
 
 #. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:6
+#: ../src/Glade/TimingsShiftDialog.glade.h:8
 msgid "From selection to _last subtitle"
 msgstr "Od výběru k pos_lednímu titulku"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:7
+#: ../src/Glade/TimingsShiftDialog.glade.h:9
 msgid "Shift Timings"
 msgstr "Posun časování"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
+#: ../src/Glade/TimingsShiftDialog.glade.h:10
 msgid "_All subtitles"
 msgstr "_Všechny titulky"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
+#: ../src/Glade/TimingsShiftDialog.glade.h:11
 msgid "_Selected subtitles"
 msgstr "_Zvolené titulky"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
+#: ../src/Glade/TimingsShiftDialog.glade.h:12
 msgid "_Shift"
 msgstr "Po_sunout"
 
@@ -802,24 +867,27 @@ msgid "Toggling Underline"
 msgstr "Podtržení"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
-msgid "Editing From"
-msgstr "Upravit od"
+#| msgid "Editing From"
+msgid "Editing Start"
+msgstr "Úprava začátku"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
-msgid "Editing To"
-msgstr "Upravit do"
+#| msgid "Editing To"
+msgid "Editing End"
+msgstr "Úprava konce"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
-msgid "Editing During"
-msgstr "Upravit během"
+#| msgid "Editing During"
+msgid "Editing Duration"
+msgstr "Úprava doby trvání"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:603
+#: ../src/GnomeSubtitles/Ui/Menus.cs:609
 msgid "Undo"
 msgstr "Vrátit změny"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:613
+#: ../src/GnomeSubtitles/Ui/Menus.cs:619
 msgid "Redo"
 msgstr "Znovu"
 
@@ -841,6 +909,11 @@ msgstr "Úprava překladu"
 msgid "Inserting Subtitle"
 msgstr "Vložení titulku"
 
+#: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
+#| msgid "Deleting Subtitles"
+msgid "Merging subtitles"
+msgstr "Slučování titulků"
+
 #: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
 msgstr "Nahrazení všech"
@@ -848,6 +921,11 @@ msgstr "Nahrazení všech"
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
 msgstr "Posun časování"
+
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#| msgid "Deleting Subtitles"
+msgid "Splitting subtitles"
+msgstr "Rozdělování titulků"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
 msgid "Synchronizing timings"
@@ -1038,11 +1116,11 @@ msgstr "Vietnamské"
 msgid "Current Locale"
 msgstr "Aktuální lokalizace"
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:392
 msgid "The Gnome Subtitles Manual could not be found."
 msgstr "Příručka k nástroji Gnome Subtitles nebyla nalezena."
 
-#: ../src/GnomeSubtitles/Core/EventHandlers.cs:394
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:392
 msgid "Please verify that your installation has been completed successfully."
 msgstr "Zkontrolujte, prosím, zda byla instalace úspěšně dokončena."
 
@@ -1068,7 +1146,7 @@ msgid "None"
 msgstr "Žádné"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -1080,17 +1158,29 @@ msgstr "Všechny soubory s titulky"
 msgid "Open Translation File"
 msgstr "Otevřít soubor s překladem"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:135
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
-msgid "Remember Last Used"
-msgstr "Zapamatovat naposledy použité"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
+#| msgid "Remember Last Used"
+msgid "Remember the last used encoding"
+msgstr "Zapamatovat si naposledy použité kódováni"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:135
-msgid "Keep Existing"
-msgstr "Zachovat stávající"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
+msgid "Keep the encoding used on file open"
+msgstr "Zachovat kódování použité při otevření souboru"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+msgid "Keep the format used on file open"
+msgstr "Zachovat formát použitý při otevření souboru"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+#| msgid "Remember Last Used"
+msgid "Remember the last used format"
+msgstr "Zapamatovat si naposledy použitý formát"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:167
+#| msgid "Remember Last Used"
+msgid "Remember the last used type"
+msgstr "Zapamatovat si naposledy použitý typ"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
 msgid "Find"
@@ -1117,7 +1207,7 @@ msgstr "Vyberte _jazyk překladu aktuálně otevřených titulků."
 msgid "Save Translation As"
 msgstr "Uložit překlad jako"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:67
 msgid "Start Time:"
 msgstr "Počáteční čas:"
 
@@ -1308,14 +1398,24 @@ msgstr "K otevření souboru nemáte potřebné oprávnění."
 msgid "The file could not be found."
 msgstr "Soubor nelze najít."
 
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr ""
+"Soubor se jeví příliš velký na to, aby to byl textový soubor s titulky."
+
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
 msgid "Could not play the file"
 msgstr "Nelze přehrát soubor"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:64
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
 msgid "All Video Files"
-msgstr "Všechny video soubory"
+msgstr "Všechny videosoubory"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#| msgid "All Video Files"
+msgid "All Audio Files"
+msgstr "Všechny zvukové soubory"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
@@ -1353,7 +1453,7 @@ msgstr "VLO"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:251
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
 msgid "Text"
 msgstr "Text"
 
@@ -1376,22 +1476,24 @@ msgid "Frame"
 msgstr "Snímek"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:239
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
 msgid "No."
 msgstr "Č."
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:243
-msgid "From"
-msgstr "Od"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#| msgid "New Start:"
+msgid "Start"
+msgstr "Začátek"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:244
-msgid "To"
-msgstr "Do"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "End"
+msgstr "Konec"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:245
-msgid "During"
-msgstr "Trvání"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
+#| msgid "During"
+msgid "Duration"
+msgstr "Doba"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:256
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
 msgid "Translation"
 msgstr "Překlad"
