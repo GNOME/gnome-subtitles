@@ -26,7 +26,6 @@ using System.Runtime.InteropServices;
 
 namespace GnomeSubtitles.Ui.Edit {
 
-//FIXME italics, bolds, underlines, change style insted of applying tags
 public abstract class SubtitleEditTextView {
 	private TextView textView = null;
 
@@ -35,11 +34,12 @@ public abstract class SubtitleEditTextView {
 	private bool isBufferDeleteManual = false; //used to indicate whether there were manual (not by the user) inserts to the buffer
 	private bool isToggleOverwriteSilent = false; //used to indicate whether an overwrite toggle was manual
 	
+	/* Constants */
+	private String textFont = "sans";
+	private int textFontSize = 14;
+	
 	/* Text tags */
-	private TextTag boldTag = new TextTag("bold");
-	private TextTag italicTag = new TextTag("italic");
 	private TextTag underlineTag = new TextTag("underline");
-	private ArrayList subtitleTags = new ArrayList(4); //4 not to resize container with 3 items added
 	
 	/* Other */
 	private Subtitle subtitle = null;
@@ -49,15 +49,8 @@ public abstract class SubtitleEditTextView {
 		this.textView = textView;
 
 		/* Init tags */
-    	boldTag.Weight = Pango.Weight.Bold;
-    	italicTag.Style = Pango.Style.Italic;
     	underlineTag.Underline = Pango.Underline.Single;
-
-		/* Init text view */
-    	this.textView.Buffer.TagTable.Add(boldTag);
-    	this.textView.Buffer.TagTable.Add(italicTag);
     	this.textView.Buffer.TagTable.Add(underlineTag);
-   		this.textView.ModifyFont(Pango.FontDescription.FromString("sans 14"));
 
 		/* Init margin */
 		new SubtitleEditTextViewMargin(this.textView);
@@ -102,8 +95,8 @@ public abstract class SubtitleEditTextView {
     			return String.Empty;
 
     		TextIter start, end;
-    		if (textView.Buffer.GetSelectionBounds(out start, out end)) //has selection
-    			return textView.Buffer.GetText(start, end, false);
+    		if (this.textView.Buffer.GetSelectionBounds(out start, out end)) //has selection
+    			return this.textView.Buffer.GetText(start, end, false);
     		else
     			return String.Empty;
     	}
@@ -113,12 +106,14 @@ public abstract class SubtitleEditTextView {
 	
 	public void LoadSubtitle (Subtitle subtitle) {
 		this.subtitle = subtitle;
-		LoadTags(subtitle.Style);
+		
+		SetFont(subtitle.Style);
 		SetText(GetSubtitleTextContent(subtitle));
+		ApplyTags();
 	}
 
 	public void InsertText (int startIndex, string text) {
-		TextBuffer buffer = textView.Buffer;
+		TextBuffer buffer = this.textView.Buffer;
 		isBufferInsertManual = true;
 
 		buffer.BeginUserAction();
@@ -132,7 +127,7 @@ public abstract class SubtitleEditTextView {
 	}
 	
 	public void DeleteText (int startIndex, int endIndex) {
-		TextBuffer buffer = textView.Buffer;
+		TextBuffer buffer = this.textView.Buffer;
 		isBufferDeleteManual = true;
 		
 		buffer.BeginUserAction();
@@ -147,13 +142,13 @@ public abstract class SubtitleEditTextView {
 
 	public void FocusOnSelection (int startIndex, int endIndex) {
     	GrabFocus();
-		TextIter start = textView.Buffer.GetIterAtOffset(startIndex);
-		TextIter end = textView.Buffer.GetIterAtOffset(endIndex);
-		textView.Buffer.SelectRange(start, end);		
+		TextIter start = this.textView.Buffer.GetIterAtOffset(startIndex);
+		TextIter end = this.textView.Buffer.GetIterAtOffset(endIndex);
+		this.textView.Buffer.SelectRange(start, end);		
     }
 	
 	public void ReplaceSelection (string replacement) {
-    	TextBuffer buffer = textView.Buffer;
+    	TextBuffer buffer = this.textView.Buffer;
     	buffer.BeginUserAction();
     	buffer.DeleteSelection(true, true);
     	buffer.InsertAtCursor(replacement);
@@ -167,7 +162,7 @@ public abstract class SubtitleEditTextView {
 	/// <returns>Whether text was selected.</returns>
 	public bool GetTextSelectionBounds (out int start, out int end) {
 		TextIter startIter, endIter;
-		if (textView.Buffer.GetSelectionBounds(out startIter, out endIter)) { //has selection
+		if (this.textView.Buffer.GetSelectionBounds(out startIter, out endIter)) { //has selection
 			start = startIter.Offset;
 			end = endIter.Offset;
 			return true;
@@ -234,50 +229,35 @@ public abstract class SubtitleEditTextView {
     	isBufferInsertManual = true;
     	isBufferDeleteManual = true;
     	
-    	textView.Buffer.Text = text;
+    	this.textView.Buffer.Text = text;
     	
     	isBufferChangeSilent = false;
     	isBufferInsertManual = false;
     	isBufferDeleteManual = false;
     }
-
-    private void SetTag (TextTag tag, TextIter start, TextIter end, bool activate) {
-		if (activate)
-			textView.Buffer.ApplyTag(tag, start, end);
-		else
-			textView.Buffer.RemoveTag(tag, start, end);
+    
+    /// <summary>Sets font with bold and italic if applicable.</summary>
+    private void SetFont (SubLib.Core.Domain.Style style) {
+    	Pango.FontDescription font = Pango.FontDescription.FromString(this.textFont + (style.Bold ? " bold" : String.Empty) + (style.Italic ? " italic" : String.Empty) + " " + this.textFontSize);
+		this.textView.ModifyFont(font);
     }
     
-	private void LoadTags (SubLib.Core.Domain.Style style) {
-    	subtitleTags.Clear();
-    	/*if (style.Bold)
-    		subtitleTags.Add(boldTag);
-    	if (style.Italic)
-    		subtitleTags.Add(italicTag);
-    	if (style.Underline)
-    		subtitleTags.Add(underlineTag);*/
-    		
-    	if (style.Bold)
-    		subtitleTags.Add(boldTag);
-    	if (style.Italic) {
-    		Pango.FontDescription fd = textView.PangoContext.FontDescription.Copy();
-    		fd.Style = Pango.Style.Italic;
-    		textView.ModifyFont(fd);
+    /* Currently applies underline tag */
+    private void ApplyTags () {
+    	if (this.subtitle.Style.Underline) {
+    		ApplyTag(this.underlineTag, this.textView.Buffer.StartIter, this.textView.Buffer.EndIter, true);
     	}
-    	if (style.Underline)
-    		subtitleTags.Add(underlineTag);
     }
     
-    private void ApplyLoadedTags () {
-    	TextBuffer buffer = textView.Buffer;
-    	TextIter start = buffer.StartIter;
-    	TextIter end = buffer.EndIter;
-    	foreach (TextTag tag in subtitleTags)
-			SetTag(tag, start, end, true);
+    private void ApplyTag (TextTag tag, TextIter start, TextIter end, bool activate) {
+		if (activate)
+			this.textView.Buffer.ApplyTag(tag, start, end);
+		else
+			this.textView.Buffer.RemoveTag(tag, start, end);
     }
-    
+            
     private TextIter GetIterAtInsertMark () {
-    	return textView.Buffer.GetIterAtMark(textView.Buffer.InsertMark);
+    	return this.textView.Buffer.GetIterAtMark(this.textView.Buffer.InsertMark);
     }
     
     private void GetLineColumn (out int line, out int column) {
@@ -299,12 +279,12 @@ public abstract class SubtitleEditTextView {
 	}
     
 	private void UpdateOverwriteStatus () {
-		Core.Base.Ui.Status.Overwrite = textView.Overwrite;
+		Core.Base.Ui.Status.Overwrite = this.textView.Overwrite;
 	}
 	
 	private void PlaceCursor (int index) {
-		TextIter iter = textView.Buffer.GetIterAtOffset(index);
-		textView.Buffer.PlaceCursor(iter);
+		TextIter iter = this.textView.Buffer.GetIterAtOffset(index);
+		this.textView.Buffer.PlaceCursor(iter);
 	}
 	
 	/// <summary>Returns the cursor index, or -1 if the text view is not enabled.</summary>
@@ -318,11 +298,11 @@ public abstract class SubtitleEditTextView {
     }
 
 	private void GrabFocus () {
-		textView.GrabFocus();
+		this.textView.GrabFocus();
 	}
 	
 	private ScrolledWindow GetScrolledWindow () {
-		return textView.Parent as ScrolledWindow;
+		return this.textView.Parent as ScrolledWindow;
 	}
 	
 	
@@ -331,15 +311,15 @@ public abstract class SubtitleEditTextView {
 	/// <summary>Toggles the overwrite status without emitting its event.</summary>
     protected void ToggleOverwriteSilent () {
     	isToggleOverwriteSilent = true;
-    	textView.Overwrite = !textView.Overwrite;
+    	this.textView.Overwrite = !this.textView.Overwrite;
     	isToggleOverwriteSilent = false;
     }
 
 	private void OnBufferChanged (object o, EventArgs args) {
 		if (!isBufferChangeSilent)
-			ChangeSubtitleTextContent(subtitle, textView.Buffer.Text);
+			ChangeSubtitleTextContent(subtitle, this.textView.Buffer.Text);
 		
-		ApplyLoadedTags();
+		ApplyTags();
 		UpdateLineColStatus();
 	}
 	
@@ -355,7 +335,7 @@ public abstract class SubtitleEditTextView {
 			ExecuteInsertCommand(index, insertion);
 		}
 		
-		ApplyLoadedTags();		
+		ApplyTags();		
 		UpdateLineColStatus();
 	}
 	
@@ -364,7 +344,7 @@ public abstract class SubtitleEditTextView {
 		if (!isBufferDeleteManual) {
 			int index = args.Start.Offset;
 			int length = args.End.Offset - index;
-			string deletion = textView.Buffer.Text.Substring(index, length);
+			string deletion = this.textView.Buffer.Text.Substring(index, length);
 			ExecuteDeleteCommand(index, deletion, GetCursorIndex()); 
 		}
 	}
@@ -419,17 +399,17 @@ public abstract class SubtitleEditTextView {
     private void OnBaseInitFinished () {
     
 		/* Buffer signals */
-		textView.Buffer.Changed += OnBufferChanged;
-		textView.Buffer.MarkSet += OnBufferMarkSet;
-		textView.Buffer.InsertText += OnBufferInsertText;
-		textView.Buffer.DeleteRange += OnBufferDeleteRange;
+		this.textView.Buffer.Changed += OnBufferChanged;
+		this.textView.Buffer.MarkSet += OnBufferMarkSet;
+		this.textView.Buffer.InsertText += OnBufferInsertText;
+		this.textView.Buffer.DeleteRange += OnBufferDeleteRange;
 		
 		/* TextView signals */
-		textView.FocusInEvent += OnFocusIn;
-		textView.FocusOutEvent += OnFocusOut;
-		textView.KeyPressEvent += OnKeyPressed;
-		textView.ToggleOverwrite += OnToggleOverwrite;
-		textView.Destroyed += OnDestroyed;
+		this.textView.FocusInEvent += OnFocusIn;
+		this.textView.FocusOutEvent += OnFocusOut;
+		this.textView.KeyPressEvent += OnKeyPressed;
+		this.textView.ToggleOverwrite += OnToggleOverwrite;
+		this.textView.Destroyed += OnDestroyed;
     }
     
     private void EmitToggleOverwrite () {
