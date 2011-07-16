@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2009,2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,15 +26,16 @@ using System.Runtime.InteropServices;
 
 namespace GnomeSubtitles.Ui.Edit {
 
+//FIXME italics, bolds, underlines, change style insted of applying tags
 public abstract class SubtitleEditTextView {
 	private TextView textView = null;
+
 	private bool isBufferChangeSilent = false; //used to indicate whether a buffer change should set the subtitle text in the subtitle list
 	private bool isBufferInsertManual = false; //used to indicate whether there were manual (not by the user) inserts to the buffer
 	private bool isBufferDeleteManual = false; //used to indicate whether there were manual (not by the user) inserts to the buffer
 	private bool isToggleOverwriteSilent = false; //used to indicate whether an overwrite toggle was manual
 	
 	/* Text tags */
-	private TextTag scaleTag = new TextTag("scale");
 	private TextTag boldTag = new TextTag("bold");
 	private TextTag italicTag = new TextTag("italic");
 	private TextTag underlineTag = new TextTag("underline");
@@ -44,21 +45,22 @@ public abstract class SubtitleEditTextView {
 	private Subtitle subtitle = null;
 	private IntPtr spellTextView = IntPtr.Zero;
 
-
 	public SubtitleEditTextView (TextView textView) {
 		this.textView = textView;
 
 		/* Init tags */
-		scaleTag.Scale = Pango.Scale.XLarge;
     	boldTag.Weight = Pango.Weight.Bold;
     	italicTag.Style = Pango.Style.Italic;
     	underlineTag.Underline = Pango.Underline.Single;
 
 		/* Init text view */
-		textView.Buffer.TagTable.Add(scaleTag);
-    	textView.Buffer.TagTable.Add(boldTag);
-    	textView.Buffer.TagTable.Add(italicTag);
-    	textView.Buffer.TagTable.Add(underlineTag);
+    	this.textView.Buffer.TagTable.Add(boldTag);
+    	this.textView.Buffer.TagTable.Add(italicTag);
+    	this.textView.Buffer.TagTable.Add(underlineTag);
+   		this.textView.ModifyFont(Pango.FontDescription.FromString("sans 14"));
+
+		/* Init margin */
+		new SubtitleEditTextViewMargin(this.textView);
 
 		Base.InitFinished += OnBaseInitFinished;
 	}
@@ -249,10 +251,20 @@ public abstract class SubtitleEditTextView {
     
 	private void LoadTags (SubLib.Core.Domain.Style style) {
     	subtitleTags.Clear();
-    	if (style.Bold)
+    	/*if (style.Bold)
     		subtitleTags.Add(boldTag);
     	if (style.Italic)
     		subtitleTags.Add(italicTag);
+    	if (style.Underline)
+    		subtitleTags.Add(underlineTag);*/
+    		
+    	if (style.Bold)
+    		subtitleTags.Add(boldTag);
+    	if (style.Italic) {
+    		Pango.FontDescription fd = textView.PangoContext.FontDescription.Copy();
+    		fd.Style = Pango.Style.Italic;
+    		textView.ModifyFont(fd);
+    	}
     	if (style.Underline)
     		subtitleTags.Add(underlineTag);
     }
@@ -261,7 +273,6 @@ public abstract class SubtitleEditTextView {
     	TextBuffer buffer = textView.Buffer;
     	TextIter start = buffer.StartIter;
     	TextIter end = buffer.EndIter;
-    	buffer.ApplyTag(scaleTag, start, end);
     	foreach (TextTag tag in subtitleTags)
 			SetTag(tag, start, end, true);
     }
@@ -416,8 +427,9 @@ public abstract class SubtitleEditTextView {
     		}
     	}
     }
-
+    
     private void OnBaseInitFinished () {
+    
 		/* Buffer signals */
 		textView.Buffer.Changed += OnBufferChanged;
 		textView.Buffer.MarkSet += OnBufferMarkSet;
@@ -431,11 +443,11 @@ public abstract class SubtitleEditTextView {
 		textView.ToggleOverwrite += OnToggleOverwrite;
 		textView.Destroyed += OnDestroyed;
 		
-		
 		/* Spell signals */
 		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
 		ConnectLanguageChangedSignal();
 		
+		/* Selection signals */
 		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
     }
     
@@ -467,7 +479,6 @@ public abstract class SubtitleEditTextView {
 	protected void ClearFields () {
 		SetText(String.Empty);	
 	}
-
 
 }
 
