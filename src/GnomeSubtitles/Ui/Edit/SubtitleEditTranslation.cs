@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2009,2011 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,27 +56,29 @@ public class SubtitleEditTranslation : SubtitleEditTextView {
 	}
 	
 	/* Event members */
-	
-	protected override void ConnectLanguageChangedSignal () {
-		Base.SpellLanguages.TranslationLanguageChanged += OnSpellLanguageChanged;
-	}
 
 	private void OnBaseInitFinished () {
 		Base.Ui.Edit.TextEdit.ToggleOverwrite += OnTextEditToggleOverwrite;
+		
 		Base.TranslationLoaded += OnBaseTranslationLoaded;
 		Base.TranslationUnloaded += OnBaseTranslationUnloaded;
 	}
 	
 	private void OnBaseTranslationLoaded () {
-		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
-		if (subtitle != null)
-			LoadSubtitle(subtitle);
-
-    	SetVisibility(true);
+		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
+    	    	
+    	Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
+		Base.SpellLanguages.TranslationLanguageChanged += OnSpellLanguageChanged;
+		
+		SetVisibility(true);
 	}
 	
 	private void OnBaseTranslationUnloaded () {
-		ClearFields();
+		Base.Ui.View.Selection.Changed -= OnSubtitleSelectionChanged;
+		
+		Base.SpellLanguages.ToggleEnabled -= OnSpellToggleEnabled;
+		Base.SpellLanguages.TranslationLanguageChanged -= OnSpellLanguageChanged;
+		
     	SetVisibility(false);
 	}
 	

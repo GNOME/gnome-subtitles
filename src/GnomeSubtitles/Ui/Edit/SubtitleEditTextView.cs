@@ -73,7 +73,6 @@ public abstract class SubtitleEditTextView {
 	protected abstract void ExecuteInsertCommand (int index, string insertion);
 	protected abstract void ExecuteDeleteCommand (int index, string deletion, int cursor);
 	protected abstract SpellLanguage GetSpellActiveLanguage ();
-	protected abstract void ConnectLanguageChangedSignal ();
 	
 	/* Events */
 	public event EventHandler ToggleOverwrite = null;
@@ -391,17 +390,6 @@ public abstract class SubtitleEditTextView {
 			EmitToggleOverwrite();
 	}
 	
-	private void OnSpellToggleEnabled () {
-		bool enabled = Base.SpellLanguages.Enabled;
-		if (enabled) {
-			GtkSpellAttach();
-			SpellLanguage language = GetSpellActiveLanguage();
-			GtkSpellSetLanguage(language);
-		}
-		else
-			GtkSpellDetach();
-	}
-	
 	private void OnDestroyed (object o, EventArgs args) {
 		GtkSpellDetach();
 	}
@@ -442,20 +430,6 @@ public abstract class SubtitleEditTextView {
 		textView.KeyPressEvent += OnKeyPressed;
 		textView.ToggleOverwrite += OnToggleOverwrite;
 		textView.Destroyed += OnDestroyed;
-		
-		/* Spell signals */
-		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
-		ConnectLanguageChangedSignal();
-		
-		/* Selection signals */
-		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
-    }
-    
-    private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
-    	if (subtitle != null)
-    		LoadSubtitle(subtitle);
-    	else
-    		ClearFields();
     }
     
     private void EmitToggleOverwrite () {
@@ -471,9 +445,30 @@ public abstract class SubtitleEditTextView {
 			GtkSpellSetLanguage(language);
 		}
 	}
+		
+	protected void OnSpellToggleEnabled () {
+		bool enabled = Base.SpellLanguages.Enabled;
+		if (enabled) {
+			GtkSpellAttach();
+			SpellLanguage language = GetSpellActiveLanguage();
+			GtkSpellSetLanguage(language);
+		}
+		else
+			GtkSpellDetach();
+	}
+
+	protected void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+		if (subtitle != null)
+    		LoadSubtitle(subtitle);
+    	else
+    		ClearFields();
+    }
 	
 	protected void SetVisibility (bool visible) {
 		GetScrolledWindow().Visible = visible;
+		if (!visible) {
+			ClearFields();
+		}
 	}
 	
 	protected void ClearFields () {
