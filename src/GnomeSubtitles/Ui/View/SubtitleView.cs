@@ -394,7 +394,6 @@ public class SubtitleView {
 	private void OnBaseDocumentLoaded (Document document) {
    		tree.Sensitive = true;
     	Load(document.Subtitles);
-		selection.SelectFirst();
     }
     
     private void OnBaseDocumentUnloaded (Document document) {

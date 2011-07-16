@@ -176,6 +176,7 @@ public class Base {
 		document = new Document();
 		EmitDocumentLoadedEvent();
 		
+		/* Create first subtitle. This happens after EmitDocumentLoadedEvent for all widgets to be ready */
 		if (document.Subtitles.Count == 0)
 			commandManager.Execute(new InsertFirstSubtitleCommand());
 	}
@@ -187,6 +188,9 @@ public class Base {
 		document = new Document(path, encoding);
 		TimingMode = document.TextFile.TimingMode;
 		EmitDocumentLoadedEvent();
+		
+		/* Select first subtitle. This happens after EmitDocumentLoadedEvent for all widgets to be ready */
+		Ui.View.Selection.SelectFirst();
 	}
 	
 	public static void CloseDocument () {
@@ -237,6 +241,9 @@ public class Base {
 	
 		document.OpenTranslation(path, encoding);
 		EmitTranslationLoadedEvent();
+		
+		/* Reselect, for the widgets to update accordingly */
+		Ui.View.Selection.Reselect();
 	}
 	
 	public static void NewTranslation () {
@@ -245,6 +252,9 @@ public class Base {
 	
 		document.NewTranslation();
 		EmitTranslationLoadedEvent();
+		
+		/* Reselect, for the widgets to update accordingly */
+		Ui.View.Selection.Reselect();
 	}
 	
 	public static void CloseTranslation () {
