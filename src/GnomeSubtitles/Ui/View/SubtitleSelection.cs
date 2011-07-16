@@ -324,7 +324,8 @@ public class SubtitleSelection {
 		selection.SelectAll();
 	}
 	
-	//TODO Check why this is needed
+	/// <summary>Needed for the selection-dependent widgets to refresh when the contents of a selection are changed
+	/// while the selection itself isn't. Example: applying styles to a single selected subtitle</summary>
     public void Reselect () {
     	EmitChangedEvent();
     }

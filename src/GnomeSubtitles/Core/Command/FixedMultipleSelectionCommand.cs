@@ -62,7 +62,7 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 		}
 		Base.Ui.View.Refresh();
 		if (reselect)
-			Base.Ui.View.Selection.Reselect();  //TODO check where reselect is needed, there might be a better approach to this
+			Base.Ui.View.Selection.Reselect();
 		
 		PostProcess();
 		return true;
