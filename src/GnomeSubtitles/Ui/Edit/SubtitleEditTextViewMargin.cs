@@ -31,7 +31,6 @@ public class SubtitleEditTextViewMargin {
 	private int marginDigitCount = 2;
 	
 	/* Cached GCs and Pango Layout */
-	private Gdk.GC bgGC = null;
 	private Gdk.GC lineGC = null;
 	private Gdk.GC textGC = null;
 	private Pango.Layout textLayout = null;
@@ -47,22 +46,20 @@ public class SubtitleEditTextViewMargin {
 	
 	/* Private methods */
 	
-	public void DrawMargin (TextView textView, Gdk.Window window) {
+	public void DrawMargin (TextView textView) {
+	
     	/* Get char count info  */
     	int[,] info;
     	GetCharCountDrawInfo(textView, out info);
 
-    	/* Do some calculations */    	
-    	int marginNumbersWidth = marginDigitCount * this.marginCharWidth;
-    	int marginNumbersX = textView.Allocation.Width - this.marginSpace - marginNumbersWidth;
+    	/* Set margin and window */
+    	int marginWidth = (this.marginSpace * 2) + (this.marginDigitCount * this.marginCharWidth);
+    	textView.SetBorderWindowSize(TextWindowType.Right, marginWidth);
+    	Gdk.Window window = textView.GetWindow(TextWindowType.Right);
+    	window.Clear();
     	
     	/* Draw line */
-    	int marginWidth = (this.marginSpace * 2) + marginNumbersWidth;
-    	int marginLineX = textView.Allocation.Width - marginWidth;
-    	window.DrawLine(this.lineGC, marginLineX, 0, marginLineX, textView.Allocation.Height);
-    	
-    	/* Draw background area */
-    	window.DrawRectangle(this.bgGC, true, marginLineX+1, 0, marginWidth-1, textView.Allocation.Height);
+    	window.DrawLine(this.lineGC, 0, 0, 0, textView.Allocation.Height);
     	
     	/* Draw text */
     	int infoCount = info.GetLength(0);
@@ -73,7 +70,7 @@ public class SubtitleEditTextViewMargin {
     		this.textLayout.SetText(charCount.ToString());
     		int textLayoutWidth, textLayoutHeight;
     		this.textLayout.GetPixelSize(out textLayoutWidth, out textLayoutHeight);
-    		window.DrawLayout(this.textGC, marginNumbersX, y - textLayoutHeight/2, this.textLayout);
+    		window.DrawLayout(this.textGC, this.marginSpace, y - textLayoutHeight/2, this.textLayout);
 		}
     }
 
@@ -146,7 +143,6 @@ public class SubtitleEditTextViewMargin {
     }
     
     private void SetGCs () {
-    	this.bgGC = Base.Ui.Window.Style.BackgroundGC(StateType.Normal);
 		this.lineGC = Base.Ui.Window.Style.BackgroundGC(StateType.Active);
 		this.textGC = Base.Ui.Window.Style.TextGC(StateType.Active);
     }
@@ -159,7 +155,6 @@ public class SubtitleEditTextViewMargin {
 	/* Event members */
 	
 	private void OnBaseInitFinished () {
-	
 		/* GCs */
 		SetGCs();
 		
@@ -168,7 +163,7 @@ public class SubtitleEditTextViewMargin {
 		this.textLayout.FontDescription = Pango.FontDescription.FromString("sans 10");
 		
 		/* Margin char width */
-		this.textLayout.SetText("0");
+		this.textLayout.SetText("8"); //To calculate a character's width
 		int marginCharHeight;
 		this.textLayout.GetPixelSize(out this.marginCharWidth, out marginCharHeight);
 
@@ -176,18 +171,14 @@ public class SubtitleEditTextViewMargin {
 		textView.ExposeEvent += OnExposeEvent;
 		textView.Buffer.Changed += OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
 		textView.StyleSet += OnStyleSet; //To update colors if the style is changed
-		textView.Parent.ExposeEvent += OnScrolledWindowExposeEvent;
+		textView.StateChanged += OnStateChanged;
 	}
 	
 	private void OnExposeEvent (object o, ExposeEventArgs args) {
 		TextView textView = o as TextView;
 		if (textView.State != StateType.Insensitive) {
-			DrawMargin(textView, args.Event.Window);
+			DrawMargin(textView);
 		}
-	}
-	
-	private void OnScrolledWindowExposeEvent (object o, ExposeEventArgs args) {
-		Refresh(); //Necessary for artifacts not to appear when scrolling
 	}
 	
 	private void OnBufferChanged (object o, EventArgs args) {
@@ -196,6 +187,13 @@ public class SubtitleEditTextViewMargin {
 	
 	private void OnStyleSet (object o, StyleSetArgs args) {
 		SetGCs();
+	}
+	
+	private void OnStateChanged (object o, StateChangedArgs args) {
+		TextView textView = o as TextView;
+		if (textView.State == StateType.Insensitive) {
+			textView.SetBorderWindowSize(TextWindowType.Right, 0); //Don't show the margin if the text view is insensitive
+		}
 	}
 
 	
