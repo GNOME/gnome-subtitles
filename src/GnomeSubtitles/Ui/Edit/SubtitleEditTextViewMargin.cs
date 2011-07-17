@@ -187,9 +187,9 @@ public class SubtitleEditTextViewMargin {
 		
 		/* Margin char width */
 		this.textLayout.SetText("0");
-		Pango.Rectangle layoutRect = GetPangoLayoutRect(this.textLayout);
-		this.marginCharWidth = layoutRect.Width;
-			
+		int marginCharHeight;
+		this.textLayout.GetPixelSize(out this.marginCharWidth, out marginCharHeight);
+
 		/* Events */
 		textView.ExposeEvent += OnExposeEvent;
 		textView.Buffer.Changed += OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
