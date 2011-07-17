@@ -355,11 +355,11 @@ public class SubtitleView {
 		bool first = true;
 		bool viewLineLengths = Base.Ui.Menus.ViewLineLengthsEnabled;
 		foreach (string line in subtitleText) {
-			textMarkup += (first ? String.Empty : "\n") + stylePrefix + line + styleSuffix + (viewLineLengths ? " <span size=\"small\"><sup>(" + line.Length + ")</sup></span>" : String.Empty);
+			textMarkup += (first ? String.Empty : "\n") + stylePrefix + GLib.Markup.EscapeText(line) + styleSuffix + (viewLineLengths ? " <span size=\"small\"><sup>(" + line.Length + ")</sup></span>" : String.Empty);
 			if (first)
 				first = false;
 		}
-
+			
 		renderer.Markup = textMarkup;
 	}
 
