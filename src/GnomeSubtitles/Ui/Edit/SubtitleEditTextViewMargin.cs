@@ -50,8 +50,7 @@ public class SubtitleEditTextViewMargin {
 	public void DrawMargin (TextView textView, Gdk.Window window) {
     	/* Get char count info  */
     	int[,] info;
-    	int maxCharCount;
-    	GetCharCountDrawInfo(textView, out info, out maxCharCount);
+    	GetCharCountDrawInfo(textView, out info);
 
     	/* Do some calculations */    	
     	int marginNumbersWidth = marginDigitCount * this.marginCharWidth;
@@ -78,10 +77,9 @@ public class SubtitleEditTextViewMargin {
 		}
     }
 
-    private void GetCharCountDrawInfo (TextView textView, out int[,] info, out int maxCharCount) {
+    private void GetCharCountDrawInfo (TextView textView, out int[,] info) {
     	if (textView.Buffer.LineCount == 0) {
     		info = null;
-    		maxCharCount = 0;
     		return; //shouldn't happen, but just to make sure
     	}
     	
@@ -100,16 +98,12 @@ public class SubtitleEditTextViewMargin {
 
 		/* Initializations */
 		info = new int[lineCount, 2];
-    	maxCharCount = -1;
     	
     	/* Process start iter */
     	int startLineCharCount = startIter.CharsInLine - (lineCount > 1 ? 1 : 0); //subtract 1 for newline if there are >1 lines
     	info[0, 0] = startLineCharCount; //Char Count
     	Gdk.Rectangle startIterLocation = textView.GetIterLocation(startIter);
     	info[0, 1] = startIterLocation.Bottom - (startIterLocation.Height/2) - minVisibleY; //Y
-    	if (startLineCharCount > maxCharCount) {
-    		maxCharCount = startLineCharCount;
-    	}
     	
     	/* If only 1 line, return */
     	if (lineCount == 1) {
@@ -123,9 +117,6 @@ public class SubtitleEditTextViewMargin {
 			info[i, 0] = charCount;
 			Gdk.Rectangle iterLocation = textView.GetIterLocation(iter);
     		info[i, 1] = iterLocation.Bottom - (iterLocation.Height/2) - minVisibleY; //Y
-    		if (charCount > maxCharCount) {
-    			maxCharCount = charCount;
-    		}
     	}
     	
     	/* Process end iter */
@@ -133,9 +124,6 @@ public class SubtitleEditTextViewMargin {
     	info[lineCount-1, 0] = endLineCharCount;
     	Gdk.Rectangle endIterLocation = textView.GetIterLocation(endIter);
     	info[lineCount-1, 1] = endIterLocation.Bottom - (endIterLocation.Height/2) - minVisibleY; //Y
-		if (endLineCharCount > maxCharCount) {
-			maxCharCount = endLineCharCount;
-		}
     }
 		
 	private int CalcDigitCount (TextBuffer buffer, int marginMinDigits) {
