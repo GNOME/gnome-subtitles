@@ -353,7 +353,7 @@ public class SubtitleView {
 		GetStyleMarkup(subtitleStyle, ref stylePrefix, ref styleSuffix);
 		
 		bool first = true;
-		bool viewLineLengths = Base.Ui.Menus.ViewLineLengthsEnabled;
+		bool viewLineLengths = Base.Config.PrefsViewLineLengths;
 		foreach (string line in subtitleText) {
 			textMarkup += (first ? String.Empty : "\n") + stylePrefix + GLib.Markup.EscapeText(line) + styleSuffix + (viewLineLengths ? " <span size=\"small\"><sup>(" + line.Length + ")</sup></span>" : String.Empty);
 			if (first)
@@ -389,6 +389,8 @@ public class SubtitleView {
 		Base.TranslationLoaded += OnBaseTranslationLoaded;
 		Base.TranslationUnloaded += OnBaseTranslationUnloaded;
 		Base.TimingModeChanged += OnBaseTimingModeChanged;
+		
+		(Base.Ui.Menus.GetMenuItem(WidgetNames.ViewLineLengths) as CheckMenuItem).Toggled += OnViewLineLengthsToggled;
 	}
 	
 	private void OnBaseDocumentLoaded (Document document) {
@@ -443,6 +445,10 @@ public class SubtitleView {
     private void SetEmptyModel () {
     	tree.Model = new ListStore(typeof(Subtitle));
     }
+    
+    private void OnViewLineLengthsToggled (object o, EventArgs args) {
+    	Refresh();
+	}
 		
 }
 

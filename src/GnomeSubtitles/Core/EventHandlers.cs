@@ -184,6 +184,11 @@ public class EventHandlers {
 		if ((o as RadioMenuItem).Active)
 			Base.TimingMode = TimingMode.Frames;
 	}
+			
+	public void OnViewLineLengthsToggled (object o, EventArgs args) {
+		CheckMenuItem menuItem = o as CheckMenuItem;
+		Base.Config.PrefsViewLineLengths = menuItem.Active;
+	}
 	
 	public void OnViewVideo (object o, EventArgs args) {
 		if ((o as CheckMenuItem).Active)

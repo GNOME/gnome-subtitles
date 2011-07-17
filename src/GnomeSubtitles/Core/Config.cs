@@ -79,6 +79,8 @@ public class Config {
 	private const string keyPrefsTimingsTimeBetweenSubtitles = keyPrefsTimings + "time_between_subs";
 	
 	/* Cached values */
+	private bool isValuePrefsViewLineLengthsCached = false;
+	private bool valuePrefsViewLineLengths = false;
 	private bool isValuePrefsVideoApplyReactionDelayCached = false;
 	private bool valuePrefsVideoApplyReactionDelay = false;
 	private int valuePrefsVideoReactionDelay = -1;
@@ -181,10 +183,20 @@ public class Config {
 	}
 	
 	public bool PrefsViewLineLengths {
-		get { return GetBool(keyPrefsViewLineLengths, true); }
-		set { Set(keyPrefsViewLineLengths, value); }
+		get {
+			if (!isValuePrefsViewLineLengthsCached) {
+				this.valuePrefsViewLineLengths = GetBool(keyPrefsViewLineLengths, true);
+				this.isValuePrefsViewLineLengthsCached = true;
+			}
+			return valuePrefsViewLineLengths;
+		}
+		set {
+			Set(keyPrefsViewLineLengths, value);
+			this.valuePrefsViewLineLengths = value;
+			this.isValuePrefsViewLineLengthsCached = true;
+		}
 	}
-	
+
 	public int PrefsWindowHeight {
 		get { return GetInt(keyPrefsWindowHeight, 600, 200, true, 0, false); }
 		set { Set(keyPrefsWindowHeight, value); }

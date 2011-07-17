@@ -31,9 +31,6 @@ public class Menus {
 
 	/* Constant strings */
 	private string videoTagText = Catalog.GetString("Video");
-	
-	/* Stored values */
-	private bool viewLineLengthsEnabled = false;
 
 	public Menus () {
 		SetToolbarHomogeneity(); //TODO needed until homogeneity definition in glade starts working
@@ -56,10 +53,6 @@ public class Menus {
 			}
 			return -1;
 		}
-	}
-	
-	public bool ViewLineLengthsEnabled {
-		get { return viewLineLengthsEnabled; }
 	}
 	
 	
@@ -125,6 +118,10 @@ public class Menus {
 			}
 		}
 	}
+	
+	public MenuItem GetMenuItem (string widgetName) {
+		return Base.GetWidget(WidgetNames.ViewLineLengths) as MenuItem;
+	}
 
 	
 	/* Private members */
@@ -165,10 +162,7 @@ public class Menus {
 
 	private void SetBlankActivity () {
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
-		
-		/* Set View Line Lengths */
-		this.viewLineLengthsEnabled = Base.Config.PrefsViewLineLengths;
-		SetCheckMenuItemActivity(WidgetNames.ViewLineLengths, this.viewLineLengthsEnabled);
+		SetCheckMenuItemActivity(WidgetNames.ViewLineLengths, Base.Config.PrefsViewLineLengths);
 	}
 	
 	private void SetViewVideoActivity (bool activity) {
@@ -523,8 +517,6 @@ public class Menus {
 		Base.CommandManager.UndoToggled += OnCommandManagerUndoToggled;
 		Base.CommandManager.RedoToggled += OnCommandManagerRedoToggled;
 		Base.CommandManager.CommandActivated += OnCommandManagerCommandActivated;
-		
-		(Base.GetWidget(WidgetNames.ViewLineLengths) as CheckMenuItem).Toggled += OnViewLineLengthsToggled;
 	}
 	
 	private void OnBaseDocumentLoaded (Document document) {
@@ -646,15 +638,6 @@ public class Menus {
 				menuItem.Toggled += handler;
 			else 
 				menuItem.Toggled -= handler;
-		}
-	}
-		
-	private void OnViewLineLengthsToggled (object o, EventArgs args) {
-		bool newValue = ((o as CheckMenuItem).Active);
-		if (newValue != viewLineLengthsEnabled) {
-			viewLineLengthsEnabled = newValue;
-			Base.Config.PrefsViewLineLengths = newValue;
-			Base.Ui.View.Refresh();
 		}
 	}
 

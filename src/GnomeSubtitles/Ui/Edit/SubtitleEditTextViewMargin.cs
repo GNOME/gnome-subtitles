@@ -150,6 +150,26 @@ public class SubtitleEditTextViewMargin {
     private void Refresh () {
     	textView.QueueDraw();
     }
+    
+    private void HideMarginWindow () {
+    	this.textView.SetBorderWindowSize(TextWindowType.Right, 0);
+    }
+    
+    private void Enable () {
+    	textView.ExposeEvent += OnExposeEvent;
+		textView.Buffer.Changed += OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
+		textView.StateChanged += OnStateChanged;
+		
+		Refresh();
+    }
+    
+    private void Disable () {
+    	textView.ExposeEvent -= OnExposeEvent;
+		textView.Buffer.Changed -= OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
+		textView.StateChanged -= OnStateChanged;
+		
+		HideMarginWindow();
+    }
    
     	
 	/* Event members */
@@ -168,10 +188,11 @@ public class SubtitleEditTextViewMargin {
 		this.textLayout.GetPixelSize(out this.marginCharWidth, out marginCharHeight);
 
 		/* Events */
-		textView.ExposeEvent += OnExposeEvent;
-		textView.Buffer.Changed += OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
 		textView.StyleSet += OnStyleSet; //To update colors if the style is changed
-		textView.StateChanged += OnStateChanged;
+		(Base.Ui.Menus.GetMenuItem(WidgetNames.ViewLineLengths) as CheckMenuItem).Toggled += OnViewLineLengthsToggled;
+		if (Base.Config.PrefsViewLineLengths) {
+			Enable();
+		}
 	}
 	
 	private void OnExposeEvent (object o, ExposeEventArgs args) {
@@ -192,8 +213,16 @@ public class SubtitleEditTextViewMargin {
 	private void OnStateChanged (object o, StateChangedArgs args) {
 		TextView textView = o as TextView;
 		if (textView.State == StateType.Insensitive) {
-			textView.SetBorderWindowSize(TextWindowType.Right, 0); //Don't show the margin if the text view is insensitive
+			HideMarginWindow();
 		}
+	}
+	
+	private void OnViewLineLengthsToggled (object o, EventArgs args) {
+    	CheckMenuItem menuItem = o as CheckMenuItem;
+    	if (menuItem.Active)
+    		Enable();
+    	else
+    		Disable();
 	}
 
 	
