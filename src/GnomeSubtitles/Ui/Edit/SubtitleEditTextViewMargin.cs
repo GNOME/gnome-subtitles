@@ -72,8 +72,9 @@ public class SubtitleEditTextViewMargin {
     		int y = info[i, 1];
     		
     		this.textLayout.SetText(charCount.ToString());
-    		Pango.Rectangle layoutRect = GetPangoLayoutRect(this.textLayout);
-    		window.DrawLayout(this.textGC, marginNumbersX, y - layoutRect.Height/2, this.textLayout);
+    		int textLayoutWidth, textLayoutHeight;
+    		this.textLayout.GetPixelSize(out textLayoutWidth, out textLayoutHeight);
+    		window.DrawLayout(this.textGC, marginNumbersX, y - textLayoutHeight/2, this.textLayout);
 		}
     }
 
@@ -136,13 +137,6 @@ public class SubtitleEditTextViewMargin {
 			maxCharCount = endLineCharCount;
 		}
     }
-	   
-	private Pango.Rectangle GetPangoLayoutRect (Pango.Layout layout) {
-		Pango.Rectangle inkRect, logicalRect;
-    	layout.GetPixelExtents(out inkRect, out logicalRect);
-    	return logicalRect;
-	}
-	
 		
 	private int CalcDigitCount (TextBuffer buffer, int marginMinDigits) {
 		int maxChars = -1;
