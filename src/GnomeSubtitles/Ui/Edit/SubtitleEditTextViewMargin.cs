@@ -27,11 +27,8 @@ namespace GnomeSubtitles.Ui.Edit {
 public class SubtitleEditTextViewMargin {
 	private int marginCharWidth = -1; //pixels
 	private int marginSpace = 4; //pixels
-	private int marginDigitCount = 2; //we always show ammount for 2 digits, which should account for "normal" lengths (above 99, lengths are marked with 99+)
-	private int marginNumbersWidth = -1;
-	private int marginWidth = -1;
-	private int marginMaxCharCount = 99;
-	private String marginMaxCharCountString = "99.";
+	private int marginMinDigits = 2; //the minimum number of digits for margin width (1 would make the margin adjust with more than 9 chars, so it's better to keep a minimum of 2 to avoid constant adjustment
+	private int marginDigitCount = 2;
 	
 	/* Cached GCs and Pango Layout */
 	private Gdk.GC bgGC = null;
@@ -53,17 +50,20 @@ public class SubtitleEditTextViewMargin {
 	public void DrawMargin (TextView textView, Gdk.Window window) {
     	/* Get char count info  */
     	int[,] info;
-    	GetCharCountDrawInfo(textView, out info);
+    	int maxCharCount;
+    	GetCharCountDrawInfo(textView, out info, out maxCharCount);
 
     	/* Do some calculations */    	
-    	int marginNumbersX = textView.Allocation.Width - this.marginSpace - this.marginNumbersWidth;
-
+    	int marginNumbersWidth = marginDigitCount * this.marginCharWidth;
+    	int marginNumbersX = textView.Allocation.Width - this.marginSpace - marginNumbersWidth;
+    	
     	/* Draw line */
-    	int marginLineX = textView.Allocation.Width - this.marginWidth;
+    	int marginWidth = (this.marginSpace * 2) + marginNumbersWidth;
+    	int marginLineX = textView.Allocation.Width - marginWidth;
     	window.DrawLine(this.lineGC, marginLineX, 0, marginLineX, textView.Allocation.Height);
     	
     	/* Draw background area */
-    	window.DrawRectangle(this.bgGC, true, marginLineX+1, 0, this.marginWidth-1, textView.Allocation.Height);
+    	window.DrawRectangle(this.bgGC, true, marginLineX+1, 0, marginWidth-1, textView.Allocation.Height);
     	
     	/* Draw text */
     	int infoCount = info.GetLength(0);
@@ -71,16 +71,16 @@ public class SubtitleEditTextViewMargin {
     		int charCount = info[i, 0];
     		int y = info[i, 1];
     		
-    		String charCountText = (charCount > this.marginMaxCharCount ? this.marginMaxCharCountString : charCount.ToString());
-    		this.textLayout.SetText(charCountText);
+    		this.textLayout.SetText(charCount.ToString());
     		Pango.Rectangle layoutRect = GetPangoLayoutRect(this.textLayout);
     		window.DrawLayout(this.textGC, marginNumbersX, y - layoutRect.Height/2, this.textLayout);
 		}
     }
 
-    private void GetCharCountDrawInfo (TextView textView, out int[,] info) {
+    private void GetCharCountDrawInfo (TextView textView, out int[,] info, out int maxCharCount) {
     	if (textView.Buffer.LineCount == 0) {
     		info = null;
+    		maxCharCount = 0;
     		return; //shouldn't happen, but just to make sure
     	}
     	
@@ -99,12 +99,16 @@ public class SubtitleEditTextViewMargin {
 
 		/* Initializations */
 		info = new int[lineCount, 2];
+    	maxCharCount = -1;
     	
     	/* Process start iter */
     	int startLineCharCount = startIter.CharsInLine - (lineCount > 1 ? 1 : 0); //subtract 1 for newline if there are >1 lines
     	info[0, 0] = startLineCharCount; //Char Count
     	Gdk.Rectangle startIterLocation = textView.GetIterLocation(startIter);
     	info[0, 1] = startIterLocation.Bottom - (startIterLocation.Height/2) - minVisibleY; //Y
+    	if (startLineCharCount > maxCharCount) {
+    		maxCharCount = startLineCharCount;
+    	}
     	
     	/* If only 1 line, return */
     	if (lineCount == 1) {
@@ -118,6 +122,9 @@ public class SubtitleEditTextViewMargin {
 			info[i, 0] = charCount;
 			Gdk.Rectangle iterLocation = textView.GetIterLocation(iter);
     		info[i, 1] = iterLocation.Bottom - (iterLocation.Height/2) - minVisibleY; //Y
+    		if (charCount > maxCharCount) {
+    			maxCharCount = charCount;
+    		}
     	}
     	
     	/* Process end iter */
@@ -125,12 +132,31 @@ public class SubtitleEditTextViewMargin {
     	info[lineCount-1, 0] = endLineCharCount;
     	Gdk.Rectangle endIterLocation = textView.GetIterLocation(endIter);
     	info[lineCount-1, 1] = endIterLocation.Bottom - (endIterLocation.Height/2) - minVisibleY; //Y
+		if (endLineCharCount > maxCharCount) {
+			maxCharCount = endLineCharCount;
+		}
     }
 	   
 	private Pango.Rectangle GetPangoLayoutRect (Pango.Layout layout) {
 		Pango.Rectangle inkRect, logicalRect;
     	layout.GetPixelExtents(out inkRect, out logicalRect);
     	return logicalRect;
+	}
+	
+		
+	private int CalcDigitCount (TextBuffer buffer, int marginMinDigits) {
+		int maxChars = -1;
+		int lineCount = buffer.LineCount;
+		for (int line = 0 ; line < lineCount; line++) {
+			TextIter iter = buffer.GetIterAtLine(line);
+			int chars = iter.CharsInLine - (line == lineCount - 1 ? 0 : 1); //Subtract 1 for newline (except for the last line)
+			if (chars > maxChars) {
+				maxChars = chars;
+			}
+		}
+		
+		int digitCount = CountDigitsInNumber(maxChars);
+		return Math.Max(digitCount, this.marginMinDigits);
 	}
     
     private int CountDigitsInNumber (int number) {
@@ -163,12 +189,10 @@ public class SubtitleEditTextViewMargin {
 		this.textLayout.SetText("0");
 		Pango.Rectangle layoutRect = GetPangoLayoutRect(this.textLayout);
 		this.marginCharWidth = layoutRect.Width;
-		this.marginNumbersWidth = this.marginDigitCount * this.marginCharWidth;
-		this.marginWidth = (this.marginSpace * 2) + this.marginNumbersWidth;
-		
 			
 		/* Events */
 		textView.ExposeEvent += OnExposeEvent;
+		textView.Buffer.Changed += OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
 		textView.StyleSet += OnStyleSet; //To update colors if the style is changed
 		textView.Parent.ExposeEvent += OnScrolledWindowExposeEvent;
 	}
@@ -182,6 +206,10 @@ public class SubtitleEditTextViewMargin {
 	
 	private void OnScrolledWindowExposeEvent (object o, ExposeEventArgs args) {
 		Refresh(); //Necessary for artifacts not to appear when scrolling
+	}
+	
+	private void OnBufferChanged (object o, EventArgs args) {
+		this.marginDigitCount = CalcDigitCount(o as TextBuffer, this.marginMinDigits);
 	}
 	
 	private void OnStyleSet (object o, StyleSetArgs args) {
