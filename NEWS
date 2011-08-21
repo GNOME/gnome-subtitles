@@ -1,6 +1,74 @@
 Gnome Subtitles
 ===============
 
+1.2 (21/08/11)
+==============
+
+- Support for merging and splitting subtitle lines
+- Allow to view character counts in the subtitle list and editing area
+- Allow to apply a reaction delay when timing start/end on video playblack
+- Video slow and fast motion options
+- New shortcuts for quick timings change:
+  * Increase/decrease subtitle start time: Ctrl+Plus/Minus (on the numpad)
+  * Increase/decrease subtitle end time: Alt+Plus/Minus (on the numpad)
+  * Shift subtitles: Shift+Plus/Minus (on the numpad)
+- Automatically seek the video when subtitle times are changed, with an option
+  to rewind it some milliseconds
+- Added support for the Fab Subtitler subtitle format
+- Allow to insert a new subtitle at the current video position, applying
+  a reaction delay if set
+- Other changes:
+  * Translation filenames are now based on the original filename plus language
+  * Added support for buggy SubRip files that use dots instead of commas
+  * Fixed bug with the subtitle overlay not being updated on times change
+  * Detect when selecting a video file as the subtitle file
+  * Updated preferences dialog with different structure and more options
+  * Fixed special characters (<,>,&,etc) not being shown in the subtitle list
+
+Bug fixes:
+- Slow and Fast Motion Option (#453469)
+- Filenames for new translations (#607227)
+- Video file extensions (#607228)
+- Opening large files (#607229)
+- File close sensitivity (#620776)
+- Shift selected lines with Keyboard shortcuts (#621145)
+- Makefile - copy libs to build dir (#621943)
+- Show the total number of characters while editing subtitles (#625485)
+- Support for FAB files (#634230)
+- Remove extension from icon in .desktop file (#636766)
+- Do not build modules as shared libraries (#636767)
+- Crash when inserting new subtitle with no subtitles selected (#638238)
+- Apply a Reaction Delay when timing subtitle start/end (#638484)
+- Add support for opening buggy SubRip files (#642674)
+- Insert subtitle at video position (#648461)
+- Merge and split lines (#651958)
+
+Contributors:
+- Arx Cruz, Keith Madill, Michał Sawicz, Pawel Brzeski
+
+Translations:
+- Joan Duran (ca)
+- Marek Černocký, Petr Kovar (cs)
+- Joe Hansen, Kenneth Nielsen (da)
+- Mario Blättermann (de)
+- Daniel Mustieles, Francisco Serrador, Jorge González (es)
+- Bruno Brouard (fr)
+- Marcos Lans (gl)
+- Yaron Shahrabani (he)
+- Gabor Kelemen (hu)
+- Claudio Arseni (it)
+- António Lima (pt)
+- Djavan Fagundes, Krix Apolinário, Marco de Freitas (pt_BR)
+- Yuri Myasoedov (ru)
+- Andrej Žnidaršič, Matej Urbančič (sl)
+- Đorđe Vasiljević (sr)
+- Daniel Nylander (sv)
+- Yinghua Wang (zh_CN)
+
+Additional thanks:
+- A. Bhattacharya, A. Dagistanli, D. Leuenberger, Eva C., J. Hogue, V. Untz, P. Drąg, W. Lemberg, Z. Kozak
+
+
 1.1 (31/10/10)
 ==============
 
@@ -18,6 +86,21 @@ Gnome Subtitles
 - Fixed a bug drag-and-dropping files with spaces in their path
 - Use ISO-8859-1 as the fallback and default encoding in the File Open list
 
+Bug fixes:
+- Automatically select subtitles on video playback (#453220)
+- Quick subtitle timing during playback (#547984)
+- Periodically backup subtitle files (#565360)
+- Subtitle loop (#601195)
+- Seek Subtitle->Time; Time->Subtitle with kb shortcut; Follow subs. (#605402)
+- Bug in help (#612400)
+- Untranslated strings (#619364)
+- Crash when shifting selected subtitles (#620027)
+- Synchronize timings for all subtitles (#622248)
+- Crash when searching backwards (#628427)
+
+Contributors:
+- Arx Cruz, Valmir Sena
+
 Translations:
 - Carles Ferrando, Joan Duran (ca@valencia)
 - Lucas Lommer, Marek Černocký, Petr Kovar (cs)
@@ -34,21 +117,6 @@ Translations:
 - Andrej Žnidaršič (sl)
 - Baris Cicek, Serkan Yılmaz (tr)
 - Aron Xu (zh_CN)
-
-Bug fixes:
-- Automatically select subtitles on video playback (#453220)
-- Quick subtitle timing during playback (#547984)
-- Periodically backup subtitle files (#565360)
-- Subtitle loop (#601195)
-- Seek Subtitle->Time; Time->Subtitle with kb shortcut; Follow subs. (#605402)
-- Bug in help (#612400)
-- Untranslated strings (#619364)
-- Crash when shifting selected subtitles (#620027)
-- Synchronize timings for all subtitles (#622248)
-- Crash when searching backwards (#628427)
-
-Contributors:
-- Arx Cruz, Valmir Sena
 
 Additional thanks:
 - A. G. Luz, Carlos Troncoso, Daniel, Gabor Kelemen, Marcin Zajaczkowski
@@ -76,20 +144,6 @@ Additional thanks:
 - Fixed use of LDADD when building
 - Use libtool to produce shared libraries
 
-Translations:
-- Alexander Shopov, Svetoslav Stefanov (bg)
-- Marek Černocký, Petr Kovar, Rinu (cs)
-- Joe Hansen (da)
-- Mario Blättermann (de)
-- Jorge González (es)
-- Antón Méixome, Lois (gl)
-- Mark Krapivner (he)
-- Claudio Arseni (it)
-- Piotr Drąg (pl)
-- António Lima (pt)
-- Andrej Žnidaršič, Matej Urbančič (sl)
-- Daniel Nylander (sv)
-
 Bug fixes:
 - Set defaultsubtitle format, character coding and newline type in
   preferences (#504656)
@@ -106,6 +160,20 @@ Bug fixes:
 Contributors:
 - Arx Cruz, Ildar Mulyukov, Peter Alfredsen
 
+Translations:
+- Alexander Shopov, Svetoslav Stefanov (bg)
+- Marek Černocký, Petr Kovar, Rinu (cs)
+- Joe Hansen (da)
+- Mario Blättermann (de)
+- Jorge González (es)
+- Antón Méixome, Lois (gl)
+- Mark Krapivner (he)
+- Claudio Arseni (it)
+- Piotr Drąg (pl)
+- António Lima (pt)
+- Andrej Žnidaršič, Matej Urbančič (sl)
+- Daniel Nylander (sv)
+
 Additional thanks:
 - A. Luz, Federico, Frederico Camara, ΙΟΑΝΝΗΣ ΜΠΟΥΡΔΑΚΗΣ, Yann Basly
 
@@ -119,16 +187,16 @@ Additional thanks:
   * Opening a video with Frames mode selected
   * Opening the Preferences dialog
 
-Translations:
-- Joan Duran (ca)
-- Jorge González (es)
-
 Bug fixes:
 - Subtitling of audio files (#584795)
 - GS crashes when opening subtitles together with a movie (#587097)
 - GS crashes on Edit->Preferences (#587100)
 
-Thanks:
+Translations:
+- Joan Duran (ca)
+- Jorge González (es)
+
+Additional thanks:
 - Marcin Zajaczkowski, Yannick Warnier
 
 0.9 (21/06/09)
@@ -171,24 +239,6 @@ Thanks:
   * Requires gtk, gtk-sharp, glade-sharp and gconf-sharp 2.12 or higher
   * No longer requires gnome-sharp nor sublib
 
-Translations:
-- Djihed Afifi (ar)
-- Joan Duran (ca)
-- Kamil Paral, Lucas Lommer, Petr Kovar, Rinu (cs)
-- Joe Hansen, Kristian Kjærgaard (da)
-- Felix Braun, Mario Blättermann (de)
-- Gabriel Ruiz, Jorge González (es)
-- Ilkka Tuohela (fi)
-- Luca Ferretti, Simone Oberti (it)
-- Kjartan Maraas (nb)
-- Yannig Marchegay (oc)
-- Piotr Drąg (pl)
-- António Lima (pt)
-- César Veiga, Fábio Nogueira, Henrique P Machado, Leonardo Ferreira
-  Fontenelle (pt_BR)
-- Nickolay V. Shmyrev (ru)
-- Daniel Nylander (sv)
-
 Bug fixes:
 - The file with a movie is not always automatically selected (#417975)
 - Improvements to selection types in timings dialogs (#430737)
@@ -206,6 +256,24 @@ Bug fixes:
 
 Contributors:
 - Arx Cruz, Lucas Lommer
+
+Translations:
+- Djihed Afifi (ar)
+- Joan Duran (ca)
+- Kamil Paral, Lucas Lommer, Petr Kovar, Rinu (cs)
+- Joe Hansen, Kristian Kjærgaard (da)
+- Felix Braun, Mario Blättermann (de)
+- Gabriel Ruiz, Jorge González (es)
+- Ilkka Tuohela (fi)
+- Luca Ferretti, Simone Oberti (it)
+- Kjartan Maraas (nb)
+- Yannig Marchegay (oc)
+- Piotr Drąg (pl)
+- António Lima (pt)
+- César Veiga, Fábio Nogueira, Henrique P Machado, Leonardo Ferreira
+  Fontenelle (pt_BR)
+- Nickolay V. Shmyrev (ru)
+- Daniel Nylander (sv)
 
 Additional thanks:
 - Adam Dixon, Julian Sikorski, Luciano A. Ferrer, Marcin Zajaczkowski,
