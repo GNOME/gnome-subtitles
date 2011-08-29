@@ -1,0 +1,1562 @@
+# Simplified Chinese translation of GNOME Subtitles.
+# Copyright (C) 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome-subtitles package.
+#
+# yjwork <yjwork@189.cn>, 2010.
+# kentxchang <kentxchang@gmail.com>,2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-subtitles VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-29 19:04+0800\n"
+"PO-Revision-Date: 2011-08-29 19:04+0800\n"
+"Last-Translator: kentxchang <kentxchang@gmail.com>\n"
+"Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: TAIWAN\n"
+
+#: ../src/Glade/AboutDialog.glade.h:1
+msgid "About Gnome Subtitles"
+msgstr "關於 GNOME Subtitles"
+
+#: ../src/Glade/AboutDialog.glade.h:2
+msgid ""
+"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gnome Subtitles is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+msgstr ""
+"Gnome Subtitles 是自由軟件；你可以按照自由軟件基金會所發表的 GNU GPL 協議自由發放和/或修改它；GPL 協議應該采用第二版或以後的任何版本。\n"
+"\n"
+"Gnome Subtitles 發表的目的是希望它能夠對你有用，但我們沒有任何保證；對於以任何用途使用它所造成的任何直接或間接後果都不承擔任何責任。請參看GNU GPL 協議中的細節。\n"
+"\n"
+"你應該在收到 Nautilus 的同時收到了 GNU GPL 協議的副本；如果你沒有收到的話，請給自由軟件基金會寫信，地址是 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
+
+#: ../src/Glade/AboutDialog.glade.h:15
+msgid "Video subtitling for the GNOME desktop"
+msgstr "GNOME 桌面下的影片字幕編輯器"
+
+#: ../src/Glade/EncodingsDialog.glade.h:1
+msgid "A_vailable:"
+msgstr "可用的(_V)："
+
+#: ../src/Glade/EncodingsDialog.glade.h:2
+msgid "Character codings"
+msgstr "文字編碼"
+
+#: ../src/Glade/EncodingsDialog.glade.h:3
+msgid "Shown in menu:"
+msgstr "在選單中顯示："
+
+#: ../src/Glade/FileOpenDialog.glade.h:1
+#: ../src/Glade/FileSaveAsDialog.glade.h:1
+msgid "Character Coding:"
+msgstr "文字編碼："
+
+#: ../src/Glade/FileOpenDialog.glade.h:2 ../src/Glade/MainWindow.glade.h:14
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
+msgid "Open File"
+msgstr "打開文件"
+
+#: ../src/Glade/FileOpenDialog.glade.h:3
+msgid "Video To Open:"
+msgstr "打開影片："
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:1
+msgid "<b>Character Coding:</b>"
+msgstr "<b>文字編碼：</b>"
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:2
+msgid "<b>Name:</b>"
+msgstr "<b>文件名：</b>"
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:3
+msgid "<b>Path:</b>"
+msgstr "<b>路徑：</b>"
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:4
+msgid "<b>Subtitle Format:</b>"
+msgstr "<b>字幕格式：</b>"
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:5
+msgid "<b>Timing Mode:</b>"
+msgstr "<b>計時模式：</b>"
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:6
+msgid "File Properties"
+msgstr "文件屬性"
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:2
+msgid "Newline Type:"
+msgstr "換行類型："
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:3
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
+msgid "Save As"
+msgstr "另存為"
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:4
+msgid "Select advanced options"
+msgstr "選擇高級模式"
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:5
+msgid "Subtitle Format:"
+msgstr "字幕格式："
+
+#: ../src/Glade/HeadersDialog.glade.h:1
+msgid "Album:"
+msgstr "專輯："
+
+#: ../src/Glade/HeadersDialog.glade.h:2
+msgid "Artist:"
+msgstr "藝術家："
+
+#: ../src/Glade/HeadersDialog.glade.h:3
+msgid ""
+"Audio\n"
+"Video\n"
+msgstr ""
+"音頻\n"
+"視頻\n"
+
+#: ../src/Glade/HeadersDialog.glade.h:6
+msgid "Author:"
+msgstr "作者："
+
+#: ../src/Glade/HeadersDialog.glade.h:7
+msgid "By:"
+msgstr "制作："
+
+#: ../src/Glade/HeadersDialog.glade.h:8
+msgid "CD Track:"
+msgstr "CD音軌："
+
+#: ../src/Glade/HeadersDialog.glade.h:9
+msgid "Collisions:"
+msgstr "碰撞處理："
+
+#: ../src/Glade/HeadersDialog.glade.h:10
+msgid "Comment:"
+msgstr "備注："
+
+#: ../src/Glade/HeadersDialog.glade.h:11
+msgid "Date:"
+msgstr "日期："
+
+#: ../src/Glade/HeadersDialog.glade.h:12
+msgid "Delay:"
+msgstr "延遲："
+
+#: ../src/Glade/HeadersDialog.glade.h:13
+msgid "File Path:"
+msgstr "文件路徑："
+
+#: ../src/Glade/HeadersDialog.glade.h:14
+msgid "File:"
+msgstr "文件："
+
+#: ../src/Glade/HeadersDialog.glade.h:15
+msgid "Font Color:"
+msgstr "字體顏色："
+
+#: ../src/Glade/HeadersDialog.glade.h:16
+msgid "Font Name:"
+msgstr "字體名字："
+
+#: ../src/Glade/HeadersDialog.glade.h:17
+msgid "Font Size:"
+msgstr "字體大小："
+
+#: ../src/Glade/HeadersDialog.glade.h:18
+msgid "Font Style:"
+msgstr "字體樣式："
+
+#: ../src/Glade/HeadersDialog.glade.h:19
+msgid "Frame rate:"
+msgstr "影格率："
+
+#: ../src/Glade/HeadersDialog.glade.h:20
+msgid "Headers"
+msgstr "標注"
+
+#: ../src/Glade/HeadersDialog.glade.h:21
+msgid "Karaoke Lyrics LRC"
+msgstr "LRC 卡拉OK歌詞"
+
+#: ../src/Glade/HeadersDialog.glade.h:22
+msgid "Karaoke Lyrics VKT"
+msgstr "VKT 卡拉OK歌詞"
+
+#: ../src/Glade/HeadersDialog.glade.h:23
+msgid "Note:"
+msgstr "注意："
+
+#: ../src/Glade/HeadersDialog.glade.h:24
+msgid "Original Editing:"
+msgstr "原始潤稿人："
+
+#: ../src/Glade/HeadersDialog.glade.h:25
+msgid "Original Script Checking:"
+msgstr "原始腳本檢查："
+
+#: ../src/Glade/HeadersDialog.glade.h:26
+msgid "Original Script:"
+msgstr "腳本原著："
+
+#: ../src/Glade/HeadersDialog.glade.h:27
+msgid "Original Timing:"
+msgstr "原時間軸："
+
+#: ../src/Glade/HeadersDialog.glade.h:28
+msgid "Original Translation:"
+msgstr "原譯者："
+
+#: ../src/Glade/HeadersDialog.glade.h:29
+msgid "PlayDepth:"
+msgstr "顯示色深："
+
+#: ../src/Glade/HeadersDialog.glade.h:30
+msgid "PlayResX:"
+msgstr "橫坐標(寬帶)："
+
+#: ../src/Glade/HeadersDialog.glade.h:31
+msgid "PlayResY:"
+msgstr "縱坐標(高度)："
+
+#: ../src/Glade/HeadersDialog.glade.h:32
+msgid "Program:"
+msgstr "程序："
+
+#: ../src/Glade/HeadersDialog.glade.h:33
+msgid "Script Updated By:"
+msgstr "腳本修訂："
+
+#: ../src/Glade/HeadersDialog.glade.h:34
+msgid "Source:"
+msgstr "來源："
+
+#: ../src/Glade/HeadersDialog.glade.h:35
+msgid "Timer:"
+msgstr "計時器："
+
+#: ../src/Glade/HeadersDialog.glade.h:36
+msgid "Title:"
+msgstr "標題："
+
+#: ../src/Glade/HeadersDialog.glade.h:37
+msgid "Type:"
+msgstr "格式："
+
+#: ../src/Glade/HeadersDialog.glade.h:38
+msgid "Version:"
+msgstr "版本："
+
+#: ../src/Glade/MainWindow.glade.h:1
+msgid "<b>Length</b>"
+msgstr "<b>總長度</b>"
+
+#: ../src/Glade/MainWindow.glade.h:2
+msgid "<b>Time</b>"
+msgstr "<b>時間</b>"
+
+#: ../src/Glade/MainWindow.glade.h:3
+msgid "At _Video Position"
+msgstr ""
+
+#: ../src/Glade/MainWindow.glade.h:4
+msgid "Auto Select Subtitle"
+msgstr "自動選擇字幕"
+
+#: ../src/Glade/MainWindow.glade.h:5
+msgid "Delete"
+msgstr "刪除"
+
+#. This is the duration of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:7
+#, fuzzy
+#| msgid "During:"
+msgid "Duration:"
+msgstr "間隔："
+
+#. This is the end time/frame of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:9
+msgid "End:"
+msgstr ""
+
+#: ../src/Glade/MainWindow.glade.h:10
+msgid "Find Ne_xt"
+msgstr "尋找下一個(_X)"
+
+#: ../src/Glade/MainWindow.glade.h:11
+msgid "Find Pre_vious"
+msgstr "尋找上一個(_V)"
+
+#: ../src/Glade/MainWindow.glade.h:12
+msgid "Insert"
+msgstr "插入"
+
+#: ../src/Glade/MainWindow.glade.h:13
+msgid "New File"
+msgstr "新建文件"
+
+#: ../src/Glade/MainWindow.glade.h:15
+msgid "Pr_eferences"
+msgstr "屬性(_E)"
+
+#: ../src/Glade/MainWindow.glade.h:16
+msgid "R_ewind"
+msgstr "回放(_E)"
+
+#: ../src/Glade/MainWindow.glade.h:17
+msgid "Report a _Bug"
+msgstr "報告BUG(_B)"
+
+#: ../src/Glade/MainWindow.glade.h:18
+msgid "Request a _Feature"
+msgstr "功能需求(_F)"
+
+#: ../src/Glade/MainWindow.glade.h:19
+msgid "Save File"
+msgstr "保存文件"
+
+#: ../src/Glade/MainWindow.glade.h:20
+msgid "Save _As"
+msgstr "另存為(_A)"
+
+#: ../src/Glade/MainWindow.glade.h:21
+msgid "Seek _to Selection"
+msgstr "定位至時間軸(_T)"
+
+#: ../src/Glade/MainWindow.glade.h:22
+msgid "Select Nearest Subtitle"
+msgstr "選擇最近的字幕"
+
+#: ../src/Glade/MainWindow.glade.h:23
+msgid "Set Subtitle En_d"
+msgstr "設為字幕結尾時間(_D)"
+
+#: ../src/Glade/MainWindow.glade.h:24
+msgid "Set Subtitle St_art"
+msgstr "設為字幕開始時間(_A)"
+
+#: ../src/Glade/MainWindow.glade.h:25
+#, fuzzy
+#| msgid "Set Text Language"
+msgid "Set T_ext Language"
+msgstr "設置文本語言"
+
+#: ../src/Glade/MainWindow.glade.h:26
+#, fuzzy
+#| msgid "Set Translation Language"
+msgid "Set Translati_on Language"
+msgstr "設置譯文語言"
+
+#: ../src/Glade/MainWindow.glade.h:27
+msgid "Sh_ift"
+msgstr "順延(_I)"
+
+#. This is the start time/frame of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:29
+#, fuzzy
+#| msgid "New Start:"
+msgid "Start:"
+msgstr "新的起始時間："
+
+#: ../src/Glade/MainWindow.glade.h:30
+msgid "T_imings"
+msgstr "時間軸(_I)"
+
+#: ../src/Glade/MainWindow.glade.h:31
+msgid ""
+"Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
+"and end timings.\n"
+"Shift+Plus/Minus (on the numpad) shifts timings."
+msgstr ""
+
+#: ../src/Glade/MainWindow.glade.h:33
+#, fuzzy
+#| msgid "Unsaved Translation"
+msgid "Translate Translatio_n → Text"
+msgstr "未保存的翻譯"
+
+#: ../src/Glade/MainWindow.glade.h:34
+#, fuzzy
+#| msgid "Unsaved Translation"
+msgid "Translate _Text → Translation"
+msgstr "未保存的翻譯"
+
+#: ../src/Glade/MainWindow.glade.h:35
+msgid "Translatio_n"
+msgstr "翻譯(_N)"
+
+#: ../src/Glade/MainWindow.glade.h:36
+msgid "Vide_o"
+msgstr "影片(_O)"
+
+#: ../src/Glade/MainWindow.glade.h:37
+msgid "Video _Subtitles"
+msgstr "影片字幕(_S)"
+
+#: ../src/Glade/MainWindow.glade.h:38
+msgid "_Adjust"
+msgstr "調整(_A)"
+
+#: ../src/Glade/MainWindow.glade.h:39
+msgid "_After"
+msgstr "之後(_A)"
+
+#: ../src/Glade/MainWindow.glade.h:40
+msgid "_Autocheck Spelling"
+msgstr "_拼寫檢查"
+
+#: ../src/Glade/MainWindow.glade.h:41
+msgid "_Before"
+msgstr "之前(_B)"
+
+#: ../src/Glade/MainWindow.glade.h:42
+msgid "_Bold"
+msgstr "粗體(_B)"
+
+#: ../src/Glade/MainWindow.glade.h:43
+msgid "_Close"
+msgstr "關閉(_C)"
+
+#: ../src/Glade/MainWindow.glade.h:44
+msgid "_Contents"
+msgstr "索引(_C)"
+
+#: ../src/Glade/MainWindow.glade.h:45
+msgid "_Delete Subtitles"
+msgstr "刪除字幕(_D)"
+
+#: ../src/Glade/MainWindow.glade.h:46
+msgid "_Edit"
+msgstr "編輯(_E)"
+
+#: ../src/Glade/MainWindow.glade.h:47
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../src/Glade/MainWindow.glade.h:48
+msgid "_Format"
+msgstr "字體格式(_F)"
+
+#: ../src/Glade/MainWindow.glade.h:49
+msgid "_Forward"
+msgstr "前進(_F)"
+
+#: ../src/Glade/MainWindow.glade.h:50
+msgid "_Frames"
+msgstr "影格(_F)"
+
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Headers"
+msgstr "標注(_H)"
+
+#: ../src/Glade/MainWindow.glade.h:52
+msgid "_Help"
+msgstr "幫助(_H)"
+
+#: ../src/Glade/MainWindow.glade.h:53
+msgid "_Input Frame Rate"
+msgstr "影格速率(_I)"
+
+#: ../src/Glade/MainWindow.glade.h:54
+msgid "_Insert Subtitle"
+msgstr "插入字幕(_I)"
+
+#: ../src/Glade/MainWindow.glade.h:55
+msgid "_Italic"
+msgstr "斜體字(_I)"
+
+#: ../src/Glade/MainWindow.glade.h:56
+msgid "_Keyboard Shortcuts"
+msgstr "鍵盤快捷鍵(_K)"
+
+#: ../src/Glade/MainWindow.glade.h:57
+msgid "_Line Lengths"
+msgstr ""
+
+#: ../src/Glade/MainWindow.glade.h:58
+msgid "_Loop Selection"
+msgstr "循環選區(_L)"
+
+#: ../src/Glade/MainWindow.glade.h:59
+#, fuzzy
+#| msgid "_Before"
+msgid "_Merge"
+msgstr "之前(_B)"
+
+#: ../src/Glade/MainWindow.glade.h:60
+msgid "_New"
+msgstr "新建(_N)"
+
+#: ../src/Glade/MainWindow.glade.h:61
+msgid "_Open"
+msgstr "打開(_O)"
+
+#: ../src/Glade/MainWindow.glade.h:62
+msgid "_Play / Pause"
+msgstr "播放/暫停(_P)"
+
+#: ../src/Glade/MainWindow.glade.h:63 ../src/Glade/SearchDialog.glade.h:7
+msgid "_Replace"
+msgstr "替換(_R)"
+
+#: ../src/Glade/MainWindow.glade.h:64
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: ../src/Glade/MainWindow.glade.h:65
+msgid "_Search"
+msgstr "尋找(_S)"
+
+#: ../src/Glade/MainWindow.glade.h:66
+msgid "_Seek to..."
+msgstr "定位到...(_S)"
+
+#: ../src/Glade/MainWindow.glade.h:67
+#, fuzzy
+#| msgid "_Shift"
+msgid "_Split"
+msgstr "順延(_S)"
+
+#: ../src/Glade/MainWindow.glade.h:68
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "_Synchronize"
+msgstr "同步(_S)"
+
+#: ../src/Glade/MainWindow.glade.h:69
+msgid "_Text"
+msgstr "文本(_T)"
+
+#: ../src/Glade/MainWindow.glade.h:70
+msgid "_Times"
+msgstr "時間(_T)"
+
+#: ../src/Glade/MainWindow.glade.h:71
+msgid "_Tools"
+msgstr "工具(_T)"
+
+#: ../src/Glade/MainWindow.glade.h:72
+msgid "_Translation"
+msgstr "翻譯(_T)"
+
+#: ../src/Glade/MainWindow.glade.h:73
+msgid "_Underline"
+msgstr "下劃線(_U)"
+
+#: ../src/Glade/MainWindow.glade.h:74
+msgid "_Video"
+msgstr "影片(_V)"
+
+#: ../src/Glade/MainWindow.glade.h:75
+msgid "_Video Frame Rate"
+msgstr "影片影格(_V)"
+
+#: ../src/Glade/MainWindow.glade.h:76
+msgid "_View"
+msgstr "檢視(_V)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:1
+msgid "<b>Backup</b>"
+msgstr "<b>備份</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:2
+#, fuzzy
+#| msgid "<b>File Open</b>"
+msgid "<b>File Open Dialog</b>"
+msgstr "<b>打開文件</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:3
+#, fuzzy
+#| msgid "<b>File Save As</b>"
+msgid "<b>File Save As Dialog</b>"
+msgstr "<b>文件另存為</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:4
+#, fuzzy
+#| msgid "<b>Options</b>"
+msgid "<b>Reaction Delay</b>"
+msgstr "<b>選項</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:5
+#, fuzzy
+#| msgid "<b>Subtitle Format:</b>"
+msgid "<b>Subtitle Splitting</b>"
+msgstr "<b>字幕格式：</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:6
+#, fuzzy
+#| msgid "<b>Translation</b>"
+msgid "<b>Translation File Saving</b>"
+msgstr "<b>翻譯</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:7
+#, fuzzy
+#| msgid "<b>Video</b>"
+msgid "<b>Video Seeking</b>"
+msgstr "<b>視頻</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:8
+msgid "Automatically choose the _video file to open"
+msgstr "自動選擇影片文件打開(_V)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
+msgid ""
+"Automatically seek the video to the first subtitle when changing timings"
+msgstr ""
+
+#: ../src/Glade/PreferencesDialog.glade.h:10
+msgid "Ch_aracter coding to use:"
+msgstr "文字編碼(_A)："
+
+#: ../src/Glade/PreferencesDialog.glade.h:11
+msgid "Character c_oding to use:"
+msgstr "使用文字編碼(_O)："
+
+#: ../src/Glade/PreferencesDialog.glade.h:12
+msgid "Create a _backup copy of files every"
+msgstr "為每個文件創建備份(_B)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:13
+#, fuzzy
+#| msgid "Editing To"
+msgid "Editing"
+msgstr "編輯為："
+
+#: ../src/Glade/PreferencesDialog.glade.h:14
+#, fuzzy
+#| msgid "File:"
+msgid "Files"
+msgstr "文件："
+
+#: ../src/Glade/PreferencesDialog.glade.h:15
+msgid "If auto detection _fails, use:"
+msgstr "如果無法自動偵測,使用(_F)："
+
+#: ../src/Glade/PreferencesDialog.glade.h:16
+#, fuzzy
+#| msgid "_Save"
+msgid "Leave"
+msgstr "保存(_S)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:17
+msgid "Preferences"
+msgstr "屬性"
+
+#: ../src/Glade/PreferencesDialog.glade.h:18
+#, fuzzy
+#| msgid "_Seek"
+msgid "Seek"
+msgstr "定位(_S)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:19
+msgid "Subtract"
+msgstr ""
+
+#: ../src/Glade/PreferencesDialog.glade.h:20
+msgid "When saving subtitles, also save their _translation"
+msgstr "保存字幕同時，保存翻譯(_T)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:21
+msgid "_Newline type to use:"
+msgstr "使用換行類型（_N)："
+
+#: ../src/Glade/PreferencesDialog.glade.h:22
+msgid "_Reset to defaults"
+msgstr "恢複到默認值(_R)"
+
+#: ../src/Glade/PreferencesDialog.glade.h:23
+msgid "_Subtitle format to use:"
+msgstr "使用字幕格式(_S)："
+
+#: ../src/Glade/PreferencesDialog.glade.h:24
+msgid "minutes"
+msgstr "分鍾"
+
+#: ../src/Glade/PreferencesDialog.glade.h:25
+msgid "ms before the actual start to help review new timings"
+msgstr ""
+
+#: ../src/Glade/PreferencesDialog.glade.h:26
+msgid "ms between subtitles when splitting"
+msgstr ""
+
+#: ../src/Glade/PreferencesDialog.glade.h:27
+msgid "ms when setting subtitle start/end on playback"
+msgstr ""
+
+#: ../src/Glade/SearchDialog.glade.h:1
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
+msgid "Replace"
+msgstr "替換"
+
+#: ../src/Glade/SearchDialog.glade.h:2
+msgid "Replace _All"
+msgstr "全部替換(_A)"
+
+#: ../src/Glade/SearchDialog.glade.h:3
+msgid "Replace _with:"
+msgstr "替換為(_W)："
+
+#: ../src/Glade/SearchDialog.glade.h:4
+msgid "Search _backwards"
+msgstr "反向尋找(_B)"
+
+#: ../src/Glade/SearchDialog.glade.h:5
+msgid "Search using a Regular _Expression"
+msgstr "使用正則表達式搜索(_E)"
+
+#: ../src/Glade/SearchDialog.glade.h:6
+msgid "_Match case"
+msgstr "區分大小寫 (_M)"
+
+#: ../src/Glade/SearchDialog.glade.h:8
+msgid "_Search for:"
+msgstr "尋找(_S)："
+
+#: ../src/Glade/SearchDialog.glade.h:9
+msgid "_Wrap around"
+msgstr "循環(_W)"
+
+#: ../src/Glade/SetLanguageDialog.glade.h:1
+msgid "Set language"
+msgstr "設置語言"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:1
+#: ../src/Glade/TimingsShiftDialog.glade.h:1
+msgid "<b>Apply to</b>"
+msgstr "<b>適用於</b>"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:2
+msgid "<b>First Subtitle</b>"
+msgstr "<b>起始字幕</b>"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:3
+msgid "<b>Last Subtitle</b>"
+msgstr "<b>結尾字幕</b>"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:4
+msgid "Adjust"
+msgstr "調整"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:5
+msgid "Adjust Timings"
+msgstr "調整時間軸"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:6
+msgid "All Subtitles"
+msgstr "所有字幕"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:7
+msgid "New Start:"
+msgstr "新的起始時間："
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:8
+msgid "No.:"
+msgstr "序號："
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:9
+msgid "Selected Range"
+msgstr "選擇範圍 "
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:10
+msgid "Start Frame:"
+msgstr "開始影格："
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:2
+msgid "<b>Frames</b>"
+msgstr "<b>影格</b>"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:3
+msgid ""
+"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
+"to shift timings from the main window.</i></small>"
+msgstr ""
+
+#. This means to apply the shift command from the selected subtitle to the first subtitle.
+#: ../src/Glade/TimingsShiftDialog.glade.h:6
+msgid "From _first subtitle to selection"
+msgstr "從第一個字幕到被選擇的字幕"
+
+#. This means to apply the shift command from the selected subtitle to the last subtitle.
+#: ../src/Glade/TimingsShiftDialog.glade.h:8
+msgid "From selection to _last subtitle"
+msgstr "從選擇的字幕到最後的字幕"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:9
+msgid "Shift Timings"
+msgstr "順延時間軸"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:10
+msgid "_All subtitles"
+msgstr "所有字幕(_A)"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:11
+msgid "_Selected subtitles"
+msgstr "選中的字幕(_S)"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:12
+msgid "_Shift"
+msgstr "順延(_S)"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
+msgid "<b>Options</b>"
+msgstr "<b>選項</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
+msgid "<b>Status</b>"
+msgstr "<b>狀態</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
+msgid "<b>Sync Points</b>"
+msgstr "<b>同步點</b>"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "Synchroni_ze all subtitles"
+msgstr "同步所有字幕(_Z)"
+
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
+msgid "Synchronize Timings"
+msgstr "同步時間軸"
+
+#: ../src/Glade/VideoOpenDialog.glade.h:1
+msgid "Open Video"
+msgstr "打開影片"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:1
+msgid "Seek To"
+msgstr "定位到"
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:2
+msgid "Seek _video to:"
+msgstr "定位影片至(_V)："
+
+#: ../src/Glade/VideoSeekToDialog.glade.h:3
+msgid "_Seek"
+msgstr "定位(_S)"
+
+#: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
+msgid "Adjusting timings"
+msgstr "調整時間軸"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
+msgid "Changing Input Frame Rate"
+msgstr "改變輸入影格率"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
+msgid "Changing Video Frame Rate"
+msgstr "改變影片影格率"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
+msgid "Toggling Bold"
+msgstr "切換粗體"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
+msgid "Toggling Italic"
+msgstr "切換斜體"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
+msgid "Toggling Underline"
+msgstr "切換下劃線"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
+#, fuzzy
+#| msgid "Editing From"
+msgid "Editing Start"
+msgstr "編輯者"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
+#, fuzzy
+#| msgid "Editing To"
+msgid "Editing End"
+msgstr "編輯為："
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
+#, fuzzy
+#| msgid "Editing During"
+msgid "Editing Duration"
+msgstr "編輯間隔"
+
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: ../src/GnomeSubtitles/Ui/Menus.cs:601
+msgid "Undo"
+msgstr "還原"
+
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: ../src/GnomeSubtitles/Ui/Menus.cs:611
+msgid "Redo"
+msgstr "重做"
+
+#: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
+msgid "Deleting Subtitles"
+msgstr "正在刪除字幕"
+
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
+msgid "Editing Text"
+msgstr "編輯文本"
+
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
+msgid "Editing Translation"
+msgstr "編輯翻譯"
+
+#: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:28
+msgid "Inserting Subtitle"
+msgstr "插入字幕"
+
+#: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
+#, fuzzy
+#| msgid "Deleting Subtitles"
+msgid "Merging subtitles"
+msgstr "正在刪除字幕"
+
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
+msgid "Replacing All"
+msgstr "替換所有"
+
+#: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
+msgid "Shifting timings"
+msgstr "順延時間"
+
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#, fuzzy
+#| msgid "Deleting Subtitles"
+msgid "Splitting subtitles"
+msgstr "正在刪除字幕"
+
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+msgid "Synchronizing timings"
+msgstr "同步時間軸"
+
+#. initially, it's the former text replaced by translation
+#. direction of translation
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
+#, fuzzy
+#| msgid "Translation"
+msgid "Translating"
+msgstr "翻譯"
+
+#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
+#, fuzzy
+#| msgid "Could not save the file"
+msgid "Could not translate the chosen subtitle."
+msgstr "不能保存該文件"
+
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
+msgid "Setting Subtitle Start"
+msgstr "設置字幕起始"
+
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
+msgid "Setting Subtitle End"
+msgstr "設置字幕終點"
+
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Core/Document.cs:113
+msgid "Unsaved Subtitles"
+msgstr "未保存的字幕 "
+
+#. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, fuzzy, csharp-format
+#| msgid "Translation"
+msgid "{0} ({1} translation)"
+msgstr "翻譯"
+
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, fuzzy, csharp-format
+#| msgid "Translation"
+msgid "{0} (translation)"
+msgstr "翻譯"
+
+#. GEOSTD8, HZ not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:33
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:101
+msgid "Western"
+msgstr "西方"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:34
+#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+msgid "Central European"
+msgstr "中歐"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:35
+msgid "South European"
+msgstr "南歐"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:36
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+msgid "Baltic"
+msgstr "波羅的海"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:37
+#: ../src/GnomeSubtitles/Core/Encodings.cs:78
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:92
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+msgid "Cyrillic"
+msgstr "西裏爾語"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:38
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+msgid "Arabic"
+msgstr "阿拉伯語"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:102
+msgid "Greek"
+msgstr "希臘語"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:82
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+msgid "Hebrew"
+msgstr "希伯來語"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
+#: ../src/GnomeSubtitles/Core/Encodings.cs:79
+#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+msgid "Turkish"
+msgstr "土耳其語"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+msgid "Nordic"
+msgstr "北歐"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+msgid "Celtic"
+msgstr "凱爾特語"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+msgid "Romanian"
+msgstr "羅馬尼亞語"
+
+#. ISO-8859-8-I not used
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
+#: ../src/GnomeSubtitles/Core/Encodings.cs:51
+#: ../src/GnomeSubtitles/Core/Encodings.cs:52
+#: ../src/GnomeSubtitles/Core/Encodings.cs:53
+#: ../src/GnomeSubtitles/Core/Encodings.cs:54
+#: ../src/GnomeSubtitles/Core/Encodings.cs:55
+#: ../src/GnomeSubtitles/Core/Encodings.cs:56
+msgid "Unicode"
+msgstr "萬國碼"
+
+#. Added
+#. UCS-2 and UCS-4 not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:59
+#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+msgid "Chinese Traditional"
+msgstr "繁體中文"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+msgid "Cyrillic/Russian"
+msgstr "西裏爾文/俄羅斯"
+
+#. ARMSCII-8 not used
+#. Added
+#. Added
+#. ISO-IR-111, KOI8R, KOI8U not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
+#: ../src/GnomeSubtitles/Core/Encodings.cs:65
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
+#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+msgid "Japanese"
+msgstr "日本"
+
+#. EUC-JP-MS not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+msgid "Korean"
+msgstr "韓國"
+
+#. EUC-TW not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:71
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+msgid "Chinese Simplified"
+msgstr "簡體中文"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+msgid "Portuguese"
+msgstr "葡萄牙語"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+msgid "Icelandic"
+msgstr "冰島語"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+msgid "French Canadian"
+msgstr "加拿大法語"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+msgid "Cyrillic/Ukrainian"
+msgstr "斯拉夫文/烏克蘭"
+
+#. TCVN, TIS-620, UHC, VISCII not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:99
+msgid "Central"
+msgstr "中非"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+msgid "Vietnamese"
+msgstr "越南"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:118
+msgid "Current Locale"
+msgstr "本地設置"
+
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:397
+msgid "The Gnome Subtitles Manual could not be found."
+msgstr "找不到 Gnome Subtitles 手冊。"
+
+#: ../src/GnomeSubtitles/Core/EventHandlers.cs:397
+msgid "Please verify that your installation has been completed successfully."
+msgstr "請確認你的安裝已成功完成。"
+
+#: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
+msgid "Description"
+msgstr "描述"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
+msgid "Encoding"
+msgstr "編碼"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
+msgid "None"
+msgstr "無"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+msgid "All Files"
+msgstr "所有文件"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
+msgid "All Subtitle Files"
+msgstr "所有字幕文件"
+
+#: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
+msgid "Open Translation File"
+msgstr "打開翻譯文件"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
+#, fuzzy
+#| msgid "Remember Last Used"
+msgid "Remember the last used encoding"
+msgstr "記住上次使用"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
+msgid "Keep the encoding used on file open"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+msgid "Keep the format used on file open"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+#, fuzzy
+#| msgid "Remember Last Used"
+msgid "Remember the last used format"
+msgstr "記住上次使用"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:167
+#, fuzzy
+#| msgid "Remember Last Used"
+msgid "Remember the last used type"
+msgstr "記住上次使用"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
+msgid "Find"
+msgstr "尋找"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
+msgid "Set Text Language"
+msgstr "設置文本語言"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
+msgid "Set Translation Language"
+msgstr "設置譯文語言"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
+msgid "Select the text _language of the current subtitles."
+msgstr "選擇當前字幕的文本語言(_L)"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
+msgid "Select the translation _language of the current subtitles."
+msgstr "選擇當前字幕的翻譯語言(_L)"
+
+#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
+msgid "Save Translation As"
+msgstr "保存翻譯為"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:67
+msgid "Start Time:"
+msgstr "起始時間："
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+msgid "Time"
+msgstr "時間"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
+msgid "Frames"
+msgstr "影格"
+
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+msgid "Subtitle No."
+msgstr "字幕序號："
+
+#. Start (current and correct) columns
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
+msgid "Current Start"
+msgstr "當前起始"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
+msgid "Correct Start"
+msgstr "正確的開始"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+msgid ""
+"Add sync points by selecting subtitles and adjusting the video to their "
+"correct position. At least 2 points are needed."
+msgstr "添加字幕的同步點並且調整影片到正確時間點。請注意：至少需要兩個同步點。"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+msgid ""
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
+msgstr "添加一個以上的同步點用來開始同步。同步點越多准確率越高。"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+msgid "Synchronization is ready. All subtitles will be synchronized."
+msgstr "同步工作已經准備好，所有字幕將被同步。"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0}."
+msgstr "同步工作已經准備好，下面的字幕將不被同步：{0}。"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0} and {1}."
+msgstr "同步工作已經准備好，下面的兩個字幕將不被同步：{0} and {1}。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
+msgid ""
+"An unknown error has occured. Please report a bug and include this error "
+"name:"
+msgstr "發生一個未知錯誤，請報告包括下面錯誤名稱的 BUG："
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+msgid "Could not open the file"
+msgstr "不能打開該文件"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+msgid "Open another file"
+msgstr "打開其他文件"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+msgid "The file path appears to be invalid."
+msgstr "該文件路徑無效。"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "不能保存該文件"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "保存到其他文件"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr "記憶體不足，請關閉一些程序後重試。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occured."
+msgstr "輸入/輸出錯誤。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+msgid "You do not have the permissions necessary to save the file."
+msgstr "你沒有保存該文件的權限。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "該文件無效。"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "如果你不保存，所有更改將永久丟失。"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr "創建新字幕前是否保存已修改的字幕「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
+msgid "Create without Saving"
+msgstr "新建不保存"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr "創建新字幕前是否保存已修改的翻譯「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr "創建新翻譯前是否保存已修改的翻譯「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "打開文件前是否保存已修改的字幕「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
+msgid "Open without Saving"
+msgstr "打開不保存"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "打開文件前是否保存已修改的翻譯「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "關閉前是否保存修改的字幕「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
+msgid "Close without Saving"
+msgstr "關閉不保存"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "關閉前是否保存修改的翻譯「{0}」？"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr "不能偵測到該字幕的格式，請檢查其格式是否被支持。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr "你的系統不支持該編碼，請選擇其他編碼。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
+msgid "You do not have the permissions necessary to open the file."
+msgstr "你沒有打開這個文件的權限。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
+msgid "The file could not be found."
+msgstr "找不到該文件。"
+
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr ""
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
+msgid "Could not play the file"
+msgstr "不能播放該文件"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
+msgid "All Video Files"
+msgstr "所有影片文件"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#, fuzzy
+#| msgid "All Video Files"
+msgid "All Audio Files"
+msgstr "所有影片文件"
+
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
+msgid "Could not open Bug Buddy, the bug reporting tool."
+msgstr "不能打開錯誤報告工具 Bug Buddy。"
+
+#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
+msgid "Bug information has been printed to the console."
+msgstr "錯誤信息已被打印到控制台。"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+msgid "Add or Remove..."
+msgstr "添加或移除..."
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
+msgid "Auto Detected"
+msgstr "自動偵測"
+
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+msgid "System Default"
+msgstr "系統預設值"
+
+#. Constant strings
+#: ../src/GnomeSubtitles/Ui/Menus.cs:33
+msgid "Video"
+msgstr "影片"
+
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "OVR"
+msgstr "覆蓋模式"
+
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "INS"
+msgstr "插入模式"
+
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
+msgid "Text"
+msgstr "文本"
+
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+msgid "Trans"
+msgstr "譯文"
+
+#. To translators: Ln corresponds to Line
+#: ../src/GnomeSubtitles/Ui/Status.cs:60
+msgid "Ln"
+msgstr "行"
+
+#. To translators: Col corresponds to Column
+#: ../src/GnomeSubtitles/Ui/Status.cs:62
+msgid "Col"
+msgstr "列"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+msgid "Frame"
+msgstr "影格"
+
+#. Number column
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
+msgid "No."
+msgstr "序號"
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#, fuzzy
+#| msgid "New Start:"
+msgid "Start"
+msgstr "新的起始時間："
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "End"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
+#, fuzzy
+#| msgid "During"
+msgid "Duration"
+msgstr "間隔"
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
+msgid "Translation"
+msgstr "翻譯"
+
+#~ msgid "From:"
+#~ msgstr "從："
+
+#~ msgid "Set Translatio_n Language"
+#~ msgstr "設置譯文語言(_N)"
+
+#~ msgid "Set _Text Language"
+#~ msgstr "設置文本語言(_T)"
+
+#~ msgid "To:"
+#~ msgstr "到："
+
+#~ msgid "Keep Existing"
+#~ msgstr "保持現狀"
+
+#~ msgid "From"
+#~ msgstr "起點"
+
+#~ msgid "To"
+#~ msgstr "終點"
+
+#~ msgid "Seek to _frame:"
+#~ msgstr "定位到幀(_F)："
+
+#~ msgid ""
+#~ "An Error has occured.\n"
+#~ "\n"
+#~ "To report this bug, please <b>Open the Bugzilla</b> and paste the "
+#~ "following <b>log</b> into the bug description.\n"
+#~ "\n"
+#~ "If the bug is related to a <b>subtitle file</b>, please attach it if "
+#~ "possible."
+#~ msgstr ""
+#~ "發生了一個錯誤.\n"
+#~ "\n"
+#~ "要報告這個錯誤,請 <b>打開Bugzilla</b> 粘貼 <b>日志</b>到錯誤詳情.\n"
+#~ "\n"
+#~ "如果錯誤是某個 <b>字幕文件</b>導致,盡可能附帶它."
+
+#~ msgid "Open Bugzilla"
+#~ msgstr "打開BUG管理"
+
+#~ msgid "Could not continue the video playback"
+#~ msgstr "無法繼續播放該視頻"
+
+#~ msgid "The following error has occurred: "
+#~ msgstr "發生錯誤: "
+
+#~ msgid "Please check that the video file is supported."
+#~ msgstr "請檢查該文件是否被支持."
