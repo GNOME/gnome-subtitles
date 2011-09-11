@@ -24,6 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
 
+//TODO: warn when saving files with a framerate different than 25 or 29,97.
 internal class SubtitleFormatAdobeEncoreDVD : SubtitleFormat {
 	private Regex inputRegexPAL = new Regex(@"\d+(\s*:\s*\d+){3}\s+\d+(\s*:\s*\d+){3}\s*.+");
 	

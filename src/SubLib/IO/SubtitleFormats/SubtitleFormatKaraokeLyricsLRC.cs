@@ -22,7 +22,8 @@ using System;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
-	
+
+//TODO: warn when saving subtitles with times > 99 minutes, warn when saving with 2+ lines
 internal class SubtitleFormatKaraokeLyricsLRC : SubtitleFormat {
 		
 	internal SubtitleFormatKaraokeLyricsLRC() {

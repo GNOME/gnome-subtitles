@@ -23,6 +23,7 @@ using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
 
+//TODO: check when hours >= 10 (2+ digits)
 internal class SubtitleFormatAdvancedSubStationAlpha : SubtitleFormatSubStationAlpha {
 	
 	protected override string FormatName {

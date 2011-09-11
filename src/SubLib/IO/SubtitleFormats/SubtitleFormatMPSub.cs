@@ -22,6 +22,7 @@ using System;
 
 namespace SubLib.IO.SubtitleFormats {
 
+//TODO: warn when opening files with comments, warn when saving lines with '#' as they will be ignored/treated as comments
 internal class SubtitleFormatMPSub : SubtitleFormat {
 	
 	internal SubtitleFormatMPSub () {

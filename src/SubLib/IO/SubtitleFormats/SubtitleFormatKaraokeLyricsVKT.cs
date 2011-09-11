@@ -22,7 +22,8 @@ using System;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
-	
+
+//TODO: warn when saving with 2+ lines
 internal class SubtitleFormatKaraokeLyricsVKT : SubtitleFormat {
 		
 	internal SubtitleFormatKaraokeLyricsVKT() {
