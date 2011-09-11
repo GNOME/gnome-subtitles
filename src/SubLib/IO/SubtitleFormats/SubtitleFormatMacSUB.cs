@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,8 @@ using System;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
-	
+
+//TODO: support empty lines
 internal class SubtitleFormatMacSUB : SubtitleFormat {
 	
 	internal SubtitleFormatMacSUB() {
@@ -37,7 +38,7 @@ internal class SubtitleFormatMacSUB : SubtitleFormat {
 		
 		subtitleIn = @"/\s*(?<StartFrame>\d+)\n+(?<Text>.+([^\d]\n.+)?)\n+/\s*(?<EndFrame>\d+)";
 		
-		subtitleOut = "/<<StartFrame>>\n<<Text>>\n/<<EndFrame>>\n";
+		subtitleOut = "/<<StartFrame>>\n<<Text>>\n/<<EndFrame>>";
 		
 	}
 		
