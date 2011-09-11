@@ -107,7 +107,7 @@ internal class SubtitleOutput {
 				return FormatedField(startSeconds, 2, match);
 			case "StartDeciseconds":
 				int startDeciseconds = DivideAndRound(subtitle.Times.Start.Milliseconds, 100);
-				return FormatedField(startDeciseconds, 2, match);
+				return FormatedField(startDeciseconds, 1, match);
 			case "StartTotalDeciseconds":
 				int startTotalDeciseconds = DivideAndRound((int)subtitle.Times.Start.TotalMilliseconds, 100);
 				return startTotalDeciseconds.ToString();
@@ -150,7 +150,7 @@ internal class SubtitleOutput {
 				return FormatedField(endSeconds, 2, match);
 			case "EndDeciseconds":
 				int endDeciseconds = DivideAndRound(subtitle.Times.End.Milliseconds, 100);
-				return FormatedField(endDeciseconds, 2, match);
+				return FormatedField(endDeciseconds, 1, match);
 			case "EndTotalDeciseconds":
 				int endTotalDeciseconds = DivideAndRound((int)subtitle.Times.End.TotalMilliseconds, 100);
 				return endTotalDeciseconds.ToString();
