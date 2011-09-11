@@ -23,6 +23,7 @@ using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
 	
+//TODO: support empty lines
 internal class SubtitleFormatAQTitle : SubtitleFormat {
 	private static Regex styleExpression = new Regex(@"<[ubi]\w*>", RegexOptions.IgnoreCase);
 	
@@ -36,7 +37,7 @@ internal class SubtitleFormatAQTitle : SubtitleFormat {
 		
 		format = @"-->>\s*\d+\s+.+\s+-->>\s*\d+";
 		
-		subtitleIn = @"-->>\s*(?<StartFrame>\d+)\s*(?<Text>.*\n.*)\n+-->>\s*(?<EndFrame>\d+)";
+		subtitleIn = @"-->>\s*(?<StartFrame>\d+).*\n(?<Text>(.+\n)+)-->>\s*(?<EndFrame>\d+)";
 		
 		subtitleOut = "-->> <<StartFrame>>\n<<Text>>\n-->> <<EndFrame>>\n";
 		
