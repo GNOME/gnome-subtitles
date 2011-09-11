@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,9 +34,9 @@ internal class SubtitleFormatKaraokeLyricsLRC : SubtitleFormat {
 		
 		lineBreak = "|"; // It does not manage line breaks, but still using this char as a separator
 		
-		format = @"\[\s*\d+:\d+.\d+\s*\].+\n+\[\s*\d+:\d+.\d+\s*\]";
+		format = @"\[\s*\d+:\d+[.,]\d+\s*\].+\n+\[\s*\d+:\d+[.,]\d+\s*\]";
 		
-		subtitleIn = @"\[\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*.\s*(?<StartCentiseconds>\d+)\s*\]\s*(?<Text>.*)\n+\[\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*.\s*(?<EndCentiseconds>\d+)\s*\]";
+		subtitleIn = @"\[\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*[.,]\s*(?<StartCentiseconds>\d+)\s*\]\s*(?<Text>.*)\n+\[\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*[.,]\s*(?<EndCentiseconds>\d+)\s*\]";
 		
 		subtitleOut = "[<<StartMinutes>>:<<StartSeconds>>.<<StartCentiseconds>>]<<Text>>\n" +
 			"[<<EndMinutes>>:<<EndSeconds>>.<<EndCentiseconds>>]";

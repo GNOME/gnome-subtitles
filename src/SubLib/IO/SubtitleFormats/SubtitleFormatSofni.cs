@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,13 +32,13 @@ internal class SubtitleFormatSofni : SubtitleFormat {
     	extensions = new string[] { "sub" };
 		lineBreak = "\n";
 		
-		format = @".+\s+\d+:\d+:\d+.\d+\\\d+:\d+:\d+.\d+";
+		format = @".+\s+\d+:\d+:\d+[.,]\d+\\\d+:\d+:\d+[.,]\d+";
 		
 		subtitleIn = @"(?<Text>.+(\n.+)?)\n+(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*.\s*(?<StartCentiseconds>\d+)\\(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*.\s*(?<EndCentiseconds>\d+)";
 		
 		subtitleOut = "<<Text>>\n" +
 			"<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>.<<StartCentiseconds>>" +
-			"\\ <<EndHours>>:<<EndMinutes>>:<<EndSeconds>>.<<EndCentiseconds>>\n";
+			"\\<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>.<<EndCentiseconds>>";
 	}
 	
 }

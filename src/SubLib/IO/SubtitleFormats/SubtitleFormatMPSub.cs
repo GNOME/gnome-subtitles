@@ -32,9 +32,9 @@ internal class SubtitleFormatMPSub : SubtitleFormat {
 		extensions = new string[] { "sub" };
 		lineBreak = "\n";
 
-		format = @"TITLE\s*=.*\n(.*\n)*FORMAT\s*=.*\n(.*\n)*[ \f\r\t\v]*\n\d+(\.\d+)? \d+(\.\d+)?\s+.+";
+		format = @"TITLE\s*=.*\n(.*\n)*FORMAT\s*=.*\n(.*\n)*[ \f\r\t\v]*\n\d+([.,]\d+)? \d+([.,]\d+)?\s+.+";
 
-		subtitleInTimesMode = @"(?<StartElapsedTime>\d+(\.\d*)?)[^\d\n](?<EndElapsedTime>\d+(\.\d*)?).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
+		subtitleInTimesMode = @"(?<StartElapsedTime>\d+([.,]\d*)?)[^\d\n](?<EndElapsedTime>\d+([.,]\d*)?).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
 		subtitleInFramesMode = @"(?<StartElapsedFrames>\d+)[^\d\n](?<EndElapsedFrames>\d+).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
 		
 		subtitleOutTimesMode = "<<StartElapsedTime>> <<EndElapsedTime>>\n<<Text>>\n";

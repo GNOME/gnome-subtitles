@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,12 +32,12 @@ internal class SubtitleFormatSubCreator1x : SubtitleFormat {
     	extensions = new string[] { "txt" };
 		lineBreak = "|";
 			
-		format = @"\d+:\d+:\d+.\d:\s*.+\s+\d+:\d+:\d+.\d:";
+		format = @"\d+:\d+:\d+[.,]\d:\s*.+\s+\d+:\d+:\d+[.,]\d:";
 		
-		subtitleIn = @"(?<StartHours>\d+):(?<StartMinutes>\d+):(?<StartSeconds>\d+).(?<StartDeciseconds>\d+):\s*(?<Text>.+)\s+(?<EndHours>\d+):(?<EndMinutes>\d+):(?<EndSeconds>\d+).(?<EndDeciseconds>\d+)";
+		subtitleIn = @"(?<StartHours>\d+):(?<StartMinutes>\d+):(?<StartSeconds>\d+)[.,](?<StartDeciseconds>\d+):\s*(?<Text>.+)\s+(?<EndHours>\d+):(?<EndMinutes>\d+):(?<EndSeconds>\d+)[.,](?<EndDeciseconds>\d+):";
 		
 		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>.<<StartDeciseconds>>:" +
-			"<<Text>>\n<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>.<<EndDeciseconds>>:\n";
+			"<<Text>>\n<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>.<<EndDeciseconds>>:";
 	}
 	
 }

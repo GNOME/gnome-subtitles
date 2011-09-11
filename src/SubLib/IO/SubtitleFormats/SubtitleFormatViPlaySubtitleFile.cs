@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,14 +33,14 @@ internal class SubtitleFormatViPlaySubtitleFile : SubtitleFormat {
 		extensions = new string[] { "vsf" };
 		lineBreak = "|";
 		
-		format = @"\{\* VIPLAY SUBTITLE FILE \*\}\s*\d+:\d+:\d+,\d+\s*-\s*\d+:\d+:\d+,\d+=.+";
+		format = @"\{\* VIPLAY SUBTITLE FILE \*\}\s*\d+:\d+:\d+[,.]\d+\s*-\s*\d+:\d+:\d+[,.]\d+=.+";
 		
-		subtitleIn = @"(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*,\s*(?<StartMilliseconds>\d+)\s*-\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*,\s*(?<EndMilliseconds>\d+)\s*=\s*(?<Text>.*)";
+		subtitleIn = @"(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*[,.]\s*(?<StartMilliseconds>\d+)\s*-\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*[,.]\s*(?<EndMilliseconds>\d+)\s*=\s*(?<Text>.*)";
 		
 		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>,<<StartMilliseconds>>-" +
-			"<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>,<<EndMilliseconds>>=<<Text>>\n";
+			"<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>,<<EndMilliseconds>>=<<Text>>";
 		
-		bodyBeginOut = "{* VIPLAY SUBTITLE FILE *}";	
+		bodyBeginOut = "{* VIPLAY SUBTITLE FILE *}\n";	
 			
 	}
 		
