@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2009 Pedro Castro
+ * Copyright (C) 2005-2009,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ using SubLib.Core.Domain;
 using SubLib.Core.Timing;
 using SubLib.IO.SubtitleFormats;
 using System;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -496,8 +497,10 @@ internal class SubtitleParser {
 		string textResult = String.Empty;
 		bool returnValue = ParseGroup(match, groupName, ref textResult);
 		if (returnValue) {
+			textResult = textResult.Replace(',', '.');
+
 			try {
-				result = (float)Convert.ToDouble(textResult);
+				result = (float)Convert.ToDouble(textResult, CultureInfo.InvariantCulture);
 			} catch (Exception) {
 				return false;
 			}

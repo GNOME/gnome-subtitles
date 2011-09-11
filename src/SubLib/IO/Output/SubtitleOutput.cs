@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2010 Pedro Castro
+ * Copyright (C) 2005-2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@ using SubLib.Core.Timing;
 using SubLib.IO.SubtitleFormats;
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -197,9 +198,10 @@ internal class SubtitleOutput {
 	}
 	
 	private string FormatedField (double field) {
-		return field.ToString("0.###");
+		return field.ToString("0.###", CultureInfo.InvariantCulture);
 	}
 	
+	//TODO fix precision when saving files. If our number width is greater than 'width', some of the last digits will be removed
 	private string DimensionField (int field, int width) {
 		return field.ToString("D" + width).Substring(0, width);
 	}
