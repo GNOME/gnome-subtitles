@@ -38,7 +38,7 @@ internal class SubtitleFormatPhoenixJapanimationSociety : SubtitleFormat {
 		
 		subtitleIn = @"\s*(?<StartFrame>\d+),\s*(?<EndFrame>\d+),\s*""(?<Text>.+)""";
 		
-		subtitleOut = "\t<<StartFrame>>,\t<<EndFrame>>, <<Text>>";
+		subtitleOut = "\t<<StartFrame>>,\t<<EndFrame>>, \"<<Text>>\"";
 		
 	}
 	
