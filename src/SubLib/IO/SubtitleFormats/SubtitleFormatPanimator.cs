@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ internal class SubtitleFormatPanimator : SubtitleFormat {
 		subtitleIn = @"/d\s+(?<StartSeconds>\d+)\s+(?<StartCentiseconds>\d+)\s+(?<Text>.+(\n.+)?)\s+/d\s+(?<EndSeconds>\d+)\s+(?<EndCentiseconds>\d+)\s+/c";
 		
 		subtitleOut = "/d <<StartSeconds>> <<StartCentiseconds>>\n<<Text>>\n" 
-				+ "/d <<EndSeconds>> <<EndCentiseconds>>\n/c\n";
+				+ "/d <<EndSeconds>> <<EndCentiseconds>>\n/c";
 		
 	}
 	
