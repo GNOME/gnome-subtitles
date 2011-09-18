@@ -33,9 +33,9 @@ internal class SubtitleFormatPanimator : SubtitleFormat {
 		
 		lineBreak = "\n";
 		
-		format = @"/d\s+\d+\s+\d+\s+.+\s*/d\s+\d+\s+\d+\s+/c";
+		format = @"/d\s+\d+\s+\d+\s+(.+\n)*\s*/d\s+\d+\s+\d+\s+/c";
 		
-		subtitleIn = @"/d\s+(?<StartSeconds>\d+)\s+(?<StartCentiseconds>\d+)\s+(?<Text>.+(\n.+)?)\s+/d\s+(?<EndSeconds>\d+)\s+(?<EndCentiseconds>\d+)\s+/c";
+		subtitleIn = @"/d\s+(?<StartSeconds>\d+)\s+(?<StartCentiseconds>\d+)\s+(?<Text>(.*(?!\n[ \f\r\t\v]*/d[ \f\r\t\v]+\d+[ \f\r\t\v]+\d+[ \f\r\t\v]*\n[ \f\r\t\v]*/c)\n)*.*\n)\s*/d\s+(?<EndSeconds>\d+)\s+(?<EndCentiseconds>\d+)\s+/c";
 		
 		subtitleOut = "/d <<StartSeconds>> <<StartCentiseconds>>\n<<Text>>\n" 
 				+ "/d <<EndSeconds>> <<EndCentiseconds>>\n/c";
