@@ -34,9 +34,9 @@ internal class SubtitleFormatMacSUB : SubtitleFormat {
 		
 		lineBreak = "\n";
 		
-		format = @"/\s*\d+\s+.+\s+/\s*\d+";
+		format = @"/\d+\s+(.+\n)*/\d+";
 		
-		subtitleIn = @"/\s*(?<StartFrame>\d+)\n+(?<Text>.+([^\d]\n.+)?)\n+/\s*(?<EndFrame>\d+)";
+		subtitleIn = @"/\s*(?<StartFrame>\d+)\n+(?<Text>(.*(?!\n/\d+)\n)*.*\n)/\s*(?<EndFrame>\d+)";
 		
 		subtitleOut = "/<<StartFrame>>\n<<Text>>\n/<<EndFrame>>";
 		
