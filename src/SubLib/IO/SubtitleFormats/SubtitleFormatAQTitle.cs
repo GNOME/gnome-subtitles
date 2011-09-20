@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2008,2011 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ internal class SubtitleFormatAQTitle : SubtitleFormat {
 		
 		lineBreak = "\n";
 		
-		format = @"-->>\s*\d+\s+.+\s+-->>\s*\d+";
+		format = @"-->>\s*\d+\s+(.+\n)*-->>\s*\d+";
 		
 		subtitleIn = @"-->>\s*(?<StartFrame>\d+).*\n(?<Text>(.+\n)+)-->>\s*(?<EndFrame>\d+)";
 		
