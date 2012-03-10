@@ -17,25 +17,40 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using System;
 using GnomeSubtitles.Core;
-using Mono.Unix;
+using GnomeSubtitles.Ui.Component;
 
-namespace GnomeSubtitles.Dialog {
-
-public class FileTranslationOpenDialog : FileOpenDialog {
-	
-	public FileTranslationOpenDialog () : base(false, Catalog.GetString("Open Translation File")) {
-	}
-	
-	/* Public members */
-	
-	protected override string GetStartFolder () {
+namespace GnomeSubtitles.Dialog
+{
+	public class TranslationFileOpenDialog : FileOpenDialog
+	{
+		public TranslationFileOpenDialog () : base(!Base.IsVideoLoaded, false, "Open Translation")
+		{
+			autoChooseTranslationFile = false;
+			
+			if (Base.IsDocumentLoaded)	{
+				AutoChooseTranslationFile(Base.Document.TextFile.Filename);
+				
+				if (!Base.IsVideoLoaded)
+					AutoChooseVideoFile(Base.Document.TextFile.Filename);
+			}
+		}
+		
+		/* Protected members */
+		
+		protected override string GetStartFolder () {
 		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted)
 			return Base.Document.TranslationFile.Directory;
 		else
 			return base.GetStartFolder();
+		}
+
+		/* Private members */
+		
+		protected override void InitSelectedSubtitleCombo () {
+			selectedTranslation = new FilexEncodingCombo(translationFileLabel ,translationFileComboBox, translationEncodingComboBox);
+			ActiveSelectionCombos.Add(selectedTranslation);
+		}
 	}
-
-}
-
 }

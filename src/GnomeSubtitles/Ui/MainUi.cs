@@ -17,20 +17,17 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using System;
+using System.Text;
 using GnomeSubtitles.Core;
-using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Dialog;
 using GnomeSubtitles.Dialog.Unmanaged;
 using GnomeSubtitles.Ui.Edit;
 using GnomeSubtitles.Ui.VideoPreview;
 using GnomeSubtitles.Ui.View;
 using Gtk;
-using Mono.Unix;
-using SubLib.Exceptions;
 using SubLib.Core.Domain;
-using System;
-using System.IO;
-using System.Text;
+using SubLib.Exceptions;
 
 namespace GnomeSubtitles.Ui {
 
@@ -101,9 +98,11 @@ public class MainUi {
     	string[] args = Base.ExecutionContext.Args;
     	if (args.Length > 0) {
     		string subtitleFile = args[0];
-    		Uri videoUri = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : null;
 			int codePage = GetFileOpenCodePageFromConfig();
-			Open(subtitleFile, codePage, videoUri);
+			Open(subtitleFile, codePage);
+			string videoFile = Base.Config.PrefsVideoAutoChooseFile ? FileTools.FromFolderFindMatchOfType(subtitleFile, ValidFileTypes.Video) : null;
+			if (videoFile != null)
+				Base.OpenVideo(FileTools.GetUriFromFilePath(videoFile));
 		}
     }
     
@@ -141,12 +140,39 @@ public class MainUi {
 		FileOpenDialog dialog = Base.Dialogs.Get(typeof(FileOpenDialog)) as FileOpenDialog;
     	dialog.Show();
     	bool gotOpenResponse = dialog.WaitForResponse();
-    	if (gotOpenResponse && ToOpenAfterWarning()) {
-    		string filename = dialog.Filename;
-    		int codePage = (dialog.Encoding.Equals(EncodingDescription.Empty) ? -1 : dialog.Encoding.CodePage);
-    		Uri videoUri = dialog.VideoUri;
-    		Open(filename, codePage, videoUri);
+    	if (gotOpenResponse) {
+    		if (dialog.SelectedSubtitle != null && ToOpenAfterWarning())
+				Open(dialog.SelectedSubtitle, dialog.SelectedSubtitleEncoding.CodePage);
+    		if (dialog.SelectedTranslation != null && ToOpenTranslationAfterWarning())
+				OpenTranslation(dialog.SelectedTranslation, dialog.SelectedTranslationEncoding.CodePage);
+			if (dialog.SelectedVideo != null)
+				Base.OpenVideo(dialog.SelectedVideo);
     	}
+    }
+		
+	/// <summary>Shows the open translation dialog and possibly opens a file.</summary>
+    /// <remarks>If there's a translation currently open with unsaved changes, a warning dialog
+    /// is shown before opening the new file.</remarks>
+    public void TranslationOpen () {
+    	TranslationFileOpenDialog dialog = Base.Dialogs.Get(typeof(TranslationFileOpenDialog)) as TranslationFileOpenDialog;
+    	dialog.Show();
+    	bool toOpen = dialog.WaitForResponse();
+    	if (toOpen) {
+			if (ToOpenTranslationAfterWarning())
+    			OpenTranslation(dialog.SelectedTranslation, dialog.SelectedTranslationEncoding.CodePage);
+   			if (dialog.SelectedVideo != null)
+				Base.OpenVideo(dialog.SelectedVideo);	
+		}
+    }
+		
+	/// <summary>Opens the Open video dalog and possibly opens a file</summary> ///	
+	public void VideoOpen () {
+    	VideoOpenDialog dialog = Base.Dialogs.Get(typeof(VideoOpenDialog)) as VideoOpenDialog;
+    	dialog.Show();
+		bool toOpen = dialog.WaitForResponse();
+		if (toOpen) {
+			Base.OpenVideo(dialog.Uri);
+		}
     }
 
 	/// <summary>Opens a subtitle.</summary>
@@ -155,7 +181,7 @@ public class MainUi {
     /// is shown before opening the new file.</remarks>
     public void Open (string filename) {
 		if (ToOpenAfterWarning()) {
-			Open(filename, -1, null);
+			Open(filename, -1);
 		}
     }
         
@@ -204,20 +230,6 @@ public class MainUi {
 		Base.NewTranslation();
     }
     
-    /// <summary>Shows the open translation dialog and possibly opens a file.</summary>
-    /// <remarks>If there's a translation currently open with unsaved changes, a warning dialog
-    /// is shown before opening the new file.</remarks>
-    public void TranslationOpen () {
-    	FileOpenDialog dialog = Base.Dialogs.Get(typeof(FileTranslationOpenDialog)) as FileOpenDialog;
-    	dialog.Show();
-    	bool toOpen = dialog.WaitForResponse();
-    	if (toOpen && ToOpenTranslationAfterWarning()) {
-    		string filename = dialog.Filename;
-    		int codePage = (dialog.Encoding.Equals(EncodingDescription.Empty) ? -1 : dialog.Encoding.CodePage);
-    		OpenTranslation(filename, codePage);
-    	}
-    }
-    
     /// <summary>Executes a Save operation regarding the translation.</summary>
     /// <remarks>If the translation hasn't been saved before, a TranslationSaveAs is executed.</remarks>
     /// <returns>Whether the translation file was saved or not.</returns>
@@ -260,10 +272,10 @@ public class MainUi {
 	/// <param name="codePage">The code page of the filename. To use autodetection, set it to -1.</param>
 	/// <param name="videoUri">The URI of the video to open. If null, no video will be opened.</param>
 	/// <remarks>An error dialog is presented if an exception is caught during open.</remarks>
-    private void Open (string path, int codePage, Uri videoUri) {
+     private void Open (string path, int codePage) {
     	try {
     		Encoding encoding = CodePageToEncoding(codePage);
-    		Base.Open(path, encoding, videoUri);
+    		Base.Open(path, encoding, null);
 		}
 		catch (Exception exception) {
 			SubtitleFileOpenErrorDialog errorDialog = new SubtitleFileOpenErrorDialog(path, exception);
@@ -272,23 +284,6 @@ public class MainUi {
 			if (toOpenAgain)
 				Open();
 		}
-    }
-    
-    /// <summary>Creates an <see cref="Encoding" /> from a code page.</summary>
-    /// <param name="codePage">The code page.</param>
-    /// <returns>The respective <see cref="Encoding" />, or null if codePage == -1.</returns>
-    /// <exception cref="EncodingNotSupportedException">Thrown if a detected encoding is not supported by the platform.</exception>
-    //TODO move to util
-    private Encoding CodePageToEncoding (int codePage) {
-    	if (codePage == -1)
-    		return null;
-
-    	try {
-    		return Encoding.GetEncoding(codePage);
-    	}
-    	catch (NotSupportedException) {
-    		throw new EncodingNotSupportedException();
-    	}
     }
 
     /// <summary>Opens a translation file, given its filename and code page.</summary>
@@ -307,6 +302,23 @@ public class MainUi {
 			if (toOpenAgain)
 				Open();
 		}
+    }
+	    
+    /// <summary>Creates an <see cref="Encoding" /> from a code page.</summary>
+    /// <param name="codePage">The code page.</param>
+    /// <returns>The respective <see cref="Encoding" />, or null if codePage == -1.</returns>
+    /// <exception cref="EncodingNotSupportedException">Thrown if a detected encoding is not supported by the platform.</exception>
+    //TODO move to util
+    private Encoding CodePageToEncoding (int codePage) {
+    	if (codePage == -1)
+    		return null;
+
+    	try {
+    		return Encoding.GetEncoding(codePage);
+    	}
+    	catch (NotSupportedException) {
+    		throw new EncodingNotSupportedException();
+    	}
     }
 
     private void Save (FileProperties fileProperties) {

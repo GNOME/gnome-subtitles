@@ -42,6 +42,7 @@ public class PreferencesDialog : GladeDialog {
 	/* Widgets */
 	[WidgetAttribute] private CheckButton translationSaveAllCheckButton = null;
 	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
+	[WidgetAttribute] private CheckButton translationAutoChooseFileCheckButton = null;
 	[WidgetAttribute] private CheckButton autoBackupCheckButton = null;
 	[WidgetAttribute] private CheckButton reactionDelayCheckButton = null;
 	[WidgetAttribute] private CheckButton videoSeekCheckButton = null;
@@ -80,6 +81,7 @@ public class PreferencesDialog : GladeDialog {
 
 		/* Video Auto choose file */
 		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
+		//translationSaveAllCheckButton.Active = Base.Config.PrefsTranslationAutoChooseFile;
 		
 		/* Auto Backup */
 		SetAutoBackup();
@@ -200,6 +202,7 @@ public class PreferencesDialog : GladeDialog {
 		fileOpenEncoding.ActiveSelection = 0; //Auto detect
 		fileOpenFallbackEncoding.ActiveSelection = 0; //Current Locale
 		videoAutoChooseFileCheckButton.Active = true;
+		translationAutoChooseFileCheckButton.Active = true;
 
 		fileSaveEncoding.ActiveSelection = 0; //Keep Existing
 		fileSaveFormat.ActiveSelection = 0; //Keep Existing
@@ -323,6 +326,10 @@ public class PreferencesDialog : GladeDialog {
 
 	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
 		Base.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
+	}
+		
+	private void OnTranslationAutoChooseFileToggled (object o, EventArgs args) {
+		Base.Config.PrefsTranslationAutoChooseFile = translationAutoChooseFileCheckButton.Active;		
 	}
 
 	private void OnTranslationSaveAllToggled (object o, EventArgs args) {

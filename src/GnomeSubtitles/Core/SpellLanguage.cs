@@ -49,6 +49,12 @@ public class SpellLanguage : IComparable {
 		get { return name; }
 	}
 	
+	public bool StringMatchesId (string candidate) {
+		if (regex.IsMatch(candidate))
+			return true;
+		return false;
+	}
+	
 	/* Public methods */
 	
 	public override bool Equals (object o) {

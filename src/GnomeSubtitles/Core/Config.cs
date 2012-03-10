@@ -32,6 +32,7 @@ public enum ConfigFileSaveEncoding { KeepExisting = -1, CurrentLocale = 0, Fixed
 public enum ConfigFileSaveFormatOption { KeepExisting = 0, RememberLastUsed = 1, Specific = 3 }; //Values match ordering where the options are used
 public enum ConfigFileSaveFormat { KeepExisting = -1, Fixed = 0 }; //KeepExisting=-1 because it doesn't appear
 public enum ConfigFileSaveNewlineOption { RememberLastUsed = 0, Specific = 2 }; //Values match ordering where the options are used
+public enum ValidFileTypes { Subtitle = 3, Video = 2, None = 0};
 
 public class Config {
 	private Client client = null;
@@ -53,6 +54,7 @@ public class Config {
 	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
 	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
 	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
+	private const string keyPrefsTranslationAutoChooseFile = keyPrefsTranslation + "auto_choose_file";
 	private const string keyPrefsVideoApplyReactionDelay = keyPrefsVideo + "apply_reaction_delay";
 	private const string keyPrefsVideoReactionDelay = keyPrefsVideo + "reaction_delay";
 	private const string keyPrefsVideoSeekOnChange = keyPrefsVideo + "seek_on_change";
@@ -124,6 +126,11 @@ public class Config {
 	public bool PrefsVideoAutoChooseFile {
 		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
 		set { Set(keyPrefsVideoAutoChooseFile, value); }
+	}
+		
+	public bool PrefsTranslationAutoChooseFile {
+		get { return GetBool(keyPrefsTranslationAutoChooseFile, true); }
+		set { Set(keyPrefsTranslationAutoChooseFile, value); }
 	}
 	
 	public bool PrefsVideoApplyReactionDelay {

@@ -25,7 +25,6 @@ using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
 using System;
-using System.IO;
 using System.Text;
 
 namespace GnomeSubtitles.Core {

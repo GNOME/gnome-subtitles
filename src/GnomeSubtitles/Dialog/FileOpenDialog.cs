@@ -16,77 +16,73 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Glade;
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Ui.Component;
-using GnomeSubtitles.Ui.VideoPreview;
-using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
-using System;
-using System.Collections;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Dialog {
 
 public class FileOpenDialog : GladeDialog {
 	protected FileChooserDialog dialog = null;
-
-	private string chosenFilename = String.Empty;
-	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
-	private ArrayList videoFiles = null; //The full paths of the video files in the current dir
-	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
-	private Uri chosenVideoUri = null;
-	private bool autoChooseVideoFile = true;
-
+		
+	
+	/* Preferences */
+	protected bool autoChooseVideoFile = true;
+	protected bool autoChooseTranslationFile = true;
+	
+	protected List<string> subtitleFiles = new List<string>();
+	protected List<string> videoFiles = new List<string>();
+		
+	protected List<FilexEncodingCombo> ActiveSelectionCombos = new List<FilexEncodingCombo>();
+		
 	/* Constant strings */
 	private const string gladeFilename = "FileOpenDialog.glade";
 
 	/* Components */
-	private EncodingComboBox encodingComboBox = null;
+	protected FilexEncodingCombo selectedSubtitle = null;
+	protected FilexEncodingCombo selectedTranslation = null;
+	protected FileCombo selectedVideo = null;
 
 	/* Widgets */
-	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox videoComboBox = null;
-	[WidgetAttribute] private Label videoLabel = null;
+	
+	[WidgetAttribute] protected Label subtitleFileLabel = null;
+	[WidgetAttribute] protected ComboBox subtitleFileComboBox = null;
+	[WidgetAttribute] protected ComboBox subtitleEncodingComboBox = null;
+	[WidgetAttribute] protected Label translationFileLabel = null;
+	[WidgetAttribute] protected ComboBox translationFileComboBox = null;
+	[WidgetAttribute] protected ComboBox translationEncodingComboBox = null;
+	[WidgetAttribute] protected Label videoFileLabel = null;
+	[WidgetAttribute] protected ComboBox videoFileComboBox = null;
+
 	
 	
-	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
+	public FileOpenDialog () : this(true, true ,Catalog.GetString("Open Files")) {
 	}
 	
-	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename) {
+	protected FileOpenDialog (bool toEnableVideo, bool toEnableTranslation, string title) : base(gladeFilename) {
 		dialog = GetDialog() as FileChooserDialog;
 		dialog.Title = title;
-
-		InitEncodingComboBox();
-
-		if (toEnableVideo)
+		dialog.CurrentFolderChanged += OnCurrentFolderChangedGetTextFiles;
+		dialog.SelectionChanged += OnSelectionGetTextFiles;
+		
+		InitSelectedSubtitleCombo (); // this is overriden in TranslationFileOpen
+		
+		if (toEnableTranslation) {
+			InitSelectedTranslationCombo ();
+		}
+		if (toEnableVideo) // This must be enabled last to allow autoselection to funtion
 			EnableVideo();
 	
 		string startFolder = GetStartFolder();
 		dialog.SetCurrentFolder(startFolder);
-
-		SetFilters();
-	}
-
-	private void InitEncodingComboBox () {
-		int fixedEncoding = -1;
-		ConfigFileOpenEncoding encodingConfig = Base.Config.PrefsDefaultsFileOpenEncoding;
-		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
-			string encodingName = Base.Config.PrefsDefaultsFileOpenEncodingFixed;
-			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
-			fixedEncoding = encodingDescription.CodePage;
-		}
-
-		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, true, null, fixedEncoding);
-
-		/* Only need to handle the case of currentLocale, as Fixed is handled before and AutoDetect is the default behaviour */
-		if (encodingConfig == ConfigFileOpenEncoding.CurrentLocale)
-			encodingComboBox.ActiveSelection = (int)encodingConfig;
+		
+		SetFilters();		
 	}
 
 	/* Overriden members */
@@ -96,23 +92,26 @@ public class FileOpenDialog : GladeDialog {
 	}
 
 	/* Public properties */
-
-	public EncodingDescription Encoding {
-		get { return chosenEncoding; }
+		
+	public string SelectedSubtitle {
+		get { return selectedSubtitle != null ? selectedSubtitle.ActiveSelection : null;}		
 	}
-
-	public string Filename {
-		get { return chosenFilename; }
-	}
-	
-	public bool HasVideoFilename {
-		get { return chosenVideoUri != null; }
+		
+	public EncodingDescription SelectedSubtitleEncoding {
+		get { return selectedSubtitle != null ?  selectedSubtitle.SelectedEncoding : EncodingDescription.Empty;}		
 	}
 	
-	public Uri VideoUri {
-		get { return chosenVideoUri; }
+	public string SelectedTranslation {
+		get { return selectedTranslation != null ? selectedTranslation.ActiveSelection : null;}		
 	}
-
+		
+	public EncodingDescription SelectedTranslationEncoding {
+		get { return selectedTranslation != null ? selectedTranslation.SelectedEncoding : EncodingDescription.Empty;}		
+	}
+		
+	public Uri SelectedVideo {
+		get { return selectedVideo.ActiveSelection != null ? FileTools.GetUriFromFilePath(selectedVideo.ActiveSelection) : null;}		
+	}
 
 	/* Protected members */
 	
@@ -123,123 +122,50 @@ public class FileOpenDialog : GladeDialog {
 			return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 	}
 
-
-	/* Private members */
+	protected virtual void InitSelectedSubtitleCombo () {
+		selectedSubtitle = new FilexEncodingCombo(subtitleFileLabel,subtitleFileComboBox, subtitleEncodingComboBox);
+		ActiveSelectionCombos.Add(selectedSubtitle);
+	}
 	
-	private void FillVideoComboBoxBasedOnCurrentFolder () {
-		videoFiles = null;
-		videoFilenames = null;
-		(videoComboBox.Model as ListStore).Clear();
-
-		string folder = String.Empty;
-		try {
-			folder = dialog.CurrentFolder;
-		}
-		catch (Exception e) {
-			System.Console.Error.WriteLine("Caught exception when trying to get the current folder:");
-			System.Console.Error.WriteLine(e);
-			SetVideoSelectionSensitivity(false);
-			return;
-		}
-			
-		if ((folder == null) || (folder == String.Empty)) {
-			System.Console.Error.WriteLine("Error when trying to get the current folder.");
-			SetVideoSelectionSensitivity(false);
-			return;
-		}
-
-		videoFiles = VideoFiles.GetVideoFilesAtPath(folder);
-
-		if ((videoFiles.Count == 0) || (videoFiles == null)) {
-			SetVideoSelectionSensitivity(false);
-			return;
-		}
-		else
-			SetVideoSelectionSensitivity(true);
+	protected virtual void InitSelectedTranslationCombo () {
+		autoChooseTranslationFile = true; //Base.Config.PrefsTranslationAutoChooseFile;
+		selectedTranslation = new FilexEncodingCombo(translationFileLabel, translationFileComboBox, translationEncodingComboBox);	
+		ActiveSelectionCombos.Add(selectedTranslation);
+	}
+	
+	protected void AutoChooseVideoFile () {	
+		if (ActiveSelectionCombos.Count > 0)
+		 if (ActiveSelectionCombos[0].ActiveSelection != null)
+			AutoChooseVideoFile(ActiveSelectionCombos[0].ActiveSelection);
 				
-		videoFiles.Sort();
-		videoFilenames = new ArrayList();
-		foreach (string file in videoFiles) {
-			string filename = Path.GetFileName(file);
-			videoComboBox.AppendText(filename);
-			
-			videoFilenames.Add(FilenameWithoutExtension(filename));
-		}
+	}	
 		
-		videoComboBox.PrependText("-");
-		videoComboBox.PrependText(Catalog.GetString("None"));
-		videoComboBox.Active = 0;
-	}
-	
-	private void SetActiveVideoFile () {
-		if ((videoFiles == null) || (videoFiles.Count == 0))
-			return;
+	protected void AutoChooseVideoFile (string filetomatch) {
+		string matchingvideo = FileTools.FindMatchingFile(filetomatch, videoFiles);
+		if (videoFiles.Contains(matchingvideo))
+			selectedVideo.Active = videoFiles.IndexOf(matchingvideo);
+	}	
 		
-		string filePath = String.Empty;
-		try {
-			filePath = dialog.Filename;
+	protected void AutoChooseTranslationFile (string filetomatch) {
+		string matchingtranslation = FileTools.FindMatchingFile(filetomatch, subtitleFiles);
+		if(subtitleFiles.Contains(matchingtranslation)){
+			selectedTranslation.Active = subtitleFiles.IndexOf(matchingtranslation);
 		}
-		catch (Exception e) {
-			System.Console.Error.WriteLine("Caught exception when trying to get the current filename:");
-			System.Console.Error.WriteLine(e);
-			SetActiveComboBoxItem(0);
-			return;
-		}
+	} 	
 		
-		if ((filePath == null) || (filePath == String.Empty) || (!File.Exists(filePath))) {
-			SetActiveComboBoxItem(0);
-			return;
-		}
+	/* Private members */
 		
-		string filename = Path.GetFileNameWithoutExtension(filePath);
-		if ((filename == String.Empty) || (filename == null)) {
-			SetActiveComboBoxItem(0);
-			return;
-		}
-		
-		int activeVideoFile = 0;
-		
-		for (int count = 0 ; count < videoFilenames.Count ; count++) {
-			string videoFilename = videoFilenames[count] as string;
-			if (filename.Equals(videoFilename)) {
-				activeVideoFile = count + 2; //Add 2 because of prepended text
-				break;
-			}
-		}
-		SetActiveComboBoxItem(activeVideoFile);		
-	}
-	
-	private void SetActiveComboBoxItem (int item) {
-		videoComboBox.Active = item;
-	}
-	
-	private void SetVideoSelectionSensitivity (bool sensitivity) {
-		videoComboBox.Sensitive = sensitivity;
-		videoLabel.Sensitive = sensitivity;
-	}
-	
-	private string FilenameWithoutExtension (string filename) {
-		int index = filename.LastIndexOf('.');
-		if (index != -1)
-			return filename.Substring(0, index);
-		else
-			return filename;
-	}
-	
 	private void EnableVideo () {
-		videoLabel.Visible = true;
-		videoComboBox.Visible = true;
-		
 		autoChooseVideoFile = Base.Config.PrefsVideoAutoChooseFile;
-		videoComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
-		
-		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
-		dialog.SelectionChanged += OnSelectionChanged;
+		videoFileComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
+		selectedVideo = new FileCombo(videoFileLabel,videoFileComboBox);
+		dialog.CurrentFolderChanged += OnCurrentFolderChangedGetVideoFiles;
+		dialog.SelectionChanged += OnSelectionGetVideoFiles;
 	}
 	
 	private void SetFilters () {
 		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
-		FileFilter[] filters = new FileFilter[types.Length + 2];
+		FileFilter[] filters = new FileFilter[types.Length + 3];
 		int filterPosition = 0;
 		
 		/* First filter corresponds to all files */
@@ -249,7 +175,14 @@ public class FileOpenDialog : GladeDialog {
 		filters[filterPosition] = allFilesFilter;
 		filterPosition++;
 		
-		/* Second filter corresponds to all subtitle files */
+		/* Second filter corresponds to all video files*/
+		FileFilter videoFilesFilter = new FileFilter();
+		videoFilesFilter.Name = Catalog.GetString("Video Files");
+		videoFilesFilter.AddMimeType("video/*");
+		filters[filterPosition] = videoFilesFilter;
+		filterPosition++;
+		
+		/* Third filter corresponds to all subtitle files */
 		FileFilter subtitleFilesFilter = new FileFilter();
 		subtitleFilesFilter.Name = Catalog.GetString("All Subtitle Files");
 		subtitleFilesFilter.AddPattern("*.txt");
@@ -272,44 +205,116 @@ public class FileOpenDialog : GladeDialog {
 		foreach (FileFilter filter in filters)
 			dialog.AddFilter(filter);
 		
-		dialog.Filter = subtitleFilesFilter;
+		dialog.Filter = allFilesFilter;
+	}	
+		
+	private void DisplayVideoFiles (List<string> selectedfiles) {
+		if (selectedfiles.Count == 1) {
+			selectedVideo.Active = videoFiles.IndexOf(selectedfiles[0]);
+			return;
+		} 
+		if ((autoChooseVideoFile)) {
+			AutoChooseVideoFile();
+			return;
+		}
+		selectedVideo.Active = -1;
 	}
-	
-	
+		
+	private void DisplayTextFiles (List<string> selectedfiles) {
+		ConnectFileSelectionGroupChanged(false);
+			
+		if (selectedfiles.Count == 1) {
+			ResetTextSelectionComboGroups();	
+			ActiveSelectionCombos[0].Active = subtitleFiles.IndexOf(selectedfiles[0]);
+			if (autoChooseTranslationFile) 
+				AutoChooseTranslationFile(selectedfiles[0]);		
+		}
+		else if (selectedfiles.Count == 2) {
+			selectedfiles.Sort(delegate(string f1, string f2) {return f1.Length.CompareTo(f2.Length);});
+			List<string> reversedlist = new List<string>(selectedfiles);
+			reversedlist.Reverse();
+				
+			ActiveSelectionCombos[0].FillComboBox(selectedfiles);
+			ActiveSelectionCombos[1].FillComboBox(reversedlist);
+			ActiveSelectionCombos[0].Active = 0;
+			ActiveSelectionCombos[1].Active = 0;
+				
+			ConnectFileSelectionGroupChanged(true);
+		} else {
+			ResetTextSelectionComboGroups();
+		}
+	}
+		
+	private void ResetTextSelectionComboGroups () {
+		foreach(FilexEncodingCombo combogroup in ActiveSelectionCombos) {
+			combogroup.FillComboBox(subtitleFiles);		
+		}		
+	}	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			chosenFilename = dialog.Filename;
-			chosenEncoding = encodingComboBox.ChosenEncoding;
-
-			if (Base.Config.PrefsDefaultsFileOpenEncodingOption == ConfigFileOpenEncodingOption.RememberLastUsed) {
-				int activeAction = encodingComboBox.ActiveSelection;
-				ConfigFileOpenEncoding activeOption = (ConfigFileOpenEncoding)Enum.ToObject(typeof(ConfigFileOpenEncoding), activeAction);
-				if (((int)activeOption) >= ((int)ConfigFileOpenEncoding.Fixed))
-					Base.Config.PrefsDefaultsFileOpenEncodingFixed = chosenEncoding.Name;
-				else
-					Base.Config.PrefsDefaultsFileOpenEncoding = activeOption;
-			}
-
-			if (videoComboBox.Active > 0) {
-				int videoFileIndex = videoComboBox.Active - 2;
-				chosenVideoUri = new Uri("file://" + videoFiles[videoFileIndex] as string);
-			}			
 			SetReturnValue(true);
 		}
 		return false;
 	}
 	
-	private void OnCurrentFolderChanged (object o, EventArgs args) {
-		FillVideoComboBoxBasedOnCurrentFolder();
+	private void OnCurrentFolderChangedGetTextFiles (object o, EventArgs args) {
+		subtitleFiles.Clear();
+		if (Directory.Exists(dialog.CurrentFolder)){
+			subtitleFiles = new List<string>(FileTools.GetFilesOfType(dialog.CurrentFolder, ValidFileTypes.Subtitle));
+			ResetTextSelectionComboGroups();
+		}
+	}
+		
+	private void OnCurrentFolderChangedGetVideoFiles (object o, EventArgs args) {
+		videoFiles.Clear();
+		if (Directory.Exists(dialog.CurrentFolder)) {
+			videoFiles = new List<string>(FileTools.GetFilesOfType(dialog.CurrentFolder, ValidFileTypes.Video));
+			selectedVideo.FillComboBox(videoFiles);
+		}
 	}
 	
-	private void OnSelectionChanged (object o, EventArgs args) {
-		if (autoChooseVideoFile)
-			SetActiveVideoFile();
+	private void OnSelectionGetTextFiles (object o, EventArgs args) {
+		List<string> selectedfiles = new List<string>(FileTools.GetFilesOfType(dialog.Filenames, ValidFileTypes.Subtitle));
+		if (selectedfiles.Count > ActiveSelectionCombos.Count)
+			selectedfiles.Clear();
+			
+		DisplayTextFiles(selectedfiles);
+	}
+		
+	private void OnSelectionGetVideoFiles (object o, EventArgs args) {
+		List<string> selectedfiles = new List<string>(FileTools.GetFilesOfType(dialog.Filenames, ValidFileTypes.Video));
+		if (selectedfiles.Count > 1)
+			selectedfiles.Clear();
+			
+		DisplayVideoFiles(selectedfiles);
+	}
+		
+	private void ConnectFileSelectionGroupChanged (bool toconnect) {
+		if (selectedSubtitle == null || selectedTranslation == null) 
+			return;
+			
+		if (toconnect) {
+			selectedSubtitle.FileSelectionChanged += OnSelectedSubtitleChanged;
+			selectedTranslation.FileSelectionChanged += OnSelectedTranslationChanged;
+		} else {
+			selectedSubtitle.FileSelectionChanged -= OnSelectedSubtitleChanged;
+			selectedTranslation.FileSelectionChanged -= OnSelectedTranslationChanged;		
+		}
 	}
 	
+	private void OnSelectedSubtitleChanged (object o, EventArgs args) {
+		if (selectedSubtitle.Active > -1 && selectedTranslation.Active > -1) {
+			selectedTranslation.Active = selectedSubtitle.Active;
+		}	
+	}
+	
+	private void OnSelectedTranslationChanged (object o, EventArgs args) {
+		if (selectedTranslation.Active > -1 && selectedSubtitle.Active > -1) {
+			selectedSubtitle.Active = selectedTranslation.Active;	
+		}
+	}
 }
-
 }
