@@ -133,26 +133,24 @@ public class Util {
 			SetSpinButtonAdjustment(spinButton, 0, toNegate);
 	}
 	
-	public static bool OpenUrl (string url) {
+	public static void OpenUrl (string url) {
 		if ((url == null) || (url == String.Empty))
-			return false;
+			return;
 
 		try {
-			Process process = Process.Start(url);
-			Thread.Sleep(250);
-			return (!process.HasExited);
+			Process.Start(url);
 		}
-		catch (Exception) {
-			return false;
+		catch (Exception e) {
+			Console.Error.WriteLine("Caught exception when trying to open url [{0}]: {1}", url, e);
 		}
 	}
 	
-	public static bool OpenSendEmail (string email) {
-		return OpenUrl("mailto:" + email);
+	public static void OpenSendEmail (string email) {
+		OpenUrl("mailto:" + email);
 	}
 
-	public static bool OpenBugReport () {
-		return OpenUrl("http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles");
+	public static void OpenBugReport () {
+		OpenUrl("http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles");
 	}
 	
 	public static bool IsPathValid (TreePath path) {
