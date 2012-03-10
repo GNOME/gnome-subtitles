@@ -392,15 +392,11 @@ public class EventHandlers {
 	/*	Help Menu */
 	
 	public void OnHelpContents (object o, EventArgs args) {
-		const string arg = "ghelp:gnome-subtitles";
-		if ((!Util.OpenUrl("gnome-help " + arg)) && (!Util.OpenUrl("yelp " + arg))) {
-			BasicErrorDialog errorDialog = new BasicErrorDialog(Catalog.GetString("The Gnome Subtitles Manual could not be found."), Catalog.GetString("Please verify that your installation has been completed successfully."));
-			errorDialog.Show();
-		}
+		Util.OpenUrl("ghelp:gnome-subtitles");
 	}
 	
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
-		Util.OpenUrl("http://gnome-subtitles.sourceforge.net/shortcuts");
+		Util.OpenUrl("http://gnomesubtitles.org/shortcuts");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
