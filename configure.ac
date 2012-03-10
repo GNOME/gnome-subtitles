@@ -70,7 +70,9 @@ AC_SUBST(gstreamer_LIBS)
 
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
 PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION)
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION,, [
+	PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
+])
 
 dnl Check gtk-sharp version
 PKG_CHECK_MODULES(GTKSHARP_INVALID, gtk-sharp-2.0 >= 2.12.2 gtk-sharp-2.0 <= 2.12.6, gtksharp_invalid=true, gtksharp_invalid=false)
