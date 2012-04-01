@@ -117,7 +117,7 @@ public class SubtitleEditTextViewMargin {
     	}
     	
     	/* Process end iter */
-    	int endLineCharCount = endIter.CharsInLine; //don't subtract newline because it's the last line
+    	int endLineCharCount = endIter.CharsInLine - (endLine == textView.Buffer.LineCount - 1 ? 0 : 1); //subtract newline if this isn't the last line in the buffer
     	info[lineCount-1, 0] = endLineCharCount;
     	Gdk.Rectangle endIterLocation = textView.GetIterLocation(endIter);
     	info[lineCount-1, 1] = endIterLocation.Bottom - (endIterLocation.Height/2) - minVisibleY; //Y
