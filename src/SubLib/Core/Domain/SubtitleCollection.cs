@@ -87,7 +87,7 @@ public class SubtitleCollection {
 	public void Add (Subtitle subtitle, int index){
 		subtitles.Insert(index, subtitle);
 	}
-	
+		
 	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
 	/// collection, inserting it right before that index.</summary>
 	/// <remarks>The newly created subtitle's times will be based on the specified subtitle. Its end
@@ -98,11 +98,24 @@ public class SubtitleCollection {
 	/// <param name="subtitleProperties">The SubtitleProperties of the subtitles.</param>
 	/// <returns>True if the subtitle could be added, false otherwise.</returns>
 	public bool AddNewBefore (int index, SubtitleProperties subtitleProperties) {
+		return AddNewBefore(index, subtitleProperties, (int)(SubtitleConstants.MinTimeBetweenSubtitles*1000));
+	}
+	
+	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
+	/// collection, inserting it right before that index.</summary>
+	/// <remarks>The newly created subtitle's times will be based on the specified subtitle. Its duration
+	/// will be <see cref="SubtitleConstants.MaxSingleLineSubtitleDuration" />. Both the start and end times
+	/// times will be wrapped to zero if they are negative.</remarks>
+	/// <param name="index">The zero-based index before which the subtitle should be inserted.</param>
+	/// <param name="subtitleProperties">The SubtitleProperties of the subtitles.</param>
+	/// <param name="timeBetweenSubtitles">The gap to keep before the existing subtitle, in milliseconds.</param>
+	/// <returns>True if the subtitle could be added, false otherwise.</returns>
+	public bool AddNewBefore (int index, SubtitleProperties subtitleProperties, int timeBetweenSubtitles) {
 		Subtitle existing = Get(index);
 		if (existing == null)
 			return false;
 		
-		TimeSpan subtitleEnd = existing.Times.Start - TimeSpan.FromSeconds(SubtitleConstants.MinTimeBetweenSubtitles);
+		TimeSpan subtitleEnd = existing.Times.Start - TimeSpan.FromMilliseconds(timeBetweenSubtitles);
 		if (subtitleEnd < TimeSpan.Zero)
 			subtitleEnd = TimeSpan.FromSeconds(0);
 
@@ -114,21 +127,33 @@ public class SubtitleCollection {
 		Add(subtitle, index);
 		return true;
 	}
-
+		
 	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
 	/// collection, inserting it right after that index.</summary>
 	/// <remarks>The newly created subtitle's times will be based on the specified subtitle. Its start
-	/// time will be the start time of the existing subtitle plus <see cref="SubtitleConstants.MinTimeBetweenSubtitles" />.
+	/// time will be the end time of the existing subtitle plus <see cref="SubtitleConstants.MinTimeBetweenSubtitles" />.
 	/// Its duration will be <see cref="SubtitleConstants.MaxSingleLineSubtitleDuration" />.</remarks>
 	/// <param name="index">The zero-based index after which the subtitle should be inserted.</param>
 	/// <param name="subtitleProperties">The SubtitleProperties of the subtitles.</param>
 	/// <returns>True if the subtitle could be added, false otherwise.</returns>
 	public bool AddNewAfter (int index, SubtitleProperties subtitleProperties) {
+		return AddNewAfter(index, subtitleProperties, (int)(SubtitleConstants.MinTimeBetweenSubtitles*1000));
+	}
+
+	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
+	/// collection, inserting it right after that index.</summary>
+	/// <remarks>The newly created subtitle's times will be based on the specified subtitle.
+	/// Its duration will be <see cref="SubtitleConstants.MaxSingleLineSubtitleDuration" />.</remarks>
+	/// <param name="index">The zero-based index after which the subtitle should be inserted.</param>
+	/// <param name="subtitleProperties">The SubtitleProperties of the subtitles.</param>
+	/// <param name="timeBetweenSubtitles">The gap to keep after the existing subtitle, in milliseconds.</param>
+	/// <returns>True if the subtitle could be added, false otherwise.</returns>
+	public bool AddNewAfter (int index, SubtitleProperties subtitleProperties, int timeBetweenSubtitles) {
 		Subtitle existing = Get(index);
 		if (existing == null)
 			return false;
 		
-		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromSeconds(SubtitleConstants.MinTimeBetweenSubtitles);
+		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromMilliseconds(timeBetweenSubtitles);
 		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index + 1);

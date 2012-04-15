@@ -160,7 +160,7 @@ public class Document {
 		AddExtraSubtitles(openedTranslation);
 
 		Translations translations = new Translations();
-		translations.Import(subtitles, openedTranslation);
+		translations.Import(subtitles, openedTranslation, Base.Config.PrefsTimingsTimeBetweenSubtitles);
 
 		if (newTranslationFile.SubtitleType != SubtitleType.Unknown)
 			canTranslationBeSaved = true;

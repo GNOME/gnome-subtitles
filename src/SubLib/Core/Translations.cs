@@ -34,8 +34,8 @@ public class Translations {
 	/// <summary>Imports translated subtitles into existing subtitles.</summary>
 	/// <param name="subtitles">The subtitles to import the translation to.</param>
 	/// <param name="translation">The translated subtitles.</param>
-	public void Import (Subtitles subtitles, Subtitles translation) {
-		AddExtraSubtitles(subtitles, translation);
+	public void Import (Subtitles subtitles, Subtitles translation, int timeBetweenSubtitles) {
+		AddExtraSubtitles(subtitles, translation, timeBetweenSubtitles);
 		CopyTranslation(subtitles, translation);
 	}
 	
@@ -49,7 +49,13 @@ public class Translations {
 	/* Private methods */
 
 	/// <summary>Adds the number of subtitles that the translation has more than the original subtitles.</summary>
+	/// <remarks>A gap between subtitles of <see cref="SubtitleConstants.MinTimeBetweenSubtitles" /> will be used.</remarks>
 	private void AddExtraSubtitles (Subtitles subtitles, Subtitles translation) {
+		AddExtraSubtitles(subtitles, translation, (int)(SubtitleConstants.MinTimeBetweenSubtitles));
+	}
+
+	/// <summary>Adds the number of subtitles missing comparing to the translation.</summary>
+	private void AddExtraSubtitles (Subtitles subtitles, Subtitles translation, int timeBetweenSubtitles) {
 		int translationCount = translation.Collection.Count;
 		int subtitlesCount = subtitles.Collection.Count;
 		int extraCount = translationCount - subtitlesCount;
@@ -58,7 +64,7 @@ public class Translations {
 			return;
 		
 		for (int position = subtitlesCount - 1 ; position < translationCount - 1 ; position++) {
-			subtitles.Collection.AddNewAfter(position, subtitles.Properties);
+			subtitles.Collection.AddNewAfter(position, subtitles.Properties, timeBetweenSubtitles);
 		}
 	}
 	
