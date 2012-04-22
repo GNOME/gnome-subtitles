@@ -2,7 +2,7 @@ desktopdir = $(datadir)/applications
 desktop_DATA = gnome-subtitles.desktop
 
 gnomesubtitlesicondir = $(datadir)/pixmaps
-gnomesubtitlesicon_DATA = gnome-subtitles.png
+gnomesubtitlesicon_DATA = gnome-subtitles.svg
 
 schemadir = $(GCONF_SCHEMA_FILE_DIR)
 schema_DATA = gnome-subtitles.schemas
