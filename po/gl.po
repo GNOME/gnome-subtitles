@@ -1,27 +1,27 @@
-# translation of gnome-subtitles.HEAD.po to Galician
+# Galician translation of gnome-subtitles
 # Copyright (C) 2007 THE gnome-subtitles'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the gnome-subtitles package.
+#
+# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
+# colaborar connosco, podes atopar máis información en http://www.trasno.net
 #
 # Lois <antiparvos@gmail.com>, 2009.
 # Antón Méixome <certima@certima.net>, 2009.
-# Fran Diéguez <frandieguez@gnome.org>, 2010, 2011.
-# Fran Dieguez <frandieguez@gnome.org>, 2012.
-#
+# Fran Diéguez <frandieguez@gnome.org>, 2010, 2011, 2012.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-19 20:16+0200\n"
-"PO-Revision-Date: 2012-04-19 20:16+0200\n"
-"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"POT-Creation-Date: 2012-09-04 23:22+0200\n"
+"PO-Revision-Date: 2012-09-02 20:28+0200\n"
+"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Poedit-Language: Galician\n"
-"X-Generator: KBabel 1.11.4\n"
 
 #: ../src/Glade/AboutDialog.glade.h:1
 msgid "About Gnome Subtitles"
@@ -97,7 +97,7 @@ msgstr "<b>Nome:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:3
 msgid "<b>Path:</b>"
-msgstr "<b>Camiño:</b>"
+msgstr "<b>Ruta:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:4
 msgid "<b>Character Coding:</b>"
@@ -197,7 +197,7 @@ msgid ""
 "Audio\n"
 "Video\n"
 msgstr ""
-"Audio\n"
+"Son\n"
 "Vídeo\n"
 
 #: ../src/Glade/HeadersDialog.glade.h:20
@@ -246,7 +246,7 @@ msgstr "Temporizador:"
 
 #: ../src/Glade/HeadersDialog.glade.h:31
 msgid "File Path:"
-msgstr "Camiño do ficheiro:"
+msgstr "Ruta do ficheiro:"
 
 #: ../src/Glade/HeadersDialog.glade.h:32
 msgid "Delay:"
@@ -519,7 +519,7 @@ msgstr "_Solicitar unha funcionalidade nova"
 
 #: ../src/Glade/MainWindow.glade.h:61
 msgid "Report a _Bug"
-msgstr "Informar dun e_rro"
+msgstr "Informar dun _fallo"
 
 #: ../src/Glade/MainWindow.glade.h:62
 msgid "New File"
@@ -596,7 +596,7 @@ msgstr "Se _falla a auto-detección, empregar:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
 msgid "Automatically choose the _video file to open"
-msgstr "Escoller automaticamente o vídeo e abrilo"
+msgstr "Escoller automaticamente o ficheiro _vídeo e abrilo"
 
 #: ../src/Glade/PreferencesDialog.glade.h:8
 msgid "<b>File Open Dialog</b>"
@@ -791,7 +791,7 @@ msgid ""
 "to shift timings from the main window.</i></small>"
 msgstr ""
 "<small><i>Truco: use Shift+Máis/Menos (no tecl.numérico)\n"
-"para desplazar os intervalos de tempo na ventá principal.</i></small>"
+"para desprazar os intervalos de tempo na xanela principal.</i></small>"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:12
 msgid "_Shift"
@@ -1252,8 +1252,8 @@ msgid ""
 "An unknown error has occured. Please report a bug and include this error "
 "name:"
 msgstr ""
-"Produciuse un erro de orixe descoñecida. Por favor informe do erro e inclúa "
-"este nome:"
+"Produciuse un erro de orixe descoñecida. Por favor informe do fallo e inclúa "
+"este nome de erro:"
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
@@ -1266,7 +1266,7 @@ msgstr "Abrir outro ficheiro"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
 msgid "The file path appears to be invalid."
-msgstr "O camiño do ficheiro pode ser incorrecto."
+msgstr "A ruta do ficheiro pode ser incorrecta."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
@@ -1296,7 +1296,7 @@ msgstr "Non dispón dos permisos precisos para gardar este ficheiro."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
-msgstr "O ficheiro especificado non é correcto."
+msgstr "O ficheiro especificado é incorrecto."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
@@ -1363,15 +1363,15 @@ msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
-"Non foi posíbel detectar o formato do subtítulo. Comprobe que o tipo do "
-"subtítulo sexa compatíbel."
+"Non foi posíbel detectar o formato do subtítulo. Comprobe que o tipo de "
+"ficheiro sexa compatíbel."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr ""
-"A codificación empregada non é recoñecida polo seu sistema. Debería escoller "
+"A codificación empregada non é admitida polo seu sistema. Debería escoller "
 "outra."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
@@ -1399,20 +1399,19 @@ msgstr "Todos os ficheiros de vídeo"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
 msgid "All Audio Files"
-msgstr "Tódolos ficheiros de son"
+msgstr "Todos os ficheiros de son"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr ""
-"Non foi posíbel abrir a ferramenta Bug Buddy para a comunicación de erros."
+msgstr "Non foi posíbel abrir a ferramenta Bug Buddy para o informe de fallos."
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
 msgid "Bug information has been printed to the console."
-msgstr "A información do erro está impresa na consola."
+msgstr "A información do fallo está impresa na consola."
 
 #: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
 msgid "Add or Remove..."
-msgstr "Engadir ou eliminar..."
+msgstr "Engadir ou retirar..."
 
 #: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
 msgid "Auto Detected"
@@ -1434,7 +1433,7 @@ msgstr "SOBR"
 
 #: ../src/GnomeSubtitles/Ui/Status.cs:43
 msgid "INS"
-msgstr "INSER"
+msgstr "INS"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
