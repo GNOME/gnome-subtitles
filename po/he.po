@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-13 01:30+0300\n"
-"PO-Revision-Date: 2012-04-13 01:44+0200\n"
+"POT-Creation-Date: 2012-12-28 14:34+0200\n"
+"PO-Revision-Date: 2012-12-28 14:35+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -24,6 +24,10 @@ msgid "About Gnome Subtitles"
 msgstr "על אודות כתוביות GNOME"
 
 #: ../src/Glade/AboutDialog.glade.h:2
+msgid "Video subtitling for the GNOME desktop"
+msgstr "עריכת כתוביות בשולחן העבודה GNOME"
+
+#: ../src/Glade/AboutDialog.glade.h:3
 msgid ""
 "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -53,40 +57,36 @@ msgstr ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
 
-#: ../src/Glade/AboutDialog.glade.h:15
-msgid "Video subtitling for the GNOME desktop"
-msgstr "עריכת כתוביות בשולחן העבודה GNOME"
-
 #: ../src/Glade/EncodingsDialog.glade.h:1
-msgid "A_vailable:"
-msgstr "ז_מינים:"
-
-#: ../src/Glade/EncodingsDialog.glade.h:2
 msgid "Character codings"
 msgstr "קידוד תווים"
+
+#: ../src/Glade/EncodingsDialog.glade.h:2
+msgid "A_vailable:"
+msgstr "ז_מינים:"
 
 #: ../src/Glade/EncodingsDialog.glade.h:3
 msgid "Shown in menu:"
 msgstr "מוצג בתפריט:"
 
 #: ../src/Glade/FileOpenDialog.glade.h:1
-#: ../src/Glade/FileSaveAsDialog.glade.h:1
-msgid "Character Coding:"
-msgstr "קידוד תווים:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:2
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.glade.h:63
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "פתח קובץ"
 
-#: ../src/Glade/FileOpenDialog.glade.h:3
+#: ../src/Glade/FileOpenDialog.glade.h:2
 msgid "Video To Open:"
 msgstr "וידאו לפתיחה:"
 
+#: ../src/Glade/FileOpenDialog.glade.h:3
+#: ../src/Glade/FileSaveAsDialog.glade.h:3
+msgid "Character Coding:"
+msgstr "קידוד תווים:"
+
 #: ../src/Glade/FilePropertiesDialog.glade.h:1
-msgid "<b>Character Coding:</b>"
-msgstr "<b>קידוד תווים:</b>"
+msgid "File Properties"
+msgstr "מאפייני קובץ"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:2
 msgid "<b>Name:</b>"
@@ -97,43 +97,99 @@ msgid "<b>Path:</b>"
 msgstr "<b>נתיב:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:4
+msgid "<b>Character Coding:</b>"
+msgstr "<b>קידוד תווים:</b>"
+
+#: ../src/Glade/FilePropertiesDialog.glade.h:5
 msgid "<b>Subtitle Format:</b>"
 msgstr "<b>סוג כתוביות:</b>"
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:5
+#: ../src/Glade/FilePropertiesDialog.glade.h:6
 msgid "<b>Timing Mode:</b>"
 msgstr "<b>מצב התזמון:</b>"
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:6
-msgid "File Properties"
-msgstr "מאפייני קובץ"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:2
-msgid "Newline Type:"
-msgstr "סוג שורה חדשה:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
+#: ../src/Glade/FileSaveAsDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
 msgid "Save As"
 msgstr "שמירה בשם"
 
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
-msgid "Select advanced options"
-msgstr "בחירת אפשרויות מתקדמות"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:5
+#: ../src/Glade/FileSaveAsDialog.glade.h:2
 msgid "Subtitle Format:"
 msgstr "סוג כתוביות:"
 
+#: ../src/Glade/FileSaveAsDialog.glade.h:4
+msgid "Newline Type:"
+msgstr "סוג שורה חדשה:"
+
+#: ../src/Glade/FileSaveAsDialog.glade.h:5
+msgid "Select advanced options"
+msgstr "בחירת אפשרויות מתקדמות"
+
 #: ../src/Glade/HeadersDialog.glade.h:1
-msgid "Album:"
-msgstr "אלבום:"
+msgid "Headers"
+msgstr "כותרות"
 
 #: ../src/Glade/HeadersDialog.glade.h:2
+msgid "Title:"
+msgstr "שם:"
+
+#: ../src/Glade/HeadersDialog.glade.h:3
+msgid "Author:"
+msgstr "יוצר:"
+
+#: ../src/Glade/HeadersDialog.glade.h:4
 msgid "Artist:"
 msgstr "אומן:"
 
-#: ../src/Glade/HeadersDialog.glade.h:3
+#: ../src/Glade/HeadersDialog.glade.h:5
+msgid "Album:"
+msgstr "אלבום:"
+
+#: ../src/Glade/HeadersDialog.glade.h:6
+msgid "By:"
+msgstr "לפי:"
+
+#: ../src/Glade/HeadersDialog.glade.h:7
+msgid "Version:"
+msgstr "גרסה:"
+
+#: ../src/Glade/HeadersDialog.glade.h:8
+msgid "Program:"
+msgstr "תכנית:"
+
+#: ../src/Glade/HeadersDialog.glade.h:9
+msgid "Karaoke Lyrics LRC"
+msgstr "מילים לקריוקי מסוג LRC"
+
+#: ../src/Glade/HeadersDialog.glade.h:10
+msgid "Source:"
+msgstr "מקור:"
+
+#: ../src/Glade/HeadersDialog.glade.h:11
+msgid "Date:"
+msgstr "תאריך:"
+
+#: ../src/Glade/HeadersDialog.glade.h:12
+msgid "Frame rate:"
+msgstr "קצב שקופיות:"
+
+#: ../src/Glade/HeadersDialog.glade.h:13
+msgid "Karaoke Lyrics VKT"
+msgstr "מילים לקריוקי מסוג VKT"
+
+#: ../src/Glade/HeadersDialog.glade.h:14
+msgid "File:"
+msgstr "קובץ:"
+
+#: ../src/Glade/HeadersDialog.glade.h:15
+msgid "Note:"
+msgstr "הערה:"
+
+#: ../src/Glade/HeadersDialog.glade.h:16
+msgid "Type:"
+msgstr "סוג:"
+
+#: ../src/Glade/HeadersDialog.glade.h:17
 msgid ""
 "Audio\n"
 "Video\n"
@@ -141,246 +197,353 @@ msgstr ""
 "קול\n"
 "וידאו\n"
 
-#: ../src/Glade/HeadersDialog.glade.h:6
-msgid "Author:"
-msgstr "יוצר:"
-
-#: ../src/Glade/HeadersDialog.glade.h:7
-msgid "By:"
-msgstr "לפי:"
-
-#: ../src/Glade/HeadersDialog.glade.h:8
-msgid "CD Track:"
-msgstr "רצועה מתקליטור:"
-
-#: ../src/Glade/HeadersDialog.glade.h:9
-msgid "Collisions:"
-msgstr "התנגשויות:"
-
-#: ../src/Glade/HeadersDialog.glade.h:10
-msgid "Comment:"
-msgstr "הערה:"
-
-#: ../src/Glade/HeadersDialog.glade.h:11
-msgid "Date:"
-msgstr "תאריך:"
-
-#: ../src/Glade/HeadersDialog.glade.h:12
-msgid "Delay:"
-msgstr "השהיה:"
-
-#: ../src/Glade/HeadersDialog.glade.h:13
-msgid "File Path:"
-msgstr "נתיב קובץ:"
-
-#: ../src/Glade/HeadersDialog.glade.h:14
-msgid "File:"
-msgstr "קובץ:"
-
-#: ../src/Glade/HeadersDialog.glade.h:15
-msgid "Font Color:"
-msgstr "צבע הגופן:"
-
-#: ../src/Glade/HeadersDialog.glade.h:16
-msgid "Font Name:"
-msgstr "שם הגופן:"
-
-#: ../src/Glade/HeadersDialog.glade.h:17
-msgid "Font Size:"
-msgstr "גודל גופן:"
-
-#: ../src/Glade/HeadersDialog.glade.h:18
-msgid "Font Style:"
-msgstr "סגנון הגופן:"
-
-#: ../src/Glade/HeadersDialog.glade.h:19
-msgid "Frame rate:"
-msgstr "קצב שקופיות:"
-
 #: ../src/Glade/HeadersDialog.glade.h:20
-msgid "Headers"
-msgstr "כותרות"
-
-#: ../src/Glade/HeadersDialog.glade.h:21
-msgid "Karaoke Lyrics LRC"
-msgstr "מילים לקריוקי מסוג LRC"
-
-#: ../src/Glade/HeadersDialog.glade.h:22
-msgid "Karaoke Lyrics VKT"
-msgstr "מילים לקריוקי מסוג VKT"
-
-#: ../src/Glade/HeadersDialog.glade.h:23
-msgid "Note:"
-msgstr "הערה:"
-
-#: ../src/Glade/HeadersDialog.glade.h:24
-msgid "Original Editing:"
-msgstr "עריכה מקורית:"
-
-#: ../src/Glade/HeadersDialog.glade.h:25
-msgid "Original Script Checking:"
-msgstr "בדיקת התסריט המקורי:"
-
-#: ../src/Glade/HeadersDialog.glade.h:26
 msgid "Original Script:"
 msgstr "התסריט המקורי:"
 
-#: ../src/Glade/HeadersDialog.glade.h:27
+#: ../src/Glade/HeadersDialog.glade.h:21
+msgid "Original Translation:"
+msgstr "תרגום מקורי:"
+
+#: ../src/Glade/HeadersDialog.glade.h:22
+msgid "Original Editing:"
+msgstr "עריכה מקורית:"
+
+#: ../src/Glade/HeadersDialog.glade.h:23
 msgid "Original Timing:"
 msgstr "התזמון המקורי:"
 
+#: ../src/Glade/HeadersDialog.glade.h:24
+msgid "Original Script Checking:"
+msgstr "בדיקת התסריט המקורי:"
+
+#: ../src/Glade/HeadersDialog.glade.h:25
+msgid "Script Updated By:"
+msgstr "התסריט עודכן על ידי:"
+
+#: ../src/Glade/HeadersDialog.glade.h:26
+msgid "Collisions:"
+msgstr "התנגשויות:"
+
+#: ../src/Glade/HeadersDialog.glade.h:27
+msgid "PlayResX:"
+msgstr "רזולוציית הנגינה ב־X:"
+
 #: ../src/Glade/HeadersDialog.glade.h:28
-msgid "Original Translation:"
-msgstr "תרגום מקורי:"
+msgid "PlayResY:"
+msgstr "רזולוציית הנגינה ב־Y:"
 
 #: ../src/Glade/HeadersDialog.glade.h:29
 msgid "PlayDepth:"
 msgstr "עומק הנגינה:"
 
 #: ../src/Glade/HeadersDialog.glade.h:30
-msgid "PlayResX:"
-msgstr "רזולוציית הנגינה ב־X:"
-
-#: ../src/Glade/HeadersDialog.glade.h:31
-msgid "PlayResY:"
-msgstr "רזולוציית הנגינה ב־Y:"
-
-#: ../src/Glade/HeadersDialog.glade.h:32
-msgid "Program:"
-msgstr "תכנית:"
-
-#: ../src/Glade/HeadersDialog.glade.h:33
-msgid "Script Updated By:"
-msgstr "התסריט עודכן על ידי:"
-
-#: ../src/Glade/HeadersDialog.glade.h:34
-msgid "Source:"
-msgstr "מקור:"
-
-#: ../src/Glade/HeadersDialog.glade.h:35
 msgid "Timer:"
 msgstr "מתזמן:"
 
+#: ../src/Glade/HeadersDialog.glade.h:31
+msgid "File Path:"
+msgstr "נתיב קובץ:"
+
+#: ../src/Glade/HeadersDialog.glade.h:32
+msgid "Delay:"
+msgstr "השהיה:"
+
+#: ../src/Glade/HeadersDialog.glade.h:33
+msgid "CD Track:"
+msgstr "רצועה מתקליטור:"
+
+#: ../src/Glade/HeadersDialog.glade.h:34
+msgid "Comment:"
+msgstr "הערה:"
+
+#: ../src/Glade/HeadersDialog.glade.h:35
+msgid "Font Name:"
+msgstr "שם הגופן:"
+
 #: ../src/Glade/HeadersDialog.glade.h:36
-msgid "Title:"
-msgstr "שם:"
+msgid "Font Color:"
+msgstr "צבע הגופן:"
 
 #: ../src/Glade/HeadersDialog.glade.h:37
-msgid "Type:"
-msgstr "סוג:"
+msgid "Font Style:"
+msgstr "סגנון הגופן:"
 
 #: ../src/Glade/HeadersDialog.glade.h:38
-msgid "Version:"
-msgstr "גרסה:"
+msgid "Font Size:"
+msgstr "גודל גופן:"
 
 #: ../src/Glade/MainWindow.glade.h:1
-msgid "<b>Length</b>"
-msgstr "<b>משך זמן</b>"
+msgid "_File"
+msgstr "_קובץ"
 
 #: ../src/Glade/MainWindow.glade.h:2
-msgid "<b>Time</b>"
-msgstr "<b>זמן</b>"
+msgid "_Translation"
+msgstr "_תרגום"
 
 #: ../src/Glade/MainWindow.glade.h:3
-msgid "At _Video Position"
-msgstr "במי_קום בווידאו"
+msgid "_New"
+msgstr "_חדש"
 
 #: ../src/Glade/MainWindow.glade.h:4
-msgid "Auto Select Subtitle"
-msgstr "בחירת כתוביות אוטומטית"
+msgid "_Open"
+msgstr "_פתיחה"
 
 #: ../src/Glade/MainWindow.glade.h:5
-msgid "Delete"
-msgstr "מחיקה"
+msgid "_Save"
+msgstr "_שמירה"
 
-#. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:7
-msgid "Duration:"
-msgstr "משך:"
-
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:9
-msgid "End:"
-msgstr "סוף:"
-
-#: ../src/Glade/MainWindow.glade.h:10
-msgid "Find Ne_xt"
-msgstr "חיפוש ה_בא"
-
-#: ../src/Glade/MainWindow.glade.h:11
-msgid "Find Pre_vious"
-msgstr "חיפוש הקו_דם"
-
-#: ../src/Glade/MainWindow.glade.h:12
-msgid "Insert"
-msgstr "הוספה"
-
-#: ../src/Glade/MainWindow.glade.h:13
-msgid "New File"
-msgstr "קובץ חדש"
-
-#: ../src/Glade/MainWindow.glade.h:15
-msgid "Pr_eferences"
-msgstr "הע_דפות"
-
-#: ../src/Glade/MainWindow.glade.h:16
-msgid "R_ewind"
-msgstr "ח_זרה אחורה"
-
-#: ../src/Glade/MainWindow.glade.h:17
-msgid "Report a _Bug"
-msgstr "דיווח על _באג"
-
-#: ../src/Glade/MainWindow.glade.h:18
-msgid "Request a _Feature"
-msgstr "בקשת _תכונה"
-
-#: ../src/Glade/MainWindow.glade.h:19
-msgid "Save File"
-msgstr "שמירת קובץ"
-
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.glade.h:6
 msgid "Save _As"
 msgstr "שמירה _בשם"
 
+#: ../src/Glade/MainWindow.glade.h:7
+msgid "_Close"
+msgstr "_סגירה"
+
+#: ../src/Glade/MainWindow.glade.h:8
+msgid "_Headers"
+msgstr "_כותרות"
+
+#: ../src/Glade/MainWindow.glade.h:9
+msgid "_Edit"
+msgstr "ע_ריכה"
+
+#: ../src/Glade/MainWindow.glade.h:10
+msgid "_Format"
+msgstr "עי_צוב"
+
+#: ../src/Glade/MainWindow.glade.h:11
+msgid "_Bold"
+msgstr "מו_דגש"
+
+#: ../src/Glade/MainWindow.glade.h:12
+msgid "_Italic"
+msgstr "_נטוי"
+
+#: ../src/Glade/MainWindow.glade.h:13
+msgid "_Underline"
+msgstr "_קו תחתי"
+
+#: ../src/Glade/MainWindow.glade.h:14
+msgid "_Split"
+msgstr "_פיצול"
+
+#: ../src/Glade/MainWindow.glade.h:15
+msgid "_Merge"
+msgstr "מי_זוג"
+
+#: ../src/Glade/MainWindow.glade.h:16
+msgid "_Insert Subtitle"
+msgstr "הו_ספת כתובית"
+
+#: ../src/Glade/MainWindow.glade.h:17
+msgid "_Before"
+msgstr "ל_פני"
+
+#: ../src/Glade/MainWindow.glade.h:18
+msgid "_After"
+msgstr "_אחרי"
+
+#: ../src/Glade/MainWindow.glade.h:19
+msgid "At _Video Position"
+msgstr "במי_קום בווידאו"
+
+#: ../src/Glade/MainWindow.glade.h:20
+msgid "_Delete Subtitles"
+msgstr "מחי_קת כתוביות"
+
 #: ../src/Glade/MainWindow.glade.h:21
-msgid "Seek _to Selection"
-msgstr "קפוץ _לקטע המסומן"
+msgid "Pr_eferences"
+msgstr "הע_דפות"
 
 #: ../src/Glade/MainWindow.glade.h:22
-msgid "Select Nearest Subtitle"
-msgstr "בחירת הכתובית הקרובה ביותר"
+msgid "_View"
+msgstr "_תצוגה"
 
 #: ../src/Glade/MainWindow.glade.h:23
-msgid "Set Subtitle En_d"
-msgstr "הגדרת _סיום הכתוביות"
+msgid "_Frames"
+msgstr "_שקופיות"
 
 #: ../src/Glade/MainWindow.glade.h:24
-msgid "Set Subtitle St_art"
-msgstr "הגדרת הת_חלת הכתוביות"
+msgid "_Times"
+msgstr "זמ_נים"
 
 #: ../src/Glade/MainWindow.glade.h:25
-msgid "Set T_ext Language"
-msgstr "הגדרת שפת ה_טקסט"
+msgid "_Line Lengths"
+msgstr "_אורכי השורות"
 
 #: ../src/Glade/MainWindow.glade.h:26
-msgid "Set Translati_on Language"
-msgstr "הגדרת שפת ה_תרגום"
+msgid "_Video"
+msgstr "_וידאו"
 
 #: ../src/Glade/MainWindow.glade.h:27
-msgid "Sh_ift"
-msgstr "הז_חה"
+msgid "Video _Subtitles"
+msgstr "כתו_ביות וידאו"
 
-#. This is the start time/frame of a subtitle.
+#: ../src/Glade/MainWindow.glade.h:28
+msgid "_Text"
+msgstr "_טקסט"
+
 #: ../src/Glade/MainWindow.glade.h:29
-msgid "Start:"
-msgstr "התחלה:"
+msgid "Translatio_n"
+msgstr "תר_גום"
 
 #: ../src/Glade/MainWindow.glade.h:30
+msgid "_Search"
+msgstr "חי_פוש"
+
+#: ../src/Glade/MainWindow.glade.h:31
+msgid "Find Ne_xt"
+msgstr "חיפוש ה_בא"
+
+#: ../src/Glade/MainWindow.glade.h:32
+msgid "Find Pre_vious"
+msgstr "חיפוש הקו_דם"
+
+#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/SearchDialog.glade.h:9
+msgid "_Replace"
+msgstr "ה_חלפה"
+
+#: ../src/Glade/MainWindow.glade.h:34
 msgid "T_imings"
 msgstr "ת_זמונים"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:35
+msgid "_Input Frame Rate"
+msgstr "קצב שקופיות ה_קלט"
+
+#: ../src/Glade/MainWindow.glade.h:36
+msgid "_Video Frame Rate"
+msgstr "קצב הצגת תמונות ב_ווידאו"
+
+#: ../src/Glade/MainWindow.glade.h:37
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+msgid "_Synchronize"
+msgstr "ס_נכרון"
+
+#: ../src/Glade/MainWindow.glade.h:38
+msgid "_Adjust"
+msgstr "ה_תאמה"
+
+#: ../src/Glade/MainWindow.glade.h:39
+msgid "Sh_ift"
+msgstr "הז_חה"
+
+#: ../src/Glade/MainWindow.glade.h:40
+msgid "Vide_o"
+msgstr "ויד_או"
+
+#: ../src/Glade/MainWindow.glade.h:41
+msgid "_Play / Pause"
+msgstr "_נגינה / השהיה"
+
+#: ../src/Glade/MainWindow.glade.h:42
+msgid "_Loop Selection"
+msgstr "לולאה על ה_בחירה"
+
+#: ../src/Glade/MainWindow.glade.h:43
+msgid "R_ewind"
+msgstr "ח_זרה אחורה"
+
+#: ../src/Glade/MainWindow.glade.h:44
+msgid "_Forward"
+msgstr "ק_דימה"
+
+#: ../src/Glade/MainWindow.glade.h:45
+msgid "_Seek to..."
+msgstr "מ_עבר ל..."
+
+#: ../src/Glade/MainWindow.glade.h:46
+msgid "Seek _to Selection"
+msgstr "קפוץ _לקטע המסומן"
+
+#: ../src/Glade/MainWindow.glade.h:47
+msgid "Select Nearest Subtitle"
+msgstr "בחירת הכתובית הקרובה ביותר"
+
+#: ../src/Glade/MainWindow.glade.h:48
+msgid "Auto Select Subtitle"
+msgstr "בחירת כתוביות אוטומטית"
+
+#: ../src/Glade/MainWindow.glade.h:49
+msgid "Set Subtitle St_art"
+msgstr "הגדרת הת_חלת הכתוביות"
+
+#: ../src/Glade/MainWindow.glade.h:50
+msgid "Set Subtitle En_d"
+msgstr "הגדרת _סיום הכתוביות"
+
+#: ../src/Glade/MainWindow.glade.h:51
+msgid "_Tools"
+msgstr "כ_לים"
+
+#: ../src/Glade/MainWindow.glade.h:52
+msgid "_Autocheck Spelling"
+msgstr "בדיקת איות _אוטומטית"
+
+#: ../src/Glade/MainWindow.glade.h:53
+msgid "Set T_ext Language"
+msgstr "הגדרת שפת ה_טקסט"
+
+#: ../src/Glade/MainWindow.glade.h:54
+msgid "Set Translati_on Language"
+msgstr "הגדרת שפת ה_תרגום"
+
+#: ../src/Glade/MainWindow.glade.h:55
+msgid "Translate _Text → Translation"
+msgstr "תרגום _טקסט ← תרגום"
+
+#: ../src/Glade/MainWindow.glade.h:56
+msgid "Translate Translatio_n → Text"
+msgstr "תרגום _תרגום ← טקסט"
+
+#: ../src/Glade/MainWindow.glade.h:57
+msgid "_Help"
+msgstr "ע_זרה"
+
+#: ../src/Glade/MainWindow.glade.h:58
+msgid "_Contents"
+msgstr "_תוכן העניינים"
+
+#: ../src/Glade/MainWindow.glade.h:59
+msgid "_Keyboard Shortcuts"
+msgstr "קיצורי _מקשים"
+
+#: ../src/Glade/MainWindow.glade.h:60
+msgid "Request a _Feature"
+msgstr "בקשת _תכונה"
+
+#: ../src/Glade/MainWindow.glade.h:61
+msgid "Report a _Bug"
+msgstr "דיווח על _באג"
+
+#: ../src/Glade/MainWindow.glade.h:62
+msgid "New File"
+msgstr "קובץ חדש"
+
+#: ../src/Glade/MainWindow.glade.h:64
+msgid "Save File"
+msgstr "שמירת קובץ"
+
+#: ../src/Glade/MainWindow.glade.h:65
+msgid "Insert"
+msgstr "הוספה"
+
+#: ../src/Glade/MainWindow.glade.h:66
+msgid "Delete"
+msgstr "מחיקה"
+
+#: ../src/Glade/MainWindow.glade.h:67
+msgid "<b>Time</b>"
+msgstr "<b>זמן</b>"
+
+#: ../src/Glade/MainWindow.glade.h:68
+msgid "<b>Length</b>"
+msgstr "<b>משך זמן</b>"
+
+#: ../src/Glade/MainWindow.glade.h:69
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start and end timings.\n"
 "Shift+Plus/Minus (on the numpad) shifts timings."
@@ -388,291 +551,128 @@ msgstr ""
 "עצה: ניתן להשתמש ב־Ctrl עם פלוס/מינוס וב־Alt+פלוס/מינוס (במקלדת הנומרית) כדי להתאים את תזמוני ההתחלה והסוף.\n"
 "Shift+פלוס/מינוס (במקלדת הנומרית) מזיז את התזמונים."
 
-#: ../src/Glade/MainWindow.glade.h:33
-msgid "Translate Translatio_n → Text"
-msgstr "תרגום _תרגום ← טקסט"
-
-#: ../src/Glade/MainWindow.glade.h:34
-msgid "Translate _Text → Translation"
-msgstr "תרגום _טקסט ← תרגום"
-
-#: ../src/Glade/MainWindow.glade.h:35
-msgid "Translatio_n"
-msgstr "תר_גום"
-
-#: ../src/Glade/MainWindow.glade.h:36
-msgid "Vide_o"
-msgstr "ויד_או"
-
-#: ../src/Glade/MainWindow.glade.h:37
-msgid "Video _Subtitles"
-msgstr "כתו_ביות וידאו"
-
-#: ../src/Glade/MainWindow.glade.h:38
-msgid "_Adjust"
-msgstr "ה_תאמה"
-
-#: ../src/Glade/MainWindow.glade.h:39
-msgid "_After"
-msgstr "_אחרי"
-
-#: ../src/Glade/MainWindow.glade.h:40
-msgid "_Autocheck Spelling"
-msgstr "בדיקת איות _אוטומטית"
-
-#: ../src/Glade/MainWindow.glade.h:41
-msgid "_Before"
-msgstr "ל_פני"
-
-#: ../src/Glade/MainWindow.glade.h:42
-msgid "_Bold"
-msgstr "מו_דגש"
-
-#: ../src/Glade/MainWindow.glade.h:43
-msgid "_Close"
-msgstr "_סגירה"
-
-#: ../src/Glade/MainWindow.glade.h:44
-msgid "_Contents"
-msgstr "_תוכן העניינים"
-
-#: ../src/Glade/MainWindow.glade.h:45
-msgid "_Delete Subtitles"
-msgstr "מחי_קת כתוביות"
-
-#: ../src/Glade/MainWindow.glade.h:46
-msgid "_Edit"
-msgstr "ע_ריכה"
-
-#: ../src/Glade/MainWindow.glade.h:47
-msgid "_File"
-msgstr "_קובץ"
-
-#: ../src/Glade/MainWindow.glade.h:48
-msgid "_Format"
-msgstr "עי_צוב"
-
-#: ../src/Glade/MainWindow.glade.h:49
-msgid "_Forward"
-msgstr "ק_דימה"
-
-#: ../src/Glade/MainWindow.glade.h:50
-msgid "_Frames"
-msgstr "_שקופיות"
-
-#: ../src/Glade/MainWindow.glade.h:51
-msgid "_Headers"
-msgstr "_כותרות"
-
-#: ../src/Glade/MainWindow.glade.h:52
-msgid "_Help"
-msgstr "ע_זרה"
-
-#: ../src/Glade/MainWindow.glade.h:53
-msgid "_Input Frame Rate"
-msgstr "קצב שקופיות ה_קלט"
-
-#: ../src/Glade/MainWindow.glade.h:54
-msgid "_Insert Subtitle"
-msgstr "הו_ספת כתובית"
-
-#: ../src/Glade/MainWindow.glade.h:55
-msgid "_Italic"
-msgstr "_נטוי"
-
-#: ../src/Glade/MainWindow.glade.h:56
-msgid "_Keyboard Shortcuts"
-msgstr "קיצורי _מקשים"
-
-#: ../src/Glade/MainWindow.glade.h:57
-msgid "_Line Lengths"
-msgstr "_אורכי השורות"
-
-#: ../src/Glade/MainWindow.glade.h:58
-msgid "_Loop Selection"
-msgstr "לולאה על ה_בחירה"
-
-#: ../src/Glade/MainWindow.glade.h:59
-msgid "_Merge"
-msgstr "מי_זוג"
-
-#: ../src/Glade/MainWindow.glade.h:60
-msgid "_New"
-msgstr "_חדש"
-
-#: ../src/Glade/MainWindow.glade.h:61
-msgid "_Open"
-msgstr "_פתיחה"
-
-#: ../src/Glade/MainWindow.glade.h:62
-msgid "_Play / Pause"
-msgstr "_נגינה / השהיה"
-
-#: ../src/Glade/MainWindow.glade.h:63
-#: ../src/Glade/SearchDialog.glade.h:7
-msgid "_Replace"
-msgstr "ה_חלפה"
-
-#: ../src/Glade/MainWindow.glade.h:64
-msgid "_Save"
-msgstr "_שמירה"
-
-#: ../src/Glade/MainWindow.glade.h:65
-msgid "_Search"
-msgstr "חי_פוש"
-
-#: ../src/Glade/MainWindow.glade.h:66
-msgid "_Seek to..."
-msgstr "מ_עבר ל..."
-
-#: ../src/Glade/MainWindow.glade.h:67
-msgid "_Split"
-msgstr "_פיצול"
-
-#: ../src/Glade/MainWindow.glade.h:68
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
-msgid "_Synchronize"
-msgstr "ס_נכרון"
-
-#: ../src/Glade/MainWindow.glade.h:69
-msgid "_Text"
-msgstr "_טקסט"
-
-#: ../src/Glade/MainWindow.glade.h:70
-msgid "_Times"
-msgstr "זמ_נים"
-
-#: ../src/Glade/MainWindow.glade.h:71
-msgid "_Tools"
-msgstr "כ_לים"
-
+#. This is the duration of a subtitle.
 #: ../src/Glade/MainWindow.glade.h:72
-msgid "_Translation"
-msgstr "_תרגום"
+msgid "Duration:"
+msgstr "משך:"
 
-#: ../src/Glade/MainWindow.glade.h:73
-msgid "_Underline"
-msgstr "_קו תחתי"
-
+#. This is the end time/frame of a subtitle.
 #: ../src/Glade/MainWindow.glade.h:74
-msgid "_Video"
-msgstr "_וידאו"
+msgid "End:"
+msgstr "סוף:"
 
-#: ../src/Glade/MainWindow.glade.h:75
-msgid "_Video Frame Rate"
-msgstr "קצב הצגת תמונות ב_ווידאו"
-
+#. This is the start time/frame of a subtitle.
 #: ../src/Glade/MainWindow.glade.h:76
-msgid "_View"
-msgstr "_תצוגה"
+msgid "Start:"
+msgstr "התחלה:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "<b>Backup</b>"
-msgstr "<b>גיבוי</b>"
+msgid "Preferences"
+msgstr "העדפות"
 
 #: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "<b>File Open Dialog</b>"
-msgstr "<b>תיבת דו־שיח לפתיחת קובץ</b>"
+msgid "_Reset to defaults"
+msgstr "_איפוס לבררות המחדל"
 
 #: ../src/Glade/PreferencesDialog.glade.h:3
-msgid "<b>File Save As Dialog</b>"
-msgstr "<b>תיבת דו־שיח שמירת קובץ בשם</b>"
+msgid "When saving subtitles, also save their _translation"
+msgstr "בעת שמירת הכתוביות, יש לשמור גם את ה_תרגום שלהן"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
-msgid "<b>Reaction Delay</b>"
-msgstr "<b>השהיית התגובה</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:5
-msgid "<b>Subtitle Splitting</b>"
-msgstr "<b>פיצול כתוביות</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:6
 msgid "<b>Translation File Saving</b>"
 msgstr "<b>שמירת קובץ התרגום</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "<b>Video Seeking</b>"
-msgstr "<b>חיפוש בווידאו</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:8
-msgid "Automatically choose the _video file to open"
-msgstr "בחירה אוטומטית של ה_ווידאו לפתיחה"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
-msgid "Automatically seek the video to the first subtitle when changing timings"
-msgstr "יש לחפש אוטומטית בווידאו ולעבור לכתובית הראשונה בעת שינוי תזמונים"
-
-#: ../src/Glade/PreferencesDialog.glade.h:10
-msgid "Ch_aracter coding to use:"
-msgstr "_קידוד תווים לשימוש:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:11
+#: ../src/Glade/PreferencesDialog.glade.h:5
 msgid "Character c_oding to use:"
 msgstr "קידוד _תווים לשימוש:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:12
-msgid "Create a _backup copy of files every"
-msgstr "יצירת עותק _גיבוי של הקבצים כל"
-
-#: ../src/Glade/PreferencesDialog.glade.h:13
-msgid "Editing"
-msgstr "בעריכה"
-
-#: ../src/Glade/PreferencesDialog.glade.h:14
-msgid "Files"
-msgstr "קבצים"
-
-#: ../src/Glade/PreferencesDialog.glade.h:15
+#: ../src/Glade/PreferencesDialog.glade.h:6
 msgid "If auto detection _fails, use:"
 msgstr "אם הזיהוי האוטומטי _כשל, יש להשתמש ב־:"
 
+#: ../src/Glade/PreferencesDialog.glade.h:7
+msgid "Automatically choose the _video file to open"
+msgstr "בחירה אוטומטית של ה_ווידאו לפתיחה"
+
+#: ../src/Glade/PreferencesDialog.glade.h:8
+msgid "<b>File Open Dialog</b>"
+msgstr "<b>תיבת דו־שיח לפתיחת קובץ</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:9
+msgid "Ch_aracter coding to use:"
+msgstr "_קידוד תווים לשימוש:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:10
+msgid "_Subtitle format to use:"
+msgstr "מבנה הכתוביות ל_שימוש:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:11
+msgid "_Newline type to use:"
+msgstr "סוג מעבר ה_שורה לשימוש:"
+
+#: ../src/Glade/PreferencesDialog.glade.h:12
+msgid "<b>File Save As Dialog</b>"
+msgstr "<b>תיבת דו־שיח שמירת קובץ בשם</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:13
+msgid "Create a _backup copy of files every"
+msgstr "יצירת עותק _גיבוי של הקבצים כל"
+
+#: ../src/Glade/PreferencesDialog.glade.h:14
+msgid "minutes"
+msgstr "דקות"
+
+#: ../src/Glade/PreferencesDialog.glade.h:15
+msgid "<b>Backup</b>"
+msgstr "<b>גיבוי</b>"
+
 #: ../src/Glade/PreferencesDialog.glade.h:16
-msgid "Leave"
-msgstr "עזיבה"
+msgid "Files"
+msgstr "קבצים"
 
 #: ../src/Glade/PreferencesDialog.glade.h:17
-msgid "Preferences"
-msgstr "העדפות"
+msgid "Automatically seek the video to the first subtitle when changing timings"
+msgstr "יש לחפש אוטומטית בווידאו ולעבור לכתובית הראשונה בעת שינוי תזמונים"
 
 #: ../src/Glade/PreferencesDialog.glade.h:18
 msgid "Seek"
 msgstr "חיפוש"
 
 #: ../src/Glade/PreferencesDialog.glade.h:19
-msgid "Subtract"
-msgstr "חיסור"
-
-#: ../src/Glade/PreferencesDialog.glade.h:20
-msgid "When saving subtitles, also save their _translation"
-msgstr "בעת שמירת הכתוביות, יש לשמור גם את ה_תרגום שלהן"
-
-#: ../src/Glade/PreferencesDialog.glade.h:21
-msgid "_Newline type to use:"
-msgstr "סוג מעבר ה_שורה לשימוש:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:22
-msgid "_Reset to defaults"
-msgstr "_איפוס לבררות המחדל"
-
-#: ../src/Glade/PreferencesDialog.glade.h:23
-msgid "_Subtitle format to use:"
-msgstr "מבנה הכתוביות ל_שימוש:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:24
-msgid "minutes"
-msgstr "דקות"
-
-#: ../src/Glade/PreferencesDialog.glade.h:25
 msgid "ms before the actual start to help review new timings"
 msgstr "מילישניות לפני ההתחלה האמתית כדי לסייע לסקור את התזמונים החדשים"
 
-#: ../src/Glade/PreferencesDialog.glade.h:26
-msgid "ms between subtitles when splitting"
-msgstr "מילישניות בין הכתוביות בעת פיצול"
+#: ../src/Glade/PreferencesDialog.glade.h:20
+msgid "<b>Video Seeking</b>"
+msgstr "<b>חיפוש בווידאו</b>"
 
-#: ../src/Glade/PreferencesDialog.glade.h:27
+#: ../src/Glade/PreferencesDialog.glade.h:21
+msgid "Leave"
+msgstr "עזיבה"
+
+#: ../src/Glade/PreferencesDialog.glade.h:22
+msgid "ms between subtitles when inserting or splitting"
+msgstr "מילישניות בין הכתוביות בעת הוספה או פיצול"
+
+#: ../src/Glade/PreferencesDialog.glade.h:23
+msgid "<b>Gap Between Subtitles</b>"
+msgstr "<b>מרווח בין הכתוביות</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:24
+msgid "Subtract"
+msgstr "חיסור"
+
+#: ../src/Glade/PreferencesDialog.glade.h:25
 msgid "ms when setting subtitle start/end on playback"
 msgstr "מילישניות בעת הגדרת מיקום התחלת/סיום הכתוביות בעת הנגינה"
+
+#: ../src/Glade/PreferencesDialog.glade.h:26
+msgid "<b>Reaction Delay</b>"
+msgstr "<b>השהיית התגובה</b>"
+
+#: ../src/Glade/PreferencesDialog.glade.h:27
+msgid "Editing"
+msgstr "בעריכה"
 
 #: ../src/Glade/SearchDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
@@ -680,89 +680,93 @@ msgid "Replace"
 msgstr "החלפה"
 
 #: ../src/Glade/SearchDialog.glade.h:2
-msgid "Replace _All"
-msgstr "החלפת _הכול"
-
-#: ../src/Glade/SearchDialog.glade.h:3
 msgid "Replace _with:"
 msgstr "החלפה _ב:"
 
-#: ../src/Glade/SearchDialog.glade.h:4
-msgid "Search _backwards"
-msgstr "חיפוש _אחורה"
-
-#: ../src/Glade/SearchDialog.glade.h:5
-msgid "Search using a Regular _Expression"
-msgstr "חיפוש באמצעות _ביטויים רגולריים"
-
-#: ../src/Glade/SearchDialog.glade.h:6
-msgid "_Match case"
-msgstr "הת_אמת רשיות"
-
-#: ../src/Glade/SearchDialog.glade.h:8
+#: ../src/Glade/SearchDialog.glade.h:3
 msgid "_Search for:"
 msgstr "חיפוש _אחר:"
 
-#: ../src/Glade/SearchDialog.glade.h:9
+#: ../src/Glade/SearchDialog.glade.h:4
+msgid "_Match case"
+msgstr "הת_אמת רשיות"
+
+#: ../src/Glade/SearchDialog.glade.h:5
+msgid "Search _backwards"
+msgstr "חיפוש _אחורה"
+
+#: ../src/Glade/SearchDialog.glade.h:6
+msgid "Search using a Regular _Expression"
+msgstr "חיפוש באמצעות _ביטויים רגולריים"
+
+#: ../src/Glade/SearchDialog.glade.h:7
 msgid "_Wrap around"
 msgstr "_גלישה מסביב"
+
+#: ../src/Glade/SearchDialog.glade.h:8
+msgid "Replace _All"
+msgstr "החלפת _הכול"
 
 #: ../src/Glade/SetLanguageDialog.glade.h:1
 msgid "Set language"
 msgstr "הגדרת השפה"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:1
-#: ../src/Glade/TimingsShiftDialog.glade.h:1
-msgid "<b>Apply to</b>"
-msgstr "<b>החלה על</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:2
-msgid "<b>First Subtitle</b>"
-msgstr "<b>כתובית ראשונה</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:3
-msgid "<b>Last Subtitle</b>"
-msgstr "<b>כתובית אחרונה</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:4
-msgid "Adjust"
-msgstr "התאמה"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:5
 msgid "Adjust Timings"
 msgstr "התאמת תזמונים"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:6
-msgid "All Subtitles"
-msgstr "כל הכתוביות"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
+#: ../src/Glade/TimingsAdjustDialog.glade.h:2
 msgid "New Start:"
 msgstr "התחלה חדשה:"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
+#: ../src/Glade/TimingsAdjustDialog.glade.h:3
+msgid "Start Frame:"
+msgstr "שקופית התחלתית:"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:4
 msgid "No.:"
 msgstr "מספר:"
 
-#: ../src/Glade/TimingsAdjustDialog.glade.h:9
+#: ../src/Glade/TimingsAdjustDialog.glade.h:5
+msgid "<b>First Subtitle</b>"
+msgstr "<b>כתובית ראשונה</b>"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:6
+msgid "<b>Last Subtitle</b>"
+msgstr "<b>כתובית אחרונה</b>"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:7
+msgid "All Subtitles"
+msgstr "כל הכתוביות"
+
+#: ../src/Glade/TimingsAdjustDialog.glade.h:8
 msgid "Selected Range"
 msgstr "טווח מסומן"
 
+#: ../src/Glade/TimingsAdjustDialog.glade.h:9
+#: ../src/Glade/TimingsShiftDialog.glade.h:9
+msgid "<b>Apply to</b>"
+msgstr "<b>החלה על</b>"
+
 #: ../src/Glade/TimingsAdjustDialog.glade.h:10
-msgid "Start Frame:"
-msgstr "שקופית התחלתית:"
+msgid "Adjust"
+msgstr "התאמה"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:1
+msgid "Shift Timings"
+msgstr "הזחת הזמנים"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:2
 msgid "<b>Frames</b>"
 msgstr "<b>שקופיות</b>"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid ""
-"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
-"to shift timings from the main window.</i></small>"
-msgstr ""
-"<small>עצה: ניתן להשתמש ב־Shift+פלוס/מינוס (במקלדת הנומרית)\n"
-"כדי להזיז תזמונים בחלון הראשי.</small>"
+msgid "_All subtitles"
+msgstr "כל הכ_תוביות"
+
+#: ../src/Glade/TimingsShiftDialog.glade.h:4
+msgid "_Selected subtitles"
+msgstr "הכתוביות ש_נבחרו"
 
 #. This means to apply the shift command from the selected subtitle to the first subtitle.
 #: ../src/Glade/TimingsShiftDialog.glade.h:6
@@ -774,41 +778,37 @@ msgstr "מה_כתובית הראשונה עד לבחירה"
 msgid "From selection to _last subtitle"
 msgstr "מהבחירה ועד לכתובית ה_אחרונה"
 
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "Shift Timings"
-msgstr "הזחת הזמנים"
-
 #: ../src/Glade/TimingsShiftDialog.glade.h:10
-msgid "_All subtitles"
-msgstr "כל הכ_תוביות"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:11
-msgid "_Selected subtitles"
-msgstr "הכתוביות ש_נבחרו"
+msgid ""
+"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
+"to shift timings from the main window.</i></small>"
+msgstr ""
+"<small>עצה: ניתן להשתמש ב־Shift+פלוס/מינוס (במקלדת הנומרית)\n"
+"כדי להזיז תזמונים בחלון הראשי.</small>"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:12
 msgid "_Shift"
 msgstr "ה_זחה"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "<b>Options</b>"
-msgstr "<b>אפשרויות</b>"
+msgid "Synchronize Timings"
+msgstr "סנכרון הזמנים"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "<b>Status</b>"
-msgstr "<b>מצב</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
 msgid "<b>Sync Points</b>"
 msgstr "<b>נקודות סנכרון</b>"
 
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
 msgid "Synchroni_ze all subtitles"
 msgstr "סנכר_ון כל הכתוביות"
 
+#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
+msgid "<b>Options</b>"
+msgstr "<b>אפשרויות</b>"
+
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "Synchronize Timings"
-msgstr "סנכרון הזמנים"
+msgid "<b>Status</b>"
+msgstr "<b>מצב</b>"
 
 #: ../src/Glade/VideoOpenDialog.glade.h:1
 msgid "Open Video"
@@ -1433,6 +1433,9 @@ msgstr "משך"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
 msgid "Translation"
 msgstr "תרגום"
+
+#~ msgid "<b>Subtitle Splitting</b>"
+#~ msgstr "<b>פיצול כתוביות</b>"
 
 #~ msgid "During:"
 #~ msgstr "במשך:"
