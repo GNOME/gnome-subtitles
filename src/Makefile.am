@@ -10,7 +10,7 @@ ASSEMBLY_CONFIG = $(ASSEMBLY).config
 AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
 gnomesubtitles_LTLIBRARIES = libgstreamer_playbin.la
 libgstreamer_playbin_la_SOURCES = $(srcdir)/External/GStreamerPlaybin/main.c
-libgstreamer_playbin_la_LIBADD = $(gstreamer_LIBS) -lgstinterfaces-0.10
+libgstreamer_playbin_la_LIBADD = $(gstreamer_LIBS)
 libgstreamer_playbin_la_LDFLAGS = -module -avoid-version
 libgstreamer_playbin_la_LIBTOOLFLAGS = --tag=disable-static 
 
@@ -54,7 +54,7 @@ GS_RESOURCES = \
 	$(srcdir)/Glade/TimingsSynchronizeDialog.glade \
 	$(srcdir)/Glade/VideoOpenDialog.glade \
 	$(srcdir)/Glade/VideoSeekToDialog.glade \
-	$(GS_DATADIR)/gnome-subtitles.png \
+	$(GS_DATADIR)/gnome-subtitles.svg \
 	$(GS_DATADIR)/gnome-subtitles-logo.png \
 	$(GS_DATADIR)/video-set-subtitle-end-16x.png \
 	$(GS_DATADIR)/video-set-subtitle-start-16x.png\

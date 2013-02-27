@@ -63,8 +63,8 @@ MONO_REQUIRED_VERSION=1.1
 GTKSHARP_REQUIRED_VERSION=2.12
 GTK_REQUIRED_VERSION=2.12
 
-PKG_CHECK_MODULES(gstreamer, [gstreamer-0.10 >= 0.10])
-PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-0.10 >= 0.10])
+PKG_CHECK_MODULES(gstreamer, [gstreamer-video-1.0 >= 1.0])
+PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-1.0 >= 1.0])
 AC_SUBST(gstreamer_CFLAGS)
 AC_SUBST(gstreamer_LIBS)
 

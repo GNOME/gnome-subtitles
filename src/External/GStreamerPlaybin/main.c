@@ -24,7 +24,7 @@
 
 
 #include <gst/gst.h>
-#include <gst/interfaces/xoverlay.h>
+#include <gst/video/videooverlay.h>
 #include <gst/tag/tag.h> 
 #include <string.h>
 
@@ -67,7 +67,7 @@ struct gstTag {
 struct gstPlay {
     GstElement *element;
     gulong xid;
-	GstXOverlay *overlay;
+	GstVideoOverlay *overlay;
 	
 	gchar *vis_name;
 	
@@ -98,9 +98,9 @@ gst_sync_watch (GstBus *bus, GstMessage *message, gpointer data)
 	if (play == NULL) return FALSE;
 	
 	if (GST_MESSAGE_TYPE (message) == GST_MESSAGE_ELEMENT) {
-		if (gst_structure_has_name (message->structure, "prepare-xwindow-id")) {
-			play->overlay = GST_X_OVERLAY (GST_MESSAGE_SRC (message));
-			gst_x_overlay_set_xwindow_id (play->overlay, play->xid);
+		if (gst_is_video_overlay_prepare_window_handle_message(message)) {
+			play->overlay = GST_VIDEO_OVERLAY (GST_MESSAGE_SRC (message));
+			gst_video_overlay_set_window_handle (play->overlay, play->xid);
 		}
 	}
 	return TRUE;
@@ -239,7 +239,7 @@ gstPlay *gst_binding_init (gulong xwin) {
 	play->xid = xwin;
 	
 	gst_bus_set_sync_handler (gst_pipeline_get_bus(GST_PIPELINE(play->element)), 
-		gst_sync_watch, play);
+		gst_sync_watch, play, NULL);
 	gst_bus_add_watch (gst_pipeline_get_bus(GST_PIPELINE(play->element)), 
 		gst_async_watch, play);
 	
@@ -323,9 +323,8 @@ void gst_binding_unload (gstPlay *play) {
 guint64 gst_binding_get_duration (gstPlay *play) {
 	if (!isValid (play)) return 0;
 	
-	GstFormat format = GST_FORMAT_TIME;
 	gint64 duration;
-	if(gst_element_query_duration (play->element, &format, &duration))
+	if(gst_element_query_duration (play->element, GST_FORMAT_TIME, &duration))
 		return duration / GST_MSECOND;
 	return 0;
 }
@@ -334,9 +333,8 @@ guint64 gst_binding_get_duration (gstPlay *play) {
 guint64 gst_binding_get_position (gstPlay *play) {
 	if (!isValid (play)) return 0;
 	
-	GstFormat format = GST_FORMAT_TIME;
     gint64 position;
-	if(gst_element_query_position (play->element, &format, &position))
+	if(gst_element_query_position (play->element, GST_FORMAT_TIME, &position))
 		return position / GST_MSECOND;
 	return 0;
 }
@@ -416,11 +414,14 @@ gstVideoInfo *gst_binding_get_video_info (gstPlay *play) {
 
 //retrieves video information, or NULL if it's not available
 gboolean gst_binding_load_video_info (gstPlay *play) {
+	GstElement *audio_sink;
+	GstElement *video_sink;
+
 	if (!isValid (play)) return FALSE;
 	
-	GList *stream_info = NULL, *stream;
-	g_object_get (G_OBJECT (play->element), "stream-info", &stream_info, NULL);
-	if (!stream_info) return FALSE;
+	g_object_get (G_OBJECT (play->element), "audio-sink", &audio_sink,
+					       	"video-sink", &video_sink,
+						NULL);
 	
 	/* Initialize video info structure */
 	if (play->video_info == NULL) {
@@ -435,78 +436,64 @@ gboolean gst_binding_load_video_info (gstPlay *play) {
 	if (!play->video_info->has_video)
 		return play->video_info->has_audio;
 	
-	/* Iterate through the streams */
-  	for (stream = stream_info; stream; stream = g_list_next (stream)) {
-  		GObject *stream_data = G_OBJECT (stream->data);
-  		gint stream_type;
-	    g_object_get (stream_data, "type", &stream_type, NULL);
-
-  		/* Look for the video stream */
- 		if (stream_type == 2) {
-	  		GstObject *stream_object;
-	    	g_object_get (stream_data, "object", &stream_object, NULL);
-    	
+	if (video_sink != NULL) {
+		GstPad *video_pad;
+		video_pad = gst_element_get_static_pad (GST_ELEMENT (video_sink), "sink");
+		if (video_pad != NULL) {
 			GstCaps *caps;
-			g_object_get(stream_object, "caps", &caps, NULL);
-			if (!GST_IS_CAPS(caps)) return FALSE;
+			if ((caps = gst_pad_get_current_caps (video_pad)) != NULL) {
+				gint caps_count = gst_caps_get_size (caps), caps_index;
+				GstStructure *caps_struct;
+				const GValue *caps_value;
+				gint caps_width = -1, caps_height = -1;
+				gfloat caps_frame_rate = -1;
+				for (caps_index = 0; caps_index < caps_count; caps_index++) {
+					caps_struct = gst_caps_get_structure (caps, caps_index);
 
-			gint caps_count = gst_caps_get_size (caps), caps_index;
-			GstStructure *caps_struct;
-			const GValue *caps_value;
-			gint caps_width = -1, caps_height = -1;
-			gfloat caps_frame_rate = -1;
-			for (caps_index = 0; caps_index < caps_count; caps_index++) {
-    			caps_struct = gst_caps_get_structure (caps, caps_index);
-    			
-    			/* Check if mime type is video */
-    			const gchar *mime_type;
-				mime_type = gst_structure_get_name (caps_struct);
-				if ((!mime_type) || (g_ascii_strncasecmp(mime_type, "video", 5)))
-					continue;
-    			    			
-    			/* Look for width */
-				caps_value = gst_structure_get_value (caps_struct, "width");
-    			if (caps_value && (G_VALUE_TYPE (caps_value) == G_TYPE_INT))
-    				caps_width = g_value_get_int(caps_value);
+					/* Check if mime type is video */
+					const gchar *mime_type;
+					mime_type = gst_structure_get_name (caps_struct);
+					if ((!mime_type) || (g_ascii_strncasecmp(mime_type, "video", 5)))
+						continue;
 
-    			/* Look for height */
-    			caps_value = gst_structure_get_value (caps_struct, "height");
-    			if (caps_value && (G_VALUE_TYPE (caps_value) == G_TYPE_INT))
-    				caps_height = g_value_get_int(caps_value);
-    			
-    			/* Look for frame rate */
-    			caps_value = gst_structure_get_value (caps_struct, "framerate");
-    			if (caps_value && (G_VALUE_TYPE (caps_value) == GST_TYPE_FRACTION)) {
-    				int num = caps_value->data[0].v_int, den = caps_value->data[1].v_int;
-		            caps_frame_rate = (float)num/den;
+					/* Look for width */
+					caps_value = gst_structure_get_value (caps_struct, "width");
+					if (caps_value && (G_VALUE_TYPE (caps_value) == G_TYPE_INT))
+						caps_width = g_value_get_int(caps_value);
+
+					/* Look for height */
+					caps_value = gst_structure_get_value (caps_struct, "height");
+					if (caps_value && (G_VALUE_TYPE (caps_value) == G_TYPE_INT))
+						caps_height = g_value_get_int(caps_value);
+
+					/* Look for frame rate */
+					caps_value = gst_structure_get_value (caps_struct, "framerate");
+					if (caps_value && (G_VALUE_TYPE (caps_value) == GST_TYPE_FRACTION)) {
+						int num = caps_value->data[0].v_int, den = caps_value->data[1].v_int;
+						caps_frame_rate = (float)num/den;
+					}
 				}
-			}
-			
-			if ((caps_width != -1) && (caps_height != -1) && (caps_frame_rate != -1)) {
-				play->video_info->width = caps_width;
-				play->video_info->height = caps_height;
-				play->video_info->aspect_ratio = ((float)caps_width)/((float)caps_height);
-				play->video_info->frame_rate = caps_frame_rate;
-				return TRUE;
+				gst_caps_unref (caps);
+				if ((caps_width != -1) && (caps_height != -1) && (caps_frame_rate != -1)) {
+					play->video_info->width = caps_width;
+					play->video_info->height = caps_height;
+					play->video_info->aspect_ratio = ((float)caps_width)/((float)caps_height);
+					play->video_info->frame_rate = caps_frame_rate;
+					return TRUE;
+				}
 			}
 		}
 	}
 	return FALSE;
 }
 
-
-
-
-
-
-
 void gst_binding_set_xid (gstPlay *play, gulong xid) {
 	if (play == NULL)
 		return;
 	
 	play->xid = xid;
-	if (play->overlay != NULL && GST_IS_X_OVERLAY (play->overlay))
-		gst_x_overlay_set_xwindow_id (play->overlay, xid);
+	if (play->overlay != NULL && GST_IS_VIDEO_OVERLAY (play->overlay))
+		gst_video_overlay_set_window_handle (play->overlay, xid);
 }
 
 void gst_binding_set_eos_cb(gstPlay *play, eosCallback cb) {
@@ -549,7 +536,7 @@ filter_features (GstPluginFeature *feature, gpointer data)
 GList *
 get_visualization_features (void)
 {
-  return gst_registry_feature_filter (gst_registry_get_default (),
+  return gst_registry_feature_filter (gst_registry_get (),
       filter_features, FALSE, NULL);
 }
 
@@ -578,7 +565,7 @@ setup_vis_find_factory (const gchar *vis_name)
     }
     
     //short name
-    else if (f && strcmp (vis_name, GST_PLUGIN_FEATURE_NAME (f)) == 0) {
+    else if (f && strcmp (vis_name, GST_OBJECT_NAME (f)) == 0) {
       fac = f;
       goto done;
     }
@@ -644,13 +631,13 @@ setup_vis (gstPlay *play)
 	gst_bin_add_many (GST_BIN (vis_bin), vis_element, vis_capsfilter, NULL);
 	
 	// sink ghostpad
-	pad = gst_element_get_pad (vis_element, "sink");
+	pad = gst_element_get_static_pad (vis_element, "sink");
 	gst_element_add_pad (vis_bin, gst_ghost_pad_new ("sink", pad));
 	gst_object_unref (pad);
 	
 	
 	// source ghostpad, link with vis_element
-	pad = gst_element_get_pad (vis_capsfilter, "src");
+	pad = gst_element_get_static_pad (vis_capsfilter, "src");
 	gst_element_add_pad (vis_bin, gst_ghost_pad_new ("src", pad));
 	gst_element_link_pads (vis_element, "src", vis_capsfilter, "sink");
 	gst_object_unref (pad);
