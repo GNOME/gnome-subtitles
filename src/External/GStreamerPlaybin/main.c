@@ -25,7 +25,7 @@
 
 #include <gst/gst.h>
 #include <gst/video/videooverlay.h>
-#include <gst/tag/tag.h> 
+#include <gst/tag/tag.h>
 #include <string.h>
 
 
