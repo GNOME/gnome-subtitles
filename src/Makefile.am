@@ -6,6 +6,7 @@ GS_DATADIR = $(srcdir)/../data
 
 ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
 ASSEMBLY_CONFIG = $(ASSEMBLY).config
+ASSEMBLY_CONFIG_SRC = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.config
 
 AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
 gnomesubtitles_LTLIBRARIES = libgstreamer_playbin.la
@@ -68,11 +69,11 @@ $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
 	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(SUBLIB_LIBS) $(GS_RESOURCES:%=-resource:%) $(GS_SOURCES)
 
 $(ASSEMBLY_CONFIG):
-	cp -f $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.config $(GS_BUILDDIR)
+	cp -f $(ASSEMBLY_CONFIG_SRC) $(GS_BUILDDIR)
 	cp -f $(srcdir)/.libs/libgstreamer_playbin.so $(GS_BUILDDIR)
 
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
 CLEANFILES = $(bin_SCRIPTS) $(ASSEMBLY) $(ASSEMBLY).mdb
-EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG)
+EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG_SRC)
 
