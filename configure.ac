@@ -1,5 +1,5 @@
 AC_PREREQ(2.58)
-AC_INIT(gnome-subtitles, 1.2, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
+AC_INIT(gnome-subtitles, 1.3, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
 
 GNOME_COMMON_INIT
 
@@ -35,7 +35,7 @@ fi
 
 dnl C# compiler
 AC_PATH_PROG(CSC, csc, no)
-AC_PATH_PROG(MCS, gmcs, no)
+AC_PATH_PROG(MCS, dmcs, no)
 AC_PATH_PROG(MONO, mono, no)
 
 CS="C#"
