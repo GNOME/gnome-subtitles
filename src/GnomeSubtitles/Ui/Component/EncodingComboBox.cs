@@ -173,7 +173,7 @@ public class EncodingComboBox {
 
 		/* Add add/remove action */
 		comboBox.AppendText("-");
-		comboBox.AppendText(Catalog.GetString("Add or Remove..."));
+		comboBox.AppendText(Catalog.GetString("Add or Remove…"));
 
 		SetActiveItem(activeItem, false); //Don't use silent change because the signal is already disabled
 
