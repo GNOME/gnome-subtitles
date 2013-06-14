@@ -55,9 +55,9 @@ public class EncodingComboBox {
 
 
 	/* Events */
-	
+
 	public event EventHandler SelectionChanged;
-	
+
 
 	/* Public properties */
 
@@ -113,7 +113,7 @@ public class EncodingComboBox {
 	private void LoadEncodings () {
 		bool toAddFixedEncoding = (fixedEncoding != -1);
 		ArrayList encodings = new ArrayList();
-		
+
 		foreach (string name in configShownEncodings) {
 			EncodingDescription description = EncodingDescription.Empty;
 			if (Encodings.Find(name, ref description)) {
@@ -126,7 +126,7 @@ public class EncodingComboBox {
 		if (toAddFixedEncoding) {
 			EncodingDescription description = EncodingDescription.Empty;
 			if (Encodings.Find(fixedEncoding, ref description))
-				encodings.Add(description);		
+				encodings.Add(description);
 		}
 
 		encodings.Sort();
@@ -200,7 +200,7 @@ public class EncodingComboBox {
 	}
 
 	/* Event members */
-	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void ConnectHandlers () {

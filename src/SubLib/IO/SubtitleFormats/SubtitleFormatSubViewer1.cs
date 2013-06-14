@@ -24,27 +24,27 @@ using System.Text.RegularExpressions;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatSubViewer1 : SubtitleFormat {
-	
+
 	internal SubtitleFormatSubViewer1 () {
 		name = "SubViewer 1.0";
 		type = SubtitleType.SubViewer1;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "sub" };
 		lineBreak = "|";
-		
+
 		format = @"\**\s*START\s*SCRIPT\s*\**[^\[]*\[\d+:\d+:\d+\]\s*.*\s*\[\d+:\d+:\d+\]";
-		
+
 		subtitleIn = @"\[\s*(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*\]\s*(?<Text>.*)\s*\[\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*\]";
-		
+
 		subtitleOut = "[<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>]\n" +
 			"<<Text>>\n" +
 			"[<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>]\n";
-		
+
 		bodyEndIn = @"\[\s*end\s*\]\s*\**\s*END\s*SCRIPT\s*\**";
-		
-		bodyBeginOut = "[BEGIN]\n******** START SCRIPT ********\n";		
+
+		bodyBeginOut = "[BEGIN]\n******** START SCRIPT ********\n";
 		bodyEndOut = "[end]\n******** END SCRIPT ********\n";
-		
+
 		headers = new string[] {
         	@"\[\s*TITLE\s*\].*\n(?<Title>.*)" ,
         	@"\[\s*AUTHOR\s*\].*\n(?<Author>.*)" ,
@@ -55,7 +55,7 @@ internal class SubtitleFormatSubViewer1 : SubtitleFormat {
         	@"\[\s*CD\s*TRACK\s*\].*\n(?<CdTrack>.*)"
 		};
 	}
-	
+
 	internal override string HeadersToString (SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		Headers headers = subtitleProperties.Headers;
 		return "[TITLE]\n" + headers.Title + "\n" +
@@ -66,7 +66,7 @@ internal class SubtitleFormatSubViewer1 : SubtitleFormat {
 			"[DELAY]\n" + headers.Delay + "\n" +
 			"[CD TRACK]\n" + headers.CDTrack + "\n";
 	}
-	
+
 }
 
 }

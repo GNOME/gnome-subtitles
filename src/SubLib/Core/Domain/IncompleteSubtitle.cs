@@ -20,14 +20,14 @@
 using System;
 
 namespace SubLib.Core.Domain {
-	
+
 /// <summary>Represents an incomplete subtitle.</summary>
 /// <remarks>An incomplete subtitle is characterized by its incomplete text and
-/// the valid subtitle that precedes it.</remarks>	
+/// the valid subtitle that precedes it.</remarks>
 public class IncompleteSubtitle {
 	private int previous = 0;
 	private string text = String.Empty;
-	
+
 	/// <summary>Initializes a new instance of the <see cref="IncompleteSubtitle" /> class,
 	/// given the index of its preceding valid subtitle and the incomplete text.</summary>
 	/// <param name="previous">The index of the preceding valid subtitle.</param>
@@ -36,19 +36,19 @@ public class IncompleteSubtitle {
 		this.previous = previous;
 		this.text = text;
 	}
-	
+
 	/// <summary>The index of the preceding valid subtitle.</summary>
 	public int Previous {
 		get { return previous; }
 		set { previous = value; }
 	}
-	
+
 	/// <summary>The incomplete subtitle's text.</summary>
 	public string Text {
 		get { return text; }
 		set { text = value; }
 	}
-  
+
  	public override string ToString(){
 	  	return "* After " + previous + ": " + text + "\n";
 	}

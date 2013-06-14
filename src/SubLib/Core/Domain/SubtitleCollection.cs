@@ -21,21 +21,21 @@ using System;
 using System.Collections;
 
 namespace SubLib.Core.Domain {
-	
+
 /// <summary>A container that represents all the subtitles.</summary>
 public class SubtitleCollection {
-	private ArrayList subtitles = new ArrayList(); 
+	private ArrayList subtitles = new ArrayList();
 
 
 	/* Public properties */
-	
+
 	/// <summary>The number of subtitles in the collection.</summary>
 	public int Count {
 		get { return subtitles.Count; }
 	}
 
 	/* Indexers */
-	
+
 	public Subtitle this [int index] {
 		get {
 			try {
@@ -64,7 +64,7 @@ public class SubtitleCollection {
 	public IEnumerator GetEnumerator () {
 		return subtitles.GetEnumerator();
 	}
-	
+
 	/// <summary>Returns the subtitle at the specified index.</summary>
 	/// <param name="index">The zero-based subtitle's index.</param>
 	/// <returns>The subtitle at the specified index, or null in case the index is invalid.</returns>
@@ -74,20 +74,20 @@ public class SubtitleCollection {
 		else
 			return null;
 	}
-	
+
 	/// <summary>Adds a subtitle to the end of the collection.</summary>
 	/// <param name="subtitle">The subtitle to add.</param>
 	public void Add (Subtitle subtitle){
 		subtitles.Add(subtitle);
 	}
-	
+
 	/// <summary>Adds a subtitle to the collection, inserting it at the specified index.</summary>
 	/// <param name="subtitle">The subtitle to add.</param>
 	/// <param name="index">The zero-based index at which the subtitle should be inserted.</param>
 	public void Add (Subtitle subtitle, int index){
 		subtitles.Insert(index, subtitle);
 	}
-		
+
 	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
 	/// collection, inserting it right before that index.</summary>
 	/// <remarks>The newly created subtitle's times will be based on the specified subtitle. Its end
@@ -100,7 +100,7 @@ public class SubtitleCollection {
 	public bool AddNewBefore (int index, SubtitleProperties subtitleProperties) {
 		return AddNewBefore(index, subtitleProperties, (int)(SubtitleConstants.MinTimeBetweenSubtitles*1000));
 	}
-	
+
 	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
 	/// collection, inserting it right before that index.</summary>
 	/// <remarks>The newly created subtitle's times will be based on the specified subtitle. Its duration
@@ -114,7 +114,7 @@ public class SubtitleCollection {
 		Subtitle existing = Get(index);
 		if (existing == null)
 			return false;
-		
+
 		TimeSpan subtitleEnd = existing.Times.Start - TimeSpan.FromMilliseconds(timeBetweenSubtitles);
 		if (subtitleEnd < TimeSpan.Zero)
 			subtitleEnd = TimeSpan.FromSeconds(0);
@@ -127,7 +127,7 @@ public class SubtitleCollection {
 		Add(subtitle, index);
 		return true;
 	}
-		
+
 	/// <summary>Creates a subtitle based on the subtitle at the specified index and adds it to the
 	/// collection, inserting it right after that index.</summary>
 	/// <remarks>The newly created subtitle's times will be based on the specified subtitle. Its start
@@ -152,14 +152,14 @@ public class SubtitleCollection {
 		Subtitle existing = Get(index);
 		if (existing == null)
 			return false;
-		
+
 		TimeSpan subtitleStart = existing.Times.End + TimeSpan.FromMilliseconds(timeBetweenSubtitles);
 		TimeSpan subtitleEnd = subtitleStart + TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index + 1);
 		return true;
 	}
-	
+
 	/// <summary>Creates a subtitle and adds it to the collection, inserting it at the specified index.</summary>
 	/// <remarks>The newly created subtitle's start time will be zero and its duration will be
 	/// <see cref="SubtitleConstants.MaxSingleLineSubtitleDuration" />.</remarks>
@@ -169,14 +169,14 @@ public class SubtitleCollection {
 	public bool AddNewAt (int index, SubtitleProperties subtitleProperties) {
 		if ((index < 0) || (index > Count))
 			return false;
-		
+
 		TimeSpan subtitleStart = TimeSpan.FromSeconds(0);
 		TimeSpan subtitleEnd = TimeSpan.FromSeconds(SubtitleConstants.AverageSubtitleDuration);
 		Subtitle subtitle = new Subtitle(subtitleProperties, subtitleStart, subtitleEnd);
 		Add(subtitle, index);
 		return true;
 	}
-	
+
 	/// <summary>Creates a subtitle and adds it to the collection, inserting it at the specified index
 	/// and with the specified start time.</summary>
 	/// <remarks>The newly created subtitle's duration will be
@@ -195,14 +195,14 @@ public class SubtitleCollection {
 		Add(subtitle, index);
 		return true;
 	}
-	
+
 	/// <summary>Checks whether a subtitle with the specified index exists in the collection.</summary>
 	/// <param name="index">The zero-based index.</param>
 	/// <returns>Whether the index is contained within the collection.</returns>
 	public bool Contains (int index) {
 		return (index >= 0) && (index < Count);
 	}
-	
+
 	/// <summary>Removes a subtitle from the collection, given its index.</summary>
 	/// <param name="index">The zero-based index of the subtitle to be removed.</param>
 	public void Remove (int index) {
@@ -219,7 +219,7 @@ public class SubtitleCollection {
 
 
 	/* Internal methods */
-	
+
 	internal void SetPropertiesForAll (SubtitleProperties properties) {
 		foreach (Subtitle subtitle in subtitles)
 			subtitle.Properties = properties;

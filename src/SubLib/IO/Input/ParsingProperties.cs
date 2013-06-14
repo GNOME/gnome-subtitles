@@ -25,16 +25,16 @@ internal class ParsingProperties {
 	private Headers headers = new Headers();
 	private TimingMode timingMode = TimingMode.Times;
 	private float inputFrameRate = 25;
-	
+
 	public Headers Headers {
 		get { return headers; }
 	}
-	
+
 	public TimingMode TimingMode {
 		get { return timingMode; }
 		set { timingMode = value; }
 	}
-	
+
 	public float InputFrameRate {
 		get { return inputFrameRate; }
 		set { inputFrameRate = value; }

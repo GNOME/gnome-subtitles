@@ -25,7 +25,7 @@ namespace SubLib.Core.Domain {
 public enum TimingMode {
 	/// <summary>Time based timing mode.</summary>
 	Times,
-	
+
 	/// <summary>Frame based timing mode.</summary>
 	Frames
 };
@@ -33,73 +33,73 @@ public enum TimingMode {
 /// <summary>
 /// Represents a supported subtitle file type.
 /// </summary>
-public enum SubtitleType { 
+public enum SubtitleType {
 	/// <summary>Unknown subtitle type.</summary>
 	Unknown ,
-	
+
 	/// <summary>Micro DVD subtitle type.</summary>
 	MicroDVD,
-	
+
 	/// <summary>SubRip subtitle type.</summary>
 	SubRip,
-	
+
 	/// <summary>Sub Station Alpha subtitle type.</summary>
     SubStationAlpha,
-	
+
 	/// <summary>Advanced Sub Station Alpha subtitle type.</summary>
 	AdvancedSubStationAlpha,
-	
+
 	/// <summary>MPlayer subtitle type.</summary>
 	MPlayer,
-	
+
 	/// <summary>MPlayer2 subtitle type.</summary>
 	MPlayer2,
-	
+
 	/// <summary>MPSub subtitle type.</summary>
 	MPSub,
-	
+
 	/// <summary>SubViewer 1.0 subtitle type.</summary>
     SubViewer1,
-    
+
     /// <summary>SubViewer 2.0 subtitle type.</summary>
     SubViewer2,
 
 	/// <summary>AQ Title subtitle type.</summary>
 	AQTitle,
-	
+
 	/// <summary>MacSUB subtitle type.</summary>
 	MacSUB,
-		
+
 	/// <summary>Phoenix Japanimation Society subtitle type.</summary>
 	PhoenixJapanimationSociety,
-		
+
 	/// <summary>Panimator subtitle type.</summary>
 	Panimator,
-		
+
 	/// <summary>Sofni subtitle type.</summary>
 	Sofni,
-		
+
 	/// <summary>SubCreator 1.x subtitle type.</summary>
 	SubCreator1x,
-		
+
 	/// <summary>ViPlay Subtitle File subtitle type.</summary>
 	ViPlaySubtitleFile,
-		
+
 	/// <summary>DKS Subtitle Format subtitle type.</summary>
 	DKSSubtitleFormat,
-	
+
 	/// <summary>Power DivX subtitle type.</summary>
 	PowerDivX,
-	
+
     /// <summary>Karaoke Lyrics LRC subtitle type.</summary>
     KaraokeLyricsVKT,
-    
+
     /// <summary>Karaoke Lyrics LRC subtitle type.</summary>
     KaraokeLyricsLRC,
 
     /// <summary>Adobe Encore DVD subtitle type.</summary>
 	AdobeEncoreDVD,
-	
+
 	/// <summary>FAB Subtitler subtitle type.</summary>
 	FABSubtitler
 };
@@ -107,16 +107,16 @@ public enum SubtitleType {
 /// <summary>
 /// Represents a type of newline.
 /// </summary>
-public enum NewlineType { 
+public enum NewlineType {
 	/// <summary>Unknown newline type.</summary>
 	Unknown ,
 
 	/// <summary>Macintosh newline type.</summary>
     Macintosh,
-	
+
 	/// <summary>Unix newline type.</summary>
 	Unix,
-	
+
 	/// <summary>Windows newline type.</summary>
 	Windows
 
@@ -128,22 +128,22 @@ public enum NewlineType {
 public enum SubtitleTextType {
 	/// <summary>The text.</summary>
 	Text,
-	
+
 	/// <summary>The translation.</summary>
 	Translation
 };
 
-	
+
 /// <summary>
 /// Represents the timing mode used by a subtitle format.
 /// </summary>
 public enum SubtitleMode {
 	/// <summary>Time based timing mode.</summary>
 	Times,
-	
+
 	/// <summary>Frame based timing mode.</summary>
 	Frames,
-	
+
 	/// <summary>Time and Frame based timing mode.</summary>
 	Both
 };

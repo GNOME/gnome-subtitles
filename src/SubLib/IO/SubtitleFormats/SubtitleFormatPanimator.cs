@@ -22,26 +22,26 @@ using System;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
-	
+
 internal class SubtitleFormatPanimator : SubtitleFormat {
-		
+
 	internal SubtitleFormatPanimator() {
 		name = "Panimator";
 		type = SubtitleType.Panimator;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "pan" };
-		
+
 		lineBreak = "\n";
-		
+
 		format = @"/d\s+\d+\s+\d+\s+(.+\n)*\s*/d\s+\d+\s+\d+\s+/c";
-		
+
 		subtitleIn = @"/d\s+(?<StartSeconds>\d+)\s+(?<StartCentiseconds>\d+)\s+(?<Text>(.*(?!\n[ \f\r\t\v]*/d[ \f\r\t\v]+\d+[ \f\r\t\v]+\d+[ \f\r\t\v]*\n[ \f\r\t\v]*/c)\n)*.*\n)\s*/d\s+(?<EndSeconds>\d+)\s+(?<EndCentiseconds>\d+)\s+/c";
-		
-		subtitleOut = "/d <<StartSeconds>> <<StartCentiseconds>>\n<<Text>>\n" 
+
+		subtitleOut = "/d <<StartSeconds>> <<StartCentiseconds>>\n<<Text>>\n"
 				+ "/d <<EndSeconds>> <<EndCentiseconds>>\n/c";
-		
+
 	}
-	
+
 }
 
 }

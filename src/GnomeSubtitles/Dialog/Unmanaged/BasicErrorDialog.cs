@@ -28,13 +28,13 @@ public class BasicErrorDialog : ErrorDialog {
 	public BasicErrorDialog (string primary, string secondary) : base(primary, secondary) {
 	}
 
-	
+
 	/* Protected methods */
-	
+
 	protected override void AddButtons () {
 		dialog.AddButton(Stock.Ok, ResponseType.Ok);
 	}
-	
+
 
 }
 

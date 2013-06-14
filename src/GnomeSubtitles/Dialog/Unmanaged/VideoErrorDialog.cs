@@ -33,11 +33,11 @@ public class VideoErrorDialog : FileOpenErrorDialog {
 	}
 
 	/* Overriden members */
-	
+
 	protected override string GetPrimaryText (string filename) {
 		return primaryTextStart + " " + filename + ".";
 	}
-	
+
 	protected override string SecondaryTextFromException (Exception exception) {
 		if (exception is PlayerEngineException)
 			return (exception as PlayerEngineException).Error;

@@ -35,12 +35,12 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
     	lineBreak = @"\N";
 
     	format = @"\[\s*" + StyleTypeIn + @"\s*Styles\s*\][^\[]*\[\s*Events\s*\]\s*Format:\s*[^,\n]*(,[^,\n]*){9}";
-    
+
     	subtitleIn = @"Dialogue:[^,]*,(?<StartHours>\d+):(?<StartMinutes>\d+):(?<StartSeconds>\d+)\.(?<StartCentiseconds>\d+),(?<EndHours>\d+):(?<EndMinutes>\d+):(?<EndSeconds>\d+)\.(?<EndCentiseconds>\d+)(,[^,]*){6},(?<Text>.*)";
-    	
+
     	subtitleOut = FormatSubtitleOut;
         bodyBeginOut = FormatBodyBeginOut;
-        
+
 		headers = new string[] {
         	@"Title:(?<Title>.*)" ,
         	@"Original\s*Script:(?<OriginalScript>.*)" ,
@@ -95,25 +95,25 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
 			Header("Timer:", headers.Timer) + "\n" +
 			StyleSection;
 	}
-	
+
 	/* Protected members */
-	
+
 	protected virtual string FormatName {
 		get { return "Sub Station Alpha"; }
 	}
-	
+
 	protected virtual SubtitleType FormatType {
 		get { return SubtitleType.SubStationAlpha; }
 	}
-	
+
 	protected virtual string[] FormatExtensions {
 		get { return new string[] { "ssa" }; }
 	}
-	
+
 	protected virtual string FormatBodyBeginOut {
 		get { return "[Events]\nFormat: Marked, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"; }
 	}
-	
+
 	protected virtual string FormatSubtitleOut {
 		get { return "Dialogue: Marked=0,<<StartHours,1>>:<<StartMinutes>>:<<StartSeconds>>.<<StartCentiseconds>>,<<EndHours,1>>:<<EndMinutes>>:<<EndSeconds>>.<<EndCentiseconds>>,Default,NTP,0000,0000,0000,!Effect,<<Style>><<Text>><<EndOfStyle>>"; }
 	}
@@ -121,13 +121,13 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
 	protected virtual string ScriptType {
 		get { return "v4.00"; }
 	}
-	
+
 	protected virtual string StyleTypeIn {
 		get { return "V4"; }
 	}
-	
+
 	protected virtual string StyleSection {
-		get { 
+		get {
 			return "[V4 Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, TertiaryColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, AlphaLevel, Encoding\n" +
             	"Style: Default,Tahoma,24,16777215,16777215,16777215,0,-1,0,1,1,1,2,10,10,30,0,0\n\n";
 		}
@@ -141,21 +141,21 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
 		else
 			return headerIntro + " " + headerValue + "\n";
 	}
-	
+
 	private string Header (string headerIntro, string headerValue) {
 		if (headerValue == String.Empty)
 			return String.Empty;
 		else
 			return headerIntro + " " + headerValue + "\n";
 	}
-	
+
 	private string Header (string headerIntro, int headerValue) {
 		if (headerValue == -1)
 			return String.Empty;
 		else
 			return headerIntro + " " + headerValue + "\n";
 	}
-	
+
 	protected string StyleToString (Style style, string suffix) {
 		string styleText = String.Empty;
 		if (style.Underline)
@@ -164,7 +164,7 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
 			styleText += @"{\b" + suffix + "}";
 		if (style.Italic)
 			styleText += @"{\i" + suffix + "}";
-		return styleText;	
+		return styleText;
 	}
 
 }

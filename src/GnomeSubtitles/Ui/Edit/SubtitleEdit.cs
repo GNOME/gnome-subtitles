@@ -39,7 +39,7 @@ public class SubtitleEdit {
 		spinButtons = new SubtitleEditSpinButtons();
 		textEdit = new SubtitleEditText(Base.GetWidget(WidgetNames.SubtitleEditText) as TextView);
 		translationEdit = new SubtitleEditTranslation(Base.GetWidget(WidgetNames.SubtitleEditTranslation) as TextView);
-		
+
 		Base.InitFinished += OnBaseInitFinished;
     }
 
@@ -53,19 +53,19 @@ public class SubtitleEdit {
 				hBox.Sensitive = value;
     	}
     }
-    
+
     public SubtitleEditText TextEdit {
     	get { return textEdit; }
     }
-    
+
     public SubtitleEditTranslation TranslationEdit {
     	get { return translationEdit; }
     }
-    
+
     public SubtitleEditSpinButtons SpinButtons {
     	get { return spinButtons; }
     }
-    
+
     /// <summary>The current text selection, either text or translation. An empty string if no text is selected.</summary>
     public string SelectedTextContent {
 		get {
@@ -76,21 +76,21 @@ public class SubtitleEdit {
 				return translationEdit.Selection;
 		}
 	}
-    
+
     public bool TextOrTranslationIsFocus {
     	get { return textEdit.IsFocus || translationEdit.IsFocus; }
     }
-    
+
     /* Public methods */
 
     public void GetEditableWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton,
     		out SpinButton durationSpinButton, out TextView textEdit, out TextView translationEdit) {
-    	
+
     	spinButtons.GetWidgets(out startSpinButton, out endSpinButton, out durationSpinButton);
     	textEdit = this.textEdit.TextView;
     	translationEdit = this.translationEdit.TextView;
     }
-	
+
 	public bool GetTextSelectionBounds (out int start, out int end, out SubtitleTextType textType) {
     	if (textEdit.IsFocus) {
     		textType = SubtitleTextType.Text;
@@ -104,17 +104,17 @@ public class SubtitleEdit {
     		textType = SubtitleTextType.Text;
     		start = -1;
     		end = -1;
-    		return false;    	
+    		return false;
     	}
     }
-    
+
     public void TextFocusOnSelection (int startIndex, int endIndex, SubtitleTextType textType) {
     	if (textType == SubtitleTextType.Text)
     		textEdit.FocusOnSelection(startIndex, endIndex);
     	else
     		translationEdit.FocusOnSelection(startIndex, endIndex);
     }
-    
+
     public void ReplaceSelection (string replacement) {
     	if (textEdit.IsFocus)
     		textEdit.ReplaceSelection(replacement);
@@ -122,13 +122,13 @@ public class SubtitleEdit {
     		translationEdit.ReplaceSelection(replacement);
     }
 
-    
+
     /* Event members */
-    
+
     private void OnBaseInitFinished () {
     	Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
     }
-    
+
     private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
 		this.Enabled = (subtitle != null);
 	}

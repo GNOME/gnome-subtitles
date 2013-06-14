@@ -22,7 +22,7 @@ using SubLib.Core.Domain;
 namespace GnomeSubtitles.Dialog {
 
 public class SetTextLanguageDialog : SetLanguageDialog {
-	
+
 	public SetTextLanguageDialog () : base(SubtitleTextType.Text) {
 	}
 

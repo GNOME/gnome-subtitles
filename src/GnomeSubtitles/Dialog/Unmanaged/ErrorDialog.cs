@@ -29,17 +29,17 @@ public abstract class ErrorDialog : MessageDialog {
 	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overriden to add buttons.</remarks>
 	public ErrorDialog () : base(MessageType.Error) {
 	}
-	
+
 	public ErrorDialog (string primary, string secondary) : base(MessageType.Error, primary, secondary) {
 	}
-	
-	
+
+
 	#region Protected methods
 
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
 		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
 	}
-	
+
 	#endregion
 
 }

@@ -49,7 +49,7 @@ public class BugReporter {
 	}
 
 	#region Private members
-	
+
 	private static void RunBugBuddy (string bugInfo) {
 		string path = WriteBugInfo(bugInfo);
 
@@ -60,7 +60,7 @@ public class BugReporter {
 
 		process.Start();
 	}
-	
+
 	private static string GetBugInfo (string message) {
 		return "Gnome Subtitles version: " + Base.ExecutionContext.Version + "\n"
 			+ "GtkSharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
@@ -69,7 +69,7 @@ public class BugReporter {
 			+ "Stack trace:" + "\n"
 			+ message;
 	}
-	
+
 	private static string WriteBugInfo (string bugInfo) {
 		string path = GetTempPath();
 		File.WriteAllText(path, bugInfo);
@@ -85,13 +85,13 @@ public class BugReporter {
 		catch (IOException) {
 			//Don't do anything, a random name will be chosen next
 		}
-		
+
 		/* Could not get path in the previous method, trying alternative */
 		Random random = new Random();
 		int number = random.Next(10000);
 		return Path.GetTempPath() + Path.DirectorySeparatorChar + number + ".tmp";
 	}
-	
+
 	#endregion
 
 }

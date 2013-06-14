@@ -26,25 +26,25 @@ public struct EncodingDescription : IComparable {
 	private string name;
 	private string description;
 	private static EncodingDescription emptyEncodingDescription = new EncodingDescription(-1, "-1", "-1");
-	
+
 	public EncodingDescription (int codePage, string name, string description) {
 		this.codePage = codePage;
 		this.name = name;
 		this.description = description;
 	}
-	
+
 	public int CodePage {
 		get { return codePage; }
 	}
-	
+
 	public string Name {
 		get { return name; }
 	}
-	
+
 	public string Description {
 		get { return description; }
 	}
-	
+
 	public int CompareTo (object obj) {
 		if (obj is EncodingDescription) {
 			EncodingDescription obj2 = (EncodingDescription)obj;
@@ -55,7 +55,7 @@ public struct EncodingDescription : IComparable {
 				return this.name.CompareTo(obj2.name);
 		}
 		else
-			throw new ArgumentException("Object is not EncodingDescription");    
+			throw new ArgumentException("Object is not EncodingDescription");
 	}
 
 	/* Static members */
@@ -63,7 +63,7 @@ public struct EncodingDescription : IComparable {
 	public static EncodingDescription Empty {
 		get { return emptyEncodingDescription; }
 	}
-	
+
 }
 
 }

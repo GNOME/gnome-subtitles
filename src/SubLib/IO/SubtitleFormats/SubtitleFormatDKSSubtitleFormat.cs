@@ -24,23 +24,23 @@ using System.Text.RegularExpressions;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatDKSSubtitleFormat : SubtitleFormat {
-	
+
 	internal SubtitleFormatDKSSubtitleFormat () {
 		name = "DKS Subtitle Format";
 		type = SubtitleType.DKSSubtitleFormat;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "dks" };
 		lineBreak = "[br]";
-		
+
 		format = @"\[\d+:\d+:\d+\]\s*.*\s*\[\d+:\d+:\d+\]";
-		
+
 		subtitleIn = @"\[\s*(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*\]\s*(?<Text>.*)\s*\[\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*\]";
-		
+
 		subtitleOut = "[<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>]<<Text>>\n" +
 			"[<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>]\n";
-		
+
 	}
-	
+
 }
 
 }

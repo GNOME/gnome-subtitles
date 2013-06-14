@@ -27,25 +27,25 @@ namespace GnomeSubtitles.Core.Command {
 public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	private static string description = Catalog.GetString("Deleting Subtitles");
 	private Subtitle[] subtitles = null;
-	
+
 	public DeleteSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
 		StoreSubtitles(); //TODO move to Execute
 	}
 
-	
+
 	public override bool Execute () {
 		Base.Ui.View.Remove(Paths);
 		return true;
 	}
-	
+
 	public override void Undo () {
-		Base.Ui.View.Insert(subtitles, Paths, Focus);	
+		Base.Ui.View.Insert(subtitles, Paths, Focus);
 	}
-	
+
 	public override void Redo () {
 		Execute();
 	}
-		
+
 	/* Private members */
 
 	private void StoreSubtitles () {
@@ -54,7 +54,7 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 		for (int index = 0 ; index < count ; index++) {
 			TreePath path = Paths[index];
 			subtitles[index] = Base.Document.Subtitles[path];
-		}	
+		}
 	}
 
 }

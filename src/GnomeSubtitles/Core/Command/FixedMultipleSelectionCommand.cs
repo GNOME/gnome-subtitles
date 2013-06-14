@@ -25,7 +25,7 @@ namespace GnomeSubtitles.Core.Command {
 /// <summary>Represents a <see cref="Command" /> in which the selection never changes during execution/undo/redo.</summary>
 public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 	private bool reselect = false;
-	
+
 	/// <summary>Creates a new instance of the <see cref="MultipleFixedSelectionCommand" /> class.</summary>
 	/// <param name="description">The description of the command.</param>
 	/// <param name="canGroup">Whether to possibly group the command with the previous command.</param>
@@ -33,22 +33,22 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 	/// <param name="paths">The paths to select, or null to use auto selection.</param>
 	/// <param name="reselect">Whether to reselect the command when executing. Note that this doesn't apply to Undo nor to Redo.</param>
 	public FixedMultipleSelectionCommand (string description, bool canGroup, SelectionIntended selectionIntended, TreePath[] paths, bool reselect) : base(description, canGroup, selectionIntended, paths) {
-		this.reselect = reselect;		
+		this.reselect = reselect;
 	}
-	
+
 	/* Protected properties */
-	
+
 	/// <summary>Whether to reselect the subtitles when the command is executed.</summary>
 	/// <remarks>Subtitles aren't really reselected, the GUI is called to be updated based on the selection, as if subtitles had been reselected.</remarks>
 	protected bool Reselect {
 		get { return reselect; }
 	}
-	
+
 	public override bool Execute () {
 		bool completed = ChangeValues();
 		if (!completed)
 			return false;
-		
+
 		switch (SelectionType) {
 			case SelectionType.All:
 				Base.Ui.View.Selection.SelectAll();
@@ -63,11 +63,11 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 		Base.Ui.View.Refresh();
 		if (reselect)
 			Base.Ui.View.Selection.Reselect();
-		
+
 		PostProcess();
 		return true;
 	}
-	
+
 	public override void Undo () {
 		ChangeValues();
 
@@ -90,13 +90,13 @@ public abstract class FixedMultipleSelectionCommand : MultipleSelectionCommand {
 	public override void Redo () {
 		Undo();
 	}
-	
+
 	/* Methods to be extended */
-	
+
 	protected virtual bool ChangeValues () {
 		return true;
 	}
-	
+
 	protected virtual void PostProcess () {
 		return;
 	}

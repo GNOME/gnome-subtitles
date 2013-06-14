@@ -31,12 +31,12 @@ namespace GnomeSubtitles.Dialog {
 
 public class TimingsAdjustDialog : GladeDialog {
 	private TimingMode timingMode;
-	
+
 	/* Constant strings */
 	private const string gladeFilename = "TimingsAdjustDialog.glade";
-	
+
 	/* Widgets */
-	
+
 	[WidgetAttribute] private Label firstSubtitleStartLabel = null;
 	[WidgetAttribute] private Label firstSubtitleNoInputLabel = null;
 	[WidgetAttribute] private Label firstSubtitleStartInputLabel = null;
@@ -45,18 +45,18 @@ public class TimingsAdjustDialog : GladeDialog {
 	[WidgetAttribute] private Label lastSubtitleNoInputLabel = null;
 	[WidgetAttribute] private Label lastSubtitleStartInputLabel = null;
 	[WidgetAttribute] private SpinButton lastSubtitleNewStartSpinButton = null;
-	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;	
+	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;
 	[WidgetAttribute] private RadioButton selectedRangeRadioButton = null;
-	
+
 
 	public TimingsAdjustDialog () : base(gladeFilename){
-		timingMode = Base.TimingMode; 
+		timingMode = Base.TimingMode;
 		SetSpinButtons();
 		UpdateForTimingMode();
 		SetApplyToSelectionSensitivity();
 		SetSelectionType();
 	}
-	
+
 	private void SetSpinButtons () {
 		firstSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		lastSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
@@ -83,22 +83,22 @@ public class TimingsAdjustDialog : GladeDialog {
 
 	private void SetApplyToAll () {
 		SubtitleCollection collection = Base.Document.Subtitles.Collection;
-		
+
 		int firstNo = 1;
-		int lastNo = collection.Count;		
+		int lastNo = collection.Count;
 		UpdateInputValues(firstNo, lastNo);
 	}
-	
+
 	private void SetApplyToSelection () {
 		TreePath firstPath = Core.Base.Ui.View.Selection.FirstPath;
 		TreePath lastPath = Core.Base.Ui.View.Selection.LastPath;
-		
+
 		int firstNo = firstPath.Indices[0] + 1;
 		int lastNo = lastPath.Indices[0] + 1;
-		
+
 		UpdateInputValues (firstNo, lastNo);
 	}
-	
+
 	private void SetApplyToSelectionSensitivity () {
 		int selectionCount = Core.Base.Ui.View.Selection.Count;
 		if (selectionCount < 2)
@@ -109,10 +109,10 @@ public class TimingsAdjustDialog : GladeDialog {
 		SubtitleCollection collection = Base.Document.Subtitles.Collection;
 		Subtitle firstSubtitle = collection.Get(firstNo - 1);
 		Subtitle lastSubtitle = collection.Get(lastNo - 1);
-	
+
 		firstSubtitleNoInputLabel.Text = firstNo.ToString();
 		lastSubtitleNoInputLabel.Text = lastNo.ToString();
-		
+
 		if (timingMode == TimingMode.Frames) {
 			firstSubtitleStartInputLabel.Text = firstSubtitle.Frames.Start.ToString();
 			firstSubtitleNewStartSpinButton.Value = firstSubtitle.Frames.Start;
@@ -134,7 +134,7 @@ public class TimingsAdjustDialog : GladeDialog {
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
 			SelectionIntended selectionIntended = (allSubtitlesRadioButton.Active ? SelectionIntended.All : SelectionIntended.Range);
-			
+
 			if (timingMode == TimingMode.Times) {
 				TimeSpan firstTime = TimeSpan.Parse(firstSubtitleNewStartSpinButton.Text);
 				TimeSpan lastTime = TimeSpan.Parse(lastSubtitleNewStartSpinButton.Text);
@@ -148,12 +148,12 @@ public class TimingsAdjustDialog : GladeDialog {
 		}
 		return false;
 	}
-	
+
 	private void OnToggleAllSubtitles (object o, EventArgs args) {
 		if ((o as RadioButton).Active)
 			SetApplyToAll();
 	}
-	
+
 	private void OnToggleSelectedSubtitles (object o, EventArgs args) {
 		if ((o as RadioButton).Active)
 			SetApplyToSelection();

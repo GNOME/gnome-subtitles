@@ -29,7 +29,7 @@ public class SyncUtil {
 	}
 
 	/// <summary>Auto syncs a range of subtitles given their first and last correct times.</summary>
-	/// <remarks>The subtitles are first shifted to the first subtitle's correct time, and then proportionally 
+	/// <remarks>The subtitles are first shifted to the first subtitle's correct time, and then proportionally
 	/// adjusted using the last subtitle's correct time.</remarks>
 	/// <param name="subtitles">The subtitles to sync.</param>
 	/// <param name="startIndex">The subtitle index to start the adjustment with.</param>
@@ -54,7 +54,7 @@ public class SyncUtil {
 			ShiftOperator shiftOp = new ShiftOperator(subtitles);
 			shiftOp.Shift(shift, startIndex, syncEndIndex);
 		}
-		
+
 		/* Sync timings with proportion */
 		for (int index = startIndex ; index <= syncEndIndex ; index++) {
 			Subtitle subtitle = subtitles.Collection.Get(index);
@@ -62,9 +62,9 @@ public class SyncUtil {
 		}
 		return true;
 	}
-	
+
 	/// <summary>Auto syncs a range of subtitles given their first and last correct frames.</summary>
-	/// <remarks>The subtitles are first shifted to the first subtitle's correct frame, and then proportionally 
+	/// <remarks>The subtitles are first shifted to the first subtitle's correct frame, and then proportionally
 	/// adjusted using the last subtitle's correct frame.</remarks>
 	/// <param name="subtitles">The subtitles to sync.</param>
 	/// <param name="startIndex">The subtitle index to start the adjustment with.</param>
@@ -89,7 +89,7 @@ public class SyncUtil {
 			ShiftOperator shiftOp = new ShiftOperator(subtitles);
 			shiftOp.Shift(shift, startIndex, syncEndIndex);
 		}
-		
+
 		/* Auto adjust timings with proportion */
 		for (int index = startIndex ; index <= syncEndIndex ; index++) {
 			Subtitle subtitle = subtitles.Collection.Get(index);
@@ -100,7 +100,7 @@ public class SyncUtil {
 
 	public static TimeSpan Scale (TimeSpan currentTime, TimeSpan baseTime, double factor) {
 		double baseMilliseconds = baseTime.TotalMilliseconds;
-	
+
 		double time = currentTime.TotalMilliseconds;
 		double newTime = baseMilliseconds + ((time - baseMilliseconds) * factor);
 		return TimeSpan.FromMilliseconds(newTime);
@@ -109,14 +109,14 @@ public class SyncUtil {
 	public static double Scale (double currentFrame, double baseFrame, double factor) {
 		return baseFrame + ((currentFrame - baseFrame) * factor);
 	}
-	
+
 	public static bool AreSyncPointsValid (Subtitles subtitles, SyncPoint start, SyncPoint end) {
 		return AreSyncArgsValid(subtitles, start.SubtitleNumber, start.Correct.Time, end.SubtitleNumber, end.Correct.Time)
 			&& AreSyncArgsValid(subtitles, start.SubtitleNumber, start.Correct.Frame, end.SubtitleNumber, end.Correct.Frame);
 	}
-	
+
 	/* Private members */
-	
+
 	private static bool AreSyncArgsValid (Subtitles subtitles, int startIndex, TimeSpan startTime, int endIndex, TimeSpan endTime) {
 		if (!AreSyncIndicesValid(subtitles, startIndex, endIndex))
 			return false;
@@ -125,7 +125,7 @@ public class SyncUtil {
 		else
 			return true;
 	}
-	
+
 	private static bool AreSyncArgsValid (Subtitles subtitles, int startIndex, int startTime, int endIndex, int endTime) {
 		if (!AreSyncIndicesValid(subtitles, startIndex, endIndex))
 			return false;
@@ -134,7 +134,7 @@ public class SyncUtil {
 		else
 			return true;
 	}
-	
+
 	private static bool AreSyncIndicesValid (Subtitles subtitles, int startIndex, int endIndex) {
 		int subtitleCount = subtitles.Collection.Count;
 		if (subtitleCount < 2)

@@ -25,22 +25,22 @@ namespace SubLib.IO.SubtitleFormats {
 
 //TODO: warn when saving subtitles with times > 99 minutes, warn when saving with 2+ lines
 internal class SubtitleFormatKaraokeLyricsLRC : SubtitleFormat {
-		
+
 	internal SubtitleFormatKaraokeLyricsLRC() {
 		name = "Karaoke Lyrics LRC";
 		type = SubtitleType.KaraokeLyricsLRC;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "lrc" };
-		
+
 		lineBreak = "|"; // It does not manage line breaks, but still using this char as a separator
-		
+
 		format = @"\[\s*\d+:\d+[.,]\d+\s*\].+\n+\[\s*\d+:\d+[.,]\d+\s*\]";
-		
+
 		subtitleIn = @"\[\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*[.,]\s*(?<StartCentiseconds>\d+)\s*\]\s*(?<Text>.*)\n+\[\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*[.,]\s*(?<EndCentiseconds>\d+)\s*\]";
-		
+
 		subtitleOut = "[<<StartMinutes>>:<<StartSeconds>>.<<StartCentiseconds>>]<<Text>>\n" +
 			"[<<EndMinutes>>:<<EndSeconds>>.<<EndCentiseconds>>]";
-			
+
 		headers = new string[] {
         	@"\[\s*ti:(?<Title>.*)\s*]" ,
         	@"\[\s*au:(?<Author>.*)\s*]" ,
@@ -50,9 +50,9 @@ internal class SubtitleFormatKaraokeLyricsLRC : SubtitleFormat {
         	@"\[\s*ve:(?<Version>.*)\s*]" ,
         	@"\[\s*re:(?<Program>.*)\s*]"
 		};
-		
+
 	}
-	
+
 	internal override string HeadersToString (SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		Headers headers = subtitleProperties.Headers;
 		return "[ti: " + headers.Title + "]\n" +

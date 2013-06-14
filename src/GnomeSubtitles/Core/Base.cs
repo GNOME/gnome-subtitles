@@ -38,7 +38,7 @@ public delegate void BasicEventHandler ();
 
 public class Base {
 	private static Glade.XML glade = null;
-	
+
 	private static MainUi ui = null;
 	private static ExecutionContext executionContext = null;
 	private static EventHandlers handlers = null;
@@ -50,7 +50,7 @@ public class Base {
 	private static Dialogs dialogs = null;
 	private static SpellLanguages spellLanguages = null;
 	private static Backup backup = null;
-	
+
 	private static Document document = null;
 	private static Uri videoUri = null;
 	private static TimingMode timingMode = TimingMode.Times;
@@ -64,30 +64,30 @@ public class Base {
 	public static event VideoLoadedHandler VideoLoaded;
 	public static event BasicEventHandler VideoUnloaded;
 	public static event TimingModeChangedHandler TimingModeChanged;
-	
-	
+
+
 	/* Public properties */
-	
+
 	public static MainUi Ui {
 		get { return ui; }
 	}
-	
+
 	public static ExecutionContext ExecutionContext {
 		get { return executionContext; }
 	}
-	
+
 	public static EventHandlers Handlers {
 		get { return handlers; }
 	}
-	
+
 	public static CommandManager CommandManager {
 		get { return commandManager; }
 	}
-	
+
 	public static Clipboards Clipboards {
 		get { return clipboards; }
 	}
-	
+
 	public static GlobalAccelerators GlobalAccelerators {
 		get { return globalAccelerators; }
 	}
@@ -95,46 +95,46 @@ public class Base {
 	public static DragDrop DragDrop {
 		get { return dragDrop; }
 	}
-	
+
 	public static Config Config {
 		get { return config; }
 	}
-	
+
 	public static Dialogs Dialogs {
 		get { return dialogs; }
 	}
-	
+
 	public static SpellLanguages SpellLanguages {
 		get { return spellLanguages; }
 	}
-	
+
 	public static Backup Backup {
-		get { return backup; }	
+		get { return backup; }
 	}
-	
+
 	public static Document Document {
 		get { return document; }
 	}
-	
+
 	public static Uri VideoUri {
 		get { return videoUri; }
 	}
-	
+
 	public static bool IsDocumentLoaded {
 		get { return document != null; }
 	}
-	
+
 	public static bool IsVideoLoaded {
 		get { return videoUri != null; }
 	}
-	
+
 	public static TimingMode TimingMode {
 		get { return timingMode; }
 		set {
 			if (timingMode != value) {
 				timingMode = value;
 				EmitTimingModeChangedEvent();
-			}		
+			}
 		}
 	}
 
@@ -148,126 +148,126 @@ public class Base {
 
 
 	/* Public methods */
-	
-	/// <summary>Runs the main GUI, after initialization.</summary> 
+
+	/// <summary>Runs the main GUI, after initialization.</summary>
 	public static void Run (ExecutionContext executionContext) {
 		Init(executionContext);
-		
+
 		ui.Start();
 		executionContext.RunApplication();
 	}
-	
+
 	/// <summary>Quits the program.</summary>
 	public static void Quit () {
 		ui.Video.Quit();
 		executionContext.QuitApplication();
 	}
-	
+
 	public static void Kill () {
 		clipboards.WatchPrimaryChanges = false;
 		ui.Kill();
 		executionContext.QuitApplication();
 	}
-	
+
 	public static void NewDocument () {
 		if (IsDocumentLoaded)
 			CloseDocument();
-			
+
 		document = new Document();
 		EmitDocumentLoadedEvent();
-		
+
 		/* Create first subtitle. This happens after EmitDocumentLoadedEvent for all widgets to be ready */
 		if (document.Subtitles.Count == 0)
 			commandManager.Execute(new InsertFirstSubtitleCommand());
 	}
-	
+
 	public static void OpenDocument (string path, Encoding encoding) {
 		if (IsDocumentLoaded)
 			CloseDocument();
-	
+
 		document = new Document(path, encoding);
 		TimingMode = document.TextFile.TimingMode;
 		EmitDocumentLoadedEvent();
-		
+
 		/* Select first subtitle. This happens after EmitDocumentLoadedEvent for all widgets to be ready */
 		Ui.View.Selection.SelectFirst();
 	}
-	
+
 	public static void CloseDocument () {
 		if (!IsDocumentLoaded)
 			return;
-		
+
 		if (document.IsTranslationLoaded)
 			CloseTranslation();
-	
+
 		document.Close();
-		CommandManager.Clear();		
+		CommandManager.Clear();
 		EmitDocumentUnloadedEvent();
-		
+
 		document = null;
 	}
-	
+
 	public static void OpenVideo (Uri uri) {
 		if (uri == null)
 			return;
-	
+
 		if (IsVideoLoaded)
 			CloseVideo();
 
 		ui.Video.Open(uri);
 	}
-	
+
 	public static void UpdateFromVideoLoaded (Uri uri) {
 		videoUri = uri;
-	
+
 		EmitVideoLoadedEvent();
 	}
-	
+
 	public static void CloseVideo () {
 		ui.Video.Close();
 		videoUri = null;
-		
+
 		EmitVideoUnloadedEvent();
 	}
-	
+
 	public static void Open (string path, Encoding encoding, Uri videoUri) {
 		OpenDocument(path, encoding);
 		OpenVideo(videoUri);
 	}
-	
+
 	public static void OpenTranslation (string path, Encoding encoding) {
 		if (document.IsTranslationLoaded)
 			CloseTranslation();
-	
+
 		document.OpenTranslation(path, encoding);
 		EmitTranslationLoadedEvent();
-		
+
 		/* Reselect, for the widgets to update accordingly */
 		Ui.View.Selection.Reselect();
 	}
-	
+
 	public static void NewTranslation () {
 		if (document.IsTranslationLoaded)
 			CloseTranslation();
-	
+
 		document.NewTranslation();
 		EmitTranslationLoadedEvent();
-		
+
 		/* Reselect, for the widgets to update accordingly */
 		Ui.View.Selection.Reselect();
 	}
-	
+
 	public static void CloseTranslation () {
 		document.CloseTranslation();
 		EmitTranslationUnloadedEvent();
 	}
-	
+
 	public static Widget GetWidget (string name) {
 		return glade.GetWidget(name);
 	}
 
 	/* Private members */
-	
+
 	/// <summary>Initializes the base program structure.</summary>
 	/// <remarks>Nothing is done if initialization has already occured. The core value is checked for this,
 	/// if it's null then initialization hasn't occured yet.</remarks>
@@ -277,13 +277,13 @@ public class Base {
 
 		executionContext = newExecutionContext;
 		executionContext.InitApplication();
-		
+
 		/* Initialize Command manager */
 		commandManager = new CommandManager();
-		
+
 		/* Initialize handlers */
 		handlers = new EventHandlers();
-		
+
 		/* Initialize misc */
 		clipboards = new Clipboards();
 		globalAccelerators = new GlobalAccelerators();
@@ -297,47 +297,47 @@ public class Base {
 		ui = new MainUi(handlers, out glade);
 		clipboards.WatchPrimaryChanges = true;
 		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.LocaleDir);
-		
+
 		EmitInitFinishedEvent();
 	}
-	
+
 	/* Event members */
-	
+
 	private static void EmitInitFinishedEvent () {
 		if (InitFinished != null)
 			InitFinished();
 	}
-	
+
 	private static void EmitDocumentLoadedEvent () {
 		if (DocumentLoaded != null)
 			DocumentLoaded(document);
 	}
-	
+
 	private static void EmitDocumentUnloadedEvent () {
 		if (DocumentUnloaded != null)
 			DocumentUnloaded(document);
 	}
-	
+
 	private static void EmitTranslationLoadedEvent () {
 		if (TranslationLoaded != null)
 			TranslationLoaded();
 	}
-	
+
 	private static void EmitTranslationUnloadedEvent () {
 		if (TranslationUnloaded != null)
 			TranslationUnloaded();
 	}
-	
+
 	private static void EmitVideoLoadedEvent () {
 		if (VideoLoaded != null)
 			VideoLoaded(videoUri);
 	}
-	
+
 	private static void EmitVideoUnloadedEvent () {
 		if (VideoUnloaded != null)
 			VideoUnloaded();
 	}
-	
+
 	private static void EmitTimingModeChangedEvent () {
 		if (TimingModeChanged != null)
 			TimingModeChanged(timingMode);

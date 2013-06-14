@@ -36,9 +36,9 @@ public class ExecutionContext {
 	private string localeDir = String.Empty;
 	private bool platformIsWindows = false;
 	private bool platformIsUnix = false;
-	
+
 	private string[] args = null;
-	
+
 	public ExecutionContext (string[] args) {
 		this.args = args;
 
@@ -61,21 +61,21 @@ public class ExecutionContext {
 				break;
 		}
 	}
-	
+
 	/* Public properties */
-	
+
 	public bool Initialized {
 		get { return initialized; }
 	}
-	
+
 	public string ApplicationName {
 		get { return applicationName; }
 	}
-	
+
 	public string ApplicationID {
 		get { return applicationID; }
 	}
-	
+
 	public string ExecutableName {
 		get { return applicationID; }
 	}
@@ -84,7 +84,7 @@ public class ExecutionContext {
 	public string LocaleDir {
 		get { return localeDir; }
 	}
-	
+
 	public string Version {
 		get { return RemoveTrailingZeros(Assembly.GetExecutingAssembly().GetName().Version.ToString()); }
 	}
@@ -96,7 +96,7 @@ public class ExecutionContext {
 	public string GladeSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("glade-sharp").GetName().Version.ToString()); }
 	}
-	
+
 	public string GConfSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gconf-sharp").GetName().Version.ToString()); }
 	}
@@ -105,7 +105,7 @@ public class ExecutionContext {
 		get { return args; }
 		set { args = value; }
 	}
-	
+
 	public string TranslationDomain {
 		get { return applicationID; }
 	}
@@ -117,33 +117,33 @@ public class ExecutionContext {
 	public bool PlatformIsUnix {
 		get { return platformIsUnix; }
 	}
-	
+
 
 	/* Public methods */
-	
+
 	public void InitApplication () {
-		if (!initialized) {	
+		if (!initialized) {
 			initialized = true;
 			Application.Init();
 		}
 	}
-	
+
 	public void RunApplication () {
 		if (initialized && (!running)) {
 			running = true;
 			Application.Run();
 		}
 	}
-	
+
 	public void QuitApplication () {
 		initialized = false;
 		running = false;
 		Application.Quit();
 	}
-	
+
 
 	/* Private methods */
-	
+
 	private string RemoveTrailingZeros (string version) {
 		while (version.EndsWith(".0")) {
 			version = version.Remove(version.Length - 2);

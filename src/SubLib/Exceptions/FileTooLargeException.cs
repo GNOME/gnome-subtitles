@@ -27,7 +27,7 @@ public class FileTooLargeException : ApplicationException {
 
 	public FileTooLargeException (string message) : base(message) {
 	}
-	
+
 	public FileTooLargeException() : base(defaultMessage) {
 	}
 

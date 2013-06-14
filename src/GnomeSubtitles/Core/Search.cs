@@ -34,20 +34,20 @@ public class Search {
 
 	public Search () {
 	}
-	
+
 	/* Public members */
 
 	public void ShowFind () {
 		InitDialog(false);
 	}
-	
+
 	public void ShowReplace () {
 		InitDialog(true);
 	}
 
 	public bool Find () {
 		Base.Ui.Menus.EnableFindNextPrevious();
-		
+
 		if (dialog.Backwards)
 			return FindPrevious();
 		else
@@ -59,41 +59,41 @@ public class Search {
 	public bool FindPrevious () {
 		return Find(true);
 	}
-	
+
 	/// <summary>Finds the next match.</summary>
 	/// <returns>Whether text was found.</returns>
 	public bool FindNext () {
 		return Find(false);
 	}
-	
+
 	public bool Replace () {
 		if (!SelectionMatchesSearch())
 			return Find();
-		
+
 		string replacement = dialog.Replacement;
 		Base.Ui.Edit.ReplaceSelection(replacement);
-		
+
 		return Find();
 	}
-	
+
 	public void ReplaceAll () {
 		Base.CommandManager.Execute(new ReplaceAllCommand(dialog.ForwardRegex, dialog.Replacement));
 	}
-	
+
 	/// <summary>Does some cleanup to make sure the dialog is like a brand new one.</summary>
 	/// <remarks>The old dialog is closed and nullified</remarks>
 	public void Clear () {
 		if (dialog != null) {
 			dialog.Destroy();
 			dialog = null;
-		}			
+		}
 	}
 
 	#region Private methods
-	
+
 	private void InitDialog (bool showReplace) {
 		dialog = Base.Dialogs.Get(typeof(SearchDialog)) as SearchDialog;
-	
+
 		dialog.Show(showReplace);
 	}
 
@@ -118,7 +118,7 @@ public class Search {
 		SubtitleSearchOptions options = new SubtitleSearchOptions(regex, textType, subtitle, index, dialog.Wrap, backwards);
 		SearchOperator searchOp = new SearchOperator(Base.Document.Subtitles);
 		SubtitleSearchResults results = searchOp.Find(options);
-		
+
 		/* If no text was found, return */
 		if (results == null)
 			return false;
@@ -153,10 +153,10 @@ public class Search {
 		}
 		else {
 			newStart = start;
-			newEnd = end;		
+			newEnd = end;
 		}
 	}
-	
+
 	/// <summary>The currently focused subtitle, or 0 if none is.</summary>
 	private int GetFocusedSubtitle() {
 			TreePath focus = Base.Ui.View.Selection.Focus;
@@ -165,16 +165,16 @@ public class Search {
 			else
 				return 0;
 	}
-	
+
 	private bool SelectionMatchesSearch () {
 			string selection = Base.Ui.Edit.SelectedTextContent;
 			if (selection == String.Empty)
 				return false;
-			
+
 			Match match = dialog.ForwardRegex.Match(selection); //Either forward and backward regexes work
 			return (match.Success && (match.Length == selection.Length));
 	}
-	
+
 	#endregion
 
 }

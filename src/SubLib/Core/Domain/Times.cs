@@ -42,7 +42,7 @@ public class Times {
 			subtitle.UpdateStartFrameFromTimes();
 		}
 	}
-	
+
 	/// <summary>The end time.</summary>
 	/// <remarks>Upon setting the end time, the end frame (<see cref="Frames.End">Frames.End</see>) is also updated based on
 	/// the <see cref="SubtitleProperties.CurrentFrameRate" />.</remarks>
@@ -53,7 +53,7 @@ public class Times {
 			subtitle.UpdateEndFrameFromTimes();
 		}
 	}
-	
+
 	/// <summary>The time duration.</summary>
 	/// <remarks>Setting the duration maintains the start time and changes the end time.
 	/// Upon setting the duration, the end frame (<see cref="Frames.End">Frames.End</see>) is also updated based on
@@ -62,8 +62,8 @@ public class Times {
 		get { return End - Start; }
 		set { End = Start + value; }
 	}
-	
-	
+
+
 	/* Public methods */
 
 	/// <summary>Shifts the subtitle with a specified time span.</summary>
@@ -78,28 +78,28 @@ public class Times {
 		return MemberwiseClone() as Times;
 	}
 
-	
+
 	public override string ToString() {
   		return Start + "->" + End;
 	}
-	
+
 	public Times Clone (Subtitle subtitleClone) {
 		Times clone = this.MemberwiseClone() as Times;
 		clone.SetFieldsForDeepClone(subtitleClone);
 		return clone;
 	}
 
-	
+
 	/* Internal members */
 
 	internal Times (Subtitle subtitle) {
 		this.subtitle = subtitle;
 	}
-	
+
 	internal Times (Subtitle subtitle, TimeSpan start, TimeSpan end) {
 		this.start = start;
 		this.end = end;
-		this.subtitle = subtitle;	
+		this.subtitle = subtitle;
 	}
 
 	/// <remarks>Doesn't update frames.</remarks>
@@ -107,29 +107,29 @@ public class Times {
 		get { return start; }
 		set { start = value; }
 	}
-	
+
 	/// <remarks>Doesn't update frames.</remarks>
 	internal TimeSpan PreciseEnd {
 		get { return end; }
 		set { end = value; }
 	}
-	
+
 	/// <remarks>Doesn't update frames.</remarks>
 	internal TimeSpan PreciseDuration {
 		get { return end - start; }
 		set { end = start + value; }
 	}
-	
+
 	internal void Scale (double factor, TimeSpan baseTime) {
 		PreciseStart = SyncUtil.Scale(PreciseStart, baseTime, factor);
 		PreciseEnd = SyncUtil.Scale(PreciseEnd, baseTime, factor);
 
-		subtitle.UpdateFramesFromTimes();	
+		subtitle.UpdateFramesFromTimes();
 	}
-	
-	
+
+
 	/* Private methods */
-	
+
 	private void SetFieldsForDeepClone (Subtitle subtitle) {
 		this.subtitle = subtitle;
 	}

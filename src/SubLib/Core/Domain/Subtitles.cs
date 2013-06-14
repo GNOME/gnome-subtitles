@@ -38,19 +38,19 @@ public class Subtitles : ICloneable {
 
 
 	/* Public properties */
-	
+
 	/// <summary>A collection which contains the subtitles.</summary>
 	public SubtitleCollection Collection {
 		get { return collection; }
 		set { collection = value; }
 	}
-	
+
 	/// <summary>The properties of the subtitles.</summary>
 	public SubtitleProperties Properties {
 		get { return properties; }
 		set { properties = value; }
 	}
-	
+
 	/// <summary>Information about the available subtitle types.</summary>
 	public static SubtitleTypeInfo[] AvailableTypes {
 		get {
@@ -74,13 +74,13 @@ public class Subtitles : ICloneable {
 				Array.Sort(types);
 				availableTypesSorted = types;
 			}
-			return availableTypesSorted;	
+			return availableTypesSorted;
 		}
 	}
 
 
 	/* Public methods */
-	
+
 	/// <summary>Get information about an available subtitle type.</summary>
 	/// <param name="type">The subtitle type.</param>
 	/// <returns>The information about the specified subtitle type.</returns>
@@ -97,7 +97,7 @@ public class Subtitles : ICloneable {
 		}
 		return false;
 	}
-	
+
 	public override string ToString(){
 		return Collection.ToString() + "\n-------------------------------------------\n" + Properties.ToString();
 	}
@@ -124,7 +124,7 @@ public class Subtitles : ICloneable {
 			subtitle.UpdateFramesFromTimes(frameRate);
 		}
 	}
-	
+
 	internal void UpdateTimesFromFrames (float frameRate) {
 		foreach (Subtitle subtitle in collection) {
 			subtitle.UpdateTimesFromFrames(frameRate);
@@ -136,9 +136,9 @@ public class Subtitles : ICloneable {
 		if (textType == SubtitleTextType.Text)
 			return subtitle.Text;
 		else
-			return subtitle.Translation;	
+			return subtitle.Translation;
 	}
-	
+
 
 }
 

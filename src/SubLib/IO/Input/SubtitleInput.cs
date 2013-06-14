@@ -41,15 +41,15 @@ internal class SubtitleInput {
 	internal string Read (string path, out Encoding encoding, out SubtitleFormat format) {
 		/* Open file */
 		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-		
+
 		return ReadSubtitleText(true, fileStream, out encoding, out format);
 	}
-	
+
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	internal string Read (string path, Encoding encoding, out SubtitleFormat format) {
 		/* Open file */
 		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-		
+
 		/* Read the text */
 		return TestEncoding(fileStream, encoding, out format);
 	}
@@ -58,16 +58,16 @@ internal class SubtitleInput {
 	internal string ReadPlain (string path, out Encoding encoding) {
 		/* Open file */
 		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-		
+
 		SubtitleFormat format = null;
 		return ReadSubtitleText(false, fileStream, out encoding, out format);
 	}
-	
+
 	/// <exception cref="EncodingNotSupportedException">Thrown if the encoding is not supported by the platform.</exception>
 	internal string ReadPlain (string path, Encoding encoding) {
 		/* Open file */
 		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-		
+
 		/* Read the text */
 		return TestEncoding(fileStream, encoding);
 	}
@@ -85,22 +85,22 @@ internal class SubtitleInput {
 		/* Init the out arguments */
 		usedEncoding = null;
 		usedFormat = null;
-		
+
 		/* Detect code pages */
 		int[] codePages = FileInputOutput.DetectCodePages(fileStream);
-		
+
 		/* Check if no codepage was detected */
 		if (codePages.Length == 0) {
 			VerboseConsole.WriteLine("No encoding was automatically detected. Using the fall-back encoding \"" + fallbackEncoding.WebName + "\"");
 			string text;
 			if (isSubtitleFile)
 				text = TestEncoding(fileStream, fallbackEncoding, out usedFormat);
-			else 
+			else
 				text = TestEncoding(fileStream, fallbackEncoding);
 			usedEncoding = fallbackEncoding;
 			return text;
 		}
-		
+
 		/* The first code page represents the most probable encoding. If any problem occurs when trying to use
 		 * that code page, this problem is registered. The remaining code pages are then tried, and if none works,
 		 * the first occuring error is the one to be reported. */
@@ -121,7 +121,7 @@ internal class SubtitleInput {
 		catch (UnknownSubtitleFormatException e) {
 			firstSubtitleFormatException = e;
 		}
-		
+
 		/* Problems were found, going to try additional code pages */
 		for (int count = 1 ; count < codePages.Length ; count++) {
 			try {
@@ -137,15 +137,15 @@ internal class SubtitleInput {
 				//Don't do anything, will try the next code page
 			}
 		}
-		
+
 		/* No code page worked, throwing the exceptions caught for the first (more probable) code page */
 		if (firstEncodingException != null)
 			throw firstEncodingException;
 		else
 			throw firstSubtitleFormatException;
-			
+
 	}
-	
+
 	/// <exception cref="EncodingNotSupportedException">Thrown if the encoding is not supported by the platform.</exception>
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	private string TestCodePage (FileStream fileStream, int codePage, out Encoding encoding, out SubtitleFormat format) {
@@ -153,7 +153,7 @@ internal class SubtitleInput {
 		TestCodePageCommon(codePage, out encoding);
 		return TestEncoding(fileStream, encoding, out format);
 	}
-		
+
 	/// <exception cref="EncodingNotSupportedException">Thrown if the encoding is not supported by the platform.</exception>
 	private string TestCodePagePlain (FileStream fileStream, int codePage, out Encoding encoding) {
 		/* Check the encoding */
@@ -170,26 +170,26 @@ internal class SubtitleInput {
 			throw new EncodingNotSupportedException();
 		}
 	}
-		
+
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	private string TestEncoding (FileStream fileStream, Encoding encoding, out SubtitleFormat format) {
 		/* Get the text */
 		string text = TestEncoding(fileStream, encoding);
-		
+
 		/* Check the subtitle format */
 		format = GetSubtitleFormat(text);
 
 		return text;
 	}
-		
+
 	private string TestEncoding (FileStream fileStream, Encoding encoding) {
 		VerboseConsole.WriteLine("Trying the encoding \"" + encoding.WebName + "\"");
 		/* Get the text */
 		string text = FileInputOutput.ReadFile(fileStream, encoding, true);
-		
+
 		return text;
 	}
-	
+
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	private SubtitleFormat GetSubtitleFormat (string text) {
 		if (subtitleType == SubtitleType.Unknown)
@@ -199,10 +199,10 @@ internal class SubtitleInput {
 
 		SubtitleFormat subtitleFormat = null;
 		if (subtitleType == SubtitleType.Unknown)
-			subtitleFormat = BuiltInSubtitleFormats.Detect(text);	
+			subtitleFormat = BuiltInSubtitleFormats.Detect(text);
 		else
 			subtitleFormat = BuiltInSubtitleFormats.GetFormat(subtitleType);
-				
+
 		return subtitleFormat;
 	}
 

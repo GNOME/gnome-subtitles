@@ -53,7 +53,7 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 		else {
 			int[] subtitleRange = GetSubtitleRange(subtitles);
 			Times[] timesToStore = GetCurrentTimes(subtitleRange, subtitles);
-			
+
 			if (subtitleRange == null)
 				return false;
 
@@ -69,20 +69,20 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 		}
 		return true;
 	}
-	
+
 	private Times[] GetCurrentTimes (int[] subtitleRange, Ui.View.Subtitles subtitles) {
 		int subtitleFrom = subtitleRange[0];
 		int subtitleTo = subtitleRange[1];
 		Times[] currentTimes = new Times[subtitleTo - subtitleFrom + 1];
-		
+
 		for (int index = subtitleFrom; index <= subtitleTo ; index++) {
 			Subtitle subtitle = subtitles[index];
 			currentTimes[index - subtitleFrom] = subtitle.Times.Clone();
 		}
-		
+
 		return currentTimes;
 	}
-	
+
 	private int[] GetSubtitleRange (Ui.View.Subtitles subtitles) {
 		if (SelectionType == SelectionType.Range) {
 			TreePath[] paths = Paths;
@@ -93,7 +93,7 @@ public class SynchronizeTimingsCommand : FixedMultipleSelectionCommand {
 		else if (SelectionType == SelectionType.All) {
 			if (subtitles.Count < 2)
 				return null;
-			
+
 			int pathFrom = 0;
 			int pathTo = subtitles.Count - 1;
 			return new int[] {pathFrom, pathTo};

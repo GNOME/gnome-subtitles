@@ -30,7 +30,7 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	public ChangeStyleCommand (string description, bool newStyleValue) : base(description, false, SelectionIntended.Simple, null, true) {
 		this.styleValue = newStyleValue;
 	}
-	
+
 	protected override bool ChangeValues () {
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Base.Document.Subtitles[path];
@@ -41,7 +41,7 @@ public abstract class ChangeStyleCommand : FixedMultipleSelectionCommand {
 	}
 
 	/* Methods to be extended */
-	
+
 	protected abstract void SetStyle (Subtitle subtitle, bool style);
 
 	/* Private members */

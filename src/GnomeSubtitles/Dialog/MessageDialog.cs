@@ -22,7 +22,7 @@ using Gtk;
 using System;
 
 namespace GnomeSubtitles.Dialog {
-	
+
 	public abstract class MessageDialog : BaseDialog {
 		protected Gtk.MessageDialog dialog = null;
 
@@ -37,47 +37,47 @@ namespace GnomeSubtitles.Dialog {
 		public MessageDialog (MessageType messageType, string primaryText, string secondaryText) : base() {
 			Init(messageType, primaryText, secondaryText);
 		}
-		
+
 		public MessageDialog (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) : base() {
 			Init(messageType, primaryText, secondaryText, primaryTextArgs);
 		}
 
-		
+
 		/* Protected methods */
-	
+
 		protected void SetText (string primaryText, string secondaryText, params object[] primaryTextArgs) {
 			SetPrimaryText(primaryText, primaryTextArgs);
 			SetSecondaryText(secondaryText);
 		}
-	
+
 		protected void SetText (string primaryText, string secondaryText) {
 			SetPrimaryText(primaryText);
 			SetSecondaryText(secondaryText);
 		}
-	
+
 		protected void SetPrimaryText (string text, params object[] textArgs) {
 			if (text != null) {
-				string primaryText = Core.Util.GetFormattedText(text, textArgs); 
+				string primaryText = Core.Util.GetFormattedText(text, textArgs);
 				dialog.Markup = GetMarkupPrimaryText(primaryText);
 			}
 		}
-		
+
 		protected void SetPrimaryText (string text) {
 			SetPrimaryText(text, null);
 		}
-		
+
 		protected void SetSecondaryText (string text, params object[] textArgs) {
 			if (text != null)
 				dialog.SecondaryText = Core.Util.GetFormattedText(text, textArgs);
 		}
-		
+
 		protected void SetSecondaryText (string text) {
 			SetSecondaryText(text, null);
 		}
 
-		
+
 		/* Private members */
-		
+
 		private void Init (MessageType messageType, string primaryText, string secondaryText, params object[]primaryTextArgs) {
 			string formattedPrimaryText = GetMarkupPrimaryText(primaryText);
 
@@ -87,17 +87,17 @@ namespace GnomeSubtitles.Dialog {
 			SetSecondaryText(secondaryText);
 			AddButtons();
 		}
-		
+
 		private string GetMarkupPrimaryText (string primaryText) {
 			return "<span weight=\"bold\" size=\"larger\">" + primaryText + "</span>";
 		}
 
 
 		/* Abstract methods */
-		
+
 		protected abstract void AddButtons ();
 
-		
+
 		/* Event members */
 
 		protected override bool ProcessResponse (ResponseType response) {
@@ -106,8 +106,8 @@ namespace GnomeSubtitles.Dialog {
 			}
 			return false;
 		}
-		
+
 	}
 
-	
+
 }

@@ -26,10 +26,10 @@ public enum SelectionType {
 
 	/// <summary>A set of subtitles is selected.</summary>
 	Simple,
-	
+
 	/// <summary>A range of subtitles are selected.</summary>
 	Range,
-	
+
 	/// <summary>All subtitles are selected.</summary>
 	All
 }

@@ -25,33 +25,33 @@ namespace SubLib.IO.SubtitleFormats {
 
 //TODO: warn when saving with 2+ lines
 internal class SubtitleFormatKaraokeLyricsVKT : SubtitleFormat {
-		
+
 	internal SubtitleFormatKaraokeLyricsVKT() {
 		name = "Karaoke Lyrics VKT";
 		type = SubtitleType.KaraokeLyricsVKT;
 		mode = SubtitleMode.Frames;
 		extensions = new string[] { "vkt" };
-		
+
 		lineBreak = "|"; // It does not manage line breaks, but still using this char as a separator
-		
+
 		format = @"\{\s*\d+\s*.+\s*\}\n+\{\s*\d+\s*\}";
-		
+
 		subtitleIn = @"\{\s*(?<StartFrame>\d+)\s*(?<Text>.+)\}\n+\{\s*(?<EndFrame>\d+)\s*\}";
-		
+
 		subtitleOut = "{<<StartFrame>> <<Text>>}\n{<<EndFrame>> }";
-		
+
 		bodyEndIn = @"#\s*[\n#]+\s+THE END.";
 		bodyEndOut = "#\n# THE END.\n";
-	
+
 		headers = new string[] {
         	@"FRAME RATE=(?<FrameRate>.*)" ,
         	@"CREATOR=(?<Author>.*)" ,
         	@"VIDEO SOURCE=(?<Source>.*)" ,
         	@"DATE=(?<Date>.*)"
 		};
-		
+
 	}
-	
+
 	internal override string HeadersToString(SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		Headers headers = subtitleProperties.Headers;
 		return "# <HEAD>\n" +

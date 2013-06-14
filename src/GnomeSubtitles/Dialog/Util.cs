@@ -23,12 +23,12 @@ using Gtk;
 namespace GnomeSubtitles.Dialog {
 
 public class Util {
-	
+
 	public static void SetBaseWindow (Gtk.Dialog dialog, Window window) {
 		dialog.TransientFor = window;
 		dialog.Icon = window.Icon;
 	}
-	
+
 	public static void SetBaseWindowFromUi (Gtk.Dialog dialog) {
 		SetBaseWindow(dialog, Base.Ui.Window);
 	}

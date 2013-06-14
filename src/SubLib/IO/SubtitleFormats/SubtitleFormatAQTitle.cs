@@ -22,27 +22,27 @@ using System;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.SubtitleFormats {
-	
+
 //TODO: support empty lines
 internal class SubtitleFormatAQTitle : SubtitleFormat {
 	private static Regex styleExpression = new Regex(@"<[ubi]\w*>", RegexOptions.IgnoreCase);
-	
+
 	internal SubtitleFormatAQTitle() {
 		name = "AQ Title";
 		type = SubtitleType.AQTitle;
 		mode = SubtitleMode.Frames;
 		extensions = new string[] { "aqt" };
-		
+
 		lineBreak = "\n";
-		
+
 		format = @"-->>\s*\d+\s+(.+\n)*-->>\s*\d+";
-		
+
 		subtitleIn = @"-->>\s*(?<StartFrame>\d+).*\n(?<Text>(.+\n)+)-->>\s*(?<EndFrame>\d+)";
-		
+
 		subtitleOut = "-->> <<StartFrame>>\n<<Text>>\n-->> <<EndFrame>>\n";
-		
+
 	}
-		
+
 	internal override string StyleToString (Style style) {
 		string styleText = String.Empty;
 		if (style.Underline)
@@ -53,7 +53,7 @@ internal class SubtitleFormatAQTitle : SubtitleFormat {
 			styleText += "<i>";
 		return styleText;
 	}
-	
+
 	// can be optimized
 	internal override void SubtitleInputPostProcess (Subtitle subtitle) {
 		string subtitleText = subtitle.Text.Get(lineBreak);
@@ -67,7 +67,7 @@ internal class SubtitleFormatAQTitle : SubtitleFormat {
 		subtitleText = styleExpression.Replace(subtitleText, String.Empty);
 		subtitle.Text.Set(subtitleText, lineBreak, true);	
 	}
-		
+
 }
 
 }

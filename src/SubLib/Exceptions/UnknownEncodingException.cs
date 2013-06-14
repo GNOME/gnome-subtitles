@@ -27,7 +27,7 @@ public class UnknownEncodingException : ApplicationException {
 
 	public UnknownEncodingException (string message) : base(message) {
 	}
-	
+
 	public UnknownEncodingException() : base(defaultMessage) {
 	}
 

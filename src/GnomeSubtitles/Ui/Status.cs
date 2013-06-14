@@ -47,12 +47,12 @@ public class Status {
 	}
 
 	/* Public methods */
-	
+
 	public void ClearEditRelatedStatus () {
 		ClearStatus(positionStatus);
 		ClearStatus(overwriteStatus);
 	}
-	
+
 	public void SetPosition (SubtitleTextType textType, int lineNumber, int columnNumber) {
 		//To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 		string type = (textType == SubtitleTextType.Text ? Catalog.GetString("Text") : Catalog.GetString("Trans"));
@@ -65,9 +65,9 @@ public class Status {
 		ClearStatus(positionStatus);
 		positionStatus.Push(0, message);
 	}
-	
+
 	/* Private methods */
-	
+
 	private void ClearStatus (Statusbar statusBar) {
 		statusBar.Pop(0);
 	}

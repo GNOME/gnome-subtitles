@@ -35,7 +35,7 @@ internal static class BuiltInSubtitleFormats {
 		new SubtitleFormatAdvancedSubStationAlpha(),
 		new SubtitleFormatMPlayer(),
 		new SubtitleFormatMPlayer2(),
-		new SubtitleFormatMPSub(), 
+		new SubtitleFormatMPSub(),
 		new SubtitleFormatSubViewer1(),
         new SubtitleFormatSubViewer2(),
 		new SubtitleFormatAQTitle(),
@@ -52,18 +52,18 @@ internal static class BuiltInSubtitleFormats {
         new SubtitleFormatAdobeEncoreDVD(),
         new SubtitleFormatFABSubtitler()
 	};
-	
+
 	internal static SubtitleFormat[] SubtitleFormats {
 		get { return subtitleFormats; }
 	}
-	
+
 	internal static SubtitleFormat GetFormat (SubtitleType subtitleType) {
 		if (subtitleType == SubtitleType.Unknown)
 			return null;
 		else
-			return subtitleFormats[(int)subtitleType - 1];	
+			return subtitleFormats[(int)subtitleType - 1];
 	}
-    
+
     internal static SubtitleFormat Detect (string subtitleText) {
     	int lengthToTest = Math.Min(subtitleText.Length, 2000); //only use the first 2000 chars
 		foreach (SubtitleFormat format in BuiltInSubtitleFormats.SubtitleFormats) {
@@ -73,7 +73,7 @@ internal static class BuiltInSubtitleFormats {
 		}
 		throw new UnknownSubtitleFormatException();
 	}
-    
+
     private static bool TrySubtitleFormat (SubtitleFormat format, string subtitleText, int length) {
     		Regex expression = new Regex(format.Format, RegexOptions.IgnoreCase);
     		Match match = expression.Match(subtitleText, 0, length);

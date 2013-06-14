@@ -31,22 +31,22 @@ public class VideoFiles {
 
 	public static ArrayList GetVideoFilesAtPath (string path) {
 		ArrayList videoFiles = new ArrayList();
-	
+
 		if ((path == null) || (path == String.Empty))
 			return videoFiles;
 
 		string[] allFiles = Directory.GetFiles(path, "*.*");
 		foreach (string file in allFiles) {
 			if (videoFilesRegex.IsMatch(file))
-				videoFiles.Add(file);	
-		}		
+				videoFiles.Add(file);
+		}
 		return videoFiles;
 	}
-	
+
 	public static Uri FindMatchingVideo (string file) {
 		ArrayList videoFiles = GetVideoFilesAtPath(Path.GetDirectoryName(file));
 		string filename = Path.GetFileNameWithoutExtension(file);
-		
+
 		foreach (string videoFile in videoFiles) {
 			string video = Path.GetFileNameWithoutExtension(videoFile);
 			if (video == filename)

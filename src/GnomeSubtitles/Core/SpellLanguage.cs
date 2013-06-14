@@ -28,46 +28,46 @@ public class SpellLanguage : IComparable {
 	private string id = null;
 	private string name = null;
 	private string prefixUnknown = Catalog.GetString("Unknown");
-	
+
 	/* Static variables */
 	private static string langGroupName = "lang";
 	private static string countryGroupName = "country";
 	private static Regex regex = new Regex(@"^(?<" + langGroupName + @">[a-zA-Z]+)(_(?<" + countryGroupName + @">[a-zA-Z]+))?$", RegexOptions.IgnoreCase);
-		
+
 	public SpellLanguage (string id) {
 		this.id = id;
 		this.name = GetNameFromID(id);
 	}
 
 	/* Properties */
-	
+
 	public string ID {
 		get { return id; }
 	}
-	
+
 	public string Name {
 		get { return name; }
 	}
-	
+
 	/* Public methods */
-	
+
 	public override bool Equals (object o) {
 		return ((o is SpellLanguage) && ((o as SpellLanguage).Name == this.name));
 	}
-	
+
 	public override int GetHashCode () {
 		return this.name.GetHashCode();
 	}
-	
+
 	public int CompareTo (object o) {
 		if (!(o is SpellLanguage))
 			throw new ArgumentException();
-		
+
 		return this.name.CompareTo((o as SpellLanguage).Name);
-	} 
-	
+	}
+
 	/* Private members */
-	
+
 	private string GetNameFromID (string id) {
 		string lang = null;
 		string country = null;
@@ -75,11 +75,11 @@ public class SpellLanguage : IComparable {
 
 		if (!parsed)
 			return GetUnknownNameFromID(id);
-		
+
 		string builtID = lang;
 		if ((country != null) && (country != String.Empty))
 			builtID += "-" + country;
-		
+
 		CultureInfo info = null;
 		try {
 			info = new CultureInfo(builtID);
@@ -89,22 +89,22 @@ public class SpellLanguage : IComparable {
 		}
 		return info.EnglishName;
 	}
-	
+
 	private string GetUnknownNameFromID (string id) {
 		return prefixUnknown + " (" + id + ")";
 	}
-	
+
 	private bool ParseID (string id, ref string lang, ref string country) {
 		Match match = regex.Match(id);
 		if (!match.Success)
 			return false;
-		
+
 		Group langGroup = match.Groups[langGroupName];
 		if (!langGroup.Success)
 			return false;
-		
+
 		lang = langGroup.Value;
-		
+
 		Group countryGroup = match.Groups[countryGroupName];
 		country = (countryGroup.Success ? countryGroup.Value : null);
 		return true;

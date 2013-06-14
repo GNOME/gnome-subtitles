@@ -69,7 +69,7 @@ public class NewlineTypeComboBox {
 		set {
 			int actionCount = GetActionCount();
 			int position = (int)value - 1 + (actionCount > 0 ? actionCount + 1 : 0);
-			this.ActiveSelection = position;	
+			this.ActiveSelection = position;
 		}
 	}
 
@@ -155,7 +155,7 @@ public class NewlineTypeComboBox {
 
 
 	/* Event members */
-	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void ConnectHandlers () {

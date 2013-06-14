@@ -32,7 +32,7 @@ public class SubtitleEditSpinButtons {
 	private SpinButton startSpinButton = null;
 	private SpinButton endSpinButton = null;
 	private SpinButton durationSpinButton = null;
-	
+
 	/* Constants */
 	private const int maxTime = 86399999; //milliseconds
 	private const int maxFrames = 3000000;
@@ -43,18 +43,18 @@ public class SubtitleEditSpinButtons {
 		startSpinButton = Base.GetWidget(WidgetNames.StartSpinButton) as SpinButton;
 		endSpinButton = Base.GetWidget(WidgetNames.EndSpinButton) as SpinButton;
 		durationSpinButton = Base.GetWidget(WidgetNames.DurationSpinButton) as SpinButton;
-		
+
 		/* Initialize */
 		startSpinButton.WidthChars = Util.SpinButtonTimeWidthChars;
 		endSpinButton.WidthChars = Util.SpinButtonTimeWidthChars;
 		durationSpinButton.WidthChars = Util.SpinButtonTimeWidthChars;
-    	
+
     	/* Set timing mode to Times */
     	SetTimingMode(TimingMode.Times); //Initial timing mode is Times
-    	
+
     	Base.InitFinished += OnBaseInitFinished;
 	}
-	
+
 	/* Public methods */
 
 	public void LoadTimings () {
@@ -66,13 +66,13 @@ public class SubtitleEditSpinButtons {
 		LoadEndTiming(subtitle);
 		LoadDurationTiming(subtitle);
     }
-    
+
     public void GetWidgets (out SpinButton startSpinButton, out SpinButton endSpinButton, out SpinButton durationSpinButton) {
     	startSpinButton = this.startSpinButton;
     	endSpinButton = this.endSpinButton;
     	durationSpinButton = this.durationSpinButton;
     }
-    
+
     public void StartSpinButtonIncreaseStep () {
     	startSpinButton.Spin(SpinType.StepForward, 0); //0 uses the defined stepIncrement
     }
@@ -80,7 +80,7 @@ public class SubtitleEditSpinButtons {
     public void StartSpinButtonDecreaseStep () {
     	startSpinButton.Spin(SpinType.StepBackward, 0); //0 uses the defined stepIncrement
     }
-    
+
     public void EndSpinButtonIncreaseStep () {
     	endSpinButton.Spin(SpinType.StepForward, 0); //0 uses the defined stepIncrement
     }
@@ -91,30 +91,30 @@ public class SubtitleEditSpinButtons {
 
 
 	/* Private methods */
-	
+
 	private void SetTimingMode (TimingMode mode) {
    		if (mode == timingMode) //Only set if it's not already set
    			return;
-   			
-   		timingMode = mode;   	
+
+   		timingMode = mode;
    		if (mode == TimingMode.Frames)
    			SetFramesMode();
    		else
    			SetTimesMode();
    	}
-	
+
 	private void SetFramesMode () {
 		SetFramesMode(startSpinButton, false);
 	    SetFramesMode(endSpinButton, false);
 	    SetFramesMode(durationSpinButton, true);
 	}
-	
+
 	private void SetTimesMode () {
 	    SetTimesMode(startSpinButton, false);
 	    SetTimesMode(endSpinButton, false);
 	    SetTimesMode(durationSpinButton, true);
 	}
-    
+
     private void SetTimesMode (SpinButton spinButton, bool allowNegatives) {
 		Util.SetSpinButtonTimingMode(spinButton, TimingMode.Times);
 
@@ -131,10 +131,10 @@ public class SubtitleEditSpinButtons {
     	spinButton.Adjustment.Upper = maxFrames;
     	spinButton.Adjustment.Lower = (allowNegatives ? -maxFrames : 0);
 	}
-	
+
 	private void LoadStartTiming (Subtitle subtitle) {
     	startSpinButton.ValueChanged -= OnStartValueChanged;
-    		
+
     	if (timingMode == TimingMode.Frames)
     		startSpinButton.Value = subtitle.Frames.Start;
     	else
@@ -142,10 +142,10 @@ public class SubtitleEditSpinButtons {
 
    		startSpinButton.ValueChanged += OnStartValueChanged;
    	}
-   	
+
 	private void LoadEndTiming (Subtitle subtitle) {
    		endSpinButton.ValueChanged -= OnEndValueChanged;
-    		
+
     	if (timingMode == TimingMode.Frames)
     		endSpinButton.Value = subtitle.Frames.End;
     	else
@@ -153,7 +153,7 @@ public class SubtitleEditSpinButtons {
 
    		endSpinButton.ValueChanged += OnEndValueChanged;
 	}
-	
+
 	private void LoadDurationTiming (Subtitle subtitle) {
     	durationSpinButton.ValueChanged -= OnDurationValueChanged;
 
@@ -164,7 +164,7 @@ public class SubtitleEditSpinButtons {
 
     	durationSpinButton.ValueChanged += OnDurationValueChanged;
     }
-    
+
 	private void ClearFields () {
         DisconnectSpinButtonsChangedSignals();
 		startSpinButton.Text = String.Empty;
@@ -172,48 +172,48 @@ public class SubtitleEditSpinButtons {
 		durationSpinButton.Text = String.Empty;
     	ConnectSpinButtonsChangedSignals();
     }
-    
-    
+
+
     /* Event methods */
-    
+
 	private void ConnectSpinButtonsChangedSignals () {
     	startSpinButton.ValueChanged += OnStartValueChanged;
     	endSpinButton.ValueChanged += OnEndValueChanged;
     	durationSpinButton.ValueChanged += OnDurationValueChanged;
     }
-    
+
     private void DisconnectSpinButtonsChangedSignals () {
     	startSpinButton.ValueChanged -= OnStartValueChanged;
    		endSpinButton.ValueChanged -= OnEndValueChanged;
    		durationSpinButton.ValueChanged -= OnDurationValueChanged;
    	}
-   	
+
 	private void OnStartValueChanged (object o, EventArgs args) {
 		if (Base.TimingModeIsFrames)
 			Base.CommandManager.Execute(new ChangeStartCommand((int)startSpinButton.Value, true));
 		else
 			Base.CommandManager.Execute(new ChangeStartCommand(TimeSpan.FromMilliseconds(startSpinButton.Value), true));
 	}
-	
+
 	private void OnEndValueChanged (object o, EventArgs args) {
 		if (Base.TimingModeIsFrames)
 			Base.CommandManager.Execute(new ChangeEndCommand((int)endSpinButton.Value, true));
 		else
 			Base.CommandManager.Execute(new ChangeEndCommand(TimeSpan.FromMilliseconds(endSpinButton.Value), true));
 	}
-	
+
 	private void OnDurationValueChanged (object o, EventArgs args) {
 		if (Base.TimingModeIsFrames)
 			Base.CommandManager.Execute(new ChangeDurationCommand((int)durationSpinButton.Value, true));
 		else
 			Base.CommandManager.Execute(new ChangeDurationCommand(TimeSpan.FromMilliseconds(durationSpinButton.Value), true));
 	}
-	
+
 	private void OnBaseInitFinished () {
 		Base.TimingModeChanged += OnBaseTimingModeChanged;
 		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
 	}
-	
+
 	private void OnBaseTimingModeChanged (TimingMode newTimingMode) {
     	if (timingMode == newTimingMode)
 			return;
@@ -221,7 +221,7 @@ public class SubtitleEditSpinButtons {
 		SetTimingMode(newTimingMode);
 		LoadTimings();
     }
-    
+
     private void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {
     	if (subtitle != null)
     		LoadTimings();

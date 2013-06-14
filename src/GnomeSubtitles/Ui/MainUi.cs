@@ -45,10 +45,10 @@ public class MainUi {
 	/* Constant strings */
 	private const string gladeFilename = "MainWindow.glade";
 	private const string iconFilename = "gnome-subtitles.svg";
-	
+
 	public MainUi (EventHandlers handlers, out Glade.XML glade) {
 		glade = new Glade.XML(null, gladeFilename, null, Base.ExecutionContext.TranslationDomain);
-		
+
 		window = glade.GetWidget("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
 		window.SetDefaultSize(Base.Config.PrefsWindowWidth, Base.Config.PrefsWindowHeight);
@@ -61,10 +61,10 @@ public class MainUi {
 
 		glade.Autoconnect(handlers);
 		Base.InitFinished += OnBaseInitFinished;
-		
+
 		window.Visible = true;
     }
-    
+
 
 	/* Public properties */
 
@@ -75,26 +75,26 @@ public class MainUi {
 	public Menus Menus {
 		get { return menus; }
 	}
-	
+
 	public Video Video {
 		get { return video; }
 	}
-	
+
 	public SubtitleView View {
 		get { return view; }
 	}
-	
+
 	public SubtitleEdit Edit {
 		get { return edit; }
 	}
-	
+
 	public Status Status {
 		get { return status; }
 	}
 
-    
+
     /* Public Methods */
-    
+
     /// <summary>Starts the GUI</summary>
     /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
     public void Start () {
@@ -106,19 +106,19 @@ public class MainUi {
 			Open(subtitleFile, codePage, videoUri);
 		}
     }
-    
+
     /// <summary>Closes the open file.</summary>
     public void Close () {
 		if (ToCloseAfterWarning())
 			Base.CloseDocument();
     }
-    
+
     /// <summary>Quits the application.</summary>
     public void Quit () {
 		if (ToCloseAfterWarning())
 			Base.Quit();
     }
-    
+
 	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
     public void Kill () {
 		window.Destroy();
@@ -133,7 +133,7 @@ public class MainUi {
 		else
 			Base.NewDocument();
     }
-    
+
     /// <summary>Shows the open dialog and possibly opens a subtitle.</summary>
     /// <remarks>If there's a document currently open with unsaved changes, a warning dialog
     /// is shown before opening the new file.</remarks>
@@ -158,9 +158,9 @@ public class MainUi {
 			Open(filename, -1, null);
 		}
     }
-        
+
     public void OpenVideo () {
-		
+
     	VideoOpenDialog dialog = Base.Dialogs.Get(typeof(VideoOpenDialog)) as VideoOpenDialog;
     	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
@@ -168,7 +168,7 @@ public class MainUi {
 			Base.OpenVideo(dialog.Uri);
 		}
     }
-    
+
     /// <summary>Executes a Save operation.</summary>
     /// <remarks>If the document hasn't been saved before, a SaveAs is executed.</remarks>
     /// <returns>Whether the file was saved.</returns>
@@ -194,7 +194,7 @@ public class MainUi {
 		else
 			return false;
 	}
-	
+
 	/// <summary>Starts a new translation.</summary>
 	/// <remarks>If there's a translation open with unsaved changes, a warning dialog is shown.</remarks>
     public void TranslationNew () {
@@ -203,7 +203,7 @@ public class MainUi {
 
 		Base.NewTranslation();
     }
-    
+
     /// <summary>Shows the open translation dialog and possibly opens a file.</summary>
     /// <remarks>If there's a translation currently open with unsaved changes, a warning dialog
     /// is shown before opening the new file.</remarks>
@@ -217,7 +217,7 @@ public class MainUi {
     		OpenTranslation(filename, codePage);
     	}
     }
-    
+
     /// <summary>Executes a Save operation regarding the translation.</summary>
     /// <remarks>If the translation hasn't been saved before, a TranslationSaveAs is executed.</remarks>
     /// <returns>Whether the translation file was saved or not.</returns>
@@ -229,7 +229,7 @@ public class MainUi {
 		else
 			return TranslationSaveAs();
     }
-    
+
     /// <summary>Executes a translation SaveAs operation.</summary>
     /// <returns>Whether the translation file was saved or not.</returns>
     public bool TranslationSaveAs () {
@@ -254,7 +254,7 @@ public class MainUi {
 
 
 	/* Private members */
-	
+
 	/// <summary>Opens a subtitle file, given its filename, code page and video filename.</summary>
 	/// <param name="path">The path of the subtitles file to open.</param>
 	/// <param name="codePage">The code page of the filename. To use autodetection, set it to -1.</param>
@@ -273,7 +273,7 @@ public class MainUi {
 				Open();
 		}
     }
-    
+
     /// <summary>Creates an <see cref="Encoding" /> from a code page.</summary>
     /// <param name="codePage">The code page.</param>
     /// <returns>The respective <see cref="Encoding" />, or null if codePage == -1.</returns>
@@ -323,7 +323,7 @@ public class MainUi {
 			}
 		}
 	}
-	
+
 	private void SaveTranslation (FileProperties fileProperties) {
 		try {
 			Base.Document.SaveTranslation(fileProperties);
@@ -333,10 +333,10 @@ public class MainUi {
 			errorDialog.Show();
 			bool toSaveAgain = errorDialog.WaitForResponse();
 	    	if (toSaveAgain)
-	    		TranslationSaveAs();			
+	    		TranslationSaveAs();
 		}
 	}
-	
+
 	/// <summary>Displays a SaveAs dialog and gets the chosen options as <cref="FileProperties" />.</summary>
 	/// <param name="dialog">The dialog to display.</param>
 	/// <returns>The chosen file properties, or null in case SaveAs was canceled.</returns>
@@ -345,10 +345,10 @@ public class MainUi {
 		bool toSaveAs = dialog.WaitForResponse();
 		if (!toSaveAs)
 			return null;
-		
+
 		string path = dialog.Filename;
 		Encoding encoding = Encoding.GetEncoding(dialog.Encoding.CodePage);
-		SubtitleType subtitleType = dialog.SubtitleType;			
+		SubtitleType subtitleType = dialog.SubtitleType;
 		NewlineType newlineType = dialog.NewlineType;
 		TimingMode timingMode = Base.TimingMode;
 		return new FileProperties(path, encoding, subtitleType, timingMode, newlineType);
@@ -358,7 +358,7 @@ public class MainUi {
 	private bool ExistTextUnsavedChanges () {
 		return Base.IsDocumentLoaded && Base.Document.WasTextModified;
 	}
-	
+
 	/// <summary>Whether there are unsaved translation changes.</summary>
 	private bool ExistTranslationUnsavedChanges () {
 		return Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.WasTranslationModified;
@@ -375,7 +375,7 @@ public class MainUi {
    			SaveConfirmationDialog translationDialog = new SaveTranslationOnCloseConfirmationDialog();
    			toCreate = translationDialog.WaitForResponse();
    		}
-    	return toCreate; 
+    	return toCreate;
 	}
 
     /// <summary>Whether a new document should be created, after choosing the respective confirmation dialog.</summary>
@@ -391,7 +391,7 @@ public class MainUi {
    		}
    		return toCreate;
 	}
-	
+
 	/// <summary>Whether a document should be opened, after choosing the respective confirmation dialog.</summary>
 	private bool ToOpenAfterWarning () {
    		bool toCreate = true;
@@ -413,9 +413,9 @@ public class MainUi {
    			return dialog.WaitForResponse();
    		}
    		else
-    		return true; 
+    		return true;
 	}
-	
+
 	/// <summary>Whether a translation should be opened, after choosing the respective confirmation dialog.</summary>
 	private bool ToOpenTranslationAfterWarning () {
    		if (ExistTranslationUnsavedChanges()) {
@@ -423,9 +423,9 @@ public class MainUi {
    			return dialog.WaitForResponse();
    		}
    		else
-    		return true; 
+    		return true;
 	}
-	
+
 	/// <summary>Whether a translation should be closed, after choosing the respective confirmation dialog.</summary>
     private bool ToCloseTranslationAfterWarning () {
    		if (ExistTranslationUnsavedChanges()) {
@@ -433,9 +433,9 @@ public class MainUi {
    			return dialog.WaitForResponse();
    		}
    		else
-    		return true; 
+    		return true;
 	}
-	
+
 	private void UpdateTitleModificationStatus (bool showFilename, bool modified) {
 		if (showFilename) {
 			string prefix = (modified ? "*" : String.Empty);
@@ -458,24 +458,24 @@ public class MainUi {
 
 
 	/* Event members */
-	
+
 	private void OnBaseInitFinished () {
 		Base.DocumentLoaded += OnBaseDocumentLoaded;
 		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
 	}
-	
+
 	private void OnBaseDocumentLoaded (Document document) {
 		UpdateTitleModificationStatus(true, false);
    		document.ModificationStatusChanged += OnBaseDocumentModificationStatusChanged;
     }
-    
+
     private void OnBaseDocumentUnloaded (Document document) {
     	if (document != null) {
     		document.ModificationStatusChanged -= OnBaseDocumentModificationStatusChanged;
     	}
     	UpdateTitleModificationStatus(false, false);
     }
-    
+
     private void OnBaseDocumentModificationStatusChanged (bool modified) {
     	UpdateTitleModificationStatus(true, modified);
 	}

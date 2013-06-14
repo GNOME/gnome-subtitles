@@ -27,17 +27,17 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.Input {
- 
+
 internal class SubtitleParser {
 	private bool includeIncompleteSubtitles = false;
-	
+
 	/* Delegate to use when parsing headers */
 	private delegate bool ParseHeaderDelegate (Match match, ParsingProperties properties);
-	
+
 	internal SubtitleParser(bool includeIncompleteSubtitles) {
 		this.includeIncompleteSubtitles = includeIncompleteSubtitles;
 	}
-	
+
 	private string ClearComments (string text, SubtitleFormat format) {
 		if (format.HasComments) {
 			Regex regex = new Regex(format.Comments);
@@ -47,13 +47,13 @@ internal class SubtitleParser {
 		else
 			return text;
 	}
-	
+
 	/// <summary>Parses the specified text, using the specified format.</summary>
 	/// <remarks>The created <see cref="SubtitleCollection" /> will have its <see cref="SubtitleProperties" /> property set to null.
 	/// It is mandatory to use <see cref="SubtitleCollection.SetPropertiesForAll" /> after.</remarks>
 	internal ParsingProperties Parse (string text, SubtitleFormat format, float inputFrameRate,
 			out SubtitleCollection collection, out IncompleteSubtitleCollection incompleteSubtitles){
-		
+
 		collection = new SubtitleCollection();
 		incompleteSubtitles = new IncompleteSubtitleCollection();
 		ParsingProperties properties = new ParsingProperties();
@@ -83,27 +83,27 @@ internal class SubtitleParser {
 			bodyIndex = FindBodyIndex(text, format, subtitleRegex);
 			ReadHeaders(text, bodyIndex, format, properties);
 		}
-		
+
 		/* Get properties from the whole input, if available */
 		format.GlobalInputGetProperties(text, properties);
 
 		int textLength = text.Length;
-		
+
 		/* Read the subtitles */
 		bodyIndex = ReadSubtitles(text, bodyIndex, textLength, subtitleRegex, format,
 			properties, collection, incompleteSubtitles);
-		
+
     	/* Read the end text of the subtitles */
     	bodyIndex = ReadBodyEnd(text, bodyIndex, format, collection, incompleteSubtitles);
-    	
+
 		/* Check if there's still text remaining */
     	if ((bodyIndex < textLength) && includeIncompleteSubtitles)
     		AddIncompleteSubtitle(incompleteSubtitles, text.Substring(bodyIndex), collection.Count);
 
     	return properties;
 	}
-	
-	
+
+
 	/* Private members */
 
 	private ParseHeaderDelegate GetHeaderParser (SubtitleType subtitleType) {
@@ -131,9 +131,9 @@ internal class SubtitleParser {
 	private int ReadHeaders (string text, int bodyIndex, SubtitleFormat format, ParsingProperties properties) {
 		if (!(format.HasHeaders && (bodyIndex > 0)))
 			return 0;
-	
+
 		ParseHeaderDelegate headerParser = GetHeaderParser(format.Type);
-		
+
 		int lastIndex = 0; //the last index with header text
 		string headerText = text.Substring(0, bodyIndex);
 		foreach (string headerExpression in format.Headers) {
@@ -144,7 +144,7 @@ internal class SubtitleParser {
 				int matchLastIndex = match.Index + match.Length;
 				if (matchLastIndex > lastIndex)
 					lastIndex = matchLastIndex;
-					
+
 				headerParser(match, properties);
 			}
 		}
@@ -157,7 +157,7 @@ internal class SubtitleParser {
 
 	private bool ParseHeaderSubViewer1 (Match match, ParsingProperties properties, Headers headers) {
 		string result = String.Empty;
-	
+
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "Author", ref result))
@@ -174,14 +174,14 @@ internal class SubtitleParser {
 			headers.CDTrackAsText = result;
 		else {
 			return false;
-		}			
+		}
 		return true;
 	}
-	
+
 	private bool ParseHeaderSubViewer2 (Match match, ParsingProperties properties) {
 		Headers headers = properties.Headers;
 		string result = String.Empty;
-		
+
 		if (!ParseHeaderSubViewer1(match, properties, headers)) {
 			if (ParseGroup(match, "Comment", ref result))
 				headers.Comment = result;
@@ -198,11 +198,11 @@ internal class SubtitleParser {
 		}
 		return true;
 	}
-	
+
 	private bool ParseHeaderKaraokeLyricsVKT (Match match, ParsingProperties properties) {
 		Headers headers = properties.Headers;
 		string result = String.Empty;
-	
+
 		if (ParseGroup(match, "FrameRate", ref result))
 			headers.FrameRate = result;
 		else if (ParseGroup(match, "Author", ref result))
@@ -213,14 +213,14 @@ internal class SubtitleParser {
 			headers.Date = result;
 		else {
 			return false;
-		}			
+		}
 		return true;
 	}
-	
+
 	private bool ParseHeaderKaraokeLyricsLRC (Match match, ParsingProperties properties) {
 		Headers headers = properties.Headers;
 		string result = String.Empty;
-	
+
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "Author", ref result))
@@ -237,15 +237,15 @@ internal class SubtitleParser {
 			headers.Program = result;
 		else {
 			return false;
-		}			
+		}
 		return true;
 	}
-	
+
 	private bool ParseHeaderMPSub (Match match, ParsingProperties properties) {
 		Headers headers = properties.Headers;
 		string result = String.Empty;
 		float floatResult = 0;
-		
+
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "File", ref result))
@@ -266,15 +266,15 @@ internal class SubtitleParser {
 		}
 		else {
 			return false;
-		}			
+		}
 		return true;
 	}
-	
+
 	private bool ParseHeaderSubStationAlphaAAS (Match match, ParsingProperties properties) {
 		Headers headers = properties.Headers;
 		string result = String.Empty;
-		int intResult = 0;		
-		
+		int intResult = 0;
+
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "OriginalScript", ref result))
@@ -301,7 +301,7 @@ internal class SubtitleParser {
 			headers.Timer = result;
 		else {
 			return false;
-		}			
+		}
 		return true;
 	}
 
@@ -316,7 +316,7 @@ internal class SubtitleParser {
 			if (match.Success) {
     			Subtitle subtitle = ParseSubtitle(match, format, properties, previousSubtitle);
     			collection.Add(subtitle);
-				AddIncompleteSubtitleIfExists(text, match, bodyIndex, collection.Count, incompleteSubtitles);    			
+				AddIncompleteSubtitleIfExists(text, match, bodyIndex, collection.Count, incompleteSubtitles);
 	    		bodyIndex = match.Index + match.Length;
 				previousSubtitle = subtitle;
    			}
@@ -329,9 +329,9 @@ internal class SubtitleParser {
 	private Subtitle ParseSubtitle (Match match, SubtitleFormat format, ParsingProperties properties, Subtitle previousSubtitle){
 		SubtitleText text = ParseSubtitleText(match, format);
 		Style style = ParseStyle(match, format);
-	
+
 		Subtitle subtitle = new Subtitle(null, text, style);
-	
+
 		if (properties.TimingMode == TimingMode.Frames) {
 			Frames previousFrames = (previousSubtitle == null ? null : previousSubtitle.Frames);
 			ParseFrames(match, subtitle.Frames, previousFrames);
@@ -341,19 +341,19 @@ internal class SubtitleParser {
 			ParseTimes(match, subtitle.Times, previousTimes, properties);
 		}
 
-		format.SubtitleInputPostProcess(subtitle);	
+		format.SubtitleInputPostProcess(subtitle);
 		return subtitle;
 	}
-	
+
 	private void ParseTimes (Match match, Times times, Times previousTimes, ParsingProperties properties) {
 		ParseStartTime(match, times, previousTimes, properties);
 		ParseEndTime(match, times, previousTimes, properties);
 	}
-	
+
 	private void ParseStartTime (Match match, Times times, Times previousTimes, ParsingProperties properties) {
 		bool isTimeDefined = false;
 		TimeSpan startTime = new TimeSpan(0);
-		
+
 		int result = 0;
 		float floatResult = 0;
 		if (ParseGroup(match, "StartHours", ref result)) {
@@ -384,22 +384,22 @@ internal class SubtitleParser {
 			startTime += TimingUtil.FramesToTime(result, properties.InputFrameRate);
 			isTimeDefined = true;
 		}
-		
+
 		if (ParseGroup(match, "StartElapsedTime", ref floatResult)) {
 			if (previousTimes != null)
 				startTime += previousTimes.PreciseEnd;
-				
+
 			startTime += TimeSpan.FromSeconds(floatResult);
 			isTimeDefined = true;
 		}
 		if (isTimeDefined)
 			times.PreciseStart = startTime;
 	}
-	
+
 	private void ParseEndTime (Match match, Times times, Times previousTimes, ParsingProperties properties) {
 		bool isTimeDefined = false;
 		TimeSpan endTime = new TimeSpan(0);
-		
+
 		int result = 0;
 		float floatResult = 0;
 		if (ParseGroup(match, "EndHours", ref result)) {
@@ -437,7 +437,7 @@ internal class SubtitleParser {
 		if (isTimeDefined)
 			times.PreciseEnd = endTime;
 	}
-	
+
 	private void ParseFrames (Match match, Frames frames, Frames previousFrames) {
 		int result = 0;
 		if (ParseGroup(match, "StartFrame", ref result))
@@ -446,14 +446,14 @@ internal class SubtitleParser {
 			double lastFrames = (previousFrames == null ? 0 : previousFrames.PreciseEnd);
 			frames.PreciseStart = lastFrames + result;
 		}
-			
+
 		if (ParseGroup(match, "EndFrame", ref result))
 			frames.PreciseEnd = result;
 		else if (ParseGroup(match, "EndElapsedFrames", ref result)) {
 			frames.PreciseDuration = result;
 		}
 	}
-		
+
 	private SubtitleText ParseSubtitleText (Match match, SubtitleFormat subtitleFormat) {
 		string text = String.Empty;
 		if (ParseGroup(match, "Text", ref text))
@@ -461,7 +461,7 @@ internal class SubtitleParser {
 		else
 			return new SubtitleText();
 	}
-		
+
 	private Style ParseStyle (Match match, SubtitleFormat subtitleFormat) {
 		string styleText = String.Empty;
 		if (ParseGroup(match, "Style", ref styleText))
@@ -469,7 +469,7 @@ internal class SubtitleParser {
 		else
 			return new Style();
 	}
-	
+
 	private bool ParseGroup (Match match, string groupName, ref string result) {
 		Group group = match.Groups[groupName];
 		if (group.Success) {
@@ -479,7 +479,7 @@ internal class SubtitleParser {
 		else
 			return false;
 	}
-	
+
 	private bool ParseGroup (Match match, string groupName, ref int result) {
 		string textResult = String.Empty;
 		bool returnValue = ParseGroup(match, groupName, ref textResult);
@@ -492,7 +492,7 @@ internal class SubtitleParser {
 		}
 		return returnValue;
 	}
-	
+
 	private bool ParseGroup (Match match, string groupName, ref float result) {
 		string textResult = String.Empty;
 		bool returnValue = ParseGroup(match, groupName, ref textResult);
@@ -507,10 +507,10 @@ internal class SubtitleParser {
 		}
 		return returnValue;
 	}
-	
+
     private int ReadBodyEnd (string text, int bodyIndex, SubtitleFormat format,
     		SubtitleCollection collection, IncompleteSubtitleCollection incompleteSubtitles) {
-    	
+
     	Regex bodyEnd = new Regex(format.BodyEndIn + @"\s*", RegexOptions.IgnoreCase);
     	Match bodyEndMatch = bodyEnd.Match(text, bodyIndex);
     	if (bodyEndMatch.Success) {
@@ -519,26 +519,26 @@ internal class SubtitleParser {
     	}
     	return bodyIndex;
 	}
-	
+
 	private bool IsThereIncompleteText (Match match, int bodyIndex) {
 		return (match.Index > bodyIndex);
 	}
-	
+
 	private void AddIncompleteSubtitle (IncompleteSubtitleCollection incompleteSubtitles, string incompleteText,
 			int previousSubtitle) {
-		
+
 		if (!HasOnlyWhiteSpaces(incompleteText)) {
 			IncompleteSubtitle incompleteSubtitle = new IncompleteSubtitle(previousSubtitle, incompleteText);
 			incompleteSubtitles.Add(incompleteSubtitle);
 		}
 	}
-	
+
 	private bool HasOnlyWhiteSpaces (string text) {
 		Regex emptyStringExpression = new Regex(@"\s*");
 		Match emptyStringMatch = emptyStringExpression.Match(text);
 		return (emptyStringMatch.Length == text.Length);
 	}
-	
+
 	private int FindBodyIndex (string text, SubtitleFormat format, Regex subtitleRegex) {
 		if (format.HasHeaders || format.HasBodyBegin) {
 			Match subtitleMatch = subtitleRegex.Match(text);
@@ -548,12 +548,12 @@ internal class SubtitleParser {
 		}
 		return 0;
 	}
-	
+
 	private Regex CreateSubtitleRegex(SubtitleFormat format) {
 		string subtitleInExpression = format.SubtitleIn + @"\s*"; //Ignore spaces between subtitles
 		return new Regex(subtitleInExpression, RegexOptions.IgnoreCase);
 	}
-	
+
 	// Used when a subtitle format suppports both times and frames
 	private Regex CreateSubtitleRegex(SubtitleFormat format, TimingMode timingMode) {
 		string subtitleInExpression;
@@ -561,18 +561,18 @@ internal class SubtitleParser {
 			subtitleInExpression = format.SubtitleInTimesMode + @"\s*";   //Ignore spaces between subtitles
 		else
 			subtitleInExpression = format.SubtitleInFramesMode + @"\s*";  //Ignore spaces between subtitles
-	
+
 		return new Regex(subtitleInExpression, RegexOptions.IgnoreCase);
 	}
-	
+
 	private void AddIncompleteSubtitleIfExists (string text, Match match, int bodyIndex,
     		int subtitleCount, IncompleteSubtitleCollection incompleteSubtitles) {
-    		
+
     	if (includeIncompleteSubtitles && IsThereIncompleteText(match, bodyIndex)) {
     		int length = match.Index - bodyIndex;
     		string incompleteText = text.Substring(bodyIndex, length);
 	    	AddIncompleteSubtitle(incompleteSubtitles, incompleteText, subtitleCount);
-		}    		
+		}
     }
 
 }

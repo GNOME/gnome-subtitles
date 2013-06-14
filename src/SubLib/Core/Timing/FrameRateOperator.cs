@@ -25,14 +25,14 @@ namespace SubLib.Core.Timing {
 /// <summary>Performs frame rate operations.</summary>
 public class FrameRateOperator {
 	private Subtitles subtitles = null;
-	
+
 	public FrameRateOperator (Subtitles subtitles) {
 		this.subtitles = subtitles;
 	}
 
 	/* Public members */
-	
-	
+
+
 	/// <summary>Changes the current frame rate of the subtitles.</summary>
 	/// <param name="frameRate">The new frame rate to be used.</param>
 	/// <remarks>This changes the frame rate currently being used with the subtitles, which is sometimes
@@ -44,7 +44,7 @@ public class FrameRateOperator {
 			subtitles.UpdateFramesFromTimes(frameRate);
 		}
 	}
-	
+
 	/// <summary>Updates the subtitles' frames using the specified frame rate as the one they had when they were opened.</summary>
 	/// <param name="frameRate">The original subtitles' frame rate.</param>
 	/// <remarks>This results on having the subtitles with the frames they would have if they had been opened with this frame rate.

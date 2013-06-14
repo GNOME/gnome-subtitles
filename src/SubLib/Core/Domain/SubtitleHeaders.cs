@@ -22,7 +22,7 @@ using System.IO;
 using System.Text;
 
 namespace SubLib.Core.Domain {
-	
+
 /// <summary>Represents the headers of the supported subtitle formats.</summary>
 public class SubtitleHeaders {
 
@@ -32,55 +32,55 @@ public class SubtitleHeaders {
 	private SubtitleHeadersSubStationAlphaASS subStationAlphaASS = null;
 	private SubtitleHeadersKaraokeLyricsLRC karaokeLyricsLRC = null;
 	private SubtitleHeadersKaraokeLyricsVKT karaokeLyricsVKT = null;
-	
+
 	/* Headers are initialized only if and when they're accessed */
-	
+
 	/// <summary>The headers for the SubViewer 1.0 subtitle type.</summary>
 	public SubtitleHeadersSubViewer1 SubViewer1 {
 		get {
 			if (subViewer1 == null)
 				subViewer1 = new SubtitleHeadersSubViewer1();
-			
+
 			return subViewer1;
 		}
 	}
-	
+
 	/// <summary>The headers for the SubViewer 2.0 subtitle type.</summary>
 	public SubtitleHeadersSubViewer2 SubViewer2 {
 		get {
 			if (subViewer2 == null)
 				subViewer2 = new SubtitleHeadersSubViewer2();
-			
+
 			return subViewer2;
 		}
 	}
-	
+
 	/// <summary>The headers for the MPSub subtitle type.</summary>
 	public SubtitleHeadersMPSub MPSub {
 		get {
 			if (mPSub == null)
 				mPSub = new SubtitleHeadersMPSub();
-			
+
 			return mPSub;
 		}
 	}
-	
+
 	/// <summary>The headers for the Sub Station Alpha and Advanced Sub Station Alpha subtitle types.</summary>
 	public SubtitleHeadersSubStationAlphaASS SubStationAlphaASS {
 		get {
 			if (subStationAlphaASS == null)
 				subStationAlphaASS = new SubtitleHeadersSubStationAlphaASS();
-			
+
 			return subStationAlphaASS;
 		}
 	}
-	
+
 	/// <summary>The headers for the Karaoke Lyrics LRC subtitle type.</summary>
 	public SubtitleHeadersKaraokeLyricsLRC KaraokeLyricsLRC {
 		get {
 			if (karaokeLyricsLRC == null)
 				karaokeLyricsLRC = new SubtitleHeadersKaraokeLyricsLRC();
-			
+
 			return karaokeLyricsLRC;
 		}
 	}
@@ -90,7 +90,7 @@ public class SubtitleHeaders {
 		get {
 			if (karaokeLyricsVKT == null)
 				karaokeLyricsVKT = new SubtitleHeadersKaraokeLyricsVKT();
-			
+
 			return karaokeLyricsVKT;
 		}
 	}
@@ -152,11 +152,11 @@ public class SubtitleHeadersSubViewer1 {
 		get { return delay; }
 		set { delay = value; }
 	}
-	
+
 	/// <summary>The delay of the subtitles as text.</summary>
 	public string DelayAsText {
 		get { return delay.ToString(); }
-		set { 
+		set {
 			try {
 				delay = Convert.ToInt32(value);
 			}
@@ -164,17 +164,17 @@ public class SubtitleHeadersSubViewer1 {
 			}
 		 }
 	}
-		
+
 	/// <summary>The CD track of the subtitles.</summary>
 	public int CDTrack {
 		get { return cdTrack; }
 		set { cdTrack = value; }
 	}
-	
+
 	/// <summary>The CD track of the subtitles as text.</summary>
 	public string CDTrackAsText {
 		get { return cdTrack.ToString(); }
-		set { 
+		set {
 			try {
 				cdTrack = Convert.ToInt32(value);
 			}
@@ -223,11 +223,11 @@ public class SubtitleHeadersSubViewer2 : SubtitleHeadersSubViewer1 {
 		get { return fontSize; }
 		set { fontSize = value; }
 	}
-	
+
 	/// <summary>The subtitles' font size as text.</summary>
 	public string FontSizeAsText {
 		get { return fontSize.ToString(); }
-		set { 
+		set {
 			try {
 				fontSize = Convert.ToInt32(value);
 			}
@@ -235,13 +235,13 @@ public class SubtitleHeadersSubViewer2 : SubtitleHeadersSubViewer1 {
 			}
 		 }
 	}
-	
+
 	/// <summary>The subtitles' font name.</summary>
 	public string FontName {
 		get { return fontName; }
 		set { fontName = value; }
 	}
-	
+
 	public override string ToString() {
 		return "\t** SubViewer 2.0 Headers **\n" +
 			"Base " + base.ToString() + "\n" +
@@ -256,26 +256,26 @@ public class SubtitleHeadersMPSub {
 	private string author = String.Empty;
 	private string mediaType = "VIDEO";
 	private string note = String.Empty;
-	
-	
+
+
 	/// <summary>The movie's title.</summary>
 	public string Title {
 		get { return title; }
 		set { title = value; }
 	}
-	
+
 	/// <summary>The File properties, in the format 'size,md5'.</summary>
 	public string File {
 		get { return file; }
 		set { file = value; }
 	}
-	
+
 	/// <summary>The subtitles' author.</summary>
 	public string Author {
 		get { return author; }
 		set { author = value; }
 	}
-	
+
 	/// <summary>The Media Type of the subtitles, which can be 'VIDEO' or 'AUDIO'.</summary>
 	/// <remarks>This property is only set if the value is 'VIDEO' or 'AUDIO'. It's case insensitive.</remarks>
 	public string MediaType {
@@ -286,13 +286,13 @@ public class SubtitleHeadersMPSub {
 				mediaType = type;
 		}
 	}
-	
+
 	/// <summary>A note on the subtitles.</summary>
 	public string Note {
 		get { return note; }
 		set { note = value; }
 	}
-	
+
 	public override string ToString() {
 		return "\t** MPSub Headers **\n" +
 			"Title: " + title + ", File: " + file + ", Author: " + author + ", MediaType: " + mediaType + ", Note: " + note;
@@ -320,59 +320,59 @@ public class SubtitleHeadersSubStationAlphaASS {
 		get { return title; }
 		set { title = value; }
 	}
-	
+
 	/// <summary>The Original Script of the subtitles.</summary>
 	public string OriginalScript {
 		get { return originalScript; }
 		set { originalScript = value; }
 	}
-	
+
 	/// <summary>The Original Translation of the subtitles.</summary>
 	public string OriginalTranslation {
 		get { return originalTranslation; }
 		set { originalTranslation = value; }
 	}
-	
+
 	/// <summary>The Original Editing of the subtitles.</summary>
 	public string OriginalEditing {
 		get { return originalEditing; }
 		set { originalEditing = value; }
 	}
-	
+
 	/// <summary>The Original Timing of the subtitles.</summary>
 	public string OriginalTiming {
 		get { return originalTiming; }
 		set { originalTiming = value; }
 	}
-	
+
 	/// <summary>The Original Script Checking of the subtitles.</summary>
 	public string OriginalScriptChecking {
 		get { return originalScriptChecking; }
 		set { originalScriptChecking = value; }
 	}
-	
+
 	/// <summary>The Script Updated By of the subtitles.</summary>
 	public string ScriptUpdatedBy {
 		get { return scriptUpdatedBy; }
 		set { scriptUpdatedBy = value; }
 	}
-	
+
 	/// <summary>The Collisions of the subtitles.</summary>
 	public string Collisions {
 		get { return collisions; }
 		set { collisions = value; }
 	}
-	
+
 	/// <summary>The PlayResX of the subtitles.</summary>
 	public int PlayResX {
 		get { return playResX; }
 		set { playResX = value; }
 	}
-	
+
 	/// <summary>The PlayResX of the subtitles as text.</summary>
 	public string PlayResXAsText {
 		get { return playResX.ToString(); }
-		set { 
+		set {
 			try {
 				playResX = Convert.ToInt32(value);
 			}
@@ -380,17 +380,17 @@ public class SubtitleHeadersSubStationAlphaASS {
 			}
 		 }
 	}
-	
+
 	/// <summary>The PlayResY of the subtitles.</summary>
 	public int PlayResY {
 		get { return playResY; }
 		set { playResY = value; }
 	}
-	
+
 	/// <summary>The PlayResY of the subtitles as text.</summary>
 	public string PlayResYAsText {
 		get { return playResY.ToString(); }
-		set { 
+		set {
 			try {
 				playResY = Convert.ToInt32(value);
 			}
@@ -398,13 +398,13 @@ public class SubtitleHeadersSubStationAlphaASS {
 			}
 		 }
 	}
-	
+
 	/// <summary>The PlayDepth of the subtitles.</summary>
 	public int PlayDepth {
 		get { return playDepth; }
 		set { playDepth = value; }
 	}
-	
+
 	/// <summary>The PlayResY of the subtitles as text.</summary>
 	public string PlayDepthAsText {
 		get { return playDepth.ToString(); }
@@ -416,7 +416,7 @@ public class SubtitleHeadersSubStationAlphaASS {
 			}
 		 }
 	}
-	
+
 	/// <summary>The Timer of the subtitles.</summary>
 	public string Timer {
 		get { return timer; }
@@ -467,7 +467,7 @@ public class SubtitleHeadersKaraokeLyricsLRC {
 		get { return album; }
 		set { album = value; }
 	}
-	
+
 	/// <summary>The subtitles' file maker.</summary>
 	public string Maker {
 		get { return maker; }
@@ -479,16 +479,16 @@ public class SubtitleHeadersKaraokeLyricsLRC {
 		get { return version; }
 		set { version = value; }
 	}
-	
+
 	/// <summary>The name of the subtitles' program.</summary>
 	public string Program {
 		get { return program; }
 		set { program = value; }
 	}
-	
+
 	public override string ToString() {
 		return "\t** Karaoke Lyrics LRC Headers **\n" +
-			"Title: " + title + ", Author: " + author + ", Artist: " + artist + 
+			"Title: " + title + ", Author: " + author + ", Artist: " + artist +
 			", Maker: " + maker + ", Version: " + version + ", Program: " + program;
 	}
 
@@ -512,7 +512,7 @@ public class SubtitleHeadersKaraokeLyricsVKT {
 		get { return frameRate; }
 		set { frameRate = value; }
 	}
-	
+
 	/// <summary>The video file path.</summary>
 	public string Source {
 		get { return source; }
@@ -524,10 +524,10 @@ public class SubtitleHeadersKaraokeLyricsVKT {
 		get { return date; }
 		set { date = value; }
 	}
-	
+
 	public override string ToString() {
 		return "\t** Karaoke Lyrics VKT Headers **\n" +
-			"Author: " + author + ", FrameRate: " + frameRate + 
+			"Author: " + author + ", FrameRate: " + frameRate +
 			", Source: " + source + ", Date: " + date;
 	}
 

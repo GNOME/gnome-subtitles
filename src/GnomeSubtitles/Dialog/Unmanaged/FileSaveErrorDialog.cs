@@ -27,10 +27,10 @@ using System.Security;
 namespace GnomeSubtitles.Dialog.Unmanaged {
 
 public class FileSaveErrorDialog : ErrorDialog {
-	
+
 	/* Strings */
 	private string primaryTextStart = Catalog.GetString("Could not save the file");
-	private string actionLabel = Catalog.GetString("Save to another file"); 
+	private string actionLabel = Catalog.GetString("Save to another file");
 
 	public FileSaveErrorDialog (string filename, Exception exception) {
 		Console.Error.WriteLine("File save error:\n" + exception);
@@ -39,21 +39,21 @@ public class FileSaveErrorDialog : ErrorDialog {
 		string secondaryText = GetSecondaryText(exception);
 		SetText(primaryText, secondaryText);
 	}
-	
+
 	/* Protected methods */
-	
+
 	protected override void AddButtons () {
 		Button actionButton = dialog.AddButton(actionLabel, ResponseType.Accept) as Button;
 		actionButton.Image = new Image(Stock.Save, IconSize.Button);
 		dialog.AddButton(Stock.Ok, ResponseType.Ok);
 	}
-	
+
 	/* Private methods */
-	
+
 	private string GetPrimaryText (string filename) {
 		return primaryTextStart + " " + filename + ".";
 	}
-	
+
 	private string GetSecondaryText (Exception exception) {
 		if (exception is OutOfMemoryException)
 			return Catalog.GetString("You have run out of memory. Please close some programs and try again.");

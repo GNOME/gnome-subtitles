@@ -33,7 +33,7 @@ public class TimingUtil {
 		TimeSpan time = TimeSpan.FromSeconds(seconds);
 		return time;
 	}
-	
+
 	/// <summary>Converts the specified time to frames, given a frame rate.</summary>
 	/// <param name="time">The time to convert to frames.</param>
 	/// <param name="frameRate">The frame rate to be used in the conversion.</param>
@@ -43,7 +43,7 @@ public class TimingUtil {
 		double frames = seconds * frameRate;
 		return frames;
 	}
-	
+
 	/// <summary>Converts the specified time to frames, given a frame rate.</summary>
 	/// <param name="time">The time, in seconds, to convert to frames.</param>
 	/// <param name="frameRate">The frame rate to be used in the conversion.</param>
@@ -52,7 +52,7 @@ public class TimingUtil {
 		double frames = time * frameRate;
 		return frames;
 	}
-	
+
 	/// <summary>Converts the specified time to frames, given a frame rate.</summary>
 	/// <param name="time">The time, in milliseconds, to convert to frames.</param>
 	/// <param name="frameRate">The frame rate to be used in the conversion.</param>

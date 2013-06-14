@@ -24,23 +24,23 @@ using System.Text.RegularExpressions;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatMicroDVD : SubtitleFormat {
-	
+
 	internal SubtitleFormatMicroDVD () {
 		name = "Micro DVD";
 		type = SubtitleType.MicroDVD;
 		mode = SubtitleMode.Frames;
 		extensions = new string[] { "sub" };
 		lineBreak = "|";
-		
+
 		format = @"\{\s*\d+\s*\}\s*\{\s*\d+\s*\}\s*.+";
-		
+
 		subtitleIn = @"\{[^\d\n]*(?<StartFrame>\d+)[^\}\n]*\}([^\{\n]*\{[^\d\n]*(?<EndFrame>\d+)[^\}\n]*\})?(?<Text>.*)";
-		
+
 		subtitleOut = "{<<StartFrame>>}{<<EndFrame>>}<<Style>><<Text>>";
 	}
-	
+
 	private static Regex styleExpression =  new Regex(@"\{[^Y]*Y[^:]*:\w*\}", RegexOptions.IgnoreCase);
-	
+
 	internal override string StyleToString(Style style) {
 		string styleText = String.Empty;
 		if (style.Enabled) {
@@ -66,9 +66,9 @@ internal class SubtitleFormatMicroDVD : SubtitleFormat {
 		Style style = StringToStyle(styleText);
 		subtitle.Style = style;
 		subtitleText = styleExpression.Replace(subtitleText, String.Empty);
-		subtitle.Text.Set(subtitleText, lineBreak, true);	
+		subtitle.Text.Set(subtitleText, lineBreak, true);
 	}
-	
+
 }
 
 }

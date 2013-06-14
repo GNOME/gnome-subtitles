@@ -30,7 +30,7 @@ public class MergeSubtitlesCommand : MultipleSelectionCommand {
 	private static string description = Catalog.GetString("Merging subtitles");
 	private Subtitle[] subtitlesBefore = null;
 	private Subtitle subtitleAfter = null;
-	
+
 	public MergeSubtitlesCommand () : base(description, false, SelectionIntended.Range, null) {
 	}
 
@@ -38,7 +38,7 @@ public class MergeSubtitlesCommand : MultipleSelectionCommand {
 		GnomeSubtitles.Ui.View.Subtitles subtitles = Base.Document.Subtitles;
 		int firstPathInt = Util.PathToInt(this.FirstPath);
 		int lastPathInt = Util.PathToInt(this.LastPath);
-		
+
 		/* Store selected subtitles */
 		int subtitleCount = lastPathInt - firstPathInt + 1;
 		this.subtitlesBefore = new Subtitle[subtitleCount];
@@ -46,7 +46,7 @@ public class MergeSubtitlesCommand : MultipleSelectionCommand {
 		for (int index = 1, currentPath = firstPathInt + 1 ; index < subtitleCount ; index++, currentPath++) {
 			this.subtitlesBefore[index] = subtitles[currentPath];
 		}
-		
+
 		/* Merge subtitles */
 		MergeOperator mergeOperator = new MergeOperator(Base.Document.Subtitles);
 		if (!mergeOperator.Merge(firstPathInt, lastPathInt))
@@ -60,11 +60,11 @@ public class MergeSubtitlesCommand : MultipleSelectionCommand {
 			return true;
 		}
 	}
-	
+
 	public override void Undo () {
 		if (this.subtitleAfter == null) {
 			this.subtitleAfter = Base.Document.Subtitles[this.FirstPath];
-		}		
+		}
 		Base.Document.Subtitles.Remove(this.FirstPath);
 		Base.Ui.View.Insert(this.subtitlesBefore, this.FirstPath, this.FirstPath);
 		PostProcess();
@@ -75,9 +75,9 @@ public class MergeSubtitlesCommand : MultipleSelectionCommand {
 		Base.Ui.View.Insert(this.subtitleAfter, this.FirstPath);
 		PostProcess();
 	}
-	
+
 	/* Protected members */
-	
+
 	protected void PostProcess () {
 		Base.Ui.Video.SeekToSelection(true);
 	}

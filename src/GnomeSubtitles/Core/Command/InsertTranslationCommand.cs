@@ -29,7 +29,7 @@ public class InsertTranslationCommand : InsertTextContentCommand {
 	public InsertTranslationCommand (int index, string text) : base(description, index, text) {
 		SetCommandTarget(CommandTarget.Translation);
 	}
-	
+
 	protected override SubtitleEditTextView GetTextView () {
 		return Base.Ui.Edit.TranslationEdit;
 	}

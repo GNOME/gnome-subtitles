@@ -36,7 +36,7 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		this.time = time;
 		useTimes = true;
 	}
-	
+
 	public ShiftTimingsCommand (int frames, SelectionIntended selectionIntended) : base(description, false, selectionIntended, null, true) {
 		this.frames = frames;
 		useTimes = false;
@@ -61,11 +61,11 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		}
 		return true;
 	}
-	
+
 	protected override void PostProcess () {
 		Base.Ui.Video.SeekToSelection(true);
 	}
-	
+
 	/* Private Members */
 
 	private void ShiftTimesAll () {
@@ -73,13 +73,13 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		shiftOp.Shift(time);
 		time = time.Negate();
 	}
-	
+
 	private void ShiftFramesAll () {
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(frames);
 		frames = -frames;
 	}
-	
+
 	private void ShiftTimesSimple () {
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Base.Document.Subtitles[path];
@@ -95,20 +95,20 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 		}
 		frames = -frames;
 	}
-	
+
 	private void ShiftTimesRange () {
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
-		
+
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(time, firstSubtitle, lastSubtitle);
 		time = time.Negate();
 	}
-	
+
 	private void ShiftFramesRange () {
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
-		
+
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(frames, firstSubtitle, lastSubtitle);
 		frames = -frames;

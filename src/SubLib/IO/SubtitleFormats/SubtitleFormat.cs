@@ -31,9 +31,9 @@ internal abstract class SubtitleFormat {
 	protected SubtitleType type;	//the subtitle type
 	protected SubtitleMode mode;	//the subtitle mode
 	protected string[] extensions;	//the extensions used
-	
+
 	protected string lineBreak;		//used to split the subtitle's text lines
-	protected string format;		//regex used to detect the file's format		
+	protected string format;		//regex used to detect the file's format
 	protected string subtitleIn;	//regex used to read a subtitle
 	protected string subtitleOut = null;	//expression with tags used to write a subtitle; GetDynamicSubtitleOut can be used instead if the expression is dynamic
 
@@ -43,7 +43,7 @@ internal abstract class SubtitleFormat {
 	protected string bodyBeginOut = String.Empty;	//used to write the beginning of the subtitles' body
 	protected string bodyEndIn = String.Empty;		//used to detect the end of the subtitles' body
 	protected string bodyEndOut = String.Empty;		//used to write the end of the subtitles' body
-	
+
 	/* Required members for subtitles that support both frames and times */
 	//The following two are used instead of subtitleIn
 	protected string subtitleInTimesMode = String.Empty;	//regex used to read a subtitle in times mode
@@ -51,15 +51,15 @@ internal abstract class SubtitleFormat {
 	//The following two are used instead of subtitleOut
 	protected string subtitleOutTimesMode = String.Empty;   //regex used to output a subtitle in times mode
 	protected string subtitleOutFramesMode = String.Empty;  //regex used to output a subtitle in times mode
-	
+
 	internal string Name {
 		get { return name; }
 	}
-		
+
 	internal SubtitleType Type {
 		get { return type; }
 	}
-	
+
 	internal SubtitleMode Mode {
 		get { return mode; }
 	}
@@ -74,23 +74,23 @@ internal abstract class SubtitleFormat {
 				return TimingMode.Times;
 		}
 	}
-	
+
 	internal string[] Extensions {
 		get { return extensions; }
 	}
-	
+
 	internal string LineBreak {
 		get { return lineBreak; }
 	}
-	
+
 	internal string Format {
 		get { return format; }
 	}
-	
+
 	internal string SubtitleIn {
 		get { return subtitleIn; }
 	}
-	
+
 	internal string SubtitleOut {
 		get { return subtitleOut; }
 	}
@@ -98,35 +98,35 @@ internal abstract class SubtitleFormat {
 	internal bool HasHeaders {
 		get { return headers != null; }
 	}
-	
+
 	internal string[] Headers {
 		get { return headers; }
 	}
-	
+
 	internal bool HasComments {
 		get { return comments != String.Empty; }
 	}
-	
+
 	internal string Comments {
 		get { return comments; }
 	}
-	
+
 	internal bool HasBodyBegin {
 		get { return bodyBeginOut != String.Empty; }
 	}
-	
+
 	internal string BodyBeginOut {
 		get { return bodyBeginOut; }
 	}
-	
+
 	internal bool HasBodyEnd {
 		get { return bodyEndOut != String.Empty; }
 	}
-	
+
 	internal string BodyEndIn {
 		get { return bodyEndIn; }
 	}
-	
+
 	internal string BodyEndOut {
 		get { return bodyEndOut; }
 	}
@@ -134,19 +134,19 @@ internal abstract class SubtitleFormat {
 	internal string SubtitleInTimesMode {
 		get { return subtitleInTimesMode; }
 	}
-	
+
 	internal string SubtitleInFramesMode {
 		get { return subtitleInFramesMode; }
 	}
-	
+
 	internal string SubtitleOutTimesMode {
 		get { return subtitleOutTimesMode; }
 	}
-	
+
 	internal string SubtitleOutFramesMode {
 		get { return subtitleOutFramesMode; }
 	}
-	
+
 	internal virtual Style StringToStyle (string styleText) {
 		Style style = new Style();
 		foreach (char character in styleText) {
@@ -155,27 +155,27 @@ internal abstract class SubtitleFormat {
 			else if ((character == 'b') || (character == 'B'))
 				style.Bold = true;
 			else if ((character == 'i') || (character == 'I'))
-				style.Italic = true;					
+				style.Italic = true;
 		}
 		return style;
 	}
-	
+
 	internal virtual string StyleToString (Style style) {
 		return String.Empty;
 	}
-	
+
 	internal virtual string EndOfStyleToString (Style style) {
 		return String.Empty;
 	}
-		
+
 	internal virtual void SubtitleInputPostProcess (Subtitle subtitle) {
 		return;
 	}
-	
+
 	internal virtual void GlobalInputGetProperties (string text, ParsingProperties properties) {
 		return;
 	}
-	
+
 	internal virtual string GetDynamicSubtitleOut (SubtitleProperties properties) {
 		return null;
 	}
@@ -183,9 +183,9 @@ internal abstract class SubtitleFormat {
     internal virtual string HeadersToString (SubtitleProperties subtitleProperties, FileProperties fileProperties) {
         return String.Empty;
     }
-    
+
 	/* Public members */
-	
+
 	public override string ToString(){
 		return Enum.GetName(typeof(SubtitleType), Type);
 	}

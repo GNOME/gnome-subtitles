@@ -28,18 +28,18 @@ namespace SubLib.Core {
 public class SubtitleSaver {
 	private FileProperties fileProperties = null;
 
-	
+
 	/* Public properties */
-	
+
 	/// <summary>The new properties of the file after saving.</summary>
 	/// <remarks>This includes the updated <see cref="TimingMode" /> for the subtitles after saving. When saving to
 	/// a subtitle format that supports only time or frame timing modes, this is updated to reflect that.</remarks>
 	public FileProperties FileProperties {
 		get { return fileProperties; }
 	}
-	
+
 	/* Public methods */
-	
+
 	/// <summary>Saves subtitles to the file with the specified properties.</summary>
 	/// <param name="subtitles">The subtitles to save.</param>
 	/// <param name="properties">The properties of the file to save the subtitles to. Its <see cref="TimingMode" /> property is used to
@@ -52,17 +52,17 @@ public class SubtitleSaver {
 
 		string text = output.Build(subtitles.Collection, subtitles.Properties, properties);
 		FileInputOutput.WriteFile(properties.Path, text, properties.Encoding);
-		
-		fileProperties = GetUpdatedFileProperties(properties); 
+
+		fileProperties = GetUpdatedFileProperties(properties);
 		VerboseConsole.WriteLine("[*] Saved " + textType + " \"" + properties.Path + "\" with encoding \"" + properties.Encoding + "\", format \"" + format.Name + "\" and frame rate \"" + subtitles.Properties.CurrentFrameRate + "\"");
 	}
-	
+
 	/* Private methods */
-	
+
 	private FileProperties GetUpdatedFileProperties (FileProperties properties) {
 		SubtitleFormat format = BuiltInSubtitleFormats.GetFormat(properties.SubtitleType);
 		TimingMode newTimingMode = (format.Mode == SubtitleMode.Both) ? properties.TimingMode : format.ModeAsTimingMode;
-		
+
 		return new FileProperties(properties.Path, properties.Encoding, properties.SubtitleType, newTimingMode, properties.NewlineType);
 	}
 }

@@ -37,7 +37,7 @@ public class EncodingsDialog : GladeDialog {
 	const int nameColumnNum = 1; //The number of the Name column
 
 	/* Widgets */
-	
+
 	[WidgetAttribute] private TreeView availableTreeView = null;
 	[WidgetAttribute] private TreeView shownTreeView = null;
 	[WidgetAttribute] private Button buttonAdd = null;
@@ -46,21 +46,21 @@ public class EncodingsDialog : GladeDialog {
 	public EncodingsDialog () : base(gladeFilename) {
 		FillAvailableEncodings();
 		FillShownEncodings();
-		
+
 		ConnectSignals();
 	}
-	
+
 	/* Public properties */
-	
+
 	public string[] ChosenNames {
 		get { return chosenNames; }
 	}
-	
+
 	/* Private members */
-	
+
 	private void FillAvailableEncodings () {
 		SetColumns(availableTreeView);
-		
+
 		ListStore store = new ListStore(typeof(string), typeof(string));
 		foreach (EncodingDescription desc in Encodings.All) {
 			store.AppendValues(desc.Description, desc.Name);
@@ -68,12 +68,12 @@ public class EncodingsDialog : GladeDialog {
 
 		SetModel(availableTreeView, store);
 	}
-	
+
 	private void FillShownEncodings () {
 		SetColumns(shownTreeView);
-		
+
 		chosenNames = Base.Config.PrefsEncodingsShownInMenu;
-		
+
 		ListStore store = new ListStore(typeof(string), typeof(string));
 		foreach (string shownEncoding in chosenNames) {
 			EncodingDescription desc = EncodingDescription.Empty;
@@ -83,34 +83,34 @@ public class EncodingsDialog : GladeDialog {
 
 		SetModel(shownTreeView, store);
 	}
-	
+
 	private void SetColumns (TreeView tree) {
 		TreeViewColumn descriptionColumn = new TreeViewColumn(Catalog.GetString("Description"), new CellRendererText(), "text", descColumnNum);
 		descriptionColumn.SortColumnId = descColumnNum;
 		tree.AppendColumn(descriptionColumn);
-		
+
 		TreeViewColumn nameColumn = new TreeViewColumn(Catalog.GetString("Encoding"), new CellRendererText(), "text", nameColumnNum);
 		nameColumn.SortColumnId = nameColumnNum;
 		tree.AppendColumn(nameColumn);
 	}
-	
+
 	private void SetModel (TreeView tree, ListStore store) {
 		TreeModelSort storeSort = new TreeModelSort(store);
 		storeSort.SetSortColumnId(descColumnNum, SortType.Ascending);
 		tree.Model = storeSort;
 	}
-	
+
 	private void AddSelectedAvailableEncoding () {
 		TreePath path = GetSelectedPath(availableTreeView);
 		if (path == null)
 			return;
-		
+
 		int encodingNumber = Core.Util.PathToInt(path);
 		EncodingDescription desc = Encodings.All[encodingNumber];
-		
-		AddToShownEncodings(desc);	
+
+		AddToShownEncodings(desc);
 	}
-	
+
 	private void RemoveSelectedShownEncoding () {
 		TreeIter iter = new TreeIter();
 		if (GetSelectedIter(shownTreeView, ref iter)) {
@@ -118,14 +118,14 @@ public class EncodingsDialog : GladeDialog {
 			UpdateShownEncodingsPrefs();
 		}
 	}
-	
+
 	private void AddToShownEncodings (EncodingDescription desc) {
 		if (!IsAlreadyShown(desc.Name)) {
 			GetListStore(shownTreeView).AppendValues(desc.Description, desc.Name);
 			UpdateShownEncodingsPrefs();
 		}
 	}
-	
+
 	private string[] GetShownNames () {
 		ListStore store = GetListStore(shownTreeView);
 		int count = store.IterNChildren();
@@ -136,9 +136,9 @@ public class EncodingsDialog : GladeDialog {
 			names[rowNumber] = row[nameColumnNum] as string;
 			rowNumber++;
 		}
-		return names;	
+		return names;
 	}
-	
+
 	private bool IsAlreadyShown (string name) {
 		ListStore store = GetListStore(shownTreeView);
 		foreach (object[] row in store) {
@@ -151,69 +151,69 @@ public class EncodingsDialog : GladeDialog {
 		}
 		return false;
 	}
-	
+
 	private ListStore GetListStore (TreeView tree) {
 		return (tree.Model as TreeModelSort).Model as ListStore;
 	}
-	
+
 	private bool GetSelectedIter (TreeView tree, ref TreeIter iter) {
 		TreePath path = GetSelectedPath(tree);
 		if (path == null)
 			return false;
-		
+
 		return GetListStore(tree).GetIter(out iter, path);
 	}
-	
+
 	private TreePath GetSelectedPath (TreeView tree) {
 		TreePath[] paths = tree.Selection.GetSelectedRows();
 		if ((paths == null) || (paths.Length != 1))
 			return null;
 
 		TreePath selected = paths[0];
-		return (tree.Model as TreeModelSort).ConvertPathToChildPath(selected);	
+		return (tree.Model as TreeModelSort).ConvertPathToChildPath(selected);
 	}
-		
+
 	private void UpdateShownEncodingsPrefs () {
 		chosenNames = GetShownNames();
 		Base.Config.PrefsEncodingsShownInMenu = chosenNames;
 	}
-	
-	
+
+
 	/* Event related members */
-	
+
 	private void ConnectSignals () {
 		availableTreeView.Selection.Changed += OnAvailableSelectionChanged;
 		shownTreeView.Selection.Changed += OnShownSelectionChanged;
 	}
-	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
+
 	private void OnAvailableSelectionChanged (object o, EventArgs args) {
 		bool sensitive = (availableTreeView.Selection.CountSelectedRows() == 1);
 		buttonAdd.Sensitive = sensitive;
 	}
-	
+
 	private void OnShownSelectionChanged (object o, EventArgs args) {
 		bool sensitive = (shownTreeView.Selection.CountSelectedRows() == 1);
 		buttonRemove.Sensitive = sensitive;
 	}
-	
+
 	private void OnAvailableRowActivated (object o, RowActivatedArgs args) {
 		AddSelectedAvailableEncoding();
 	}
-		
+
 	private void OnAdd (object o, EventArgs args) {
 		AddSelectedAvailableEncoding();
 	}
-	
+
 	private void OnRemove (object o, EventArgs args) {
 		RemoveSelectedShownEncoding();
 	}
-	
+
 	private void OnShownRowActivated (object o, RowActivatedArgs args) {
 		RemoveSelectedShownEncoding();
 	}
-	
+
 }
 
 }

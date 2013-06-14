@@ -25,15 +25,15 @@ namespace SubLib.Core.Timing {
 /// <summary>Performs adjustment operations.</summary>
 public class AdjustOperator {
 	private Subtitles subtitles = null;
-	
+
 	public AdjustOperator (Subtitles subtitles) {
 		this.subtitles = subtitles;
 	}
 
 	/* Public members */
-	
+
 	/// <summary>Auto adjusts the subtitles given the correct times for the first and last subtitle.</summary>
-	/// <remarks>The subtitles are first shifted to the first subtitle's correct time, and then proportionally 
+	/// <remarks>The subtitles are first shifted to the first subtitle's correct time, and then proportionally
 	/// adjusted using the last subtitle's correct time.</remarks>
 	/// <param name="startTime">The correct start time for the first subtitle.</param>
 	/// <param name="endTime">The correct start time for the last subtitle.</param>
@@ -43,9 +43,9 @@ public class AdjustOperator {
 		int endIndex = subtitles.Collection.Count - 1;
 		return Adjust(startIndex, startTime, endIndex, endTime);
 	}
-	
+
 	/// <summary>Auto adjusts a range of subtitles given their first and last correct times.</summary>
-	/// <remarks>The subtitles are first shifted to the first subtitle's correct time, and then proportionally 
+	/// <remarks>The subtitles are first shifted to the first subtitle's correct time, and then proportionally
 	/// adjusted using the last subtitle's correct time.</remarks>
 	/// <param name="startIndex">The subtitle index to start the adjustment with.</param>
 	/// <param name="startTime">The correct start time for the first subtitle.</param>
@@ -55,9 +55,9 @@ public class AdjustOperator {
 	public bool Adjust (int startIndex, TimeSpan startTime, int endIndex, TimeSpan endTime) {
 		return SyncUtil.Sync(subtitles, startIndex, startTime, endIndex, endTime, true);
 	}
-	
+
 	/// <summary>Auto adjusts the subtitles given the correct frames for the first and last subtitle.</summary>
-	/// <remarks>The subtitles are first shifted to the first subtitle's correct frame, and then proportionally 
+	/// <remarks>The subtitles are first shifted to the first subtitle's correct frame, and then proportionally
 	/// adjusted using the last subtitle's correct frame.</remarks>
 	/// <param name="startFrame">The correct start frame for the first subtitle.</param>
 	/// <param name="endFrame">The correct start frame for the last subtitle.</param>
@@ -67,9 +67,9 @@ public class AdjustOperator {
 		int endIndex = subtitles.Collection.Count - 1;
 		return Adjust(startIndex, startFrame, endIndex, endFrame);
 	}
-	
+
 	/// <summary>Auto adjusts a range of subtitles given their first and last correct frames.</summary>
-	/// <remarks>The subtitles are first shifted to the first subtitle's correct frame, and then proportionally 
+	/// <remarks>The subtitles are first shifted to the first subtitle's correct frame, and then proportionally
 	/// adjusted using the last subtitle's correct frame.</remarks>
 	/// <param name="startIndex">The subtitle index to start the adjustment with.</param>
 	/// <param name="startFrame">The correct start frame for the first subtitle.</param>

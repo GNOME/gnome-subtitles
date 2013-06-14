@@ -24,22 +24,22 @@ using System.Text.RegularExpressions;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatPowerDivX : SubtitleFormat {
-	
+
 	internal SubtitleFormatPowerDivX () {
 		name = "Power DivX";
 		type = SubtitleType.PowerDivX;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "psb" };
 		lineBreak = "|";
-		
+
 		format = @"\{\s*\d+:\d+:\d+\s*\}\{\s*\d+:\d+:\d+\s*\}\s*.+";
-		
+
 		subtitleIn = @"\{\s*(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*\}\s*\{\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*\}\s*(?<Text>.*)";
-		
+
 		subtitleOut = "{<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>}" +
 			"{<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>}<<Text>>";
 	}
-	
+
 }
 
 }

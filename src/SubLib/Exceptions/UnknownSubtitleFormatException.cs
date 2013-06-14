@@ -27,7 +27,7 @@ public class UnknownSubtitleFormatException : ApplicationException {
 
 	public UnknownSubtitleFormatException(string message) : base(message) {
 	}
-	
+
 	public UnknownSubtitleFormatException() : base(defaultMessage) {
 	}
 

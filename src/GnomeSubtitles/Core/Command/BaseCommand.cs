@@ -29,19 +29,19 @@ public abstract class Command {
 		this.description = description;
 		this.canGroup = canGroup;
 	}
-	
+
 	public string Description {
 		get { return description; }
 	}
-	
+
 	public bool CanGroup {
 		get { return canGroup; }
 	}
-	
+
 	public bool StopsGrouping {
 		get { return stopsGrouping; }
 	}
-	
+
 	public CommandTarget Target {
 		get { return target; }
 	}
@@ -51,11 +51,11 @@ public abstract class Command {
 	public virtual void Undo () {
 		Execute();
 	}
-	
+
 	public virtual void Redo () {
 		Undo();
 	}
-	
+
 	/// <summary>Whether this command can be grouped with the last command.</summary>
 	public virtual bool CanGroupWith (Command command) {
 		return false;
@@ -65,21 +65,21 @@ public abstract class Command {
 	public virtual Command MergeWith (Command command) {
 		return command;
 	}
-	
+
 	/* Protected members */
-	
+
 	protected void SetDescription (string description) {
 		this.description = description;
 	}
-	
+
 	protected void SetStopsGrouping (bool stopsGrouping) {
 		this.stopsGrouping = stopsGrouping;
 	}
-	
+
 	protected void SetCanGroup (bool canGroup) {
 		this.canGroup = canGroup;
 	}
-	
+
 	protected virtual void SetCommandTarget (CommandTarget target) {
 		this.target = target;
 	}

@@ -40,17 +40,17 @@ public abstract class GladeDialog : BaseDialog {
 	protected GladeDialog (string filename, bool autoconnect) {
 		Init(filename, autoconnect);
 	}
-	
+
 	/* Protected members */
-	
-	/// <summary>Constructs the dialog with the specified filename, and possibly sets it as persistent.</param> 
+
+	/// <summary>Constructs the dialog with the specified filename, and possibly sets it as persistent.</param>
 	/// <param name="filename">The filename of the dialog.</param>
 	/// <param name="autoconnect">Whether to autoconnect the event handlers.</param>
 	/// <remarks>Constructing creates the dialog from its filename, autoconnects the handlers,
 	/// sets the icon and also sets the dialog as transient for the main window.</summary>
 	protected void Init (string filename, bool autoconnect) {
 		glade = new Glade.XML(null, filename, null, Base.ExecutionContext.TranslationDomain);
-		
+
 		if (autoconnect)
 			Autoconnect();
 		else

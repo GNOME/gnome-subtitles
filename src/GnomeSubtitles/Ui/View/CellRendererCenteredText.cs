@@ -27,7 +27,7 @@ namespace GnomeSubtitles.Ui.View {
 public class CellRendererCenteredText2 : CellRendererText {
 
 	public CellRendererCenteredText2 () : base() {
-		//this.Alignment = Pango.Alignment.Center;	
+		//this.Alignment = Pango.Alignment.Center;
 	}
 
 	/*protected override void Render (Drawable window, Widget widget, Rectangle backgroundArea,
@@ -45,7 +45,7 @@ public class CellRendererCenteredText2 : CellRendererText {
 			state = StateType.Prelight;
 		else
 			state = (widget.State == StateType.Insensitive ? StateType.Insensitive : StateType.Normal);
-		
+
 		Pango.Layout layout = widget.CreatePangoLayout(null);
 		layout.Alignment = Pango.Alignment.Center;
 		Pango.FontDescription fontDescription = new Pango.FontDescription();
@@ -60,7 +60,7 @@ public class CellRendererCenteredText2 : CellRendererText {
 
 		Gtk.Style.PaintLayout(widget.Style, window, state, true, cellArea, widget,
 			"cellrenderertext", cellArea.X + xOffset, cellArea.Y + yOffset, layout);
-			
+
 	}*/
 
 }

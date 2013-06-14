@@ -41,48 +41,48 @@ public class SpellLanguages {
 		GetAvailableLanguages();
 		GetEnabledFromConfig();
 	}
-	
+
 	/* Events */
 	public event BasicEventHandler ToggleEnabled = null;
 	public event BasicEventHandler TextLanguageChanged = null;
 	public event BasicEventHandler TranslationLanguageChanged = null;
-	
-	
+
+
 	/* Public members */
 
 	public ArrayList Languages {
 		get {
 			if (languages == null)
 				GetAvailableLanguages();
-			
-			return languages;		
+
+			return languages;
 		}
 	}
-	
+
 	public int ActiveTextLanguageIndex {
 		get { return GetActiveLanguageIndex(SubtitleTextType.Text); }
 	}
-	
+
 	public int ActiveTranslationLanguageIndex {
 		get { return GetActiveLanguageIndex(SubtitleTextType.Translation); }
 	}
-	
+
 	public SpellLanguage ActiveTextLanguage {
 		get { return GetActiveLanguage(SubtitleTextType.Text); }
 	}
-	
+
 	public SpellLanguage ActiveTranslationLanguage {
 		get { return GetActiveLanguage(SubtitleTextType.Translation); }
 	}
-	
+
 	public bool HasActiveTextLanguage {
 		get { return ActiveTextLanguageIndex != -1; }
 	}
-	
+
 	public bool HasActiveTranslationLanguage {
 		get { return ActiveTranslationLanguageIndex != -1; }
 	}
-	
+
 	public bool Enabled {
 		set {
 			if (value != enabled) {
@@ -93,31 +93,31 @@ public class SpellLanguages {
 		}
 		get { return enabled; }
 	}
-	
+
 	public int GetActiveLanguageIndex (SubtitleTextType textType) {
 		if (textType == SubtitleTextType.Text)
 			return activeTextLanguageIndex;
 		else
 			return activeTranslationLanguageIndex;
 	}
-	
+
 	public SpellLanguage GetActiveLanguage (SubtitleTextType textType) {
 		int index = GetActiveLanguageIndex(textType);
 		return GetLanguage(index);
 	}
-	
+
 	public SpellLanguage GetLanguage (int index) {
 		if ((index < 0) || (index >= languages.Count))
 			return null;
 		else
 			return languages[index] as SpellLanguage;
 	}
-	
+
 	public void SetActiveLanguage (SubtitleTextType textType, string languageID) {
 		int index = GetLanguageIndex(languageID);
 		SetActiveLanguageIndex(textType, index);
 	}
-		
+
 	public void SetActiveLanguageIndex (SubtitleTextType textType, int index) {
 		bool isEmpty = ((index < 0) || (index >= languages.Count));
 
@@ -126,9 +126,9 @@ public class SpellLanguages {
 			index = -1;
 		else
 			activeLanguage = languages[index] as SpellLanguage;
-	
+
 		System.Console.Error.WriteLine("Setting active language: " + (activeLanguage == null ? "none." : activeLanguage.ID));
-	
+
 		/* Set index variable */
 		if (textType == SubtitleTextType.Text)
 			activeTextLanguageIndex = index;
@@ -140,61 +140,61 @@ public class SpellLanguages {
 
 		EmitLanguageChanged(textType);
 	}
-	
+
 	/* LibEnchant imports */
-	
+
 	[DllImport ("libenchant")]
 	static extern IntPtr enchant_broker_init ();
-	
+
 	[DllImport ("libenchant")]
 	static extern void enchant_broker_free (IntPtr broker);
-	
+
 	[DllImport ("libenchant")]
 	static extern void enchant_broker_list_dicts (IntPtr broker, LanguageListHandler cb, IntPtr userdata);
 
-	
+
 	/* Private members */
-	
+
 	private void GetAvailableLanguages () {
 		if (languages == null)
 			Init();
-		
+
 		FillLanguages();
 		GetActiveLanguagesFromConfig();
 	}
-	
+
 	private void FillLanguages () {
 		IntPtr broker = enchant_broker_init ();
 		if (broker == IntPtr.Zero)
 			return;
-		
+
 		enchant_broker_list_dicts (broker, languageListHandler, IntPtr.Zero);
-			
+
 		enchant_broker_free(broker);
-		
+
 		languages.Sort();
 		System.Console.Error.WriteLine("Got " + languages.Count + " languages.");
 	}
-	
+
 	private void GetActiveLanguagesFromConfig () {
 		string activeTextLanguage = Base.Config.PrefsSpellCheckActiveTextLanguage;
 		this.activeTextLanguageIndex = GetLanguageIndex(activeTextLanguage);
-		
+
 		string activeTranslationLanguage = Base.Config.PrefsSpellCheckActiveTranslationLanguage;
 		this.activeTranslationLanguageIndex = GetLanguageIndex(activeTranslationLanguage);
 	}
-	
+
 	private void GetEnabledFromConfig () {
 		this.enabled = Base.Config.PrefsSpellCheckAutocheck;
 	}
-	
+
 	private void SetActiveLanguageInConfig (SubtitleTextType textType, string activeLanguage) {
 		if (textType == SubtitleTextType.Text)
 			Base.Config.PrefsSpellCheckActiveTextLanguage = activeLanguage;
 		else
 			Base.Config.PrefsSpellCheckActiveTranslationLanguage = activeLanguage;
 	}
-	
+
 	private int GetLanguageIndex (string languageID) {
 		for (int index = 0 ; index < languages.Count ; index++) {
 			SpellLanguage language = languages[index] as SpellLanguage;
@@ -203,38 +203,38 @@ public class SpellLanguages {
 		}
 		return -1;
 	}
-	
+
 	private void Init () {
 		languages = new ArrayList();
 		activeTextLanguageIndex = -1;
 		activeTranslationLanguageIndex = -1;
 	}
-	
+
 	/* Event members */
-	
+
 	private void OnLanguageList (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata) {
 		SpellLanguage language = new SpellLanguage(langTag);
 		if (!languages.Contains(language))
 			languages.Add(language);
 	}
-	
+
 	private void EmitToggleEnabled () {
     	if (this.ToggleEnabled != null)
     		this.ToggleEnabled();
     }
-    
+
     private void EmitLanguageChanged (SubtitleTextType textType) {
     	if (textType == SubtitleTextType.Text)
     		EmitTextLanguageChanged();
     	else
     		EmitTranslationLanguageChanged();
     }
-    
+
     private void EmitTextLanguageChanged () {
     	if (this.TextLanguageChanged != null)
     		this.TextLanguageChanged();
     }
-    
+
     private void EmitTranslationLanguageChanged () {
     	if (this.TranslationLanguageChanged != null)
     		this.TranslationLanguageChanged();

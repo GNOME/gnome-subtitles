@@ -35,7 +35,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 		this.lastTime = lastTime;
 		useTimes = true;
 	}
-	
+
 	public AdjustTimingsCommand (int firstFrame, int lastFrame, SelectionIntended selectionIntended) : base(description, false, selectionIntended, null, true) {
 		this.firstFrame = firstFrame;
 		this.lastFrame = lastFrame;
@@ -47,7 +47,7 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 			if (ApplyToAll)
 				AdjustAllSubtitlesTime();
 			else
-				AdjustSubtitlesTime();	
+				AdjustSubtitlesTime();
 		}
 		else {
 			if (ApplyToAll)
@@ -60,58 +60,58 @@ public class AdjustTimingsCommand : FixedMultipleSelectionCommand {
 
 	private void AdjustAllSubtitlesTime () {
 		Subtitles subtitles = Base.Document.Subtitles;
-		
+
 		TimeSpan oldFirstTime = subtitles[0].Times.Start;
 		TimeSpan oldLastTime = subtitles[subtitles.Count - 1].Times.Start;
-		
+
 		AdjustOperator adjustOp = new AdjustOperator(subtitles);
 		adjustOp.Adjust(firstTime, lastTime);
-		
+
 		firstTime = oldFirstTime;
 		lastTime = oldLastTime;
 	}
-	
+
 	private void AdjustAllSubtitlesFrames () {
 		Subtitles subtitles = Base.Document.Subtitles;
-		
+
 		int oldFirstFrame = subtitles[0].Frames.Start;
 		int oldLastFrame = subtitles[subtitles.Count - 1].Frames.Start;
-		
+
 		AdjustOperator adjustOp = new AdjustOperator(subtitles);
 		adjustOp.Adjust(firstFrame, lastFrame);
-		
+
 		firstFrame = oldFirstFrame;
 		lastFrame = oldLastFrame;
 	}
-	
+
 	private void AdjustSubtitlesTime () {
 		Subtitles subtitles = Base.Document.Subtitles;
-		
+
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
-		
+
 		TimeSpan oldFirstTime = subtitles[firstSubtitle].Times.Start;
 		TimeSpan oldLastTime = subtitles[lastSubtitle].Times.Start;
-		
+
 		AdjustOperator adjustOp = new AdjustOperator(subtitles);
 		adjustOp.Adjust(firstSubtitle, firstTime, lastSubtitle, lastTime);
-		
+
 		firstTime = oldFirstTime;
 		lastTime = oldLastTime;
 	}
-	
+
 	private void AdjustSubtitlesFrames () {
 		Subtitles subtitles = Base.Document.Subtitles;
-		
+
 		int firstSubtitle = Util.PathToInt(Paths[0]);
 		int lastSubtitle = Util.PathToInt(Paths[Paths.Length - 1]);
-		
+
 		int oldFirstFrame = subtitles[firstSubtitle].Frames.Start;
 		int oldLastFrame = subtitles[lastSubtitle].Frames.Start;
-		
+
 		AdjustOperator adjustOp = new AdjustOperator(subtitles);
 		adjustOp.Adjust(firstSubtitle, firstFrame, lastSubtitle, lastFrame);
-		
+
 		firstFrame = oldFirstFrame;
 		lastFrame = oldLastFrame;
 	}

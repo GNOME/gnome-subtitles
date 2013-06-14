@@ -27,7 +27,7 @@ public class EncodingNotSupportedException : ApplicationException {
 
 	public EncodingNotSupportedException (string message) : base(message) {
 	}
-	
+
 	public EncodingNotSupportedException() : base(defaultMessage) {
 	}
 

@@ -32,7 +32,7 @@ public class SubtitleTracker {
 
 	/* Delegates */
 	public delegate void VideoCurrentSubtitleChangedHandler (int indexSubtitle);
-		
+
 	/* Events */
 	public event VideoCurrentSubtitleChangedHandler CurrentSubtitleChanged;
 
@@ -49,7 +49,7 @@ public class SubtitleTracker {
 		else
 			return searchOp.FindNearTime((float)position.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
  	}
-		
+
 	public void Close(){
 		if (IsSubtitleLoaded())
 			UnSetCurrentSubtitle();
@@ -57,26 +57,26 @@ public class SubtitleTracker {
 
 
 	/* Private methods */
-	
+
 	private bool IsSubtitleLoaded () {
 		return this.subtitle != null;
 	}
-	
+
 	private bool IsTimeInCurrentSubtitle (TimeSpan time) {
 		return IsSubtitleLoaded() && (time >= this.subtitle.Times.Start) && (time <= this.subtitle.Times.End);
 	}
-	
+
 	private void SetCurrentSubtitle (int index) {
 		if (index != currentSubtitleIndex) {
-			subtitle = Base.Document.Subtitles[index];	
-			currentSubtitleIndex = index;			
+			subtitle = Base.Document.Subtitles[index];
+			currentSubtitleIndex = index;
 		}
 	}
-	
+
 	private void UnSetCurrentSubtitle () {
 		if (currentSubtitleIndex != -1) {
-			currentSubtitleIndex = -1;				
-			subtitle = null;			
+			currentSubtitleIndex = -1;
+			subtitle = null;
 		}
 	}
 
@@ -87,12 +87,12 @@ public class SubtitleTracker {
 
 
 	/* Event members */
-	
+
 	private void OnBaseInitFinished () {
-		Base.Ui.Video.Position.Changed += OnVideoPositionChanged;		
+		Base.Ui.Video.Position.Changed += OnVideoPositionChanged;
 		Base.DocumentLoaded += OnBaseDocumentLoaded;
 	}
-	
+
 	private void OnBaseDocumentLoaded (Document document) {
 		this.searchOp = new SearchOperator(document.Subtitles);
 	}
@@ -100,18 +100,18 @@ public class SubtitleTracker {
 	private void OnVideoPositionChanged (TimeSpan newPosition) {
 		if (!(Base.IsDocumentLoaded))
 			return;
-	
+
 		if (!(IsTimeInCurrentSubtitle(newPosition))) {
 			int foundSubtitle = searchOp.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
 			if (foundSubtitle == -1)
-				UnSetCurrentSubtitle();			
+				UnSetCurrentSubtitle();
 			else
 				SetCurrentSubtitle(foundSubtitle);
-			
+
 			EmitCurrentSubtitleChanged(currentSubtitleIndex);
 		}
-	}		
+	}
 
 	}
-	
+
 }

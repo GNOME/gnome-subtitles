@@ -24,7 +24,7 @@ using System;
 namespace GnomeSubtitles.Dialog.Unmanaged {
 
 public abstract class WarningDialog : MessageDialog {
-	
+
 	public WarningDialog () : base(MessageType.Warning) {
 	}
 

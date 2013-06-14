@@ -46,18 +46,18 @@ public class Document {
 		New();
 		ConnectInitSignals();
 	}
-	
+
 	public Document (string path, Encoding encoding) {
 		Open(path, encoding);
 		ConnectInitSignals();
 	}
-	
+
 	/* Events */
-	
+
 	public event DocumentModificationStatusChangedHandler ModificationStatusChanged;
-	
+
 	/* Public properties */
-	
+
 	public FileProperties TextFile {
 		get {
 			/*Note: this must be changed if the unsaved text filename is to be dynamically generated on Save time.
@@ -68,20 +68,20 @@ public class Document {
 			return textFile;
 		}
 	}
-	
+
 	public FileProperties TranslationFile {
 		get { return translationFile; }
 	}
-	
+
 	public bool IsTranslationLoaded {
 		get { return isTranslationLoaded; }
 	}
-	
+
 	/* Whether the text file properties is set */
 	public bool HasTextFileProperties {
 		get { return textFile != null; }
 	}
-	
+
 	/* Whether the translation file properties is set */
 	public bool HasTranslationFileProperties {
 		get { return translationFile != null; }
@@ -90,49 +90,49 @@ public class Document {
 	public Ui.View.Subtitles Subtitles {
 		get { return subtitles; }
 	}
-	
+
 	public bool CanTextBeSaved {
 		get { return canTextBeSaved; }
 	}
-	
+
 	public bool CanTranslationBeSaved {
 		get { return canTranslationBeSaved; }
 	}
-	
+
 	public bool WasTextModified {
 		get { return wasTextModified; }
 	}
-	
+
 	public bool WasTranslationModified {
 		get { return wasTranslationModified; }
 	}
-	
+
 	public string UnsavedTextFilename {
 		get {
 			//To translators: this is the filename for new files (before being saved for the first time)
 			return Catalog.GetString("Unsaved Subtitles");
 		}
 	}
-	
+
 	public string UnsavedTranslationFilename {
 		get {
 			string filename = (((textFile == null) || (textFile.Filename == String.Empty)) ? this.UnsavedTextFilename : textFile.FilenameWithoutExtension);
 			string language = (Base.SpellLanguages.HasActiveTranslationLanguage ? Base.SpellLanguages.ActiveTranslationLanguage.ID : String.Empty);
 			//To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
 			string translatedString = (language != String.Empty ? Catalog.GetString("{0} ({1} translation)") : Catalog.GetString("{0} (translation)"));
-			object[] args = {filename, language};			
+			object[] args = {filename, language};
 			return Core.Util.GetFormattedText(translatedString, args);
 		}
 	}
-	
+
 
 	/* Public methods */
 
 	public bool Save (FileProperties newFileProperties) {
 		SubtitleSaver saver = new SubtitleSaver();
 		saver.Save(subtitles, newFileProperties, SubtitleTextType.Text);
-		
-		textFile = saver.FileProperties;		
+
+		textFile = saver.FileProperties;
 		canTextBeSaved = true;
 
 		ClearTextModified();
@@ -164,34 +164,34 @@ public class Document {
 
 		if (newTranslationFile.SubtitleType != SubtitleType.Unknown)
 			canTranslationBeSaved = true;
-	
+
 		this.translationFile = newTranslationFile;
 		this.isTranslationLoaded = true;
 	}
-	
+
 	public void Close () {
-		DisconnectInitSignals();		
+		DisconnectInitSignals();
 	}
-	
+
 	public void CloseTranslation () {
 		RemoveTranslationFromSubtitles();
 		ClearTranslationStatus();
 	}
-	  
+
 	public bool SaveTranslation (FileProperties newFileProperties) {
 		SubtitleSaver saver = new SubtitleSaver();
 		saver.Save(subtitles, newFileProperties, SubtitleTextType.Translation);
-		
-		translationFile = saver.FileProperties;		
+
+		translationFile = saver.FileProperties;
 		canTranslationBeSaved = true;
-		
+
 		ClearTranslationModified();
 		return true;
 	}
 
 
 	/* Private methods */
-	
+
 	/* Used in the object construction. Path is used when running from the command line specifying an inexistent file. */
 	private void New (string path) {
 		New();
@@ -202,7 +202,7 @@ public class Document {
 	private void New () {
 		SubtitleFactory factory = new SubtitleFactory();
 		factory.Verbose = true;
-		
+
 		subtitles = new Ui.View.Subtitles(factory.New());
 	}
 
@@ -225,7 +225,7 @@ public class Document {
 
 		subtitles = new Ui.View.Subtitles(openedSubtitles);
 		textFile = factory.FileProperties;
-		
+
 		if (textFile.SubtitleType != SubtitleType.Unknown)
 			canTextBeSaved = true;
 	}
@@ -241,25 +241,25 @@ public class Document {
 		if (!wasTextModified) //Emit the event if text is also not in modified state
 			EmitModificationStatusChangedEvent(false);
 	}
-	
+
 	private void RemoveTranslationFromSubtitles () {
 		Translations translations = new Translations();
 		translations.Clear(subtitles);
 	}
-	
+
 	private void ClearTranslationStatus () {
 		this.isTranslationLoaded = false;
 		this.wasTranslationModified = false;
 		this.translationFile = null;
 		this.canTranslationBeSaved = false;
-		
+
 		ClearTranslationModified();
 	}
-	
+
 	private void AddExtraSubtitles (SubLib.Core.Domain.Subtitles translation) {
 		int extraCount = translation.Collection.Count - subtitles.Collection.Count;
 		if (extraCount > 0)
-			subtitles.AddExtra(extraCount);	
+			subtitles.AddExtra(extraCount);
 	}
 
 	private Encoding GetFallbackEncoding () {
@@ -273,23 +273,23 @@ public class Document {
 			return Encoding.GetEncoding(encodingDescription.CodePage);
 		}
 	}
-	
+
 	private FileProperties CreateNewTextFileProperties () {
 		return new FileProperties(this.UnsavedTextFilename);
 	}
-	
-	
-	
+
+
+
 	/* Event members */
-	
+
 	private void ConnectInitSignals () {
 		Base.CommandManager.CommandActivated += OnCommandManagerCommandActivated;
 	}
-	
+
 	private void DisconnectInitSignals () {
 		Base.CommandManager.CommandActivated -= OnCommandManagerCommandActivated;
 	}
-	
+
 	private void OnCommandManagerCommandActivated (object o, CommandActivatedArgs args) {
     	if ((args.Target == CommandTarget.Normal) && (!wasTextModified)) {
 			wasTextModified = true;
@@ -300,12 +300,12 @@ public class Document {
 			EmitModificationStatusChangedEvent(true);
 		}
 		else if ((args.Target == CommandTarget.NormalAndTranslation) && ((!wasTextModified) || (!wasTranslationModified))) {
-			wasTextModified = true;			
+			wasTextModified = true;
 			wasTranslationModified = true;
 			EmitModificationStatusChangedEvent(true);
 		}
     }
-    	
+
 	private void EmitModificationStatusChangedEvent (bool modified) {
 		if (ModificationStatusChanged != null)
 			ModificationStatusChanged(modified);

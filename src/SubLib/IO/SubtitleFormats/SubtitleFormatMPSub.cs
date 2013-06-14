@@ -24,7 +24,7 @@ namespace SubLib.IO.SubtitleFormats {
 
 //TODO: warn when opening files with comments, warn when saving lines with '#' as they will be ignored/treated as comments
 internal class SubtitleFormatMPSub : SubtitleFormat {
-	
+
 	internal SubtitleFormatMPSub () {
 		name = "MPSub";
 		type = SubtitleType.MPSub;
@@ -36,12 +36,12 @@ internal class SubtitleFormatMPSub : SubtitleFormat {
 
 		subtitleInTimesMode = @"(?<StartElapsedTime>\d+([.,]\d*)?)[^\d\n](?<EndElapsedTime>\d+([.,]\d*)?).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
 		subtitleInFramesMode = @"(?<StartElapsedFrames>\d+)[^\d\n](?<EndElapsedFrames>\d+).*(?<Text>(\n?.*(?!\n[ \f\r\t\v]*\n))*.)";
-		
+
 		subtitleOutTimesMode = "<<StartElapsedTime>> <<EndElapsedTime>>\n<<Text>>\n";
 		subtitleOutFramesMode = "<<StartElapsedFrames>> <<EndElapsedFrames>>\n<<Text>>\n";
-		
+
 		comments = "#.*";
-		
+
 		headers = new string[] {
         	@"TITLE\s*=(?<Title>.*)" ,
         	@"FILE\s*=(?<File>.*)" ,
@@ -63,7 +63,7 @@ internal class SubtitleFormatMPSub : SubtitleFormat {
 			"FORMAT=" + format + "\n" +
 			"NOTE=" + headers.Comment + "\n\n";
 	}
-		
+
 }
 
 }

@@ -30,15 +30,15 @@ public class SubtitleEditTranslation : SubtitleEditTextView {
 	public SubtitleEditTranslation (TextView textView) : base(textView) {
 		Base.InitFinished += OnBaseInitFinished;
 	}
-	
+
 	protected override SubtitleTextType GetTextType () {
 		return SubtitleTextType.Translation;
 	}
-	
+
 	protected override void ChangeSubtitleTextContent (Subtitle subtitle, string text) {
 		subtitle.Translation.Set(text);
 	}
-	
+
 	protected override string GetSubtitleTextContent (Subtitle subtitle) {
 		return subtitle.Translation.Get();
 	}
@@ -50,42 +50,42 @@ public class SubtitleEditTranslation : SubtitleEditTextView {
 	protected override void ExecuteDeleteCommand (int index, string text, int cursor) {
 		Base.CommandManager.Execute(new DeleteTranslationCommand(index, text, cursor));
 	}
-	
+
 	protected override SpellLanguage GetSpellActiveLanguage () {
 		return Base.SpellLanguages.ActiveTranslationLanguage;
 	}
-	
+
 	/* Event members */
 
 	private void OnBaseInitFinished () {
 		Base.Ui.Edit.TextEdit.ToggleOverwrite += OnTextEditToggleOverwrite;
-		
+
 		Base.TranslationLoaded += OnBaseTranslationLoaded;
 		Base.TranslationUnloaded += OnBaseTranslationUnloaded;
 	}
-	
+
 	private void OnBaseTranslationLoaded () {
 		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
-    	    	
+
     	Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
 		Base.SpellLanguages.TranslationLanguageChanged += OnSpellLanguageChanged;
-		
+
 		SetVisibility(true);
 	}
-	
+
 	private void OnBaseTranslationUnloaded () {
 		Base.Ui.View.Selection.Changed -= OnSubtitleSelectionChanged;
-		
+
 		Base.SpellLanguages.ToggleEnabled -= OnSpellToggleEnabled;
 		Base.SpellLanguages.TranslationLanguageChanged -= OnSpellLanguageChanged;
-		
+
     	SetVisibility(false);
 	}
-	
+
 	private void OnTextEditToggleOverwrite (object o, EventArgs args) {
 		ToggleOverwriteSilent();
 	}
-	
+
 
 }
 

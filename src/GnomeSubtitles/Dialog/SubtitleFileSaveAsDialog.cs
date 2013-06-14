@@ -80,14 +80,14 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	public SubtitleType SubtitleType {
 		get { return chosenSubtitleType; }
 	}
-	
+
 	public NewlineType NewlineType {
 		get { return chosenNewlineType; }
 	}
 
-	
+
 	/* Private members */
-	
+
 	private void InitEncodingComboBox () {
 		int fixedEncoding = GetFixedEncoding();
 		ConfigFileSaveEncoding encodingConfig = Base.Config.PrefsDefaultsFileSaveEncoding;
@@ -127,7 +127,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 		this.newlineComboBoxComponent = new NewlineTypeComboBox(newlineTypeComboBox, newlineTypeToSelect, null);
 	}
-	
+
 	private void SetTitle () {
 		if (textType == SubtitleTextType.Text)
 			dialog.Title = Catalog.GetString("Save As");
@@ -152,7 +152,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			return SubtitleType.Unknown;
 		}
 	}
-	
+
 	private void SetDialogFromFileProperties () {
 		/* Set folder */
 		if ((textType == SubtitleTextType.Translation) && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted)
@@ -161,7 +161,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 			dialog.SetCurrentFolder(Base.Document.TextFile.Directory);
 		else
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-		
+
 		/* Set filename */
 		FileProperties fileProperties = (textType == SubtitleTextType.Text ? Base.Document.TextFile : Base.Document.TranslationFile);
 		if ((fileProperties != null) && (fileProperties.Filename != String.Empty))
@@ -169,15 +169,15 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 		else
 			dialog.CurrentName = (textType == SubtitleTextType.Text ? Base.Document.UnsavedTextFilename : Base.Document.UnsavedTranslationFilename);
 	}
-	
-	
+
+
 	private string UpdateFilenameExtension (string filename, SubtitleType type) {
 		SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
 		string newExtensionDotted = "." + typeInfo.PreferredExtension;
 
 		int index = -1;
 		string extensionDotted = "." + GetFilenameExtension(filename, out index);
-		
+
 		if (extensionDotted == newExtensionDotted) //filename already has the correct extension
 			return filename;
 		else if (index == -1) //filename doesn't have an extension, appending
@@ -201,7 +201,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 		else
 			return filename + "." + typeInfo.PreferredExtension;
 	}
-	
+
 	/// <summary>Returns the extension for the specified filename.</summary>
 	private string GetFilenameExtension (string filename, out int index) {
 		int dotIndex = filename.LastIndexOf('.');

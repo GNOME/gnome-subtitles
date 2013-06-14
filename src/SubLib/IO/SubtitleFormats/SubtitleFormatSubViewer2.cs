@@ -24,20 +24,20 @@ using System.Text.RegularExpressions;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatSubViewer2 : SubtitleFormat {
-	
+
 	internal SubtitleFormatSubViewer2 () {
 		name = "SubViewer 2.0";
 		type = SubtitleType.SubViewer2;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "sub" };
 		lineBreak = "[br]";
-		
+
 		format = @"\d\d:\d\d:\d\d.\d\d,\d\d:\d\d:\d\d.\d\d";
-		
+
 		subtitleIn = @"(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*\.\s*(?<StartCentiseconds>\d+)\s*,\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*\.\s*(?<EndCentiseconds>\d+).*\n(?<Text>.*)";
-		
+
 		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>.<<StartCentiseconds>>,<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>.<<EndCentiseconds>>\n<<Text>>\n";
-		
+
 		headers = new string[] {
         	@"\[\s*TITLE\s*\](?<Title>.*)" ,
         	@"\[\s*AUTHOR\s*\](?<Author>.*)" ,
@@ -53,10 +53,10 @@ internal class SubtitleFormatSubViewer2 : SubtitleFormat {
         	@"\[\s*FONT\s*\](?<FontName>[^,\[\n]*)"
 		};
 	}
-	
+
 	internal override string HeadersToString (SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		Headers headers = subtitleProperties.Headers;
-		return "[INFORMATION]\n" + 
+		return "[INFORMATION]\n" +
 			"[TITLE]" + headers.Title + "\n" +
 			"[AUTHOR]" + headers.Author + "\n" +
 			"[SOURCE]" + headers.VideoSource + "\n" +

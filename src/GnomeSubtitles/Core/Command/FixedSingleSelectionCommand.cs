@@ -23,7 +23,7 @@ namespace GnomeSubtitles.Core.Command {
 
 public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 	private bool reselect = false;
-	
+
 	public FixedSingleSelectionCommand (string description, bool canGroup, bool reselect) : base(description, canGroup) {
 		this.reselect = reselect;
 	}
@@ -32,14 +32,14 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 		bool completed = ChangeValues();
 		if (!completed)
 			return false;
-		
+
 		if (reselect)
 			Base.Ui.View.Selection.Select(Path, true, true);
 		else {
 			Base.Ui.View.Selection.ScrollToFocus(Path, true);
 			Base.Ui.View.Refresh();
 		}
-		
+
 		PostProcess();
 		return true;
 	}
@@ -49,13 +49,13 @@ public abstract class FixedSingleSelectionCommand : SingleSelectionCommand {
 		Base.Ui.View.Selection.Select(Path, true, true);
 		PostProcess();
 	}
-	
+
 	/* Methods to be extended */
-	
+
 	protected virtual bool ChangeValues () {
 		return true;
 	}
-	
+
 	protected virtual void PostProcess () {
 		return;
 	}

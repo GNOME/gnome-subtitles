@@ -28,7 +28,7 @@ public class DeleteTextCommand : DeleteTextContentCommand {
 
 	public DeleteTextCommand (int index, string text, int cursor) : base(description, index, text, cursor) {
 	}
-	
+
 	protected override SubtitleEditTextView GetTextView () {
 		return Base.Ui.Edit.TextEdit;
 	}

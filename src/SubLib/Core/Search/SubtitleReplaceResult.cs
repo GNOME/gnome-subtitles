@@ -32,7 +32,7 @@ public class SubtitleReplaceResult {
 		this.text = text;
 		this.translation = translation;
 	}
-	
+
 	/* Public properties */
 
 	public int Number {

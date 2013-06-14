@@ -41,38 +41,38 @@ public class SubtitleTypeInfo : IComparable {
 		this.mode = mode;
 		this.extensions = extensions;
 	}
-	
+
 	/// <summary>The name of the subtitle type.</summary>
 	public string Name {
 		get { return name; }
 	}
-	
+
 	/// <summary>The subtitle type.</summary>
 	public SubtitleType Type {
 		get { return type; }
 	}
-	
+
 	/// <summary>The subtitle mode.</summary>
 	public SubtitleMode Mode {
 		get { return mode; }
 	}
-	
+
 	/// <summary>The extensions the subtitle type uses.</summary>
 	public string[] Extensions {
 		get { return extensions; }
 	}
-	
+
 	/// <summary>A comma-separated list of the extensions the subtitle type uses.
 	/// The prefix "*." is added to every extension.</summary>
 	public string ExtensionsAsText {
 		get { return ExtensionsToText(); }
 	}
-	
+
 	/// <summary>The preferred extension, which is the first on the list.</summary>
 	public string PreferredExtension {
 		get { return extensions[0]; }
 	}
-	
+
 	/// <summary>Checks whether the specified extension is one of the extensions of the <see cref="SubtitleType" /></summary>
 	/// <param name="extension">The extension to search for.</param>
 	/// <returns>True if the extension was found, False otherwise.</returns>
@@ -83,7 +83,7 @@ public class SubtitleTypeInfo : IComparable {
 		}
 		return false;
 	}
-	
+
 	/// <summary>Compares this instance with a specified object, based on the object names.
 	/// See <see cref="String.CompareTo(object)" /> for more information.</summary>
 	/// <param name="obj">The object to compare this class to.</param>
@@ -101,23 +101,23 @@ public class SubtitleTypeInfo : IComparable {
 	}
 
 	/* Internal members */
-	
+
 	internal SubtitleTypeInfo (SubtitleFormat format) : this(format.Name, format.Type, format.Mode, format.Extensions) {
 	}
 
 	/* Private members */
-	
+
 	private string ExtensionsToText () {
 		if (extensions == null)
 			return String.Empty;
-			
+
 		string text = ExtensionToText(extensions[0]);
 		for (int count = 1 ; count < extensions.Length ; count++)
 			text += ", " + ExtensionToText(extensions[count]);
-			
-		return text;		
+
+		return text;
 	}
-	
+
 	private string ExtensionToText (string extension) {
 		return "*." + extension;
 	}

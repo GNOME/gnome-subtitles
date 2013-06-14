@@ -27,7 +27,7 @@ public class TranslatorException : ApplicationException {
 
 	public TranslatorException (string message) : base(message) {
 	}
-	
+
 	public TranslatorException() : base(defaultMessage) {
 	}
 

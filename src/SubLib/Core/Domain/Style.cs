@@ -21,16 +21,16 @@ using System;
 using System.Collections;
 
 namespace SubLib.Core.Domain {
-	
+
 /// <summary>Represents a text style, including Bold, Italic and Underline.</summary>
 public class Style : ICloneable {
 	private bool bold = false;
 	private bool italic = false;
 	private bool underline = false;
-	
+
 	/// <summary>Initializes a new instance of the <see cref="SubLib.Style" /> class.</summary>
 	public Style () {}
-	
+
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Style" /> class, given the
 	/// specified style values.</summary>
@@ -45,25 +45,25 @@ public class Style : ICloneable {
 
 
 	/* Public properties */
-	
+
 	/// <summary>Whether the style is bold.</summary>
 	public bool Bold {
 		get { return bold; }
 		set { bold = value; }
 	}
-	
+
 	/// <summary>Whether the style is italic.</summary>
 	public bool Italic {
 		get { return italic; }
 		set { italic = value; }
 	}
-	
+
 	/// <summary>Whether the style is underlined.</summary>
 	public bool Underline {
 		get { return underline; }
 		set { underline = value; }
 	}
-	
+
 	/// <summary>Whether any of the style values is enabled.</summary>
 	public bool Enabled {
 		get { return Bold || Italic || Underline; }
@@ -79,8 +79,8 @@ public class Style : ICloneable {
   			result += " underline";
   		return result;
 	}
-	
-	
+
+
 	/* Public methods */
 
 	public object Clone() {

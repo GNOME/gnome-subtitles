@@ -45,7 +45,7 @@ public class Encodings {
 		new EncodingDescription(28605, "ISO-8859-15", Catalog.GetString("Western")),
 		new EncodingDescription(28606, "ISO-8859-16", Catalog.GetString("Romanian")),
 		/* ISO-8859-8-I not used */
-		
+
 		new EncodingDescription(65001, "UTF-8", Catalog.GetString("Unicode")), /* Added */
 		new EncodingDescription(65000, "UTF-7", Catalog.GetString("Unicode")),
 		new EncodingDescription(1200, "UTF-16", Catalog.GetString("Unicode")),
@@ -60,19 +60,19 @@ public class Encodings {
 		new EncodingDescription(951, "BIG5-HKSCS", Catalog.GetString("Chinese Traditional")),
 		new EncodingDescription(866, "CP866", Catalog.GetString("Cyrillic/Russian")),
 		/* ARMSCII-8 not used */
-		
+
 		new EncodingDescription(51932, "EUC-JP", Catalog.GetString("Japanese")),
 		new EncodingDescription(932, "CP932", Catalog.GetString("Japanese")),
 		/* EUC-JP-MS not used */
-		
+
 		new EncodingDescription(51949, "EUC-KR", Catalog.GetString("Korean")),
 		/* EUC-TW not used */
-		
+
 		new EncodingDescription(54936, "GB18030", Catalog.GetString("Chinese Simplified")),
 		new EncodingDescription(936, "GB2312", Catalog.GetString("Chinese Simplified")),
 		new EncodingDescription(936, "GBK", Catalog.GetString("Chinese Simplified")),
 		/* GEOSTD8, HZ not used */
-		
+
 		new EncodingDescription(850, "IBM850", Catalog.GetString("Western")),
 		new EncodingDescription(852, "IBM852", Catalog.GetString("Central European")),
 		new EncodingDescription(855, "IBM855", Catalog.GetString("Cyrillic")),
@@ -85,17 +85,17 @@ public class Encodings {
 		new EncodingDescription(865, "IBM865", Catalog.GetString("Nordic")), /* Added */
 		new EncodingDescription(866, "IBM866", Catalog.GetString("Cyrillic")), /* Added */
 		new EncodingDescription(869, "IBM869", Catalog.GetString("Greek")), /* Added */
-		
+
 		new EncodingDescription(50221, "ISO-2022-JP", Catalog.GetString("Japanese")),
 		new EncodingDescription(50225, "ISO-2022-KR", Catalog.GetString("Korean")),
 		new EncodingDescription(1361, "JOHAB", Catalog.GetString("Korean")),
 		new EncodingDescription(20866, "KOI8-R", Catalog.GetString("Cyrillic")),
 		new EncodingDescription(21866, "KOI8-U", Catalog.GetString("Cyrillic/Ukrainian")), /* Added */
 		/* ISO-IR-111, KOI8R, KOI8U not used */
-		
+
 		new EncodingDescription(932, "SHIFT_JIS", Catalog.GetString("Japanese")),
 		/* TCVN, TIS-620, UHC, VISCII not used */
-		
+
 		new EncodingDescription(1250, "WINDOWS-1250", Catalog.GetString("Central")),
 		new EncodingDescription(1251, "WINDOWS-1251", Catalog.GetString("Cyrillic")),
 		new EncodingDescription(1252, "WINDOWS-1252", Catalog.GetString("Western")),
@@ -106,20 +106,20 @@ public class Encodings {
 		new EncodingDescription(1257, "WINDOWS-1257", Catalog.GetString("Baltic")),
 		new EncodingDescription(1258, "WINDOWS-1258", Catalog.GetString("Vietnamese")),
 	};
-	
+
 	/* Public properties */
-	
+
 	public static EncodingDescription[] All {
-		get { return descriptions; }	
+		get { return descriptions; }
 	}
 
 	public static EncodingDescription SystemDefault {
 		get {
 			string description = Catalog.GetString("Current Locale");
-			
+
 			Encoding defaultEncoding = Encoding.Default;
 			int codePage = defaultEncoding.CodePage;
-		
+
 			string name = String.Empty;
 			EncodingDescription tempDesc = EncodingDescription.Empty;
 			if (Find(codePage, ref tempDesc))
@@ -130,9 +130,9 @@ public class Encodings {
 			return new EncodingDescription(codePage, name, description);
 		}
 	}
-	
+
 	/* Public methods */
-	
+
 	/// <summary>Finds the description for the encoding with the specified name.</summary>
 	/// <param name="name">The encoding's name.</param>
 	/// <param name="description">The encoding's description that was found.</param>
@@ -146,7 +146,7 @@ public class Encodings {
 		}
 		return false;
 	}
-	
+
 	public static bool Find (int codePage, ref EncodingDescription description) {
 		foreach (EncodingDescription desc in descriptions) {
 			if (desc.CodePage == codePage) {
@@ -156,7 +156,7 @@ public class Encodings {
 		}
 		return false;
 	}
-	
+
 	public static string GetEncodingName (int codePage) {
 		EncodingDescription desc = EncodingDescription.Empty;
 		if (Find(codePage, ref desc))

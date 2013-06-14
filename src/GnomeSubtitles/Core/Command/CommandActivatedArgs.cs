@@ -27,7 +27,7 @@ public class CommandActivatedArgs : EventArgs {
 	public CommandActivatedArgs (CommandTarget target) {
 		this.target = target;
 	}
-	
+
 	public CommandTarget Target {
 		get { return target; }
 	}

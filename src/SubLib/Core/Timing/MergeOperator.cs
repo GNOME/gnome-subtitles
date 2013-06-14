@@ -25,13 +25,13 @@ namespace SubLib.Core.Timing {
 /// <summary>Performs merge operations.</summary>
 public class MergeOperator {
 	private Subtitles subtitles = null;
-	
+
 	public MergeOperator (Subtitles subtitles) {
 		this.subtitles = subtitles;
 	}
 
 	/* Public members */
-	
+
 	public bool Merge (int firstSubtitleNumber, int lastSubtitleNumber) {
 		if (!isOperationValid(firstSubtitleNumber, lastSubtitleNumber))
 			return false;
@@ -40,17 +40,17 @@ public class MergeOperator {
 			return true;
 		}
 	}
-	
-	
+
+
 	/* Private members */
-	
+
 	/// <summary>Splits a subtitle in two halves. The subtitle passed as parameter is turned into the first half and the second half is returned.</summary>
 	/// <param name="subtitles">The subtitle to split</param>
 	/// <param name="subtitleProperties">The subtitle properties</param>
 	/// <param name="timeBetweenSubtitles">Time between the 2 subtitles, in milliseconds</param>
 	private void Merge (Subtitles subtitles, int firstSubtitleNumber, int lastSubtitleNumber) {
 		Subtitle firstSubtitle = subtitles.Collection[firstSubtitleNumber];
-		
+
 		/* Add lines */
 		for (int currentSubtitleNumber = firstSubtitleNumber + 1 ; currentSubtitleNumber <= lastSubtitleNumber ; currentSubtitleNumber++) {
 			Subtitle currentSubtitle = subtitles.Collection[currentSubtitleNumber];
@@ -59,16 +59,16 @@ public class MergeOperator {
 				firstSubtitle.Translation.Add(currentSubtitle.Translation.GetLines());
 			}
 		}
-		
+
 		/* Set times */
 		Subtitle lastSubtitle = subtitles.Collection[lastSubtitleNumber];
 		firstSubtitle.Times.End = lastSubtitle.Times.End;
 	}
-	
+
 	bool isOperationValid (int firstSubtitleNumber, int lastSubtitleNumber) {
 		if (firstSubtitleNumber > lastSubtitleNumber)
 			return false;
-			
+
 		Subtitle firstSubtitle = subtitles.Collection[firstSubtitleNumber];
 		Subtitle lastSubtitle = subtitles.Collection[lastSubtitleNumber];
 		return (firstSubtitle != null) && (lastSubtitle != null) && (firstSubtitle.Times.Start <= lastSubtitle.Times.End);

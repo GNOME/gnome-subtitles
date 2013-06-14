@@ -28,17 +28,17 @@ public class VideoSetSubtitleStartCommand : ChangeStartCommand {
 	public VideoSetSubtitleStartCommand (int frames) : base(frames, false) {
 		SetCommandProperties();
 	}
-	
+
 	public VideoSetSubtitleStartCommand (TimeSpan time) : base(time, false) {
 		SetCommandProperties();
 	}
-	
+
 	/* Private methods */
-	
+
 	private void SetCommandProperties () {
 		SetDescription(description);
 		SetCanGroup(false);
-	}	
+	}
 }
 
 public class VideoSetSubtitleEndCommand : ChangeEndCommand {
@@ -47,17 +47,17 @@ public class VideoSetSubtitleEndCommand : ChangeEndCommand {
 	public VideoSetSubtitleEndCommand (int frames) : base(frames, false) {
 		SetCommandProperties();
 	}
-	
+
 	public VideoSetSubtitleEndCommand (TimeSpan time) : base(time, false) {
 		SetCommandProperties();
 	}
-	
+
 	/* Private methods */
-	
+
 	private void SetCommandProperties () {
 		SetDescription(description);
 		SetCanGroup(false);
-	}	
+	}
 }
 
 }

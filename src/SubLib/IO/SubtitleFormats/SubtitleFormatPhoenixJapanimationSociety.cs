@@ -25,23 +25,23 @@ namespace SubLib.IO.SubtitleFormats {
 
 //TODO: support empty lines
 internal class SubtitleFormatPhoenixJapanimationSociety : SubtitleFormat {
-		
+
 	internal SubtitleFormatPhoenixJapanimationSociety() {
 		name = "Phoenix Japanimation Society";
 		type = SubtitleType.PhoenixJapanimationSociety;
 		mode = SubtitleMode.Frames;
 		extensions = new string[] { "pjs" };
-		
+
 		lineBreak = "|";
-		
+
 		format = @"\s*\d+,\s*\d+,\s*"".+""";
-		
+
 		subtitleIn = @"\s*(?<StartFrame>\d+),\s*(?<EndFrame>\d+),\s*""(?<Text>.+)""";
-		
+
 		subtitleOut = "\t<<StartFrame>>,\t<<EndFrame>>, \"<<Text>>\"";
-		
+
 	}
-	
+
 }
 
 }

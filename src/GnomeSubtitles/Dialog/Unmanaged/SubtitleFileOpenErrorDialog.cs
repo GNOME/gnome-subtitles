@@ -31,7 +31,7 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 	}
 
 	/* Overriden members */
-	
+
 	protected override string SecondaryTextFromException (Exception exception) {
 		if (exception is UnknownSubtitleFormatException)
 			return Catalog.GetString("Unable to detect the subtitle format. Please check that the file type is supported.");

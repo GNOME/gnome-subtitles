@@ -24,26 +24,26 @@ namespace GnomeSubtitles.Ui.VideoPreview.Exceptions {
 public class PlayerEngineException : ApplicationException {
 	private string error = String.Empty;
 	private string debug = String.Empty;
-	
+
 	public PlayerEngineException (string error, string debug) {
 		this.error = error;
 		this.debug = debug;
 	}
-	
+
 	/* Properties */
-	
+
 	public string Error {
 		get { return error; }
 	}
-	
+
 	public string Debug {
 		get { return debug; }
 	}
-	
+
 	/* Public methods */
-	
+
 	public override string ToString () {
-		return this.error + "; " + this.debug;	
+		return this.error + "; " + this.debug;
 	}
 }
 

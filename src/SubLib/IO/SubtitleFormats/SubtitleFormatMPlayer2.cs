@@ -23,18 +23,18 @@ using System;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatMPlayer2 : SubtitleFormat {
-    
+
     internal SubtitleFormatMPlayer2 () {
 		name = "MPlayer2";
 		type = SubtitleType.MPlayer2;
 		mode = SubtitleMode.Times;
     	extensions = new string[] { "mpl" };
 		lineBreak = "|";
-		
+
 		format = @"\[\d+\]\[\d+\]";
-		
+
 		subtitleIn = @"\[\s*(?<StartDeciseconds>\d+)\s*\]\[\s*(?<EndDeciseconds>\d+)\s*\](?<Text>.*)";
-		
+
 		subtitleOut = "[<<StartTotalDeciseconds>>][<<EndTotalDeciseconds>>]<<Text>>";
 	}
 }

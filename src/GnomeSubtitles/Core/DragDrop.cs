@@ -25,7 +25,7 @@ namespace GnomeSubtitles.Core {
 
 public class DragDrop {
 	private TargetEntry targetUriList = new TargetEntry("text/uri-list", 0, DragDropTargetUriList);
-    
+
 	/* Public constants */
 	public const uint DragDropTargetUriList = 0;
 
@@ -36,7 +36,7 @@ public class DragDrop {
 
 
 	/* Private members */
-	
+
 	private void SetDropTargets () {
 		TargetEntry[] targetEntries = new TargetEntry[] { targetUriList };
 		Gtk.Drag.DestSet(Base.GetWidget(WidgetNames.SubtitleAreaVBox), DestDefaults.All, targetEntries, DragAction.Copy);

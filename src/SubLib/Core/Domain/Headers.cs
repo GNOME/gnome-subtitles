@@ -22,7 +22,7 @@ using System.IO;
 using System.Text;
 
 namespace SubLib.Core.Domain {
-	
+
 /// <summary>Represents the headers of the supported subtitle formats.</summary>
 public class Headers : ICloneable {
 
@@ -58,9 +58,9 @@ public class Headers : ICloneable {
 	private int delay = 0;
 	private int cdTrack = 0;
 
-	
+
 	/* Public properties */
-	
+
 	/// <summary>The movie's title.</summary>
 	public string Title {
 		get { return title; }
@@ -72,7 +72,7 @@ public class Headers : ICloneable {
 		get { return author; }
 		set { author = value; }
 	}
-	
+
 	/// <summary>The movie's author.</summary>
 	public string MovieAuthor {
 		get { return movieAuthor; }
@@ -84,19 +84,19 @@ public class Headers : ICloneable {
 		get { return artist; }
 		set { artist = value; }
 	}
-	
+
 	/// <summary>The subtitles' album.</summary>
 	public string Album {
 		get { return album; }
 		set { album = value; }
 	}
-	
+
 	/// <summary>The video' source.</summary>
 	public string VideoSource {
 		get { return videoSource; }
 		set { videoSource = value; }
 	}
-	
+
 	/// <summary>The subtitles' source.</summary>
 	public string SubtitlesSource {
 		get { return subtitlesSource; }
@@ -114,13 +114,13 @@ public class Headers : ICloneable {
 		get { return version; }
 		set { version = value; }
 	}
-	
+
 	/// <summary>A comment or note on the subtitles.</summary>
 	public string Comment {
 		get { return comment; }
 		set { comment = value; }
 	}
-	
+
 	/// <summary>The subtitles' font color.</summary>
 	public string FontColor {
 		get { return fontColor; }
@@ -138,13 +138,13 @@ public class Headers : ICloneable {
 		get { return fontName; }
 		set { fontName = value; }
 	}
-	
+
 	/// <summary>The File properties, in the format 'size,md5'.</summary>
 	public string FileProperties {
 		get { return fileProperties; }
 		set { fileProperties = value; }
 	}
-	
+
 	/// <summary>The Media Type of the subtitles, which can be 'VIDEO' or 'AUDIO'.</summary>
 	/// <remarks>This property is only set if the value is 'VIDEO' or 'AUDIO'. It's case insensitive.</remarks>
 	public string MediaType {
@@ -155,49 +155,49 @@ public class Headers : ICloneable {
 				mediaType = type;
 		}
 	}
-	
+
 	/// <summary>The Original Script of the subtitles.</summary>
 	public string OriginalScript {
 		get { return originalScript; }
 		set { originalScript = value; }
 	}
-	
+
 	/// <summary>The Original Translation of the subtitles.</summary>
 	public string OriginalTranslation {
 		get { return originalTranslation; }
 		set { originalTranslation = value; }
 	}
-	
+
 	/// <summary>The Original Editing of the subtitles.</summary>
 	public string OriginalEditing {
 		get { return originalEditing; }
 		set { originalEditing = value; }
 	}
-	
+
 	/// <summary>The Original Timing of the subtitles.</summary>
 	public string OriginalTiming {
 		get { return originalTiming; }
 		set { originalTiming = value; }
 	}
-	
+
 	/// <summary>The Original Script Checking of the subtitles.</summary>
 	public string OriginalScriptChecking {
 		get { return originalScriptChecking; }
 		set { originalScriptChecking = value; }
 	}
-	
+
 	/// <summary>The Script Updated By of the subtitles.</summary>
 	public string ScriptUpdatedBy {
 		get { return scriptUpdatedBy; }
 		set { scriptUpdatedBy = value; }
 	}
-	
+
 	/// <summary>The Collisions of the subtitles.</summary>
 	public string Collisions {
 		get { return collisions; }
 		set { collisions = value; }
 	}
-	
+
 	/// <summary>The Timer of the subtitles.</summary>
 	public string Timer {
 		get { return timer; }
@@ -209,23 +209,23 @@ public class Headers : ICloneable {
 		get { return frameRate; }
 		set { frameRate = value; }
 	}
-	
+
 	/// <summary>The subtitles' date.</summary>
 	public string Date {
 		get { return date; }
 		set { date = value; }
 	}
-	
+
 	/// <summary>The PlayResX of the subtitles.</summary>
 	public int PlayResX {
 		get { return playResX; }
 		set { playResX = value; }
 	}
-	
+
 	/// <summary>The PlayResX of the subtitles as text.</summary>
 	public string PlayResXAsText {
 		get { return playResX.ToString(); }
-		set { 
+		set {
 			try {
 				playResX = Convert.ToInt32(value);
 			}
@@ -233,17 +233,17 @@ public class Headers : ICloneable {
 			}
 		 }
 	}
-	
+
 	/// <summary>The PlayResY of the subtitles.</summary>
 	public int PlayResY {
 		get { return playResY; }
 		set { playResY = value; }
 	}
-	
+
 	/// <summary>The PlayResY of the subtitles as text.</summary>
 	public string PlayResYAsText {
 		get { return playResY.ToString(); }
-		set { 
+		set {
 			try {
 				playResY = Convert.ToInt32(value);
 			}
@@ -251,13 +251,13 @@ public class Headers : ICloneable {
 			}
 		 }
 	}
-	
+
 	/// <summary>The PlayDepth of the subtitles.</summary>
 	public int PlayDepth {
 		get { return playDepth; }
 		set { playDepth = value; }
 	}
-	
+
 	/// <summary>The PlayResY of the subtitles as text.</summary>
 	public string PlayDepthAsText {
 		get { return playDepth.ToString(); }
@@ -269,17 +269,17 @@ public class Headers : ICloneable {
 			}
 		 }
 	}
-	
+
 	/// <summary>The subtitles' font size.</summary>
 	public int FontSize {
 		get { return fontSize; }
 		set { fontSize = value; }
 	}
-	
+
 	/// <summary>The subtitles' font size as text.</summary>
 	public string FontSizeAsText {
 		get { return fontSize.ToString(); }
-		set { 
+		set {
 			try {
 				fontSize = Convert.ToInt32(value);
 			}
@@ -287,17 +287,17 @@ public class Headers : ICloneable {
 			}
 		 }
 	}
-	
+
 	/// <summary>The delay of the subtitles.</summary>
 	public int Delay {
 		get { return delay; }
 		set { delay = value; }
 	}
-	
+
 	/// <summary>The delay of the subtitles as text.</summary>
 	public string DelayAsText {
 		get { return delay.ToString(); }
-		set { 
+		set {
 			try {
 				delay = Convert.ToInt32(value);
 			}
@@ -305,17 +305,17 @@ public class Headers : ICloneable {
 			}
 		 }
 	}
-		
+
 	/// <summary>The CD track of the subtitles.</summary>
 	public int CDTrack {
 		get { return cdTrack; }
 		set { cdTrack = value; }
 	}
-	
+
 	/// <summary>The CD track of the subtitles as text.</summary>
 	public string CDTrackAsText {
 		get { return cdTrack.ToString(); }
-		set { 
+		set {
 			try {
 				cdTrack = Convert.ToInt32(value);
 			}
@@ -326,11 +326,11 @@ public class Headers : ICloneable {
 
 
 	/* Public methods */
-	
+
 	public object Clone () {
 		return this.MemberwiseClone();
 	}
-	
+
 }
 
 }

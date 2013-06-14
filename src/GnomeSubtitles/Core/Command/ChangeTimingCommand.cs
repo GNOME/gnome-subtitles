@@ -27,16 +27,16 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	private TimeSpan storedTime;
 	private int storedFrames = -1;
 	private bool seekAfterChange = false; //TODO put this in upper classes
-	
+
 	/* Protected variables */
 	protected Subtitle subtitle = null;
-	
+
 	public ChangeTimingCommand (int frames, string description, bool seekAfterChange): base(description, true, true) {
 		this.subtitle = Base.Document.Subtitles[Path];
 		this.storedFrames = frames;
 		this.seekAfterChange = seekAfterChange;
 	}
-	
+
 	public ChangeTimingCommand (TimeSpan time, string description, bool seekAfterChange): base(description, true, true) {
 		this.subtitle = Base.Document.Subtitles[Path];
 		this.storedTime = time;
@@ -44,7 +44,7 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 	}
 
 	public override bool CanGroupWith (Command command) {
-		return (Util.PathsAreEqual(Path, (command as ChangeTimingCommand).Path));	
+		return (Util.PathsAreEqual(Path, (command as ChangeTimingCommand).Path));
 	}
 
 	protected override bool ChangeValues () {
@@ -58,7 +58,7 @@ public abstract class ChangeTimingCommand : FixedSingleSelectionCommand {
 		storedTime = previousTime;
 		return true;
 	}
-	
+
 	protected override void PostProcess () {
 		if (this.seekAfterChange) {
 			Base.Ui.Video.SeekToSelection(true);
@@ -75,20 +75,20 @@ public class ChangeStartCommand : ChangeTimingCommand {
 
 	public ChangeStartCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
-	
+
 	public ChangeStartCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
-	
+
 	/* Overriden methods */
 
 	protected override TimeSpan GetPreviousTime () {
 		return subtitle.Times.Start;
 	}
-	
+
 	protected override void SetTime (TimeSpan storedTime) {
 		subtitle.Times.Start = storedTime;
 	}
-	
+
 	protected override void SetFrames (int storedFrames) {
 		subtitle.Frames.Start = storedFrames;
 	}
@@ -99,18 +99,18 @@ public class ChangeEndCommand : ChangeTimingCommand {
 
 	public ChangeEndCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
-	
+
 	public ChangeEndCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
 		return subtitle.Times.End;
 	}
-	
+
 	protected override void SetTime (TimeSpan storedTime) {
 		subtitle.Times.End = storedTime;
 	}
-	
+
 	protected override void SetFrames (int storedFrames) {
 		subtitle.Frames.End = storedFrames;
 	}
@@ -121,18 +121,18 @@ public class ChangeDurationCommand : ChangeTimingCommand {
 
 	public ChangeDurationCommand (int frames, bool seekAfterChange): base(frames, description, seekAfterChange) {
 	}
-	
+
 	public ChangeDurationCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
 
 	protected override TimeSpan GetPreviousTime () {
 		return subtitle.Times.Duration;
 	}
-	
+
 	protected override void SetTime (TimeSpan storedTime) {
 		subtitle.Times.Duration = storedTime;
 	}
-	
+
 	protected override void SetFrames (int storedFrames) {
 		subtitle.Frames.Duration = storedFrames;
 	}

@@ -21,15 +21,15 @@ using SubLib.Core.Domain;
 
 namespace SubLib.Core {
 
-/// <summary>Allows to import translation subtitles into existing subtitles.</summary>	
+/// <summary>Allows to import translation subtitles into existing subtitles.</summary>
 public class Translations {
 
 	/// <summary>Creates a new instance of the <see cref="Translations" /> class.</summary>
 	public Translations () {
 	}
-	
+
 	/* Public methods */
-	
+
 	//TODO have more elaborate heuristics, taking the times into account and reporting errors
 	/// <summary>Imports translated subtitles into existing subtitles.</summary>
 	/// <param name="subtitles">The subtitles to import the translation to.</param>
@@ -38,14 +38,14 @@ public class Translations {
 		AddExtraSubtitles(subtitles, translation, timeBetweenSubtitles);
 		CopyTranslation(subtitles, translation);
 	}
-	
+
 	/// <summary>Removes the entire translation from existing subtitles.</summary>
 	/// <param name="subtitles">The subtitles to remove the translation from.</param>
 	public void Clear (Subtitles subtitles) {
 		foreach (Subtitle subtitle in subtitles.Collection)
 			subtitle.ClearTranslation();
 	}
-	
+
 	/* Private methods */
 
 	/// <summary>Adds the number of subtitles that the translation has more than the original subtitles.</summary>
@@ -62,18 +62,18 @@ public class Translations {
 
 		if (extraCount <= 0)
 			return;
-		
+
 		for (int position = subtitlesCount - 1 ; position < translationCount - 1 ; position++) {
 			subtitles.Collection.AddNewAfter(position, subtitles.Properties, timeBetweenSubtitles);
 		}
 	}
-	
+
 	/// <summary>Copies the translation to the subtitles.</summary>
 	private void CopyTranslation (Subtitles subtitles, Subtitles translation) {
 		for (int subtitleNumber = 0 ; subtitleNumber < translation.Collection.Count ; subtitleNumber++) {
 			Subtitle translated = translation.Collection[subtitleNumber];
 			Subtitle original = subtitles.Collection[subtitleNumber];
-			
+
 			string translatedText = translated.Text.Get();
 			original.Translation.Set(translatedText);
 		}

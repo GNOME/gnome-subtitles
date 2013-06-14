@@ -30,7 +30,7 @@ public delegate void PlayerErrorEventHandler (Uri videoUri, Exception e);
 public delegate void VideoDurationEventHandler (TimeSpan duration);
 
 public class Player {
-    
+
 	private AspectFrame frame = null;
 	private Socket socket = null;
 	private Playbin playbin = null;
@@ -53,8 +53,8 @@ public class Player {
 		InitializePositionWatcher();
 		InitializePlaybin();
 	}
-	
-	
+
+
 	/* Events */
 	public event PlayerErrorEventHandler Error;
 	public event EndOfStreamEventHandler EndOfStream;
@@ -80,11 +80,11 @@ public class Player {
 	public bool HasVideoInfo {
 		get { return videoInfo != null; }
 	}
-	
+
 	public float AspectRatio {
 		get { return videoInfo.AspectRatio; }
 	}
-	
+
 	public float FrameRate {
 		get { return videoInfo.FrameRate; }
 	}
@@ -96,25 +96,25 @@ public class Player {
 	public bool HasVideo {
 		get { return videoInfo.HasVideo; }
 	}
-	
+
 	public Uri VideoUri {
 		get { return videoUri; }
 	}
-	
+
 	public float Speed {
 		get { return speed; }
 	}
 
 
 	/* Public methods */
-	
+
 	public void Open (Uri videoUri) {
 		this.videoUri = videoUri;
 
 		/* Load the playbin */
 		playbin.Load(videoUri.AbsoluteUri);
 	}
-	
+
 	public void Close () {
 		position.Stop();
 		playbin.Unload();
@@ -128,11 +128,11 @@ public class Player {
 	public void Play () {
 		playbin.Play();
 	}
-	
+
 	public void Pause () {
 		playbin.Pause();
 	}
-	
+
     public void SpeedUp () {
         if (this.speed >= DefaultMaxSpeed)
 	        return;
@@ -140,7 +140,7 @@ public class Player {
 		this.speed += DefaultSpeedStep;
 		ChangeSpeed(this.speed);
 	}
-	
+
 	public void SpeedDown () {
 	    if (this.speed <= DefaultMinSpeed)
 	        return;
@@ -148,28 +148,28 @@ public class Player {
 	    this.speed -= DefaultSpeedStep;
 		ChangeSpeed(this.speed);
 	}
-	
+
 	public void SpeedReset () {
 		this.speed = 1;
 		ChangeSpeed(this.speed);
 	}
-	
+
 	public void Rewind (TimeSpan dec) {
 		Seek(playbin.CurrentPosition - dec);
 	}
-	
+
 	public void Forward (TimeSpan inc) {
 		Seek(playbin.CurrentPosition + inc);
 	}
-	
+
 	public void Seek (TimeSpan newPosition) {
 		playbin.Seek(newPosition, speed);
 	}
-	
+
 	public void Seek (double newPosition) {
 		playbin.Seek(newPosition, speed); // newPosition in milliseconds
 	}
-	
+
 	public void Dispose () {
 		Close();
 		playbin.Dispose();
@@ -177,7 +177,7 @@ public class Player {
 
 
 	/* Private members */
-	
+
 	private void InitializeSocket () {
 		socket = new Socket();
 		socket.ModifyBg(StateType.Normal, socket.Style.Black);
@@ -187,25 +187,25 @@ public class Player {
 		socket.Realize();
 		socket.Show();
 	}
-	
+
 	private void InitializePlaybin () {
 		playbin = new Playbin();
-		
+
 		if (!playbin.Initiate(socket.Id))
 			throw new PlayerCouldNotInitiateEngineException();
-		
+
 		playbin.Error += OnPlaybinError;
 		playbin.EndOfStream += OnPlaybinEndOfStream;
 		playbin.StateChanged += OnPlaybinStateChanged;
 		playbin.FoundVideoInfo += OnPlaybinFoundVideoInfo;
 		playbin.FoundTag += OnPlaybinFoundTag;
 	}
-	
+
 	private void InitializePositionWatcher () {
 		position = new PlayerPositionWatcher(GetPosition);
-		position.Changed += OnPositionWatcherChanged;		
+		position.Changed += OnPositionWatcherChanged;
 	}
-	
+
 	/// <summary>Gets the current player position.</summary>
 	private TimeSpan GetPosition () {
 		return playbin.CurrentPosition;
@@ -215,20 +215,20 @@ public class Player {
 	    playbin.Seek(playbin.CurrentPosition, newSpeed);
 	}
 
-		
+
 	/* Event members */
-	
+
 	private void OnPlaybinError (ErrorEventArgs args) {
 		if (Error != null)
 			Error(videoUri, new PlayerEngineException(args.Error, args.Debug));
 	}
-	
+
 	private void OnPlaybinEndOfStream () {
 		position.Stop();
 		if (EndOfStream != null)
 			EndOfStream();
 	}
-	
+
 	private void OnPlaybinStateChanged (StateEventArgs args) {
 		if (args.State == MediaStatus.Unloaded)
 			position.Stop();
@@ -238,7 +238,7 @@ public class Player {
 		if (StateChanged != null)
 			StateChanged(args);
 	}
-	
+
 	private void OnPositionWatcherChanged (TimeSpan time) {
 		if (PositionChanged != null)
 			PositionChanged(time);
@@ -259,17 +259,17 @@ public class Player {
 		if (FoundVideoInfo != null)
 			FoundVideoInfo(args);
 	}
-	
+
 	private void OnPlaybinFoundTag (TagEventArgs args) {
 		if ((!hasFoundDuration) && (FoundDuration != null) && (playbin.Duration != TimeSpan.Zero)) {
 			TimeSpan duration = playbin.Duration;
 			Console.Error.WriteLine("Got video duration: " + duration);
-			
+
 			hasFoundDuration = true;
 			FoundDuration(duration);
 		}
 	}
-	
+
 }
 
 }

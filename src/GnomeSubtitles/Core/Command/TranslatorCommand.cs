@@ -34,13 +34,13 @@ public class TranslatorCommand : FixedSingleSelectionCommand {
 	private string previousValue = null; // initially, it's the former text replaced by translation
 	private bool leftToRight = true; // direction of translation
 	private static string description = Catalog.GetString("Translating");
-		
+
 	public TranslatorCommand (bool leftToRight) : base(description, false, true) {
 		this.leftToRight = leftToRight;
 	}
-	
+
 	/* Public members */
-		
+
 	protected override bool ChangeValues () {
 		/* If previousText is null, it's the first time the command is executed, so do translation.
 		   Otherwise, it's undo or redo, so we only need to swap the values */
@@ -61,24 +61,24 @@ public class TranslatorCommand : FixedSingleSelectionCommand {
 			return true;
 		}
 	}
-	
+
 	private bool DoTranslation () {
 		if (Base.Ui.View.Selection.Count != 1) //TODO: for now, only works if 1 subtitle is selected
 			return false;
-		
+
 		/* Show language selection dialogs if no languages are selected */
 		if (!Base.SpellLanguages.HasActiveTextLanguage) {
 			Base.Dialogs.Get(typeof(SetTextLanguageDialog)).Show();
 			if (!Base.SpellLanguages.HasActiveTextLanguage)
 				return false;
 		}
-		
+
 		if (!Base.SpellLanguages.HasActiveTranslationLanguage) {
 			Base.Dialogs.Get(typeof(SetTranslationLanguageDialog)).Show();
 			if (!Base.SpellLanguages.HasActiveTranslationLanguage)
 				return false;
 		}
-			
+
 		try {
 			Subtitle subtitle = Base.Document.Subtitles[Path];
 			if (leftToRight) {
@@ -91,7 +91,7 @@ public class TranslatorCommand : FixedSingleSelectionCommand {
 				string translatedText = Translator.TranslateText(subtitle.Translation.Get(), Base.SpellLanguages.ActiveTranslationLanguage.ID, Base.SpellLanguages.ActiveTextLanguage.ID, Translator.TIMEOUT);
 				subtitle.Text.Set(translatedText);
 			}
-			
+
 			//TODO: if only one subtitle selected, set the cursor on the translated text box and select its text. If multiple subtitles translated, select those subtitles.
 			return true;
 		}

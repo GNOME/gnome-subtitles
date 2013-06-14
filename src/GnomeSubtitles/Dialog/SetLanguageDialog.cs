@@ -33,7 +33,7 @@ public abstract class SetLanguageDialog : GladeDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "SetLanguageDialog.glade";
-	
+
 	/* Strings */
 	private string dialogTitleText = Catalog.GetString("Set Text Language");
 	private string dialogTitleTranslation = Catalog.GetString("Set Translation Language");
@@ -41,14 +41,14 @@ public abstract class SetLanguageDialog : GladeDialog {
 	private string introLabelTranslation = Catalog.GetString("Select the translation _language of the current subtitles.");
 
 	/* Widgets */
-	
+
 	[WidgetAttribute] private TreeView languagesTreeView = null;
 	[WidgetAttribute] private Label introLabel = null;
 
 
 	protected SetLanguageDialog (SubtitleTextType textType) : base(gladeFilename) {
 		this.textType = textType;
-	
+
 		SetDialogTitle(textType);
 		SetIntroLabel(textType);
 		FillAvailableLanguages();
@@ -56,37 +56,37 @@ public abstract class SetLanguageDialog : GladeDialog {
 	}
 
 	/* Private members */
-	
+
 	private void FillAvailableLanguages () {
 		TreeViewColumn col = new TreeViewColumn("col", new CellRendererText(), "text", colNum);
 		languagesTreeView.AppendColumn(col);
-	
+
 		store = new ListStore(typeof(string));
 		foreach (SpellLanguage language in Base.SpellLanguages.Languages) {
 			store.AppendValues(language.Name);
 		}
-		
+
 		languagesTreeView.Model = store;
 	}
-	
+
 	private void SelectActiveLanguage (SubtitleTextType textType) {
 		int count = store.IterNChildren();
 		if (count == 0)
 			return;
-		
+
 		int activeLanguageIndex = GetActiveLanguageIndex(textType, count);
-		
+
 		TreePath path = Core.Util.IntToPath(activeLanguageIndex);
 		languagesTreeView.ScrollToCell(path, null, true, 0.5f, 0.5f);
    		languagesTreeView.SetCursor(path, null, false);
 	}
-	
+
 	private int GetActiveLanguageIndex (SubtitleTextType textType, int count) {
 		int activeLanguageIndex = Base.SpellLanguages.GetActiveLanguageIndex(textType);
 		/* Set active language to the first if invalid */
 		if ((activeLanguageIndex == -1) || (activeLanguageIndex >= count))
 			activeLanguageIndex = 0;
-			
+
 		return activeLanguageIndex;
 	}
 
@@ -94,19 +94,19 @@ public abstract class SetLanguageDialog : GladeDialog {
 		int selectedLanguageIndex = GetSelectedLanguageIndex();
 		Base.SpellLanguages.SetActiveLanguageIndex(textType, selectedLanguageIndex);
 	}
-	
+
 	private int GetSelectedLanguageIndex () {
 		int count = languagesTreeView.Selection.CountSelectedRows();
 		if (count != 1)
 			return -1;
-			
+
 		TreePath path = GetSelectedPath(languagesTreeView);
 		if (path == null)
 			return -1;
-			
+
 		return Core.Util.PathToInt(path);
 	}
-	
+
 	private TreePath GetSelectedPath (TreeView tree) {
 		TreePath[] paths = tree.Selection.GetSelectedRows();
 		if ((paths == null) || (paths.Length != 1))
@@ -115,15 +115,15 @@ public abstract class SetLanguageDialog : GladeDialog {
 		TreePath selected = paths[0];
 		return selected;
 	}
-	
+
 	private void SetDialogTitle (SubtitleTextType textType) {
 		GetDialog().Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
 	}
-	
+
 	private void SetIntroLabel (SubtitleTextType textType) {
 		introLabel.TextWithMnemonic = (textType == SubtitleTextType.Text ? introLabelText : introLabelTranslation);
 	}
-	
+
 	/* Event members */
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
@@ -135,7 +135,7 @@ public abstract class SetLanguageDialog : GladeDialog {
 		}
 		return false;
 	}
-	
+
 	private void OnLanguageRowActivated (object o, RowActivatedArgs args) {
 		SetSpellLanguage();
 		SetReturnValue(true);

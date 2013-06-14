@@ -27,13 +27,13 @@ namespace GnomeSubtitles.Dialog.Unmanaged {
 
 public abstract class SaveConfirmationDialog : WarningDialog {
 	private SubtitleTextType textType;
-	
+
 	/* Strings */
 	private string secondaryText = Catalog.GetString("If you don't save, all your changes will be permanently lost.");
 
 	public SaveConfirmationDialog (string primaryText, SubtitleTextType textType) : base() {
 		this.textType = textType;
-	
+
 		string filename = String.Empty;
 		if (textType == SubtitleTextType.Text)
 			filename = Base.Document.TextFile.Filename;
@@ -41,26 +41,26 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 			filename = Base.Document.TranslationFile.Filename;
 		else
 			filename = Base.Document.UnsavedTranslationFilename;
-		
+
 		SetText(primaryText, secondaryText, filename);
 	}
-	
-	
+
+
 	/* Abstract methods */
-	
+
 	protected abstract string GetRejectLabel ();
-	
+
 
 	/* Protected methods */
-	
+
 	protected override void AddButtons () {
 		string rejectLabel = GetRejectLabel();
 		dialog.AddButton(rejectLabel, ResponseType.Reject);
 		dialog.AddButton(Stock.Cancel, ResponseType.Cancel);
 		dialog.AddButton(Stock.Save, ResponseType.Accept);
 	}
-	
-	
+
+
 	/* Event members */
 
 	protected override bool ProcessResponse (ResponseType response) {
@@ -90,13 +90,13 @@ public class SaveSubtitlesOnNewFileConfirmationDialog : SaveConfirmationDialog {
 
 	public SaveSubtitlesOnNewFileConfirmationDialog () : base(primaryText, SubtitleTextType.Text) {
 	}
-	
+
 	public SaveSubtitlesOnNewFileConfirmationDialog (string primaryText, SubtitleTextType textType) : base(primaryText, textType) {
 	}
-	
-	
+
+
 	/* Protected methods */
-	
+
 	protected override string GetRejectLabel ()
 	{
 		return rejectLabel;
@@ -127,12 +127,12 @@ public class SaveSubtitlesOnOpenFileConfirmationDialog : SaveConfirmationDialog 
 
 	public SaveSubtitlesOnOpenFileConfirmationDialog () : base(primaryText, SubtitleTextType.Text) {
 	}
-	
+
 	public SaveSubtitlesOnOpenFileConfirmationDialog (string primaryText, SubtitleTextType textType) : base (primaryText, textType) {
 	}
-	
+
 	/* Protected methods */
-	
+
 	protected override string GetRejectLabel ()
 	{
 		return rejectLabel;
@@ -156,12 +156,12 @@ public class SaveSubtitlesOnCloseFileConfirmationDialog : SaveConfirmationDialog
 
 	public SaveSubtitlesOnCloseFileConfirmationDialog () : base(primaryText, SubtitleTextType.Text) {
 	}
-	
+
 	public SaveSubtitlesOnCloseFileConfirmationDialog (string primaryText, SubtitleTextType textType) : base(primaryText, textType) {
 	}
-	
+
 	/* Protected methods */
-	
+
 	protected override string GetRejectLabel ()
 	{
 		return rejectLabel;

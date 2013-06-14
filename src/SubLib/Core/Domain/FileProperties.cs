@@ -30,7 +30,7 @@ public class FileProperties : ICloneable {
 	private Encoding encoding = null; //The character coding of the file
 	private SubtitleType subtitleType = SubtitleType.Unknown; //The subtitle type of the file
 	private TimingMode timingMode = TimingMode.Times; //The timing mode used in the file (some subtitle types support both)
-	
+
 	/* Used for writing only */
 	private NewlineType newlineType = NewlineType.Unknown;
 
@@ -52,7 +52,7 @@ public class FileProperties : ICloneable {
 		this.timingMode = timingMode;
 		this.newlineType = newlineType;
 	}
-	
+
 	/// <summary>Creates a new instance of the <see cref="FileProperties" /> class, given its properties.</summary>
 	/// <param name="path">The file's path.</param>
 	/// <param name="encoding">The file's character coding.</param>
@@ -69,7 +69,7 @@ public class FileProperties : ICloneable {
 	public FileProperties(string path, Encoding encoding, TimingMode timingMode)
 		: this(path, encoding, SubtitleType.Unknown, timingMode) {
 	}
-		
+
 	/// <summary>Creates a new instance of the <see cref="FileProperties" /> class, given the file's path.</summary>
 	/// <param name="path">The file's path.</param>
 	public FileProperties (string path) : this(path, null, SubtitleType.Unknown, TimingMode.Times) {
@@ -83,59 +83,59 @@ public class FileProperties : ICloneable {
 		get { return path; }
 		set { path = System.IO.Path.GetFullPath(value); }
 	}
-	
+
 	/// <summary>The file's filename.</summary>
 	/// <remarks>See <see cref="System.IO.Path.GetFileName" /> for more information.</remarks>
 	public string Filename {
 		get { return System.IO.Path.GetFileName(path); }
 	}
-	
+
 	/// <summary>The file's filename without its extension.</summary>
 	/// <remarks>See <see cref="System.IO.Path.GetFileNameWithoutExtension" /> for more information.</remarks>
 	public string FilenameWithoutExtension {
 		get { return System.IO.Path.GetFileNameWithoutExtension(path); }
 	}
-	
+
 	/// <summary>The file's directory.</summary>
 	/// <remarks>See <see cref="System.IO.Path.GetDirectoryName" /> for more information.</remarks>
 	public string Directory {
 		get { return System.IO.Path.GetDirectoryName(path); }
 	}
-	
+
 	/// <summary>Whether the path is rooted.</summary>
 	/// <remarks>See <see cref="System.IO.Path.IsPathRooted" /> for more information.</remarks>
 	public bool IsPathRooted {
 		get { return System.IO.Path.IsPathRooted(path); }
 	}
-	
+
 	/// <summary>The character coding used in the file.</summary>
 	public Encoding Encoding {
 		get { return encoding; }
 		set { encoding = value; }
 	}
-	
+
 	/// <summary>The timing mode used in the file.</summary>
 	/// <remarks>This is more useful for the subtitle types that support both the time and frame modes.</remarks>
 	public TimingMode TimingMode {
 		get { return timingMode; }
 		set { timingMode = value; }
 	}
-	
+
 	/// <summary>The type of the subtitles.</summary>
 	public SubtitleType SubtitleType {
 		get { return subtitleType; }
 		set { subtitleType = value; }
 	}
-	
+
 	/// <summary>The type of newline used in the file.</summary>
 	public NewlineType NewlineType {
 		get { return newlineType; }
 		set { newlineType = value; }
 	}
-	
-	
+
+
 	/* Public methods */
-	
+
 	public object Clone () {
 		return this.MemberwiseClone();
 	}

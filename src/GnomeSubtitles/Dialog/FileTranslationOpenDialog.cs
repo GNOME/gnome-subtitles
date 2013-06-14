@@ -23,12 +23,12 @@ using Mono.Unix;
 namespace GnomeSubtitles.Dialog {
 
 public class FileTranslationOpenDialog : FileOpenDialog {
-	
+
 	public FileTranslationOpenDialog () : base(false, Catalog.GetString("Open Translation File")) {
 	}
-	
+
 	/* Public members */
-	
+
 	protected override string GetStartFolder () {
 		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted)
 			return Base.Document.TranslationFile.Directory;

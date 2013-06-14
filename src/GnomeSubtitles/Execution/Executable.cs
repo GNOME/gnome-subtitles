@@ -48,7 +48,7 @@ public class Executable {
         }
         return true;
 	}
-	
+
 	public static bool SetProcessNameSetproctitle (string name) {
 		try {
 			setproctitle(Encoding.ASCII.GetBytes("%s\0"), Encoding.ASCII.GetBytes(name + "\0"));
@@ -78,7 +78,7 @@ public class Executable {
 
 		Base.Run(executionContext);
 	}
-	
+
 	/* Private members */
 
 	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
@@ -87,13 +87,13 @@ public class Executable {
 	   		Base.Kill();
 		}
 		catch (Exception) {
-			; //Nothing to do if there were errors while killing the window 
+			; //Nothing to do if there were errors while killing the window
 		}
 	}
 
-	
+
 	/* Event members */
-	
+
 	private static void OnUnhandledException (UnhandledExceptionArgs args) {
 		if (args.ExceptionObject is Exception)
 			BugReporter.Report(args.ExceptionObject as Exception);

@@ -52,11 +52,11 @@ public class FileOpenDialog : GladeDialog {
 	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
 	[WidgetAttribute] private ComboBox videoComboBox = null;
 	[WidgetAttribute] private Label videoLabel = null;
-	
-	
+
+
 	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
 	}
-	
+
 	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename) {
 		dialog = GetDialog() as FileChooserDialog;
 		dialog.Title = title;
@@ -65,7 +65,7 @@ public class FileOpenDialog : GladeDialog {
 
 		if (toEnableVideo)
 			EnableVideo();
-	
+
 		string startFolder = GetStartFolder();
 		dialog.SetCurrentFolder(startFolder);
 
@@ -104,18 +104,18 @@ public class FileOpenDialog : GladeDialog {
 	public string Filename {
 		get { return chosenFilename; }
 	}
-	
+
 	public bool HasVideoFilename {
 		get { return chosenVideoUri != null; }
 	}
-	
+
 	public Uri VideoUri {
 		get { return chosenVideoUri; }
 	}
 
 
 	/* Protected members */
-	
+
 	protected virtual string GetStartFolder () {
 		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
 			return Base.Document.TextFile.Directory;
@@ -125,7 +125,7 @@ public class FileOpenDialog : GladeDialog {
 
 
 	/* Private members */
-	
+
 	private void FillVideoComboBoxBasedOnCurrentFolder () {
 		videoFiles = null;
 		videoFilenames = null;
@@ -141,7 +141,7 @@ public class FileOpenDialog : GladeDialog {
 			SetVideoSelectionSensitivity(false);
 			return;
 		}
-			
+
 		if ((folder == null) || (folder == String.Empty)) {
 			System.Console.Error.WriteLine("Error when trying to get the current folder.");
 			SetVideoSelectionSensitivity(false);
@@ -156,25 +156,25 @@ public class FileOpenDialog : GladeDialog {
 		}
 		else
 			SetVideoSelectionSensitivity(true);
-				
+
 		videoFiles.Sort();
 		videoFilenames = new ArrayList();
 		foreach (string file in videoFiles) {
 			string filename = Path.GetFileName(file);
 			videoComboBox.AppendText(filename);
-			
+
 			videoFilenames.Add(FilenameWithoutExtension(filename));
 		}
-		
+
 		videoComboBox.PrependText("-");
 		videoComboBox.PrependText(Catalog.GetString("None"));
 		videoComboBox.Active = 0;
 	}
-	
+
 	private void SetActiveVideoFile () {
 		if ((videoFiles == null) || (videoFiles.Count == 0))
 			return;
-		
+
 		string filePath = String.Empty;
 		try {
 			filePath = dialog.Filename;
@@ -185,20 +185,20 @@ public class FileOpenDialog : GladeDialog {
 			SetActiveComboBoxItem(0);
 			return;
 		}
-		
+
 		if ((filePath == null) || (filePath == String.Empty) || (!File.Exists(filePath))) {
 			SetActiveComboBoxItem(0);
 			return;
 		}
-		
+
 		string filename = Path.GetFileNameWithoutExtension(filePath);
 		if ((filename == String.Empty) || (filename == null)) {
 			SetActiveComboBoxItem(0);
 			return;
 		}
-		
+
 		int activeVideoFile = 0;
-		
+
 		for (int count = 0 ; count < videoFilenames.Count ; count++) {
 			string videoFilename = videoFilenames[count] as string;
 			if (filename.Equals(videoFilename)) {
@@ -206,18 +206,18 @@ public class FileOpenDialog : GladeDialog {
 				break;
 			}
 		}
-		SetActiveComboBoxItem(activeVideoFile);		
+		SetActiveComboBoxItem(activeVideoFile);
 	}
-	
+
 	private void SetActiveComboBoxItem (int item) {
 		videoComboBox.Active = item;
 	}
-	
+
 	private void SetVideoSelectionSensitivity (bool sensitivity) {
 		videoComboBox.Sensitive = sensitivity;
 		videoLabel.Sensitive = sensitivity;
 	}
-	
+
 	private string FilenameWithoutExtension (string filename) {
 		int index = filename.LastIndexOf('.');
 		if (index != -1)
@@ -225,37 +225,37 @@ public class FileOpenDialog : GladeDialog {
 		else
 			return filename;
 	}
-	
+
 	private void EnableVideo () {
 		videoLabel.Visible = true;
 		videoComboBox.Visible = true;
-		
+
 		autoChooseVideoFile = Base.Config.PrefsVideoAutoChooseFile;
 		videoComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
-		
+
 		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
 		dialog.SelectionChanged += OnSelectionChanged;
 	}
-	
+
 	private void SetFilters () {
 		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
 		FileFilter[] filters = new FileFilter[types.Length + 2];
 		int filterPosition = 0;
-		
+
 		/* First filter corresponds to all files */
 		FileFilter allFilesFilter = new FileFilter();
 		allFilesFilter.Name = Catalog.GetString("All Files");
 		allFilesFilter.AddPattern("*");
 		filters[filterPosition] = allFilesFilter;
 		filterPosition++;
-		
+
 		/* Second filter corresponds to all subtitle files */
 		FileFilter subtitleFilesFilter = new FileFilter();
 		subtitleFilesFilter.Name = Catalog.GetString("All Subtitle Files");
 		subtitleFilesFilter.AddPattern("*.txt");
 		filters[filterPosition] = subtitleFilesFilter;
 		filterPosition++;
-		
+
 		/* Remaining filters correspond to the subtitle types */
 		foreach (SubtitleTypeInfo type in types) {
 			FileFilter filter = new FileFilter();
@@ -268,14 +268,14 @@ public class FileOpenDialog : GladeDialog {
 			filters[filterPosition] = filter;
 			filterPosition++;
 		}
-		
+
 		foreach (FileFilter filter in filters)
 			dialog.AddFilter(filter);
-		
+
 		dialog.Filter = subtitleFilesFilter;
 	}
-	
-	
+
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	protected override bool ProcessResponse (ResponseType response) {
@@ -295,21 +295,21 @@ public class FileOpenDialog : GladeDialog {
 			if (videoComboBox.Active > 0) {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoUri = new Uri("file://" + videoFiles[videoFileIndex] as string);
-			}			
+			}
 			SetReturnValue(true);
 		}
 		return false;
 	}
-	
+
 	private void OnCurrentFolderChanged (object o, EventArgs args) {
 		FillVideoComboBoxBasedOnCurrentFolder();
 	}
-	
+
 	private void OnSelectionChanged (object o, EventArgs args) {
 		if (autoChooseVideoFile)
 			SetActiveVideoFile();
 	}
-	
+
 }
 
 }

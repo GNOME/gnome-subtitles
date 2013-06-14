@@ -30,15 +30,15 @@ using System.Collections;
 namespace GnomeSubtitles.Dialog {
 
 public class TimingsSynchronizeDialog : GladeDialog {
-	private TimingMode timingMode = TimingMode.Times; 
+	private TimingMode timingMode = TimingMode.Times;
 	private GnomeSubtitles.Core.SyncPoints syncPoints = new GnomeSubtitles.Core.SyncPoints();
 	private TreeViewColumn numberCol = null;
 	private TreeViewColumn currentStartCol = null;
 	private TreeViewColumn correctStartCol = null;
-		
+
 	/* Constant strings */
 	private const string gladeFilename = "TimingsSynchronizeDialog.glade";
-	
+
 	/* Widgets */
 	[WidgetAttribute] private TreeView syncPointsTree = null;
 	[WidgetAttribute] private Button buttonAdd = null;
@@ -49,13 +49,13 @@ public class TimingsSynchronizeDialog : GladeDialog {
 
 	public TimingsSynchronizeDialog () : base(gladeFilename, true){
 		this.timingMode = Base.TimingMode;
-	
+
 		CreateColumns();
 		SetModel();
 		InitWidgetSensitivity();
-		
+
 		ConnectHandlers();
-		
+
 		UpdateStatusMessage();
 	}
 
@@ -70,14 +70,14 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		base.Destroy();
 	}
 
-	
-	
+
+
 	/* Private methods */
-	
+
 	private void CreateColumns() {
     	/* Number column */
     	numberCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Subtitle No."), -1, new CellRendererText(), RenderSubtitleNumberCell);
-    	
+
     	/* Start (current and correct) columns */
     	currentStartCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Current Start"), -1, new CellRendererText(), RenderCurrentStartCell);
     	correctStartCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Correct Start"), -1, new CellRendererText(), RenderCorrectStartCell);
@@ -88,16 +88,16 @@ public class TimingsSynchronizeDialog : GladeDialog {
 
     	syncPointsTree.AppendColumn(new TreeViewColumn()); //Appending to leave empty space to the right
     }
-    
+
     private void SetModel () {
 		syncPointsTree.Model = syncPoints.Model;
 	}
-	
+
 	private void UpdateFromSyncPointCountChanged () {
 		UpdateStatusMessage();
 		UpdateSynchronizeButtonSensitivity();
 	}
-	
+
 	private void UpdateStatusMessage () {
 		string message = String.Empty;
 		switch (syncPoints.Collection.Count) {
@@ -131,38 +131,38 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		}
 		statusMessageLabel.Text = message;
 	}
-	
+
 	private void UpdateSynchronizeButtonSensitivity () {
 		buttonSynchronize.Sensitive = (syncPoints.Collection.Count >= 2);
 	}
-	
+
 	private void SelectPath (TreePath path) {
 		syncPointsTree.SetCursor(path, null, false);
 	}
-	
+
 	private void InitWidgetSensitivity () {
 		buttonAdd.Sensitive = (Base.Ui.View.Selection.Count == 1);
 	}
-	
+
 	private ArrayList GetOutOfRangeIntervals () {
 		Ui.View.Subtitles subtitles = Base.Document.Subtitles;
 		ArrayList intervals = new ArrayList();
 		if (syncPoints.Collection.Count == 0)
 			return intervals;
-		
+
 		SyncPoint first = syncPoints.Collection.Get(0);
 		if (first.SubtitleNumber > 0) {
 			string firstInterval = "1" + (first.SubtitleNumber > 1 ? "-" + first.SubtitleNumber : String.Empty);
 			intervals.Add(firstInterval);
 		}
-		
+
 		SyncPoint last = syncPoints.Collection.Get(syncPoints.Collection.Count - 1);
 		int lastSubtitleNumber = subtitles.Count - 1;
 		if (last.SubtitleNumber < lastSubtitleNumber) {
 			string lastInterval = (last.SubtitleNumber < lastSubtitleNumber - 1 ? (last.SubtitleNumber + 2) + "-" : String.Empty) + (lastSubtitleNumber + 1);
 			intervals.Add(lastInterval);
 		}
-		
+
 		return intervals;
 	}
 
@@ -170,7 +170,7 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		return (syncPoints.Collection.Count > 0)
 			&& (syncPoints.Collection.Get(syncPoints.Collection.Count - 1).SubtitleNumber < Base.Document.Subtitles.Count);
 	}
-    
+
     /* Cell Renderers */
 
 	private void RenderSubtitleNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
@@ -184,7 +184,7 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		else
 			renderer.Text = Core.Util.TimeSpanToText(syncPoints[iter].Current.Time);
 	}
-	
+
 	private void RenderCorrectStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
 		if (timingMode == TimingMode.Frames)
@@ -192,21 +192,21 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		else
 			renderer.Text = Core.Util.TimeSpanToText(syncPoints[iter].Correct.Time);
 	}
-	
+
 	/* Event members */
-	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
+
 	private void ConnectHandlers () {
 		syncPointsTree.Selection.Changed += OnSelectionChanged;
-		
+
 		/* External event handlers */
 		Base.Ui.View.Selection.Changed += OnUiViewSelectionChanged;
 	}
-	
+
 	private void OnSelectionChanged (object o, EventArgs args) {
 		TreeSelection selection = (o as TreeSelection);
-		buttonRemove.Sensitive = (selection.CountSelectedRows() > 0); 
+		buttonRemove.Sensitive = (selection.CountSelectedRows() > 0);
 	}
 
 	private void OnRowActivated (object o, RowActivatedArgs args) {
@@ -217,23 +217,23 @@ public class TimingsSynchronizeDialog : GladeDialog {
 			Base.Ui.Video.Seek(syncPoint.Correct.Time);
 		}
 	}
-	
+
 	private void OnAdd (object o, EventArgs args) {
 		/* Check if document and video are loaded */
 		if (!(Base.IsDocumentLoaded && Base.Ui.Video.IsLoaded))
 			return;
-	
+
 		/* Get selected subtitle */
 		TreePath path = Base.Ui.View.Selection.Path;
 		if (path == null)
 			return;
-		
+
 		int subtitleNumber = Core.Util.PathToInt(path);
 		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
-		
+
 		/* Get current start */
 		Timing currentTiming = new Timing(subtitle.Frames.Start, subtitle.Times.Start);
-		
+
 		/* Get correct start from video */
 		Timing correctTiming = new Timing(Base.Ui.Video.Position.CurrentFrames, Base.Ui.Video.Position.CurrentTime);
 
@@ -241,11 +241,11 @@ public class TimingsSynchronizeDialog : GladeDialog {
 		SyncPoint syncPoint = new SyncPoint(subtitleNumber, currentTiming, correctTiming);
 		int syncPointIndex = syncPoints.Add(syncPoint);
 		TreePath syncPointPath = Core.Util.IntToPath(syncPointIndex);
-		SelectPath(syncPointPath);		
-		
+		SelectPath(syncPointPath);
+
 		UpdateFromSyncPointCountChanged();
 	}
-	
+
 	private void OnRemove (object o, EventArgs args) {
 		TreePath[] paths = syncPointsTree.Selection.GetSelectedRows();
 		if (paths.Length == 0)
@@ -258,14 +258,14 @@ public class TimingsSynchronizeDialog : GladeDialog {
 			int subtitleToDelete = (firstDeletedSubtitle < syncPointCount ? firstDeletedSubtitle : syncPointCount - 1);
 			syncPointsTree.SetCursor(Core.Util.IntToPath(subtitleToDelete), null, false);
 		}
-		
+
 		UpdateFromSyncPointCountChanged();
 	}
-	
+
 	private void OnSynchronizeAllSubtitlesToggled (object o, EventArgs args) {
 		UpdateStatusMessage();
 	}
-	
+
 	private void OnUiViewSelectionChanged (TreePath[] paths, Subtitle subtitle) {
 		buttonAdd.Sensitive = (subtitle != null);
 	}
@@ -275,14 +275,14 @@ public class TimingsSynchronizeDialog : GladeDialog {
 			if (CanSynchronize()) {
 				bool toSyncAll = syncAllSubtitlesCheckButton.Active;
 				SelectionIntended selectionIntended = (toSyncAll ? SelectionIntended.All : SelectionIntended.Range);
-				
+
 				TreePath[] pathRange = null;
 				if (selectionIntended == SelectionIntended.Range) {
 					pathRange = new TreePath[2];
 					pathRange[0] = Core.Util.IntToPath(syncPoints.Collection[0].SubtitleNumber);
 					pathRange[1] = Core.Util.IntToPath(syncPoints.Collection[syncPoints.Collection.Count - 1].SubtitleNumber);
 				}
-				
+
 				Base.CommandManager.Execute(new SynchronizeTimingsCommand(syncPoints, toSyncAll, selectionIntended, pathRange));
 			}
 			return true;

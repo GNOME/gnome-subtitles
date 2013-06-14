@@ -25,7 +25,7 @@ public class SyncPoint {
 	private int subtitleNumber = 0;
 	private Timing current = null;
 	private Timing correct = null;
-	
+
 	public SyncPoint (int subtitleNumber, Timing current, Timing correct) {
 		this.subtitleNumber = subtitleNumber;
 		this.current = current;
@@ -37,15 +37,15 @@ public class SyncPoint {
 	public int SubtitleNumber {
 		get { return subtitleNumber; }
 	}
-	
+
 	public Timing Current {
 		get { return current; }
 	}
-	
+
 	public Timing Correct {
 		get { return correct; }
 	}
-	
+
 	public int CompareCurrentTo (SyncPoint otherSyncPoint) {
 		return current.CompareTo(otherSyncPoint.Current);
 	}

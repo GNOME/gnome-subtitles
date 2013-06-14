@@ -31,15 +31,15 @@ public abstract class InsertTextContentCommand : FixedSingleSelectionCommand {
 	public InsertTextContentCommand (string description, int index, string text) : base(description, true, false) {
 		this.index = index;
 		this.text = text;
-		
+
 		/* If text isn't a single char, it should have been pasted, so stop grouping */
 		if (text.Length != 1)
 			SetStopsGrouping(true);
 	}
-	
+
 	/* Abstract members */
 	protected abstract SubtitleEditTextView GetTextView ();
-	
+
 	/* Public members */
 
 	public override bool CanGroupWith (Command command) {
@@ -50,42 +50,42 @@ public abstract class InsertTextContentCommand : FixedSingleSelectionCommand {
 			&& (this.text.Length == 1) //A single char was inserted
 			&& (!(Char.IsWhiteSpace(last.GetLastChar()) && (!Char.IsWhiteSpace(GetLastChar())))); //A space->non-space sequence is not the case
 	}
-	
+
 	public override Command MergeWith (Command command) {
 		InsertTextContentCommand last = command as InsertTextContentCommand;
 		this.index = last.GetIndex();
-		this.text = last.GetText() + this.text;	
+		this.text = last.GetText() + this.text;
 		return this;
 	}
-	
+
 	public override void Undo () {
 		Base.Ui.View.Selection.Select(Path, true, false);
 		SubtitleEditTextView textView = GetTextView();
 		textView.DeleteText(index, index + text.Length);
 		PostProcess();
 	}
-	
+
 	public override void Redo () {
 		Base.Ui.View.Selection.Select(Path, true, false);
 		SubtitleEditTextView textView = GetTextView();
 		textView.InsertText(index, text);
 		PostProcess();
 	}
-	
+
 	/* Protected members */
-	
+
 	protected override void PostProcess () {
 		Base.Ui.View.RedrawPath(Path);
 	}
-	
+
 	protected int GetIndex () {
 		return index;
 	}
-	
+
 	protected string GetText () {
 		return text;
 	}
-	
+
 	protected char GetLastChar () {
 		return text[text.Length - 1];
 	}

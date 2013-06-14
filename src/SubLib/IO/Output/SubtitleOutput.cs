@@ -32,12 +32,12 @@ namespace SubLib.IO.Output {
 internal class SubtitleOutput {
 	private SubtitleFormat format = null;
 	private SubtitleTextType textType = SubtitleTextType.Text;
-	
+
 	private SubtitleProperties subtitleProperties = null;
 	private Subtitle subtitle = null;
 	private Subtitle previousSubtitle = null;
 	private int subtitleNumber = 1;
-	
+
 	internal SubtitleOutput (SubtitleFormat format, SubtitleTextType textType) {
 		this.format = format;
 		this.textType = textType;
@@ -48,11 +48,11 @@ internal class SubtitleOutput {
 		StringBuilder output = new StringBuilder();
 		if (format.HasHeaders)
 			output.Append(format.HeadersToString(subtitleProperties, fileProperties));
-		
+
 		if (format.HasBodyBegin)
 			output.Append(format.BodyBeginOut);
-		
-		string subtitleExpression = GetSubtitleExpression(format, subtitleProperties, fileProperties); 
+
+		string subtitleExpression = GetSubtitleExpression(format, subtitleProperties, fileProperties);
 		Regex fieldExpression = new Regex(@"<<(?<Field>\w+)(,(?<Width>\d+))?>>");
 		MatchEvaluator matchEvaluator = new MatchEvaluator(this.FieldEvaluator);
 
@@ -64,25 +64,25 @@ internal class SubtitleOutput {
 			subtitleNumber++;
 			previousSubtitle = subtitle;
 		}
-		
+
 		if (format.HasBodyEnd)
 			output.Append(format.BodyEndOut);
-		
+
 		subtitle = null;
 		previousSubtitle = null;
 		subtitleNumber = 1;
-		
+
 		ConvertNewlines(output, fileProperties);
 		return output.ToString();
 	}
 
-	
+
 	/* Private members */
 
 	private string FieldEvaluator (Match match) {
 		Group fieldGroup = match.Groups["Field"];
 		string field = fieldGroup.Value;
-		
+
 		switch (field) {
 			case "StartFrame":
 				int startFrame = subtitle.Frames.Start;
@@ -180,13 +180,13 @@ internal class SubtitleOutput {
 				return match.Value;
 		}
 	}
-	
+
 	private string FormatedField (int field, int defaultWidth, Match match) {
 		Group group = match.Groups["Width"];
 		int width = (group.Success ? Convert.ToInt32(group.Value) : defaultWidth);
 		return DimensionField(field, width);
 	}
-	
+
 	private string FormatedField (int field, Match match) {
 		Group group = match.Groups["Width"];
 		if (group.Success) {
@@ -194,31 +194,31 @@ internal class SubtitleOutput {
 			return DimensionField(field, width);
 		}
 		else
-			return field.ToString();	
+			return field.ToString();
 	}
-	
+
 	private string FormatedField (double field) {
 		return field.ToString("0.###", CultureInfo.InvariantCulture);
 	}
-	
+
 	//TODO fix precision when saving files. If our number width is greater than 'width', some of the last digits will be removed
 	private string DimensionField (int field, int width) {
 		return field.ToString("D" + width).Substring(0, width);
 	}
-	
+
 	private int DivideAndRound (int number, int denominator) {
 		return (int)Math.Round((double)number / denominator);
 	}
-	
+
 	private void ConvertNewlines (StringBuilder builder, FileProperties properties) {
 		NewlineType type = properties.NewlineType;
 		if ((type == NewlineType.Unknown) || (type == NewlineType.Unix))
 			return;
-		
+
 		string newline = (type == NewlineType.Windows ? "\r\n" : "\r"); //Windows : Macintosh
 		builder.Replace("\n", newline);
 	}
-	
+
 	private string GetSubtitleExpression (SubtitleFormat format, SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		if (format.Mode == SubtitleMode.Both) {
 			if (fileProperties.TimingMode == TimingMode.Times)
@@ -231,9 +231,9 @@ internal class SubtitleOutput {
 				return format.SubtitleOut;
 			else
 				return format.GetDynamicSubtitleOut(subtitleProperties);
-		}	
+		}
 	}
-	
+
 }
 
 }

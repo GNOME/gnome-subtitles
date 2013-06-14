@@ -42,17 +42,17 @@ public class SearchDialog : GladeDialog {
 	private const string gladeFilename = "SearchDialog.glade";
 
 	/* Widgets */
-	
+
 	[WidgetAttribute] private Entry findEntry = null;
 	[WidgetAttribute] private Entry replaceEntry = null;
 	[WidgetAttribute] private Label replaceLabel = null;
 	[WidgetAttribute] private Table table = null;
-	
-	[WidgetAttribute] private CheckButton matchCaseCheckButton = null;	
+
+	[WidgetAttribute] private CheckButton matchCaseCheckButton = null;
 	[WidgetAttribute] private CheckButton backwardsCheckButton = null;
 	[WidgetAttribute] private CheckButton regexCheckButton = null;
 	[WidgetAttribute] private CheckButton wrapCheckButton = null;
-	
+
 	[WidgetAttribute] private Button buttonReplaceAll = null;
 	[WidgetAttribute] private Button buttonReplace = null;
 	[WidgetAttribute] private Button buttonFind = null;
@@ -71,15 +71,15 @@ public class SearchDialog : GladeDialog {
 	public Regex ForwardRegex {
 		get { return forwardRegex; }
 	}
-	
+
 	public Regex BackwardRegex {
 		get { return backwardRegex; }
 	}
-	
+
 	public string Replacement {
 		get { return replaceEntry.Text; }
 	}
-	
+
 	public bool MatchCase {
 		get { return matchCaseCheckButton.Active; }
 	}
@@ -87,11 +87,11 @@ public class SearchDialog : GladeDialog {
 	public bool Backwards {
 		get { return backwardsCheckButton.Active; }
 	}
-	
+
 	public bool UseRegex {
 		get { return regexCheckButton.Active; }
 	}
-	
+
 	public bool Wrap {
 		get { return wrapCheckButton.Active; }
 	}
@@ -101,7 +101,7 @@ public class SearchDialog : GladeDialog {
 	public override void Show () {
 		Show(false);
 	}
-	
+
 	public void Show (bool useReplace) {
 		if (useReplace) {
 			GetDialog().Title = Catalog.GetString("Replace");
@@ -111,19 +111,19 @@ public class SearchDialog : GladeDialog {
 			GetDialog().Title = Catalog.GetString("Find");
 			table.RowSpacing = 0;
 		}
-		
+
 		replaceEntry.Visible = useReplace;
 		replaceLabel.Visible = useReplace;
-		
+
 		buttonReplaceAll.Visible = useReplace;
 		buttonReplace.Visible = useReplace;
-		
+
 		LoadDialogValues();
 		base.Show();
 	}
-	
+
 	/* Private methods */
-	
+
 	private bool ValuesHaveChanged () {
 		if (!valuesMayHaveChanged)
 			return false;
@@ -137,7 +137,7 @@ public class SearchDialog : GladeDialog {
 			return true;
 		if (wrap != wrapCheckButton.Active)
 			return true;
-		
+
 		return false;
 	}
 
@@ -164,51 +164,51 @@ public class SearchDialog : GladeDialog {
 		matchCase = matchCaseCheckButton.Active;
 		backwards = backwardsCheckButton.Active;
 		useRegex = regexCheckButton.Active;
-		wrap = wrapCheckButton.Active;	
+		wrap = wrapCheckButton.Active;
 	}
-	
+
 	private void HandleValuesChange () {
 		bool updateRegex = ValuesHaveChanged(); //Need to be before SaveDialogValues, as the values will be changed
 		SaveDialogValues();
 		if (updateRegex)
 			UpdateRegex();
-	
+
 	}
-	
+
 	private void Find () {
 		HandleValuesChange();
-		
+
 		bool found = Core.Base.Ui.View.Search.Find();
 		if (found)
 			buttonReplace.Sensitive = true;
 	}
-	
+
 	private void Replace () {
 		HandleValuesChange();
-		
+
 		bool foundNext = Core.Base.Ui.View.Search.Replace();
 		if (!foundNext) //No other text was found to replace, after replacing this one
 			buttonReplace.Sensitive = false;
 	}
-	
+
 	private void ReplaceAll () {
 		HandleValuesChange();
-		
+
 		Core.Base.Ui.View.Search.ReplaceAll();
 	}
-	
+
 	private void UpdateRegex() {
 		RegexOptions options = RegexOptions.Singleline;
 		if (!matchCase)
 			options |= RegexOptions.IgnoreCase;
-				
+
 		string regexText = (useRegex ? text : Regex.Escape(text));
 		forwardRegex = new Regex(regexText, options);
 		backwardRegex = new Regex(regexText, options | RegexOptions.RightToLeft);
 	}
 
 	/* Event members */
-	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	protected override bool ProcessResponse (ResponseType response) {
@@ -244,15 +244,15 @@ public class SearchDialog : GladeDialog {
 			buttonReplaceAll.Sensitive = true;
 		}
 	}
-	
+
 	private void OnReplaceTextChanged (object o, EventArgs args) {
 		valuesMayHaveChanged = true;
 	}
-	
+
 	private void OnMatchCaseToggled (object o, EventArgs args) {
 		valuesMayHaveChanged = true;
 	}
-	
+
 	private void OnBackwardsToggled (object o, EventArgs args) {
 		valuesMayHaveChanged = true;
 	}
@@ -260,10 +260,10 @@ public class SearchDialog : GladeDialog {
 	private void OnUseRegexToggled (object o, EventArgs args) {
 		valuesMayHaveChanged = true;
 	}
-	
+
 	private void OnWrapToggled (object o, EventArgs args) {
 		valuesMayHaveChanged = true;
-	}	
+	}
 
 }
 

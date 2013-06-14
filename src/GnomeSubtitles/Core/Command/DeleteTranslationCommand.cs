@@ -29,7 +29,7 @@ public class DeleteTranslationCommand : DeleteTextContentCommand {
 	public DeleteTranslationCommand (int index, string text, int cursor) : base(description, index, text, cursor) {
 		SetCommandTarget(CommandTarget.Translation);
 	}
-	
+
 	protected override SubtitleEditTextView GetTextView () {
 		return Base.Ui.Edit.TranslationEdit;
 	}

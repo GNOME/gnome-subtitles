@@ -31,9 +31,9 @@ internal class SubtitleFormatSubCreator1x : SubtitleFormat {
 		mode = SubtitleMode.Times;
     	extensions = new string[] { "txt" };
 		lineBreak = "|";
-			
+
 		format = @"\d+:\d+:\d+[.,]\d:\s*.+\s+\d+:\d+:\d+[.,]\d:";
-		
+
 		subtitleIn = @"(?<StartHours>\d+):(?<StartMinutes>\d+):(?<StartSeconds>\d+)[.,](?<StartDeciseconds>\d+):\s*(?<Text>.+)\s+(?<EndHours>\d+):(?<EndMinutes>\d+):(?<EndSeconds>\d+)[.,](?<EndDeciseconds>\d+):";
 		
 		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>.<<StartDeciseconds>>:" +

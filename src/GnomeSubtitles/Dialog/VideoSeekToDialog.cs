@@ -52,7 +52,7 @@ public class VideoSeekToDialog : GladeDialog {
 		base.Show ();
 	}
 
-	
+
 	/* Private methods */
 
 	private void InitSpinButton () {
@@ -76,13 +76,13 @@ public class VideoSeekToDialog : GladeDialog {
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentFrames);
 		}
 	}
-	
+
 	private void SetSpinButtonValue (double newValue) {
 		spinButton.Value = newValue;
 	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
+
 	private void OnClear (object o, EventArgs args) {
 		SetSpinButtonValue(0);
 	}

@@ -27,14 +27,14 @@ public class Clipboards {
 	private Clipboard clipboard = null;
 	private Clipboard primary = null;
 	private bool watchPrimaryChanges = false;
-	
+
 	/// <summary>Initializes a new instance of the <see cref="Clipboards" /> class.</summary>
 	/// <remarks><see cref="WatchPrimaryChanges"> is set to false at start, it needs to be enabled afterwards.</remarks>
 	public Clipboards () {
 		clipboard = Clipboard.Get(Gdk.Selection.Clipboard);
 		primary = Clipboard.Get(Gdk.Selection.Primary);
 	}
-	
+
 	public bool WatchPrimaryChanges {
 		set {
 			if (value && (!watchPrimaryChanges)) {
@@ -45,7 +45,7 @@ public class Clipboards {
 				primary.OwnerChange -= OnOwnerChange;
 				watchPrimaryChanges = false;
 			}
-		}	
+		}
 	}
 
 	public void OnOwnerChange (object o, OwnerChangeArgs args) {
@@ -54,17 +54,17 @@ public class Clipboards {
     	if ((!window.IsActive) || (args.Event.Owner == 0) || (!ValidWidgetHasFocus()))
     		Base.Ui.Menus.SetCutCopySensitivity(false);
     	else {
-    		Base.Ui.Menus.SetCutCopySensitivity(true);    	
+    		Base.Ui.Menus.SetCutCopySensitivity(true);
     	}
     }
-    
+
     public bool ValidWidgetHasFocus () {
     	SpinButton start, end, duration;
     	TextView textEdit, translationEdit;
     	Base.Ui.Edit.GetEditableWidgets (out start, out end, out duration, out textEdit, out translationEdit);
     	return start.HasFocus || end.HasFocus || duration.HasFocus || textEdit.HasFocus || translationEdit.HasFocus;
     }
-    
+
     public void Copy () {
     	Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)
@@ -72,7 +72,7 @@ public class Clipboards {
     	else if (widget is TextView)
     		(widget as TextView).Buffer.CopyClipboard(clipboard);
     }
-    
+
     public void Cut () {
 		Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)
@@ -80,7 +80,7 @@ public class Clipboards {
     	else if (widget is TextView)
     		(widget as TextView).Buffer.CutClipboard(clipboard, true);
     }
-    
+
     public void Paste () {
 		Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)

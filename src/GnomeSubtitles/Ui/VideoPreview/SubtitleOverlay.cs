@@ -26,12 +26,12 @@ using System;
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class SubtitleOverlay {
-	private Label label = null;	
-	
+	private Label label = null;
+
 	/* Current subtitle */
-	private Subtitle subtitle = null;	
+	private Subtitle subtitle = null;
 	private bool toShowText = true;
-	
+
 	public SubtitleOverlay () {
 		EventBox box = Base.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
 		box.ModifyBg(StateType.Normal, box.Style.Black);
@@ -42,9 +42,9 @@ public class SubtitleOverlay {
 		Base.InitFinished += OnBaseInitFinished;
 	}
 
-	
+
 	/* Public properties */
-	
+
 	public bool ToShowText {
 		get { return toShowText; }
 		set { this.toShowText = value; }
@@ -56,32 +56,32 @@ public class SubtitleOverlay {
 	public void Close () {
 		UnloadSubtitle();
 	}
-	
-	
+
+
 	/* Private methods */
-	
+
 	private void LoadSubtitle (int number) {
-		subtitle = Base.Document.Subtitles[number];		
+		subtitle = Base.Document.Subtitles[number];
 		SetText();
 		label.Visible = true;
 	}
-	
+
 	private void UnloadSubtitle () {
-		subtitle = null;		
+		subtitle = null;
 		ClearText();
 		label.Visible = false;
 	}
-	
+
 	private void SetText () {
 		if (toShowText)
 			SetText(subtitle.Text.Get());
 		else
 			SetText(subtitle.Translation.Get());
 	}
-	
+
 	private void SetText (string text) {
-		string markup = "<span size=\"x-large\""; 
-	
+		string markup = "<span size=\"x-large\"";
+
 		if (subtitle.Style.Bold)
 			markup += " weight=\"bold\"";
 
@@ -90,27 +90,27 @@ public class SubtitleOverlay {
 
 		if (subtitle.Style.Underline)
 			markup += " underline=\"single\"";
-		
+
 		markup += ">" + text + "</span>";
 		label.Markup = markup;
 	}
-	
+
 	private void ClearText () {
 		label.Text = String.Empty;
 	}
 
 
-	/* Event members */		
+	/* Event members */
 
 	private void OnBaseInitFinished () {
-		Base.Ui.Video.Tracker.CurrentSubtitleChanged += OnCurrentSubtitleChanged;		
+		Base.Ui.Video.Tracker.CurrentSubtitleChanged += OnCurrentSubtitleChanged;
 	}
 
 	private void OnCurrentSubtitleChanged (int indexSubtitle) {
 		if (indexSubtitle == -1)
 			UnloadSubtitle();
 		else
-			LoadSubtitle(indexSubtitle);		
+			LoadSubtitle(indexSubtitle);
 	}
 
 }

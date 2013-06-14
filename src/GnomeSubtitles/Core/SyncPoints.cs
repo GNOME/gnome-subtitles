@@ -26,14 +26,14 @@ namespace GnomeSubtitles.Core {
 public class SyncPoints {
 	private ListStore model = new ListStore(typeof(SyncPoint));
 	private SubLib.Core.Domain.SyncPoints collection = new SubLib.Core.Domain.SyncPoints();
-	
-	
+
+
 	public SyncPoints () : base() {
 		LoadModelFromCollection();
 	}
-	
+
 	/* Indexers */
-	
+
 	public SyncPoint this [TreeIter iter] {
 		get { return model.GetValue(iter, 0) as SyncPoint; }
 	}
@@ -41,19 +41,19 @@ public class SyncPoints {
 	public SyncPoint this [TreePath path] {
 		get { return collection[path.Indices[0]]; }
 	}
-	
+
 	/* Public properties */
 
 	public ListStore Model {
 		get { return model; }
 	}
-	
+
 	public SubLib.Core.Domain.SyncPoints Collection {
 		get { return collection; }
 	}
-	
+
 	/* Public methods */
-	
+
 	public int Add (SyncPoint syncPoint) {
 		bool didReplace = collection.Add(syncPoint);
 		int index = collection.IndexOf(syncPoint);
@@ -70,21 +70,21 @@ public class SyncPoints {
 			return index;
 		}
 	}
-	
+
 	public void Remove (TreePath[] paths) {
 		foreach (TreePath path in paths) {
 			TreeIter iter;
 			model.GetIter(out iter, path);
 			model.Remove(ref iter);
-			
+
 			collection.Remove(Util.PathToInt(path));
 		}
 	}
-	
+
 	public IEnumerator GetEnumerator () {
 		return collection.GetEnumerator();
 	}
-	
+
 
 	/* Private members */
 
@@ -94,18 +94,18 @@ public class SyncPoints {
 			model.AppendValues(syncPoint);
 		}
 	}
-	
-		
+
+
 	private void Insert (int index, SyncPoint syncPoint) {
 		model.SetValue(model.Insert(index), 0, syncPoint);
 	}
-	
+
 	private void Replace (int index, SyncPoint syncPoint) {
 		TreeIter iter;
 		model.GetIterFromString(out iter, index.ToString());
 		model.SetValue(iter, 0, syncPoint);
 	}
-	
+
 	private void Append (SyncPoint syncPoint) {
 		model.AppendValues(syncPoint);
 	}

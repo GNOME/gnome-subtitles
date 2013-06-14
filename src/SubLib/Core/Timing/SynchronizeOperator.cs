@@ -25,13 +25,13 @@ namespace SubLib.Core.Timing {
 /// <summary>Performs synchronization operations.</summary>
 public class SynchronizeOperator {
 	private Subtitles subtitles = null;
-	
+
 	public SynchronizeOperator (Subtitles subtitles) {
 		this.subtitles = subtitles;
 	}
 
 	/* Public members */
-	
+
 	public bool Sync (SyncPoints syncPoints, bool toSyncAll) {
 		SyncPoints pointsToUse = AdaptForOperation(syncPoints, toSyncAll);
 		if (!AreSyncArgsValid(pointsToUse)) {
@@ -42,26 +42,26 @@ public class SynchronizeOperator {
 			bool syncLast = (index == pointsToUse.Count - 1);
 			SyncPoint current = pointsToUse[index];
 			SyncUtil.Sync(subtitles, previous, current, syncLast);
-		
+
 			previous = current;
 		}
-		
+
 		return true;
 	}
-	
-	
+
+
 	/* Private members */
 
 	private SyncPoints AdaptForOperation (SyncPoints syncPoints, bool toSyncAll) {
 		if ((syncPoints == null) || (!toSyncAll) || (toSyncAll && (syncPoints.Count < 2)))
 			return syncPoints;
-		
+
 		SyncPoints adapted = syncPoints.Clone();
 
 		/* Add the first subtitle if possible */
 		int firstSubtitleNumber = 0;
 		if ((subtitles.Collection.Count > 1) && (!adapted.Contains(firstSubtitleNumber))) {
-			
+
 			/* Calculate sync shift and factor using the last 2 sync points */
 			SyncPoint firstSyncPoint = adapted[0];
 			SyncPoint secondSyncPoint = adapted[1];
@@ -69,7 +69,7 @@ public class SynchronizeOperator {
 			Subtitle secondSyncPointSubtitle = subtitles.Collection[secondSyncPoint.SubtitleNumber];
 			TimeSpan shift = firstSyncPoint.Correct.Time - firstSyncPointSubtitle.Times.PreciseStart;
 			double factor = (secondSyncPoint.Correct.Time - firstSyncPoint.Correct.Time).TotalMilliseconds / (secondSyncPointSubtitle.Times.PreciseStart - firstSyncPointSubtitle.Times.PreciseStart).TotalMilliseconds;
-			
+
 			/* Calculate new time */
 			Subtitle firstSubtitle = subtitles.Collection[firstSubtitleNumber];
 			TimeSpan firstSubtitleNewTime = firstSubtitle.Times.Start + shift; //Apply shift
@@ -83,13 +83,13 @@ public class SynchronizeOperator {
 			SyncPoint newFirstSyncPoint = new SyncPoint(firstSubtitleNumber, firstSubtitleCurrentTiming, firstSubtitleNewTiming);
 			adapted.Add(newFirstSyncPoint);
 		}
-		
+
 		/* Add last subtitle if possible */
 		int lastSubtitleNumber = subtitles.Collection.Count - 1;
 		if ((subtitles.Collection.Count > 1) && (!adapted.Contains(lastSubtitleNumber))) {
 
 			/* Calculate sync shift and factor using the last 2 sync points */
-			SyncPoint penultSyncPoint = adapted[adapted.Count - 2];			
+			SyncPoint penultSyncPoint = adapted[adapted.Count - 2];
 			SyncPoint lastSyncPoint = adapted[adapted.Count - 1];
 			Subtitle penultSyncPointSubtitle = subtitles.Collection[penultSyncPoint.SubtitleNumber];
 			Subtitle lastSyncPointSubtitle = subtitles.Collection[lastSyncPoint.SubtitleNumber];
@@ -106,10 +106,10 @@ public class SynchronizeOperator {
 			SyncPoint newLastSyncPoint = new SyncPoint(lastSubtitleNumber, lastSubtitleCurrentTiming, lastSubtitleNewTiming);
 			adapted.Add(newLastSyncPoint);
 		}
-		
+
 		return adapted;
 	}
-	
+
 	private bool AreSyncArgsValid (SyncPoints syncPoints) {
 		if ((syncPoints == null) || (syncPoints.Count < 2) || (syncPoints[syncPoints.Count - 1].SubtitleNumber > subtitles.Collection.Count))
 			return false;
@@ -119,12 +119,12 @@ public class SynchronizeOperator {
 			SyncPoint current = syncPoints[index];
 			if (!SyncUtil.AreSyncPointsValid(subtitles, previous, current))
 				return false;
-		
+
 			previous = current;
 		}
 		return true;
 	}
-	
+
 }
 
 }

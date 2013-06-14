@@ -54,17 +54,17 @@ public class TimingsShiftDialog : GladeDialog {
 
 	public override void Show () {
 		UpdateContents(false);
-		base.Show();		
+		base.Show();
 	}
-	
+
 	/* Private methods */
-	
+
 	private void UpdateContents (bool initializing) {
 		UpdateFromTimingMode(Base.TimingMode, initializing);
 		UpdateFromSelection();
 		UpdateSpinButtonValue(initializing);
 	}
-	
+
 	private void InitSpinButton () {
 		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
@@ -73,16 +73,16 @@ public class TimingsShiftDialog : GladeDialog {
 	private void UpdateFromTimingMode (TimingMode newTimingMode, bool initializing) {
 		if ((!initializing) && (newTimingMode == timingMode))
 			return;
-			
-		timingMode = newTimingMode;	
+
+		timingMode = newTimingMode;
 		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode);
 		Core.Util.SetSpinButtonMaxAdjustment(spinButton, timingMode, true);
-		
+
 		string label = (timingMode == TimingMode.Times ? Catalog.GetString("Time") : Catalog.GetString("Frames"));
 		string markup = "<b>" + label + "</b>";
 		timingModeLabel.Markup = markup;
 	}
-	
+
 	private void UpdateFromSelection () {
 		int selectionCount = Core.Base.Ui.View.Selection.Count;
 		fromFirstSubtitleToSelectionRadioButton.Sensitive = (selectionCount == 1);
@@ -93,13 +93,13 @@ public class TimingsShiftDialog : GladeDialog {
 		else
 			selectedSubtitlesRadioButton.Sensitive = false;
 	}
-	
+
 	private void UpdateSpinButtonValue (bool initializing) {
 		if (!Core.Base.Ui.Video.IsLoaded) {
 			SetSpinButtonValue(0);
 			return;
 		}
-		
+
 		TreePath path = Core.Base.Ui.View.Selection.FirstPath;
 		Subtitle subtitle = Base.Document.Subtitles[path];
 
@@ -117,11 +117,11 @@ public class TimingsShiftDialog : GladeDialog {
 		double difference = videoPosition - subtitlePosition;
 		SetSpinButtonValue(difference);
 	}
-	
+
 	private void SetSpinButtonValue (double newValue) {
 		spinButton.Value = newValue;
 	}
-	
+
 	private SelectionIntended GetSelectionIntended () {
 		if (allSubtitlesRadioButton.Active)
 			return SelectionIntended.All;
@@ -134,7 +134,7 @@ public class TimingsShiftDialog : GladeDialog {
 	}
 
 	#pragma warning disable 169		//Disables warning about handlers not being used
-	
+
 	private void OnClear (object o, EventArgs args) {
 		SetSpinButtonValue(0);
 	}
@@ -142,7 +142,7 @@ public class TimingsShiftDialog : GladeDialog {
 	protected override bool ProcessResponse (ResponseType response) {
 		if ((response == ResponseType.Ok) && (spinButton.Value != 0)) {
 			SelectionIntended selectionIntended = GetSelectionIntended();
-			
+
 			if (timingMode == TimingMode.Times) {
 				TimeSpan time = TimeSpan.FromMilliseconds(spinButton.Value);
 				Base.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));

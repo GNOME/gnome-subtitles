@@ -23,21 +23,21 @@ using System;
 namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatMPlayer : SubtitleFormat {
-	
+
 	internal SubtitleFormatMPlayer () {
 		name = "MPlayer";
 		type = SubtitleType.MPlayer;
 		mode = SubtitleMode.Frames;
 		extensions = new string[] { "mpl" };
 		lineBreak = "|";
-		
+
 		format = @"\d+,\d+,\d+,";
-		
+
 		subtitleIn = @"(?<StartFrame>\d+)\s*,[^\d\n]*(?<EndFrame>\d+)\s*,[^\d\n]*\d+\s*,(?<Text>.*)";
-		
+
 		subtitleOut = "<<StartFrame>>,<<EndFrame>>,0,<<Text>>";
 	}
-	
+
 }
 
 }

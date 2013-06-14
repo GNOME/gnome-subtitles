@@ -61,7 +61,7 @@ internal class FileInputOutput {
 		/* Check if no encoding was detected */
 		if (detectedEncodings[0] == "nomatch")
 			return new int[0];
-		
+
 		return GetCodePages(detectedEncodings);
 	}
 
@@ -89,7 +89,7 @@ internal class FileInputOutput {
 			writer.Close();
 		}
 	}
-	
+
 	internal static void WriteFile (string fileName, string text, Encoding encoding) {
 		StreamWriter writer = OpenFileForWriting(fileName, encoding);
 		try {
@@ -100,31 +100,31 @@ internal class FileInputOutput {
 		}
 	}
 
-	
+
 	/* Private members */
-	
+
 	private static StreamWriter OpenFileForWriting (string fileName) {
 		FileStream file = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
 		StreamWriter fileWriter = new StreamWriter(file);
-		return fileWriter;	
+		return fileWriter;
 	}
-	
+
 	private static StreamWriter OpenFileForWriting (string fileName, Encoding encoding) {
 		FileStream file = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
 		StreamWriter fileWriter = new StreamWriter(file, encoding);
-		return fileWriter;	
+		return fileWriter;
 	}
-	
+
 	private static int[] GetCodePages (string[] encodings) {
 		ArrayList codePages = new ArrayList();
 		foreach (string encoding in encodings) {
 			int codePage = GetCodePage(encoding);
 			if (codePage != -1)
-				codePages.Add(codePage);		
+				codePages.Add(codePage);
 		}
-		return (int[])codePages.ToArray(typeof(int));	
+		return (int[])codePages.ToArray(typeof(int));
 	}
-	
+
 	// Note: ISO-2022-CN, HZ-GB-2312 and x-euc-tw are not defined as their code pages were not found
 	private static int GetCodePage (string encoding) {
 		switch (encoding) {
@@ -151,7 +151,7 @@ internal class FileInputOutput {
 		}
 		return result;
 	}
-	
+
 	/// <summary>Replaces the occurrences of Windows and Mac newline chars with unix newline.</summary>
 	private static string ConvertNewLinesToUnix (string text) {
 		text = text.Replace("\r\n", "\n"); //Replace Windows newline

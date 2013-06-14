@@ -30,54 +30,54 @@ public class SubtitleEditText : SubtitleEditTextView {
 	public SubtitleEditText (TextView textView) : base(textView) {
 		Base.InitFinished += OnBaseInitFinished;
 	}
-	
+
 	protected override SubtitleTextType GetTextType () {
 		return SubtitleTextType.Text;
 	}
-	
+
 	protected override void ChangeSubtitleTextContent (Subtitle subtitle, string text) {
 		subtitle.Text.Set(text);
 	}
-	
+
 	protected override string GetSubtitleTextContent (Subtitle subtitle) {
 		return subtitle.Text.Get();
 	}
-	
+
 	protected override void ExecuteInsertCommand (int index, string text) {
 		Base.CommandManager.Execute(new InsertTextCommand(index, text));
 	}
-	
+
 	protected override void ExecuteDeleteCommand (int index, string text, int cursor) {
 		Base.CommandManager.Execute(new DeleteTextCommand(index, text, cursor));
 	}
-	
+
 	protected override SpellLanguage GetSpellActiveLanguage () {
 		return Base.SpellLanguages.ActiveTextLanguage;
 	}
-	
+
 	/* Event members */
-	
+
 	private void OnBaseInitFinished () {
 		Base.Ui.Edit.TranslationEdit.ToggleOverwrite += OnTranslationEditToggleOverwrite;
 
 		Base.DocumentLoaded += OnBaseDocumentLoaded;
 		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
 	}
-	
+
 	private void OnTranslationEditToggleOverwrite (object o, EventArgs args) {
 		ToggleOverwriteSilent();
 	}
-	
+
 	private void OnBaseDocumentLoaded (Document document) {
 		Base.Ui.View.Selection.Changed += OnSubtitleSelectionChanged;
-		
+
 		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
 		Base.SpellLanguages.TextLanguageChanged += OnSpellLanguageChanged;
 	}
-	
+
 	private void OnBaseDocumentUnloaded (Document document) {
 		Base.Ui.View.Selection.Changed -= OnSubtitleSelectionChanged;
-		
+
 		Base.SpellLanguages.ToggleEnabled += OnSpellToggleEnabled;
 		Base.SpellLanguages.TextLanguageChanged += OnSpellLanguageChanged;
 	}

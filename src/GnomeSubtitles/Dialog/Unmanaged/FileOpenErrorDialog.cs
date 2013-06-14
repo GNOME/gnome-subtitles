@@ -24,10 +24,10 @@ using System;
 namespace GnomeSubtitles.Dialog.Unmanaged {
 
 public abstract class FileOpenErrorDialog : ErrorDialog {
-	
+
 	/* Strings */
 	private string primaryTextStart = Catalog.GetString("Could not open the file");
-	private string actionLabel = Catalog.GetString("Open another file"); 
+	private string actionLabel = Catalog.GetString("Open another file");
 
 	public FileOpenErrorDialog (Uri uri, Exception exception) : this(uri.LocalPath, exception) {
 	}
@@ -39,19 +39,19 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 		string secondaryText = GetSecondaryText(exception);
 		SetText(primaryText, secondaryText);
 	}
-	
+
 	/* Protected methods */
-	
+
 	protected override void AddButtons () {
 		Button actionButton = dialog.AddButton(actionLabel, ResponseType.Accept) as Button;
 		actionButton.Image = new Image(Stock.Open, IconSize.Button);
 		dialog.AddButton(Stock.Ok, ResponseType.Ok);
 	}
-	
+
 	protected virtual string GetPrimaryText (string filename) {
 		return primaryTextStart + " " + filename + ".";
 	}
-	
+
 	protected virtual string GetSecondaryText (Exception exception) {
 		string text = SecondaryTextFromException(exception);
 		if (text != String.Empty)
@@ -64,7 +64,7 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 
 
 	/* Abstract methods */
-	
+
 	protected abstract string SecondaryTextFromException (Exception exception);
 
 }

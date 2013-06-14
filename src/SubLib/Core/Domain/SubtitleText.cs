@@ -25,7 +25,7 @@ using System.Text.RegularExpressions;
 namespace SubLib.Core.Domain {
 
 //TODO this can be optimized
-/// <summary>Represents the text of a subtitle.</summary>	
+/// <summary>Represents the text of a subtitle.</summary>
 public class SubtitleText : ICloneable {
 	private ArrayList lines = new ArrayList();
 
@@ -37,33 +37,33 @@ public class SubtitleText : ICloneable {
 	public SubtitleText (string text, string lineBreak, bool toTrimLines) {
 		Set(text, lineBreak, toTrimLines);
 	}
-	
+
 	/// <summary>Initializes a new instance of the <see cref="SubtitleText" /> class
 	/// with the specified text.</summary>
 	/// <remarks>Newline (\n) is used as the line break. The text lines are not trimmed.</remarks>
 	/// <param name="text">The subtitle text.</param>
 	public SubtitleText (string text) : this(text, "\n", false) {
 	}
-	
+
 	/// <summary>Initializes a new instance of the <see cref="SubtitleText" /> class, with empty text.</summary>
 	public SubtitleText() {
 	}
-	
-	
+
+
 	/* Public properties */
-	
+
 	/// <summary>Whether there is no text.</summary>
 	public bool IsEmpty {
 		get { return ((lines.Count == 0) || ((lines.Count == 1) && ((lines[0] as string).Length == 0))); }
 	}
-		
+
 	public IEnumerator GetEnumerator () {
 		return lines.GetEnumerator();
 	}
 
-	
+
 	/* Public methods */
-	
+
 	public void Clear () {
 		lines.Clear();
 	}
@@ -91,14 +91,14 @@ public class SubtitleText : ICloneable {
 		}
 		return text;
 	}
-	
+
 	/// <summary>Gets the subtitle text.</summary>
 	/// <remarks>The text lines end with the new line (\n) char.</remarks>
 	/// <returns>The subtitle text.</returns>
 	public string Get () {
 		return Get("\n");
 	}
-	
+
 	/// <summary>Gets the text lines merged with the specified line break and replaces those that are empty.</summary>
 	/// <param name="replacement">The text to replace empty lines with.</param>
 	/// <param name="lineBreak">The line break used to merge the text.</param>
@@ -107,7 +107,7 @@ public class SubtitleText : ICloneable {
 	public string GetReplaceEmptyLines (string replacement, string lineBreak) {
 		if (this.IsEmpty)
 			return replacement;
-	
+
 		string text = String.Empty;
 		IEnumerator textLines = lines.GetEnumerator();
 		if (textLines.MoveNext()){
@@ -120,7 +120,7 @@ public class SubtitleText : ICloneable {
 		}
 		return text;
 	}
-	
+
 	/// <summary>Gets the text lines and replaces those that are empty.</summary>
 	/// <param name="replacement">The text to replace empty lines with.</param>
 	/// <remarks>The text lines are merged by the newline (\n) char. A subtitle line is considered empty
@@ -129,7 +129,7 @@ public class SubtitleText : ICloneable {
 	public string GetReplaceEmptyLines (string replacement) {
 		return GetReplaceEmptyLines(replacement, "\n");
 	}
-	
+
 	/// <summary>Gets and trims the text lines merged with the specified line break.</summary>
 	/// <param name="lineBreak">The line break used to merge the text.</param>
 	/// <remarks>A subtitle line is considered blank if it has only white spaces.</remarks>
@@ -152,7 +152,7 @@ public class SubtitleText : ICloneable {
 		}
 		return text;
 	}
-	
+
 	/// <summary>Gets and trims the text lines.</summary>
 	/// <remarks>The text lines are merged by the newline (\n) char. A subtitle line is
 	/// considered blank ifit has only white spaces.</remarks>
@@ -160,11 +160,11 @@ public class SubtitleText : ICloneable {
 	public string GetTrimLines () {
 		return GetTrimLines("\n");
 	}
-	
+
 	public string[] GetLines () {
 		return (string[])lines.ToArray(typeof(String));
 	}
-	
+
 	/// <summary>Sets the subtitle text using the specified line break and trimming option.</summary>
 	/// <param name="text">The subtitle text.</param>
 	/// <param name="lineBreak">The text substring used to split the text in lines.</param>
@@ -181,19 +181,19 @@ public class SubtitleText : ICloneable {
 		foreach (string textLine in textLines)
 			lines.Add(textLine);
 	}
-	
+
 	/// <summary>Sets the subtitle text.</summary>
 	/// <remarks>Newline (\n) is used as the line break. The text lines are not trimmed.</remarks>
 	/// <param name="text">The subtitle text.</param>
 	public void Set (string text) {
 		Set(text, "\n", false);
 	}
-	
+
 	public void Set (string[] newLines) {
 		Clear();
 		Add(newLines);
 	}
-	
+
 	public void Add (string[] newLines) {
 		foreach (string newLine in newLines) {
 			string trimmedLine = newLine.Trim();
@@ -201,7 +201,7 @@ public class SubtitleText : ICloneable {
 				lines.Add(trimmedLine);
 		}
 	}
-	
+
 	public override string ToString() {
 		string result = String.Empty;
 	  	int lineNumber = 1;
@@ -211,7 +211,7 @@ public class SubtitleText : ICloneable {
   		}
   		return result;
 	}
-	
+
 	public object Clone() {
 		SubtitleText clone = new SubtitleText();
 		foreach (string line in lines) {
@@ -222,7 +222,7 @@ public class SubtitleText : ICloneable {
 
 
 	/* Private Methods */
-	
+
 	private string ReplaceLineIfEmpty (string textLine, string replacement) {
 		if (textLine == String.Empty)
 			return replacement;

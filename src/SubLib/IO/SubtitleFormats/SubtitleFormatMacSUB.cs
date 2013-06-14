@@ -25,23 +25,23 @@ namespace SubLib.IO.SubtitleFormats {
 
 //TODO: support empty lines
 internal class SubtitleFormatMacSUB : SubtitleFormat {
-	
+
 	internal SubtitleFormatMacSUB() {
 		name = "MacSUB";
 		type = SubtitleType.MacSUB;
 		mode = SubtitleMode.Frames;
 		extensions = new string[] { "scr" };
-		
+
 		lineBreak = "\n";
-		
+
 		format = @"/\d+\s+(.+\n)*/\d+";
-		
+
 		subtitleIn = @"/\s*(?<StartFrame>\d+)\n+(?<Text>(.*(?!\n/\d+)\n)*.*\n)/\s*(?<EndFrame>\d+)";
-		
+
 		subtitleOut = "/<<StartFrame>>\n<<Text>>\n/<<EndFrame>>";
-		
+
 	}
-		
+
 }
 
 }

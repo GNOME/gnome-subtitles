@@ -29,44 +29,44 @@ namespace GnomeSubtitles.Core {
 
 public class Backup {
 	private uint backupTimeoutId = 0; //Active timeout ID, used to remove timeout if needed
-	
+
 	public Backup () {
 		Base.InitFinished += OnBaseInitFinished;
 	}
-	
+
 
 	/* Public methods */
-	
+
 	/* ReCheck forces restart if we're enabling backup and it's already running */
 	public void ReCheck () {
 		if (IsBackupRunning()) {
 			Disable();
 		}
-	
+
 		if (Base.Config.PrefsBackupAutoBackup) {
 			Enable();
 		}
 	}
-	
-	
+
+
 	/* Private members */
-	
+
 	private bool IsBackupRunning () {
 		return backupTimeoutId != 0;
 	}
-	
+
 	private void Enable() {
 		if (backupTimeoutId == 0)
 			backupTimeoutId = GLib.Timeout.Add((uint)Base.Config.PrefsBackupBackupTime * 1000, DoBackup); //milliseconds
 	}
-	
+
 	private void Disable() {
 		if (backupTimeoutId != 0) {
 			GLib.Source.Remove(backupTimeoutId);
 			backupTimeoutId = 0;
 		}
 	}
-	
+
 	private bool DoBackup() {
 		if (!Base.IsDocumentLoaded) {
 			return true;
@@ -76,7 +76,7 @@ public class Backup {
 		if (Base.Document.CanTextBeSaved) {
 			backupThreadArgs.TextFilePropertiesClone = Base.Document.TextFile.Clone() as SubLib.Core.Domain.FileProperties;
 		}
-		
+
 		if (Base.Document.CanTranslationBeSaved) {
 			backupThreadArgs.TranslationFilePropertiesClone = Base.Document.TranslationFile.Clone() as SubLib.Core.Domain.FileProperties;
 		}
@@ -89,17 +89,17 @@ public class Backup {
 
 		return true;
 	}
-	
+
 	private void SaveSubtitleFiles (object backupThreadArgs) {
 		try {
 			BackupThreadArgs args = backupThreadArgs as BackupThreadArgs;
-			
+
 			/* Save subtitle file */
 			if ((args.TextFilePropertiesClone != null) && (args.TextFilePropertiesClone.SubtitleType != SubtitleType.Unknown) && (args.TextFilePropertiesClone.IsPathRooted)) {
 				args.TextFilePropertiesClone.Path += "~";
 				SaveFile(args.SubtitlesClone, args.TextFilePropertiesClone, SubtitleTextType.Text);
 			}
-			
+
 			/* Save translation file */
 			if ((args.TranslationFilePropertiesClone != null) && (args.TranslationFilePropertiesClone.SubtitleType != SubtitleType.Unknown) && (args.TranslationFilePropertiesClone.IsPathRooted)) {
 				args.TranslationFilePropertiesClone.Path += "~";
@@ -110,7 +110,7 @@ public class Backup {
 			Console.Error.WriteLine("Caught exception creating backup files: " + e);
 		}
 	}
-	
+
 	private bool SaveFile (SubLib.Core.Domain.Subtitles subtitles, FileProperties properties, SubtitleTextType textType) {
 		try {
 			SubtitleSaver saver = new SubtitleSaver();
@@ -122,16 +122,16 @@ public class Backup {
 			return false;
 		}
 	}
-	
+
 	/* Event members */
-	
+
 	private void OnBaseInitFinished () {
 		if (Base.Config.PrefsBackupAutoBackup) {
 			Enable();
 		}
     }
-    
-    
+
+
     /* Inner classes */
 
     private class BackupThreadArgs {
@@ -145,12 +145,12 @@ public class Backup {
     		get { return subtitlesClone; }
     		set { this.subtitlesClone = value; }
     	}
-    	
+
     	public SubLib.Core.Domain.FileProperties TextFilePropertiesClone {
     		get { return textFilePropertiesClone; }
     		set { this.textFilePropertiesClone = value; }
     	}
-    	
+
     	public SubLib.Core.Domain.FileProperties TranslationFilePropertiesClone {
     		get { return translationFilePropertiesClone; }
     		set { this.translationFilePropertiesClone = value; }

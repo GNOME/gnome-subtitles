@@ -136,7 +136,7 @@ public class SubtitleFormatComboBox {
 
 
 	/* Event members */
-	
+
 	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void ConnectHandlers () {

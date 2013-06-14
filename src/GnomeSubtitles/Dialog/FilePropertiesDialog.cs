@@ -39,37 +39,37 @@ public class FilePropertiesDialog : GladeDialog {
 	[WidgetAttribute] private Label encodingValueLabel = null;
 	[WidgetAttribute] private Label subtitleFormatValueLabel = null;
 	[WidgetAttribute] private Label timingModeValueLabel = null;
-	
+
 	public FilePropertiesDialog () : base(gladeFilename) {
 		FillLabelValues();
 	}
-	
+
 	/* Private methods */
-	
+
 	private void FillLabelValues () {
 		FileProperties properties = Base.Document.TextFile;
-		
+
 		FillName(properties.Filename);
 		FillPath(properties.Directory);
 		FillEncoding(properties.Encoding);
 		FillSubtitleFormat(properties.SubtitleType);
 		FillTimingMode(properties.TimingMode);
 	}
-	
+
 	private void FillName (string name) {
 		if (name == String.Empty)
 			name = Catalog.GetString("Unknown");
 
 		nameValueLabel.Text = name;
 	}
-	
+
 	private void FillPath (string path) {
 		if (path == String.Empty)
 			path = Catalog.GetString("Unknown");
 
 		pathValueLabel.Text = path;
 	}
-	
+
 	private void FillEncoding (Encoding encoding) {
 		string encodingName = String.Empty;
 		if (encoding == null)
@@ -79,10 +79,10 @@ public class FilePropertiesDialog : GladeDialog {
 			if ((encodingName == null) || (encodingName == String.Empty))
 				encodingName = Catalog.GetString("Unknown");
 		}
-		
+
 		encodingValueLabel.Text = encodingName;
 	}
-	
+
 	private void FillSubtitleFormat (SubtitleType type) {
 		string format = String.Empty;
 		if (type == SubtitleType.Unknown)
@@ -91,14 +91,14 @@ public class FilePropertiesDialog : GladeDialog {
 			SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
 			format = typeInfo.Name;
 		}
-		
+
 		subtitleFormatValueLabel.Text = format;
 	}
-	
+
 	private void FillTimingMode (TimingMode mode) {
 		timingModeValueLabel.Text = mode.ToString();
 	}
-	
+
 }
 
 }

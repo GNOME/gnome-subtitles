@@ -31,7 +31,7 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 	private Subtitle[] subtitlesBefore = null;
 	private TreePath[] pathsAfter = null;
 	private Subtitle[] subtitlesAfter = null;
-	
+
 	public SplitSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
 	}
 
@@ -40,9 +40,9 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 		ArrayList pathsBefore = new ArrayList();
 		ArrayList subtitlesBefore = new ArrayList();
 		ArrayList pathsAfter = new ArrayList();
-		
+
 		SplitOperator splitOperator = new SplitOperator(subtitles, Base.Config.PrefsTimingsTimeBetweenSubtitles);
-		
+
 		foreach (TreePath path in Paths) {
 			int subtitleIndex = Util.PathToInt(path) + subtitlesBefore.Count; //need to account for subtitles already added in this loop
 			Subtitle subtitle = subtitles[subtitleIndex];
@@ -58,7 +58,7 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 				subtitles.Add(subtitle2, subtitleIndex + 1);
 			}
 		}
-		
+
 		/* If any subtitle was changed, the command was successful */
 		if (subtitlesBefore.Count == 0)
 			return false;
@@ -72,7 +72,7 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 			return true;
 		}
 	}
-	
+
 	public override void Undo () {
 		if (this.subtitlesAfter == null) {
 			this.subtitlesAfter = GetSubtitlesAfter(Base.Document.Subtitles, this.pathsAfter);
@@ -87,14 +87,14 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 		Base.Ui.View.Insert(this.subtitlesAfter, this.pathsAfter, this.pathsAfter[0]);
 		PostProcess();
 	}
-	
+
 	/* Protected members */
-	
+
 	protected void PostProcess () {
 		Base.Ui.Video.SeekToSelection(true);
 	}
-	
-	
+
+
 	/* Private members */
 
 	private Subtitle[] GetSubtitlesAfter (GnomeSubtitles.Ui.View.Subtitles subtitles, TreePath[] pathsAfter) {

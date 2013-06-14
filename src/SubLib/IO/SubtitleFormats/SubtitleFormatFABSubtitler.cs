@@ -27,18 +27,18 @@ namespace SubLib.IO.SubtitleFormats {
 /* Note: it's not clear whether FAB Subtitler supports framerates besides PAL and NTSC. Because of that, all framerates
    are supported here. The user should use the subtitle input and output framerate options accordingly. */
 internal class SubtitleFormatFABSubtitler : SubtitleFormat {
-	
+
 	internal SubtitleFormatFABSubtitler () {
 		name = "FAB Subtitler";
 		type = SubtitleType.FABSubtitler;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "txt" };
 		lineBreak = "\n";
-		
+
 		format = @"\d\d:\d\d:\d\d:\d\d\s+\d\d:\d\d:\d\d:\d\d";
-		
+
 		subtitleIn = @"(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*:\s*(?<StartMillisecondsAsFrames>\d+)\s+(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*:\s*(?<EndMillisecondsAsFrames>\d+).*(\n(?<Text>(.*(?!\n\d+(\s*:\s*\d+){2})\n?)*.))?";
-		
+
 		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>:<<StartMillisecondsAsFrames>>  <<EndHours>>:<<EndMinutes>>:<<EndSeconds>>:<<EndMillisecondsAsFrames>>\n<<Text>>\n";;
 	}
 

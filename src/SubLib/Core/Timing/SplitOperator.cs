@@ -26,32 +26,32 @@ namespace SubLib.Core.Timing {
 public class SplitOperator {
 	private Subtitles subtitles = null;
 	private int timeBetweenSubtitles = -1;
-	
+
 	public SplitOperator (Subtitles subtitles, int timeBetweenSubtitles) {
 		this.subtitles = subtitles;
 		this.timeBetweenSubtitles = timeBetweenSubtitles;
 	}
 
 	/* Public members */
-	
+
 	public Subtitle Split (Subtitle subtitle) {
 		if (!isOperationValid(subtitle))
 			return null;
-		
+
 		Subtitle subtitle2 = Split(subtitle, this.subtitles.Properties, this.timeBetweenSubtitles);
 		return subtitle2;
 	}
-	
-	
+
+
 	/* Private members */
-	
+
 	/// <summary>Splits a subtitle in two halves. The subtitle passed as parameter is turned into the first half and the second half is returned.</summary>
 	/// <param name="subtitle">The subtitle to split</param>
 	/// <param name="subtitleProperties">The subtitle properties</param>
 	/// <param name="timeBetweenSubtitles">Time between the 2 subtitles, in milliseconds</param>
 	private Subtitle Split (Subtitle subtitle, SubtitleProperties subtitleProperties, int timeBetweenSubtitles) {
 		Subtitle subtitle2 = subtitle.Clone(subtitleProperties);
-		
+
 		/* Change timings */
 		int originalStart = (int)subtitle.Times.Start.TotalMilliseconds;
 		int originalEnd = (int)subtitle.Times.End.TotalMilliseconds;
@@ -69,7 +69,7 @@ public class SplitOperator {
 			subtitle.Times.End = TimeSpan.FromMilliseconds(newSubtitleEnd);
 			subtitle2.Times.Start = TimeSpan.FromMilliseconds(subtitle2Start);
 		}
-		
+
 		/* Change subtitle text */
 		string[] textLines = subtitle.Text.GetLines();
 		if (textLines.Length == 1)
@@ -81,7 +81,7 @@ public class SplitOperator {
 			subtitle.Text.Set(textLinesHalf1);
 			subtitle2.Text.Set(textLinesHalf2);
 		}
-		
+
 		/* Change translation text */
 		if (subtitle.HasTranslation) {
 			string[] translationLines = subtitle.Translation.GetLines();
@@ -95,21 +95,21 @@ public class SplitOperator {
 				subtitle2.Translation.Set(translationLinesHalf2);
 			}
 		}
-		
+
 		return subtitle2;
 	}
-	
+
 	private bool isOperationValid (Subtitle subtitle) {
 		return subtitle.Times.End >= subtitle.Times.Start;
 	}
-	
+
 	private void SplitArray<T> (T[] array, ref T[] half1, ref T[] half2) {
 		if (array == null) {
 			half1 = null;
 			half2 = null;
 			return;
 		}
-		
+
 		int arrayLength = array.Length;
 		if (arrayLength == 0) {
 			half1 = new T[0];

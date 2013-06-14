@@ -26,33 +26,33 @@ namespace GnomeSubtitles.Ui.View {
 
 public class Subtitles : SubLib.Core.Domain.Subtitles {
 	private ListStore model = new ListStore(typeof(Subtitle));
-	
-	
+
+
 	public Subtitles (SubLib.Core.Domain.Subtitles subtitles) : base(subtitles.Collection, subtitles.Properties) {
 		LoadModelFromCollection();
 	}
 
-	
+
 	/* Indexers */
-	
+
 	public Subtitle this [int index] {
 		get { return Collection[index]; }
 	}
-	
+
 	public Subtitle this [TreeIter iter] {
 		get { return model.GetValue(iter, 0) as Subtitle; }
 	}
-	
+
 	public Subtitle this [TreePath path] {
 		get { return this[path.Indices[0]]; }
 	}
-	
+
 	/* Public properties */
 
 	public ListStore Model {
 		get { return model; }
 	}
-	
+
 	public int Count {
 		get { return Collection.Count; }
 	}
@@ -62,13 +62,13 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 		Collection.Add(subtitle);
 		model.AppendValues(subtitle);
 	}
-	
+
 	/// <summary>Adds a subtitle to the specified position on the list.</summary>
 	public void Add (Subtitle subtitle, int index) {
 		Collection.Add(subtitle, index);
 		model.SetValue(model.Insert(index), 0, subtitle);
 	}
-	
+
 	/// <summary>Creates a subtitle and adds it after the specified position.</summary>
 	/// <remarks>The timings of the new subtitle will be based on the subtitle that preceeds it.</remarks>
 	public void AddNewAfter (int index) {
@@ -77,38 +77,38 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 		Subtitle newSubtitle = this[newIndex];
 		model.SetValue(model.Insert(newIndex), 0, newSubtitle);
 	}
-	
+
 	/// <summary>Creates a subtitle and adds it before the specified position.</summary>
 	/// <remarks>The timings of the new subtitle will be based on the subtitle that succeeds it.</remarks>
 	public void AddNewBefore (int index) {
 		Collection.AddNewBefore(index, Properties, Base.Config.PrefsTimingsTimeBetweenSubtitles);
 		Subtitle newSubtitle = this[index];
-		model.SetValue(model.Insert(index), 0, newSubtitle);	
+		model.SetValue(model.Insert(index), 0, newSubtitle);
 	}
-	
+
 	/// <summary>Creates a subtitle and adds it to the specified position of the list.</summary>
 	public void AddNewAt (int index) {
 		Collection.AddNewAt(index, Properties);
 		Subtitle newSubtitle = this[index];
 		model.SetValue(model.Insert(index), 0, newSubtitle);
 	}
-	
+
 	public void AddNewAt (int index, TimeSpan start) {
 		Collection.AddNewAt(index, Properties, start);
 		Subtitle newSubtitle = this[index];
 		model.SetValue(model.Insert(index), 0, newSubtitle);
 	}
-	
+
 	/// <summary>Removes a subtitle from the collection, given its <see cref="TreePath" />.</summary>
 	/// <returns>Whether the subtitle could be removed.</returns>
 	public bool Remove (TreePath path) {
 		int index = Util.PathToInt(path);
 		if (!Collection.Contains(index))
 			return false;
-			
+
 		TreeIter iter;
 		model.GetIter(out iter, path);
-		
+
 		Collection.Remove(index);
 		model.Remove(ref iter);
 		return true;
@@ -119,7 +119,7 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	public bool Remove (int index) {
 		if (!Collection.Contains(index))
 			return false;
-	
+
 		TreeIter iter;
 		model.GetIterFromString(out iter, index.ToString());
 
@@ -127,19 +127,19 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 		model.Remove(ref iter);
 		return true;
 	}
-		
+
 	/// <summary>Removes a collection of subtitles from the subtitle collection, given their multiple <see cref="TreePath" />.</summary>
 	/// <param name="paths">The collection of paths corresponding to the subtitles to be removed. Its elements must be ordered without repetition.</param>
 	/// <returns>Whether the subtitles could be removed. This method removes all of the subtitles or none.</returns>
 	public bool Remove (TreePath[] paths) { //TODO seems to perform worse than before, for no visible reason. Check out. Maybe has to due with event being thrown on count change?
 		if ((paths == null) || (paths.Length == 0))
 			return true;
-	
+
 		/* Check if the last member is within the valid range */
 		int lastIndex = Util.PathToInt(paths[paths.Length - 1]);
 		if (!Collection.Contains(lastIndex))
 			return false;
-		
+
 		for (int index = 0 ; index < paths.Length ; index++) {
 			TreePath path = paths[index];
 			int subtitleIndex = Util.PathToInt(path) - index; //Subtract pathIndex because indexes decrement as subtitles are removed.
@@ -147,23 +147,23 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 		}
 		return true;
 	}
-	
+
 	public bool RemoveRange (TreePath firstPath, TreePath lastPath) {
 		if ((firstPath == null) || (lastPath == null))
 			return false;
-			
+
 		int firstSubtitleNumber = Util.PathToInt(firstPath);
 		int lastSubtitleNumber = Util.PathToInt(lastPath);
 		if ((firstSubtitleNumber < 0) || (firstSubtitleNumber > lastSubtitleNumber) || (lastSubtitleNumber >= Collection.Count))
 			return false;
-			
+
 		for (int index = firstSubtitleNumber ; index <= lastSubtitleNumber ; index++) {
 			if (!Remove(firstSubtitleNumber)) //the index is constant as subtitles are removed
 				return false;
 		}
 		return true;
 	}
-	
+
 	/// <summary>Loads possible extra subtitles at the end of the model.</summary>
 	/// <remarks>Extra subtitles exist if subtitles were added to the base collection.</remarks>
 	public void AddExtra (int extraCount) {
@@ -174,7 +174,7 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 
 		if (Count == 0)
 			AddNewAt(0);
-		
+
 		for (int index = Count - 1 ; index < lastIndex ; index++)
 			AddNewAfter(index);
 	}

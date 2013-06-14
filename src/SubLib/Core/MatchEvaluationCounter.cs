@@ -26,20 +26,20 @@ internal class MatchEvaluationCounter {
 	int count = 0; //The number of matches or times the evaluator was called
 	bool evaluationOccured = false; //Whether an evaluation occured
 	string replacement = String.Empty;
-	
+
 	internal MatchEvaluationCounter (string replacement) {
 		this.replacement = replacement;
 	}
-	
+
 	internal int Count {
 		get { return count; }
 	}
-	
+
 	internal bool EvaluationOccured {
 		get { return evaluationOccured; }
 		set { evaluationOccured = value; }
 	}
-	
+
 	internal string Evaluator (Match match) {
 		count++;
 		evaluationOccured = true;

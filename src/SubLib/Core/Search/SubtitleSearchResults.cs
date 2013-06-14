@@ -40,24 +40,24 @@ public class SubtitleSearchResults {
 		this.index = index;
 		this.length = length;
 	}
-	
+
 	/* Public properties */
-	
+
 	/// <summary>The subtitle number.</summary>
 	public int Subtitle {
 		get { return subtitle; }
 	}
-	
+
 	/// <summary>The type of the text content.</summary>
 	public SubtitleTextType TextType {
 		get { return textType; }
 	}
-	
+
 	/// <summary>The text index.</summary>
 	public int Index {
 		get { return index; }
 	}
-	
+
 	/// <summary>The text length.</summary>
 	public int Length {
 		get { return length; }

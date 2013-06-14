@@ -22,7 +22,7 @@ using SubLib.Core.Domain;
 namespace GnomeSubtitles.Dialog {
 
 public class FileSaveAsDialog : SubtitleFileSaveAsDialog {
-	
+
 	public FileSaveAsDialog () : base(SubtitleTextType.Text) {
 	}
 

@@ -26,16 +26,16 @@ public enum SelectionIntended {
 
 	/// <summary>Use the current selection.</summary>
 	Simple,
-	
+
 	/// <summary>Use the current selection to the first subtitle.</summary>
 	SimpleToFirst,
-	
+
 	/// <summary>Use the current selection to the last subtitle.</summary>
 	SimpleToLast,
-	
+
 	/// <summary>A range of subtitles is selected.</summary>
 	Range,
-	
+
 	/// <summary>All subtitles are selected.</summary>
 	All
 }

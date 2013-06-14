@@ -32,13 +32,13 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 	public InsertSubtitleCommand (TreePath path) : base(description, false, path) {
 		newPath = GetNewPath();
 	}
-	
+
 	/* Protected properties */
-	
+
 	protected TreePath NewPath {
 		get { return newPath; }
 	}
-	
+
 	/* Public members */
 
 	public override bool Execute () {
@@ -46,7 +46,7 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 		subtitle = Base.Document.Subtitles[newPath];
 		return true;
 	}
-	
+
 	public override void Undo () {
 		bool selectNext = ((Path != null) && (Path.Compare(newPath) == 1));
 		Base.Ui.View.Remove(newPath, selectNext);
@@ -55,9 +55,9 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 	public override void Redo () {
 		Base.Ui.View.Insert(subtitle, newPath);
 	}
-	
+
 	/* Methods to be extended */
-	
+
 	protected abstract TreePath GetNewPath ();
 	protected abstract void InsertNew ();
 
@@ -67,11 +67,11 @@ public class InsertSubtitleAfterCommand : InsertSubtitleCommand {
 
 	public InsertSubtitleAfterCommand () : base(Base.Ui.View.Selection.LastPath) {
 	}
-	
+
 	protected override TreePath GetNewPath () {
 		return Util.PathNext(Path);
 	}
-	
+
 	protected override void InsertNew () {
 		Base.Ui.View.InsertNewAfter(Path);
 	}
@@ -86,22 +86,22 @@ public class InsertSubtitleBeforeCommand : InsertSubtitleCommand {
 	protected override TreePath GetNewPath () {
 		return Path;
 	}
-	
+
 	protected override void InsertNew () {
 		Base.Ui.View.InsertNewBefore(Path);
 	}
 
 }
- 
+
 public class InsertFirstSubtitleCommand : InsertSubtitleCommand {
-	
+
 	public InsertFirstSubtitleCommand () : base(null) {
 	}
-	
+
 	protected override TreePath GetNewPath () {
 		return TreePath.NewFirst();
 	}
-	
+
 	protected override void InsertNew () {
 		Base.Ui.View.InsertNewAt(NewPath);
 	}
@@ -109,14 +109,14 @@ public class InsertFirstSubtitleCommand : InsertSubtitleCommand {
 }
 
 public class InsertLastSubtitleCommand : InsertSubtitleCommand {
-	
+
 	public InsertLastSubtitleCommand () : base(Util.IntToPath(Base.Document.Subtitles.Count - 1)) {
 	}
-	
+
 	protected override TreePath GetNewPath () {
 		return Util.IntToPath(Base.Document.Subtitles.Count);
 	}
-	
+
 	protected override void InsertNew () {
 		Base.Ui.View.InsertNewAfter(Path);
 	}
@@ -134,10 +134,10 @@ public class InsertSubtitleAtVideoPositionCommand : InsertSubtitleCommand {
 		if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
 			subtitleTime -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
 		}
-	
+
 		if (Base.Document.Subtitles.Count == 0)
 			return TreePath.NewFirst();
-			
+
 		int index = Base.Ui.Video.Tracker.FindSubtitleNearPosition(subtitleTime);
 		Subtitle nearestSubtitle = Base.Document.Subtitles[index];
 		if (subtitleTime < nearestSubtitle.Times.Start)

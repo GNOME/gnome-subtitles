@@ -23,17 +23,17 @@ namespace SubLib.IO.Output {
 
 internal class VerboseConsole {
 	private static bool verbose = false;
-	
+
 	internal static bool Verbose {
 		get { return verbose; }
-		set { verbose = value; }	
+		set { verbose = value; }
 	}
-	
+
 	internal static void Write (string text) {
 		if (verbose)
 			Console.Error.Write(text);
 	}
-	
+
 	internal static void WriteLine (string text) {
 		if (verbose)
 			Console.Error.WriteLine(text);

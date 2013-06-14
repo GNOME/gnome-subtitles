@@ -35,7 +35,7 @@ public enum ConfigFileSaveNewlineOption { RememberLastUsed = 0, Specific = 2 }; 
 
 public class Config {
 	private Client client = null;
-	
+
 	/* Constant prefix strings */
 	private const string keyPrefix = "/apps/gnome-subtitles/";
 	private const string keyPrefs = keyPrefix + "preferences/";
@@ -77,7 +77,7 @@ public class Config {
 	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step"; //Not editable in the Preferences dialog
 	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step"; //Not editable in the Preferences dialog
 	private const string keyPrefsTimingsTimeBetweenSubtitles = keyPrefsTimings + "time_between_subs";
-	
+
 	/* Cached values */
 	private bool isValuePrefsViewLineLengthsCached = false;
 	private bool valuePrefsViewLineLengths = false;
@@ -90,12 +90,12 @@ public class Config {
 	private int valuePrefsTimingsTimeStep = -1;
 	private int valuePrefsTimingsFramesStep = -1;
 	private int valuePrefsTimingsTimeBetweenSubtitles = -1;
-	
+
 
 	public Config () {
 		client = new Client();
 	}
-	
+
 	/* Public properties */
 
 	public string[] PrefsEncodingsShownInMenu {
@@ -105,27 +105,27 @@ public class Config {
 		}
 		set { SetStrings(keyPrefsEncodingsShownInMenu, value); }
 	}
-	
+
 	public string PrefsSpellCheckActiveTextLanguage {
 		get { return GetString(keyPrefsSpellCheckActiveTextLanguage, String.Empty); }
 		set { Set(keyPrefsSpellCheckActiveTextLanguage, value); }
 	}
-	
+
 	public string PrefsSpellCheckActiveTranslationLanguage {
 		get { return GetString(keyPrefsSpellCheckActiveTranslationLanguage, String.Empty); }
 		set { Set(keyPrefsSpellCheckActiveTranslationLanguage, value); }
 	}
-	
+
 	public bool PrefsSpellCheckAutocheck {
 		get { return GetBool(keyPrefsSpellCheckAutocheck, false); }
 		set { Set(keyPrefsSpellCheckAutocheck, value); }
 	}
-	
+
 	public bool PrefsVideoAutoChooseFile {
 		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
 		set { Set(keyPrefsVideoAutoChooseFile, value); }
 	}
-	
+
 	public bool PrefsVideoApplyReactionDelay {
 		get {
 			if (!isValuePrefsVideoApplyReactionDelayCached) {
@@ -153,7 +153,7 @@ public class Config {
 			this.valuePrefsVideoReactionDelay = value;
 		}
 	}
-	
+
 	public bool PrefsVideoSeekOnChange {
 		get {
 			if (!isValuePrefsVideoSeekOnChangeCached) {
@@ -181,7 +181,7 @@ public class Config {
 			this.valuePrefsVideoSeekOnChangeRewind = value;
 		}
 	}
-	
+
 	public bool PrefsViewLineLengths {
 		get {
 			if (!isValuePrefsViewLineLengthsCached) {
@@ -201,7 +201,7 @@ public class Config {
 		get { return GetInt(keyPrefsWindowHeight, 600, 200, true, 0, false); }
 		set { Set(keyPrefsWindowHeight, value); }
 	}
-	
+
 	public int PrefsWindowWidth {
 		get { return GetInt(keyPrefsWindowWidth, 690, 200, true, 0, false); }
 		set { Set(keyPrefsWindowWidth, value); }
@@ -280,18 +280,18 @@ public class Config {
 		get { return GetBool(keyPrefsTranslationSaveAll, true); }
 		set { Set(keyPrefsTranslationSaveAll, value); }
 	}
-	
+
 	//Even though the default in gconf schema is true, if gconf is not working we're using false
 	public bool PrefsBackupAutoBackup {
 		get { return GetBool(keyPrefsBackupAutoBackup, false); }
 		set { Set(keyPrefsBackupAutoBackup, value); }
 	}
- 
+
 	public int PrefsBackupBackupTime {
 		get { return GetInt(keyPrefsBackupBackupTime, 120, 30, true, 0, false); }
 		set { Set(keyPrefsBackupBackupTime, value); }
 	}
-	
+
 	/* Time in milliseconds */
 	public int PrefsTimingsTimeStep {
 		get {
@@ -305,7 +305,7 @@ public class Config {
 			this.valuePrefsTimingsTimeStep = value;
 		}
 	}
-	
+
 	public int PrefsTimingsFramesStep {
 		get {
 			if (this.valuePrefsTimingsFramesStep == -1) {
@@ -318,7 +318,7 @@ public class Config {
 			this.valuePrefsTimingsFramesStep = value;
 		}
 	}
-	
+
 	public int PrefsTimingsTimeBetweenSubtitles {
 		get {
 			if (this.valuePrefsTimingsTimeBetweenSubtitles == -1) {
@@ -332,9 +332,9 @@ public class Config {
 		}
 	}
 
-	
+
 	/* Private members */
-	
+
 	private string GetString (string key, string defaultValue) {
 		try {
 			return (string)client.Get(key);
@@ -344,7 +344,7 @@ public class Config {
 			return defaultValue;
 		}
 	}
-	
+
 	private bool GetBool (string key, bool defaultValue) {
 		try {
 			return (bool)client.Get(key);
@@ -354,16 +354,16 @@ public class Config {
 			return defaultValue;
 		}
 	}
-	
+
 	private int GetInt (string key, int defaultValue, int lowerLimit, bool useLowerLimit, int upperLimit, bool useUpperLimit) {
 		try {
 			int number = (int)client.Get(key);
 			if (useLowerLimit && (number < lowerLimit))
 				return defaultValue;
-			
+
 			if (useUpperLimit && (number > upperLimit))
 				return defaultValue;
-			
+
 			return number;
 		}
 		catch (Exception e) {
@@ -371,7 +371,7 @@ public class Config {
 			return defaultValue;
 		}
 	}
-	
+
 	private string[] GetStrings (string key, string[] defaultValue) {
 		try {
 			string[] strings = client.Get(key) as string[];

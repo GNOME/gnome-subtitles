@@ -29,14 +29,14 @@ public delegate void PositionChangedEventHandler (TimeSpan position); //Represen
 
 public class PlayerPositionWatcher {
 	private uint timeoutId = 0;
-	
+
 	/* Events */
 	public event PositionChangedEventHandler Changed;
-	
+
 	/* Delegate functions */
 	private PlayerGetTimeFunc PlayerGetPosition;
 
-	
+
 	/* Constants */
 	private const int timeout = 100; //milliseconds
 
@@ -44,28 +44,28 @@ public class PlayerPositionWatcher {
 		PlayerGetPosition = playerGetPositionFunc;
 	}
 
-	
+
 	/* Public methods */
-	
+
 	/// <summary>Starts watching for changes on the player position.</summary>
 	public void Start () {
 		RemoveCheckPositionTimeout();
 		AddCheckPositionTimeout();
 	}
-	
+
 	public void Stop () {
 		RemoveCheckPositionTimeout();
 	}
-	
+
 	/* Event members */
 
 	private void RemoveCheckPositionTimeout () {
 		if (timeoutId != 0) {
 			GLib.Source.Remove(timeoutId);
 			timeoutId = 0;
-		}	
+		}
 	}
-	
+
 	private void AddCheckPositionTimeout () {
 		timeoutId = GLib.Timeout.Add(timeout, CheckPosition);
 	}
@@ -75,7 +75,7 @@ public class PlayerPositionWatcher {
 		EmitPositionChanged(position);
 		return true;
 	}
-		
+
 	private void EmitPositionChanged (TimeSpan position) {
 		if (Changed != null)
 			Changed(position);

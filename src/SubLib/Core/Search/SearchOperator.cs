@@ -27,14 +27,14 @@ namespace SubLib.Core.Search {
 /// <summary>Performs search operations.</summary>
 public class SearchOperator {
 	private Subtitles subtitles = null;
-	
+
 	public SearchOperator (Subtitles subtitles) {
 		this.subtitles = subtitles;
 	}
 
 	/* Public members */
-	
-	
+
+
 	/// <summary>Searches for text using the specified search options.</summary>
 	/// <param name="options">The search options.</param>
 	/// <returns>The search results, or null in case no results were found.</returns>
@@ -42,7 +42,7 @@ public class SearchOperator {
 		if (options.Backwards)
 			return FindBackward(options);
 		else
-			return FindForward(options);	
+			return FindForward(options);
 	}
 
 	/// <summary>Replaces all occurences of some text with the specified replacement.</summary>
@@ -92,29 +92,29 @@ public class SearchOperator {
 
 		return replaced;
 	}
-	
+
 	/// <summary>Finds the subtitle that contains the specified time position.</summary>
 	/// <param name="time">The time position, in seconds.</param>
 	/// <returns>The found subtitle number, or -1 if no subtitle was found.</returns>
 	public int FindWithTime (float time) {
 		SubtitleCollection collection = subtitles.Collection;
-	
+
 		if (collection.Count == 0)
 			return -1;
-		
+
 		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count ; subtitleNumber++) {
 			Subtitle subtitle = collection[subtitleNumber];
 			double start = subtitle.Times.Start.TotalSeconds;
 			if (time < start)
 				continue;
-			
+
 			double end = subtitle.Times.End.TotalSeconds;
 			if (time <= end)
 				return subtitleNumber; //TODO optimize: else return -1;
 		}
-		return -1; // No subtitles were found 
+		return -1; // No subtitles were found
 	}
-		
+
 	/// <summary>Finds the subtitle more near of specified time position.</summary>
 	/// <param name="time">The time position, in seconds.</param>
 	/// <returns>The found subtitle number, or -1 if no subtitle was found.</returns>
@@ -130,17 +130,17 @@ public class SearchOperator {
 		/* Iterate subtitles two by two - the last subtitle is handled in pair and individually afterwards */
 		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count - 1 ; subtitleNumber++) {
 			Subtitle subtitle = collection[subtitleNumber];
-			
+
 			/* Continue iterating if didn't reach subtitle start yet */
 			double start = subtitle.Times.Start.TotalSeconds;
 			if (time < start)
 				continue;
-			
+
 			/* Check if time is contained by the subtitle */
 			double end = subtitle.Times.End.TotalSeconds;
 			if (time <= end)
 				return subtitleNumber;
-				
+
 			/* Check if contained between this and the next subtitle, and which is nearest */
 			int nextSubtitleIndex = subtitleNumber + 1;
 			Subtitle nextSubtitle = collection[nextSubtitleIndex];
@@ -148,23 +148,23 @@ public class SearchOperator {
 			if (time < nextSubtitleStart)
 				return ((time - end) < (nextSubtitleStart - time)) ? subtitleNumber : nextSubtitleIndex;
 		}
-		
+
 		/* If no rule matched before, time must be after last subtitle */
 		return collection.Count - 1;
 	}
-	
+
 	/* Private members */
-	
-	
+
+
 	/// <summary>Searches forward for text using the specified search options.</summary>
 	/// <param name="options">The search options.</param>
 	/// <returns>The search results, or null in case no results were found.</returns>
 	private SubtitleSearchResults FindForward (SubtitleSearchOptions options) {
 		SubtitleCollection collection = subtitles.Collection;
-	
+
 		if (collection.Count == 0)
 			return null;
-		
+
 		/* Search the startSubtitle subtitle starting at the startIndex */
 		SubtitleSearchResults results = FindInSubtitleFromIndex(options.StartSubtitle, options.LineBreak, options.Regex, options.StartIndex, options.TextType, options.Backwards);
 		if (results != null)
@@ -176,7 +176,7 @@ public class SearchOperator {
 			if (results != null)
 				return results;
 		}
-		
+
 		if (options.Wrap) {
 			/* Iterate from the beginning back to the subtitle */
 			for (int subtitleNumber = 0 ; subtitleNumber < options.StartSubtitle ; subtitleNumber++) {
@@ -189,32 +189,32 @@ public class SearchOperator {
 			if (results != null)
 				return results;
 		}
-		
+
 		/* Text not found */
 		return null;
 	}
-	
+
 	/// <summary>Searches backward for text using the specified search options.</summary>
 	/// <param name="options">The search options.</param>
 	/// <returns>The search results, or null in case no results were found.</returns>
 	private SubtitleSearchResults FindBackward (SubtitleSearchOptions options) {
 		SubtitleCollection collection = subtitles.Collection;
-	
+
 		if (collection.Count == 0)
 			return null;
-		
+
 		/* Search the subtitle starting at the startIndex */
 		SubtitleSearchResults results = FindInSubtitleFromIndex(options.StartSubtitle, options.LineBreak, options.Regex, options.StartIndex, options.TextType, options.Backwards);
 		if (results != null)
 			return results;
-		
+
 		/* Iterate through the start of the collection */
 		for (int subtitleNumber = options.StartSubtitle - 1 ; subtitleNumber > 0 ; subtitleNumber--) {
 			results = FindInSubtitle(subtitleNumber, options.LineBreak, options.Regex, options.Backwards);
 			if (results != null)
 				return results;
 		}
-		
+
 		if (options.Wrap) {
 			/* Iterate from the end back to the subtitle */
 			for (int subtitleNumber = collection.Count - 1 ; subtitleNumber > options.StartSubtitle ; subtitleNumber--) {
@@ -227,11 +227,11 @@ public class SearchOperator {
 			if (results != null)
 				return results;
 		}
-		
+
 		/* Text not found */
 		return null;
 	}
-	
+
 	/// <returns>The <see cref="SubtitleSearchResults" />, or null if the text was not found.</returns>
 	private SubtitleSearchResults FindInSubtitle (int subtitleNumber, string lineBreak, Regex regex, bool backwards) {
 		if (backwards) {
@@ -239,7 +239,7 @@ public class SearchOperator {
 			SubtitleSearchResults results = FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Translation);
 			if (results != null)
 				return results;
-			
+
 			/* Not found in the translation, finding in the text */
 			return FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Text);
 		}
@@ -248,12 +248,12 @@ public class SearchOperator {
 			SubtitleSearchResults results = FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Text);
 			if (results != null)
 				return results;
-			
+
 			/* Not found in the text, finding in the translation */
 			return FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Translation);
 		}
 	}
-	
+
 	/// <returns>The <see cref="SubtitleSearchResults" />, or null if the text was not found.</returns>
 	private SubtitleSearchResults FindInSubtitleFromIndex (int subtitleNumber, string lineBreak, Regex regex, int startIndex, SubtitleTextType textType, bool backwards) {
 		if (backwards) {
@@ -266,7 +266,7 @@ public class SearchOperator {
 				SubtitleSearchResults results = FindInTextContentFromIndex(subtitleNumber, lineBreak, regex, startIndex, SubtitleTextType.Translation);
 				if (results != null)
 					return results;
-				
+
 				/* Not found in the translation, finding in the text */
 				return FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Text);
 			}
@@ -277,7 +277,7 @@ public class SearchOperator {
 				SubtitleSearchResults results = FindInTextContentFromIndex(subtitleNumber, lineBreak, regex, startIndex, SubtitleTextType.Text);
 				if (results != null)
 					return results;
-				
+
 				/* Not found in the text, finding in the translation */
 				return FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Translation);
 			}
@@ -287,7 +287,7 @@ public class SearchOperator {
 			}
 		}
 	}
-		
+
 	/// <returns>The <see cref="SubtitleSearchResults" />, or null if the text was not found.</returns>
 	private SubtitleSearchResults FindInSubtitleTillIndex (int subtitleNumber, string lineBreak, Regex regex, int endIndex, SubtitleTextType textType, bool backwards) {
 		if (backwards) {
@@ -296,7 +296,7 @@ public class SearchOperator {
 				SubtitleSearchResults results = FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Translation);
 				if (results != null)
 					return results;
-				
+
 				/* Not found in the text, finding in the text till the specified index */
 				return FindInTextContentTillIndex(subtitleNumber, lineBreak, regex, endIndex, SubtitleTextType.Text, backwards);
 			}
@@ -315,23 +315,23 @@ public class SearchOperator {
 				SubtitleSearchResults results = FindInTextContent(subtitleNumber, lineBreak, regex, SubtitleTextType.Text);
 				if (results != null)
 					return results;
-				
+
 				/* Not found in the text, finding in the translation till the specified index */
 				return FindInTextContentTillIndex(subtitleNumber, lineBreak, regex, endIndex, SubtitleTextType.Translation, backwards);
 			}
 		}
 	}
-	
+
 	private SubtitleSearchResults FindInTextContent (int subtitleNumber, string lineBreak, Regex regex, SubtitleTextType textType) {
 		SubtitleText text = subtitles.GetSubtitleText(subtitleNumber, textType);
 		return MatchValues(regex.Match(text.Get(lineBreak)), subtitleNumber, textType, 0);
 	}
-	
+
 	private SubtitleSearchResults FindInTextContentFromIndex (int subtitleNumber, string lineBreak, Regex regex, int startIndex, SubtitleTextType textType) {
 		SubtitleText text = subtitles.GetSubtitleText(subtitleNumber, textType);
 		return MatchValues(regex.Match(text.Get(lineBreak), startIndex), subtitleNumber, textType, 0);
 	}
-	
+
 	private SubtitleSearchResults FindInTextContentTillIndex (int subtitleNumber, string lineBreak, Regex regex, int endIndex, SubtitleTextType textType, bool backwards) {
 		SubtitleText text = subtitles.GetSubtitleText(subtitleNumber, textType);
 		string subtitleText = text.Get(lineBreak);
@@ -345,7 +345,7 @@ public class SearchOperator {
 			return MatchValues(regex.Match(subtitleTextSubstring), subtitleNumber, textType, 0);
 		}
 	}
-	
+
 	private SubtitleSearchResults MatchValues (Match match, int subtitleNumber, SubtitleTextType textType, int charsBeforeMatchInput) {
 		if (match.Success) {
 			return new SubtitleSearchResults(subtitleNumber, textType, match.Index + charsBeforeMatchInput, match.Length);
@@ -359,8 +359,8 @@ public class SearchOperator {
 		string newText = regex.Replace(text, counter.Evaluator);
 		return (counter.EvaluationOccured ? newText : null);
 	}
-	
-	
+
+
 }
 
 }

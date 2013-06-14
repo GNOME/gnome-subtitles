@@ -55,12 +55,12 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 		Paths = paths;
 		if (Paths.Length > 0)
 			Focus = Paths[0];
-		
+
 		Base.Ui.View.Selection.Select(Paths, Focus, true);
 		return true;
 	}
 
-	
+
 	public override void Undo () {
 		ArrayList newReplacedSubtitles = new ArrayList();
 
@@ -86,7 +86,7 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 		replacedSubtitles = newReplacedSubtitles;
 		Base.Ui.View.Selection.Select(Paths, Focus, true);
 	}
-	
+
 	public override void Redo () {
 		Undo();
 	}
@@ -95,10 +95,10 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 
 
 	private void GetCommandData (out TreePath[] paths, out CommandTarget target) {
-		ArrayList foundPaths = new ArrayList();		
+		ArrayList foundPaths = new ArrayList();
 		bool foundText = false;
 		bool foundTranslation = false;
-		
+
 		foreach (SubtitleReplaceResult replacedSubtitle in replacedSubtitles) {
 			foundPaths.Add(Util.IntToPath(replacedSubtitle.Number));
 

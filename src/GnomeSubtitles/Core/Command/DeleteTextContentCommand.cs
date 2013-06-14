@@ -32,16 +32,16 @@ public abstract class DeleteTextContentCommand : FixedSingleSelectionCommand {
 	public DeleteTextContentCommand (string description, int index, string text, int cursor) : base(description, true, false) {
 		this.index = index;
 		this.text = text;
-		toRight = (cursor == index);		
-		
+		toRight = (cursor == index);
+
 		/* If text isn't a single char, do not group */
 		if (text.Length != 1)
 			SetStopsGrouping(true);
 	}
-	
+
 	/* Abstract members */
 	protected abstract SubtitleEditTextView GetTextView ();
-	
+
 	/* Public members */
 
 	public override bool CanGroupWith (Command command) {
@@ -54,45 +54,45 @@ public abstract class DeleteTextContentCommand : FixedSingleSelectionCommand {
 			&& ((this.toRight && (!(Char.IsWhiteSpace(last.GetLastChar()) && (!Char.IsWhiteSpace(GetLastChar()))))) //A space->non-space sequence is not the case
 				|| ((!this.toRight) && (!(Char.IsWhiteSpace(last.GetFirstChar()) && (!Char.IsWhiteSpace(GetLastChar()))))));
 	}
-	
+
 	public override Command MergeWith (Command command) {
 		DeleteTextContentCommand last = command as DeleteTextContentCommand;
 		if (this.toRight)
 			this.text = last.GetText() + this.text;
 		else
-			this.text = this.text + last.GetText();		
+			this.text = this.text + last.GetText();
 
 		return this;
 	}
-	
+
 	public override void Undo () {
 		Base.Ui.View.Selection.Select(Path, true, false);
 		SubtitleEditTextView textView = GetTextView();
 		textView.InsertText(index, text);
 		PostProcess();
 	}
-	
+
 	public override void Redo () {
 		Base.Ui.View.Selection.Select(Path, true, false);
 		SubtitleEditTextView textView = GetTextView();
 		textView.DeleteText(index, index + text.Length);
 		PostProcess();
 	}
-	
+
 	/* Protected members */
-	
+
 	protected override void PostProcess () {
 		Base.Ui.View.RedrawPath(Path);
 	}
-	
+
 	protected int GetIndex () {
 		return index;
 	}
-	
+
 	protected string GetText () {
 		return text;
 	}
-	
+
 	protected bool GetToRight () {
 		return toRight;
 	}
@@ -100,7 +100,7 @@ public abstract class DeleteTextContentCommand : FixedSingleSelectionCommand {
 	protected char GetFirstChar () {
 		return text[0];
 	}
-	
+
 	protected char GetLastChar () {
 		return text[text.Length - 1];
 	}

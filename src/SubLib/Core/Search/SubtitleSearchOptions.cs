@@ -66,44 +66,44 @@ public class SubtitleSearchOptions {
 	public SubtitleSearchOptions (Regex regex, SubtitleTextType textType, int startSubtitle, int startIndex, bool wrap, bool backwards)
 		: this(regex, textType, "\n", startSubtitle, startIndex, wrap, backwards) {
 	}
-	
+
 	/* Public properties */
-	
+
 	/// <summary>The regular expression.</summary>
 	public Regex Regex {
 		get { return regex; }
 	}
-	
+
 	/// <summary>The linebreak used to use between multiple lines of text.</summary>
 	public string LineBreak {
 		get { return lineBreak; }
 	}
-	
+
 	/// <summary>The type of text content to start the search with.</summary>
 	public SubtitleTextType TextType {
 		get { return textType; }
 	}
-	
+
 	/// <summary>The subtitle to start the search with.</summary>
 	public int StartSubtitle {
 		get { return startSubtitle; }
 	}
-	
+
 	/// <summary>The index of the text to start the search with.</summary>
 	public int StartIndex {
 		get { return startIndex; }
 	}
-	
+
 	/// <summary>Whether to continue the search from the beginning when it reaches the end of the subtitles.</summary>
 	public bool Wrap {
 		get { return wrap; }
 	}
-	
+
 	/// <summary>Whether to search backwards.</summary>
 	public bool Backwards {
 		get { return backwards; }
 	}
-		
+
 }
 
 }

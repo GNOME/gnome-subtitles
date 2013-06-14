@@ -25,20 +25,20 @@ namespace SubLib.Core.Timing {
 /// <summary>Performs shift operations.</summary>
 public class ShiftOperator {
 	private Subtitles subtitles = null;
-	
+
 	public ShiftOperator (Subtitles subtitles) {
 		this.subtitles = subtitles;
 	}
 
 	/* Public members */
-	
+
 	/// <summary>Shifts the subtitles a specified amount of time.</summary>
 	/// <param name="time">The time to use, which can be positive or negative.</param>
 	public void Shift (TimeSpan time) {
 		foreach (Subtitle subtitle in subtitles.Collection)
 			subtitle.Times.Shift(time);
 	}
-	
+
 	/// <summary>Shifts a range of subtitles a specified amount of time.</summary>
 	/// <param name="time">The time to use, which can be positive or negative.</param>
 	/// <param name="startIndex">The subtitle index the range begins with.</param>
@@ -52,14 +52,14 @@ public class ShiftOperator {
 			subtitle.Times.Shift(time);
 		}
 	}
-	
+
 	/// <summary>Shifts the subtitles a specified amount of frames.</summary>
 	/// <param name="frames">The frames to use, which can be positive or negative.</param>
 	public void Shift (int frames) {
 		foreach (Subtitle subtitle in subtitles.Collection)
 			subtitle.Frames.Shift(frames);
 	}
-	
+
 	/// <summary>Shifts a range of subtitles a specified amount of frames.</summary>
 	/// <param name="frames">The frames to use, which can be positive or negative.</param>
 	/// <param name="startIndex">The subtitle index the range begins with.</param>
@@ -73,10 +73,10 @@ public class ShiftOperator {
 			subtitle.Frames.Shift(frames);
 		}
 	}
-	
-	
+
+
 	/* Private members */
-	
+
 	private bool AreShiftArgsValid (int startIndex, int endIndex) {
 		int subtitleCount = subtitles.Collection.Count;
 		if (subtitleCount == 0)

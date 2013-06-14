@@ -31,7 +31,7 @@ public class PreferencesDialog : GladeDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "PreferencesDialog.glade";
-	
+
 	/* Components */
 	private EncodingComboBox fileOpenEncoding = null;
 	private EncodingComboBox fileOpenFallbackEncoding = null;
@@ -61,7 +61,7 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	/* Private members */
-	
+
 	private void LoadValues () {
 		LoadValuesFilesTab();
 		LoadValuesEditingTab();
@@ -80,20 +80,20 @@ public class PreferencesDialog : GladeDialog {
 
 		/* Video Auto choose file */
 		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
-		
+
 		/* Auto Backup */
 		SetAutoBackup();
 	}
-	
-	private void LoadValuesEditingTab () {	
+
+	private void LoadValuesEditingTab () {
 		/* Video Seeking */
 		videoSeekCheckButton.Active = Base.Config.PrefsVideoSeekOnChange;
 		videoSeekRewindSpinButton.Value = Base.Config.PrefsVideoSeekOnChangeRewind;
 		videoSeekRewindSpinButton.Sensitive = videoSeekCheckButton.Active;
-		
+
 		/* Subtitle Splitting */
-		subtitleSplitSpinButton.Value = Base.Config.PrefsTimingsTimeBetweenSubtitles;		
-		
+		subtitleSplitSpinButton.Value = Base.Config.PrefsTimingsTimeBetweenSubtitles;
+
 		/* Reaction Delay */
 		SetReactionDelay();
 	}
@@ -177,15 +177,15 @@ public class PreferencesDialog : GladeDialog {
 		}
 		fileSaveNewline.SelectionChanged += OnDefaultsFileSaveNewlineChanged;
 	}
-	
+
 	private void SetAutoBackup () {
 		bool autoBackupEnabled = Base.Config.PrefsBackupAutoBackup;
 		autoBackupCheckButton.Active = autoBackupEnabled;
-		
+
 		autoBackupTimeSpinButton.Sensitive = autoBackupEnabled;
 		autoBackupTimeSpinButton.Value = Base.Config.PrefsBackupBackupTime / 60; //Minutes
 	}
-	
+
 	private void SetReactionDelay () {
 		bool reactionDelayEnabled = Base.Config.PrefsVideoApplyReactionDelay;
 		reactionDelayCheckButton.Active = reactionDelayEnabled;
@@ -204,16 +204,16 @@ public class PreferencesDialog : GladeDialog {
 		fileSaveEncoding.ActiveSelection = 0; //Keep Existing
 		fileSaveFormat.ActiveSelection = 0; //Keep Existing
 		fileSaveNewline.ChosenNewlineType = NewlineType.Windows;
-		
+
 		autoBackupCheckButton.Active = true;
 		autoBackupTimeSpinButton.Value = 2;
-		
+
 		reactionDelayCheckButton.Active = true;
 		reactionDelaySpinButton.Value = 200;
-		
+
 		videoSeekCheckButton.Active = true;
 		videoSeekRewindSpinButton.Value = 200;
-		
+
 		subtitleSplitSpinButton.Value = 100;
 	}
 
@@ -328,21 +328,21 @@ public class PreferencesDialog : GladeDialog {
 	private void OnTranslationSaveAllToggled (object o, EventArgs args) {
 		Base.Config.PrefsTranslationSaveAll = translationSaveAllCheckButton.Active;
 	}
-	
+
 	private void OnAutoBackupToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
-		
+
 		Base.Config.PrefsBackupAutoBackup = isActive;
 		autoBackupTimeSpinButton.Sensitive = isActive;
-		
+
 		Base.Backup.ReCheck();
 	}
-	
+
 	private void OnAutoBackupTimeSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsBackupBackupTime = (o as SpinButton).ValueAsInt * 60; //seconds
 		Base.Backup.ReCheck();
 	}
-	
+
 	private void OnReactionDelayToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
 
@@ -353,18 +353,18 @@ public class PreferencesDialog : GladeDialog {
 	private void OnReactionDelaySpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsVideoReactionDelay = (o as SpinButton).ValueAsInt;
 	}
-	
+
 	private void OnVideoSeekToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
 
 		Base.Config.PrefsVideoSeekOnChange = isActive;
 		videoSeekRewindSpinButton.Sensitive = isActive;
 	}
-	
+
 	private void OnVideoSeekRewindSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsVideoSeekOnChangeRewind = (o as SpinButton).ValueAsInt;
 	}
-	
+
 	private void OnSubtitleSplitSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.PrefsTimingsTimeBetweenSubtitles = (o as SpinButton).ValueAsInt;
 	}

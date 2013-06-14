@@ -36,13 +36,13 @@ public class Menus {
 		SetToolbarHomogeneity(); //TODO needed until homogeneity definition in glade starts working
 		SetDocumentSensitivity(false);
 		SetBlankActivity();
-	
+
 		Base.InitFinished += OnBaseInitFinished;
 	}
-	
-	
+
+
 	/* Public properties */
-	
+
 	public float TimingsInputFrameRateActive {
 		get {
 			Menu menu = Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu;
@@ -54,22 +54,22 @@ public class Menus {
 			return -1;
 		}
 	}
-	
-	
+
+
 	/* Public methods */
-	
+
 	public void SetCutCopySensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.EditCut, sensitivity);
 		SetSensitivity(WidgetNames.EditCopy, sensitivity);
 		SetSensitivity(WidgetNames.CutButton, sensitivity);
-		SetSensitivity(WidgetNames.CopyButton, sensitivity);		
+		SetSensitivity(WidgetNames.CopyButton, sensitivity);
 	}
-	
+
 	public void SetPasteSensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.EditPaste, sensitivity);
 		SetSensitivity(WidgetNames.PasteButton, sensitivity);
 	}
-	
+
 	public void UpdateActiveInputFrameRateMenuItem (bool toggleHandlers) {
 		float inputFrameRate = Base.Document.Subtitles.Properties.OriginalFrameRate;
 		if (toggleHandlers)
@@ -77,40 +77,40 @@ public class Menus {
 		else
 			SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true);
 	}
-	
+
 	/* Note: this method makes the assumption that the OnTimingsVideoFrameRateToggled event handler is connected to the
 	   menu item, as it is disconnected and then connected again after changing the active menu item. */
 	public void UpdateActiveVideoFrameRateMenuItem () {
 		float videoFrameRate = Base.Document.Subtitles.Properties.CurrentFrameRate;
 		SetCheckMenuItemActivity(VideoFrameRateMenuItem(videoFrameRate), true, OnTimingsVideoFrameRateToggled);
 	}
-	
+
 	public void EnableFindNextPrevious () {
 		SetSensitivity(WidgetNames.SearchFindNext, true);
 		SetSensitivity(WidgetNames.SearchFindPrevious, true);
 	}
-	
+
 	public void AddFrameRateVideoTag (float frameRate) {
 		if (frameRate <= 0)
 			return;
-	
+
 		string menuItemName = FrameRateToMenuItem(frameRate, "Video");
 		string menuItemText = GetMenuItemText(menuItemName);
-		
+
 		menuItemText += " (" + videoTagText + ")";
-		SetMenuItemText(menuItemName, menuItemText);	
+		SetMenuItemText(menuItemName, menuItemText);
 	}
-	
+
 	public void RemoveFrameRateVideoTag () {
 		Menu menu = Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu;
 		foreach (Widget child in menu.Children) {
 			if (!(child is MenuItem))
 				continue;
-			
+
 			MenuItem menuItem = child as MenuItem;
 			string text = GetMenuItemText(menuItem);
 			string videoTagSuffix = GetVideoTagSuffix();
-			
+
 			int tagIndex = text.LastIndexOf(videoTagSuffix);
 			if (tagIndex > 0) {
 				text = text.Substring(0, tagIndex);
@@ -118,14 +118,14 @@ public class Menus {
 			}
 		}
 	}
-	
+
 	public MenuItem GetMenuItem (string widgetName) {
 		return Base.GetWidget(WidgetNames.ViewLineLengths) as MenuItem;
 	}
 
-	
+
 	/* Private members */
-	
+
 	/// <summary>Sets the sensitivity depending on 1 or more selected subtitles.</summary>
 	/// <param name="selectionCount">The number of selected subtitles.</param>
 	/// <param name="sensitivity">Whether the items are set sensitive.</param>
@@ -136,7 +136,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.EditMerge, selectionCount >= 2);
 		SetSensitivity(WidgetNames.DeleteSubtitlesButton, sensitivity);
 	}
-	
+
 	/// <summary>Sets the sensitivity depending on exactly 1 selected subtitle.</summary>
 	/// <param name="sensitivity">Whether the items are set sensitive.</param>
 	private void SetOneSelectionDependentSensitivity (bool sensitivity) {
@@ -144,7 +144,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && Base.Document.IsTranslationLoaded);
 		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && Base.Document.IsTranslationLoaded);
 	}
-	
+
 	private void SetSubtitleCountDependentSensitivity (int count) {
 		if (count == 0) {
 			SetSensitivity(WidgetNames.TimingsAdjust, false);
@@ -157,21 +157,21 @@ public class Menus {
 		else {
 			SetSensitivity(WidgetNames.TimingsAdjust, true);
 			SetSensitivity(WidgetNames.TimingsShift, true);
-		}	
+		}
 	}
 
 	private void SetBlankActivity () {
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
 		SetCheckMenuItemActivity(WidgetNames.ViewLineLengths, Base.Config.PrefsViewLineLengths);
 	}
-	
+
 	private void SetViewVideoActivity (bool activity) {
 		SetCheckMenuItemActivity(WidgetNames.ViewVideo, activity);
 	}
 
 	private void SetDocumentSensitivity (bool documentLoaded) {
 		/* Set Sensitivity that corresponds to the document loaded status */
-	
+
 		/* File Menu */
 		SetSensitivity(WidgetNames.FileSave, documentLoaded);
 		SetSensitivity(WidgetNames.FileSaveAs, documentLoaded);
@@ -199,9 +199,9 @@ public class Menus {
 		/* Toolbar */
 		SetSensitivity(WidgetNames.SaveButton, documentLoaded);
 		SetSensitivity(WidgetNames.InsertSubtitleButton, documentLoaded);
-		
+
 		/* Set sensitivity that's only applicable when the document is not loaded */
-		
+
 		if (!documentLoaded) {
 			/* Edit menu */
 			SetSensitivity(WidgetNames.EditDeleteSubtitles, false);
@@ -229,30 +229,30 @@ public class Menus {
 			SetStylesSensitivity(false);
 		}
 	}
-	
+
 	private void SetTranslationSensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.FileTranslationSave, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
 		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, sensitivity);
-		
+
 		bool oneSubtitleSelected = (Core.Base.Ui.View.Selection.Count == 1);
 		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && oneSubtitleSelected);
 		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && oneSubtitleSelected);
 		SetViewVideoSubtitlesSensitivity();
 	}
-		
+
 	private void SetToolsAutocheckSpellingSensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.ToolsAutocheckSpelling, sensitivity);
 	}
-	
+
 	private void SetFrameRateMenus (bool documentLoaded) {
 		if (documentLoaded) {
 			if (Base.TimingMode == TimingMode.Frames) {
 				UpdateActiveInputFrameRateMenuItem(false);
 				SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
 				SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu, true, OnTimingsInputFrameRateToggled);
-				
+
 				SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
 				SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu, true, OnTimingsVideoFrameRateToggled);
 				UpdateActiveVideoFrameRateMenuItem();
@@ -273,7 +273,7 @@ public class Menus {
 			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, false);
 		}
 	}
-	
+
 	private void SetStylesActivity (bool bold, bool italic, bool underline) {
 		SetCheckMenuItemActivity(WidgetNames.EditFormatBold, bold, Base.Handlers.OnEditFormatBold);
 		SetCheckMenuItemActivity(WidgetNames.EditFormatItalic, italic, Base.Handlers.OnEditFormatItalic);
@@ -282,21 +282,21 @@ public class Menus {
 		SetToggleToolButtonActivity(WidgetNames.ItalicButton, italic, Base.Handlers.OnEditFormatItalic);
 		SetToggleToolButtonActivity(WidgetNames.UnderlineButton, underline, Base.Handlers.OnEditFormatUnderline);
 	}
-	
+
 	private void SetActiveTimingMode (TimingMode mode) {
 		if (mode == TimingMode.Times)
 			SetCheckMenuItemActivity(WidgetNames.ViewTimes, true);
 		else
 			SetCheckMenuItemActivity(WidgetNames.ViewFrames, true);
-	}	
-		
+	}
+
 	private void SetViewVideoSubtitlesActivity (bool isTextActive) {
 		if (isTextActive)
 			SetCheckMenuItemActivity(WidgetNames.ViewVideoSubtitlesText, true);
 		else
 			SetCheckMenuItemActivity(WidgetNames.ViewVideoSubtitlesTranslation, true);
 	}
-	
+
 	private void SetVideoSensitivity (bool sensitivity) {
 		SetSensitivity(WidgetNames.VideoClose, sensitivity);
 		SetSensitivity(WidgetNames.VideoPlayPause, sensitivity);
@@ -304,14 +304,14 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoForward, sensitivity);
 		SetSensitivity(WidgetNames.VideoSeekTo, sensitivity);
 		SetVideoDocumentLoadedSensitivity(Base.IsDocumentLoaded);
-		
+
 		/* Set video menu dependent sensitivity if there is 1 selected subtitle. */
 		if ((Core.Base.Ui.View.Selection.Count == 1) && sensitivity)
 			SetVideoSelectionDependentSensitivity(true);
 		else
 			SetVideoSelectionDependentSensitivity(false);
 	}
-	
+
 	private void SetStylesSensitivity (bool sensitivity) {
 		if (Base.GetWidget(WidgetNames.EditFormatBold).Sensitive != sensitivity) {
 			SetSensitivity(WidgetNames.EditFormatBold, sensitivity);
@@ -320,9 +320,9 @@ public class Menus {
 			SetSensitivity(WidgetNames.BoldButton, sensitivity);
 			SetSensitivity(WidgetNames.ItalicButton, sensitivity);
 			SetSensitivity(WidgetNames.UnderlineButton, sensitivity);
-		}	
+		}
 	}
-	
+
 	/// <summary>Set the video selection dependent menu items.</summary>
 	/// <param name="sensitivity">Whether to set the menu items sensitive.</param>
 	/// <remarks>The menu items are only set sensitive if the video is loaded.</remarks>
@@ -338,19 +338,19 @@ public class Menus {
 			SetSensitivity(WidgetNames.VideoSetSubtitleEnd, false);
 		}
 	}
-	
+
 	private void SetViewVideoSubtitlesSensitivity () {
 		bool isVideoLoaded = (Base.Ui != null) && Base.Ui.Video.IsLoaded;
 		bool textSensitivity = isVideoLoaded && Base.IsDocumentLoaded;
 		bool translationSensitivity = isVideoLoaded && textSensitivity && Base.Document.IsTranslationLoaded;
-		SetViewVideoSubtitlesSensitivity(textSensitivity, translationSensitivity);	
+		SetViewVideoSubtitlesSensitivity(textSensitivity, translationSensitivity);
 	}
-	
+
 	private void SetViewVideoSubtitlesSensitivity (bool textSensitivity, bool translationSensitivity) {
 		SetSensitivity(WidgetNames.ViewVideoSubtitlesText, textSensitivity);
 		SetSensitivity(WidgetNames.ViewVideoSubtitlesTranslation, translationSensitivity);
 	}
-	
+
 	private void SetVideoDocumentLoadedSensitivity (bool isDocumentLoaded) {
 		bool sensitivity = isDocumentLoaded && (Base.Ui != null) && Base.Ui.Video.IsLoaded;
 		SetSensitivity(WidgetNames.VideoSelectNearestSubtitle, sensitivity);
@@ -358,37 +358,37 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, sensitivity);
 		SetSensitivity(WidgetNames.EditInsertSubtitleAtVideoPosition, sensitivity);
 	}
-	
+
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {
 		(Base.GetWidget(menuItemName) as CheckMenuItem).Active = isActive;
 	}
-	
+
 	private void SetCheckMenuItemActivity (string menuItemName, bool isActive, EventHandler handler) {
 		CheckMenuItem menuItem = Base.GetWidget(menuItemName) as CheckMenuItem;
 		menuItem.Toggled -= handler;
 		menuItem.Active = isActive;
 		menuItem.Toggled += handler;
 	}
-	
+
 	private void SetToggleToolButtonActivity (string toggleToolButtonName, bool isActive, EventHandler handler) {
 		ToggleToolButton toggleToolButton = Base.GetWidget(toggleToolButtonName) as ToggleToolButton;
 		toggleToolButton.Toggled -= handler;
 		toggleToolButton.Active = isActive;
-		toggleToolButton.Toggled += handler;		
+		toggleToolButton.Toggled += handler;
 	}
-	
+
 	private void SetSensitivity (string widgetName, bool isSensitive) {
 		Widget widget = Base.GetWidget(widgetName);
 		if (widget != null)
 			widget.Sensitive = isSensitive;
 	}
-	
+
 	private void SetMenuSensitivity (string menuName, bool sensitivity) {
 		Menu menu = Base.GetWidget(menuName) as Menu;
 		foreach (Widget widget in menu)
-			widget.Sensitive = sensitivity;	
+			widget.Sensitive = sensitivity;
 	}
-		
+
 	private void GetGlobalStyles (TreePath[] paths, out bool bold, out bool italic, out bool underline) {
 		Ui.View.Subtitles subtitles = Base.Document.Subtitles;
 		bold = true;
@@ -402,17 +402,17 @@ public class Menus {
 				italic = false;
 			if ((underline == true) && !subtitle.Style.Underline)
 				underline = false;
-		}		
+		}
 	}
-	
+
 	private string InputFrameRateMenuItem (float frameRate) {
 		return FrameRateToMenuItem(frameRate, "Input");
 	}
-	
+
 	private string VideoFrameRateMenuItem (float frameRate) {
 		return FrameRateToMenuItem(frameRate, "Video");
 	}
-	
+
 	private string FrameRateToMenuItem (float frameRate, string type) {
 		int rate = 0;
 		if (frameRate >= 30)
@@ -425,44 +425,44 @@ public class Menus {
 			rate = 24;
 		else
 			rate = 23;
-		
+
 		return "timings" + type + "FrameRate" + rate;
 	}
-	
+
 	private string GetMenuItemText (string menuItemName) {
 		MenuItem menuItem = Base.GetWidget(menuItemName) as MenuItem;
 		return GetMenuItemText(menuItem);
 	}
-	
+
 	private string GetMenuItemText (MenuItem menuItem) {
 		Label label = menuItem.Child as Label;
 		return label.Text;
 	}
-	
+
 	private void SetMenuItemText (string menuItemName, string text) {
 		MenuItem menuItem = Base.GetWidget(menuItemName) as MenuItem;
 		SetMenuItemText(menuItem, text);
 	}
-	
+
 	private void SetMenuItemText (MenuItem menuItem, string text) {
 		Label label = menuItem.Child as Label;
-		label.Text = text;	
+		label.Text = text;
 	}
-	
+
 	private string GetVideoTagSuffix () {
 		return " (" + videoTagText + ")";
 	}
-	
+
 	private void SetToolbarHomogeneity () {
 		Toolbar toolbar = Base.GetWidget(WidgetNames.Toolbar) as Toolbar;
 		Widget[] toolItems = toolbar.Children;
 		foreach (Widget item in toolItems)
-			(item as ToolItem).Homogeneous = false;		
+			(item as ToolItem).Homogeneous = false;
 	}
-	
+
 	private void UpdateUndoRedoMessages () {
     	CommandManager commandManager = Base.CommandManager;
-    	
+
     	/* Update undo messages */
     	ToolButton undoButton = Base.GetWidget(WidgetNames.UndoButton) as ToolButton;
     	if (commandManager.CanUndo) {
@@ -473,7 +473,7 @@ public class Menus {
     	}
 		else
 			ClearTooltip(undoButton);
-		
+
 		/* Update redo messages */
 		ToolButton redoButton = Base.GetWidget(WidgetNames.RedoButton) as ToolButton;
     	if (commandManager.CanRedo) {
@@ -485,24 +485,24 @@ public class Menus {
     	else
     		ClearTooltip(redoButton);
     }
-    
+
     private void SetTooltip (Widget widget, string text) {
     	widget.TooltipText = text;
     }
-    
+
     private void ClearTooltip (Widget widget) {
     	SetTooltip(widget, null);
     }
-    
+
    	private float FrameRateFromMenuItem (string menuItem) {
 		string frameRateText = menuItem.Split(' ')[0];
 		NumberFormatInfo invariant = NumberFormatInfo.InvariantInfo;
 		return (float)Convert.ToDouble(frameRateText, invariant);
 	}
-	
+
 
 	/* Event members */
-	
+
 	private void OnBaseInitFinished () {
 		Base.DocumentLoaded += OnBaseDocumentLoaded;
 		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
@@ -518,19 +518,19 @@ public class Menus {
 		Base.CommandManager.RedoToggled += OnCommandManagerRedoToggled;
 		Base.CommandManager.CommandActivated += OnCommandManagerCommandActivated;
 	}
-	
+
 	private void OnBaseDocumentLoaded (Document document) {
 		SetDocumentSensitivity(true);
 		SetFrameRateMenus(true);
 		SetActiveTimingMode(Base.TimingMode);
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
 	}
-	
+
 	private void OnBaseDocumentUnloaded (Document document) {
 		SetDocumentSensitivity(false);
 		SetFrameRateMenus(false);
 	}
-	
+
 	private void OnBaseVideoLoaded (Uri videoUri) {
 		SetVideoSensitivity(true);
     	SetViewVideoSubtitlesSensitivity();
@@ -549,18 +549,18 @@ public class Menus {
 	private void OnSubtitleViewCountChanged (int count) {
 		SetSubtitleCountDependentSensitivity(count);
 	}
-	
+
 	private void OnBaseTranslationLoaded () {
 		SetTranslationSensitivity(true);
 		UpdateUndoRedoMessages();
 	}
-	
+
 	private void OnBaseTranslationUnloaded () {
 		SetTranslationSensitivity(false);
     	SetViewVideoSubtitlesActivity(true);
     	UpdateUndoRedoMessages();
 	}
-	
+
 	private void OnSubtitleViewSelectionChanged (TreePath[] paths, Subtitle subtitle) {
 		if (subtitle != null) {
 			/* One subtitle selected */
@@ -571,7 +571,7 @@ public class Menus {
 		else {
 			SetOneSelectionDependentSensitivity(false);
 			int selectionCount = paths.Length;
-	
+
 			if (selectionCount == 0) {
 				/* No selection */
 				SetNonZeroSelectionDependentSensitivity(selectionCount, false);
@@ -582,40 +582,40 @@ public class Menus {
 				SetNonZeroSelectionDependentSensitivity(selectionCount, true);
 				bool bold, italic, underline;
 				GetGlobalStyles(paths, out bold, out italic, out underline);
-				SetStylesActivity(bold, italic, underline);	
+				SetStylesActivity(bold, italic, underline);
 			}
 		}
 	}
-	
+
 	private void OnSpellLanguagesLanguageChanged () {
 		SetToolsAutocheckSpellingSensitivity(true);
 	}
-		
+
 	private void OnCommandManagerUndoToggled (object o, EventArgs args)  {
    		Widget button = Base.GetWidget(WidgetNames.UndoButton);
    		button.Sensitive = !button.Sensitive;
-    		
+
 		MenuItem menuItem = Base.GetWidget(WidgetNames.EditUndo) as MenuItem;
 		menuItem.Sensitive = !menuItem.Sensitive;
 		if (!menuItem.Sensitive)
 			(menuItem.Child as Label).Text = Catalog.GetString("Undo");
 	}
-    
+
 	private void OnCommandManagerRedoToggled (object o, EventArgs args) {
     	Widget button = Base.GetWidget(WidgetNames.RedoButton);
     	button.Sensitive = !button.Sensitive;
-    		
+
 		MenuItem menuItem = Base.GetWidget(WidgetNames.EditRedo) as MenuItem;
     	menuItem.Sensitive = !menuItem.Sensitive;
     	if (!menuItem.Sensitive)
 			(menuItem.Child as Label).Text = Catalog.GetString("Redo");
     }
-    
+
     private void OnCommandManagerCommandActivated (object o, CommandActivatedArgs args) {
     	UpdateUndoRedoMessages();
     }
-    
-    	
+
+
 	private void OnTimingsInputFrameRateToggled (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
@@ -623,7 +623,7 @@ public class Menus {
 			Base.CommandManager.Execute(new ChangeInputFrameRateCommand(frameRate));
 		}
 	}
-	
+
 	private void OnTimingsVideoFrameRateToggled (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
 		if (menuItem.Active) {
@@ -636,7 +636,7 @@ public class Menus {
 		foreach (RadioMenuItem menuItem in menu.Children) {
 			if (enable)
 				menuItem.Toggled += handler;
-			else 
+			else
 				menuItem.Toggled -= handler;
 		}
 	}

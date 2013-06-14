@@ -24,16 +24,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace SubLib.IO.Input {
- 
+
 internal class PlainTextParser {
-			
+
 	private bool withCharacterNames = false;
 	private string lineSeparator = String.Empty;
 	private string text = String.Empty;
-		
+
 	internal PlainTextParser(bool withCharacterNames, string lineSeparator) {
 		this.withCharacterNames = withCharacterNames;
-		this.lineSeparator = lineSeparator; 
+		this.lineSeparator = lineSeparator;
 	}
 
 	internal PlainTextParser(bool withCharacterNames) : this(withCharacterNames, @"\n") {
@@ -42,20 +42,20 @@ internal class PlainTextParser {
 	/// <remarks>The created <see cref="SubtitleCollection" /> will have its <see cref="SubtitleProperties" /> property set to null.
 	/// It is mandatory to use <see cref="SubtitleCollection.SetPropertiesForAll" /> after.</remarks>
 	internal ParsingProperties Parse (string text, TimingMode timingMode, Encoding encoding, out SubtitleCollection collection) {
-		
+
 		collection = new SubtitleCollection();
 		ParsingProperties properties = new ParsingProperties();
 		this.text = text;
 		properties.TimingMode = timingMode;
-			
+
 		/* Read the subtitles */
 		ReadSubtitles(encoding, properties, collection);
-			
+
 		return properties;
 	}
-		
+
 	private void ReadSubtitles (Encoding encoding, ParsingProperties properties, SubtitleCollection collection) {
-		
+
 		string[] lines = text.Split(new char[] {'\n'});
 		for (int i = 0; i < lines.Length; i++) {
 			SubtitleText stext = ParseSubtitleText(lines[i]);
@@ -65,9 +65,9 @@ internal class PlainTextParser {
 				collection.Add(subtitle);
 			}
 		}
-		
+
 	}
-		
+
 	private SubtitleText ParseSubtitleText (string line) {
 		string text = String.Empty;
 		if (withCharacterNames) {
@@ -83,9 +83,9 @@ internal class PlainTextParser {
 		if (text.Length > 0)
 			return new SubtitleText(text, lineSeparator, true);
 		else return new SubtitleText();
-		
+
 	}
-		
+
 }
-	
+
 }

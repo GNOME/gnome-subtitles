@@ -26,13 +26,13 @@ public enum DialogScope {
 
 	/// <summary>The dialog is active until it's closed.</summary>
 	Singleton,
-	
+
 	/// <summary>The dialog is active until the document is closed.</summary>
 	Document,
 
 	/// <summary>The dialog is active until the video is closed.</summary>
 	Video,
-	
+
 	/// <summary>The dialog is active until the application is closed.</summary>
 	Application
 }

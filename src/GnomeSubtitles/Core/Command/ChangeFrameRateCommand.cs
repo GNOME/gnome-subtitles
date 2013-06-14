@@ -34,11 +34,11 @@ public abstract class ChangeFrameRateCommand : FixedMultipleSelectionCommand {
 		float previousFrameRate = GetFrameRate();
 		SetFrameRate(storedFrameRate);
 		storedFrameRate = previousFrameRate;
-		
+
 		UpdateMenuItem();
 		return true;
 	}
-	
+
 	protected abstract float GetFrameRate ();
 	protected abstract void SetFrameRate (float frameRate);
 	protected abstract void UpdateMenuItem ();
@@ -49,16 +49,16 @@ public class ChangeInputFrameRateCommand : ChangeFrameRateCommand {
 
 	public ChangeInputFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}
-	
+
 	protected override float GetFrameRate () {
 		return Base.Document.Subtitles.Properties.OriginalFrameRate;
 	}
-	
+
 	protected override void SetFrameRate (float frameRate) {
 		FrameRateOperator frameRateOp = new FrameRateOperator(Base.Document.Subtitles);
 		frameRateOp.ChangeOriginal(frameRate);
 	}
-	
+
 	protected override void UpdateMenuItem () {
 		Base.Ui.Menus.UpdateActiveInputFrameRateMenuItem(true);
 	}
@@ -69,16 +69,16 @@ public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
 
 	public ChangeVideoFrameRateCommand (float frameRate) : base(description, frameRate) {
 	}
-	
+
 	protected override float GetFrameRate () {
 		return Base.Document.Subtitles.Properties.CurrentFrameRate;
 	}
-	
+
 	protected override void SetFrameRate (float frameRate) {
 		FrameRateOperator frameRateOp = new FrameRateOperator(Base.Document.Subtitles);
 		frameRateOp.ChangeCurrent(frameRate);
 	}
-	
+
 	protected override void UpdateMenuItem () {
 		Base.Ui.Menus.UpdateActiveVideoFrameRateMenuItem();
 	}

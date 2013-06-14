@@ -28,7 +28,7 @@ public class InsertTextCommand : InsertTextContentCommand {
 
 	public InsertTextCommand (int index, string text) : base(description, index, text) {
 	}
-	
+
 	protected override SubtitleEditTextView GetTextView () {
 		return Base.Ui.Edit.TextEdit;
 	}

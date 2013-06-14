@@ -20,36 +20,36 @@
 using System.Collections;
 
 namespace SubLib.Core.Domain {
-	
+
 /// <summary>A container that represents a collection of incomplete subtitles.</summary>
 public class IncompleteSubtitleCollection {
 	private ArrayList subtitles = new ArrayList();
-	
-	
+
+
 	/// <summary>The number of subtitles in the collection.</summary>
 	public int Count {
 		get { return subtitles.Count; }
 	}
-	
+
 	/// <summary>Returns an enumerator that can iterate through the collection.</summary>
 	/// <returns>An <see cref="IEnumerator" /> for the entire <see cref="IncompleteSubtitleCollection" />.</returns>
 	public IEnumerator GetEnumerator () {
 		return subtitles.GetEnumerator();
 	}
-	
+
 	/// <summary>Returns the subtitle at the specified index.</summary>
 	/// <param name="index">The zero-based subtitle's index.</param>
 	/// <returns>The subtitle at the specified index.</returns>
 	public IncompleteSubtitle Get (int index){
 		return (IncompleteSubtitle)subtitles[index];
 	}
-	
+
 	/// <summary>Adds an incomplete subtitle to the end of the collection.</summary>
 	/// <param name="subtitle">The subtitle to add.</param>
 	public void Add (IncompleteSubtitle subtitle){
 		subtitles.Add(subtitle);
 	}
-	
+
 	/// <summary>Adds an incomplete subtitle to the collection, inserting it at the specified index.</summary>
 	/// <param name="subtitle">The subtitle to add.</param>
 	/// <param name="index">The zero-based index at which the subtitle should be inserted.</param>

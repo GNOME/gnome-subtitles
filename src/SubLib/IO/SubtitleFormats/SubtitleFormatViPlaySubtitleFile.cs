@@ -25,23 +25,23 @@ namespace SubLib.IO.SubtitleFormats {
 
 internal class SubtitleFormatViPlaySubtitleFile : SubtitleFormat {
 	private static Regex styleExpression = new Regex(@"<[ubi]\w*>", RegexOptions.IgnoreCase);
-	
+
 	internal SubtitleFormatViPlaySubtitleFile () {
 		name = "ViPlay Subtitle File";
 		type = SubtitleType.ViPlaySubtitleFile;
 		mode = SubtitleMode.Times;
 		extensions = new string[] { "vsf" };
 		lineBreak = "|";
-		
+
 		format = @"\{\* VIPLAY SUBTITLE FILE \*\}\s*\d+:\d+:\d+[,.]\d+\s*-\s*\d+:\d+:\d+[,.]\d+=.+";
-		
+
 		subtitleIn = @"(?<StartHours>\d+)\s*:\s*(?<StartMinutes>\d+)\s*:\s*(?<StartSeconds>\d+)\s*[,.]\s*(?<StartMilliseconds>\d+)\s*-\s*(?<EndHours>\d+)\s*:\s*(?<EndMinutes>\d+)\s*:\s*(?<EndSeconds>\d+)\s*[,.]\s*(?<EndMilliseconds>\d+)\s*=\s*(?<Text>.*)";
-		
+
 		subtitleOut = "<<StartHours>>:<<StartMinutes>>:<<StartSeconds>>,<<StartMilliseconds>>-" +
 			"<<EndHours>>:<<EndMinutes>>:<<EndSeconds>>,<<EndMilliseconds>>=<<Text>>";
-		
-		bodyBeginOut = "{* VIPLAY SUBTITLE FILE *}\n";	
-			
+
+		bodyBeginOut = "{* VIPLAY SUBTITLE FILE *}\n";
+
 	}
 		
 	internal override string StyleToString (Style style) {
@@ -54,7 +54,7 @@ internal class SubtitleFormatViPlaySubtitleFile : SubtitleFormat {
 			styleText += "<i>";
 		return styleText;
 	}
-	
+
 	// can be optimized
 	internal override void SubtitleInputPostProcess (Subtitle subtitle) {
 		string subtitleText = subtitle.Text.Get(lineBreak);
@@ -68,7 +68,7 @@ internal class SubtitleFormatViPlaySubtitleFile : SubtitleFormat {
 		subtitleText = styleExpression.Replace(subtitleText, String.Empty);
 		subtitle.Text.Set(subtitleText, lineBreak, true);	
 	}
-		
+
 }
-	
+
 }

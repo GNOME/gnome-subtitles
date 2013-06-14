@@ -26,7 +26,7 @@ public class WidgetNames {
 	public const string MainPaned = "mainPaned";
 
 	/* Menu Bar */
-	
+
 	/* File Menu */
 	public const string FileSave = "fileSave";
 	public const string FileSaveAs = "fileSaveAs";
@@ -38,7 +38,7 @@ public class WidgetNames {
 	public const string FileTranslationSaveAs = "fileTranslationSaveAs";
 	public const string FileTranslationClose = "fileTranslationClose";
 	public const string FileClose = "fileClose";
-	
+
 	/* Edit Menu */
 	public const string EditUndo = "editUndo";
 	public const string EditRedo = "editRedo";
@@ -53,7 +53,7 @@ public class WidgetNames {
 	public const string EditDeleteSubtitles = "editDeleteSubtitles";
 	public const string EditSplit = "editSplit";
 	public const string EditMerge = "editMerge";
-	
+
 	/* View Menu */
 	public const string ViewTimes = "viewTimes";
 	public const string ViewFrames = "viewFrames";
@@ -61,7 +61,7 @@ public class WidgetNames {
 	public const string ViewVideo = "viewVideo";
 	public const string ViewVideoSubtitlesText = "viewVideoSubtitlesText";
 	public const string ViewVideoSubtitlesTranslation = "viewVideoSubtitlesTranslation";
-	
+
 	/* Search Menu */
 	public const string SearchFind = "searchFind";
 	public const string SearchFindNext = "searchFindNext";
@@ -74,7 +74,7 @@ public class WidgetNames {
 	public const string TimingsSynchronize = "timingsSynchronize";
 	public const string TimingsAdjust = "timingsAdjust";
 	public const string TimingsShift = "timingsShift";
-	
+
 	/* Video Menu */
 	public const string VideoClose = "videoClose";
 	public const string VideoPlayPause = "videoPlayPause";
@@ -87,7 +87,7 @@ public class WidgetNames {
 	public const string VideoLoopSelectionPlayback = "videoLoopSelectionPlayback";
 	public const string VideoSetSubtitleStart = "videoSetSubtitleStart";
 	public const string VideoSetSubtitleEnd = "videoSetSubtitleEnd";
-	
+
 	/* Tools Menu */
 	public const string ToolsAutocheckSpelling = "toolsAutocheckSpelling";
 	public const string ToolsSetTextLanguage = "toolsSetTextLanguage";
@@ -109,7 +109,7 @@ public class WidgetNames {
 	public const string BoldButton = "boldToolButton";
 	public const string ItalicButton = "italicToolButton";
 	public const string UnderlineButton = "underlineToolButton";
-		
+
 	/* Video */
 	public const string VideoAreaHBox = "videoAreaHBox";
 	public const string VideoTimingsVBox = "videoTimingsVBox";
@@ -138,7 +138,7 @@ public class WidgetNames {
 
 	/* Subtitle View */
 	public const string SubtitleView = "subtitleView";
-	
+
 	/* Subtitle Edit */
 	public const string SubtitleEdit = "subtitleEdit";
 	public const string StartSpinButton = "startSpinButton";
@@ -147,12 +147,12 @@ public class WidgetNames {
 	public const string SubtitleEditText = "subtitleEditText";
 	public const string SubtitleEditTranslation = "subtitleEditTranslation";
 	public const string SubtitleEditTranslationScrolledWindow = "subtitleEditTranslationScrolledWindow";
-	
+
 	/* Status Bar */
 	public const string MessageStatusbar = "messageStatusbar";
 	public const string PositionStatusbar = "positionStatusbar";
 	public const string OverwriteStatusbar = "overwriteStatusbar";
-	
+
 }
 
 }

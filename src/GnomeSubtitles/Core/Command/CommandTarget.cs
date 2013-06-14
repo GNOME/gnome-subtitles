@@ -26,7 +26,7 @@ public enum CommandTarget {
 
 	/// <summary>The command target is the normal document.</summary>
 	Normal,
-	
+
 	/// <summary>The command target is the translation.</summary>
 	Translation,
 

@@ -24,24 +24,24 @@ namespace SubLib.Core.Domain {
 public class Timing : IComparable {
 	private double frame = 0;
 	private TimeSpan time = TimeSpan.Zero;
-	
+
 	public Timing (int frame, TimeSpan time) {
 		this.frame = frame;
 		this.time = time;
 	}
-	
+
 	public int Frame {
 		get { return Convert.ToInt32(frame); }
 	}
-	
+
 	public TimeSpan Time {
 		get { return time; }
 	}
-	
+
 	public int CompareTo (object obj) {
         if (!(obj is Timing))
         	throw new ArgumentException("Object is not of class Timing");
-        
+
         return time.CompareTo((obj as Timing).Time);
     }
 
