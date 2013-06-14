@@ -1,8 +1,17 @@
 <Combine fileversion="2.0" outputpath="build/" name="gnome-subtitles" MakePkgConfig="False" MakeLibPC="True">
   <Policies>
-    <TextStylePolicy FileWidth="120" TabWidth="4" TabsToSpaces="False" NoTabsAfterNonTabs="False" RemoveTrailingWhitespace="True" EolMarker="Native" />
-    <StandardHeader Text="" inheritsSet="MITX11License" />
+    <TextStylePolicy FileWidth="120" TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" />
+    <StandardHeader Text="" IncludeInNewFiles="True" />
     <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
+    <TextStylePolicy TabsToSpaces="False" EolMarker="Unix" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+    <CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+    <TextStylePolicy FileWidth="120" TabsToSpaces="False" inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/plain" />
+    <TextStylePolicy inheritsSet="null" scope="application/config+xml" />
+    <XmlFormattingPolicy inheritsSet="null" scope="application/config+xml" />
+    <VersionControlPolicy inheritsSet="Mono" />
+    <ChangeLogPolicy UpdateMode="None" inheritsSet="Mono">
+      <MessageStyle LineAlign="0" />
+    </ChangeLogPolicy>
   </Policies>
   <Configurations active="Debug">
     <Configuration name="Debug" ctype="CombineConfiguration">
