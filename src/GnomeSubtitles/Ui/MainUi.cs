@@ -98,12 +98,11 @@ public class MainUi {
     /// <summary>Starts the GUI</summary>
     /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
     public void Start () {
-    	string[] args = Base.ExecutionContext.Args;
-    	if (args.Length > 0) {
-    		string subtitleFile = args[0];
-    		Uri videoUri = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFile) : null;
+		string subtitleFilePath = GetSubtitleFileArg(Base.ExecutionContext.Args);
+		if (subtitleFilePath != null) {
+			Uri videoUri = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFilePath) : null;
 			int codePage = GetFileOpenCodePageFromConfig();
-			Open(subtitleFile, codePage, videoUri);
+			Open(subtitleFilePath, codePage, videoUri);
 		}
     }
 
@@ -454,6 +453,30 @@ public class MainUi {
 				return encodingDescription.CodePage;
 			default: return -1; //Also accounts for Auto Detect
 		}
+	}
+
+	private string GetSubtitleFileArg (string[] args) {
+		if (args.Length == 0) {
+			return null;
+		}
+
+		string file = args[0];
+		if (file == null) {
+			return null;
+		}
+
+		if (!Path.IsPathRooted(file)) {
+			try {
+				file = Path.GetFullPath(file);
+			}
+			catch (Exception e) {
+				System.Console.Error.WriteLine("Unable to read subtitle file path from argument 0");
+				System.Console.Error.WriteLine(e);
+				return null;
+			}
+		}
+
+		return file;
 	}
 
 
