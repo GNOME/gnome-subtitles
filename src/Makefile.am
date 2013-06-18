@@ -68,7 +68,7 @@ GS_SYSTEM_REFERENCES = \
 $(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
 	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(SUBLIB_LIBS) $(GS_RESOURCES:%=-resource:%) $(GS_SOURCES)
 
-$(ASSEMBLY_CONFIG):
+$(ASSEMBLY_CONFIG): $(gnomesubtitles_LTLIBRARIES)
 	cp -f $(ASSEMBLY_CONFIG_SRC) $(GS_BUILDDIR)
 	cp -f $(srcdir)/.libs/libgstreamer_playbin.so $(GS_BUILDDIR)
 
