@@ -34,6 +34,7 @@ public class WidgetNames {
 	public const string FileProperties = "fileProperties";
 	public const string FileTranslationNew = "fileTranslationNew";
 	public const string FileTranslationOpen = "fileTranslationOpen";
+	public const string FileTranslationReload = "fileTranslationReload";
 	public const string FileTranslationSave = "fileTranslationSave";
 	public const string FileTranslationSaveAs = "fileTranslationSaveAs";
 	public const string FileTranslationClose = "fileTranslationClose";

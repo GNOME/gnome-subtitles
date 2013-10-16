@@ -228,6 +228,14 @@ public class MainUi {
 		else
 			return TranslationSaveAs();
     }
+	
+	/// <summary>
+	/// Reopens current translation file
+	/// </summary>
+	public void TranslationReload () {
+		//FIXME: encoding is autodetected, which is fine for me, but it should be remembered somewhere
+		OpenTranslation(Base.Document.TranslationFile.Path, -1); 
+	}
 
     /// <summary>Executes a translation SaveAs operation.</summary>
     /// <returns>Whether the translation file was saved or not.</returns>

@@ -234,6 +234,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.FileTranslationSave, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
+		SetSensitivity(WidgetNames.FileTranslationReload, sensitivity);
 		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, sensitivity);
 
 		bool oneSubtitleSelected = (Core.Base.Ui.View.Selection.Count == 1);

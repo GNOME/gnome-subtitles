@@ -72,6 +72,10 @@ public class EventHandlers {
 	public void OnFileTranslationSave (object o, EventArgs args) {
 		Base.Ui.TranslationSave();
 	}
+	
+	public void OnFileTranslationReload (object o, EventArgs args) {
+		Base.Ui.TranslationReload();
+	}
 
 	public void OnFileTranslationSaveAs (object o, EventArgs args) {
 		Base.Ui.TranslationSaveAs();
