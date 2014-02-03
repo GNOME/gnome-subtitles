@@ -25,7 +25,7 @@ using System.Text.RegularExpressions;
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class VideoFiles {
-	private static Regex videoFilesRegex = new Regex(@"\.(?:(?:3g2)|(?:3gp)|(?:asf)|(?:avi)|(?:bdm)|(?:cpi)|(?:divx)|(?:flv)|(?:m4v)|(?:mkv)|(?:mod)|(?:mov)|(?:mp3)|(?:mp4)|(?:mpeg)|(?:mpg)|(?:mts)|(?:ogg)|(?:ogm)|(?:ogv)|(?:rm)|(?:rmvb)|(?:spx)|(?:vob)|(?:wav)|(?:webm)|(?:wma)|(?:wmv)|(?:xvid))$");
+	private static Regex videoFilesRegex = new Regex(@"\.(?:(?:3g2)|(?:3gp)|(?:asf)|(?:avi)|(?:bdm)|(?:cpi)|(?:divx)|(?:flv)|(?:m4v)|(?:mkv)|(?:mod)|(?:mov)|(?:mp3)|(?:mp4)|(?:mpeg)|(?:mpg)|(?:mts)|(?:ogg)|(?:ogm)|(?:ogv)|(?:rm)|(?:rmvb)|(?:spx)|(?:vob)|(?:wav)|(?:webm)|(?:wma)|(?:wmv)|(?:xvid))$", RegexOptions.IgnoreCase);
 
 	/* Public methods */
 
