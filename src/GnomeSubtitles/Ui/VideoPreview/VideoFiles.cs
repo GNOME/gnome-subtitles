@@ -44,13 +44,16 @@ public class VideoFiles {
 	}
 
 	public static Uri FindMatchingVideo (string file) {
-		ArrayList videoFiles = GetVideoFilesAtPath(Path.GetDirectoryName(file));
+		string fileDir = Path.GetDirectoryName(file);
+		ArrayList videoFiles = GetVideoFilesAtPath(fileDir);
 		string filename = Path.GetFileNameWithoutExtension(file);
 
 		foreach (string videoFile in videoFiles) {
 			string video = Path.GetFileNameWithoutExtension(videoFile);
-			if (video == filename)
-				return new Uri(videoFile);
+			if (video == filename) {
+				string videoFilename = Path.GetFileName(videoFile);
+				return new Uri(Path.Combine(fileDir, videoFilename));
+			}
 		}
 
 		return null;
