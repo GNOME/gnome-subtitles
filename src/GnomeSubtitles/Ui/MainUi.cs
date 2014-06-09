@@ -217,6 +217,15 @@ public class MainUi {
     	}
     }
 
+	/// <summary>Reloads the current translation file.</summary>
+	/// <remarks>If there's a translation currently open with unsaved changes, a warning dialog
+	/// is shown before opening the new file.</remarks>
+	public void TranslationReload () {
+		if (ToOpenTranslationAfterWarning()) {
+			OpenTranslation(Base.Document.TranslationFile.Path, Base.Document.TranslationFile.Encoding.CodePage);
+		}
+	}
+
     /// <summary>Executes a Save operation regarding the translation.</summary>
     /// <remarks>If the translation hasn't been saved before, a TranslationSaveAs is executed.</remarks>
     /// <returns>Whether the translation file was saved or not.</returns>
@@ -229,14 +238,6 @@ public class MainUi {
 			return TranslationSaveAs();
     }
 	
-	/// <summary>
-	/// Reopens current translation file
-	/// </summary>
-	public void TranslationReload () {
-		//FIXME: encoding is autodetected, which is fine for me, but it should be remembered somewhere
-		OpenTranslation(Base.Document.TranslationFile.Path, -1); 
-	}
-
     /// <summary>Executes a translation SaveAs operation.</summary>
     /// <returns>Whether the translation file was saved or not.</returns>
     public bool TranslationSaveAs () {
