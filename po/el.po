@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles 0.6\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-07 11:12+0000\n"
-"PO-Revision-Date: 2013-07-08 17:58+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"POT-Creation-Date: 2014-06-22 19:31+0000\n"
+"PO-Revision-Date: 2014-08-11 11:12+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.6.5\n"
 "X-Project-Style: gnome\n"
 
 #: ../src/Glade/AboutDialog.glade.h:1
@@ -27,7 +27,7 @@ msgstr "Περί Gnome Subtitles"
 
 #: ../src/Glade/AboutDialog.glade.h:2
 msgid "Video subtitling for the GNOME desktop"
-msgstr "Υποτιτλισμός βίντεο για την επιφάνεια εργασίας GNOME"
+msgstr "Υποτιτλισμός βίντεο για το GNOME"
 
 #: ../src/Glade/AboutDialog.glade.h:3
 msgid ""
@@ -73,7 +73,7 @@ msgstr "_Διαθέσιμα:"
 msgid "Shown in menu:"
 msgstr "Εμφανίζονται στο μενού:"
 
-#: ../src/Glade/FileOpenDialog.glade.h:1 ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/FileOpenDialog.glade.h:1 ../src/Glade/MainWindow.glade.h:64
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
 msgid "Open File"
 msgstr "Άνοιγμα αρχείου"
@@ -85,7 +85,7 @@ msgstr "Βίντεο για άνοιγμα:"
 #: ../src/Glade/FileOpenDialog.glade.h:3
 #: ../src/Glade/FileSaveAsDialog.glade.h:3
 msgid "Character Coding:"
-msgstr "Κωδικοποίηση Χαρακτήρων:"
+msgstr "Κωδικοποίηση χαρακτήρων:"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:1
 msgid "File Properties"
@@ -97,11 +97,11 @@ msgstr "<b>Όνομα:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:3
 msgid "<b>Path:</b>"
-msgstr "<b>Διαδρομή:</b>"
+msgstr "<b>Τοποθεσία:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:4
 msgid "<b>Character Coding:</b>"
-msgstr "<b>Κωδικοποίηση Χαρακτήρων:</b>"
+msgstr "<b>Κωδικοποίηση χαρακτήρων:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:5
 msgid "<b>Subtitle Format:</b>"
@@ -109,20 +109,20 @@ msgstr "<b>Μορφή υποτίτλων:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:6
 msgid "<b>Timing Mode:</b>"
-msgstr "<b>Λειτουργία Χρονισμού:</b>"
+msgstr "<b>Λειτουργία χρονισμού:</b>"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:1
 #: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
 msgid "Save As"
-msgstr "Αποθήκευση Ως"
+msgstr "Αποθήκευση ως"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:2
 msgid "Subtitle Format:"
-msgstr "Τύπος Υποτίτλων:"
+msgstr "Μορφή υποτίτλων:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:4
 msgid "Newline Type:"
-msgstr "Είδος νέας γραμμής:"
+msgstr "Τύπος νέας γραμμής:"
 
 #: ../src/Glade/FileSaveAsDialog.glade.h:5
 msgid "Select advanced options"
@@ -146,7 +146,7 @@ msgstr "Καλλιτέχνης:"
 
 #: ../src/Glade/HeadersDialog.glade.h:5
 msgid "Album:"
-msgstr "Δίσκος:"
+msgstr "Άλμπουμ:"
 
 #: ../src/Glade/HeadersDialog.glade.h:6
 msgid "By:"
@@ -173,9 +173,8 @@ msgid "Date:"
 msgstr "Ημερομηνία:"
 
 #: ../src/Glade/HeadersDialog.glade.h:12
-#| msgid "_Input Frame Rate"
 msgid "Frame rate:"
-msgstr "Ρυθμός λήψεων:"
+msgstr "Ρυθμός καρέ:"
 
 #: ../src/Glade/HeadersDialog.glade.h:13
 msgid "Karaoke Lyrics VKT"
@@ -255,7 +254,7 @@ msgstr "Καθυστέρηση:"
 
 #: ../src/Glade/HeadersDialog.glade.h:33
 msgid "CD Track:"
-msgstr "Κομμάτι CD:"
+msgstr "Κομμάτι:"
 
 #: ../src/Glade/HeadersDialog.glade.h:34
 msgid "Comment:"
@@ -271,7 +270,7 @@ msgstr "Χρώμα γραμματοσειράς:"
 
 #: ../src/Glade/HeadersDialog.glade.h:37
 msgid "Font Style:"
-msgstr "Τεχνοτροπία γραμματοσειράς:"
+msgstr "Στυλ γραμματοσειράς:"
 
 #: ../src/Glade/HeadersDialog.glade.h:38
 msgid "Font Size:"
@@ -294,271 +293,263 @@ msgid "_Open"
 msgstr "Άνοι_γμα"
 
 #: ../src/Glade/MainWindow.glade.h:5
+msgid "_Reload"
+msgstr "Επαναφό_ρτωση"
+
+#: ../src/Glade/MainWindow.glade.h:6
 msgid "_Save"
 msgstr "Α_ποθήκευση"
 
-#: ../src/Glade/MainWindow.glade.h:6
-msgid "Save _As"
-msgstr "Αποθήκευση _Ως"
-
 #: ../src/Glade/MainWindow.glade.h:7
+msgid "Save _As"
+msgstr "Αποθήκευση _ως"
+
+#: ../src/Glade/MainWindow.glade.h:8
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: ../src/Glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.glade.h:9
 msgid "_Headers"
 msgstr "Κε_φαλίδες"
 
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.glade.h:10
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.glade.h:11
 msgid "_Format"
 msgstr "Μορ_φή"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.glade.h:12
 msgid "_Bold"
 msgstr "Έντ_ονα"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.glade.h:13
 msgid "_Italic"
 msgstr "Πλάγ_ια"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.glade.h:14
 msgid "_Underline"
 msgstr "_Υπογράμμιση"
 
-#: ../src/Glade/MainWindow.glade.h:14
-#| msgid "_Shift"
+#: ../src/Glade/MainWindow.glade.h:15
 msgid "_Split"
 msgstr "_Διαίρεση"
 
-#: ../src/Glade/MainWindow.glade.h:15
-#| msgid "_Before"
+#: ../src/Glade/MainWindow.glade.h:16
 msgid "_Merge"
 msgstr "Συγ_χώνευση"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.glade.h:17
 msgid "_Insert Subtitle"
 msgstr "Ε_ισαγωγή υπότιτλου"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.glade.h:18
 msgid "_Before"
 msgstr "Πρι_ν"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.glade.h:19
 msgid "_After"
 msgstr "_Μετά"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.glade.h:20
 msgid "At _Video Position"
 msgstr "Στη θέση του _βίντεο"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.glade.h:21
 msgid "_Delete Subtitles"
 msgstr "_Διαγραφή υποτίτλων"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.glade.h:22
 msgid "Pr_eferences"
 msgstr "Π_ροτιμήσεις"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.glade.h:23
 msgid "_View"
 msgstr "_Προβολή"
 
-#: ../src/Glade/MainWindow.glade.h:23
-msgid "_Frames"
-msgstr "_Πλαίσια"
-
 #: ../src/Glade/MainWindow.glade.h:24
+msgid "_Frames"
+msgstr "_Καρέ"
+
+#: ../src/Glade/MainWindow.glade.h:25
 msgid "_Times"
 msgstr "_Χρόνοι"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.glade.h:26
 msgid "_Line Lengths"
 msgstr "Μήκη _γραμμής"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.glade.h:27
 msgid "_Video"
 msgstr "_Βίντεο"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.glade.h:28
 msgid "Video _Subtitles"
 msgstr "_Υπότιτλοι βίντεο"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.glade.h:29
 msgid "_Text"
 msgstr "_Κείμενο"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.glade.h:30
 msgid "Translatio_n"
 msgstr "Μετάφρασ_η"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.glade.h:31
 msgid "_Search"
 msgstr "_Αναζήτηση"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.glade.h:32
 msgid "Find Ne_xt"
 msgstr "Εύρεση ε_πομένου"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.glade.h:33
 msgid "Find Pre_vious"
 msgstr "Εύρεση π_ροηγούμενου"
 
-#: ../src/Glade/MainWindow.glade.h:33 ../src/Glade/SearchDialog.glade.h:9
+#: ../src/Glade/MainWindow.glade.h:34 ../src/Glade/SearchDialog.glade.h:9
 msgid "_Replace"
 msgstr "Αν_τικατάσταση"
 
-#: ../src/Glade/MainWindow.glade.h:34
-#| msgid "_Timings"
+#: ../src/Glade/MainWindow.glade.h:35
 msgid "T_imings"
 msgstr "Χρο_νισμοί"
 
-#: ../src/Glade/MainWindow.glade.h:35
-msgid "_Input Frame Rate"
-msgstr "Ρυθμός λήψεων ε_ισόδου"
-
 #: ../src/Glade/MainWindow.glade.h:36
-msgid "_Video Frame Rate"
-msgstr "Ρυθμός λήψεων _βίντεο"
+msgid "_Input Frame Rate"
+msgstr "Ρυθμός καρέ ε_ισαγωγής"
 
 #: ../src/Glade/MainWindow.glade.h:37
+msgid "_Video Frame Rate"
+msgstr "Ρυθμός καρέ _βίντεο"
+
+#: ../src/Glade/MainWindow.glade.h:38
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
 msgid "_Synchronize"
 msgstr "_Συγχρονισμός"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.glade.h:39
 msgid "_Adjust"
 msgstr "Προσ_αρμογή"
 
-#: ../src/Glade/MainWindow.glade.h:39
-#| msgid "Shift"
+#: ../src/Glade/MainWindow.glade.h:40
 msgid "Sh_ift"
 msgstr "Με_τατόπιση"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.glade.h:41
 msgid "Vide_o"
 msgstr "Βίντε_ο"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.glade.h:42
 msgid "_Play / Pause"
 msgstr "Ανα_παραγωγή / Παύση"
 
-#: ../src/Glade/MainWindow.glade.h:42
-#| msgid "Seek _To Selection"
+#: ../src/Glade/MainWindow.glade.h:43
 msgid "_Loop Selection"
 msgstr "Επιλογή _βρόχου"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.glade.h:44
 msgid "R_ewind"
 msgstr "Πισ_ωγύρισμα"
 
-#: ../src/Glade/MainWindow.glade.h:44
-#| msgid "_Format"
+#: ../src/Glade/MainWindow.glade.h:45
 msgid "_Forward"
 msgstr "_Προώθηση"
 
-#: ../src/Glade/MainWindow.glade.h:45
-#| msgid "_Save"
+#: ../src/Glade/MainWindow.glade.h:46
 msgid "_Seek to…"
 msgstr "Ανα_ζήτηση σε…"
 
-#: ../src/Glade/MainWindow.glade.h:46
-#| msgid "Seek _To Selection"
+#: ../src/Glade/MainWindow.glade.h:47
 msgid "Seek _to Selection"
 msgstr "Αναζήτηση _στην επιλογή"
 
-#: ../src/Glade/MainWindow.glade.h:47
-#| msgid "Selected Subtitles"
+#: ../src/Glade/MainWindow.glade.h:48
 msgid "Select Nearest Subtitle"
 msgstr "Επιλογή πλησιέστερου υπότιτλου"
 
-#: ../src/Glade/MainWindow.glade.h:48
-#| msgid "Selected Subtitles"
+#: ../src/Glade/MainWindow.glade.h:49
 msgid "Auto Select Subtitle"
 msgstr "Αυτόματη επιλογή υπότιτλου"
 
-#: ../src/Glade/MainWindow.glade.h:49
-#| msgid "Set Subtitle _Start"
+#: ../src/Glade/MainWindow.glade.h:50
 msgid "Set Subtitle St_art"
 msgstr "Καθορισμός αρ_χής υπότιτλου"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.glade.h:51
 msgid "Set Subtitle En_d"
 msgstr "Καθορισμός _τέλους υπότιτλου"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.glade.h:52
 msgid "_Tools"
 msgstr "_Εργαλεία"
 
-#: ../src/Glade/MainWindow.glade.h:52
-msgid "_Autocheck Spelling"
-msgstr "_Αυτόματος Έλεγχος Ορθογραφίας"
-
 #: ../src/Glade/MainWindow.glade.h:53
+msgid "_Autocheck Spelling"
+msgstr "_Αυτόματος έλεγχος ορθογραφίας"
+
+#: ../src/Glade/MainWindow.glade.h:54
 msgid "Set T_ext Language"
 msgstr "Ορισμός γ_λώσσας κειμένου"
 
-#: ../src/Glade/MainWindow.glade.h:54
-#| msgid "Save Translation As"
+#: ../src/Glade/MainWindow.glade.h:55
 msgid "Set Translati_on Language"
 msgstr "Ορισμός γλώσσας με_τάφρασης"
 
-#: ../src/Glade/MainWindow.glade.h:55
+#: ../src/Glade/MainWindow.glade.h:56
 msgid "Translate _Text → Translation"
 msgstr "Μεταφράστε Κ_είμενο → Μετάφραση"
 
-#: ../src/Glade/MainWindow.glade.h:56
+#: ../src/Glade/MainWindow.glade.h:57
 msgid "Translate Translatio_n → Text"
 msgstr "Μεταφράστε Μετάφρασ_η → Κείμενο"
 
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.glade.h:58
 msgid "_Help"
 msgstr "Βοή_θεια"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.glade.h:59
 msgid "_Contents"
 msgstr "_Περιεχόμενα"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.glade.h:60
 msgid "_Keyboard Shortcuts"
 msgstr "Συντομεύσεις _πληκτρολογίου"
 
-#: ../src/Glade/MainWindow.glade.h:60
-msgid "Request a _Feature"
-msgstr "Αίτημα για νέο _γνώρισμα"
-
 #: ../src/Glade/MainWindow.glade.h:61
+msgid "Request a _Feature"
+msgstr "Αίτημα για νέα _λειτουγία"
+
+#: ../src/Glade/MainWindow.glade.h:62
 msgid "Report a _Bug"
 msgstr "Αναφορά _σφάλματος"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.glade.h:63
 msgid "New File"
-msgstr "Νέο Αρχείο"
+msgstr "Νέο αρχείο"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.glade.h:65
 msgid "Save File"
 msgstr "Αποθήκευση αρχείου"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.glade.h:66
 msgid "Insert"
 msgstr "Εισαγωγή"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.glade.h:67
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.glade.h:68
 msgid "<b>Time</b>"
 msgstr "<b>Χρόνος</b>"
 
-#: ../src/Glade/MainWindow.glade.h:68
+#: ../src/Glade/MainWindow.glade.h:69
 msgid "<b>Length</b>"
 msgstr "<b>Μήκος</b>"
 
-#: ../src/Glade/MainWindow.glade.h:69
+#: ../src/Glade/MainWindow.glade.h:70
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -569,17 +560,17 @@ msgstr ""
 "Shift+συν/πλην (στο αριθμητικό πληκτρολόγιο) μετατοπίζει τους χρονισμούς."
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:72
+#: ../src/Glade/MainWindow.glade.h:73
 msgid "Duration:"
 msgstr "Διάρκεια:"
 
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:74
+#: ../src/Glade/MainWindow.glade.h:75
 msgid "End:"
 msgstr "Τέλος:"
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:76
+#: ../src/Glade/MainWindow.glade.h:77
 msgid "Start:"
 msgstr "Έναρξη:"
 
@@ -596,12 +587,10 @@ msgid "When saving subtitles, also save their _translation"
 msgstr "Όταν αποθηκεύετε υπότιτλους, αποθηκεύστε επίσης την _μετάφρασή τους"
 
 #: ../src/Glade/PreferencesDialog.glade.h:4
-#| msgid "Open Translation File"
 msgid "<b>Translation File Saving</b>"
 msgstr "<b>Αποθήκευση αρχείου μετάφρασης</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:5
-#| msgid "Character codings"
 msgid "Character c_oding to use:"
 msgstr "Κ_ωδικοποιήσεις χαρακτήρων για χρήση:"
 
@@ -610,7 +599,6 @@ msgid "If auto detection _fails, use:"
 msgstr "Εάν _αποτύχει η αυτόματη αναγνώριση, χρησιμοποιήστε:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:7
-#| msgid "Automatically choose video to open"
 msgid "Automatically choose the _video file to open"
 msgstr "Αυτόματη επιλογή του αρχείου _βίντεο για άνοιγμα"
 
@@ -619,23 +607,20 @@ msgid "<b>File Open Dialog</b>"
 msgstr "<b>Διάλογος ανοίγματος αρχείου</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:9
-#| msgid "Character codings"
 msgid "Ch_aracter coding to use:"
 msgstr "Κωδικοποίηση _χαρακτήρων για χρήση:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:10
-#| msgid "Subtitle Format:"
 msgid "_Subtitle format to use:"
 msgstr "Μορφή _υποτίτλων για χρήση:"
 
 #: ../src/Glade/PreferencesDialog.glade.h:11
-#| msgid "Newline Type:"
 msgid "_Newline type to use:"
-msgstr "Είδος _νέας γραμμής για χρήση:"
+msgstr "Τύπος _νέας γραμμής για χρήση"
 
 #: ../src/Glade/PreferencesDialog.glade.h:12
 msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Αποθήκευσης αρχείου ως διάλογος</b>"
+msgstr "<b>Αποθήκευση αρχείου ως διάλογο</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:13
 msgid "Create a _backup copy of files every"
@@ -660,16 +645,14 @@ msgstr ""
 "Αυτόματη αναζήτηση του βίντεο στον πρώτο υπότιτλο κατά την αλλαγή χρονισμών"
 
 #: ../src/Glade/PreferencesDialog.glade.h:18
-#| msgid "Greek"
 msgid "Seek"
 msgstr "Αναζήτηση"
 
 #: ../src/Glade/PreferencesDialog.glade.h:19
 msgid "ms before the actual start to help review new timings"
-msgstr "ms πριν την ενεργή έναρξη για επιθεώρηση βοήθειας νέων χρονισμών"
+msgstr "ms πριν την πραγματική έναρξη βοήθειας αναθεώρησης νέων χρονισμών"
 
 #: ../src/Glade/PreferencesDialog.glade.h:20
-#| msgid "<b>Video</b>"
 msgid "<b>Video Seeking</b>"
 msgstr "<b>Αναζήτηση βίντεο</b>"
 
@@ -682,7 +665,6 @@ msgid "ms between subtitles when inserting or splitting"
 msgstr "ms μεταξύ υποτίτλων κατά την εισαγωγή ή διαίρεση"
 
 #: ../src/Glade/PreferencesDialog.glade.h:23
-#| msgid "<b>Last Subtitle</b>"
 msgid "<b>Gap Between Subtitles</b>"
 msgstr "<b>Κενό μεταξύ υποτίτλων</b>"
 
@@ -729,7 +711,7 @@ msgstr "Αναζήτηση με χρήση μιας κανονικής έ_κφρ
 
 #: ../src/Glade/SearchDialog.glade.h:7
 msgid "_Wrap around"
-msgstr "_Αναδίπλωση γύρω"
+msgstr "_Αναδίπλωση γύρω από"
 
 #: ../src/Glade/SearchDialog.glade.h:8
 msgid "Replace _All"
@@ -740,7 +722,6 @@ msgid "Set language"
 msgstr "Ορισμός γλώσσας"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:1
-#| msgid "Adjusting timings"
 msgid "Adjust Timings"
 msgstr "Προσαρμογή χρονισμών"
 
@@ -750,7 +731,7 @@ msgstr "Νέα έναρξη:"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:3
 msgid "Start Frame:"
-msgstr "Πλαίσιο έναρξης:"
+msgstr "Καρέ έναρξης:"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:4
 msgid "No.:"
@@ -769,7 +750,6 @@ msgid "All Subtitles"
 msgstr "Όλοι οι υπότιτλοι"
 
 #: ../src/Glade/TimingsAdjustDialog.glade.h:8
-#| msgid "Selected Subtitles"
 msgid "Selected Range"
 msgstr "Επιλεγμένη περιοχή"
 
@@ -783,21 +763,18 @@ msgid "Adjust"
 msgstr "Προσαρμογή"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:1
-#| msgid "Shifting timings"
 msgid "Shift Timings"
 msgstr "Μετατόπιση χρονισμών"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:2
 msgid "<b>Frames</b>"
-msgstr "<b>Πλαίσια</b>"
+msgstr "<b>Καρέ</b>"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:3
-#| msgid "All subtitles"
 msgid "_All subtitles"
 msgstr "Ό_λοι οι υπότιτλοι"
 
 #: ../src/Glade/TimingsShiftDialog.glade.h:4
-#| msgid "Selected subtitles"
 msgid "_Selected subtitles"
 msgstr "_Επιλεγμένοι υπότιτλοι"
 
@@ -829,12 +806,10 @@ msgid "Synchronize Timings"
 msgstr "Συγχρονισμός χρονισμών"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-#| msgid "<b>Apply to</b>"
 msgid "<b>Sync Points</b>"
 msgstr "<b>Συγχρονισμός σημείων</b>"
 
 #: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-#| msgid "All subtitles"
 msgid "Synchroni_ze all subtitles"
 msgstr "Σ_υγχρονισμός όλων των υποτίτλων"
 
@@ -855,12 +830,10 @@ msgid "Seek To"
 msgstr "Αναζήτηση σε"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:2
-#| msgid "Seek _To Selection"
 msgid "Seek _video to:"
 msgstr "Αναζήτηση _βίντεο σε:"
 
 #: ../src/Glade/VideoSeekToDialog.glade.h:3
-#| msgid "_Save"
 msgid "_Seek"
 msgstr "Ανα_ζήτηση"
 
@@ -870,11 +843,11 @@ msgstr "Προσαρμογή χρονισμών"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
 msgid "Changing Input Frame Rate"
-msgstr "Αλλαγή ρυθμού πλαισίων εισόδου"
+msgstr "Αλλαγή ρυθμού καρέ εισόδου"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
 msgid "Changing Video Frame Rate"
-msgstr "Αλλαγή ρυθμού πλαισίων Βίντεο"
+msgstr "Αλλαγή ρυθμού καρέ βίντεο"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
@@ -889,27 +862,24 @@ msgid "Toggling Underline"
 msgstr "Εναλλαγή υπογραμμισμένου κειμένου"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
-#| msgid "Editing From"
 msgid "Editing Start"
 msgstr "Επεξεργασία έναρξης"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
-#| msgid "Editing To"
 msgid "Editing End"
 msgstr "Επεξεργασία τέλους"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
-#| msgid "Editing During"
 msgid "Editing Duration"
-msgstr "Επεξεργασία κατά τη διάρκεια"
+msgstr "Επεξεργασία διάρκειας"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:601
+#: ../src/GnomeSubtitles/Ui/Menus.cs:602
 msgid "Undo"
 msgstr "Αναίρεση"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:611
+#: ../src/GnomeSubtitles/Ui/Menus.cs:612
 msgid "Redo"
 msgstr "Επαναφορά"
 
@@ -932,7 +902,6 @@ msgid "Inserting Subtitle"
 msgstr "Εισαγωγή υπότιτλου"
 
 #: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
-#| msgid "Deleting Subtitles"
 msgid "Merging subtitles"
 msgstr "Συγχώνευση υποτίτλων"
 
@@ -945,12 +914,10 @@ msgid "Shifting timings"
 msgstr "Μετατόπιση χρονισμών"
 
 #: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
-#| msgid "Deleting Subtitles"
 msgid "Splitting subtitles"
 msgstr "Διαίρεση υποτίτλων"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
-#| msgid "Shifting timings"
 msgid "Synchronizing timings"
 msgstr "Συγχρονισμός χρονισμών"
 
@@ -975,7 +942,7 @@ msgstr "Ορισμός τέλους υπότιτλου"
 #. To translators: this is the filename for new files (before being saved for the first time)
 #: ../src/GnomeSubtitles/Core/Document.cs:113
 msgid "Unsaved Subtitles"
-msgstr "Αναποθήκευτοι υπότιτλοι"
+msgstr "Μη αποθηκευμένοι υπότιτλοι"
 
 #. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
 #: ../src/GnomeSubtitles/Core/Document.cs:122
@@ -1137,7 +1104,7 @@ msgstr "Βιετναμέζικη"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:118
 msgid "Current Locale"
-msgstr "Τρέχον τοπικό"
+msgstr "Τρέχουσα εντοπιότητα"
 
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
@@ -1230,22 +1197,19 @@ msgstr "Χρόνος"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
 msgid "Frames"
-msgstr "Πλαίσια"
+msgstr "Καρέ"
 
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
-#| msgid "Subtitle Format:"
 msgid "Subtitle No."
 msgstr "Αριθμός υπότιτλου"
 
 #. Start (current and correct) columns
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
-#| msgid "Current Locale"
 msgid "Current Start"
 msgstr "Τρέχουσα έναρξη"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
-#| msgid "New Start:"
 msgid "Correct Start"
 msgstr "Σωστή έναρξη"
 
@@ -1292,7 +1256,7 @@ msgid ""
 "An unknown error has occured. Please report a bug and include this error "
 "name:"
 msgstr ""
-"Εμφανίστηκε κάποιο άγνωστο σφάλμα. Παρακαλούμε, αναφέρετε το σφάλμα και να "
+"Παρουσιάστηκε άγνωστο σφάλμα. Παρακαλούμε, αναφέρετε το σφάλμα και να "
 "συμπεριλάβετε αυτό το όνομα σφάλματος:"
 
 #. Strings
@@ -1336,7 +1300,7 @@ msgstr "Δεν έχετε τα κατάλληλα δικαιώματα για ν
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
-msgstr "Το καθορισμένο αρχείο είναι άκυρο."
+msgstr "Το καθορισμένο αρχείο δεν είναι έγκυρο."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
@@ -1411,7 +1375,7 @@ msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr ""
-"Η κωδικοποίηση που χρησιμοποιήθηκε δεν υποστηρίζεται από το σύστημα. "
+"Η κωδικοποίηση που χρησιμοποιήθηκε δεν υποστηρίζεται από το σύστημά σας. "
 "Παρακαλούμε, επιλέξτε κάποια άλλη κωδικοποίηση."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
@@ -1438,7 +1402,6 @@ msgid "All Video Files"
 msgstr "Όλα τα αρχεία βίντεο"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
-#| msgid "All Video Files"
 msgid "All Audio Files"
 msgstr "Όλα τα αρχεία ήχου"
 
@@ -1451,7 +1414,6 @@ msgid "Bug information has been printed to the console."
 msgstr "Οι πληροφορίες σφάλματος εμφανίζονται στην κονσόλα."
 
 #: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
-#| msgid "Add or Remove..."
 msgid "Add or Remove…"
 msgstr "Προσθήκη ή αφαίρεση…"
 
@@ -1499,7 +1461,7 @@ msgstr "Στήλη"
 
 #: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
 msgid "Frame"
-msgstr "Πλαίσιο"
+msgstr "Καρέ"
 
 #. Number column
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
