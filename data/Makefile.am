@@ -1,6 +1,9 @@
 desktopdir = $(datadir)/applications
 desktop_DATA = gnome-subtitles.desktop
 
+appdatadir = $(datadir)/appdata
+appdata_DATA = gnome-subtitles.appdata.xml
+
 gnomesubtitlesicondir = $(datadir)/pixmaps
 gnomesubtitlesicon_DATA = gnome-subtitles.svg
 
@@ -11,6 +14,7 @@ man_MANS = gnome-subtitles.1
 
 EXTRA_DIST =				\
 	$(desktop_DATA)			\
+	$(appdata_DATA)			\
 	$(gnomesubtitlesicon_DATA)	\
 	$(man_MANS)			\
 	$(schema_DATA)

@@ -92,6 +92,7 @@ AM_GCONF_SOURCE_2
 AC_OUTPUT([
 Makefile
 data/Makefile
+data/gnome-subtitles.appdata.xml
 data/gnome-subtitles.desktop
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
