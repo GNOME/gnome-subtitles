@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-28 21:42+0000\n"
-"PO-Revision-Date: 2014-11-07 02:46-0300\n"
+"POT-Creation-Date: 2014-12-18 17:54+0000\n"
+"PO-Revision-Date: 2015-01-03 18:19-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.1\n"
 
 #: ../data/gnome-subtitles.appdata.xml.h:1
 #: ../data/gnome-subtitles.appdata.xml.in.h:1
@@ -37,8 +37,8 @@ msgid ""
 "It allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
-"Permite criar, sincronizar, converter e traduzir legendas usando uma "
-"interface de usuário amigável com pré-visualização de vídeo."
+"Permite criar, sincronizar, converter e traduzir legendas usando uma interface "
+"de usuário amigável com pré-visualização de vídeo."
 
 #: ../data/gnome-subtitles.appdata.xml.h:3
 #: ../data/gnome-subtitles.appdata.xml.in.h:3
@@ -47,9 +47,9 @@ msgid ""
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
 "SubViewer."
 msgstr ""
-"Há suporte a um total de 22 formatos de legendas, incluindo mas sem se "
-"limitar a: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, "
-"MPSub e SubViewer."
+"Há suporte a um total de 22 formatos de legendas, incluindo mas sem se limitar "
+"a: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub e "
+"SubViewer."
 
 #: ../data/gnome-subtitles.desktop.in.h:1
 msgid "Gnome Subtitles"
@@ -62,6 +62,10 @@ msgstr "Editor de legendas"
 #: ../data/gnome-subtitles.desktop.in.h:3 ../src/Glade/AboutDialog.glade.h:2
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Legendagem de vídeos no ambiente GNOME"
+
+#: ../data/gnome-subtitles.desktop.in.h:4
+msgid "Subtitles;Video;"
+msgstr "Legendas;Subtitles;Vídeo;Video;"
 
 #: ../src/Glade/AboutDialog.glade.h:1
 msgid "About Gnome Subtitles"
@@ -83,8 +87,8 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
 msgstr ""
-"O GNOME Subtitles é um software livre; você pode redistribuí-lo e/ou "
-"modificá-lo\n"
+"O GNOME Subtitles é um software livre; você pode redistribuí-lo e/ou modificá-"
+"lo\n"
 "sob os termos da Licença Pública Geral GNU publicada pela Free Software \n"
 "Foundation; qualquer versão 2 da Licença, ou (a seu critério) outra versão \n"
 "posterior.\n"
@@ -118,8 +122,7 @@ msgstr "Abrir arquivo"
 msgid "Video To Open:"
 msgstr "Abrir vídeo:"
 
-#: ../src/Glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
+#: ../src/Glade/FileOpenDialog.glade.h:3 ../src/Glade/FileSaveAsDialog.glade.h:3
 msgid "Character Coding:"
 msgstr "Codificação de caracteres:"
 
@@ -591,8 +594,8 @@ msgid ""
 "and end timings.\n"
 "Shift+Plus/Minus (on the numpad) shifts timings."
 msgstr ""
-"Dica: Use Ctrl+Mais/Menos e Alt+Mais/Menos (no teclado numérico) para "
-"ajustar início e fim da cronometragem.\n"
+"Dica: Use Ctrl+Mais/Menos e Alt+Mais/Menos (no teclado numérico) para ajustar "
+"início e fim da cronometragem.\n"
 "Shift+Mais/Menos (no teclado numérico) desloca a cronometragem."
 
 #. This is the duration of a subtitle.
@@ -675,8 +678,7 @@ msgid "Files"
 msgstr "Arquivos"
 
 #: ../src/Glade/PreferencesDialog.glade.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
+msgid "Automatically seek the video to the first subtitle when changing timings"
 msgstr ""
 "Busca automaticamente no vídeo pela primeira legenda ao alterar os tempos"
 
@@ -1258,8 +1260,8 @@ msgstr ""
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
 msgid ""
-"Add 1 more sync point to start synchronizing. Adding more points will "
-"improve accuracy."
+"Add 1 more sync point to start synchronizing. Adding more points will improve "
+"accuracy."
 msgstr ""
 "Adicionar mais 1 ponto de sincronização para iniciar sincronização. "
 "Adicionando mais pontos melhora a precisão."
@@ -1274,8 +1276,7 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
 msgstr ""
-"Sincronização está pronta. As seguintes legendas não serão sincronizadas: "
-"{0}."
+"Sincronização está pronta. As seguintes legendas não serão sincronizadas: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
 #, csharp-format
@@ -1283,13 +1284,12 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
-"Sincronização está pronta. As seguintes legendas não serão sincronizadas: "
-"{0} e {1}."
+"Sincronização está pronta. As seguintes legendas não serão sincronizadas: {0} "
+"e {1}."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
+"An unknown error has occured. Please report a bug and include this error name:"
 msgstr ""
 "Ocorreu um erro desconhecido. Por favor relate este defeito e inclua o "
 "seguinte nome de erro:"
@@ -1340,16 +1340,14 @@ msgstr "O arquivo especificado é inválido."
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
-"Se você não salvar, todas as suas alterações serão perdidas para sempre."
+msgstr "Se você não salvar, todas as suas alterações serão perdidas para sempre."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"Deseja salvar as alterações nas legendas \"{0}\" antes de criar novas "
-"legendas?"
+"Deseja salvar as alterações nas legendas \"{0}\" antes de criar novas legendas?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -1399,8 +1397,8 @@ msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
-"Impossível detectar o formato das legendas. Por favor, verifique se o tipo "
-"do arquivo é suportado."
+"Impossível detectar o formato das legendas. Por favor, verifique se o tipo do "
+"arquivo é suportado."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
@@ -1437,8 +1435,7 @@ msgstr "Todos os arquivos de áudio"
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
 msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr ""
-"Não foi possível abrir o Bug Buddy, a ferramenta de relatório de erros."
+msgstr "Não foi possível abrir o Bug Buddy, a ferramenta de relatório de erros."
 
 #: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
 msgid "Bug information has been printed to the console."
@@ -1526,8 +1523,7 @@ msgstr "Tradução"
 #~ msgid "The Gnome Subtitles Manual could not be found."
 #~ msgstr "O manual do Gnome Subtitles não foi encontrado."
 
-#~ msgid ""
-#~ "Please verify that your installation has been completed successfully."
+#~ msgid "Please verify that your installation has been completed successfully."
 #~ msgstr "Por favor, verifique se sua instalação foi completada com sucesso."
 
 #~ msgid "Keep Existing"
