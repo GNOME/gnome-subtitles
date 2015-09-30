@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles 0.6\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-06-22 19:31+0000\n"
-"PO-Revision-Date: 2014-08-11 11:12+0200\n"
+"POT-Creation-Date: 2014-12-18 17:54+0000\n"
+"PO-Revision-Date: 2015-08-30 13:47+0300\n"
 "Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -18,16 +18,57 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Project-Style: gnome\n"
+
+#: ../data/gnome-subtitles.appdata.xml.h:1
+#: ../data/gnome-subtitles.appdata.xml.in.h:1
+msgid "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
+msgstr ""
+"Η εφαρμογή Υπότιτλοι GNOME, είναι ένας επεξεργαστής υπότιτλων για το γραφικό "
+"περιβάλλον του GNOME."
+
+#: ../data/gnome-subtitles.appdata.xml.h:2
+#: ../data/gnome-subtitles.appdata.xml.in.h:2
+msgid ""
+"It allows to create, synchronize, convert and translate subtitles by using a "
+"friendly user interface with video preview."
+msgstr ""
+"Σας επιτρέπει να δημιουργήσετε, συγχρονίσετε, μετατρέψετε και να μεταφράσετε "
+"υπότιτλους χρησιμοποιώντας μια φιλική στον χρήστη γραφική διεπαφή μαζί με τη "
+"βοήθεια της προεπισκόπησης βίντεο."
+
+#: ../data/gnome-subtitles.appdata.xml.h:3
+#: ../data/gnome-subtitles.appdata.xml.in.h:3
+msgid ""
+"A total of 22 subtitle formats are supported, including but not limited to: "
+"SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
+"SubViewer."
+msgstr ""
+"Υποστηρίζεται ένα σύνολο από 22 μορφές υπότιτλων, συμπεριλαμβανομένων αλλά όχι "
+"και μόνο αυτών σε: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station "
+"Alpha, MPSub και SubViewer."
+
+#: ../data/gnome-subtitles.desktop.in.h:1
+msgid "Gnome Subtitles"
+msgstr "Υπότιτλοι GNOME"
+
+#: ../data/gnome-subtitles.desktop.in.h:2
+msgid "Subtitle Editor"
+msgstr "Επεξεργαστής υποτίτλων"
+
+#: ../data/gnome-subtitles.desktop.in.h:3 ../src/Glade/AboutDialog.glade.h:2
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Υποτιτλισμός βίντεο για το GNOME"
+
+#: ../data/gnome-subtitles.desktop.in.h:4
+#| msgid "Subtitle No."
+msgid "Subtitles;Video;"
+msgstr "Subtitles;Video;υπότιτλοι;βίντεο;"
 
 #: ../src/Glade/AboutDialog.glade.h:1
 msgid "About Gnome Subtitles"
-msgstr "Περί Gnome Subtitles"
-
-#: ../src/Glade/AboutDialog.glade.h:2
-msgid "Video subtitling for the GNOME desktop"
-msgstr "Υποτιτλισμός βίντεο για το GNOME"
+msgstr "Περί Υπότιτλοι GNOME"
 
 #: ../src/Glade/AboutDialog.glade.h:3
 msgid ""
@@ -82,8 +123,7 @@ msgstr "Άνοιγμα αρχείου"
 msgid "Video To Open:"
 msgstr "Βίντεο για άνοιγμα:"
 
-#: ../src/Glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
+#: ../src/Glade/FileOpenDialog.glade.h:3 ../src/Glade/FileSaveAsDialog.glade.h:3
 msgid "Character Coding:"
 msgstr "Κωδικοποίηση χαρακτήρων:"
 
@@ -97,7 +137,7 @@ msgstr "<b>Όνομα:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:3
 msgid "<b>Path:</b>"
-msgstr "<b>Τοποθεσία:</b>"
+msgstr "<b>Διαδρομή:</b>"
 
 #: ../src/Glade/FilePropertiesDialog.glade.h:4
 msgid "<b>Character Coding:</b>"
@@ -639,8 +679,7 @@ msgid "Files"
 msgstr "Αρχεία"
 
 #: ../src/Glade/PreferencesDialog.glade.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
+msgid "Automatically seek the video to the first subtitle when changing timings"
 msgstr ""
 "Αυτόματη αναζήτηση του βίντεο στον πρώτο υπότιτλο κατά την αλλαγή χρονισμών"
 
@@ -662,11 +701,11 @@ msgstr "Έξοδος"
 
 #: ../src/Glade/PreferencesDialog.glade.h:22
 msgid "ms between subtitles when inserting or splitting"
-msgstr "ms μεταξύ υποτίτλων κατά την εισαγωγή ή διαίρεση"
+msgstr "ms μεταξύ υπότιτλων κατά την εισαγωγή ή διαίρεση"
 
 #: ../src/Glade/PreferencesDialog.glade.h:23
 msgid "<b>Gap Between Subtitles</b>"
-msgstr "<b>Κενό μεταξύ υποτίτλων</b>"
+msgstr "<b>Κενό μεταξύ υπότιτλων</b>"
 
 #: ../src/Glade/PreferencesDialog.glade.h:24
 msgid "Subtract"
@@ -885,7 +924,7 @@ msgstr "Επαναφορά"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
 msgid "Deleting Subtitles"
-msgstr "Διαγραφή υποτίτλων"
+msgstr "Διαγραφή υπότιτλων"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
 #: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
@@ -1218,13 +1257,13 @@ msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
 msgstr ""
-"Προσθήκη σημείων συγχρονισμού επιλέγοντας υπότιτλους και ρυθμίζοντας το "
-"βίντεο στη σωστή τους θέση. Τουλάχιστον 2 σημεία απαιτούνται."
+"Προσθήκη σημείων συγχρονισμού επιλέγοντας υπότιτλους και ρυθμίζοντας το βίντεο "
+"στη σωστή τους θέση. Τουλάχιστον 2 σημεία απαιτούνται."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
 msgid ""
-"Add 1 more sync point to start synchronizing. Adding more points will "
-"improve accuracy."
+"Add 1 more sync point to start synchronizing. Adding more points will improve "
+"accuracy."
 msgstr ""
 "Προσθήκη 1 περισσότερου σημείου συγχρονισμού για έναρξη συγχρονισμού. Η "
 "προσθήκη περισσότερων σημείων θα βελτιώσει την ακρίβεια."
@@ -1239,8 +1278,7 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
 msgstr ""
-"Ο συγχρονισμός είναι έτοιμος. Οι ακόλουθοι υπότιτλοι δεν θα συγχρονιστούν: "
-"{0}."
+"Ο συγχρονισμός είναι έτοιμος. Οι ακόλουθοι υπότιτλοι δεν θα συγχρονιστούν: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
 #, csharp-format
@@ -1248,13 +1286,12 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
-"Ο συγχρονισμός είναι έτοιμος. Οι ακόλουθοι υπότιτλοι δεν θα συγχρονιστούν: "
-"{0} και {1}."
+"Ο συγχρονισμός είναι έτοιμος. Οι ακόλουθοι υπότιτλοι δεν θα συγχρονιστούν: {0} "
+"και {1}."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
+"An unknown error has occured. Please report a bug and include this error name:"
 msgstr ""
 "Παρουσιάστηκε άγνωστο σφάλμα. Παρακαλούμε, αναφέρετε το σφάλμα και να "
 "συμπεριλάβετε αυτό το όνομα σφάλματος:"
@@ -1323,8 +1360,7 @@ msgstr "Δημιουργία χωρίς αποθήκευση"
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr ""
-"Αποθήκευση των αλλαγών στη μετάφραση \"{0}\" πριν τη δημιουργία νέων "
-"υποτίτλων;"
+"Αποθήκευση των αλλαγών στη μετάφραση \"{0}\" πριν τη δημιουργία νέων υποτίτλων;"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
 #, csharp-format
@@ -1389,8 +1425,8 @@ msgstr "Το αρχείο δεν ήταν δυνατόν να βρεθεί."
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr ""
-"Το αρχείο φαίνεται να είναι υπερβολικά μεγάλο για ένα αρχείο υποτίτλων με "
-"βάση το κείμενο."
+"Το αρχείο φαίνεται να είναι υπερβολικά μεγάλο για ένα αρχείο υποτίτλων με βάση "
+"το κείμενο."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
@@ -1493,8 +1529,8 @@ msgstr "Μετάφραση"
 #~ msgid ""
 #~ "An Error has occured.\n"
 #~ "\n"
-#~ "To report this bug, please <b>Open the Bugzilla</b> and paste the "
-#~ "following <b>log</b> into the bug description.\n"
+#~ "To report this bug, please <b>Open the Bugzilla</b> and paste the following "
+#~ "<b>log</b> into the bug description.\n"
 #~ "\n"
 #~ "If the bug is related to a <b>subtitle file</b>, please attach it if "
 #~ "possible."
