@@ -2,12 +2,12 @@
 # Copyright (C) 2010 gnome-subtitles's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-subtitles package.
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
-# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2010, 2013, 2014.
+# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2010, 2013, 2014, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
-"POT-Creation-Date: 2014-08-01 07:35+0000\n"
-"PO-Revision-Date: 2014-08-01 16:30+0200\n"
+"POT-Creation-Date: 2017-04-08 14:48+0000\n"
+"PO-Revision-Date: 2017-08-04 20:58+0200\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
@@ -368,12 +368,15 @@ msgid "Command line"
 msgstr "Linie de comandă"
 
 #: C/gnome-subtitles.xml:198(para)
+#| msgid ""
+#| "Type <command>gnome-subtitles</command><replaceable>filename</"
+#| "replaceable> and press <keycap>Return</keycap>."
 msgid ""
 "Type <command>gnome-subtitles</command><replaceable>filename</replaceable> "
-"and press <keycap>Return</keycap>."
+"and press <keycap>Enter</keycap>."
 msgstr ""
-"Tastați <command>gnome-subtitles</command> <replaceable>numele fișierului</"
-"replaceable> și apăsați <keycap>Enter</keycap>."
+"Tastați <command>gnome-subtitles</command><replaceable>numele "
+"fișierului</replaceable> și apăsați <keycap>Enter</keycap>."
 
 #: C/gnome-subtitles.xml:199(para)
 msgid ""
@@ -415,7 +418,7 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Fișier</guisubmenu> "
 "<guimenuitem>Deschide</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:231(para) C/gnome-subtitles.xml:263(para)
+#: C/gnome-subtitles.xml:231(para) C/gnome-subtitles.xml:262(para)
 msgid "The Open File window should open"
 msgstr "Ar trebui să se deschidă fereastra „Deschide fișier”"
 
@@ -424,14 +427,19 @@ msgid "Select the subtitle file you wish to open."
 msgstr "Selectați fișierul de subtitrare pe care doriți să-l deschideți."
 
 #: C/gnome-subtitles.xml:238(para)
+#| msgid ""
+#| "If you want to specify the encoding, choose the appropriate character "
+#| "encoding from the Encoding"
 msgid ""
-"If you want to specify the encoding, choose the appropriate character "
-"encoding from the Encoding"
+"If you want to specify the file's character coding, choose one from the "
+"Character Coding list. If not specified, the caracter coding will be auto "
+"detected."
 msgstr ""
-"Dacă doriți să specificați codificarea, selectați codarea de caractere "
-"corespunzătoare de la Codificare"
+"Dacă doriți să specificați codificarea fișierului, selectați una din lista „"
+"Codarea caracterelor”. Dacă nu este specificată, codarea caracterelor va fi "
+"detectată automat."
 
-#: C/gnome-subtitles.xml:242(para)
+#: C/gnome-subtitles.xml:241(para)
 msgid ""
 "If you want to choose a video to open immediately, choose a video from the "
 "Video list."
@@ -439,7 +447,7 @@ msgstr ""
 "Dacă doriți să deschideți imediat un video ales, alegeți un video din lista "
 "cu materiale video."
 
-#: C/gnome-subtitles.xml:247(para)
+#: C/gnome-subtitles.xml:246(para)
 msgid ""
 "When selecting a video, you can only choose from the videos in the current "
 "directory. If the video you want to open is not in the same directory as the "
@@ -450,18 +458,18 @@ msgstr ""
 "dosar cu fișierul subtitrare, puteți deschide videoul după deschiderea "
 "fișierului subtitrare."
 
-#: C/gnome-subtitles.xml:253(title) C/gnome-subtitles.xml:255(title)
+#: C/gnome-subtitles.xml:252(title) C/gnome-subtitles.xml:254(title)
 msgid "Saving a file"
 msgstr "Salvarea unui fișier"
 
-#: C/gnome-subtitles.xml:256(para)
+#: C/gnome-subtitles.xml:255(para)
 msgid ""
 "You can either save a file normally, or use Save As to set different options."
 msgstr ""
 "Puteți salva un fișier în mod normal, fie utilizați „Salvează ca” pentru a "
 "configura opțiuni diferite."
 
-#: C/gnome-subtitles.xml:258(para)
+#: C/gnome-subtitles.xml:257(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save</"
 "guimenuitem></menuchoice>."
@@ -469,15 +477,15 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Fișier</guisubmenu> "
 "<guimenuitem>Salvează</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:266(para)
+#: C/gnome-subtitles.xml:265(para)
 msgid "If you are saving a new file, the Save As window will appear"
 msgstr "Dacă salvați un fișier nou, va apărea fereastra „Salvează ca”"
 
-#: C/gnome-subtitles.xml:268(title)
+#: C/gnome-subtitles.xml:267(title)
 msgid "Saving as a new file"
 msgstr "Salvare ca fișier nou"
 
-#: C/gnome-subtitles.xml:270(para)
+#: C/gnome-subtitles.xml:269(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save As</"
 "guimenuitem></menuchoice>."
@@ -485,15 +493,15 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Fișier</guisubmenu> "
 "<guimenuitem>Salvează ca</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:275(para)
+#: C/gnome-subtitles.xml:274(para)
 msgid "The Save As window should open"
 msgstr "Ar trebui să se deschidă fereastra „Salvează ca”"
 
-#: C/gnome-subtitles.xml:277(para)
+#: C/gnome-subtitles.xml:276(para)
 msgid "Enter a new name for your subtitle file"
 msgstr "Introduceți un nume nou pentru fișierul subtitrare"
 
-#: C/gnome-subtitles.xml:278(para)
+#: C/gnome-subtitles.xml:277(para)
 msgid ""
 "If you would like to save the file in a different location, browse to the "
 "new location in the file browser"
@@ -501,7 +509,7 @@ msgstr ""
 "Dacă doriți să salvați fișierul într-o locație diferită, navigați până la "
 "noua locație în navigatorul de fișiere"
 
-#: C/gnome-subtitles.xml:280(para)
+#: C/gnome-subtitles.xml:279(para)
 msgid ""
 "If you would like to save the file in a format other than the format listed "
 "in the Subtitle Format list, choose a different format."
@@ -509,7 +517,7 @@ msgstr ""
 "Dacă doriți să salvați fișierul într-un alt format decât cele enumerate în "
 "lista de formate subtitrări, selectați un format diferit."
 
-#: C/gnome-subtitles.xml:282(para)
+#: C/gnome-subtitles.xml:281(para)
 msgid ""
 "If you would like to save the file in a character encoding other than your "
 "default encoding which is listed, change the encoding in the character "
@@ -519,15 +527,15 @@ msgstr ""
 "implicită care este listată, modificați codificarea din lista de codificări "
 "de caractere."
 
-#: C/gnome-subtitles.xml:284(para)
+#: C/gnome-subtitles.xml:283(para)
 msgid "Click Save"
 msgstr "Clic pe „Salvează”"
 
-#: C/gnome-subtitles.xml:289(title)
+#: C/gnome-subtitles.xml:288(title)
 msgid "Selecting a character encoding"
 msgstr "Selectarea unei codări de caractere"
 
-#: C/gnome-subtitles.xml:290(para)
+#: C/gnome-subtitles.xml:289(para)
 msgid ""
 "If you use special characters in your subtitle file, you will want to make "
 "sure that your file is saved in an encoding that supports those characters."
@@ -536,7 +544,7 @@ msgstr ""
 "asigurați că fișierul este salvat într-o codificare care acceptă aceste "
 "caractere."
 
-#: C/gnome-subtitles.xml:292(para)
+#: C/gnome-subtitles.xml:291(para)
 msgid ""
 "Saving a file in a character encoding that does not support the special "
 "characters will cause loss of character data. This occurs when you try to "
@@ -547,11 +555,11 @@ msgstr ""
 "întâmplă atunci când încercați să salvați caractere multi-octet într-o "
 "codificare de caractere stocate într-un singur octet."
 
-#: C/gnome-subtitles.xml:297(title)
+#: C/gnome-subtitles.xml:296(title)
 msgid "Editing subtitle headers"
 msgstr "Editarea antetele subtitrărilor"
 
-#: C/gnome-subtitles.xml:300(para)
+#: C/gnome-subtitles.xml:299(para)
 msgid ""
 "Some subtitle formats have file headers that contain information about the "
 "file. You can edit these fields in <application>Gnome Subtitles</"
@@ -561,7 +569,7 @@ msgstr ""
 "Puteți edita aceste câmpuri în <application>Subtitrări Gnome</application> "
 "astfel:"
 
-#: C/gnome-subtitles.xml:303(para)
+#: C/gnome-subtitles.xml:302(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Headers</"
 "guimenuitem></menuchoice>."
@@ -569,27 +577,27 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Fișier</guisubmenu> <guimenuitem>Antete</"
 "guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:308(para)
+#: C/gnome-subtitles.xml:307(para)
 msgid "The Headers window will open. It has 4 tabs on it."
 msgstr "Se va deschide fereastra „Antete” ce conține 4 taburi."
 
-#: C/gnome-subtitles.xml:310(para)
+#: C/gnome-subtitles.xml:309(para)
 msgid "Select the tab that corresponds to the format of your subtitle file"
 msgstr "Selectați tabul care corespunde cu formatul fișierului subtitrare"
 
-#: C/gnome-subtitles.xml:311(para)
+#: C/gnome-subtitles.xml:310(para)
 msgid "Fill in appropriate fields."
 msgstr "Completați câmpurile corespunzătoare."
 
-#: C/gnome-subtitles.xml:312(para)
+#: C/gnome-subtitles.xml:311(para)
 msgid "When you are done entering header data in, click OK"
 msgstr "Când ați terminat introducerea datelor din antet, clic pe OK"
 
-#: C/gnome-subtitles.xml:318(title)
+#: C/gnome-subtitles.xml:317(title)
 msgid "Working with Subtitles"
 msgstr "Lucrul cu subtitlurile"
 
-#: C/gnome-subtitles.xml:319(para)
+#: C/gnome-subtitles.xml:318(para)
 msgid ""
 "This help lists the keyboard shortcuts to accomplish tasks. All of the tasks "
 "can also be accomplished by using the Edit menu instead of keyboard "
@@ -599,38 +607,46 @@ msgstr ""
 "sarcinile. Toate sarcinile, de asemenea, pot fi realizate prin utilizarea "
 "meniului Editare în loc de a folosi scurtături de tastatură."
 
-#: C/gnome-subtitles.xml:322(title)
+#: C/gnome-subtitles.xml:321(title)
 msgid "Adding a Subtitle"
 msgstr "Adăugarea unui subtitlu"
 
-#: C/gnome-subtitles.xml:323(para)
+#: C/gnome-subtitles.xml:322(para)
 msgid "New subtitles are added either before or after the current subtitle."
 msgstr "Subtitlurile noi sunt adăugate înainte sau după subtitlul curent."
 
-#: C/gnome-subtitles.xml:325(title)
+#: C/gnome-subtitles.xml:324(title)
 msgid "To add a new subtitle after the current subtitle"
 msgstr "Pentru a adăuga un subtitlu nou după subtitlul curent"
 
-#: C/gnome-subtitles.xml:327(para)
-msgid "Type <keycap>Insert</keycap> or <keycap>Control-Return</keycap>"
-msgstr "Tastați <keycap>Insert</keycap> sau <keycap>Control-Enter</keycap>"
+#: C/gnome-subtitles.xml:326(para)
+#| msgid ""
+#| "Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</"
+#| "keycap>"
+msgid ""
+"Type <keycap>Insert</keycap> or <keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
+msgstr ""
+"Tastați <keycap>Shift</keycap> sau "
+"<keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 
-#: C/gnome-subtitles.xml:331(title)
+#: C/gnome-subtitles.xml:330(title)
 msgid "To add a new subtitle before the current subtitle"
 msgstr "Pentru a adăuga un subtitlu nou înaintea subtitlului curent"
 
-#: C/gnome-subtitles.xml:333(para)
+#: C/gnome-subtitles.xml:332(para)
+#| msgid ""
+#| "Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</"
+#| "keycap>"
 msgid ""
-"Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</keycap>"
+"Type <keycap>Shift</keycap>+<keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 msgstr ""
-"Tastați <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Enter</"
-"keycap>"
+"Tastați <keycap>Shift</keycap>+<keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 
-#: C/gnome-subtitles.xml:338(title)
+#: C/gnome-subtitles.xml:337(title)
 msgid "Moving between subtitles"
 msgstr "Mutarea între subtitluri"
 
-#: C/gnome-subtitles.xml:339(para)
+#: C/gnome-subtitles.xml:338(para)
 msgid ""
 "To select subtitles you can either use your mouse to click the subtitle , "
 "or, when your cursor is in the edit window, you can use keyboard shortcuts "
@@ -641,73 +657,80 @@ msgstr ""
 "editare, puteți utiliza scurtăturile de tastatură pentru a vă deplasa între "
 "subtitluri"
 
-#: C/gnome-subtitles.xml:343(title)
+#: C/gnome-subtitles.xml:342(title)
 msgid "To go to the next subtitle"
 msgstr "Pentru a naviga la următorul subtitlu"
 
-#: C/gnome-subtitles.xml:345(para)
-msgid "Type <keycap>Control</keycap>-<keycap>Page Down</keycap>"
-msgstr "Tastați <keycap>Control</keycap>-<keycap>Page Down</keycap>"
+#: C/gnome-subtitles.xml:344(para)
+#| msgid "Type <keycap>Control</keycap>-<keycap>Page Down</keycap>"
+msgid "Type <keycap>Ctrl</keycap>+<keycap>Page Down</keycap>"
+msgstr "Tastați <keycap>Ctrl</keycap>+<keycap>Page Down</keycap>"
 
-#: C/gnome-subtitles.xml:349(title)
+#: C/gnome-subtitles.xml:348(title)
 msgid "To move to the previous subtitle"
 msgstr "Pentru a comuta la subtitlul anterior"
 
-#: C/gnome-subtitles.xml:351(para)
-msgid "Type <keycap>Control</keycap>-<keycap>Page Up</keycap>"
-msgstr "Tastați <keycap>Control</keycap>-<keycap>Page Up</keycap>"
+#: C/gnome-subtitles.xml:350(para)
+#| msgid "Type <keycap>Control</keycap>-<keycap>Page Up</keycap>"
+msgid "Type <keycap>Ctrl</keycap>+<keycap>Page Up</keycap>"
+msgstr "Tastați <keycap>Ctrl</keycap>+<keycap>Page Up</keycap>"
 
-#: C/gnome-subtitles.xml:356(title)
+#: C/gnome-subtitles.xml:355(title)
 msgid "Removing Subtitle(s)"
 msgstr "Eliminarea subtitlurilor"
 
-#: C/gnome-subtitles.xml:357(para)
+#: C/gnome-subtitles.xml:356(para)
 msgid "Type <keycap>Delete</keycap>"
 msgstr "Tastați <keycap>Delete</keycap>"
 
-#: C/gnome-subtitles.xml:360(title)
+#: C/gnome-subtitles.xml:359(title)
 msgid "Working with Multiple Subtitles"
 msgstr "Lucrul cu subtitluri multiple"
 
-#: C/gnome-subtitles.xml:361(para)
+#: C/gnome-subtitles.xml:360(para)
+#| msgid ""
+#| "Sometimes you will want to select multiple subtitles. Use <keycap>Shift</"
+#| "keycap> to select sequenctial subtitles, and <keycap>Control</keycap> to "
+#| "select non-sequention subtitles"
 msgid ""
 "Sometimes you will want to select multiple subtitles. Use <keycap>Shift</"
-"keycap> to select sequenctial subtitles, and <keycap>Control</keycap> to "
-"select non-sequention subtitles"
+"keycap> to select sequential subtitles, and <keycap>Ctrl</keycap> to select "
+"non-sequential subtitles"
 msgstr ""
 "Uneori, veți dori să selectați mai multe subtitluri. Utilizați "
 "<keycap>Shift</keycap> pentru a selecta subtitluri secvențial și "
-"<keycap>Control</keycap> pentru a selecta subtitluri nesecvențial"
+"<keycap>Ctrl</keycap> pentru a selecta subtitluri nesecvențial"
 
-#: C/gnome-subtitles.xml:363(para)
-msgid ""
-"To select all subtitles type <keycap>Control</keycap>-<keycap>A</keycap>"
+#: C/gnome-subtitles.xml:362(para)
+#| msgid ""
+#| "To select all subtitles type <keycap>Control</keycap>-<keycap>A</keycap>"
+msgid "To select all subtitles type <keycap>Ctrl</keycap>+<keycap>A</keycap>"
 msgstr ""
-"Pentru a selecta toate subtitlurile tastați <keycap>Control</keycap>-"
-"<keycap>A</keycap>"
+"Pentru a selecta toate subtitlurile tastați "
+"<keycap>Ctrl</keycap>+<keycap>A</keycap>"
 
-#: C/gnome-subtitles.xml:366(title)
+#: C/gnome-subtitles.xml:365(title)
 msgid "Editing Text"
 msgstr "Editarea textului"
 
-#: C/gnome-subtitles.xml:367(para)
+#: C/gnome-subtitles.xml:366(para)
 msgid "To edit text in a subtitle"
 msgstr "Pentru a edita textul dintr-un subtitlu"
 
-#: C/gnome-subtitles.xml:369(para)
+#: C/gnome-subtitles.xml:368(para)
 msgid "Select the subtitle"
 msgstr "Selectați subtitlul"
 
-#: C/gnome-subtitles.xml:370(para)
+#: C/gnome-subtitles.xml:369(para)
 msgid "Click the edit window to move the cursor into the edit window"
 msgstr ""
 "Clic pe fereastra de editare pentru a muta cursorul în fereastra de editare"
 
-#: C/gnome-subtitles.xml:374(title)
+#: C/gnome-subtitles.xml:373(title)
 msgid "Text format"
 msgstr "Format text"
 
-#: C/gnome-subtitles.xml:375(para)
+#: C/gnome-subtitles.xml:374(para)
 msgid ""
 "A type format (bold, italics, underline) can be applied to the whole line "
 "only. Currently, if you want to have only certain characters formatted "
@@ -718,71 +741,78 @@ msgstr ""
 "formatate special, va trebui să editați fișierul de subtitrare într-un "
 "editor de text."
 
-#: C/gnome-subtitles.xml:380(title)
+#: C/gnome-subtitles.xml:379(title)
 msgid "Undoing and Redoing"
 msgstr "Anularea și refacerea"
 
-#: C/gnome-subtitles.xml:381(title)
+#: C/gnome-subtitles.xml:380(title)
 msgid "To undo an action"
 msgstr "Pentru a anula o acțiune"
 
-#: C/gnome-subtitles.xml:381(para)
-msgid "Type <keycap>Control</keycap>- <keycap>Z</keycap>"
-msgstr "Tastați <keycap>Control</keycap>-<keycap>Z</keycap>"
+#: C/gnome-subtitles.xml:380(para)
+#| msgid "Type <keycap>Control</keycap>- <keycap>Z</keycap>"
+msgid "Type <keycap>Ctrl</keycap>+ <keycap>Z</keycap>"
+msgstr "Tastați <keycap>Ctrl</keycap>+<keycap>Z</keycap>"
 
-#: C/gnome-subtitles.xml:383(title)
+#: C/gnome-subtitles.xml:382(title)
 msgid "To redo an action"
 msgstr "Pentru a reface o acțiune"
 
-#: C/gnome-subtitles.xml:383(para)
+#: C/gnome-subtitles.xml:382(para)
+#| msgid ""
+#| "Type <keycap>Control</keycap>- <keycap>Y</keycap> or <keycap>Control</"
+#| "keycap>-<keycap>Shift</keycap>-<keycap>Z </keycap>"
 msgid ""
-"Type <keycap>Control</keycap>- <keycap>Y</keycap> or <keycap>Control</"
-"keycap>-<keycap>Shift</keycap>-<keycap>Z </keycap>"
+"Type <keycap>Ctrl</keycap>+ <keycap>Y</keycap> or <keycap>Ctrl</keycap>"
+"+<keycap>Shift</keycap>+<keycap>Z </keycap>"
 msgstr ""
-"Tastați <keycap>Control</keycap>-<keycap>Y</keycap> sau <keycap>Control</"
-"keycap>-<keycap>Shift</keycap>-<keycap>Z </keycap>"
+"Tastați <keycap>Ctrl</keycap>+<keycap>Y</keycap> sau "
+"<keycap>Ctrl</keycap>+<keycap>Shift</keycap>-<keycap>Z </keycap>"
 
-#: C/gnome-subtitles.xml:388(title)
+#: C/gnome-subtitles.xml:387(title)
 msgid "Cutting, Copying, and Pasting"
 msgstr "Tăierea, copierea și lipirea"
 
-#: C/gnome-subtitles.xml:389(para)
+#: C/gnome-subtitles.xml:388(para)
 msgid "You can cut, copy, and paste the text in a subtitle."
 msgstr "Puteți tăia, copia și lipi textul dintr-un subtitlu."
 
-#: C/gnome-subtitles.xml:390(title)
+#: C/gnome-subtitles.xml:389(title)
 msgid "To copy text"
 msgstr "Pentru a copia text"
 
-#: C/gnome-subtitles.xml:390(para)
-msgid "<keycap>Control</keycap>- <keycap>C</keycap>"
-msgstr "<keycap>Control</keycap>- <keycap>C</keycap>"
+#: C/gnome-subtitles.xml:389(para)
+#| msgid "<keycap>Control</keycap>- <keycap>C</keycap>"
+msgid "<keycap>Ctrl</keycap>+ <keycap>C</keycap>"
+msgstr "<keycap>Ctrl</keycap>+<keycap>C</keycap>"
 
-#: C/gnome-subtitles.xml:392(title)
+#: C/gnome-subtitles.xml:391(title)
 msgid "To cut text"
 msgstr "Pentru a tăia text"
 
-#: C/gnome-subtitles.xml:392(para)
-msgid "<keycap>Control</keycap>- <keycap>X</keycap>"
-msgstr "<keycap>Control</keycap>- <keycap>X</keycap>"
+#: C/gnome-subtitles.xml:391(para)
+#| msgid "<keycap>Control</keycap>- <keycap>X</keycap>"
+msgid "<keycap>Ctrl</keycap>+ <keycap>X</keycap>"
+msgstr "<keycap>Ctrl</keycap>+<keycap>X</keycap>"
 
-#: C/gnome-subtitles.xml:394(title)
+#: C/gnome-subtitles.xml:393(title)
 msgid "To paste text"
 msgstr "Pentru a lipi text"
 
-#: C/gnome-subtitles.xml:394(para)
-msgid "<keycap>Control</keycap>- <keycap>V</keycap>"
-msgstr "<keycap>Control</keycap>-<keycap>V</keycap>"
+#: C/gnome-subtitles.xml:393(para)
+#| msgid "<keycap>Control</keycap>- <keycap>V</keycap>"
+msgid "<keycap>Ctrl</keycap>+ <keycap>V</keycap>"
+msgstr "<keycap>Ctrl</keycap>+<keycap>V</keycap>"
 
-#: C/gnome-subtitles.xml:421(title)
+#: C/gnome-subtitles.xml:420(title)
 msgid "Manipulating Subtitles"
 msgstr "Manipularea subtitlurilor"
 
-#: C/gnome-subtitles.xml:423(title)
+#: C/gnome-subtitles.xml:422(title)
 msgid "Setting subtitle units"
 msgstr "Stabilirea unităților subtitrării"
 
-#: C/gnome-subtitles.xml:424(para)
+#: C/gnome-subtitles.xml:423(para)
 msgid ""
 "In <application>Gnome Subtitles</application> you can set and adjust "
 "subtitles in time units (minutes and seconds) or in frame units. The default "
@@ -792,11 +822,11 @@ msgstr ""
 "subtitlurile în unități de timp (minute și secunde) sau în unități de cadre. "
 "Unitatea de măsură implicită este timpul."
 
-#: C/gnome-subtitles.xml:426(title)
+#: C/gnome-subtitles.xml:425(title)
 msgid "To use Frame units"
 msgstr "Pentru a utiliza unități de cadre"
 
-#: C/gnome-subtitles.xml:427(para)
+#: C/gnome-subtitles.xml:426(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Frames</"
 "guimenuitem></menuchoice>."
@@ -804,11 +834,11 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Vizualizare</guisubmenu> "
 "<guimenuitem>Cadre</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:431(title)
+#: C/gnome-subtitles.xml:430(title)
 msgid "To use Time units"
 msgstr "Pentru a utiliza unități de timp"
 
-#: C/gnome-subtitles.xml:432(para)
+#: C/gnome-subtitles.xml:431(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Times</"
 "guimenuitem></menuchoice>."
@@ -816,11 +846,11 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Vizualizare</guisubmenu> "
 "<guimenuitem>Timpi</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:438(title)
+#: C/gnome-subtitles.xml:437(title)
 msgid "Adjusting Timings"
 msgstr "Reglarea timpilor"
 
-#: C/gnome-subtitles.xml:440(para)
+#: C/gnome-subtitles.xml:439(para)
 msgid ""
 "If you want to adjust the timings of only some subtitles, select the "
 "subtitles that you want to adjust the timing of"
@@ -828,7 +858,7 @@ msgstr ""
 "Dacă doriți să ajustați numai timpii unor subtitluri, selectați subtitlurile "
 "cărora doriți să le ajustați timpul"
 
-#: C/gnome-subtitles.xml:442(para)
+#: C/gnome-subtitles.xml:441(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Adjust</"
 "guimenuitem></menuchoice>."
@@ -836,7 +866,7 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Timpi</guisubmenu><guimenuitem>Reglează</"
 "guimenuitem></menuchoice>"
 
-#: C/gnome-subtitles.xml:446(para)
+#: C/gnome-subtitles.xml:445(para)
 msgid ""
 "Choose the new starting time of the first subtitle and the new starting time "
 "of the last subtitle"
@@ -844,11 +874,11 @@ msgstr ""
 "Alegeți noul timp de început a primului subtitlu și noul timp de început al "
 "ultimului subtitlu"
 
-#: C/gnome-subtitles.xml:451(title)
+#: C/gnome-subtitles.xml:450(title)
 msgid "Shifting Timings"
 msgstr "Decalarea timpilor"
 
-#: C/gnome-subtitles.xml:452(para)
+#: C/gnome-subtitles.xml:451(para)
 msgid ""
 "Shifting timings allows you to moves one or more subtitles ahead or behind "
 "by a specific amount. Unlike the Adjust subtitles feature, Shifting "
@@ -859,11 +889,11 @@ msgstr ""
 "funcționalitatea „Reglare subtitluri”, decalarea subtitlurilor nu afectează "
 "durata acestora."
 
-#: C/gnome-subtitles.xml:455(title)
+#: C/gnome-subtitles.xml:454(title)
 msgid "To use shift subtitles"
 msgstr "Pentru a utiliza decalarea subtitlurilor"
 
-#: C/gnome-subtitles.xml:456(para)
+#: C/gnome-subtitles.xml:455(para)
 msgid ""
 "Select which subtitle(s) you want to shift. If you want to shift the time/"
 "frame of one subtitle and/or all subtitles before or after a specific "
@@ -876,7 +906,7 @@ msgstr ""
 "decalați mai mult decât un subtitlu, selectați toate subtitlurile pe care "
 "doriți să le decalați."
 
-#: C/gnome-subtitles.xml:459(para)
+#: C/gnome-subtitles.xml:458(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Shift</"
 "guimenuitem></menuchoice>."
@@ -884,7 +914,7 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Timpi</guisubmenu> "
 "<guimenuitem>Decalează</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:463(para)
+#: C/gnome-subtitles.xml:462(para)
 msgid ""
 "Enter in the amount of time (or frames, if you are using the frame unit) to "
 "adjust your subtitles by. If you want to move the subtitles back, enter a "
@@ -894,19 +924,19 @@ msgstr ""
 "care se vor decala subtitlurile. Dacă doriți să mutați subtitlurile înapoi, "
 "introduceți o valoare negativă, altfel introduceți o valoare pozitivă."
 
-#: C/gnome-subtitles.xml:466(para)
+#: C/gnome-subtitles.xml:465(para)
 msgid "Select how you want to shift your subtitles."
 msgstr "Selectați modul în care doriți să decalați subtitlurile dumneavoastră."
 
-#: C/gnome-subtitles.xml:467(para)
+#: C/gnome-subtitles.xml:466(para)
 msgid "Click Shift to shift the subtitles."
 msgstr "Clic pe „Decalează” pentru a decala subtitlurile."
 
-#: C/gnome-subtitles.xml:471(title)
+#: C/gnome-subtitles.xml:470(title)
 msgid "Setting the Input and Video Framerates"
 msgstr "Stabilirea frecvenței cadrelor de intrare și ale videoului"
 
-#: C/gnome-subtitles.xml:472(para)
+#: C/gnome-subtitles.xml:471(para)
 msgid ""
 "When you open a video, <application>Gnome Subtitles</application> does not "
 "automatically set the framerate of the video."
@@ -914,7 +944,7 @@ msgstr ""
 "Când deschideți un video, <application>Subtitrări Gnome</application> nu "
 "stabilește automat frecvența de cadre a clipului video."
 
-#: C/gnome-subtitles.xml:473(para)
+#: C/gnome-subtitles.xml:472(para)
 msgid ""
 "<application>Gnome Subtitles</application> manipulates subtitles based on "
 "time, regardless of view mode. Therefore, when you change the video frame "
@@ -927,7 +957,7 @@ msgstr ""
 "application> reglează cadrele pentru a compensa schimbarea. Durata "
 "subtitlului rămâne același."
 
-#: C/gnome-subtitles.xml:476(para)
+#: C/gnome-subtitles.xml:475(para)
 msgid ""
 "If your subtitle format uses frames to determine when a subtitle is dispayed "
 "(MicroDVD), changing the video framerate may cause your subtitles to lose "
@@ -937,11 +967,11 @@ msgstr ""
 "când un subtitlu este afișat (MicroDVD), schimbarea frecvenței de cadre "
 "video poate provoca desincronizarea."
 
-#: C/gnome-subtitles.xml:478(title)
+#: C/gnome-subtitles.xml:477(title)
 msgid "To set the video framerate"
 msgstr "Pentru a stabili frecvența de cadre a videoului"
 
-#: C/gnome-subtitles.xml:479(para)
+#: C/gnome-subtitles.xml:478(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Video Frame "
 "Rate</guimenuitem></menuchoice> and select the appropriate framerate."
@@ -950,11 +980,11 @@ msgstr ""
 "cadrelor videoului</guimenuitem></menuchoice> și selectați frecvența "
 "corespunzătoare."
 
-#: C/gnome-subtitles.xml:484(title)
+#: C/gnome-subtitles.xml:483(title)
 msgid "To set the input framerate"
 msgstr "Pentru a stabili frecvența de cadre la intrare"
 
-#: C/gnome-subtitles.xml:485(para)
+#: C/gnome-subtitles.xml:484(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Input Frame "
 "Rate</guimenuitem></menuchoice> and select the appropriate framerate."
@@ -963,19 +993,19 @@ msgstr ""
 "cadrelor la intrare</guimenuitem></menuchoice> și selectați frecvența "
 "corespunzătoare."
 
-#: C/gnome-subtitles.xml:494(title)
+#: C/gnome-subtitles.xml:493(title)
 msgid "Working with Videos"
 msgstr "Lucrul cu materialele video"
 
-#: C/gnome-subtitles.xml:496(title)
+#: C/gnome-subtitles.xml:495(title)
 msgid "Opening and Closing a Video"
 msgstr "Deschiderea și închiderea unui video"
 
-#: C/gnome-subtitles.xml:498(title)
+#: C/gnome-subtitles.xml:497(title)
 msgid "To open a video"
 msgstr "Pentru a deschide un video"
 
-#: C/gnome-subtitles.xml:499(para)
+#: C/gnome-subtitles.xml:498(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Open</"
 "guimenuitem></menuchoice>"
@@ -983,11 +1013,11 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Video</guisubmenu> "
 "<guimenuitem>Deschide</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:506(title)
+#: C/gnome-subtitles.xml:505(title)
 msgid "To close a video"
 msgstr "Pentru a închide un video"
 
-#: C/gnome-subtitles.xml:507(para)
+#: C/gnome-subtitles.xml:506(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Close</"
 "guimenuitem></menuchoice>"
@@ -995,11 +1025,11 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Video</guisubmenu> <guimenuitem>Închide</"
 "guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:515(title)
+#: C/gnome-subtitles.xml:514(title)
 msgid "Playing back"
 msgstr "Redarea"
 
-#: C/gnome-subtitles.xml:516(para)
+#: C/gnome-subtitles.xml:515(para)
 msgid ""
 "<application>Gnome Subtitles</application> will play the video in the view "
 "window with your subtitles."
@@ -1007,21 +1037,21 @@ msgstr ""
 "<application>Subtitrări Gnome</application> va reda materialul video în "
 "fereastra de vizualizare adăugând subtitlurile dumneavoastră."
 
-#: C/gnome-subtitles.xml:519(title)
+#: C/gnome-subtitles.xml:518(title)
 msgid "Seeking to the Selection"
 msgstr "Derularea la selecție"
 
-#: C/gnome-subtitles.xml:520(para)
+#: C/gnome-subtitles.xml:519(para)
 msgid "You can go to the point in the loaded video where a subtitle starts"
 msgstr ""
 "Puteți să navigați la un punctul de începere al unui subtitlu în videoul "
 "încărcat"
 
-#: C/gnome-subtitles.xml:522(title)
+#: C/gnome-subtitles.xml:521(title)
 msgid "To seek to a subtitle"
 msgstr "Pentru a derula până la un subtitlu"
 
-#: C/gnome-subtitles.xml:523(para)
+#: C/gnome-subtitles.xml:522(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Seek to "
 "Selection</guimenuitem></menuchoice>"
@@ -1029,11 +1059,11 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Video</guisubmenu> "
 "<guimenuitem>Derulează până la selecție</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:531(title)
+#: C/gnome-subtitles.xml:530(title)
 msgid "Setting the Subtitle Start or End Positions"
 msgstr "Stabilirea pozițiilor de început sau de sfârșit ale subtitlului"
 
-#: C/gnome-subtitles.xml:532(para)
+#: C/gnome-subtitles.xml:531(para)
 msgid ""
 "You can set the subtitles start or end time based on the point at which the "
 "loaded video is paused"
@@ -1041,11 +1071,11 @@ msgstr ""
 "Puteți seta începutul sau sfârșitul subtitlului bazându-vă pe timpul la care "
 "videoul încărcat este în pauză"
 
-#: C/gnome-subtitles.xml:534(title)
+#: C/gnome-subtitles.xml:533(title)
 msgid "To set subtitle starting time"
 msgstr "Pentru a stabili timpul de început al subtitlului"
 
-#: C/gnome-subtitles.xml:535(para)
+#: C/gnome-subtitles.xml:534(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
 "Start</guimenuitem></menuchoice>"
@@ -1053,11 +1083,11 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Video</guisubmenu> "
 "<guimenuitem>Stabilește începutul subtitlului</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:542(title)
+#: C/gnome-subtitles.xml:541(title)
 msgid "To set subtitle ending time"
 msgstr "Pentru a stabili timpul de sfârșit al subtitlului"
 
-#: C/gnome-subtitles.xml:543(para)
+#: C/gnome-subtitles.xml:542(para)
 msgid ""
 "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
 "End</guimenuitem></menuchoice>"
@@ -1065,15 +1095,15 @@ msgstr ""
 "Navigați la <menuchoice><guisubmenu>Video</guisubmenu> "
 "<guimenuitem>Stabilește sfârșitul subtitlului</guimenuitem></menuchoice>."
 
-#: C/gnome-subtitles.xml:553(title)
+#: C/gnome-subtitles.xml:552(title)
 msgid "Where to Get Additional Support"
 msgstr "De unde se poate obține asistență suplimentară"
 
-#: C/gnome-subtitles.xml:555(title)
+#: C/gnome-subtitles.xml:554(title)
 msgid "Forums"
 msgstr "Forumuri"
 
-#: C/gnome-subtitles.xml:556(para)
+#: C/gnome-subtitles.xml:555(para)
 msgid ""
 "Questions and general discussions should be posted on the <ulink url="
 "\"http://sourceforge.net/forum/?group_id=129996\" type=\"http\">Forum</"
@@ -1083,11 +1113,11 @@ msgstr ""
 "\"http://sourceforge.net/forum/?group_id=129996\" type=\"http\">forum</"
 "ulink> (nu este necesară înregistrarea)."
 
-#: C/gnome-subtitles.xml:559(title)
+#: C/gnome-subtitles.xml:558(title)
 msgid "Mailing List"
 msgstr "Lista de discuții"
 
-#: C/gnome-subtitles.xml:560(para)
+#: C/gnome-subtitles.xml:559(para)
 msgid ""
 "You might get a quick response by asking the <ulink url=\"http://lists."
 "sourceforge.net/lists/listinfo/gnome-subtitles-general\" type=\"http"
@@ -1101,11 +1131,11 @@ msgstr ""
 "mailarchive/forum.php?forum_name=gnome-subtitles-general\" type=\"http"
 "\">arhivele discuțiilor</ulink>)."
 
-#: C/gnome-subtitles.xml:563(title)
+#: C/gnome-subtitles.xml:562(title)
 msgid "Bugs and Features"
 msgstr "Erori și funcționalități"
 
-#: C/gnome-subtitles.xml:564(para)
+#: C/gnome-subtitles.xml:563(para)
 msgid ""
 "Bugs and Feature Requests can be reported at the official <ulink url="
 "\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles\" type=\"http"
@@ -1119,3 +1149,6 @@ msgstr ""
 #: C/gnome-subtitles.xml:0(None)
 msgid "translator-credits"
 msgstr "Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2010, 2014"
+
+#~ msgid "Type <keycap>Insert</keycap> or <keycap>Control-Return</keycap>"
+#~ msgstr "Tastați <keycap>Insert</keycap> sau <keycap>Control-Enter</keycap>"
