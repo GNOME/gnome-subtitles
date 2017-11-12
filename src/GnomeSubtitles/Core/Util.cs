@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -115,13 +115,13 @@ public class Util {
 	}
 
 	public static void SetSpinButtonAdjustment (SpinButton spinButton, TimeSpan upperLimit, bool canNegate) {
-		spinButton.Adjustment.StepIncrement = Base.Config.PrefsTimingsTimeStep; //milliseconds
+		spinButton.Adjustment.StepIncrement = Base.Config.TimingsTimeStep; //milliseconds
 		spinButton.Adjustment.Upper = (upperLimit != TimeSpan.Zero ? upperLimit.TotalMilliseconds : 86399999);
 		spinButton.Adjustment.Lower = (canNegate ? -spinButton.Adjustment.Upper : 0);
 	}
 
 	public static void SetSpinButtonAdjustment (SpinButton spinButton, int upperLimit, bool canNegate) {
-		spinButton.Adjustment.StepIncrement = Base.Config.PrefsTimingsFramesStep; //frames
+		spinButton.Adjustment.StepIncrement = Base.Config.TimingsFramesStep; //frames
 		spinButton.Adjustment.Upper = (upperLimit != 0 ? upperLimit : 3000000);
 		spinButton.Adjustment.Lower = (canNegate ? -spinButton.Adjustment.Upper : 0);
 	}

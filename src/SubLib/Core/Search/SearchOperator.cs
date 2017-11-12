@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -93,60 +93,59 @@ public class SearchOperator {
 		return replaced;
 	}
 
-	/// <summary>Finds the subtitle that contains the specified time position.</summary>
-	/// <param name="time">The time position, in seconds.</param>
-	/// <returns>The found subtitle number, or -1 if no subtitle was found.</returns>
-	public int FindWithTime (float time) {
+	/// <summary>Finds the subtitle containing the specified time.</summary>
+	/// <param name="time">The time position.</param>
+	/// <returns>The number of the subtitle that was found, or -1 if no subtitle was found.</returns>
+	public int FindWithTime (TimeSpan time) {
 		SubtitleCollection collection = subtitles.Collection;
-
-		if (collection.Count == 0)
-			return -1;
 
 		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count ; subtitleNumber++) {
 			Subtitle subtitle = collection[subtitleNumber];
-			double start = subtitle.Times.Start.TotalSeconds;
-			if (time < start)
-				continue;
-
-			double end = subtitle.Times.End.TotalSeconds;
-			if (time <= end)
-				return subtitleNumber; //TODO optimize: else return -1;
+			if ((time >= subtitle.Times.Start) && (time <= subtitle.Times.End)) {
+				return subtitleNumber;
+			}
 		}
+
 		return -1; // No subtitles were found
 	}
 
-	/// <summary>Finds the subtitle more near of specified time position.</summary>
-	/// <param name="time">The time position, in seconds.</param>
-	/// <returns>The found subtitle number, or -1 if no subtitle was found.</returns>
-	public int FindNearTime (float time) {
+	/// <summary>Finds the subtitle nearer the specified time.</summary>
+	/// <param name="time">The time position.</param>
+	/// <returns>The number of the subtitle that was found, or -1 if no subtitle was found.</returns>
+	public int FindNearTime (TimeSpan time) {
 		SubtitleCollection collection = subtitles.Collection;
-		if (collection.Count == 0)
+		if (collection.Count == 0) {
 			return -1;
+		}
 
 		/* Check if before the first subtitle */
-		if (time < collection[0].Times.Start.TotalSeconds)
+		if (time < collection[0].Times.Start) {
 			return 0;
+		}
 
 		/* Iterate subtitles two by two - the last subtitle is handled in pair and individually afterwards */
 		for (int subtitleNumber = 0 ; subtitleNumber < collection.Count - 1 ; subtitleNumber++) {
 			Subtitle subtitle = collection[subtitleNumber];
 
 			/* Continue iterating if didn't reach subtitle start yet */
-			double start = subtitle.Times.Start.TotalSeconds;
-			if (time < start)
+			TimeSpan start = subtitle.Times.Start;
+			if (time < start) {
 				continue;
+			}
 
 			/* Check if time is contained by the subtitle */
-			double end = subtitle.Times.End.TotalSeconds;
-			if (time <= end)
+			TimeSpan end = subtitle.Times.End;
+			if (time <= end) {
 				return subtitleNumber;
+			}
 
 			/* Check if contained between this and the next subtitle, and which is nearest */
 			int nextSubtitleIndex = subtitleNumber + 1;
 			Subtitle nextSubtitle = collection[nextSubtitleIndex];
-			double nextSubtitleStart = nextSubtitle.Times.Start.TotalSeconds;
-			if (time < nextSubtitleStart)
+			TimeSpan nextSubtitleStart = nextSubtitle.Times.Start;
+			if (time < nextSubtitleStart) {
 				return ((time - end) < (nextSubtitleStart - time)) ? subtitleNumber : nextSubtitleIndex;
+			}
 		}
 
 		/* If no rule matched before, time must be after last subtitle */

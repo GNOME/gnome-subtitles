@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ public class VideoPosition {
 	private TimeSpan position = TimeSpan.Zero;
 
 	/* Slider related */
-	private HScale slider = null;
+	private Scale slider = null;
 	private uint userUpdateTimeoutId = 0; //the ID of the timeout after which the value will be updated by the user selection
 	private bool isPlayerUpdate = false;
 
@@ -45,13 +45,14 @@ public class VideoPosition {
 	private TimeSpan seekIncrement = TimeSpan.FromMilliseconds(500);
 
 	/* Delegates */
-	public delegate void VideoPositionChangedHandler (TimeSpan position);
+	public delegate void VideoPositionPulseHandler (TimeSpan position);
 
 	/* Events */
-	public event VideoPositionChangedHandler Changed;
+
+	public event VideoPositionPulseHandler PositionPulse;
 
 	public VideoPosition (Player player) {
-		slider = Base.GetWidget(WidgetNames.VideoSlider) as HScale;
+		slider = Base.GetWidget(WidgetNames.VideoSlider) as Scale;
 		positionLabel = Base.GetWidget(WidgetNames.VideoPositionLabel) as Label;
 		positionValueLabel = Base.GetWidget(WidgetNames.VideoPositionValueLabel) as Label;
 		lengthValueLabel = Base.GetWidget(WidgetNames.VideoLengthValueLabel) as Label;
@@ -110,14 +111,14 @@ public class VideoPosition {
 	}
 
 	/// <summary>Handles changes in the player position.</summary>
-	private void OnPlayerPositionChanged (TimeSpan newPosition) {
+	private void OnPlayerPositionPulse (TimeSpan newPosition) {
 		position = newPosition;
 
 		if (userUpdateTimeoutId == 0)  //There is not a manual positioning going on
 			UpdateSlider(newPosition);
 
 		UpdatePositionValueLabel(newPosition);
-		EmitVideoPositionChanged(newPosition);
+		EmitVideoPositionPulse(newPosition);
 	}
 
 	private void OnBaseVideoLoaded (Uri videoUri) {
@@ -143,9 +144,9 @@ public class VideoPosition {
 		userUpdateTimeoutId = GLib.Timeout.Add(userUpdateTimeout, UpdatePlayerPosition);
 	}
 
-	private void EmitVideoPositionChanged (TimeSpan newPosition) {
-		if (Changed != null)
-			Changed(newPosition);
+	private void EmitVideoPositionPulse (TimeSpan newPosition) {
+		if (PositionPulse != null)
+			PositionPulse(newPosition);
 	}
 
 	private void ConnectSliderSignals () {
@@ -160,7 +161,7 @@ public class VideoPosition {
 		Base.TimingModeChanged += OnBaseTimingModeChanged;
 		Base.VideoLoaded += OnBaseVideoLoaded;
 
-		player.PositionChanged += OnPlayerPositionChanged;
+		player.PositionPulse += OnPlayerPositionPulse;
 	}
 
 	private void OnBaseTimingModeChanged (TimingMode timingMode) {

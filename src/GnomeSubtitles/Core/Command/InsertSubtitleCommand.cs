@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -131,8 +131,8 @@ public class InsertSubtitleAtVideoPositionCommand : InsertSubtitleCommand {
 
 	protected override TreePath GetNewPath () {
 		subtitleTime = Base.Ui.Video.Position.CurrentTime;
-		if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-			subtitleTime -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+		if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+			subtitleTime -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
 		}
 
 		if (Base.Document.Subtitles.Count == 0)

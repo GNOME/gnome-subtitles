@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009,2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -239,7 +239,7 @@ public abstract class SubtitleEditTextView {
     /// <summary>Sets font with bold and italic if applicable.</summary>
     private void SetFont (SubLib.Core.Domain.Style style) {
     	Pango.FontDescription font = Pango.FontDescription.FromString(this.textFont + (style.Bold ? " bold" : String.Empty) + (style.Italic ? " italic" : String.Empty) + " " + this.textFontSize);
-		this.textView.ModifyFont(font);
+		this.textView.OverrideFont(font);
     }
 
     /* Currently applies underline tag */
@@ -331,7 +331,7 @@ public abstract class SubtitleEditTextView {
 	private void OnBufferInsertText (object o, InsertTextArgs args) {
 		if (!isBufferInsertManual) {
 			int index = args.Pos.Offset;
-			string insertion = args.Text;
+			string insertion = args.NewText;
 			ExecuteInsertCommand(index, insertion);
 		}
 

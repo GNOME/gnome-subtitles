@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,6 @@ public class Menus {
 	private string videoTagText = Catalog.GetString("Video");
 
 	public Menus () {
-		SetToolbarHomogeneity(); //TODO needed until homogeneity definition in glade starts working
 		SetDocumentSensitivity(false);
 		SetBlankActivity();
 
@@ -162,7 +161,7 @@ public class Menus {
 
 	private void SetBlankActivity () {
 		SetCheckMenuItemActivity(WidgetNames.ToolsAutocheckSpelling, Base.SpellLanguages.Enabled);
-		SetCheckMenuItemActivity(WidgetNames.ViewLineLengths, Base.Config.PrefsViewLineLengths);
+		SetCheckMenuItemActivity(WidgetNames.ViewLineLengths, Base.Config.ViewLineLengths);
 	}
 
 	private void SetViewVideoActivity (bool activity) {
@@ -452,13 +451,6 @@ public class Menus {
 
 	private string GetVideoTagSuffix () {
 		return " (" + videoTagText + ")";
-	}
-
-	private void SetToolbarHomogeneity () {
-		Toolbar toolbar = Base.GetWidget(WidgetNames.Toolbar) as Toolbar;
-		Widget[] toolItems = toolbar.Children;
-		foreach (Widget item in toolItems)
-			(item as ToolItem).Homogeneous = false;
 	}
 
 	private void UpdateUndoRedoMessages () {

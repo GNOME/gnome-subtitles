@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
-using Glade;
+//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -27,18 +27,18 @@ using System.Text;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FilePropertiesDialog : GladeDialog {
+public class FilePropertiesDialog : BuilderDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "FilePropertiesDialog.glade";
 
 	/* Widgets */
 
-	[WidgetAttribute] private Label nameValueLabel = null;
-	[WidgetAttribute] private Label pathValueLabel = null;
-	[WidgetAttribute] private Label encodingValueLabel = null;
-	[WidgetAttribute] private Label subtitleFormatValueLabel = null;
-	[WidgetAttribute] private Label timingModeValueLabel = null;
+	[Builder.Object] private Label nameValueLabel = null;
+	[Builder.Object] private Label pathValueLabel = null;
+	[Builder.Object] private Label encodingValueLabel = null;
+	[Builder.Object] private Label subtitleFormatValueLabel = null;
+	[Builder.Object] private Label timingModeValueLabel = null;
 
 	public FilePropertiesDialog () : base(gladeFilename) {
 		FillLabelValues();

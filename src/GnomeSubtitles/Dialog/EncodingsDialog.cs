@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +19,14 @@
 
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
-using Glade;
+//using Glade;
 using Gtk;
 using Mono.Unix;
 using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class EncodingsDialog : GladeDialog {
+public class EncodingsDialog : BuilderDialog {
 	private string[] chosenNames = new string[0];
 
 	/* Constant strings */
@@ -38,10 +38,10 @@ public class EncodingsDialog : GladeDialog {
 
 	/* Widgets */
 
-	[WidgetAttribute] private TreeView availableTreeView = null;
-	[WidgetAttribute] private TreeView shownTreeView = null;
-	[WidgetAttribute] private Button buttonAdd = null;
-	[WidgetAttribute] private Button buttonRemove = null;
+	[Builder.Object] private TreeView availableTreeView = null;
+	[Builder.Object] private TreeView shownTreeView = null;
+	[Builder.Object] private Button buttonAdd = null;
+	[Builder.Object] private Button buttonRemove = null;
 
 	public EncodingsDialog () : base(gladeFilename) {
 		FillAvailableEncodings();
@@ -72,7 +72,7 @@ public class EncodingsDialog : GladeDialog {
 	private void FillShownEncodings () {
 		SetColumns(shownTreeView);
 
-		chosenNames = Base.Config.PrefsEncodingsShownInMenu;
+		chosenNames = Base.Config.FileEncodingsShownInMenu;
 
 		ListStore store = new ListStore(typeof(string), typeof(string));
 		foreach (string shownEncoding in chosenNames) {
@@ -175,7 +175,7 @@ public class EncodingsDialog : GladeDialog {
 
 	private void UpdateShownEncodingsPrefs () {
 		chosenNames = GetShownNames();
-		Base.Config.PrefsEncodingsShownInMenu = chosenNames;
+		Base.Config.FileEncodingsShownInMenu = chosenNames;
 	}
 
 

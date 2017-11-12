@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -91,14 +91,6 @@ public class ExecutionContext {
 
 	public string GtkSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gtk-sharp").GetName().Version.ToString()); }
-	}
-
-	public string GladeSharpVersion {
-		get { return RemoveTrailingZeros(Assembly.Load("glade-sharp").GetName().Version.ToString()); }
-	}
-
-	public string GConfSharpVersion {
-		get { return RemoveTrailingZeros(Assembly.Load("gconf-sharp").GetName().Version.ToString()); }
 	}
 
 	public string[] Args {

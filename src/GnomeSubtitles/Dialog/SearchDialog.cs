@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
+//using Glade;
 using Gtk;
 using Mono.Unix;
 using System;
@@ -27,7 +27,7 @@ namespace GnomeSubtitles.Dialog {
 
 internal enum SearchDialogResponse { Find = 1, Replace, ReplaceAll, Close = -6 };
 
-public class SearchDialog : GladeDialog {
+public class SearchDialog : BuilderDialog {
 	private string text = String.Empty;		//The text to search for
 	private Regex forwardRegex = null;		//The regex that corresponds to the text and the options
 	private Regex backwardRegex = null;		//The regex that corresponds to the text and the options
@@ -43,19 +43,19 @@ public class SearchDialog : GladeDialog {
 
 	/* Widgets */
 
-	[WidgetAttribute] private Entry findEntry = null;
-	[WidgetAttribute] private Entry replaceEntry = null;
-	[WidgetAttribute] private Label replaceLabel = null;
-	[WidgetAttribute] private Table table = null;
+	[Builder.Object] private Entry findEntry = null;
+	[Builder.Object] private Entry replaceEntry = null;
+	[Builder.Object] private Label replaceLabel = null;
+	[Builder.Object] private Table table = null;
 
-	[WidgetAttribute] private CheckButton matchCaseCheckButton = null;
-	[WidgetAttribute] private CheckButton backwardsCheckButton = null;
-	[WidgetAttribute] private CheckButton regexCheckButton = null;
-	[WidgetAttribute] private CheckButton wrapCheckButton = null;
+	[Builder.Object] private CheckButton matchCaseCheckButton = null;
+	[Builder.Object] private CheckButton backwardsCheckButton = null;
+	[Builder.Object] private CheckButton regexCheckButton = null;
+	[Builder.Object] private CheckButton wrapCheckButton = null;
 
-	[WidgetAttribute] private Button buttonReplaceAll = null;
-	[WidgetAttribute] private Button buttonReplace = null;
-	[WidgetAttribute] private Button buttonFind = null;
+	[Builder.Object] private Button buttonReplaceAll = null;
+	[Builder.Object] private Button buttonReplace = null;
+	[Builder.Object] private Button buttonFind = null;
 
 	public SearchDialog () : base(gladeFilename) {
 	}

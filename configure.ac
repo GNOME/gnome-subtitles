@@ -59,9 +59,9 @@ then
 fi
 
 dnl pkg-config
-MONO_REQUIRED_VERSION=1.1
-GTKSHARP_REQUIRED_VERSION=2.12
-GTK_REQUIRED_VERSION=2.12
+MONO_REQUIRED_VERSION=3.0
+GTKSHARP_REQUIRED_VERSION=3.0
+GTK_REQUIRED_VERSION=3.12
 
 PKG_CHECK_MODULES(gstreamer, [gstreamer-video-1.0 >= 1.0])
 PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-1.0 >= 1.0])
@@ -69,27 +69,29 @@ AC_SUBST(gstreamer_CFLAGS)
 AC_SUBST(gstreamer_LIBS)
 
 PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
-PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-2.0 glade-sharp-2.0 gconf-sharp-2.0 >= $GTKSHARP_REQUIRED_VERSION)
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= $GTK_REQUIRED_VERSION,, [
-	PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
-])
+PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-3.0 >= $GTKSHARP_REQUIRED_VERSION)
+PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
+
 
 dnl Check gtk-sharp version
-PKG_CHECK_MODULES(GTKSHARP_INVALID, gtk-sharp-2.0 >= 2.12.2 gtk-sharp-2.0 <= 2.12.6, gtksharp_invalid=true, gtksharp_invalid=false)
+#PKG_CHECK_MODULES(GTKSHARP_INVALID, gtk-sharp-2.0 >= 2.12.2 gtk-sharp-2.0 <= 2.12.6, gtksharp_invalid=true, gtksharp_invalid=false)
 
-if test "x$gtksharp_invalid" = "xtrue"; then
- 	AC_MSG_ERROR([gtk-sharp versions between 2.12.2 and 2.12.6 (inclusive) are not supported.])
-fi
+#if test "x$gtksharp_invalid" = "xtrue"; then
+# 	AC_MSG_ERROR([gtk-sharp versions between 2.12.2 and 2.12.6 (inclusive) are not supported.])
+#fi
 
 PKG_PROG_PKG_CONFIG()
 
 AC_SUBST(MCS)
 
 dnl Handle GConf
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-AM_GCONF_SOURCE_2
+#AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+#AM_GCONF_SOURCE_2
 
-AC_OUTPUT([
+dnl Handle GSettings
+GLIB_GSETTINGS
+
+AC_CONFIG_FILES([
 Makefile
 data/Makefile
 data/gnome-subtitles.appdata.xml
@@ -99,3 +101,6 @@ src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
 help/Makefile
 po/Makefile.in])
+
+AC_OUTPUT
+

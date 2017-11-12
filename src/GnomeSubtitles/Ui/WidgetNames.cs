@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -114,8 +114,7 @@ public class WidgetNames {
 	/* Video */
 	public const string VideoAreaHBox = "videoAreaHBox";
 	public const string VideoTimingsVBox = "videoTimingsVBox";
-	public const string VideoSubtitleLabel = "videoSubtitle";
-	public const string VideoSubtitleLabelEventBox = "videoSubtitleEventBox";
+	public const string VideoImageOverlay = "videoImageOverlay";
 	public const string VideoPositionLabel = "videoControlsPositionLabel";
 	public const string VideoPositionValueLabel = "videoControlsPositionValueLabel";
 	public const string VideoLengthValueLabel = "videoControlsLengthValueLabel";

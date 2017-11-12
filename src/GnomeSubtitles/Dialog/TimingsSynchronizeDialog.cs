@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2010 Pedro Castro
+ * Copyright (C) 2008-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
+//using Glade;
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Ui.View;
@@ -29,7 +29,7 @@ using System.Collections;
 
 namespace GnomeSubtitles.Dialog {
 
-public class TimingsSynchronizeDialog : GladeDialog {
+public class TimingsSynchronizeDialog : BuilderDialog {
 	private TimingMode timingMode = TimingMode.Times;
 	private GnomeSubtitles.Core.SyncPoints syncPoints = new GnomeSubtitles.Core.SyncPoints();
 	private TreeViewColumn numberCol = null;
@@ -40,12 +40,12 @@ public class TimingsSynchronizeDialog : GladeDialog {
 	private const string gladeFilename = "TimingsSynchronizeDialog.glade";
 
 	/* Widgets */
-	[WidgetAttribute] private TreeView syncPointsTree = null;
-	[WidgetAttribute] private Button buttonAdd = null;
-	[WidgetAttribute] private Button buttonRemove = null;
-	[WidgetAttribute] private Button buttonSynchronize = null;
-	[WidgetAttribute] private CheckButton syncAllSubtitlesCheckButton = null;
-	[WidgetAttribute] private Label statusMessageLabel = null;
+	[Builder.Object] private TreeView syncPointsTree = null;
+	[Builder.Object] private Button buttonAdd = null;
+	[Builder.Object] private Button buttonRemove = null;
+	[Builder.Object] private Button buttonSynchronize = null;
+	[Builder.Object] private CheckButton syncAllSubtitlesCheckButton = null;
+	[Builder.Object] private Label statusMessageLabel = null;
 
 	public TimingsSynchronizeDialog () : base(gladeFilename, true){
 		this.timingMode = Base.TimingMode;
@@ -173,11 +173,11 @@ public class TimingsSynchronizeDialog : GladeDialog {
 
     /* Cell Renderers */
 
-	private void RenderSubtitleNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+	private void RenderSubtitleNumberCell (TreeViewColumn column, CellRenderer cell, ITreeModel treeModel, TreeIter iter) {
 		(cell as CellRendererText).Text = (syncPoints[iter].SubtitleNumber + 1).ToString();
 	}
 
-	private void RenderCurrentStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+	private void RenderCurrentStartCell (TreeViewColumn column, CellRenderer cell, ITreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
 		if (timingMode == TimingMode.Frames)
 			renderer.Text = syncPoints[iter].Current.Frame.ToString();
@@ -185,7 +185,7 @@ public class TimingsSynchronizeDialog : GladeDialog {
 			renderer.Text = Core.Util.TimeSpanToText(syncPoints[iter].Current.Time);
 	}
 
-	private void RenderCorrectStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+	private void RenderCorrectStartCell (TreeViewColumn column, CellRenderer cell, ITreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
 		if (timingMode == TimingMode.Frames)
 			renderer.Text = syncPoints[iter].Correct.Frame.ToString();

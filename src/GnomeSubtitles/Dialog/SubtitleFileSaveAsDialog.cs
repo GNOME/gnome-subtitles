@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
+//using Glade;
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Ui.Component;
 using Gtk;
@@ -29,7 +29,7 @@ using System.Text;
 
 namespace GnomeSubtitles.Dialog {
 
-public abstract class SubtitleFileSaveAsDialog : GladeDialog {
+public abstract class SubtitleFileSaveAsDialog : BuilderDialog {
 	protected FileChooserDialog dialog = null;
 
 	private string chosenFilename = String.Empty;
@@ -47,9 +47,9 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	private NewlineTypeComboBox newlineComboBoxComponent = null;
 
 	/* Widgets */
-	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox subtitleFormatComboBox = null;
-	[WidgetAttribute] private ComboBox newlineTypeComboBox = null;
+	[Builder.Object] private ComboBoxText fileEncodingComboBox = null;
+	[Builder.Object] private ComboBoxText subtitleFormatComboBox = null;
+	[Builder.Object] private ComboBoxText newlineTypeComboBox = null;
 
 
 	protected SubtitleFileSaveAsDialog (SubtitleTextType textType) : base(gladeFilename) {
@@ -90,9 +90,9 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 	private void InitEncodingComboBox () {
 		int fixedEncoding = GetFixedEncoding();
-		ConfigFileSaveEncoding encodingConfig = Base.Config.PrefsDefaultsFileSaveEncoding;
+		ConfigFileSaveEncoding encodingConfig = Base.Config.FileSaveEncoding;
 		if (encodingConfig == ConfigFileSaveEncoding.Fixed) {
-			string encodingName = Base.Config.PrefsDefaultsFileSaveEncodingFixed;
+			string encodingName = Base.Config.FileSaveEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
 			Encodings.Find(encodingName, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
@@ -107,9 +107,9 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 	private void InitFormatComboBox () {
 		SubtitleType fixedSubtitleType = GetFixedSubtitleType();
-		ConfigFileSaveFormat formatConfig = Base.Config.PrefsDefaultsFileSaveFormat;
+		ConfigFileSaveFormat formatConfig = Base.Config.FileSaveFormat;
 		if (formatConfig == ConfigFileSaveFormat.Fixed) {
-			fixedSubtitleType = Base.Config.PrefsDefaultsFileSaveFormatFixed;
+			fixedSubtitleType = Base.Config.FileSaveFormatFixed;
 		}
 		/* Check if fixed subtitle type has been correctly identified */
 		if (fixedSubtitleType == SubtitleType.Unknown) {
@@ -120,7 +120,7 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 	}
 
 	private void InitNewlineComboBox () {
-		NewlineType newlineTypeToSelect = Base.Config.PrefsDefaultsFileSaveNewline;
+		NewlineType newlineTypeToSelect = Base.Config.FileSaveNewline;
 		/* If no newline type set, or system default unknown, use Unix */
 		if (newlineTypeToSelect == NewlineType.Unknown)
 			newlineTypeToSelect = NewlineType.Unix;
@@ -229,27 +229,27 @@ public abstract class SubtitleFileSaveAsDialog : GladeDialog {
 
 			/* Check chosen encoding */
 			chosenEncoding = encodingComboBoxComponent.ChosenEncoding;
-			if (Base.Config.PrefsDefaultsFileSaveEncodingOption == ConfigFileSaveEncodingOption.RememberLastUsed) {
+			if (Base.Config.FileSaveEncodingOption == ConfigFileSaveEncodingOption.RememberLastUsed) {
 				int activeAction = encodingComboBoxComponent.ActiveSelection;
 				ConfigFileSaveEncoding activeOption = (ConfigFileSaveEncoding)Enum.ToObject(typeof(ConfigFileSaveEncoding), activeAction);
 				if (((int)activeOption) >= ((int)ConfigFileSaveEncoding.Fixed)) {
-					Base.Config.PrefsDefaultsFileSaveEncodingFixed = chosenEncoding.Name;
+					Base.Config.FileSaveEncodingFixed = chosenEncoding.Name;
 				}
 				else {
-					Base.Config.PrefsDefaultsFileSaveEncoding = activeOption;
+					Base.Config.FileSaveEncoding = activeOption;
 				}
 			}
 
 			/* Check chosen subtitle format */
 			chosenSubtitleType = formatComboBoxComponent.ChosenSubtitleType;
-			if (Base.Config.PrefsDefaultsFileSaveFormatOption == ConfigFileSaveFormatOption.RememberLastUsed) {
-				Base.Config.PrefsDefaultsFileSaveFormatFixed = chosenSubtitleType;
+			if (Base.Config.FileSaveFormatOption == ConfigFileSaveFormatOption.RememberLastUsed) {
+				Base.Config.FileSaveFormatFixed = chosenSubtitleType;
 			}
 
 			/* Check chosen newline type */
 			chosenNewlineType = newlineComboBoxComponent.ChosenNewlineType;
-			if (Base.Config.PrefsDefaultsFileSaveNewlineOption == ConfigFileSaveNewlineOption.RememberLastUsed) {
-				Base.Config.PrefsDefaultsFileSaveNewline = chosenNewlineType;
+			if (Base.Config.FileSaveNewlineOption == ConfigFileSaveNewlineOption.RememberLastUsed) {
+				Base.Config.FileSaveNewline = chosenNewlineType;
 			}
 
 			/* Check chosen filename */

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.GnomeSubtitles" path="/org/gnome/gnome-subtitles/">
+
+    <key name="file-encodings-shown-in-menu" type="as">
+      <default>[ 'ISO-8859-1' ]</default>
+      <summary>Encodings shown in menu</summary>
+      <description>List of encodings shown in the File Open/Save dialogs.</description>
+    </key>
+    <key name="file-open-encoding-option" type="s">
+      <default>'AutoDetect'</default>
+      <summary>File Open encoding option</summary>
+      <description>Encoding option to use by default when opening files. Possible values are: "AutoDetect" to use auto detection, "RememberLastUsed" to remember the last used encoding, "CurrentLocale" to use the current locale, and "Specific" to use a specific encoding. The encoding for "RememberLastUsed" and "Specific" is stored in the file_open_encoding key.</description>
+    </key>
+    <key name="file-open-encoding" type="s">
+      <default>''</default>
+      <summary>File Open encoding</summary>
+      <description>Encoding to use when opening files. Besides the actual encoding, used when "RememberLastUsed" or "Specific" are set in the file_open_encoding_option key, other possible values are "AutoDetect" and "CurrentLocale".</description>
+    </key>
+    <key name="file-open-fallback" type="s">
+      <default>'ISO-8859-1'</default>
+      <summary>Auto detection fallback encoding</summary>
+      <description>Encoding to use when auto detection fails.</description>
+    </key>
+    <key name="file-save-encoding-option" type="s">
+      <default>'KeepExisting'</default>
+      <summary>File Save encoding option</summary>
+      <description>Encoding option to use by default when saving files. Possible values are: "KeepExisting" to use the existing file's encoding, "RememberLastUsed" to remember the last used encoding, "CurrentLocale" to use the current locale, and "Specific" to use a specific encoding. The encoding for "RememberLastUsed" and "Specific" is stored in the file_save_encoding key.</description>
+    </key>
+    <key name="file-save-encoding" type="s">
+      <default>''</default>
+      <summary>File Save encoding</summary>
+      <description>Encoding to use when saving files. Besides the actual encoding, used when "RememberLastUsed" or "Specific" are set in the file_save_encoding_option key, other possible values are "KeepExisting" and "CurrentLocale".</description>
+    </key>
+    <key name="file-save-format-option" type="s">
+      <default>'KeepExisting'</default>
+      <summary>File Save format option</summary>
+      <description>Subtitle format option to use by default when saving files. Possible values are: "KeepExisting" to use the existing file's format, "RememberLastUsed" to remember the last used format, and "Specific" to use a specific format. The subtitle format for "RememberLastUsed" and "Specific" is stored in the file_save_format key.</description>
+    </key>
+    <key name="file-save-format" type="s">
+      <default>''</default>
+      <summary>File Save format</summary>
+      <description>Subtitle format to use when saving files. Besides the actual format, used when "RememberLastUsed" or "Specific" are set in the file_save_format_option key, other possible values are "KeepExisting" and "CurrentLocale".</description>
+    </key>
+    <key name="file-save-newline-option" type="s">
+      <default>'Specific'</default>
+      <summary>File Save newline option</summary>
+      <description>Newline option to use by default when saving files. Possible values are: "RememberLastUsed" to remember the last used newline type, and "Specific" to use a specific newline type. The newline type for "RememberLastUsed" and "Specific" is stored in the file_save_newline key.</description>
+    </key>
+    <key name="file-save-newline" type="s">
+      <default>'Windows'</default>
+      <summary>File Save newline</summary>
+      <description>Newline type to use when saving files.</description>
+    </key>
+    <key name="file-translation-save-all" type="b">
+      <default>true</default>
+      <summary>Save translation when saving subtitles</summary>
+      <description>Whether to save existing translations when saving subtitles.</description>
+    </key>
+
+    <key name="video-auto-choose-file" type="b">
+      <default>true</default>
+      <summary>Automatically choose the video file</summary>
+      <description>Whether to automatically choose the video file to open, when opening a subtitle file. A video file is chosen based on the name of the subtitle file.</description>
+    </key>
+    <key name="video-apply-reaction-delay" type="b">
+      <default>true</default>
+      <summary>Apply reaction delay</summary>
+      <description>Whether to apply a reaction delay when setting the start or end times of a subtitle with the video playing.</description>
+    </key>
+    <key name="video-reaction-delay" type="i">
+      <default>200</default>
+      <summary>Reaction delay</summary>
+      <description>Time, in milliseconds, to subtract from the start or end times when setting them with the video playing.</description>
+    </key>
+    <key name="video-seek-on-change" type="b">
+      <default>true</default>
+      <summary>Seek the video on subtitles change</summary>
+      <description>Whether to seek the video to the start of the first subtitle when one or more subtitles are changed.</description>
+    </key>
+    <key name="video-seek-on-change-rewind" type="i">
+      <default>200</default>
+      <summary>Seek on change rewind</summary>
+      <description>Time, in milliseconds, to rewind the video when seeking on subtitles change.</description>
+    </key>
+
+    <key name="view-line-lengths" type="b">
+      <default>true</default>
+      <summary>View line lengths</summary>
+      <description>Whether to view line lengths as characters counts in the subtitle list.</description>
+    </key>
+    <key name="view-window-width" type="i">
+      <default>690</default>
+      <summary>Window width</summary>
+      <description>The width of the Main Window.</description>
+    </key>
+    <key name="view-window-height" type="i">
+      <default>600</default>
+      <summary>Window height</summary>
+      <description>The height of the Main Window.</description>
+    </key>
+
+    <key name="spellcheck-text-language" type="s">
+      <default>''</default>
+      <summary>Active spellcheck language for text</summary>
+      <description>The language used to check the spelling of subtitle text.</description>
+    </key>
+    <key name="spellcheck-translation-language" type="s">
+      <default>''</default>
+      <summary>Active spellcheck language for translation</summary>
+      <description>The language used to check the spelling of subtitle translation.</description>
+    </key>
+    <key name="spellcheck-auto" type="b">
+      <default>false</default>
+      <summary>Autocheck spelling</summary>
+      <description>Whether to automatically check the spelling of subtitle text.</description>
+    </key>
+
+    <key name="backup-auto" type="b">
+      <default>true</default>
+      <summary>Auto backup</summary>
+      <description>Whether to automatically backup files. A copy of the file will be periodically saved with a ~ suffix.</description>
+    </key>
+    <key name="backup-time" type="i">
+      <default>120</default>
+      <summary>Backup time</summary>
+      <description>Time interval, in seconds, to automatically backup files. A minimum of 30 seconds is recommended.</description>
+    </key>
+
+    <key name="timings-time-step" type="i">
+      <default>100</default>
+      <summary>Time step increment</summary>
+      <description>Time, in milliseconds, to add or subtract when adjusting times in spinbutton controls (e.g., start, end and duration).</description>
+    </key>
+    <key name="timings-frames-step" type="i">
+      <default>2</default>
+      <summary>Frames step increment</summary>
+      <description>Frames to add or subtract when adjusting frames in spinbutton controls (e.g., start, end and duration).</description>
+    </key>
+    <key name="timings-time-between-subs" type="i">
+      <default>100</default>
+      <summary>Time between subtitles</summary>
+      <description>Recommended time between subtitles, in milliseconds, used for example when splitting a subtitle in two.</description>
+    </key>
+
+  </schema>
+</schemalist>

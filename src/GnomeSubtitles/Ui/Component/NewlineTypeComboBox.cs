@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,11 +26,11 @@ namespace GnomeSubtitles.Ui.Component {
 
 public class NewlineTypeComboBox {
 
-	private ComboBox comboBox = null;
+	private ComboBoxText comboBox = null;
 	private NewlineType newlineTypeToSelect = NewlineType.Unknown;
 	private string[] additionalActions = null;
 
-	public NewlineTypeComboBox (ComboBox comboBox, NewlineType newlineTypeToSelect, string[] additionalActions) {
+	public NewlineTypeComboBox (ComboBoxText comboBox, NewlineType newlineTypeToSelect, string[] additionalActions) {
 		this.comboBox = comboBox;
 		this.newlineTypeToSelect = newlineTypeToSelect;
 		this.additionalActions = additionalActions;

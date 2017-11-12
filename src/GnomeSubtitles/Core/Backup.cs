@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2010 Pedro Castro
+ * Copyright (C) 2010-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ public class Backup {
 			Disable();
 		}
 
-		if (Base.Config.PrefsBackupAutoBackup) {
+		if (Base.Config.BackupAuto) {
 			Enable();
 		}
 	}
@@ -57,7 +57,7 @@ public class Backup {
 
 	private void Enable() {
 		if (backupTimeoutId == 0)
-			backupTimeoutId = GLib.Timeout.Add((uint)Base.Config.PrefsBackupBackupTime * 1000, DoBackup); //milliseconds
+			backupTimeoutId = GLib.Timeout.Add((uint)Base.Config.BackupTime * 1000, DoBackup); //milliseconds
 	}
 
 	private void Disable() {
@@ -126,7 +126,7 @@ public class Backup {
 	/* Event members */
 
 	private void OnBaseInitFinished () {
-		if (Base.Config.PrefsBackupAutoBackup) {
+		if (Base.Config.BackupAuto) {
 			Enable();
 		}
     }

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009,2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,14 +28,14 @@ namespace GnomeSubtitles.Ui.Edit {
 public class SubtitleEdit {
 
 	/* Widgets */
-	private	HBox hBox = null;
+	private	Box hBox = null;
 	private SubtitleEditSpinButtons spinButtons = null;
 	private SubtitleEditText textEdit = null;
 	private SubtitleEditTranslation translationEdit = null;
 
 
 	public SubtitleEdit() {
-		hBox = Base.GetWidget(WidgetNames.SubtitleEdit) as HBox;
+		hBox = Base.GetWidget(WidgetNames.SubtitleEdit) as Box;
 		spinButtons = new SubtitleEditSpinButtons();
 		textEdit = new SubtitleEditText(Base.GetWidget(WidgetNames.SubtitleEditText) as TextView);
 		translationEdit = new SubtitleEditTranslation(Base.GetWidget(WidgetNames.SubtitleEditTranslation) as TextView);

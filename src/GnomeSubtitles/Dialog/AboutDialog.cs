@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class AboutDialog : GladeDialog {
+public class AboutDialog : BuilderDialog {
 	private Gtk.AboutDialog dialog = null;
 
 	/* Constant strings */
@@ -43,12 +43,12 @@ public class AboutDialog : GladeDialog {
 
 	/// <summary>Sets the Url and Email hooks. These must be set before the dialog is realized.</summary>
 	private void SetHooks () {
-		Gtk.AboutDialog.SetUrlHook(AboutDialogOpenUrl);
-		Gtk.AboutDialog.SetEmailHook(AboutDialogOpenEmail);
+//		Gtk.AboutDialog.SetUrlHook(AboutDialogOpenUrl); //FIXME
+//		Gtk.AboutDialog.SetEmailHook(AboutDialogOpenEmail); //FIXME
 	}
 
-	private void AboutDialogOpenUrl (Gtk.AboutDialog about, string url) {
-		Core.Util.OpenUrl(url);
+	private void AboutDialogOpenUrl (object o, ActivateLinkArgs args) {
+		//Core.Util.OpenUrl(url); / //FIXME
 	}
 
 	private void AboutDialogOpenEmail (Gtk.AboutDialog about, string email) {

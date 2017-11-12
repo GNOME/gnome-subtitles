@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2011 Pedro Castro
+ * Copyright (C) 2008-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
+//using Glade;
 using GnomeSubtitles.Core;
 using Gtk;
 using Mono.Unix;
@@ -27,14 +27,14 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class VideoSeekToDialog : GladeDialog {
+public class VideoSeekToDialog : BuilderDialog {
 	private TimingMode timingMode = TimingMode.Frames;
 
 	/* Constant strings */
 	private const string gladeFilename = "VideoSeekToDialog.glade";
 
 	/* Widgets */
-	[WidgetAttribute] private SpinButton spinButton = null;
+	[Builder.Object] private SpinButton spinButton = null;
 
 	public VideoSeekToDialog () : base(gladeFilename){
 		InitSpinButton();

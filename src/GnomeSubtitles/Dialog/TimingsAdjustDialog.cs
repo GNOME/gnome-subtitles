@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009,2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Ui.View;
-using Glade;
+//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -29,7 +29,7 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 
-public class TimingsAdjustDialog : GladeDialog {
+public class TimingsAdjustDialog : BuilderDialog {
 	private TimingMode timingMode;
 
 	/* Constant strings */
@@ -37,16 +37,16 @@ public class TimingsAdjustDialog : GladeDialog {
 
 	/* Widgets */
 
-	[WidgetAttribute] private Label firstSubtitleStartLabel = null;
-	[WidgetAttribute] private Label firstSubtitleNoInputLabel = null;
-	[WidgetAttribute] private Label firstSubtitleStartInputLabel = null;
-	[WidgetAttribute] private SpinButton firstSubtitleNewStartSpinButton = null;
-	[WidgetAttribute] private Label lastSubtitleStartLabel = null;
-	[WidgetAttribute] private Label lastSubtitleNoInputLabel = null;
-	[WidgetAttribute] private Label lastSubtitleStartInputLabel = null;
-	[WidgetAttribute] private SpinButton lastSubtitleNewStartSpinButton = null;
-	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;
-	[WidgetAttribute] private RadioButton selectedRangeRadioButton = null;
+	[Builder.Object] private Label firstSubtitleStartLabel = null;
+	[Builder.Object] private Label firstSubtitleNoInputLabel = null;
+	[Builder.Object] private Label firstSubtitleStartInputLabel = null;
+	[Builder.Object] private SpinButton firstSubtitleNewStartSpinButton = null;
+	[Builder.Object] private Label lastSubtitleStartLabel = null;
+	[Builder.Object] private Label lastSubtitleNoInputLabel = null;
+	[Builder.Object] private Label lastSubtitleStartInputLabel = null;
+	[Builder.Object] private SpinButton lastSubtitleNewStartSpinButton = null;
+	[Builder.Object] private RadioButton allSubtitlesRadioButton = null;
+	[Builder.Object] private RadioButton selectedRangeRadioButton = null;
 
 
 	public TimingsAdjustDialog () : base(gladeFilename){

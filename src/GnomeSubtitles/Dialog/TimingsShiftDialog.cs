@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
 using GnomeSubtitles.Ui.View;
-using Glade;
+//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -30,19 +30,19 @@ namespace GnomeSubtitles.Dialog {
 
 //TODO set spinButton limits according to selection type
 //TODO show informative message about the Ctrl+Shift++ shortcuts
-public class TimingsShiftDialog : GladeDialog {
+public class TimingsShiftDialog : BuilderDialog {
 	private TimingMode timingMode = TimingMode.Frames;
 
 	/* Constant strings */
 	private const string gladeFilename = "TimingsShiftDialog.glade";
 
 	/* Widgets */
-	[WidgetAttribute] private Label timingModeLabel = null;
-	[WidgetAttribute] private SpinButton spinButton = null;
-	[WidgetAttribute] private RadioButton allSubtitlesRadioButton = null;
-	[WidgetAttribute] private RadioButton selectedSubtitlesRadioButton = null;
-	[WidgetAttribute] private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
-	[WidgetAttribute] private RadioButton fromSelectionToLastSubtitleRadioButton = null;
+	[Builder.Object] private Label timingModeLabel = null;
+	[Builder.Object] private SpinButton spinButton = null;
+	[Builder.Object] private RadioButton allSubtitlesRadioButton = null;
+	[Builder.Object] private RadioButton selectedSubtitlesRadioButton = null;
+	[Builder.Object] private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
+	[Builder.Object] private RadioButton fromSelectionToLastSubtitleRadioButton = null;
 
 	public TimingsShiftDialog () : base(gladeFilename){
 		InitSpinButton();

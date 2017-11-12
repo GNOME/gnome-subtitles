@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,10 +31,13 @@ using SubLib.Core.Domain;
 using System;
 using System.IO;
 using System.Text;
+using System.Reflection;
 
 namespace GnomeSubtitles.Ui {
 
 public class MainUi {
+	private static Builder builder = null;
+
 	private Window window = null;
 	private Menus menus = null;
 	private Video video = null;
@@ -43,15 +46,15 @@ public class MainUi {
 	private Status status = null;
 
 	/* Constant strings */
-	private const string gladeFilename = "MainWindow.glade";
+	private const string uiFilename = "MainWindow.ui";
 	private const string iconFilename = "gnome-subtitles.svg";
 
-	public MainUi (EventHandlers handlers, out Glade.XML glade) {
-		glade = new Glade.XML(null, gladeFilename, null, Base.ExecutionContext.TranslationDomain);
+	public MainUi (EventHandlers handlers) {
+		builder = new Builder(uiFilename, Base.ExecutionContext.TranslationDomain);
 
-		window = glade.GetWidget("window") as Window;
+		window = builder.GetObject("window") as Window;
 		window.Icon = new Gdk.Pixbuf(null, iconFilename);
-		window.SetDefaultSize(Base.Config.PrefsWindowWidth, Base.Config.PrefsWindowHeight);
+		window.SetDefaultSize(Base.Config.ViewWindowWidth, Base.Config.ViewWindowHeight);
 
 		video = new Video();
 		view = new SubtitleView();
@@ -59,7 +62,7 @@ public class MainUi {
 		menus = new Menus();
 		status = new Status();
 
-		glade.Autoconnect(handlers);
+		builder.Autoconnect(handlers);
 		Base.InitFinished += OnBaseInitFinished;
 
 		window.Visible = true;
@@ -95,12 +98,16 @@ public class MainUi {
 
     /* Public Methods */
 
+	public static Widget GetWidget (string name) {
+			return builder.GetObject(name) as Widget;
+	}
+
     /// <summary>Starts the GUI</summary>
     /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
     public void Start () {
 		string subtitleFilePath = GetSubtitleFileArg(Base.ExecutionContext.Args);
 		if (subtitleFilePath != null) {
-			Uri videoUri = Base.Config.PrefsVideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFilePath) : null;
+			Uri videoUri = Base.Config.VideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFilePath) : null;
 			int codePage = GetFileOpenCodePageFromConfig();
 			Open(subtitleFilePath, codePage, videoUri);
 		}
@@ -159,7 +166,6 @@ public class MainUi {
     }
 
     public void OpenVideo () {
-
     	VideoOpenDialog dialog = Base.Dialogs.Get(typeof(VideoOpenDialog)) as VideoOpenDialog;
     	dialog.Show();
 		bool toOpen = dialog.WaitForResponse();
@@ -453,10 +459,10 @@ public class MainUi {
 	}
 
 	private int GetFileOpenCodePageFromConfig () {
-		switch (Base.Config.PrefsDefaultsFileOpenEncoding) {
+		switch (Base.Config.FileOpenEncoding) {
 			case ConfigFileOpenEncoding.CurrentLocale: return Encodings.SystemDefault.CodePage;
 			case ConfigFileOpenEncoding.Fixed:
-				string encodingName = Base.Config.PrefsDefaultsFileOpenEncodingFixed;
+				string encodingName = Base.Config.FileOpenEncodingFixed;
 				EncodingDescription encodingDescription = EncodingDescription.Empty;
 				Encodings.Find(encodingName, ref encodingDescription);
 				return encodingDescription.CodePage;

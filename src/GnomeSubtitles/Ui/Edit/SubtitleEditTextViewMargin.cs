@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2011 Pedro Castro
+ * Copyright (C) 2011-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,26 +17,29 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Cairo;
 using GnomeSubtitles.Core;
 using Gtk;
 using System;
 
 namespace GnomeSubtitles.Ui.Edit {
 
-//TODO possible improvements: draw text once with newlines and Spacing
 public class SubtitleEditTextViewMargin {
-	private int marginCharWidth = -1; //pixels
-	private int marginSpace = 4; //pixels
-	private int marginMinDigits = 2; //the minimum number of digits for margin width (1 would make the margin adjust with more than 9 chars, so it's better to keep a minimum of 2 to avoid constant adjustment
-	private int marginDigitCount = 2;
+	/* Constants */
+	private const int marginSpace = 4; //pixels
+	private const int marginMinDigits = 2; //the minimum number of digits for margin width (1 would make the margin adjust with more than 9 chars, so it's better to keep a minimum of 2 to avoid constant adjustment
 
-	/* Cached GCs and Pango Layout */
-	private Gdk.GC lineGC = null;
-	private Gdk.GC textGC = null;
-	private Pango.Layout textLayout = null;
+	/* Set on base init */
+	private Gdk.RGBA marginBGColor;
+	private Gdk.RGBA marginLineColor;
+	private Gdk.RGBA marginTextColor;
+	private Pango.Layout textLayout;
 
 	/* Widgets */
 	private TextView textView = null;
+
+	private int marginCharWidth = -1; //pixels
+	private int marginDigitCount = 2;
 
 	public SubtitleEditTextViewMargin (TextView textView) {
 		this.textView = textView;
@@ -46,20 +49,29 @@ public class SubtitleEditTextViewMargin {
 
 	/* Private methods */
 
-	public void DrawMargin (TextView textView) {
+	public void DrawMargin (TextView textView, Context cr) {
 
     	/* Get char count info  */
     	int[,] info;
     	GetCharCountDrawInfo(textView, out info);
 
-    	/* Set margin and window */
-    	int marginWidth = (this.marginSpace * 2) + (this.marginDigitCount * this.marginCharWidth);
+    	/* Set margin and window on the right */
+    	int marginWidth = (marginSpace * 2) + (this.marginDigitCount * this.marginCharWidth);
     	textView.SetBorderWindowSize(TextWindowType.Right, marginWidth);
-    	Gdk.Window window = textView.GetWindow(TextWindowType.Right);
-    	window.Clear();
+
+		/* Get margin window and cairo context */
+		Gdk.Window marginWindow = textView.GetWindow(TextWindowType.Right);
+		Cairo.Context marginCR = Gdk.CairoHelper.Create(marginWindow);
+
+		/* Clear the background */
+		Gdk.CairoHelper.SetSourceRgba(marginCR, marginBGColor);
+		marginCR.Paint();
 
     	/* Draw line */
-    	window.DrawLine(this.lineGC, 0, 0, 0, textView.Allocation.Height);
+		Gdk.CairoHelper.SetSourceRgba(marginCR, marginLineColor);
+		marginCR.MoveTo(0, 0);
+		marginCR.LineTo(0, marginWindow.Height); //We don't use marginWindow.Height because sometimes (e.g., on initialization) its height is 1px
+		marginCR.Stroke();
 
     	/* Draw text */
     	int infoCount = info.GetLength(0);
@@ -70,8 +82,14 @@ public class SubtitleEditTextViewMargin {
     		this.textLayout.SetText(charCount.ToString());
     		int textLayoutWidth, textLayoutHeight;
     		this.textLayout.GetPixelSize(out textLayoutWidth, out textLayoutHeight);
-    		window.DrawLayout(this.textGC, this.marginSpace, y - textLayoutHeight/2, this.textLayout);
+			marginCR.MoveTo(marginSpace, y - textLayoutHeight / 2);
+
+			Gdk.CairoHelper.SetSourceRgba(marginCR, marginTextColor);
+			Pango.CairoHelper.ShowLayout(marginCR, this.textLayout);
 		}
+
+		marginCR.Dispose();
+		cr.Dispose();
     }
 
     private void GetCharCountDrawInfo (TextView textView, out int[,] info) {
@@ -135,16 +153,11 @@ public class SubtitleEditTextViewMargin {
 		}
 
 		int digitCount = CountDigitsInNumber(maxChars);
-		return Math.Max(digitCount, this.marginMinDigits);
+		return Math.Max(digitCount, marginMinDigits);
 	}
 
     private int CountDigitsInNumber (int number) {
     	return (number == 0 ? 1 : (int)Math.Floor(Math.Log10(number)) + 1); //assuming the number is positive, otherwise would need to use abs() too
-    }
-
-    private void SetGCs () {
-		this.lineGC = Base.Ui.Window.Style.BackgroundGC(StateType.Active);
-		this.textGC = Base.Ui.Window.Style.TextGC(StateType.Active);
     }
 
     private void Refresh () {
@@ -156,7 +169,7 @@ public class SubtitleEditTextViewMargin {
     }
 
     private void Enable () {
-    	textView.ExposeEvent += OnExposeEvent;
+		textView.Drawn += OnWidgetDrawn;
 		textView.Buffer.Changed += OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
 		textView.StateChanged += OnStateChanged;
 
@@ -164,21 +177,37 @@ public class SubtitleEditTextViewMargin {
     }
 
     private void Disable () {
-    	textView.ExposeEvent -= OnExposeEvent;
+		textView.Drawn -= OnWidgetDrawn;
 		textView.Buffer.Changed -= OnBufferChanged; //To calculate margin digit count (based on the largest line char count)
 		textView.StateChanged -= OnStateChanged;
 
 		HideMarginWindow();
     }
 
+	private void SetColors () {
+		marginTextColor = Base.Ui.Window.StyleContext.GetColor(StateFlags.Active);
+		marginBGColor = Base.Ui.Window.StyleContext.GetBackgroundColor(StateFlags.Active);
+		marginLineColor = marginBGColor;
+		marginLineColor.Red -= (marginLineColor.Red <= 0.1 ? 0 : 0.1);
+		marginLineColor.Green -= (marginLineColor.Green <= 0.1 ? 0 : 0.1);
+		marginLineColor.Blue -= (marginLineColor.Blue <= 0.1 ? 0 : 0.1);
+	}
+
 
 	/* Event members */
 
-	private void OnBaseInitFinished () {
-		/* GCs */
-		SetGCs();
+	private void OnWidgetDrawn (object o, DrawnArgs args) {
+		TextView textView = o as TextView;
+		if (textView.State != StateType.Insensitive) {
+			DrawMargin(textView, args.Cr);
+		}
+	}
 
-		/* Layouts */
+	private void OnBaseInitFinished () {
+		/* Colors */
+		SetColors();
+
+		/* Layout */
 		this.textLayout = new Pango.Layout(textView.PangoContext);
 		this.textLayout.FontDescription = Pango.FontDescription.FromString("sans 10");
 
@@ -190,24 +219,17 @@ public class SubtitleEditTextViewMargin {
 		/* Events */
 		textView.StyleSet += OnStyleSet; //To update colors if the style is changed
 		(Base.Ui.Menus.GetMenuItem(WidgetNames.ViewLineLengths) as CheckMenuItem).Toggled += OnViewLineLengthsToggled;
-		if (Base.Config.PrefsViewLineLengths) {
+		if (Base.Config.ViewLineLengths) {
 			Enable();
 		}
 	}
 
-	private void OnExposeEvent (object o, ExposeEventArgs args) {
-		TextView textView = o as TextView;
-		if (textView.State != StateType.Insensitive) {
-			DrawMargin(textView);
-		}
-	}
-
 	private void OnBufferChanged (object o, EventArgs args) {
-		this.marginDigitCount = CalcDigitCount(o as TextBuffer, this.marginMinDigits);
+		this.marginDigitCount = CalcDigitCount(o as TextBuffer, marginMinDigits);
 	}
 
 	private void OnStyleSet (object o, StyleSetArgs args) {
-		SetGCs();
+		SetColors();
 	}
 
 	private void OnStateChanged (object o, StateChangedArgs args) {

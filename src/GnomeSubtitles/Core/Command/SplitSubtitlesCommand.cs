@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2011 Pedro Castro
+ * Copyright (C) 2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 		ArrayList subtitlesBefore = new ArrayList();
 		ArrayList pathsAfter = new ArrayList();
 
-		SplitOperator splitOperator = new SplitOperator(subtitles, Base.Config.PrefsTimingsTimeBetweenSubtitles);
+		SplitOperator splitOperator = new SplitOperator(subtitles, Base.Config.TimingsTimeBetweenSubtitles);
 
 		foreach (TreePath path in Paths) {
 			int subtitleIndex = Util.PathToInt(path) + subtitlesBefore.Count; //need to account for subtitles already added in this loop

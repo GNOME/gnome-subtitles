@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gdk;
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog.Unmanaged;
 using Gtk;
@@ -29,8 +30,9 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
+//FIXME video stops showing when paused, switching to a different application (or opening a Gnome Subtitles dialog)
 public class Video {
-	private HBox videoArea = null;
+	private Box videoArea = null;
 	private AspectFrame frame = null;
 
 	private Player player = null;
@@ -41,19 +43,19 @@ public class Video {
 	private bool isLoaded = false;
 	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
 
-	/* Constant strings */
+	/* Constants */
 	private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
 	private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
 	private const string videoSetSubtitleStartEndIconFilename = "video-set-subtitle-start-end-30x.png";
 
 	public Video () {
-		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as HBox;
+		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as Box;
 
 		InitializeVideoFrame();
 		InitializePlayer();
 
-		position = new VideoPosition(player);
 		overlay = new SubtitleOverlay();
+		position = new VideoPosition(player);
 		tracker = new SubtitleTracker();
 
 		SetCustomIcons();
@@ -129,8 +131,9 @@ public class Video {
 
 
 		/* Update the frame */
-		frame.Child.Hide();
-		frame.Child.Show();
+//		frame.Child.Hide();
+//		frame.Child.Show();
+		frame.QueueDraw(); //To make sure the frame stops showing the last image from the closed video
 		frame.Ratio = Player.DefaultAspectRatio;
 
 		SilentDisablePlayPauseButton();
@@ -146,9 +149,9 @@ public class Video {
 
 	public void SetLoopSelectionPlayback (bool enabled){
 		if (enabled)
-			Base.Ui.Video.Position.Changed += OnVideoPositionChangedLoopPlayback;
+			Base.Ui.Video.Position.PositionPulse += OnVideoPositionPulseLoopPlayback;
 		else
-			Base.Ui.Video.Position.Changed -= OnVideoPositionChangedLoopPlayback;
+			Base.Ui.Video.Position.PositionPulse -= OnVideoPositionPulseLoopPlayback;
 	}
 
 	public void Rewind () {
@@ -205,8 +208,8 @@ public class Video {
 	public void SeekToSelection (bool allowRewind) {
 		Subtitle subtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
     	TimeSpan time = subtitle.Times.Start;
-    	if (allowRewind && Base.Config.PrefsVideoSeekOnChange) {
-    		TimeSpan rewind = TimeSpan.FromMilliseconds(Base.Config.PrefsVideoSeekOnChangeRewind);
+    	if (allowRewind && Base.Config.VideoSeekOnChange) {
+    		TimeSpan rewind = TimeSpan.FromMilliseconds(Base.Config.VideoSeekOnChangeRewind);
     		time = (time >= rewind ? time - rewind : TimeSpan.Zero);
     	}
     	Seek(time);
@@ -252,19 +255,24 @@ public class Video {
 	}
 
 	private void InitializeVideoFrame () {
+
 		/* Create frame */
 		frame = new AspectFrame(null, 0.5f, 0.5f, 1.6f, false);
-		frame.Shadow = ShadowType.None;
+		frame.ShadowType = ShadowType.None; //Otherwise we have a border around the frame
 
 		/* Create event box */
 		EventBox videoFrameEventBox = new EventBox();
 		videoFrameEventBox.Add(frame);
-		videoFrameEventBox.ModifyBg(StateType.Normal, videoFrameEventBox.Style.Black);
+		RGBA black = new RGBA();
+		black.Red = 0;
+		black.Green = 0;
+		black.Blue = 0;
+		black.Alpha = 1;
+		videoFrameEventBox.OverrideBackgroundColor(StateFlags.Normal, black); //So the area outside the video is also black
 
-		/* Attach event box */
-		Table videoImageTable = Base.GetWidget("videoImageTable") as Table;
-		videoImageTable.Attach(videoFrameEventBox, 0, 1, 0, 1);
-		videoImageTable.ShowAll();
+		Bin bin = Base.GetWidget(WidgetNames.VideoImageOverlay) as Bin;
+		bin.Add(videoFrameEventBox);
+		bin.ShowAll();
 	}
 
 	private void InitializePlayer () {
@@ -370,7 +378,7 @@ public class Video {
 	}
 
 	/// <summary>Do loop playback when it's enabled, seeking to current selection on video position change.</summary>
-	private void OnVideoPositionChangedLoopPlayback (TimeSpan position) {
+	private void OnVideoPositionPulseLoopPlayback (TimeSpan position) {
 		if (!(Base.IsDocumentLoaded))
 			return;
 
@@ -379,7 +387,6 @@ public class Video {
 			return;
 
 		Subtitle lastSubtitle = Core.Base.Ui.View.Selection.LastSubtitle;
-
 		if ((position < firstSubtitle.Times.Start) || (position > lastSubtitle.Times.End))
 			SeekToSelection();
 	}

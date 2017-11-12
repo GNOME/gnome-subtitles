@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
+//FIXME still needed?
 namespace GnomeSubtitles.Execution {
 
 public class BugReporter {
@@ -62,10 +63,8 @@ public class BugReporter {
 	}
 
 	private static string GetBugInfo (string message) {
-		return "Gnome Subtitles version: " + Base.ExecutionContext.Version + "\n"
-			+ "GtkSharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
-			+ "GladeSharp version: " + Base.ExecutionContext.GladeSharpVersion + "\n"
-			+ "GConfSharp version: " + Base.ExecutionContext.GConfSharpVersion + "\n\n"
+		return "gnome-subtitles version: " + Base.ExecutionContext.Version + "\n"
+			+ "gtk-sharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
 			+ "Stack trace:" + "\n"
 			+ message;
 	}

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Ui.Component;
 using GnomeSubtitles.Ui.VideoPreview;
-using Glade;
+//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -32,7 +32,7 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FileOpenDialog : GladeDialog {
+public class FileOpenDialog : BuilderDialog {
 	protected FileChooserDialog dialog = null;
 
 	private string chosenFilename = String.Empty;
@@ -49,9 +49,9 @@ public class FileOpenDialog : GladeDialog {
 	private EncodingComboBox encodingComboBox = null;
 
 	/* Widgets */
-	[WidgetAttribute] private ComboBox fileEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox videoComboBox = null;
-	[WidgetAttribute] private Label videoLabel = null;
+	[Builder.Object] private ComboBoxText fileEncodingComboBox = null;
+	[Builder.Object] private ComboBoxText videoComboBox = null;
+	[Builder.Object] private Label videoLabel = null;
 
 
 	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
@@ -74,9 +74,9 @@ public class FileOpenDialog : GladeDialog {
 
 	private void InitEncodingComboBox () {
 		int fixedEncoding = -1;
-		ConfigFileOpenEncoding encodingConfig = Base.Config.PrefsDefaultsFileOpenEncoding;
+		ConfigFileOpenEncoding encodingConfig = Base.Config.FileOpenEncoding;
 		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
-			string encodingName = Base.Config.PrefsDefaultsFileOpenEncodingFixed;
+			string encodingName = Base.Config.FileOpenEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
 			Encodings.Find(encodingName, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
@@ -230,7 +230,7 @@ public class FileOpenDialog : GladeDialog {
 		videoLabel.Visible = true;
 		videoComboBox.Visible = true;
 
-		autoChooseVideoFile = Base.Config.PrefsVideoAutoChooseFile;
+		autoChooseVideoFile = Base.Config.VideoAutoChooseFile;
 		videoComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
 
 		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
@@ -283,13 +283,13 @@ public class FileOpenDialog : GladeDialog {
 			chosenFilename = dialog.Filename;
 			chosenEncoding = encodingComboBox.ChosenEncoding;
 
-			if (Base.Config.PrefsDefaultsFileOpenEncodingOption == ConfigFileOpenEncodingOption.RememberLastUsed) {
+			if (Base.Config.FileOpenEncodingOption == ConfigFileOpenEncodingOption.RememberLastUsed) {
 				int activeAction = encodingComboBox.ActiveSelection;
 				ConfigFileOpenEncoding activeOption = (ConfigFileOpenEncoding)Enum.ToObject(typeof(ConfigFileOpenEncoding), activeAction);
 				if (((int)activeOption) >= ((int)ConfigFileOpenEncoding.Fixed))
-					Base.Config.PrefsDefaultsFileOpenEncodingFixed = chosenEncoding.Name;
+					Base.Config.FileOpenEncodingFixed = chosenEncoding.Name;
 				else
-					Base.Config.PrefsDefaultsFileOpenEncoding = activeOption;
+					Base.Config.FileOpenEncoding = activeOption;
 			}
 
 			if (videoComboBox.Active > 0) {

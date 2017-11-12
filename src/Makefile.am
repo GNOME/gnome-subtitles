@@ -40,21 +40,21 @@ GS_SOURCES = \
 	$(srcdir)/SubLib/IO/SubtitleFormats/*.cs
 
 GS_RESOURCES = \
-	$(srcdir)/Glade/AboutDialog.glade \
-	$(srcdir)/Glade/EncodingsDialog.glade \
-	$(srcdir)/Glade/FileOpenDialog.glade \
-	$(srcdir)/Glade/FilePropertiesDialog.glade \
-	$(srcdir)/Glade/FileSaveAsDialog.glade \
-	$(srcdir)/Glade/HeadersDialog.glade \
-	$(srcdir)/Glade/MainWindow.glade \
-	$(srcdir)/Glade/PreferencesDialog.glade \
-	$(srcdir)/Glade/SearchDialog.glade \
-	$(srcdir)/Glade/SetLanguageDialog.glade \
-	$(srcdir)/Glade/TimingsAdjustDialog.glade \
-	$(srcdir)/Glade/TimingsShiftDialog.glade \
-	$(srcdir)/Glade/TimingsSynchronizeDialog.glade \
-	$(srcdir)/Glade/VideoOpenDialog.glade \
-	$(srcdir)/Glade/VideoSeekToDialog.glade \
+	$(srcdir)/Glade/AboutDialog.ui \
+	$(srcdir)/Glade/EncodingsDialog.ui \
+	$(srcdir)/Glade/FileOpenDialog.ui \
+	$(srcdir)/Glade/FilePropertiesDialog.ui \
+	$(srcdir)/Glade/FileSaveAsDialog.ui \
+	$(srcdir)/Glade/HeadersDialog.ui \
+	$(srcdir)/Glade/MainWindow.ui \
+	$(srcdir)/Glade/PreferencesDialog.ui \
+	$(srcdir)/Glade/SearchDialog.ui \
+	$(srcdir)/Glade/SetLanguageDialog.ui \
+	$(srcdir)/Glade/TimingsAdjustDialog.ui \
+	$(srcdir)/Glade/TimingsShiftDialog.ui \
+	$(srcdir)/Glade/TimingsSynchronizeDialog.ui \
+	$(srcdir)/Glade/VideoOpenDialog.ui \
+	$(srcdir)/Glade/VideoSeekToDialog.ui \
 	$(GS_DATADIR)/gnome-subtitles.svg \
 	$(GS_DATADIR)/gnome-subtitles-logo.png \
 	$(GS_DATADIR)/video-set-subtitle-end-16x.png \

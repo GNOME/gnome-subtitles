@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{A82B0920-1925-4BFB-AE07-37B732F2729D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>gnomesubtitles</RootNamespace>
+    <AssemblyName>gnome-subtitles</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>build</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>build</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="System.Web" />
+    <Reference Include="gtk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gdk-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="cairo-sharp, Version=1.10.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <Package>gtk-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="gio-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gio-sharp-3.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>glib-sharp-3.0</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="src\Glade\AboutDialog.glade">
+      <LogicalName>AboutDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\EncodingsDialog.glade">
+      <LogicalName>EncodingsDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\FileOpenDialog.glade">
+      <LogicalName>FileOpenDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\FilePropertiesDialog.glade">
+      <LogicalName>FilePropertiesDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\FileSaveAsDialog.glade">
+      <LogicalName>FileSaveAsDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\HeadersDialog.glade">
+      <LogicalName>HeadersDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\PreferencesDialog.glade">
+      <LogicalName>PreferencesDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\SearchDialog.glade">
+      <LogicalName>SearchDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\SetLanguageDialog.glade">
+      <LogicalName>SetLanguageDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\TimingsAdjustDialog.glade">
+      <LogicalName>TimingsAdjustDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\TimingsShiftDialog.glade">
+      <LogicalName>TimingsShiftDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\TimingsSynchronizeDialog.glade">
+      <LogicalName>TimingsSynchronizeDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\VideoSeekToDialog.glade">
+      <LogicalName>VideoSeekToDialog.glade</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\gnome-subtitles.svg">
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <LogicalName>gnome-subtitles.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\video-set-subtitle-end-16x.png">
+      <LogicalName>video-set-subtitle-end-16x.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\video-set-subtitle-start-16x.png">
+      <LogicalName>video-set-subtitle-start-16x.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\video-set-subtitle-start-end-30x.png">
+      <LogicalName>video-set-subtitle-start-end-30x.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\MainWindow.ui">
+      <LogicalName>MainWindow.ui</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Glade\VideoOpenDialog.ui">
+      <LogicalName>VideoOpenDialog.ui</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src\External\GStreamerPlaybin\Engine.cs" />
+    <Compile Include="src\External\GStreamerPlaybin\Events.cs" />
+    <Compile Include="src\External\NCharDet\Big5Statistics.cs" />
+    <Compile Include="src\External\NCharDet\EUCJPStatistics.cs" />
+    <Compile Include="src\External\NCharDet\EUCKRStatistics.cs" />
+    <Compile Include="src\External\NCharDet\EUCTWStatistics.cs" />
+    <Compile Include="src\External\NCharDet\GB2312Statistics.cs" />
+    <Compile Include="src\External\NCharDet\nsBIG5Verifier.cs" />
+    <Compile Include="src\External\NCharDet\nsCP1252Verifier.cs" />
+    <Compile Include="src\External\NCharDet\nsDetector.cs" />
+    <Compile Include="src\External\NCharDet\nsEUCJPVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsEUCKRVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsEUCSampler.cs" />
+    <Compile Include="src\External\NCharDet\nsEUCStatistics.cs" />
+    <Compile Include="src\External\NCharDet\nsEUCTWVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsGB18030Verifier.cs" />
+    <Compile Include="src\External\NCharDet\nsGB2312Verifier.cs" />
+    <Compile Include="src\External\NCharDet\nsHZVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsICharsetDetectionObserver.cs" />
+    <Compile Include="src\External\NCharDet\nsICharsetDetector.cs" />
+    <Compile Include="src\External\NCharDet\nsISO2022CNVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsISO2022JPVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsISO2022KRVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsPSMDetector.cs" />
+    <Compile Include="src\External\NCharDet\nsSJISVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsUCS2BEVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsUCS2LEVerifier.cs" />
+    <Compile Include="src\External\NCharDet\nsUTF8Verifier.cs" />
+    <Compile Include="src\External\NCharDet\nsVerifier.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Backup.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Base.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Clipboards.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Config.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Document.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\DragDrop.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\EncodingDescription.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Encodings.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\EventHandlers.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\GlobalAccelerators.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Search.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\SpellLanguage.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\SpellLanguages.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\SyncPoints.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Util.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\AdjustTimingsCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\BaseCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\ChangeFrameRateCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\ChangeStyleCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\ChangeTimingCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\CommandActivatedArgs.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\CommandActivatedHandler.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\CommandManager.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\CommandTarget.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\DeleteSubtitlesCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\DeleteTextCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\DeleteTextContentCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\DeleteTranslationCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\FixedMultipleSelectionCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\FixedSingleSelectionCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\InsertSubtitleCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\InsertTextCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\InsertTextContentCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\InsertTranslationCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\MergeSubtitlesCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\MultipleSelectionCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\ReplaceAllCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\ShiftTimingsCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\SingleSelectionCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\SplitSubtitlesCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\SynchronizeTimingsCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\TranslatorCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\Command\VideoSetSubtitleTimingCommand.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\AboutDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\BaseDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\DialogScope.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Dialogs.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\EncodingsDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FileOpenDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FilePropertiesDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FileSaveAsDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationOpenDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\HeadersDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\MessageDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\PreferencesDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\SearchDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\SetLanguageDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\SetTextLanguageDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\SetTranslationLanguageDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\SubtitleFileSaveAsDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\TimingsAdjustDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\TimingsShiftDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\TimingsSynchronizeDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\TranslationSaveAsDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Util.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\VideoOpenDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\VideoSeekToDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\BasicErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\ErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\FileOpenErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\FileSaveErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\SaveConfirmationDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\SubtitleFileOpenErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\VideoErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\WarningDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Execution\AssemblyInfo.cs" />
+    <Compile Include="src\GnomeSubtitles\Execution\BugReporter.cs" />
+    <Compile Include="src\GnomeSubtitles\Execution\Executable.cs" />
+    <Compile Include="src\GnomeSubtitles\Execution\ExecutionContext.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\MainUi.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Menus.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Status.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\WidgetNames.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Component\ComboBoxUtil.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Component\EncodingComboBox.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Component\NewlineTypeComboBox.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Component\SubtitleFormatComboBox.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Edit\SubtitleEdit.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Edit\SubtitleEditSpinButtons.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Edit\SubtitleEditText.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Edit\SubtitleEditTextView.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Edit\SubtitleEditTextViewMargin.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\Edit\SubtitleEditTranslation.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Player.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\PlayerPositionWatcher.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\SubtitleOverlay.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\SubtitleTracker.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Video.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\VideoFiles.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\VideoPosition.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Exceptions\PlayerCouldNotInitiateEngineException.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Exceptions\PlayerEngineException.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\View\CellRendererCenteredText.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\View\SelectionIntended.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\View\SelectionType.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\View\SubtitleSelection.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\View\SubtitleView.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\View\Subtitles.cs" />
+    <Compile Include="src\SubLib\Core\MatchEvaluationCounter.cs" />
+    <Compile Include="src\SubLib\Core\SubtitleFactory.cs" />
+    <Compile Include="src\SubLib\Core\SubtitleSaver.cs" />
+    <Compile Include="src\SubLib\Core\Translations.cs" />
+    <Compile Include="src\SubLib\Core\Translator.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Enumerations.cs" />
+    <Compile Include="src\SubLib\Core\Domain\FileProperties.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Frames.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Headers.cs" />
+    <Compile Include="src\SubLib\Core\Domain\IncompleteSubtitle.cs" />
+    <Compile Include="src\SubLib\Core\Domain\IncompleteSubtitleCollection.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Style.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Subtitle.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SubtitleCollection.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SubtitleConstants.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SubtitleHeaders.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SubtitleProperties.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SubtitleText.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SubtitleTypeInfo.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Subtitles.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SyncPoint.cs" />
+    <Compile Include="src\SubLib\Core\Domain\SyncPoints.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Times.cs" />
+    <Compile Include="src\SubLib\Core\Domain\Timing.cs" />
+    <Compile Include="src\SubLib\Core\Search\SearchOperator.cs" />
+    <Compile Include="src\SubLib\Core\Search\SubtitleReplaceResult.cs" />
+    <Compile Include="src\SubLib\Core\Search\SubtitleSearchOptions.cs" />
+    <Compile Include="src\SubLib\Core\Search\SubtitleSearchResults.cs" />
+    <Compile Include="src\SubLib\Core\Timing\AdjustOperator.cs" />
+    <Compile Include="src\SubLib\Core\Timing\FrameRateOperator.cs" />
+    <Compile Include="src\SubLib\Core\Timing\MergeOperator.cs" />
+    <Compile Include="src\SubLib\Core\Timing\ShiftOperator.cs" />
+    <Compile Include="src\SubLib\Core\Timing\SplitOperator.cs" />
+    <Compile Include="src\SubLib\Core\Timing\SyncUtil.cs" />
+    <Compile Include="src\SubLib\Core\Timing\SynchronizeOperator.cs" />
+    <Compile Include="src\SubLib\Core\Timing\TimingUtil.cs" />
+    <Compile Include="src\SubLib\Exceptions\EncodingNotSupportedException.cs" />
+    <Compile Include="src\SubLib\Exceptions\FileTooLargeException.cs" />
+    <Compile Include="src\SubLib\Exceptions\TranslatorException.cs" />
+    <Compile Include="src\SubLib\Exceptions\UnknownEncodingException.cs" />
+    <Compile Include="src\SubLib\Exceptions\UnknownSubtitleFormatException.cs" />
+    <Compile Include="src\SubLib\IO\FileInputOutput.cs" />
+    <Compile Include="src\SubLib\IO\Input\ParsingProperties.cs" />
+    <Compile Include="src\SubLib\IO\Input\PlainTextParser.cs" />
+    <Compile Include="src\SubLib\IO\Input\SubtitleInput.cs" />
+    <Compile Include="src\SubLib\IO\Input\SubtitleParser.cs" />
+    <Compile Include="src\SubLib\IO\Output\SubtitleOutput.cs" />
+    <Compile Include="src\SubLib\IO\Output\VerboseConsole.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\BuiltInSubtitleFormats.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormat.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatAQTitle.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatAdobeEncoreDVD.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatAdvancedSubStationAlpha.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatDKSSubtitleFormat.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatFABSubtitler.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatKaraokeLyricsLRC.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatKaraokeLyricsVKT.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatMPSub.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatMPlayer.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatMPlayer2.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatMacSUB.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatMicroDVD.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatPanimator.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatPhoenixJapanimationSociety.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatPowerDivX.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSofni.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSubCreator1x.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSubRip.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSubStationAlpha.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSubViewer1.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSubViewer2.cs" />
+    <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatViPlaySubtitleFile.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\BuilderDialog.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+</Project>

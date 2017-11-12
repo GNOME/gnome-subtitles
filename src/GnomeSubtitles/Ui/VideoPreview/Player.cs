@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gdk;
 using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using GStreamer;
 using Gtk;
@@ -59,7 +60,7 @@ public class Player {
 	public event PlayerErrorEventHandler Error;
 	public event EndOfStreamEventHandler EndOfStream;
 	public event StateEventHandler StateChanged;
-	public event PositionChangedEventHandler PositionChanged;
+	public event PositionPulseEventHandler PositionPulse;
 	public event VideoInfoEventHandler FoundVideoInfo;
 	public event VideoDurationEventHandler FoundDuration;
 
@@ -180,7 +181,13 @@ public class Player {
 
 	private void InitializeSocket () {
 		socket = new Socket();
-		socket.ModifyBg(StateType.Normal, socket.Style.Black);
+
+//		RGBA black = new RGBA();
+//		black.Red = 0;
+//		black.Green = 0;
+//		black.Blue = 0;
+//		black.Alpha = 1;
+//		socket.OverrideBackgroundColor(StateFlags.Normal, black);
 
 		frame.Child = socket;
 
@@ -203,7 +210,7 @@ public class Player {
 
 	private void InitializePositionWatcher () {
 		position = new PlayerPositionWatcher(GetPosition);
-		position.Changed += OnPositionWatcherChanged;
+		position.PositionPulse += OnPositionWatcherPulse;
 	}
 
 	/// <summary>Gets the current player position.</summary>
@@ -239,9 +246,9 @@ public class Player {
 			StateChanged(args);
 	}
 
-	private void OnPositionWatcherChanged (TimeSpan time) {
-		if (PositionChanged != null)
-			PositionChanged(time);
+	private void OnPositionWatcherPulse (TimeSpan time) {
+		if (PositionPulse != null)
+			PositionPulse(time);
 	}
 
 	private void OnPlaybinFoundVideoInfo (VideoInfoEventArgs args) {

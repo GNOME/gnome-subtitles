@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <object class="GtkAboutDialog" id="dialog">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">About Gnome Subtitles</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="skip_pager_hint">True</property>
+    <property name="program_name">Gnome Subtitles</property>
+    <property name="copyright">Copyright &#xA9; 2006-2013 Pedro Castro</property>
+    <property name="comments" translatable="yes">Video subtitling for the GNOME desktop</property>
+    <property name="website">http://gnomesubtitles.org</property>
+    <property name="license" translatable="yes">Gnome Subtitles is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+Gnome Subtitles is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</property>
+    <property name="authors">Primary Development:
+    Pedro Castro (Author and Maintainer)
+
+Contributors:
+    Arx Cruz
+    Cristina Yenyxe (Past Maintainer)
+    David Krkoska
+    Dominique Leuenberger
+    Fernando Zorrilla
+    Gy&#xF6;rgy Ball&#xF3;
+    Keith Madill
+    Micha&#x142; Sawicz
+    Miguel Filho
+    Nazar Kulyk
+    Pawe&#x142; Brzeski
+    Valmir Sena
+</property>
+    <property name="documenters">Erin Bloom</property>
+    <property name="translator_credits">Djihed Afifi (ar)
+Alexander Shopov, Svetoslav Stefanov (bg)
+Joan Duran (ca)
+Carles Ferrando, Joan Duran (ca@valencia)
+Kamil Paral, Lucas Lommer, Marek &#x10C;ernock&#xFD;, Petr Kovar, Rinu (cs)
+Joe Hansen, Kenneth Nielsen, Kristian Kj&#xE6;rgaard (da)
+Felix Braun, Mario Bl&#xE4;ttermann (de)
+Yumkee Lhamo (dz)
+Efstathios Iosifidis, Mel Argyropoulou, Nick Agianniotis, Simos Xenitellis (el)
+Philip Withnall (en_GB)
+Daniel Mustieles, Francisco Serrador, Gabriel Ruiz, Jorge Gonz&#xE1;lez, Paulino Padial (es)
+Ilkka Tuohela (fi)
+Alain Lojewski, Alexandre Imache, Bruno Brouard, Claude Paroz, Frederic Peters, St&#xE9;phane Raimbault (fr)
+Ant&#xF3;n M&#xE9;ixome, Fran Di&#xE9;guez, Leandro Regueiro, Lois, Marcos Lans (gl)
+Mark Krapivner, Yair Hershkovitz, Yaron Shahrabani (he)
+Gabor Kelemen, Laszlo Csordas (hu)
+Claudio Arseni, Luca Ferretti, Simone Oberti (it)
+Kjartan Maraas (nb)
+Yannig Marchegay (oc)
+A S Alam (pa)
+Piotr Dr&#x105;g, Tomasz Sa&#x142;aci&#x144;ski (pl)
+Ant&#xF3;nio Lima (pt)
+C&#xE9;sar Veiga, Djavan Fagundes, F&#xE1;bio Nogueira, Henrique Machado, Krix Apolin&#xE1;rio, Leonardo Fontenelle, Marco de Freitas, Rafael Ferreira, Raphael Higino (pt_BR)
+Daniel &#x218;erb&#x103;nescu, Lucian Grijincu (ro)
+Nickolay V. Shmyrev, Yuri Myasoedov (ru)
+Andrej &#x17D;nidar&#x161;i&#x10D;, Matej Urban&#x10D;i&#x10D; (sl)
+&#x110;or&#x111;e Vasiljevi&#x107;, Miroslav Nikoli&#x107; (sr)
+Daniel Nylander (sv)
+Baris Cicek, Serkan Y&#x131;lmaz (tr)
+Aron Xu, Yinghua Wang (zh_CN)
+Chao-Hsiung Liao (zh_HK)
+Chao-Hsiung Liao (zh_TW)</property>
+    <property name="artists">Stefan A. Keel (Sak)</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialogVBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialogActionArea">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

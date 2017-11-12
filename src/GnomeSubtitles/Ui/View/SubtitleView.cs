@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -73,9 +73,9 @@ public class SubtitleView {
 
 	public void SetAutoSelectSubtitles (bool active) {
 		if (active)
-			Base.Ui.Video.Tracker.CurrentSubtitleChanged += OnCurrentSubtitleChanged;
+			Base.Ui.Video.Tracker.SubtitlePulse += OnSubtitlePulse;
 		else
-			Base.Ui.Video.Tracker.CurrentSubtitleChanged -= OnCurrentSubtitleChanged;
+			Base.Ui.Video.Tracker.SubtitlePulse -= OnSubtitlePulse;
 	}
 
 
@@ -301,11 +301,11 @@ public class SubtitleView {
 
 	/* Cell Renderers */
 
-	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+	private void RenderNumberCell (TreeViewColumn column, CellRenderer cell, ITreeModel treeModel, TreeIter iter) {
 		(cell as CellRendererText).Text = (Util.PathToInt(treeModel.GetPath(iter)) + 1).ToString();
 	}
 
-	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+	private void RenderStartCell (TreeViewColumn column, CellRenderer cell, ITreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
 		if (Base.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Start.ToString();
@@ -313,7 +313,7 @@ public class SubtitleView {
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Start);
 	}
 
-	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+	private void RenderEndCell (TreeViewColumn column, CellRenderer cell, ITreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
 		if (Base.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.End.ToString();
@@ -321,7 +321,7 @@ public class SubtitleView {
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.End);
 	}
 
-	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, TreeModel model, TreeIter iter) {
+	private void RenderDurationCell (TreeViewColumn column, CellRenderer cell, ITreeModel model, TreeIter iter) {
 		CellRendererText renderer = cell as CellRendererText;
 		if (Base.TimingModeIsFrames)
 			renderer.Text = subtitles[iter].Frames.Duration.ToString();
@@ -329,12 +329,12 @@ public class SubtitleView {
 			renderer.Text = Util.TimeSpanToText(subtitles[iter].Times.Duration);
 	}
 
-	private void RenderSubtitleTextCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+	private void RenderSubtitleTextCell (TreeViewColumn column, CellRenderer cell, ITreeModel treeModel, TreeIter iter) {
 		Subtitle subtitle = subtitles[iter];
 		RenderTextCell(cell as CellRendererText, iter, subtitle.Text, subtitle.Style);
 	}
 
-	private void RenderTranslationTextCell (TreeViewColumn column, CellRenderer cell, TreeModel treeModel, TreeIter iter) {
+	private void RenderTranslationTextCell (TreeViewColumn column, CellRenderer cell, ITreeModel treeModel, TreeIter iter) {
 		Subtitle subtitle = subtitles[iter];
 		RenderTextCell(cell as CellRendererText, iter, subtitle.Translation, subtitle.Style);
 	}
@@ -353,7 +353,7 @@ public class SubtitleView {
 		GetStyleMarkup(subtitleStyle, ref stylePrefix, ref styleSuffix);
 
 		bool first = true;
-		bool viewLineLengths = Base.Config.PrefsViewLineLengths;
+		bool viewLineLengths = Base.Config.ViewLineLengths;
 		foreach (string line in subtitleText) {
 			textMarkup += (first ? String.Empty : "\n") + stylePrefix + GLib.Markup.EscapeText(line) + styleSuffix + (viewLineLengths ? " <span size=\"small\"><sup>(" + line.Length + ")</sup></span>" : String.Empty);
 			if (first)
@@ -438,7 +438,7 @@ public class SubtitleView {
 			SubtitleCountChanged(subtitles.Count);
 	}
 
-	private void OnCurrentSubtitleChanged (int subtitleIndex) {
+	private void OnSubtitlePulse (int subtitleIndex) {
 		selection.Select(subtitleIndex, false, false, true);
 	}
 

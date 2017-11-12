@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ namespace GnomeSubtitles.Ui.Component {
 
 public class EncodingComboBox {
 
-	private ComboBox comboBox = null;
+	private ComboBoxText comboBox = null;
 	private int comboBoxActiveItem = 0; //Stores the last active item so we can get back to it after using Add/Remove
 
 	private ArrayList encodings = null; //Encodings present in the combo box
@@ -38,7 +38,7 @@ public class EncodingComboBox {
 	private int fixedEncoding = -1; //Codepage of an encoding that must be present (-1 if not)
 	private ArrayList configShownEncodings = null; //Encodings shown in menu from config
 
-	public EncodingComboBox (ComboBox comboBox, bool hasAutoDetect, string[] additionalActions, int fixedEncoding) {
+	public EncodingComboBox (ComboBoxText comboBox, bool hasAutoDetect, string[] additionalActions, int fixedEncoding) {
 		this.comboBox = comboBox;
 		this.additionalActions = additionalActions;
 		this.hasAutoDetect = hasAutoDetect;
@@ -46,11 +46,11 @@ public class EncodingComboBox {
 
 		InitComboBoxModel();
 		SetActionCount();
-		SetComboBox(Base.Config.PrefsEncodingsShownInMenu);
+		SetComboBox(Base.Config.FileEncodingsShownInMenu);
 		ConnectHandlers();
 	}
 
-	public EncodingComboBox (ComboBox comboBox, bool hasAutoDetect) : this(comboBox, hasAutoDetect, null, -1) {
+	public EncodingComboBox (ComboBoxText comboBox, bool hasAutoDetect) : this(comboBox, hasAutoDetect, null, -1) {
 	}
 
 

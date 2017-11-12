@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2009 Pedro Castro
+ * Copyright (C) 2008-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,7 +87,7 @@ public class SpellLanguages {
 		set {
 			if (value != enabled) {
 				enabled = value;
-				Base.Config.PrefsSpellCheckAutocheck = value;
+				Base.Config.SpellCheckAuto = value;
 				EmitToggleEnabled();
 			}
 		}
@@ -177,22 +177,22 @@ public class SpellLanguages {
 	}
 
 	private void GetActiveLanguagesFromConfig () {
-		string activeTextLanguage = Base.Config.PrefsSpellCheckActiveTextLanguage;
+		string activeTextLanguage = Base.Config.SpellCheckTextLanguage;
 		this.activeTextLanguageIndex = GetLanguageIndex(activeTextLanguage);
 
-		string activeTranslationLanguage = Base.Config.PrefsSpellCheckActiveTranslationLanguage;
+		string activeTranslationLanguage = Base.Config.SpellCheckTranslationLanguage;
 		this.activeTranslationLanguageIndex = GetLanguageIndex(activeTranslationLanguage);
 	}
 
 	private void GetEnabledFromConfig () {
-		this.enabled = Base.Config.PrefsSpellCheckAutocheck;
+		this.enabled = Base.Config.SpellCheckAuto;
 	}
 
 	private void SetActiveLanguageInConfig (SubtitleTextType textType, string activeLanguage) {
 		if (textType == SubtitleTextType.Text)
-			Base.Config.PrefsSpellCheckActiveTextLanguage = activeLanguage;
+			Base.Config.SpellCheckTextLanguage = activeLanguage;
 		else
-			Base.Config.PrefsSpellCheckActiveTranslationLanguage = activeLanguage;
+			Base.Config.SpellCheckTranslationLanguage = activeLanguage;
 	}
 
 	private int GetLanguageIndex (string languageID) {

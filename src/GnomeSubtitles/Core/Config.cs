@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2011 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GConf;
+using GLib;
 using SubLib.Core.Domain;
 using System;
 
+//TODO clean commented code
+//TODO implement a runtime variable that allows to run the app without a config schema installed
 namespace GnomeSubtitles.Core {
 
 /* Enumerations */
@@ -33,302 +35,320 @@ public enum ConfigFileSaveFormatOption { KeepExisting = 0, RememberLastUsed = 1,
 public enum ConfigFileSaveFormat { KeepExisting = -1, Fixed = 0 }; //KeepExisting=-1 because it doesn't appear
 public enum ConfigFileSaveNewlineOption { RememberLastUsed = 0, Specific = 2 }; //Values match ordering where the options are used
 
+/* Note: when changing the schema file, in order to run the application from the development workspace,
+ * the new schema needs to be installed to a dir recognized by GSettings. The XML file needs to be placed
+ * inside /usr/share/glib-2.0/schemas (location may vary - the glib-2.0 dir must be found inside one of
+ * the $XDG_DATA_DIRS) and 'glib-compile-schemas .' must be run on that dir. This will update the system-wide
+ * 'gschemas.compiled' file and make the new schema recognizable.
+ */
 public class Config {
-	private Client client = null;
 
-	/* Constant prefix strings */
-	private const string keyPrefix = "/apps/gnome-subtitles/";
-	private const string keyPrefs = keyPrefix + "preferences/";
-	private const string keyPrefsEncodings = keyPrefs + "encodings/";
-	private const string keyPrefsSpellCheck = keyPrefs + "spellcheck/";
-	private const string keyPrefsVideo = keyPrefs + "video/";
-	private const string keyPrefsView = keyPrefs + "view/";
-	private const string keyPrefsWindow = keyPrefs + "window/";
-	private const string keyPrefsDefaults = keyPrefs + "defaults/";
-	private const string keyPrefsTranslation = keyPrefs + "translation/";
-	private const string keyPrefsBackup = keyPrefs + "backup/";
-	private const string keyPrefsTimings = keyPrefs + "timings/";
+	/* Schema */
+	private const string Schema = "org.gnome.GnomeSubtitles";
 
-	/* Constant key strings */
-	private const string keyPrefsEncodingsShownInMenu = keyPrefsEncodings + "shown_in_menu";
-	private const string keyPrefsTranslationSaveAll = keyPrefsTranslation + "save_all";
-	private const string keyPrefsVideoAutoChooseFile = keyPrefsVideo + "auto_choose_file";
-	private const string keyPrefsVideoApplyReactionDelay = keyPrefsVideo + "apply_reaction_delay";
-	private const string keyPrefsVideoReactionDelay = keyPrefsVideo + "reaction_delay";
-	private const string keyPrefsVideoSeekOnChange = keyPrefsVideo + "seek_on_change";
-	private const string keyPrefsVideoSeekOnChangeRewind = keyPrefsVideo + "seek_on_change_rewind";
-	private const string keyPrefsViewLineLengths = keyPrefsView + "line_lengths";
-	private const string keyPrefsSpellCheckActiveTextLanguage = keyPrefsSpellCheck + "active_text_language";
-	private const string keyPrefsSpellCheckActiveTranslationLanguage = keyPrefsSpellCheck + "active_translation_language";
-	private const string keyPrefsSpellCheckAutocheck = keyPrefsSpellCheck + "autocheck";
-	private const string keyPrefsWindowHeight = keyPrefsWindow + "height";
-	private const string keyPrefsWindowWidth = keyPrefsWindow + "width";
-	private const string keyPrefsDefaultsFileOpenEncodingOption = keyPrefsDefaults + "file_open_encoding_option";
-	private const string keyPrefsDefaultsFileOpenEncoding = keyPrefsDefaults + "file_open_encoding";
-	private const string keyPrefsDefaultsFileOpenFallbackEncoding = keyPrefsDefaults + "file_open_fallback";
-	private const string keyPrefsDefaultsFileSaveEncodingOption = keyPrefsDefaults + "file_save_encoding_option";
-	private const string keyPrefsDefaultsFileSaveEncoding = keyPrefsDefaults + "file_save_encoding";
-	private const string keyPrefsDefaultsFileSaveFormatOption = keyPrefsDefaults + "file_save_format_option";
-	private const string keyPrefsDefaultsFileSaveFormat = keyPrefsDefaults + "file_save_format";
-	private const string keyPrefsDefaultsFileSaveNewlineOption = keyPrefsDefaults + "file_save_newline_option";
-	private const string keyPrefsDefaultsFileSaveNewline = keyPrefsDefaults + "file_save_newline";
-	private const string keyPrefsBackupAutoBackup = keyPrefsBackup + "auto_backup";
-	private const string keyPrefsBackupBackupTime = keyPrefsBackup + "backup_time";
-	private const string keyPrefsTimingsTimeStep = keyPrefsTimings + "time_step"; //Not editable in the Preferences dialog
-	private const string keyPrefsTimingsFramesStep = keyPrefsTimings + "frames_step"; //Not editable in the Preferences dialog
-	private const string keyPrefsTimingsTimeBetweenSubtitles = keyPrefsTimings + "time_between_subs";
+	/* Keys */
+	private const string KeyFileEncodingsShownInMenu = "file-encodings-shown-in-menu";
+	private const string KeyFileOpenEncodingOption = "file-open-encoding-option";
+	private const string KeyFileOpenEncoding = "file-open-encoding";
+	private const string KeyFileOpenFallbackEncoding = "file-open-fallback";
+	private const string KeyFileSaveEncodingOption = "file-save-encoding-option";
+	private const string KeyFileSaveEncoding = "file-save-encoding";
+	private const string KeyFileSaveFormatOption = "file-save-format-option";
+	private const string KeyFileSaveFormat = "file-save-format";
+	private const string KeyFileSaveNewlineOption = "file-save-newline-option";
+	private const string KeyFileSaveNewline = "file-save-newline";
+	private const string KeyFileTranslationSaveAll = "file-translation-save-all";
+
+	private const string KeyVideoAutoChooseFile = "video-auto-choose-file";
+	private const string KeyVideoApplyReactionDelay = "video-apply-reaction-delay";
+	private const string KeyVideoReactionDelay = "video-reaction-delay";
+	private const string KeyVideoSeekOnChange = "video-seek-on-change";
+	private const string KeyVideoSeekOnChangeRewind = "video-seek-on-change-rewind";
+
+	private const string KeyViewLineLengths = "view-line-lengths";
+	private const string KeyViewWindowHeight = "view-window-height";
+	private const string KeyViewWindowWidth = "view-window-width";
+
+	private const string KeySpellCheckTextLanguage = "spellcheck-text-language";
+	private const string KeySpellCheckTranslationLanguage = "spellcheck-translation-language";
+	private const string KeySpellCheckAuto = "spellcheck-auto";
+
+	private const string KeyBackupAuto = "backup-auto";
+	private const string KeyBackupTime = "backup-time";
+
+	private const string KeyTimingsTimeStep = "timings-time-step"; //Not editable in the Preferences dialog
+	private const string KeyTimingsFramesStep = "timings-frames-step"; //Not editable in the Preferences dialog
+	private const string KeyTimingsTimeBetweenSubtitles = "timings-time-between-subs";
+
+	/* Constant default values */
+	private const string DefaultEncoding = "ISO-8859-15";
+
+	//private Client client = null;
+	private Settings settings = null;
 
 	/* Cached values */
-	private bool isValuePrefsViewLineLengthsCached = false;
-	private bool valuePrefsViewLineLengths = false;
-	private bool isValuePrefsVideoApplyReactionDelayCached = false;
-	private bool valuePrefsVideoApplyReactionDelay = false;
-	private int valuePrefsVideoReactionDelay = -1;
-	private bool isValuePrefsVideoSeekOnChangeCached = false;
-	private bool valuePrefsVideoSeekOnChange = false;
-	private int valuePrefsVideoSeekOnChangeRewind = -1;
-	private int valuePrefsTimingsTimeStep = -1;
-	private int valuePrefsTimingsFramesStep = -1;
-	private int valuePrefsTimingsTimeBetweenSubtitles = -1;
+//	private bool isValuePrefsViewLineLengthsCached = false;
+//	private bool valuePrefsViewLineLengths = false;
+//	private bool isValuePrefsVideoApplyReactionDelayCached = false;
+//	private bool valuePrefsVideoApplyReactionDelay = false;
+//	private int valuePrefsVideoReactionDelay = -1;
+//	private bool isValuePrefsVideoSeekOnChangeCached = false;
+//	private bool valuePrefsVideoSeekOnChange = false;
+//	private int valuePrefsVideoSeekOnChangeRewind = -1;
+//	private int valuePrefsTimingsTimeStep = -1;
+//	private int valuePrefsTimingsFramesStep = -1;
+//	private int valuePrefsTimingsTimeBetweenSubtitles = -1;
 
 
 	public Config () {
-		client = new Client();
+		try {
+			settings = new Settings(Schema);
+		} catch(Exception e) {
+			Console.Error.WriteLine(e);
+		}
 	}
 
 	/* Public properties */
 
-	public string[] PrefsEncodingsShownInMenu {
+	public string[] FileEncodingsShownInMenu {
 		get {
-			string[] defaultValue = { "ISO-8859-15" };
-			return GetStrings(keyPrefsEncodingsShownInMenu, defaultValue);
+			string[] defaultValue = { DefaultEncoding };
+			return GetStrings(KeyFileEncodingsShownInMenu, defaultValue);
 		}
-		set { SetStrings(keyPrefsEncodingsShownInMenu, value); }
+		set { SetStrings(KeyFileEncodingsShownInMenu, value); }
 	}
 
-	public string PrefsSpellCheckActiveTextLanguage {
-		get { return GetString(keyPrefsSpellCheckActiveTextLanguage, String.Empty); }
-		set { Set(keyPrefsSpellCheckActiveTextLanguage, value); }
+	public ConfigFileOpenEncodingOption FileOpenEncodingOption {
+		get { return (ConfigFileOpenEncodingOption)GetEnumValue(KeyFileOpenEncodingOption, ConfigFileOpenEncodingOption.AutoDetect); }
+		set { Set(KeyFileOpenEncodingOption, value.ToString()); }
 	}
 
-	public string PrefsSpellCheckActiveTranslationLanguage {
-		get { return GetString(keyPrefsSpellCheckActiveTranslationLanguage, String.Empty); }
-		set { Set(keyPrefsSpellCheckActiveTranslationLanguage, value); }
+	public ConfigFileOpenEncoding FileOpenEncoding {
+		get { return (ConfigFileOpenEncoding)GetEnumValueFromSuperset(KeyFileOpenEncoding, ConfigFileOpenEncoding.Fixed); }
+		set { Set(KeyFileOpenEncoding, value.ToString()); }
 	}
 
-	public bool PrefsSpellCheckAutocheck {
-		get { return GetBool(keyPrefsSpellCheckAutocheck, false); }
-		set { Set(keyPrefsSpellCheckAutocheck, value); }
+	/* Uses the same key as FileOpenEncoding but is used when there's a specific encoding set */
+	public string FileOpenEncodingFixed {
+		get { return GetString(KeyFileOpenEncoding, DefaultEncoding); }
+		set { Set(KeyFileOpenEncoding, value); }
 	}
 
-	public bool PrefsVideoAutoChooseFile {
-		get { return GetBool(keyPrefsVideoAutoChooseFile, true); }
-		set { Set(keyPrefsVideoAutoChooseFile, value); }
+	public ConfigFileOpenFallbackEncoding FileOpenFallbackEncoding {
+		get { return (ConfigFileOpenFallbackEncoding)GetEnumValueFromSuperset(KeyFileOpenFallbackEncoding, ConfigFileOpenFallbackEncoding.Fixed); }
+		set { Set(KeyFileOpenFallbackEncoding, value.ToString()); }
 	}
 
-	public bool PrefsVideoApplyReactionDelay {
+	/* Uses the same key as FileOpenFallbackEncoding but is used when there's a specific encoding set */
+	public string FileOpenFallbackEncodingFixed {
+		get { return GetString(KeyFileOpenFallbackEncoding, DefaultEncoding); }
+		set { Set(KeyFileOpenFallbackEncoding, value); }
+	}
+
+	public ConfigFileSaveEncodingOption FileSaveEncodingOption {
+		get { return (ConfigFileSaveEncodingOption)GetEnumValue(KeyFileSaveEncodingOption, ConfigFileSaveEncodingOption.KeepExisting); }
+		set { Set(KeyFileSaveEncodingOption, value.ToString()); }
+	}
+
+	public ConfigFileSaveEncoding FileSaveEncoding {
+		get { return (ConfigFileSaveEncoding)GetEnumValueFromSuperset(KeyFileSaveEncoding, ConfigFileSaveEncoding.Fixed); }
+		set { Set(KeyFileSaveEncoding, value.ToString()); }
+	}
+
+	/* Uses the same key as FileSaveEncoding but is used when there's a specific encoding set */
+	public string FileSaveEncodingFixed {
+		get { return GetString(KeyFileSaveEncoding, DefaultEncoding); }
+		set { Set(KeyFileSaveEncoding, value); }
+	}
+
+	public ConfigFileSaveFormatOption FileSaveFormatOption {
+		get { return (ConfigFileSaveFormatOption)GetEnumValue(KeyFileSaveFormatOption, ConfigFileSaveFormatOption.KeepExisting); }
+		set { Set(KeyFileSaveFormatOption, value.ToString()); }
+	}
+
+	public ConfigFileSaveFormat FileSaveFormat {
+		get { return (ConfigFileSaveFormat)GetEnumValueFromSuperset(KeyFileSaveFormat, ConfigFileSaveFormat.Fixed); }
+		set { Set(KeyFileSaveFormat, value.ToString()); }
+	}
+
+	/* Uses the same key as FileSaveFormat but is used when there's a specific format set */
+	public SubtitleType FileSaveFormatFixed {
+		get { return (SubtitleType)GetEnumValueFromSuperset(KeyFileSaveFormat, SubtitleType.SubRip); }
+		set { Set(KeyFileSaveFormat, value.ToString()); }
+	}
+
+	public ConfigFileSaveNewlineOption FileSaveNewlineOption {
+		get { return (ConfigFileSaveNewlineOption)GetEnumValue(KeyFileSaveNewlineOption, ConfigFileSaveNewlineOption.Specific); }
+		set { Set(KeyFileSaveNewlineOption, value.ToString()); }
+	}
+
+	public NewlineType FileSaveNewline {
+		get { return (NewlineType)GetEnumValue(KeyFileSaveNewline, NewlineType.Windows); }
+		set { Set(KeyFileSaveNewline, value.ToString()); }
+	}
+
+	public bool FileTranslationSaveAll {
+		get { return GetBool(KeyFileTranslationSaveAll, true); }
+		set { Set(KeyFileTranslationSaveAll, value); }
+	}
+
+	public bool VideoAutoChooseFile {
+		get { return GetBool(KeyVideoAutoChooseFile, true); }
+		set { Set(KeyVideoAutoChooseFile, value); }
+	}
+
+	public bool VideoApplyReactionDelay {
 		get {
-			if (!isValuePrefsVideoApplyReactionDelayCached) {
-				this.valuePrefsVideoApplyReactionDelay = GetBool(keyPrefsVideoApplyReactionDelay, false);
-				this.isValuePrefsVideoApplyReactionDelayCached = true;
-			}
-			return valuePrefsVideoApplyReactionDelay;
+			return GetBool(KeyVideoApplyReactionDelay, false);
+//			if (!isValuePrefsVideoApplyReactionDelayCached) {
+//				this.valuePrefsVideoApplyReactionDelay = GetBool(KeyVideoApplyReactionDelay, false);
+//				this.isValuePrefsVideoApplyReactionDelayCached = true;
+//			}
+//			return valuePrefsVideoApplyReactionDelay;
 		}
 		set {
-			Set(keyPrefsVideoApplyReactionDelay, value);
-			this.valuePrefsVideoApplyReactionDelay = value;
-			this.isValuePrefsVideoApplyReactionDelayCached = true;
+			Set(KeyVideoApplyReactionDelay, value);
+//			this.valuePrefsVideoApplyReactionDelay = value;
+//			this.isValuePrefsVideoApplyReactionDelayCached = true;
 		}
 	}
 
-	public int PrefsVideoReactionDelay {
+	public int VideoReactionDelay {
 		get {
-			if (this.valuePrefsVideoReactionDelay == -1) {
-				this.valuePrefsVideoReactionDelay = GetInt(keyPrefsVideoReactionDelay, 200, 0, true, 2000, true);
-			}
-			return this.valuePrefsVideoReactionDelay;
+			return GetInt(KeyVideoReactionDelay, 200, 0, true, 2000, true);
+//			if (this.valuePrefsVideoReactionDelay == -1) {
+//				this.valuePrefsVideoReactionDelay = GetInt(KeyVideoReactionDelay, 200, 0, true, 2000, true);
+//			}
+//			return this.valuePrefsVideoReactionDelay;
 		}
 		set {
-			Set(keyPrefsVideoReactionDelay, value);
-			this.valuePrefsVideoReactionDelay = value;
+			Set(KeyVideoReactionDelay, value);
+//			this.valuePrefsVideoReactionDelay = value;
 		}
 	}
 
-	public bool PrefsVideoSeekOnChange {
+	public bool VideoSeekOnChange {
 		get {
-			if (!isValuePrefsVideoSeekOnChangeCached) {
-				this.valuePrefsVideoSeekOnChange = GetBool(keyPrefsVideoSeekOnChange, true);
-				this.isValuePrefsVideoSeekOnChangeCached = true;
-			}
-			return valuePrefsVideoSeekOnChange;
+			return GetBool(KeyVideoSeekOnChange, true);
+//			if (!isValuePrefsVideoSeekOnChangeCached) {
+//				this.valuePrefsVideoSeekOnChange = GetBool(KeyVideoSeekOnChange, true);
+//				this.isValuePrefsVideoSeekOnChangeCached = true;
+//			}
+//			return valuePrefsVideoSeekOnChange;
 		}
 		set {
-			Set(keyPrefsVideoSeekOnChange, value);
-			this.valuePrefsVideoSeekOnChange = value;
-			this.isValuePrefsVideoSeekOnChangeCached = true;
+			Set(KeyVideoSeekOnChange, value);
+//			this.valuePrefsVideoSeekOnChange = value;
+//			this.isValuePrefsVideoSeekOnChangeCached = true;
 		}
 	}
 
-	public int PrefsVideoSeekOnChangeRewind {
+	public int VideoSeekOnChangeRewind {
 		get {
-			if (this.valuePrefsVideoSeekOnChangeRewind == -1) {
-				this.valuePrefsVideoSeekOnChangeRewind = GetInt(keyPrefsVideoSeekOnChangeRewind, 200, 0, true, 2000, true);
-			}
-			return this.valuePrefsVideoSeekOnChangeRewind;
+			return GetInt(KeyVideoSeekOnChangeRewind, 200, 0, true, 2000, true);
+//			if (this.valuePrefsVideoSeekOnChangeRewind == -1) {
+//				this.valuePrefsVideoSeekOnChangeRewind = GetInt(KeyVideoSeekOnChangeRewind, 200, 0, true, 2000, true);
+//			}
+//			return this.valuePrefsVideoSeekOnChangeRewind;
 		}
 		set {
-			Set(keyPrefsVideoSeekOnChangeRewind, value);
-			this.valuePrefsVideoSeekOnChangeRewind = value;
+			Set(KeyVideoSeekOnChangeRewind, value);
+//			this.valuePrefsVideoSeekOnChangeRewind = value;
 		}
 	}
 
-	public bool PrefsViewLineLengths {
+	public bool ViewLineLengths {
 		get {
-			if (!isValuePrefsViewLineLengthsCached) {
-				this.valuePrefsViewLineLengths = GetBool(keyPrefsViewLineLengths, true);
-				this.isValuePrefsViewLineLengthsCached = true;
-			}
-			return valuePrefsViewLineLengths;
+			return GetBool(KeyViewLineLengths, true);
+//			if (!isValuePrefsViewLineLengthsCached) {
+//				this.valuePrefsViewLineLengths = GetBool(KeyViewLineLengths, true);
+//				this.isValuePrefsViewLineLengthsCached = true;
+//			}
+//			return valuePrefsViewLineLengths;
 		}
 		set {
-			Set(keyPrefsViewLineLengths, value);
-			this.valuePrefsViewLineLengths = value;
-			this.isValuePrefsViewLineLengthsCached = true;
+			Set(KeyViewLineLengths, value);
+//			this.valuePrefsViewLineLengths = value;
+//			this.isValuePrefsViewLineLengthsCached = true;
 		}
 	}
 
-	public int PrefsWindowHeight {
-		get { return GetInt(keyPrefsWindowHeight, 600, 200, true, 0, false); }
-		set { Set(keyPrefsWindowHeight, value); }
+	public int ViewWindowHeight {
+		get { return GetInt(KeyViewWindowHeight, 600, 200, true, 0, false); }
+		set { Set(KeyViewWindowHeight, value); }
 	}
 
-	public int PrefsWindowWidth {
-		get { return GetInt(keyPrefsWindowWidth, 690, 200, true, 0, false); }
-		set { Set(keyPrefsWindowWidth, value); }
+	public int ViewWindowWidth {
+		get { return GetInt(KeyViewWindowWidth, 690, 200, true, 0, false); }
+		set { Set(KeyViewWindowWidth, value); }
 	}
 
-	public ConfigFileOpenEncodingOption PrefsDefaultsFileOpenEncodingOption {
-		get { return (ConfigFileOpenEncodingOption)GetEnumValue(keyPrefsDefaultsFileOpenEncodingOption, ConfigFileOpenEncodingOption.AutoDetect); }
-		set { Set(keyPrefsDefaultsFileOpenEncodingOption, value.ToString()); }
+	public string SpellCheckTextLanguage {
+		get { return GetString(KeySpellCheckTextLanguage, String.Empty); }
+		set { Set(KeySpellCheckTextLanguage, value); }
 	}
 
-	public ConfigFileOpenEncoding PrefsDefaultsFileOpenEncoding {
-		get { return (ConfigFileOpenEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileOpenEncoding, ConfigFileOpenEncoding.Fixed); }
-		set { Set(keyPrefsDefaultsFileOpenEncoding, value.ToString()); }
+	public string SpellCheckTranslationLanguage {
+		get { return GetString(KeySpellCheckTranslationLanguage, String.Empty); }
+		set { Set(KeySpellCheckTranslationLanguage, value); }
 	}
 
-	/* Uses the same key as PrefsDefaultsFileOpenEncoding but is used when there's a specific encoding set */
-	public string PrefsDefaultsFileOpenEncodingFixed {
-		get { return GetString(keyPrefsDefaultsFileOpenEncoding, "ISO-8859-15"); }
-		set { Set(keyPrefsDefaultsFileOpenEncoding, value); }
-	}
-
-	public ConfigFileOpenFallbackEncoding PrefsDefaultsFileOpenFallbackEncoding {
-		get { return (ConfigFileOpenFallbackEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileOpenFallbackEncoding, ConfigFileOpenFallbackEncoding.Fixed); }
-		set { Set(keyPrefsDefaultsFileOpenFallbackEncoding, value.ToString()); }
-	}
-
-	/* Uses the same key as PrefsDefaultsFileOpenFallbackEncoding but is used when there's a specific encoding set */
-	public string PrefsDefaultsFileOpenFallbackEncodingFixed {
-		get { return GetString(keyPrefsDefaultsFileOpenFallbackEncoding, "ISO-8859-15"); }
-		set { Set(keyPrefsDefaultsFileOpenFallbackEncoding, value); }
-	}
-
-	public ConfigFileSaveEncodingOption PrefsDefaultsFileSaveEncodingOption {
-		get { return (ConfigFileSaveEncodingOption)GetEnumValue(keyPrefsDefaultsFileSaveEncodingOption, ConfigFileSaveEncodingOption.KeepExisting); }
-		set { Set(keyPrefsDefaultsFileSaveEncodingOption, value.ToString()); }
-	}
-
-	public ConfigFileSaveEncoding PrefsDefaultsFileSaveEncoding {
-		get { return (ConfigFileSaveEncoding)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveEncoding, ConfigFileSaveEncoding.Fixed); }
-		set { Set(keyPrefsDefaultsFileSaveEncoding, value.ToString()); }
-	}
-
-	/* Uses the same key as PrefsDefaultsFileSaveEncoding but is used when there's a specific encoding set */
-	public string PrefsDefaultsFileSaveEncodingFixed {
-		get { return GetString(keyPrefsDefaultsFileSaveEncoding, "ISO-8859-15"); }
-		set { Set(keyPrefsDefaultsFileSaveEncoding, value); }
-	}
-
-	public ConfigFileSaveFormatOption PrefsDefaultsFileSaveFormatOption {
-		get { return (ConfigFileSaveFormatOption)GetEnumValue(keyPrefsDefaultsFileSaveFormatOption, ConfigFileSaveFormatOption.KeepExisting); }
-		set { Set(keyPrefsDefaultsFileSaveFormatOption, value.ToString()); }
-	}
-
-	public ConfigFileSaveFormat PrefsDefaultsFileSaveFormat {
-		get { return (ConfigFileSaveFormat)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveFormat, ConfigFileSaveFormat.Fixed); }
-		set { Set(keyPrefsDefaultsFileSaveFormat, value.ToString()); }
-	}
-
-	/* Uses the same key as PrefsDefaultsFileSaveFormat but is used when there's a specific format set */
-	public SubtitleType PrefsDefaultsFileSaveFormatFixed {
-		get { return (SubtitleType)GetEnumValueFromSuperset(keyPrefsDefaultsFileSaveFormat, SubtitleType.SubRip); }
-		set { Set(keyPrefsDefaultsFileSaveFormat, value.ToString()); }
-	}
-
-	public ConfigFileSaveNewlineOption PrefsDefaultsFileSaveNewlineOption {
-		get { return (ConfigFileSaveNewlineOption)GetEnumValue(keyPrefsDefaultsFileSaveNewlineOption, ConfigFileSaveNewlineOption.Specific); }
-		set { Set(keyPrefsDefaultsFileSaveNewlineOption, value.ToString()); }
-	}
-
-	public NewlineType PrefsDefaultsFileSaveNewline {
-		get { return (NewlineType)GetEnumValue(keyPrefsDefaultsFileSaveNewline, NewlineType.Windows); }
-		set { Set(keyPrefsDefaultsFileSaveNewline, value.ToString()); }
-	}
-
-	public bool PrefsTranslationSaveAll {
-		get { return GetBool(keyPrefsTranslationSaveAll, true); }
-		set { Set(keyPrefsTranslationSaveAll, value); }
+	public bool SpellCheckAuto {
+		get { return GetBool(KeySpellCheckAuto, false); }
+		set { Set(KeySpellCheckAuto, value); }
 	}
 
 	//Even though the default in gconf schema is true, if gconf is not working we're using false
-	public bool PrefsBackupAutoBackup {
-		get { return GetBool(keyPrefsBackupAutoBackup, false); }
-		set { Set(keyPrefsBackupAutoBackup, value); }
+	public bool BackupAuto {
+		get { return GetBool(KeyBackupAuto, false); }
+		set { Set(KeyBackupAuto, value); }
 	}
 
-	public int PrefsBackupBackupTime {
-		get { return GetInt(keyPrefsBackupBackupTime, 120, 30, true, 0, false); }
-		set { Set(keyPrefsBackupBackupTime, value); }
+	public int BackupTime {
+		get { return GetInt(KeyBackupTime, 120, 30, true, 0, false); }
+		set { Set(KeyBackupTime, value); }
 	}
 
 	/* Time in milliseconds */
-	public int PrefsTimingsTimeStep {
+	public int TimingsTimeStep {
 		get {
-			if (this.valuePrefsTimingsTimeStep == -1) {
-				this.valuePrefsTimingsTimeStep = GetInt(keyPrefsTimingsTimeStep, 100, 1, true, 2000, true);
-			}
-			return this.valuePrefsTimingsTimeStep;
+			return GetInt(KeyTimingsTimeStep, 100, 1, true, 2000, true);
+//			if (this.valuePrefsTimingsTimeStep == -1) {
+//				this.valuePrefsTimingsTimeStep = GetInt(KeyTimingsTimeStep, 100, 1, true, 2000, true);
+//			}
+//			return this.valuePrefsTimingsTimeStep;
 		}
 		set {
-			Set(keyPrefsTimingsTimeStep, value);
-			this.valuePrefsTimingsTimeStep = value;
+			Set(KeyTimingsTimeStep, value);
+//			this.valuePrefsTimingsTimeStep = value;
 		}
 	}
 
-	public int PrefsTimingsFramesStep {
+	public int TimingsFramesStep {
 		get {
-			if (this.valuePrefsTimingsFramesStep == -1) {
-				this.valuePrefsTimingsFramesStep = GetInt(keyPrefsTimingsFramesStep, 2, 1, true, 60, true);
-			}
-			return this.valuePrefsTimingsFramesStep;
+			return GetInt(KeyTimingsFramesStep, 2, 1, true, 60, true);
+//			if (this.valuePrefsTimingsFramesStep == -1) {
+//				this.valuePrefsTimingsFramesStep = GetInt(KeyTimingsFramesStep, 2, 1, true, 60, true);
+//			}
+//			return this.valuePrefsTimingsFramesStep;
 		}
 		set {
-			Set(keyPrefsTimingsFramesStep, value);
-			this.valuePrefsTimingsFramesStep = value;
+			Set(KeyTimingsFramesStep, value);
+//			this.valuePrefsTimingsFramesStep = value;
 		}
 	}
 
-	public int PrefsTimingsTimeBetweenSubtitles {
+	public int TimingsTimeBetweenSubtitles {
 		get {
-			if (this.valuePrefsTimingsTimeBetweenSubtitles == -1) {
-				this.valuePrefsTimingsTimeBetweenSubtitles = GetInt(keyPrefsTimingsTimeBetweenSubtitles, 100, 0, true, 2000, true);
-			}
-			return this.valuePrefsTimingsTimeBetweenSubtitles;
+			return GetInt(KeyTimingsTimeBetweenSubtitles, 100, 0, true, 2000, true);
+//			if (this.valuePrefsTimingsTimeBetweenSubtitles == -1) {
+//				this.valuePrefsTimingsTimeBetweenSubtitles = GetInt(KeyTimingsTimeBetweenSubtitles, 100, 0, true, 2000, true);
+//			}
+//			return this.valuePrefsTimingsTimeBetweenSubtitles;
 		}
 		set {
-			Set(keyPrefsTimingsTimeBetweenSubtitles, value);
-			this.valuePrefsTimingsTimeBetweenSubtitles = value;
+			Set(KeyTimingsTimeBetweenSubtitles, value);
+//			this.valuePrefsTimingsTimeBetweenSubtitles = value;
 		}
 	}
 
@@ -337,7 +357,7 @@ public class Config {
 
 	private string GetString (string key, string defaultValue) {
 		try {
-			return (string)client.Get(key);
+			return settings.GetString(key);
 		}
 		catch (Exception e) {
 			Console.Error.WriteLine(e);
@@ -347,7 +367,7 @@ public class Config {
 
 	private bool GetBool (string key, bool defaultValue) {
 		try {
-			return (bool)client.Get(key);
+			return settings.GetBoolean(key);
 		}
 		catch (Exception e) {
 			Console.Error.WriteLine(e);
@@ -357,7 +377,7 @@ public class Config {
 
 	private int GetInt (string key, int defaultValue, int lowerLimit, bool useLowerLimit, int upperLimit, bool useUpperLimit) {
 		try {
-			int number = (int)client.Get(key);
+			int number = settings.GetInt(key);
 			if (useLowerLimit && (number < lowerLimit))
 				return defaultValue;
 
@@ -374,7 +394,7 @@ public class Config {
 
 	private string[] GetStrings (string key, string[] defaultValue) {
 		try {
-			string[] strings = client.Get(key) as string[];
+			string[] strings = settings.GetStrv(key);
 			if ((strings.Length == 1) && (strings[0] == String.Empty))
 				return new string[0];
 			else
@@ -389,7 +409,7 @@ public class Config {
 	/* Gets an enum value from a field which can hold a value not included in the enum (basically assumes an exception can occur). */
 	private Enum GetEnumValueFromSuperset (string key, Enum defaultValue) {
 		try {
-			string stringValue = (string)client.Get(key);
+			string stringValue = settings.GetString(key);
 			return (Enum)Enum.Parse(defaultValue.GetType(), stringValue);
 		}
 		catch (Exception) {
@@ -399,7 +419,7 @@ public class Config {
 
 	private Enum GetEnumValue (string key, Enum defaultValue) {
 		try {
-			string stringValue = (string)client.Get(key);
+			string stringValue = settings.GetString(key);
 			return (Enum)Enum.Parse(defaultValue.GetType(), stringValue);
 		}
 		catch (Exception e) {
@@ -409,17 +429,41 @@ public class Config {
 	}
 
 	private void SetStrings (string key, string[] values) {
-		if (values.Length == 0) {
-			string[] newValues = { String.Empty };
-			Set(key, newValues);
+		try {
+			settings.SetStrv(key, values);
 		}
-		else
-			Set(key, values);
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
+		}
+//		if (values.Length == 0) {
+//			string[] newValues = { String.Empty };
+//			Set(key, newValues);
+//		}
+//		else
+//			Set(key, values);
 	}
 
-	private void Set (string key, object val) {
+	private void Set(string key, string value) {
 		try {
-			client.Set(key, val);
+			settings.SetString(key, value);
+		}
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
+		}
+	}
+
+	private void Set(string key, bool value) {
+		try {
+			settings.SetBoolean(key, value);
+		}
+		catch (Exception e) {
+			Console.Error.WriteLine(e);
+		}
+	}
+
+	private void Set(string key, int value) {
+		try {
+			settings.SetInt(key, value);
 		}
 		catch (Exception e) {
 			Console.Error.WriteLine(e);

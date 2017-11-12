@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ namespace GnomeSubtitles.Ui.Component {
 
 public class ComboBoxUtil {
 
-	public static bool SeparatorFunc (TreeModel model, TreeIter iter) {
+	public static bool SeparatorFunc (ITreeModel model, TreeIter iter) {
 		string text = (string)model.GetValue(iter, 0);
 		return ((text != null) && (text.CompareTo("-") == 0));
 	}

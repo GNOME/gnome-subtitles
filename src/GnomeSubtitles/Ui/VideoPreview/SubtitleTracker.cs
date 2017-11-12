@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2011 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,14 +27,18 @@ namespace GnomeSubtitles.Ui.VideoPreview {
 
 public class SubtitleTracker {
 	private SearchOperator searchOp = null;
-	private int currentSubtitleIndex = 0;
+
+	/* Keep the current subtitle as an optimization. This way, while the video is showing the same subtitle,
+	 * we don't need to constantly search for the subtitle corresponding to its position.
+	 */
+	private int currentSubtitleIndex = -1;
 	private Subtitle subtitle = null;
 
 	/* Delegates */
-	public delegate void VideoCurrentSubtitleChangedHandler (int indexSubtitle);
+	public delegate void VideoSubtitlePulseHandler(int indexSubtitle);
 
 	/* Events */
-	public event VideoCurrentSubtitleChangedHandler CurrentSubtitleChanged;
+	public event VideoSubtitlePulseHandler SubtitlePulse;
 
 
 	public SubtitleTracker () {
@@ -44,15 +48,14 @@ public class SubtitleTracker {
 	/* Public methods */
 
 	public int FindSubtitleNearPosition (TimeSpan position) {
-		if (IsTimeInCurrentSubtitle(position))
-			return currentSubtitleIndex;
-		else
-			return searchOp.FindNearTime((float)position.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
+		//We don't optimize this (by looking at the current subtitle) because it's unnecessary. This method isn't called that much.
+		return searchOp.FindNearTime(position);
  	}
 
 	public void Close(){
-		if (IsSubtitleLoaded())
+		if (IsSubtitleLoaded()) {
 			UnSetCurrentSubtitle();
+		}
 	}
 
 
@@ -67,29 +70,25 @@ public class SubtitleTracker {
 	}
 
 	private void SetCurrentSubtitle (int index) {
-		if (index != currentSubtitleIndex) {
-			subtitle = Base.Document.Subtitles[index];
-			currentSubtitleIndex = index;
-		}
+		this.subtitle = Base.Document.Subtitles[index];
+		this.currentSubtitleIndex = index;
 	}
 
 	private void UnSetCurrentSubtitle () {
-		if (currentSubtitleIndex != -1) {
-			currentSubtitleIndex = -1;
-			subtitle = null;
-		}
+		this.currentSubtitleIndex = -1;
+		this.subtitle = null;
 	}
 
-	private void EmitCurrentSubtitleChanged(int newIndex) {
-		if (CurrentSubtitleChanged != null)
-			CurrentSubtitleChanged(newIndex);
+	private void EmitSubtitlePulse(int newIndex) {
+		if (SubtitlePulse != null)
+			SubtitlePulse(newIndex);
 	}
 
 
 	/* Event members */
 
 	private void OnBaseInitFinished () {
-		Base.Ui.Video.Position.Changed += OnVideoPositionChanged;
+		Base.Ui.Video.Position.PositionPulse += OnVideoPositionPulse;
 		Base.DocumentLoaded += OnBaseDocumentLoaded;
 	}
 
@@ -97,19 +96,20 @@ public class SubtitleTracker {
 		this.searchOp = new SearchOperator(document.Subtitles);
 	}
 
-	private void OnVideoPositionChanged (TimeSpan newPosition) {
+	private void OnVideoPositionPulse (TimeSpan newPosition) {
 		if (!(Base.IsDocumentLoaded))
 			return;
 
-		if (!(IsTimeInCurrentSubtitle(newPosition))) {
-			int foundSubtitle = searchOp.FindWithTime((float)newPosition.TotalSeconds); //TODO write method in SubLib that accepts TimeSpans
-			if (foundSubtitle == -1)
+		if (!IsTimeInCurrentSubtitle(newPosition)) {
+			int foundSubtitle = searchOp.FindWithTime(newPosition);
+			if (foundSubtitle == -1) {
 				UnSetCurrentSubtitle();
-			else
+			} else {
 				SetCurrentSubtitle(foundSubtitle);
-
-			EmitCurrentSubtitleChanged(currentSubtitleIndex);
+			}
 		}
+
+		EmitSubtitlePulse(this.currentSubtitleIndex);
 	}
 
 	}

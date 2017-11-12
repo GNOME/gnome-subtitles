@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2011 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Glade;
+//using Glade;
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Ui.Component;
 using Gtk;
@@ -27,7 +27,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class PreferencesDialog : GladeDialog {
+public class PreferencesDialog : BuilderDialog {
 
 	/* Constant strings */
 	private const string gladeFilename = "PreferencesDialog.glade";
@@ -40,20 +40,20 @@ public class PreferencesDialog : GladeDialog {
 	private NewlineTypeComboBox fileSaveNewline = null;
 
 	/* Widgets */
-	[WidgetAttribute] private CheckButton translationSaveAllCheckButton = null;
-	[WidgetAttribute] private CheckButton videoAutoChooseFileCheckButton = null;
-	[WidgetAttribute] private CheckButton autoBackupCheckButton = null;
-	[WidgetAttribute] private CheckButton reactionDelayCheckButton = null;
-	[WidgetAttribute] private CheckButton videoSeekCheckButton = null;
-	[WidgetAttribute] private ComboBox fileOpenEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox fileOpenFallbackEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox fileSaveEncodingComboBox = null;
-	[WidgetAttribute] private ComboBox fileSaveFormatComboBox = null;
-	[WidgetAttribute] private ComboBox fileSaveNewlineComboBox = null;
-	[WidgetAttribute] private SpinButton autoBackupTimeSpinButton = null;
-	[WidgetAttribute] private SpinButton reactionDelaySpinButton = null;
-	[WidgetAttribute] private SpinButton videoSeekRewindSpinButton = null;
-	[WidgetAttribute] private SpinButton subtitleSplitSpinButton = null;
+	[Builder.Object] private CheckButton translationSaveAllCheckButton = null;
+	[Builder.Object] private CheckButton videoAutoChooseFileCheckButton = null;
+	[Builder.Object] private CheckButton autoBackupCheckButton = null;
+	[Builder.Object] private CheckButton reactionDelayCheckButton = null;
+	[Builder.Object] private CheckButton videoSeekCheckButton = null;
+	[Builder.Object] private ComboBoxText fileOpenEncodingComboBox = null;
+	[Builder.Object] private ComboBoxText fileOpenFallbackEncodingComboBox = null;
+	[Builder.Object] private ComboBoxText fileSaveEncodingComboBox = null;
+	[Builder.Object] private ComboBoxText fileSaveFormatComboBox = null;
+	[Builder.Object] private ComboBoxText fileSaveNewlineComboBox = null;
+	[Builder.Object] private SpinButton autoBackupTimeSpinButton = null;
+	[Builder.Object] private SpinButton reactionDelaySpinButton = null;
+	[Builder.Object] private SpinButton videoSeekRewindSpinButton = null;
+	[Builder.Object] private SpinButton subtitleSplitSpinButton = null;
 
 	public PreferencesDialog () : base(gladeFilename, false) {
 		LoadValues();
@@ -69,7 +69,7 @@ public class PreferencesDialog : GladeDialog {
 
 	private void LoadValuesFilesTab () {
 		/* Translation Save All */
-		translationSaveAllCheckButton.Active = Base.Config.PrefsTranslationSaveAll;
+		translationSaveAllCheckButton.Active = Base.Config.FileTranslationSaveAll;
 
 		/* Defaults */
 		SetDefaultsFileOpenEncoding();
@@ -79,7 +79,7 @@ public class PreferencesDialog : GladeDialog {
 		SetDefaultsFileSaveNewline();
 
 		/* Video Auto choose file */
-		videoAutoChooseFileCheckButton.Active = Base.Config.PrefsVideoAutoChooseFile;
+		videoAutoChooseFileCheckButton.Active = Base.Config.VideoAutoChooseFile;
 
 		/* Auto Backup */
 		SetAutoBackup();
@@ -87,12 +87,12 @@ public class PreferencesDialog : GladeDialog {
 
 	private void LoadValuesEditingTab () {
 		/* Video Seeking */
-		videoSeekCheckButton.Active = Base.Config.PrefsVideoSeekOnChange;
-		videoSeekRewindSpinButton.Value = Base.Config.PrefsVideoSeekOnChangeRewind;
+		videoSeekCheckButton.Active = Base.Config.VideoSeekOnChange;
+		videoSeekRewindSpinButton.Value = Base.Config.VideoSeekOnChangeRewind;
 		videoSeekRewindSpinButton.Sensitive = videoSeekCheckButton.Active;
 
 		/* Subtitle Splitting */
-		subtitleSplitSpinButton.Value = Base.Config.PrefsTimingsTimeBetweenSubtitles;
+		subtitleSplitSpinButton.Value = Base.Config.TimingsTimeBetweenSubtitles;
 
 		/* Reaction Delay */
 		SetReactionDelay();
@@ -101,9 +101,9 @@ public class PreferencesDialog : GladeDialog {
 	private void SetDefaultsFileOpenEncoding () {
 		string[] additionalActions = { Catalog.GetString("Remember the last used encoding") };
 		int fixedEncoding = -1;
-		ConfigFileOpenEncodingOption fileOpenEncodingOption = Base.Config.PrefsDefaultsFileOpenEncodingOption;
+		ConfigFileOpenEncodingOption fileOpenEncodingOption = Base.Config.FileOpenEncodingOption;
 		if (fileOpenEncodingOption == ConfigFileOpenEncodingOption.Specific) {
-			string encodingName = Base.Config.PrefsDefaultsFileOpenEncodingFixed;
+			string encodingName = Base.Config.FileOpenEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
 			Encodings.Find(encodingName, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
@@ -118,9 +118,9 @@ public class PreferencesDialog : GladeDialog {
 
 	private void SetDefaultsFileOpenFallbackEncoding () {
 		int fixedEncoding = -1;
-		ConfigFileOpenFallbackEncoding fileOpenFallbackEncodingConfig = Base.Config.PrefsDefaultsFileOpenFallbackEncoding;
+		ConfigFileOpenFallbackEncoding fileOpenFallbackEncodingConfig = Base.Config.FileOpenFallbackEncoding;
 		if (fileOpenFallbackEncodingConfig == ConfigFileOpenFallbackEncoding.Fixed) {
-			string encodingName = Base.Config.PrefsDefaultsFileOpenFallbackEncodingFixed;
+			string encodingName = Base.Config.FileOpenFallbackEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
 			Encodings.Find(encodingName, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
@@ -133,9 +133,9 @@ public class PreferencesDialog : GladeDialog {
 	private void SetDefaultsFileSaveEncoding () {
 		string[] additionalActions = { Catalog.GetString("Keep the encoding used on file open"), Catalog.GetString("Remember the last used encoding") };
 		int fixedEncoding = -1;
-		ConfigFileSaveEncodingOption fileSaveEncodingOption = Base.Config.PrefsDefaultsFileSaveEncodingOption;
+		ConfigFileSaveEncodingOption fileSaveEncodingOption = Base.Config.FileSaveEncodingOption;
 		if (fileSaveEncodingOption == ConfigFileSaveEncodingOption.Specific) {
-			string encodingName = Base.Config.PrefsDefaultsFileSaveEncodingFixed;
+			string encodingName = Base.Config.FileSaveEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
 			Encodings.Find(encodingName, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
@@ -151,9 +151,9 @@ public class PreferencesDialog : GladeDialog {
 	private void SetDefaultsFileSaveFormat () {
 		string[] additionalActions = { Catalog.GetString("Keep the format used on file open"), Catalog.GetString("Remember the last used format") };
 		SubtitleType fixedFormat = SubtitleType.Unknown;
-		ConfigFileSaveFormatOption fileSaveFormatOption = Base.Config.PrefsDefaultsFileSaveFormatOption;
+		ConfigFileSaveFormatOption fileSaveFormatOption = Base.Config.FileSaveFormatOption;
 		if (fileSaveFormatOption == ConfigFileSaveFormatOption.Specific) {
-			fixedFormat = Base.Config.PrefsDefaultsFileSaveFormatFixed;
+			fixedFormat = Base.Config.FileSaveFormatFixed;
 		}
 
 		fileSaveFormat = new SubtitleFormatComboBox(fileSaveFormatComboBox, fixedFormat, additionalActions);
@@ -166,9 +166,9 @@ public class PreferencesDialog : GladeDialog {
 	private void SetDefaultsFileSaveNewline () {
 		string[] additionalActions = { Catalog.GetString("Remember the last used type") };
 		NewlineType newlineTypeToSelect = NewlineType.Unknown;
-		ConfigFileSaveNewlineOption fileSaveNewlineOption = Base.Config.PrefsDefaultsFileSaveNewlineOption;
+		ConfigFileSaveNewlineOption fileSaveNewlineOption = Base.Config.FileSaveNewlineOption;
 		if (fileSaveNewlineOption == ConfigFileSaveNewlineOption.Specific) {
-			newlineTypeToSelect = Base.Config.PrefsDefaultsFileSaveNewline;
+			newlineTypeToSelect = Base.Config.FileSaveNewline;
 		}
 
 		fileSaveNewline = new NewlineTypeComboBox(fileSaveNewlineComboBox, newlineTypeToSelect, additionalActions);
@@ -179,19 +179,19 @@ public class PreferencesDialog : GladeDialog {
 	}
 
 	private void SetAutoBackup () {
-		bool autoBackupEnabled = Base.Config.PrefsBackupAutoBackup;
+		bool autoBackupEnabled = Base.Config.BackupAuto;
 		autoBackupCheckButton.Active = autoBackupEnabled;
 
 		autoBackupTimeSpinButton.Sensitive = autoBackupEnabled;
-		autoBackupTimeSpinButton.Value = Base.Config.PrefsBackupBackupTime / 60; //Minutes
+		autoBackupTimeSpinButton.Value = Base.Config.BackupTime / 60; //Minutes
 	}
 
 	private void SetReactionDelay () {
-		bool reactionDelayEnabled = Base.Config.PrefsVideoApplyReactionDelay;
+		bool reactionDelayEnabled = Base.Config.VideoApplyReactionDelay;
 		reactionDelayCheckButton.Active = reactionDelayEnabled;
 
 		reactionDelaySpinButton.Sensitive = reactionDelayEnabled;
-		reactionDelaySpinButton.Value = Base.Config.PrefsVideoReactionDelay;
+		reactionDelaySpinButton.Value = Base.Config.VideoReactionDelay;
 	}
 
 	private void ResetDialogToDefaults () {
@@ -228,12 +228,12 @@ public class PreferencesDialog : GladeDialog {
 		if (((int)activeOption) > ((int)ConfigFileOpenEncodingOption.Specific)) //Positions higher than specific are always specific too
 			activeOption = ConfigFileOpenEncodingOption.Specific;
 
-		Base.Config.PrefsDefaultsFileOpenEncodingOption = activeOption;
+		Base.Config.FileOpenEncodingOption = activeOption;
 		/* If encoding option is specific, encodingOption=Specific and encoding holds the encoding name */
 		if (activeOption == ConfigFileOpenEncodingOption.Specific) {
 			EncodingDescription chosenEncoding = fileOpenEncoding.ChosenEncoding;
 			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
-				Base.Config.PrefsDefaultsFileOpenEncodingFixed = chosenEncoding.Name;
+				Base.Config.FileOpenEncodingFixed = chosenEncoding.Name;
 			}
 		}
 		else {
@@ -242,17 +242,17 @@ public class PreferencesDialog : GladeDialog {
 			if (activeOption == ConfigFileOpenEncodingOption.CurrentLocale) {
 				encodingToStore = ConfigFileOpenEncoding.CurrentLocale;
 			}
-			Base.Config.PrefsDefaultsFileOpenEncoding = encodingToStore;
+			Base.Config.FileOpenEncoding = encodingToStore;
 		}
 	}
 
 	private void OnDefaultsFileOpenFallbackEncodingChanged (object o, EventArgs args) {
 		if (fileOpenFallbackEncoding.IsChosenCurrentLocale)
-			Base.Config.PrefsDefaultsFileOpenFallbackEncoding = ConfigFileOpenFallbackEncoding.CurrentLocale;
+			Base.Config.FileOpenFallbackEncoding = ConfigFileOpenFallbackEncoding.CurrentLocale;
 		else {
 			EncodingDescription chosenEncoding = fileOpenFallbackEncoding.ChosenEncoding;
 			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
-				Base.Config.PrefsDefaultsFileOpenFallbackEncodingFixed = chosenEncoding.Name;
+				Base.Config.FileOpenFallbackEncodingFixed = chosenEncoding.Name;
 			}
 		}
 	}
@@ -263,12 +263,12 @@ public class PreferencesDialog : GladeDialog {
 		if (((int)activeOption) > ((int)ConfigFileSaveEncodingOption.Specific)) //Positions higher than specific are always specific too
 			activeOption = ConfigFileSaveEncodingOption.Specific;
 
-		Base.Config.PrefsDefaultsFileSaveEncodingOption = activeOption;
+		Base.Config.FileSaveEncodingOption = activeOption;
 		/* If encoding is specific, encodingOption=Specific and encoding holds the encoding name */
 		if (activeOption == ConfigFileSaveEncodingOption.Specific) {
 			EncodingDescription chosenEncoding = fileSaveEncoding.ChosenEncoding;
 			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
-				Base.Config.PrefsDefaultsFileSaveEncodingFixed = chosenEncoding.Name;
+				Base.Config.FileSaveEncodingFixed = chosenEncoding.Name;
 			}
 		}
 		else {
@@ -277,7 +277,7 @@ public class PreferencesDialog : GladeDialog {
 			if (activeOption == ConfigFileSaveEncodingOption.CurrentLocale) {
 				encodingToStore = ConfigFileSaveEncoding.CurrentLocale;
 			}
-			Base.Config.PrefsDefaultsFileSaveEncoding = encodingToStore;
+			Base.Config.FileSaveEncoding = encodingToStore;
 		}
 	}
 
@@ -287,17 +287,17 @@ public class PreferencesDialog : GladeDialog {
 		if (((int)activeOption) > ((int)ConfigFileSaveFormatOption.Specific)) //Positions higher than specific are always specific too
 			activeOption = ConfigFileSaveFormatOption.Specific;
 
-		Base.Config.PrefsDefaultsFileSaveFormatOption = activeOption;
+		Base.Config.FileSaveFormatOption = activeOption;
 		/* If format is specific, formatOption=Specific and format holds the format name */
 		if (activeOption == ConfigFileSaveFormatOption.Specific) {
 			SubtitleType chosenFormat = fileSaveFormat.ChosenSubtitleType;
 			if (!chosenFormat.Equals(SubtitleType.Unknown)) {
-				Base.Config.PrefsDefaultsFileSaveFormatFixed = chosenFormat;
+				Base.Config.FileSaveFormatFixed = chosenFormat;
 			}
 		}
 		else {
 			/* If format option is keep existing or remember last, use keep existing */
-			Base.Config.PrefsDefaultsFileSaveFormat = ConfigFileSaveFormat.KeepExisting;
+			Base.Config.FileSaveFormat = ConfigFileSaveFormat.KeepExisting;
 		}
 	}
 
@@ -307,66 +307,66 @@ public class PreferencesDialog : GladeDialog {
 		if (((int)activeOption) > ((int)ConfigFileSaveNewlineOption.Specific)) //Positions higher than specific are always specific too
 			activeOption = ConfigFileSaveNewlineOption.Specific;
 
-		Base.Config.PrefsDefaultsFileSaveNewlineOption = activeOption;
+		Base.Config.FileSaveNewlineOption = activeOption;
 		/* If newline is specific, newlineOption=Specific and newline holds the newline type name */
 		if (activeOption == ConfigFileSaveNewlineOption.Specific) {
 			NewlineType chosenNewlineType = fileSaveNewline.ChosenNewlineType;
 			if (!chosenNewlineType.Equals(NewlineType.Unknown)) {
-				Base.Config.PrefsDefaultsFileSaveNewline = chosenNewlineType;
+				Base.Config.FileSaveNewline = chosenNewlineType;
 			}
 		}
 		else {
 			/* If newline option is remember last, use the system default */
-			Base.Config.PrefsDefaultsFileSaveNewline = Core.Util.GetSystemNewlineType();
+			Base.Config.FileSaveNewline = Core.Util.GetSystemNewlineType();
 		}
 	}
 
 	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
-		Base.Config.PrefsVideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
+		Base.Config.VideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
 	}
 
 	private void OnTranslationSaveAllToggled (object o, EventArgs args) {
-		Base.Config.PrefsTranslationSaveAll = translationSaveAllCheckButton.Active;
+		Base.Config.FileTranslationSaveAll = translationSaveAllCheckButton.Active;
 	}
 
 	private void OnAutoBackupToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
 
-		Base.Config.PrefsBackupAutoBackup = isActive;
+		Base.Config.BackupAuto = isActive;
 		autoBackupTimeSpinButton.Sensitive = isActive;
 
 		Base.Backup.ReCheck();
 	}
 
 	private void OnAutoBackupTimeSpinButtonValueChanged (object o, EventArgs args) {
-		Base.Config.PrefsBackupBackupTime = (o as SpinButton).ValueAsInt * 60; //seconds
+		Base.Config.BackupTime = (o as SpinButton).ValueAsInt * 60; //seconds
 		Base.Backup.ReCheck();
 	}
 
 	private void OnReactionDelayToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
 
-		Base.Config.PrefsVideoApplyReactionDelay = isActive;
+		Base.Config.VideoApplyReactionDelay = isActive;
 		reactionDelaySpinButton.Sensitive = isActive;
 	}
 
 	private void OnReactionDelaySpinButtonValueChanged (object o, EventArgs args) {
-		Base.Config.PrefsVideoReactionDelay = (o as SpinButton).ValueAsInt;
+		Base.Config.VideoReactionDelay = (o as SpinButton).ValueAsInt;
 	}
 
 	private void OnVideoSeekToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
 
-		Base.Config.PrefsVideoSeekOnChange = isActive;
+		Base.Config.VideoSeekOnChange = isActive;
 		videoSeekRewindSpinButton.Sensitive = isActive;
 	}
 
 	private void OnVideoSeekRewindSpinButtonValueChanged (object o, EventArgs args) {
-		Base.Config.PrefsVideoSeekOnChangeRewind = (o as SpinButton).ValueAsInt;
+		Base.Config.VideoSeekOnChangeRewind = (o as SpinButton).ValueAsInt;
 	}
 
 	private void OnSubtitleSplitSpinButtonValueChanged (object o, EventArgs args) {
-		Base.Config.PrefsTimingsTimeBetweenSubtitles = (o as SpinButton).ValueAsInt;
+		Base.Config.TimingsTimeBetweenSubtitles = (o as SpinButton).ValueAsInt;
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {

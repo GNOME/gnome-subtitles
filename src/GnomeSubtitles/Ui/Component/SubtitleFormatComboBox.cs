@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,12 +25,12 @@ namespace GnomeSubtitles.Ui.Component {
 
 public class SubtitleFormatComboBox {
 
-	private ComboBox comboBox = null;
+	private ComboBoxText comboBox = null;
 	private SubtitleTypeInfo[] subtitleTypes = null;
 	private string[] additionalActions = null; //
 	private SubtitleType fixedSubtitleType = SubtitleType.Unknown; //A subtitle type that must be selected
 
-	public SubtitleFormatComboBox (ComboBox comboBox, SubtitleType fixedSubtitleType, string[] additionalActions) {
+	public SubtitleFormatComboBox (ComboBoxText comboBox, SubtitleType fixedSubtitleType, string[] additionalActions) {
 		this.comboBox = comboBox;
 		this.fixedSubtitleType = fixedSubtitleType;
 		this.additionalActions = additionalActions;

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2011 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,17 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Gdk;
 using GnomeSubtitles.Core;
 using Gtk;
 using SubLib.Core.Domain;
 using SubLib.Core.Search;
 using System;
+using System.Runtime.InteropServices;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
+//TODO: draw text with Cairo, replacing the current Label in a Gtk Overlay. Example: https://github.com/reboot/obs-text-pango/blob/master/text-pango.c
 public class SubtitleOverlay {
 	private Label label = null;
 
@@ -33,11 +36,34 @@ public class SubtitleOverlay {
 	private bool toShowText = true;
 
 	public SubtitleOverlay () {
-		EventBox box = Base.GetWidget(WidgetNames.VideoSubtitleLabelEventBox) as EventBox;
-		box.ModifyBg(StateType.Normal, box.Style.Black);
+		label = new Label(); //We create it here because Glade doesn't currently allow to set the overlay widget in GtkOverlays
 
-		label = Base.GetWidget(WidgetNames.VideoSubtitleLabel) as Label;
-		label.ModifyFg(StateType.Normal, new Gdk.Color(255, 255, 0));
+		label.Halign = Align.Center;
+		label.Valign = Align.End;
+		label.Justify = Justification.Center;
+		//label.LineWrap = true;
+		//label.LineWrapMode = Pango.WrapMode.WordChar; //We cannot do this anymore. Doing this, a gray rectangle is painted above the subtitle after entering some characteres, on top of the video.
+
+		//Yellow text color
+		RGBA labelColor = new RGBA();
+		labelColor.Red = 1;
+		labelColor.Green = 1;
+		labelColor.Blue = 0;
+		labelColor.Alpha = 1;
+		label.OverrideColor(StateFlags.Normal, labelColor);
+		label.Expand = false;
+
+		//Black label background.
+		RGBA labelBGColor = new RGBA();
+		labelBGColor.Red = 0;
+		labelBGColor.Green = 0;
+		labelBGColor.Blue = 0;
+		labelBGColor.Alpha = 1;
+		label.OverrideBackgroundColor(StateFlags.Normal, labelBGColor);
+
+		//We don't cast to Overlay because GTK# doesn't support it
+		Bin bin = Base.GetWidget(WidgetNames.VideoImageOverlay) as Bin;
+		gtk_overlay_add_overlay(bin.Handle, label.Handle);
 
 		Base.InitFinished += OnBaseInitFinished;
 	}
@@ -62,24 +88,34 @@ public class SubtitleOverlay {
 
 	private void LoadSubtitle (int number) {
 		subtitle = Base.Document.Subtitles[number];
-		SetText();
-		label.Visible = true;
+		UpdateOverlayText();
 	}
 
 	private void UnloadSubtitle () {
 		subtitle = null;
-		ClearText();
-		label.Visible = false;
+		UpdateOverlayText();
 	}
 
-	private void SetText () {
+	private void UpdateOverlayText() {
+		if (subtitle == null) {
+			SetText(String.Empty);
+			return;
+		}
+		
 		if (toShowText)
 			SetText(subtitle.Text.Get());
 		else
 			SetText(subtitle.Translation.Get());
 	}
 
+	//Ref: https://developer.gnome.org/pango/stable/PangoMarkupFormat.html
 	private void SetText (string text) {
+		if (text == String.Empty) {
+			label.Visible = false;
+			label.Text = String.Empty;
+			return;
+		}
+
 		string markup = "<span size=\"x-large\"";
 
 		if (subtitle.Style.Bold)
@@ -93,25 +129,30 @@ public class SubtitleOverlay {
 
 		markup += ">" + text + "</span>";
 		label.Markup = markup;
-	}
-
-	private void ClearText () {
-		label.Text = String.Empty;
+		label.Visible = true;
 	}
 
 
 	/* Event members */
 
 	private void OnBaseInitFinished () {
-		Base.Ui.Video.Tracker.CurrentSubtitleChanged += OnCurrentSubtitleChanged;
+		//We do this because the label is initialized as visible (when added to the gtk overlay in the constructor)
+		label.Visible = false;
+
+		Base.Ui.Video.Tracker.SubtitlePulse += OnSubtitlePulse;
 	}
 
-	private void OnCurrentSubtitleChanged (int indexSubtitle) {
+	private void OnSubtitlePulse (int indexSubtitle) {
 		if (indexSubtitle == -1)
 			UnloadSubtitle();
 		else
 			LoadSubtitle(indexSubtitle);
 	}
+
+	/* External Imports */
+
+	[DllImport("gtk-3")]
+	static extern void gtk_overlay_add_overlay (IntPtr overlay, IntPtr widget);
 
 }
 

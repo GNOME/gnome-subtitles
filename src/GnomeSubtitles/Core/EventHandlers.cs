@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ public class EventHandlers {
 	public void OnFileSave (object o, EventArgs args) {
 		Base.Ui.Save();
 
-		if (Base.Document.IsTranslationLoaded && Base.Config.PrefsTranslationSaveAll) {
+		if (Base.Document.IsTranslationLoaded && Base.Config.FileTranslationSaveAll) {
 			OnFileTranslationSave(o, args);
 		}
 	}
@@ -56,7 +56,7 @@ public class EventHandlers {
 	public void OnFileSaveAs (object o, EventArgs args) {
 		Base.Ui.SaveAs();
 
-		if (Base.Document.IsTranslationLoaded && Base.Config.PrefsTranslationSaveAll) {
+		if (Base.Document.IsTranslationLoaded && Base.Config.FileTranslationSaveAll) {
 			OnFileTranslationSave(o, args);
 		}
 	}
@@ -191,7 +191,7 @@ public class EventHandlers {
 
 	public void OnViewLineLengthsToggled (object o, EventArgs args) {
 		CheckMenuItem menuItem = o as CheckMenuItem;
-		Base.Config.PrefsViewLineLengths = menuItem.Active;
+		Base.Config.ViewLineLengths = menuItem.Active;
 	}
 
 	public void OnViewVideo (object o, EventArgs args) {
@@ -305,15 +305,15 @@ public class EventHandlers {
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-				time -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
 			}
 			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
 		}
 		else {
 			int frames = Base.Ui.Video.Position.CurrentFrames;
-			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.PrefsVideoReactionDelay, Base.Ui.Video.FrameRate);
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
 			}
 			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(frames));
 		}
@@ -322,33 +322,37 @@ public class EventHandlers {
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-				time -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
 			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 		}
 		else {
 			int frames = Base.Ui.Video.Position.CurrentFrames;
-			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.PrefsVideoReactionDelay, Base.Ui.Video.FrameRate);
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
 			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 		}
 	}
 
-	public void OnVideoSetSubtitleStartEnd (object o, EventArgs args) {
+	public void OnVideoSetSubtitleStartEndButtonPress (object o, ButtonPressEventArgs args) {
+		OnVideoSetSubtitleStart(o, args);
+	}
+
+	public void OnVideoSetSubtitleStartEndButtonRelease (object o, ButtonReleaseEventArgs args) {
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-				time -= TimeSpan.FromMilliseconds(Base.Config.PrefsVideoReactionDelay);
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
 			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
 			Base.Ui.View.SelectNextSubtitle();
 		}
 		else {
 			int frames = Base.Ui.Video.Position.CurrentFrames;
-			if (Base.Ui.Video.IsStatePlaying && Base.Config.PrefsVideoApplyReactionDelay) {
-				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.PrefsVideoReactionDelay, Base.Ui.Video.FrameRate);
+			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
 			}
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 			Base.Ui.View.SelectNextSubtitle();
@@ -364,7 +368,7 @@ public class EventHandlers {
 
 	public void OnVideoSetSubtitleStartEndKeyRelease (object o, KeyReleaseEventArgs args) {
 		if (buttonStartEndKeyPressed){
-			OnVideoSetSubtitleStartEnd(o, args);
+			OnVideoSetSubtitleStartEndButtonRelease(o, null);
 			buttonStartEndKeyPressed = false;
 		}
 	}
@@ -400,7 +404,7 @@ public class EventHandlers {
 	}
 
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
-		Util.OpenUrl("http://gnomesubtitles.org/shortcuts");
+		Util.OpenUrl("http://www.gnomesubtitles.org/shortcuts");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
@@ -424,8 +428,8 @@ public class EventHandlers {
     }
 
     public void OnSizeAllocated (object o, SizeAllocatedArgs args) {
-    	Base.Config.PrefsWindowWidth = args.Allocation.Width;
-    	Base.Config.PrefsWindowHeight = args.Allocation.Height;
+    	Base.Config.ViewWindowWidth = args.Allocation.Width;
+    	Base.Config.ViewWindowHeight = args.Allocation.Height;
     }
 
 
@@ -490,8 +494,8 @@ public class EventHandlers {
 			return;
 
 		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
-		if ((Base.TimingModeIsTimes && (subtitle.Times.Start >= TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep)))
-				|| (!Base.TimingModeIsTimes) && (subtitle.Frames.Start >= Base.Config.PrefsTimingsFramesStep)){
+		if ((Base.TimingModeIsTimes && (subtitle.Times.Start >= TimeSpan.FromMilliseconds(Base.Config.TimingsTimeStep)))
+				|| (!Base.TimingModeIsTimes) && (subtitle.Frames.Start >= Base.Config.TimingsFramesStep)){
 
 			Base.Ui.Edit.SpinButtons.StartSpinButtonDecreaseStep();
 		}
@@ -509,8 +513,8 @@ public class EventHandlers {
 			return;
 
 		Subtitle subtitle = Base.Ui.View.Selection.Subtitle;
-		if ((Base.TimingModeIsTimes && (subtitle.Times.End >= TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep)))
-				|| (!Base.TimingModeIsTimes) && (subtitle.Frames.End >= Base.Config.PrefsTimingsFramesStep)){
+		if ((Base.TimingModeIsTimes && (subtitle.Times.End >= TimeSpan.FromMilliseconds(Base.Config.TimingsTimeStep)))
+				|| (!Base.TimingModeIsTimes) && (subtitle.Frames.End >= Base.Config.TimingsFramesStep)){
 
 			Base.Ui.Edit.SpinButtons.EndSpinButtonDecreaseStep();
 		}
@@ -522,10 +526,10 @@ public class EventHandlers {
 			return;
 
 		if (Base.TimingModeIsTimes) {
-			Base.CommandManager.Execute(new ShiftTimingsCommand(TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep), SelectionIntended.Simple));
+			Base.CommandManager.Execute(new ShiftTimingsCommand(TimeSpan.FromMilliseconds(Base.Config.TimingsTimeStep), SelectionIntended.Simple));
 		}
 		else {
-			Base.CommandManager.Execute(new ShiftTimingsCommand(Base.Config.PrefsTimingsFramesStep, SelectionIntended.Simple));
+			Base.CommandManager.Execute(new ShiftTimingsCommand(Base.Config.TimingsFramesStep, SelectionIntended.Simple));
 		}
 	}
 
@@ -537,13 +541,13 @@ public class EventHandlers {
 			return;
 
 		if (Base.TimingModeIsTimes) {
-			TimeSpan timeStep = TimeSpan.FromMilliseconds(Base.Config.PrefsTimingsTimeStep);
+			TimeSpan timeStep = TimeSpan.FromMilliseconds(Base.Config.TimingsTimeStep);
 			if (firstSelectedSubtitle.Times.Start >= timeStep) {
 				Base.CommandManager.Execute(new ShiftTimingsCommand(timeStep.Negate(), SelectionIntended.Simple));
 			}
 		}
 		else {
-			int framesStep = Base.Config.PrefsTimingsFramesStep;
+			int framesStep = Base.Config.TimingsFramesStep;
 			if (firstSelectedSubtitle.Frames.Start >= framesStep) {
 				Base.CommandManager.Execute(new ShiftTimingsCommand(-framesStep, SelectionIntended.Simple));
 			}

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	/// <summary>Creates a subtitle and adds it after the specified position.</summary>
 	/// <remarks>The timings of the new subtitle will be based on the subtitle that preceeds it.</remarks>
 	public void AddNewAfter (int index) {
-		Collection.AddNewAfter(index, Properties, Base.Config.PrefsTimingsTimeBetweenSubtitles);
+		Collection.AddNewAfter(index, Properties, Base.Config.TimingsTimeBetweenSubtitles);
 		int newIndex = index + 1;
 		Subtitle newSubtitle = this[newIndex];
 		model.SetValue(model.Insert(newIndex), 0, newSubtitle);
@@ -81,7 +81,7 @@ public class Subtitles : SubLib.Core.Domain.Subtitles {
 	/// <summary>Creates a subtitle and adds it before the specified position.</summary>
 	/// <remarks>The timings of the new subtitle will be based on the subtitle that succeeds it.</remarks>
 	public void AddNewBefore (int index) {
-		Collection.AddNewBefore(index, Properties, Base.Config.PrefsTimingsTimeBetweenSubtitles);
+		Collection.AddNewBefore(index, Properties, Base.Config.TimingsTimeBetweenSubtitles);
 		Subtitle newSubtitle = this[index];
 		model.SetValue(model.Insert(index), 0, newSubtitle);
 	}

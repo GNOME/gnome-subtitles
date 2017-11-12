@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,8 +37,6 @@ public delegate void TimingModeChangedHandler (TimingMode timingMode);
 public delegate void BasicEventHandler ();
 
 public class Base {
-	private static Glade.XML glade = null;
-
 	private static MainUi ui = null;
 	private static ExecutionContext executionContext = null;
 	private static EventHandlers handlers = null;
@@ -263,7 +261,7 @@ public class Base {
 	}
 
 	public static Widget GetWidget (string name) {
-		return glade.GetWidget(name);
+		return MainUi.GetWidget(name);
 	}
 
 	/* Private members */
@@ -294,7 +292,7 @@ public class Base {
 		backup = new Backup();
 
 		/* Initialize the GUI */
-		ui = new MainUi(handlers, out glade);
+		ui = new MainUi(handlers);
 		clipboards.WatchPrimaryChanges = true;
 		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.LocaleDir);
 
