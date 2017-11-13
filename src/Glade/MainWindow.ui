@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkAdjustment" id="durationSpinButtonAdjustment">
@@ -244,8 +244,8 @@
                         <property name="label" translatable="yes">_Redo</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditRedo" swapped="no"/>
-                        <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -567,8 +567,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext" swapped="no"/>
-                        <accelerator key="F3" signal="activate"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -578,8 +578,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious" swapped="no"/>
-                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -818,8 +818,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause" swapped="no"/>
-                        <accelerator key="F5" signal="activate"/>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F5" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -841,8 +841,8 @@
                         <property name="label" translatable="yes">R_ewind</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoRewind" swapped="no"/>
-                        <accelerator key="F6" signal="activate"/>
                         <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F6" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -853,8 +853,8 @@
                         <property name="label" translatable="yes">_Forward</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoForward" swapped="no"/>
-                        <accelerator key="F7" signal="activate"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F7" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -882,8 +882,8 @@
                         <property name="label" translatable="yes">Seek _to Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection" swapped="no"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -894,8 +894,8 @@
                         <property name="label" translatable="yes">Select _Nearest Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSelectNearestSubtitle" swapped="no"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -1348,9 +1348,8 @@
                           <object class="GtkLabel" id="videoControlsPositionLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Time</property>
-                            <property name="xalign">0</property>
-                            <property name="yalign">0</property>
                             <attributes>
                               <attribute name="weight" value="bold"/>
                             </attributes>
@@ -1365,9 +1364,8 @@
                           <object class="GtkLabel" id="videoControlsPositionValueLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label">00:00:00.000</property>
-                            <property name="xalign">0</property>
-                            <property name="yalign">0</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -1379,9 +1377,8 @@
                           <object class="GtkLabel" id="videoControlsLengthLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Length	</property>
-                            <property name="xalign">0</property>
-                            <property name="yalign">0</property>
                             <attributes>
                               <attribute name="weight" value="bold"/>
                             </attributes>
@@ -1396,9 +1393,8 @@
                           <object class="GtkLabel" id="videoControlsLengthValueLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label">00:00:00.000</property>
-                            <property name="xalign">0</property>
-                            <property name="yalign">0</property>
                           </object>
                           <packing>
                             <property name="expand">True</property>
@@ -1425,7 +1421,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid" id="grid1">
+                      <object class="GtkGrid" id="videoSetSubtitleButtonsGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="row_spacing">4</property>
@@ -1443,8 +1439,10 @@
                               <object class="GtkImage" id="videoSetSubtitleStartButtonImage">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xpad">7</property>
-                                <property name="ypad">4</property>
+                                <property name="margin_left">5</property>
+                                <property name="margin_right">5</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">5</property>
                                 <property name="stock">gtk-missing-image</property>
                               </object>
                             </child>
@@ -1460,14 +1458,15 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="relief">none</property>
-                            <property name="yalign">0.49000000953674316</property>
                             <signal name="clicked" handler="OnVideoSetSubtitleEnd" swapped="no"/>
                             <child>
                               <object class="GtkImage" id="videoSetSubtitleEndButtonImage">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xpad">7</property>
-                                <property name="ypad">4</property>
+                                <property name="margin_left">5</property>
+                                <property name="margin_right">5</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">5</property>
                                 <property name="stock">gtk-missing-image</property>
                               </object>
                             </child>
@@ -1491,8 +1490,10 @@
                               <object class="GtkImage" id="videoSetSubtitleStartEndButtonImage">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xpad">7</property>
-                                <property name="ypad">4</property>
+                                <property name="margin_left">5</property>
+                                <property name="margin_right">5</property>
+                                <property name="margin_top">5</property>
+                                <property name="margin_bottom">5</property>
                                 <property name="stock">gtk-missing-image</property>
                               </object>
                             </child>
@@ -1716,9 +1717,9 @@
                                 <property name="label" translatable="yes">1.0x</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="focus_on_click">False</property>
                                 <property name="receives_default">True</property>
                                 <property name="relief">none</property>
-                                <property name="focus_on_click">False</property>
                                 <signal name="clicked" handler="OnVideoSpeed" swapped="no"/>
                               </object>
                               <packing>
@@ -1844,8 +1845,8 @@
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start and end timings.
 Shift+Plus/Minus (on the numpad) shifts timings.</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes" comments="This is the start time/frame of a subtitle.">Start:</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1858,8 +1859,8 @@ Shift+Plus/Minus (on the numpad) shifts timings.</property>
                             <property name="can_focus">False</property>
                             <property name="tooltip_text" translatable="yes">Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start and end timings.
 Shift+Plus/Minus (on the numpad) shifts timings.</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">End:</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1870,8 +1871,8 @@ Shift+Plus/Minus (on the numpad) shifts timings.</property>
                           <object class="GtkLabel" id="durationLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes" comments="This is the duration of a subtitle.">Duration:</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
