@@ -30,7 +30,6 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
-//FIXME video stops showing when paused, switching to a different application (or opening a Gnome Subtitles dialog)
 public class Video {
 	private Box videoArea = null;
 	private AspectFrame frame = null;
