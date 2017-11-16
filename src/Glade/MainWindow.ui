@@ -629,6 +629,7 @@
                                 <property name="label">23.976</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
+                                <property name="group">timingsInputFrameRate25</property>
                               </object>
                             </child>
                             <child>
@@ -638,7 +639,7 @@
                                 <property name="label">24</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
+                                <property name="group">timingsInputFrameRate25</property>
                               </object>
                             </child>
                             <child>
@@ -647,8 +648,8 @@
                                 <property name="can_focus">False</property>
                                 <property name="label">25 (PAL)</property>
                                 <property name="use_underline">True</property>
+                                <property name="active">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
                               </object>
                             </child>
                             <child>
@@ -658,7 +659,7 @@
                                 <property name="label">29.97 (NTSC)</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
+                                <property name="group">timingsInputFrameRate25</property>
                               </object>
                             </child>
                             <child>
@@ -668,7 +669,7 @@
                                 <property name="label">30</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsInputFrameRate23</property>
+                                <property name="group">timingsInputFrameRate25</property>
                               </object>
                             </child>
                           </object>
@@ -692,6 +693,7 @@
                                 <property name="label">23.976</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
+                                <property name="group">timingsVideoFrameRate25</property>
                               </object>
                             </child>
                             <child>
@@ -701,7 +703,7 @@
                                 <property name="label">24</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
+                                <property name="group">timingsVideoFrameRate25</property>
                               </object>
                             </child>
                             <child>
@@ -710,8 +712,8 @@
                                 <property name="can_focus">False</property>
                                 <property name="label">25 (PAL)</property>
                                 <property name="use_underline">True</property>
+                                <property name="active">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
                               </object>
                             </child>
                             <child>
@@ -721,7 +723,7 @@
                                 <property name="label">29.97 (NTSC)</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
+                                <property name="group">timingsVideoFrameRate25</property>
                               </object>
                             </child>
                             <child>
@@ -731,7 +733,7 @@
                                 <property name="label">30</property>
                                 <property name="use_underline">True</property>
                                 <property name="draw_as_radio">True</property>
-                                <property name="group">timingsVideoFrameRate23</property>
+                                <property name="group">timingsVideoFrameRate25</property>
                               </object>
                             </child>
                           </object>
@@ -958,6 +960,7 @@
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Autocheck Spelling</property>
                         <property name="use_underline">True</property>
+                        <property name="active">True</property>
                         <signal name="toggled" handler="OnToolsAutocheckSpelling" swapped="no"/>
                       </object>
                     </child>
