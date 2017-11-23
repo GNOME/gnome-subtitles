@@ -24,23 +24,24 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class VideoOpenDialog : BuilderDialog {
+public class VideoOpenDialog : BaseDialog {
 	protected FileChooserDialog dialog = null;
 	private Uri chosenUri = null;
 
-	/* Constant strings */
-	private const string gladeFilename = "VideoOpenDialog.ui";
+	public VideoOpenDialog () : base() {
+		dialog = new FileChooserDialog(Catalog.GetString("Open Video"), Base.Ui.Window, FileChooserAction.Open,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
+		dialog.DefaultResponse = ResponseType.Ok;
 
-	public VideoOpenDialog () : base(gladeFilename) {
-		dialog = GetDialog() as FileChooserDialog;
-
-		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
+		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted) {
 			dialog.SetCurrentFolder(Base.Document.TextFile.Directory);
-		else
+		} else {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+		}
 
 		SetFilters();
+		Init(dialog);
 	}
 
 	/* Public properties */

@@ -181,7 +181,7 @@ public class EncodingComboBox {
 	}
 
 	private void AddAutoDetect () {
-		comboBox.AppendText(Catalog.GetString("Auto Detected"));
+		comboBox.AppendText(Catalog.GetString("Automatically Detected"));
 	}
 
 	private void SetActiveItem (int item, bool silent) {

@@ -32,7 +32,7 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FileOpenDialog : BuilderDialog {
+public class FileOpenDialog : BaseDialog {
 	protected FileChooserDialog dialog = null;
 
 	private string chosenFilename = String.Empty;
@@ -42,37 +42,69 @@ public class FileOpenDialog : BuilderDialog {
 	private Uri chosenVideoUri = null;
 	private bool autoChooseVideoFile = true;
 
-	/* Constant strings */
-	private const string gladeFilename = "FileOpenDialog.glade";
-
 	/* Components */
 	private EncodingComboBox encodingComboBox = null;
 
 	/* Widgets */
-	[Builder.Object] private ComboBoxText fileEncodingComboBox = null;
-	[Builder.Object] private ComboBoxText videoComboBox = null;
-	[Builder.Object] private Label videoLabel = null;
+	private ComboBoxText fileEncodingComboBox = null;
+	private ComboBoxText videoComboBox = null;
+	private Label videoLabel = null;
 
 
 	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
 	}
 
-	protected FileOpenDialog (bool toEnableVideo, string title) : base(gladeFilename) {
-		dialog = GetDialog() as FileChooserDialog;
-		dialog.Title = title;
+	protected FileOpenDialog (bool toEnableVideo, string title) : base() {
+		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
-		InitEncodingComboBox();
+		dialog.DefaultResponse = ResponseType.Ok;
 
-		if (toEnableVideo)
+		InitContentArea();
+
+		if (toEnableVideo) {
 			EnableVideo();
+		}
 
-		string startFolder = GetStartFolder();
-		dialog.SetCurrentFolder(startFolder);
+		dialog.SetCurrentFolder(GetStartFolder());
 
 		SetFilters();
+
+		Init(dialog);
 	}
 
-	private void InitEncodingComboBox () {
+	private void InitContentArea() {
+		Grid grid = new Grid();
+
+		grid.RowSpacing = 6;
+		grid.ColumnSpacing = 6;
+		grid.MarginLeft = 6;
+		grid.MarginRight = 6;
+		grid.MarginTop = 8;
+		grid.MarginBottom = 10;
+
+		Label encodingLabel = new Label(Catalog.GetString("Character Encoding:"));
+		encodingLabel.Xalign = 0;
+		grid.Attach(encodingLabel, 0, 0, 1, 1);
+
+		this.videoLabel = new Label(Catalog.GetString("Video To Open:"));
+		this.videoLabel.Xalign = 0;
+		grid.Attach(this.videoLabel, 0, 1, 1, 1);
+
+		this.fileEncodingComboBox = new ComboBoxText();
+		this.fileEncodingComboBox.Hexpand = true;
+		grid.Attach(this.fileEncodingComboBox, 1, 0, 1, 1);
+		this.encodingComboBox = BuildEncodingComboBox();
+
+		this.videoComboBox = new ComboBoxText();
+		this.videoComboBox.Hexpand = true;
+		grid.Attach(this.videoComboBox, 1, 1, 1, 1);
+
+		dialog.ContentArea.Add(grid);
+		dialog.ContentArea.ShowAll();
+	}
+
+	private EncodingComboBox BuildEncodingComboBox () {
 		int fixedEncoding = -1;
 		ConfigFileOpenEncoding encodingConfig = Base.Config.FileOpenEncoding;
 		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
@@ -82,11 +114,14 @@ public class FileOpenDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		this.encodingComboBox = new EncodingComboBox(fileEncodingComboBox, true, null, fixedEncoding);
+		EncodingComboBox comboBox = new EncodingComboBox(this.fileEncodingComboBox, true, null, fixedEncoding);
 
 		/* Only need to handle the case of currentLocale, as Fixed is handled before and AutoDetect is the default behaviour */
-		if (encodingConfig == ConfigFileOpenEncoding.CurrentLocale)
-			encodingComboBox.ActiveSelection = (int)encodingConfig;
+		if (encodingConfig == ConfigFileOpenEncoding.CurrentLocale) {
+			comboBox.ActiveSelection = (int)encodingConfig;
+		}
+
+		return comboBox;
 	}
 
 	/* Overriden members */
@@ -117,10 +152,11 @@ public class FileOpenDialog : BuilderDialog {
 	/* Protected members */
 
 	protected virtual string GetStartFolder () {
-		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted)
+		if (Base.IsDocumentLoaded && Base.Document.TextFile.IsPathRooted) {
 			return Base.Document.TextFile.Directory;
-		else
+		} else {
 			return Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+		}
 	}
 
 

@@ -63,9 +63,6 @@
     <EmbeddedResource Include="src\Glade\EncodingsDialog.glade">
       <LogicalName>EncodingsDialog.glade</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\FileOpenDialog.glade">
-      <LogicalName>FileOpenDialog.glade</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Glade\FilePropertiesDialog.glade">
       <LogicalName>FilePropertiesDialog.glade</LogicalName>
     </EmbeddedResource>
@@ -111,9 +108,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Glade\MainWindow.ui">
       <LogicalName>MainWindow.ui</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\VideoOpenDialog.ui">
-      <LogicalName>VideoOpenDialog.ui</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -194,7 +188,6 @@
     <Compile Include="src\GnomeSubtitles\Dialog\DialogScope.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Dialogs.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\EncodingsDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\FileOpenDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FilePropertiesDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileSaveAsDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationOpenDialog.cs" />
@@ -210,8 +203,6 @@
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsShiftDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsSynchronizeDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TranslationSaveAsDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Util.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\VideoOpenDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\VideoSeekToDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\BasicErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\ErrorDialog.cs" />
@@ -327,6 +318,8 @@
     <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatSubViewer2.cs" />
     <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatViPlaySubtitleFile.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\BuilderDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FileOpenDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\VideoOpenDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

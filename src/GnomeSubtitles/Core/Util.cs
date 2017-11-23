@@ -243,6 +243,12 @@ public class Util {
 		}
 	}
 
+	public static String GetStockLabel(string stockId) {
+		StockItem item;
+		StockManager.LookupItem(stockId, out item);
+		return item.Label;
+	}
+
 }
 
 }

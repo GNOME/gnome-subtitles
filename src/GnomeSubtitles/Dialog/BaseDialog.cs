@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2009 Pedro Castro
+ * Copyright (C) 2009-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 using Gtk;
 using System;
+using GnomeSubtitles.Core;
 
 namespace GnomeSubtitles.Dialog {
 
@@ -83,7 +84,7 @@ public abstract class BaseDialog {
 
 	protected void Init (Gtk.Dialog dialog) {
 		this.dialog = dialog;
-		Util.SetBaseWindowFromUi(dialog);
+		//SetBaseWindow(dialog, Base.Ui.Window);
 
 		dialog.Response += OnResponse;
 		dialog.DeleteEvent += OnDeleteEvent;
@@ -123,6 +124,13 @@ public abstract class BaseDialog {
 		}
 	}
 
+
+	/* Private members */
+
+	private void SetBaseWindow (Gtk.Dialog dialog, Window window) {
+		dialog.TransientFor = window;
+		dialog.Icon = window.Icon; //TODO is this still needed?
+	}
 
 }
 
