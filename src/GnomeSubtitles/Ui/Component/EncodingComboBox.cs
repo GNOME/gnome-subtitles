@@ -221,7 +221,7 @@ public class EncodingComboBox {
 		int selectedItem = comboBox.Active;
 
 		if (selectedItem == (itemCount - 1)) {
-			EncodingsDialog dialog = Base.Dialogs.Get(typeof(EncodingsDialog)) as EncodingsDialog;
+			EncodingsDialog dialog = Base.Dialogs.Get(typeof(EncodingsDialog), comboBox.Toplevel) as EncodingsDialog;
 			dialog.Show();
 			dialog.WaitForResponse();
 			SetComboBox(dialog.ChosenNames);

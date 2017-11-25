@@ -19,18 +19,15 @@
 
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
-//using Glade;
 using Gtk;
 using Mono.Unix;
 using System;
+using System.Runtime.InteropServices;
 
 namespace GnomeSubtitles.Dialog {
 
-public class EncodingsDialog : BuilderDialog {
+public class EncodingsDialog : BaseDialog {
 	private string[] chosenNames = new string[0];
-
-	/* Constant strings */
-	private const string gladeFilename = "EncodingsDialog.glade";
 
 	/* Constant integers */
 	const int descColumnNum = 0; //The number of the Description column
@@ -38,16 +35,17 @@ public class EncodingsDialog : BuilderDialog {
 
 	/* Widgets */
 
-	[Builder.Object] private TreeView availableTreeView = null;
-	[Builder.Object] private TreeView shownTreeView = null;
-	[Builder.Object] private Button buttonAdd = null;
-	[Builder.Object] private Button buttonRemove = null;
+	private Gtk.Dialog dialog = null;
+	private TreeView availableTreeView = null;
+	private TreeView shownTreeView = null;
+	private Button buttonAdd = null;
+	private Button buttonRemove = null;
 
-	public EncodingsDialog () : base(gladeFilename) {
-		FillAvailableEncodings();
-		FillShownEncodings();
+	public EncodingsDialog (Window parent) : base() {
+		BuildDialog(parent);
 
 		ConnectSignals();
+		base.Init(dialog);
 	}
 
 	/* Public properties */
@@ -57,6 +55,59 @@ public class EncodingsDialog : BuilderDialog {
 	}
 
 	/* Private members */
+
+	private void BuildDialog (Window parent) {
+		dialog = new Gtk.Dialog(Catalog.GetString("Character Encodings"), parent, DialogFlags.Modal | DialogFlagsUseHeaderBar);
+
+		dialog.WidthRequest = 600;
+		dialog.HeightRequest = 400;
+
+		Grid grid = new Grid();
+		grid.RowSpacing = 6;
+		grid.ColumnSpacing = 12;
+		grid.BorderWidth = 6;
+		grid.ColumnHomogeneous = true;
+
+		/* Left part: Available VBox */
+
+		Label availLabel = new Label("<b>" + Catalog.GetString("Available Encodings") + "</b>");
+		availLabel.UseMarkup = true;
+		availLabel.Halign = Align.Start;
+		grid.Attach(availLabel, 0, 0, 1, 1);
+
+		ScrolledWindow availScrolledWindow = new ScrolledWindow();
+		availScrolledWindow.ShadowType = ShadowType.EtchedIn;
+		availScrolledWindow.Expand = true;
+		availableTreeView = new TreeView();
+		availScrolledWindow.Add(availableTreeView);
+		grid.Attach(availScrolledWindow, 0, 1, 1, 1);
+
+		buttonAdd = new Button("gtk-add");
+		grid.Attach(buttonAdd, 0, 2, 1, 1);
+
+		/* Right part: Shown VBox */
+
+		Label shownLabel = new Label("<b>" + Catalog.GetString("Chosen Encodings") + "</b>");
+		shownLabel.UseMarkup = true;
+		shownLabel.Halign = Align.Start;
+		grid.Attach(shownLabel, 1, 0, 1, 1);
+
+		ScrolledWindow shownScrolledWindow = new ScrolledWindow();
+		shownScrolledWindow.ShadowType = ShadowType.EtchedIn;
+		shownScrolledWindow.Expand = true;
+		shownTreeView = new TreeView();
+		shownScrolledWindow.Add(shownTreeView);
+		grid.Attach(shownScrolledWindow, 1, 1, 1, 1);
+
+		buttonRemove = new Button("gtk-remove");
+		grid.Attach(buttonRemove, 1, 2, 1, 1);
+
+		FillAvailableEncodings();
+		FillShownEncodings();
+
+		dialog.ContentArea.Add(grid);
+		dialog.ContentArea.ShowAll();
+	}
 
 	private void FillAvailableEncodings () {
 		SetColumns(availableTreeView);
@@ -183,10 +234,13 @@ public class EncodingsDialog : BuilderDialog {
 
 	private void ConnectSignals () {
 		availableTreeView.Selection.Changed += OnAvailableSelectionChanged;
-		shownTreeView.Selection.Changed += OnShownSelectionChanged;
-	}
+		availableTreeView.RowActivated += OnAvailableRowActivated;
+		buttonAdd.Clicked += OnAdd;
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
+		shownTreeView.Selection.Changed += OnShownSelectionChanged;
+		shownTreeView.RowActivated += OnShownRowActivated;
+		buttonRemove.Clicked += OnRemove;
+	}
 
 	private void OnAvailableSelectionChanged (object o, EventArgs args) {
 		bool sensitive = (availableTreeView.Selection.CountSelectedRows() == 1);

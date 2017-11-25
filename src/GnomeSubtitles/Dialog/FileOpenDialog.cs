@@ -20,7 +20,6 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Ui.Component;
 using GnomeSubtitles.Ui.VideoPreview;
-//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -55,33 +54,27 @@ public class FileOpenDialog : BaseDialog {
 	}
 
 	protected FileOpenDialog (bool toEnableVideo, string title) : base() {
-		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
-			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
-
-		dialog.DefaultResponse = ResponseType.Ok;
-
-		InitContentArea();
+		BuildDialog(title);
 
 		if (toEnableVideo) {
 			EnableVideo();
 		}
 
-		dialog.SetCurrentFolder(GetStartFolder());
-
-		SetFilters();
-
-		Init(dialog);
+		base.Init(dialog);
 	}
 
-	private void InitContentArea() {
-		Grid grid = new Grid();
+	private void BuildDialog(string title) {
+		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
+		dialog.DefaultResponse = ResponseType.Ok;
+
+		/* Build content area */
+
+		Grid grid = new Grid();
 		grid.RowSpacing = 6;
 		grid.ColumnSpacing = 6;
-		grid.MarginLeft = 6;
-		grid.MarginRight = 6;
-		grid.MarginTop = 8;
-		grid.MarginBottom = 10;
+		grid.BorderWidth = 6;
 
 		Label encodingLabel = new Label(Catalog.GetString("Character Encoding:"));
 		encodingLabel.Xalign = 0;
@@ -102,6 +95,10 @@ public class FileOpenDialog : BaseDialog {
 
 		dialog.ContentArea.Add(grid);
 		dialog.ContentArea.ShowAll();
+
+		/* Other stuff */
+		SetFilters();
+		dialog.SetCurrentFolder(GetStartFolder());
 	}
 
 	private EncodingComboBox BuildEncodingComboBox () {
@@ -305,14 +302,13 @@ public class FileOpenDialog : BaseDialog {
 			filterPosition++;
 		}
 
-		foreach (FileFilter filter in filters)
+		foreach (FileFilter filter in filters) {
 			dialog.AddFilter(filter);
+		}
 
 		dialog.Filter = subtitleFilesFilter;
 	}
 
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {

@@ -41,7 +41,7 @@ public class VideoOpenDialog : BaseDialog {
 		}
 
 		SetFilters();
-		Init(dialog);
+		base.Init(dialog);
 	}
 
 	/* Public properties */
@@ -81,8 +81,6 @@ public class VideoOpenDialog : BaseDialog {
 	}
 
 	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {

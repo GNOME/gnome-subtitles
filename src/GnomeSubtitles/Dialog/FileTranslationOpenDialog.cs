@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,10 +30,11 @@ public class FileTranslationOpenDialog : FileOpenDialog {
 	/* Public members */
 
 	protected override string GetStartFolder () {
-		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted)
+		if (Base.IsDocumentLoaded && Base.Document.IsTranslationLoaded && Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted) {
 			return Base.Document.TranslationFile.Directory;
-		else
+		} else {
 			return base.GetStartFolder();
+		}
 	}
 
 }

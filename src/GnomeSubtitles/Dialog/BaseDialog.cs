@@ -28,6 +28,9 @@ public abstract class BaseDialog {
 	private Gtk.Dialog dialog = null;
 	private bool returnValue = false;
 
+	//Hack because gtk# doesn't support this flag yet (as of 2017). Ref: https://git.gnome.org/browse/gtk+/tree/gtk/gtkdialog.h (GTK_DIALOG_USE_HEADER_BAR)
+	protected const DialogFlags DialogFlagsUseHeaderBar = (DialogFlags)4;
+
 	public BaseDialog () {
 	}
 
@@ -127,10 +130,10 @@ public abstract class BaseDialog {
 
 	/* Private members */
 
-	private void SetBaseWindow (Gtk.Dialog dialog, Window window) {
-		dialog.TransientFor = window;
-		dialog.Icon = window.Icon; //TODO is this still needed?
-	}
+//	private void SetBaseWindow (Gtk.Dialog dialog, Window window) {
+//		dialog.TransientFor = window;
+//		dialog.Icon = window.Icon; //TODO is this still needed?
+//	}
 
 }
 
