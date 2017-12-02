@@ -59,8 +59,8 @@ public class EncodingsDialog : BaseDialog {
 	private void BuildDialog (Window parent) {
 		dialog = new Gtk.Dialog(Catalog.GetString("Character Encodings"), parent, DialogFlags.Modal | DialogFlagsUseHeaderBar);
 
-		dialog.WidthRequest = 600;
-		dialog.HeightRequest = 400;
+		dialog.DefaultWidth = 600;
+		dialog.DefaultHeight = 400;
 
 		Grid grid = new Grid();
 		grid.RowSpacing = 6;

@@ -29,6 +29,20 @@ public class VideoOpenDialog : BaseDialog {
 	private Uri chosenUri = null;
 
 	public VideoOpenDialog () : base() {
+		BuildDialog();
+
+		base.Init(dialog);
+	}
+
+	/* Public properties */
+
+	public Uri Uri {
+		get { return chosenUri; }
+	}
+
+	/* Private methods */
+
+	private void BuildDialog() {
 		dialog = new FileChooserDialog(Catalog.GetString("Open Video"), Base.Ui.Window, FileChooserAction.Open,
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
@@ -41,16 +55,7 @@ public class VideoOpenDialog : BaseDialog {
 		}
 
 		SetFilters();
-		base.Init(dialog);
 	}
-
-	/* Public properties */
-
-	public Uri Uri {
-		get { return chosenUri; }
-	}
-
-	/* Private methods */
 
 	private void SetFilters () {
 
