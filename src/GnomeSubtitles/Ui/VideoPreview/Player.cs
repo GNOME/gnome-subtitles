@@ -252,7 +252,7 @@ public class Player {
 	}
 
 	private void OnPlaybinFoundVideoInfo (VideoInfoEventArgs args) {
-		Console.Error.WriteLine("Got video info: " + args.VideoInfo.ToString());
+		Console.WriteLine("[Player] Media info: " + args.VideoInfo.ToString());
 		this.videoInfo = args.VideoInfo;
 
 		/* Set defaults if there is no video */
@@ -270,7 +270,7 @@ public class Player {
 	private void OnPlaybinFoundTag (TagEventArgs args) {
 		if ((!hasFoundDuration) && (FoundDuration != null) && (playbin.Duration != TimeSpan.Zero)) {
 			TimeSpan duration = playbin.Duration;
-			Console.Error.WriteLine("Got video duration: " + duration);
+			Console.WriteLine("[Player] Media duration: " + duration);
 
 			hasFoundDuration = true;
 			FoundDuration(duration);

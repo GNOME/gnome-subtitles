@@ -127,7 +127,7 @@ public class SpellLanguages {
 		else
 			activeLanguage = languages[index] as SpellLanguage;
 
-		System.Console.Error.WriteLine("Setting active language: " + (activeLanguage == null ? "none." : activeLanguage.ID));
+		System.Console.WriteLine("[Spellcheck] Setting active language: {0}", (activeLanguage == null ? "none." : activeLanguage.ID));
 
 		/* Set index variable */
 		if (textType == SubtitleTextType.Text)
@@ -173,7 +173,7 @@ public class SpellLanguages {
 		enchant_broker_free(broker);
 
 		languages.Sort();
-		System.Console.Error.WriteLine("Got " + languages.Count + " languages.");
+		System.Console.WriteLine("[Spellcheck] Found {0} languages", languages.Count);
 	}
 
 	private void GetActiveLanguagesFromConfig () {
