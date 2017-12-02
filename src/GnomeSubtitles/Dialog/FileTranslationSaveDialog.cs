@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2009 Pedro Castro
+ * Copyright (C) 2009-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,31 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Core;
+using Mono.Unix;
 using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FileSaveAsDialog : SubtitleFileSaveAsDialog {
+public class FileTranslationSaveDialog : FileSaveDialog {
 
-	public FileSaveAsDialog () : base(SubtitleTextType.Text) {
+	public FileTranslationSaveDialog () : base(Catalog.GetString("Save Translation As")) {
+	}
+
+	protected override string GetStartFolder () {
+		if (Base.Document.HasTranslationFileProperties && Base.Document.TranslationFile.IsPathRooted) {
+			return Base.Document.TranslationFile.Directory;
+		}
+
+		return base.GetStartFolder();
+	}
+
+	protected override string GetStartFilename () {
+		if (Base.Document.HasTranslationFileProperties && !string.IsNullOrEmpty(Base.Document.TranslationFile.Filename)) {
+			return Base.Document.TranslationFile.Filename;
+		}
+
+		return Base.Document.UnsavedTranslationFilename;
 	}
 
 }

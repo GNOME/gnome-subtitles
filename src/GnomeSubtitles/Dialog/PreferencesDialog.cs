@@ -109,7 +109,8 @@ public class PreferencesDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileOpenEncoding = new EncodingComboBox(fileOpenEncodingComboBox, true, additionalActions, fixedEncoding);
+		fileOpenEncoding = new EncodingComboBox(true, additionalActions, fixedEncoding);
+		fileOpenEncodingComboBox = fileOpenEncoding.Widget; //FIXME REMOVE
 		if (fileOpenEncodingOption != ConfigFileOpenEncodingOption.Specific) {
 			fileOpenEncoding.ActiveSelection = (int)fileOpenEncodingOption;
 		}
@@ -126,7 +127,8 @@ public class PreferencesDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileOpenFallbackEncoding = new EncodingComboBox(fileOpenFallbackEncodingComboBox, false, null, fixedEncoding);
+		fileOpenFallbackEncoding = new EncodingComboBox(false, null, fixedEncoding);
+		fileOpenFallbackEncodingComboBox = fileOpenFallbackEncoding.Widget; //FIXME REMOVE
 		fileOpenFallbackEncoding.SelectionChanged += OnDefaultsFileOpenFallbackEncodingChanged;
 	}
 
@@ -141,7 +143,8 @@ public class PreferencesDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileSaveEncoding = new EncodingComboBox(fileSaveEncodingComboBox, false, additionalActions, fixedEncoding);
+		fileSaveEncoding = new EncodingComboBox(false, additionalActions, fixedEncoding);
+		fileSaveEncodingComboBox = fileSaveEncoding.Widget; //FIXME REMOVE
 		if (fileSaveEncodingOption != ConfigFileSaveEncodingOption.Specific) {
 			fileSaveEncoding.ActiveSelection = (int)fileSaveEncodingOption;
 		}
@@ -156,7 +159,8 @@ public class PreferencesDialog : BuilderDialog {
 			fixedFormat = Base.Config.FileSaveFormatFixed;
 		}
 
-		fileSaveFormat = new SubtitleFormatComboBox(fileSaveFormatComboBox, fixedFormat, additionalActions);
+		fileSaveFormat = new SubtitleFormatComboBox(fixedFormat, additionalActions);
+		fileSaveFormatComboBox = fileSaveFormat.Widget; //FIXME REMOVE
 		if (fileSaveFormatOption != ConfigFileSaveFormatOption.Specific) {
 			fileSaveFormat.ActiveSelection = (int)fileSaveFormatOption;
 		}
@@ -171,7 +175,8 @@ public class PreferencesDialog : BuilderDialog {
 			newlineTypeToSelect = Base.Config.FileSaveNewline;
 		}
 
-		fileSaveNewline = new NewlineTypeComboBox(fileSaveNewlineComboBox, newlineTypeToSelect, additionalActions);
+		fileSaveNewline = new NewlineTypeComboBox(newlineTypeToSelect, additionalActions);
+		fileSaveNewlineComboBox = fileSaveNewline.Widget; //FIXME REMOVE
 		if (fileSaveNewlineOption != ConfigFileSaveNewlineOption.Specific) {
 			fileSaveNewline.ActiveSelection = (int)fileSaveNewlineOption;
 		}

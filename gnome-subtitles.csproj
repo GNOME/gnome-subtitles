@@ -63,9 +63,6 @@
     <EmbeddedResource Include="src\Glade\FilePropertiesDialog.glade">
       <LogicalName>FilePropertiesDialog.glade</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\FileSaveAsDialog.glade">
-      <LogicalName>FileSaveAsDialog.glade</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Glade\PreferencesDialog.glade">
       <LogicalName>PreferencesDialog.glade</LogicalName>
     </EmbeddedResource>
@@ -183,7 +180,6 @@
     <Compile Include="src\GnomeSubtitles\Dialog\Dialogs.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\EncodingsDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FilePropertiesDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\FileSaveAsDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationOpenDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\HeadersDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\MessageDialog.cs" />
@@ -192,11 +188,9 @@
     <Compile Include="src\GnomeSubtitles\Dialog\SetLanguageDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\SetTextLanguageDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\SetTranslationLanguageDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\SubtitleFileSaveAsDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsAdjustDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsShiftDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsSynchronizeDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\TranslationSaveAsDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\VideoSeekToDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\BasicErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\ErrorDialog.cs" />
@@ -313,6 +307,8 @@
     <Compile Include="src\GnomeSubtitles\Dialog\BuilderDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileOpenDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\VideoOpenDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FileSaveDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationSaveDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

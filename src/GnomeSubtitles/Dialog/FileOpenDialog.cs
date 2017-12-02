@@ -32,7 +32,7 @@ using System.Text.RegularExpressions;
 namespace GnomeSubtitles.Dialog {
 
 public class FileOpenDialog : BaseDialog {
-	protected FileChooserDialog dialog = null;
+	protected FileChooserDialog dialog;
 
 	private string chosenFilename = String.Empty;
 	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
@@ -45,7 +45,6 @@ public class FileOpenDialog : BaseDialog {
 	private EncodingComboBox encodingComboBox = null;
 
 	/* Widgets */
-	private ComboBoxText fileEncodingComboBox = null;
 	private ComboBoxText videoComboBox = null;
 	private Label videoLabel = null;
 
@@ -63,69 +62,13 @@ public class FileOpenDialog : BaseDialog {
 		base.Init(dialog);
 	}
 
-	private void BuildDialog(string title) {
-		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
-			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
-
-		dialog.DefaultResponse = ResponseType.Ok;
-
-		/* Build content area */
-
-		Grid grid = new Grid();
-		grid.RowSpacing = 6;
-		grid.ColumnSpacing = 6;
-		grid.BorderWidth = 6;
-
-		Label encodingLabel = new Label(Catalog.GetString("Character Encoding:"));
-		encodingLabel.Xalign = 0;
-		grid.Attach(encodingLabel, 0, 0, 1, 1);
-
-		this.videoLabel = new Label(Catalog.GetString("Video To Open:"));
-		this.videoLabel.Xalign = 0;
-		grid.Attach(this.videoLabel, 0, 1, 1, 1);
-
-		this.fileEncodingComboBox = new ComboBoxText();
-		this.fileEncodingComboBox.Hexpand = true;
-		grid.Attach(this.fileEncodingComboBox, 1, 0, 1, 1);
-		this.encodingComboBox = BuildEncodingComboBox();
-
-		this.videoComboBox = new ComboBoxText();
-		this.videoComboBox.Hexpand = true;
-		grid.Attach(this.videoComboBox, 1, 1, 1, 1);
-
-		dialog.ContentArea.Add(grid);
-		dialog.ContentArea.ShowAll();
-
-		/* Other stuff */
-		SetFilters();
-		dialog.SetCurrentFolder(GetStartFolder());
-	}
-
-	private EncodingComboBox BuildEncodingComboBox () {
-		int fixedEncoding = -1;
-		ConfigFileOpenEncoding encodingConfig = Base.Config.FileOpenEncoding;
-		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
-			string encodingName = Base.Config.FileOpenEncodingFixed;
-			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
-			fixedEncoding = encodingDescription.CodePage;
-		}
-
-		EncodingComboBox comboBox = new EncodingComboBox(this.fileEncodingComboBox, true, null, fixedEncoding);
-
-		/* Only need to handle the case of currentLocale, as Fixed is handled before and AutoDetect is the default behaviour */
-		if (encodingConfig == ConfigFileOpenEncoding.CurrentLocale) {
-			comboBox.ActiveSelection = (int)encodingConfig;
-		}
-
-		return comboBox;
-	}
 
 	/* Overriden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Singleton; }
 	}
+
 
 	/* Public properties */
 
@@ -159,10 +102,64 @@ public class FileOpenDialog : BaseDialog {
 
 	/* Private members */
 
+	private void BuildDialog(string title) {
+		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
+
+		dialog.DefaultResponse = ResponseType.Ok;
+
+		//Build content area
+
+		Box box = new Box(Orientation.Horizontal, 6);
+		box.BorderWidth = 6;
+
+		videoLabel = new Label(Catalog.GetString("Video To Open:"));
+		box.Add(videoLabel);
+		videoComboBox = new ComboBoxText();
+		videoComboBox.Hexpand = true;
+		CellRendererText videoComboBoxRenderer = (videoComboBox.Cells[0] as CellRendererText);
+		videoComboBoxRenderer.WidthChars = 20;
+		videoComboBoxRenderer.Ellipsize = Pango.EllipsizeMode.End;
+		box.Add(videoComboBox);
+
+		box.Add(new Label(Catalog.GetString("Character Encoding:")));
+
+		encodingComboBox = BuildEncodingComboBox();
+		box.Add(encodingComboBox.Widget);
+
+		dialog.ContentArea.Add(box);
+		dialog.ContentArea.ShowAll();
+
+		//Other stuff
+
+		SetFilters();
+		dialog.SetCurrentFolder(GetStartFolder());
+	}
+
+	private EncodingComboBox BuildEncodingComboBox () {
+		int fixedEncoding = -1;
+		ConfigFileOpenEncoding encodingConfig = Base.Config.FileOpenEncoding;
+		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
+			string encodingName = Base.Config.FileOpenEncodingFixed;
+			EncodingDescription encodingDescription = EncodingDescription.Empty;
+			Encodings.Find(encodingName, ref encodingDescription);
+			fixedEncoding = encodingDescription.CodePage;
+		}
+
+		EncodingComboBox comboBox = new EncodingComboBox(true, null, fixedEncoding);
+
+		/* Only need to handle the case of currentLocale, as Fixed is handled before and AutoDetect is the default behaviour */
+		if (encodingConfig == ConfigFileOpenEncoding.CurrentLocale) {
+			comboBox.ActiveSelection = (int)encodingConfig;
+		}
+
+		return comboBox;
+	}
+
 	private void FillVideoComboBoxBasedOnCurrentFolder () {
 		videoFiles = null;
 		videoFilenames = null;
-		(videoComboBox.Model as ListStore).Clear();
+		videoComboBox.RemoveAll();
 
 		string folder = String.Empty;
 		try {
@@ -270,6 +267,9 @@ public class FileOpenDialog : BaseDialog {
 		dialog.SelectionChanged += OnSelectionChanged;
 	}
 
+	/* Note: It would be nice show a separator after "All Subtitle Files" but filters
+	 * don't allow to set a separator function like we do in a normal combo box.
+	 */
 	private void SetFilters () {
 		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
 		FileFilter[] filters = new FileFilter[types.Length + 2];

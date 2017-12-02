@@ -190,7 +190,7 @@ public class MainUi {
     /// <remarks>After saving, the timing mode is set to the timing mode of the subtitle format using when saving.</remarks>
     /// <returns>Whether the file was saved.</returns>
     public bool SaveAs () {
-		FileSaveAsDialog dialog = Base.Dialogs.Get(typeof(FileSaveAsDialog)) as FileSaveAsDialog;
+		FileSaveDialog dialog = Base.Dialogs.Get(typeof(FileSaveDialog)) as FileSaveDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
 		if (properties != null) {
 			Save(properties);
@@ -247,7 +247,7 @@ public class MainUi {
     /// <summary>Executes a translation SaveAs operation.</summary>
     /// <returns>Whether the translation file was saved or not.</returns>
     public bool TranslationSaveAs () {
-		TranslationSaveAsDialog dialog = Base.Dialogs.Get(typeof(TranslationSaveAsDialog)) as TranslationSaveAsDialog;
+		FileTranslationSaveDialog dialog = Base.Dialogs.Get(typeof(FileTranslationSaveDialog)) as FileTranslationSaveDialog;
 		FileProperties properties = ShowSaveAsDialog(dialog);
 		if (properties != null) {
 			SaveTranslation(properties);
@@ -354,7 +354,7 @@ public class MainUi {
 	/// <summary>Displays a SaveAs dialog and gets the chosen options as <cref="FileProperties" />.</summary>
 	/// <param name="dialog">The dialog to display.</param>
 	/// <returns>The chosen file properties, or null in case SaveAs was canceled.</returns>
-	private FileProperties ShowSaveAsDialog (SubtitleFileSaveAsDialog dialog) {
+	private FileProperties ShowSaveAsDialog (FileSaveDialog dialog) {
 		dialog.Show();
 		bool toSaveAs = dialog.WaitForResponse();
 		if (!toSaveAs)

@@ -38,19 +38,18 @@ public class EncodingComboBox {
 	private int fixedEncoding = -1; //Codepage of an encoding that must be present (-1 if not)
 	private ArrayList configShownEncodings = null; //Encodings shown in menu from config
 
-	public EncodingComboBox (ComboBoxText comboBox, bool hasAutoDetect, string[] additionalActions, int fixedEncoding) {
-		this.comboBox = comboBox;
+	public EncodingComboBox (bool hasAutoDetect, string[] additionalActions, int fixedEncoding) {
+		this.comboBox = new ComboBoxText();
 		this.additionalActions = additionalActions;
 		this.hasAutoDetect = hasAutoDetect;
 		this.fixedEncoding = fixedEncoding;
 
-		InitComboBoxModel();
 		SetActionCount();
 		SetComboBox(Base.Config.FileEncodingsShownInMenu);
 		ConnectHandlers();
 	}
 
-	public EncodingComboBox (ComboBoxText comboBox, bool hasAutoDetect) : this(comboBox, hasAutoDetect, null, -1) {
+	public EncodingComboBox (bool hasAutoDetect) : this(hasAutoDetect, null, -1) {
 	}
 
 
@@ -60,6 +59,10 @@ public class EncodingComboBox {
 
 
 	/* Public properties */
+
+	public ComboBoxText Widget {
+		get { return comboBox; }
+	}
 
 	public bool HasChosenAction {
 		get { return comboBox.Active < actionCount; }
@@ -95,10 +98,6 @@ public class EncodingComboBox {
 
 
 	/* Private members */
-
-	private void InitComboBoxModel () {
-		ComboBoxUtil.InitComboBox(comboBox);
-	}
 
 	private void SetActionCount () {
 		this.actionCount = (hasAutoDetect ? 1 : 0) + (additionalActions != null ? additionalActions.Length : 0);
@@ -200,8 +199,6 @@ public class EncodingComboBox {
 	}
 
 	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void ConnectHandlers () {
 		comboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;

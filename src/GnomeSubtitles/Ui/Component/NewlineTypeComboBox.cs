@@ -30,12 +30,11 @@ public class NewlineTypeComboBox {
 	private NewlineType newlineTypeToSelect = NewlineType.Unknown;
 	private string[] additionalActions = null;
 
-	public NewlineTypeComboBox (ComboBoxText comboBox, NewlineType newlineTypeToSelect, string[] additionalActions) {
-		this.comboBox = comboBox;
+	public NewlineTypeComboBox (NewlineType newlineTypeToSelect, string[] additionalActions) {
+		this.comboBox = new ComboBoxText();
 		this.newlineTypeToSelect = newlineTypeToSelect;
 		this.additionalActions = additionalActions;
 
-		InitComboBoxModel();
 		FillComboBox();
 		ConnectHandlers();
 	}
@@ -46,6 +45,10 @@ public class NewlineTypeComboBox {
 
 
 	/* Public properties */
+
+	public ComboBoxText Widget {
+		get { return comboBox; }
+	}
 
 	public bool HasChosenAction {
 		get { return comboBox.Active < GetActionCount(); }
@@ -81,10 +84,6 @@ public class NewlineTypeComboBox {
 
 	/* Private members */
 
-	private void InitComboBoxModel () {
-		ComboBoxUtil.InitComboBox(comboBox);
-	}
-
 	private void FillComboBox () {
 		DisconnectComboBoxChangedSignal();
 
@@ -101,8 +100,8 @@ public class NewlineTypeComboBox {
 		}
 
 		/* Prepare newline types to add */
-		string mac = "Macintosh";
-		string unix = "Unix";
+		string mac = "Mac OS Classic";
+		string unix = "Unix/Linux";
 		string windows = "Windows";
 		string systemDefault = " (" + Catalog.GetString("System Default") + ")";
 		NewlineType systemNewline = Core.Util.GetSystemNewlineType();
@@ -155,8 +154,6 @@ public class NewlineTypeComboBox {
 
 
 	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void ConnectHandlers () {
 		comboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;

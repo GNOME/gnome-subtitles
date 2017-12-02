@@ -30,13 +30,13 @@ public class SubtitleFormatComboBox {
 	private string[] additionalActions = null; //
 	private SubtitleType fixedSubtitleType = SubtitleType.Unknown; //A subtitle type that must be selected
 
-	public SubtitleFormatComboBox (ComboBoxText comboBox, SubtitleType fixedSubtitleType, string[] additionalActions) {
-		this.comboBox = comboBox;
+	public SubtitleFormatComboBox (SubtitleType fixedSubtitleType, string[] additionalActions) {
+		this.comboBox = new ComboBoxText();
 		this.fixedSubtitleType = fixedSubtitleType;
 		this.additionalActions = additionalActions;
 
-		InitComboBoxModel();
-		SetComboBox();
+		this.subtitleTypes = Subtitles.AvailableTypesSorted;
+		FillComboBox();
 		ConnectHandlers();
 	}
 
@@ -46,6 +46,10 @@ public class SubtitleFormatComboBox {
 
 
 	/* Public properties */
+
+	public ComboBoxText Widget {
+		get { return comboBox; }
+	}
 
 	public bool HasChosenAction {
 		get { return comboBox.Active < GetActionCount(); }
@@ -74,15 +78,6 @@ public class SubtitleFormatComboBox {
 
 	/* Private members */
 
-	private void InitComboBoxModel () {
-		ComboBoxUtil.InitComboBox(comboBox);
-	}
-
-	private void SetComboBox () {
-		subtitleTypes = Subtitles.AvailableTypesSorted;
-		FillComboBox();
-	}
-
 	private void FillComboBox () {
 		DisconnectComboBoxChangedSignal();
 
@@ -104,7 +99,7 @@ public class SubtitleFormatComboBox {
 
 		/* Add subtitle formats */
 		foreach (SubtitleTypeInfo typeInfo in subtitleTypes) {
-			comboBox.AppendText(typeInfo.Name + " (" + typeInfo.ExtensionsAsText + ")");
+			comboBox.AppendText(typeInfo.Name + " (" + ConcatenateExtensions(typeInfo.Extensions) + ")");
 			if (typeInfo.Type == fixedSubtitleType) {
 				activeItem = currentItem;
 			}
@@ -134,10 +129,21 @@ public class SubtitleFormatComboBox {
 		return (additionalActions != null ? additionalActions.Length : 0);
 	}
 
+	private string ConcatenateExtensions (string[] extensions) {
+		string result = "";
+		if (extensions == null) {
+			return result;
+		}
+
+		foreach (string extension in extensions) {
+			result += (String.IsNullOrEmpty(result) ? "" : ", ") + "." + extension;
+		}
+
+		return result;
+	}
+
 
 	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void ConnectHandlers () {
 		comboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;

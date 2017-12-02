@@ -28,14 +28,6 @@ public class ComboBoxUtil {
 		return ((text != null) && (text.CompareTo("-") == 0));
 	}
 
-	public static void InitComboBox (ComboBox comboBox) {
-		comboBox.Clear();
-		CellRendererText cell = new CellRendererText();
-		comboBox.PackStart(cell, false);
-		comboBox.AddAttribute(cell, "text", 0);
-		comboBox.Model = new ListStore(typeof(string));
-	}
-
 }
 
 }

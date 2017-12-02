@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008,2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,12 +62,6 @@ public class SubtitleTypeInfo : IComparable {
 		get { return extensions; }
 	}
 
-	/// <summary>A comma-separated list of the extensions the subtitle type uses.
-	/// The prefix "*." is added to every extension.</summary>
-	public string ExtensionsAsText {
-		get { return ExtensionsToText(); }
-	}
-
 	/// <summary>The preferred extension, which is the first on the list.</summary>
 	public string PreferredExtension {
 		get { return extensions[0]; }
@@ -105,22 +99,6 @@ public class SubtitleTypeInfo : IComparable {
 	internal SubtitleTypeInfo (SubtitleFormat format) : this(format.Name, format.Type, format.Mode, format.Extensions) {
 	}
 
-	/* Private members */
-
-	private string ExtensionsToText () {
-		if (extensions == null)
-			return String.Empty;
-
-		string text = ExtensionToText(extensions[0]);
-		for (int count = 1 ; count < extensions.Length ; count++)
-			text += ", " + ExtensionToText(extensions[count]);
-
-		return text;
-	}
-
-	private string ExtensionToText (string extension) {
-		return "*." + extension;
-	}
 }
 
 }
