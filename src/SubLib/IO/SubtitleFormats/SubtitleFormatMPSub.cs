@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008,2011 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,9 @@ namespace SubLib.IO.SubtitleFormats {
 
 //TODO: warn when opening files with comments, warn when saving lines with '#' as they will be ignored/treated as comments
 internal class SubtitleFormatMPSub : SubtitleFormat {
+
+	public const string HeaderMediaTypeAudio = "AUDIO";
+	public const string HeaderMediaTypeVideo = "VIDEO";
 
 	internal SubtitleFormatMPSub () {
 		name = "MPSub";
@@ -57,9 +60,9 @@ internal class SubtitleFormatMPSub : SubtitleFormat {
 		Headers headers = subtitleProperties.Headers;
 		string format = (fileProperties.TimingMode == TimingMode.Times ? "TIME" : subtitleProperties.CurrentFrameRate.ToString());
 		return "TITLE=" + headers.Title + "\n" +
-			"FILE=" + headers.FileProperties + "\n" +
+			"FILE=" + headers.MPSubFileProperties + "\n" +
 			"AUTHOR=" + headers.Author + "\n" +
-			"TYPE=" + headers.MediaType + "\n" +
+			"TYPE=" + headers.MPSubMediaType + "\n" +
 			"FORMAT=" + format + "\n" +
 			"NOTE=" + headers.Comment + "\n\n";
 	}

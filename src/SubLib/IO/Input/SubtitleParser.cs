@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2009,2011 Pedro Castro
+ * Copyright (C) 2005-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -157,21 +157,22 @@ internal class SubtitleParser {
 
 	private bool ParseHeaderSubViewer1 (Match match, ParsingProperties properties, Headers headers) {
 		string result = String.Empty;
+		int intResult = 0;
 
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "Author", ref result))
 			headers.Author = result;
 		else if (ParseGroup(match, "Source", ref result))
-			headers.VideoSource = result;
+			headers.Source = result;
 		else if (ParseGroup(match, "Program", ref result))
 			headers.Program = result;
 		else if (ParseGroup(match, "FilePath", ref result))
-			headers.SubtitlesSource = result;
-		else if (ParseGroup(match, "Delay", ref result))
-			headers.DelayAsText = result;
-		else if (ParseGroup(match, "CdTrack", ref result))
-			headers.CDTrackAsText = result;
+			headers.FilePath = result;
+		else if (ParseGroup(match, "Delay", ref intResult))
+			headers.Delay = intResult;
+		else if (ParseGroup(match, "CdTrack", ref intResult))
+			headers.CDTrack = intResult;
 		else {
 			return false;
 		}
@@ -181,18 +182,19 @@ internal class SubtitleParser {
 	private bool ParseHeaderSubViewer2 (Match match, ParsingProperties properties) {
 		Headers headers = properties.Headers;
 		string result = String.Empty;
+		int intResult = 0;
 
 		if (!ParseHeaderSubViewer1(match, properties, headers)) {
 			if (ParseGroup(match, "Comment", ref result))
 				headers.Comment = result;
 			else if (ParseGroup(match, "FontName", ref result))
-				headers.FontName = result;
+				headers.SubViewer2FontName = result;
 			else if (ParseGroup(match, "FontColor", ref result))
-				headers.FontColor = result;
+				headers.SubViewer2FontColor = result;
 			else if (ParseGroup(match, "FontStyle", ref result))
-				headers.FontStyle = result;
-			else if (ParseGroup(match, "FontSize", ref result))
-				headers.FontSizeAsText = result;
+				headers.SubViewer2FontStyle = result;
+			else if (ParseGroup(match, "FontSize", ref intResult))
+				headers.SubViewer2FontSize = intResult;
 			else
 				return false;
 		}
@@ -208,7 +210,7 @@ internal class SubtitleParser {
 		else if (ParseGroup(match, "Author", ref result))
 			headers.Author = result;
 		else if (ParseGroup(match, "Source", ref result))
-			headers.VideoSource = result;
+			headers.Source = result;
 		else if (ParseGroup(match, "Date", ref result))
 			headers.Date = result;
 		else {
@@ -224,13 +226,13 @@ internal class SubtitleParser {
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "Author", ref result))
-			headers.MovieAuthor = result;
+			headers.Author = result;
 		else if (ParseGroup(match, "Artist", ref result))
 			headers.Artist = result;
 		else if (ParseGroup(match, "Album", ref result))
 			headers.Album = result;
 		else if (ParseGroup(match, "Maker", ref result))
-			headers.Author = result;
+			headers.FileCreator = result;
 		else if (ParseGroup(match, "Version", ref result))
 			headers.Version = result;
 		else if (ParseGroup(match, "Program", ref result))
@@ -238,6 +240,7 @@ internal class SubtitleParser {
 		else {
 			return false;
 		}
+
 		return true;
 	}
 
@@ -249,11 +252,11 @@ internal class SubtitleParser {
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "File", ref result))
-			headers.FileProperties = result;
+			headers.MPSubFileProperties = result;
 		else if (ParseGroup(match, "Author", ref result))
 			headers.Author = result;
 		else if (ParseGroup(match, "MediaType", ref result))
-			headers.MediaType = result;
+			headers.MPSubMediaType = result;
 		else if (ParseGroup(match, "Note", ref result))
 			headers.Comment = result;
 		//Used to detect if a subtitles' timing mode is Times in the case of a format that supports both
@@ -278,27 +281,27 @@ internal class SubtitleParser {
 		if (ParseGroup(match, "Title", ref result))
 			headers.Title = result;
 		else if (ParseGroup(match, "OriginalScript", ref result))
-			headers.OriginalScript = result;
+			headers.SubStationAlphaOriginalScript = result;
 		else if (ParseGroup(match, "OriginalTranslation", ref result))
-			headers.OriginalTranslation = result;
+			headers.SubStationAlphaOriginalTranslation = result;
 		else if (ParseGroup(match, "OriginalEditing", ref result))
-			headers.OriginalEditing = result;
+			headers.SubStationAlphaOriginalEditing = result;
 		else if (ParseGroup(match, "OriginalTiming", ref result))
-			headers.OriginalTiming = result;
+			headers.SubStationAlphaOriginalTiming = result;
 		else if (ParseGroup(match, "OriginalScriptChecking", ref result))
-			headers.OriginalScriptChecking = result;
+			headers.SubStationAlphaOriginalScriptChecking = result;
 		else if (ParseGroup(match, "ScriptUpdatedBy", ref result))
-			headers.ScriptUpdatedBy = result;
+			headers.SubStationAlphaScriptUpdatedBy = result;
 		else if (ParseGroup(match, "Collisions", ref result))
-			headers.Collisions = result;
+			headers.SubStationAlphaCollisions = result;
 		else if (ParseGroup(match, "PlayResX", ref intResult))
-			headers.PlayResX = intResult;
+			headers.SubStationAlphaPlayResX = intResult;
 		else if (ParseGroup(match, "PlayResY", ref intResult))
-			headers.PlayResY = intResult;
+			headers.SubStationAlphaPlayResY = intResult;
 		else if (ParseGroup(match, "PlayDepth", ref intResult))
-			headers.PlayDepth = intResult;
+			headers.SubStationAlphaPlayDepth = intResult;
 		else if (ParseGroup(match, "Timer", ref result))
-			headers.Timer = result;
+			headers.SubStationAlphaTimer = result;
 		else {
 			return false;
 		}

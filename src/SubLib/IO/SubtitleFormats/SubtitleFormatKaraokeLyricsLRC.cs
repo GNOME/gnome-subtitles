@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008,2011 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,10 +56,10 @@ internal class SubtitleFormatKaraokeLyricsLRC : SubtitleFormat {
 	internal override string HeadersToString (SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		Headers headers = subtitleProperties.Headers;
 		return "[ti: " + headers.Title + "]\n" +
-			"[au:" + headers.MovieAuthor + "]\n" +
+			"[au:" + headers.Author + "]\n" +
 			"[ar:" + headers.Artist + "]\n" +
 			"[al:" + headers.Album + "]\n" +
-			"[by:" + headers.Author + "]\n" +
+			"[by:" + headers.FileCreator + "]\n" +
 			"[ve:" + headers.Version + "]\n" +
 			"[re:" + headers.Program + "]\n";
 	}

@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,9 +60,9 @@ internal class SubtitleFormatSubViewer1 : SubtitleFormat {
 		Headers headers = subtitleProperties.Headers;
 		return "[TITLE]\n" + headers.Title + "\n" +
 			"[AUTHOR]\n" + headers.Author + "\n" +
-			"[SOURCE]\n" + headers.VideoSource + "\n" +
+			"[SOURCE]\n" + headers.Source + "\n" +
 			"[PRG]\n" + headers.Program + "\n" +
-			"[FILEPATH]\n" + headers.SubtitlesSource + "\n" +
+			"[FILEPATH]\n" + headers.FilePath + "\n" +
 			"[DELAY]\n" + headers.Delay + "\n" +
 			"[CD TRACK]\n" + headers.CDTrack + "\n";
 	}

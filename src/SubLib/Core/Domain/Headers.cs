@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,309 +20,139 @@
 using System;
 using System.IO;
 using System.Text;
+using SubLib.IO.SubtitleFormats;
 
 namespace SubLib.Core.Domain {
+
+public enum HeadersMediaType { Audio, Video }
 
 /// <summary>Represents the headers of the supported subtitle formats.</summary>
 public class Headers : ICloneable {
 
-	private string title = String.Empty;
-	private string author = String.Empty;
-	private string movieAuthor = String.Empty;
-	private string artist = String.Empty;
-	private string album = String.Empty;
-	private string videoSource = String.Empty;
-	private string subtitlesSource = String.Empty;
-	private string program = String.Empty;
-	private string version = String.Empty;
-	private string comment = String.Empty;
-	private string fontColor = "&HFFFFFF";
-	private string fontStyle = "bd";
-	private string fontName = "Tahoma";
-	private string fileProperties = String.Empty;
-	private string mediaType = "VIDEO";
-	private string originalScript = "<unknown>";
-	private string originalTranslation = String.Empty;
-	private string originalEditing = String.Empty;
-	private string originalTiming = String.Empty;
-	private string originalScriptChecking = String.Empty;
-	private string scriptUpdatedBy = String.Empty;
-	private string collisions = String.Empty;
-	private string timer = String.Empty;
-	private string frameRate = String.Empty;
-	private string date = DateTime.Today.ToString("yyyy-MM-dd");
-	private int playResX = 0;
-	private int playResY = 0;
-	private int playDepth = 0;
-	private int fontSize = 24;
-	private int delay = 0;
-	private int cdTrack = 0;
-
-
-	/* Public properties */
+	/* Common properties */
 
 	/// <summary>The movie's title.</summary>
-	public string Title {
-		get { return title; }
-		set { title = value; }
-	}
+	public string Title { get; set; }
 
 	/// <summary>The subtitles' author.</summary>
-	public string Author {
-		get { return author; }
-		set { author = value; }
-	}
-
-	/// <summary>The movie's author.</summary>
-	public string MovieAuthor {
-		get { return movieAuthor; }
-		set { movieAuthor = value; }
-	}
+	public string Author { get; set; }
 
 	/// <summary>The subtitles' artist.</summary>
-	public string Artist {
-		get { return artist; }
-		set { artist = value; }
-	}
+	public string Artist { get; set; }
 
 	/// <summary>The subtitles' album.</summary>
-	public string Album {
-		get { return album; }
-		set { album = value; }
-	}
+	public string Album { get; set; }
 
-	/// <summary>The video' source.</summary>
-	public string VideoSource {
-		get { return videoSource; }
-		set { videoSource = value; }
-	}
-
-	/// <summary>The subtitles' source.</summary>
-	public string SubtitlesSource {
-		get { return subtitlesSource; }
-		set { subtitlesSource = value; }
-	}
+	/// <summary>The subtitles' file creator.</summary>
+	public string FileCreator { get; set; }
 
 	/// <summary>The name of the subtitles' program.</summary>
-	public string Program {
-		get { return program; }
-		set { program = value; }
-	}
+	public string Program { get; set; }
 
-	/// <summary>The version of the subtitles.</summary>
-	public string Version {
-		get { return version; }
-		set { version = value; }
-	}
+	/// <summary>Th subtitles' version.</summary>
+	public string Version { get; set; }
+
+	/// <summary>The movie's frame rate.</summary>
+	public string FrameRate { get; set; }
+
+	/// <summary>The subtitles' date.</summary>
+	public string Date { get; set; } = DateTime.Today.ToString("yyyy-MM-dd");
+
+	/// <summary>The video source.</summary>
+	public string Source { get; set; }
+
+	/// <summary>The subtitles' file path.</summary>
+	public string FilePath { get; set; }
 
 	/// <summary>A comment or note on the subtitles.</summary>
-	public string Comment {
-		get { return comment; }
-		set { comment = value; }
-	}
+	public string Comment { get; set; }
 
-	/// <summary>The subtitles' font color.</summary>
-	public string FontColor {
-		get { return fontColor; }
-		set { fontColor = value; }
-	}
+	/// <summary>The delay of the subtitles.</summary>
+	public int Delay { get; set; } = 0;
 
-	/// <summary>The subtitles' font style.</summary>
-	public string FontStyle {
-		get { return fontStyle; }
-		set { fontStyle = value; }
-	}
-
-	/// <summary>The subtitles' font name.</summary>
-	public string FontName {
-		get { return fontName; }
-		set { fontName = value; }
-	}
-
-	/// <summary>The File properties, in the format 'size,md5'.</summary>
-	public string FileProperties {
-		get { return fileProperties; }
-		set { fileProperties = value; }
-	}
+	/// <summary>The CD track of the subtitles.</summary>
+	public int CDTrack { get; set; } = 1;
 
 	/// <summary>The Media Type of the subtitles, which can be 'VIDEO' or 'AUDIO'.</summary>
 	/// <remarks>This property is only set if the value is 'VIDEO' or 'AUDIO'. It's case insensitive.</remarks>
-	public string MediaType {
-		get { return mediaType; }
+	public HeadersMediaType? MediaType { get; set; } = HeadersMediaType.Video;
+
+
+	/* SubViewer 2 */
+
+	/// <summary>The subtitles' font color.</summary>
+	public string SubViewer2FontColor { get; set; } = "&HFFFFFF";
+
+	/// <summary>The subtitles' font style.</summary>
+	public string SubViewer2FontStyle { get; set; } = "bd";
+
+	/// <summary>The subtitles' font name.</summary>
+	public string SubViewer2FontName { get; set; } = "Tahoma";
+
+	/// <summary>The subtitles' font size.</summary>
+	public int SubViewer2FontSize { get; set; } = 24;
+
+
+	/* MPSub */
+
+	/// <summary>The File properties, in the format 'size,md5'.</summary>
+	public string MPSubFileProperties { get; set; }
+
+	public string MPSubMediaType {
+		get {
+			if (MediaType == null) {
+				return null;
+			} else {
+				return MediaType.ToString().ToUpper();
+			}
+		}
 		set {
-			string type = value.ToUpper();
-			if (type.Equals("VIDEO") || type.Equals("AUDIO"))
-				mediaType = type;
+			if (SubtitleFormatMPSub.HeaderMediaTypeVideo.Equals(value, StringComparison.InvariantCultureIgnoreCase)) {
+				MediaType = HeadersMediaType.Video;
+			} else if (SubtitleFormatMPSub.HeaderMediaTypeAudio.Equals(value, StringComparison.InvariantCultureIgnoreCase)) {
+				MediaType = HeadersMediaType.Audio;
+			} else {
+				MediaType = null;
+			}
 		}
 	}
 
+
+	/* Sub Station Alpha */
+
 	/// <summary>The Original Script of the subtitles.</summary>
-	public string OriginalScript {
-		get { return originalScript; }
-		set { originalScript = value; }
-	}
+	public string SubStationAlphaOriginalScript { get; set; }
 
 	/// <summary>The Original Translation of the subtitles.</summary>
-	public string OriginalTranslation {
-		get { return originalTranslation; }
-		set { originalTranslation = value; }
-	}
+	public string SubStationAlphaOriginalTranslation { get; set; }
 
 	/// <summary>The Original Editing of the subtitles.</summary>
-	public string OriginalEditing {
-		get { return originalEditing; }
-		set { originalEditing = value; }
-	}
+	public string SubStationAlphaOriginalEditing { get; set; }
 
 	/// <summary>The Original Timing of the subtitles.</summary>
-	public string OriginalTiming {
-		get { return originalTiming; }
-		set { originalTiming = value; }
-	}
+	public string SubStationAlphaOriginalTiming { get; set; }
 
 	/// <summary>The Original Script Checking of the subtitles.</summary>
-	public string OriginalScriptChecking {
-		get { return originalScriptChecking; }
-		set { originalScriptChecking = value; }
-	}
+	public string SubStationAlphaOriginalScriptChecking { get; set; }
 
 	/// <summary>The Script Updated By of the subtitles.</summary>
-	public string ScriptUpdatedBy {
-		get { return scriptUpdatedBy; }
-		set { scriptUpdatedBy = value; }
-	}
+	public string SubStationAlphaScriptUpdatedBy { get; set; }
 
 	/// <summary>The Collisions of the subtitles.</summary>
-	public string Collisions {
-		get { return collisions; }
-		set { collisions = value; }
-	}
+	public string SubStationAlphaCollisions { get; set; }
 
 	/// <summary>The Timer of the subtitles.</summary>
-	public string Timer {
-		get { return timer; }
-		set { timer = value; }
-	}
+	public string SubStationAlphaTimer { get; set; }
 
-	/// <summary>The movie's frame rate.</summary>
-	public string FrameRate {
-		get { return frameRate; }
-		set { frameRate = value; }
-	}
-
-	/// <summary>The subtitles' date.</summary>
-	public string Date {
-		get { return date; }
-		set { date = value; }
-	}
 
 	/// <summary>The PlayResX of the subtitles.</summary>
-	public int PlayResX {
-		get { return playResX; }
-		set { playResX = value; }
-	}
-
-	/// <summary>The PlayResX of the subtitles as text.</summary>
-	public string PlayResXAsText {
-		get { return playResX.ToString(); }
-		set {
-			try {
-				playResX = Convert.ToInt32(value);
-			}
-			catch (Exception) {
-			}
-		 }
-	}
+	public int SubStationAlphaPlayResX { get; set; } = 0;
 
 	/// <summary>The PlayResY of the subtitles.</summary>
-	public int PlayResY {
-		get { return playResY; }
-		set { playResY = value; }
-	}
-
-	/// <summary>The PlayResY of the subtitles as text.</summary>
-	public string PlayResYAsText {
-		get { return playResY.ToString(); }
-		set {
-			try {
-				playResY = Convert.ToInt32(value);
-			}
-			catch (Exception) {
-			}
-		 }
-	}
+	public int SubStationAlphaPlayResY { get; set; } = 0;
 
 	/// <summary>The PlayDepth of the subtitles.</summary>
-	public int PlayDepth {
-		get { return playDepth; }
-		set { playDepth = value; }
-	}
-
-	/// <summary>The PlayResY of the subtitles as text.</summary>
-	public string PlayDepthAsText {
-		get { return playDepth.ToString(); }
-		set {
-			try {
-				playDepth = Convert.ToInt32(value);
-			}
-			catch (Exception) {
-			}
-		 }
-	}
-
-	/// <summary>The subtitles' font size.</summary>
-	public int FontSize {
-		get { return fontSize; }
-		set { fontSize = value; }
-	}
-
-	/// <summary>The subtitles' font size as text.</summary>
-	public string FontSizeAsText {
-		get { return fontSize.ToString(); }
-		set {
-			try {
-				fontSize = Convert.ToInt32(value);
-			}
-			catch (Exception) {
-			}
-		 }
-	}
-
-	/// <summary>The delay of the subtitles.</summary>
-	public int Delay {
-		get { return delay; }
-		set { delay = value; }
-	}
-
-	/// <summary>The delay of the subtitles as text.</summary>
-	public string DelayAsText {
-		get { return delay.ToString(); }
-		set {
-			try {
-				delay = Convert.ToInt32(value);
-			}
-			catch (Exception) {
-			}
-		 }
-	}
-
-	/// <summary>The CD track of the subtitles.</summary>
-	public int CDTrack {
-		get { return cdTrack; }
-		set { cdTrack = value; }
-	}
-
-	/// <summary>The CD track of the subtitles as text.</summary>
-	public string CDTrackAsText {
-		get { return cdTrack.ToString(); }
-		set {
-			try {
-				cdTrack = Convert.ToInt32(value);
-			}
-			catch (Exception) {
-			}
-		 }
-	}
+	public int SubStationAlphaPlayDepth { get; set; } = 0;
 
 
 	/* Public methods */

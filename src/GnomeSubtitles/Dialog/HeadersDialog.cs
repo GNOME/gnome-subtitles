@@ -19,251 +19,267 @@
 
 using GnomeSubtitles.Core;
 using System;
-//using Glade;
 using Gtk;
 using SubLib.Core.Domain;
+using Mono.Unix;
+using System.Reflection;
+using SubLib.IO.SubtitleFormats;
 
 namespace GnomeSubtitles.Dialog {
 
-public class HeadersDialog : BuilderDialog {
-	private Headers headers = null;
+public class HeadersDialog : BaseDialog {
 
-	/* Constant strings */
-	private const string gladeFilename = "HeadersDialog.glade";
-	private const string mpSubAudioTag = "AUDIO";
-	private const string mpSubVideoTag = "VIDEO";
+	private Gtk.Dialog dialog;
+	private Headers headers;
 
-	/* Widgets */
+	//Property Changed event
+	private delegate void PropertyChangedHandler (object sender, string property, object newValue);
+	private event PropertyChangedHandler PropertyChanged;
 
-	/* KaraokeLyricsLRC fields */
-	[Builder.Object] private Entry entryKaraokeLRCTitle = null;
-	[Builder.Object] private Entry entryKaraokeLRCAuthor = null;
-	[Builder.Object] private Entry entryKaraokeLRCArtist = null;
-	[Builder.Object] private Entry entryKaraokeLRCAlbum = null;
-	[Builder.Object] private Entry entryKaraokeLRCMaker = null;
-	[Builder.Object] private Entry entryKaraokeLRCVersion = null;
-	[Builder.Object] private Entry entryKaraokeLRCProgram = null;
+	public HeadersDialog () : base() {
+		headers = (Headers)Base.Document.Subtitles.Properties.Headers.Clone();
 
-	/* KaraokeLyricsVKT fields */
-	[Builder.Object] private Entry entryKaraokeVKTFrameRate = null;
-	[Builder.Object] private Entry entryKaraokeVKTAuthor = null;
-	[Builder.Object] private Entry entryKaraokeVKTSource = null;
-	[Builder.Object] private Entry entryKaraokeVKTDate = null;
+		BuildDialog();
 
-	/* MPSub fields */
-	[Builder.Object] private Entry entryMPSubTitle = null;
-	[Builder.Object] private Entry entryMPSubFile = null;
-	[Builder.Object] private Entry entryMPSubAuthor = null;
-	[Builder.Object] private Entry entryMPSubNote = null;
-	[Builder.Object] private ComboBox comboBoxMPSubType = null;
-
-	/* SubStationAlphaASS fields */
-	[Builder.Object] private Entry entrySSAASSTitle = null;
-	[Builder.Object] private Entry entrySSAASSOriginalScript = null;
-	[Builder.Object] private Entry entrySSAASSOriginalTranslation = null;
-	[Builder.Object] private Entry entrySSAASSOriginalEditing = null;
-	[Builder.Object] private Entry entrySSAASSOriginalTiming = null;
-	[Builder.Object] private Entry entrySSAASSOriginalScriptChecking = null;
-	[Builder.Object] private Entry entrySSAASSScriptUpdatedBy = null;
-	[Builder.Object] private Entry entrySSAASSCollisions = null;
-	[Builder.Object] private Entry entrySSAASSTimer = null;
-	[Builder.Object] private SpinButton spinButtonSSAASSPlayResX = null;
-	[Builder.Object] private SpinButton spinButtonSSAASSPlayResY = null;
-	[Builder.Object] private SpinButton spinButtonSSAASSPlayDepth = null;
-
-	/* SubViewer1 fields */
-	[Builder.Object] private Entry entrySubViewer1Title = null;
-	[Builder.Object] private Entry entrySubViewer1Author = null;
-	[Builder.Object] private Entry entrySubViewer1Source = null;
-	[Builder.Object] private Entry entrySubViewer1Program = null;
-	[Builder.Object] private Entry entrySubViewer1FilePath = null;
-	[Builder.Object] private SpinButton spinButtonSubViewer1Delay = null;
-	[Builder.Object] private SpinButton spinButtonSubViewer1CDTrack = null;
-
-	/* SubViewer2 fields */
-	[Builder.Object] private Entry entrySubViewer2Title = null;
-	[Builder.Object] private Entry entrySubViewer2Author = null;
-	[Builder.Object] private Entry entrySubViewer2Source = null;
-	[Builder.Object] private Entry entrySubViewer2Program = null;
-	[Builder.Object] private Entry entrySubViewer2FilePath = null;
-	[Builder.Object] private Entry entrySubViewer2Comment = null;
-	[Builder.Object] private Entry entrySubViewer2FontName = null;
-	[Builder.Object] private Entry entrySubViewer2FontColor = null;
-	[Builder.Object] private Entry entrySubViewer2FontStyle = null;
-	[Builder.Object] private SpinButton spinButtonSubViewer2Delay = null;
-	[Builder.Object] private SpinButton spinButtonSubViewer2CDTrack = null;
-	[Builder.Object] private SpinButton spinButtonSubViewer2FontSize = null;
-
-
-	public HeadersDialog () : base(gladeFilename) {
-		headers = Base.Document.Subtitles.Properties.Headers;
-		LoadHeaders();
+		base.Init(dialog);
 	}
 
 
 	/* Private members */
 
-	private void LoadHeaders () {
-		LoadKaraokeLRCHeaders();
-		LoadKaraokeVKTHeaders();
-		LoadMPSubHeaders();
-		LoadSSAASSHeaders();
-		LoadSubViewer1Headers();
-		LoadSubViewer2Headers();
+	private void BuildDialog() {
+		dialog = new Gtk.Dialog(Catalog.GetString("Headers"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-apply"), ResponseType.Ok);
+
+		dialog.DefaultResponse = ResponseType.Ok;
+		dialog.DefaultWidth = 600;
+		dialog.DefaultHeight = 550;
+
+		Notebook notebook = new Notebook();
+		notebook.Expand = true;
+		notebook.TabPos = PositionType.Left;
+		notebook.BorderWidth = 6;
+
+		Grid grid;
+
+		//Karaoke Lyrics LRC
+		grid = CreatePageWithGrid(notebook, "Karaoke Lyrics LRC");
+		grid.Attach(CreateLabel(Catalog.GetString("Title:")), 0, 0, 1, 1);
+		grid.Attach(CreateEntry("Title"), 1, 0, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Author:")), 0, 1, 1, 1);
+		grid.Attach(CreateEntry("Author"), 1, 1, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Artist:")), 0, 2, 1, 1);
+		grid.Attach(CreateEntry("Artist"), 1, 2, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Album:")), 0, 3, 1, 1);
+		grid.Attach(CreateEntry("Album"), 1, 3, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("By:")), 0, 4, 1, 1);
+		grid.Attach(CreateEntry("FileCreator"), 1, 4, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Version:")), 0, 5, 1, 1);
+		grid.Attach(CreateEntry("Version"), 1, 5, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Program:")), 0, 6, 1, 1);
+		grid.Attach(CreateEntry("Program"), 1, 6, 1, 1);
+
+		//Karaoke Lyrics VKT
+		grid = CreatePageWithGrid(notebook, "Karaoke Lyrics VKT");
+		grid.Attach(CreateLabel(Catalog.GetString("Author:")), 0, 0, 1, 1);
+		grid.Attach(CreateEntry("Author"), 1, 0, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Source:")), 0, 2, 1, 1);
+		grid.Attach(CreateEntry("Source"), 1, 2, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Date:")), 0, 3, 1, 1);
+		grid.Attach(CreateEntry("Date"), 1, 3, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Frame Rate:")), 0, 4, 1, 1);
+		grid.Attach(CreateEntry("FrameRate"), 1, 4, 1, 1);
+
+		//MPSub
+		grid = CreatePageWithGrid(notebook, "MPSub");
+		grid.Attach(CreateLabel(Catalog.GetString("Title:")), 0, 0, 1, 1);
+		grid.Attach(CreateEntry("Title"), 1, 0, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("File:")), 0, 2, 1, 1);
+		grid.Attach(CreateEntry("MPSubFileProperties"), 1, 2, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Author:")), 0, 3, 1, 1);
+		grid.Attach(CreateEntry("Author"), 1, 3, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Note:")), 0, 4, 1, 1);
+		grid.Attach(CreateEntry("Comment"), 1, 4, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Media Type:")), 0, 5, 1, 1);
+		ComboBoxText comboBoxMPSubMediaType = CreateComboBoxText("MPSubMediaType",
+	          SubtitleFormatMPSub.HeaderMediaTypeAudio, Catalog.GetString("Audio"),
+	          SubtitleFormatMPSub.HeaderMediaTypeVideo, Catalog.GetString("Video"));
+		grid.Attach(comboBoxMPSubMediaType, 1, 5, 1, 1);
+
+		//Sub Station Alpha / ASS
+		grid = CreatePageWithGrid(notebook, "Sub Station Alpha / ASS");
+		grid.Attach(CreateLabel(Catalog.GetString("Title:")), 0, 0, 1, 1);
+		grid.Attach(CreateEntry("Title"), 1, 0, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Original Script:")), 0, 1, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaOriginalScript"), 1, 1, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Original Translation:")), 0, 2, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaOriginalTranslation"), 1, 2, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Original Editing:")), 0, 3, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaOriginalEditing"), 1, 3, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Original Timing:")), 0, 4, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaOriginalTiming"), 1, 4, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Original Script Checking:")), 0, 5, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaOriginalScriptChecking"), 1, 5, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Script Updated By:")), 0, 6, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaScriptUpdatedBy"), 1, 6, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Collisions:")), 0, 7, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaCollisions"), 1, 7, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Timer:")), 0, 8, 1, 1);
+		grid.Attach(CreateEntry("SubStationAlphaTimer"), 1, 8, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Play Res X:")), 0, 9, 1, 1);
+		grid.Attach(CreateSpinButton("SubStationAlphaPlayResX", 0, 10000, 1), 1, 9, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Play Res Y:")), 0, 10, 1, 1);
+		grid.Attach(CreateSpinButton("SubStationAlphaPlayResY", 0, 10000, 1), 1, 10, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Play Depth:")), 0, 11, 1, 1);
+		grid.Attach(CreateSpinButton("SubStationAlphaPlayDepth", 0, 10000, 1), 1, 11, 1, 1);
+
+		//SubViewer 1
+		grid = CreatePageWithGrid(notebook, "SubViewer 1");
+		grid.Attach(CreateLabel(Catalog.GetString("Title:")), 0, 0, 1, 1);
+		grid.Attach(CreateEntry("Title"), 1, 0, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Author:")), 0, 1, 1, 1);
+		grid.Attach(CreateEntry("Author"), 1, 1, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Source:")), 0, 2, 1, 1);
+		grid.Attach(CreateEntry("Source"), 1, 2, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Program:")), 0, 3, 1, 1);
+		grid.Attach(CreateEntry("Program"), 1, 3, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("File Path:")), 0, 4, 1, 1);
+		grid.Attach(CreateEntry("FilePath"), 1, 4, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Delay:")), 0, 5, 1, 1);
+		grid.Attach(CreateSpinButton("Delay", 0, 1000000, 1), 1, 5, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("CD Track:")), 0, 6, 1, 1);
+		grid.Attach(CreateSpinButton("CDTrack", 1, 1000, 1), 1, 6, 1, 1);
+
+		//SubViewer 2
+		grid = CreatePageWithGrid(notebook, "SubViewer 2");
+		grid.Attach(CreateLabel(Catalog.GetString("Title:")), 0, 0, 1, 1);
+		grid.Attach(CreateEntry("Title"), 1, 0, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Author:")), 0, 1, 1, 1);
+		grid.Attach(CreateEntry("Author"), 1, 1, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Source:")), 0, 2, 1, 1);
+		grid.Attach(CreateEntry("Source"), 1, 2, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Program:")), 0, 3, 1, 1);
+		grid.Attach(CreateEntry("Program"), 1, 3, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("File Path:")), 0, 4, 1, 1);
+		grid.Attach(CreateEntry("FilePath"), 1, 4, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Font Name:")), 0, 5, 1, 1);
+		grid.Attach(CreateEntry("SubViewer2FontName"), 1, 5, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Font Color:")), 0, 6, 1, 1);
+		grid.Attach(CreateEntry("SubViewer2FontColor"), 1, 6, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Font Style:")), 0, 7, 1, 1);
+		grid.Attach(CreateEntry("SubViewer2FontStyle"), 1, 7, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Font Size:")), 0, 8, 1, 1);
+		grid.Attach(CreateSpinButton("SubViewer2FontSize", 1, 1000, 1), 1, 8, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("Delay:")), 0, 9, 1, 1);
+		grid.Attach(CreateSpinButton("Delay", 0, 1000000, 1), 1, 9, 1, 1);
+		grid.Attach(CreateLabel(Catalog.GetString("CD Track:")), 0, 10, 1, 1);
+		grid.Attach(CreateSpinButton("CDTrack", 1, 1000, 1), 1, 10, 1, 1);
+
+		//Finalize
+		dialog.ContentArea.Add(notebook);
+		dialog.ContentArea.ShowAll();
 	}
 
-	private void LoadKaraokeLRCHeaders() {
-		entryKaraokeLRCTitle.Text = headers.Title;
-		entryKaraokeLRCAuthor.Text = headers.MovieAuthor;
-		entryKaraokeLRCArtist.Text = headers.Artist;
-		entryKaraokeLRCAlbum.Text = headers.Album;
-		entryKaraokeLRCMaker.Text = headers.Author;
-		entryKaraokeLRCVersion.Text = headers.Version;
-		entryKaraokeLRCProgram.Text = headers.Program;
+	private Grid CreatePageWithGrid(Notebook notebook, string tabLabel) {
+		ScrolledWindow window = new ScrolledWindow();
+
+		Grid grid = new Grid();
+		grid.BorderWidth = 8;
+		grid.ColumnSpacing = 6;
+		grid.RowSpacing = 10;
+		window.Add(grid);
+
+		notebook.AppendPage(window, new Label(tabLabel));
+		return grid;
 	}
 
-	private void LoadKaraokeVKTHeaders() {
-		entryKaraokeVKTFrameRate.Text = headers.FrameRate;
-		entryKaraokeVKTAuthor.Text = headers.Author;
-		entryKaraokeVKTSource.Text = headers.VideoSource;
-		entryKaraokeVKTDate.Text = headers.Date;
+	private Label CreateLabel(string text) {
+		Label label = new Label(text);
+		label.SetAlignment(0, 0.5f);
+		return label;
 	}
 
-	private void LoadMPSubHeaders () {
-		entryMPSubTitle.Text = headers.Title;
-		entryMPSubFile.Text = headers.FileProperties;
-		entryMPSubAuthor.Text = headers.Author;
-		entryMPSubNote.Text = headers.Comment;
+	private Entry CreateEntry(string propertyName) {
+		PropertyInfo property = typeof(Headers).GetProperty(propertyName);
+		string value = (string)property.GetValue(headers) ?? ""; //Make sure we don't pass null to the entry to avoid gtk warnings
 
-		comboBoxMPSubType.Active = (headers.MediaType == mpSubAudioTag ? 0 : 1);
+		Entry entry = new Entry(value);
+		entry.Hexpand = true;
+		entry.Changed += (object sender, EventArgs e) => SetProperty(sender, property, ((Entry)sender).Text);
+		PropertyChanged += (object sender, string prop, object newValue) => {
+			if ((sender != entry) && (prop == propertyName)) {
+				entry.Text = (string)newValue;
+			}
+		};
+
+		return entry;
 	}
 
-	private void LoadSSAASSHeaders () {
-		entrySSAASSTitle.Text = headers.Title;
-		entrySSAASSOriginalScript.Text = headers.OriginalScript;
-		entrySSAASSOriginalTranslation.Text = headers.OriginalTranslation;
-		entrySSAASSOriginalEditing.Text = headers.OriginalEditing;
-		entrySSAASSOriginalTiming.Text = headers.OriginalTiming;
-		entrySSAASSOriginalScriptChecking.Text = headers.OriginalScriptChecking;
-		entrySSAASSScriptUpdatedBy.Text = headers.ScriptUpdatedBy;
-		entrySSAASSCollisions.Text = headers.Collisions;
-		entrySSAASSTimer.Text = headers.Timer;
+	//Values: (id, text) pairs
+	private ComboBoxText CreateComboBoxText(string propertyName, params string[] values) {
+		PropertyInfo property = typeof(Headers).GetProperty(propertyName);
 
-		spinButtonSSAASSPlayResX.Value = headers.PlayResX;
-		spinButtonSSAASSPlayResY.Value = headers.PlayResY;
-		spinButtonSSAASSPlayDepth.Value = headers.PlayDepth;
+		ComboBoxText comboBox = new ComboBoxText();
+		for (int i = 0; i < values.Length; i += 2) {
+			comboBox.Append(values[i], values[i + 1]);
+		}
+
+		comboBox.ActiveId = (string)property.GetValue(headers);
+		comboBox.Changed += (object sender, EventArgs e) => SetProperty(sender, property, ((ComboBox)sender).ActiveId);
+		PropertyChanged += (object sender, string prop, object newValue) => {
+			if ((sender != comboBox) && (prop == propertyName)) {
+				comboBox.ActiveId = (string)newValue;
+			}
+		};
+
+		return comboBox;
 	}
 
-	private void LoadSubViewer1Headers () {
-		entrySubViewer1Title.Text = headers.Title;
-	 	entrySubViewer1Author.Text = headers.Author;
-	 	entrySubViewer1Source.Text = headers.VideoSource;
-	 	entrySubViewer1Program.Text = headers.Program;
-	 	entrySubViewer1FilePath.Text = headers.SubtitlesSource;
+	private SpinButton CreateSpinButton(string propertyName, int min, int max, int step) {
+		PropertyInfo property = typeof(Headers).GetProperty(propertyName);
+		object value = property.GetValue(headers);
 
-		spinButtonSubViewer1Delay.Value = headers.Delay;
-		spinButtonSubViewer1CDTrack.Value = headers.CDTrack;
+		SpinButton spinButton = new SpinButton(min, max, step);
+		spinButton.Numeric = true;
+		spinButton.Value = (int)value;
+
+		spinButton.ValueChanged += (object sender, EventArgs e) => SetProperty(sender, property, ((SpinButton)sender).ValueAsInt);
+
+		PropertyChanged += (object sender, string prop, object newValue) => {
+			if ((sender != spinButton) && (prop == propertyName)) {
+				spinButton.Value = (int)newValue;
+			}
+		};
+
+		return spinButton;
 	}
 
-	private void LoadSubViewer2Headers () {
-		entrySubViewer2Title.Text = headers.Title;
-	 	entrySubViewer2Author.Text = headers.Author;
-	 	entrySubViewer2Source.Text = headers.VideoSource;
-	 	entrySubViewer2Program.Text = headers.Program;
-	 	entrySubViewer2FilePath.Text = headers.SubtitlesSource;
-	 	entrySubViewer2Comment.Text = headers.Comment;
-		entrySubViewer2FontName.Text = headers.FontName;
-		entrySubViewer2FontColor.Text = headers.FontColor;
-		entrySubViewer2FontStyle.Text = headers.FontStyle;
+	private void SetProperty (object sender, PropertyInfo property, object value) {
+		/* Prevent unnecessary event fires. Ex: when an entry is changed, other entries for the same property are also changed.
+		 * Changing each of them would trigger a PropertyChanged event, which would then be handled again by all the others (in a loop).
+		 */
+		object currentValue = property.GetValue(headers);
+		if (Object.Equals(currentValue, value)) { //Comparison with == wasn't working here, even though both values are value types
+			return;
+		}
 
-		spinButtonSubViewer2Delay.Value = headers.Delay;
-		spinButtonSubViewer2CDTrack.Value = headers.CDTrack;
-		spinButtonSubViewer2FontSize.Value = headers.FontSize;
+		property.SetValue(headers, value);
+		PropertyChanged(sender, property.Name, value);
 	}
 
-	private void StoreHeaders () {
-		StoreKaraokeLRCHeaders();
-		StoreKaraokeVKTHeaders();
-		StoreMPSubHeaders();
-		StoreSSAASSHeaders();
-		StoreSubViewer1Headers();
-		StoreSubViewer2Headers();
-	}
+	private void SaveHeaders () {
+		Headers targetHeaders = Base.Document.Subtitles.Properties.Headers;
 
-	private void StoreKaraokeLRCHeaders() {
-		headers.Title = entryKaraokeLRCTitle.Text;
-		headers.MovieAuthor = entryKaraokeLRCAuthor.Text;
-		headers.Artist = entryKaraokeLRCArtist.Text;
-		headers.Album = entryKaraokeLRCAlbum.Text;
-		headers.Author = entryKaraokeLRCMaker.Text;
-		headers.Version = entryKaraokeLRCVersion.Text;
-		headers.Program = entryKaraokeLRCProgram.Text;
-	}
-
-	private void StoreKaraokeVKTHeaders() {
-		headers.FrameRate = entryKaraokeVKTFrameRate.Text;
-		headers.Author = entryKaraokeVKTAuthor.Text;
-		headers.VideoSource = entryKaraokeVKTSource.Text;
-		headers.Date = entryKaraokeVKTDate.Text;
-	}
-
-	private void StoreMPSubHeaders () {
-		headers.Title = entryMPSubTitle.Text;
-		headers.FileProperties = entryMPSubFile.Text;
-		headers.Author = entryMPSubAuthor.Text;
-		headers.Comment = entryMPSubNote.Text;
-
-		headers.MediaType = (comboBoxMPSubType.Active == 0 ? mpSubAudioTag : mpSubVideoTag);
-	}
-
-	private void StoreSSAASSHeaders () {
-		headers.Title = entrySSAASSTitle.Text;
-		headers.OriginalScript = entrySSAASSOriginalScript.Text;
-		headers.OriginalTranslation = entrySSAASSOriginalTranslation.Text;
-		headers.OriginalEditing = entrySSAASSOriginalEditing.Text;
-		headers.OriginalTiming = entrySSAASSOriginalTiming.Text;
-		headers.OriginalScriptChecking = entrySSAASSOriginalScriptChecking.Text;
-		headers.ScriptUpdatedBy = entrySSAASSScriptUpdatedBy.Text;
-		headers.Collisions = entrySSAASSCollisions.Text;
-		headers.Timer = entrySSAASSTimer.Text;
-
-		headers.PlayResX = spinButtonSSAASSPlayResX.ValueAsInt;
-		headers.PlayResY = spinButtonSSAASSPlayResY.ValueAsInt;
-		headers.PlayDepth = spinButtonSSAASSPlayDepth.ValueAsInt;
-	}
-
-	private void StoreSubViewer1Headers () {
-		headers.Title = entrySubViewer1Title.Text;
-	 	headers.Author = entrySubViewer1Author.Text;
-	 	headers.VideoSource = entrySubViewer1Source.Text;
-	 	headers.Program = entrySubViewer1Program.Text;
-	 	headers.SubtitlesSource = entrySubViewer1FilePath.Text;
-
-		headers.Delay = spinButtonSubViewer1Delay.ValueAsInt;
-		headers.CDTrack = spinButtonSubViewer1CDTrack.ValueAsInt;
-	}
-
-	private void StoreSubViewer2Headers () {
-		headers.Title = entrySubViewer2Title.Text;
-	 	headers.Author = entrySubViewer2Author.Text;
-	 	headers.VideoSource = entrySubViewer2Source.Text;
-	 	headers.Program = entrySubViewer2Program.Text;
-	 	headers.SubtitlesSource = entrySubViewer2FilePath.Text;
-	 	headers.Comment = entrySubViewer2Comment.Text;
-		headers.FontName = entrySubViewer2FontName.Text;
-		headers.FontColor = entrySubViewer2FontColor.Text;
-		headers.FontStyle = entrySubViewer2FontStyle.Text;
-
-		headers.Delay = spinButtonSubViewer2Delay.ValueAsInt;
-		headers.CDTrack = spinButtonSubViewer2CDTrack.ValueAsInt;
-		headers.FontSize = spinButtonSubViewer2FontSize.ValueAsInt;
+		foreach (PropertyInfo property in typeof(Headers).GetProperties()) {
+			property.SetValue(targetHeaders, property.GetValue(headers));
+		}
 	}
 
 	/* Event members */
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			StoreHeaders();
+			SaveHeaders();
 		}
 		return false;
 	}

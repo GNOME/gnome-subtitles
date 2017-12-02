@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ internal class SubtitleFormatKaraokeLyricsVKT : SubtitleFormat {
 		return "# <HEAD>\n" +
 			"# FRAME RATE=" + headers.FrameRate + "\n" +
 			"# CREATOR=" + headers.Author + "\n" +
-			"# VIDEO SOURCE=" + headers.VideoSource + "\n" +
+			"# VIDEO SOURCE=" + headers.Source + "\n" +
 			"# DATE=" + headers.Date + "\n" +
 			"# </HEAD>\n#\n";
 	}

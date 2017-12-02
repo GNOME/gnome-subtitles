@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -81,18 +81,19 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
 	internal override string HeadersToString (SubtitleProperties subtitleProperties, FileProperties fileProperties) {
 		Headers headers = subtitleProperties.Headers;
 		return "[Script Info]\n" +
-			Header("Title:", headers.Title, "<untitled>") +			Header("Original Script:", headers.OriginalScript, "<unknown>") +
+			Header("Title:", headers.Title, "<untitled>") +
+			Header("Original Script:", headers.SubStationAlphaOriginalScript, "<unknown>") +
 			"Script Type: " + ScriptType + "\n" +
-			Header("Original Translation:", headers.OriginalTranslation) +
-			Header("Original Editing:", headers.OriginalEditing) +
-			Header("Original Timing:", headers.OriginalTiming) +
-			Header("Original Script Checking:", headers.OriginalScriptChecking) +
-			Header("Script Updated By:", headers.ScriptUpdatedBy) +
-			Header("Collisions:", headers.Collisions) +
-			Header("PlayResX:", headers.PlayResX) +
-			Header("PlayResY:", headers.PlayResY) +
-			Header("PlayDepth:", headers.PlayDepth) +
-			Header("Timer:", headers.Timer) + "\n" +
+			Header("Original Translation:", headers.SubStationAlphaOriginalTranslation) +
+			Header("Original Editing:", headers.SubStationAlphaOriginalEditing) +
+			Header("Original Timing:", headers.SubStationAlphaOriginalTiming) +
+			Header("Original Script Checking:", headers.SubStationAlphaOriginalScriptChecking) +
+			Header("Script Updated By:", headers.SubStationAlphaScriptUpdatedBy) +
+			Header("Collisions:", headers.SubStationAlphaCollisions) +
+			Header("PlayResX:", headers.SubStationAlphaPlayResX) +
+			Header("PlayResY:", headers.SubStationAlphaPlayResY) +
+			Header("PlayDepth:", headers.SubStationAlphaPlayDepth) +
+			Header("Timer:", headers.SubStationAlphaTimer) + "\n" +
 			StyleSection;
 	}
 
@@ -136,24 +137,21 @@ internal class SubtitleFormatSubStationAlpha : SubtitleFormat {
 	/* Private members */
 
 	private string Header (string headerIntro, string headerValue, string defaultValue) {
-		if (headerValue == String.Empty)
+		if (String.IsNullOrEmpty(headerValue))
 			return headerIntro + " " + defaultValue + "\n";
 		else
 			return headerIntro + " " + headerValue + "\n";
 	}
 
 	private string Header (string headerIntro, string headerValue) {
-		if (headerValue == String.Empty)
+		if (String.IsNullOrEmpty(headerValue))
 			return String.Empty;
 		else
 			return headerIntro + " " + headerValue + "\n";
 	}
 
 	private string Header (string headerIntro, int headerValue) {
-		if (headerValue == -1)
-			return String.Empty;
-		else
-			return headerIntro + " " + headerValue + "\n";
+		return headerIntro + " " + headerValue + "\n";
 	}
 
 	protected string StyleToString (Style style, string suffix) {
