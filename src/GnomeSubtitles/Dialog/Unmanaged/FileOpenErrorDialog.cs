@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 using Gtk;
 using Mono.Unix;
+using SubLib.Util;
 using System;
 
 namespace GnomeSubtitles.Dialog.Unmanaged {
@@ -33,7 +34,7 @@ public abstract class FileOpenErrorDialog : ErrorDialog {
 	}
 
 	public FileOpenErrorDialog (string filename, Exception exception) {
-		Console.Error.WriteLine("File open error:\n" + exception);
+		Logger.Error(exception, "File open error");
 
 		string primaryText = GetPrimaryText(filename);
 		string secondaryText = GetSecondaryText(exception);

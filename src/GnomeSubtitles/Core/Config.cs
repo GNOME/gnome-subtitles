@@ -23,6 +23,9 @@ using System;
 
 //TODO clean commented code
 //TODO implement a runtime variable that allows to run the app without a config schema installed
+using SubLib.Util;
+
+
 namespace GnomeSubtitles.Core {
 
 /* Enumerations */
@@ -104,7 +107,7 @@ public class Config {
 		try {
 			settings = new Settings(Schema);
 		} catch(Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e, "Config initialization error");
 		}
 	}
 
@@ -360,7 +363,7 @@ public class Config {
 			return settings.GetString(key);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 			return defaultValue;
 		}
 	}
@@ -370,7 +373,7 @@ public class Config {
 			return settings.GetBoolean(key);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 			return defaultValue;
 		}
 	}
@@ -387,7 +390,7 @@ public class Config {
 			return number;
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 			return defaultValue;
 		}
 	}
@@ -401,7 +404,7 @@ public class Config {
 				return strings;
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 			return defaultValue;
 		}
 	}
@@ -423,7 +426,7 @@ public class Config {
 			return (Enum)Enum.Parse(defaultValue.GetType(), stringValue);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 			return defaultValue;
 		}
 	}
@@ -433,7 +436,7 @@ public class Config {
 			settings.SetStrv(key, values);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 		}
 //		if (values.Length == 0) {
 //			string[] newValues = { String.Empty };
@@ -448,7 +451,7 @@ public class Config {
 			settings.SetString(key, value);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 		}
 	}
 
@@ -457,7 +460,7 @@ public class Config {
 			settings.SetBoolean(key, value);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 		}
 	}
 
@@ -466,7 +469,7 @@ public class Config {
 			settings.SetInt(key, value);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 		}
 	}
 

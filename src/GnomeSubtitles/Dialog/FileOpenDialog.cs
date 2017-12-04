@@ -28,6 +28,7 @@ using System.Collections;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using SubLib.Util;
 
 namespace GnomeSubtitles.Dialog {
 
@@ -166,14 +167,13 @@ public class FileOpenDialog : BaseDialog {
 			folder = dialog.CurrentFolder;
 		}
 		catch (Exception e) {
-			System.Console.Error.WriteLine("Caught exception when trying to get the current folder:");
-			System.Console.Error.WriteLine(e);
+			Logger.Error(e, "Caught exception when trying to get the current folder");
 			SetVideoSelectionSensitivity(false);
 			return;
 		}
 
 		if ((folder == null) || (folder == String.Empty)) {
-			System.Console.Error.WriteLine("Error when trying to get the current folder.");
+			Logger.Error("Error when trying to get the current folder.");
 			SetVideoSelectionSensitivity(false);
 			return;
 		}
@@ -210,8 +210,7 @@ public class FileOpenDialog : BaseDialog {
 			filePath = dialog.Filename;
 		}
 		catch (Exception e) {
-			System.Console.Error.WriteLine("Caught exception when trying to get the current filename:");
-			System.Console.Error.WriteLine(e);
+			Logger.Error(e, "Caught exception when trying to get the current filename");
 			SetActiveComboBoxItem(0);
 			return;
 		}

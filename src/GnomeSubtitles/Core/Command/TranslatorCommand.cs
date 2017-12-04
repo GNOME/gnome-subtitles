@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2011 Pedro Castro
+ * Copyright (C) 2011-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ using SubLib;
 using SubLib.Core;
 using SubLib.Core.Domain;
 using SubLib.Exceptions;
+using SubLib.Util;
 using System;
 
 namespace GnomeSubtitles.Core.Command {
@@ -96,7 +97,7 @@ public class TranslatorCommand : FixedSingleSelectionCommand {
 			return true;
 		}
 		catch (TranslatorException e) { //TODO know which exceptions are originally thrown. Check if it's possible to have the second error message in the application language.
-			Console.Error.WriteLine(e);
+			Logger.Error(e);
 			BasicErrorDialog errorDialog = new BasicErrorDialog(Catalog.GetString("Could not translate the chosen subtitle."), e.Message);
 			errorDialog.Show();
 			return false;

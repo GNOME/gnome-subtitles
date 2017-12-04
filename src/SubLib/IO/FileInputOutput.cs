@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using SubLib.IO.Output;
+using SubLib.Util;
 using System;
 using System.Collections;
 using System.IO;
@@ -56,7 +56,7 @@ internal class FileInputOutput {
 		stream.Seek(0, SeekOrigin.Begin);
 
 		string[] detectedEncodings = detector.getProbableCharsets();
-		VerboseConsole.WriteLine(DetectedEncodingsToString(detectedEncodings));
+		Logger.Info("[FileInputOutput] Detected encodings: {0}", String.Join(", ", detectedEncodings));
 
 		/* Check if no encoding was detected */
 		if (detectedEncodings[0] == "nomatch")
@@ -142,14 +142,6 @@ internal class FileInputOutput {
 			case "EUC-JP": return 51932;
 			default: return -1;
 		}
-	}
-
-	private static string DetectedEncodingsToString (string[] detectedEncodings) {
-		string result = "Detected encodings:";
-		foreach (string encoding in detectedEncodings) {
-			result += " " + encoding;
-		}
-		return result;
 	}
 
 	/// <summary>Replaces the occurrences of Windows and Mac newline chars with unix newline.</summary>

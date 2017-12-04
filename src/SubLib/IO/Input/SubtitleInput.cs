@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
 
 using SubLib.Core.Domain;
 using SubLib.Exceptions;
-using SubLib.IO.Output;
 using SubLib.IO.SubtitleFormats;
+using SubLib.Util;
 using System;
 using System.IO;
 using System.Text;
@@ -91,7 +91,7 @@ internal class SubtitleInput {
 
 		/* Check if no codepage was detected */
 		if (codePages.Length == 0) {
-			VerboseConsole.WriteLine("No encoding was automatically detected. Using the fall-back encoding \"" + fallbackEncoding.WebName + "\"");
+			Logger.Info("[SubtitleInput] No encoding was automatically detected. Using the fall-back encoding \"{0}\"", fallbackEncoding.WebName);
 			string text;
 			if (isSubtitleFile)
 				text = TestEncoding(fileStream, fallbackEncoding, out usedFormat);
@@ -183,7 +183,7 @@ internal class SubtitleInput {
 	}
 
 	private string TestEncoding (FileStream fileStream, Encoding encoding) {
-		VerboseConsole.WriteLine("Trying the encoding \"" + encoding.WebName + "\"");
+		Logger.Info("[SubtitleInput] Trying encoding \"{0}\"", encoding.WebName);
 		/* Get the text */
 		string text = FileInputOutput.ReadFile(fileStream, encoding, true);
 
@@ -192,10 +192,11 @@ internal class SubtitleInput {
 
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	private SubtitleFormat GetSubtitleFormat (string text) {
-		if (subtitleType == SubtitleType.Unknown)
-			VerboseConsole.WriteLine("Trying to autodetect the subtitle format.");
-		else
-			VerboseConsole.WriteLine("Trying the subtitle format \"" + subtitleType + "\"");
+		if (subtitleType == SubtitleType.Unknown) {
+			Logger.Info("[SubtitleInput] Trying to autodetect the subtitle format.");
+		} else {
+			Logger.Info("[SubtitleInput] Trying subtitle format \"{0}\"", subtitleType);
+		}
 
 		SubtitleFormat subtitleFormat = null;
 		if (subtitleType == SubtitleType.Unknown)

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2017 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 using GLib;
 using GnomeSubtitles.Core;
+using SubLib.Util;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -38,12 +39,11 @@ public class Executable {
 	public static bool SetProcessNamePrctl (string name) {
 		try {
 			if (prctl(15, Encoding.ASCII.GetBytes(name + "\0"), 0, 0, 0) != 0) { // 15 = PR_SET_NAME
-				Console.Error.WriteLine("Error setting process name with prctl: " + Mono.Unix.Native.Stdlib.GetLastError());
+				Logger.Error("Error setting process name with prctl: {0}", Mono.Unix.Native.Stdlib.GetLastError());
 			}
 		}
 		catch (Exception e) {
-        	Console.Error.WriteLine("Setting the process name using prctl has thrown an exception:");
-        	Console.Error.WriteLine(e);
+			Logger.Error(e, "Setting the process name using prctl has thrown an exception");
         	return false;
         }
         return true;
@@ -54,8 +54,7 @@ public class Executable {
 			setproctitle(Encoding.ASCII.GetBytes("%s\0"), Encoding.ASCII.GetBytes(name + "\0"));
 		}
 		catch (Exception e) {
-        	Console.Error.WriteLine("Setting the process name using setproctitle has thrown an exception:");
-        	Console.Error.WriteLine(e);
+			Logger.Error(e, "Setting the process name using setproctitle has thrown an exception");
         	return false;
         }
         return true;
@@ -95,8 +94,9 @@ public class Executable {
 	/* Event members */
 
 	private static void OnUnhandledException (UnhandledExceptionArgs args) {
-		if (args.ExceptionObject is Exception)
+		if (args.ExceptionObject is Exception) {
 			BugReporter.Report(args.ExceptionObject as Exception);
+		}
 
 		Kill();
 	}

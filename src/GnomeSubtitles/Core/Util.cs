@@ -18,11 +18,12 @@
  */
 
 using Gtk;
+using SubLib.Core.Domain;
+using SubLib.Util;
 using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
-using SubLib.Core.Domain;
 
 namespace GnomeSubtitles.Core {
 
@@ -141,7 +142,7 @@ public class Util {
 			Process.Start(url);
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine("Caught exception when trying to open url [{0}]: {1}", url, e);
+			Logger.Error(e, "Caught exception when trying to open url \"{0}\"", url);
 		}
 	}
 

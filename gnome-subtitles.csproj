@@ -279,7 +279,6 @@
     <Compile Include="src\SubLib\IO\Input\SubtitleInput.cs" />
     <Compile Include="src\SubLib\IO\Input\SubtitleParser.cs" />
     <Compile Include="src\SubLib\IO\Output\SubtitleOutput.cs" />
-    <Compile Include="src\SubLib\IO\Output\VerboseConsole.cs" />
     <Compile Include="src\SubLib\IO\SubtitleFormats\BuiltInSubtitleFormats.cs" />
     <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormat.cs" />
     <Compile Include="src\SubLib\IO\SubtitleFormats\SubtitleFormatAQTitle.cs" />
@@ -309,9 +308,11 @@
     <Compile Include="src\GnomeSubtitles\Dialog\VideoOpenDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileSaveDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationSaveDialog.cs" />
+    <Compile Include="src\SubLib\Util\Logger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="src\SubLib\Util\" />
   </ItemGroup>
 </Project>

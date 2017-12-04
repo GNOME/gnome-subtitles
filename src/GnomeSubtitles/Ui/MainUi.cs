@@ -26,8 +26,9 @@ using GnomeSubtitles.Ui.VideoPreview;
 using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
-using SubLib.Exceptions;
 using SubLib.Core.Domain;
+using SubLib.Exceptions;
+using SubLib.Util;
 using System;
 using System.IO;
 using System.Text;
@@ -426,8 +427,8 @@ public class MainUi {
     		SaveConfirmationDialog dialog = new SaveTranslationOnNewTranslationConfirmationDialog();
    			return dialog.WaitForResponse();
    		}
-   		else
-    		return true;
+
+		return true;
 	}
 
 	/// <summary>Whether a translation should be opened, after choosing the respective confirmation dialog.</summary>
@@ -436,8 +437,8 @@ public class MainUi {
     		SaveConfirmationDialog dialog = new SaveTranslationOnOpenConfirmationDialog();
    			return dialog.WaitForResponse();
    		}
-   		else
-    		return true;
+
+		return true;
 	}
 
 	/// <summary>Whether a translation should be closed, after choosing the respective confirmation dialog.</summary>
@@ -446,16 +447,17 @@ public class MainUi {
     		SaveConfirmationDialog dialog = new SaveTranslationOnCloseConfirmationDialog();
    			return dialog.WaitForResponse();
    		}
-   		else
-    		return true;
+
+		return true;
 	}
 
+	//FIXME use a header bar to show the title and subtitle
 	private void UpdateTitleModificationStatus (bool showFilename, bool modified) {
 		if (showFilename) {
-			string prefix = (modified ? "*" : String.Empty);
-			window.Title = prefix + Base.Document.TextFile.Filename + " - " + Base.ExecutionContext.ApplicationName;
+			window.Title = (modified ? "*" : "") + Base.Document.TextFile.Filename;
+		} else {
+			window.Title = Base.ExecutionContext.ApplicationName;
 		}
-		else window.Title = Base.ExecutionContext.ApplicationName;
 	}
 
 	private int GetFileOpenCodePageFromConfig () {
@@ -485,8 +487,7 @@ public class MainUi {
 				file = Path.GetFullPath(file);
 			}
 			catch (Exception e) {
-				System.Console.Error.WriteLine("Unable to read subtitle file path from argument 0");
-				System.Console.Error.WriteLine(e);
+				Logger.Error(e, "Unable to read subtitle file path from argument 0");
 				return null;
 			}
 		}

@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008,2011 Pedro Castro
+ * Copyright (C) 2005-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ using SubLib.Core.Domain;
 using SubLib.Exceptions;
 using SubLib.IO.SubtitleFormats;
 using SubLib.IO.Input;
-using SubLib.IO.Output;
+using SubLib.Util;
 using System;
 using System.IO;
 using System.Text;
@@ -60,10 +60,10 @@ public class SubtitleFactory {
 
 	/// <summary>Whether to enable the library to print messages to the console.</summary>
 	/// <remarks>Messages will be shown along with the main methods of <see cref="SubtitleFactory" />
-	/// and <see cref="Subtitles" />. The default value is false.</remarks>
-	public bool Verbose {
-		get { return VerboseConsole.Verbose; }
-		set { VerboseConsole.Verbose = value; }
+	/// and <see cref="Subtitles" />. The default value is true.</remarks>
+	public bool LoggingEnabled {
+		get { return Logger.Enabled; }
+		set { Logger.Enabled = value; }
 	}
 
 	/// <summary>Whether to detect and store incomplete subtitles found upon open.</summary>
@@ -191,7 +191,9 @@ public class SubtitleFactory {
 
 		fileProperties = new FileProperties(path, fileEncoding, format.Type, parsingProperties.TimingMode);
 
-		VerboseConsole.WriteLine("[*] Opened \"" + path + "\" with encoding \"" + fileEncoding + "\", format \"" + format.Name + "\", timing mode \"" + parsingProperties.TimingMode + "\" and frame rate \"" + subtitleProperties.CurrentFrameRate + "\" (input frame rate was \"" + inputFrameRate + "\")");
+		Logger.Info("[SubtitleFactory] Opened \"{0}\" with encoding \"{1}\", format \"{2}\", timing mode \"{3}\" and frame rate \"{4}\" (input frame rate was \"{5}\")",
+			path, fileEncoding, format.Name, parsingProperties.TimingMode, subtitleProperties.CurrentFrameRate, inputFrameRate);
+
 		return subtitles;
 	}
 
@@ -208,7 +210,7 @@ public class SubtitleFactory {
 
 		fileProperties = new FileProperties(path, fileEncoding, parsingProperties.TimingMode);
 
-		VerboseConsole.WriteLine("[*] Opened " + path + " with encoding " + fileEncoding);
+		Logger.Info("[SubtitleFactory] Opened {0} with encoding {1}", path, fileEncoding);
 		return subtitles;
 	}
 

@@ -26,6 +26,9 @@ using System.Diagnostics;
 using System.IO;
 
 //FIXME still needed?
+using SubLib.Util;
+
+
 namespace GnomeSubtitles.Execution {
 
 public class BugReporter {
@@ -38,7 +41,7 @@ public class BugReporter {
 
 	public static void Report (string message) {
 		string bugInfo = GetBugInfo(message);
-		Console.Error.WriteLine(bugInfo);
+		Logger.Error(bugInfo);
 
 		try {
 			RunBugBuddy(bugInfo);

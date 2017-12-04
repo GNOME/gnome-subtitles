@@ -24,6 +24,7 @@ using GnomeSubtitles.Ui;
 using Gtk;
 using SubLib.Core;
 using SubLib.Core.Domain;
+using SubLib.Util;
 
 namespace GnomeSubtitles.Core {
 
@@ -107,7 +108,7 @@ public class Backup {
 			}
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine("Caught exception creating backup files: " + e);
+			Logger.Error(e, "Caught an exception while creating backup files");
 		}
 	}
 
@@ -118,7 +119,7 @@ public class Backup {
 			return true;
 		}
 		catch (Exception e) {
-			Console.Error.WriteLine("Caught exception saving backup file: " + e);
+			Logger.Error(e, "Caught an exception while saving backup file");
 			return false;
 		}
 	}

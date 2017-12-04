@@ -23,6 +23,7 @@ using GStreamer;
 using Gtk;
 using SubLib.Core.Domain;
 using System;
+using SubLib.Util;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
@@ -252,7 +253,7 @@ public class Player {
 	}
 
 	private void OnPlaybinFoundVideoInfo (VideoInfoEventArgs args) {
-		Console.WriteLine("[Player] Media info: " + args.VideoInfo.ToString());
+		Logger.Info("[Player] Media info: {0}", args.VideoInfo.ToString());
 		this.videoInfo = args.VideoInfo;
 
 		/* Set defaults if there is no video */
@@ -270,7 +271,7 @@ public class Player {
 	private void OnPlaybinFoundTag (TagEventArgs args) {
 		if ((!hasFoundDuration) && (FoundDuration != null) && (playbin.Duration != TimeSpan.Zero)) {
 			TimeSpan duration = playbin.Duration;
-			Console.WriteLine("[Player] Media duration: " + duration);
+			Logger.Info("[Player] Media duration: {0}", duration);
 
 			hasFoundDuration = true;
 			FoundDuration(duration);

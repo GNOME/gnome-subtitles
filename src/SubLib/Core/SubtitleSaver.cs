@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2008 Pedro Castro
+ * Copyright (C) 2005-2017 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@ using SubLib.Core.Domain;
 using SubLib.IO;
 using SubLib.IO.Output;
 using SubLib.IO.SubtitleFormats;
+using SubLib.Util;
 
 namespace SubLib.Core {
 
@@ -54,7 +55,8 @@ public class SubtitleSaver {
 		FileInputOutput.WriteFile(properties.Path, text, properties.Encoding);
 
 		fileProperties = GetUpdatedFileProperties(properties);
-		VerboseConsole.WriteLine("[*] Saved " + textType + " \"" + properties.Path + "\" with encoding \"" + properties.Encoding + "\", format \"" + format.Name + "\" and frame rate \"" + subtitles.Properties.CurrentFrameRate + "\"");
+		Logger.Info("[SubtitleSaver] Saved {0} \"{1}\" with encoding \"{2}\", format \"{3}\" and frame rate \"{4}\"",
+			textType, properties.Path, properties.Encoding, format.Name, subtitles.Properties.CurrentFrameRate);
 	}
 
 	/* Private methods */

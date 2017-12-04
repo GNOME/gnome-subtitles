@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using SubLib.Core.Domain;
+using SubLib.Util;
 
 namespace GnomeSubtitles.Core {
 
@@ -127,7 +128,7 @@ public class SpellLanguages {
 		else
 			activeLanguage = languages[index] as SpellLanguage;
 
-		System.Console.WriteLine("[Spellcheck] Setting active language: {0}", (activeLanguage == null ? "none." : activeLanguage.ID));
+		Logger.Info("[Spellcheck] Setting active language: {0}", (activeLanguage == null ? "none." : activeLanguage.ID));
 
 		/* Set index variable */
 		if (textType == SubtitleTextType.Text)
@@ -173,7 +174,7 @@ public class SpellLanguages {
 		enchant_broker_free(broker);
 
 		languages.Sort();
-		System.Console.WriteLine("[Spellcheck] Found {0} languages", languages.Count);
+		Logger.Info("[Spellcheck] Found {0} languages", languages.Count);
 	}
 
 	private void GetActiveLanguagesFromConfig () {

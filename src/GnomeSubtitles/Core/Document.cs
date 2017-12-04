@@ -151,7 +151,6 @@ public class Document {
 			CloseTranslation();
 
 		SubtitleFactory factory = new SubtitleFactory();
-		factory.Verbose = true;
 		factory.Encoding = encoding;
 		factory.FallbackEncoding = GetFallbackEncoding();
 
@@ -201,7 +200,6 @@ public class Document {
 	/* Used in the object construction */
 	private void New () {
 		SubtitleFactory factory = new SubtitleFactory();
-		factory.Verbose = true;
 
 		subtitles = new Ui.View.Subtitles(factory.New());
 	}
@@ -209,7 +207,6 @@ public class Document {
 	/* Used in the object construction */
 	private void Open (string path, Encoding encoding) {
 		SubtitleFactory factory = new SubtitleFactory();
-		factory.Verbose = true;
 		factory.Encoding = encoding;
 		factory.FallbackEncoding = GetFallbackEncoding();
 		factory.InputFrameRate = Base.Ui.Menus.TimingsInputFrameRateActive;
