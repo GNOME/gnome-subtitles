@@ -27,76 +27,78 @@ using System.Text;
 
 namespace GnomeSubtitles.Dialog {
 
-public class FilePropertiesDialog : BuilderDialog {
+//TODO check if we still need all these properties, and whether others should be added (e.g., video/translation file)
+public class FilePropertiesDialog : BaseDialog {
 
-	/* Constant strings */
-	private const string gladeFilename = "FilePropertiesDialog.glade";
-
-	/* Widgets */
-
-	[Builder.Object] private Label nameValueLabel = null;
-	[Builder.Object] private Label pathValueLabel = null;
-	[Builder.Object] private Label encodingValueLabel = null;
-	[Builder.Object] private Label subtitleFormatValueLabel = null;
-	[Builder.Object] private Label timingModeValueLabel = null;
-
-	public FilePropertiesDialog () : base(gladeFilename) {
-		FillLabelValues();
+	public FilePropertiesDialog () : base() {
+		Init(BuildDialog());
 	}
 
 	/* Private methods */
 
-	private void FillLabelValues () {
+	private Gtk.Dialog BuildDialog() {
 		FileProperties properties = Base.Document.TextFile;
 
-		FillName(properties.Filename);
-		FillPath(properties.Directory);
-		FillEncoding(properties.Encoding);
-		FillSubtitleFormat(properties.SubtitleType);
-		FillTimingMode(properties.TimingMode);
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("File Properties"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar);
+
+//		dialog.DefaultResponse = ResponseType.Ok;
+//		dialog.DefaultWidth = 600;
+//		dialog.DefaultHeight = 550;
+
+		Grid grid = new Grid();
+		grid.BorderWidth = 15;
+		grid.ColumnSpacing = 15;
+		grid.RowSpacing = 15;
+
+		grid.Attach(CreateFieldLabel(Catalog.GetString("File Name")), 0, 0, 1, 1);
+		grid.Attach(CreateValueLabel(properties.Filename), 1, 0, 1, 1);
+
+		grid.Attach(CreateFieldLabel(Catalog.GetString("Path")), 0, 1, 1, 1);
+		grid.Attach(CreateValueLabel(properties.Directory), 1, 1, 1, 1);
+
+		grid.Attach(CreateFieldLabel(Catalog.GetString("Character Encoding")), 0, 2, 1, 1);
+		grid.Attach(CreateValueLabel(GetEncoding(properties.Encoding)), 1, 2, 1, 1);
+
+		grid.Attach(CreateFieldLabel(Catalog.GetString("Subtitle Format")), 0, 3, 1, 1);
+		grid.Attach(CreateValueLabel(GetSubtitleFormat(properties.SubtitleType)), 1, 3, 1, 1);
+
+		grid.Attach(CreateFieldLabel(Catalog.GetString("Timing Mode")), 0, 4, 1, 1);
+		grid.Attach(CreateValueLabel(properties.TimingMode.ToString()), 1, 4, 1, 1);
+
+		dialog.ContentArea.Add(grid);
+		dialog.ContentArea.ShowAll();
+		return dialog;
 	}
 
-	private void FillName (string name) {
-		if (name == String.Empty)
-			name = Catalog.GetString("Unknown");
-
-		nameValueLabel.Text = name;
+	private Label CreateFieldLabel (string text) {
+		Label label = new Label();
+		label.Markup = "<b>" + text + "</b>";
+		label.SetAlignment(0f, 0.5f);
+		return label;
 	}
 
-	private void FillPath (string path) {
-		if (path == String.Empty)
-			path = Catalog.GetString("Unknown");
-
-		pathValueLabel.Text = path;
+	private Label CreateValueLabel (string text) {
+		Label label = new Label();
+		label.Text = (String.IsNullOrEmpty(text) ? "-" : text);
+		label.SetAlignment(0f, 0.5f);
+		return label;
 	}
 
-	private void FillEncoding (Encoding encoding) {
-		string encodingName = String.Empty;
-		if (encoding == null)
-			encodingName = Catalog.GetString("Unknown");
-		else {
-			encodingName = Encodings.GetEncodingName(encoding.CodePage);
-			if ((encodingName == null) || (encodingName == String.Empty))
-				encodingName = Catalog.GetString("Unknown");
+	private string GetEncoding (Encoding encoding) {
+		if (encoding == null) {
+			return null;
 		}
 
-		encodingValueLabel.Text = encodingName;
+		return Encodings.GetEncodingName(encoding.CodePage);
 	}
 
-	private void FillSubtitleFormat (SubtitleType type) {
-		string format = String.Empty;
-		if (type == SubtitleType.Unknown)
-			format = Catalog.GetString("Unknown");
-		else {
-			SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
-			format = typeInfo.Name;
+	private string GetSubtitleFormat (SubtitleType type) {
+		if (type == SubtitleType.Unknown) {
+			return null;
 		}
 
-		subtitleFormatValueLabel.Text = format;
-	}
-
-	private void FillTimingMode (TimingMode mode) {
-		timingModeValueLabel.Text = mode.ToString();
+		SubtitleTypeInfo typeInfo = Subtitles.GetAvailableType(type);
+		return typeInfo.Name;
 	}
 
 }

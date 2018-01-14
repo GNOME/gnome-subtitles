@@ -29,7 +29,6 @@ namespace GnomeSubtitles.Dialog {
 
 public class HeadersDialog : BaseDialog {
 
-	private Gtk.Dialog dialog;
 	private Headers headers;
 
 	//Property Changed event
@@ -39,16 +38,14 @@ public class HeadersDialog : BaseDialog {
 	public HeadersDialog () : base() {
 		headers = (Headers)Base.Document.Subtitles.Properties.Headers.Clone();
 
-		BuildDialog();
-
-		base.Init(dialog);
+		base.Init(BuildDialog());
 	}
 
 
 	/* Private members */
 
-	private void BuildDialog() {
-		dialog = new Gtk.Dialog(Catalog.GetString("Headers"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar,
+	private Gtk.Dialog BuildDialog() {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Headers"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar,
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-apply"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
@@ -178,6 +175,8 @@ public class HeadersDialog : BaseDialog {
 		//Finalize
 		dialog.ContentArea.Add(notebook);
 		dialog.ContentArea.ShowAll();
+
+		return dialog;
 	}
 
 	private Grid CreatePageWithGrid(Notebook notebook, string tabLabel) {

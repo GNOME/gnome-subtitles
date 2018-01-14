@@ -24,7 +24,6 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 public class AboutDialog : BuilderDialog {
-	private Gtk.AboutDialog dialog = null;
 
 	/* Constant strings */
 	private const string gladeFilename = "AboutDialog.glade";
@@ -35,7 +34,6 @@ public class AboutDialog : BuilderDialog {
 		SetHooks();
 		Init(gladeFilename, true);
 
-		dialog = GetDialog() as Gtk.AboutDialog;
 		SetInfo();
 	}
 
@@ -56,6 +54,8 @@ public class AboutDialog : BuilderDialog {
 	}
 
 	private void SetInfo () {
+		Gtk.AboutDialog dialog = Dialog as Gtk.AboutDialog;
+
 		dialog.Version = Base.ExecutionContext.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
 	}

@@ -33,8 +33,7 @@ using SubLib.Util;
 namespace GnomeSubtitles.Dialog {
 
 public class FileOpenDialog : BaseDialog {
-	protected FileChooserDialog dialog;
-
+	
 	private string chosenFilename = String.Empty;
 	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
 	private ArrayList videoFiles = null; //The full paths of the video files in the current dir
@@ -54,13 +53,7 @@ public class FileOpenDialog : BaseDialog {
 	}
 
 	protected FileOpenDialog (bool toEnableVideo, string title) : base() {
-		BuildDialog(title);
-
-		if (toEnableVideo) {
-			EnableVideo();
-		}
-
-		base.Init(dialog);
+		base.Init(BuildDialog(toEnableVideo, title));
 	}
 
 
@@ -103,8 +96,8 @@ public class FileOpenDialog : BaseDialog {
 
 	/* Private members */
 
-	private void BuildDialog(string title) {
-		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
+	private FileChooserDialog BuildDialog(bool toEnableVideo, string title) {
+		FileChooserDialog dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
@@ -133,8 +126,14 @@ public class FileOpenDialog : BaseDialog {
 
 		//Other stuff
 
-		SetFilters();
+		SetFilters(dialog);
 		dialog.SetCurrentFolder(GetStartFolder());
+
+		if (toEnableVideo) {
+			EnableVideo(dialog);
+		}
+
+		return dialog;
 	}
 
 	private EncodingComboBox BuildEncodingComboBox () {
@@ -164,7 +163,7 @@ public class FileOpenDialog : BaseDialog {
 
 		string folder = String.Empty;
 		try {
-			folder = dialog.CurrentFolder;
+			folder = (Dialog as FileChooserDialog).CurrentFolder;
 		}
 		catch (Exception e) {
 			Logger.Error(e, "Caught exception when trying to get the current folder");
@@ -207,7 +206,7 @@ public class FileOpenDialog : BaseDialog {
 
 		string filePath = String.Empty;
 		try {
-			filePath = dialog.Filename;
+			filePath = (Dialog as FileChooserDialog).Filename;
 		}
 		catch (Exception e) {
 			Logger.Error(e, "Caught exception when trying to get the current filename");
@@ -255,7 +254,7 @@ public class FileOpenDialog : BaseDialog {
 			return filename;
 	}
 
-	private void EnableVideo () {
+	private void EnableVideo (FileChooserDialog dialog) {
 		videoLabel.Visible = true;
 		videoComboBox.Visible = true;
 
@@ -269,7 +268,7 @@ public class FileOpenDialog : BaseDialog {
 	/* Note: It would be nice show a separator after "All Subtitle Files" but filters
 	 * don't allow to set a separator function like we do in a normal combo box.
 	 */
-	private void SetFilters () {
+	private void SetFilters (FileChooserDialog dialog) {
 		SubtitleTypeInfo[] types = Subtitles.AvailableTypesSorted;
 		FileFilter[] filters = new FileFilter[types.Length + 2];
 		int filterPosition = 0;
@@ -311,7 +310,7 @@ public class FileOpenDialog : BaseDialog {
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			chosenFilename = dialog.Filename;
+			chosenFilename = (Dialog as FileChooserDialog).Filename;
 			chosenEncoding = encodingComboBox.ChosenEncoding;
 
 			if (Base.Config.FileOpenEncodingOption == ConfigFileOpenEncodingOption.RememberLastUsed) {

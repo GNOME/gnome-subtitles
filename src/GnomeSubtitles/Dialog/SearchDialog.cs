@@ -104,11 +104,11 @@ public class SearchDialog : BuilderDialog {
 
 	public void Show (bool useReplace) {
 		if (useReplace) {
-			GetDialog().Title = Catalog.GetString("Replace");
+			Dialog.Title = Catalog.GetString("Replace");
 			table.RowSpacing = 12;
 		}
 		else {
-			GetDialog().Title = Catalog.GetString("Find");
+			Dialog.Title = Catalog.GetString("Find");
 			table.RowSpacing = 0;
 		}
 

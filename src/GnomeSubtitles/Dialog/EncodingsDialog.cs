@@ -35,17 +35,13 @@ public class EncodingsDialog : BaseDialog {
 
 	/* Widgets */
 
-	private Gtk.Dialog dialog = null;
-	private TreeView availableTreeView = null;
-	private TreeView shownTreeView = null;
-	private Button buttonAdd = null;
-	private Button buttonRemove = null;
+	private TreeView availableTreeView;
+	private TreeView shownTreeView;
+	private Button buttonAdd;
+	private Button buttonRemove;
 
 	public EncodingsDialog (Window parent) : base() {
-		BuildDialog(parent);
-
-		ConnectSignals();
-		base.Init(dialog);
+		base.Init(BuildDialog(parent));
 	}
 
 	/* Public properties */
@@ -56,8 +52,8 @@ public class EncodingsDialog : BaseDialog {
 
 	/* Private members */
 
-	private void BuildDialog (Window parent) {
-		dialog = new Gtk.Dialog(Catalog.GetString("Character Encodings"), parent, DialogFlags.Modal | DialogFlagsUseHeaderBar);
+	private Gtk.Dialog BuildDialog (Window parent) {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Character Encodings"), parent, DialogFlags.Modal | DialogFlagsUseHeaderBar);
 
 		dialog.DefaultWidth = 600;
 		dialog.DefaultHeight = 400;
@@ -107,6 +103,10 @@ public class EncodingsDialog : BaseDialog {
 
 		dialog.ContentArea.Add(grid);
 		dialog.ContentArea.ShowAll();
+
+		ConnectSignals();
+
+		return dialog;
 	}
 
 	private void FillAvailableEncodings () {

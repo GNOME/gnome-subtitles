@@ -25,13 +25,10 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 public class VideoOpenDialog : BaseDialog {
-	protected FileChooserDialog dialog = null;
-	private Uri chosenUri = null;
+	private Uri chosenUri;
 
 	public VideoOpenDialog () : base() {
-		BuildDialog();
-
-		base.Init(dialog);
+		base.Init(BuildDialog());
 	}
 
 	/* Public properties */
@@ -42,8 +39,8 @@ public class VideoOpenDialog : BaseDialog {
 
 	/* Private methods */
 
-	private void BuildDialog() {
-		dialog = new FileChooserDialog(Catalog.GetString("Open Video"), Base.Ui.Window, FileChooserAction.Open,
+	private FileChooserDialog BuildDialog() {
+		FileChooserDialog dialog = new FileChooserDialog(Catalog.GetString("Open Video"), Base.Ui.Window, FileChooserAction.Open,
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
@@ -55,9 +52,12 @@ public class VideoOpenDialog : BaseDialog {
 		}
 
 		SetFilters();
+
+		return dialog;
 	}
 
 	private void SetFilters () {
+		FileChooserDialog dialog = Dialog as FileChooserDialog;
 
 		/* Video files */
 		FileFilter videoFilesFilter = new FileFilter();
@@ -89,8 +89,9 @@ public class VideoOpenDialog : BaseDialog {
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			if (dialog.Uri != null) {
-				chosenUri = new Uri(dialog.Uri);
+			string uri = (Dialog as FileChooserDialog).Uri;
+			if (uri != null) {
+				chosenUri = new Uri(uri);
 			}
 			SetReturnValue(true);
 		}

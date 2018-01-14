@@ -23,7 +23,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-	public abstract class MessageDialog : BaseDialog {
+public abstract class MessageDialog : BaseDialog {
 		protected Gtk.MessageDialog dialog = null;
 
 		public MessageDialog (MessageType messageType) : base() {

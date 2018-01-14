@@ -29,8 +29,6 @@ using System.Text;
 namespace GnomeSubtitles.Dialog {
 
 public class FileSaveDialog : BaseDialog {
-	protected FileChooserDialog dialog;
-
 	private string chosenFilename = String.Empty;
 	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
 	private SubtitleType chosenSubtitleType;
@@ -45,9 +43,7 @@ public class FileSaveDialog : BaseDialog {
 	}
 
 	protected FileSaveDialog (string title) : base() {
-		BuildDialog(title);
-
-		base.Init(dialog);
+		base.Init(BuildDialog(title));
 	}
 
 
@@ -88,8 +84,8 @@ public class FileSaveDialog : BaseDialog {
 
 	/* Private members */
 
-	private void BuildDialog (string title) {
-		dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Save,
+	private FileChooserDialog BuildDialog (string title) {
+		FileChooserDialog dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Save,
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-save"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
@@ -129,6 +125,8 @@ public class FileSaveDialog : BaseDialog {
 
 		dialog.SetCurrentFolder(GetStartFolder());
 		dialog.CurrentName = GetStartFilename();
+
+		return dialog;
 	}
 
 	private void BuildFormatComboBox () {
@@ -211,7 +209,7 @@ public class FileSaveDialog : BaseDialog {
 	}
 
 	private string AddExtensionIfNeeded (SubtitleType type) {
-		string filename = dialog.Filename;
+		string filename = (Dialog as FileChooserDialog).Filename;
 		int index = 0;
 		string extension = GetFilenameExtension(filename, out index);
 
@@ -275,6 +273,8 @@ public class FileSaveDialog : BaseDialog {
 	}
 
 	private void OnFormatChanged (object o, EventArgs args) {
+		FileChooserDialog dialog = Dialog as FileChooserDialog;
+
 		string filename = dialog.Filename;
 		if ((filename == null) || (filename == String.Empty))
 			return;

@@ -117,7 +117,7 @@ public abstract class SetLanguageDialog : BuilderDialog {
 	}
 
 	private void SetDialogTitle (SubtitleTextType textType) {
-		GetDialog().Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
+		Dialog.Title = (textType == SubtitleTextType.Text ? dialogTitleText : dialogTitleTranslation);
 	}
 
 	private void SetIntroLabel (SubtitleTextType textType) {

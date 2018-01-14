@@ -25,7 +25,6 @@ namespace GnomeSubtitles.Dialog {
 
 public abstract class BaseDialog {
 
-	private Gtk.Dialog dialog = null;
 	private bool returnValue = false;
 
 	//Hack because gtk# doesn't support this flag yet (as of 2017). Ref: https://git.gnome.org/browse/gtk+/tree/gtk/gtkdialog.h (GTK_DIALOG_USE_HEADER_BAR)
@@ -46,7 +45,7 @@ public abstract class BaseDialog {
 	}
 
 	public virtual bool Visible {
-		get { return dialog.Visible; }
+		get { return Dialog.Visible; }
 		set {
 			if (value)
 				Show();
@@ -55,18 +54,22 @@ public abstract class BaseDialog {
 		}
 	}
 
+	protected Gtk.Dialog Dialog {
+		get; private set;
+	}
+
 	/* Public Methods */
 
 	public virtual void Show () {
-		dialog.Visible = true;
+		Dialog.Visible = true;
 	}
 
 	public virtual void Hide () {
-		dialog.Visible = false;
+		Dialog.Visible = false;
 	}
 
 	public virtual void Destroy () {
-		dialog.Destroy();
+		Dialog.Destroy();
 		EmitDestroyedEvent();
 	}
 
@@ -74,7 +77,7 @@ public abstract class BaseDialog {
 
 	//TODO check if this is needed
 	public virtual bool WaitForResponse () {
-		dialog.Run();
+		Dialog.Run();
 		return returnValue;
 	}
 
@@ -86,15 +89,11 @@ public abstract class BaseDialog {
 	/* Protected members */
 
 	protected void Init (Gtk.Dialog dialog) {
-		this.dialog = dialog;
+		Dialog = dialog;
 		//SetBaseWindow(dialog, Base.Ui.Window);
 
-		dialog.Response += OnResponse;
-		dialog.DeleteEvent += OnDeleteEvent;
-	}
-
-	protected Gtk.Dialog GetDialog () {
-		return dialog;
+		Dialog.Response += OnResponse;
+		Dialog.DeleteEvent += OnDeleteEvent;
 	}
 
 	protected void SetReturnValue (bool returnValue) {
