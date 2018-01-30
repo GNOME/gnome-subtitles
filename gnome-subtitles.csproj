@@ -57,33 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="src\Glade\AboutDialog.glade">
-      <LogicalName>AboutDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\FilePropertiesDialog.glade">
-      <LogicalName>FilePropertiesDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\PreferencesDialog.glade">
-      <LogicalName>PreferencesDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\SearchDialog.glade">
-      <LogicalName>SearchDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\SetLanguageDialog.glade">
-      <LogicalName>SetLanguageDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\TimingsAdjustDialog.glade">
-      <LogicalName>TimingsAdjustDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\TimingsShiftDialog.glade">
-      <LogicalName>TimingsShiftDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\TimingsSynchronizeDialog.glade">
-      <LogicalName>TimingsSynchronizeDialog.glade</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Glade\VideoSeekToDialog.glade">
-      <LogicalName>VideoSeekToDialog.glade</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="data\gnome-subtitles.svg">
       <DeployService-Deploy>True</DeployService-Deploy>
       <LogicalName>gnome-subtitles.svg</LogicalName>
@@ -99,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Glade\MainWindow.ui">
       <LogicalName>MainWindow.ui</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\gnome-subtitles-logo.png">
+      <LogicalName>gnome-subtitles-logo.png</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -314,5 +290,28 @@
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="src\SubLib\Util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Glade\AboutDialog.glade">
+      <LogicalName>AboutDialog.glade</LogicalName>
+    </None>
+    <None Include="src\Glade\SearchDialog.glade">
+      <LogicalName>SearchDialog.glade</LogicalName>
+    </None>
+    <None Include="src\Glade\SetLanguageDialog.glade">
+      <LogicalName>SetLanguageDialog.glade</LogicalName>
+    </None>
+    <None Include="src\Glade\TimingsAdjustDialog.glade">
+      <LogicalName>TimingsAdjustDialog.glade</LogicalName>
+    </None>
+    <None Include="src\Glade\TimingsShiftDialog.glade">
+      <LogicalName>TimingsShiftDialog.glade</LogicalName>
+    </None>
+    <None Include="src\Glade\TimingsSynchronizeDialog.glade">
+      <LogicalName>TimingsSynchronizeDialog.glade</LogicalName>
+    </None>
+    <None Include="src\Glade\VideoSeekToDialog.glade">
+      <LogicalName>VideoSeekToDialog.glade</LogicalName>
+    </None>
   </ItemGroup>
 </Project>

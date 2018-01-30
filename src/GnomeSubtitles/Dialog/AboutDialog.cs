@@ -17,47 +17,51 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using Mono.Unix;
 using GnomeSubtitles.Core;
 using Gtk;
 using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class AboutDialog : BuilderDialog {
+public class AboutDialog : BaseDialog {
 
-	/* Constant strings */
-	private const string gladeFilename = "AboutDialog.glade";
-	private const string logoFilename = "gnome-subtitles-logo.png";
-
+	private const string LogoFilename = "gnome-subtitles-logo.png";
 
 	public AboutDialog () {
-		SetHooks();
-		Init(gladeFilename, true);
-
-		SetInfo();
+		Init(BuildDialog());
 	}
 
 	/* Private members */
 
-	/// <summary>Sets the Url and Email hooks. These must be set before the dialog is realized.</summary>
-	private void SetHooks () {
-//		Gtk.AboutDialog.SetUrlHook(AboutDialogOpenUrl); //FIXME
-//		Gtk.AboutDialog.SetEmailHook(AboutDialogOpenEmail); //FIXME
-	}
+	private Gtk.AboutDialog BuildDialog () {
+		Gtk.AboutDialog dialog = new Gtk.AboutDialog();
 
-	private void AboutDialogOpenUrl (object o, ActivateLinkArgs args) {
-		//Core.Util.OpenUrl(url); / //FIXME
-	}
+		dialog.Modal = true;
 
-	private void AboutDialogOpenEmail (Gtk.AboutDialog about, string email) {
-		Core.Util.OpenSendEmail(email);
-	}
-
-	private void SetInfo () {
-		Gtk.AboutDialog dialog = Dialog as Gtk.AboutDialog;
-
+		dialog.Title = Catalog.GetString("About Gnome Subtitles");
+		dialog.ProgramName = Base.ExecutionContext.ApplicationName;
 		dialog.Version = Base.ExecutionContext.Version;
-		dialog.Logo = new Gdk.Pixbuf(null, logoFilename);
+		dialog.Logo = new Gdk.Pixbuf(null, LogoFilename);
+		dialog.Website = "http://gnomesubtitles.org";
+		dialog.WebsiteLabel = dialog.Website;
+		dialog.Comments = Catalog.GetString("Video subtitling for the GNOME desktop");
+		dialog.Copyright = "Copyright © 2006-2018 Pedro Castro";
+		dialog.LicenseType = License.Gpl20;
+
+		dialog.Authors = new string[]{
+			"Pedro Castro"
+		};
+
+		dialog.Documenters = new string[]{
+			"Erin Bloom"
+		};
+
+		dialog.Artists = new string[]{
+			"Stefan A. Keel (Sak)"
+		};
+
+		return dialog;
 	}
 
 }

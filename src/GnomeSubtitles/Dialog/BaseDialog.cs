@@ -73,9 +73,11 @@ public abstract class BaseDialog {
 		EmitDestroyedEvent();
 	}
 
-
-
-	//TODO check if this is needed
+	/**
+	 * Used when we want to open a dialog and continue execution based on the dialog response.
+	 * This way, the dialog doesn't need to understand who its caller is. It will just set its
+	 * response value (in its object) and the caller will obtain it once the dialog returns.
+	 */
 	public virtual bool WaitForResponse () {
 		Dialog.Run();
 		return returnValue;
@@ -90,7 +92,13 @@ public abstract class BaseDialog {
 
 	protected void Init (Gtk.Dialog dialog) {
 		Dialog = dialog;
-		//SetBaseWindow(dialog, Base.Ui.Window);
+
+		/* If the dialog doesn't specify a parent, we assume it's the main window.
+		 * Usually the parent is specified when creating dialogs, but not in all types (e.g., AboutDialog).
+		 */
+		if (dialog.TransientFor == null) {
+			dialog.TransientFor = Base.Ui.Window;
+		}
 
 		Dialog.Response += OnResponse;
 		Dialog.DeleteEvent += OnDeleteEvent;
@@ -125,14 +133,6 @@ public abstract class BaseDialog {
 			Destroyed(this, EventArgs.Empty);
 		}
 	}
-
-
-	/* Private members */
-
-//	private void SetBaseWindow (Gtk.Dialog dialog, Window window) {
-//		dialog.TransientFor = window;
-//		dialog.Icon = window.Icon; //TODO is this still needed?
-//	}
 
 }
 
