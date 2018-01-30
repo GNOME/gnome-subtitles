@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 using GnomeSubtitles.Core;
-//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -40,10 +39,6 @@ public class FilePropertiesDialog : BaseDialog {
 		FileProperties properties = Base.Document.TextFile;
 
 		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("File Properties"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar);
-
-//		dialog.DefaultResponse = ResponseType.Ok;
-//		dialog.DefaultWidth = 600;
-//		dialog.DefaultHeight = 550;
 
 		Grid grid = new Grid();
 		grid.BorderWidth = 15;

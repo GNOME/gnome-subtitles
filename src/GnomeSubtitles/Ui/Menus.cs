@@ -194,7 +194,7 @@ public class Menus {
 		SetVideoDocumentLoadedSensitivity(documentLoaded);
 		/* Tools Menu */
 		SetToolsAutocheckSpellingSensitivity(documentLoaded);
-		SetSensitivity(WidgetNames.ToolsSetTextLanguage, documentLoaded);
+		SetSensitivity(WidgetNames.ToolsSetLanguages, documentLoaded);
 		/* Toolbar */
 		SetSensitivity(WidgetNames.SaveButton, documentLoaded);
 		SetSensitivity(WidgetNames.InsertSubtitleButton, documentLoaded);
@@ -234,7 +234,6 @@ public class Menus {
 		SetSensitivity(WidgetNames.FileTranslationSaveAs, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationReload, sensitivity);
-		SetSensitivity(WidgetNames.ToolsSetTranslationLanguage, sensitivity);
 
 		bool oneSubtitleSelected = (Core.Base.Ui.View.Selection.Count == 1);
 		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && oneSubtitleSelected);

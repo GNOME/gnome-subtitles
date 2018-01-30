@@ -20,6 +20,7 @@
 using Gtk;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using SubLib.Core.Domain;
 using SubLib.Util;
@@ -172,9 +173,18 @@ public class SpellLanguages {
 		enchant_broker_list_dicts (broker, languageListHandler, IntPtr.Zero);
 
 		enchant_broker_free(broker);
-
+		 
 		languages.Sort();
-		Logger.Info("[Spellcheck] Found {0} languages", languages.Count);
+		Logger.Info("[Spellcheck] Found {0} languages: {1}", languages.Count, GetLanguageIDsAsString(languages));
+	}
+
+	private string GetLanguageIDsAsString (ArrayList languages) {
+		List<string> ids = new List<string>();
+		foreach (SpellLanguage language in languages) {
+			ids.Add(language.ID);
+		}
+
+		return String.Join(",", ids);
 	}
 
 	private void GetActiveLanguagesFromConfig () {

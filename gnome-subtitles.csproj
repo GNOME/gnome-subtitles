@@ -161,9 +161,6 @@
     <Compile Include="src\GnomeSubtitles\Dialog\MessageDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\PreferencesDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\SearchDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\SetLanguageDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\SetTextLanguageDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\SetTranslationLanguageDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsAdjustDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsShiftDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsSynchronizeDialog.cs" />
@@ -285,6 +282,8 @@
     <Compile Include="src\GnomeSubtitles\Dialog\FileSaveDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationSaveDialog.cs" />
     <Compile Include="src\SubLib\Util\Logger.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\SetLanguagesDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\WidgetStyles.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -292,14 +291,8 @@
     <Folder Include="src\SubLib\Util\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Glade\AboutDialog.glade">
-      <LogicalName>AboutDialog.glade</LogicalName>
-    </None>
     <None Include="src\Glade\SearchDialog.glade">
       <LogicalName>SearchDialog.glade</LogicalName>
-    </None>
-    <None Include="src\Glade\SetLanguageDialog.glade">
-      <LogicalName>SetLanguageDialog.glade</LogicalName>
     </None>
     <None Include="src\Glade\TimingsAdjustDialog.glade">
       <LogicalName>TimingsAdjustDialog.glade</LogicalName>

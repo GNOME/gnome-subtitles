@@ -380,12 +380,8 @@ public class EventHandlers {
 		Base.SpellLanguages.Enabled = enabled;
 	}
 
-	public void OnToolsSetTextLanguage (object o, EventArgs args) {
-		Base.Dialogs.Get(typeof(SetTextLanguageDialog)).Show();
-	}
-
-	public void OnToolsSetTranslationLanguage (object o, EventArgs args) {
-		Base.Dialogs.Get(typeof(SetTranslationLanguageDialog)).Show();
+	public void OnToolsSetLanguages (object o, EventArgs args) {
+		Base.Dialogs.Get(typeof(SetLanguagesDialog)).Show();
 	}
 
 	public void OnToolsTranslateText (object o, EventArgs args) {

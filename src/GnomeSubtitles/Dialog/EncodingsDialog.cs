@@ -19,6 +19,7 @@
 
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
+using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
 using System;
@@ -55,8 +56,8 @@ public class EncodingsDialog : BaseDialog {
 	private Gtk.Dialog BuildDialog (Window parent) {
 		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Character Encodings"), parent, DialogFlags.Modal | DialogFlagsUseHeaderBar);
 
-		dialog.DefaultWidth = 600;
-		dialog.DefaultHeight = 400;
+		dialog.DefaultWidth = WidgetStyles.DialogWidthMedium;
+		dialog.DefaultHeight = WidgetStyles.DialogHeightMedium;
 
 		Grid grid = new Grid();
 		grid.RowSpacing = 6;

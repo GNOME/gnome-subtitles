@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,13 @@
  */
 
 using GnomeSubtitles.Core;
-using System;
+using GnomeSubtitles.Ui;
 using Gtk;
-using SubLib.Core.Domain;
 using Mono.Unix;
-using System.Reflection;
+using SubLib.Core.Domain;
 using SubLib.IO.SubtitleFormats;
+using System;
+using System.Reflection;
 
 namespace GnomeSubtitles.Dialog {
 
@@ -49,8 +50,8 @@ public class HeadersDialog : BaseDialog {
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-apply"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
-		dialog.DefaultWidth = 600;
-		dialog.DefaultHeight = 550;
+		dialog.DefaultWidth = WidgetStyles.DialogWidthMedium;
+		dialog.DefaultHeight = WidgetStyles.DialogHeightLarge;
 
 		Notebook notebook = new Notebook();
 		notebook.Expand = true;

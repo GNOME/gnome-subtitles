@@ -64,20 +64,18 @@ public class TranslatorCommand : FixedSingleSelectionCommand {
 	}
 
 	private bool DoTranslation () {
-		if (Base.Ui.View.Selection.Count != 1) //TODO: for now, only works if 1 subtitle is selected
+		if (Base.Ui.View.Selection.Count != 1) { //TODO: for now, only works if 1 subtitle is selected
 			return false;
-
-		/* Show language selection dialogs if no languages are selected */
-		if (!Base.SpellLanguages.HasActiveTextLanguage) {
-			Base.Dialogs.Get(typeof(SetTextLanguageDialog)).Show();
-			if (!Base.SpellLanguages.HasActiveTextLanguage)
-				return false;
 		}
 
-		if (!Base.SpellLanguages.HasActiveTranslationLanguage) {
-			Base.Dialogs.Get(typeof(SetTranslationLanguageDialog)).Show();
-			if (!Base.SpellLanguages.HasActiveTranslationLanguage)
-				return false;
+		/* Show language selection dialog if one of the languages isn't selected */
+		if (!Base.SpellLanguages.HasActiveTextLanguage || !Base.SpellLanguages.HasActiveTranslationLanguage) {
+			SetLanguagesDialog dialog = Base.Dialogs.Get(typeof(SetLanguagesDialog)) as SetLanguagesDialog;
+			dialog.Show();
+			dialog.WaitForResponse();
+			if (!Base.SpellLanguages.HasActiveTextLanguage || !Base.SpellLanguages.HasActiveTranslationLanguage) {
+				return false; //Both must be selected, if they aren't we just don't do anything here
+			}
 		}
 
 		try {
@@ -93,7 +91,7 @@ public class TranslatorCommand : FixedSingleSelectionCommand {
 				subtitle.Text.Set(translatedText);
 			}
 
-			//TODO: if only one subtitle selected, set the cursor on the translated text box and select its text. If multiple subtitles translated, select those subtitles.
+			//TODO: if only one subtitle is selected, set the cursor on the translated text box and select its text. If multiple subtitles translated, select those subtitles.
 			return true;
 		}
 		catch (TranslatorException e) { //TODO know which exceptions are originally thrown. Check if it's possible to have the second error message in the application language.
