@@ -18,6 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui;
 using GnomeSubtitles.Ui.Component;
 using GnomeSubtitles.Ui.VideoPreview;
 using Gtk;
@@ -104,8 +105,8 @@ public class FileOpenDialog : BaseDialog {
 
 		//Build content area
 
-		Box box = new Box(Orientation.Horizontal, 6);
-		box.BorderWidth = 6;
+		Box box = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
+		box.BorderWidth = WidgetStyles.BorderWidthMedium;
 
 		videoLabel = new Label(Catalog.GetString("Video To Open:"));
 		box.Add(videoLabel);

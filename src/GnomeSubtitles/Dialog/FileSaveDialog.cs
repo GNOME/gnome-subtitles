@@ -18,6 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui;
 using GnomeSubtitles.Ui.Component;
 using Gtk;
 using Mono.Unix;
@@ -93,9 +94,9 @@ public class FileSaveDialog : BaseDialog {
 		//Build content area
 
 		Grid grid = new Grid();
-		grid.RowSpacing = 6;
-		grid.ColumnSpacing = 6;
-		grid.BorderWidth = 6;
+		grid.RowSpacing = WidgetStyles.RowSpacingMedium;
+		grid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
+		grid.BorderWidth = WidgetStyles.BorderWidthMedium;
 
 		Label formatLabel = new Label(Catalog.GetString("Subtitle Format:"));
 		formatLabel.Xalign = 0;

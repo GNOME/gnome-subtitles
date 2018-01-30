@@ -22,6 +22,7 @@ namespace GnomeSubtitles.Ui {
 public class WidgetStyles {
 
 	/* Dialogs */
+
 	public const int DialogWidthSmall = 450;
 	public const int DialogWidthMedium = 600;
 	public const int DialogWidthLarge = 750;
@@ -29,6 +30,20 @@ public class WidgetStyles {
 	public const int DialogHeightSmall = 250;
 	public const int DialogHeightMedium = 400;
 	public const int DialogHeightLarge = 550;
+
+
+	/* Spacing */
+
+	public const int RowSpacingMedium = 6;
+	public const int RowSpacingLarge = 12;
+
+	public const int ColumnSpacingMedium = 6;
+	public const int ColumnSpacingLarge = 12;
+
+	public const int BorderWidthMedium = 6;
+	public const int BorderWidthLarge = 12;
+
+	public const int BoxSpacingMedium = 6;
 
 }
 

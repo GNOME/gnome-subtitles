@@ -28,7 +28,7 @@ using System.Reflection;
 
 namespace GnomeSubtitles.Dialog {
 
-public class HeadersDialog : BaseDialog {
+public class FileHeadersDialog : BaseDialog {
 
 	private Headers headers;
 
@@ -36,7 +36,7 @@ public class HeadersDialog : BaseDialog {
 	private delegate void PropertyChangedHandler (object sender, string property, object newValue);
 	private event PropertyChangedHandler PropertyChanged;
 
-	public HeadersDialog () : base() {
+	public FileHeadersDialog () : base() {
 		headers = (Headers)Base.Document.Subtitles.Properties.Headers.Clone();
 
 		base.Init(BuildDialog());
@@ -56,7 +56,7 @@ public class HeadersDialog : BaseDialog {
 		Notebook notebook = new Notebook();
 		notebook.Expand = true;
 		notebook.TabPos = PositionType.Left;
-		notebook.BorderWidth = 6;
+		notebook.BorderWidth = WidgetStyles.BorderWidthMedium;
 
 		Grid grid;
 
@@ -184,9 +184,9 @@ public class HeadersDialog : BaseDialog {
 		ScrolledWindow window = new ScrolledWindow();
 
 		Grid grid = new Grid();
-		grid.BorderWidth = 8;
-		grid.ColumnSpacing = 6;
-		grid.RowSpacing = 10;
+		grid.BorderWidth = WidgetStyles.BorderWidthLarge;
+		grid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
+		grid.RowSpacing = WidgetStyles.RowSpacingLarge;
 		window.Add(grid);
 
 		notebook.AppendPage(window, new Label(tabLabel));

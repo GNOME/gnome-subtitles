@@ -18,6 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -41,9 +42,9 @@ public class FilePropertiesDialog : BaseDialog {
 		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("File Properties"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar);
 
 		Grid grid = new Grid();
-		grid.BorderWidth = 15;
-		grid.ColumnSpacing = 15;
-		grid.RowSpacing = 15;
+		grid.BorderWidth = WidgetStyles.BorderWidthLarge;
+		grid.ColumnSpacing = WidgetStyles.ColumnSpacingLarge;
+		grid.RowSpacing = WidgetStyles.RowSpacingLarge;
 
 		grid.Attach(CreateFieldLabel(Catalog.GetString("File Name")), 0, 0, 1, 1);
 		grid.Attach(CreateValueLabel(properties.Filename), 1, 0, 1, 1);

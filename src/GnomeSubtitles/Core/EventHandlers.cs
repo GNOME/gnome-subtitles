@@ -86,7 +86,7 @@ public class EventHandlers {
 	}
 
 	public void OnFileHeaders (object o, EventArgs args) {
-		Base.Dialogs.Get(typeof(HeadersDialog)).Show();
+		Base.Dialogs.Get(typeof(FileHeadersDialog)).Show();
 	}
 
 	public void OnFileProperties (object o, EventArgs args) {

@@ -60,9 +60,9 @@ public class EncodingsDialog : BaseDialog {
 		dialog.DefaultHeight = WidgetStyles.DialogHeightMedium;
 
 		Grid grid = new Grid();
-		grid.RowSpacing = 6;
-		grid.ColumnSpacing = 12;
-		grid.BorderWidth = 6;
+		grid.RowSpacing = WidgetStyles.RowSpacingMedium;
+		grid.ColumnSpacing = WidgetStyles.ColumnSpacingLarge;
+		grid.BorderWidth = WidgetStyles.BorderWidthMedium;
 		grid.ColumnHomogeneous = true;
 
 		/* Left part: Available VBox */
