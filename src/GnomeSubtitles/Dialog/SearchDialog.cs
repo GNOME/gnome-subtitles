@@ -101,14 +101,7 @@ public class SearchDialog : BaseDialog {
 	}
 
 	public void Show (bool useReplace) {
-		if (useReplace) {
-			Dialog.Title = Catalog.GetString("Replace");
-//			table.RowSpacing = 12;
-		}
-		else {
-			Dialog.Title = Catalog.GetString("Find");
-//			table.RowSpacing = 0;
-		}
+		Dialog.Title = (useReplace ? Catalog.GetString("Replace") : Catalog.GetString("Find"));
 
 		replaceEntry.Visible = useReplace;
 		replaceLabel.Visible = useReplace;
