@@ -17,7 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-//using Glade;
+using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
 using System;
@@ -25,9 +26,9 @@ using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Dialog {
 
-internal enum SearchDialogResponse { Find = 1, Replace, ReplaceAll, Close = -6 };
+internal enum SearchDialogResponse { Find = 1, Replace, ReplaceAll };
 
-public class SearchDialog : BuilderDialog {
+public class SearchDialog : BaseDialog {
 	private string text = String.Empty;		//The text to search for
 	private Regex forwardRegex = null;		//The regex that corresponds to the text and the options
 	private Regex backwardRegex = null;		//The regex that corresponds to the text and the options
@@ -38,26 +39,23 @@ public class SearchDialog : BuilderDialog {
 	private bool useRegex = false;
 	private bool wrap = true;
 
-	/* Constant strings */
-	private const string gladeFilename = "SearchDialog.glade";
-
 	/* Widgets */
 
-	[Builder.Object] private Entry findEntry = null;
-	[Builder.Object] private Entry replaceEntry = null;
-	[Builder.Object] private Label replaceLabel = null;
-	[Builder.Object] private Table table = null;
+	private Entry findEntry = null;
+	private Entry replaceEntry = null;
+	private Label replaceLabel = null;
 
-	[Builder.Object] private CheckButton matchCaseCheckButton = null;
-	[Builder.Object] private CheckButton backwardsCheckButton = null;
-	[Builder.Object] private CheckButton regexCheckButton = null;
-	[Builder.Object] private CheckButton wrapCheckButton = null;
+	private CheckButton matchCaseCheckButton = null;
+	private CheckButton backwardsCheckButton = null;
+	private CheckButton regexCheckButton = null;
+	private CheckButton wrapCheckButton = null;
 
-	[Builder.Object] private Button buttonReplaceAll = null;
-	[Builder.Object] private Button buttonReplace = null;
-	[Builder.Object] private Button buttonFind = null;
+	private Button buttonReplaceAll = null;
+	private Button buttonReplace = null;
+	private Button buttonFind = null;
 
-	public SearchDialog () : base(gladeFilename) {
+	public SearchDialog () : base() {
+		base.Init(BuildDialog());
 	}
 
 	/* Overriden members */
@@ -105,11 +103,11 @@ public class SearchDialog : BuilderDialog {
 	public void Show (bool useReplace) {
 		if (useReplace) {
 			Dialog.Title = Catalog.GetString("Replace");
-			table.RowSpacing = 12;
+//			table.RowSpacing = 12;
 		}
 		else {
 			Dialog.Title = Catalog.GetString("Find");
-			table.RowSpacing = 0;
+//			table.RowSpacing = 0;
 		}
 
 		replaceEntry.Visible = useReplace;
@@ -124,21 +122,74 @@ public class SearchDialog : BuilderDialog {
 
 	/* Private methods */
 
-	private bool ValuesHaveChanged () {
-		if (!valuesMayHaveChanged)
-			return false;
-		if (text != findEntry.Text)
-			return true;
-		if (matchCase != matchCaseCheckButton.Active)
-			return true;
-		if (backwards != backwardsCheckButton.Active)
-			return true;
-		if (useRegex != regexCheckButton.Active)
-			return true;
-		if (wrap != wrapCheckButton.Active)
-			return true;
+	private Gtk.Dialog BuildDialog() {
+		Gtk.Dialog dialog = new Gtk.Dialog();
 
-		return false;
+		//Content area
+
+		Grid grid = new Grid();
+
+		grid.BorderWidth = WidgetStyles.BorderWidthLarge;
+		grid.ColumnSpacing = WidgetStyles.ColumnSpacingLarge;
+		grid.RowSpacing = WidgetStyles.RowSpacingLarge;
+
+		Label findLabel = new Label(Catalog.GetString("F_ind"));
+		findLabel.SetAlignment(1, 0.5f);
+		grid.Attach(findLabel, 0, 0, 1, 1);
+
+		findEntry = new Entry();
+		findEntry.Changed += OnFindTextChanged;
+		findEntry.ActivatesDefault = true;
+		grid.Attach(findEntry, 1, 0, 2, 1);
+
+		replaceLabel = new Label(Catalog.GetString("Replace _with"));
+		replaceLabel.SetAlignment(1, 0.5f);
+		grid.Attach(replaceLabel, 0, 1, 1, 1);
+
+		replaceEntry = new Entry();
+		replaceEntry.Changed += OnReplaceTextChanged;
+		replaceEntry.ActivatesDefault = true;
+		grid.Attach(replaceEntry, 1, 1, 2, 1);
+
+		matchCaseCheckButton = new CheckButton(Catalog.GetString("_Match case"));
+		matchCaseCheckButton.Toggled += OnMatchCaseToggled;
+		grid.Attach(matchCaseCheckButton, 1, 2, 1, 1);
+
+		backwardsCheckButton = new CheckButton(Catalog.GetString("Search _backwards"));
+		backwardsCheckButton.Toggled += OnBackwardsToggled;
+		grid.Attach(backwardsCheckButton, 2, 2, 1, 1);
+
+		regexCheckButton = new CheckButton(Catalog.GetString("Regular _expression"));
+		regexCheckButton.Toggled += OnUseRegexToggled;
+		grid.Attach(regexCheckButton, 1, 3, 1, 1);
+
+		wrapCheckButton = new CheckButton(Catalog.GetString("Wra_p around"));
+		wrapCheckButton.Toggled += OnWrapToggled;
+		grid.Attach(wrapCheckButton, 2, 3, 1, 1);
+
+		dialog.ContentArea.Add(grid);
+		dialog.ContentArea.ShowAll();
+
+		//Action area
+		buttonReplaceAll = dialog.AddButton(Catalog.GetString("Replace _All"), (int)SearchDialogResponse.ReplaceAll) as Button;
+		buttonReplace = dialog.AddButton(Catalog.GetString("_Replace"), (int)SearchDialogResponse.Replace) as Button;
+		buttonFind = dialog.AddButton(Util.GetStockLabel("gtk-find"), (int)SearchDialogResponse.Find) as Button;
+
+		dialog.DefaultResponse = (ResponseType)SearchDialogResponse.Find;
+
+		return dialog;
+	}
+
+	private bool ValuesHaveChanged () {
+		if (!valuesMayHaveChanged) {
+			return false;
+		}
+		
+		return (text != findEntry.Text)
+		|| (matchCase != matchCaseCheckButton.Active)
+		|| (backwards != backwardsCheckButton.Active)
+		|| (useRegex != regexCheckButton.Active)
+		|| (wrap != wrapCheckButton.Active);
 	}
 
 	private void LoadDialogValues () {
@@ -170,25 +221,27 @@ public class SearchDialog : BuilderDialog {
 	private void HandleValuesChange () {
 		bool updateRegex = ValuesHaveChanged(); //Need to be before SaveDialogValues, as the values will be changed
 		SaveDialogValues();
-		if (updateRegex)
+		if (updateRegex) {
 			UpdateRegex();
-
+		}
 	}
 
 	private void Find () {
 		HandleValuesChange();
 
 		bool found = Core.Base.Ui.View.Search.Find();
-		if (found)
+		if (found) {
 			buttonReplace.Sensitive = true;
+		}
 	}
 
 	private void Replace () {
 		HandleValuesChange();
 
 		bool foundNext = Core.Base.Ui.View.Search.Replace();
-		if (!foundNext) //No other text was found to replace, after replacing this one
+		if (!foundNext) { //No other text was found to replace, after replacing this one
 			buttonReplace.Sensitive = false;
+		}
 	}
 
 	private void ReplaceAll () {
@@ -199,8 +252,9 @@ public class SearchDialog : BuilderDialog {
 
 	private void UpdateRegex() {
 		RegexOptions options = RegexOptions.Singleline;
-		if (!matchCase)
+		if (!matchCase) {
 			options |= RegexOptions.IgnoreCase;
+		}
 
 		string regexText = (useRegex ? text : Regex.Escape(text));
 		forwardRegex = new Regex(regexText, options);
@@ -208,8 +262,6 @@ public class SearchDialog : BuilderDialog {
 	}
 
 	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	protected override bool ProcessResponse (ResponseType response) {
 		SearchDialogResponse searchResponse = (SearchDialogResponse)response;
@@ -223,9 +275,6 @@ public class SearchDialog : BuilderDialog {
 			case SearchDialogResponse.ReplaceAll:
 				ReplaceAll();
 				return true;
-			case SearchDialogResponse.Close:
-				Hide();
-				return false;
 			default:
 				return false;
 		}

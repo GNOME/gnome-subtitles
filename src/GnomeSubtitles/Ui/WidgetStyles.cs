@@ -44,6 +44,7 @@ public class WidgetStyles {
 	public const int BorderWidthLarge = 12;
 
 	public const int BoxSpacingMedium = 6;
+	public const int BoxSpacingLarge = 12;
 
 }
 
