@@ -51,13 +51,12 @@ public class VideoOpenDialog : BaseDialog {
 			dialog.SetCurrentFolder(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
 		}
 
-		SetFilters();
+		SetFilters(dialog);
 
 		return dialog;
 	}
 
-	private void SetFilters () {
-		FileChooserDialog dialog = Dialog as FileChooserDialog;
+	private void SetFilters (FileChooserDialog dialog) {
 
 		/* Video files */
 		FileFilter videoFilesFilter = new FileFilter();
