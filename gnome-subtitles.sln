@@ -17,11 +17,7 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.TextStylePolicy = $1
-		$1.FileWidth = 120
-		$1.TabsToSpaces = False
 		$1.EolMarker = Unix
-		$1.inheritsSet = VisualStudio
-		$1.inheritsScope = text/plain
 		$1.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $2
 		$2.IndentNamespaceBody = False
@@ -44,9 +40,24 @@ Global
 		$2.BeforeDelegateDeclarationParentheses = False
 		$2.NewParentheses = False
 		$2.SpacesBeforeBrackets = False
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
 		$2.scope = text/x-csharp
+		$2.NewLinesForBracesInTypes = False
+		$2.NewLinesForBracesInMethods = False
+		$2.NewLinesForBracesInProperties = False
+		$2.NewLinesForBracesInAccessors = False
+		$2.NewLinesForBracesInAnonymousMethods = False
+		$2.NewLinesForBracesInControlBlocks = False
+		$2.NewLinesForBracesInAnonymousTypes = False
+		$2.NewLinesForBracesInObjectCollectionArrayInitializers = False
+		$2.NewLinesForBracesInLambdaExpressionBody = False
+		$2.NewLineForElse = False
+		$2.NewLineForCatch = False
+		$2.NewLineForFinally = False
+		$2.NewLineForMembersInObjectInit = False
+		$2.NewLineForMembersInAnonymousTypes = False
+		$2.NewLineForClausesInQuery = False
+		$2.SpacingAfterMethodDeclarationName = True
+		$2.SpaceBeforeOpenSquareBracket = True
 		$0.NameConventionPolicy = $3
 		$3.Rules = $4
 		$4.NamingRule = $5
@@ -172,8 +183,6 @@ Global
 		$24.IncludeInstanceMembers = True
 		$24.IncludeStaticEntities = True
 		$0.DotNetNamingPolicy = $26
-		$26.DirectoryNamespaceAssociation = None
-		$26.ResourceNamePolicy = FileFormatDefault
 		$0.TextStylePolicy = $27
 		$27.inheritsSet = null
 		$27.scope = application/glade+xml
@@ -184,14 +193,8 @@ Global
 		$29.inheritsSet = null
 		$29.scope = application/xml
 		$0.XmlFormattingPolicy = $30
-		$30.inheritsSet = Mono
-		$30.inheritsScope = application/xml
 		$30.scope = application/xml
 		$0.TextStylePolicy = $31
-		$31.FileWidth = 120
-		$31.TabsToSpaces = False
-		$31.inheritsSet = VisualStudio
-		$31.inheritsScope = text/plain
 		$31.scope = text/plain
 		$0.TextStylePolicy = $32
 		$32.inheritsSet = null
@@ -200,7 +203,5 @@ Global
 		$33.inheritsSet = null
 		$33.scope = image/svg+xml
 		$0.StandardHeader = $34
-		$34.Text = 
-		$34.IncludeInNewFiles = True
 	EndGlobalSection
 EndGlobal
