@@ -129,7 +129,7 @@ public class SpellLanguages {
 		else
 			activeLanguage = languages[index] as SpellLanguage;
 
-		Logger.Info("[Spellcheck] Setting active language: {0}", (activeLanguage == null ? "none." : activeLanguage.ID));
+		Logger.Info("[Spellcheck] Setting active {0} language: {1}", textType, (activeLanguage == null ? "none." : activeLanguage.ID));
 
 		/* Set index variable */
 		if (textType == SubtitleTextType.Text)
