@@ -140,8 +140,8 @@ public class Menus {
 	/// <param name="sensitivity">Whether the items are set sensitive.</param>
 	private void SetOneSelectionDependentSensitivity (bool sensitivity) {
 		SetVideoSelectionDependentSensitivity(sensitivity);
-		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && Base.Document.IsTranslationLoaded);
-		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && Base.Document.IsTranslationLoaded);
+//		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && Base.Document.IsTranslationLoaded);
+//		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && Base.Document.IsTranslationLoaded);
 	}
 
 	private void SetSubtitleCountDependentSensitivity (int count) {
@@ -235,9 +235,9 @@ public class Menus {
 		SetSensitivity(WidgetNames.FileTranslationClose, sensitivity);
 		SetSensitivity(WidgetNames.FileTranslationReload, sensitivity);
 
-		bool oneSubtitleSelected = (Core.Base.Ui.View.Selection.Count == 1);
-		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && oneSubtitleSelected);
-		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && oneSubtitleSelected);
+//		bool oneSubtitleSelected = (Core.Base.Ui.View.Selection.Count == 1);
+//		SetSensitivity(WidgetNames.ToolsTranslateText, sensitivity && oneSubtitleSelected);
+//		SetSensitivity(WidgetNames.ToolsTranslateTranslation, sensitivity && oneSubtitleSelected);
 		SetViewVideoSubtitlesSensitivity();
 	}
 

@@ -92,8 +92,8 @@ public class WidgetNames {
 	/* Tools Menu */
 	public const string ToolsAutocheckSpelling = "toolsAutocheckSpelling";
 	public const string ToolsSetLanguages = "toolsSetLanguages";
-	public const string ToolsTranslateText = "toolsTranslateText";
-	public const string ToolsTranslateTranslation = "toolsTranslateTranslation";
+	//public const string ToolsTranslateText = "toolsTranslateText";
+	//public const string ToolsTranslateTranslation = "toolsTranslateTranslation";
 
 
 	/* Toolbar */

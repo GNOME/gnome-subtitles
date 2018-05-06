@@ -384,13 +384,13 @@ public class EventHandlers {
 		Base.Dialogs.Get(typeof(SetLanguagesDialog)).Show();
 	}
 
-	public void OnToolsTranslateText (object o, EventArgs args) {
-		Base.CommandManager.Execute(new TranslatorCommand(true));
-	}
+	//public void OnToolsTranslateText (object o, EventArgs args) {
+	//	Base.CommandManager.Execute(new TranslatorCommand(true));
+	//}
 
-	public void OnToolsTranslateTranslation (object o, EventArgs args) {
-		Base.CommandManager.Execute(new TranslatorCommand(false));
-	}
+	//public void OnToolsTranslateTranslation (object o, EventArgs args) {
+	//	Base.CommandManager.Execute(new TranslatorCommand(false));
+	//}
 
 
 	/*	Help Menu */

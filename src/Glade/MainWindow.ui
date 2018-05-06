@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 -->
+<!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkAdjustment" id="durationSpinButtonAdjustment">
@@ -28,6 +28,9 @@
     <property name="title">Gnome Subtitles</property>
     <signal name="delete-event" handler="OnWindowDelete" swapped="no"/>
     <signal name="size-allocate" handler="OnSizeAllocated" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -248,8 +251,8 @@
                         <property name="label" translatable="yes">_Redo</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditRedo" swapped="no"/>
-                        <accelerator key="z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -571,8 +574,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext" swapped="no"/>
-                        <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate"/>
+                        <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -582,8 +585,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious" swapped="no"/>
-                        <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
+                        <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -824,8 +827,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause" swapped="no"/>
-                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F5" signal="activate"/>
+                        <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -847,8 +850,8 @@
                         <property name="label" translatable="yes">R_ewind</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoRewind" swapped="no"/>
-                        <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F6" signal="activate"/>
+                        <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -859,8 +862,8 @@
                         <property name="label" translatable="yes">_Forward</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoForward" swapped="no"/>
-                        <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F7" signal="activate"/>
+                        <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -888,8 +891,8 @@
                         <property name="label" translatable="yes">Seek _to Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection" swapped="no"/>
-                        <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -900,8 +903,8 @@
                         <property name="label" translatable="yes">Select _Nearest Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSelectNearestSubtitle" swapped="no"/>
-                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -976,32 +979,6 @@
                         <property name="label" translatable="yes">Set _Languages</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnToolsSetLanguages" swapped="no"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparatorMenuItem" id="toolsSeparator1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="toolsTranslateText">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Translate _Text → Translation</property>
-                        <property name="use_underline">True</property>
-                        <signal name="activate" handler="OnToolsTranslateText" swapped="no"/>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuItem" id="toolsTranslateTranslation">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Translate Translatio_n → Text</property>
-                        <property name="use_underline">True</property>
-                        <signal name="activate" handler="OnToolsTranslateTranslation" swapped="no"/>
                       </object>
                     </child>
                   </object>
