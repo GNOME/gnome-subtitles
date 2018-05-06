@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -117,7 +117,8 @@ public class SearchDialog : BaseDialog {
 
 	private Gtk.Dialog BuildDialog() {
 		Gtk.Dialog dialog = new Gtk.Dialog();
-
+		dialog.Resizable = false; //This way it automatically resizes according to its content in the 2 display modes: find / replace
+		
 		//Content area
 
 		Grid grid = new Grid();
@@ -164,9 +165,15 @@ public class SearchDialog : BaseDialog {
 		dialog.ContentArea.ShowAll();
 
 		//Action area
+		
 		buttonReplaceAll = dialog.AddButton(Catalog.GetString("Replace _All"), (int)SearchDialogResponse.ReplaceAll) as Button;
+		buttonReplaceAll.Sensitive = false;
+		
 		buttonReplace = dialog.AddButton(Catalog.GetString("_Replace"), (int)SearchDialogResponse.Replace) as Button;
+		buttonReplace.Sensitive = false;
+		
 		buttonFind = dialog.AddButton(Util.GetStockLabel("gtk-find"), (int)SearchDialogResponse.Find) as Button;
+		buttonFind.Sensitive = false;
 
 		dialog.DefaultResponse = (ResponseType)SearchDialogResponse.Find;
 
