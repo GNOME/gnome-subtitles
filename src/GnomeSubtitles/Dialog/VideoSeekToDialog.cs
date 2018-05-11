@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2017 Pedro Castro
+ * Copyright (C) 2008-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,28 +17,23 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-//using Glade;
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
-using SubLib.Core;
 using SubLib.Core.Domain;
 using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class VideoSeekToDialog : BuilderDialog {
+public class VideoSeekToDialog : BaseDialog {
 	private TimingMode timingMode = TimingMode.Frames;
 
-	/* Constant strings */
-	private const string gladeFilename = "VideoSeekToDialog.glade";
-
 	/* Widgets */
-	[Builder.Object] private SpinButton spinButton = null;
+	private SpinButton spinButton = null;
 
-	public VideoSeekToDialog () : base(gladeFilename){
-		InitSpinButton();
-		spinButton.SelectRegion(0, spinButton.Text.Length);
+	public VideoSeekToDialog () : base(){
+		Init(BuildDialog());
 	}
 
 	/* Overriden members */
@@ -49,20 +44,45 @@ public class VideoSeekToDialog : BuilderDialog {
 
 	public override void Show () {
 		SetSpinButtonFromTimingMode();
+		
+		spinButton.SelectRegion(0, spinButton.Text.Length);
+		
 		base.Show ();
 	}
 
 
 	/* Private methods */
 
-	private void InitSpinButton () {
+	private Gtk.Dialog BuildDialog () {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Seek Video To"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Catalog.GetString("_Seek"), ResponseType.Ok);
+
+		dialog.DefaultResponse = ResponseType.Ok;
+		
+		Box hbox = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
+		hbox.BorderWidth = WidgetStyles.BorderWidthMedium;
+		hbox.Spacing = WidgetStyles.BoxSpacingMedium;
+		hbox.Add(new Label(Catalog.GetString("Seek _video to:")));
+		
+		spinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
+		hbox.Add(spinButton);
+		
+		//Button button = new Button("gtk-clear");
+		//button.Clicked += OnClear;
+		//hbox.Add(button);
+		
+		dialog.ContentArea.Add(hbox);
+		dialog.ShowAll();
+		
+		return dialog;
 	}
 
 	private void SetSpinButtonFromTimingMode () {
-		if (this.timingMode == Base.TimingMode)
+		if (this.timingMode == Base.TimingMode) {
 			return;
+		}
 
 		this.timingMode = Base.TimingMode;
 		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode);
@@ -81,11 +101,9 @@ public class VideoSeekToDialog : BuilderDialog {
 		spinButton.Value = newValue;
 	}
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
-
-	private void OnClear (object o, EventArgs args) {
-		SetSpinButtonValue(0);
-	}
+	//private void OnClear (object o, EventArgs args) {
+	//	SetSpinButtonValue(0);
+	//}
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
