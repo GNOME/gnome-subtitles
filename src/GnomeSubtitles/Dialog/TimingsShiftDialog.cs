@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
 
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Ui;
 using GnomeSubtitles.Ui.View;
-//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -30,27 +30,95 @@ namespace GnomeSubtitles.Dialog {
 
 //TODO set spinButton limits according to selection type
 //TODO show informative message about the Ctrl+Shift++ shortcuts
-public class TimingsShiftDialog : BuilderDialog {
+public class TimingsShiftDialog : BaseDialog {
 	private TimingMode timingMode = TimingMode.Frames;
 
-	/* Constant strings */
-	private const string gladeFilename = "TimingsShiftDialog.glade";
-
 	/* Widgets */
-	[Builder.Object] private Label timingModeLabel = null;
-	[Builder.Object] private SpinButton spinButton = null;
-	[Builder.Object] private RadioButton allSubtitlesRadioButton = null;
-	[Builder.Object] private RadioButton selectedSubtitlesRadioButton = null;
-	[Builder.Object] private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
-	[Builder.Object] private RadioButton fromSelectionToLastSubtitleRadioButton = null;
+	private Frame timingModeFrame;
+	private SpinButton spinButton = null;
+	private RadioButton allSubtitlesRadioButton = null;
+	private RadioButton selectedSubtitlesRadioButton = null;
+	private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
+	private RadioButton fromSelectionToLastSubtitleRadioButton = null;
 
-	public TimingsShiftDialog () : base(gladeFilename){
-		InitSpinButton();
-		UpdateContents(true);
+	public TimingsShiftDialog () : base(){
+		Init(BuildDialog());
 	}
 
 
 	/* Methods */
+	
+	private Gtk.Dialog BuildDialog () {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Shift Timings"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar,
+			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Catalog.GetString("_Shift"), ResponseType.Ok);
+
+		dialog.DefaultResponse = ResponseType.Ok;
+		dialog.DefaultWidth = 1; //Needed otherwise the tip label will be displayed in a single line making the dialog have a huge width
+
+		Box box = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingLarge);
+		box.BorderWidth = WidgetStyles.BorderWidthMedium;
+
+		//Timing Mode frame
+
+		timingModeFrame = new Frame();
+		timingModeFrame.ShadowType = ShadowType.None;
+		Label timingModeFrameLabel = new Label();
+		timingModeFrame.LabelWidget = timingModeFrameLabel;
+		
+		spinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
+		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
+		spinButton.Alignment = 0.5f;
+		Button button = new Button("gtk-clear");
+		button.Clicked += OnClear;
+
+		Box timingModeHBox = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
+		timingModeHBox.BorderWidth = WidgetStyles.BorderWidthMedium;
+		timingModeHBox.MarginLeft = 10;
+		timingModeHBox.Add(spinButton);
+		timingModeHBox.Add(button);
+		
+		timingModeFrame.Add(timingModeHBox);
+		box.Add(timingModeFrame);
+		
+		
+		//Apply To frame
+		
+		Frame applyToFrame = new Frame();
+		applyToFrame.ShadowType = ShadowType.None;
+		Label applyToFrameLabel = new Label();
+		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply to") + "</b>";
+		applyToFrame.LabelWidget = applyToFrameLabel;
+		
+		allSubtitlesRadioButton = new RadioButton(Catalog.GetString("_All subtitles"));
+		selectedSubtitlesRadioButton = new RadioButton(allSubtitlesRadioButton, Catalog.GetString("_Selected subtitles"));
+		fromFirstSubtitleToSelectionRadioButton = new RadioButton(allSubtitlesRadioButton, Catalog.GetString("From _first subtitle to selection"));
+		fromSelectionToLastSubtitleRadioButton = new RadioButton(allSubtitlesRadioButton, Catalog.GetString("From selection to _last subtitle"));
+
+		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
+		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
+		applyToFrameVBox.MarginLeft = 10;
+		applyToFrameVBox.Add(allSubtitlesRadioButton);
+		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
+		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
+		applyToFrameVBox.Add(fromSelectionToLastSubtitleRadioButton);
+		
+		applyToFrame.Add(applyToFrameVBox);
+		
+		box.Add(applyToFrame);
+		
+		//Tips label
+		
+		Label label = new Label("<small><i>" + Catalog.GetString("Tip: use Shift+Plus/Minus (on the numpad) to shift timings directly from the main window.") + "</i></small>");
+		label.UseMarkup = true;
+		label.Wrap = true;
+		box.Add(label);
+
+		dialog.ContentArea.Add(box);
+		UpdateContents(true);
+		dialog.ContentArea.ShowAll();
+
+		return dialog;
+	}
 
 	public override void Show () {
 		UpdateContents(false);
@@ -65,11 +133,6 @@ public class TimingsShiftDialog : BuilderDialog {
 		UpdateSpinButtonValue(initializing);
 	}
 
-	private void InitSpinButton () {
-		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
-		spinButton.Alignment = 0.5f;
-	}
-
 	private void UpdateFromTimingMode (TimingMode newTimingMode, bool initializing) {
 		if ((!initializing) && (newTimingMode == timingMode))
 			return;
@@ -80,7 +143,7 @@ public class TimingsShiftDialog : BuilderDialog {
 
 		string label = (timingMode == TimingMode.Times ? Catalog.GetString("Time") : Catalog.GetString("Frames"));
 		string markup = "<b>" + label + "</b>";
-		timingModeLabel.Markup = markup;
+		(timingModeFrame.LabelWidget as Label).Markup = markup;
 	}
 
 	private void UpdateFromSelection () {
@@ -133,14 +196,12 @@ public class TimingsShiftDialog : BuilderDialog {
 			return SelectionIntended.SimpleToLast;
 	}
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
-
 	private void OnClear (object o, EventArgs args) {
 		SetSpinButtonValue(0);
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {
-		if ((response == ResponseType.Ok) && (spinButton.Value != 0)) {
+		if ((response == ResponseType.Ok) && (Math.Abs(spinButton.Value) > float.Epsilon)) {
 			SelectionIntended selectionIntended = GetSelectionIntended();
 
 			if (timingMode == TimingMode.Times) {
