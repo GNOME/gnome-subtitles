@@ -58,6 +58,7 @@ public class VideoSeekToDialog : BaseDialog {
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Catalog.GetString("_Seek"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
+		dialog.Resizable = false;
 		
 		Box hbox = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
 		hbox.BorderWidth = WidgetStyles.BorderWidthMedium;

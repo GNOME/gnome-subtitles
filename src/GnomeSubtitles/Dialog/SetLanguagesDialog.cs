@@ -22,7 +22,6 @@ using GnomeSubtitles.Ui;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
-using System;
 
 namespace GnomeSubtitles.Dialog {
 

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<glade-interface>
+  <!-- interface-requires gtk+ 2.16 -->
+  <!-- interface-naming-policy toplevel-contextual -->
+  <widget class="GtkDialog" id="dialog">
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Seek To</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <property name="has_separator">False</property>
+    <child internal-child="vbox">
+      <widget class="GtkVBox" id="dialogVBox">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">11</property>
+        <child>
+          <widget class="GtkHBox" id="dialogHBox">
+            <property name="visible">True</property>
+            <property name="border_width">4</property>
+            <property name="spacing">9</property>
+            <child>
+              <widget class="GtkLabel" id="positionLabel">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Seek _video to:</property>
+                <property name="use_underline">True</property>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkSpinButton" id="spinButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="has_focus">True</property>
+                <property name="is_focus">True</property>
+                <property name="activates_default">True</property>
+                <property name="adjustment">0 0 100 1 10 0</property>
+                <property name="numeric">True</property>
+              </widget>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkButton" id="clearButton">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="OnClear"/>
+                <child>
+                  <widget class="GtkImage" id="clearButtonImage">
+                    <property name="visible">True</property>
+                    <property name="stock">gtk-clear</property>
+                    <property name="icon-size">1</property>
+                  </widget>
+                </child>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child internal-child="action_area">
+          <widget class="GtkHButtonBox" id="dialogActionArea">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <widget class="GtkButton" id="buttonCancel">
+                <property name="label">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="GtkButton" id="buttonSeek">
+                <property name="response_id">-5</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
+                <property name="receives_default">True</property>
+                <child>
+                  <widget class="GtkAlignment" id="alignment1">
+                    <property name="visible">True</property>
+                    <property name="xscale">0</property>
+                    <property name="yscale">0</property>
+                    <child>
+                      <widget class="GtkHBox" id="hBox">
+                        <property name="visible">True</property>
+                        <property name="spacing">2</property>
+                        <child>
+                          <widget class="GtkImage" id="buttonImage">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-jump-to</property>
+                          </widget>
+                          <packing>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="buttonLabel">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Seek</property>
+                            <property name="use_underline">True</property>
+                          </widget>
+                          <packing>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </widget>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</glade-interface>
