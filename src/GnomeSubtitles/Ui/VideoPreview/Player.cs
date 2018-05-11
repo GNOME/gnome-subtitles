@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -183,12 +183,16 @@ public class Player {
 	private void InitializeSocket () {
 		socket = new Socket();
 
-//		RGBA black = new RGBA();
-//		black.Red = 0;
-//		black.Green = 0;
-//		black.Blue = 0;
-//		black.Alpha = 1;
-//		socket.OverrideBackgroundColor(StateFlags.Normal, black);
+		/* Set the socket background color. If we don't do this, the socket/video
+		 * area will show a copy of the UI elements (menu, labels, other
+		 * components) when the video isn't loaded.
+		 */
+		RGBA black = new RGBA();
+		black.Red = 0;
+		black.Green = 0;
+		black.Blue = 0;
+		black.Alpha = 1;
+		socket.OverrideBackgroundColor(StateFlags.Normal, black);
 
 		frame.Child = socket;
 
