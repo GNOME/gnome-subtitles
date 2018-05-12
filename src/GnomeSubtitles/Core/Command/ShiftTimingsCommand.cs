@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009,2011 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,21 +45,20 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 	protected override bool ChangeValues () {
 		if (useTimes) {
 			if (ApplyToAll)
-				ShiftTimesAll();
+				return ShiftTimesAll();
 			else if (ApplyToSimple)
-				ShiftTimesSimple();
+				return ShiftTimesSimple();
 			else
-				ShiftTimesRange();
+				return ShiftTimesRange();
 		}
 		else {
 			if (ApplyToAll)
-				ShiftFramesAll();
+				return ShiftFramesAll();
 			else if (ApplyToSimple)
-				ShiftFramesSimple();
+				return ShiftFramesSimple();
 			else
-				ShiftFramesRange();
+				return ShiftFramesRange();
 		}
-		return true;
 	}
 
 	protected override void PostProcess () {
@@ -68,50 +67,86 @@ public class ShiftTimingsCommand : FixedMultipleSelectionCommand {
 
 	/* Private Members */
 
-	private void ShiftTimesAll () {
+	private Boolean ShiftTimesAll () {
+		if (Base.Document.Subtitles.Count == 0) {
+			return false;
+		}
+	
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(time);
 		time = time.Negate();
+
+		return true;
 	}
 
-	private void ShiftFramesAll () {
+	private Boolean ShiftFramesAll () {
+		if (Base.Document.Subtitles.Count == 0) {
+			return false;
+		}
+		
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(frames);
 		frames = -frames;
+		
+		return true;
 	}
 
-	private void ShiftTimesSimple () {
+	private Boolean ShiftTimesSimple () {
+		if (Paths.Length == 0) {
+			return false;
+		}
+	
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Base.Document.Subtitles[path];
 			subtitle.Times.Shift(time);
 		}
 		time = time.Negate();
+		
+		return true;
 	}
 
-	private void ShiftFramesSimple () {
+	private Boolean ShiftFramesSimple () {
+		if (Paths.Length == 0) {
+			return false;
+		}
+		
 		foreach (TreePath path in Paths) {
 			Subtitle subtitle = Base.Document.Subtitles[path];
 			subtitle.Frames.Shift(frames);
 		}
 		frames = -frames;
+		
+		return true;
 	}
 
-	private void ShiftTimesRange () {
+	private Boolean ShiftTimesRange () {
+		if ((Paths == null) || (Paths.Length == 0)) {
+			return false;
+		}
+	
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
 
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(time, firstSubtitle, lastSubtitle);
 		time = time.Negate();
+		
+		return true;
 	}
 
-	private void ShiftFramesRange () {
+	private Boolean ShiftFramesRange () {
+		if ((Paths == null) || (Paths.Length == 0)) {
+			return false;
+		}
+	
 		int firstSubtitle = Util.PathToInt(FirstPath);
 		int lastSubtitle = Util.PathToInt(LastPath);
 
 		ShiftOperator shiftOp = new ShiftOperator(Base.Document.Subtitles);
 		shiftOp.Shift(frames, firstSubtitle, lastSubtitle);
 		frames = -frames;
+		
+		return true;
 	}
 }
 

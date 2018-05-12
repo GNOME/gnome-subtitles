@@ -45,6 +45,8 @@ public class WidgetStyles {
 
 	public const int BoxSpacingMedium = 6;
 	public const int BoxSpacingLarge = 12;
+	
+	public const int FrameContentSpacingMedium = 10;
 
 }
 

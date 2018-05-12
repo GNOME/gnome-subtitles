@@ -24,6 +24,7 @@ using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
+using SubLib.Core.Timing;
 using System;
 
 namespace GnomeSubtitles.Dialog {
@@ -31,7 +32,7 @@ namespace GnomeSubtitles.Dialog {
 //TODO set spinButton limits according to selection type
 //TODO show informative message about the Ctrl+Shift++ shortcuts
 public class TimingsShiftDialog : BaseDialog {
-	private TimingMode timingMode = TimingMode.Frames;
+	private TimingMode timingMode;
 
 	/* Widgets */
 	private Frame timingModeFrame;
@@ -40,17 +41,29 @@ public class TimingsShiftDialog : BaseDialog {
 	private RadioButton selectedSubtitlesRadioButton = null;
 	private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
 	private RadioButton fromSelectionToLastSubtitleRadioButton = null;
+	private Button videoButton = null;
 
 	public TimingsShiftDialog () : base(){
 		Init(BuildDialog());
 	}
+	
+	/* Overriden members */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Document; }
+	}
+
+	public override void Show () {
+		UpdateFromSelection();
+		base.Show();
+	}
 
 
 	/* Methods */
-	
+
 	private Gtk.Dialog BuildDialog () {
-		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Shift Timings"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar,
-			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Catalog.GetString("_Shift"), ResponseType.Ok);
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Shift Timings"), Base.Ui.Window, DialogFlags.DestroyWithParent,
+			Util.GetStockLabel("gtk-close"), ResponseType.Cancel, Catalog.GetString("Apply"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
 		dialog.DefaultWidth = 1; //Needed otherwise the tip label will be displayed in a single line making the dialog have a huge width
@@ -68,14 +81,18 @@ public class TimingsShiftDialog : BaseDialog {
 		spinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
-		Button button = new Button("gtk-clear");
-		button.Clicked += OnClear;
+		Button clearButton = new Button(Catalog.GetString("Reset"));
+		clearButton.Clicked += OnClear;
+		videoButton = new Button(Catalog.GetString("Set From Video"));
+		videoButton.TooltipText = Catalog.GetString("Sets the shift amount in order for the selected subtitles to start at the current video position.");
+		videoButton.Clicked += OnSetFromVideo;
 
 		Box timingModeHBox = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
 		timingModeHBox.BorderWidth = WidgetStyles.BorderWidthMedium;
-		timingModeHBox.MarginLeft = 10;
+		timingModeHBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		timingModeHBox.Add(spinButton);
-		timingModeHBox.Add(button);
+		timingModeHBox.Add(clearButton);
+		timingModeHBox.Add(videoButton);
 		
 		timingModeFrame.Add(timingModeHBox);
 		box.Add(timingModeFrame);
@@ -96,7 +113,7 @@ public class TimingsShiftDialog : BaseDialog {
 
 		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
 		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
-		applyToFrameVBox.MarginLeft = 10;
+		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		applyToFrameVBox.Add(allSubtitlesRadioButton);
 		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
 		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
@@ -108,36 +125,30 @@ public class TimingsShiftDialog : BaseDialog {
 		
 		//Tips label
 		
-		Label label = new Label("<small><i>" + Catalog.GetString("Tip: use Shift+Plus/Minus (on the numpad) to shift timings directly from the main window.") + "</i></small>");
+		Label label = new Label("<small><i>" + Catalog.GetString("Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly from the main window.") + "</i></small>");
 		label.UseMarkup = true;
 		label.Wrap = true;
 		box.Add(label);
 
 		dialog.ContentArea.Add(box);
-		UpdateContents(true);
+	
+		timingMode = Base.TimingMode;	
+		UpdateFromTimingMode();
+		UpdateFromSelection();
+		UpdateVideoButtonSensitivity();
+		
+		Base.TimingModeChanged += OnBaseTimingModeChanged;
+		Base.VideoLoaded += OnBaseVideoLoaded;
+		Base.VideoUnloaded += OnBaseVideoUnloaded;
+		
 		dialog.ContentArea.ShowAll();
 
 		return dialog;
 	}
 
-	public override void Show () {
-		UpdateContents(false);
-		base.Show();
-	}
-
 	/* Private methods */
 
-	private void UpdateContents (bool initializing) {
-		UpdateFromTimingMode(Base.TimingMode, initializing);
-		UpdateFromSelection();
-		UpdateSpinButtonValue(initializing);
-	}
-
-	private void UpdateFromTimingMode (TimingMode newTimingMode, bool initializing) {
-		if ((!initializing) && (newTimingMode == timingMode))
-			return;
-
-		timingMode = newTimingMode;
+	private void UpdateFromTimingMode () {
 		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode);
 		Core.Util.SetSpinButtonMaxAdjustment(spinButton, timingMode, true);
 
@@ -145,44 +156,17 @@ public class TimingsShiftDialog : BaseDialog {
 		string markup = "<b>" + label + "</b>";
 		(timingModeFrame.LabelWidget as Label).Markup = markup;
 	}
+	
+	private void UpdateVideoButtonSensitivity () {
+		videoButton.Sensitive = Core.Base.Ui.Video.IsLoaded;
+	}
 
 	private void UpdateFromSelection () {
 		int selectionCount = Core.Base.Ui.View.Selection.Count;
-		fromFirstSubtitleToSelectionRadioButton.Sensitive = (selectionCount == 1);
-		fromSelectionToLastSubtitleRadioButton.Sensitive = (selectionCount == 1);
-
-		if (selectionCount > 0)
+		if (selectionCount > 1)
 			selectedSubtitlesRadioButton.Active = true;
 		else
-			selectedSubtitlesRadioButton.Sensitive = false;
-	}
-
-	private void UpdateSpinButtonValue (bool initializing) {
-		if (!Core.Base.Ui.Video.IsLoaded) {
-			SetSpinButtonValue(0);
-			return;
-		}
-
-		TreePath path = Core.Base.Ui.View.Selection.FirstPath;
-		Subtitle subtitle = Base.Document.Subtitles[path];
-
-		double subtitlePosition = 0;
-		double videoPosition = 0;
-		if (Base.TimingModeIsTimes) {
-			subtitlePosition = subtitle.Times.Start.TotalMilliseconds;
-			videoPosition = Core.Base.Ui.Video.Position.CurrentTime.TotalMilliseconds;
-		}
-		else {
-			subtitlePosition = subtitle.Frames.Start;
-			videoPosition = Core.Base.Ui.Video.Position.CurrentFrames;
-		}
-
-		double difference = videoPosition - subtitlePosition;
-		SetSpinButtonValue(difference);
-	}
-
-	private void SetSpinButtonValue (double newValue) {
-		spinButton.Value = newValue;
+			allSubtitlesRadioButton.Active = true;
 	}
 
 	private SelectionIntended GetSelectionIntended () {
@@ -196,23 +180,78 @@ public class TimingsShiftDialog : BaseDialog {
 			return SelectionIntended.SimpleToLast;
 	}
 
+
+	/* Event Members */
+	
 	private void OnClear (object o, EventArgs args) {
-		SetSpinButtonValue(0);
+		spinButton.Value = 0;
+	}
+	
+	private void OnSetFromVideo (object o, EventArgs args) {
+		if (!Core.Base.Ui.Video.IsLoaded) {
+			return;
+		}
+
+		TreePath path = Core.Base.Ui.View.Selection.FirstPath;
+		Subtitle subtitle = Base.Document.Subtitles[path];
+
+		double subtitlePosition = 0;
+		double videoPosition = 0;
+		if (timingMode == TimingMode.Times) {
+			subtitlePosition = subtitle.Times.Start.TotalMilliseconds;
+			videoPosition = Core.Base.Ui.Video.Position.CurrentTime.TotalMilliseconds;
+		}
+		else {
+			subtitlePosition = subtitle.Frames.Start;
+			videoPosition = Core.Base.Ui.Video.Position.CurrentFrames;
+		}
+
+		double difference = videoPosition - subtitlePosition;
+		spinButton.Value = difference;
+	}
+	
+	private void OnBaseTimingModeChanged (TimingMode newTimingMode) {
+    	if (timingMode == newTimingMode) {
+			return;
+		}
+		
+		int oldValue = (int)spinButton.Value; //contains frames or ms, depending on the old timing mode
+		float frameRate = Base.Document.Subtitles.Properties.CurrentFrameRate;
+		double newValue = (newTimingMode == TimingMode.Times ?
+				TimingUtil.FramesToTime(oldValue, frameRate).TotalMilliseconds :
+				TimingUtil.TimeMillisecondsToFrames(oldValue, frameRate));
+				
+		timingMode = newTimingMode;
+		UpdateFromTimingMode();
+		spinButton.Value = newValue;
+    }
+    
+    private void OnBaseVideoLoaded (Uri videoUri) {
+    	UpdateVideoButtonSensitivity();
+	}
+
+	private void OnBaseVideoUnloaded () {
+		UpdateVideoButtonSensitivity();
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {
-		if ((response == ResponseType.Ok) && (Math.Abs(spinButton.Value) > float.Epsilon)) {
-			SelectionIntended selectionIntended = GetSelectionIntended();
+		if (response == ResponseType.Ok) {
+			if (Math.Abs(spinButton.Value) > float.Epsilon) {
+				SelectionIntended selectionIntended = GetSelectionIntended();
+	
+				if (timingMode == TimingMode.Times) {
+					TimeSpan time = TimeSpan.FromMilliseconds(spinButton.Value);
+					Base.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
+				}
+				else {
+					int frames = (int)spinButton.Value;
+					Base.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
+				}
+			}
 
-			if (timingMode == TimingMode.Times) {
-				TimeSpan time = TimeSpan.FromMilliseconds(spinButton.Value);
-				Base.CommandManager.Execute(new ShiftTimingsCommand(time, selectionIntended));
-			}
-			else {
-				int frames = (int)spinButton.Value;
-				Base.CommandManager.Execute(new ShiftTimingsCommand(frames, selectionIntended));
-			}
+			return true;
 		}
+		
 		return false;
 	}
 
