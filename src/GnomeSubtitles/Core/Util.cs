@@ -19,11 +19,11 @@
 
 using Gtk;
 using SubLib.Core.Domain;
+using SubLib.Core.Timing;
 using SubLib.Util;
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Threading;
 
 namespace GnomeSubtitles.Core {
 
@@ -103,16 +103,41 @@ public class Util {
 	}
 
 	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode) {
+		SetSpinButtonTimingMode(spinButton, timingMode, 0);
+	}
+
+	/// <summary>
+	/// Note: Should be either used to set the first timing mode or to switch between modes.
+	/// Should not be used if the timing mode is unchanged, as events will be assigned again.
+	/// </summary>
+	/// <param name="spinButton">Spin button.</param>
+	/// <param name="timingMode">Timing mode.</param>
+	/// <param name="frameRateForConversion">Frame rate for conversion if the spin button has a value. Use 0 for no conversion.</param>
+	public static void SetSpinButtonTimingMode (SpinButton spinButton, TimingMode timingMode, float frameRateForConversion) {
+		bool convertValue = (spinButton.ValueAsInt > 0) && (frameRateForConversion > float.Epsilon);
+		int oldValue = spinButton.ValueAsInt;
+		
+		//Switching to Frames mode
+		
 		if (timingMode == TimingMode.Frames) {
 			spinButton.Numeric = true;
 			spinButton.Input -= OnTimeInput;
 			spinButton.Output -= OnTimeOutput;
+			
+			//Even if the value isn't converted, we need to set the old one in order for the input to be shown with the new format
+			spinButton.Value = (convertValue ? TimingUtil.TimeMillisecondsToFrames(oldValue, frameRateForConversion) : oldValue);
+			
+			return;
 		}
-		else {
-			spinButton.Numeric = false;
-			spinButton.Input += OnTimeInput;
-			spinButton.Output += OnTimeOutput;
-		}
+		
+		//Switching to Times mode
+		
+		spinButton.Numeric = false;
+		spinButton.Input += OnTimeInput;
+		spinButton.Output += OnTimeOutput;
+		
+		//Even if the value isn't converted, we need to set the old one in order for the input to be shown with the new format
+		spinButton.Value = (convertValue ? TimingUtil.FramesToTime(oldValue, frameRateForConversion).TotalMilliseconds : oldValue);
 	}
 
 	public static void SetSpinButtonAdjustment (SpinButton spinButton, TimeSpan upperLimit, bool canNegate) {

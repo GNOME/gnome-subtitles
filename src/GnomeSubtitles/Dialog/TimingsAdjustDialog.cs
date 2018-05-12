@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
 
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Ui;
 using GnomeSubtitles.Ui.View;
-//using Glade;
 using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
@@ -29,112 +29,376 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 
-public class TimingsAdjustDialog : BuilderDialog {
+public class TimingsAdjustDialog : BaseDialog {
 	private TimingMode timingMode;
-
-	/* Constant strings */
-	private const string gladeFilename = "TimingsAdjustDialog.glade";
 
 	/* Widgets */
 
-	[Builder.Object] private Label firstSubtitleStartLabel = null;
-	[Builder.Object] private Label firstSubtitleNoInputLabel = null;
-	[Builder.Object] private Label firstSubtitleStartInputLabel = null;
-	[Builder.Object] private SpinButton firstSubtitleNewStartSpinButton = null;
-	[Builder.Object] private Label lastSubtitleStartLabel = null;
-	[Builder.Object] private Label lastSubtitleNoInputLabel = null;
-	[Builder.Object] private Label lastSubtitleStartInputLabel = null;
-	[Builder.Object] private SpinButton lastSubtitleNewStartSpinButton = null;
-	[Builder.Object] private RadioButton allSubtitlesRadioButton = null;
-	[Builder.Object] private RadioButton selectedRangeRadioButton = null;
+	private Label firstSubtitleStartLabel = null;
+	private Label firstSubtitleStartInputLabel = null;
+	private Label firstSubtitleNoInputLabel = null;
+	private Label firstSubtitleNewStartLabel = null;
+	private SpinButton firstSubtitleNewStartSpinButton = null;
+	
+	private Label lastSubtitleStartLabel = null;
+	private Label lastSubtitleStartInputLabel = null;
+	private Label lastSubtitleNoInputLabel = null;
+	private Label lastSubtitleNewStartLabel = null;
+	private SpinButton lastSubtitleNewStartSpinButton = null;
+	
+	private RadioButton allSubtitlesRadioButton = null;
+	private RadioButton selectedSubtitlesRadioButton = null;
+	private RadioButton fromFirstSubtitleToSelectionRadioButton = null;
+	private RadioButton fromSelectionToLastSubtitleRadioButton = null;
 
 
-	public TimingsAdjustDialog () : base(gladeFilename){
+	public TimingsAdjustDialog () : base(){
 		timingMode = Base.TimingMode;
-		SetSpinButtons();
-		UpdateForTimingMode();
-		SetApplyToSelectionSensitivity();
-		SetSelectionType();
+		
+		Init(BuildDialog());
+		
+		UpdateFromTimingMode();
+		UpdateApplyToOptionFromSubtitleSelection();
+		ConnectEventHandlers();
+	}
+	
+	/* Overriden members */
+
+	public override DialogScope Scope {
+		get { return DialogScope.Document; }
 	}
 
-	private void SetSpinButtons () {
+	public override void Show () {
+		UpdateApplyToOptionFromSubtitleSelection();
+		base.Show();
+	}
+	
+	public override void Destroy () {
+		DisconnectEventHandlers();
+		base.Destroy();
+	}
+	
+	
+	/* Private members */
+	
+	private Gtk.Dialog BuildDialog () {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Adjust Timings Between 2 Points"), Base.Ui.Window, DialogFlags.DestroyWithParent,
+			Util.GetStockLabel("gtk-close"), ResponseType.Cancel, Catalog.GetString("_Apply"), ResponseType.Ok);
+
+		dialog.DefaultResponse = ResponseType.Ok;
+
+		Grid grid = new Grid();
+		grid.BorderWidth = WidgetStyles.BorderWidthMedium;
+		grid.RowSpacing = WidgetStyles.RowSpacingLarge;
+		grid.ColumnSpacing = WidgetStyles.ColumnSpacingLarge;
+		
+		
+		//First Subtitle frame
+		
+		Frame firstSubtitleFrame = new Frame();
+		firstSubtitleFrame.ShadowType = ShadowType.None;
+		Label firstSubtitleFrameLabel = new Label();
+		firstSubtitleFrameLabel.Markup = "<b>" + Catalog.GetString("First Point") + "</b>";
+		firstSubtitleFrame.LabelWidget = firstSubtitleFrameLabel;
+		
+		Grid firstSubtitleGrid = new Grid();
+		firstSubtitleGrid.BorderWidth = WidgetStyles.BorderWidthMedium;
+		firstSubtitleGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
+		firstSubtitleGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
+		firstSubtitleGrid.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		Label firstSubtitleNoLabel = CreateAlignedLabel(Catalog.GetString("Subtitle No.:"));
+		firstSubtitleGrid.Attach(firstSubtitleNoLabel, 0, 0, 1, 1);
+		firstSubtitleNoInputLabel = CreateAlignedLabel();
+		firstSubtitleGrid.Attach(firstSubtitleNoInputLabel, 1, 0, 1, 1);
+		firstSubtitleStartLabel = CreateAlignedLabel();
+		firstSubtitleGrid.Attach(firstSubtitleStartLabel, 0, 1, 1, 1);
+		firstSubtitleStartInputLabel = CreateAlignedLabel();
+		firstSubtitleGrid.Attach(firstSubtitleStartInputLabel, 1, 1, 1, 1);
+		firstSubtitleNewStartLabel = CreateAlignedLabel();
+		firstSubtitleNewStartLabel.SetAlignment(0, 0.5f);
+		firstSubtitleGrid.Attach(firstSubtitleNewStartLabel, 0, 2, 1, 1);
+		firstSubtitleNewStartSpinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		firstSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
+		firstSubtitleNewStartSpinButton.Alignment = 0.5f;
+		firstSubtitleGrid.Attach(firstSubtitleNewStartSpinButton, 1, 2, 1, 1);
+		
+		firstSubtitleFrame.Add(firstSubtitleGrid);
+		grid.Attach(firstSubtitleFrame, 0, 0, 1, 1);
+
+	
+		//Second Subtitle frame
+		
+		Frame lastSubtitleFrame = new Frame();
+		lastSubtitleFrame.ShadowType = ShadowType.None;
+		Label lastSubtitleFrameLabel = new Label();
+		lastSubtitleFrameLabel.Markup = "<b>" + Catalog.GetString("Second Point") + "</b>";
+		lastSubtitleFrame.LabelWidget = lastSubtitleFrameLabel;
+
+		Grid lastSubtitleGrid = new Grid();
+		lastSubtitleGrid.BorderWidth = WidgetStyles.BorderWidthMedium;
+		lastSubtitleGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
+		lastSubtitleGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
+		lastSubtitleGrid.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		Label lastSubtitleNoLabel = CreateAlignedLabel(Catalog.GetString("Subtitle No.:"));
+		lastSubtitleGrid.Attach(lastSubtitleNoLabel, 0, 0, 1, 1);
+		lastSubtitleNoInputLabel = CreateAlignedLabel();
+		lastSubtitleGrid.Attach(lastSubtitleNoInputLabel, 1, 0, 1, 1);
+		lastSubtitleStartLabel = CreateAlignedLabel();
+		lastSubtitleGrid.Attach(lastSubtitleStartLabel, 0, 1, 1, 1);
+		lastSubtitleStartInputLabel = CreateAlignedLabel();
+		lastSubtitleGrid.Attach(lastSubtitleStartInputLabel, 1, 1, 1, 1);
+		lastSubtitleNewStartLabel = CreateAlignedLabel();
+		lastSubtitleGrid.Attach(lastSubtitleNewStartLabel, 0, 2, 1, 1);
+		lastSubtitleNewStartSpinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		lastSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
+		lastSubtitleNewStartSpinButton.Alignment = 0.5f;
+		lastSubtitleGrid.Attach(lastSubtitleNewStartSpinButton, 1, 2, 1, 1);
+		
+		lastSubtitleFrame.Add(lastSubtitleGrid);
+		grid.Attach(lastSubtitleFrame, 1, 0, 1, 1);
+		
+
+		//Apply To frame
+		
+		Frame applyToFrame = new Frame();
+		applyToFrame.ShadowType = ShadowType.None;
+		Label applyToFrameLabel = new Label();
+		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply to") + "</b>";
+		applyToFrame.LabelWidget = applyToFrameLabel;
+
+
+		allSubtitlesRadioButton = new RadioButton(DialogStrings.ApplyToAllSubtitles);
+		selectedSubtitlesRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToSelection);
+		fromFirstSubtitleToSelectionRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToFirstToSelection);
+		fromSelectionToLastSubtitleRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToSelectionToLast);
+
+		allSubtitlesRadioButton.Toggled += OnToggleRadioButton;
+		selectedSubtitlesRadioButton.Toggled += OnToggleRadioButton;
+		fromFirstSubtitleToSelectionRadioButton.Toggled += OnToggleRadioButton;
+		fromSelectionToLastSubtitleRadioButton.Toggled += OnToggleRadioButton;
+		
+		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
+		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
+		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		applyToFrameVBox.Add(allSubtitlesRadioButton);
+		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
+		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
+		applyToFrameVBox.Add(fromSelectionToLastSubtitleRadioButton);
+		
+		applyToFrame.Add(applyToFrameVBox);
+		grid.Attach(applyToFrame, 0, 1, 2, 2);
+		
+		dialog.ContentArea.Add(grid);
+		dialog.ContentArea.ShowAll();
+		
+		return dialog;
+	}
+	
+	private Label CreateAlignedLabel () {
+		Label label = new Label();
+		label.SetAlignment(0, 0.5f);
+		return label;
+	}
+	
+	private Label CreateAlignedLabel (string text) {
+		Label label = CreateAlignedLabel();
+		label.Text = text;
+		return label;
 	}
 
-	private void UpdateForTimingMode () {
-		if (timingMode == TimingMode.Times) {
-			string startLabel = Catalog.GetString("Start Time:");
-			firstSubtitleStartLabel.Text = startLabel;
-			lastSubtitleStartLabel.Text = startLabel;
-		}
+	private void UpdateFromTimingMode () {
+		string startLabel = (timingMode == TimingMode.Times ? Catalog.GetString("Current Time:") : Catalog.GetString("Current Frame:"));
+		string newStartLabel = (timingMode == TimingMode.Times ? Catalog.GetString("New Time:") : Catalog.GetString("New Frame:"));
+	
+		firstSubtitleStartLabel.Text = startLabel;
+		lastSubtitleStartLabel.Text = startLabel;
+		firstSubtitleNewStartLabel.Text = newStartLabel;
+		lastSubtitleNewStartLabel.Text = newStartLabel;
+
 		Core.Util.SetSpinButtonTimingMode(firstSubtitleNewStartSpinButton, timingMode);
 		Core.Util.SetSpinButtonMaxAdjustment(firstSubtitleNewStartSpinButton, timingMode, false);
 		Core.Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode);
 		Core.Util.SetSpinButtonMaxAdjustment(lastSubtitleNewStartSpinButton, timingMode, false);
+		
+		UpdateInputValuesAccordingToApplyToOption();
+	}
+	
+	private void UpdateApplyToOptionFromSubtitleSelection () {
+		int selectionCount = Core.Base.Ui.View.Selection.Count;
+		if (selectionCount > 1) {
+			if (selectedSubtitlesRadioButton.Active) {
+				UpdateInputValuesAccordingToApplyToOption(); //It's already selected, need to call update directly
+			} else {
+				selectedSubtitlesRadioButton.Active = true;
+			}
+		} else {
+			if (allSubtitlesRadioButton.Active) {
+				UpdateInputValuesAccordingToApplyToOption(); //It's already selected, need to call update directly
+			} else {
+				allSubtitlesRadioButton.Active = true;
+			}
+		}
+	}
+	
+	private void UpdateInputValuesAccordingToApplyToOption () {
+		if (allSubtitlesRadioButton.Active) {
+			UpdateInputValuesForApplyToAll();
+		} else if (selectedSubtitlesRadioButton.Active) {
+			UpdateInputValuesForApplyToSelection();
+		} else if (fromFirstSubtitleToSelectionRadioButton.Active) {
+			UpdateInputValuesForApplyToFirstToSelection();
+		} else if (fromSelectionToLastSubtitleRadioButton.Active) {
+			UpdateInputValuesForApplyToSelectionToLast();
+		}
 	}
 
-	private void SetSelectionType () {
-		if (Core.Base.Ui.View.Selection.Count < 2)
-			allSubtitlesRadioButton.Active = true;
-		else
-			SetApplyToSelection(); //It's already selected by default, only need to set values
-	}
+	private void UpdateInputValuesForApplyToAll () {
+		int subtitleCount = Base.Document.Subtitles.Collection.Count;
 
-	private void SetApplyToAll () {
-		SubtitleCollection collection = Base.Document.Subtitles.Collection;
-
-		int firstNo = 1;
-		int lastNo = collection.Count;
+		int firstNo = (subtitleCount > 0 ? 1 : -1);
+		int lastNo = (subtitleCount > 1 ? subtitleCount : -1);
 		UpdateInputValues(firstNo, lastNo);
 	}
 
-	private void SetApplyToSelection () {
-		TreePath firstPath = Core.Base.Ui.View.Selection.FirstPath;
-		TreePath lastPath = Core.Base.Ui.View.Selection.LastPath;
-
-		int firstNo = firstPath.Indices[0] + 1;
-		int lastNo = lastPath.Indices[0] + 1;
-
-		UpdateInputValues (firstNo, lastNo);
-	}
-
-	private void SetApplyToSelectionSensitivity () {
+	private void UpdateInputValuesForApplyToSelection () {
 		int selectionCount = Core.Base.Ui.View.Selection.Count;
-		if (selectionCount < 2)
-			selectedRangeRadioButton.Sensitive = false;
+	
+		int firstNo = (selectionCount > 0 ? Core.Base.Ui.View.Selection.FirstPath.Indices[0] + 1 : -1);
+		int lastNo = (selectionCount > 1 ? Core.Base.Ui.View.Selection.LastPath.Indices[0] + 1 : -1);
+		UpdateInputValues(firstNo, lastNo);
+	}
+	
+	private void UpdateInputValuesForApplyToFirstToSelection () {
+		int subtitleCount = Base.Document.Subtitles.Collection.Count;
+		int firstNo = (subtitleCount > 0 ? 1 : -1);
+
+		int lastNo = -1;
+		if (subtitleCount > 1) {
+			TreePath path = Core.Base.Ui.View.Selection.LastPath;
+			if (path != null) {
+				int lastIndex = path.Indices[0];
+				if (lastIndex > 0) {
+					lastNo = lastIndex + 1;
+				}
+			}
+		}
+		
+		UpdateInputValues(firstNo, lastNo);
+	}
+	
+	private void UpdateInputValuesForApplyToSelectionToLast () {
+		int subtitleCount = Base.Document.Subtitles.Collection.Count;
+		int lastNo = (subtitleCount > 0 ? subtitleCount : -1);
+		
+		int firstNo = -1;
+		if (subtitleCount > 1) {
+			TreePath path = Core.Base.Ui.View.Selection.FirstPath;
+			if (path != null) {
+				int firstIndex = path.Indices[0];
+				if (firstIndex < subtitleCount - 1) {
+					firstNo = firstIndex + 1;
+				}
+			}
+		}
+		
+		UpdateInputValues(firstNo, lastNo);
 	}
 
 	private void UpdateInputValues (int firstNo, int lastNo) {
-		SubtitleCollection collection = Base.Document.Subtitles.Collection;
-		Subtitle firstSubtitle = collection.Get(firstNo - 1);
-		Subtitle lastSubtitle = collection.Get(lastNo - 1);
+	
+		//Handle the first subtitle
+		if (firstNo == -1) {
+			firstSubtitleNoInputLabel.Text = "-";
+			firstSubtitleStartInputLabel.Text = "-";
+			firstSubtitleNewStartSpinButton.Value = 0;
+		} else {
+			Subtitle firstSubtitle = Base.Document.Subtitles.Collection.Get(firstNo - 1);
+			firstSubtitleNoInputLabel.Text = firstNo.ToString();
 
-		firstSubtitleNoInputLabel.Text = firstNo.ToString();
-		lastSubtitleNoInputLabel.Text = lastNo.ToString();
+			if (timingMode == TimingMode.Frames) {			
+				firstSubtitleStartInputLabel.Text = firstSubtitle.Frames.Start.ToString();
+				firstSubtitleNewStartSpinButton.Value = firstSubtitle.Frames.Start;
+			} else {
+				firstSubtitleStartInputLabel.Text = Core.Util.TimeSpanToText(firstSubtitle.Times.Start);
+				firstSubtitleNewStartSpinButton.Value = firstSubtitle.Times.Start.TotalMilliseconds;
+			}
+		}
+		
+		//Handle the last subtitle
+		if (lastNo == -1) {
+			lastSubtitleNoInputLabel.Text = "-";
+			lastSubtitleStartInputLabel.Text = "-";
+			lastSubtitleNewStartSpinButton.Value = 0;
+		} else {
+			Subtitle lastSubtitle = Base.Document.Subtitles.Collection.Get(lastNo - 1);
+			lastSubtitleNoInputLabel.Text = lastNo.ToString();
 
-		if (timingMode == TimingMode.Frames) {
-			firstSubtitleStartInputLabel.Text = firstSubtitle.Frames.Start.ToString();
-			firstSubtitleNewStartSpinButton.Value = firstSubtitle.Frames.Start;
-			lastSubtitleStartInputLabel.Text = lastSubtitle.Frames.Start.ToString();
-			lastSubtitleNewStartSpinButton.Value = lastSubtitle.Frames.Start;
+			if (timingMode == TimingMode.Frames) {			
+				lastSubtitleStartInputLabel.Text = lastSubtitle.Frames.Start.ToString();
+				lastSubtitleNewStartSpinButton.Value = lastSubtitle.Frames.Start;
+			} else {
+				lastSubtitleStartInputLabel.Text = Core.Util.TimeSpanToText(lastSubtitle.Times.Start);
+				lastSubtitleNewStartSpinButton.Value = lastSubtitle.Times.Start.TotalMilliseconds;
+			}
 		}
-		else {
-			firstSubtitleStartInputLabel.Text = Core.Util.TimeSpanToText(firstSubtitle.Times.Start);
-			firstSubtitleNewStartSpinButton.Value = firstSubtitle.Times.Start.TotalMilliseconds;
-			lastSubtitleStartInputLabel.Text = Core.Util.TimeSpanToText(lastSubtitle.Times.Start);
-			lastSubtitleNewStartSpinButton.Value = lastSubtitle.Times.Start.TotalMilliseconds;
-		}
+		
+		//Update spin buttons sensitivity
+		bool hasBothPoints = (firstNo != -1) && (lastNo != -1);
+		firstSubtitleNewStartSpinButton.Sensitive = hasBothPoints;
+		lastSubtitleNewStartSpinButton.Sensitive = hasBothPoints;
+		
+		//Update apply button sensitivity
+		Button applyButton = Dialog.GetWidgetForResponse((int)ResponseType.Ok) as Button;
+		applyButton.Sensitive = hasBothPoints;
 	}
+	
+	private SelectionIntended GetSelectionIntended () {
+		if (allSubtitlesRadioButton.Active)
+			return SelectionIntended.All;
+		else if (selectedSubtitlesRadioButton.Active)
+			return SelectionIntended.Simple;
+		else if (fromFirstSubtitleToSelectionRadioButton.Active)
+			return SelectionIntended.SimpleToFirst;
+		else
+			return SelectionIntended.SimpleToLast;
+	}
+
 
 	/* Event members */
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
+	private void OnToggleRadioButton (object o, EventArgs args) {
+		if ((o as RadioButton).Active) {
+			UpdateInputValuesAccordingToApplyToOption();
+		}
+	}
+
+	private void ConnectEventHandlers () {
+		Base.TimingModeChanged += OnBaseTimingModeChanged;
+		Base.Ui.View.Selection.Changed += OnSubtitleViewSelectionChanged;
+	}
+	
+	private void DisconnectEventHandlers () {
+		Base.TimingModeChanged -= OnBaseTimingModeChanged;
+		Base.Ui.View.Selection.Changed -= OnSubtitleViewSelectionChanged;
+	}
+	
+	private void OnBaseTimingModeChanged (TimingMode newTimingMode) {
+    	if (timingMode == newTimingMode) {
+			return;
+		}
+
+		timingMode = newTimingMode;
+		UpdateFromTimingMode();
+    }
+    
+    private void OnSubtitleViewSelectionChanged (TreePath[] paths, Subtitle subtitle) {
+    	UpdateInputValuesAccordingToApplyToOption();
+    }
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			SelectionIntended selectionIntended = (allSubtitlesRadioButton.Active ? SelectionIntended.All : SelectionIntended.Range);
-
+			SelectionIntended selectionIntended = GetSelectionIntended();
+		
 			if (timingMode == TimingMode.Times) {
 				TimeSpan firstTime = TimeSpan.Parse(firstSubtitleNewStartSpinButton.Text);
 				TimeSpan lastTime = TimeSpan.Parse(lastSubtitleNewStartSpinButton.Text);
@@ -145,20 +409,14 @@ public class TimingsAdjustDialog : BuilderDialog {
 				int lastFrame = (int)lastSubtitleNewStartSpinButton.Value;
 				Base.CommandManager.Execute(new AdjustTimingsCommand(firstFrame, lastFrame, selectionIntended));
 			}
+			
+			return true;
 		}
+		
 		return false;
 	}
 
-	private void OnToggleAllSubtitles (object o, EventArgs args) {
-		if ((o as RadioButton).Active)
-			SetApplyToAll();
-	}
-
-	private void OnToggleSelectedSubtitles (object o, EventArgs args) {
-		if ((o as RadioButton).Active)
-			SetApplyToSelection();
-	}
-
+    
 }
 
 }

@@ -36,8 +36,9 @@ public class Dialogs {
 		BaseDialog dialog = dialogs[dialogType] as BaseDialog;
 		if (dialog == null) {
 			object newDialog = Activator.CreateInstance(dialogType, args);
-			if (!(newDialog is BaseDialog))
+			if (!(newDialog is BaseDialog)) {
 				return null;
+			}
 
 			dialog = newDialog as BaseDialog;
 			if (dialog.Scope != DialogScope.Singleton) {

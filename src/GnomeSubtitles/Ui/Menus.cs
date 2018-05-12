@@ -145,15 +145,7 @@ public class Menus {
 	}
 
 	private void SetSubtitleCountDependentSensitivity (int count) {
-		if (count == 0) {
-			SetSensitivity(WidgetNames.TimingsAdjust, false);
-		}
-		else if (count == 1) {
-			SetSensitivity(WidgetNames.TimingsAdjust, false);
-		}
-		else {
-			SetSensitivity(WidgetNames.TimingsAdjust, true);
-		}
+		//Do nothing
 	}
 
 	private void SetBlankActivity () {
@@ -187,6 +179,7 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchReplace, documentLoaded);
 		/* Timings Menu */
 		SetSensitivity(WidgetNames.TimingsSynchronize, documentLoaded);
+		SetSensitivity(WidgetNames.TimingsAdjust, documentLoaded);
 		SetSensitivity(WidgetNames.TimingsShift, documentLoaded);
 		/* Video Menu */
 		SetVideoDocumentLoadedSensitivity(documentLoaded);
@@ -212,8 +205,6 @@ public class Menus {
 			/* Search menu */
 			SetSensitivity(WidgetNames.SearchFindNext, false);
 			SetSensitivity(WidgetNames.SearchFindPrevious, false);
-			/* Timings Menu */
-			SetSensitivity(WidgetNames.TimingsAdjust, false);
 			/* Toolbar */
 			SetSensitivity(WidgetNames.DeleteSubtitlesButton, false);
 			SetSensitivity(WidgetNames.UndoButton, false);
