@@ -106,7 +106,7 @@ public class TimingsShiftDialog : BaseDialog {
 		Frame applyToFrame = new Frame();
 		applyToFrame.ShadowType = ShadowType.None;
 		Label applyToFrameLabel = new Label();
-		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply to") + "</b>";
+		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply To") + "</b>";
 		applyToFrame.LabelWidget = applyToFrameLabel;
 		
 		allSubtitlesRadioButton = new RadioButton(DialogStrings.ApplyToAllSubtitles);

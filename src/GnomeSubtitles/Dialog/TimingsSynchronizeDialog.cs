@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2017 Pedro Castro
+ * Copyright (C) 2008-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,9 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-//using Glade;
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Core.Command;
+using GnomeSubtitles.Ui;
 using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
@@ -29,34 +29,28 @@ using System.Collections;
 
 namespace GnomeSubtitles.Dialog {
 
-public class TimingsSynchronizeDialog : BuilderDialog {
+public class TimingsSynchronizeDialog : BaseDialog {
 	private TimingMode timingMode = TimingMode.Times;
-	private GnomeSubtitles.Core.SyncPoints syncPoints = new GnomeSubtitles.Core.SyncPoints();
-	private TreeViewColumn numberCol = null;
-	private TreeViewColumn currentStartCol = null;
-	private TreeViewColumn correctStartCol = null;
-
-	/* Constant strings */
-	private const string gladeFilename = "TimingsSynchronizeDialog.glade";
+	private Core.SyncPoints syncPoints = new Core.SyncPoints();
 
 	/* Widgets */
-	[Builder.Object] private TreeView syncPointsTree = null;
-	[Builder.Object] private Button buttonAdd = null;
-	[Builder.Object] private Button buttonRemove = null;
-	[Builder.Object] private Button buttonSynchronize = null;
-	[Builder.Object] private CheckButton syncAllSubtitlesCheckButton = null;
-	[Builder.Object] private Label statusMessageLabel = null;
+	private TreeView syncPointsTree = null;
+	private Button buttonAdd = null;
+	private Button buttonRemove = null;
+	private RadioButton allSubtitlesRadioButton = null;
+	private RadioButton selectedSubtitlesRadioButton = null;
+	private Label statusMessageLabel = null;
 
-	public TimingsSynchronizeDialog () : base(gladeFilename, true){
+
+	public TimingsSynchronizeDialog () : base(){
 		this.timingMode = Base.TimingMode;
 
-		CreateColumns();
-		SetModel();
-		InitWidgetSensitivity();
+		Init(BuildDialog());
 
-		ConnectHandlers();
-
+		UpdateSynchronizeButtonSensitivity();
 		UpdateStatusMessage();
+		
+		ConnectEventHandlers();
 	}
 
 	/* Overriden members */
@@ -66,32 +60,124 @@ public class TimingsSynchronizeDialog : BuilderDialog {
 	}
 
 	public override void Destroy () {
-		Base.Ui.View.Selection.Changed -= OnUiViewSelectionChanged;
+		DisconnectEventHandlers();
 		base.Destroy();
 	}
 
 
-
 	/* Private methods */
 
-	private void CreateColumns() {
+	private Gtk.Dialog BuildDialog () {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Synchronize Timings"), Base.Ui.Window, DialogFlags.DestroyWithParent,
+			Util.GetStockLabel("gtk-close"), ResponseType.Cancel, Catalog.GetString("_Apply"), ResponseType.Ok);
+
+		dialog.DefaultResponse = ResponseType.Ok;
+		dialog.DefaultWidth = WidgetStyles.DialogWidthXSmall;
+		dialog.DefaultHeight = WidgetStyles.DialogHeightMedium;
+
+		Box box = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
+		box.BorderWidth = WidgetStyles.BorderWidthMedium;
+		
+		//Sync Points frame
+
+		Frame syncFrame = new Frame();
+		syncFrame.ShadowType = ShadowType.None;
+		Label syncFrameLabel = new Label();
+		syncFrameLabel.Markup = "<b>" + Catalog.GetString("Sync Points") + "</b>";
+		syncFrame.LabelWidget = syncFrameLabel;
+		
+		Box syncVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
+		syncVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		syncVBox.Spacing = WidgetStyles.BoxSpacingMedium;
+		syncVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
+
+		ScrolledWindow syncWindow = new ScrolledWindow();
+		syncWindow.ShadowType = ShadowType.In;
+		syncWindow.Expand = true;
+		syncPointsTree = new TreeView();
+		CreateColumns(syncPointsTree);
+		syncPointsTree.Model = syncPoints.Model;
+		syncPointsTree.Selection.Changed += OnSelectionChanged;
+		syncWindow.Add(syncPointsTree);
+		syncVBox.Add(syncWindow);
+		
+		Box syncButtonsHBox = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
+		buttonAdd = new Button("gtk-add");
+		UpdateAddButtonSensitivity();
+		buttonAdd.Clicked += OnAdd;
+		syncButtonsHBox.Add(buttonAdd);
+		
+		buttonRemove = new Button("gtk-remove");
+		buttonRemove.Sensitive = false;
+		buttonRemove.Clicked += OnRemove;
+		syncButtonsHBox.Add(buttonRemove);
+		
+		syncVBox.Add(syncButtonsHBox);
+		syncFrame.Add(syncVBox);
+		box.Add(syncFrame);
+		
+		
+		//Apply To frame
+		
+		Frame applyToFrame = new Frame();
+		applyToFrame.ShadowType = ShadowType.None;
+		Label applyToFrameLabel = new Label();
+		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply To") + "</b>";
+		applyToFrame.LabelWidget = applyToFrameLabel;
+		
+		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
+		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
+		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		applyToFrameVBox.Spacing = WidgetStyles.BoxSpacingMedium;
+		allSubtitlesRadioButton = new RadioButton(DialogStrings.ApplyToAllSubtitles);
+		selectedSubtitlesRadioButton = new RadioButton(allSubtitlesRadioButton, Catalog.GetString("Subtitles between sync points"));
+		applyToFrameVBox.Add(allSubtitlesRadioButton);
+		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
+		applyToFrame.Add(applyToFrameVBox);
+		
+		box.Add(applyToFrame);
+		
+		
+		//Status frame
+		
+		Frame statusFrame = new Frame();
+		statusFrame.ShadowType = ShadowType.None;
+		Label statusFrameLabel = new Label();
+		statusFrameLabel.Markup = "<b>" + Catalog.GetString("Info") + "</b>";
+		statusFrame.LabelWidget = statusFrameLabel;
+		
+		Box statusFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium); //Used so we can have a border
+		statusFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
+		statusFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		statusFrameVBox.Spacing = WidgetStyles.BoxSpacingMedium;
+		statusMessageLabel = new Label();
+		statusMessageLabel.Wrap = true;
+		statusFrameVBox.Add(statusMessageLabel);
+		statusFrame.Add(statusFrameVBox);
+		
+		box.Add(statusFrame);
+		
+		dialog.ContentArea.Add(box);
+		dialog.ContentArea.ShowAll();
+
+		return dialog;
+	}		
+
+	private void CreateColumns(TreeView treeView) {
     	/* Number column */
-    	numberCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Subtitle No."), -1, new CellRendererText(), RenderSubtitleNumberCell);
+    	TreeViewColumn numberCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Subtitle No."), -1, new CellRendererText(), RenderSubtitleNumberCell);
 
     	/* Start (current and correct) columns */
-    	currentStartCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Current Start"), -1, new CellRendererText(), RenderCurrentStartCell);
-    	correctStartCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Correct Start"), -1, new CellRendererText(), RenderCorrectStartCell);
+    	int timeWidth = Util.ColumnWidthForTimeValue(treeView);
+    	TreeViewColumn currentStartCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("Start"), timeWidth, new CellRendererText(), RenderCurrentStartCell);
+    	TreeViewColumn correctStartCol = Core.Util.CreateTreeViewColumn(Catalog.GetString("New Start"), timeWidth, new CellRendererText(), RenderCorrectStartCell);
 
-    	syncPointsTree.AppendColumn(numberCol);
-    	syncPointsTree.AppendColumn(currentStartCol);
-    	syncPointsTree.AppendColumn(correctStartCol);
+    	treeView.AppendColumn(numberCol);
+    	treeView.AppendColumn(currentStartCol);
+    	treeView.AppendColumn(correctStartCol);
 
-    	syncPointsTree.AppendColumn(new TreeViewColumn()); //Appending to leave empty space to the right
+    	treeView.AppendColumn(new TreeViewColumn()); //Appending to leave empty space to the right
     }
-
-    private void SetModel () {
-		syncPointsTree.Model = syncPoints.Model;
-	}
 
 	private void UpdateFromSyncPointCountChanged () {
 		UpdateStatusMessage();
@@ -109,9 +195,9 @@ public class TimingsSynchronizeDialog : BuilderDialog {
 				break;
 			default:
 				string allSubtitlesSyncMessage = Catalog.GetString("Synchronization is ready. All subtitles will be synchronized.");
-				if (syncAllSubtitlesCheckButton.Active)
+				if (allSubtitlesRadioButton.Active) {
 					message = allSubtitlesSyncMessage;
-				else {
+				} else {
 					ArrayList intervals = GetOutOfRangeIntervals();
 					switch (intervals.Count) {
 						case 0:
@@ -129,19 +215,21 @@ public class TimingsSynchronizeDialog : BuilderDialog {
 				}
 				break;
 		}
-		statusMessageLabel.Text = message;
+		
+		statusMessageLabel.Markup = "<i>" + message + "</i>";
 	}
 
 	private void UpdateSynchronizeButtonSensitivity () {
-		buttonSynchronize.Sensitive = (syncPoints.Collection.Count >= 2);
+		Button syncButton = Dialog.GetWidgetForResponse((int)ResponseType.Ok) as Button;
+		syncButton.Sensitive = (syncPoints.Collection.Count >= 2);
+	}
+	
+	private void UpdateAddButtonSensitivity () {
+		buttonAdd.Sensitive = (Base.Ui.View.Selection.Count == 1) && Base.Ui.Video.IsLoaded;
 	}
 
 	private void SelectPath (TreePath path) {
 		syncPointsTree.SetCursor(path, null, false);
-	}
-
-	private void InitWidgetSensitivity () {
-		buttonAdd.Sensitive = (Base.Ui.View.Selection.Count == 1);
 	}
 
 	private ArrayList GetOutOfRangeIntervals () {
@@ -192,16 +280,42 @@ public class TimingsSynchronizeDialog : BuilderDialog {
 		else
 			renderer.Text = Core.Util.TimeSpanToText(syncPoints[iter].Correct.Time);
 	}
+	
+	private void UpdateFromTimingMode () {
+		syncPointsTree.QueueDraw();
+	}
 
 	/* Event members */
 
-	#pragma warning disable 169		//Disables warning about handlers not being used
-
-	private void ConnectHandlers () {
-		syncPointsTree.Selection.Changed += OnSelectionChanged;
-
-		/* External event handlers */
+	private void ConnectEventHandlers () {
 		Base.Ui.View.Selection.Changed += OnUiViewSelectionChanged;
+		Base.VideoLoaded += OnBaseVideoLoaded;
+		Base.VideoUnloaded += OnBaseVideoUnloaded;
+		Base.TimingModeChanged += OnBaseTimingModeChanged;
+	}
+	
+	private void DisconnectEventHandlers () {
+		Base.Ui.View.Selection.Changed -= OnUiViewSelectionChanged;
+		Base.VideoLoaded -= OnBaseVideoLoaded;
+		Base.VideoUnloaded -= OnBaseVideoUnloaded;
+		Base.TimingModeChanged -= OnBaseTimingModeChanged;
+	}
+	
+	private void OnBaseTimingModeChanged (TimingMode newTimingMode) {
+    	if (timingMode == newTimingMode) {
+			return;
+		}
+		
+		timingMode = newTimingMode;
+		UpdateFromTimingMode();
+    }
+	
+	private void OnBaseVideoLoaded (Uri videoUri) {
+    	UpdateAddButtonSensitivity();
+	}
+
+	private void OnBaseVideoUnloaded () {
+		UpdateAddButtonSensitivity();
 	}
 
 	private void OnSelectionChanged (object o, EventArgs args) {
@@ -267,13 +381,13 @@ public class TimingsSynchronizeDialog : BuilderDialog {
 	}
 
 	private void OnUiViewSelectionChanged (TreePath[] paths, Subtitle subtitle) {
-		buttonAdd.Sensitive = (subtitle != null);
+		UpdateAddButtonSensitivity();
 	}
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
 			if (CanSynchronize()) {
-				bool toSyncAll = syncAllSubtitlesCheckButton.Active;
+				bool toSyncAll = allSubtitlesRadioButton.Active;
 				SelectionIntended selectionIntended = (toSyncAll ? SelectionIntended.All : SelectionIntended.Range);
 
 				TreePath[] pathRange = null;
@@ -287,8 +401,8 @@ public class TimingsSynchronizeDialog : BuilderDialog {
 			}
 			return true;
 		}
-		else
-			return false;
+		
+		return false;
 	}
 
 }

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,8 +29,11 @@ namespace GnomeSubtitles.Core {
 
 public class Util {
 	public static int SpinButtonTimeWidthChars = 11; //00:00:00.000 actually has 12 chars, but some have lower width
+	
+	public static int ColumnWidthForTimeValue (Widget widget) {
+		return ColumnWidth(widget, "00:00:00.000");
+	}
 
-  	//TODO move to other util?
   	public static int ColumnWidth (Widget widget, string text) {
   		int margins = 10;
   		return TextWidth(widget, text, margins);
@@ -54,7 +57,6 @@ public class Util {
 		return column;
 	}
 
-  	//TODO stop using this? Doesn't seem to be working for spin buttons anymore (which were updated OTM)
     public static int TextWidth (Widget widget, string text, int margins) {
     	Pango.Layout layout = widget.CreatePangoLayout(text);
     	int width, height;

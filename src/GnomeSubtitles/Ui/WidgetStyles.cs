@@ -23,6 +23,7 @@ public class WidgetStyles {
 
 	/* Dialogs */
 
+	public const int DialogWidthXSmall = 350;
 	public const int DialogWidthSmall = 450;
 	public const int DialogWidthMedium = 600;
 	public const int DialogWidthLarge = 750;

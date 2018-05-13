@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -254,7 +254,7 @@ public class SubtitleView {
     	numberCol = Util.CreateTreeViewColumn(Catalog.GetString("No."), Util.ColumnWidth(tree, "000"), new CellRendererText(), RenderNumberCell);
 
     	/* Start, end and duration columns */
-    	int timeWidth = Util.ColumnWidth(tree, "00:00:00.000");
+    	int timeWidth = Util.ColumnWidthForTimeValue(tree);
     	startCol = Util.CreateTreeViewColumn(Catalog.GetString("Start"), timeWidth, new CellRendererText(), RenderStartCell);
     	endCol = Util.CreateTreeViewColumn(Catalog.GetString("End"), timeWidth, new CellRendererText(), RenderEndCell);
     	durationCol = Util.CreateTreeViewColumn(Catalog.GetString("Duration"), timeWidth, new CellRendererText(), RenderDurationCell);

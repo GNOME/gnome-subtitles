@@ -34,16 +34,12 @@ public class TimingsAdjustDialog : BaseDialog {
 
 	/* Widgets */
 
-	private Label firstSubtitleStartLabel = null;
 	private Label firstSubtitleStartInputLabel = null;
 	private Label firstSubtitleNoInputLabel = null;
-	private Label firstSubtitleNewStartLabel = null;
 	private SpinButton firstSubtitleNewStartSpinButton = null;
 	
-	private Label lastSubtitleStartLabel = null;
 	private Label lastSubtitleStartInputLabel = null;
 	private Label lastSubtitleNoInputLabel = null;
-	private Label lastSubtitleNewStartLabel = null;
 	private SpinButton lastSubtitleNewStartSpinButton = null;
 	
 	private RadioButton allSubtitlesRadioButton = null;
@@ -52,7 +48,7 @@ public class TimingsAdjustDialog : BaseDialog {
 	private RadioButton fromSelectionToLastSubtitleRadioButton = null;
 
 
-	public TimingsAdjustDialog () : base(){
+	public TimingsAdjustDialog () : base() {
 		timingMode = Base.TimingMode;
 		
 		Init(BuildDialog());
@@ -110,11 +106,11 @@ public class TimingsAdjustDialog : BaseDialog {
 		firstSubtitleGrid.Attach(firstSubtitleNoLabel, 0, 0, 1, 1);
 		firstSubtitleNoInputLabel = CreateAlignedLabel();
 		firstSubtitleGrid.Attach(firstSubtitleNoInputLabel, 1, 0, 1, 1);
-		firstSubtitleStartLabel = CreateAlignedLabel();
+		Label firstSubtitleStartLabel = CreateAlignedLabel(Catalog.GetString("Start:"));
 		firstSubtitleGrid.Attach(firstSubtitleStartLabel, 0, 1, 1, 1);
 		firstSubtitleStartInputLabel = CreateAlignedLabel();
 		firstSubtitleGrid.Attach(firstSubtitleStartInputLabel, 1, 1, 1, 1);
-		firstSubtitleNewStartLabel = CreateAlignedLabel();
+		Label firstSubtitleNewStartLabel = CreateAlignedLabel(Catalog.GetString("New Start:"));
 		firstSubtitleNewStartLabel.SetAlignment(0, 0.5f);
 		firstSubtitleGrid.Attach(firstSubtitleNewStartLabel, 0, 2, 1, 1);
 		firstSubtitleNewStartSpinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
@@ -143,11 +139,11 @@ public class TimingsAdjustDialog : BaseDialog {
 		lastSubtitleGrid.Attach(lastSubtitleNoLabel, 0, 0, 1, 1);
 		lastSubtitleNoInputLabel = CreateAlignedLabel();
 		lastSubtitleGrid.Attach(lastSubtitleNoInputLabel, 1, 0, 1, 1);
-		lastSubtitleStartLabel = CreateAlignedLabel();
+		Label lastSubtitleStartLabel = CreateAlignedLabel(Catalog.GetString("Start:"));
 		lastSubtitleGrid.Attach(lastSubtitleStartLabel, 0, 1, 1, 1);
 		lastSubtitleStartInputLabel = CreateAlignedLabel();
 		lastSubtitleGrid.Attach(lastSubtitleStartInputLabel, 1, 1, 1, 1);
-		lastSubtitleNewStartLabel = CreateAlignedLabel();
+		Label lastSubtitleNewStartLabel = CreateAlignedLabel(Catalog.GetString("New Start:"));
 		lastSubtitleGrid.Attach(lastSubtitleNewStartLabel, 0, 2, 1, 1);
 		lastSubtitleNewStartSpinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		lastSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
@@ -163,7 +159,7 @@ public class TimingsAdjustDialog : BaseDialog {
 		Frame applyToFrame = new Frame();
 		applyToFrame.ShadowType = ShadowType.None;
 		Label applyToFrameLabel = new Label();
-		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply to") + "</b>";
+		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply To") + "</b>";
 		applyToFrame.LabelWidget = applyToFrameLabel;
 
 
@@ -207,14 +203,6 @@ public class TimingsAdjustDialog : BaseDialog {
 	}
 
 	private void UpdateFromTimingMode () {
-		string startLabel = (timingMode == TimingMode.Times ? Catalog.GetString("Current Time:") : Catalog.GetString("Current Frame:"));
-		string newStartLabel = (timingMode == TimingMode.Times ? Catalog.GetString("New Time:") : Catalog.GetString("New Frame:"));
-	
-		firstSubtitleStartLabel.Text = startLabel;
-		lastSubtitleStartLabel.Text = startLabel;
-		firstSubtitleNewStartLabel.Text = newStartLabel;
-		lastSubtitleNewStartLabel.Text = newStartLabel;
-
 		Core.Util.SetSpinButtonTimingMode(firstSubtitleNewStartSpinButton, timingMode);
 		Core.Util.SetSpinButtonMaxAdjustment(firstSubtitleNewStartSpinButton, timingMode, false);
 		Core.Util.SetSpinButtonTimingMode(lastSubtitleNewStartSpinButton, timingMode);
