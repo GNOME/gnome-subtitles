@@ -68,11 +68,8 @@ public class VideoSeekToDialog : BaseDialog {
 		spinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
+		spinButton.ActivatesDefault = true;
 		hbox.Add(spinButton);
-		
-		//Button button = new Button("gtk-clear");
-		//button.Clicked += OnClear;
-		//hbox.Add(button);
 		
 		dialog.ContentArea.Add(hbox);
 		dialog.ShowAll();
@@ -91,8 +88,7 @@ public class VideoSeekToDialog : BaseDialog {
 		if (timingMode == TimingMode.Times) {
 			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.Duration, false);
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentTime.TotalMilliseconds);
-		}
-		else {
+		} else {
 			Core.Util.SetSpinButtonAdjustment(spinButton, Base.Ui.Video.Position.DurationInFrames, false);
 			SetSpinButtonValue(Base.Ui.Video.Position.CurrentFrames);
 		}
