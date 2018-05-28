@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -80,7 +80,7 @@ public class ChangeVideoFrameRateCommand : ChangeFrameRateCommand {
 	}
 
 	protected override void UpdateMenuItem () {
-		Base.Ui.Menus.UpdateActiveVideoFrameRateMenuItem();
+		Base.Ui.Menus.UpdateActiveCurrentFrameRateMenuItem();
 	}
 }
 

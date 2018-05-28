@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,10 +29,16 @@ namespace GnomeSubtitles.Ui {
 
 public class Menus {
 
-	/* Constant strings */
-	private string videoTagText = Catalog.GetString("Video");
+	private static readonly object[,] BaseFrameRates = new object[,]{
+		{ 23.976f, null }, { 24, null}, { 25, "PAL" }, { 29.97f, "NTSC" }, { 30, null }
+	};
+	
+	private static readonly float DefaultBaseFrameRate = 25;
+	
+	private string VideoTag = Catalog.GetString("Video");
 
 	public Menus () {
+		BuildFrameRateMenus();
 		SetDocumentSensitivity(false);
 		SetBlankActivity();
 
@@ -47,7 +53,8 @@ public class Menus {
 			Menu menu = Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu;
 			foreach (RadioMenuItem menuItem in menu.Children) {
 				if (menuItem.Active) {
-					return FrameRateFromMenuItem((menuItem.Child as Label).Text);
+					return GetFrameRateMenuItemValue(menuItem);
+					
 				}
 			}
 			return -1;
@@ -70,18 +77,33 @@ public class Menus {
 	}
 
 	public void UpdateActiveInputFrameRateMenuItem (bool toggleHandlers) {
+		Menu menu = Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu;
 		float inputFrameRate = Base.Document.Subtitles.Properties.OriginalFrameRate;
-		if (toggleHandlers)
-			SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true, OnTimingsInputFrameRateToggled);
-		else
-			SetCheckMenuItemActivity(InputFrameRateMenuItem(inputFrameRate), true);
+		
+		RadioMenuItem item = GetFrameRateMenuItem(menu, inputFrameRate);
+		if (item == null) {
+			item = AddFrameRateMenuItem(menu, inputFrameRate, null, null, OnTimingsInputFrameRateToggled);
+	  	}
+		
+		if (toggleHandlers) {
+			SetCheckMenuItemActivity(item, true, OnTimingsInputFrameRateToggled);
+		} else {
+			SetCheckMenuItemActivity(item, true);
+		}
 	}
 
-	/* Note: this method makes the assumption that the OnTimingsVideoFrameRateToggled event handler is connected to the
+	/* Note: this method makes the assumption that the OnTimingsCurrentFrameRateToggled event handler is connected to the
 	   menu item, as it is disconnected and then connected again after changing the active menu item. */
-	public void UpdateActiveVideoFrameRateMenuItem () {
-		float videoFrameRate = Base.Document.Subtitles.Properties.CurrentFrameRate;
-		SetCheckMenuItemActivity(VideoFrameRateMenuItem(videoFrameRate), true, OnTimingsVideoFrameRateToggled);
+	public void UpdateActiveCurrentFrameRateMenuItem () {
+		Menu menu = Base.GetWidget(WidgetNames.TimingsCurrentFrameRateMenu) as Menu;
+		float currentFrameRate = Base.Document.Subtitles.Properties.CurrentFrameRate;
+		
+		RadioMenuItem item = GetFrameRateMenuItem(menu, currentFrameRate);
+		if (item == null) {
+			item = AddFrameRateMenuItem(menu, currentFrameRate, null, null, OnTimingsCurrentFrameRateToggled);
+	  	}
+	  	
+		SetCheckMenuItemActivity(item, true, OnTimingsCurrentFrameRateToggled);
 	}
 
 	public void EnableFindNextPrevious () {
@@ -89,41 +111,174 @@ public class Menus {
 		SetSensitivity(WidgetNames.SearchFindPrevious, true);
 	}
 
-	public void AddFrameRateVideoTag (float frameRate) {
-		if (frameRate <= 0)
-			return;
-
-		string menuItemName = FrameRateToMenuItem(frameRate, "Video");
-		string menuItemText = GetMenuItemText(menuItemName);
-
-		menuItemText += " (" + videoTagText + ")";
-		SetMenuItemText(menuItemName, menuItemText);
+	private string GetTagText (string tag) {
+		return "(" + tag + ")";
 	}
-
-	public void RemoveFrameRateVideoTag () {
-		Menu menu = Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu;
-		foreach (Widget child in menu.Children) {
-			if (!(child is MenuItem))
-				continue;
-
-			MenuItem menuItem = child as MenuItem;
-			string text = GetMenuItemText(menuItem);
-			string videoTagSuffix = GetVideoTagSuffix();
-
-			int tagIndex = text.LastIndexOf(videoTagSuffix);
-			if (tagIndex > 0) {
-				text = text.Substring(0, tagIndex);
-				SetMenuItemText(menuItem, text);
-			}
+	
+	private bool AddFrameRateAndTag (Menu menu, float frameRate, string tag, EventHandler onToggled) {
+		if (frameRate <= 0) {
+			return false;
 		}
+		
+		//If the item already exists, only add the tag
+		MenuItem item = GetFrameRateMenuItem(menu, frameRate);
+		if (item != null) {
+			AddFrameRateMenuItemTag(item, tag);
+			return true;
+		}
+		
+		//Item does not exist, adding item with tag
+		AddFrameRateMenuItem(menu, frameRate, null, tag, onToggled);
+		return true;
 	}
+	
+	private void AddFrameRateMenuItemTag (MenuItem item, string tag) {
+		string newItemText = GetMenuItemText(item) + " " + GetTagText(tag);
+		SetMenuItemText(item, newItemText);
+	}
+	
+	
+	/// <summary>
+	/// Removes the item if it isn't a base frame rate. Otherwise, only removes the tag.
+	/// </summary>
+	private bool RemoveFrameRateMenuItemWithTag (Menu menu, string tag) {
+		MenuItem item = GetFrameRateMenuItem(menu, tag);
+		if (item == null) {
+			return false;
+		}
+	
+		//If it's a base frame rate, only remove the tag
+		float frameRate = GetFrameRateMenuItemValue(item);
+		if (IsBaseFrameRate(frameRate)) {
+			RemoveFrameRateMenuItemTag(item, tag);
+			return true;
+		}
+		
+		//It isn't a base frame rate, so remove the whole item
+		menu.Remove(item);
+		return true;
+	}
+	
+	private bool RemoveFrameRateMenuItemTag (MenuItem item, string tag) {
+		string itemText = GetMenuItemText(item);
+		string tagTextToSearch = " " + GetTagText(tag);
 
+		if (itemText.Contains(tagTextToSearch)) {
+			SetMenuItemText(item, itemText.Replace(tagTextToSearch, ""));
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public MenuItem GetMenuItem (string widgetName) {
 		return Base.GetWidget(WidgetNames.ViewLineLengths) as MenuItem;
 	}
 
 
 	/* Private members */
+
+	private void BuildFrameRateMenus () {
+		Menu inputFrameRatesMenu = Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu;
+		Menu currentFrameRatesMenu = Base.GetWidget(WidgetNames.TimingsCurrentFrameRateMenu) as Menu;
+		
+		for (int i = 0; i < BaseFrameRates.GetLength(0); i++) {
+			float frameRate = Convert.ToSingle(BaseFrameRates[i, 0]);
+			string title = BaseFrameRates[i, 1] != null ? (string)BaseFrameRates[i, 1] : null;
+			
+			AddFrameRateMenuItem(inputFrameRatesMenu, frameRate, title, null, OnTimingsInputFrameRateToggled);
+			AddFrameRateMenuItem(currentFrameRatesMenu, frameRate, title, null, OnTimingsCurrentFrameRateToggled);
+		}
+		
+		inputFrameRatesMenu.ShowAll();
+		currentFrameRatesMenu.ShowAll();
+		
+		SetCheckMenuItemActivity(GetFrameRateMenuItem(inputFrameRatesMenu, DefaultBaseFrameRate), true, OnTimingsInputFrameRateToggled);
+		SetCheckMenuItemActivity(GetFrameRateMenuItem(currentFrameRatesMenu, DefaultBaseFrameRate), true, OnTimingsCurrentFrameRateToggled);
+	}
+	
+	//Adds a menu item sorting by frame rate
+	private RadioMenuItem AddFrameRateMenuItem (Menu menu, float frameRate, string title, string tag, EventHandler onToggled) {
+		int position = 0;
+		RadioMenuItem group = null;
+		
+		foreach (RadioMenuItem item in menu.Children) {
+			float itemFrameRate = GetFrameRateMenuItemValue(item);
+			if (Math.Abs(itemFrameRate - frameRate) <= float.Epsilon) {
+				return null; //Already exists, not adding
+			}
+			
+			//Find the group
+			if (group == null) {
+				group = (item.Group.Length > 0 ? item.Group[0] : item); //We get the group from the first time. If there's no group, it becomes the group.
+			}
+			
+			if (itemFrameRate > frameRate) {
+				break;
+			}
+			
+			position++;
+		}
+
+		string label = frameRate.ToString("G", CultureInfo.InvariantCulture)
+			+ (title != null ? " " + title : "")
+			+ (tag != null ? " (" + tag + ")" : "");
+
+		RadioMenuItem newItem = new RadioMenuItem(group, label);
+		newItem.Toggled += onToggled;
+		menu.Insert(newItem, position);
+		menu.ShowAll();
+
+		return newItem;
+	}
+	
+	private RadioMenuItem GetFrameRateMenuItem (Menu menu, float frameRate) {
+		foreach (MenuItem item in menu.Children) {
+			float itemFrameRate = GetFrameRateMenuItemValue(item);
+			
+			if (Math.Abs(itemFrameRate - frameRate) <= float.Epsilon) {
+				return (RadioMenuItem)item;
+			}
+		}
+		
+		return null;
+	}
+	
+	private MenuItem GetFrameRateMenuItem (Menu menu, string tag) {
+		string tagTextToSearch = " " + GetTagText(tag);
+		foreach (MenuItem item in menu.Children) {
+			string itemText = GetMenuItemText(item);
+			if (itemText.Contains(tagTextToSearch)) {
+				return item;
+			}
+		}
+		
+		return null;
+	}
+	
+	private float GetFrameRateMenuItemValue (MenuItem item) {
+		string label = item.Label;
+		if (String.IsNullOrEmpty(label)) {
+			return -1;
+		}
+		
+		int spaceIndex = label.IndexOf(' ');
+		if (spaceIndex != -1) {
+			label = label.Substring(0, spaceIndex);
+		}
+		
+		return float.Parse(label, CultureInfo.InvariantCulture);
+	}
+	
+	private bool IsBaseFrameRate (float frameRate) {
+		for (int i = 0; i < BaseFrameRates.GetLength(0); i++) {
+			if (Math.Abs(Convert.ToSingle(BaseFrameRates[i, 0]) - frameRate) <= float.Epsilon) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	/// <summary>Sets the sensitivity depending on 1 or more selected subtitles.</summary>
 	/// <param name="selectionCount">The number of selected subtitles.</param>
@@ -238,26 +393,20 @@ public class Menus {
 			if (Base.TimingMode == TimingMode.Frames) {
 				UpdateActiveInputFrameRateMenuItem(false);
 				SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
-				SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu, true, OnTimingsInputFrameRateToggled);
 
-				SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
-				SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu, true, OnTimingsVideoFrameRateToggled);
-				UpdateActiveVideoFrameRateMenuItem();
+				SetMenuSensitivity(WidgetNames.TimingsCurrentFrameRateMenu, true);
+				UpdateActiveCurrentFrameRateMenuItem();
 			}
 			else {
 				UpdateActiveInputFrameRateMenuItem(false);
 				SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, false);
 
-				SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, true);
-				SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu, true, OnTimingsVideoFrameRateToggled);
-				UpdateActiveVideoFrameRateMenuItem();
+				SetMenuSensitivity(WidgetNames.TimingsCurrentFrameRateMenu, true);
+				UpdateActiveCurrentFrameRateMenuItem();
 			}
-		}
-		else {
-			SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsInputFrameRateMenu) as Menu, false, OnTimingsInputFrameRateToggled);
+		} else {
 			SetMenuSensitivity(WidgetNames.TimingsInputFrameRateMenu, true);
-			SetFrameRateMenuHandlers(Base.GetWidget(WidgetNames.TimingsVideoFrameRateMenu) as Menu, false, OnTimingsVideoFrameRateToggled);
-			SetMenuSensitivity(WidgetNames.TimingsVideoFrameRateMenu, false);
+			SetMenuSensitivity(WidgetNames.TimingsCurrentFrameRateMenu, false);
 		}
 	}
 
@@ -345,16 +494,25 @@ public class Menus {
 		SetSensitivity(WidgetNames.VideoAutoSelectSubtitles, sensitivity);
 		SetSensitivity(WidgetNames.EditInsertSubtitleAtVideoPosition, sensitivity);
 	}
-
-	private void SetCheckMenuItemActivity (string menuItemName, bool isActive) {
-		(Base.GetWidget(menuItemName) as CheckMenuItem).Active = isActive;
+	
+	private void SetCheckMenuItemActivity (string itemName, bool isActive) {
+		CheckMenuItem item = Base.GetWidget(itemName) as CheckMenuItem;
+		SetCheckMenuItemActivity(item, isActive);
 	}
 
-	private void SetCheckMenuItemActivity (string menuItemName, bool isActive, EventHandler handler) {
-		CheckMenuItem menuItem = Base.GetWidget(menuItemName) as CheckMenuItem;
-		menuItem.Toggled -= handler;
-		menuItem.Active = isActive;
-		menuItem.Toggled += handler;
+	private void SetCheckMenuItemActivity (CheckMenuItem item, bool isActive) {
+		item.Active = isActive;
+	}
+
+	private void SetCheckMenuItemActivity (string itemName, bool isActive, EventHandler handler) {
+		CheckMenuItem item = Base.GetWidget(itemName) as CheckMenuItem;
+		SetCheckMenuItemActivity(item, isActive, handler);
+	}
+
+	private void SetCheckMenuItemActivity (CheckMenuItem item, bool isActive, EventHandler handler) {
+		item.Toggled -= handler;
+		item.Active = isActive;
+		item.Toggled += handler;
 	}
 
 	private void SetToggleToolButtonActivity (string toggleToolButtonName, bool isActive, EventHandler handler) {
@@ -392,30 +550,6 @@ public class Menus {
 		}
 	}
 
-	private string InputFrameRateMenuItem (float frameRate) {
-		return FrameRateToMenuItem(frameRate, "Input");
-	}
-
-	private string VideoFrameRateMenuItem (float frameRate) {
-		return FrameRateToMenuItem(frameRate, "Video");
-	}
-
-	private string FrameRateToMenuItem (float frameRate, string type) {
-		int rate = 0;
-		if (frameRate >= 30)
-			rate = 30;
-		else if (frameRate >= 27)
-			rate = 29;
-		else if (frameRate >= 25)
-			rate = 25;
-		else if (frameRate >= 24)
-			rate = 24;
-		else
-			rate = 23;
-
-		return "timings" + type + "FrameRate" + rate;
-	}
-
 	private string GetMenuItemText (string menuItemName) {
 		MenuItem menuItem = Base.GetWidget(menuItemName) as MenuItem;
 		return GetMenuItemText(menuItem);
@@ -434,10 +568,6 @@ public class Menus {
 	private void SetMenuItemText (MenuItem menuItem, string text) {
 		Label label = menuItem.Child as Label;
 		label.Text = text;
-	}
-
-	private string GetVideoTagSuffix () {
-		return " (" + videoTagText + ")";
 	}
 
 	private void UpdateUndoRedoMessages () {
@@ -473,12 +603,6 @@ public class Menus {
     private void ClearTooltip (Widget widget) {
     	SetTooltip(widget, null);
     }
-
-   	private float FrameRateFromMenuItem (string menuItem) {
-		string frameRateText = menuItem.Split(' ')[0];
-		NumberFormatInfo invariant = NumberFormatInfo.InvariantInfo;
-		return (float)Convert.ToDouble(frameRateText, invariant);
-	}
 
 
 	/* Event members */
@@ -517,11 +641,14 @@ public class Menus {
     	SetViewVideoActivity(true);
 
 		if (Base.Ui.Video.HasVideo) {
-			AddFrameRateVideoTag(Base.Ui.Video.FrameRate);
+			Menu menu = Base.GetWidget(WidgetNames.TimingsCurrentFrameRateMenu) as Menu;
+			AddFrameRateAndTag(menu, Base.Ui.Video.FrameRate, VideoTag, OnTimingsCurrentFrameRateToggled);
 		}
 	}
 
 	private void OnBaseVideoUnloaded () {
+		Menu menu = Base.GetWidget(WidgetNames.TimingsCurrentFrameRateMenu) as Menu;
+		RemoveFrameRateMenuItemWithTag(menu, VideoTag);
 		SetVideoSensitivity(false);
     	SetViewVideoSubtitlesSensitivity(false, false);
 	}
@@ -598,29 +725,20 @@ public class Menus {
 
 	private void OnTimingsInputFrameRateToggled (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
-		if (menuItem.Active) {
-			float frameRate = FrameRateFromMenuItem((menuItem.Child as Label).Text);
+		if (menuItem.Active && Base.IsDocumentLoaded) {
+			float frameRate = GetFrameRateMenuItemValue(menuItem);
 			Base.CommandManager.Execute(new ChangeInputFrameRateCommand(frameRate));
 		}
 	}
 
-	private void OnTimingsVideoFrameRateToggled (object o, EventArgs args) {
+	private void OnTimingsCurrentFrameRateToggled (object o, EventArgs args) {
 		RadioMenuItem menuItem = o as RadioMenuItem;
-		if (menuItem.Active) {
-			float frameRate = FrameRateFromMenuItem((menuItem.Child as Label).Text);
+		if (menuItem.Active && Base.IsDocumentLoaded) {
+			float frameRate = GetFrameRateMenuItemValue(menuItem);
 			Base.CommandManager.Execute(new ChangeVideoFrameRateCommand(frameRate));
 		}
 	}
-
-	private void SetFrameRateMenuHandlers (Menu menu, bool enable, EventHandler handler) {
-		foreach (RadioMenuItem menuItem in menu.Children) {
-			if (enable)
-				menuItem.Toggled += handler;
-			else
-				menuItem.Toggled -= handler;
-		}
-	}
-
+	
 }
 
 }
