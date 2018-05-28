@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2017 Pedro Castro
+ * Copyright (C) 2005-2018 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -81,22 +81,14 @@ internal class FileInputOutput {
 	}
 
 	internal static void WriteFile (string fileName, string text){
-		StreamWriter writer = OpenFileForWriting(fileName);
-		try {
+		using (StreamWriter writer = OpenFileForWriting(fileName)) {
 			writer.Write(text);
-		}
-		finally {
-			writer.Close();
 		}
 	}
 
 	internal static void WriteFile (string fileName, string text, Encoding encoding) {
-		StreamWriter writer = OpenFileForWriting(fileName, encoding);
-		try {
+		using (StreamWriter writer = OpenFileForWriting(fileName, encoding)) {
 			writer.Write(text);
-		}
-		finally {
-			writer.Close();
 		}
 	}
 

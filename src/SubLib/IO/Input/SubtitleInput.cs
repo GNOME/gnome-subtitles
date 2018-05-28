@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2005-2017 Pedro Castro
+ * Copyright (C) 2005-2018 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,37 +39,31 @@ internal class SubtitleInput {
 	/// <exception cref="EncodingNotSupportedException">Thrown if the encoding is not supported by the platform.</exception>
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	internal string Read (string path, out Encoding encoding, out SubtitleFormat format) {
-		/* Open file */
-		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-
-		return ReadSubtitleText(true, fileStream, out encoding, out format);
+		using (FileStream fileStream = FileInputOutput.OpenFileForReading(path)) {
+			return ReadSubtitleText(true, fileStream, out encoding, out format);
+		}
 	}
 
 	/// <exception cref="UnknownSubtitleFormatException">Thrown if the subtitle format could not be detected.</exception>
 	internal string Read (string path, Encoding encoding, out SubtitleFormat format) {
-		/* Open file */
-		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-
-		/* Read the text */
-		return TestEncoding(fileStream, encoding, out format);
+		using (FileStream fileStream = FileInputOutput.OpenFileForReading(path)) {
+			return TestEncoding(fileStream, encoding, out format);
+		}
 	}
 
 	/// <exception cref="EncodingNotSupportedException">Thrown if the encoding is not supported by the platform.</exception>
 	internal string ReadPlain (string path, out Encoding encoding) {
-		/* Open file */
-		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-
-		SubtitleFormat format = null;
-		return ReadSubtitleText(false, fileStream, out encoding, out format);
+		using (FileStream fileStream = FileInputOutput.OpenFileForReading(path)) {
+			SubtitleFormat format = null;
+			return ReadSubtitleText(false, fileStream, out encoding, out format);
+		}
 	}
 
 	/// <exception cref="EncodingNotSupportedException">Thrown if the encoding is not supported by the platform.</exception>
 	internal string ReadPlain (string path, Encoding encoding) {
-		/* Open file */
-		FileStream fileStream = FileInputOutput.OpenFileForReading(path);
-
-		/* Read the text */
-		return TestEncoding(fileStream, encoding);
+		using (FileStream fileStream = FileInputOutput.OpenFileForReading(path)) {
+			return TestEncoding(fileStream, encoding);
+		}
 	}
 
 	/* Private methods */
