@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,8 +24,6 @@ using Gtk;
 using Mono.Unix;
 using SubLib.Core.Domain;
 using System;
-using System.IO;
-using System.Text;
 
 namespace GnomeSubtitles.Dialog {
 
@@ -90,6 +88,7 @@ public class FileSaveDialog : BaseDialog {
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-save"), ResponseType.Ok);
 
 		dialog.DefaultResponse = ResponseType.Ok;
+		dialog.DoOverwriteConfirmation = true;
 
 		//Build content area
 
@@ -123,9 +122,8 @@ public class FileSaveDialog : BaseDialog {
 		dialog.ContentArea.ShowAll();
 
 		// Other stuff
-
 		dialog.SetCurrentFolder(GetStartFolder());
-		dialog.CurrentName = GetStartFilename();
+		dialog.CurrentName = AddExtensionIfNeeded(GetStartFilename(), formatComboBox.ChosenSubtitleType);
 
 		return dialog;
 	}
@@ -209,8 +207,7 @@ public class FileSaveDialog : BaseDialog {
 			return filename + newExtensionDotted;
 	}
 
-	private string AddExtensionIfNeeded (SubtitleType type) {
-		string filename = (Dialog as FileChooserDialog).Filename;
+	private string AddExtensionIfNeeded (string filename, SubtitleType type) {
 		int index = 0;
 		string extension = GetFilenameExtension(filename, out index);
 
@@ -265,14 +262,12 @@ public class FileSaveDialog : BaseDialog {
 				Base.Config.FileSaveNewline = chosenNewlineType;
 			}
 
-			/* Check chosen filename */
-			chosenFilename = AddExtensionIfNeeded(chosenSubtitleType);
-
+			chosenFilename = (Dialog as FileChooserDialog).Filename;
 			SetReturnValue(true);
 		}
 		return false;
 	}
-
+	
 	private void OnFormatChanged (object o, EventArgs args) {
 		FileChooserDialog dialog = Dialog as FileChooserDialog;
 
