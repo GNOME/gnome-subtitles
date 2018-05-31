@@ -400,13 +400,17 @@ public class EventHandlers {
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
 		Util.OpenUrl("http://www.gnomesubtitles.org/shortcuts");
 	}
+	
+	public void OnHelpDonate (object o, EventArgs args) {
+		Util.OpenUrl("http://www.gnomesubtitles.org/donate");
+	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {
-		Util.OpenBugReport();
+		Util.OpenUrl("https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/");
 	}
 
 	public void OnHelpReportBug (object o, EventArgs args) {
-		Util.OpenBugReport();
+		Util.OpenUrl("https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/");
 	}
 
 	public void OnHelpAbout (object o, EventArgs args) {

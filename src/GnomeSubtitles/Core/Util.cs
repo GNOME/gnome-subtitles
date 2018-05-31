@@ -177,10 +177,6 @@ public class Util {
 		OpenUrl("mailto:" + email);
 	}
 
-	public static void OpenBugReport () {
-		OpenUrl("http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles");
-	}
-
 	public static bool IsPathValid (TreePath path) {
 		if (path == null)
 			return false;
