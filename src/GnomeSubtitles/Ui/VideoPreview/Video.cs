@@ -43,9 +43,9 @@ public class Video {
 	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
 
 	/* Constants */
-	private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
-	private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
-	private const string videoSetSubtitleStartEndIconFilename = "video-set-subtitle-start-end-30x.png";
+	//private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
+	//private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
+	//private const string videoSetSubtitleStartEndIconFilename = "video-set-subtitle-start-end-30x.png";
 
 	public Video () {
 		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as Box;
@@ -57,7 +57,7 @@ public class Video {
 		position = new VideoPosition(player);
 		tracker = new SubtitleTracker();
 
-		SetCustomIcons();
+		//SetCustomIcons();
 		Base.InitFinished += OnBaseInitFinished;
 	}
 
@@ -234,22 +234,22 @@ public class Video {
 		Base.GetWidget(WidgetNames.VideoSpeedUpButton).Sensitive = (speed < Player.DefaultMaxSpeed);
 	}
 
-	private void SetCustomIcons () {
-		/* Set the icon for the SetSubtitleStart button */
-		Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
-		Image image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
-		image.Pixbuf = pixbuf;
+	//private void SetCustomIcons () {
+	//	/* Set the icon for the SetSubtitleStart button */
+	//	Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
+	//	Image image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
+	//	image.Pixbuf = pixbuf;
 
-		/* Set the icon for the SetSubtitleEnd button */
-		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
-		image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
-		image.Pixbuf = pixbuf;
+	//	/* Set the icon for the SetSubtitleEnd button */
+	//	pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
+	//	image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
+	//	image.Pixbuf = pixbuf;
 
-		/* Set the icon for the SetSubtitleStartEnd button */
-		pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartEndIconFilename);
-		image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButtonImage) as Image;
-		image.Pixbuf = pixbuf;
-	}
+	//	/* Set the icon for the SetSubtitleStartEnd button */
+	//	pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartEndIconFilename);
+	//	image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButtonImage) as Image;
+	//	image.Pixbuf = pixbuf;
+	//}
 
 	private void InitializeVideoFrame () {
 

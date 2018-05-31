@@ -251,8 +251,8 @@
                         <property name="label" translatable="yes">_Redo</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditRedo" swapped="no"/>
-                        <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -574,8 +574,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext" swapped="no"/>
-                        <accelerator key="F3" signal="activate"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -585,8 +585,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious" swapped="no"/>
-                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -727,8 +727,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause" swapped="no"/>
-                        <accelerator key="F5" signal="activate"/>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F5" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -750,8 +750,8 @@
                         <property name="label" translatable="yes">R_ewind</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoRewind" swapped="no"/>
-                        <accelerator key="F6" signal="activate"/>
                         <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F6" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -762,8 +762,8 @@
                         <property name="label" translatable="yes">_Forward</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoForward" swapped="no"/>
-                        <accelerator key="F7" signal="activate"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F7" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -791,8 +791,8 @@
                         <property name="label" translatable="yes">Seek _to Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection" swapped="no"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -803,8 +803,8 @@
                         <property name="label" translatable="yes">Select _Nearest Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSelectNearestSubtitle" swapped="no"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -989,7 +989,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">New File</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-new</property>
+                <property name="icon_name">document-new-symbolic</property>
                 <signal name="clicked" handler="OnFileNew" swapped="no"/>
               </object>
               <packing>
@@ -1003,7 +1003,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Open File</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-open</property>
+                <property name="icon_name">document-open-symbolic</property>
                 <signal name="clicked" handler="OnFileOpen" swapped="no"/>
               </object>
               <packing>
@@ -1017,7 +1017,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Save File</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-save</property>
+                <property name="icon_name">document-save-symbolic</property>
                 <signal name="clicked" handler="OnFileSave" swapped="no"/>
               </object>
               <packing>
@@ -1040,7 +1040,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-undo</property>
+                <property name="icon_name">edit-undo-symbolic</property>
                 <signal name="clicked" handler="OnEditUndo" swapped="no"/>
               </object>
               <packing>
@@ -1053,7 +1053,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-redo</property>
+                <property name="icon_name">edit-redo-symbolic</property>
                 <signal name="clicked" handler="OnEditRedo" swapped="no"/>
               </object>
               <packing>
@@ -1076,7 +1076,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-cut</property>
+                <property name="icon_name">edit-cut-symbolic</property>
                 <signal name="clicked" handler="OnEditCut" swapped="no"/>
               </object>
               <packing>
@@ -1089,7 +1089,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-copy</property>
+                <property name="icon_name">edit-copy-symbolic</property>
                 <signal name="clicked" handler="OnEditCopy" swapped="no"/>
               </object>
               <packing>
@@ -1102,7 +1102,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-paste</property>
+                <property name="icon_name">edit-paste-symbolic</property>
                 <signal name="clicked" handler="OnEditPaste" swapped="no"/>
               </object>
               <packing>
@@ -1126,7 +1126,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Insert</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-add</property>
+                <property name="icon_name">list-add-symbolic</property>
                 <signal name="clicked" handler="OnEditInsertSubtitleAfter" swapped="no"/>
               </object>
               <packing>
@@ -1140,7 +1140,7 @@
                 <property name="can_focus">False</property>
                 <property name="tooltip_text" translatable="yes">Delete</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-remove</property>
+                <property name="icon_name">list-remove-symbolic</property>
                 <signal name="clicked" handler="OnEditDeleteSubtitles" swapped="no"/>
               </object>
               <packing>
@@ -1163,7 +1163,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-bold</property>
+                <property name="icon_name">format-text-bold-symbolic</property>
                 <signal name="toggled" handler="OnEditFormatBold" swapped="no"/>
               </object>
               <packing>
@@ -1176,7 +1176,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-italic</property>
+                <property name="icon_name">format-text-italic-symbolic</property>
                 <signal name="toggled" handler="OnEditFormatItalic" swapped="no"/>
               </object>
               <packing>
@@ -1189,7 +1189,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-underline</property>
+                <property name="icon_name">format-text-underline-symbolic</property>
                 <signal name="toggled" handler="OnEditFormatUnderline" swapped="no"/>
               </object>
               <packing>
@@ -1315,26 +1315,16 @@
                         <property name="can_focus">False</property>
                         <property name="row_spacing">4</property>
                         <property name="column_spacing">1</property>
-                        <property name="row_homogeneous">True</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkButton" id="videoSetSubtitleStartButton">
+                            <property name="label">⇤</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Sets the subtitle Start to the current video position</property>
                             <property name="relief">none</property>
                             <signal name="clicked" handler="OnVideoSetSubtitleStart" swapped="no"/>
-                            <child>
-                              <object class="GtkImage" id="videoSetSubtitleStartButtonImage">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="margin_left">5</property>
-                                <property name="margin_right">5</property>
-                                <property name="margin_top">5</property>
-                                <property name="margin_bottom">5</property>
-                                <property name="stock">gtk-missing-image</property>
-                              </object>
-                            </child>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1343,22 +1333,13 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="videoSetSubtitleEndButton">
+                            <property name="label" translatable="yes">⇥</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Sets the subtitle End to the current video position</property>
                             <property name="relief">none</property>
                             <signal name="clicked" handler="OnVideoSetSubtitleEnd" swapped="no"/>
-                            <child>
-                              <object class="GtkImage" id="videoSetSubtitleEndButtonImage">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="margin_left">5</property>
-                                <property name="margin_right">5</property>
-                                <property name="margin_top">5</property>
-                                <property name="margin_bottom">5</property>
-                                <property name="stock">gtk-missing-image</property>
-                              </object>
-                            </child>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -1367,34 +1348,23 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="videoSetSubtitleStartEndButton">
+                            <property name="label" translatable="yes">⇤ ⇥</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Sets the subtitle Start and End while the video is playing. Keep the button pressed for the duration of each subtitle.	</property>
                             <property name="relief">none</property>
                             <signal name="button-press-event" handler="OnVideoSetSubtitleStartEndButtonPress" swapped="no"/>
                             <signal name="button-release-event" handler="OnVideoSetSubtitleStartEndButtonRelease" swapped="no"/>
                             <signal name="grab-focus" handler="OnVideoSetSubtitleStartEndGrabFocus" swapped="no"/>
                             <signal name="key-release-event" handler="OnVideoSetSubtitleStartEndKeyRelease" swapped="no"/>
-                            <child>
-                              <object class="GtkImage" id="videoSetSubtitleStartEndButtonImage">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="margin_left">5</property>
-                                <property name="margin_right">5</property>
-                                <property name="margin_top">5</property>
-                                <property name="margin_bottom">5</property>
-                                <property name="stock">gtk-missing-image</property>
-                              </object>
-                            </child>
                             <accelerator key="j" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">1</property>
+                            <property name="width">2</property>
                           </packing>
-                        </child>
-                        <child>
-                          <placeholder/>
                         </child>
                       </object>
                       <packing>
@@ -1477,7 +1447,7 @@
                                           <object class="GtkImage" id="playPauseButtonPlayImage">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="stock">gtk-media-play</property>
+                                            <property name="icon_name">media-playback-start-symbolic</property>
                                             <property name="icon_size">1</property>
                                           </object>
                                           <packing>
@@ -1490,7 +1460,7 @@
                                           <object class="GtkImage" id="playPauseButtonPauseImage">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="stock">gtk-media-pause</property>
+                                            <property name="icon_name">media-playback-pause-symbolic</property>
                                             <property name="icon_size">1</property>
                                           </object>
                                           <packing>
@@ -1527,7 +1497,7 @@
                                       <object class="GtkImage" id="rewindButtonImage">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="stock">gtk-media-rewind</property>
+                                        <property name="icon_name">media-seek-backward-symbolic</property>
                                         <property name="icon_size">1</property>
                                       </object>
                                     </child>
@@ -1549,7 +1519,7 @@
                                       <object class="GtkImage" id="forwardButtonImage">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="stock">gtk-media-forward</property>
+                                        <property name="icon_name">media-seek-forward-symbolic</property>
                                         <property name="icon_size">1</property>
                                       </object>
                                     </child>
@@ -1589,7 +1559,7 @@
                                   <object class="GtkImage" id="videoSpeedDownButtonImage">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="stock">gtk-remove</property>
+                                    <property name="icon_name">list-remove-symbolic</property>
                                     <property name="icon_size">1</property>
                                   </object>
                                 </child>
@@ -1628,7 +1598,7 @@
                                   <object class="GtkImage" id="videoSpeedUpButtonImage">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="stock">gtk-add</property>
+                                    <property name="icon_name">list-add-symbolic</property>
                                     <property name="icon_size">1</property>
                                   </object>
                                 </child>
