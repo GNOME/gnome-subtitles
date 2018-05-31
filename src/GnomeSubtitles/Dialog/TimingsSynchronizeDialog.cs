@@ -80,19 +80,13 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		
 		//Sync Points frame
 
-		Frame syncFrame = new Frame();
-		syncFrame.ShadowType = ShadowType.None;
-		Label syncFrameLabel = new Label();
-		syncFrameLabel.Markup = "<b>" + Catalog.GetString("Sync Points") + "</b>";
-		syncFrame.LabelWidget = syncFrameLabel;
-		
 		Box syncVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
 		syncVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		syncVBox.Spacing = WidgetStyles.BoxSpacingMedium;
 		syncVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 
 		ScrolledWindow syncWindow = new ScrolledWindow();
-		syncWindow.ShadowType = ShadowType.In;
+		syncWindow.ShadowType = ShadowType.EtchedIn;
 		syncWindow.Expand = true;
 		syncPointsTree = new TreeView();
 		CreateColumns(syncPointsTree);
@@ -113,18 +107,12 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		syncButtonsHBox.Add(buttonRemove);
 		
 		syncVBox.Add(syncButtonsHBox);
-		syncFrame.Add(syncVBox);
+		Frame syncFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Sync Points"), syncVBox);
 		box.Add(syncFrame);
-		
+
 		
 		//Apply To frame
-		
-		Frame applyToFrame = new Frame();
-		applyToFrame.ShadowType = ShadowType.None;
-		Label applyToFrameLabel = new Label();
-		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply To") + "</b>";
-		applyToFrame.LabelWidget = applyToFrameLabel;
-		
+
 		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
 		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
@@ -133,19 +121,13 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		selectedSubtitlesRadioButton = new RadioButton(allSubtitlesRadioButton, Catalog.GetString("Subtitles between sync points"));
 		applyToFrameVBox.Add(allSubtitlesRadioButton);
 		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
-		applyToFrame.Add(applyToFrameVBox);
 		
+		Frame applyToFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Apply To"), applyToFrameVBox);
 		box.Add(applyToFrame);
 		
 		
 		//Status frame
-		
-		Frame statusFrame = new Frame();
-		statusFrame.ShadowType = ShadowType.None;
-		Label statusFrameLabel = new Label();
-		statusFrameLabel.Markup = "<b>" + Catalog.GetString("Info") + "</b>";
-		statusFrame.LabelWidget = statusFrameLabel;
-		
+
 		Box statusFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium); //Used so we can have a border
 		statusFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		statusFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
@@ -153,8 +135,8 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		statusMessageLabel = new Label();
 		statusMessageLabel.Wrap = true;
 		statusFrameVBox.Add(statusMessageLabel);
-		statusFrame.Add(statusFrameVBox);
 		
+		Frame statusFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Info"), statusFrameVBox);
 		box.Add(statusFrame);
 		
 		dialog.ContentArea.Add(box);

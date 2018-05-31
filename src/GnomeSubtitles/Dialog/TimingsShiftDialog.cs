@@ -33,7 +33,6 @@ public class TimingsShiftDialog : BaseDialog {
 	private TimingMode timingMode;
 
 	/* Widgets */
-	private Frame timingModeFrame;
 	private SpinButton spinButton = null;
 	private RadioButton allSubtitlesRadioButton = null;
 	private RadioButton selectedSubtitlesRadioButton = null;
@@ -74,13 +73,9 @@ public class TimingsShiftDialog : BaseDialog {
 		Box box = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingLarge);
 		box.BorderWidth = WidgetStyles.BorderWidthMedium;
 
+
 		//Timing Mode frame
 
-		timingModeFrame = new Frame();
-		timingModeFrame.ShadowType = ShadowType.None;
-		Label timingModeFrameLabel = new Label();
-		timingModeFrame.LabelWidget = timingModeFrameLabel;
-		
 		spinButton = new SpinButton(new Adjustment(0, 0, 0, 1, 10, 0), 0, 0);
 		spinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		spinButton.Alignment = 0.5f;
@@ -97,17 +92,11 @@ public class TimingsShiftDialog : BaseDialog {
 		timingModeHBox.Add(clearButton);
 		timingModeHBox.Add(videoButton);
 		
-		timingModeFrame.Add(timingModeHBox);
+		Frame timingModeFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Amount"), timingModeHBox);
 		box.Add(timingModeFrame);
 		
 		
 		//Apply To frame
-		
-		Frame applyToFrame = new Frame();
-		applyToFrame.ShadowType = ShadowType.None;
-		Label applyToFrameLabel = new Label();
-		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply To") + "</b>";
-		applyToFrame.LabelWidget = applyToFrameLabel;
 		
 		allSubtitlesRadioButton = new RadioButton(DialogStrings.ApplyToAllSubtitles);
 		selectedSubtitlesRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToSelection);
@@ -122,9 +111,9 @@ public class TimingsShiftDialog : BaseDialog {
 		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
 		applyToFrameVBox.Add(fromSelectionToLastSubtitleRadioButton);
 		
-		applyToFrame.Add(applyToFrameVBox);
-		
+		Frame applyToFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Apply To"), applyToFrameVBox);
 		box.Add(applyToFrame);
+		
 		
 		//Tips label
 		
@@ -152,10 +141,6 @@ public class TimingsShiftDialog : BaseDialog {
 	private void UpdateFromTimingMode () {
 		Core.Util.SetSpinButtonTimingMode(spinButton, timingMode, Base.Document.Subtitles.Properties.CurrentFrameRate);
 		Core.Util.SetSpinButtonMaxAdjustment(spinButton, timingMode, true);
-
-		string label = (timingMode == TimingMode.Times ? Catalog.GetString("Time") : Catalog.GetString("Frames"));
-		string markup = "<b>" + label + "</b>";
-		(timingModeFrame.LabelWidget as Label).Markup = markup;
 	}
 	
 	private void UpdateVideoButtonSensitivity () {

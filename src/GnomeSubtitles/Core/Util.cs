@@ -17,6 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using GnomeSubtitles.Ui;
 using Gtk;
 using SubLib.Core.Domain;
 using SubLib.Core.Timing;
@@ -271,6 +272,20 @@ public class Util {
 		StockItem item;
 		StockManager.LookupItem(stockId, out item);
 		return item.Label;
+	}
+	
+	public static Frame CreateFrameWithIndentedContent (string label, Widget content) {
+		Frame frame = new Frame();
+		frame.ShadowType = ShadowType.None;
+		
+		Label frameLabel = new Label();
+		frameLabel.Markup = "<b>" + label + "</b>";
+		frame.LabelWidget = frameLabel;
+		
+		content.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		frame.Add(content);
+		
+		return frame;
 	}
 
 }

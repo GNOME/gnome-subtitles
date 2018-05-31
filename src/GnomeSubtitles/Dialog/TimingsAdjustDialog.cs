@@ -91,12 +91,6 @@ public class TimingsAdjustDialog : BaseDialog {
 		
 		//First Subtitle frame
 		
-		Frame firstSubtitleFrame = new Frame();
-		firstSubtitleFrame.ShadowType = ShadowType.None;
-		Label firstSubtitleFrameLabel = new Label();
-		firstSubtitleFrameLabel.Markup = "<b>" + Catalog.GetString("First Point") + "</b>";
-		firstSubtitleFrame.LabelWidget = firstSubtitleFrameLabel;
-		
 		Grid firstSubtitleGrid = new Grid();
 		firstSubtitleGrid.BorderWidth = WidgetStyles.BorderWidthMedium;
 		firstSubtitleGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
@@ -117,19 +111,13 @@ public class TimingsAdjustDialog : BaseDialog {
 		firstSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		firstSubtitleNewStartSpinButton.Alignment = 0.5f;
 		firstSubtitleGrid.Attach(firstSubtitleNewStartSpinButton, 1, 2, 1, 1);
-		
-		firstSubtitleFrame.Add(firstSubtitleGrid);
+
+		Frame firstSubtitleFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("First Point"), firstSubtitleGrid);
 		grid.Attach(firstSubtitleFrame, 0, 0, 1, 1);
 
 	
 		//Second Subtitle frame
 		
-		Frame lastSubtitleFrame = new Frame();
-		lastSubtitleFrame.ShadowType = ShadowType.None;
-		Label lastSubtitleFrameLabel = new Label();
-		lastSubtitleFrameLabel.Markup = "<b>" + Catalog.GetString("Second Point") + "</b>";
-		lastSubtitleFrame.LabelWidget = lastSubtitleFrameLabel;
-
 		Grid lastSubtitleGrid = new Grid();
 		lastSubtitleGrid.BorderWidth = WidgetStyles.BorderWidthMedium;
 		lastSubtitleGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
@@ -149,20 +137,13 @@ public class TimingsAdjustDialog : BaseDialog {
 		lastSubtitleNewStartSpinButton.WidthChars = Core.Util.SpinButtonTimeWidthChars;
 		lastSubtitleNewStartSpinButton.Alignment = 0.5f;
 		lastSubtitleGrid.Attach(lastSubtitleNewStartSpinButton, 1, 2, 1, 1);
-		
-		lastSubtitleFrame.Add(lastSubtitleGrid);
+
+		Frame lastSubtitleFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Second Point"), lastSubtitleGrid);
 		grid.Attach(lastSubtitleFrame, 1, 0, 1, 1);
 		
 
 		//Apply To frame
 		
-		Frame applyToFrame = new Frame();
-		applyToFrame.ShadowType = ShadowType.None;
-		Label applyToFrameLabel = new Label();
-		applyToFrameLabel.Markup = "<b>" + Catalog.GetString("Apply To") + "</b>";
-		applyToFrame.LabelWidget = applyToFrameLabel;
-
-
 		allSubtitlesRadioButton = new RadioButton(DialogStrings.ApplyToAllSubtitles);
 		selectedSubtitlesRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToSelection);
 		fromFirstSubtitleToSelectionRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToFirstToSelection);
@@ -180,8 +161,8 @@ public class TimingsAdjustDialog : BaseDialog {
 		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
 		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
 		applyToFrameVBox.Add(fromSelectionToLastSubtitleRadioButton);
-		
-		applyToFrame.Add(applyToFrameVBox);
+
+		Frame applyToFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Apply To"), applyToFrameVBox);
 		grid.Attach(applyToFrame, 0, 1, 2, 2);
 		
 		dialog.ContentArea.Add(grid);
