@@ -86,13 +86,12 @@ public class TimingsShiftDialog : BaseDialog {
 		videoButton.Clicked += OnSetFromVideo;
 
 		Box timingModeHBox = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
-		timingModeHBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		timingModeHBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		timingModeHBox.Add(spinButton);
 		timingModeHBox.Add(clearButton);
 		timingModeHBox.Add(videoButton);
 		
-		Frame timingModeFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Amount"), timingModeHBox);
+		Frame timingModeFrame = Util.CreateFrameWithContent(Catalog.GetString("Amount"), timingModeHBox);
 		box.Add(timingModeFrame);
 		
 		
@@ -104,14 +103,13 @@ public class TimingsShiftDialog : BaseDialog {
 		fromSelectionToLastSubtitleRadioButton = new RadioButton(allSubtitlesRadioButton, DialogStrings.ApplyToSelectionToLast);
 
 		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
-		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		applyToFrameVBox.Add(allSubtitlesRadioButton);
 		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
 		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
 		applyToFrameVBox.Add(fromSelectionToLastSubtitleRadioButton);
 		
-		Frame applyToFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Apply To"), applyToFrameVBox);
+		Frame applyToFrame = Util.CreateFrameWithContent(Catalog.GetString("Apply To"), applyToFrameVBox);
 		box.Add(applyToFrame);
 		
 		

@@ -83,7 +83,6 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		Box syncVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
 		syncVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		syncVBox.Spacing = WidgetStyles.BoxSpacingMedium;
-		syncVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 
 		ScrolledWindow syncWindow = new ScrolledWindow();
 		syncWindow.ShadowType = ShadowType.EtchedIn;
@@ -107,14 +106,13 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		syncButtonsHBox.Add(buttonRemove);
 		
 		syncVBox.Add(syncButtonsHBox);
-		Frame syncFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Sync Points"), syncVBox);
+		Frame syncFrame = Util.CreateFrameWithContent(Catalog.GetString("Sync Points"), syncVBox);
 		box.Add(syncFrame);
 
 		
 		//Apply To frame
 
 		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
-		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		applyToFrameVBox.Spacing = WidgetStyles.BoxSpacingMedium;
 		allSubtitlesRadioButton = new RadioButton(DialogStrings.ApplyToAllSubtitles);
@@ -122,28 +120,27 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		applyToFrameVBox.Add(allSubtitlesRadioButton);
 		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
 		
-		Frame applyToFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Apply To"), applyToFrameVBox);
+		Frame applyToFrame = Util.CreateFrameWithContent(Catalog.GetString("Apply To"), applyToFrameVBox);
 		box.Add(applyToFrame);
 		
 		
 		//Status frame
 
 		Box statusFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium); //Used so we can have a border
-		statusFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		statusFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		statusFrameVBox.Spacing = WidgetStyles.BoxSpacingMedium;
 		statusMessageLabel = new Label();
 		statusMessageLabel.Wrap = true;
 		statusFrameVBox.Add(statusMessageLabel);
 		
-		Frame statusFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Info"), statusFrameVBox);
+		Frame statusFrame = Util.CreateFrameWithContent(Catalog.GetString("Info"), statusFrameVBox);
 		box.Add(statusFrame);
 		
 		dialog.ContentArea.Add(box);
 		dialog.ContentArea.ShowAll();
 
 		return dialog;
-	}		
+	}
 
 	private void CreateColumns(TreeView treeView) {
     	/* Number column */

@@ -194,9 +194,7 @@ public class FileHeadersDialog : BaseDialog {
 	}
 
 	private Label CreateLabel(string text) {
-		Label label = new Label(text);
-		label.SetAlignment(0, 0.5f);
-		return label;
+		return Util.CreateLabel(text, 0, 0.5f);
 	}
 
 	private Entry CreateEntry(string propertyName) {

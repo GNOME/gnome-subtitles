@@ -92,7 +92,6 @@ public class TimingsAdjustDialog : BaseDialog {
 		//First Subtitle frame
 		
 		Grid firstSubtitleGrid = new Grid();
-		firstSubtitleGrid.BorderWidth = WidgetStyles.BorderWidthMedium;
 		firstSubtitleGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
 		firstSubtitleGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
 		firstSubtitleGrid.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
@@ -112,14 +111,13 @@ public class TimingsAdjustDialog : BaseDialog {
 		firstSubtitleNewStartSpinButton.Alignment = 0.5f;
 		firstSubtitleGrid.Attach(firstSubtitleNewStartSpinButton, 1, 2, 1, 1);
 
-		Frame firstSubtitleFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("First Point"), firstSubtitleGrid);
+		Frame firstSubtitleFrame = Util.CreateFrameWithContent(Catalog.GetString("First Point"), firstSubtitleGrid);
 		grid.Attach(firstSubtitleFrame, 0, 0, 1, 1);
 
 	
 		//Second Subtitle frame
 		
 		Grid lastSubtitleGrid = new Grid();
-		lastSubtitleGrid.BorderWidth = WidgetStyles.BorderWidthMedium;
 		lastSubtitleGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
 		lastSubtitleGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
 		lastSubtitleGrid.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
@@ -138,7 +136,7 @@ public class TimingsAdjustDialog : BaseDialog {
 		lastSubtitleNewStartSpinButton.Alignment = 0.5f;
 		lastSubtitleGrid.Attach(lastSubtitleNewStartSpinButton, 1, 2, 1, 1);
 
-		Frame lastSubtitleFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Second Point"), lastSubtitleGrid);
+		Frame lastSubtitleFrame = Util.CreateFrameWithContent(Catalog.GetString("Second Point"), lastSubtitleGrid);
 		grid.Attach(lastSubtitleFrame, 1, 0, 1, 1);
 		
 
@@ -155,14 +153,13 @@ public class TimingsAdjustDialog : BaseDialog {
 		fromSelectionToLastSubtitleRadioButton.Toggled += OnToggleRadioButton;
 		
 		Box applyToFrameVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
-		applyToFrameVBox.BorderWidth = WidgetStyles.BorderWidthMedium;
 		applyToFrameVBox.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
 		applyToFrameVBox.Add(allSubtitlesRadioButton);
 		applyToFrameVBox.Add(selectedSubtitlesRadioButton);
 		applyToFrameVBox.Add(fromFirstSubtitleToSelectionRadioButton);
 		applyToFrameVBox.Add(fromSelectionToLastSubtitleRadioButton);
 
-		Frame applyToFrame = Util.CreateFrameWithIndentedContent(Catalog.GetString("Apply To"), applyToFrameVBox);
+		Frame applyToFrame = Util.CreateFrameWithContent(Catalog.GetString("Apply To"), applyToFrameVBox);
 		grid.Attach(applyToFrame, 0, 1, 2, 2);
 		
 		dialog.ContentArea.Add(grid);

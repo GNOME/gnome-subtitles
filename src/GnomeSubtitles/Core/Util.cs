@@ -274,7 +274,7 @@ public class Util {
 		return item.Label;
 	}
 	
-	public static Frame CreateFrameWithIndentedContent (string label, Widget content) {
+	public static Frame CreateFrameWithContent (string label, Container content) {
 		Frame frame = new Frame();
 		frame.ShadowType = ShadowType.None;
 		
@@ -283,11 +283,18 @@ public class Util {
 		frame.LabelWidget = frameLabel;
 		
 		content.MarginLeft = WidgetStyles.FrameContentSpacingMedium;
+		content.BorderWidth = WidgetStyles.BorderWidthMedium;
 		frame.Add(content);
 		
 		return frame;
 	}
-
+	
+	public static Label CreateLabel(string text, float xAlign, float yAlign) {
+		Label label = new Label(text);
+		label.SetAlignment(xAlign, yAlign);
+		return label;
+	}
+	
 }
 
 }

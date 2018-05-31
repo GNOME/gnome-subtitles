@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-//using Glade;
 using GnomeSubtitles.Core;
+using GnomeSubtitles.Ui;
 using GnomeSubtitles.Ui.Component;
 using Gtk;
 using Mono.Unix;
@@ -27,10 +27,7 @@ using System;
 
 namespace GnomeSubtitles.Dialog {
 
-public class PreferencesDialog : BuilderDialog {
-
-	/* Constant strings */
-	private const string gladeFilename = "PreferencesDialog.glade";
+public class PreferencesDialog : BaseDialog {
 
 	/* Components */
 	private EncodingComboBox fileOpenEncoding = null;
@@ -40,65 +37,178 @@ public class PreferencesDialog : BuilderDialog {
 	private NewlineTypeComboBox fileSaveNewline = null;
 
 	/* Widgets */
-	[Builder.Object] private CheckButton translationSaveAllCheckButton = null;
-	[Builder.Object] private CheckButton videoAutoChooseFileCheckButton = null;
-	[Builder.Object] private CheckButton autoBackupCheckButton = null;
-	[Builder.Object] private CheckButton reactionDelayCheckButton = null;
-	[Builder.Object] private CheckButton videoSeekCheckButton = null;
-	[Builder.Object] private ComboBoxText fileOpenEncodingComboBox = null;
-	[Builder.Object] private ComboBoxText fileOpenFallbackEncodingComboBox = null;
-	[Builder.Object] private ComboBoxText fileSaveEncodingComboBox = null;
-	[Builder.Object] private ComboBoxText fileSaveFormatComboBox = null;
-	[Builder.Object] private ComboBoxText fileSaveNewlineComboBox = null;
-	[Builder.Object] private SpinButton autoBackupTimeSpinButton = null;
-	[Builder.Object] private SpinButton reactionDelaySpinButton = null;
-	[Builder.Object] private SpinButton videoSeekRewindSpinButton = null;
-	[Builder.Object] private SpinButton subtitleSplitSpinButton = null;
-
-	public PreferencesDialog () : base(gladeFilename, false) {
-		LoadValues();
-		Autoconnect();
+	private SpinButton videoSeekRewindSpinButton = null;
+	private SpinButton reactionDelaySpinButton = null;
+	private SpinButton autoBackupSpinButton = null;
+	
+	public PreferencesDialog () : base() {
+		Init(BuildDialog());
 	}
 
 	/* Private members */
 
-	private void LoadValues () {
-		LoadValuesFilesTab();
-		LoadValuesEditingTab();
+	private Gtk.Dialog BuildDialog () {
+		Gtk.Dialog dialog = new Gtk.Dialog(Catalog.GetString("Preferences"), Base.Ui.Window, DialogFlags.Modal | DialogFlagsUseHeaderBar);
+
+		Notebook notebook = new Notebook();
+		notebook.Expand = true;
+		notebook.TabPos = PositionType.Top;
+		notebook.ShowBorder = false;
+		
+		notebook.AppendPage(BuildFilesPage(), new Label(Catalog.GetString("Files")));
+		notebook.AppendPage(BuildEditingPage(), new Label(Catalog.GetString("Editing")));
+		
+		dialog.ContentArea.Add(notebook);
+		dialog.ContentArea.ShowAll();
+
+		return dialog;
 	}
+	
+	private Widget BuildFilesPage () {
+		Box box = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingLarge);
+		box.BorderWidth = WidgetStyles.BorderWidthLarge;
+		
+		//Translation File Saving
+		
+		CheckButton translationFileSaving = new CheckButton(Catalog.GetString("When saving subtitle files, automatically save their _translation"));
+		translationFileSaving.Active = Base.Config.FileTranslationSaveAll;
+		translationFileSaving.Toggled += OnTranslationSaveAllToggled;
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("Translation File Saving"), translationFileSaving));
 
-	private void LoadValuesFilesTab () {
-		/* Translation Save All */
-		translationSaveAllCheckButton.Active = Base.Config.FileTranslationSaveAll;
 
-		/* Defaults */
-		SetDefaultsFileOpenEncoding();
-		SetDefaultsFileOpenFallbackEncoding();
-		SetDefaultsFileSaveEncoding();
-		SetDefaultsFileSaveFormat();
-		SetDefaultsFileSaveNewline();
-
-		/* Video Auto choose file */
-		videoAutoChooseFileCheckButton.Active = Base.Config.VideoAutoChooseFile;
-
-		/* Auto Backup */
-		SetAutoBackup();
+		//File Open Dialog
+		
+		Grid fileOpenDialogGrid = new Grid();
+		fileOpenDialogGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
+		fileOpenDialogGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
+		
+		fileOpenDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("Character c_oding to use:"), 0, 0.5f), 0, 0, 1, 1);
+		fileOpenEncoding = BuildFileOpenEncodingComboBox();
+		fileOpenDialogGrid.Attach(fileOpenEncoding.Widget, 1, 0, 1, 1);
+		
+		fileOpenDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("If auto detection _fails, use:"), 0, 0.5f), 0, 1, 1, 1);
+		fileOpenFallbackEncoding = BuildFileOpenFallbackEncodingComboBox();
+		fileOpenDialogGrid.Attach(fileOpenFallbackEncoding.Widget, 1, 1, 1, 1);
+		
+		CheckButton videoAutoChoose = new CheckButton(Catalog.GetString("Automatically choose the _video file to open"));
+		videoAutoChoose.Active = Base.Config.VideoAutoChooseFile;
+		videoAutoChoose.Toggled += OnVideoAutoChooseFileToggled;
+		fileOpenDialogGrid.Attach(videoAutoChoose, 0, 2, 2, 1);
+		
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("File Open Dialog"), fileOpenDialogGrid));
+		
+		
+		//File Save As Dialog
+		
+		Grid fileSaveAsDialogGrid = new Grid();
+		fileSaveAsDialogGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
+		fileSaveAsDialogGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
+		
+		fileSaveAsDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("_Subtitle format to use:"), 0, 0.5f), 0, 0, 1, 1);
+		fileSaveFormat = BuildFileSaveFormatComboBox();
+		fileSaveAsDialogGrid.Attach(fileSaveFormat.Widget, 1, 0, 1, 1);
+		
+		fileSaveAsDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("Ch_aracter coding to use:"), 0, 0.5f), 0, 1, 1, 1);
+		fileSaveEncoding = BuildFileSaveEncodingComboBox();
+		fileSaveAsDialogGrid.Attach(fileSaveEncoding.Widget, 1, 1, 1, 1);
+		
+		fileSaveAsDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("_Newline type to use:"), 0, 0.5f), 0, 2, 1, 1);
+		fileSaveNewline = BuildFileSaveNewlineComboBox();
+		fileSaveAsDialogGrid.Attach(fileSaveNewline.Widget, 1, 2, 1, 1);
+		
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("File Save As Dialog"), fileSaveAsDialogGrid));
+		
+		
+		//Backup
+		
+		Box backupBox = new Box(Orientation.Horizontal, 3);
+		bool autoBackupEnabled = Base.Config.BackupAuto;
+		
+		CheckButton backupCheckButton = new CheckButton(Catalog.GetString("Create a _backup copy of files every"));
+		backupCheckButton.Active = autoBackupEnabled;
+		backupCheckButton.Toggled += OnAutoBackupToggled;
+		backupBox.Add(backupCheckButton);
+		
+		autoBackupSpinButton = new SpinButton(1, 90, 1);
+		autoBackupSpinButton.Numeric = true;
+		autoBackupSpinButton.WidthChars = 2;
+		autoBackupSpinButton.Sensitive = autoBackupEnabled;
+		autoBackupSpinButton.Value = Base.Config.BackupTime / 60; //Minutes
+		autoBackupSpinButton.Changed += OnAutoBackupTimeSpinButtonValueChanged;
+		backupBox.Add(autoBackupSpinButton);
+		
+		backupBox.Add(new Label(Catalog.GetString("minutes")));
+		
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("Backup"), backupBox));
+		
+		return box;
 	}
-
-	private void LoadValuesEditingTab () {
-		/* Video Seeking */
+	
+	private Widget BuildEditingPage () {
+		Box box = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingLarge);
+		box.BorderWidth = WidgetStyles.BorderWidthLarge;
+		
+		//Video Seeking
+		
+		Box videoSeekVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
+		
+		CheckButton videoSeekCheckButton = new CheckButton(Catalog.GetString("Seek the video to the selected subtitle when changing timings"));
 		videoSeekCheckButton.Active = Base.Config.VideoSeekOnChange;
+		videoSeekCheckButton.Toggled += OnVideoSeekToggled;
+		videoSeekVBox.Add(videoSeekCheckButton);
+		
+		Box videoSeekRewindHBox = new Box(Orientation.Horizontal, 3);
+		videoSeekRewindHBox.Add(new Label(Catalog.GetString("Play")));
+		videoSeekRewindSpinButton = new SpinButton(0, 2000, 50);
+		videoSeekRewindSpinButton.WidthChars = 4;
 		videoSeekRewindSpinButton.Value = Base.Config.VideoSeekOnChangeRewind;
 		videoSeekRewindSpinButton.Sensitive = videoSeekCheckButton.Active;
+		videoSeekRewindSpinButton.Changed += OnVideoSeekRewindSpinButtonValueChanged;
+		videoSeekRewindHBox.Add(videoSeekRewindSpinButton);
+		videoSeekRewindHBox.Add(new Label(Catalog.GetString("ms before the actual start to help review new timings")));
+		
+		videoSeekVBox.Add(videoSeekRewindHBox);
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("Video Seeking"), videoSeekVBox));
 
-		/* Subtitle Splitting */
+
+		//Gap Between Subtitles
+		
+		Box splitHBox = new Box(Orientation.Horizontal, 3);
+		splitHBox.Add(new Label(Catalog.GetString("Leave")));
+		SpinButton subtitleSplitSpinButton = new SpinButton(0, 2000, 50);
+		subtitleSplitSpinButton.WidthChars = 4;
 		subtitleSplitSpinButton.Value = Base.Config.TimingsTimeBetweenSubtitles;
+		subtitleSplitSpinButton.Changed += OnSubtitleSplitSpinButtonValueChanged;
+		splitHBox.Add(subtitleSplitSpinButton);
+		splitHBox.Add(new Label(Catalog.GetString("ms between subtitles when inserting or splitting")));
+		
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("Gap Between Subtitles"), splitHBox));
 
-		/* Reaction Delay */
-		SetReactionDelay();
+
+		//Reaction Delay
+
+		Box reactionDelayHBox = new Box(Orientation.Horizontal, 3);
+		bool reactionDelayEnabled = Base.Config.VideoApplyReactionDelay;
+		
+		CheckButton reactionDelayCheckButton = new CheckButton(Catalog.GetString("Subtract"));
+		reactionDelayCheckButton.Active = reactionDelayEnabled;
+		reactionDelayCheckButton.Toggled += OnReactionDelayToggled;
+		reactionDelayHBox.Add(reactionDelayCheckButton);
+		
+		reactionDelaySpinButton = new SpinButton(0, 2000, 50);
+		reactionDelaySpinButton.WidthChars = 4;
+		reactionDelaySpinButton.Sensitive = reactionDelayEnabled;
+		reactionDelaySpinButton.Value = Base.Config.VideoReactionDelay;
+		reactionDelaySpinButton.Changed += OnReactionDelaySpinButtonValueChanged;
+		reactionDelayHBox.Add(reactionDelaySpinButton);
+
+		reactionDelayHBox.Add(new Label(Catalog.GetString("ms when setting subtitle start/end while playing the video")));
+		box.Add(Util.CreateFrameWithContent(Catalog.GetString("Reaction Delay"), reactionDelayHBox));
+
+		return box;
 	}
 
-	private void SetDefaultsFileOpenEncoding () {
+	private EncodingComboBox BuildFileOpenEncodingComboBox () {
 		string[] additionalActions = { Catalog.GetString("Remember the last used encoding") };
 		int fixedEncoding = -1;
 		ConfigFileOpenEncodingOption fileOpenEncodingOption = Base.Config.FileOpenEncodingOption;
@@ -109,15 +219,16 @@ public class PreferencesDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileOpenEncoding = new EncodingComboBox(true, additionalActions, fixedEncoding);
-		fileOpenEncodingComboBox = fileOpenEncoding.Widget; //FIXME REMOVE
+		EncodingComboBox comboBox = new EncodingComboBox(true, additionalActions, fixedEncoding);
 		if (fileOpenEncodingOption != ConfigFileOpenEncodingOption.Specific) {
-			fileOpenEncoding.ActiveSelection = (int)fileOpenEncodingOption;
+			comboBox.ActiveSelection = (int)fileOpenEncodingOption;
 		}
-		fileOpenEncoding.SelectionChanged += OnDefaultsFileOpenEncodingChanged;
+		comboBox.SelectionChanged += OnDefaultsFileOpenEncodingChanged;
+		
+		return comboBox;
 	}
 
-	private void SetDefaultsFileOpenFallbackEncoding () {
+	private EncodingComboBox BuildFileOpenFallbackEncodingComboBox () {
 		int fixedEncoding = -1;
 		ConfigFileOpenFallbackEncoding fileOpenFallbackEncodingConfig = Base.Config.FileOpenFallbackEncoding;
 		if (fileOpenFallbackEncodingConfig == ConfigFileOpenFallbackEncoding.Fixed) {
@@ -127,12 +238,12 @@ public class PreferencesDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileOpenFallbackEncoding = new EncodingComboBox(false, null, fixedEncoding);
-		fileOpenFallbackEncodingComboBox = fileOpenFallbackEncoding.Widget; //FIXME REMOVE
-		fileOpenFallbackEncoding.SelectionChanged += OnDefaultsFileOpenFallbackEncodingChanged;
+		EncodingComboBox comboBox = new EncodingComboBox(false, null, fixedEncoding);
+		comboBox.SelectionChanged += OnDefaultsFileOpenFallbackEncodingChanged;
+		return comboBox;
 	}
 
-	private void SetDefaultsFileSaveEncoding () {
+	private EncodingComboBox BuildFileSaveEncodingComboBox () {
 		string[] additionalActions = { Catalog.GetString("Keep the encoding used on file open"), Catalog.GetString("Remember the last used encoding") };
 		int fixedEncoding = -1;
 		ConfigFileSaveEncodingOption fileSaveEncodingOption = Base.Config.FileSaveEncodingOption;
@@ -143,15 +254,15 @@ public class PreferencesDialog : BuilderDialog {
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
-		fileSaveEncoding = new EncodingComboBox(false, additionalActions, fixedEncoding);
-		fileSaveEncodingComboBox = fileSaveEncoding.Widget; //FIXME REMOVE
+		EncodingComboBox comboBox = new EncodingComboBox(false, additionalActions, fixedEncoding);
 		if (fileSaveEncodingOption != ConfigFileSaveEncodingOption.Specific) {
-			fileSaveEncoding.ActiveSelection = (int)fileSaveEncodingOption;
+			comboBox.ActiveSelection = (int)fileSaveEncodingOption;
 		}
-		fileSaveEncoding.SelectionChanged += OnDefaultsFileSaveEncodingChanged;
+		comboBox.SelectionChanged += OnDefaultsFileSaveEncodingChanged;
+		return comboBox;
 	}
 
-	private void SetDefaultsFileSaveFormat () {
+	private SubtitleFormatComboBox BuildFileSaveFormatComboBox () {
 		string[] additionalActions = { Catalog.GetString("Keep the format used on file open"), Catalog.GetString("Remember the last used format") };
 		SubtitleType fixedFormat = SubtitleType.Unknown;
 		ConfigFileSaveFormatOption fileSaveFormatOption = Base.Config.FileSaveFormatOption;
@@ -159,15 +270,15 @@ public class PreferencesDialog : BuilderDialog {
 			fixedFormat = Base.Config.FileSaveFormatFixed;
 		}
 
-		fileSaveFormat = new SubtitleFormatComboBox(fixedFormat, additionalActions);
-		fileSaveFormatComboBox = fileSaveFormat.Widget; //FIXME REMOVE
+		SubtitleFormatComboBox comboBox = new SubtitleFormatComboBox(fixedFormat, additionalActions);
 		if (fileSaveFormatOption != ConfigFileSaveFormatOption.Specific) {
-			fileSaveFormat.ActiveSelection = (int)fileSaveFormatOption;
+			comboBox.ActiveSelection = (int)fileSaveFormatOption;
 		}
-		fileSaveFormat.SelectionChanged += OnDefaultsFileSaveFormatChanged;
+		comboBox.SelectionChanged += OnDefaultsFileSaveFormatChanged;
+		return comboBox;
 	}
 
-	private void SetDefaultsFileSaveNewline () {
+	private NewlineTypeComboBox BuildFileSaveNewlineComboBox () {
 		string[] additionalActions = { Catalog.GetString("Remember the last used type") };
 		NewlineType newlineTypeToSelect = NewlineType.Unknown;
 		ConfigFileSaveNewlineOption fileSaveNewlineOption = Base.Config.FileSaveNewlineOption;
@@ -175,57 +286,16 @@ public class PreferencesDialog : BuilderDialog {
 			newlineTypeToSelect = Base.Config.FileSaveNewline;
 		}
 
-		fileSaveNewline = new NewlineTypeComboBox(newlineTypeToSelect, additionalActions);
-		fileSaveNewlineComboBox = fileSaveNewline.Widget; //FIXME REMOVE
+		NewlineTypeComboBox comboBox = new NewlineTypeComboBox(newlineTypeToSelect, additionalActions);
 		if (fileSaveNewlineOption != ConfigFileSaveNewlineOption.Specific) {
-			fileSaveNewline.ActiveSelection = (int)fileSaveNewlineOption;
+			comboBox.ActiveSelection = (int)fileSaveNewlineOption;
 		}
-		fileSaveNewline.SelectionChanged += OnDefaultsFileSaveNewlineChanged;
-	}
-
-	private void SetAutoBackup () {
-		bool autoBackupEnabled = Base.Config.BackupAuto;
-		autoBackupCheckButton.Active = autoBackupEnabled;
-
-		autoBackupTimeSpinButton.Sensitive = autoBackupEnabled;
-		autoBackupTimeSpinButton.Value = Base.Config.BackupTime / 60; //Minutes
-	}
-
-	private void SetReactionDelay () {
-		bool reactionDelayEnabled = Base.Config.VideoApplyReactionDelay;
-		reactionDelayCheckButton.Active = reactionDelayEnabled;
-
-		reactionDelaySpinButton.Sensitive = reactionDelayEnabled;
-		reactionDelaySpinButton.Value = Base.Config.VideoReactionDelay;
-	}
-
-	private void ResetDialogToDefaults () {
-		translationSaveAllCheckButton.Active = true;
-
-		fileOpenEncoding.ActiveSelection = 0; //Auto detect
-		fileOpenFallbackEncoding.ActiveSelection = 0; //Current Locale
-		videoAutoChooseFileCheckButton.Active = true;
-
-		fileSaveEncoding.ActiveSelection = 0; //Keep Existing
-		fileSaveFormat.ActiveSelection = 0; //Keep Existing
-		fileSaveNewline.ChosenNewlineType = NewlineType.Windows;
-
-		autoBackupCheckButton.Active = true;
-		autoBackupTimeSpinButton.Value = 2;
-
-		reactionDelayCheckButton.Active = true;
-		reactionDelaySpinButton.Value = 200;
-
-		videoSeekCheckButton.Active = true;
-		videoSeekRewindSpinButton.Value = 200;
-
-		subtitleSplitSpinButton.Value = 100;
+		comboBox.SelectionChanged += OnDefaultsFileSaveNewlineChanged;
+		return comboBox;
 	}
 
 
 	/* Event members */
-
-	#pragma warning disable 169		//Disables warning about handlers not being used
 
 	private void OnDefaultsFileOpenEncodingChanged (object o, EventArgs args) {
 		int active = fileOpenEncoding.ActiveSelection;
@@ -327,18 +397,18 @@ public class PreferencesDialog : BuilderDialog {
 	}
 
 	private void OnVideoAutoChooseFileToggled (object o, EventArgs args) {
-		Base.Config.VideoAutoChooseFile = videoAutoChooseFileCheckButton.Active;
+		Base.Config.VideoAutoChooseFile = (o as CheckButton).Active;
 	}
 
 	private void OnTranslationSaveAllToggled (object o, EventArgs args) {
-		Base.Config.FileTranslationSaveAll = translationSaveAllCheckButton.Active;
+		Base.Config.FileTranslationSaveAll = (o as CheckButton).Active;
 	}
 
 	private void OnAutoBackupToggled (object o, EventArgs args) {
 		bool isActive = (o as CheckButton).Active;
 
 		Base.Config.BackupAuto = isActive;
-		autoBackupTimeSpinButton.Sensitive = isActive;
+		autoBackupSpinButton.Sensitive = isActive;
 
 		Base.Backup.ReCheck();
 	}
@@ -372,15 +442,6 @@ public class PreferencesDialog : BuilderDialog {
 
 	private void OnSubtitleSplitSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.TimingsTimeBetweenSubtitles = (o as SpinButton).ValueAsInt;
-	}
-
-	protected override bool ProcessResponse (ResponseType response) {
-		if (response == ResponseType.Cancel) {
-			ResetDialogToDefaults();
-			return true;
-		}
-		else
-			return false;
 	}
 
 }
