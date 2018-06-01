@@ -4,21 +4,37 @@
 data/gnome-subtitles.appdata.xml
 data/gnome-subtitles.appdata.xml.in
 data/gnome-subtitles.desktop.in
-src/Glade/AboutDialog.glade
-src/Glade/EncodingsDialog.glade
-src/Glade/FileOpenDialog.glade
-src/Glade/FilePropertiesDialog.glade
-src/Glade/FileSaveAsDialog.glade
-src/Glade/HeadersDialog.glade
-src/Glade/MainWindow.glade
-src/Glade/PreferencesDialog.glade
-src/Glade/SearchDialog.glade
-src/Glade/SetLanguageDialog.glade
-src/Glade/TimingsAdjustDialog.glade
-src/Glade/TimingsShiftDialog.glade
-src/Glade/TimingsSynchronizeDialog.glade
-src/Glade/VideoOpenDialog.glade
-src/Glade/VideoSeekToDialog.glade
+data/org.gnome.GnomeSubtitles.gschema.xml
+[type: gettext/glade]src/Glade/MainWindow.ui
+src/Glade/old.glade/AboutDialog.glade
+[type: gettext/glade]src/Glade/old.glade/AboutDialog.ui
+src/Glade/old.glade/EncodingsDialog.glade
+[type: gettext/glade]src/Glade/old.glade/EncodingsDialog.ui
+src/Glade/old.glade/FileOpenDialog.glade
+[type: gettext/glade]src/Glade/old.glade/FileOpenDialog.ui
+src/Glade/old.glade/FilePropertiesDialog.glade
+[type: gettext/glade]src/Glade/old.glade/FilePropertiesDialog.ui
+src/Glade/old.glade/FileSaveAsDialog.glade
+[type: gettext/glade]src/Glade/old.glade/FileSaveAsDialog.ui
+src/Glade/old.glade/HeadersDialog.glade
+[type: gettext/glade]src/Glade/old.glade/HeadersDialog.ui
+src/Glade/old.glade/MainWindow.glade
+src/Glade/old.glade/PreferencesDialog.glade
+[type: gettext/glade]src/Glade/old.glade/PreferencesDialog.ui
+src/Glade/old.glade/SearchDialog.glade
+[type: gettext/glade]src/Glade/old.glade/SearchDialog.ui
+src/Glade/old.glade/SetLanguageDialog.glade
+[type: gettext/glade]src/Glade/old.glade/SetLanguageDialog.ui
+src/Glade/old.glade/TimingsAdjustDialog.glade
+[type: gettext/glade]src/Glade/old.glade/TimingsAdjustDialog.ui
+src/Glade/old.glade/TimingsShiftDialog.glade
+[type: gettext/glade]src/Glade/old.glade/TimingsShiftDialog.ui
+src/Glade/old.glade/TimingsSynchronizeDialog.glade
+[type: gettext/glade]src/Glade/old.glade/TimingsSynchronizeDialog.ui
+src/Glade/old.glade/VideoOpenDialog.glade
+[type: gettext/glade]src/Glade/old.glade/VideoOpenDialog.ui
+src/Glade/old.glade/VideoSeekToDialog.glade
+[type: gettext/glade]src/Glade/old.glade/VideoSeekToDialog.ui
 src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs
 src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs
 src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs
@@ -35,21 +51,22 @@ src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs
 src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs
 src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs
 src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs
-src/GnomeSubtitles/Core/Command/TranslatorCommand.cs
 src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs
 src/GnomeSubtitles/Core/Document.cs
 src/GnomeSubtitles/Core/Encodings.cs
-src/GnomeSubtitles/Core/EventHandlers.cs
 src/GnomeSubtitles/Core/SpellLanguage.cs
+src/GnomeSubtitles/Dialog/AboutDialog.cs
+src/GnomeSubtitles/Dialog/DialogStrings.cs
 src/GnomeSubtitles/Dialog/EncodingsDialog.cs
+src/GnomeSubtitles/Dialog/FileHeadersDialog.cs
 src/GnomeSubtitles/Dialog/FileOpenDialog.cs
 src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs
-src/GnomeSubtitles/Dialog/FileSaveAsDialog.cs
+src/GnomeSubtitles/Dialog/FileSaveDialog.cs
 src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs
+src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs
 src/GnomeSubtitles/Dialog/PreferencesDialog.cs
 src/GnomeSubtitles/Dialog/SearchDialog.cs
-src/GnomeSubtitles/Dialog/SetLanguageDialog.cs
-src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs
+src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs
 src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs
 src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs
 src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs
@@ -64,7 +81,6 @@ src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs
 src/GnomeSubtitles/Execution/BugReporter.cs
 src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs
 src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs
-src/GnomeSubtitles/Ui/MainUi.cs
 src/GnomeSubtitles/Ui/Menus.cs
 src/GnomeSubtitles/Ui/Status.cs
 src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs
