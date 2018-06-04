@@ -25,6 +25,7 @@ using Gtk;
 using SubLib.Core.Domain;
 using SubLib.Core.Timing;
 using System;
+using System.ComponentModel;
 using System.Text;
 
 namespace GnomeSubtitles.Core {
@@ -333,12 +334,42 @@ public class EventHandlers {
 			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
 		}
 	}
+	
 
-	public void OnVideoSetSubtitleStartEndButtonPress (object o, ButtonPressEventArgs args) {
-		OnVideoSetSubtitleStart(o, args);
+	/* The following 4 event handlers work with the Set Subtitle Start+End button as follows:
+	 * 
+	 * 1) OnVideoSetSubtitleStartEndButtonPress + OnVideoSetSubtitleStartEndButtonRelease:
+	 *    - Capture mouse click on the button. The mouse click is kept pressed for the duration of the subtitle.
+	 *    - Previously we used the GtkButton "pressed" event, however it's now deprecated. It was supposed to be
+	 *      replaced by the GtkWidget "button-press-event" however it doesn't behave the same way. The former
+	 *      is triggered by a left mouse click on a button, however the new one is not. Apparently, buttons
+	 *      are supposed to only trigger the clicked/activated signal when the mouse click is relased and not
+	 *      when pressed. Therefore, we now use GtkWidget "event" event to capture a mouse button press and
+	 *      "button-release-event" for the button release.
+	 *    - According to the GtkWidget docs, the GDK_BUTTON_RELEASE_MASK mask is required but all seems to work without it.
+	 * 
+	 * 2) OnVideoSetSubtitleStartEndGrabFocus + OnVideoSetSubtitleStartEndKeyRelease:
+	 *    - Capture the keyboard shortcut on the button. This is the only way to use the keyboard with this button,
+	 *      as using space or return when this button is focused always triggers a key down and release.
+	 *    - The "grab-focus" event is used to detect when the accelerator/shortcut key is pressed, while
+	 *      "key-release-event" is used to detect when the key was released.
+     *    - According to the GtkWidget docs, the GDK_KEY_RELEASE_MASK mask is required but all seems to work without it.
+     */
+
+	public void OnVideoSetSubtitleStartEndButtonPress (object o, WidgetEventArgs args) {
+		if (args.Event is Gdk.EventButton) {
+			Gdk.EventButton eventButton = args.Event as Gdk.EventButton;
+			if ((eventButton.Type == Gdk.EventType.ButtonPress) && (eventButton.Button == 1)) {
+				OnVideoSetSubtitleStart(o, args);
+			}
+		}
 	}
 
 	public void OnVideoSetSubtitleStartEndButtonRelease (object o, ButtonReleaseEventArgs args) {
+		if (args.Event.Button != 1) {
+			return;
+		}
+	
 		if (Base.TimingMode == TimingMode.Times) {
 			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
 			if (Base.Ui.Video.IsStatePlaying && Base.Config.VideoApplyReactionDelay) {
@@ -357,6 +388,7 @@ public class EventHandlers {
 		}
 	}
 
+	
 	public void OnVideoSetSubtitleStartEndGrabFocus (object o, EventArgs args) {
 		if (!buttonStartEndKeyPressed) {
 			OnVideoSetSubtitleStart(o, args);

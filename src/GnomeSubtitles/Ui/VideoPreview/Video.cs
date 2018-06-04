@@ -57,7 +57,6 @@ public class Video {
 		position = new VideoPosition(player);
 		tracker = new SubtitleTracker();
 
-		//SetCustomIcons();
 		Base.InitFinished += OnBaseInitFinished;
 	}
 
@@ -233,23 +232,6 @@ public class Video {
 		Base.GetWidget(WidgetNames.VideoSpeedDownButton).Sensitive = (speed > Player.DefaultMinSpeed);
 		Base.GetWidget(WidgetNames.VideoSpeedUpButton).Sensitive = (speed < Player.DefaultMaxSpeed);
 	}
-
-	//private void SetCustomIcons () {
-	//	/* Set the icon for the SetSubtitleStart button */
-	//	Gdk.Pixbuf pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartIconFilename);
-	//	Image image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartButtonImage) as Image;
-	//	image.Pixbuf = pixbuf;
-
-	//	/* Set the icon for the SetSubtitleEnd button */
-	//	pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleEndIconFilename);
-	//	image = Base.GetWidget(WidgetNames.VideoSetSubtitleEndButtonImage) as Image;
-	//	image.Pixbuf = pixbuf;
-
-	//	/* Set the icon for the SetSubtitleStartEnd button */
-	//	pixbuf = new Gdk.Pixbuf(null, videoSetSubtitleStartEndIconFilename);
-	//	image = Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButtonImage) as Image;
-	//	image.Pixbuf = pixbuf;
-	//}
 
 	private void InitializeVideoFrame () {
 
