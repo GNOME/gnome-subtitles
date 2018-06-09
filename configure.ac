@@ -1,12 +1,17 @@
-AC_PREREQ(2.58)
-AC_INIT(gnome-subtitles, 1.3, http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-subtitles)
+dnl Process this file with autoconf to produce a configure script.
 
-GNOME_COMMON_INIT
+AC_PREREQ(2.63)
+AC_INIT([gnome-subtitles],
+	[1.3],
+	[https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/new],
+	[gnome-subtitles],
+	[http://www.gnomesubtitles.org])
 
 GNOME_DOC_INIT
 GTK_DOC_CHECK([1.0])
 
 AC_CONFIG_MACRO_DIR([m4])
+AC_SUBST([ACLOCAL_AMFLAGS], ["-I $ac_macro_dir \${ACLOCAL_FLAGS}"])
 AC_CONFIG_SRCDIR([configure.ac])
 
 AM_INIT_AUTOMAKE([1.9 tar-ustar])
@@ -14,7 +19,8 @@ AM_MAINTAINER_MODE
 
 IT_PROG_INTLTOOL([0.35.0])
 
-AC_PROG_LIBTOOL
+LT_PREREQ([2.2.6])
+LT_INIT
 
 AC_PROG_INSTALL
 AC_PREFIX_PROGRAM(mono)
@@ -35,7 +41,7 @@ fi
 
 dnl C# compiler
 AC_PATH_PROG(CSC, csc, no)
-AC_PATH_PROG(MCS, dmcs, no)
+AC_PATH_PROG(MCS, mcs, no)
 AC_PATH_PROG(MONO, mono, no)
 
 CS="C#"
@@ -58,19 +64,19 @@ then
 	mkdir build
 fi
 
-dnl pkg-config
-MONO_REQUIRED_VERSION=3.0
-GTKSHARP_REQUIRED_VERSION=3.0
+#Dependencies
+MONO_REQUIRED_VERSION=4.0
+GTKSHARP_REQUIRED_VERSION=2.99.3
 GTK_REQUIRED_VERSION=3.12
+GSTREAMER_REQUIRED_VERSION=1.0
 
-PKG_CHECK_MODULES(gstreamer, [gstreamer-video-1.0 >= 1.0])
-PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-1.0 >= 1.0])
+PKG_CHECK_MODULES(MONO, [mono >= $MONO_REQUIRED_VERSION])
+PKG_CHECK_MODULES(GTKSHARP, [gtk-sharp-3.0 >= $GTKSHARP_REQUIRED_VERSION])
+PKG_CHECK_MODULES(GTK, [gtk+-3.0 >= $GTK_REQUIRED_VERSION])
+PKG_CHECK_MODULES(gstreamer, [gstreamer-video-1.0 >= $GSTREAMER_REQUIRED_VERSION])
+PKG_CHECK_MODULES(gstreamer_plugins_base, [gstreamer-plugins-base-1.0 >= $GSTREAMER_REQUIRED_VERSION])
 AC_SUBST(gstreamer_CFLAGS)
 AC_SUBST(gstreamer_LIBS)
-
-PKG_CHECK_MODULES(MONO, mono >= $MONO_REQUIRED_VERSION)
-PKG_CHECK_MODULES(GTKSHARP, gtk-sharp-3.0 >= $GTKSHARP_REQUIRED_VERSION)
-PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED_VERSION)
 
 
 dnl Check gtk-sharp version
@@ -80,13 +86,9 @@ dnl Check gtk-sharp version
 # 	AC_MSG_ERROR([gtk-sharp versions between 2.12.2 and 2.12.6 (inclusive) are not supported.])
 #fi
 
-PKG_PROG_PKG_CONFIG()
+#PKG_PROG_PKG_CONFIG()
 
 AC_SUBST(MCS)
-
-dnl Handle GConf
-#AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-#AM_GCONF_SOURCE_2
 
 dnl Handle GSettings
 GLIB_GSETTINGS

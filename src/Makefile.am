@@ -1,3 +1,6 @@
+#Option needed because main.c is in a subdir
+AUTOMAKE_OPTIONS = subdir-objects
+
 gnomesubtitlesdir = $(pkglibdir)
 gnomesubtitles_SCRIPTS = $(ASSEMBLY)
 gnomesubtitles_DATA = $(ASSEMBLY_CONFIG)
@@ -10,12 +13,12 @@ ASSEMBLY_CONFIG_SRC = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.con
 
 AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
 gnomesubtitles_LTLIBRARIES = libgstreamer_playbin.la
-libgstreamer_playbin_la_SOURCES = $(srcdir)/External/GStreamerPlaybin/main.c
+libgstreamer_playbin_la_SOURCES = External/GStreamerPlaybin/main.c
 libgstreamer_playbin_la_LIBADD = $(gstreamer_LIBS)
 libgstreamer_playbin_la_LDFLAGS = -module -avoid-version
 libgstreamer_playbin_la_LIBTOOLFLAGS = --tag=disable-static 
 
-GS_SOURCES = \
+GSSOURCES = \
 	$(srcdir)/External/GStreamerPlaybin/*.cs \
 	$(srcdir)/External/NCharDet/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
@@ -37,36 +40,20 @@ GS_SOURCES = \
 	$(srcdir)/SubLib/IO/*.cs \
 	$(srcdir)/SubLib/IO/Input/*.cs \
 	$(srcdir)/SubLib/IO/Output/*.cs \
-	$(srcdir)/SubLib/IO/SubtitleFormats/*.cs
+	$(srcdir)/SubLib/IO/SubtitleFormats/*.cs \
+	$(srcdir)/SubLib/Util/*.cs
 
 GS_RESOURCES = \
-	$(srcdir)/Glade/AboutDialog.ui \
-	$(srcdir)/Glade/EncodingsDialog.ui \
-	$(srcdir)/Glade/FileOpenDialog.ui \
-	$(srcdir)/Glade/FilePropertiesDialog.ui \
-	$(srcdir)/Glade/FileSaveAsDialog.ui \
-	$(srcdir)/Glade/HeadersDialog.ui \
 	$(srcdir)/Glade/MainWindow.ui \
-	$(srcdir)/Glade/PreferencesDialog.ui \
-	$(srcdir)/Glade/SearchDialog.ui \
-	$(srcdir)/Glade/SetLanguageDialog.ui \
-	$(srcdir)/Glade/TimingsAdjustDialog.ui \
-	$(srcdir)/Glade/TimingsShiftDialog.ui \
-	$(srcdir)/Glade/TimingsSynchronizeDialog.ui \
-	$(srcdir)/Glade/VideoOpenDialog.ui \
-	$(srcdir)/Glade/VideoSeekToDialog.ui \
 	$(GS_DATADIR)/gnome-subtitles.svg \
-	$(GS_DATADIR)/gnome-subtitles-logo.png \
-	$(GS_DATADIR)/video-set-subtitle-end-16x.png \
-	$(GS_DATADIR)/video-set-subtitle-start-16x.png\
-	$(GS_DATADIR)/video-set-subtitle-start-end-30x.png
+	$(GS_DATADIR)/gnome-subtitles-logo.png
 
 GS_SYSTEM_REFERENCES = \
 	Mono.Posix.dll \
 	System.Web.dll
 
-$(ASSEMBLY): $(GS_SOURCES) $(GS_RESOURCES)
-	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(SUBLIB_LIBS) $(GS_RESOURCES:%=-resource:%) $(GS_SOURCES)
+$(ASSEMBLY): $(GSSOURCES) $(GS_RESOURCES)
+	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(SUBLIB_LIBS) $(GS_RESOURCES:%=-resource:%) $(GSSOURCES)
 
 $(ASSEMBLY_CONFIG): $(gnomesubtitles_LTLIBRARIES)
 	cp -f $(ASSEMBLY_CONFIG_SRC) $(GS_BUILDDIR)
@@ -75,5 +62,5 @@ $(ASSEMBLY_CONFIG): $(gnomesubtitles_LTLIBRARIES)
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
 CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb
-EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GS_SOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG_SRC)
+EXTRA_DIST = $(gnomesubtitles_SOURCES) $(GSSOURCES) $(GS_RESOURCES) $(ASSEMBLY_CONFIG_SRC)
 
