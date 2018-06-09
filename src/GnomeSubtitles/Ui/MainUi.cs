@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -126,10 +126,10 @@ public class MainUi {
 			Base.Quit();
     }
 
-	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
-    public void Kill () {
-		window.Destroy();
-    }
+	///// <summary>Kills the window in the most quick and unfriendly way.</summary>
+  //  public void Kill () {
+		//window.Destroy();
+    //}
 
 	/// <summary>Creates a new subtitles document for the specified path.</summary>
 	/// <param name="path">The subtitles' filename. If it's an empty string, 'Unsaved Subtitles' will be used instead.</param>

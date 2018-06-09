@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,58 +18,51 @@
  */
 
 using GnomeSubtitles.Core;
-using GnomeSubtitles.Dialog.Unmanaged;
-using Mono.Unix;
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-
-//FIXME still needed?
+//using GnomeSubtitles.Dialog.Unmanaged;
+//using Mono.Unix;
 using SubLib.Util;
+using System;
+//using System.Diagnostics;
+using System.IO;
 
 
 namespace GnomeSubtitles.Execution {
 
 public class BugReporter {
-	private static string noBugBuddyPrimaryMessage = Catalog.GetString("Could not open Bug Buddy, the bug reporting tool.");
-	private static string noBugBuddySecondaryMessage = Catalog.GetString("Bug information has been printed to the console.");
+	//private static string noBugBuddyPrimaryMessage = Catalog.GetString("Could not open Bug Buddy, the bug reporting tool.");
+	//private static string noBugBuddySecondaryMessage = Catalog.GetString("Bug information has been printed to the console.");
 
+
+	//We don't run BugBuddy anymore. Only output some context information to the console.
+	//The exception will be thrown afterwards and printed to the console anyway.
 	public static void Report (Exception exception) {
-		Report(exception.ToString());
-	}
-
-	public static void Report (string message) {
-		string bugInfo = GetBugInfo(message);
+		string bugInfo = GetBugInfo(null);
 		Logger.Error(bugInfo);
 
-		try {
-			RunBugBuddy(bugInfo);
-		}
-		catch (Exception) {
-			BasicErrorDialog errorDialog = new BasicErrorDialog(noBugBuddyPrimaryMessage, noBugBuddySecondaryMessage);
-			errorDialog.Show();
-		}
+		//try {
+		//	RunBugBuddy(bugInfo);
+		//}
+		//catch (Exception) {
+		//	BasicErrorDialog errorDialog = new BasicErrorDialog(noBugBuddyPrimaryMessage, noBugBuddySecondaryMessage);
+		//	errorDialog.Show();
+		//}
 	}
 
-	#region Private members
+	//private static void RunBugBuddy (string bugInfo) {
+	//	string path = WriteBugInfo(bugInfo);
 
-	private static void RunBugBuddy (string bugInfo) {
-		string path = WriteBugInfo(bugInfo);
+	//	Process process = new Process();
+	//	process.StartInfo.FileName = "bug-buddy";
+	//	process.StartInfo.Arguments = "--appname=gnome-subtitles --include=" + path;
+	//	process.StartInfo.UseShellExecute = false;
 
-		Process process = new Process();
-		process.StartInfo.FileName = "bug-buddy";
-		process.StartInfo.Arguments = "--appname=gnome-subtitles --include=" + path;
-		process.StartInfo.UseShellExecute = false;
-
-		process.Start();
-	}
+	//	process.Start();
+	//}
 
 	private static string GetBugInfo (string message) {
 		return "gnome-subtitles version: " + Base.ExecutionContext.Version + "\n"
 			+ "gtk-sharp version: " + Base.ExecutionContext.GtkSharpVersion + "\n"
-			+ "Stack trace:" + "\n"
-			+ message;
+			+ (String.IsNullOrEmpty(message) ? "" : "Stack trace:\n" + message);
 	}
 
 	private static string WriteBugInfo (string bugInfo) {
@@ -93,8 +86,6 @@ public class BugReporter {
 		int number = random.Next(10000);
 		return Path.GetTempPath() + Path.DirectorySeparatorChar + number + ".tmp";
 	}
-
-	#endregion
 
 }
 

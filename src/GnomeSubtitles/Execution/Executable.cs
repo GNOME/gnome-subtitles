@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -80,15 +80,15 @@ public class Executable {
 
 	/* Private members */
 
-	/// <summary>Kills the window in the most quick and unfriendly way.</summary>
-	private static void Kill () {
-		try {
-	   		Base.Kill();
-		}
-		catch (Exception) {
-			; //Nothing to do if there were errors while killing the window
-		}
-	}
+	///// <summary>Kills the window in the most quick and unfriendly way.</summary>
+	//private static void Kill () {
+	//	try {
+	//   		Base.Kill();
+	//	}
+	//	catch (Exception) {
+	//		; //Nothing to do if there were errors while killing the window
+	//	}
+	//}
 
 
 	/* Event members */
@@ -96,9 +96,11 @@ public class Executable {
 	private static void OnUnhandledException (UnhandledExceptionArgs args) {
 		if (args.ExceptionObject is Exception) {
 			BugReporter.Report(args.ExceptionObject as Exception);
+			throw new Exception("Unhandled Exception", args.ExceptionObject as Exception);
 		}
-
-		Kill();
+		
+		throw new Exception("Unhandled Exception with no inner exception");
+		//Kill();
 	}
 
 }
