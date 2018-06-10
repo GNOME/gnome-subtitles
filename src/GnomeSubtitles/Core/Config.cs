@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GLib;
 using SubLib.Core.Domain;
-using System;
-
-//TODO clean commented code
-//TODO implement a runtime variable that allows to run the app without a config schema installed
 using SubLib.Util;
+using System;
 
 
 namespace GnomeSubtitles.Core {
@@ -38,16 +34,15 @@ public enum ConfigFileSaveFormatOption { KeepExisting = 0, RememberLastUsed = 1,
 public enum ConfigFileSaveFormat { KeepExisting = -1, Fixed = 0 }; //KeepExisting=-1 because it doesn't appear
 public enum ConfigFileSaveNewlineOption { RememberLastUsed = 0, Specific = 2 }; //Values match ordering where the options are used
 
-/* Note: when changing the schema file, in order to run the application from the development workspace,
+/* Note: the GSettings backend will be used if the GnomeSubtitles schema is installed. Otherwise an in-memory
+ * backend will be used. The later is only meant to be used for development, as no schema may have been installed.
+ * When changing the schema file, in order to run the application from the development workspace,
  * the new schema needs to be installed to a dir recognized by GSettings. The XML file needs to be placed
  * inside /usr/share/glib-2.0/schemas (location may vary - the glib-2.0 dir must be found inside one of
  * the $XDG_DATA_DIRS) and 'glib-compile-schemas .' must be run on that dir. This will update the system-wide
  * 'gschemas.compiled' file and make the new schema recognizable.
  */
 public class Config {
-
-	/* Schema */
-	private const string Schema = "org.gnome.GnomeSubtitles";
 
 	/* Keys */
 	private const string KeyFileEncodingsShownInMenu = "file-encodings-shown-in-menu";
@@ -86,28 +81,23 @@ public class Config {
 	/* Constant default values */
 	private const string DefaultEncoding = "ISO-8859-15";
 
-	//private Client client = null;
-	private Settings settings = null;
-
-	/* Cached values */
-//	private bool isValuePrefsViewLineLengthsCached = false;
-//	private bool valuePrefsViewLineLengths = false;
-//	private bool isValuePrefsVideoApplyReactionDelayCached = false;
-//	private bool valuePrefsVideoApplyReactionDelay = false;
-//	private int valuePrefsVideoReactionDelay = -1;
-//	private bool isValuePrefsVideoSeekOnChangeCached = false;
-//	private bool valuePrefsVideoSeekOnChange = false;
-//	private int valuePrefsVideoSeekOnChangeRewind = -1;
-//	private int valuePrefsTimingsTimeStep = -1;
-//	private int valuePrefsTimingsFramesStep = -1;
-//	private int valuePrefsTimingsTimeBetweenSubtitles = -1;
+	private IConfigBackend settings = null;
 
 
 	public Config () {
 		try {
-			settings = new Settings(Schema);
+			settings = new ConfigBackendGSettings();
+		} catch (ConfigBackendUnavailableException) {
+			Logger.Error("Unable to initialize the GSettings configuration. This means the schema was not properly installed "
+				+ "in this distro and the gnome-subtitles package should be fixed. This is ok if you're trying the application without "
+				+ "installing it, for example in a development branch.");
 		} catch(Exception e) {
-			Logger.Error(e, "Config initialization error");
+			Logger.Error(e, "Unable to initialize the GSettings config backend. Reverting to an in-memory backend (no settings will be saved!).");
+		}
+		
+		if (settings == null) {
+			Logger.Error("Reverting to an in-memory configuration backend. No settings will be persisted when the application closes.");
+			settings = new ConfigBackendInMemory();
 		}
 	}
 
@@ -203,76 +193,45 @@ public class Config {
 	public bool VideoApplyReactionDelay {
 		get {
 			return GetBool(KeyVideoApplyReactionDelay, false);
-//			if (!isValuePrefsVideoApplyReactionDelayCached) {
-//				this.valuePrefsVideoApplyReactionDelay = GetBool(KeyVideoApplyReactionDelay, false);
-//				this.isValuePrefsVideoApplyReactionDelayCached = true;
-//			}
-//			return valuePrefsVideoApplyReactionDelay;
 		}
 		set {
 			Set(KeyVideoApplyReactionDelay, value);
-//			this.valuePrefsVideoApplyReactionDelay = value;
-//			this.isValuePrefsVideoApplyReactionDelayCached = true;
 		}
 	}
 
 	public int VideoReactionDelay {
 		get {
 			return GetInt(KeyVideoReactionDelay, 200, 0, true, 2000, true);
-//			if (this.valuePrefsVideoReactionDelay == -1) {
-//				this.valuePrefsVideoReactionDelay = GetInt(KeyVideoReactionDelay, 200, 0, true, 2000, true);
-//			}
-//			return this.valuePrefsVideoReactionDelay;
 		}
 		set {
 			Set(KeyVideoReactionDelay, value);
-//			this.valuePrefsVideoReactionDelay = value;
 		}
 	}
 
 	public bool VideoSeekOnChange {
 		get {
 			return GetBool(KeyVideoSeekOnChange, true);
-//			if (!isValuePrefsVideoSeekOnChangeCached) {
-//				this.valuePrefsVideoSeekOnChange = GetBool(KeyVideoSeekOnChange, true);
-//				this.isValuePrefsVideoSeekOnChangeCached = true;
-//			}
-//			return valuePrefsVideoSeekOnChange;
 		}
 		set {
 			Set(KeyVideoSeekOnChange, value);
-//			this.valuePrefsVideoSeekOnChange = value;
-//			this.isValuePrefsVideoSeekOnChangeCached = true;
 		}
 	}
 
 	public int VideoSeekOnChangeRewind {
 		get {
 			return GetInt(KeyVideoSeekOnChangeRewind, 200, 0, true, 2000, true);
-//			if (this.valuePrefsVideoSeekOnChangeRewind == -1) {
-//				this.valuePrefsVideoSeekOnChangeRewind = GetInt(KeyVideoSeekOnChangeRewind, 200, 0, true, 2000, true);
-//			}
-//			return this.valuePrefsVideoSeekOnChangeRewind;
 		}
 		set {
 			Set(KeyVideoSeekOnChangeRewind, value);
-//			this.valuePrefsVideoSeekOnChangeRewind = value;
 		}
 	}
 
 	public bool ViewLineLengths {
 		get {
 			return GetBool(KeyViewLineLengths, true);
-//			if (!isValuePrefsViewLineLengthsCached) {
-//				this.valuePrefsViewLineLengths = GetBool(KeyViewLineLengths, true);
-//				this.isValuePrefsViewLineLengthsCached = true;
-//			}
-//			return valuePrefsViewLineLengths;
 		}
 		set {
 			Set(KeyViewLineLengths, value);
-//			this.valuePrefsViewLineLengths = value;
-//			this.isValuePrefsViewLineLengthsCached = true;
 		}
 	}
 
@@ -316,42 +275,27 @@ public class Config {
 	public int TimingsTimeStep {
 		get {
 			return GetInt(KeyTimingsTimeStep, 100, 1, true, 2000, true);
-//			if (this.valuePrefsTimingsTimeStep == -1) {
-//				this.valuePrefsTimingsTimeStep = GetInt(KeyTimingsTimeStep, 100, 1, true, 2000, true);
-//			}
-//			return this.valuePrefsTimingsTimeStep;
 		}
 		set {
 			Set(KeyTimingsTimeStep, value);
-//			this.valuePrefsTimingsTimeStep = value;
 		}
 	}
 
 	public int TimingsFramesStep {
 		get {
 			return GetInt(KeyTimingsFramesStep, 2, 1, true, 60, true);
-//			if (this.valuePrefsTimingsFramesStep == -1) {
-//				this.valuePrefsTimingsFramesStep = GetInt(KeyTimingsFramesStep, 2, 1, true, 60, true);
-//			}
-//			return this.valuePrefsTimingsFramesStep;
 		}
 		set {
 			Set(KeyTimingsFramesStep, value);
-//			this.valuePrefsTimingsFramesStep = value;
 		}
 	}
 
 	public int TimingsTimeBetweenSubtitles {
 		get {
 			return GetInt(KeyTimingsTimeBetweenSubtitles, 100, 0, true, 2000, true);
-//			if (this.valuePrefsTimingsTimeBetweenSubtitles == -1) {
-//				this.valuePrefsTimingsTimeBetweenSubtitles = GetInt(KeyTimingsTimeBetweenSubtitles, 100, 0, true, 2000, true);
-//			}
-//			return this.valuePrefsTimingsTimeBetweenSubtitles;
 		}
 		set {
 			Set(KeyTimingsTimeBetweenSubtitles, value);
-//			this.valuePrefsTimingsTimeBetweenSubtitles = value;
 		}
 	}
 
@@ -397,7 +341,7 @@ public class Config {
 
 	private string[] GetStrings (string key, string[] defaultValue) {
 		try {
-			string[] strings = settings.GetStrv(key);
+			string[] strings = settings.GetStrings(key);
 			if ((strings.Length == 1) && (strings[0] == String.Empty))
 				return new string[0];
 			else
@@ -433,17 +377,11 @@ public class Config {
 
 	private void SetStrings (string key, string[] values) {
 		try {
-			settings.SetStrv(key, values);
+			settings.SetStrings(key, values);
 		}
 		catch (Exception e) {
 			Logger.Error(e);
 		}
-//		if (values.Length == 0) {
-//			string[] newValues = { String.Empty };
-//			Set(key, newValues);
-//		}
-//		else
-//			Set(key, values);
 	}
 
 	private void Set(string key, string value) {

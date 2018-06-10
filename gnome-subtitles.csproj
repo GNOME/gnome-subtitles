@@ -275,6 +275,10 @@
     <Compile Include="src\GnomeSubtitles\Ui\WidgetStyles.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileHeadersDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\DialogStrings.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\IConfigBackend.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\ConfigBackendGSettings.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\ConfigBackendUnavailableException.cs" />
+    <Compile Include="src\GnomeSubtitles\Core\ConfigBackendInMemory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
