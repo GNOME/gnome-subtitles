@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,17 +17,17 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+using External.GtkSpell;
 using GnomeSubtitles.Core;
 using Gtk;
 using SubLib.Core.Domain;
 using System;
-using System.Collections;
-using System.Runtime.InteropServices;
 
 namespace GnomeSubtitles.Ui.Edit {
 
 public abstract class SubtitleEditTextView {
 	private TextView textView = null;
+	private SpellChecker spellChecker = null;
 
 	private bool isBufferChangeSilent = false; //used to indicate whether a buffer change should set the subtitle text in the subtitle list
 	private bool isBufferInsertManual = false; //used to indicate whether there were manual (not by the user) inserts to the buffer
@@ -43,7 +43,6 @@ public abstract class SubtitleEditTextView {
 
 	/* Other */
 	private Subtitle subtitle = null;
-	private IntPtr spellTextView = IntPtr.Zero;
 
 	public SubtitleEditTextView (TextView textView) {
 		this.textView = textView;
@@ -54,6 +53,8 @@ public abstract class SubtitleEditTextView {
 
 		/* Init margin */
 		new SubtitleEditTextViewMargin(this.textView);
+		
+		this.spellChecker = new SpellChecker(textView);
 
 		Base.InitFinished += OnBaseInitFinished;
 	}
@@ -175,50 +176,13 @@ public abstract class SubtitleEditTextView {
 		}
 	}
 
-    /* GtkSpell */
-	[DllImport ("libgtkspell")]
-	static extern IntPtr gtkspell_new_attach (IntPtr textView, string locale, IntPtr error);
-
-	[DllImport ("libgtkspell")]
-	static extern void gtkspell_detach (IntPtr obj);
-
-	[DllImport ("libgtkspell")]
-	static extern bool gtkspell_set_language (IntPtr textView, string lang, IntPtr error);
-
-	private void GtkSpellDetach () {
-		if (IsGtkSpellAttached()) {
-			gtkspell_detach(spellTextView);
-			spellTextView = IntPtr.Zero;
-		}
-	}
-
-	private void GtkSpellAttach () {
-		if (!IsGtkSpellAttached()) {
-			spellTextView = gtkspell_new_attach(textView.Handle, null, IntPtr.Zero);
-		}
-	}
-
-	private bool IsGtkSpellAttached () {
-		return (spellTextView != IntPtr.Zero);
-	}
-
-	private bool GtkSpellSetLanguage (SpellLanguage language) {
+	private void SetSpellLanguage (SpellLanguage language) {
 		if (language == null) {
-			if (IsGtkSpellAttached()) {
-				GtkSpellDetach();
-			}
-			return false;
+			spellChecker.Disable();
+			return;
 		}
-		else {
-			if (!IsGtkSpellAttached()) {
-				GtkSpellAttach();
-			}
-			bool result = gtkspell_set_language(spellTextView, language.ID, IntPtr.Zero);
-			if (!result)
-				GtkSpellDetach();
 
-			return result;
-		}
+		spellChecker.Enable(language.ID);
 	}
 
 
@@ -371,7 +335,7 @@ public abstract class SubtitleEditTextView {
 	}
 
 	private void OnDestroyed (object o, EventArgs args) {
-		GtkSpellDetach();
+		spellChecker.Disable();
 	}
 
 	[GLib.ConnectBefore]
@@ -422,19 +386,16 @@ public abstract class SubtitleEditTextView {
     protected void OnSpellLanguageChanged () {
 		if (Base.SpellLanguages.Enabled) {
 			SpellLanguage language = GetSpellActiveLanguage();
-			GtkSpellSetLanguage(language);
+			SetSpellLanguage(language);
 		}
 	}
 
 	protected void OnSpellToggleEnabled () {
-		bool enabled = Base.SpellLanguages.Enabled;
-		if (enabled) {
-			GtkSpellAttach();
-			SpellLanguage language = GetSpellActiveLanguage();
-			GtkSpellSetLanguage(language);
+		if (Base.SpellLanguages.Enabled) {
+			SetSpellLanguage(GetSpellActiveLanguage());
+		} else {
+			SetSpellLanguage(null);
 		}
-		else
-			GtkSpellDetach();
 	}
 
 	protected void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {

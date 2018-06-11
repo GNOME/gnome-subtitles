@@ -279,10 +279,12 @@
     <Compile Include="src\GnomeSubtitles\Core\ConfigBackendGSettings.cs" />
     <Compile Include="src\GnomeSubtitles\Core\ConfigBackendUnavailableException.cs" />
     <Compile Include="src\GnomeSubtitles\Core\ConfigBackendInMemory.cs" />
+    <Compile Include="src\External\GtkSpell\SpellChecker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="src\SubLib\Util\" />
+    <Folder Include="src\External\GtkSpell\" />
   </ItemGroup>
 </Project>

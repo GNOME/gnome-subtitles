@@ -77,6 +77,13 @@ public class SetLanguagesDialog : BaseDialog {
 			transScrolledWindow.Sensitive = false;
 		}
 		grid.Attach(transScrolledWindow, 1, 1, 1, 1);
+		
+		
+		/* Bottom: info message */
+		
+		Label bottomLabel = Util.CreateLabel("<i>" + Catalog.GetString("For additional languages please install the corresponding package.") + "</i>", 0, 0);
+		bottomLabel.UseMarkup = true;
+		grid.Attach(bottomLabel, 0, 2, 2, 1);
 
 		dialog.ContentArea.Add(grid);
 		dialog.ContentArea.ShowAll();

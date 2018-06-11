@@ -151,7 +151,7 @@ public class SubtitleOverlay {
 
 	/* External Imports */
 
-	[DllImport("gtk-3")]
+	[DllImport("libgtk")]
 	static extern void gtk_overlay_add_overlay (IntPtr overlay, IntPtr widget);
 
 }
