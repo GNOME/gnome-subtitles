@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-03 18:35+0200\n"
-"PO-Revision-Date: 2018-06-03 18:37+0200\n"
+"POT-Creation-Date: 2018-06-10 16:24+0200\n"
+"PO-Revision-Date: 2018-06-10 16:25+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -703,16 +703,16 @@ msgid "Sets the subtitle Start to the current video position"
 msgstr "Ustawia początek napisu na obecną pozycję wideo"
 
 #: ../src/Glade/MainWindow.ui.h:78
-msgid "⇥"
-msgstr "⇥"
+msgid "<span size='x-large'>⇤</span>"
+msgstr "<span size='x-large'>⇤</span>"
 
 #: ../src/Glade/MainWindow.ui.h:79
 msgid "Sets the subtitle End to the current video position"
 msgstr "Ustawia koniec napisu na obecną pozycję wideo"
 
 #: ../src/Glade/MainWindow.ui.h:80
-msgid "⇤ ⇥"
-msgstr "⇤ ⇥"
+msgid "<span size='x-large'>⇥</span>"
+msgstr "<span size='x-large'>⇥</span>"
 
 #: ../src/Glade/MainWindow.ui.h:81
 msgid ""
@@ -723,10 +723,14 @@ msgstr ""
 "przytrzymać klawisz przez czas trwania każdego napisu.\t"
 
 #: ../src/Glade/MainWindow.ui.h:82
+msgid "<span size='x-large'>⇤ ⇥</span>"
+msgstr "<span size='x-large'>⇤ ⇥</span>"
+
+#: ../src/Glade/MainWindow.ui.h:83
 msgid "1.0x"
 msgstr "1,0×"
 
-#: ../src/Glade/MainWindow.ui.h:83 ../src/Glade/old.glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.ui.h:84 ../src/Glade/old.glade/MainWindow.glade.h:70
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -737,19 +741,19 @@ msgstr ""
 "Shift+Plus/Minus (na klawiaturze numerycznej) przesuwa czas."
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:86 ../src/Glade/old.glade/MainWindow.glade.h:77
+#: ../src/Glade/MainWindow.ui.h:87 ../src/Glade/old.glade/MainWindow.glade.h:77
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Początek:"
 
 #. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:87 ../src/Glade/old.glade/MainWindow.glade.h:75
+#: ../src/Glade/MainWindow.ui.h:88 ../src/Glade/old.glade/MainWindow.glade.h:75
 msgid "End:"
 msgstr "Koniec:"
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:89 ../src/Glade/old.glade/MainWindow.glade.h:73
+#: ../src/Glade/MainWindow.ui.h:90 ../src/Glade/old.glade/MainWindow.glade.h:73
 msgid "Duration:"
 msgstr "Czas trwania:"
 
@@ -2238,14 +2242,6 @@ msgstr "Wszystkie pliki dźwiękowe"
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
 msgid "Seek Video To"
 msgstr "Przewinięcie wideo do"
-
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:35
-msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr "Nie można otworzyć narzędzia zgłaszania błędów Bug Buddy."
-
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:36
-msgid "Bug information has been printed to the console."
-msgstr "Informacje o błędzie zostały wypisane do konsoli."
 
 #: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
