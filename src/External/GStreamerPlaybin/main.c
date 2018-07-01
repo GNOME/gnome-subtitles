@@ -22,7 +22,7 @@
 */
 
 #include <gst/gst.h>
-#include <gst/video/videooverlay.h>
+//#include <gst/video/videooverlay.h>
 #include <gst/tag/tag.h>
 #include <string.h>
 
@@ -63,8 +63,9 @@ struct gstTag
 struct gstPlay
 {
 	GstElement *element;
-	gulong xid;
-	GstVideoOverlay *overlay;
+	GstElement *video_element;
+//	gulong xid;
+//	GstVideoOverlay *overlay;
 
 	gchar *vis_name;
 
@@ -86,23 +87,23 @@ gboolean gst_binding_load_video_info(gstPlay *play);
 gboolean gst_binding_has_video(gstPlay *play);
 gboolean gst_binding_has_audio(gstPlay *play);
 
-static GstBusSyncReply
-gst_sync_watch(GstBus *bus, GstMessage *message, gpointer data)
-{
-	gstPlay *play = (gstPlay *)data;
-	if (play == NULL)
-		return FALSE;
+// static GstBusSyncReply
+// gst_sync_watch(GstBus *bus, GstMessage *message, gpointer data)
+// {
+// 	gstPlay *play = (gstPlay *)data;
+// 	if (play == NULL)
+// 		return FALSE;
 
-	if (GST_MESSAGE_TYPE(message) == GST_MESSAGE_ELEMENT)
-	{
-		if (gst_is_video_overlay_prepare_window_handle_message(message))
-		{
-			play->overlay = GST_VIDEO_OVERLAY(GST_MESSAGE_SRC(message));
-			gst_video_overlay_set_window_handle(play->overlay, play->xid);
-		}
-	}
-	return TRUE;
-}
+// 	if (GST_MESSAGE_TYPE(message) == GST_MESSAGE_ELEMENT)
+// 	{
+// 		if (gst_is_video_overlay_prepare_window_handle_message(message))
+// 		{
+// 			play->overlay = GST_VIDEO_OVERLAY(GST_MESSAGE_SRC(message));
+// 			//gst_video_overlay_set_window_handle(play->overlay, play->xid);
+// 		}
+// 	}
+// 	return TRUE;
+// }
 
 static gboolean
 gst_async_watch(GstBus *bus, GstMessage *message, gpointer data)
@@ -230,7 +231,8 @@ gboolean isValid(gstPlay *play)
 }
 
 // initiates gstreamer as a playbin pipeline
-gstPlay *gst_binding_init(gulong xwin)
+//gstPlay *gst_binding_init(gulong xwin)
+gstPlay *gst_binding_init()
 {
 	gstPlay *play = g_new0(gstPlay, 1);
 
@@ -238,15 +240,32 @@ gstPlay *gst_binding_init(gulong xwin)
 	play->element = gst_element_factory_make("playbin", "play");
 	if (play->element == NULL)
 		return NULL;
-	play->xid = xwin;
+	
+//	play->xid = xwin;
 
-	gst_bus_set_sync_handler(gst_pipeline_get_bus(GST_PIPELINE(play->element)),
-							 gst_sync_watch, play, NULL);
+	play->video_element = gst_element_factory_make ("gtksink", "gtksink");
+	if (play->video_element == NULL) {
+		return NULL;
+	}
+
+	g_object_set(G_OBJECT(play->element), "video-sink", play->video_element, NULL);
+
+//	gst_bus_set_sync_handler(gst_pipeline_get_bus(GST_PIPELINE(play->element)),
+//							 gst_sync_watch, play, NULL);
 	gst_bus_add_watch(gst_pipeline_get_bus(GST_PIPELINE(play->element)),
 					  gst_async_watch, play);
 
 	return play;
 }
+
+/* Gets the GtkWidget inside the gtksink video element */
+void *gst_binding_get_video_widget(gstPlay *play)
+{
+	void *widget;
+	g_object_get (play->video_element, "widget", &widget, NULL);
+	return widget;
+}
+
 
 // releases any references to gstreamer
 void gst_binding_deinit(gstPlay *play)
@@ -520,15 +539,15 @@ gboolean gst_binding_load_video_info(gstPlay *play)
 	return FALSE;
 }
 
-void gst_binding_set_xid(gstPlay *play, gulong xid)
-{
-	if (play == NULL)
-		return;
+// void gst_binding_set_xid(gstPlay *play, gulong xid)
+// {
+// 	if (play == NULL)
+// 		return;
 
-	play->xid = xid;
-	if (play->overlay != NULL && GST_IS_VIDEO_OVERLAY(play->overlay))
-		gst_video_overlay_set_window_handle(play->overlay, xid);
-}
+// 	play->xid = xid;
+// 	if (play->overlay != NULL && GST_IS_VIDEO_OVERLAY(play->overlay))
+// 		gst_video_overlay_set_window_handle(play->overlay, xid);
+// }
 
 void gst_binding_set_eos_cb(gstPlay *play, eosCallback cb)
 {
@@ -616,8 +635,8 @@ done:
 static void
 setup_vis(gstPlay *play)
 {
-	if (play->xid == 0)
-		return;
+//	if (play->xid == 0)
+//		return;
 
 	GstElement *vis_bin = NULL;
 	GstElement *vis_element = NULL;

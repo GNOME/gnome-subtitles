@@ -1,7 +1,7 @@
 /*
 
 	Copyright (C) 2007 Goran Sterjov, Pedro Castro
-	Copyright (C) 2011 Pedro Castro
+	Copyright (C) 2011-2018 Pedro Castro
 
     This file is part of the GStreamer Playbin Wrapper.
     Derived from Fuse.
@@ -21,10 +21,26 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-
-
+using Gtk;
 using System;
 using System.Runtime.InteropServices;
+
+/*
+ * There are a number of ways to integrate gstreamer into an application. This implementation uses a gstreamer
+ * playbin (which is a gstreamer pipeline with a number of additional features) with a video sink set to a 
+ * gtksink (instead of the default "auto" video sink). Once initialized, this video sink allows returning
+ * its GtkWidget, which is then added to the application UI. Most of the hard work is done in the auxiliary
+ * gstreamer_playbin C library, whereas here we use bindings to that library.
+ * 
+ * Previously, this implementation relied on gst_video_overlay_set_window_handle which received the X11 id
+ * of the Gdk.Window to which we wanted gstreamer to attach to, however this implementation presented many
+ * glitches which weren't simple to solve (ex: screen went black when switching between apps, and also when
+ * updating the current subtitle while the video was paused).
+ *
+ * Reference to other ways to implement gstreamer into a GTK application:
+ *   - https://github.com/GNOME/clutter-gst (does a lot more than a simple integration; used in Totem)
+ *   - https://developer.gnome.org/totem/stable/BaconVideoWidget.html (Totem bacon video widget)
+ */
 
 
 namespace GStreamer
@@ -95,11 +111,11 @@ namespace GStreamer
 		/// Load the GStreamer library and attach it
 		/// to the specified window.
 		/// </summary>
-		public bool Initiate (ulong x_window_id)
+		public bool Initiate ()
 		{
 
 			// load the gstreamer library
-			IntPtr ptr = gst_binding_init (x_window_id);
+			IntPtr ptr = gst_binding_init ();
 
 			if(ptr == IntPtr.Zero)
 			{
@@ -124,19 +140,10 @@ namespace GStreamer
 
 
 			status = MediaStatus.Unloaded;
+			
 			return true;
 		}
-
-
-		/// <summary>
-		/// Load the GStreamer library.
-		/// </summary>
-		public bool Initiate ()
-		{
-			return Initiate (0);
-		}
-
-
+		
 
 		/// <summary>
 		/// Disposes the GStreamer library.
@@ -200,13 +207,13 @@ namespace GStreamer
 			}
 		}
 
-		/// <summary>
-		/// Changes the window to which video playback is attached to.
-		/// </summary>
-		public void SetWindow (ulong window_id)
-		{
-			gst_binding_set_xid (engine, window_id);
-		}
+		///// <summary>
+		///// Changes the window to which video playback is attached to.
+		///// </summary>
+		//public void SetWindow (ulong window_id)
+		//{
+		//	gst_binding_set_xid (engine, window_id);
+		//}
 
 
 
@@ -374,6 +381,11 @@ namespace GStreamer
 		{
 			get { return status; }
 		}
+		
+		public Widget GetVideoWidget ()
+		{
+			return new Widget(gst_binding_get_video_widget(engine));
+		}
 
 
 
@@ -458,8 +470,7 @@ namespace GStreamer
 			else
 				return null;
 		}
-
-
+		
 
 		// private convenience properties
 		bool isPlaying { get{ return status == MediaStatus.Playing; } }
@@ -468,7 +479,7 @@ namespace GStreamer
 
 		// core engine functions
 		[DllImport("gstreamer_playbin")]
-		static extern IntPtr gst_binding_init (ulong xwin);
+		static extern IntPtr gst_binding_init ();
 		[DllImport("gstreamer_playbin")]
 		static extern void gst_binding_deinit (HandleRef play);
 		[DllImport("gstreamer_playbin")]
@@ -479,8 +490,8 @@ namespace GStreamer
 		static extern void gst_binding_pause (HandleRef play);
 		[DllImport("gstreamer_playbin")]
 		static extern void gst_binding_unload (HandleRef play);
-		[DllImport("gstreamer_playbin")]
-		static extern void gst_binding_set_xid (HandleRef play, ulong xid);
+		//[DllImport("gstreamer_playbin")]
+		//static extern void gst_binding_set_xid (HandleRef play, ulong xid);
 
 
 		// engine property functions
@@ -520,9 +531,11 @@ namespace GStreamer
 		[DllImport("gstreamer_playbin")]
 		static extern void gst_binding_set_visual (HandleRef play, string vis_name);
 
-
 		[DllImport("gstreamer_playbin")]
 		static extern IntPtr gst_binding_get_visuals_list (HandleRef play);
+		
+		[DllImport("gstreamer_playbin")]
+		static extern IntPtr gst_binding_get_video_widget (HandleRef play);
 	}
 
 

@@ -17,7 +17,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gdk;
 using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using GStreamer;
 using Gtk;
@@ -34,7 +33,7 @@ public delegate void VideoDurationEventHandler (TimeSpan duration);
 public class Player {
 
 	private AspectFrame frame = null;
-	private Socket socket = null;
+	//private Socket socket = null;
 	private Playbin playbin = null;
 	private PlayerPositionWatcher position = null;
 	private bool hasFoundDuration = false;
@@ -51,11 +50,11 @@ public class Player {
 	public Player (AspectFrame aspectFrame) {
 		this.frame = aspectFrame;
 
-		InitializeSocket();
+		//InitializeSocket();
 		InitializePositionWatcher();
 		InitializePlaybin();
 	}
-
+	
 
 	/* Events */
 	public event PlayerErrorEventHandler Error;
@@ -180,31 +179,43 @@ public class Player {
 
 	/* Private members */
 
-	private void InitializeSocket () {
-		socket = new Socket();
 
-		/* Set the socket background color. If we don't do this, the socket/video
-		 * area will show a copy of the UI elements (menu, labels, other
-		 * components) when the video isn't loaded.
-		 */
-		RGBA black = new RGBA();
-		black.Red = 0;
-		black.Green = 0;
-		black.Blue = 0;
-		black.Alpha = 1;
-		socket.OverrideBackgroundColor(StateFlags.Normal, black);
+	//private void InitializeSocket () {
+	//	socket = new Socket();
 
-		frame.Child = socket;
+	//	/* Set the socket background color. If we don't do this, the socket/video
+	//	 * area will show a copy of the UI elements (menu, labels, other
+	//	 * components) when the video isn't loaded.
+	//	 */
+	//	RGBA black = new RGBA();
+	//	black.Red = 0;
+	//	black.Green = 0;
+	//	black.Blue = 0;
+	//	black.Alpha = 1;
+	//	socket.OverrideBackgroundColor(StateFlags.Normal, black);
+	//	socket.DoubleBuffered = false;
 
-		socket.Realize();
-		socket.Show();
-	}
+	//	frame.Child = socket;
+
+	//	socket.Realize();
+	//	socket.Show();
+	//}
 
 	private void InitializePlaybin () {
 		playbin = new Playbin();
 
-		if (!playbin.Initiate(socket.Id))
-			throw new PlayerCouldNotInitiateEngineException();
+		if (!playbin.Initiate()) {
+			throw new PlayerCouldNotInitiateEngineException("Unable to initiate the playbin engine");
+		}
+		
+		Widget videoWidget = playbin.GetVideoWidget();
+		if (videoWidget == null) {
+			throw new PlayerCouldNotInitiateEngineException("Unable to get the video widget from the playbin engine");
+		}
+
+		frame.Child = videoWidget;
+		videoWidget.Realize();
+		videoWidget.Show();
 
 		playbin.Error += OnPlaybinError;
 		playbin.EndOfStream += OnPlaybinEndOfStream;
