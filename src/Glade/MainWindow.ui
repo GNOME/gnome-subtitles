@@ -251,8 +251,8 @@
                         <property name="label" translatable="yes">_Redo</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnEditRedo" swapped="no"/>
-                        <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="z" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="y" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -574,8 +574,8 @@
                         <property name="label" translatable="yes">Find Ne_xt</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindNext" swapped="no"/>
-                        <accelerator key="F3" signal="activate"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -585,8 +585,8 @@
                         <property name="label" translatable="yes">Find Pre_vious</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnSearchFindPrevious" swapped="no"/>
-                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                         <accelerator key="g" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F3" signal="activate" modifiers="GDK_SHIFT_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -727,8 +727,8 @@
                         <property name="label" translatable="yes">_Play / Pause</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoPlayPause" swapped="no"/>
-                        <accelerator key="F5" signal="activate"/>
                         <accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F5" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -750,8 +750,8 @@
                         <property name="label" translatable="yes">R_ewind</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoRewind" swapped="no"/>
-                        <accelerator key="F6" signal="activate"/>
                         <accelerator key="k" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F6" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -762,8 +762,8 @@
                         <property name="label" translatable="yes">_Forward</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoForward" swapped="no"/>
-                        <accelerator key="F7" signal="activate"/>
                         <accelerator key="l" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F7" signal="activate"/>
                       </object>
                     </child>
                     <child>
@@ -791,8 +791,8 @@
                         <property name="label" translatable="yes">Seek _to Selection</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSeekToSelection" swapped="no"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_SHIFT_MASK | GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -803,8 +803,8 @@
                         <property name="label" translatable="yes">Select _Nearest Subtitle</property>
                         <property name="use_underline">True</property>
                         <signal name="activate" handler="OnVideoSelectNearestSubtitle" swapped="no"/>
-                        <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                         <accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+                        <accelerator key="F4" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
                     <child>
@@ -1376,7 +1376,7 @@
                               <object class="GtkLabel" id="videoSetSubtitleStartEndButtonLabel">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">&lt;span size='x-large'&gt;⇤ ⇥&lt;/span&gt;</property>
+                                <property name="label" translatable="yes">&lt;span size='x-large'&gt;⇤⇥&lt;/span&gt;</property>
                                 <property name="use_markup">True</property>
                                 <property name="justify">center</property>
                               </object>
