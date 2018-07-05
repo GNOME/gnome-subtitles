@@ -40,7 +40,7 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 		else if (exception is OutOfMemoryException)
 			return Catalog.GetString("You have run out of memory. Please close some programs and try again.");
 		else if (exception is IOException)
-			return Catalog.GetString("An I/O error has occured.");
+			return Catalog.GetString("An I/O error has occurred.");
 		else if ((exception is UnauthorizedAccessException) || (exception is SecurityException))
 			return Catalog.GetString("You do not have the permissions necessary to open the file.");
 		else if ((exception is ArgumentNullException) || (exception is ArgumentException) || (exception is NotSupportedException) || (exception is PathTooLongException))
