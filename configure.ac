@@ -17,13 +17,13 @@ AC_CONFIG_SRCDIR([configure.ac])
 AM_INIT_AUTOMAKE([1.9 tar-ustar])
 AM_MAINTAINER_MODE
 
-IT_PROG_INTLTOOL([0.35.0])
-
 LT_PREREQ([2.2.6])
 LT_INIT
 
 AC_PROG_INSTALL
 AC_PREFIX_PROGRAM(mono)
+
+IT_PROG_INTLTOOL([0.50])
 
 dnl Gettext stuff.
 
@@ -32,6 +32,7 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
 
 AM_GLIB_GNU_GETTEXT
+
 
 dnl pkg-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
@@ -96,13 +97,13 @@ GLIB_GSETTINGS
 AC_CONFIG_FILES([
 Makefile
 data/Makefile
-data/gnome-subtitles.appdata.xml
-data/gnome-subtitles.desktop
+data/gnome-subtitles.desktop.in
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
 help/Makefile
-po/Makefile.in])
+po/Makefile.in
+])
 
 AC_OUTPUT
 

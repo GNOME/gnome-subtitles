@@ -30,5 +30,4 @@ EXTRA_DIST = 			\
 DISTCLEANFILES = 		\
 	intltool-extract 	\
 	intltool-merge 		\
-	intltool-update		\
-	gnome-doc-utils.make
+	intltool-update
