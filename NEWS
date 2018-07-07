@@ -1,6 +1,63 @@
 Gnome Subtitles
 ===============
 
+1.4 (07/07/18)
+==============
+
+- Upgraded to GTK3
+- Added support for webm and ogv video files, as well as video file extensions in all caps letters.
+- Show a confirmation when reloading a translation file with unsaved changes
+- Improvements to Timings Shift/Adjust dialogs, which now remain open when applying changes
+- Added support for non-standard video framerates, which should now appear correctly in the Timings menu
+- Fixed a crash when starting the application with a video file passed as parameter
+- Fixed a bug with subtitle headers not being properly saved
+- Improved the embedded video playback
+- Updated GtkSpell to 3.0
+
+Note to packagers:
+- Most dependencies have changed. Please check the README file.
+
+Bug fixes:
+- Replace three dots in strings by … (#697193)
+- Build system is not parallelisable - "make -j$N" fails (#702271)
+- Add .webm and .ogv to the videos file extensions (#702273)
+- Crash when running Gnome Subtitles using a relative path as first argument (#702413)
+- Will not parse related video file if its extension is: .MP4 (or anything else in capitals) (#723477)
+- Please create an AppData file for Gnome Subtitles (#730805)
+- Desktop file is untranslatable (#737087)
+- Minor Help documentation error (#757614)
+
+Contributors:
+- Andrei Dziahel, Shlomi Fish
+
+Translations:
+- Samir Ribic (bs)
+- Jordi Mas (ca)
+- Marek Černocký (cs)
+- Joe Hansen (da)
+- Mario Blättermann, Simon Linden (de)
+- Dimitris Spingos, MarMav, Tom Tryfonidis (el)
+- Daniel Mustieles (es)
+- Jiri Grönroos, Lasse Liehu, Timo Jyrinki, Ville-Pekka Vainio (fi)
+- Fran Diéguez (gl)
+- Yosef Or Boczko (he)
+- Balázs Úr (hu)
+- Sveinn í Felli (is)
+- Claudio Arseni (it)
+- Piotr Drąg (pl)
+- Pedro Albuquerque (pt)
+- Enrico Nicoletto, Fernando Paladini, Rafael Fontenelle (pt_BR)
+- Daniel Șerbănescu (ro)
+- Dušan Kazik (sk)
+- Matej Urbančič (sl)
+- Miroslav Nikolić (sr)
+- Josef Andersson (sv)
+- Muhammet Kara, Necdet Yücel (tr)
+
+Additional thanks:
+- Piotr Drąg, Rafael Fontenelle, Richard Hughes
+
+
 1.3 (29/03/13)
 ==============
 
@@ -15,10 +72,10 @@ Gnome Subtitles
 - Fixed Help menu items
 
 Note to packagers (updated dependencies):
-  * mono i18n all libraries >= 4.0 (language libraries for character codings' support)
-  * gstreamer 	>= 1.0
-  * gstreamer-plugins-base >= 1.0
-  * gstreamer-x >= 1.0 (gstreamer plugins for x11 video output)
+- mono i18n all libraries >= 4.0 (language libraries for character codings' support)
+- gstreamer >= 1.0
+- gstreamer-plugins-base >= 1.0
+- gstreamer-x >= 1.0 (gstreamer plugins for x11 video output)
 
 Bug fixes:
 - Error opening some types of previously saved files (#643389)
