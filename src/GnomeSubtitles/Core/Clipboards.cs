@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@
 
 using Gtk;
 using System;
-using SubLib;
 
 namespace GnomeSubtitles.Core {
 
@@ -48,23 +47,6 @@ public class Clipboards {
 		}
 	}
 
-	public void OnOwnerChange (object o, OwnerChangeArgs args) {
-    	Window window = Base.Ui.Window;
-
-    	if ((!window.IsActive) || (args.Event.Owner == 0) || (!ValidWidgetHasFocus()))
-    		Base.Ui.Menus.SetCutCopySensitivity(false);
-    	else {
-    		Base.Ui.Menus.SetCutCopySensitivity(true);
-    	}
-    }
-
-    public bool ValidWidgetHasFocus () {
-    	SpinButton start, end, duration;
-    	TextView textEdit, translationEdit;
-    	Base.Ui.Edit.GetEditableWidgets (out start, out end, out duration, out textEdit, out translationEdit);
-    	return start.HasFocus || end.HasFocus || duration.HasFocus || textEdit.HasFocus || translationEdit.HasFocus;
-    }
-
     public void Copy () {
     	Widget widget = Base.Ui.Window.Focus;
     	if (widget is SpinButton)
@@ -87,6 +69,33 @@ public class Clipboards {
     		(widget as SpinButton).PasteClipboard();
     	else if (widget is TextView)
     		(widget as TextView).Buffer.PasteClipboard(clipboard);
+    }
+    
+    private bool ValidWidgetHasFocus () {
+    	SpinButton start, end, duration;
+    	TextView textEdit, translationEdit;
+    	Base.Ui.Edit.GetEditableWidgets (out start, out end, out duration, out textEdit, out translationEdit);
+    	return start.HasFocus || end.HasFocus || duration.HasFocus || textEdit.HasFocus || translationEdit.HasFocus;
+    }
+    
+    private bool IsCutCopyAvailable (Clipboard clipboard) {
+    	if (!Base.Ui.Window.IsActive) {
+    		return false;
+		}
+		
+		string text = clipboard.WaitForText();
+		if (String.IsNullOrEmpty(text)) {
+			return false;
+		}
+		
+		return ValidWidgetHasFocus();
+    }
+    
+    
+    /* Event members */
+    
+    private void OnOwnerChange (object o, OwnerChangeArgs args) {
+		Base.Ui.Menus.SetCutCopySensitivity(IsCutCopyAvailable(o as Clipboard));
     }
 
 }
