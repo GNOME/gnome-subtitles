@@ -1,10 +1,10 @@
 desktopdir=$(datadir)/applications
-desktop_in_files = gnome-subtitles.desktop.in
+desktop_in_files = org.gnome.GnomeSubtitles.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
 appdatadir = $(datadir)/metainfo
-appdata_in_files = gnome-subtitles.appdata.xml.in
+appdata_in_files = org.gnome.GnomeSubtitles.appdata.xml.in
 appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 

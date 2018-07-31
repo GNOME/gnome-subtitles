@@ -97,7 +97,7 @@ GLIB_GSETTINGS
 AC_CONFIG_FILES([
 Makefile
 data/Makefile
-data/gnome-subtitles.desktop.in
+data/org.gnome.GnomeSubtitles.desktop.in
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
