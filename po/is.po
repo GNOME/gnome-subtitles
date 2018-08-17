@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
 "POT-Creation-Date: 2018-07-31 22:00+0000\n"
-"PO-Revision-Date: 2018-08-05 10:32+0000\n"
+"PO-Revision-Date: 2018-08-17 11:43+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -56,7 +56,7 @@ msgstr "Skjátextaritill"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
 msgid "Subtitles;Video;"
-msgstr "Skjátextar;Myndskeið;"
+msgstr "Skjátextar;Myndskeið"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 #| msgid "Shown in menu:"
@@ -65,11 +65,11 @@ msgstr "Stafatöflur sýndar í valmynd"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
 msgid "List of encodings shown in the File Open/Save dialogs."
-msgstr ""
+msgstr "Listi yfir stafatöflur sem birtast í Opna/Vista valmyndum."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
 msgid "File Open encoding option"
-msgstr "Valkostir stafataflna við opnun skráa"
+msgstr "Val stafataflna við opnun skráa"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
 msgid ""
@@ -79,6 +79,12 @@ msgid ""
 "\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
 "\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
+"Val stafatöflu sem nota á sjálfgefið við opnun skráa. Möguleg gildi eru: "
+"\"AutoDetect\" til að nota sjálfvirka greiningu, \"RememberLastUsed\" til að "
+"nota síðast völdu stafatöfluna, \"CurrentLocale\" til að nota núverandi "
+"staðfærslu, og \"Specific\" til að nota sérstaka stafatöflu. Stafatöflurnar "
+"fyrir \"RememberLastUsed\" og \"Specific\" eru geymdar í file_open_encoding "
+"lyklinum."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
 msgid "File Open encoding"
@@ -91,6 +97,10 @@ msgid ""
 "file_open_encoding_option key, other possible values are \"AutoDetect\" and "
 "\"CurrentLocale\"."
 msgstr ""
+"Stafatafla sem nota á við opnun skráa. Fyrir utan raunverulega stafatöflu "
+"(encoding), sem notuð er þegar \"RememberLastUsed\" og \"Specific\" eru "
+"stilltar í file_open_encoding lyklinum, þá eru önnur möguleg gildi "
+"\"AutoDetect\" og \"CurrentLocale\"."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
 #| msgid "If auto detection _fails, use:"
@@ -100,11 +110,13 @@ msgstr "Stafatafla ef sjálfvirk greining mistekst"
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
 msgid "Encoding to use when auto detection fails."
 msgstr ""
+"Stafatafla (encoding) sem á að nota þegar sjálfvirk greining stafatöflu "
+"mistekst."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
 #| msgid "Select advanced options"
 msgid "File Save encoding option"
-msgstr "Valkostir stafataflna við vistun skráa"
+msgstr "Val stafataflna við vistun skráa"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
 msgid ""
@@ -115,6 +127,12 @@ msgid ""
 "\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
 "key."
 msgstr ""
+"Val stafatöflu sem nota á sjálfgefið við vistun skráa. Möguleg gildi eru: "
+"\"KeepExisting\" til að nota fyrirliggjandi stafatöflu skrárinnar, "
+"\"RememberLastUsed\" til að nota síðast völdu stafatöfluna, \"CurrentLocale\" "
+"til að nota núverandi staðfærslu, og \"Specific\" til að nota sérstaka "
+"stafatöflu. Stafatöflurnar fyrir \"RememberLastUsed\" og \"Specific\" eru "
+"geymdar í file_save_encoding lyklinum."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
 msgid "File Save encoding"
@@ -127,10 +145,14 @@ msgid ""
 "file_save_encoding_option key, other possible values are \"KeepExisting\" "
 "and \"CurrentLocale\"."
 msgstr ""
+"Stafatafla sem nota á við vistun skráa. Fyrir utan raunverulega stafatöflu "
+"(encoding), sem notuð er þegar \"RememberLastUsed\" og \"Specific\" eru "
+"stilltar í file_save_encoding_option lyklinum, þá eru önnur möguleg gildi "
+"\"KeepExisting\" og \"CurrentLocale\"."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
 msgid "File Save format option"
-msgstr ""
+msgstr "Val skráarsniðs við vistun"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
 msgid ""
@@ -140,6 +162,11 @@ msgid ""
 "format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
 "stored in the file_save_format key."
 msgstr ""
+"Snið skjátexta sem nota á sjálfgefið við vistun skráa. Möguleg gildi eru: "
+"\"KeepExisting\" til að nota fyrirliggjandi snið skrárinnar, "
+"\"RememberLastUsed\" til að nota síðast valið snið, og \"Specific\" til að "
+"nota sérstakt snið. Snið skjátexta fyrir \"RememberLastUsed\" og \"Specific\" "
+"eru geymd í file_save_format lyklinum."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
 msgid "File Save format"
@@ -152,10 +179,14 @@ msgid ""
 "file_save_format_option key, other possible values are \"KeepExisting\" and "
 "\"CurrentLocale\"."
 msgstr ""
+"Snið skjátexta sem nota á við vistun skráa. Fyrir utan raunverulega "
+"stafatöflu (encoding), sem notuð er þegar \"RememberLastUsed\" og "
+"\"Specific\" eru stilltar í file_save_format lyklinum, þá eru önnur möguleg "
+"gildi \"KeepExisting\" og \"CurrentLocale\"."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
 msgid "File Save newline option"
-msgstr "Valkostir nýlína við vistun skráa"
+msgstr "Val nýlína við vistun skráa"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
 msgid ""
@@ -164,6 +195,10 @@ msgid ""
 "\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
 "and \"Specific\" is stored in the file_save_newline key."
 msgstr ""
+"Val nýlínu sem nota á sjálfgefið við vistun skráa. Möguleg gildi eru: "
+"\"RememberLastUsed\" til að nota síðast völdu gerð nýlínumerkis og "
+"\"Specific\" til að nota sérstaka gerð nýlínumerkis. Gerð nýlínumerkis fyrir "
+"\"RememberLastUsed\" og \"Specific\" eru geymdar í file_save_newline lyklinum."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
 msgid "File Save newline"
@@ -198,13 +233,15 @@ msgstr ""
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
 msgid "Apply reaction delay"
-msgstr ""
+msgstr "Virkja töf á viðbrögðum"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
 msgid ""
 "Whether to apply a reaction delay when setting the start or end times of a "
 "subtitle with the video playing."
 msgstr ""
+"Hvort virkja eigi töf á viðbrögðum þegar upphafs- eða endatímar skjátexta eru "
+"stilltir með myndskeiði í afspilun."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
 #| msgid "<b>Reaction Delay</b>"
@@ -216,6 +253,8 @@ msgid ""
 "Time, in milliseconds, to subtract from the start or end times when setting "
 "them with the video playing."
 msgstr ""
+"Tími, í millisekúndum, sem draga á frá upphafs- eða endatímum þegar þeir eru "
+"stilltir með myndskeiði í afspilun."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
 #| msgid "_Selected subtitles"
@@ -227,6 +266,8 @@ msgid ""
 "Whether to seek the video to the start of the first subtitle when one or "
 "more subtitles are changed."
 msgstr ""
+"Hvort leita eigi sjálfvirkt í fyrsta skjátexta myndskeiðs þegar einum eða "
+"fleiri skjátextum er breytt."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
 msgid "Seek on change rewind"
@@ -244,7 +285,7 @@ msgstr "Skoða lengdir lína"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
 msgid "Whether to view line lengths as characters counts in the subtitle list."
-msgstr ""
+msgstr "Hvort birta eigi lengdir lína sem fjölda stafa í skjátextalistanum."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
 msgid "Window width"
@@ -312,23 +353,27 @@ msgstr ""
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
 msgid "Time step increment"
-msgstr ""
+msgstr "Þrepun tíma"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
 msgid ""
 "Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
 "controls (e.g., start, end and duration)."
 msgstr ""
+"Tími, í millísekúndum, sem á að bæta við eða draga frá við hvert þrep þegar "
+"tími er stilltur með stjórnhnöppum (t.d. upphaf, endir og tímalengd)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
 msgid "Frames step increment"
-msgstr ""
+msgstr "Þrepun ramma"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
 msgid ""
 "Frames to add or subtract when adjusting frames in spinbutton controls (e."
 "g., start, end and duration)."
 msgstr ""
+"Rammar sem á að bæta við eða draga frá við hvert þrep þegar rammar eru "
+"stilltir með stjórnhnöppum (t.d. upphaf, endir og tímalengd)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
 #| msgid "_Selected subtitles"
@@ -979,11 +1024,11 @@ msgstr "Valdir skjátextar"
 
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
 msgid "Subtitles between those selected and the _first"
-msgstr ""
+msgstr "Skjátextar milli þeirra sem eru valdir og þess _fyrsta"
 
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
 msgid "Subtitles between those selected and the _last"
-msgstr ""
+msgstr "Skjátextar milli þeirra sem eru valdir og þess _síðasta"
 
 #: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
 #| msgid "Character codings"
