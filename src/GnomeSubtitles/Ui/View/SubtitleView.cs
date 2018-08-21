@@ -251,7 +251,7 @@ public class SubtitleView {
 
     private void CreateColumns() {
     	/* Number column */
-    	numberCol = Util.CreateTreeViewColumn(Catalog.GetString("No."), Util.ColumnWidth(tree, "000"), new CellRendererText(), RenderNumberCell);
+    	numberCol = Util.CreateTreeViewColumn(Catalog.GetString("No."), Util.ColumnWidth(tree, "0000"), new CellRendererText(), RenderNumberCell);
 
     	/* Start, end and duration columns */
     	int timeWidth = Util.ColumnWidthForTimeValue(tree);
