@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2011-2017 Pedro Castro
+ * Copyright (C) 2011-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,8 +26,10 @@ namespace GnomeSubtitles.Ui.Edit {
 
 public class SubtitleEditTextViewMargin {
 	/* Constants */
-	private const int marginSpace = 4; //pixels
-	private const int marginMinDigits = 2; //the minimum number of digits for margin width (1 would make the margin adjust with more than 9 chars, so it's better to keep a minimum of 2 to avoid constant adjustment
+	private const int MarginInnerSpaceLeft = 4; //space pixels inside the margin, to the left of the margin text
+	private const int MarginInnerSpaceRight = 8; //space pixels inside the margin, to the right of the margin text (adding extra space for the scroll bar)
+	private const int MarginOuterSpaceLeft = 8; //space pixels outside the margin, to its left (used for the subtitle text not to touch the margin border)
+	private const int MarginMinDigits = 2; //the minimum number of digits for margin width (1 would make the margin adjust with more than 9 chars, so it's better to keep a minimum of 2 to avoid constant adjustment
 
 	/* Set on base init */
 	private Gdk.RGBA marginBGColor;
@@ -49,31 +51,34 @@ public class SubtitleEditTextViewMargin {
 
 	/* Private methods */
 
-	public void DrawMargin (TextView textView, Context cr) {
+	private void DrawMargin (TextView textView, Context cr) {
 
     	/* Get char count info  */
     	int[,] info;
     	GetCharCountDrawInfo(textView, out info);
 
-    	/* Set margin and window on the right */
-    	int marginWidth = (marginSpace * 2) + (this.marginDigitCount * this.marginCharWidth);
-    	textView.SetBorderWindowSize(TextWindowType.Right, marginWidth);
+    	/* Calculate margin dimensions and position */
+    	int marginWidth = MarginInnerSpaceLeft + MarginInnerSpaceRight + (this.marginDigitCount * this.marginCharWidth);
+		int marginHeight = textView.AllocatedHeight;
+    	int marginX = textView.AllocatedWidth - marginWidth;
+    	int marginY = 0;
+    	
+    	/* Adjust the text view's right window */
+    	textView.SetBorderWindowSize(TextWindowType.Right, marginWidth + MarginOuterSpaceLeft);
+    	
+		/* Draw the margin background */
+		cr.Rectangle(new Rectangle(marginX, marginY, marginWidth, marginHeight));
+		Gdk.CairoHelper.SetSourceRgba(cr, marginBGColor);
+		cr.Fill();
 
-		/* Get margin window and cairo context */
-		Gdk.Window marginWindow = textView.GetWindow(TextWindowType.Right);
-		Cairo.Context marginCR = Gdk.CairoHelper.Create(marginWindow);
-
-		/* Clear the background */
-		Gdk.CairoHelper.SetSourceRgba(marginCR, marginBGColor);
-		marginCR.Paint();
-
-    	/* Draw line */
-		Gdk.CairoHelper.SetSourceRgba(marginCR, marginLineColor);
-		marginCR.MoveTo(0, 0);
-		marginCR.LineTo(0, marginWindow.Height); //We don't use marginWindow.Height because sometimes (e.g., on initialization) its height is 1px
-		marginCR.Stroke();
+    	/* Draw the margin border/line */
+		Gdk.CairoHelper.SetSourceRgba(cr, marginLineColor);
+		cr.MoveTo(marginX, marginY);
+		cr.LineTo(marginX, marginHeight);
+		cr.Stroke();
 
     	/* Draw text */
+		Gdk.CairoHelper.SetSourceRgba(cr, marginTextColor);
     	int infoCount = info.GetLength(0);
     	for (int i = 0 ; i < infoCount ; i++) {
     		int charCount = info[i, 0];
@@ -82,13 +87,12 @@ public class SubtitleEditTextViewMargin {
     		this.textLayout.SetText(charCount.ToString());
     		int textLayoutWidth, textLayoutHeight;
     		this.textLayout.GetPixelSize(out textLayoutWidth, out textLayoutHeight);
-			marginCR.MoveTo(marginSpace, y - textLayoutHeight / 2);
+			cr.MoveTo(marginX + MarginInnerSpaceLeft, y - textLayoutHeight / 2);
 
-			Gdk.CairoHelper.SetSourceRgba(marginCR, marginTextColor);
-			Pango.CairoHelper.ShowLayout(marginCR, this.textLayout);
+			Pango.CairoHelper.ShowLayout(cr, this.textLayout);
 		}
 
-		marginCR.Dispose();
+		cr.GetTarget().Dispose();
 		cr.Dispose();
     }
 
@@ -225,7 +229,7 @@ public class SubtitleEditTextViewMargin {
 	}
 
 	private void OnBufferChanged (object o, EventArgs args) {
-		this.marginDigitCount = CalcDigitCount(o as TextBuffer, marginMinDigits);
+		this.marginDigitCount = CalcDigitCount(o as TextBuffer, MarginMinDigits);
 	}
 
 	private void OnStyleSet (object o, StyleSetArgs args) {
