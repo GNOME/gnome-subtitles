@@ -2,14 +2,13 @@
 # The translations are Copyright (C) of the contributing translators.
 # Copyright (C) 2016 Free Software Foundation, Inc.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2016.
+# Sveinn í Felli <sv1@fellsnet.is>, 2016, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-05 10:01+0000\n"
-"PO-Revision-Date: 2016-07-23 09:03+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
+"POT-Creation-Date: 2018-07-31 22:00+0000\n"
+"PO-Revision-Date: 2018-08-17 11:43+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -19,570 +18,710 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: ../data/gnome-subtitles.appdata.xml.h:1
-#: ../data/gnome-subtitles.appdata.xml.in.h:1
-msgid "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
-msgstr "Gnome Subtitles er skjátextaritill fyrir GNOME skjáborðsumhverfið."
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Gerð skjátexta með myndskeiðum fyrir GNOME skjáborðsumhverfið"
 
-#: ../data/gnome-subtitles.appdata.xml.h:2
-#: ../data/gnome-subtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#| msgid ""
+#| "It allows to create, synchronize, convert and translate subtitles by "
+#| "using a friendly user interface with video preview."
 msgid ""
-"It allows to create, synchronize, convert and translate subtitles by using a "
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
-"Gerir kleift að útbúa skjátexta, samstilla þá, umbreyta og þýða; allt í "
+"Gnome Subtitles er skjátextaritill fyrir GNOME skjáborðsumhverfið."
+"Það gerir kleift að útbúa skjátexta, samstilla þá, umbreyta og þýða; allt í "
 "vinsamlegu notandaviðmóti sem innifelur forskoðun á myndskeiði."
 
-#: ../data/gnome-subtitles.appdata.xml.h:3
-#: ../data/gnome-subtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
 "SubViewer."
 msgstr ""
-"Alls eru studd 22 snið skjátexta, þar með talin: "
-"SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub og "
-"SubViewer."
+"Alls eru studd 22 snið skjátexta, þar með talin: SubRip, MicroDVD, FAB "
+"Subtitler, MPlayer, Sub Station Alpha, MPSub og SubViewer."
 
-#: ../data/gnome-subtitles.desktop.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
 msgid "Gnome Subtitles"
 msgstr "Gnome skjátextar"
 
-#: ../data/gnome-subtitles.desktop.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Skjátextaritill"
 
-#: ../data/gnome-subtitles.desktop.in.h:3 ../src/Glade/AboutDialog.glade.h:2
-msgid "Video subtitling for the GNOME desktop"
-msgstr "Gerð skjátexta með myndskeiðum fyrir GNOME skjáborðið"
-
-#: ../data/gnome-subtitles.desktop.in.h:4
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
 msgid "Subtitles;Video;"
 msgstr "Skjátextar;Myndskeið"
 
-#: ../src/Glade/AboutDialog.glade.h:1
-msgid "About Gnome Subtitles"
-msgstr "Um Gnome skjátexta"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
+#| msgid "Shown in menu:"
+msgid "Encodings shown in menu"
+msgstr "Stafatöflur sýndar í valmynd"
 
-#: ../src/Glade/AboutDialog.glade.h:3
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
+msgid "List of encodings shown in the File Open/Save dialogs."
+msgstr "Listi yfir stafatöflur sem birtast í Opna/Vista valmyndum."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
+msgid "File Open encoding option"
+msgstr "Val stafataflna við opnun skráa"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
 msgid ""
-"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gnome Subtitles is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+"Encoding option to use by default when opening files. Possible values are: "
+"\"AutoDetect\" to use auto detection, \"RememberLastUsed\" to remember the "
+"last used encoding, \"CurrentLocale\" to use the current locale, and "
+"\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
+"\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
-"Þetta forrit er frjáls hugbúnaður; þú mátt endurrita hann og/eða breyta\n"
-"samkvæmt skilmálum \"GNU General Public License\" eins og það er\n"
-"útgefið af \"Free Software Foundation;\"; annað hvort útgáfa 2 af leyfinu,\n"
-"eða (að þínu vali) einhver síðari útgáfa.\n"
-"\n"
-"Þessu forriti er dreift í þeirri von að það sé gagnlegt, en ÁN\n"
-"NOKKURAR ÁBYRGÐAR; einnig án óbeinnar SÖLUÁBYRGÐAR eða\n"
-"HÆFNI TIL NOKKURS HLUTAR. Sjá nánar í \"GNU General Public\n"
-"License\" leyfinu.\n"
-"\n"
-"Þú ættir að hafa fengið afrit af \"GNU General Public License\" með\n"
-"þessu forriti; ef ekki, skrifaðu til Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+"Val stafatöflu sem nota á sjálfgefið við opnun skráa. Möguleg gildi eru: "
+"\"AutoDetect\" til að nota sjálfvirka greiningu, \"RememberLastUsed\" til að "
+"nota síðast völdu stafatöfluna, \"CurrentLocale\" til að nota núverandi "
+"staðfærslu, og \"Specific\" til að nota sérstaka stafatöflu. Stafatöflurnar "
+"fyrir \"RememberLastUsed\" og \"Specific\" eru geymdar í file_open_encoding "
+"lyklinum."
 
-#: ../src/Glade/EncodingsDialog.glade.h:1
-msgid "Character codings"
-msgstr "Stafatöflur"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
+msgid "File Open encoding"
+msgstr "Stafatafla við opnun skráa"
 
-#: ../src/Glade/EncodingsDialog.glade.h:2
-msgid "A_vailable:"
-msgstr "_Tiltækt:"
-
-#: ../src/Glade/EncodingsDialog.glade.h:3
-msgid "Shown in menu:"
-msgstr "Birta í valmynd:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:1 ../src/Glade/MainWindow.glade.h:64
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
-msgid "Open File"
-msgstr "Opna skrá"
-
-#: ../src/Glade/FileOpenDialog.glade.h:2
-msgid "Video To Open:"
-msgstr "Myndskeið sem á að opna:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
-msgid "Character Coding:"
-msgstr "Stafakóði:"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:1
-msgid "File Properties"
-msgstr "Eiginleikar skráar"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:2
-msgid "<b>Name:</b>"
-msgstr "<b>Heiti:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:3
-msgid "<b>Path:</b>"
-msgstr "<b>Slóð:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:4
-msgid "<b>Character Coding:</b>"
-msgstr "<b>Stafakóði:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:5
-msgid "<b>Subtitle Format:</b>"
-msgstr "<b>Snið skjátexta:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:6
-msgid "<b>Timing Mode:</b>"
-msgstr "<b>Tímasetning:</b>"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
-msgid "Save As"
-msgstr "Vista sem"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:2
-msgid "Subtitle Format:"
-msgstr "Snið skjátexta:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
-msgid "Newline Type:"
-msgstr "Tegund nýlínu:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:5
-msgid "Select advanced options"
-msgstr "Veldu ítarlega valkosti"
-
-#: ../src/Glade/HeadersDialog.glade.h:1
-msgid "Headers"
-msgstr "Hausar"
-
-#: ../src/Glade/HeadersDialog.glade.h:2
-msgid "Title:"
-msgstr "Titill:"
-
-#: ../src/Glade/HeadersDialog.glade.h:3
-msgid "Author:"
-msgstr "Höfundur:"
-
-#: ../src/Glade/HeadersDialog.glade.h:4
-msgid "Artist:"
-msgstr "Flytjandi:"
-
-#: ../src/Glade/HeadersDialog.glade.h:5
-msgid "Album:"
-msgstr "Albúm/Diskur:"
-
-#: ../src/Glade/HeadersDialog.glade.h:6
-msgid "By:"
-msgstr "Eftir:"
-
-#: ../src/Glade/HeadersDialog.glade.h:7
-msgid "Version:"
-msgstr "Útgáfa:"
-
-#: ../src/Glade/HeadersDialog.glade.h:8
-msgid "Program:"
-msgstr "Forrit:"
-
-#: ../src/Glade/HeadersDialog.glade.h:9
-msgid "Karaoke Lyrics LRC"
-msgstr "Karaoke textar LRC"
-
-#: ../src/Glade/HeadersDialog.glade.h:10
-msgid "Source:"
-msgstr "Uppruni:"
-
-#: ../src/Glade/HeadersDialog.glade.h:11
-msgid "Date:"
-msgstr "Dagsetning:"
-
-#: ../src/Glade/HeadersDialog.glade.h:12
-msgid "Frame rate:"
-msgstr "Rammatíðni:"
-
-#: ../src/Glade/HeadersDialog.glade.h:13
-msgid "Karaoke Lyrics VKT"
-msgstr "Karaoke textar VKT"
-
-#: ../src/Glade/HeadersDialog.glade.h:14
-msgid "File:"
-msgstr "Skrá:"
-
-#: ../src/Glade/HeadersDialog.glade.h:15
-msgid "Note:"
-msgstr "Minnispunktur:"
-
-#: ../src/Glade/HeadersDialog.glade.h:16
-msgid "Type:"
-msgstr "Tegund:"
-
-#: ../src/Glade/HeadersDialog.glade.h:17
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:6
 msgid ""
-"Audio\n"
-"Video\n"
+"Encoding to use when opening files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_open_encoding_option key, other possible values are \"AutoDetect\" and "
+"\"CurrentLocale\"."
 msgstr ""
-"Hjóð\n"
-"Myndskeið\n"
+"Stafatafla sem nota á við opnun skráa. Fyrir utan raunverulega stafatöflu "
+"(encoding), sem notuð er þegar \"RememberLastUsed\" og \"Specific\" eru "
+"stilltar í file_open_encoding lyklinum, þá eru önnur möguleg gildi "
+"\"AutoDetect\" og \"CurrentLocale\"."
 
-#: ../src/Glade/HeadersDialog.glade.h:20
-msgid "Original Script:"
-msgstr "Upprunalegt handrit:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
+#| msgid "If auto detection _fails, use:"
+msgid "Auto detection fallback encoding"
+msgstr "Stafatafla ef sjálfvirk greining mistekst"
 
-#: ../src/Glade/HeadersDialog.glade.h:21
-msgid "Original Translation:"
-msgstr "Upprunaleg þýðing:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
+msgid "Encoding to use when auto detection fails."
+msgstr ""
+"Stafatafla (encoding) sem á að nota þegar sjálfvirk greining stafatöflu "
+"mistekst."
 
-#: ../src/Glade/HeadersDialog.glade.h:22
-msgid "Original Editing:"
-msgstr "Upprunaleg yfirferð:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
+#| msgid "Select advanced options"
+msgid "File Save encoding option"
+msgstr "Val stafataflna við vistun skráa"
 
-#: ../src/Glade/HeadersDialog.glade.h:23
-msgid "Original Timing:"
-msgstr "Upprunalegar tímasetningar:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
+msgid ""
+"Encoding option to use by default when saving files. Possible values are: "
+"\"KeepExisting\" to use the existing file's encoding, \"RememberLastUsed\" "
+"to remember the last used encoding, \"CurrentLocale\" to use the current "
+"locale, and \"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
+"key."
+msgstr ""
+"Val stafatöflu sem nota á sjálfgefið við vistun skráa. Möguleg gildi eru: "
+"\"KeepExisting\" til að nota fyrirliggjandi stafatöflu skrárinnar, "
+"\"RememberLastUsed\" til að nota síðast völdu stafatöfluna, \"CurrentLocale\" "
+"til að nota núverandi staðfærslu, og \"Specific\" til að nota sérstaka "
+"stafatöflu. Stafatöflurnar fyrir \"RememberLastUsed\" og \"Specific\" eru "
+"geymdar í file_save_encoding lyklinum."
 
-#: ../src/Glade/HeadersDialog.glade.h:24
-msgid "Original Script Checking:"
-msgstr "Upprunaleg yfirferð handrits:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
+msgid "File Save encoding"
+msgstr "Stafatafla við vistun skráa"
 
-#: ../src/Glade/HeadersDialog.glade.h:25
-msgid "Script Updated By:"
-msgstr "Handrit uppfært af:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:12
+msgid ""
+"Encoding to use when saving files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_encoding_option key, other possible values are \"KeepExisting\" "
+"and \"CurrentLocale\"."
+msgstr ""
+"Stafatafla sem nota á við vistun skráa. Fyrir utan raunverulega stafatöflu "
+"(encoding), sem notuð er þegar \"RememberLastUsed\" og \"Specific\" eru "
+"stilltar í file_save_encoding_option lyklinum, þá eru önnur möguleg gildi "
+"\"KeepExisting\" og \"CurrentLocale\"."
 
-#: ../src/Glade/HeadersDialog.glade.h:26
-msgid "Collisions:"
-msgstr "Árekstrar:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
+msgid "File Save format option"
+msgstr "Val skráarsniðs við vistun"
 
-#: ../src/Glade/HeadersDialog.glade.h:27
-msgid "PlayResX:"
-msgstr "PlayResX:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
+msgid ""
+"Subtitle format option to use by default when saving files. Possible values "
+"are: \"KeepExisting\" to use the existing file's format, \"RememberLastUsed"
+"\" to remember the last used format, and \"Specific\" to use a specific "
+"format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
+"stored in the file_save_format key."
+msgstr ""
+"Snið skjátexta sem nota á sjálfgefið við vistun skráa. Möguleg gildi eru: "
+"\"KeepExisting\" til að nota fyrirliggjandi snið skrárinnar, "
+"\"RememberLastUsed\" til að nota síðast valið snið, og \"Specific\" til að "
+"nota sérstakt snið. Snið skjátexta fyrir \"RememberLastUsed\" og \"Specific\" "
+"eru geymd í file_save_format lyklinum."
 
-#: ../src/Glade/HeadersDialog.glade.h:28
-msgid "PlayResY:"
-msgstr "PlayResY:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
+msgid "File Save format"
+msgstr "Skráarsnið við vistun"
 
-#: ../src/Glade/HeadersDialog.glade.h:29
-msgid "PlayDepth:"
-msgstr "PlayDepth:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:16
+msgid ""
+"Subtitle format to use when saving files. Besides the actual format, used "
+"when \"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_format_option key, other possible values are \"KeepExisting\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"Snið skjátexta sem nota á við vistun skráa. Fyrir utan raunverulega "
+"stafatöflu (encoding), sem notuð er þegar \"RememberLastUsed\" og "
+"\"Specific\" eru stilltar í file_save_format lyklinum, þá eru önnur möguleg "
+"gildi \"KeepExisting\" og \"CurrentLocale\"."
 
-#: ../src/Glade/HeadersDialog.glade.h:30
-msgid "Timer:"
-msgstr "Niðurtalning:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
+msgid "File Save newline option"
+msgstr "Val nýlína við vistun skráa"
 
-#: ../src/Glade/HeadersDialog.glade.h:31
-msgid "File Path:"
-msgstr "Skráarslóð:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
+msgid ""
+"Newline option to use by default when saving files. Possible values are: "
+"\"RememberLastUsed\" to remember the last used newline type, and \"Specific"
+"\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
+"and \"Specific\" is stored in the file_save_newline key."
+msgstr ""
+"Val nýlínu sem nota á sjálfgefið við vistun skráa. Möguleg gildi eru: "
+"\"RememberLastUsed\" til að nota síðast völdu gerð nýlínumerkis og "
+"\"Specific\" til að nota sérstaka gerð nýlínumerkis. Gerð nýlínumerkis fyrir "
+"\"RememberLastUsed\" og \"Specific\" eru geymdar í file_save_newline lyklinum."
 
-#: ../src/Glade/HeadersDialog.glade.h:32
-msgid "Delay:"
-msgstr "Töf:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
+msgid "File Save newline"
+msgstr "Nýlínur við vistun skráa"
 
-#: ../src/Glade/HeadersDialog.glade.h:33
-msgid "CD Track:"
-msgstr "CD-spor:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
+#| msgid "_Newline type to use:"
+msgid "Newline type to use when saving files."
+msgstr "Tegund nýlínu sem á að nota við vistun skráa."
 
-#: ../src/Glade/HeadersDialog.glade.h:34
-msgid "Comment:"
-msgstr "Athugasemd:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
+#| msgid ""
+#| "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgid "Save translation when saving subtitles"
+msgstr "Vista þýðingu þegar skjátextar eru vistaðir"
 
-#: ../src/Glade/HeadersDialog.glade.h:35
-msgid "Font Name:"
-msgstr "Heiti leturs:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
+msgid "Whether to save existing translations when saving subtitles."
+msgstr ""
+"Hvort eigi að vista fyrirliggjandi þýðingar þegar skjátextar eru vistaðir."
 
-#: ../src/Glade/HeadersDialog.glade.h:36
-msgid "Font Color:"
-msgstr "Litur á letri:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
+#| msgid "Automatically choose the _video file to open"
+msgid "Automatically choose the video file"
+msgstr "Velja sjálfvirkt myndskeiðsskrána"
 
-#: ../src/Glade/HeadersDialog.glade.h:37
-msgid "Font Style:"
-msgstr "Stíll leturs:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:24
+msgid ""
+"Whether to automatically choose the video file to open, when opening a "
+"subtitle file. A video file is chosen based on the name of the subtitle file."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:38
-msgid "Font Size:"
-msgstr "Leturstærð:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
+msgid "Apply reaction delay"
+msgstr "Virkja töf á viðbrögðum"
 
-#: ../src/Glade/MainWindow.glade.h:1
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
+msgid ""
+"Whether to apply a reaction delay when setting the start or end times of a "
+"subtitle with the video playing."
+msgstr ""
+"Hvort virkja eigi töf á viðbrögðum þegar upphafs- eða endatímar skjátexta eru "
+"stilltir með myndskeiði í afspilun."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
+#| msgid "<b>Reaction Delay</b>"
+msgid "Reaction delay"
+msgstr "Töf á viðbrögðum"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:28
+msgid ""
+"Time, in milliseconds, to subtract from the start or end times when setting "
+"them with the video playing."
+msgstr ""
+"Tími, í millisekúndum, sem draga á frá upphafs- eða endatímum þegar þeir eru "
+"stilltir með myndskeiði í afspilun."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
+#| msgid "_Selected subtitles"
+msgid "Seek the video on subtitles change"
+msgstr "Færa til í myndskeiði við skiptingu á milli skjátexta"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
+msgid ""
+"Whether to seek the video to the start of the first subtitle when one or "
+"more subtitles are changed."
+msgstr ""
+"Hvort leita eigi sjálfvirkt í fyrsta skjátexta myndskeiðs þegar einum eða "
+"fleiri skjátextum er breytt."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
+msgid "Seek on change rewind"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
+msgid ""
+"Time, in milliseconds, to rewind the video when seeking on subtitles change."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
+#| msgid "_Line Lengths"
+msgid "View line lengths"
+msgstr "Skoða lengdir lína"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
+msgid "Whether to view line lengths as characters counts in the subtitle list."
+msgstr "Hvort birta eigi lengdir lína sem fjölda stafa í skjátextalistanum."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
+msgid "Window width"
+msgstr "Breidd glugga"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:36
+msgid "The width of the Main Window."
+msgstr "Breidd aðalgluggans."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:37
+msgid "Window height"
+msgstr "Hæð glugga"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:38
+msgid "The height of the Main Window."
+msgstr "Hæð aðalgluggans."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:39
+msgid "Active spellcheck language for text"
+msgstr "Virkt tungumál stafsetningaryfirferðar fyrir frumtexta"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
+msgid "The language used to check the spelling of subtitle text."
+msgstr "Tungumál sem notað er við yfirferð á stafsetningu texta í skjátextum."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
+msgid "Active spellcheck language for translation"
+msgstr "Virkt tungumál stafsetningaryfirferðar fyrir þýðingu"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
+msgid "The language used to check the spelling of subtitle translation."
+msgstr ""
+"Tungumál sem notað er við yfirferð á stafsetningu þýðingar á skjátextum."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
+#| msgid "_Autocheck Spelling"
+msgid "Autocheck spelling"
+msgstr "Sjálfvirk stafsetningaryfirferð"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
+msgid "Whether to automatically check the spelling of subtitle text."
+msgstr "Hvort athuga eigi sjálfvirkt stafsetningu skjátexta."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
+msgid "Auto backup"
+msgstr "Sjálfvirk öryggisafritun"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:46
+msgid ""
+"Whether to automatically backup files. A copy of the file will be "
+"periodically saved with a ~ suffix."
+msgstr ""
+"Hvort taka eigi sjálfvirk öryggisafrit af skrám. Afrit skráa verða vistuð "
+"reglulega með ~ forskeyti."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
+msgid "Backup time"
+msgstr "Tímasetning öryggisafritunar"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:48
+msgid ""
+"Time interval, in seconds, to automatically backup files. A minimum of 30 "
+"seconds is recommended."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
+msgid "Time step increment"
+msgstr "Þrepun tíma"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
+msgid ""
+"Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
+"controls (e.g., start, end and duration)."
+msgstr ""
+"Tími, í millísekúndum, sem á að bæta við eða draga frá við hvert þrep þegar "
+"tími er stilltur með stjórnhnöppum (t.d. upphaf, endir og tímalengd)."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
+msgid "Frames step increment"
+msgstr "Þrepun ramma"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
+msgid ""
+"Frames to add or subtract when adjusting frames in spinbutton controls (e."
+"g., start, end and duration)."
+msgstr ""
+"Rammar sem á að bæta við eða draga frá við hvert þrep þegar rammar eru "
+"stilltir með stjórnhnöppum (t.d. upphaf, endir og tímalengd)."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
+#| msgid "_Selected subtitles"
+msgid "Time between subtitles"
+msgstr "Tími á milli skjátexta"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:54
+msgid ""
+"Recommended time between subtitles, in milliseconds, used for example when "
+"splitting a subtitle in two."
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Skrá"
 
-#: ../src/Glade/MainWindow.glade.h:2
-msgid "_Translation"
-msgstr "Þýðin_g"
-
-#: ../src/Glade/MainWindow.glade.h:3
+#: ../src/Glade/MainWindow.ui.h:2
 msgid "_New"
 msgstr "_Nýtt"
 
-#: ../src/Glade/MainWindow.glade.h:4
+#: ../src/Glade/MainWindow.ui.h:3
 msgid "_Open"
 msgstr "_Opna"
 
-#: ../src/Glade/MainWindow.glade.h:5
-msgid "_Reload"
-msgstr "Endu_rhlaða"
-
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:4
 msgid "_Save"
 msgstr "Vi_sta"
 
-#: ../src/Glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.ui.h:5
 msgid "Save _As"
 msgstr "Vist_a sem"
 
-#: ../src/Glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.ui.h:6
+msgid "_Translation"
+msgstr "Þýðin_g"
+
+#: ../src/Glade/MainWindow.ui.h:7
+msgid "_Reload"
+msgstr "Endu_rhlaða"
+
+#: ../src/Glade/MainWindow.ui.h:8
 msgid "_Close"
 msgstr "_Loka"
 
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:9
 msgid "_Headers"
 msgstr "_Hausar"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.ui.h:10
+#| msgid "File Properties"
+msgid "_Properties"
+msgstr "_Eiginleikar"
+
+#: ../src/Glade/MainWindow.ui.h:11
+msgid "_Quit"
+msgstr "_Hætta"
+
+#: ../src/Glade/MainWindow.ui.h:12
 msgid "_Edit"
 msgstr "Br_eyta"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.ui.h:13
+#| msgid "Undo"
+msgid "_Undo"
+msgstr "_Afturkalla"
+
+#: ../src/Glade/MainWindow.ui.h:14
+#| msgid "Redo"
+msgid "_Redo"
+msgstr "_Endurtaka"
+
+#: ../src/Glade/MainWindow.ui.h:15
+msgid "Cu_t"
+msgstr "_Klippa"
+
+#: ../src/Glade/MainWindow.ui.h:16
+msgid "_Copy"
+msgstr "_Afrita"
+
+#: ../src/Glade/MainWindow.ui.h:17
+msgid "_Paste"
+msgstr "_Líma"
+
+#: ../src/Glade/MainWindow.ui.h:18
 msgid "_Format"
 msgstr "_Forsníða"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.ui.h:19
 msgid "_Bold"
 msgstr "_Feitletrað"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.ui.h:20
 msgid "_Italic"
 msgstr "_Skáletrað"
 
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.ui.h:21
 msgid "_Underline"
 msgstr "_Undirstrika"
 
-#: ../src/Glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.ui.h:22
 msgid "_Split"
 msgstr "_Skipta"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.ui.h:23
 msgid "_Merge"
 msgstr "Sa_meina"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
 msgstr "Setja _inn skjátexta"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.ui.h:25
 msgid "_Before"
 msgstr "Á un_dan"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.ui.h:26
 msgid "_After"
 msgstr "Á _eftir"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.ui.h:27
 msgid "At _Video Position"
 msgstr "Á stað í _myndskeiði"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.ui.h:28
 msgid "_Delete Subtitles"
 msgstr "E_yða skjátextum"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.ui.h:29
 msgid "Pr_eferences"
 msgstr "Kjörstillin_gar"
 
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.ui.h:30
 msgid "_View"
 msgstr "S_koða"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.ui.h:31
 msgid "_Frames"
 msgstr "_Rammar:"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.ui.h:32
 msgid "_Times"
 msgstr "_Tími"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.ui.h:33
 msgid "_Line Lengths"
 msgstr "_Lengdir lína"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.ui.h:34
 msgid "_Video"
 msgstr "_Myndskeið"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.ui.h:35
 msgid "Video _Subtitles"
 msgstr "_Skjátextar myndskeiðs"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.ui.h:36
 msgid "_Text"
 msgstr "_Texti"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.ui.h:37
 msgid "Translatio_n"
 msgstr "Þýði_ng"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.ui.h:38
 msgid "_Search"
 msgstr "_Leita"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.ui.h:39
+#| msgid "Find"
+msgid "_Find"
+msgstr "_Finna"
+
+#: ../src/Glade/MainWindow.ui.h:40
 msgid "Find Ne_xt"
 msgstr "_Finna næsta"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.ui.h:41
 msgid "Find Pre_vious"
 msgstr "Finna f_yrri"
 
-#: ../src/Glade/MainWindow.glade.h:34 ../src/Glade/SearchDialog.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:42
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:172
 msgid "_Replace"
 msgstr "_Skipta út"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.ui.h:43
 msgid "T_imings"
 msgstr "Tímasetn_ingar"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.ui.h:44
 msgid "_Input Frame Rate"
 msgstr "Ramma_hraði upprunalegs myndmerkis"
 
-#: ../src/Glade/MainWindow.glade.h:37
-msgid "_Video Frame Rate"
-msgstr "Rammahraði _myndmerkis"
+#: ../src/Glade/MainWindow.ui.h:45
+#| msgid "_Input Frame Rate"
+msgid "_Current Frame Rate"
+msgstr "Núveran_di rammatíðni"
 
-#: ../src/Glade/MainWindow.glade.h:38
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:46
 msgid "_Synchronize"
 msgstr "_Samstilla"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.ui.h:47
 msgid "_Adjust"
 msgstr "_Aðlaga"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.ui.h:48
 msgid "Sh_ift"
 msgstr "_Hliðra"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.ui.h:49
 msgid "Vide_o"
 msgstr "M_yndskeið"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.ui.h:50
 msgid "_Play / Pause"
 msgstr "S_pila/stöðva"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.ui.h:51
 msgid "_Loop Selection"
 msgstr "_Endurtaka valið"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.ui.h:52
 msgid "R_ewind"
 msgstr "_Spóla til baka"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.ui.h:53
 msgid "_Forward"
 msgstr "Á_fram"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.ui.h:54
 msgid "_Seek to…"
 msgstr "_Leita að…"
 
-#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.ui.h:55
 msgid "Seek _to Selection"
 msgstr "Lei_ta að vali"
 
-#: ../src/Glade/MainWindow.glade.h:48
-msgid "Select Nearest Subtitle"
-msgstr "Velja næsta skjátexta"
+#: ../src/Glade/MainWindow.ui.h:56
+#| msgid "Select Nearest Subtitle"
+msgid "Select _Nearest Subtitle"
+msgstr "Velja _næsta skjátexta"
 
-#: ../src/Glade/MainWindow.glade.h:49
-msgid "Auto Select Subtitle"
-msgstr "Sjálfvirkt val skjátexta"
+#: ../src/Glade/MainWindow.ui.h:57
+#| msgid "Auto Select Subtitle"
+msgid "A_uto Select Subtitle"
+msgstr "Sjálfvirkt _val skjátexta"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
 msgstr "Setja upph_af skjátexta"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
 msgstr "Setja en_da skjátexta"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
 msgstr "_Verkfæri"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.ui.h:61
 msgid "_Autocheck Spelling"
 msgstr "Sjálfvirk st_afsetningaryfirferð"
 
-#: ../src/Glade/MainWindow.glade.h:54
-msgid "Set T_ext Language"
-msgstr "V_eldu tungumál textans"
+#: ../src/Glade/MainWindow.ui.h:62
+#| msgid "Set language"
+msgid "Set _Languages"
+msgstr "Sti_lla tungumál"
 
-#: ../src/Glade/MainWindow.glade.h:55
-msgid "Set Translati_on Language"
-msgstr "Veldu tun_gumál þýðingar"
-
-#: ../src/Glade/MainWindow.glade.h:56
-msgid "Translate _Text → Translation"
-msgstr "Þýðing _texta → Þýðing"
-
-#: ../src/Glade/MainWindow.glade.h:57
-msgid "Translate Translatio_n → Text"
-msgstr "Þýða þýði_ngu → Texti"
-
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.ui.h:63
 msgid "_Help"
 msgstr "_Hjálp"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.ui.h:64
 msgid "_Contents"
 msgstr "_Efni"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "Flýtily_klar"
 
-#: ../src/Glade/MainWindow.glade.h:61
-msgid "Request a _Feature"
-msgstr "Stin_ga upp á eiginleikum"
+#: ../src/Glade/MainWindow.ui.h:66
+msgid "_Donate"
+msgstr "_Styrkja"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.ui.h:67
+#| msgid "Request a _Feature"
+msgid "Request a New _Feature"
+msgstr "Stin_ga upp á nýjum eiginleikum"
+
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "Report a _Bug"
 msgstr "Tilkynna um _villu"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.ui.h:69
+msgid "_About"
+msgstr "_Um hugbúnaðinn"
+
+#: ../src/Glade/MainWindow.ui.h:70
 msgid "New File"
 msgstr "Ný skrá"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.ui.h:71
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
+msgid "Open File"
+msgstr "Opna skrá"
+
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Save File"
 msgstr "Vista skrá"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Insert"
 msgstr "Setja inn"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.ui.h:74
 msgid "Delete"
 msgstr "Eyða"
 
-#: ../src/Glade/MainWindow.glade.h:68
-msgid "<b>Time</b>"
-msgstr "<b>Tími</b>"
+#: ../src/Glade/MainWindow.ui.h:75
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+msgid "Time"
+msgstr "Tími"
 
-#: ../src/Glade/MainWindow.glade.h:69
-msgid "<b>Length</b>"
-msgstr "<b>Lengd</b>"
+#: ../src/Glade/MainWindow.ui.h:76
+#| msgid "_Line Lengths"
+msgid "Length\t"
+msgstr "Lengd\t"
 
-#: ../src/Glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.ui.h:77
+msgid "Sets the subtitle Start to the current video position"
+msgstr "Setja inn upphaf skjátexta á þennan stað í myndskeiði"
+
+#: ../src/Glade/MainWindow.ui.h:78
+msgid "Sets the subtitle End to the current video position"
+msgstr "Setja inn enda skjátexta á þennan stað í myndskeiði"
+
+#: ../src/Glade/MainWindow.ui.h:79
+msgid ""
+"Sets the subtitle Start and End while the video is playing. Keep the button "
+"pressed for the duration of each subtitle.\t"
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:80
+msgid "1.0x"
+msgstr "1.0x"
+
+#: ../src/Glade/MainWindow.ui.h:81
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -592,284 +731,21 @@ msgstr ""
 "aðlaga tímasetningar upphafs og enda.\n"
 "Shift+Plús/Mínus (á talnaborði) hliðrar tímasetningum."
 
-#. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:73
-msgid "Duration:"
-msgstr "Tímalengd:"
-
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:75
-msgid "End:"
-msgstr "Endir:"
-
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:77
+#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Upphaf:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "Preferences"
-msgstr "Kjörstillingar"
+#: ../src/Glade/MainWindow.ui.h:85
+msgid "End:"
+msgstr "Endir:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "_Reset to defaults"
-msgstr "_Frumstilla á sjálfgefin gildi"
-
-#: ../src/Glade/PreferencesDialog.glade.h:3
-msgid "When saving subtitles, also save their _translation"
-msgstr "Við vis_tun skjátexta, vista einnig þýðingar þeirra"
-
-#: ../src/Glade/PreferencesDialog.glade.h:4
-msgid "<b>Translation File Saving</b>"
-msgstr "<b>Vistun þýðingarskrár</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:5
-msgid "Character c_oding to use:"
-msgstr "Stafatafl_an sem á að nota:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:6
-msgid "If auto detection _fails, use:"
-msgstr "Ef sjálfvirk _greining mistekst, nota:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "Automatically choose the _video file to open"
-msgstr "Velja sjálfvirkt m_yndskeiðsskrána sem á að opna"
-
-#: ../src/Glade/PreferencesDialog.glade.h:8
-msgid "<b>File Open Dialog</b>"
-msgstr "<b>Valmynd til að opna skrá</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
-msgid "Ch_aracter coding to use:"
-msgstr "Stafatafl_an sem á að nota:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:10
-msgid "_Subtitle format to use:"
-msgstr "_Snið skjátexta sem á að nota:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "_Newline type to use:"
-msgstr "Tegund _nýlínu sem á að nota:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:12
-msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Valmynd til að vista skrá sem</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:13
-msgid "Create a _backup copy of files every"
-msgstr "Gera ör_yggisafrit af skrám á"
-
-#: ../src/Glade/PreferencesDialog.glade.h:14
-msgid "minutes"
-msgstr "mínútna fresti"
-
-#: ../src/Glade/PreferencesDialog.glade.h:15
-msgid "<b>Backup</b>"
-msgstr "<b>Öryggisafrit</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:16
-msgid "Files"
-msgstr "Skrár"
-
-#: ../src/Glade/PreferencesDialog.glade.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
-msgstr ""
-"Leita sjálfvirkt í fyrsta skjátexta myndskeiðs þegar tímasetningum er breytt"
-
-#: ../src/Glade/PreferencesDialog.glade.h:18
-msgid "Seek"
-msgstr "Fara á"
-
-#: ../src/Glade/PreferencesDialog.glade.h:19
-msgid "ms before the actual start to help review new timings"
-msgstr ""
-"msek á undan raunverulegu upphafi til að auðvelda yfirferð á nýjum "
-"tímasetningum"
-
-#: ../src/Glade/PreferencesDialog.glade.h:20
-msgid "<b>Video Seeking</b>"
-msgstr "<b>Leit í myndskeiði</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:21
-msgid "Leave"
-msgstr "Skilja eftir"
-
-#: ../src/Glade/PreferencesDialog.glade.h:22
-msgid "ms between subtitles when inserting or splitting"
-msgstr "msek á milli skjátexta við innskot eða skiptingu"
-
-#: ../src/Glade/PreferencesDialog.glade.h:23
-msgid "<b>Gap Between Subtitles</b>"
-msgstr "<b>Bil á milli skjátexta</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:24
-msgid "Subtract"
-msgstr "Draga frá"
-
-#: ../src/Glade/PreferencesDialog.glade.h:25
-msgid "ms when setting subtitle start/end on playback"
-msgstr "msek við stillingu á upphafi/enda skjátexta við afspilun"
-
-#: ../src/Glade/PreferencesDialog.glade.h:26
-msgid "<b>Reaction Delay</b>"
-msgstr "<b>Töf á viðbrögðum</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:27
-msgid "Editing"
-msgstr "Breytingar"
-
-#: ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
-msgid "Replace"
-msgstr "Skipta út"
-
-#: ../src/Glade/SearchDialog.glade.h:2
-msgid "Replace _with:"
-msgstr "Skipta út _með: "
-
-#: ../src/Glade/SearchDialog.glade.h:3
-msgid "_Search for:"
-msgstr "_Leita að:"
-
-#: ../src/Glade/SearchDialog.glade.h:4
-msgid "_Match case"
-msgstr "Sa_msvara stafstöðu"
-
-#: ../src/Glade/SearchDialog.glade.h:5
-msgid "Search _backwards"
-msgstr "Leita afturá_bak"
-
-#: ../src/Glade/SearchDialog.glade.h:6
-msgid "Search using a Regular _Expression"
-msgstr "Leita með r_eglulegri segð"
-
-#: ../src/Glade/SearchDialog.glade.h:7
-msgid "_Wrap around"
-msgstr "Um_brjóta texta"
-
-#: ../src/Glade/SearchDialog.glade.h:8
-msgid "Replace _All"
-msgstr "Skipt_a út öllu"
-
-#: ../src/Glade/SetLanguageDialog.glade.h:1
-msgid "Set language"
-msgstr "Stilla tungumál"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:1
-msgid "Adjust Timings"
-msgstr "Aðlaga tímasetningar"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:2
-msgid "New Start:"
-msgstr "Nýtt upphaf: %1"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:3
-msgid "Start Frame:"
-msgstr "Upphafsrammi:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:4
-msgid "No.:"
-msgstr "Nr.:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:5
-msgid "<b>First Subtitle</b>"
-msgstr "<b>Fyrsti skjátexti</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:6
-msgid "<b>Last Subtitle</b>"
-msgstr "<b>Síðasti skjátexti</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
-msgid "All Subtitles"
-msgstr "Allir skjátextar"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
-msgid "Selected Range"
-msgstr "Valið svið"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:9
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "<b>Apply to</b>"
-msgstr "<b>Beita á</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:10
-msgid "Adjust"
-msgstr "Aðlaga"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:1
-msgid "Shift Timings"
-msgstr "Hliðra tímasetningum"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:2
-msgid "<b>Frames</b>"
-msgstr "<b>Rammar</b>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "_All subtitles"
-msgstr "_Allir skjátextar"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:4
-msgid "_Selected subtitles"
-msgstr "Valdir skjátextar"
-
-#. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:6
-msgid "From _first subtitle to selection"
-msgstr "Frá _fyrsta skjátexta að vali"
-
-#. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "From selection to _last subtitle"
-msgstr "Frá va_li að síðasta skjátexta"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
-msgid ""
-"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
-"to shift timings from the main window.</i></small>"
-msgstr ""
-"<small><i>Ábending: notaðu Shift+Plús/Mínus (á talnaborði)\n"
-"til að hliðra tímasetningum í aðalglugganum.</i></small>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:12
-msgid "_Shift"
-msgstr "_Hliðra"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "Synchronize Timings"
-msgstr "Samstilla tímasetningar"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "<b>Sync Points</b>"
-msgstr "<b>Samstillingarpunktar</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-msgid "Synchroni_ze all subtitles"
-msgstr "Samstilla alla skjáte_xta"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "<b>Options</b>"
-msgstr "<b> Valkostir</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "<b>Status</b>"
-msgstr "<b>Staða</b>"
-
-#: ../src/Glade/VideoOpenDialog.glade.h:1
-msgid "Open Video"
-msgstr "Opna myndskeið"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:1
-msgid "Seek To"
-msgstr "Leita að"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek _video to:"
-msgstr "Leita í m_yndskeiði að:"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:3
-msgid "_Seek"
-msgstr "_Leita að"
+#. This is the duration of a subtitle.
+#: ../src/Glade/MainWindow.ui.h:87
+msgid "Duration:"
+msgstr "Tímalengd:"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -908,12 +784,12 @@ msgid "Editing Duration"
 msgstr "Tímalengd breytinga"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:602
+#: ../src/GnomeSubtitles/Ui/Menus.cs:708
 msgid "Undo"
 msgstr "Afturkalla"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:612
+#: ../src/GnomeSubtitles/Ui/Menus.cs:718
 msgid "Redo"
 msgstr "Endurtaka"
 
@@ -954,16 +830,6 @@ msgstr "Kljúfa skjátexta"
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
 msgid "Synchronizing timings"
 msgstr "Samstilla tímasetningar"
-
-#. initially, it's the former text replaced by translation
-#. direction of translation
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
-msgid "Translating"
-msgstr "Þýðing"
-
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
-msgid "Could not translate the chosen subtitle."
-msgstr "Gat ekki þýtt valinn skjátexta."
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
@@ -1141,113 +1007,593 @@ msgid "Current Locale"
 msgstr "Núverandi staðfærsla"
 
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+msgid "About Gnome Subtitles"
+msgstr "Um Gnome skjátexta"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+msgid "_All subtitles"
+msgstr "_Allir skjátextar"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+msgid "_Selected subtitles"
+msgstr "Valdir skjátextar"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
+msgid "Subtitles between those selected and the _first"
+msgstr "Skjátextar milli þeirra sem eru valdir og þess _fyrsta"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
+msgid "Subtitles between those selected and the _last"
+msgstr "Skjátextar milli þeirra sem eru valdir og þess _síðasta"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
+#| msgid "Character codings"
+msgid "Character Encodings"
+msgstr "Stafatöflur"
+
+#. Left part: Available VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:70
+#| msgid "Character codings"
+msgid "Available Encodings"
+msgstr "Tiltækar stafatöflur"
+
+#. Right part: Shown VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:87
+#| msgid "Encoding"
+msgid "Chosen Encodings"
+msgstr "Valdar stafatöflur"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
 msgid "Description"
 msgstr "Lýsing"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
 msgid "Encoding"
 msgstr "Stafatafla"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+msgid "Headers"
+msgstr "Hausar"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+msgid "Title:"
+msgstr "Titill:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "Höfundur:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+msgid "Artist:"
+msgstr "Flytjandi:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "Albúm/Diskur:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+msgid "By:"
+msgstr "Eftir:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "Útgáfa:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+msgid "Program:"
+msgstr "Forrit:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+msgid "Source:"
+msgstr "Uppruni:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "Dagsetning:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
+#| msgid "Frame rate:"
+msgid "Frame Rate:"
+msgstr "Rammatíðni:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+msgid "File:"
+msgstr "Skrá:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+msgid "Note:"
+msgstr "Minnispunktur:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
+#| msgid "Newline Type:"
+msgid "Media Type:"
+msgstr "Tegund gagna:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "Hljóð"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: ../src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "Myndskeið"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+msgid "Original Script:"
+msgstr "Upprunalegt handrit:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+msgid "Original Translation:"
+msgstr "Upprunaleg þýðing:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+msgid "Original Editing:"
+msgstr "Upprunaleg yfirferð:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+msgid "Original Timing:"
+msgstr "Upprunalegar tímasetningar:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+msgid "Original Script Checking:"
+msgstr "Upprunaleg yfirferð handrits:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+msgid "Script Updated By:"
+msgstr "Handrit uppfært af:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+msgid "Collisions:"
+msgstr "Árekstrar:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+msgid "Timer:"
+msgstr "Niðurtalning:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
+#| msgid "PlayResX:"
+msgid "Play Res X:"
+msgstr "PlayResX:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:129
+#| msgid "PlayResY:"
+msgid "Play Res Y:"
+msgstr "PlayResY:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
+#| msgid "PlayDepth:"
+msgid "Play Depth:"
+msgstr "Play Depth:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+msgid "File Path:"
+msgstr "Skráarslóð:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+msgid "Delay:"
+msgstr "Töf:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+msgid "CD Track:"
+msgstr "CD-spor:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+msgid "Font Name:"
+msgstr "Heiti leturs:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+msgid "Font Color:"
+msgstr "Litur á letri:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+msgid "Font Style:"
+msgstr "Stíll leturs:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+msgid "Font Size:"
+msgstr "Leturstærð:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+msgid "Video To Open:"
+msgstr "Myndskeið sem á að opna:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
+#| msgid "Character codings"
+msgid "Character Encoding:"
+msgstr "Stafatafla:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:200
 msgid "None"
 msgstr "Ekkert"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:279
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
 msgid "All Files"
 msgstr "Allar skrár"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
 msgid "All Subtitle Files"
 msgstr "Allar skjátextaskrár"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "Eiginleikar skráar"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
+#| msgid "File Path:"
+msgid "File Name"
+msgstr "Skráarheiti"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:52
+msgid "Path"
+msgstr "Slóð"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:55
+#| msgid "Character codings"
+msgid "Character Encoding"
+msgstr "Stafatafla"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
+#| msgid "Subtitle Format:"
+msgid "Subtitle Format"
+msgstr "Snið skjátexta"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+#| msgid "<b>Timing Mode:</b>"
+msgid "Timing Mode"
+msgstr "Tímasetningarhamur"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "Vista sem"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+msgid "Subtitle Format:"
+msgstr "Snið skjátexta:"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
+#| msgid "Original Editing:"
+msgid "Line Ending:"
+msgstr "Línuendingar:"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Opna þýðingarskrá"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Remember the last used encoding"
-msgstr "Muna síðast notuðu stafakóðun"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Keep the encoding used on file open"
-msgstr "Halda stafatöflunni sem var notuð við opnun skrárinnar"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Keep the format used on file open"
-msgstr "Halda sniðinu sem var notað við opnun skrárinnar"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Remember the last used format"
-msgstr "Muna síðast notaða snið"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:167
-msgid "Remember the last used type"
-msgstr "Muna síðast notuðu skráartegund"
-
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
-msgid "Find"
-msgstr "Finna"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
-msgid "Set Text Language"
-msgstr "Veldu tungumál textans"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
-msgid "Set Translation Language"
-msgstr "Veldu tungumál þýðingar"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
-msgid "Select the text _language of the current subtitles."
-msgstr "Ve_ldu tungumál texta núverandi skjátexta."
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
-msgid "Select the translation _language of the current subtitles."
-msgstr "Ve_ldu tungumál þýðingar á núverandi skjátexta."
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:28
 msgid "Save Translation As"
 msgstr "Vista þýðingu sem"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:67
-msgid "Start Time:"
-msgstr "Upphafstími:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "Kjörstillingar"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
-msgid "Time"
-msgstr "Tími"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "Skrár"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-msgid "Frames"
-msgstr "Rammar"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "Breytingar"
+
+#. Translation File Saving
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
+#| msgid "When saving subtitles, also save their _translation"
+msgid "When saving subtitle files, automatically save their _translation"
+msgstr "Við vis_tun skjátexta, vista þýðingar þeirra sjálfvirkt"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
+#| msgid "<b>Translation File Saving</b>"
+msgid "Translation File Saving"
+msgstr "Vistun þýðingarskrár"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+msgid "Character c_oding to use:"
+msgstr "Stafatafl_an sem á að nota:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+msgid "If auto detection _fails, use:"
+msgstr "Ef sjálfvirk _greining mistekst, nota:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+msgid "Automatically choose the _video file to open"
+msgstr "Velja sjálfvirkt m_yndskeiðsskrána sem á að opna"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+#| msgid "<b>File Open Dialog</b>"
+msgid "File Open Dialog"
+msgstr "Valmynd til að opna skrár"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+msgid "_Subtitle format to use:"
+msgstr "_Snið skjátexta sem á að nota:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+msgid "Ch_aracter coding to use:"
+msgstr "Stafatafl_an sem á að nota:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+msgid "_Newline type to use:"
+msgstr "Tegund _nýlínu sem á að nota:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+#| msgid "<b>File Save As Dialog</b>"
+msgid "File Save As Dialog"
+msgstr "Valmynd til að vista skrá sem"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+msgid "Create a _backup copy of files every"
+msgstr "Gera ör_yggisafrit af skrám á"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+msgid "minutes"
+msgstr "mínútna fresti"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+#| msgid "<b>Backup</b>"
+msgid "Backup"
+msgstr "Öryggisafrit"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
+#| msgid ""
+#| "Automatically seek the video to the first subtitle when changing timings"
+msgid "Seek the video to the selected subtitle when changing timings"
+msgstr ""
+"Leita sjálfvirkt í valinn skjátexta myndskeiðs þegar tímasetningum er breytt"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+#| msgid "PlayResX:"
+msgid "Play"
+msgstr "Afspilun"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+msgid "ms before the actual start to help review new timings"
+msgstr ""
+"msek á undan raunverulegu upphafi til að auðvelda yfirferð á nýjum "
+"tímasetningum"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+#| msgid "<b>Video Seeking</b>"
+msgid "Video Seeking"
+msgstr "Leit í myndskeiði"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+msgid "Leave"
+msgstr "Skilja eftir"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+msgid "ms between subtitles when inserting or splitting"
+msgstr "msek á milli skjátexta við innskot eða skiptingu"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+#| msgid "<b>Gap Between Subtitles</b>"
+msgid "Gap Between Subtitles"
+msgstr "Bil á milli skjátexta"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+msgid "Subtract"
+msgstr "Draga frá"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+#| msgid "ms when setting subtitle start/end on playback"
+msgid "ms when setting subtitle start/end while playing the video"
+msgstr "msek við stillingu á upphafi/enda skjátexta við afspilun"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+#| msgid "<b>Reaction Delay</b>"
+msgid "Reaction Delay"
+msgstr "Töf á viðbrögðum"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+msgid "Remember the last used encoding"
+msgstr "Muna síðast notuðu stafakóðun"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+msgid "Keep the encoding used on file open"
+msgstr "Halda stafatöflunni sem var notuð við opnun skrárinnar"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+msgid "Keep the format used on file open"
+msgstr "Halda sniðinu sem var notað við opnun skrárinnar"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+msgid "Remember the last used format"
+msgstr "Muna síðast notaða snið"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+msgid "Remember the last used type"
+msgstr "Muna síðast notuðu skráartegund"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Replace"
+msgstr "Skipta út"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Find"
+msgstr "Finna"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:130
+msgid "F_ind"
+msgstr "F_inna"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:139
+#| msgid "Replace _with:"
+msgid "Replace _with"
+msgstr "Skipta út _með"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "Sa_msvara stafstöðu"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "Leita afturá_bak"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
+#| msgid "Search using a Regular _Expression"
+msgid "Regular _expression"
+msgstr "R_egluleg segð"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
+#| msgid "_Wrap around"
+msgid "Wra_p around"
+msgstr "Um_brjóta texta"
+
+#. Action area
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "Skipt_a út öllu"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
+#| msgid "Set language"
+msgid "Set Languages"
+msgstr "Stilla tungumál"
+
+#. Left part: Text Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
+#| msgid "Set Text Language"
+msgid "Text Language"
+msgstr "Tungumál texta"
+
+#. Right part: Translation Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
+#| msgid "Set Translation Language"
+msgid "Translation Language"
+msgstr "Tungumál þýðingar"
+
+#. Bottom: info message
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
+msgid "For additional languages please install the corresponding package."
+msgstr "Til að nota fleiri tungumál settu þá upp viðkomandi tungumálapakka."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
+#| msgid "Adjust Timings"
+msgid "Adjust Timings Between 2 Points"
+msgstr "Aðlaga tímasetningar milli 2 punkta"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
+msgid "_Apply"
+msgstr "Virkj_a"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
+#| msgid "Subtitle No."
+msgid "Subtitle No.:"
+msgstr "Skjátexti nr.:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+msgid "New Start:"
+msgstr "Nýtt upphaf: %1"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
+msgid "First Point"
+msgstr "Fyrsti punktur"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:139
+msgid "Second Point"
+msgstr "Annar punktur"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:162
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
+#| msgid "<b>Apply to</b>"
+msgid "Apply To"
+msgstr "Beita á"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+msgid "Shift Timings"
+msgstr "Hliðra tímasetningum"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
+msgid "Apply"
+msgstr "Virkja"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:82
+msgid "Reset"
+msgstr "Frumstilla"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
+msgid "Set From Video"
+msgstr "Setja miðað við myndskeið"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid ""
+"Sets the shift amount in order for the selected subtitles to start at the "
+"current video position."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
+msgid "Amount"
+msgstr "Magn"
+
+#. Tips label
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
+#| msgid ""
+#| "<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
+#| "to shift timings from the main window.</i></small>"
+msgid ""
+"Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
+"from the main window."
+msgstr ""
+"Ábending: þú getur notað Shift + Plús/Mínus (á talnaborði) til að hliðra "
+"tímasetningum beint í aðalglugganum."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+msgid "Synchronize Timings"
+msgstr "Samstilla tímasetningar"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
+#| msgid "<b>Sync Points</b>"
+msgid "Sync Points"
+msgstr "Samstillingarpunktar"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
+msgid "Subtitles between sync points"
+msgstr "Skjátextar milli samstillingarpunkta"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
+msgid "Info"
+msgstr "Upplýsingar"
 
 #. Number column
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
 msgid "Subtitle No."
 msgstr "Skjátexti nr."
 
-#. Start (current and correct) columns
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
-msgid "Current Start"
-msgstr "Núverandi upphaf"
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+msgid "Start"
+msgstr "Upphaf"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
-msgid "Correct Start"
-msgstr "Rétt upphaf"
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:152
+#| msgid "New Start:"
+msgid "New Start"
+msgstr "Nýtt upphaf"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:170
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
@@ -1256,7 +1602,7 @@ msgstr ""
 "myndskeiðið á rétta stöðu miðað við textann. Nota þarf a.m.k. 2 "
 "samstillingarpunkta."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
 msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
@@ -1264,29 +1610,27 @@ msgstr ""
 "Bættu við 1 samstillingarpunkti áður en samstilling fer fram. Ef bætt er við "
 "enn fleiri punktum, eykst nákvæmnin."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
 msgid "Synchronization is ready. All subtitles will be synchronized."
 msgstr "Allt er tilbúið fyrir samstillingu. Allir skjátextar verða samræmdir."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
 msgstr ""
 "Allt er tilbúið fyrir samstillingu. Eftirfarandi skjátextar verða ekki "
-"samræmdir: "
-"{0}."
+"samræmdir: {0}."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
 "Allt er tilbúið fyrir samstillingu. Eftirfarandi skjátextar verða ekki "
-"samræmdir: "
-"{0} og {1}."
+"samræmdir: {0} og {1}."
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
 msgid ""
@@ -1297,43 +1641,44 @@ msgstr ""
 "eftirfarandi auðkenni:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
 msgid "Could not open the file"
 msgstr "Gat ekki opnað skrána"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:31
 msgid "Open another file"
 msgstr "Opna aðra skrá"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:61
 msgid "The file path appears to be invalid."
 msgstr "Slóð skrárinnar virðist vera ógild."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
 msgid "Could not save the file"
 msgstr "Gat ekki vistað skrána"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:34
 msgid "Save to another file"
 msgstr "Vista í aðra skrá"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:60
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr ""
 "Tölvan hefur klárað minnið. Lokaðu einhverjum forritum og reyndu aftur."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
+#| msgid "An I/O error has occured."
+msgid "An I/O error has occurred."
 msgstr "I/O-villa kom upp."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:64
 msgid "You do not have the permissions necessary to save the file."
 msgstr "Þú hefur ekki næg réttindi til að vista skrána."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:66
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
 msgstr "Tiltekna skráin er ógild."
@@ -1423,42 +1768,47 @@ msgstr ""
 "Skráin virðist vera of stór til að geta verið textaskrá með skjátextum."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:30
 msgid "Could not play the file"
 msgstr "Gat ekki spilað skrána"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+msgid "Open Video"
+msgstr "Opna myndskeið"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
 msgid "All Video Files"
 msgstr "Allar myndskeiðasskrár"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:71
 msgid "All Audio Files"
 msgstr "Allar hljóðskrár"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
-msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr "Gat ekki opnað Bug Buddy, villuskýrslutólið."
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
+#| msgid "Seek _video to:"
+msgid "Seek Video To"
+msgstr "Leita í myndskeiði að"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
-msgid "Bug information has been printed to the console."
-msgstr "Búið er að birta á stjórnskjá upplýsingar um villu."
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+msgid "_Seek"
+msgstr "_Leita að"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+msgid "Seek _video to:"
+msgstr "Leita í m_yndskeiði að:"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
 msgstr "Bæta við eða fjarlægja..."
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
-msgid "Auto Detected"
-msgstr "Sjálfuppgötvað"
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+#| msgid "Auto Detected"
+msgid "Automatically Detected"
+msgstr "Fannst sjálfkrafa"
 
-#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
 msgid "System Default"
 msgstr "Sjálfgefið í kerfinu"
-
-#. Constant strings
-#: ../src/GnomeSubtitles/Ui/Menus.cs:33
-msgid "Video"
-msgstr "Myndskeið"
 
 #. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
 #: ../src/GnomeSubtitles/Ui/Status.cs:43
@@ -1489,7 +1839,7 @@ msgstr "Ln"
 msgid "Col"
 msgstr "Dál"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
 msgid "Frame"
 msgstr "Rammi"
 
@@ -1497,10 +1847,6 @@ msgstr "Rammi"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
 msgid "No."
 msgstr "Nr."
-
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
-msgid "Start"
-msgstr "Upphaf"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "End"
@@ -1514,4 +1860,178 @@ msgstr "Tímalengd"
 msgid "Translation"
 msgstr "Þýðing"
 
+#~ msgid ""
+#~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
+#~ msgstr "Gnome Subtitles er skjátextaritill fyrir GNOME skjáborðsumhverfið."
 
+#~ msgid ""
+#~ "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gnome Subtitles is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ msgstr ""
+#~ "Þetta forrit er frjáls hugbúnaður; þú mátt endurrita hann og/eða breyta\n"
+#~ "samkvæmt skilmálum \"GNU General Public License\" eins og það er\n"
+#~ "útgefið af \"Free Software Foundation;\"; annað hvort útgáfa 2 af "
+#~ "leyfinu,\n"
+#~ "eða (að þínu vali) einhver síðari útgáfa.\n"
+#~ "\n"
+#~ "Þessu forriti er dreift í þeirri von að það sé gagnlegt, en ÁN\n"
+#~ "NOKKURAR ÁBYRGÐAR; einnig án óbeinnar SÖLUÁBYRGÐAR eða\n"
+#~ "HÆFNI TIL NOKKURS HLUTAR. Sjá nánar í \"GNU General Public\n"
+#~ "License\" leyfinu.\n"
+#~ "\n"
+#~ "Þú ættir að hafa fengið afrit af \"GNU General Public License\" með\n"
+#~ "þessu forriti; ef ekki, skrifaðu til Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+
+#~ msgid "A_vailable:"
+#~ msgstr "_Tiltækt:"
+
+#~ msgid "Character Coding:"
+#~ msgstr "Stafakóði:"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>Heiti:</b>"
+
+#~ msgid "<b>Path:</b>"
+#~ msgstr "<b>Slóð:</b>"
+
+#~ msgid "<b>Character Coding:</b>"
+#~ msgstr "<b>Stafakóði:</b>"
+
+#~ msgid "<b>Subtitle Format:</b>"
+#~ msgstr "<b>Snið skjátexta:</b>"
+
+#~ msgid "Karaoke Lyrics LRC"
+#~ msgstr "Karaoke textar LRC"
+
+#~ msgid "Karaoke Lyrics VKT"
+#~ msgstr "Karaoke textar VKT"
+
+#~ msgid "Type:"
+#~ msgstr "Tegund:"
+
+#~ msgid ""
+#~ "Audio\n"
+#~ "Video\n"
+#~ msgstr ""
+#~ "Hjóð\n"
+#~ "Myndskeið\n"
+
+#~ msgid "Comment:"
+#~ msgstr "Athugasemd:"
+
+#~ msgid "_Video Frame Rate"
+#~ msgstr "Rammahraði _myndmerkis"
+
+#~ msgid "Set T_ext Language"
+#~ msgstr "V_eldu tungumál textans"
+
+#~ msgid "Set Translati_on Language"
+#~ msgstr "Veldu tun_gumál þýðingar"
+
+#~ msgid "Translate _Text → Translation"
+#~ msgstr "Þýðing _texta → Þýðing"
+
+#~ msgid "Translate Translatio_n → Text"
+#~ msgstr "Þýða þýði_ngu → Texti"
+
+#~ msgid "<b>Time</b>"
+#~ msgstr "<b>Tími</b>"
+
+#~ msgid "<b>Length</b>"
+#~ msgstr "<b>Lengd</b>"
+
+#~ msgid "_Reset to defaults"
+#~ msgstr "_Frumstilla á sjálfgefin gildi"
+
+#~ msgid "Seek"
+#~ msgstr "Fara á"
+
+#~ msgid "_Search for:"
+#~ msgstr "_Leita að:"
+
+#~ msgid "Start Frame:"
+#~ msgstr "Upphafsrammi:"
+
+#~ msgid "No.:"
+#~ msgstr "Nr.:"
+
+#~ msgid "<b>First Subtitle</b>"
+#~ msgstr "<b>Fyrsti skjátexti</b>"
+
+#~ msgid "<b>Last Subtitle</b>"
+#~ msgstr "<b>Síðasti skjátexti</b>"
+
+#~ msgid "All Subtitles"
+#~ msgstr "Allir skjátextar"
+
+#~ msgid "Selected Range"
+#~ msgstr "Valið svið"
+
+#~ msgid "Adjust"
+#~ msgstr "Aðlaga"
+
+#~ msgid "<b>Frames</b>"
+#~ msgstr "<b>Rammar</b>"
+
+#~ msgid "From _first subtitle to selection"
+#~ msgstr "Frá _fyrsta skjátexta að vali"
+
+#~ msgid "From selection to _last subtitle"
+#~ msgstr "Frá va_li að síðasta skjátexta"
+
+#~ msgid "_Shift"
+#~ msgstr "_Hliðra"
+
+#~ msgid "Synchroni_ze all subtitles"
+#~ msgstr "Samstilla alla skjáte_xta"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b> Valkostir</b>"
+
+#~ msgid "<b>Status</b>"
+#~ msgstr "<b>Staða</b>"
+
+#~ msgid "Seek To"
+#~ msgstr "Leita að"
+
+#~ msgid "Translating"
+#~ msgstr "Þýðing"
+
+#~ msgid "Could not translate the chosen subtitle."
+#~ msgstr "Gat ekki þýtt valinn skjátexta."
+
+#~ msgid "Select the text _language of the current subtitles."
+#~ msgstr "Ve_ldu tungumál texta núverandi skjátexta."
+
+#~ msgid "Select the translation _language of the current subtitles."
+#~ msgstr "Ve_ldu tungumál þýðingar á núverandi skjátexta."
+
+#~ msgid "Start Time:"
+#~ msgstr "Upphafstími:"
+
+#~ msgid "Frames"
+#~ msgstr "Rammar"
+
+#~ msgid "Current Start"
+#~ msgstr "Núverandi upphaf"
+
+#~ msgid "Correct Start"
+#~ msgstr "Rétt upphaf"
+
+#~ msgid "Could not open Bug Buddy, the bug reporting tool."
+#~ msgstr "Gat ekki opnað Bug Buddy, villuskýrslutólið."
+
+#~ msgid "Bug information has been printed to the console."
+#~ msgstr "Búið er að birta á stjórnskjá upplýsingar um villu."

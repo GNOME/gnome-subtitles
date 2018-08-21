@@ -14,34 +14,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2018-07-08 14:35+0000\n"
-"PO-Revision-Date: 2018-07-08 14:11-0300\n"
-"Last-Translator: Bruno Lopes da Silva <brunolopesbldsb@gmail.com>\n"
+"POT-Creation-Date: 2018-07-31 22:00+0000\n"
+"PO-Revision-Date: 2018-08-06 16:15-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-subtitles.appdata.xml.h:1
-#: ../data/gnome-subtitles.appdata.xml.in.h:1
-msgid "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
-msgstr "Gnome Subtitles é um editor de legendas para o ambiente do GNOME."
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Legendagem de vídeos no ambiente GNOME"
 
-#: ../data/gnome-subtitles.appdata.xml.h:2
-#: ../data/gnome-subtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#| msgid ""
+#| "It allows to create, synchronize, convert and translate subtitles by "
+#| "using a friendly user interface with video preview."
 msgid ""
-"It allows to create, synchronize, convert and translate subtitles by using a "
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
-"Permite criar, sincronizar, converter e traduzir legendas usando uma "
-"interface de usuário amigável com pré-visualização de vídeo."
+"GNOME Subtitles é um editor de legendas para o ambiente GNOME. Permite "
+"criar, sincronizar, converter e traduzir legendas usando uma interface de "
+"usuário amigável com pré-visualização de vídeo."
 
-#: ../data/gnome-subtitles.appdata.xml.h:3
-#: ../data/gnome-subtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
@@ -51,22 +55,15 @@ msgstr ""
 "limitar a: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, "
 "MPSub e SubViewer."
 
-#: ../data/gnome-subtitles.desktop.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
 msgid "Gnome Subtitles"
 msgstr "GNOME Subtitles"
 
-#: ../data/gnome-subtitles.desktop.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Editor de legendas"
 
-#: ../data/gnome-subtitles.desktop.in.h:3
-#: ../src/Glade/old.glade/AboutDialog.glade.h:2
-#: ../src/Glade/old.glade/AboutDialog.ui.h:2
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
-msgid "Video subtitling for the GNOME desktop"
-msgstr "Legendagem de vídeos no ambiente GNOME"
-
-#: ../data/gnome-subtitles.desktop.in.h:4
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
 msgid "Subtitles;Video;"
 msgstr "Legendas;Subtitles;Vídeo;Video;"
 
@@ -396,39 +393,39 @@ msgstr ""
 "Tempo recomendado entre legendas, em milissegundos, usado, por exemplo, ao "
 "dividir uma legenda em duas."
 
-#: ../src/Glade/MainWindow.ui.h:1 ../src/Glade/old.glade/MainWindow.glade.h:1
+#: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Arquivo"
 
-#: ../src/Glade/MainWindow.ui.h:2 ../src/Glade/old.glade/MainWindow.glade.h:3
+#: ../src/Glade/MainWindow.ui.h:2
 msgid "_New"
 msgstr "_Novo"
 
-#: ../src/Glade/MainWindow.ui.h:3 ../src/Glade/old.glade/MainWindow.glade.h:4
+#: ../src/Glade/MainWindow.ui.h:3
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/Glade/MainWindow.ui.h:4 ../src/Glade/old.glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:4
 msgid "_Save"
 msgstr "_Salvar"
 
-#: ../src/Glade/MainWindow.ui.h:5 ../src/Glade/old.glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.ui.h:5
 msgid "Save _As"
 msgstr "Salvar _como"
 
-#: ../src/Glade/MainWindow.ui.h:6 ../src/Glade/old.glade/MainWindow.glade.h:2
+#: ../src/Glade/MainWindow.ui.h:6
 msgid "_Translation"
 msgstr "_Tradução"
 
-#: ../src/Glade/MainWindow.ui.h:7 ../src/Glade/old.glade/MainWindow.glade.h:5
+#: ../src/Glade/MainWindow.ui.h:7
 msgid "_Reload"
 msgstr "_Recarregar"
 
-#: ../src/Glade/MainWindow.ui.h:8 ../src/Glade/old.glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.ui.h:8
 msgid "_Close"
 msgstr "_Fechar"
 
-#: ../src/Glade/MainWindow.ui.h:9 ../src/Glade/old.glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:9
 msgid "_Headers"
 msgstr "_Cabeçalhos"
 
@@ -440,7 +437,7 @@ msgstr "_Propriedades"
 msgid "_Quit"
 msgstr "_Sair"
 
-#: ../src/Glade/MainWindow.ui.h:12 ../src/Glade/old.glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.ui.h:12
 msgid "_Edit"
 msgstr "_Editar"
 
@@ -464,87 +461,87 @@ msgstr "_Copiar"
 msgid "_Paste"
 msgstr "C_olar"
 
-#: ../src/Glade/MainWindow.ui.h:18 ../src/Glade/old.glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.ui.h:18
 msgid "_Format"
 msgstr "_Formato"
 
-#: ../src/Glade/MainWindow.ui.h:19 ../src/Glade/old.glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.ui.h:19
 msgid "_Bold"
 msgstr "_Negrito"
 
-#: ../src/Glade/MainWindow.ui.h:20 ../src/Glade/old.glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.ui.h:20
 msgid "_Italic"
 msgstr "_Itálico"
 
-#: ../src/Glade/MainWindow.ui.h:21 ../src/Glade/old.glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.ui.h:21
 msgid "_Underline"
 msgstr "_Sublinhado"
 
-#: ../src/Glade/MainWindow.ui.h:22 ../src/Glade/old.glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.ui.h:22
 msgid "_Split"
 msgstr "_Dividir"
 
-#: ../src/Glade/MainWindow.ui.h:23 ../src/Glade/old.glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.ui.h:23
 msgid "_Merge"
 msgstr "_Mesclar"
 
-#: ../src/Glade/MainWindow.ui.h:24 ../src/Glade/old.glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
 msgstr "_Inserir legenda"
 
-#: ../src/Glade/MainWindow.ui.h:25 ../src/Glade/old.glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.ui.h:25
 msgid "_Before"
 msgstr "_Antes"
 
-#: ../src/Glade/MainWindow.ui.h:26 ../src/Glade/old.glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.ui.h:26
 msgid "_After"
 msgstr "_Depois"
 
-#: ../src/Glade/MainWindow.ui.h:27 ../src/Glade/old.glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.ui.h:27
 msgid "At _Video Position"
 msgstr "Na posição do _vídeo"
 
-#: ../src/Glade/MainWindow.ui.h:28 ../src/Glade/old.glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.ui.h:28
 msgid "_Delete Subtitles"
 msgstr "_Excluir legendas"
 
-#: ../src/Glade/MainWindow.ui.h:29 ../src/Glade/old.glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.ui.h:29
 msgid "Pr_eferences"
 msgstr "Pr_eferências"
 
-#: ../src/Glade/MainWindow.ui.h:30 ../src/Glade/old.glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.ui.h:30
 msgid "_View"
 msgstr "_Ver"
 
-#: ../src/Glade/MainWindow.ui.h:31 ../src/Glade/old.glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.ui.h:31
 msgid "_Frames"
 msgstr "_Quadros"
 
-#: ../src/Glade/MainWindow.ui.h:32 ../src/Glade/old.glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.ui.h:32
 msgid "_Times"
 msgstr "_Horários"
 
-#: ../src/Glade/MainWindow.ui.h:33 ../src/Glade/old.glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.ui.h:33
 msgid "_Line Lengths"
 msgstr "Comprimento da _linha"
 
-#: ../src/Glade/MainWindow.ui.h:34 ../src/Glade/old.glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.ui.h:34
 msgid "_Video"
 msgstr "_Vídeo"
 
-#: ../src/Glade/MainWindow.ui.h:35 ../src/Glade/old.glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.ui.h:35
 msgid "Video _Subtitles"
 msgstr "Legendas _do vídeo"
 
-#: ../src/Glade/MainWindow.ui.h:36 ../src/Glade/old.glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.ui.h:36
 msgid "_Text"
 msgstr "_Texto"
 
-#: ../src/Glade/MainWindow.ui.h:37 ../src/Glade/old.glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.ui.h:37
 msgid "Translatio_n"
 msgstr "Traduçã_o"
 
-#: ../src/Glade/MainWindow.ui.h:38 ../src/Glade/old.glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.ui.h:38
 msgid "_Search"
 msgstr "_Pesquisar"
 
@@ -552,26 +549,24 @@ msgstr "_Pesquisar"
 msgid "_Find"
 msgstr "_Localizar"
 
-#: ../src/Glade/MainWindow.ui.h:40 ../src/Glade/old.glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.ui.h:40
 msgid "Find Ne_xt"
 msgstr "Localizar pró_xima"
 
-#: ../src/Glade/MainWindow.ui.h:41 ../src/Glade/old.glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.ui.h:41
 msgid "Find Pre_vious"
 msgstr "Localizar a_nterior"
 
-#: ../src/Glade/MainWindow.ui.h:42 ../src/Glade/old.glade/MainWindow.glade.h:34
-#: ../src/Glade/old.glade/SearchDialog.glade.h:9
-#: ../src/Glade/old.glade/SearchDialog.ui.h:9
+#: ../src/Glade/MainWindow.ui.h:42
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:172
 msgid "_Replace"
 msgstr "_Substituir"
 
-#: ../src/Glade/MainWindow.ui.h:43 ../src/Glade/old.glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.ui.h:43
 msgid "T_imings"
 msgstr "C_ronometragem"
 
-#: ../src/Glade/MainWindow.ui.h:44 ../src/Glade/old.glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.ui.h:44
 msgid "_Input Frame Rate"
 msgstr "Taxa de quadros de _entrada"
 
@@ -579,45 +574,43 @@ msgstr "Taxa de quadros de _entrada"
 msgid "_Current Frame Rate"
 msgstr "Taxa de quadros de _aual"
 
-#: ../src/Glade/MainWindow.ui.h:46 ../src/Glade/old.glade/MainWindow.glade.h:38
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.glade.h:6
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.ui.h:6
+#: ../src/Glade/MainWindow.ui.h:46
 msgid "_Synchronize"
 msgstr "_Sincronizar"
 
-#: ../src/Glade/MainWindow.ui.h:47 ../src/Glade/old.glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.ui.h:47
 msgid "_Adjust"
 msgstr "_Ajustar"
 
-#: ../src/Glade/MainWindow.ui.h:48 ../src/Glade/old.glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.ui.h:48
 msgid "Sh_ift"
 msgstr "_Deslocar"
 
-#: ../src/Glade/MainWindow.ui.h:49 ../src/Glade/old.glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.ui.h:49
 msgid "Vide_o"
 msgstr "Víde_o"
 
-#: ../src/Glade/MainWindow.ui.h:50 ../src/Glade/old.glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.ui.h:50
 msgid "_Play / Pause"
 msgstr "_Reproduzir / Pausar"
 
-#: ../src/Glade/MainWindow.ui.h:51 ../src/Glade/old.glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.ui.h:51
 msgid "_Loop Selection"
 msgstr "_Loop da seleção"
 
-#: ../src/Glade/MainWindow.ui.h:52 ../src/Glade/old.glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.ui.h:52
 msgid "R_ewind"
 msgstr "R_etroceder"
 
-#: ../src/Glade/MainWindow.ui.h:53 ../src/Glade/old.glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.ui.h:53
 msgid "_Forward"
 msgstr "A_vançar"
 
-#: ../src/Glade/MainWindow.ui.h:54 ../src/Glade/old.glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.ui.h:54
 msgid "_Seek to…"
 msgstr "_Buscar…"
 
-#: ../src/Glade/MainWindow.ui.h:55 ../src/Glade/old.glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.ui.h:55
 msgid "Seek _to Selection"
 msgstr "Buscar _seleção"
 
@@ -629,19 +622,19 @@ msgstr "Selecionar legendas _aproximadas"
 msgid "A_uto Select Subtitle"
 msgstr "Selecionar legendas a_utomaticamente"
 
-#: ../src/Glade/MainWindow.ui.h:58 ../src/Glade/old.glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
 msgstr "Definir _início da legenda"
 
-#: ../src/Glade/MainWindow.ui.h:59 ../src/Glade/old.glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
 msgstr "Definir _fim da legenda"
 
-#: ../src/Glade/MainWindow.ui.h:60 ../src/Glade/old.glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: ../src/Glade/MainWindow.ui.h:61 ../src/Glade/old.glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.ui.h:61
 msgid "_Autocheck Spelling"
 msgstr "_Verificar ortografia automaticamente"
 
@@ -649,15 +642,15 @@ msgstr "_Verificar ortografia automaticamente"
 msgid "Set _Languages"
 msgstr "Atribuir _idiomas"
 
-#: ../src/Glade/MainWindow.ui.h:63 ../src/Glade/old.glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.ui.h:63
 msgid "_Help"
 msgstr "Aj_uda"
 
-#: ../src/Glade/MainWindow.ui.h:64 ../src/Glade/old.glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.ui.h:64
 msgid "_Contents"
 msgstr "_Sumário"
 
-#: ../src/Glade/MainWindow.ui.h:65 ../src/Glade/old.glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "Atalhos de te_clado"
 
@@ -669,7 +662,7 @@ msgstr "_Doar"
 msgid "Request a New _Feature"
 msgstr "Solicitar um novo _recurso"
 
-#: ../src/Glade/MainWindow.ui.h:68 ../src/Glade/old.glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "Report a _Bug"
 msgstr "Relatar um _erro"
 
@@ -677,27 +670,24 @@ msgstr "Relatar um _erro"
 msgid "_About"
 msgstr "So_bre"
 
-#: ../src/Glade/MainWindow.ui.h:70 ../src/Glade/old.glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.ui.h:70
 msgid "New File"
 msgstr "Novo arquivo"
 
 #: ../src/Glade/MainWindow.ui.h:71
-#: ../src/Glade/old.glade/FileOpenDialog.glade.h:1
-#: ../src/Glade/old.glade/FileOpenDialog.ui.h:1
-#: ../src/Glade/old.glade/MainWindow.glade.h:64
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
 msgid "Open File"
 msgstr "Abrir arquivo"
 
-#: ../src/Glade/MainWindow.ui.h:72 ../src/Glade/old.glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Save File"
 msgstr "Salvar arquivo"
 
-#: ../src/Glade/MainWindow.ui.h:73 ../src/Glade/old.glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Insert"
 msgstr "Inserir"
 
-#: ../src/Glade/MainWindow.ui.h:74 ../src/Glade/old.glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.ui.h:74
 msgid "Delete"
 msgstr "Excluir"
 
@@ -730,7 +720,7 @@ msgstr ""
 msgid "1.0x"
 msgstr "1.0x"
 
-#: ../src/Glade/MainWindow.ui.h:81 ../src/Glade/old.glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.ui.h:81
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -741,769 +731,20 @@ msgstr ""
 "Shift+Mais/Menos (no teclado numérico) desloca a cronometragem."
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:84 ../src/Glade/old.glade/MainWindow.glade.h:77
+#: ../src/Glade/MainWindow.ui.h:84
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Início:"
 
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:85 ../src/Glade/old.glade/MainWindow.glade.h:75
+#: ../src/Glade/MainWindow.ui.h:85
 msgid "End:"
 msgstr "Fim:"
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:87 ../src/Glade/old.glade/MainWindow.glade.h:73
+#: ../src/Glade/MainWindow.ui.h:87
 msgid "Duration:"
 msgstr "Duração:"
-
-#: ../src/Glade/old.glade/AboutDialog.glade.h:1
-#: ../src/Glade/old.glade/AboutDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
-msgid "About Gnome Subtitles"
-msgstr "Sobre o GNOME Subtitles"
-
-#: ../src/Glade/old.glade/AboutDialog.glade.h:3
-#: ../src/Glade/old.glade/AboutDialog.ui.h:3
-msgid ""
-"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gnome Subtitles is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
-msgstr ""
-"O GNOME Subtitles é um software livre; você pode redistribuí-lo e/ou\n"
-"modificá-lo sob os termos da Licença Pública Geral GNU publicada pela\n"
-"Free Software Foundation; qualquer versão 2 da Licença, ou (a seu\n"
-"critério) outra versão posterior.\n"
-"\n"
-"Este programa é distribuído na expectativa de que seja útil,\n"
-"mas SEM NENHUMA GARANTIA; sem mesmo implicar garantias de\n"
-"COMERCIABILIDADE ou ADAPTAÇÃO A UM PROPÓSITO PARTICULAR.\n"
-"Veja a Licença Pública Geral GNU (GPL) para mais detalhes.\n"
-"\n"
-"Você deve ter recebido uma cópia da Licença Pública Geral GNU\n"
-"junto com este programa; caso contrário, escreva para Free Software\n"
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#: ../src/Glade/old.glade/EncodingsDialog.glade.h:1
-#: ../src/Glade/old.glade/EncodingsDialog.ui.h:1
-msgid "Character codings"
-msgstr "Codificação de caracteres"
-
-#: ../src/Glade/old.glade/EncodingsDialog.glade.h:2
-#: ../src/Glade/old.glade/EncodingsDialog.ui.h:2
-msgid "A_vailable:"
-msgstr "Disponí_vel:"
-
-#: ../src/Glade/old.glade/EncodingsDialog.glade.h:3
-#: ../src/Glade/old.glade/EncodingsDialog.ui.h:3
-msgid "Shown in menu:"
-msgstr "Mostrado no menu:"
-
-#: ../src/Glade/old.glade/FileOpenDialog.glade.h:2
-#: ../src/Glade/old.glade/FileOpenDialog.ui.h:3
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
-msgid "Video To Open:"
-msgstr "Abrir vídeo:"
-
-#: ../src/Glade/old.glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/old.glade/FileOpenDialog.ui.h:2
-#: ../src/Glade/old.glade/FileSaveAsDialog.glade.h:3
-#: ../src/Glade/old.glade/FileSaveAsDialog.ui.h:3
-msgid "Character Coding:"
-msgstr "Codificação de caracteres:"
-
-#: ../src/Glade/old.glade/FilePropertiesDialog.glade.h:1
-#: ../src/Glade/old.glade/FilePropertiesDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
-msgid "File Properties"
-msgstr "Propriedades do arquivo"
-
-#: ../src/Glade/old.glade/FilePropertiesDialog.glade.h:2
-#: ../src/Glade/old.glade/FilePropertiesDialog.ui.h:2
-msgid "<b>Name:</b>"
-msgstr "<b>Nome:</b>"
-
-#: ../src/Glade/old.glade/FilePropertiesDialog.glade.h:3
-#: ../src/Glade/old.glade/FilePropertiesDialog.ui.h:3
-msgid "<b>Path:</b>"
-msgstr "<b>Caminho:</b>"
-
-#: ../src/Glade/old.glade/FilePropertiesDialog.glade.h:4
-#: ../src/Glade/old.glade/FilePropertiesDialog.ui.h:4
-msgid "<b>Character Coding:</b>"
-msgstr "<b>Codificação de caracteres:</b>"
-
-#: ../src/Glade/old.glade/FilePropertiesDialog.glade.h:5
-#: ../src/Glade/old.glade/FilePropertiesDialog.ui.h:5
-msgid "<b>Subtitle Format:</b>"
-msgstr "<b>Formato da legenda:</b>"
-
-#: ../src/Glade/old.glade/FilePropertiesDialog.glade.h:6
-#: ../src/Glade/old.glade/FilePropertiesDialog.ui.h:6
-msgid "<b>Timing Mode:</b>"
-msgstr "<b>Modo de cronometragem:</b>"
-
-#: ../src/Glade/old.glade/FileSaveAsDialog.glade.h:1
-#: ../src/Glade/old.glade/FileSaveAsDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
-msgid "Save As"
-msgstr "Salvar como"
-
-#: ../src/Glade/old.glade/FileSaveAsDialog.glade.h:2
-#: ../src/Glade/old.glade/FileSaveAsDialog.ui.h:2
-#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
-msgid "Subtitle Format:"
-msgstr "Formato da legenda:"
-
-#: ../src/Glade/old.glade/FileSaveAsDialog.glade.h:4
-#: ../src/Glade/old.glade/FileSaveAsDialog.ui.h:4
-msgid "Newline Type:"
-msgstr "Tipo de nova linha:"
-
-#: ../src/Glade/old.glade/FileSaveAsDialog.glade.h:5
-#: ../src/Glade/old.glade/FileSaveAsDialog.ui.h:5
-msgid "Select advanced options"
-msgstr "Selecionar opções avançadas"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:1
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:3
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
-msgid "Headers"
-msgstr "Cabeçalhos"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:2
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:4
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
-msgid "Title:"
-msgstr "Título:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:3
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:5
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
-msgid "Author:"
-msgstr "Autor:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:4
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:6
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
-msgid "Artist:"
-msgstr "Artista:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:5
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:7
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
-msgid "Album:"
-msgstr "Álbum:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:6
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:8
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
-msgid "By:"
-msgstr "Por:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:7
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:9
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
-msgid "Version:"
-msgstr "Versão:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:8
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:10
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
-msgid "Program:"
-msgstr "Programa:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:9
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:11
-msgid "Karaoke Lyrics LRC"
-msgstr "Letras LRC para karaokê"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:10
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:12
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
-msgid "Source:"
-msgstr "Origem:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:11
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:13
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
-msgid "Date:"
-msgstr "Data:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:12
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:14
-msgid "Frame rate:"
-msgstr "Taxa de quadros:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:13
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:15
-msgid "Karaoke Lyrics VKT"
-msgstr "Letras VKT para karaokê"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:14
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:16
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
-msgid "File:"
-msgstr "Arquivo:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:15
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:17
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
-msgid "Note:"
-msgstr "Nota:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:16
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:18
-msgid "Type:"
-msgstr "Tipo:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:17
-msgid ""
-"Audio\n"
-"Video\n"
-msgstr ""
-"Áudio\n"
-"Vídeo\n"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:20
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:19
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
-msgid "Original Script:"
-msgstr "Roteiro original:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:21
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:20
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
-msgid "Original Translation:"
-msgstr "Tradução original:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:22
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:21
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
-msgid "Original Editing:"
-msgstr "Edição Original:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:23
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:22
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
-msgid "Original Timing:"
-msgstr "Tempo original:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:24
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:23
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
-msgid "Original Script Checking:"
-msgstr "Revisão do roteiro original:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:25
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:24
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
-msgid "Script Updated By:"
-msgstr "Roteiro atualizado por:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:26
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:25
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
-msgid "Collisions:"
-msgstr "Colisões:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:27
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:26
-msgid "PlayResX:"
-msgstr "Resolução X:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:28
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:27
-msgid "PlayResY:"
-msgstr "Resolução Y:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:29
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:28
-msgid "PlayDepth:"
-msgstr "Profundidade:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:30
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:29
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
-msgid "Timer:"
-msgstr "Contador:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:31
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:30
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
-msgid "File Path:"
-msgstr "Caminho do arquivo:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:32
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:31
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
-msgid "Delay:"
-msgstr "Atraso:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:33
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:32
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
-msgid "CD Track:"
-msgstr "Faixa de CD:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:34
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:33
-msgid "Comment:"
-msgstr "Comentário:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:35
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:34
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
-msgid "Font Name:"
-msgstr "Nome da fonte:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:36
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:35
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
-msgid "Font Color:"
-msgstr "Cor da fonte:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:37
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:36
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
-msgid "Font Style:"
-msgstr "Estilo da fonte:"
-
-#: ../src/Glade/old.glade/HeadersDialog.glade.h:38
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:37
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
-msgid "Font Size:"
-msgstr "Tamanho da fonte:"
-
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
-msgid "Audio"
-msgstr "Áudio"
-
-#: ../src/Glade/old.glade/HeadersDialog.ui.h:2
-#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
-#: ../src/GnomeSubtitles/Ui/Menus.cs:38
-msgid "Video"
-msgstr "Vídeo"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:37
-msgid "_Video Frame Rate"
-msgstr "_Taxa de quadros do vídeo"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:48
-msgid "Select Nearest Subtitle"
-msgstr "Selecionar legendas aproximadas"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:49
-msgid "Auto Select Subtitle"
-msgstr "Selecionar legendas automaticamente"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:54
-msgid "Set T_ext Language"
-msgstr "Definir idioma do t_exto"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:55
-msgid "Set Translati_on Language"
-msgstr "Definir idioma de traduçã_o"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:56
-msgid "Translate _Text → Translation"
-msgstr "Traduzir _texto → tradução"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:57
-msgid "Translate Translatio_n → Text"
-msgstr "Traduzir traduçã_o → texto"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:61
-msgid "Request a _Feature"
-msgstr "Solicitar um _recurso"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:68
-msgid "<b>Time</b>"
-msgstr "<b>Tempo</b>"
-
-#: ../src/Glade/old.glade/MainWindow.glade.h:69
-msgid "<b>Length</b>"
-msgstr "<b>Duração</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:1
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
-msgid "Preferences"
-msgstr "Preferências"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:2
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:2
-msgid "_Reset to defaults"
-msgstr "_Redefinir para padrões"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:3
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:3
-msgid "When saving subtitles, also save their _translation"
-msgstr "Ao salvar legendas, também salvar suas _traduções"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:4
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:4
-msgid "<b>Translation File Saving</b>"
-msgstr "<b>Salvamento de arquivo de tradução</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:5
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:5
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-msgid "Character c_oding to use:"
-msgstr "C_odificação de caracteres a ser usada:"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:6
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:6
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
-msgid "If auto detection _fails, use:"
-msgstr "Se a detecção automática _falhar, use:"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:7
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:7
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
-msgid "Automatically choose the _video file to open"
-msgstr "Escolher automaticamente o _vídeo para abrir"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:8
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:8
-msgid "<b>File Open Dialog</b>"
-msgstr "<b>Diálogo de abrir arquivo</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:9
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:9
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
-msgid "Ch_aracter coding to use:"
-msgstr "Codificações de c_aracteres a ser usado:"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:10
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:10
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
-msgid "_Subtitle format to use:"
-msgstr "Formato da legenda para u_sar:"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:11
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:11
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
-msgid "_Newline type to use:"
-msgstr "Tipo de _nova linha para usar:"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:12
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:12
-msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Diálogo de salvar arquivo como</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:13
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:13
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
-msgid "Create a _backup copy of files every"
-msgstr "Criar uma cópia de _backup de todos os arquivos"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:14
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:14
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
-msgid "minutes"
-msgstr "minutos"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:15
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:15
-msgid "<b>Backup</b>"
-msgstr "<b>Backup</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:16
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:16
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
-msgid "Files"
-msgstr "Arquivos"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:17
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
-msgstr ""
-"Busca automaticamente no vídeo pela primeira legenda ao alterar os tempos"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:18
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:18
-msgid "Seek"
-msgstr "Buscar"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:19
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:19
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
-msgid "ms before the actual start to help review new timings"
-msgstr "ms antes do real início para ajudar a revisão de nova cronometragem"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:20
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:20
-msgid "<b>Video Seeking</b>"
-msgstr "<b>Buscar no vídeo</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:21
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:21
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
-msgid "Leave"
-msgstr "Deixar"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:22
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:22
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
-msgid "ms between subtitles when inserting or splitting"
-msgstr "ms entre legendas ao inserir ou dividir"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:23
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:23
-msgid "<b>Gap Between Subtitles</b>"
-msgstr "<b>Intervalo entre legendas</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:24
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:24
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
-msgid "Subtract"
-msgstr "Subtrair"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:25
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:25
-msgid "ms when setting subtitle start/end on playback"
-msgstr "ms ao definir início/fim da legenda na reprodução"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:26
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:26
-msgid "<b>Reaction Delay</b>"
-msgstr "<b>Atraso de reação</b>"
-
-#: ../src/Glade/old.glade/PreferencesDialog.glade.h:27
-#: ../src/Glade/old.glade/PreferencesDialog.ui.h:27
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
-msgid "Editing"
-msgstr "Edição"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:1
-#: ../src/Glade/old.glade/SearchDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
-msgid "Replace"
-msgstr "Substituir"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:2
-#: ../src/Glade/old.glade/SearchDialog.ui.h:2
-msgid "Replace _with:"
-msgstr "Substituir _por:"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:3
-#: ../src/Glade/old.glade/SearchDialog.ui.h:3
-msgid "_Search for:"
-msgstr "_Pesquisar:"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:4
-#: ../src/Glade/old.glade/SearchDialog.ui.h:4
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
-msgid "_Match case"
-msgstr "_Diferenciar caixa"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:5
-#: ../src/Glade/old.glade/SearchDialog.ui.h:5
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
-msgid "Search _backwards"
-msgstr "Pesquisar _para trás"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:6
-#: ../src/Glade/old.glade/SearchDialog.ui.h:6
-msgid "Search using a Regular _Expression"
-msgstr "Pesquisar usando uma _expressão regular"
-
-#: ../src/Glade/old.glade/SearchDialog.glade.h:7
-#: ../src/Glade/old.glade/SearchDialog.ui.h:7
-msgid "_Wrap around"
-msgstr "_Quebrar linha"
-
-#. Action area
-#: ../src/Glade/old.glade/SearchDialog.glade.h:8
-#: ../src/Glade/old.glade/SearchDialog.ui.h:8
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
-msgid "Replace _All"
-msgstr "Substituir _todas"
-
-#: ../src/Glade/old.glade/SetLanguageDialog.glade.h:1
-#: ../src/Glade/old.glade/SetLanguageDialog.ui.h:1
-msgid "Set language"
-msgstr "Atribuir idioma"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:1
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:1
-msgid "Adjust Timings"
-msgstr "Ajustar cronometragem"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:2
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:2
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
-msgid "New Start:"
-msgstr "Novo início:"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:3
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:3
-msgid "Start Frame:"
-msgstr "Quadro inicial:"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:4
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:4
-msgid "No.:"
-msgstr "Nº:"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:5
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:5
-msgid "<b>First Subtitle</b>"
-msgstr "<b>Primeira legenda</b>"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:6
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:6
-msgid "<b>Last Subtitle</b>"
-msgstr "<b>Última legenda</b>"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:7
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:7
-msgid "All Subtitles"
-msgstr "Todas as legendas"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:8
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:8
-msgid "Selected Range"
-msgstr "Intervalo selecionado"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:9
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:9
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:9
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:7
-msgid "<b>Apply to</b>"
-msgstr "<b>Aplicar a</b>"
-
-#: ../src/Glade/old.glade/TimingsAdjustDialog.glade.h:10
-#: ../src/Glade/old.glade/TimingsAdjustDialog.ui.h:10
-msgid "Adjust"
-msgstr "Ajustar"
-
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:1
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
-msgid "Shift Timings"
-msgstr "Deslocar cronometragem"
-
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:2
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:2
-msgid "<b>Frames</b>"
-msgstr "<b>Quadros</b>"
-
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:3
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:3
-#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
-msgid "_All subtitles"
-msgstr "_Todas as legendas"
-
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:4
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:4
-#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
-msgid "_Selected subtitles"
-msgstr "Legendas _selecionadas"
-
-#. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:6
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:5
-msgid "From _first subtitle to selection"
-msgstr "Da _primeira legenda até a selecionada"
-
-#. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:8
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:6
-msgid "From selection to _last subtitle"
-msgstr "Da selecionada até a ú_ltima legenda"
-
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:10
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:8
-msgid ""
-"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
-"to shift timings from the main window.</i></small>"
-msgstr ""
-"<small><i>Dica: use Shift+Mais/Menos (no teclado numérico)\n"
-"para deslocar cronometragem da janela principal.</i></small>"
-
-#: ../src/Glade/old.glade/TimingsShiftDialog.glade.h:12
-#: ../src/Glade/old.glade/TimingsShiftDialog.ui.h:10
-msgid "_Shift"
-msgstr "_Deslocar"
-
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.glade.h:1
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
-msgid "Synchronize Timings"
-msgstr "Sincronizar cronometragem"
-
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.glade.h:2
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.ui.h:2
-msgid "<b>Sync Points</b>"
-msgstr "<b>Pontos de sincronismo</b>"
-
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.glade.h:3
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.ui.h:3
-msgid "Synchroni_ze all subtitles"
-msgstr "Sincroni_zar todas as legendas"
-
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.glade.h:4
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.ui.h:4
-msgid "<b>Options</b>"
-msgstr "<b>Opções</b>"
-
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.glade.h:5
-#: ../src/Glade/old.glade/TimingsSynchronizeDialog.ui.h:5
-msgid "<b>Status</b>"
-msgstr "<b>Status</b>"
-
-#: ../src/Glade/old.glade/VideoOpenDialog.glade.h:1
-#: ../src/Glade/old.glade/VideoOpenDialog.ui.h:1
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
-msgid "Open Video"
-msgstr "Abrir vídeo"
-
-#: ../src/Glade/old.glade/VideoSeekToDialog.glade.h:1
-#: ../src/Glade/old.glade/VideoSeekToDialog.ui.h:1
-msgid "Seek To"
-msgstr "Buscar"
-
-#: ../src/Glade/old.glade/VideoSeekToDialog.glade.h:2
-#: ../src/Glade/old.glade/VideoSeekToDialog.ui.h:2
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
-msgid "Seek _video to:"
-msgstr "Buscar _vídeo para:"
-
-#: ../src/Glade/old.glade/VideoSeekToDialog.glade.h:3
-#: ../src/Glade/old.glade/VideoSeekToDialog.ui.h:3
-#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
-msgid "_Seek"
-msgstr "_Buscar"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -1768,6 +1009,18 @@ msgstr "Idioma atual"
 msgid "Unknown"
 msgstr "Desconhecido"
 
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+msgid "About Gnome Subtitles"
+msgstr "Sobre o GNOME Subtitles"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+msgid "_All subtitles"
+msgstr "_Todas as legendas"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+msgid "_Selected subtitles"
+msgstr "Legendas _selecionadas"
+
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
 msgid "Subtitles between those selected and the _first"
 msgstr "Legendas entre aqueles selecionados e a p_rimeira"
@@ -1798,13 +1051,114 @@ msgstr "Descrição"
 msgid "Encoding"
 msgstr "Codificação"
 
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+msgid "Headers"
+msgstr "Cabeçalhos"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+msgid "Title:"
+msgstr "Título:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "Autor:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+msgid "Artist:"
+msgstr "Artista:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "Álbum:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+msgid "By:"
+msgstr "Por:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "Versão:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+msgid "Program:"
+msgstr "Programa:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+msgid "Source:"
+msgstr "Origem:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "Data:"
+
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
 msgid "Frame Rate:"
 msgstr "Taxa de quadros:"
 
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+msgid "File:"
+msgstr "Arquivo:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+msgid "Note:"
+msgstr "Nota:"
+
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
 msgid "Media Type:"
 msgstr "Tipo de mídia:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "Áudio"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: ../src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "Vídeo"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+msgid "Original Script:"
+msgstr "Roteiro original:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+msgid "Original Translation:"
+msgstr "Tradução original:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+msgid "Original Editing:"
+msgstr "Edição Original:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+msgid "Original Timing:"
+msgstr "Tempo original:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+msgid "Original Script Checking:"
+msgstr "Revisão do roteiro original:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+msgid "Script Updated By:"
+msgstr "Roteiro atualizado por:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+msgid "Collisions:"
+msgstr "Colisões:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+msgid "Timer:"
+msgstr "Contador:"
 
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
 msgid "Play Res X:"
@@ -1817,6 +1171,41 @@ msgstr "Resolução Y:"
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
 msgid "Play Depth:"
 msgstr "Profundidade:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+msgid "File Path:"
+msgstr "Caminho do arquivo:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+msgid "Delay:"
+msgstr "Atraso:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+msgid "CD Track:"
+msgstr "Faixa de CD:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+msgid "Font Name:"
+msgstr "Nome da fonte:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+msgid "Font Color:"
+msgstr "Cor da fonte:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+msgid "Font Style:"
+msgstr "Estilo da fonte:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+msgid "Font Size:"
+msgstr "Tamanho da fonte:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+msgid "Video To Open:"
+msgstr "Abrir vídeo:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
@@ -1835,6 +1224,10 @@ msgstr "Todos os arquivos"
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
 msgid "All Subtitle Files"
 msgstr "Todos os arquivos de legenda"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "Propriedades do arquivo"
 
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
 msgid "File Name"
@@ -1856,6 +1249,14 @@ msgstr "Formato da legenda"
 msgid "Timing Mode"
 msgstr "Modo de cronometragem"
 
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "Salvar como"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+msgid "Subtitle Format:"
+msgstr "Formato da legenda:"
+
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
 msgid "Line Ending:"
 msgstr "Edição de linha:"
@@ -1868,6 +1269,18 @@ msgstr "Abrir arquivo de tradução"
 msgid "Save Translation As"
 msgstr "Salvar tradução como"
 
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "Preferências"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "Arquivos"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "Edição"
+
 #. Translation File Saving
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
 msgid "When saving subtitle files, automatically save their _translation"
@@ -1877,13 +1290,45 @@ msgstr "Ao salvar arquivos de legendas, salvar automaticamente suas _traduções
 msgid "Translation File Saving"
 msgstr "Salvamento de arquivo de tradução"
 
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+msgid "Character c_oding to use:"
+msgstr "C_odificação de caracteres a ser usada:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+msgid "If auto detection _fails, use:"
+msgstr "Se a detecção automática _falhar, use:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+msgid "Automatically choose the _video file to open"
+msgstr "Escolher automaticamente o _vídeo para abrir"
+
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
 msgid "File Open Dialog"
 msgstr "Diálogo de abrir arquivo"
 
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+msgid "_Subtitle format to use:"
+msgstr "Formato da legenda para u_sar:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+msgid "Ch_aracter coding to use:"
+msgstr "Codificações de c_aracteres a ser usado:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+msgid "_Newline type to use:"
+msgstr "Tipo de _nova linha para usar:"
+
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
 msgid "File Save As Dialog"
 msgstr "Diálogo de salvar arquivo como"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+msgid "Create a _backup copy of files every"
+msgstr "Criar uma cópia de _backup de todos os arquivos"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+msgid "minutes"
+msgstr "minutos"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
 msgid "Backup"
@@ -1897,13 +1342,29 @@ msgstr "Busca no vídeo pela legenda selecionada ao alterar os tempos"
 msgid "Play"
 msgstr "Reproduzir"
 
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+msgid "ms before the actual start to help review new timings"
+msgstr "ms antes do real início para ajudar a revisão de nova cronometragem"
+
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Video Seeking"
 msgstr "Buscar no vídeo"
 
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+msgid "Leave"
+msgstr "Deixar"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+msgid "ms between subtitles when inserting or splitting"
+msgstr "ms entre legendas ao inserir ou dividir"
+
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
 msgid "Gap Between Subtitles"
 msgstr "Intervalo entre legendas"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+msgid "Subtract"
+msgstr "Subtrair"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
 msgid "ms when setting subtitle start/end while playing the video"
@@ -1935,6 +1396,10 @@ msgid "Remember the last used type"
 msgstr "Lembrar do último tipo usado"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Replace"
+msgstr "Substituir"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
 msgid "Find"
 msgstr "Localizar"
 
@@ -1946,6 +1411,14 @@ msgstr "_Localizar"
 msgid "Replace _with"
 msgstr "Substituir _por"
 
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "_Diferenciar caixa"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "Pesquisar _para trás"
+
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
 msgid "Regular _expression"
 msgstr "_Expressão regular"
@@ -1953,6 +1426,11 @@ msgstr "_Expressão regular"
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
 msgid "Wra_p around"
 msgstr "_Quebrar linha"
+
+#. Action area
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "Substituir _todas"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
 msgid "Set Languages"
@@ -1987,6 +1465,11 @@ msgstr "_Aplicar"
 msgid "Subtitle No.:"
 msgstr "Legenda nº:"
 
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+msgid "New Start:"
+msgstr "Novo início:"
+
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
 msgid "First Point"
 msgstr "Primeiro ponto"
@@ -2000,6 +1483,10 @@ msgstr "Segundo ponto"
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
 msgid "Apply To"
 msgstr "Aplicar a"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+msgid "Shift Timings"
+msgstr "Deslocar cronometragem"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
 msgid "Apply"
@@ -2033,6 +1520,10 @@ msgid ""
 msgstr ""
 "Dica: alternativamente, use Shift + Mais/Menos (do teclado numérico) para "
 "deslocar tempos da janela principal."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+msgid "Synchronize Timings"
+msgstr "Sincronizar cronometragem"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
 msgid "Sync Points"
@@ -2238,6 +1729,10 @@ msgstr "O arquivo parece ser muito grande para um arquivo texto de legenda."
 msgid "Could not play the file"
 msgstr "Não foi possível reproduzir o arquivo"
 
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+msgid "Open Video"
+msgstr "Abrir vídeo"
+
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
 msgid "All Video Files"
 msgstr "Todos os arquivos de vídeo"
@@ -2249,6 +1744,14 @@ msgstr "Todos os arquivos de áudio"
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
 msgid "Seek Video To"
 msgstr "Buscar vídeo para"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+msgid "_Seek"
+msgstr "_Buscar"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+msgid "Seek _video to:"
+msgstr "Buscar _vídeo para:"
 
 #: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
@@ -2313,6 +1816,248 @@ msgstr "Duração"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid ""
+#~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
+#~ msgstr "Gnome Subtitles é um editor de legendas para o ambiente do GNOME."
+
+#~ msgid ""
+#~ "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gnome Subtitles is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ msgstr ""
+#~ "O GNOME Subtitles é um software livre; você pode redistribuí-lo e/ou\n"
+#~ "modificá-lo sob os termos da Licença Pública Geral GNU publicada pela\n"
+#~ "Free Software Foundation; qualquer versão 2 da Licença, ou (a seu\n"
+#~ "critério) outra versão posterior.\n"
+#~ "\n"
+#~ "Este programa é distribuído na expectativa de que seja útil,\n"
+#~ "mas SEM NENHUMA GARANTIA; sem mesmo implicar garantias de\n"
+#~ "COMERCIABILIDADE ou ADAPTAÇÃO A UM PROPÓSITO PARTICULAR.\n"
+#~ "Veja a Licença Pública Geral GNU (GPL) para mais detalhes.\n"
+#~ "\n"
+#~ "Você deve ter recebido uma cópia da Licença Pública Geral GNU\n"
+#~ "junto com este programa; caso contrário, escreva para Free Software\n"
+#~ "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+#~ "USA"
+
+#~ msgid "Character codings"
+#~ msgstr "Codificação de caracteres"
+
+#~ msgid "A_vailable:"
+#~ msgstr "Disponí_vel:"
+
+#~ msgid "Shown in menu:"
+#~ msgstr "Mostrado no menu:"
+
+#~ msgid "Character Coding:"
+#~ msgstr "Codificação de caracteres:"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>Nome:</b>"
+
+#~ msgid "<b>Path:</b>"
+#~ msgstr "<b>Caminho:</b>"
+
+#~ msgid "<b>Character Coding:</b>"
+#~ msgstr "<b>Codificação de caracteres:</b>"
+
+#~ msgid "<b>Subtitle Format:</b>"
+#~ msgstr "<b>Formato da legenda:</b>"
+
+#~ msgid "<b>Timing Mode:</b>"
+#~ msgstr "<b>Modo de cronometragem:</b>"
+
+#~ msgid "Newline Type:"
+#~ msgstr "Tipo de nova linha:"
+
+#~ msgid "Select advanced options"
+#~ msgstr "Selecionar opções avançadas"
+
+#~ msgid "Karaoke Lyrics LRC"
+#~ msgstr "Letras LRC para karaokê"
+
+#~ msgid "Frame rate:"
+#~ msgstr "Taxa de quadros:"
+
+#~ msgid "Karaoke Lyrics VKT"
+#~ msgstr "Letras VKT para karaokê"
+
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgid ""
+#~ "Audio\n"
+#~ "Video\n"
+#~ msgstr ""
+#~ "Áudio\n"
+#~ "Vídeo\n"
+
+#~ msgid "PlayResX:"
+#~ msgstr "Resolução X:"
+
+#~ msgid "PlayResY:"
+#~ msgstr "Resolução Y:"
+
+#~ msgid "PlayDepth:"
+#~ msgstr "Profundidade:"
+
+#~ msgid "Comment:"
+#~ msgstr "Comentário:"
+
+#~ msgid "_Video Frame Rate"
+#~ msgstr "_Taxa de quadros do vídeo"
+
+#~ msgid "Select Nearest Subtitle"
+#~ msgstr "Selecionar legendas aproximadas"
+
+#~ msgid "Auto Select Subtitle"
+#~ msgstr "Selecionar legendas automaticamente"
+
+#~ msgid "Set T_ext Language"
+#~ msgstr "Definir idioma do t_exto"
+
+#~ msgid "Set Translati_on Language"
+#~ msgstr "Definir idioma de traduçã_o"
+
+#~ msgid "Translate _Text → Translation"
+#~ msgstr "Traduzir _texto → tradução"
+
+#~ msgid "Translate Translatio_n → Text"
+#~ msgstr "Traduzir traduçã_o → texto"
+
+#~ msgid "Request a _Feature"
+#~ msgstr "Solicitar um _recurso"
+
+#~ msgid "<b>Time</b>"
+#~ msgstr "<b>Tempo</b>"
+
+#~ msgid "<b>Length</b>"
+#~ msgstr "<b>Duração</b>"
+
+#~ msgid "_Reset to defaults"
+#~ msgstr "_Redefinir para padrões"
+
+#~ msgid "When saving subtitles, also save their _translation"
+#~ msgstr "Ao salvar legendas, também salvar suas _traduções"
+
+#~ msgid "<b>Translation File Saving</b>"
+#~ msgstr "<b>Salvamento de arquivo de tradução</b>"
+
+#~ msgid "<b>File Open Dialog</b>"
+#~ msgstr "<b>Diálogo de abrir arquivo</b>"
+
+#~ msgid "<b>File Save As Dialog</b>"
+#~ msgstr "<b>Diálogo de salvar arquivo como</b>"
+
+#~ msgid "<b>Backup</b>"
+#~ msgstr "<b>Backup</b>"
+
+#~ msgid ""
+#~ "Automatically seek the video to the first subtitle when changing timings"
+#~ msgstr ""
+#~ "Busca automaticamente no vídeo pela primeira legenda ao alterar os tempos"
+
+#~ msgid "Seek"
+#~ msgstr "Buscar"
+
+#~ msgid "<b>Video Seeking</b>"
+#~ msgstr "<b>Buscar no vídeo</b>"
+
+#~ msgid "<b>Gap Between Subtitles</b>"
+#~ msgstr "<b>Intervalo entre legendas</b>"
+
+#~ msgid "ms when setting subtitle start/end on playback"
+#~ msgstr "ms ao definir início/fim da legenda na reprodução"
+
+#~ msgid "<b>Reaction Delay</b>"
+#~ msgstr "<b>Atraso de reação</b>"
+
+#~ msgid "Replace _with:"
+#~ msgstr "Substituir _por:"
+
+#~ msgid "_Search for:"
+#~ msgstr "_Pesquisar:"
+
+#~ msgid "Search using a Regular _Expression"
+#~ msgstr "Pesquisar usando uma _expressão regular"
+
+#~ msgid "_Wrap around"
+#~ msgstr "_Quebrar linha"
+
+#~ msgid "Set language"
+#~ msgstr "Atribuir idioma"
+
+#~ msgid "Adjust Timings"
+#~ msgstr "Ajustar cronometragem"
+
+#~ msgid "Start Frame:"
+#~ msgstr "Quadro inicial:"
+
+#~ msgid "No.:"
+#~ msgstr "Nº:"
+
+#~ msgid "<b>First Subtitle</b>"
+#~ msgstr "<b>Primeira legenda</b>"
+
+#~ msgid "<b>Last Subtitle</b>"
+#~ msgstr "<b>Última legenda</b>"
+
+#~ msgid "All Subtitles"
+#~ msgstr "Todas as legendas"
+
+#~ msgid "Selected Range"
+#~ msgstr "Intervalo selecionado"
+
+#~ msgid "<b>Apply to</b>"
+#~ msgstr "<b>Aplicar a</b>"
+
+#~ msgid "Adjust"
+#~ msgstr "Ajustar"
+
+#~ msgid "<b>Frames</b>"
+#~ msgstr "<b>Quadros</b>"
+
+#~ msgid "From _first subtitle to selection"
+#~ msgstr "Da _primeira legenda até a selecionada"
+
+#~ msgid "From selection to _last subtitle"
+#~ msgstr "Da selecionada até a ú_ltima legenda"
+
+#~ msgid ""
+#~ "<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
+#~ "to shift timings from the main window.</i></small>"
+#~ msgstr ""
+#~ "<small><i>Dica: use Shift+Mais/Menos (no teclado numérico)\n"
+#~ "para deslocar cronometragem da janela principal.</i></small>"
+
+#~ msgid "_Shift"
+#~ msgstr "_Deslocar"
+
+#~ msgid "<b>Sync Points</b>"
+#~ msgstr "<b>Pontos de sincronismo</b>"
+
+#~ msgid "Synchroni_ze all subtitles"
+#~ msgstr "Sincroni_zar todas as legendas"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Opções</b>"
+
+#~ msgid "<b>Status</b>"
+#~ msgstr "<b>Status</b>"
+
+#~ msgid "Seek To"
+#~ msgstr "Buscar"
 
 #~ msgid "Translating"
 #~ msgstr "Traduzindo"
