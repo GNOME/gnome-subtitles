@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2018-08-21 23:50+0000\n"
-"PO-Revision-Date: 2018-08-31 09:51+0200\n"
+"POT-Creation-Date: 2018-08-31 08:00+0000\n"
+"PO-Revision-Date: 2018-09-03 08:53+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -83,12 +83,11 @@ msgid ""
 "\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
 "Opción de codificación que usar de manera predeterminada al abrir archivos. "
-"Los valores posibles son \"AutoDetect\" pasa usar la detección automática, "
-"\"RememberLastUsed\" para recordar la última codificación usada, "
-"\"CurrentLocale\" para usar la configuración regional actual, y \"Specific\" "
+"Los valores posibles son «AutoDetect» pasa usar la detección automática, "
+"«RememberLastUsed» para recordar la última codificación usada, "
+"«CurrentLocale» para usar la configuración regional actual, y «Specific» "
 "para usar una codificación específica. La codificación para "
-"\"RememberLastUsed\" y \"Specific\" se guarda en la clave file_open_encoding "
-"key."
+"«RememberLastUsed» y «Specific» se guarda en la clave file_open_encoding."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
 msgid "File Open encoding"
@@ -102,9 +101,9 @@ msgid ""
 "\"CurrentLocale\"."
 msgstr ""
 "Codificación que usar al abrir archivos. Además de la actual, usada cuando "
-"se establece \"RememberLastUsed\" o \"Specific\" en la clave "
-"file_open_encoding_option los otros valores posibles son \"AutoDetect\" y "
-"\"CurrentLocale\"."
+"se establece «RememberLastUsed» o «Specific» en la clave "
+"file_open_encoding_option los otros valores posibles son «AutoDetect» y "
+"«CurrentLocale»."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
 msgid "Auto detection fallback encoding"
@@ -116,7 +115,7 @@ msgstr "Codificación que usar cuando la detección automática falla."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
 msgid "File Save encoding option"
-msgstr "opción de codificación para guardar archivos"
+msgstr "Opción de codificación para guardar archivos"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
 msgid ""
@@ -127,6 +126,12 @@ msgid ""
 "\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
 "key."
 msgstr ""
+"Opción de codificación que usar de manera predeterminada al guardar "
+"archivos. Los valores posibles son: «KeepExisting» para usar la codificación "
+"de archivo existente, «RememberLastUsed» para recordar la codificación que "
+"se usó por última vez, «CurrentLocale» para usar la ubicación actual y "
+"«Specific» para usar una codificación específica. La codificación de "
+"«RememberLastUsed» y «Specific» se guarda en la clave file_save_encoding."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
 msgid "File Save encoding"
@@ -140,9 +145,9 @@ msgid ""
 "and \"CurrentLocale\"."
 msgstr ""
 "Codificación que usar al guardar archivos. Además de la actual, usada cuando "
-"se establece \"RememberLastUsed\" o \"Specific\" en la clave "
-"file_save_encoding_option los otros valores posibles son \"KeepExisting\" y "
-"\"CurrentLocale\"."
+"se establece «RememberLastUsed» o «Specific» en la clave "
+"file_save_encoding_option los otros valores posibles son «KeepExisting» y "
+"«CurrentLocale»."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
 msgid "File Save format option"
@@ -156,6 +161,12 @@ msgid ""
 "format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
 "stored in the file_save_format key."
 msgstr ""
+"Opción de formato de subtítulos que usar de manera predeterminada al guardar "
+"archivos. Los valores posibles son: «KeepExisting» para usar el formato del "
+"archivo existente, «RememberLastUsed» para recordar el último formato "
+"utilizado y «Specific» para usar un formato específico. El formato de los "
+"subtítulos para «RememberLastUsed» y «Specific» se almacena en la clave "
+"file_save_format."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
 msgid "File Save format"
@@ -169,13 +180,13 @@ msgid ""
 "\"CurrentLocale\"."
 msgstr ""
 "Formato de subtítulo que usar al guardar archivos. Además del formato "
-"actual, usado cuando se establecen los valores \"RememberLastUsed\" o "
-"\"Specific\" en la clave file_save_format_option, otros valores posibles son "
-"\"KeepExisting\" y \"CurrentLocale\"."
+"actual, usado cuando se establecen los valores «RememberLastUsed» o "
+"«Specific» en la clave file_save_format_option, otros valores posibles son "
+"«KeepExisting» y «CurrentLocale»."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
 msgid "File Save newline option"
-msgstr ""
+msgstr "Opción de nueva línea que usar en el guardado de archivo"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
 msgid ""
@@ -184,10 +195,15 @@ msgid ""
 "\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
 "and \"Specific\" is stored in the file_save_newline key."
 msgstr ""
+"Opción de nueva línea que usar de manera predeterminada al guardar archivos. "
+"Los valores posibles son: «RememberLastUsed» para recordar el tipo de nueva "
+"línea utilizado por última vez y «Specific» para usar un tipo de nueva línea "
+"específico. El tipo de línea nueva de «RememberLastUsed» y «Specific» se "
+"guarda en la clave file_save_newline."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
 msgid "File Save newline"
-msgstr ""
+msgstr "Nueva línea de guardado de archivo"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
 msgid "Newline type to use when saving files."
@@ -375,6 +391,8 @@ msgid ""
 "Recommended time between subtitles, in milliseconds, used for example when "
 "splitting a subtitle in two."
 msgstr ""
+"Tiempo recomendado entre subtítulos, en milisegundos, utilizado por ejemplo "
+"al dividir un subtítulo en dos."
 
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
@@ -1433,7 +1451,7 @@ msgstr "Idioma de traducción"
 #. Bottom: info message
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
 msgid "For additional languages please install the corresponding package."
-msgstr ""
+msgstr "Para idiomas adicionales instale el paquete correspondiente."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1482,13 +1500,15 @@ msgstr "Reiniciar"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
 msgid "Set From Video"
-msgstr ""
+msgstr "Establecer desde el vídeo"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
 msgid ""
 "Sets the shift amount in order for the selected subtitles to start at the "
 "current video position."
 msgstr ""
+"Establece la magnitud del desplazamiento para que los subtítulos "
+"seleccionados comiencen en la posición actual del vídeo."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
 msgid "Amount"
@@ -1513,7 +1533,7 @@ msgstr "Puntos de sincronización"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
 msgid "Subtitles between sync points"
-msgstr ""
+msgstr "Subtítulos entre puntos de sincronización"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
 msgid "Info"
@@ -1611,8 +1631,6 @@ msgstr ""
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-#, fuzzy
-#| msgid "An I/O error has occured."
 msgid "An I/O error has occurred."
 msgstr "Ha ocurrido un error de Entrada/Salida."
 
