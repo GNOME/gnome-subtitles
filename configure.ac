@@ -7,7 +7,7 @@ AC_INIT([gnome-subtitles],
 	[gnome-subtitles],
 	[http://www.gnomesubtitles.org])
 
-GNOME_DOC_INIT
+YELP_HELP_INIT
 GTK_DOC_CHECK([1.0])
 
 AC_CONFIG_MACRO_DIR([m4])

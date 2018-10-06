@@ -426,7 +426,7 @@ public class EventHandlers {
 	/*	Help Menu */
 
 	public void OnHelpContents (object o, EventArgs args) {
-		Util.OpenUrl("ghelp:gnome-subtitles");
+		Util.OpenUrl("help:gnome-subtitles");
 	}
 
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {

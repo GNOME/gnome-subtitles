@@ -1,8 +1,9 @@
-include $(top_srcdir)/gnome-doc-utils.make
+@YELP_HELP_RULES@
 
-DOC_MODULE = gnome-subtitles
-DOC_ENTITIES = legal.xml
-DOC_LINGUAS = ca cs da de el es fr oc pt_BR ro sl sv
-DOC_FIGURES = 
+HELP_ID = gnome-subtitles
 
-dist-hook: doc-dist-hook
+HELP_FILES = \
+	index.docbook \
+	legal.xml
+
+HELP_LINGUAS = ca cs da de el es fr oc pt_BR ro sl sv
