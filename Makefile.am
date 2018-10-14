@@ -20,7 +20,6 @@ gstpbdir = $(pkglibdir)
 
 EXTRA_DIST = 			\
 	autogen.sh			\
-	gnome-doc-utils.make	\
 	gnome-subtitles.csproj \
 	gnome-subtitles.sln \
 	intltool-extract.in \
