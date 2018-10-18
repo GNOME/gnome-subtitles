@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the Gnome-subtitles package.
 # Kristian Kjærgaard <kkjaergaard@gmail.com>, 2008.
 # Joe Hansen <joedalton2@yahoo.dk>, 2008, 2009, 2010, 2011, 2013.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2018.
 #
-# frames -> billedrate (ofte kun en billedrate; dog kan det være billedrater)
-# end -> til
+# frames -> billeder
+# end -> slut
 # set -> indstil
-# shift -> forskyde 
-# start -> fra
+# shift -> forskyde
+# start -> start
 # times -> tidsenheder
 # timings -> tidspunkter
 #
@@ -28,896 +29,782 @@
 # hvor "Starttidspunkt:" og "Start- og sluttidspunkter"
 # nok vil være nemmere at læse.
 #
-# Jeg er ikke helt uenig i ovenstående, og det blev også overvejet, men jeg 
-# endte med til/fra til sidst. En af de væsentligste overvejelser omkring 
+# Jeg er ikke helt uenig i ovenstående, og det blev også overvejet, men jeg
+# endte med til/fra til sidst. En af de væsentligste overvejelser omkring
 # dette var at de er meget korte og det passer med de steder de indgår i
-# programmet. 
+# programmet.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Subtitles\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-13 22:10+0200\n"
-"PO-Revision-Date: 2013-09-11 13:01+01:00\n"
-"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
+"POT-Creation-Date: 2018-07-31 22:00+0000\n"
+"PO-Revision-Date: 2018-09-09 19:29+0200\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Videoundertekster til GNOME skrivebordet"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+msgid ""
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
+"friendly user interface with video preview."
+msgstr ""
+"GNOME Undertekster er et program til GNOME-skrivebordsmiljøet til redigering "
+"af undertekster. Det lader brugeren oprette, synkronisere, konvertere og "
+"oversætte undertekster med en brugervenlig grænseflade med forhåndsvisning "
+"af videoen."
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+msgid ""
+"A total of 22 subtitle formats are supported, including but not limited to: "
+"SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
+"SubViewer."
+msgstr ""
+"I alt understøttes 22 undertekstformater heriblandt: SubRip, MicroDVD, FAB "
+"Subtitler, MPlayer, Sub Station Alpha, MPSub og SubViewer."
 
 # Højst sandsynlig en fejl her vedrørende Gnome-undertekster, da
 # det er et sammensat ord med proprium først og ikke et sammensat navneord.
 # I det tilfælde skal det hedde Gnome undertekster. Det gælder også de
 # følgende strenge.
-#: ../src/Glade/AboutDialog.glade.h:1
-msgid "About Gnome Subtitles"
-msgstr "Om Gnome-undertekster"
+# Alan: Lignende moduler hedder sædvanligvis "GNOME Xxxx"
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+msgid "Gnome Subtitles"
+msgstr "GNOME Undertekster"
 
-#: ../src/Glade/AboutDialog.glade.h:2
-msgid "Video subtitling for the GNOME desktop"
-msgstr "Videotekstning til GNOME-skrivebordet"
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
+msgid "Subtitle Editor"
+msgstr "Undertekstredigering"
 
-#: ../src/Glade/AboutDialog.glade.h:3
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
+msgid "Subtitles;Video;"
+msgstr "Undertekster;Video;"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
+msgid "Encodings shown in menu"
+msgstr "Kodninger vist i menuen"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
+msgid "List of encodings shown in the File Open/Save dialogs."
+msgstr "Liste over kodninger vist i dialogen Gem/Åbn fil."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
+msgid "File Open encoding option"
+msgstr "Kodningsmuligheder når fil åbnes"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
 msgid ""
-"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gnome Subtitles is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+"Encoding option to use by default when opening files. Possible values are: "
+"\"AutoDetect\" to use auto detection, \"RememberLastUsed\" to remember the "
+"last used encoding, \"CurrentLocale\" to use the current locale, and "
+"\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
+"\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
-"Gnome-undertekster er fri software. Du kan redistribuere og/eller\n"
-"modificere det under betingelserne, som er angivet i GNU General\n"
-"Public License, som er udgivet af Free Software Foundation; enten\n"
-"version 2 af licensen eller (efter eget valg) enhver senere version.\n"
-"\n"
-"Gnome-undertekster distribueres i håb om, at det vil vise sig nyttigt,\n"
-"men UDEN NOGEN FORM FOR GARANTI, uden selv de underforståede garantier\n"
-"omkring SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere\n"
-"detaljer kan læses i GNU General Public License.\n"
-"\n"
-"Du bør have modtaget en kopi af GNU General Public License sammen med\n"
-"dette program. Hvis ikke, så skriv til Free software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+"Kodningsmuligheder der bruges ved åbning af filer. Mulige værdier er: "
+"“AutoDetect” for at bruge automatisk registrering, “RememberLastUsed” for at "
+"huske senest brugte kodning, “CurrentLocale” for at bruge de aktuelle "
+"regionaldata og “Specific” for at bruge en specifik kodning. Kodningen for "
+"“RememberLastUsed” og “Specific” gemmes i nøglen file_open_encoding."
 
-#: ../src/Glade/EncodingsDialog.glade.h:1
-msgid "Character codings"
-msgstr "Tegnsæt"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
+msgid "File Open encoding"
+msgstr "Kodning ved åbning af fil"
 
-#: ../src/Glade/EncodingsDialog.glade.h:2
-msgid "A_vailable:"
-msgstr "_Tilgængelig:"
-
-#: ../src/Glade/EncodingsDialog.glade.h:3
-msgid "Shown in menu:"
-msgstr "Vist i menu:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:1 ../src/Glade/MainWindow.glade.h:63
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
-msgid "Open File"
-msgstr "Åbn fil"
-
-#: ../src/Glade/FileOpenDialog.glade.h:2
-msgid "Video To Open:"
-msgstr "Video der skal åbnes:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
-msgid "Character Coding:"
-msgstr "Tegnsæt:"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:1
-msgid "File Properties"
-msgstr "Filegenskaber"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:2
-msgid "<b>Name:</b>"
-msgstr "<b>Navn:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:3
-msgid "<b>Path:</b>"
-msgstr "<b>Sti:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:4
-msgid "<b>Character Coding:</b>"
-msgstr "<b>Tegnsæt:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:5
-msgid "<b>Subtitle Format:</b>"
-msgstr "<b>Undertekstformat:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:6
-msgid "<b>Timing Mode:</b>"
-msgstr "<b>Indstillingstilstand:</b>"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
-msgid "Save As"
-msgstr "Gem som"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:2
-msgid "Subtitle Format:"
-msgstr "Undertekstformat:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
-msgid "Newline Type:"
-msgstr "Nylinjetype:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:5
-msgid "Select advanced options"
-msgstr "Vælg avancerede indstillinger"
-
-# overskrifter eller filhoveder, du bliver nok nødt til at undersøge i hvilken
-# betydning det bruges her, for man kunne godt forestille sig begge
-# udtryk brugt i forbindelse med understekster. Rent faktisk anser jeg
-# det for væsentligt mere sandsynligt at det er filhoveder, idet det
-# virker som om at dette er et program til ændre i undertekstfiler med.
-# Jeg ved at sådan nogle har filhoveder, omvendt har jeg svært ved at
-# forestille mig hvor overskifter skulle komme ind i billedet
-#: ../src/Glade/HeadersDialog.glade.h:1
-msgid "Headers"
-msgstr "Filhoveder"
-
-#: ../src/Glade/HeadersDialog.glade.h:2
-msgid "Title:"
-msgstr "Titel:"
-
-#: ../src/Glade/HeadersDialog.glade.h:3
-msgid "Author:"
-msgstr "Forfatter:"
-
-#: ../src/Glade/HeadersDialog.glade.h:4
-msgid "Artist:"
-msgstr "Kunstner:"
-
-#: ../src/Glade/HeadersDialog.glade.h:5
-msgid "Album:"
-msgstr "Album:"
-
-#: ../src/Glade/HeadersDialog.glade.h:6
-msgid "By:"
-msgstr "Af:"
-
-#: ../src/Glade/HeadersDialog.glade.h:7
-msgid "Version:"
-msgstr "Version:"
-
-#: ../src/Glade/HeadersDialog.glade.h:8
-msgid "Program:"
-msgstr "Program:"
-
-#: ../src/Glade/HeadersDialog.glade.h:9
-msgid "Karaoke Lyrics LRC"
-msgstr "Karaoketekster LRC"
-
-#: ../src/Glade/HeadersDialog.glade.h:10
-msgid "Source:"
-msgstr "Kilde:"
-
-#: ../src/Glade/HeadersDialog.glade.h:11
-msgid "Date:"
-msgstr "Dato:"
-
-#: ../src/Glade/HeadersDialog.glade.h:12
-msgid "Frame rate:"
-msgstr "Billedrate:"
-
-#: ../src/Glade/HeadersDialog.glade.h:13
-msgid "Karaoke Lyrics VKT"
-msgstr "Karaoketekster VKT"
-
-#: ../src/Glade/HeadersDialog.glade.h:14
-msgid "File:"
-msgstr "Fil:"
-
-#: ../src/Glade/HeadersDialog.glade.h:15
-msgid "Note:"
-msgstr "Note:"
-
-#: ../src/Glade/HeadersDialog.glade.h:16
-msgid "Type:"
-msgstr "Type:"
-
-#: ../src/Glade/HeadersDialog.glade.h:17
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:6
 msgid ""
-"Audio\n"
-"Video\n"
+"Encoding to use when opening files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_open_encoding_option key, other possible values are \"AutoDetect\" and "
+"\"CurrentLocale\"."
 msgstr ""
-"Lyd\n"
-"Video\n"
+"Kodning der bruges ved åbning af fil. Udover den faktiske kodning, som "
+"bruges, når “RememberLastUsed” og “Specific” er angivet i nøglen "
+"file_open_encoding_option, er andre mulige værdier “AutoDetect” og "
+"“CurrentLocale”."
 
-#: ../src/Glade/HeadersDialog.glade.h:20
-msgid "Original Script:"
-msgstr "Original skript:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
+msgid "Auto detection fallback encoding"
+msgstr "Alternativ kodning ved mislykket automatisk registrering"
 
-#: ../src/Glade/HeadersDialog.glade.h:21
-msgid "Original Translation:"
-msgstr "Original oversættelse:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
+msgid "Encoding to use when auto detection fails."
+msgstr "Kodning der skal bruges, når automatisk registrering mislykkedes."
 
-#: ../src/Glade/HeadersDialog.glade.h:22
-msgid "Original Editing:"
-msgstr "Original redigering:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
+msgid "File Save encoding option"
+msgstr "Kodningsmuligheder til at gemme filer"
 
-#: ../src/Glade/HeadersDialog.glade.h:23
-msgid "Original Timing:"
-msgstr "Original timing:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
+msgid ""
+"Encoding option to use by default when saving files. Possible values are: "
+"\"KeepExisting\" to use the existing file's encoding, \"RememberLastUsed\" "
+"to remember the last used encoding, \"CurrentLocale\" to use the current "
+"locale, and \"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
+"key."
+msgstr ""
+"Kodningsmuligheder der som standard bruges til at gemme filer. Mulige værdier "
+"er: “KeepExisting” for at bruge filens egen kodning, “RememberLastUsed” for "
+"at huske senest brugte kodning, “CurrentLocale” for at bruge de aktuelle "
+"regionaldata og “Specific” for at bruge en specifik kodning. Kodningen for "
+"“RememberLastUsed” og “Specific” gemmes i nøglen file_save_encoding."
 
-#: ../src/Glade/HeadersDialog.glade.h:24
-msgid "Original Script Checking:"
-msgstr "Original skripttjek:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
+msgid "File Save encoding"
+msgstr "Kodning til at gemme filer"
 
-#: ../src/Glade/HeadersDialog.glade.h:25
-msgid "Script Updated By:"
-msgstr "Skript opdateret af:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:12
+msgid ""
+"Encoding to use when saving files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_encoding_option key, other possible values are \"KeepExisting\" "
+"and \"CurrentLocale\"."
+msgstr ""
+"Kodning der bruges til at gemme filer. Udover den faktiske kodning, som "
+"bruges, når “RememberLastUsed” eller “Specific” er angivet i nøglen "
+"file_open_encoding_option, er andre mulige værdier “KeepExisting” og "
+"“CurrentLocale”."
 
-#: ../src/Glade/HeadersDialog.glade.h:26
-msgid "Collisions:"
-msgstr "Sammenstød:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
+msgid "File Save format option"
+msgstr "Mulige formater til at gemme filer"
 
-# Ikke afklaret, forslag modtages
-#: ../src/Glade/HeadersDialog.glade.h:27
-msgid "PlayResX:"
-msgstr "AfspilOplX:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
+msgid ""
+"Subtitle format option to use by default when saving files. Possible values "
+"are: \"KeepExisting\" to use the existing file's format, \"RememberLastUsed"
+"\" to remember the last used format, and \"Specific\" to use a specific "
+"format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
+"stored in the file_save_format key."
+msgstr ""
+"Undertekstformat der som standard bruges til at gemme filer. Mulige værdier "
+"er: “KeepExisting” for at bruge filens eget format, “RememberLastUsed” for "
+"at huske senest brugte format og “Specific” for at bruge et specifik format. "
+"Undertekstformatet for “RememberLastUsed” og “Specific” gemmes i nøglen "
+"file_save_format."
 
-# Ikke afklaret, forslag modtages
-#: ../src/Glade/HeadersDialog.glade.h:28
-msgid "PlayResY:"
-msgstr "AfspilOplY:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
+msgid "File Save format"
+msgstr "Format til at gemme filer"
 
-# Ikke afklaret, forslag modtages (ændret fra KørDybde: til AfspilDybde:)
-#: ../src/Glade/HeadersDialog.glade.h:29
-msgid "PlayDepth:"
-msgstr "AfspilDybde:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:16
+msgid ""
+"Subtitle format to use when saving files. Besides the actual format, used "
+"when \"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_format_option key, other possible values are \"KeepExisting\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"Undertekstformat til at gemme filer. Udover den faktiske kodning, som bruges, "
+"når “RememberLastUsed” eller “Specific” er angivet i nøglen "
+"file_save_format_option, er andre mulige værdier “KeepExisting” og "
+"“CurrentLocale”."
 
-#: ../src/Glade/HeadersDialog.glade.h:30
-msgid "Timer:"
-msgstr "Tidtagning:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
+msgid "File Save newline option"
+msgstr "Linjeskiftmuligheder til at gemme fil"
 
-#: ../src/Glade/HeadersDialog.glade.h:31
-msgid "File Path:"
-msgstr "Filsti:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
+msgid ""
+"Newline option to use by default when saving files. Possible values are: "
+"\"RememberLastUsed\" to remember the last used newline type, and \"Specific"
+"\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
+"and \"Specific\" is stored in the file_save_newline key."
+msgstr ""
+"Linjeskiftmuligehed der som standard bruges til at gemme filer. Mulige "
+"værdier er: “RememberLastUsed” for at huske senest brugte linjeskift og "
+"“Specific” for at bruge et specifikt linjeskift. Linjeskifttypen for "
+"“RememberLastUsed” og “Specific” gemmes i nøglen file_save_newline."
 
-#: ../src/Glade/HeadersDialog.glade.h:32
-msgid "Delay:"
-msgstr "Forsinkelse:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
+msgid "File Save newline"
+msgstr "Linjeskift til at gemme fil"
 
-#: ../src/Glade/HeadersDialog.glade.h:33
-msgid "CD Track:"
-msgstr "Cd-spor:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
+msgid "Newline type to use when saving files."
+msgstr "Linjeskifttype der bruges til at gemme filer."
 
-#: ../src/Glade/HeadersDialog.glade.h:34
-msgid "Comment:"
-msgstr "Bemærkning:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
+msgid "Save translation when saving subtitles"
+msgstr "Gem oversættelse, når undertekster gemmes"
 
-#: ../src/Glade/HeadersDialog.glade.h:35
-msgid "Font Name:"
-msgstr "Navn på skrifttype:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
+msgid "Whether to save existing translations when saving subtitles."
+msgstr "Om eksisterende oversættelser skal gemmes, når underteksterne gemmes."
 
-#: ../src/Glade/HeadersDialog.glade.h:36
-msgid "Font Color:"
-msgstr "Farve på skrifttype:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
+msgid "Automatically choose the video file"
+msgstr "Vælg automatisk videofilen"
 
-#: ../src/Glade/HeadersDialog.glade.h:37
-msgid "Font Style:"
-msgstr "Skrifttypestil:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:24
+msgid ""
+"Whether to automatically choose the video file to open, when opening a "
+"subtitle file. A video file is chosen based on the name of the subtitle file."
+msgstr ""
+"Om videofilen, der skal åbnes, vælges automatisk, når en undertekstfil åbnes."
 
-#: ../src/Glade/HeadersDialog.glade.h:38
-msgid "Font Size:"
-msgstr "Størrelse på skrifttype:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
+msgid "Apply reaction delay"
+msgstr "Tilføj reaktionsforsinkelse"
 
-#: ../src/Glade/MainWindow.glade.h:1
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
+msgid ""
+"Whether to apply a reaction delay when setting the start or end times of a "
+"subtitle with the video playing."
+msgstr ""
+"Om der skal tilføjes en reaktionsforsinkelse, når start- og "
+"sluttidspunkterne indstilles på underteksterne, mens videoen afspilles."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
+msgid "Reaction delay"
+msgstr "Reaktionsforsinkelse"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:28
+msgid ""
+"Time, in milliseconds, to subtract from the start or end times when setting "
+"them with the video playing."
+msgstr ""
+"Tid (i millisekunder) som skal trækkes fra start- eller sluttidspunktet, når "
+"de indstilles, mens videoen afspilles."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
+msgid "Seek the video on subtitles change"
+msgstr "Søg i videoen ved ændring af undertekster"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
+msgid ""
+"Whether to seek the video to the start of the first subtitle when one or "
+"more subtitles are changed."
+msgstr ""
+"Om der skal søges i videoen til starten af den første undertekst, når en "
+"eller flere undertekster er blevet ændret."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
+msgid "Seek on change rewind"
+msgstr "Tilbagespoling ved søgning efter ændringer"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
+msgid ""
+"Time, in milliseconds, to rewind the video when seeking on subtitles change."
+msgstr ""
+"Tid (i millisekunder) som videoen skal spoles tilbage, når der søges i "
+"forbindelse med ændringer af underteksterne."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
+msgid "View line lengths"
+msgstr "Vis injelængder"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
+msgid "Whether to view line lengths as characters counts in the subtitle list."
+msgstr "Om linjelængder skal vises som antal tegn i undertekstlisten."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
+msgid "Window width"
+msgstr "Vinduesbredde"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:36
+msgid "The width of the Main Window."
+msgstr "Hovedvinduets bredde."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:37
+msgid "Window height"
+msgstr "Vindueshøjde"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:38
+msgid "The height of the Main Window."
+msgstr "Hovedvinduets højde."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:39
+msgid "Active spellcheck language for text"
+msgstr "Aktivt sprog til stavekontrol af teksten"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
+msgid "The language used to check the spelling of subtitle text."
+msgstr "Sproget brugt til stavekontrol af underteksterne."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
+msgid "Active spellcheck language for translation"
+msgstr "Aktivt sprog til stavekontrol af oversættelse"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
+msgid "The language used to check the spelling of subtitle translation."
+msgstr "Sproget til stavekontrol af underteksternes oversættelse."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
+msgid "Autocheck spelling"
+msgstr "Automatisk stavekontrol"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
+msgid "Whether to automatically check the spelling of subtitle text."
+msgstr "Om underteksterne automatisk skal kontrolleres for stavefejl."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
+msgid "Auto backup"
+msgstr "Automatisk sikkerhedskopi"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:46
+msgid ""
+"Whether to automatically backup files. A copy of the file will be "
+"periodically saved with a ~ suffix."
+msgstr ""
+"Om filer automatisk skal sikkerhedskopieres. En kopi af filen vil "
+"regelmæssigt blive gemt med filendelsen ~."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
+msgid "Backup time"
+msgstr "Sikkerhedskopieringsinterval"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:48
+msgid ""
+"Time interval, in seconds, to automatically backup files. A minimum of 30 "
+"seconds is recommended."
+msgstr ""
+"Tidsinterval (i sekunder) mellem sikkerhedskopiering af filer. Som minimum "
+"anbefales 30 sekunder."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
+msgid "Time step increment"
+msgstr "Forøgelse af tidstrin"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
+msgid ""
+"Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
+"controls (e.g., start, end and duration)."
+msgstr ""
+"Tid (i millesekunder), der skal lægges til eller trækkes fra, når tiden "
+"justeres med rulleknapper (f.eks. start, slut og varighed)."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
+msgid "Frames step increment"
+msgstr "Forøgelse af billedtrin"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
+msgid ""
+"Frames to add or subtract when adjusting frames in spinbutton controls (e."
+"g., start, end and duration)."
+msgstr ""
+"Billeder, der skal lægges til eller trækkes fra, når billeder justeres med "
+"rulleknapper (f.eks. start, slut og varighed)."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
+msgid "Time between subtitles"
+msgstr "Tid mellem undertekster"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:54
+msgid ""
+"Recommended time between subtitles, in milliseconds, used for example when "
+"splitting a subtitle in two."
+msgstr ""
+"Anbefalet tid (i millisekunder) mellem undertekster når f.eks. en undertekst "
+"deles i to."
+
+#: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Fil"
 
-#: ../src/Glade/MainWindow.glade.h:2
-msgid "_Translation"
-msgstr "_Oversættelse"
-
-#: ../src/Glade/MainWindow.glade.h:3
+#: ../src/Glade/MainWindow.ui.h:2
 msgid "_New"
 msgstr "_Ny"
 
-#: ../src/Glade/MainWindow.glade.h:4
+#: ../src/Glade/MainWindow.ui.h:3
 msgid "_Open"
 msgstr "_Åbn"
 
-#: ../src/Glade/MainWindow.glade.h:5
+#: ../src/Glade/MainWindow.ui.h:4
 msgid "_Save"
 msgstr "_Gem"
 
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:5
 msgid "Save _As"
 msgstr "Gem _som"
 
-#: ../src/Glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.ui.h:6
+msgid "_Translation"
+msgstr "_Oversættelse"
+
+#: ../src/Glade/MainWindow.ui.h:7
+msgid "_Reload"
+msgstr "Genindl_æs"
+
+#: ../src/Glade/MainWindow.ui.h:8
 msgid "_Close"
 msgstr "_Luk"
 
-#: ../src/Glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.ui.h:9
 msgid "_Headers"
 msgstr "_Filhoveder"
 
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:10
+msgid "_Properties"
+msgstr "_Egenskaber"
+
+#: ../src/Glade/MainWindow.ui.h:11
+msgid "_Quit"
+msgstr "_Afslut"
+
+#: ../src/Glade/MainWindow.ui.h:12
 msgid "_Edit"
 msgstr "_Rediger"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.ui.h:13
+msgid "_Undo"
+msgstr "_Fortryd"
+
+#: ../src/Glade/MainWindow.ui.h:14
+msgid "_Redo"
+msgstr "_Omgør"
+
+#: ../src/Glade/MainWindow.ui.h:15
+msgid "Cu_t"
+msgstr "K_lip"
+
+#: ../src/Glade/MainWindow.ui.h:16
+msgid "_Copy"
+msgstr "_Kopiér"
+
+#: ../src/Glade/MainWindow.ui.h:17
+msgid "_Paste"
+msgstr "I_ndsæt"
+
+#: ../src/Glade/MainWindow.ui.h:18
 msgid "_Format"
 msgstr "_Format"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.ui.h:19
 msgid "_Bold"
 msgstr "_Fed"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.ui.h:20
 msgid "_Italic"
 msgstr "_Kursiv"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.ui.h:21
 msgid "_Underline"
 msgstr "_Understregning"
 
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.ui.h:22
 msgid "_Split"
 msgstr "_Opdel"
 
-#: ../src/Glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.ui.h:23
 msgid "_Merge"
 msgstr "_Sammenføj"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
 msgstr "_Indsæt undertekst"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.ui.h:25
 msgid "_Before"
 msgstr "_Før"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.ui.h:26
 msgid "_After"
 msgstr "_Efter"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.ui.h:27
 msgid "At _Video Position"
 msgstr "Ved _videoposition"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.ui.h:28
 msgid "_Delete Subtitles"
 msgstr "_Slet undertekster"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.ui.h:29
 msgid "Pr_eferences"
 msgstr "Indstilling_er"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.ui.h:30
 msgid "_View"
 msgstr "_Vis"
 
-# Kun _en_ billedrate
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.ui.h:31
 msgid "_Frames"
-msgstr "_Billedrate"
+msgstr "_Billeder"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.ui.h:32
 msgid "_Times"
 msgstr "_Tidsenheder"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.ui.h:33
 msgid "_Line Lengths"
 msgstr "_Linjelængder"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.ui.h:34
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.ui.h:35
 msgid "Video _Subtitles"
-msgstr "Video-undertek_ster"
+msgstr "Videoundertek_ster"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.ui.h:36
 msgid "_Text"
-msgstr "_Tekst"
+msgstr "T_ekst"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.ui.h:37
 msgid "Translatio_n"
-msgstr "Oversætte_lse"
+msgstr "Overs_ættelse"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.ui.h:38
 msgid "_Search"
 msgstr "_Søg"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.ui.h:39
+msgid "_Find"
+msgstr "_Find"
+
+#: ../src/Glade/MainWindow.ui.h:40
 msgid "Find Ne_xt"
 msgstr "Find næ_ste"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.ui.h:41
 msgid "Find Pre_vious"
 msgstr "Find _tidligere"
 
-#: ../src/Glade/MainWindow.glade.h:33 ../src/Glade/SearchDialog.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:42
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:172
 msgid "_Replace"
 msgstr "_Erstat"
 
-#: ../src/Glade/MainWindow.glade.h:34
+#: ../src/Glade/MainWindow.ui.h:43
 msgid "T_imings"
 msgstr "T_idspunkter"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.ui.h:44
 msgid "_Input Frame Rate"
-msgstr "_Indtast billedrate"
+msgstr "_Indtast billedfrekvens"
 
-#: ../src/Glade/MainWindow.glade.h:36
-msgid "_Video Frame Rate"
-msgstr "_Videobilledrate"
+#: ../src/Glade/MainWindow.ui.h:45
+msgid "_Current Frame Rate"
+msgstr "_Nuværende billedfrekvens"
 
-#: ../src/Glade/MainWindow.glade.h:37
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:46
 msgid "_Synchronize"
 msgstr "_Synkroniser"
 
-#: ../src/Glade/MainWindow.glade.h:38
+#: ../src/Glade/MainWindow.ui.h:47
 msgid "_Adjust"
 msgstr "_Juster"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.ui.h:48
 msgid "Sh_ift"
 msgstr "Sk_ift"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.ui.h:49
 msgid "Vide_o"
 msgstr "Vide_o"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.ui.h:50
 msgid "_Play / Pause"
 msgstr "_Afspil / pause"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.ui.h:51
 msgid "_Loop Selection"
 msgstr "_Løkkeudvælgelse"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.ui.h:52
 msgid "R_ewind"
 msgstr "_Spol tilbage"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.ui.h:53
 msgid "_Forward"
-msgstr "_Fremad"
+msgstr "S_pol frem"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.ui.h:54
 msgid "_Seek to…"
 msgstr "_Søg til …"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.ui.h:55
 msgid "Seek _to Selection"
 msgstr "Søg _til udvælgelse"
 
-#: ../src/Glade/MainWindow.glade.h:47
-msgid "Select Nearest Subtitle"
-msgstr "Vælg nærmeste undertekst"
+#: ../src/Glade/MainWindow.ui.h:56
+msgid "Select _Nearest Subtitle"
+msgstr "_Vælg nærmeste undertekst"
 
-#: ../src/Glade/MainWindow.glade.h:48
-msgid "Auto Select Subtitle"
-msgstr "Automatisk valg af undertekst"
+#: ../src/Glade/MainWindow.ui.h:57
+msgid "A_uto Select Subtitle"
+msgstr "A_utomatisk valg af undertekst"
 
-# ændret fra for undertekst til af undertekst.
-#: ../src/Glade/MainWindow.glade.h:49
+#: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
-msgstr "Indstil st_art af undertekst"
+msgstr "Indstil st_arten på undertekst"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
-msgstr "Indstil slutning på un_dertekst"
+msgstr "Indstil slutningen på un_dertekst"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
 msgstr "_Værktøjer"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.ui.h:61
 msgid "_Autocheck Spelling"
-msgstr "_Automatisk tjek af stavning"
+msgstr "_Automatisk stavekontrol"
 
-#: ../src/Glade/MainWindow.glade.h:53
-msgid "Set T_ext Language"
-msgstr "Indstil _tekstsprog"
+#: ../src/Glade/MainWindow.ui.h:62
+msgid "Set _Languages"
+msgstr "In_dstil sprog"
 
-#: ../src/Glade/MainWindow.glade.h:54
-msgid "Set Translati_on Language"
-msgstr "Indstil _oversættelsessprog"
-
-#: ../src/Glade/MainWindow.glade.h:55
-msgid "Translate _Text → Translation"
-msgstr "Oversæt _tekst → oversættelse"
-
-#: ../src/Glade/MainWindow.glade.h:56
-msgid "Translate Translatio_n → Text"
-msgstr "Oversæt over_sættelse → tekst"
-
-#: ../src/Glade/MainWindow.glade.h:57
+#: ../src/Glade/MainWindow.ui.h:63
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.ui.h:64
 msgid "_Contents"
 msgstr "_Indhold"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: ../src/Glade/MainWindow.glade.h:60
-msgid "Request a _Feature"
-msgstr "Anmod om en _funktion"
+#: ../src/Glade/MainWindow.ui.h:66
+msgid "_Donate"
+msgstr "_Donér"
 
-#: ../src/Glade/MainWindow.glade.h:61
+#: ../src/Glade/MainWindow.ui.h:67
+msgid "Request a New _Feature"
+msgstr "Anmod om en n_y funktion"
+
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "Report a _Bug"
 msgstr "Anmeld en _fejl"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.ui.h:69
+msgid "_About"
+msgstr "_Om"
+
+#: ../src/Glade/MainWindow.ui.h:70
 msgid "New File"
 msgstr "Ny fil"
 
-#: ../src/Glade/MainWindow.glade.h:64
+#: ../src/Glade/MainWindow.ui.h:71
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
+msgid "Open File"
+msgstr "Åbn fil"
+
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Save File"
 msgstr "Gem fil"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Insert"
 msgstr "Indsæt"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.ui.h:74
 msgid "Delete"
 msgstr "Slet"
 
-#: ../src/Glade/MainWindow.glade.h:67
-msgid "<b>Time</b>"
-msgstr "<b>Tid</b>"
+#: ../src/Glade/MainWindow.ui.h:75
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+msgid "Time"
+msgstr "Tid"
 
-#: ../src/Glade/MainWindow.glade.h:68
-msgid "<b>Length</b>"
-msgstr "<b>Længde</b>"
+#: ../src/Glade/MainWindow.ui.h:76
+msgid "Length\t"
+msgstr "Længde\t"
 
-#: ../src/Glade/MainWindow.glade.h:69
+#: ../src/Glade/MainWindow.ui.h:77
+msgid "Sets the subtitle Start to the current video position"
+msgstr "Indstiller start på en undertekst til den nuværende videoposition"
+
+#: ../src/Glade/MainWindow.ui.h:78
+msgid "Sets the subtitle End to the current video position"
+msgstr "Indstiller slut på en undertekst til den nuværende videoposition"
+
+#: ../src/Glade/MainWindow.ui.h:79
+msgid ""
+"Sets the subtitle Start and End while the video is playing. Keep the button "
+"pressed for the duration of each subtitle.\t"
+msgstr ""
+"Indstiller start og slut på underteksten, mens videoen afspilles. Hold "
+"knappen nede for at se hver underteksts varighed.\t"
+
+#: ../src/Glade/MainWindow.ui.h:80
+msgid "1.0x"
+msgstr "1,0x"
+
+#: ../src/Glade/MainWindow.ui.h:81
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
 "Shift+Plus/Minus (on the numpad) shifts timings."
 msgstr ""
 "Fif: Brug Ctrl+plus/minus og Alt+plus/minus (på det numeriske tastatur) til "
-"at justere tidspunkter for til og fra.\n"
+"at justere tidspunkter for start og slut.\n"
 "Skift+plus/minus (på det numeriske tastatur) forskyder tidspunkter."
 
+#. This is the start time/frame of a subtitle.
+#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
+msgid "Start:"
+msgstr "Start:"
+
+#: ../src/Glade/MainWindow.ui.h:85
+msgid "End:"
+msgstr "Slut:"
+
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:72
+#: ../src/Glade/MainWindow.ui.h:87
 msgid "Duration:"
 msgstr "Varighed:"
 
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:74
-msgid "End:"
-msgstr "Til:"
-
-#. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:76
-msgid "Start:"
-msgstr "Fra:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "Preferences"
-msgstr "Indstillinger"
-
-#: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "_Reset to defaults"
-msgstr "_Nulstil"
-
-#: ../src/Glade/PreferencesDialog.glade.h:3
-msgid "When saving subtitles, also save their _translation"
-msgstr "Når der gemmes undertekster så gem også _oversættelse"
-
-#: ../src/Glade/PreferencesDialog.glade.h:4
-msgid "<b>Translation File Saving</b>"
-msgstr "<b>Lagring af oversættelsesfil</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:5
-msgid "Character c_oding to use:"
-msgstr "Tegnsæt der skal _bruges:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:6
-msgid "If auto detection _fails, use:"
-msgstr "Hvis automatisk registrering _mislykkes så brug:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "Automatically choose the _video file to open"
-msgstr "Vælg automatisk _videofil der skal åbnes"
-
-#: ../src/Glade/PreferencesDialog.glade.h:8
-msgid "<b>File Open Dialog</b>"
-msgstr "<b>Dialog for åbn fil</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
-msgid "Ch_aracter coding to use:"
-msgstr "_Tegnsæt der skal bruges:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:10
-msgid "_Subtitle format to use:"
-msgstr "_Undertekstformat der skal bruges:"
-
-# "_Nylinjetype der skal bruges:" / "Kodning af linjeskift:" 
-# / "Type af linjeskiftmarkering"
-#: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "_Newline type to use:"
-msgstr "_Kodning af linjeskift:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:12
-msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Dialog for gem fil som</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:13
-msgid "Create a _backup copy of files every"
-msgstr "Opret en _sikkerhedskopi af filerne hver"
-
-#: ../src/Glade/PreferencesDialog.glade.h:14
-msgid "minutes"
-msgstr "minutter"
-
-#: ../src/Glade/PreferencesDialog.glade.h:15
-msgid "<b>Backup</b>"
-msgstr "<b>Sikkerhedskopi</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:16
-msgid "Files"
-msgstr "Filer"
-
-#: ../src/Glade/PreferencesDialog.glade.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
-msgstr ""
-"Søg automatisk i videoen til den første undertekst når der ændres tidspunkter"
-
-#: ../src/Glade/PreferencesDialog.glade.h:18
-msgid "Seek"
-msgstr "Søg"
-
-#: ../src/Glade/PreferencesDialog.glade.h:19
-msgid "ms before the actual start to help review new timings"
-msgstr ""
-"ms før den aktuelle fra (start) for at hjælpe med at gennemse nye tidspunkter"
-
-#: ../src/Glade/PreferencesDialog.glade.h:20
-msgid "<b>Video Seeking</b>"
-msgstr "<b>Videosøgning</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:21
-msgid "Leave"
-msgstr "Forlad"
-
-#: ../src/Glade/PreferencesDialog.glade.h:22
-msgid "ms between subtitles when inserting or splitting"
-msgstr "ms mellem undertekster under indsættelse eller opsplitning"
-
-#: ../src/Glade/PreferencesDialog.glade.h:23
-msgid "<b>Gap Between Subtitles</b>"
-msgstr "<b>Mellemrum mellem undertekster</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:24
-msgid "Subtract"
-msgstr "Træk fra"
-
-#: ../src/Glade/PreferencesDialog.glade.h:25
-msgid "ms when setting subtitle start/end on playback"
-msgstr "ms når der ved afspilning angives fra/til på underteksterne"
-
-#: ../src/Glade/PreferencesDialog.glade.h:26
-msgid "<b>Reaction Delay</b>"
-msgstr "<b>Reaktionsforsinkelse</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:27
-msgid "Editing"
-msgstr "Redigerer"
-
-#: ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
-msgid "Replace"
-msgstr "Erstat"
-
-#: ../src/Glade/SearchDialog.glade.h:2
-msgid "Replace _with:"
-msgstr "Erstat _med:"
-
-#: ../src/Glade/SearchDialog.glade.h:3
-msgid "_Search for:"
-msgstr "_Søg efter:"
-
-#: ../src/Glade/SearchDialog.glade.h:4
-msgid "_Match case"
-msgstr "_Skeln mellem små/store bogstaver"
-
-#: ../src/Glade/SearchDialog.glade.h:5
-msgid "Search _backwards"
-msgstr "Søg _baglæns"
-
-#: ../src/Glade/SearchDialog.glade.h:6
-msgid "Search using a Regular _Expression"
-msgstr "Søg med brug af et regulært _udtryk"
-
-#: ../src/Glade/SearchDialog.glade.h:7
-msgid "_Wrap around"
-msgstr "_Omslut"
-
-#: ../src/Glade/SearchDialog.glade.h:8
-msgid "Replace _All"
-msgstr "Erstat _alle"
-
-#: ../src/Glade/SetLanguageDialog.glade.h:1
-msgid "Set language"
-msgstr "Indstil sprog"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:1
-msgid "Adjust Timings"
-msgstr "Juster tidspunkter"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:2
-msgid "New Start:"
-msgstr "Ny fra:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:3
-msgid "Start Frame:"
-msgstr "Fra billede:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:4
-msgid "No.:"
-msgstr "Nr.:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:5
-msgid "<b>First Subtitle</b>"
-msgstr "<b>Første undertekst</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:6
-msgid "<b>Last Subtitle</b>"
-msgstr "<b>Sidste undertekst</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
-msgid "All Subtitles"
-msgstr "Alle undertekster"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
-msgid "Selected Range"
-msgstr "Valgt interval"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:9
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "<b>Apply to</b>"
-msgstr "<b>Gør gældende for</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:10
-msgid "Adjust"
-msgstr "Juster"
-
-# bemærk at Shift ikke er tasten Skift
-#: ../src/Glade/TimingsShiftDialog.glade.h:1
-msgid "Shift Timings"
-msgstr "Forskyd tidspunkter"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:2
-msgid "<b>Frames</b>"
-msgstr "<b>Billeder</b>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "_All subtitles"
-msgstr "_Alle undertekster"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:4
-msgid "_Selected subtitles"
-msgstr "Valgte undertek_ster"
-
-#. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:6
-msgid "From _first subtitle to selection"
-msgstr "Fra _første undertekst til den valgte"
-
-#. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "From selection to _last subtitle"
-msgstr "Fra den val_gte til sidste undertekst"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
-msgid ""
-"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
-"to shift timings from the main window.</i></small>"
-msgstr ""
-"<small><i>Fif: Brug Skift+plus/minus (på numerisk tastatur)\n"
-"for at ændre tidspunkter fra hovedvinduet.</i></small>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:12
-msgid "_Shift"
-msgstr "_Forskyd"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "Synchronize Timings"
-msgstr "Synkroniser tidspunkter"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "<b>Sync Points</b>"
-msgstr "<b>Synkroniseringspunkter</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-msgid "Synchroni_ze all subtitles"
-msgstr "S_ynkroniser alle undertekster"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "<b>Options</b>"
-msgstr "<b>Indstillinger</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "<b>Status</b>"
-msgstr "<b>Status</b>"
-
-#: ../src/Glade/VideoOpenDialog.glade.h:1
-msgid "Open Video"
-msgstr "Åbn video"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:1
-msgid "Seek To"
-msgstr "Søg til"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek _video to:"
-msgstr "Søg _video til:"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:3
-msgid "_Seek"
-msgstr "_Søg"
-
+# Lidt i tvivl om -ing-formen i denne og de efterfølgende skal forstås som nutid (programmet er i gang med opgaven) eller som "Redigering af tidspunkter" (et menupunkt eller lignende til at redigere tidspunkter)
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
 msgstr "Justerer tidspunkter"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
 msgid "Changing Input Frame Rate"
-msgstr "Ændrer billedrate for inddata"
+msgstr "Ændrer billedfrekvens for inddata"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
 msgid "Changing Video Frame Rate"
-msgstr "Ændrer billedrate for video"
+msgstr "Ændrer billedfrekvens for video"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
-msgstr "Slå fed til/fra"
+msgstr "Slår fed til/fra"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
 msgid "Toggling Italic"
-msgstr "Slå skråtekst til/fra"
+msgstr "Slår kursiv til/fra"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
 msgid "Toggling Underline"
-msgstr "Slå understregning til/fra"
+msgstr "Slår understregning til/fra"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
 msgid "Editing Start"
-msgstr "Rediger fra"
+msgstr "Redigerer start"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
 msgid "Editing End"
-msgstr "Rediger til"
+msgstr "Redigerer slut"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
 msgid "Editing Duration"
-msgstr "Rediger varighed"
+msgstr "Redigerer varighed"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:601
+#: ../src/GnomeSubtitles/Ui/Menus.cs:708
 msgid "Undo"
 msgstr "Fortryd"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:611
+#: ../src/GnomeSubtitles/Ui/Menus.cs:718
 msgid "Redo"
 msgstr "Omgør"
 
@@ -959,28 +846,18 @@ msgstr "Opdeler undertekster"
 msgid "Synchronizing timings"
 msgstr "Synkroniserer tidspunkter"
 
-#. initially, it's the former text replaced by translation
-#. direction of translation
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
-msgid "Translating"
-msgstr "Oversætter"
-
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
-msgid "Could not translate the chosen subtitle."
-msgstr "Kunne ikke oversætte de valgte undertekster."
-
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr "Indstiller begyndelse for undertekst"
+msgstr "Indstiller begyndelsen på undertekst"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr "Indstiller afslutning for undertekst"
+msgstr "Indstiller afslutningen på undertekst"
 
 #. To translators: this is the filename for new files (before being saved for the first time)
 #: ../src/GnomeSubtitles/Core/Document.cs:113
 msgid "Unsaved Subtitles"
-msgstr "Ugemte undertekster"
+msgstr "Ikke-gemte undertekster"
 
 #. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
 #: ../src/GnomeSubtitles/Core/Document.cs:122
@@ -1083,7 +960,7 @@ msgstr "Unicode"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:59
 #: ../src/GnomeSubtitles/Core/Encodings.cs:60
 msgid "Chinese Traditional"
-msgstr "Kinesisk traditionelt"
+msgstr "Traditionel kinesisk"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:61
 msgid "Cyrillic/Russian"
@@ -1112,11 +989,11 @@ msgstr "Koreansk"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:72
 #: ../src/GnomeSubtitles/Core/Encodings.cs:73
 msgid "Chinese Simplified"
-msgstr "Kinesisk simplicificeret"
+msgstr "Forenklet kinesisk"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:80
 msgid "Portuguese"
-msgstr "Portugesisk"
+msgstr "Portugisisk"
 
 #. Added
 #: ../src/GnomeSubtitles/Core/Encodings.cs:81
@@ -1145,121 +1022,579 @@ msgid "Current Locale"
 msgstr "Nuværende sprog"
 
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
+# Højst sandsynlig en fejl her vedrørende Gnome-undertekster, da
+# det er et sammensat ord med proprium først og ikke et sammensat navneord.
+# I det tilfælde skal det hedde Gnome undertekster. Det gælder også de
+# følgende strenge.
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+msgid "About Gnome Subtitles"
+msgstr "Om GNOME Undertekster"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+msgid "_All subtitles"
+msgstr "_Alle undertekster"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+msgid "_Selected subtitles"
+msgstr "Valgte undertek_ster"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
+msgid "Subtitles between those selected and the _first"
+msgstr "Undertekster mellem de valgte og den _første"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
+msgid "Subtitles between those selected and the _last"
+msgstr "Undertekster mellem de valgte og den _sidste"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
+msgid "Character Encodings"
+msgstr "Tegnkodninger"
+
+#. Left part: Available VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:70
+msgid "Available Encodings"
+msgstr "Tilgængelige kodninger"
+
+#. Right part: Shown VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:87
+msgid "Chosen Encodings"
+msgstr "Valgte kodninger"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
 msgid "Encoding"
 msgstr "Kodning"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
+# overskrifter eller filhoveder, du bliver nok nødt til at undersøge i hvilken
+# betydning det bruges her, for man kunne godt forestille sig begge
+# udtryk brugt i forbindelse med understekster. Rent faktisk anser jeg
+# det for væsentligt mere sandsynligt at det er filhoveder, idet det
+# virker som om at dette er et program til ændre i undertekstfiler med.
+# Jeg ved at sådan nogle har filhoveder, omvendt har jeg svært ved at
+# forestille mig hvor overskifter skulle komme ind i billedet
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+msgid "Headers"
+msgstr "Filhoveder"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+msgid "Title:"
+msgstr "Titel:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "Forfatter:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+msgid "Artist:"
+msgstr "Kunstner:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "Album:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+msgid "By:"
+msgstr "Af:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "Version:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+msgid "Program:"
+msgstr "Program:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+msgid "Source:"
+msgstr "Kilde:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "Dato:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
+msgid "Frame Rate:"
+msgstr "Billedfrekvens:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+msgid "File:"
+msgstr "Fil:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+msgid "Note:"
+msgstr "Note:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
+msgid "Media Type:"
+msgstr "Medietype:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "Lyd"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: ../src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "Video"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+msgid "Original Script:"
+msgstr "Original skript:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+msgid "Original Translation:"
+msgstr "Original oversættelse:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+msgid "Original Editing:"
+msgstr "Original redigering:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+msgid "Original Timing:"
+msgstr "Original timing:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+msgid "Original Script Checking:"
+msgstr "Original skripttjek:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+msgid "Script Updated By:"
+msgstr "Skript opdateret af:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+msgid "Collisions:"
+msgstr "Sammenstød:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+msgid "Timer:"
+msgstr "Tidtagning:"
+
+# Ikke afklaret, forslag modtages
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
+msgid "Play Res X:"
+msgstr "Afspil i opl. X:"
+
+# Ikke afklaret, forslag modtages
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:129
+msgid "Play Res Y:"
+msgstr "Afspil i opl. Y:"
+
+# Ikke afklaret, forslag modtages (ændret fra KørDybde: til AfspilDybde:)
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
+msgid "Play Depth:"
+msgstr "Afspilningsdybde:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+msgid "File Path:"
+msgstr "Filsti:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+msgid "Delay:"
+msgstr "Forsinkelse:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+msgid "CD Track:"
+msgstr "Cd-spor:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+msgid "Font Name:"
+msgstr "Navn på skrifttype:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+msgid "Font Color:"
+msgstr "Farve på skrifttype:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+msgid "Font Style:"
+msgstr "Skrifttypestil:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+msgid "Font Size:"
+msgstr "Størrelse på skrifttype:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+msgid "Video To Open:"
+msgstr "Video der skal åbnes:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
+msgid "Character Encoding:"
+msgstr "Tegnkodning:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:200
 msgid "None"
 msgstr "Ingen"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:279
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
 msgid "All Subtitle Files"
 msgstr "Alle undertekstfiler"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "Filegenskaber"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
+msgid "File Name"
+msgstr "Filnavn"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:52
+msgid "Path"
+msgstr "Sti"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:55
+msgid "Character Encoding"
+msgstr "Tegnkodning"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
+msgid "Subtitle Format"
+msgstr "Undertekstformat"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+msgid "Timing Mode"
+msgstr "Tilstand for tidsangivelser"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "Gem som"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+msgid "Subtitle Format:"
+msgstr "Undertekstformat:"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
+msgid "Line Ending:"
+msgstr "Linjeafslutning:"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Åbn oversættelsesfil"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Remember the last used encoding"
-msgstr "Husk den sidst brugte kodning"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Keep the encoding used on file open"
-msgstr "Bevar kodningen brugt ved åbn fil"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Keep the format used on file open"
-msgstr "Bevar formatet brugt ved åbn fil"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Remember the last used format"
-msgstr "Husk det sidst brugte format"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:167
-msgid "Remember the last used type"
-msgstr "Husk den sidst brugte type"
-
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
-msgid "Find"
-msgstr "Find"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
-msgid "Set Text Language"
-msgstr "Indstil tekstsprog"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
-msgid "Set Translation Language"
-msgstr "Indstil oversættelsessprog"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
-msgid "Select the text _language of the current subtitles."
-msgstr "Vælg tekst_sproget for de nuværende undertekster."
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
-msgid "Select the translation _language of the current subtitles."
-msgstr "Vælg oversættelses_sproget for de nuværende undertekster."
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:28
 msgid "Save Translation As"
 msgstr "Gem oversættelse som"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:67
-msgid "Start Time:"
-msgstr "Fra tid:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "Indstillinger"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
-msgid "Time"
-msgstr "Til"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "Filer"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-msgid "Frames"
-msgstr "Billeder"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "Redigerer"
+
+#. Translation File Saving
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
+msgid "When saving subtitle files, automatically save their _translation"
+msgstr "Når der gemmes undertekstfiler så gem også _oversættelse"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
+msgid "Translation File Saving"
+msgstr "Gemmetilstand for oversættelsesfil"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+msgid "Character c_oding to use:"
+msgstr "Tegnsæt der skal _bruges:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+msgid "If auto detection _fails, use:"
+msgstr "Hvis automatisk registrering _mislykkes så brug:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+msgid "Automatically choose the _video file to open"
+msgstr "Vælg automatisk _videofil der skal åbnes"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+msgid "File Open Dialog"
+msgstr "Dialogen åbn fil"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+msgid "_Subtitle format to use:"
+msgstr "_Undertekstformat der skal bruges:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+msgid "Ch_aracter coding to use:"
+msgstr "_Tegnsæt der skal bruges:"
+
+# "_Nylinjetype der skal bruges:" / "Kodning af linjeskift:"
+# / "Type af linjeskiftmarkering"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+msgid "_Newline type to use:"
+msgstr "_Kodning af linjeskift:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+msgid "File Save As Dialog"
+msgstr "Dialogen gem fil som"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+msgid "Create a _backup copy of files every"
+msgstr "Interval for _sikkerhedskopiering af filerne:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+msgid "minutes"
+msgstr "minutter"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+msgid "Backup"
+msgstr "Sikkerhedskopi"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
+msgid "Seek the video to the selected subtitle when changing timings"
+msgstr "Søg i videoen til den valgte undertekst, når der ændres tidspunkter"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+msgid "Play"
+msgstr "Afspil"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+msgid "ms before the actual start to help review new timings"
+msgstr ""
+"ms før den aktuelle start for at hjælpe med at gennemse nye tidspunkter"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+msgid "Video Seeking"
+msgstr "Videosøgning"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+msgid "Leave"
+msgstr "Forlad"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+msgid "ms between subtitles when inserting or splitting"
+msgstr "ms mellem undertekster under indsættelse eller opsplitning"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+msgid "Gap Between Subtitles"
+msgstr "Mellemrum mellem undertekster"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+msgid "Subtract"
+msgstr "Træk fra"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+msgid "ms when setting subtitle start/end while playing the video"
+msgstr "ms når der under afspilning angives start/slut på underteksterne"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+msgid "Reaction Delay"
+msgstr "Reaktionsforsinkelse"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+msgid "Remember the last used encoding"
+msgstr "Husk den sidst brugte kodning"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+msgid "Keep the encoding used on file open"
+msgstr "Bevar kodningen brugt ved åbn fil"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+msgid "Keep the format used on file open"
+msgstr "Bevar formatet brugt ved åbn fil"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+msgid "Remember the last used format"
+msgstr "Husk det sidst brugte format"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+msgid "Remember the last used type"
+msgstr "Husk den sidst brugte type"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Replace"
+msgstr "Erstat"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Find"
+msgstr "Find"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:130
+msgid "F_ind"
+msgstr "F_ind"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:139
+msgid "Replace _with"
+msgstr "Erstat _med"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "_Skeln mellem små/store bogstaver"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "Søg _baglæns"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
+msgid "Regular _expression"
+msgstr "Regulært _udtryk"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
+msgid "Wra_p around"
+msgstr "_Ombryd"
+
+#. Action area
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "Erstat _alle"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
+msgid "Set Languages"
+msgstr "Indstil sprog"
+
+#. Left part: Text Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
+msgid "Text Language"
+msgstr "Tekstsprog"
+
+#. Right part: Translation Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
+msgid "Translation Language"
+msgstr "Oversættelsessprog"
+
+#. Bottom: info message
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
+msgid "For additional languages please install the corresponding package."
+msgstr "Ønskes flere sprog, installér da den relevante pakke."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
+msgid "Adjust Timings Between 2 Points"
+msgstr "Juster tidspunktet mellem to punkter"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
+msgid "_Apply"
+msgstr "An_vend"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
+msgid "Subtitle No.:"
+msgstr "Undertekstnr.:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+msgid "New Start:"
+msgstr "Ny start:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
+msgid "First Point"
+msgstr "Første punkt"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:139
+msgid "Second Point"
+msgstr "Andet punkt"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:162
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
+msgid "Apply To"
+msgstr "Anvend på"
+
+# bemærk at Shift ikke er tasten Skift
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+msgid "Shift Timings"
+msgstr "Forskyd tidspunkter"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
+msgid "Apply"
+msgstr "Anvend"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:82
+msgid "Reset"
+msgstr "Nulstil"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
+msgid "Set From Video"
+msgstr "Indstil fra video"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid ""
+"Sets the shift amount in order for the selected subtitles to start at the "
+"current video position."
+msgstr ""
+"Indstil forskydningen, så de valgte undertekster begynder ved den nuværende "
+"videoposition."
+
+# Der er tale om forskydningen jvf. foregående. Mængde eller grad vil lyde lidt malplaceret her
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
+msgid "Amount"
+msgstr "Forskydning"
+
+#. Tips label
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
+msgid ""
+"Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
+"from the main window."
+msgstr ""
+"Fif: Alternativt kan Skift+plus/minus (på numerisk tastatur) bruges for at "
+"ændre tidspunkter direkte fra hovedvinduet."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+msgid "Synchronize Timings"
+msgstr "Synkroniser tidspunkter"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
+msgid "Sync Points"
+msgstr "Synkroniseringspunkter"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
+msgid "Subtitles between sync points"
+msgstr "Undertekster mellem synkroniseringspunkter"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
+msgid "Info"
+msgstr "Info"
 
 #. Number column
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
 msgid "Subtitle No."
-msgstr "Undertekst nr."
+msgstr "Undertekstnr."
 
-#. Start (current and correct) columns
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
-msgid "Current Start"
-msgstr "Nuværende fra"
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+msgid "Start"
+msgstr "Start"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
-msgid "Correct Start"
-msgstr "Korrekt fra"
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:152
+msgid "New Start"
+msgstr "Ny start"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:170
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
 msgstr ""
 "Tilføj synkroniseringspunkter ved at vælge undertekster og justere videoen "
-"til deres korrekte position. Mindst 2 punkter kræves."
+"til deres korrekte tidspunkter. Mindst 2 punkter kræves."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
 msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
@@ -1267,11 +1602,11 @@ msgstr ""
 "Tilføj 1 yderligere synkroniseringspunkt for at påbegynde synkronisering. "
 "Tilføjelse af flere punkter vil forøge præcisionen."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
 msgid "Synchronization is ready. All subtitles will be synchronized."
 msgstr "Synkronisering er klar. Alle undertekster vil blive synkroniseret."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
@@ -1280,7 +1615,7 @@ msgstr ""
 "Synkronisering er klar. De følgende undertekster vil ikke blive "
 "synkroniseret: {0}."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
@@ -1298,43 +1633,43 @@ msgstr ""
 "fejlnavn:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
 msgid "Could not open the file"
 msgstr "Kunne ikke åbne filen"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:31
 msgid "Open another file"
 msgstr "Åbn en anden fil"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:61
 msgid "The file path appears to be invalid."
 msgstr "Filstien virker ugyldig."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
 msgid "Could not save the file"
 msgstr "Kunne ikke gemme filen"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:34
 msgid "Save to another file"
 msgstr "Gem til anden fil"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:60
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr ""
 "Du er løbet tør for hukommelse. Luk venligst nogle programmer og forsøg igen."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
-msgstr "En I/O-fejl er opstået."
+msgid "An I/O error has occurred."
+msgstr "Der opstod en I/O-fejl."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:64
 msgid "You do not have the permissions necessary to save the file."
 msgstr "Du har ikke de nødvendige rettigheder for at kunne gemme filen."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:66
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
 msgstr "Den angivne fil er ugyldig."
@@ -1349,7 +1684,7 @@ msgstr "Hvis du ikke gemmer vil alle dine ændringer blive tabt."
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"Gem ændringerne til undertekster \"{0}\" før oprettelse af nye undertekster?"
+"Gem ændringerne til underteksterne “{0}” før oprettelse af nye undertekster?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
 msgid "Create without Saving"
@@ -1359,20 +1694,19 @@ msgstr "Opret uden at gemme"
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr ""
-"Gem ændringerne til oversættelse \"{0}\" før oprettelse af nye undertekster?"
+"Gem ændringerne til oversættelsen “{0}” før oprettelse af nye undertekster?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
 #, csharp-format
 msgid ""
 "Save the changes to translation \"{0}\" before creating a new translation?"
 msgstr ""
-"Gem ændringerne til oversættelse \"{0}\" før oprettelse af en ny "
-"oversættelse?"
+"Gem ændringerne til oversættelsen “{0}” før oprettelse af en ny oversættelse?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr "Gem ændringerne til undertekster \"{0}\" før åbning?"
+msgstr "Gem ændringerne til underteksterne “{0}” før åbning?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
 msgid "Open without Saving"
@@ -1381,12 +1715,12 @@ msgstr "Åbn uden at gemme"
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr "Gem ændringer til oversættelse \"{0}\" før åbning?"
+msgstr "Gem ændringerne til oversættelsen “{0}” før åbning?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Gem ændringer til undertekster \"{0}\" før lukning?"
+msgstr "Gem ændringerne til underteksterne “{0}” før lukning?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
 msgid "Close without Saving"
@@ -1395,7 +1729,7 @@ msgstr "Luk uden at gemme"
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr "Gem ændringerne til oversættelse \"{0}\" før lukning?"
+msgstr "Gem ændringerne til oversættelsen “{0}” før lukning?"
 
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
 msgid ""
@@ -1426,42 +1760,45 @@ msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "Filen ser ud til at være for stor for en tekstbaseret undertekstfil."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:30
 msgid "Could not play the file"
 msgstr "Kunne ikke åbne filen"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+msgid "Open Video"
+msgstr "Åbn video"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
 msgid "All Video Files"
 msgstr "Alle videofiler"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:71
 msgid "All Audio Files"
 msgstr "Alle lydfiler"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
-msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr "Kunne ikke åbne fejlrapporteringsværktøjet Fejl-Frede."
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
+msgid "Seek Video To"
+msgstr "Søg til"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
-msgid "Bug information has been printed to the console."
-msgstr "Fejlsøgningsinformation er blevet skrevet til konsolen."
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+msgid "_Seek"
+msgstr "_Søg"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+msgid "Seek _video to:"
+msgstr "Søg _video til:"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
 msgstr "Tilføj eller fjern …"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
-msgid "Auto Detected"
-msgstr "Autodetekteret"
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+msgid "Automatically Detected"
+msgstr "Automatisk registreret"
 
-#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
 msgid "System Default"
 msgstr "Systemstandard"
-
-#. Constant strings
-#: ../src/GnomeSubtitles/Ui/Menus.cs:33
-msgid "Video"
-msgstr "Video"
 
 #. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
 #: ../src/GnomeSubtitles/Ui/Status.cs:43
@@ -1492,22 +1829,18 @@ msgstr "L"
 msgid "Col"
 msgstr "Kol"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
 msgid "Frame"
-msgstr "Billedrate"
+msgstr "Billede"
 
 #. Number column
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
 msgid "No."
 msgstr "Nr."
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
-msgid "Start"
-msgstr "Fra"
-
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "End"
-msgstr "Til"
+msgstr "Slut"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
 msgid "Duration"
@@ -1516,3 +1849,174 @@ msgstr "Varighed"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
 msgid "Translation"
 msgstr "Oversættelse"
+
+#~ msgid ""
+#~ "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gnome Subtitles is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ msgstr ""
+#~ "Gnome-undertekster er fri software. Du kan redistribuere og/eller\n"
+#~ "modificere det under betingelserne, som er angivet i GNU General\n"
+#~ "Public License, som er udgivet af Free Software Foundation; enten\n"
+#~ "version 2 af licensen eller (efter eget valg) enhver senere version.\n"
+#~ "\n"
+#~ "Gnome-undertekster distribueres i håb om, at det vil vise sig nyttigt,\n"
+#~ "men UDEN NOGEN FORM FOR GARANTI, uden selv de underforståede garantier\n"
+#~ "omkring SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere\n"
+#~ "detaljer kan læses i GNU General Public License.\n"
+#~ "\n"
+#~ "Du bør have modtaget en kopi af GNU General Public License sammen med\n"
+#~ "dette program. Hvis ikke, så skriv til Free software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+
+#~ msgid "A_vailable:"
+#~ msgstr "_Tilgængelig:"
+
+#~ msgid "Character Coding:"
+#~ msgstr "Tegnsæt:"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>Navn:</b>"
+
+#~ msgid "<b>Path:</b>"
+#~ msgstr "<b>Sti:</b>"
+
+#~ msgid "<b>Character Coding:</b>"
+#~ msgstr "<b>Tegnsæt:</b>"
+
+#~ msgid "<b>Subtitle Format:</b>"
+#~ msgstr "<b>Undertekstformat:</b>"
+
+#~ msgid "Karaoke Lyrics LRC"
+#~ msgstr "Karaoketekster LRC"
+
+#~ msgid "Karaoke Lyrics VKT"
+#~ msgstr "Karaoketekster VKT"
+
+#~ msgid "Type:"
+#~ msgstr "Type:"
+
+#~ msgid ""
+#~ "Audio\n"
+#~ "Video\n"
+#~ msgstr ""
+#~ "Lyd\n"
+#~ "Video\n"
+
+#~ msgid "Comment:"
+#~ msgstr "Bemærkning:"
+
+#~ msgid "_Video Frame Rate"
+#~ msgstr "_Videobilledrate"
+
+#~ msgid "Set T_ext Language"
+#~ msgstr "Indstil _tekstsprog"
+
+#~ msgid "Set Translati_on Language"
+#~ msgstr "Indstil _oversættelsessprog"
+
+#~ msgid "Translate _Text → Translation"
+#~ msgstr "Oversæt _tekst → oversættelse"
+
+#~ msgid "Translate Translatio_n → Text"
+#~ msgstr "Oversæt over_sættelse → tekst"
+
+#~ msgid "<b>Time</b>"
+#~ msgstr "<b>Tid</b>"
+
+#~ msgid "<b>Length</b>"
+#~ msgstr "<b>Længde</b>"
+
+#~ msgid "_Reset to defaults"
+#~ msgstr "_Nulstil"
+
+#~ msgid "Seek"
+#~ msgstr "Søg"
+
+#~ msgid "_Search for:"
+#~ msgstr "_Søg efter:"
+
+#~ msgid "Start Frame:"
+#~ msgstr "Fra billede:"
+
+#~ msgid "No.:"
+#~ msgstr "Nr.:"
+
+#~ msgid "<b>First Subtitle</b>"
+#~ msgstr "<b>Første undertekst</b>"
+
+#~ msgid "<b>Last Subtitle</b>"
+#~ msgstr "<b>Sidste undertekst</b>"
+
+#~ msgid "All Subtitles"
+#~ msgstr "Alle undertekster"
+
+#~ msgid "Selected Range"
+#~ msgstr "Valgt interval"
+
+#~ msgid "Adjust"
+#~ msgstr "Juster"
+
+#~ msgid "<b>Frames</b>"
+#~ msgstr "<b>Billeder</b>"
+
+#~ msgid "From _first subtitle to selection"
+#~ msgstr "Fra _første undertekst til den valgte"
+
+#~ msgid "From selection to _last subtitle"
+#~ msgstr "Fra den val_gte til sidste undertekst"
+
+#~ msgid "_Shift"
+#~ msgstr "_Forskyd"
+
+#~ msgid "Synchroni_ze all subtitles"
+#~ msgstr "S_ynkroniser alle undertekster"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Indstillinger</b>"
+
+#~ msgid "<b>Status</b>"
+#~ msgstr "<b>Status</b>"
+
+#~ msgid "Seek To"
+#~ msgstr "Søg til"
+
+#~ msgid "Translating"
+#~ msgstr "Oversætter"
+
+#~ msgid "Could not translate the chosen subtitle."
+#~ msgstr "Kunne ikke oversætte de valgte undertekster."
+
+#~ msgid "Select the text _language of the current subtitles."
+#~ msgstr "Vælg tekst_sproget for de nuværende undertekster."
+
+#~ msgid "Select the translation _language of the current subtitles."
+#~ msgstr "Vælg oversættelses_sproget for de nuværende undertekster."
+
+#~ msgid "Start Time:"
+#~ msgstr "Fra tid:"
+
+#~ msgid "Frames"
+#~ msgstr "Billeder"
+
+#~ msgid "Current Start"
+#~ msgstr "Nuværende fra"
+
+#~ msgid "Correct Start"
+#~ msgstr "Korrekt fra"
+
+#~ msgid "Could not open Bug Buddy, the bug reporting tool."
+#~ msgstr "Kunne ikke åbne fejlrapporteringsværktøjet Fejl-Frede."
+
+#~ msgid "Bug information has been printed to the console."
+#~ msgstr "Fejlsøgningsinformation er blevet skrevet til konsolen."
