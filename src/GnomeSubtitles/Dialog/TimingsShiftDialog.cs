@@ -226,7 +226,7 @@ public class TimingsShiftDialog : BaseDialog {
 
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
-			if (spinButton.ValueAsInt > 0) {
+			if (spinButton.ValueAsInt != 0) {
 				SelectionIntended selectionIntended = GetSelectionIntended();
 	
 				if (timingMode == TimingMode.Times) {
