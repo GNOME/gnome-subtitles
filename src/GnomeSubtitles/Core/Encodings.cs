@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,6 +25,10 @@ namespace GnomeSubtitles.Core {
 
 public class Encodings {
 
+	/* UTF8 encoding is constructed in a different manner in order to disable the BOM. */
+	private static int CODEPAGE_UTF8 = 65001;
+	private static Encoding encodingUTF8 = null;
+
 	/* The original versions of the following tables were taken from gedit
 	 * which on the other hand took them from profterm
 	 * Copyright (C) 2002 Red Hat, Inc.
@@ -46,12 +50,12 @@ public class Encodings {
 		new EncodingDescription(28606, "ISO-8859-16", Catalog.GetString("Romanian")),
 		/* ISO-8859-8-I not used */
 
-		new EncodingDescription(65001, "UTF-8", Catalog.GetString("Unicode")), /* Added */
+		new EncodingDescription(CODEPAGE_UTF8, "UTF-8", Catalog.GetString("Unicode")), /* Added */
 		new EncodingDescription(65000, "UTF-7", Catalog.GetString("Unicode")),
-		new EncodingDescription(1200, "UTF-16", Catalog.GetString("Unicode")),
+		new EncodingDescription(1200, "UTF-16", Catalog.GetString("Unicode")), //Little endian
 		new EncodingDescription(1201, "UTF-16BE", Catalog.GetString("Unicode")),
 		new EncodingDescription(1200, "UTF-16LE", Catalog.GetString("Unicode")),
-		new EncodingDescription(12000, "UTF-32", Catalog.GetString("Unicode")),
+		new EncodingDescription(12000, "UTF-32", Catalog.GetString("Unicode")), //Little endian
 		new EncodingDescription(12001, "UTF-32BE", Catalog.GetString("Unicode")), /* Added */
 		new EncodingDescription(12000, "UTF-32LE", Catalog.GetString("Unicode")), /* Added */
 		/* UCS-2 and UCS-4 not used */
@@ -163,7 +167,7 @@ public class Encodings {
 			return desc.Name;
 
 		try {
-			Encoding encoding = Encoding.GetEncoding(codePage);
+			Encoding encoding = GetEncoding(codePage);
 			if (encoding != null)
 				return encoding.WebName;
 		}
@@ -171,6 +175,17 @@ public class Encodings {
 			//Don't do anything, this will be handled next
 		}
 		return null;
+	}
+	
+	public static Encoding GetEncoding (int codePage) {
+		if (codePage == CODEPAGE_UTF8) {
+			if (encodingUTF8 == null) {
+				encodingUTF8 = new UTF8Encoding(false);
+			}
+			return encodingUTF8;
+		}
+
+		return Encoding.GetEncoding(codePage);
 	}
 
 }

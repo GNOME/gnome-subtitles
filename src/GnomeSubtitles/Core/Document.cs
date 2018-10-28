@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2018 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -262,12 +262,12 @@ public class Document {
 	private Encoding GetFallbackEncoding () {
 		ConfigFileOpenFallbackEncoding fallbackEncodingConfig = Base.Config.FileOpenFallbackEncoding;
 		if (fallbackEncodingConfig == ConfigFileOpenFallbackEncoding.CurrentLocale)
-			return Encoding.GetEncoding(Encodings.SystemDefault.CodePage);
+			return Encodings.GetEncoding(Encodings.SystemDefault.CodePage);
 		else {
 			string encodingName = Base.Config.FileOpenFallbackEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
 			Encodings.Find(encodingName, ref encodingDescription);
-			return Encoding.GetEncoding(encodingDescription.CodePage);
+			return Encodings.GetEncoding(encodingDescription.CodePage);
 		}
 	}
 

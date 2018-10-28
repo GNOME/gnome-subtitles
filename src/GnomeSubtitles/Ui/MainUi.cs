@@ -299,7 +299,7 @@ public class MainUi {
     		return null;
 
     	try {
-    		return Encoding.GetEncoding(codePage);
+    		return Encodings.GetEncoding(codePage);
     	}
     	catch (NotSupportedException) {
     		throw new EncodingNotSupportedException();
@@ -312,7 +312,7 @@ public class MainUi {
 	/// <remarks>An error dialog is presented if an exception is caught during open.</remarks>
     private void OpenTranslation (string path, int codePage) {
     	try {
-    		Encoding encoding = (codePage == -1 ? null : Encoding.GetEncoding(codePage));
+    		Encoding encoding = (codePage == -1 ? null : Encodings.GetEncoding(codePage));
     		Base.OpenTranslation(path, encoding);
 		}
 		catch (Exception exception) {
@@ -362,7 +362,7 @@ public class MainUi {
 			return null;
 
 		string path = dialog.Filename;
-		Encoding encoding = Encoding.GetEncoding(dialog.Encoding.CodePage);
+		Encoding encoding = Encodings.GetEncoding(dialog.Encoding.CodePage);
 		SubtitleType subtitleType = dialog.SubtitleType;
 		NewlineType newlineType = dialog.NewlineType;
 		TimingMode timingMode = Base.TimingMode;
