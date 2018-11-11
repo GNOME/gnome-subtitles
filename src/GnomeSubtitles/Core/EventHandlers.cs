@@ -45,17 +45,21 @@ public class EventHandlers {
 	}
 
 	public void OnFileSave (object o, EventArgs args) {
-		Base.Ui.Save();
+		//Save the subtitles
+		Boolean saved = Base.Ui.Save();
 
-		if (Base.Document.IsTranslationLoaded && Base.Config.FileTranslationSaveAll) {
+		//Save the translation
+		if (saved && Base.Document.IsTranslationLoaded && Base.Config.FileTranslationSaveAll) {
 			OnFileTranslationSave(o, args);
 		}
 	}
 
 	public void OnFileSaveAs (object o, EventArgs args) {
-		Base.Ui.SaveAs();
+		//Save the subtitles
+		Boolean saved = Base.Ui.SaveAs();
 
-		if (Base.Document.IsTranslationLoaded && Base.Config.FileTranslationSaveAll) {
+		//Save the translation
+		if (saved && Base.Document.IsTranslationLoaded && Base.Config.FileTranslationSaveAll) {
 			OnFileTranslationSave(o, args);
 		}
 	}

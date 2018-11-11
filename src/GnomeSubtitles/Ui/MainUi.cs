@@ -197,8 +197,8 @@ public class MainUi {
 			Save(properties);
 			return true;
 		}
-		else
-			return false;
+		
+		return false;
 	}
 
 	/// <summary>Starts a new translation.</summary>
@@ -254,8 +254,8 @@ public class MainUi {
 			SaveTranslation(properties);
 			return true;
 		}
-		else
-			return false;
+
+		return false;
 	}
 
     /// <summary>Closes a translation.</summary>
