@@ -434,11 +434,11 @@ public class EventHandlers {
 	}
 
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
-		Util.OpenUrl("http://www.gnomesubtitles.org/shortcuts");
+		Util.OpenUrl("https://gnomesubtitles.org/shortcuts");
 	}
 	
 	public void OnHelpDonate (object o, EventArgs args) {
-		Util.OpenUrl("http://www.gnomesubtitles.org/donate");
+		Util.OpenUrl("https://gnomesubtitles.org/donate");
 	}
 
 	public void OnHelpRequestFeature (object o, EventArgs args) {

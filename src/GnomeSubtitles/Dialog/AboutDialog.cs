@@ -43,7 +43,7 @@ public class AboutDialog : BaseDialog {
 		dialog.ProgramName = Base.ExecutionContext.ApplicationName;
 		dialog.Version = Base.ExecutionContext.Version;
 		dialog.Logo = new Gdk.Pixbuf(null, LogoFilename);
-		dialog.Website = "http://gnomesubtitles.org";
+		dialog.Website = "https://gnomesubtitles.org";
 		dialog.WebsiteLabel = dialog.Website;
 		dialog.Comments = Catalog.GetString("Video subtitling for the GNOME desktop");
 		dialog.Copyright = "Copyright © 2006-2018 Pedro Castro";
