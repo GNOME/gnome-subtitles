@@ -1,11 +1,30 @@
 Gnome Subtitles
 ===============
 
-X.X (XX/XX/XX)
-==============
+1.4.2 (18/12/18)
+================
+
+- Fixed a bug where the Timings Shift dialog was unable to handle negative shift amounts.
+- The byte order mark (BOM) is no longer inserted at the beginning of files saved with UTF-8 encoding.
+- Fixed a bug with the Translation Save dialog appearing after cancelling the Subtitle Save dialog.
+- Migrated from gnome-doc-utils to yelp-tools (GNOME Goal: Port To New Documentation Infrastructure).
+- Updated the website URLs
 
 Note to packagers:
 - Dependency change: gnome-doc-utils has been replaced by yelp-tools
+
+Bug fixes:
+- Negative time shift not work (#112)
+- Don't insert the BOM (byte order mark) when saving files with UTF-8 encoding (#113)
+
+Contributors:
+- Andre Klapper
+- Piotr Drąg
+
+Translations:
+- Marek Černocký (cs)
+- Alan Mortensen (da)
+- Rodrigo Lledó (es)
 
 
 1.4.1 (29/08/18)

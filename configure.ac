@@ -2,10 +2,10 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.63)
 AC_INIT([gnome-subtitles],
-	[1.4.1],
+	[1.4.2],
 	[https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/new],
 	[gnome-subtitles],
-	[http://www.gnomesubtitles.org])
+	[https://www.gnomesubtitles.org])
 
 YELP_HELP_INIT
 GTK_DOC_CHECK([1.0])
