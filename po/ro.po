@@ -6,38 +6,39 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-12-18 17:54+0000\n"
-"PO-Revision-Date: 2015-05-04 18:16+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
+"POT-Creation-Date: 2018-07-31 22:00+0000\n"
+"PO-Revision-Date: 2019-03-16 21:15+0100\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
-"Language-Team: Gnome Romanian Translation Team\n"
+"Language-Team: Gnome Romanian Translation Team <gnomero-list@lists."
+"sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Project-Style: gnome\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
-#: ../data/gnome-subtitles.appdata.xml.h:1
-#: ../data/gnome-subtitles.appdata.xml.in.h:1
-#| msgid "Video subtitling for the GNOME desktop"
-msgid "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
-msgstr "Subtitrări Gnome este un editor de subtitluri pentru desktopul GNOME"
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Aplicație de creat subtitrări filmelor pentru desktopul GNOME"
 
-#: ../data/gnome-subtitles.appdata.xml.h:2
-#: ../data/gnome-subtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
 msgid ""
-"It allows to create, synchronize, convert and translate subtitles by using a "
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
+"Subtitrări Gnome este un editor de subtitrări pentru mediul desktop GNOME. "
 "Permite crearea, sincronizarea, conversia și traducerea subtitlurilor "
 "utilizând o interfață prietenoasă conținând un previzualizator video."
 
-#: ../data/gnome-subtitles.appdata.xml.h:3
-#: ../data/gnome-subtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
@@ -46,549 +47,644 @@ msgstr ""
 "Un total de 22 de formate de subtitrări sunt suportate, incluzând:  SubRip, "
 "MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub și SubViewer."
 
-#: ../data/gnome-subtitles.desktop.in.h:1
-#| msgid "About Gnome Subtitles"
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
 msgid "Gnome Subtitles"
 msgstr "Subtitrări Gnome"
 
-#: ../data/gnome-subtitles.desktop.in.h:2
-#| msgid "Subtitle No."
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Editor de subtitluri"
 
-#: ../data/gnome-subtitles.desktop.in.h:3 ../src/Glade/AboutDialog.glade.h:2
-msgid "Video subtitling for the GNOME desktop"
-msgstr "Aplicație de creat subtitrări filmelor pentru desktopul GNOME"
-
-#: ../data/gnome-subtitles.desktop.in.h:4
-#| msgid "Subtitle No."
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
 msgid "Subtitles;Video;"
 msgstr "Subtitles;Video;Subtitlu;Subtitrări;Subtitrare;"
 
-#: ../src/Glade/AboutDialog.glade.h:1
-msgid "About Gnome Subtitles"
-msgstr "Despre Subtitrări Gnome"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
+msgid "Encodings shown in menu"
+msgstr "Codări afișare în meniu"
 
-#: ../src/Glade/AboutDialog.glade.h:3
-msgid ""
-"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gnome Subtitles is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
+msgid "List of encodings shown in the File Open/Save dialogs."
 msgstr ""
-"Subtitrări Gnome este software liber, îl puteți redistribui și/sau modifica\n"
-"conform cu termenii GNU General Public License așa cum a fost publicată de "
-"către\n"
-"Free Software Foundation; fie versiunea 2 a Licenței, sau(la latitudinea\n"
-"dumneavoastră) orice versiune ulterioară.\n"
-"\n"
-"Subtitrări Gnome este distribuit în speranța că va fi folositor, dar\n"
-"FĂRĂ NICI O GARANȚIE, fără chiar garanția implicată de VANDABILITATE sau\n"
-"POTRIVIRE PENTRU UN SCOP PARTICULAR. Citiți GNU General Public License\n"
-"pentru mai multe detalii.\n"
-"\n"
-"Trebuie să fi primit o copie a GNU General Public License împreună cu\n"
-"Subtitrări Gnome; dacă nu, scrieți la Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+"Listă de codări de afișat în dialogurile de Deschidere/Salvare fișiere."
 
-#: ../src/Glade/EncodingsDialog.glade.h:1
-msgid "Character codings"
-msgstr "Codările caracterelor"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
+msgid "File Open encoding option"
+msgstr "Opțiune de codare la deschiderea fișierelor"
 
-#: ../src/Glade/EncodingsDialog.glade.h:2
-msgid "A_vailable:"
-msgstr "Disponi_bil:"
-
-#: ../src/Glade/EncodingsDialog.glade.h:3
-msgid "Shown in menu:"
-msgstr "Afișează în meniu:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:1 ../src/Glade/MainWindow.glade.h:64
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
-msgid "Open File"
-msgstr "Deschide fișier"
-
-#: ../src/Glade/FileOpenDialog.glade.h:2
-msgid "Video To Open:"
-msgstr "Fișierul video de deschis:"
-
-#: ../src/Glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
-msgid "Character Coding:"
-msgstr "Codarea caracterelor:"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:1
-msgid "File Properties"
-msgstr "Proprietățile fișierului"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:2
-msgid "<b>Name:</b>"
-msgstr "<b>Nume:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:3
-msgid "<b>Path:</b>"
-msgstr "<b>Cale:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:4
-msgid "<b>Character Coding:</b>"
-msgstr "<b>Codarea caracterelor:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:5
-msgid "<b>Subtitle Format:</b>"
-msgstr "<b>Formatul subtitrării:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:6
-msgid "<b>Timing Mode:</b>"
-msgstr "<b>Mod de sincronizare:</b>"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
-msgid "Save As"
-msgstr "Salvează ca"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:2
-msgid "Subtitle Format:"
-msgstr "Formatul subtitrării:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
-msgid "Newline Type:"
-msgstr "Tipul liniilor noi:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:5
-msgid "Select advanced options"
-msgstr "Selectează opțiuni avansate"
-
-#: ../src/Glade/HeadersDialog.glade.h:1
-msgid "Headers"
-msgstr "Antet"
-
-#: ../src/Glade/HeadersDialog.glade.h:2
-msgid "Title:"
-msgstr "Titlu:"
-
-#: ../src/Glade/HeadersDialog.glade.h:3
-msgid "Author:"
-msgstr "Autor:"
-
-#: ../src/Glade/HeadersDialog.glade.h:4
-msgid "Artist:"
-msgstr "Artist:"
-
-#: ../src/Glade/HeadersDialog.glade.h:5
-msgid "Album:"
-msgstr "Album:"
-
-#: ../src/Glade/HeadersDialog.glade.h:6
-msgid "By:"
-msgstr "De:"
-
-#: ../src/Glade/HeadersDialog.glade.h:7
-msgid "Version:"
-msgstr "Versiune:"
-
-#: ../src/Glade/HeadersDialog.glade.h:8
-msgid "Program:"
-msgstr "Program:"
-
-#: ../src/Glade/HeadersDialog.glade.h:9
-msgid "Karaoke Lyrics LRC"
-msgstr "Versuri Karaoke LRC"
-
-#: ../src/Glade/HeadersDialog.glade.h:10
-msgid "Source:"
-msgstr "Sursă:"
-
-#: ../src/Glade/HeadersDialog.glade.h:11
-msgid "Date:"
-msgstr "Dată:"
-
-#: ../src/Glade/HeadersDialog.glade.h:12
-msgid "Frame rate:"
-msgstr "Frecvență cadre:"
-
-#: ../src/Glade/HeadersDialog.glade.h:13
-msgid "Karaoke Lyrics VKT"
-msgstr "Versuri Karaoke VKT"
-
-#: ../src/Glade/HeadersDialog.glade.h:14
-msgid "File:"
-msgstr "Fișier:"
-
-#: ../src/Glade/HeadersDialog.glade.h:15
-msgid "Note:"
-msgstr "Notă:"
-
-#: ../src/Glade/HeadersDialog.glade.h:16
-msgid "Type:"
-msgstr "Tip:"
-
-#: ../src/Glade/HeadersDialog.glade.h:17
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
 msgid ""
-"Audio\n"
-"Video\n"
+"Encoding option to use by default when opening files. Possible values are: "
+"\"AutoDetect\" to use auto detection, \"RememberLastUsed\" to remember the "
+"last used encoding, \"CurrentLocale\" to use the current locale, and "
+"\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
+"\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
-"Audio\n"
-"Video\n"
+"Opțiunea de codare de folosit implicit când se deschid fișiere. Valorile "
+"posibile sunt: „AutoDetect” pentru a folosi detectarea automată, "
+"„RememberLastUsed” pentru a ține minte ultima codare folosită, "
+"„CurrentLocale” pentru a folosi localizarea curentă, și „Specific” pentru a "
+"folosi o codare specifică. Codarea pentru „RememberLastUsed” și „Specific” "
+"este stocată în cheia file_open_encoding."
 
-#: ../src/Glade/HeadersDialog.glade.h:20
-msgid "Original Script:"
-msgstr "Script original:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
+msgid "File Open encoding"
+msgstr "Codare la deschiderea fișierelor"
 
-#: ../src/Glade/HeadersDialog.glade.h:21
-msgid "Original Translation:"
-msgstr "Traducere originală:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:6
+msgid ""
+"Encoding to use when opening files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_open_encoding_option key, other possible values are \"AutoDetect\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"Codare de folosit când se deschid fișiere. Pe lângă codarea prezentă, "
+"folosită când „RememberLastUsed” sau „Specific” sunt stabilite în cheia "
+"file_open_encoding_option, alte valori posibile sunt „AutoDetect” și "
+"„CurrentLocale”."
 
-#: ../src/Glade/HeadersDialog.glade.h:22
-msgid "Original Editing:"
-msgstr "Editare originală:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
+msgid "Auto detection fallback encoding"
+msgstr "Codare de rezervă pentru când detectarea automată eșuează"
 
-#: ../src/Glade/HeadersDialog.glade.h:23
-msgid "Original Timing:"
-msgstr "Sincronizare originală:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
+msgid "Encoding to use when auto detection fails."
+msgstr "Codare de utilizat când detectarea automată eșuează."
 
-#: ../src/Glade/HeadersDialog.glade.h:24
-msgid "Original Script Checking:"
-msgstr "Verificare originală a scriptului:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
+msgid "File Save encoding option"
+msgstr "Opțiunea de codare la salvarea fișierelor"
 
-#: ../src/Glade/HeadersDialog.glade.h:25
-msgid "Script Updated By:"
-msgstr "Script actualizat de:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
+msgid ""
+"Encoding option to use by default when saving files. Possible values are: "
+"\"KeepExisting\" to use the existing file's encoding, \"RememberLastUsed\" "
+"to remember the last used encoding, \"CurrentLocale\" to use the current "
+"locale, and \"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
+"key."
+msgstr ""
+"Opțiunea de codare de folosit în mod implicit la salvarea fișierelor. "
+"Valorile posibile sunt „KeepExisting” pentru a utiliza codarea existentă a "
+"fișierului, „RememberLastUsed” pentru a ține minte ultima codare folosită, "
+"„CurrentLocale” pentru a utiliza localizarea curentă, și „Specific” pentru a "
+"utiliza o codare specifică. Codarea pentru „RememberLastUsed” și „Specific” "
+"este stocată în cheia file_save_encoding."
 
-#: ../src/Glade/HeadersDialog.glade.h:26
-msgid "Collisions:"
-msgstr "Coliziuni:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
+msgid "File Save encoding"
+msgstr "Codare la salvarea fișierelor"
 
-#: ../src/Glade/HeadersDialog.glade.h:27
-msgid "PlayResX:"
-msgstr "RezoluțieRedareX:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:12
+msgid ""
+"Encoding to use when saving files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_encoding_option key, other possible values are \"KeepExisting\" "
+"and \"CurrentLocale\"."
+msgstr ""
+"Codare când se salvează fișiere. Pe lângă codarea curentă, este folosită "
+"când „RememberLastUsed” sau „Specific” sunt stabilite în cheia "
+"file_save_encoding_option, alte valori posibile sunt \"KeepExisting\" și "
+"\"CurrentLocale\"."
 
-#: ../src/Glade/HeadersDialog.glade.h:28
-msgid "PlayResY:"
-msgstr "RezoluțieRedareY:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
+msgid "File Save format option"
+msgstr "Opțiunea formatului de salvat fișiere"
 
-#: ../src/Glade/HeadersDialog.glade.h:29
-msgid "PlayDepth:"
-msgstr "AdâncimeRedare:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
+msgid ""
+"Subtitle format option to use by default when saving files. Possible values "
+"are: \"KeepExisting\" to use the existing file's format, \"RememberLastUsed"
+"\" to remember the last used format, and \"Specific\" to use a specific "
+"format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
+"stored in the file_save_format key."
+msgstr ""
+"Opțiunea formatului de subtitrare de folosit implicit când se salvează "
+"fișiere. Valorile posibile sunt: „KeepExisting” pentru a folosi formatul "
+"existent al fișierului, „RememberLastUsed” pentru a ține minte ultimul "
+"format folosit, și „Specific” pentru a utiliza un format specific. Formatul "
+"subtitrării pentru „RememberLastUsed” și „Specific” este stocat în cheia "
+"file_save_format."
 
-#: ../src/Glade/HeadersDialog.glade.h:30
-msgid "Timer:"
-msgstr "Temporizator:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
+msgid "File Save format"
+msgstr "Format la salvarea fișierelor"
 
-#: ../src/Glade/HeadersDialog.glade.h:31
-msgid "File Path:"
-msgstr "Cale fișier:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:16
+msgid ""
+"Subtitle format to use when saving files. Besides the actual format, used "
+"when \"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_format_option key, other possible values are \"KeepExisting\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"Formatul de subtitrare de folosit la salvarea fișierelor. Pe lângă formatul "
+"curent, folosit când „RememberLastUsed” sau „Specific” sunt stabilite în "
+"cheia file_save_format_option, alte valori posibile sunt „KeepExisting” și "
+"„CurrentLocale”."
 
-#: ../src/Glade/HeadersDialog.glade.h:32
-msgid "Delay:"
-msgstr "Decalaj:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
+msgid "File Save newline option"
+msgstr "Opțiunea de linie nouă la salvarea fișierelor"
 
-#: ../src/Glade/HeadersDialog.glade.h:33
-msgid "CD Track:"
-msgstr "Piesă CD:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
+msgid ""
+"Newline option to use by default when saving files. Possible values are: "
+"\"RememberLastUsed\" to remember the last used newline type, and \"Specific"
+"\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
+"and \"Specific\" is stored in the file_save_newline key."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:34
-msgid "Comment:"
-msgstr "Comentariu:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
+msgid "File Save newline"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:35
-msgid "Font Name:"
-msgstr "Nume font:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
+msgid "Newline type to use when saving files."
+msgstr "Tipul de linii noi de folosit când se salvează fișiere."
 
-#: ../src/Glade/HeadersDialog.glade.h:36
-msgid "Font Color:"
-msgstr "Culoare font:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
+msgid "Save translation when saving subtitles"
+msgstr "Salvează traducerea când se salvează subtitrările"
 
-#: ../src/Glade/HeadersDialog.glade.h:37
-msgid "Font Style:"
-msgstr "Stil font:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
+msgid "Whether to save existing translations when saving subtitles."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:38
-msgid "Font Size:"
-msgstr "Dimensiune font:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
+msgid "Automatically choose the video file"
+msgstr "Alege automat fișierul video"
 
-#: ../src/Glade/MainWindow.glade.h:1
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:24
+msgid ""
+"Whether to automatically choose the video file to open, when opening a "
+"subtitle file. A video file is chosen based on the name of the subtitle file."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
+msgid "Apply reaction delay"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
+msgid ""
+"Whether to apply a reaction delay when setting the start or end times of a "
+"subtitle with the video playing."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
+msgid "Reaction delay"
+msgstr "Decalaj de reacție"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:28
+msgid ""
+"Time, in milliseconds, to subtract from the start or end times when setting "
+"them with the video playing."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
+msgid "Seek the video on subtitles change"
+msgstr "Derulează videoul la schimbarea subtitlului"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
+msgid ""
+"Whether to seek the video to the start of the first subtitle when one or "
+"more subtitles are changed."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
+msgid "Seek on change rewind"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
+msgid ""
+"Time, in milliseconds, to rewind the video when seeking on subtitles change."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
+msgid "View line lengths"
+msgstr "Vezi lungimile liniilor"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
+msgid "Whether to view line lengths as characters counts in the subtitle list."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
+msgid "Window width"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:36
+msgid "The width of the Main Window."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:37
+msgid "Window height"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:38
+msgid "The height of the Main Window."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:39
+msgid "Active spellcheck language for text"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
+msgid "The language used to check the spelling of subtitle text."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
+msgid "Active spellcheck language for translation"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
+msgid "The language used to check the spelling of subtitle translation."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
+msgid "Autocheck spelling"
+msgstr "Verifică ortografia automat"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
+msgid "Whether to automatically check the spelling of subtitle text."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
+msgid "Auto backup"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:46
+msgid ""
+"Whether to automatically backup files. A copy of the file will be "
+"periodically saved with a ~ suffix."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
+msgid "Backup time"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:48
+msgid ""
+"Time interval, in seconds, to automatically backup files. A minimum of 30 "
+"seconds is recommended."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
+msgid "Time step increment"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
+msgid ""
+"Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
+"controls (e.g., start, end and duration)."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
+msgid "Frames step increment"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
+msgid ""
+"Frames to add or subtract when adjusting frames in spinbutton controls (e."
+"g., start, end and duration)."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
+msgid "Time between subtitles"
+msgstr "Timp între subtitluri"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:54
+msgid ""
+"Recommended time between subtitles, in milliseconds, used for example when "
+"splitting a subtitle in two."
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Fișier"
 
-#: ../src/Glade/MainWindow.glade.h:2
-msgid "_Translation"
-msgstr "_Traducere"
-
-#: ../src/Glade/MainWindow.glade.h:3
+#: ../src/Glade/MainWindow.ui.h:2
 msgid "_New"
 msgstr "_Nou"
 
-#: ../src/Glade/MainWindow.glade.h:4
+#: ../src/Glade/MainWindow.ui.h:3
 msgid "_Open"
 msgstr "_Deschide"
 
-#: ../src/Glade/MainWindow.glade.h:5
-msgid "_Reload"
-msgstr "_Reîncarcă"
-
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:4
 msgid "_Save"
 msgstr "_Salvează"
 
-#: ../src/Glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.ui.h:5
 msgid "Save _As"
 msgstr "Salvează c_a"
 
-#: ../src/Glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.ui.h:6
+msgid "_Translation"
+msgstr "_Traducere"
+
+#: ../src/Glade/MainWindow.ui.h:7
+msgid "_Reload"
+msgstr "_Reîncarcă"
+
+#: ../src/Glade/MainWindow.ui.h:8
 msgid "_Close"
 msgstr "În_chide"
 
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:9
 msgid "_Headers"
 msgstr "Ant_ete"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.ui.h:10
+msgid "_Properties"
+msgstr "_Proprietăți"
+
+#: ../src/Glade/MainWindow.ui.h:11
+msgid "_Quit"
+msgstr "_Ieșire"
+
+#: ../src/Glade/MainWindow.ui.h:12
 msgid "_Edit"
 msgstr "_Editare"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.ui.h:13
+msgid "_Undo"
+msgstr "An_ulează"
+
+#: ../src/Glade/MainWindow.ui.h:14
+msgid "_Redo"
+msgstr "_Refă"
+
+#: ../src/Glade/MainWindow.ui.h:15
+msgid "Cu_t"
+msgstr "_Taie"
+
+#: ../src/Glade/MainWindow.ui.h:16
+msgid "_Copy"
+msgstr "_Copiază"
+
+#: ../src/Glade/MainWindow.ui.h:17
+msgid "_Paste"
+msgstr "Li_pește"
+
+#: ../src/Glade/MainWindow.ui.h:18
 msgid "_Format"
 msgstr "_Format"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.ui.h:19
 msgid "_Bold"
 msgstr "_Aldin"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.ui.h:20
 msgid "_Italic"
 msgstr "Curs_iv"
 
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.ui.h:21
 msgid "_Underline"
 msgstr "S_ubliniat"
 
-#: ../src/Glade/MainWindow.glade.h:15
+#: ../src/Glade/MainWindow.ui.h:22
 msgid "_Split"
 msgstr "Î_mparte"
 
-#: ../src/Glade/MainWindow.glade.h:16
+#: ../src/Glade/MainWindow.ui.h:23
 msgid "_Merge"
 msgstr "Î_mbină"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
 msgstr "_Introdu subtitlu"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.ui.h:25
 msgid "_Before"
 msgstr "Înaint_e"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.ui.h:26
 msgid "_After"
 msgstr "_După"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.ui.h:27
 msgid "At _Video Position"
 msgstr "La poziția _videoului"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.ui.h:28
 msgid "_Delete Subtitles"
 msgstr "Șter_ge subtitlurile"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.ui.h:29
 msgid "Pr_eferences"
 msgstr "Pr_eferințe"
 
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.ui.h:30
 msgid "_View"
 msgstr "_Vizualizare"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.ui.h:31
 msgid "_Frames"
 msgstr "_Cadre"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.ui.h:32
 msgid "_Times"
 msgstr "_Timpi"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.ui.h:33
 msgid "_Line Lengths"
 msgstr "_Lungimile liniilor"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.ui.h:34
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.ui.h:35
 msgid "Video _Subtitles"
 msgstr "_Subtitrări video"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.ui.h:36
 msgid "_Text"
 msgstr "_Text"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.ui.h:37
 msgid "Translatio_n"
 msgstr "T_raducere"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.ui.h:38
 msgid "_Search"
 msgstr "_Caută"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.ui.h:39
+msgid "_Find"
+msgstr "_Caută"
+
+#: ../src/Glade/MainWindow.ui.h:40
 msgid "Find Ne_xt"
 msgstr "Găseșt_e următorul"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.ui.h:41
 msgid "Find Pre_vious"
 msgstr "Găsește prece_dentul"
 
-#: ../src/Glade/MainWindow.glade.h:34 ../src/Glade/SearchDialog.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:42
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:172
 msgid "_Replace"
 msgstr "Înloc_uiește"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.ui.h:43
 msgid "T_imings"
 msgstr "_Timpi"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.ui.h:44
 msgid "_Input Frame Rate"
 msgstr "Frecvența cadrelor la _intrare"
 
-#: ../src/Glade/MainWindow.glade.h:37
-msgid "_Video Frame Rate"
-msgstr "Frecvența cadrelor _videoului"
+#: ../src/Glade/MainWindow.ui.h:45
+msgid "_Current Frame Rate"
+msgstr "Frecvența curentă a cadrelor"
 
-#: ../src/Glade/MainWindow.glade.h:38
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:46
 msgid "_Synchronize"
 msgstr "_Sincronizează"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.ui.h:47
 msgid "_Adjust"
 msgstr "Regle_ază"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.ui.h:48
 msgid "Sh_ift"
 msgstr "D_ecalează"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.ui.h:49
 msgid "Vide_o"
 msgstr "Vide_o"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.ui.h:50
 msgid "_Play / Pause"
 msgstr "_Redare / Pauză"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.ui.h:51
 msgid "_Loop Selection"
 msgstr "In_versează selecția"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.ui.h:52
 msgid "R_ewind"
 msgstr "Î_napoi"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.ui.h:53
 msgid "_Forward"
 msgstr "Înain_te"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.ui.h:54
 msgid "_Seek to…"
 msgstr "Derulea_ză la…"
 
-#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.ui.h:55
 msgid "Seek _to Selection"
 msgstr "Derulează până _la selecție"
 
-#: ../src/Glade/MainWindow.glade.h:48
-msgid "Select Nearest Subtitle"
-msgstr "Selectează cel mai apropiat subtitlu"
+#: ../src/Glade/MainWindow.ui.h:56
+msgid "Select _Nearest Subtitle"
+msgstr "Selectează cel _mai apropiat subtitlu"
 
-#: ../src/Glade/MainWindow.glade.h:49
-msgid "Auto Select Subtitle"
-msgstr "Selectează automat subtitlul"
+#: ../src/Glade/MainWindow.ui.h:57
+msgid "A_uto Select Subtitle"
+msgstr "Selectează a_utomat subtitlul"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
 msgstr "St_abilește ca început de subtittlu"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
 msgstr "Stabilește ca final de su_btitlu"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
 msgstr "_Instrumente"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.ui.h:61
 msgid "_Autocheck Spelling"
 msgstr "_Verificare ortografică automată"
 
-#: ../src/Glade/MainWindow.glade.h:54
-msgid "Set T_ext Language"
-msgstr "Stabilește limba t_extului"
+#: ../src/Glade/MainWindow.ui.h:62
+msgid "Set _Languages"
+msgstr "Stabiliți _limbile"
 
-#: ../src/Glade/MainWindow.glade.h:55
-msgid "Set Translati_on Language"
-msgstr "Stab_ilește limba traducerii"
-
-#: ../src/Glade/MainWindow.glade.h:56
-msgid "Translate _Text → Translation"
-msgstr "Tradu _textul → traducere"
-
-#: ../src/Glade/MainWindow.glade.h:57
-msgid "Translate Translatio_n → Text"
-msgstr "Tradu t_raducererea → text"
-
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.ui.h:63
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.ui.h:64
 msgid "_Contents"
 msgstr "_Cuprins"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "S_curtături de tastatură"
 
-#: ../src/Glade/MainWindow.glade.h:61
-msgid "Request a _Feature"
+#: ../src/Glade/MainWindow.ui.h:66
+msgid "_Donate"
+msgstr "_Donează"
+
+#: ../src/Glade/MainWindow.ui.h:67
+msgid "Request a New _Feature"
 msgstr "Solicită implementarea unei _funcționalități"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "Report a _Bug"
 msgstr "Raportează o _eroare"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.ui.h:69
+msgid "_About"
+msgstr "_Despre"
+
+#: ../src/Glade/MainWindow.ui.h:70
 msgid "New File"
 msgstr "Fișier nou"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.ui.h:71
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
+msgid "Open File"
+msgstr "Deschide fișier"
+
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Save File"
 msgstr "Salvează fișierul"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Insert"
 msgstr "Inserare"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.ui.h:74
 msgid "Delete"
 msgstr "Șterge"
 
-#: ../src/Glade/MainWindow.glade.h:68
-msgid "<b>Time</b>"
-msgstr "<b>Timp</b>"
+#: ../src/Glade/MainWindow.ui.h:75
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+msgid "Time"
+msgstr "Timp"
 
-#: ../src/Glade/MainWindow.glade.h:69
-msgid "<b>Length</b>"
-msgstr "<b>Lungime</b>"
+#: ../src/Glade/MainWindow.ui.h:76
+msgid "Length\t"
+msgstr "Lungime\t"
 
-#: ../src/Glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.ui.h:77
+msgid "Sets the subtitle Start to the current video position"
+msgstr "Stabilește începutul subtitlului la poziția curentă a videoului"
+
+#: ../src/Glade/MainWindow.ui.h:78
+msgid "Sets the subtitle End to the current video position"
+msgstr "Stabilește sfârșitul subtitlului la poziția curentă a videoului"
+
+#: ../src/Glade/MainWindow.ui.h:79
+msgid ""
+"Sets the subtitle Start and End while the video is playing. Keep the button "
+"pressed for the duration of each subtitle.\t"
+msgstr ""
+"Stabilește începutul și sfârșitul subtitlului în timp ce videoul este redat. "
+"Mențineți butonul apăsat pentru durata fiecărui subtitlu\t"
+
+#: ../src/Glade/MainWindow.ui.h:80
+msgid "1.0x"
+msgstr "1.0x"
+
+#: ../src/Glade/MainWindow.ui.h:81
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -598,386 +694,113 @@ msgstr ""
 "pentru a regla timpii de început și de sfârșit.\n"
 "Shift+Plus/Minus (de pe tastatura numerică) decalează timpii."
 
-#. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:73
-msgid "Duration:"
-msgstr "Durată:"
-
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:75
-msgid "End:"
-msgstr "Sfârșit:"
-
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:77
+#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Început:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "Preferences"
-msgstr "Preferințe"
+#: ../src/Glade/MainWindow.ui.h:85
+msgid "End:"
+msgstr "Sfârșit:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "_Reset to defaults"
-msgstr "_Resetabilește la valorile implicite"
-
-#: ../src/Glade/PreferencesDialog.glade.h:3
-msgid "When saving subtitles, also save their _translation"
-msgstr ""
-"Când se salvează subtitlurile, de asemenea salvează și _traducerile lor"
-
-#: ../src/Glade/PreferencesDialog.glade.h:4
-msgid "<b>Translation File Saving</b>"
-msgstr "<b>Salvarea fișierului traducere</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:5
-msgid "Character c_oding to use:"
-msgstr "C_odare caractere de utilizat:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:6
-msgid "If auto detection _fails, use:"
-msgstr "Dacă autodetectarea eșuează, _folosește:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "Automatically choose the _video file to open"
-msgstr "Alege automat fișierul _video ce urmează a fi deschis"
-
-#: ../src/Glade/PreferencesDialog.glade.h:8
-msgid "<b>File Open Dialog</b>"
-msgstr "<b>Dialogul „Deschide un fișier”</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
-msgid "Ch_aracter coding to use:"
-msgstr "Cod_area de caractere de utilizat:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:10
-msgid "_Subtitle format to use:"
-msgstr "Formatul de _subtitrare de folosit:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "_Newline type to use:"
-msgstr "Tipul de linie _nouă de folosit:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:12
-msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Dialogul „Salvează fișierul ca”</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:13
-msgid "Create a _backup copy of files every"
-msgstr "Creează o copie de si_guranță a fișierelor la fiecare"
-
-#: ../src/Glade/PreferencesDialog.glade.h:14
-msgid "minutes"
-msgstr "minute"
-
-#: ../src/Glade/PreferencesDialog.glade.h:15
-msgid "<b>Backup</b>"
-msgstr "<b>Copie de siguranță</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:16
-msgid "Files"
-msgstr "Fișiere"
-
-#: ../src/Glade/PreferencesDialog.glade.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
-msgstr "Derulează automat videoul la primul subtitlu când se schimbă timpii"
-
-#: ../src/Glade/PreferencesDialog.glade.h:18
-msgid "Seek"
-msgstr "Derulează"
-
-#: ../src/Glade/PreferencesDialog.glade.h:19
-msgid "ms before the actual start to help review new timings"
-msgstr "milisecunde înaintea începutului actual pentru a revizui noii timpi"
-
-#: ../src/Glade/PreferencesDialog.glade.h:20
-msgid "<b>Video Seeking</b>"
-msgstr "<b>Derularea video</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:21
-msgid "Leave"
-msgstr "Lasă"
-
-#: ../src/Glade/PreferencesDialog.glade.h:22
-msgid "ms between subtitles when inserting or splitting"
-msgstr "milisecunde între subtitli când se introduce sau împarte"
-
-#: ../src/Glade/PreferencesDialog.glade.h:23
-msgid "<b>Gap Between Subtitles</b>"
-msgstr "<b>Decalaj între subtitli</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:24
-msgid "Subtract"
-msgstr "Scade"
-
-#: ../src/Glade/PreferencesDialog.glade.h:25
-msgid "ms when setting subtitle start/end on playback"
-msgstr ""
-"milisecunde când se stabilește începutul/sfârșitul unui subtitlu pe fluxul "
-"redare"
-
-#: ../src/Glade/PreferencesDialog.glade.h:26
-msgid "<b>Reaction Delay</b>"
-msgstr "<b>Decalaj de reacție</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:27
-msgid "Editing"
-msgstr "Editare"
-
-#: ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
-msgid "Replace"
-msgstr "Înlocuiește"
-
-#: ../src/Glade/SearchDialog.glade.h:2
-msgid "Replace _with:"
-msgstr "Înlocuiește _cu:"
-
-#: ../src/Glade/SearchDialog.glade.h:3
-msgid "_Search for:"
-msgstr "_Caută după:"
-
-#: ../src/Glade/SearchDialog.glade.h:4
-msgid "_Match case"
-msgstr "Sensibil la _majuscule"
-
-#: ../src/Glade/SearchDialog.glade.h:5
-msgid "Search _backwards"
-msgstr "Caută în sens _invers"
-
-#: ../src/Glade/SearchDialog.glade.h:6
-msgid "Search using a Regular _Expression"
-msgstr "Caută folosind o _expresie regulată"
-
-#: ../src/Glade/SearchDialog.glade.h:7
-msgid "_Wrap around"
-msgstr "_Reia de la început"
-
-#: ../src/Glade/SearchDialog.glade.h:8
-msgid "Replace _All"
-msgstr "Înlocuiește _tot"
-
-#: ../src/Glade/SetLanguageDialog.glade.h:1
-msgid "Set language"
-msgstr "Stabiliți limba"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:1
-msgid "Adjust Timings"
-msgstr "Reglează timpii"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:2
-msgid "New Start:"
-msgstr "Noul început:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:3
-msgid "Start Frame:"
-msgstr "Cadrul de început:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:4
-msgid "No.:"
-msgstr "Nr.:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:5
-msgid "<b>First Subtitle</b>"
-msgstr "<b>Primul subtitlu</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:6
-msgid "<b>Last Subtitle</b>"
-msgstr "<b>Ultimul subtitlu</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
-msgid "All Subtitles"
-msgstr "Toate subtitlurile"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
-msgid "Selected Range"
-msgstr "Intervalului selectat"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:9
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "<b>Apply to</b>"
-msgstr "<b>Aplică</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:10
-msgid "Adjust"
-msgstr "Reglează"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:1
-msgid "Shift Timings"
-msgstr "Decalare timpi"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:2
-msgid "<b>Frames</b>"
-msgstr "<b>Cadre</b>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "_All subtitles"
-msgstr "T_ututor subtitlurilor"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:4
-msgid "_Selected subtitles"
-msgstr "_Subtitlurilor selectate"
-
-#. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:6
-msgid "From _first subtitle to selection"
-msgstr "De la primul su_btitlu până la selecție"
-
-#. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "From selection to _last subtitle"
-msgstr "De la selecție până la u_ltimul subtitlu"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
-msgid ""
-"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
-"to shift timings from the main window.</i></small>"
-msgstr ""
-"<small><i>Sfat: utilizați Shift+Plus/Minus (de pe tastatura numerică)\n"
-"pentru a decla timpii din fereastra principală.</i></small>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:12
-msgid "_Shift"
-msgstr "_Decalează"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "Synchronize Timings"
-msgstr "Sincronizează timpii"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "<b>Sync Points</b>"
-msgstr "<b>Puncte de sincronizare</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-msgid "Synchroni_ze all subtitles"
-msgstr "Sincronizea_ză toate subtitlurile"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "<b>Options</b>"
-msgstr "<b>Opțiuni</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "<b>Status</b>"
-msgstr "<b>Stare</b>"
-
-#: ../src/Glade/VideoOpenDialog.glade.h:1
-msgid "Open Video"
-msgstr "Deschide video"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:1
-msgid "Seek To"
-msgstr "Derulează la"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek _video to:"
-msgstr "Derulează _video până la:"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:3
-msgid "_Seek"
-msgstr "_Derulează"
+#. This is the duration of a subtitle.
+#: ../src/Glade/MainWindow.ui.h:87
+msgid "Duration:"
+msgstr "Durată:"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
-msgstr "reglarea timpilor"
+msgstr "Se reglează timpii"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
 msgid "Changing Input Frame Rate"
-msgstr "schimbarea frecvenței cadrelor de intrare"
+msgstr "Se schimbă frecvența cadrelor de intrare"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
 msgid "Changing Video Frame Rate"
-msgstr "schimbarea frecvenței cadrelor a videoului"
+msgstr "Se schimbă frecvența cadrelor videoului"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
 msgid "Toggling Bold"
-msgstr "comutarea în aldin"
+msgstr "Se comută în aldin"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
 msgid "Toggling Italic"
-msgstr "comutarea în cursiv"
+msgstr "Se comută în cursiv"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
 msgid "Toggling Underline"
-msgstr "comutarea în subliniat"
+msgstr "Se comută sublinierea"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
 msgid "Editing Start"
-msgstr "începutul editării"
+msgstr "Începutul editări"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
 msgid "Editing End"
-msgstr "sfârșitul editării"
+msgstr "Sfârșitul editării"
 
 #: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
 msgid "Editing Duration"
-msgstr "durata editării"
+msgstr "Durata editării"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:602
+#: ../src/GnomeSubtitles/Ui/Menus.cs:708
 msgid "Undo"
 msgstr "Anulează"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:612
+#: ../src/GnomeSubtitles/Ui/Menus.cs:718
 msgid "Redo"
 msgstr "Refă"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
 msgid "Deleting Subtitles"
-msgstr "ștergerea subtitlurilor"
+msgstr "Ștergerea subtitlurilor"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
 #: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
 msgid "Editing Text"
-msgstr "editarea de text"
+msgstr "Editarea de text"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
 #: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
 msgid "Editing Translation"
-msgstr "editarea traducerii"
+msgstr "Editarea traducerii"
 
 #: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:28
 msgid "Inserting Subtitle"
-msgstr "introducerea unui subtitlu"
+msgstr "Introducerea unui subtitlu"
 
 #: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
 msgid "Merging subtitles"
-msgstr "îmbinarea subtitlurilor"
+msgstr "Îmbinarea subtitlurilor"
 
 #: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
-msgstr "înlocuirea tuturor aparițiilor"
+msgstr "Înlocuirea tuturor aparițiilor"
 
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
-msgstr "decalarea timpilor"
+msgstr "Decalarea timpilor"
 
 #: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
 msgid "Splitting subtitles"
-msgstr "împărțirea subtitlurilor"
+msgstr "Împărțirea subtitlurilor"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
 msgid "Synchronizing timings"
-msgstr "sincronizare timpilor"
-
-#. initially, it's the former text replaced by translation
-#. direction of translation
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
-msgid "Translating"
-msgstr "Traducere"
-
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
-msgid "Could not translate the chosen subtitle."
-msgstr "Nu se poate salva fișierul subtitlu ales."
+msgstr "Sincronizare timpilor"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr "stabilirea începutului subtitlului"
+msgstr "Stabilirea începutului subtitlului"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr "stabilirea finalului subtitlului"
+msgstr "Stabilirea finalului subtitlului"
 
 #. To translators: this is the filename for new files (before being saved for the first time)
 #: ../src/GnomeSubtitles/Core/Document.cs:113
@@ -1147,121 +970,561 @@ msgid "Current Locale"
 msgstr "Aceeași ca a sistemului"
 
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+msgid "About Gnome Subtitles"
+msgstr "Despre Subtitrări Gnome"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+msgid "_All subtitles"
+msgstr "T_ututor subtitlurilor"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+msgid "_Selected subtitles"
+msgstr "_Subtitlurilor selectate"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
+msgid "Subtitles between those selected and the _first"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
+msgid "Subtitles between those selected and the _last"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
+msgid "Character Encodings"
+msgstr "Codări caractere"
+
+#. Left part: Available VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:70
+msgid "Available Encodings"
+msgstr "Codări disponibile"
+
+#. Right part: Shown VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:87
+msgid "Chosen Encodings"
+msgstr "Codificare aleasă"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
 msgid "Description"
 msgstr "Descriere"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
 msgid "Encoding"
 msgstr "Codificare"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+msgid "Headers"
+msgstr "Antet"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+msgid "Title:"
+msgstr "Titlu:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "Autor:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+msgid "Artist:"
+msgstr "Artist:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "Album:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+msgid "By:"
+msgstr "De:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "Versiune:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+msgid "Program:"
+msgstr "Program:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+msgid "Source:"
+msgstr "Sursă:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "Dată:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
+msgid "Frame Rate:"
+msgstr "Frecvență cadre:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+msgid "File:"
+msgstr "Fișier:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+msgid "Note:"
+msgstr "Notă:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
+msgid "Media Type:"
+msgstr "Tipul media:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "Audio"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: ../src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "Video"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+msgid "Original Script:"
+msgstr "Script original:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+msgid "Original Translation:"
+msgstr "Traducere originală:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+msgid "Original Editing:"
+msgstr "Editare originală:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+msgid "Original Timing:"
+msgstr "Sincronizare originală:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+msgid "Original Script Checking:"
+msgstr "Verificare originală a scriptului:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+msgid "Script Updated By:"
+msgstr "Script actualizat de:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+msgid "Collisions:"
+msgstr "Coliziuni:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+msgid "Timer:"
+msgstr "Temporizator:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
+msgid "Play Res X:"
+msgstr "Rezoluție Redare X:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:129
+msgid "Play Res Y:"
+msgstr "Rezoluție Redare Y:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
+msgid "Play Depth:"
+msgstr "Adâncime Redare:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+msgid "File Path:"
+msgstr "Cale fișier:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+msgid "Delay:"
+msgstr "Decalaj:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+msgid "CD Track:"
+msgstr "Piesă CD:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+msgid "Font Name:"
+msgstr "Nume font:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+msgid "Font Color:"
+msgstr "Culoare font:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+msgid "Font Style:"
+msgstr "Stil font:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+msgid "Font Size:"
+msgstr "Dimensiune font:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+msgid "Video To Open:"
+msgstr "Fișierul video de deschis:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
+msgid "Character Encoding:"
+msgstr "Codarea caracterelor:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:200
 msgid "None"
 msgstr "Niciunul"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:279
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
 msgid "All Subtitle Files"
 msgstr "Toate fișierele de tip subtitrare"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "Proprietățile fișierului"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
+msgid "File Name"
+msgstr "Nume fișier"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:52
+msgid "Path"
+msgstr "Cale"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:55
+msgid "Character Encoding"
+msgstr "Codarea caracterelor"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
+msgid "Subtitle Format"
+msgstr "Formatul subtitrării"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+msgid "Timing Mode"
+msgstr "Mod de sincronizare"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "Salvează ca"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+msgid "Subtitle Format:"
+msgstr "Formatul subtitrării:"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
+msgid "Line Ending:"
+msgstr "Sfârșitul liniilor:"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Deschide fișierul traducere"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Remember the last used encoding"
-msgstr "Ține minte ultima codare folosită"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Keep the encoding used on file open"
-msgstr "Păstrează codarea folosită la deschiderea fișierului"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Keep the format used on file open"
-msgstr "Păstrează formatul folosit la deschiderea fișierului"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Remember the last used format"
-msgstr "Ține minte ultimul format folosit"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:167
-msgid "Remember the last used type"
-msgstr "Ține minte ultimul tip folosit"
-
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
-msgid "Find"
-msgstr "Căutare"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
-msgid "Set Text Language"
-msgstr "Stabilește limba textului"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
-msgid "Set Translation Language"
-msgstr "Stabilește limba traducerii"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
-msgid "Select the text _language of the current subtitles."
-msgstr "Stabilește _limba textului a subtitlurilor curente."
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
-msgid "Select the translation _language of the current subtitles."
-msgstr "Stabilește _limba traducerii subtitlurilor curente."
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:28
 msgid "Save Translation As"
 msgstr "Salvează traducerea ca"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:67
-msgid "Start Time:"
-msgstr "Timp început:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "Preferințe"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
-msgid "Time"
-msgstr "Timp"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "Fișiere"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-msgid "Frames"
-msgstr "Cadre"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "Editare"
+
+#. Translation File Saving
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
+msgid "When saving subtitle files, automatically save their _translation"
+msgstr ""
+"Când se salvează subtitlurile, de asemenea salvează și _traducerile lor"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
+msgid "Translation File Saving"
+msgstr "Salvarea fișierului traducere"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+msgid "Character c_oding to use:"
+msgstr "C_odare caractere de utilizat:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+msgid "If auto detection _fails, use:"
+msgstr "Dacă autodetectarea eșuează, _folosește:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+msgid "Automatically choose the _video file to open"
+msgstr "Alege automat fișierul _video ce urmează a fi deschis"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+msgid "File Open Dialog"
+msgstr "Dialogul „Deschide fișier”"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+msgid "_Subtitle format to use:"
+msgstr "Formatul de _subtitrare de folosit:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+msgid "Ch_aracter coding to use:"
+msgstr "Cod_area de caractere de utilizat:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+msgid "_Newline type to use:"
+msgstr "Tipul de linie _nouă de folosit:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+msgid "File Save As Dialog"
+msgstr "Dialogul „Salvează ca”"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+msgid "Create a _backup copy of files every"
+msgstr "Creează o copie de si_guranță a fișierelor la fiecare"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+msgid "minutes"
+msgstr "minute"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+msgid "Backup"
+msgstr "Copie de siguranță"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
+msgid "Seek the video to the selected subtitle when changing timings"
+msgstr "Derulează videoul la primul subtitlu când se schimbă timpii"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+msgid "Play"
+msgstr "Redă"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+msgid "ms before the actual start to help review new timings"
+msgstr "milisecunde înaintea începutului actual pentru a revizui noii timpi"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+msgid "Video Seeking"
+msgstr "Derulare video"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+msgid "Leave"
+msgstr "Lasă"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+msgid "ms between subtitles when inserting or splitting"
+msgstr "milisecunde între subtitli când se introduce sau împarte"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+msgid "Gap Between Subtitles"
+msgstr "Decalaj între subtitluri"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+msgid "Subtract"
+msgstr "Scade"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+msgid "ms when setting subtitle start/end while playing the video"
+msgstr ""
+"ms când se stabilește începutul/sfârșitul unui subtitlu în timpul redării "
+"unui video"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+msgid "Reaction Delay"
+msgstr "Decalaj de reacție"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+msgid "Remember the last used encoding"
+msgstr "Ține minte ultima codare folosită"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+msgid "Keep the encoding used on file open"
+msgstr "Păstrează codarea folosită la deschiderea fișierului"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+msgid "Keep the format used on file open"
+msgstr "Păstrează formatul folosit la deschiderea fișierului"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+msgid "Remember the last used format"
+msgstr "Ține minte ultimul format folosit"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+msgid "Remember the last used type"
+msgstr "Ține minte ultimul tip folosit"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Replace"
+msgstr "Înlocuiește"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Find"
+msgstr "Căutare"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:130
+msgid "F_ind"
+msgstr "C_aută"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:139
+msgid "Replace _with"
+msgstr "Înlocuiește _cu"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "Sensibil la _majuscule"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "Caută în sens _invers"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
+msgid "Regular _expression"
+msgstr "_Expresie regulată"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
+msgid "Wra_p around"
+msgstr "Reia de la înce_put"
+
+#. Action area
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "Înlocuiește _tot"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
+msgid "Set Languages"
+msgstr "Stabilește limbile"
+
+#. Left part: Text Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
+msgid "Text Language"
+msgstr "Limba textului"
+
+#. Right part: Translation Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
+msgid "Translation Language"
+msgstr "Limba traducerii"
+
+#. Bottom: info message
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
+msgid "For additional languages please install the corresponding package."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
+msgid "Adjust Timings Between 2 Points"
+msgstr "Reglează timpii între două puncte"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
+msgid "_Apply"
+msgstr "_Aplică"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
+msgid "Subtitle No.:"
+msgstr "Subtitlul nr.:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+msgid "New Start:"
+msgstr "Noul început:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
+msgid "First Point"
+msgstr "Primul punct"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:139
+msgid "Second Point"
+msgstr "Al doilea punct"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:162
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
+msgid "Apply To"
+msgstr "Aplică la"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+msgid "Shift Timings"
+msgstr "Decalare timpi"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
+msgid "Apply"
+msgstr "Aplică"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:82
+msgid "Reset"
+msgstr "Restabilește"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
+msgid "Set From Video"
+msgstr "Stabilește de la video"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid ""
+"Sets the shift amount in order for the selected subtitles to start at the "
+"current video position."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
+msgid "Amount"
+msgstr ""
+
+#. Tips label
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
+msgid ""
+"Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
+"from the main window."
+msgstr ""
+"Sfat: utilizați Shift+Plus/Minus (de pe tastatura numerică) pentru a decala "
+"timpii din fereastra principală."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+msgid "Synchronize Timings"
+msgstr "Sincronizează timpii"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
+msgid "Sync Points"
+msgstr "Puncte de sincronizare"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
+msgid "Subtitles between sync points"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
+msgid "Info"
+msgstr "Informații"
 
 #. Number column
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
 msgid "Subtitle No."
 msgstr "Subtitlul nr."
 
-#. Start (current and correct) columns
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
-msgid "Current Start"
-msgstr "Începutul curent"
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+msgid "Start"
+msgstr "Început"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
-msgid "Correct Start"
-msgstr "Începutul corect"
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:152
+msgid "New Start"
+msgstr "Noul început"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:170
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
 msgstr ""
 "Adaugă puncte de sincronizare selectând subtitlurile și reglând video-ul la "
-"poziția lor corectă. Cel puțin 2 puncte sunt necesare. "
+"poziția lor corectă. Cel puțin 2 puncte sunt necesare."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
 msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
@@ -1269,11 +1532,11 @@ msgstr ""
 "Adaugă încă un punct de sincronizare pentru a începe sincronizarea. "
 "Acuratețea se va îmbunătăți adăugând mai multe puncte."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
 msgid "Synchronization is ready. All subtitles will be synchronized."
 msgstr "Sincronizarea este pregătită. Toate subtitlurile vor fi sincronizate."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
@@ -1282,7 +1545,7 @@ msgstr ""
 "Sincronizarea este pregătită. Următoarele subtitluri nu vor fi sincronizate: "
 "{0}."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
@@ -1300,42 +1563,42 @@ msgstr ""
 "de eroare:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
 msgid "Could not open the file"
 msgstr "Nu se poate deschide fișierul"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:31
 msgid "Open another file"
 msgstr "Deschide alt fișier"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:61
 msgid "The file path appears to be invalid."
 msgstr "Adresa fișierului pare a fi nevalidă."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
 msgid "Could not save the file"
 msgstr "Nu se poate salva fișierul"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:34
 msgid "Save to another file"
 msgstr "Salvează în alt fișier"
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:60
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Memorie insuficientă. Închideți câteva programe și încercați din nou."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
+msgid "An I/O error has occurred."
 msgstr "S-a produs o eroare I/O."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:64
 msgid "You do not have the permissions necessary to save the file."
 msgstr "Nu aveți drepturile necesară pentru a salva fișierul."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:66
 #: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
 msgid "The specified file is invalid."
 msgstr "Fișierul specificat este nevalid."
@@ -1425,42 +1688,45 @@ msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "Fișierul pare a fi prea mare pentru o subtitrare bazată pe text."
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
+#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:30
 msgid "Could not play the file"
 msgstr "Nu se poate reda fișierul"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+msgid "Open Video"
+msgstr "Deschide video"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
 msgid "All Video Files"
 msgstr "Toate fișierele video"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:71
 msgid "All Audio Files"
 msgstr "Toate fișierele audio"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
-msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr "Nu se poate deschide Bug Buddy, utilitarul pentru raportarea erorilor."
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
+msgid "Seek Video To"
+msgstr "Derulează video până la"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
-msgid "Bug information has been printed to the console."
-msgstr "Informația erorii a fost tipărită în consolă."
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+msgid "_Seek"
+msgstr "_Derulează"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+msgid "Seek _video to:"
+msgstr "Derulează _video până la:"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
 msgstr "Adaugă sau elimină…"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
-msgid "Auto Detected"
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+msgid "Automatically Detected"
 msgstr "Detectată automat"
 
-#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
 msgid "System Default"
-msgstr "implicit în sistem"
-
-#. Constant strings
-#: ../src/GnomeSubtitles/Ui/Menus.cs:33
-msgid "Video"
-msgstr "Video"
+msgstr "Implicit în sistem"
 
 #. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
 #: ../src/GnomeSubtitles/Ui/Status.cs:43
@@ -1491,7 +1757,7 @@ msgstr "Ln"
 msgid "Col"
 msgstr "Col"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
 msgid "Frame"
 msgstr "Cadru"
 
@@ -1499,10 +1765,6 @@ msgstr "Cadru"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
 msgid "No."
 msgstr "Nr."
-
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
-msgid "Start"
-msgstr "Început"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "End"
@@ -1515,6 +1777,186 @@ msgstr "Durată"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
 msgid "Translation"
 msgstr "Traducere"
+
+#~| msgid "Video subtitling for the GNOME desktop"
+#~ msgid ""
+#~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
+#~ msgstr ""
+#~ "Subtitrări Gnome este un editor de subtitluri pentru desktopul GNOME"
+
+#~ msgid ""
+#~ "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gnome Subtitles is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ msgstr ""
+#~ "Subtitrări Gnome este software liber, îl puteți redistribui și/sau "
+#~ "modifica\n"
+#~ "conform cu termenii GNU General Public License așa cum a fost publicată "
+#~ "de către\n"
+#~ "Free Software Foundation; fie versiunea 2 a Licenței, sau(la latitudinea\n"
+#~ "dumneavoastră) orice versiune ulterioară.\n"
+#~ "\n"
+#~ "Subtitrări Gnome este distribuit în speranța că va fi folositor, dar\n"
+#~ "FĂRĂ NICI O GARANȚIE, fără chiar garanția implicată de VANDABILITATE sau\n"
+#~ "POTRIVIRE PENTRU UN SCOP PARTICULAR. Citiți GNU General Public License\n"
+#~ "pentru mai multe detalii.\n"
+#~ "\n"
+#~ "Trebuie să fi primit o copie a GNU General Public License împreună cu\n"
+#~ "Subtitrări Gnome; dacă nu, scrieți la Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+
+#~ msgid "A_vailable:"
+#~ msgstr "Disponi_bil:"
+
+#~ msgid "Character Coding:"
+#~ msgstr "Codarea caracterelor:"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>Nume:</b>"
+
+#~ msgid "<b>Path:</b>"
+#~ msgstr "<b>Cale:</b>"
+
+#~ msgid "<b>Character Coding:</b>"
+#~ msgstr "<b>Codarea caracterelor:</b>"
+
+#~ msgid "<b>Subtitle Format:</b>"
+#~ msgstr "<b>Formatul subtitrării:</b>"
+
+#~ msgid "Karaoke Lyrics LRC"
+#~ msgstr "Versuri Karaoke LRC"
+
+#~ msgid "Karaoke Lyrics VKT"
+#~ msgstr "Versuri Karaoke VKT"
+
+#~ msgid "Type:"
+#~ msgstr "Tip:"
+
+#~ msgid ""
+#~ "Audio\n"
+#~ "Video\n"
+#~ msgstr ""
+#~ "Audio\n"
+#~ "Video\n"
+
+#~ msgid "Comment:"
+#~ msgstr "Comentariu:"
+
+#~ msgid "_Video Frame Rate"
+#~ msgstr "Frecvența cadrelor _videoului"
+
+#~ msgid "Set T_ext Language"
+#~ msgstr "Stabilește limba t_extului"
+
+#~ msgid "Set Translati_on Language"
+#~ msgstr "Stab_ilește limba traducerii"
+
+#~ msgid "Translate _Text → Translation"
+#~ msgstr "Tradu _textul → traducere"
+
+#~ msgid "Translate Translatio_n → Text"
+#~ msgstr "Tradu t_raducererea → text"
+
+#~ msgid "<b>Time</b>"
+#~ msgstr "<b>Timp</b>"
+
+#~ msgid "<b>Length</b>"
+#~ msgstr "<b>Lungime</b>"
+
+#~ msgid "_Reset to defaults"
+#~ msgstr "_Resetabilește la valorile implicite"
+
+#~ msgid "Seek"
+#~ msgstr "Derulează"
+
+#~ msgid "_Search for:"
+#~ msgstr "_Caută după:"
+
+#~ msgid "Start Frame:"
+#~ msgstr "Cadrul de început:"
+
+#~ msgid "No.:"
+#~ msgstr "Nr.:"
+
+#~ msgid "<b>First Subtitle</b>"
+#~ msgstr "<b>Primul subtitlu</b>"
+
+#~ msgid "<b>Last Subtitle</b>"
+#~ msgstr "<b>Ultimul subtitlu</b>"
+
+#~ msgid "All Subtitles"
+#~ msgstr "Toate subtitlurile"
+
+#~ msgid "Selected Range"
+#~ msgstr "Intervalului selectat"
+
+#~ msgid "Adjust"
+#~ msgstr "Reglează"
+
+#~ msgid "<b>Frames</b>"
+#~ msgstr "<b>Cadre</b>"
+
+#~ msgid "From _first subtitle to selection"
+#~ msgstr "De la primul su_btitlu până la selecție"
+
+#~ msgid "From selection to _last subtitle"
+#~ msgstr "De la selecție până la u_ltimul subtitlu"
+
+#~ msgid "_Shift"
+#~ msgstr "_Decalează"
+
+#~ msgid "Synchroni_ze all subtitles"
+#~ msgstr "Sincronizea_ză toate subtitlurile"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Opțiuni</b>"
+
+#~ msgid "<b>Status</b>"
+#~ msgstr "<b>Stare</b>"
+
+#~ msgid "Seek To"
+#~ msgstr "Derulează la"
+
+#~ msgid "Translating"
+#~ msgstr "Traducere"
+
+#~ msgid "Could not translate the chosen subtitle."
+#~ msgstr "Nu se poate salva fișierul subtitlu ales."
+
+#~ msgid "Select the text _language of the current subtitles."
+#~ msgstr "Stabilește _limba textului a subtitlurilor curente."
+
+#~ msgid "Select the translation _language of the current subtitles."
+#~ msgstr "Stabilește _limba traducerii subtitlurilor curente."
+
+#~ msgid "Start Time:"
+#~ msgstr "Timp început:"
+
+#~ msgid "Frames"
+#~ msgstr "Cadre"
+
+#~ msgid "Current Start"
+#~ msgstr "Începutul curent"
+
+#~ msgid "Correct Start"
+#~ msgstr "Începutul corect"
+
+#~ msgid "Could not open Bug Buddy, the bug reporting tool."
+#~ msgstr ""
+#~ "Nu se poate deschide Bug Buddy, utilitarul pentru raportarea erorilor."
+
+#~ msgid "Bug information has been printed to the console."
+#~ msgstr "Informația erorii a fost tipărită în consolă."
 
 #~ msgid "During:"
 #~ msgstr "Durată:"
