@@ -732,13 +732,13 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuItem" id="videoLoopSelectionPlayback">
+                      <object class="GtkCheckMenuItem" id="videoLoopSelectionPlayback">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">False</property>
                         <property name="label" translatable="yes">_Loop Selection</property>
                         <property name="use_underline">True</property>
-                        <signal name="activate" handler="OnVideoLoopSelectionPlayback" swapped="no"/>
+                        <signal name="toggled" handler="OnVideoLoopSelectionPlayback" swapped="no"/>
                         <accelerator key="F11" signal="activate" modifiers="GDK_CONTROL_MASK"/>
                       </object>
                     </child>
