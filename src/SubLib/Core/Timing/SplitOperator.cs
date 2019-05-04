@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2011 Pedro Castro
+ * Copyright (C) 2011-2019 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 using SubLib.Core.Domain;
 using System;
+using System.Collections;
 
 namespace SubLib.Core.Timing {
 
@@ -34,101 +35,130 @@ public class SplitOperator {
 
 	/* Public members */
 
-	public Subtitle Split (Subtitle subtitle) {
-		if (!isOperationValid(subtitle))
+	public Subtitle[] Split (Subtitle subtitle) {
+		if (!IsOperationValid(subtitle))
 			return null;
 
-		Subtitle subtitle2 = Split(subtitle, this.subtitles.Properties, this.timeBetweenSubtitles);
-		return subtitle2;
+		return Split(subtitle, this.subtitles.Properties, this.timeBetweenSubtitles);
 	}
 
 
 	/* Private members */
 
-	/// <summary>Splits a subtitle in two halves. The subtitle passed as parameter is turned into the first half and the second half is returned.</summary>
+	/// <summary>Splits a single subtitle into multiple subtitles - one for each subtitle line.</summary>
 	/// <param name="subtitle">The subtitle to split</param>
 	/// <param name="subtitleProperties">The subtitle properties</param>
 	/// <param name="timeBetweenSubtitles">Time between the 2 subtitles, in milliseconds</param>
-	private Subtitle Split (Subtitle subtitle, SubtitleProperties subtitleProperties, int timeBetweenSubtitles) {
-		Subtitle subtitle2 = subtitle.Clone(subtitleProperties);
+	private Subtitle[] Split (Subtitle subtitle, SubtitleProperties subtitleProperties, int timeBetweenSubtitles) {
 
-		/* Change timings */
+		//Get text lines
+		ArrayList textLines = GetTextLines(subtitle);
+		if (textLines == null) {
+			return null;
+		}
+
+		//Get translation lines
+		ArrayList translationLines = GetAlignedTranslationLines(subtitle, textLines);
+		
+		//Prepare times. There must be at least
 		int originalStart = (int)subtitle.Times.Start.TotalMilliseconds;
 		int originalEnd = (int)subtitle.Times.End.TotalMilliseconds;
-
-		if ((originalEnd - originalStart) <= timeBetweenSubtitles) {
-			/* Not possible to have the predefined time between subtitle, subtitle 2 will start at subtitle's end time */
-			int originalMiddle = (originalStart + originalEnd) / 2;
-			TimeSpan newSubtitleEnd = TimeSpan.FromMilliseconds(originalMiddle);
-			subtitle.Times.End = newSubtitleEnd;
-			subtitle2.Times.Start = newSubtitleEnd;
+		int originalDuration = originalEnd - originalStart;
+		
+		int newDuration = CalculateSubtitleDuration(originalDuration, timeBetweenSubtitles, textLines.Count);
+		if (newDuration < timeBetweenSubtitles) {
+			timeBetweenSubtitles = 0; //If each subtitle would have a duration shorter than timeBetweenSubtitles itself, we don't use it
+			newDuration = CalculateSubtitleDuration(originalDuration, timeBetweenSubtitles, textLines.Count);
 		}
-		else {
-			int newSubtitleEnd = (originalStart + originalEnd - timeBetweenSubtitles) / 2;
-			int subtitle2Start = newSubtitleEnd + timeBetweenSubtitles;
-			subtitle.Times.End = TimeSpan.FromMilliseconds(newSubtitleEnd);
-			subtitle2.Times.Start = TimeSpan.FromMilliseconds(subtitle2Start);
-		}
-
-		/* Change subtitle text */
-		string[] textLines = subtitle.Text.GetLines();
-		if (textLines.Length == 1)
-			subtitle2.Text.Clear();
-		else if (textLines.Length > 1) {
-			string[] textLinesHalf1 = null;
-			string[] textLinesHalf2 = null;
-			SplitArray(textLines, ref textLinesHalf1, ref textLinesHalf2);
-			subtitle.Text.Set(textLinesHalf1);
-			subtitle2.Text.Set(textLinesHalf2);
-		}
-
-		/* Change translation text */
-		if (subtitle.HasTranslation) {
-			string[] translationLines = subtitle.Translation.GetLines();
-			if (translationLines.Length == 1)
-				subtitle2.Translation.Clear();
-			else if (translationLines.Length > 1) {
-				string[] translationLinesHalf1 = null;
-				string[] translationLinesHalf2 = null;
-				SplitArray(translationLines, ref translationLinesHalf1, ref translationLinesHalf2);
-				subtitle.Translation.Set(translationLinesHalf1);
-				subtitle2.Translation.Set(translationLinesHalf2);
+		
+		/* Create a new Subtitle for each line by cloning the original one and setting appropriate text and times.
+		 * Note: textLines can have a single line (which means the other original lines were empty). In this case,
+		 * the subtitle will still be changed as a form of "cleanup" where the empty lines are removed.
+		 */
+		ArrayList result = new ArrayList();
+		for (int i = 0; i < textLines.Count; i++) {
+			Subtitle newSubtitle = subtitle.Clone(subtitleProperties);
+			
+			//Set text
+			newSubtitle.Text.Set(textLines[i] as String);
+			
+			//Set translation
+			if (subtitle.HasTranslation) {
+				if (i < translationLines.Count) { 
+					newSubtitle.Translation.Set(translationLines[i] as String);
+				} else {
+					newSubtitle.Translation.Clear();
+				}
 			}
+			
+			int start = originalStart + i * (newDuration + timeBetweenSubtitles);
+			newSubtitle.Times.Start = TimeSpan.FromMilliseconds(start);
+			newSubtitle.Times.End = TimeSpan.FromMilliseconds(start + newDuration);
+
+			result.Add(newSubtitle);
+		}
+		
+		return (Subtitle[])result.ToArray(typeof(Subtitle));
+	}
+	
+	private ArrayList GetTextLines (Subtitle subtitle) {
+		//Check if we have multiple text lines in this subtitle. If we don't, just return.
+		string[] originalLines = subtitle.Text.GetLines();
+		if ((originalLines == null) || (originalLines.Length <= 1)) {
+			return null;
 		}
 
-		return subtitle2;
+		//Remove empty or whitespace text lines.
+		ArrayList textLines = GetNonEmptyLines(originalLines);
+		if (textLines.Count == 0) {
+			return null;
+		}
+		
+		return textLines;
 	}
 
-	private bool isOperationValid (Subtitle subtitle) {
+	private ArrayList GetAlignedTranslationLines (Subtitle subtitle, ArrayList textLines) {
+		if (!subtitle.HasTranslation) {
+			return null;
+		}
+		
+		string[] originalLines = subtitle.Translation.GetLines();
+		if (originalLines == null) {
+			return null;
+		}
+
+		//Remove empty or whitespace text lines.
+		ArrayList translationLines = GetNonEmptyLines(originalLines);
+		if (translationLines.Count > textLines.Count) {
+			int lastTextIndex = textLines.Count - 1;
+			String lastLine = String.Join("\n", (string[])translationLines.ToArray(typeof(string)), lastTextIndex, translationLines.Count - textLines.Count + 1);
+			translationLines[lastTextIndex] = lastLine;
+			translationLines.RemoveRange(lastTextIndex + 1, translationLines.Count - textLines.Count);
+		}
+		
+		return translationLines;
+	}
+	
+	private ArrayList GetNonEmptyLines (string[] lines) {
+		ArrayList result = new ArrayList();
+		
+		foreach (string line in lines) {
+			if (!String.IsNullOrWhiteSpace(line)) {
+				result.Add(line);
+			}
+		}
+		
+		return result;
+	}
+	
+	private int CalculateSubtitleDuration (int originalDuration, int timeBetweenSubtitles, int lineCount) {
+		return (originalDuration - (timeBetweenSubtitles * (lineCount - 1))) / lineCount;
+	}
+
+	private bool IsOperationValid (Subtitle subtitle) {
 		return subtitle.Times.End >= subtitle.Times.Start;
 	}
 
-	private void SplitArray<T> (T[] array, ref T[] half1, ref T[] half2) {
-		if (array == null) {
-			half1 = null;
-			half2 = null;
-			return;
-		}
-
-		int arrayLength = array.Length;
-		if (arrayLength == 0) {
-			half1 = new T[0];
-			half2 = new T[0];
-		}
-		else if (arrayLength == 1) {
-			half1 = new T[1];
-			half1[0] = array[0];
-			half2 = new T[0];
-		}
-		else {
-			int half1Length = (int)Math.Round(arrayLength / 2d);
-			int half2Length = arrayLength - half1Length;
-			half1 = new T[half1Length];
-			half2 = new T[half2Length];
-			Array.Copy(array, 0, half1, 0, half1Length);
-			Array.Copy(array, half1Length, half2, 0, half2Length);
-		}
-	}
 }
 
 }

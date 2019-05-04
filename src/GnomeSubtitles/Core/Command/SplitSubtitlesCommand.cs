@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2017 Pedro Castro
+ * Copyright (C) 2017-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 	}
 
 	public override bool Execute () {
-		GnomeSubtitles.Ui.View.Subtitles subtitles = Base.Document.Subtitles;
+		Ui.View.Subtitles subtitles = Base.Document.Subtitles;
 		ArrayList pathsBefore = new ArrayList();
 		ArrayList subtitlesBefore = new ArrayList();
 		ArrayList pathsAfter = new ArrayList();
@@ -44,33 +44,34 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 		SplitOperator splitOperator = new SplitOperator(subtitles, Base.Config.TimingsTimeBetweenSubtitles);
 
 		foreach (TreePath path in Paths) {
-			int subtitleIndex = Util.PathToInt(path) + subtitlesBefore.Count; //need to account for subtitles already added in this loop
+			int subtitlesThatHaveBeenAdded = pathsAfter.Count - pathsBefore.Count; //number of subtitles that have been added ever since, in this loop
+			int subtitleIndex = Util.PathToInt(path) + subtitlesThatHaveBeenAdded;
 			Subtitle subtitle = subtitles[subtitleIndex];
-			Subtitle subtitleClone = subtitle.Clone(subtitles.Properties);
-			Subtitle subtitle2 = splitOperator.Split(subtitle);
-			if (subtitle2 != null) {
-				pathsAfter.Add(Util.IntToPath(subtitleIndex));
-				pathsAfter.Add(Util.IntToPath(subtitleIndex + 1));
-
+			
+			Subtitle[] newSubtitles = splitOperator.Split(subtitle);
+			if (newSubtitles != null) {
 				pathsBefore.Add(path);
-				subtitlesBefore.Add(subtitleClone);
-
-				subtitles.Add(subtitle2, subtitleIndex + 1);
+				subtitlesBefore.Add(subtitle);
+				
+				subtitles.Remove(subtitleIndex);
+				for (int i = 0 ; i < newSubtitles.Length ; i++) {
+					pathsAfter.Add(Util.IntToPath(subtitleIndex + i));
+					subtitles.Add(newSubtitles[i], subtitleIndex + i);
+				}
 			}
 		}
 
-		/* If any subtitle was changed, the command was successful */
-		if (subtitlesBefore.Count == 0)
+		if (subtitlesBefore.Count == 0) {
 			return false;
-		else {
-			this.subtitlesBefore = (Subtitle[])subtitlesBefore.ToArray(typeof(Subtitle));
-			this.Paths = (TreePath[])pathsBefore.ToArray(typeof(TreePath));
-			this.pathsAfter = (TreePath[])pathsAfter.ToArray(typeof(TreePath));
-			Base.Ui.View.RedrawPaths(this.pathsAfter);
-			Base.Ui.View.Selection.Select(this.pathsAfter, this.pathsAfter[0], true);
-			PostProcess();
-			return true;
 		}
+		
+		this.subtitlesBefore = (Subtitle [])subtitlesBefore.ToArray(typeof(Subtitle));
+		this.Paths = (TreePath [])pathsBefore.ToArray(typeof(TreePath));
+		this.pathsAfter = (TreePath [])pathsAfter.ToArray(typeof(TreePath));
+		Base.Ui.View.RedrawPaths(this.pathsAfter);
+		Base.Ui.View.Selection.Select(this.pathsAfter, this.pathsAfter [0], true);
+		PostProcess();
+		return true;
 	}
 
 	public override void Undo () {
