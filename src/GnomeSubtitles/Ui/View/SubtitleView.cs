@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2018 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 using GnomeSubtitles.Core;
-using GnomeSubtitles.Ui.View;
 using Gtk;
 using Mono.Unix;
 using System;
@@ -336,14 +335,18 @@ public class SubtitleView {
 
 	private void RenderTranslationTextCell (TreeViewColumn column, CellRenderer cell, ITreeModel treeModel, TreeIter iter) {
 		Subtitle subtitle = subtitles[iter];
-		RenderTextCell(cell as CellRendererText, iter, subtitle.Translation, subtitle.Style);
+		if (subtitle.HasTranslation) {
+			RenderTextCell(cell as CellRendererText, iter, subtitle.Translation, subtitle.Style);
+		} else {
+			RenderEmptyTextCell(cell as CellRendererText);
+		}
 	}
-
+	
 	private void RenderTextCell (CellRendererText renderer, TreeIter iter, SubtitleText subtitleText, SubLib.Core.Domain.Style subtitleStyle) {
 
 		/* If there's no text, return empty text without line count */
 		if (subtitleText.IsEmpty) {
-			renderer.Text = String.Empty;
+			RenderEmptyTextCell(renderer);
 			return;
 		}
 
@@ -361,6 +364,10 @@ public class SubtitleView {
 		}
 
 		renderer.Markup = textMarkup;
+	}
+	
+	private void RenderEmptyTextCell (CellRendererText renderer) {
+		renderer.Text = String.Empty;
 	}
 
 	private void GetStyleMarkup (SubLib.Core.Domain.Style subtitleStyle, ref string prefix, ref string suffix) {
