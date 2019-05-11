@@ -131,7 +131,7 @@ public class SplitOperator {
 		ArrayList translationLines = GetNonEmptyLines(originalLines);
 		if (translationLines.Count > textLines.Count) {
 			int lastTextIndex = textLines.Count - 1;
-			String lastLine = String.Join("\n", (string[])translationLines.ToArray(typeof(string)), lastTextIndex, translationLines.Count - textLines.Count + 1);
+			string lastLine = String.Join("\n", (string[])translationLines.ToArray(typeof(string)), lastTextIndex, translationLines.Count - textLines.Count + 1);
 			translationLines[lastTextIndex] = lastLine;
 			translationLines.RemoveRange(lastTextIndex + 1, translationLines.Count - textLines.Count);
 		}

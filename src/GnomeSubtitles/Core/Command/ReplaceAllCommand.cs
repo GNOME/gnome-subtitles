@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -90,9 +90,23 @@ public class ReplaceAllCommand : MultipleSelectionCommand {
 	public override void Redo () {
 		Undo();
 	}
+	
+	public override void ClearTarget (CommandTarget target) {
+		if (target == CommandTarget.Translation) {
+			ArrayList newReplacedSubtitles = new ArrayList();
+			
+			foreach (SubtitleReplaceResult replacedSubtitle in replacedSubtitles) {
+				if (replacedSubtitle.Text != null) {
+					newReplacedSubtitles.Add(new SubtitleReplaceResult(replacedSubtitle.Number, replacedSubtitle.Text, null));
+				}
+			}
+			
+			replacedSubtitles = newReplacedSubtitles;
+		}
+	}
+
 
 	/* Private members */
-
 
 	private void GetCommandData (out TreePath[] paths, out CommandTarget target) {
 		ArrayList foundPaths = new ArrayList();

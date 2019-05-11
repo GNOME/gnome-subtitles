@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009,2011 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,11 +29,21 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	private Subtitle[] subtitles = null;
 
 	public DeleteSubtitlesCommand () : base(description, false, SelectionIntended.Simple, null) {
-		StoreSubtitles(); //TODO move to Execute
 	}
 
 
 	public override bool Execute () {
+		//Store subtitles to be deleted
+		int count = Paths.Length;
+		subtitles = new Subtitle[count];
+		for (int index = 0 ; index < count ; index++) {
+			TreePath path = Paths[index];
+			subtitles[index] = Base.Document.Subtitles[path];
+		}
+		
+		//If translations are loaded, our command affects both the normal document and translations
+		SetCommandTarget(Base.Document.IsTranslationLoaded ? CommandTarget.NormalAndTranslation : CommandTarget.Normal);
+	
 		Base.Ui.View.Remove(Paths);
 		return true;
 	}
@@ -45,15 +55,14 @@ public class DeleteSubtitlesCommand : MultipleSelectionCommand {
 	public override void Redo () {
 		Execute();
 	}
-
-	/* Private members */
-
-	private void StoreSubtitles () {
-		int count = Paths.Length;
-		subtitles = new Subtitle[count];
-		for (int index = 0 ; index < count ; index++) {
-			TreePath path = Paths[index];
-			subtitles[index] = Base.Document.Subtitles[path];
+	
+	public override void ClearTarget (CommandTarget target) {
+		if (target == CommandTarget.Translation) {
+			foreach (Subtitle subtitle in subtitles) {
+				if (subtitle.HasTranslation) {
+					subtitle.Translation.Clear();
+				}
+			}
 		}
 	}
 

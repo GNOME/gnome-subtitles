@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2009 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -248,13 +248,21 @@ public class CommandManager {
 		/* Go through the undo commands */
 		if (undoCount > 0) {
 			int lastUndoIter = iterator - undoCount;
-			if (lastUndoIter < 0)
+			if (lastUndoIter < 0) {
 				lastUndoIter = limit + lastUndoIter;
+			}
 
 			int undoIter = lastUndoIter;
 			while (undoIter != iterator) {
 				Command undoCommand = commands[undoIter];
+				
+				//We only keep the command if its target is not the one we're clearing
 				if (undoCommand.Target != target) {
+					//If the command target is NormalAndTranslation, it means at least part of it may need to be cleared
+					if (undoCommand.Target == CommandTarget.NormalAndTranslation) {
+						undoCommand.ClearTarget(target);
+					}
+				
 					newCommands[newIterator] = undoCommand;
 					newIterator++;
 					newUndoCount++;
@@ -269,7 +277,14 @@ public class CommandManager {
 			int newRedoIterator = newIterator; //Because newIterator cannot be changed now
 			for (int redoNum = 0 ; redoNum < redoCount ; redoNum++) {
 				Command redoCommand = commands[redoIter];
+				
+				//We only keep the command if its target is not the one we're clearing
 				if (redoCommand.Target != target) {
+					//If the command target is NormalAndTranslation, it means at least part of it may need to be cleared
+					if (redoCommand.Target == CommandTarget.NormalAndTranslation) {
+						redoCommand.ClearTarget(target);
+					}
+				
 					newCommands[newRedoIterator] = redoCommand;
 					newRedoIterator++;
 					newRedoCount++;
@@ -289,11 +304,15 @@ public class CommandManager {
 		iterator = newIterator;
 
 		/* Issue possible events */
-		if (toToggleUndo)
+		if (toToggleUndo) {
 			EmitUndoToggled();
-		if (toToggleRedo)
+		}
+		
+		if (toToggleRedo) {
 			EmitRedoToggled();
+		}
 	}
+
 
 	/* Event members */
 
