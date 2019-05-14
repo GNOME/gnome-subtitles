@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2018 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GLib;
 using GnomeSubtitles.Core;
 using SubLib.Util;
 using System;
@@ -66,7 +65,7 @@ public class Executable {
     }
 
 	public static void Main (string[] args) {
-		ExceptionManager.UnhandledException += OnUnhandledException;
+		//ExceptionManager.UnhandledException += OnUnhandledException;
 
 		ExecutionContext executionContext = new ExecutionContext(args);
 
@@ -93,15 +92,16 @@ public class Executable {
 
 	/* Event members */
 
-	private static void OnUnhandledException (UnhandledExceptionArgs args) {
-		if (args.ExceptionObject is Exception) {
-			BugReporter.Report(args.ExceptionObject as Exception);
-			throw new Exception("Unhandled Exception", args.ExceptionObject as Exception);
-		}
+	//Commenting because this isn't getting the Exception with its full stack trace
+	//private static void OnUnhandledException (UnhandledExceptionArgs args) {
+	//	if (args.ExceptionObject is Exception) {
+	//		BugReporter.Report(args.ExceptionObject as Exception);
+	//		throw new Exception("Unhandled Exception", args.ExceptionObject as Exception);
+	//	}
 		
-		throw new Exception("Unhandled Exception with no inner exception");
-		//Kill();
-	}
+	//	throw new Exception("Unhandled Exception with no inner exception");
+	//	//Kill();
+	//}
 
 }
 
