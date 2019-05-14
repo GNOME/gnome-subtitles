@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,12 +43,12 @@ public abstract class InsertSubtitleCommand : SingleSelectionCommand {
 
 	public override bool Execute () {
 		InsertNew();
-		subtitle = Base.Document.Subtitles[newPath];
+		subtitle = Base.Document.Subtitles[newPath].Clone(Base.Document.Subtitles.Properties);
 		return true;
 	}
 
 	public override void Undo () {
-		bool selectNext = ((Path != null) && (Path.Compare(newPath) == 1));
+		bool selectNext = (Path != null) && (Path.Compare(newPath) == 1);
 		Base.Ui.View.Remove(newPath, selectNext);
 	}
 
