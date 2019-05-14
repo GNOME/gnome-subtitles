@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2018 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -134,7 +134,7 @@ public class PreferencesDialog : BaseDialog {
 		autoBackupSpinButton.WidthChars = 2;
 		autoBackupSpinButton.Sensitive = autoBackupEnabled;
 		autoBackupSpinButton.Value = Base.Config.BackupTime / 60; //Minutes
-		autoBackupSpinButton.Changed += OnAutoBackupTimeSpinButtonValueChanged;
+		autoBackupSpinButton.ValueChanged += OnAutoBackupTimeSpinButtonValueChanged;
 		backupBox.Add(autoBackupSpinButton);
 		
 		backupBox.Add(new Label(Catalog.GetString("minutes")));
@@ -163,7 +163,7 @@ public class PreferencesDialog : BaseDialog {
 		videoSeekRewindSpinButton.WidthChars = 4;
 		videoSeekRewindSpinButton.Value = Base.Config.VideoSeekOnChangeRewind;
 		videoSeekRewindSpinButton.Sensitive = videoSeekCheckButton.Active;
-		videoSeekRewindSpinButton.Changed += OnVideoSeekRewindSpinButtonValueChanged;
+		videoSeekRewindSpinButton.ValueChanged += OnVideoSeekRewindSpinButtonValueChanged;
 		videoSeekRewindHBox.Add(videoSeekRewindSpinButton);
 		videoSeekRewindHBox.Add(new Label(Catalog.GetString("ms before the actual start to help review new timings")));
 		
@@ -178,7 +178,7 @@ public class PreferencesDialog : BaseDialog {
 		SpinButton subtitleSplitSpinButton = new SpinButton(0, 2000, 50);
 		subtitleSplitSpinButton.WidthChars = 4;
 		subtitleSplitSpinButton.Value = Base.Config.TimingsTimeBetweenSubtitles;
-		subtitleSplitSpinButton.Changed += OnSubtitleSplitSpinButtonValueChanged;
+		subtitleSplitSpinButton.ValueChanged += OnSubtitleSplitSpinButtonValueChanged;
 		splitHBox.Add(subtitleSplitSpinButton);
 		splitHBox.Add(new Label(Catalog.GetString("ms between subtitles when inserting or splitting")));
 		
@@ -199,7 +199,7 @@ public class PreferencesDialog : BaseDialog {
 		reactionDelaySpinButton.WidthChars = 4;
 		reactionDelaySpinButton.Sensitive = reactionDelayEnabled;
 		reactionDelaySpinButton.Value = Base.Config.VideoReactionDelay;
-		reactionDelaySpinButton.Changed += OnReactionDelaySpinButtonValueChanged;
+		reactionDelaySpinButton.ValueChanged += OnReactionDelaySpinButtonValueChanged;
 		reactionDelayHBox.Add(reactionDelaySpinButton);
 
 		reactionDelayHBox.Add(new Label(Catalog.GetString("ms when setting subtitle start/end while playing the video")));
@@ -443,7 +443,7 @@ public class PreferencesDialog : BaseDialog {
 	private void OnSubtitleSplitSpinButtonValueChanged (object o, EventArgs args) {
 		Base.Config.TimingsTimeBetweenSubtitles = (o as SpinButton).ValueAsInt;
 	}
-
+	
 }
 
 }
