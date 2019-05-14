@@ -52,12 +52,11 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 
 	public override void Undo () {
 		/*
-		 * If the command originally applied to translations and they have changed, we need to use the new translations because we didn't have them when this command was first executed.
-		 * The same goes if the command didn't originally have translations but it now has.
+		 * If the command originally applied to translations and they have changed, we need to use the new translations because we didn't have them
+		 * when this command was first executed. The same goes if the command didn't originally have translations but it now has.
 		 */
 		bool hadTranslation = (this.Target == CommandTarget.NormalAndTranslation);
-		bool updateTranslation = Base.Document.IsTranslationLoaded
-			&& ((hadTranslation && translationCleared) || !hadTranslation);
+		bool updateTranslation = Base.Document.IsTranslationLoaded && ((hadTranslation && translationCleared) || !hadTranslation);
 		
 		if (updateTranslation) {
 			for (int i = 0; i < subtitlesBefore.Length; i++) {
@@ -88,8 +87,8 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 
 
 	/*
-	 * In Redo, we just run the Split command again, so we don't reuse existing subtitles. Because of that, if a new translation
-	 * has been loaded there's no problem, its current text will be used.
+	 * In Redo, we just run the Split command again, so we don't reuse old subtitles. Because of that, if a new translation
+	 * has been loaded on the meanwhile, there's no problem, the current translation text will be used.
 	 */
 	public override void Redo () {
 		SetCommandTarget(Base.Document.IsTranslationLoaded ? CommandTarget.NormalAndTranslation : CommandTarget.Normal);
@@ -99,8 +98,6 @@ public class SplitSubtitlesCommand : MultipleSelectionCommand {
 		}
 
 		PostProcess();
-		
-		Split();
 	}
 	
 	public override void ClearTarget (CommandTarget target) {
