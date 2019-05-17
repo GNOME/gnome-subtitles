@@ -74,6 +74,29 @@ public class Executable {
 			SetProcessName(executionContext.ExecutableName);
 		}
 
+		GLib.Log.SetDefaultHandler((string domain, GLib.LogLevelFlags level, string message) => {
+			/* Ignore GLib Critical message: "Source ID <number> was not found when attempting to remove it". Context:
+			 * 1) A change was introduced in GLib commit https://gitlab.gnome.org/GNOME/glib/commit/a919be3d39150328874ff647fb2c2be7af3df996
+			 *    which made it output a critical error when removing an event which had already been removed. Only the
+			 *    message is displayed, no exception is thrown.
+			 * 2) Gtk-sharp wasn't checking if events were there before removing them, so applications based on it started
+			 *    displaying lots of messages like this. This was fixed in https://github.com/mono/gtk-sharp/commit/7ea0c4afaf405df2dfc5a42e098e9023ecc1c51c
+			 *    however it hasn't been released yet (the latest gtk-sharp version for gtk3 is 2.99.3 which was before this commit).
+			 * 3) The gtk-sharp developers have been asked to release 2.99.4 on this thread but it hasn't happened yet:
+			 *    https://gtk-sharp-list.ximian.narkive.com/oTBGM2Yx/please-release-gtk-sharp-2-99-4
+			 * 4) So, as a temporary fix (until who knows when), we're just ignoring these messages here so they don't clutter up the logs.
+			 */
+			if ((level == GLib.LogLevelFlags.Critical)
+					&& (domain == "GLib")
+					&& message.StartsWith("Source ID")
+					&& message.EndsWith("was not found when attempting to remove it")) {
+
+				return;
+			}
+			
+			Console.Error.WriteLine(domain + " | " + level + " | " + message);
+		});
+		
 		Base.Run(executionContext);
 	}
 
