@@ -8,21 +8,22 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
 # Rodrigo <rodhos92@gmail.com>, 2018.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2018.
+# Rodrigo Lledó <rodhos92@gmail.com>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2018-08-31 08:00+0000\n"
-"PO-Revision-Date: 2018-09-03 08:53+0200\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: es <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2019-05-14 07:44+0000\n"
+"PO-Revision-Date: 2019-05-16 19:26+0200\n"
+"Last-Translator: Rodrigo Lledó <rodhos92@gmail.com>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Gtranslator 3.32.0\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
@@ -479,12 +480,14 @@ msgid "_Underline"
 msgstr "_Subrayado"
 
 #: ../src/Glade/MainWindow.ui.h:22
-msgid "_Split"
-msgstr "_Dividir"
+#| msgid "_Split"
+msgid "_Split Lines"
+msgstr "_Dividir lineas"
 
 #: ../src/Glade/MainWindow.ui.h:23
-msgid "_Merge"
-msgstr "_Mezclar"
+#| msgid "_Merge"
+msgid "_Merge Lines"
+msgstr "_Unir lineas"
 
 #: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
@@ -823,7 +826,7 @@ msgstr "Reemplazando todo"
 msgid "Shifting timings"
 msgstr "Desplazando los tiempos"
 
-#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
 msgid "Splitting subtitles"
 msgstr "Dividiendo subtítulos"
 
@@ -856,98 +859,100 @@ msgid "{0} (translation)"
 msgstr "{0} (traducción)"
 
 #. GEOSTD8, HZ not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:33
-#: ../src/GnomeSubtitles/Core/Encodings.cs:45
-#: ../src/GnomeSubtitles/Core/Encodings.cs:76
-#: ../src/GnomeSubtitles/Core/Encodings.cs:101
+#: ../src/GnomeSubtitles/Core/Encodings.cs:37
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:105
 msgid "Western"
 msgstr "Occidental"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:34
-#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+#: ../src/GnomeSubtitles/Core/Encodings.cs:38
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Central European"
 msgstr "Centroeuropeo"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:35
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
 msgid "South European"
 msgstr "Sur de Europa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:36
-#: ../src/GnomeSubtitles/Core/Encodings.cs:43
-#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
 msgid "Baltic"
 msgstr "Báltico"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:37
-#: ../src/GnomeSubtitles/Core/Encodings.cs:78
-#: ../src/GnomeSubtitles/Core/Encodings.cs:86
-#: ../src/GnomeSubtitles/Core/Encodings.cs:92
-#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
+#: ../src/GnomeSubtitles/Core/Encodings.cs:82
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
 msgid "Cyrillic"
 msgstr "Cirílico"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:38
-#: ../src/GnomeSubtitles/Core/Encodings.cs:84
-#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
 msgid "Arabic"
 msgstr "Árabe"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:39
-#: ../src/GnomeSubtitles/Core/Encodings.cs:87
-#: ../src/GnomeSubtitles/Core/Encodings.cs:102
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:106
 msgid "Greek"
 msgstr "Griego"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:40
-#: ../src/GnomeSubtitles/Core/Encodings.cs:82
-#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
 msgid "Hebrew"
 msgstr "Hebreo"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:41
-#: ../src/GnomeSubtitles/Core/Encodings.cs:79
-#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
 msgid "Turkish"
 msgstr "Turco"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:42
-#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
 msgid "Nordic"
 msgstr "Nordico"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
 msgid "Celtic"
 msgstr "Celta"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
 msgid "Romanian"
 msgstr "Rumano"
 
 #. ISO-8859-8-I not used
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:49
-#: ../src/GnomeSubtitles/Core/Encodings.cs:50
-#: ../src/GnomeSubtitles/Core/Encodings.cs:51
-#: ../src/GnomeSubtitles/Core/Encodings.cs:52
+#. Little endian
+#. Added
 #: ../src/GnomeSubtitles/Core/Encodings.cs:53
 #: ../src/GnomeSubtitles/Core/Encodings.cs:54
 #: ../src/GnomeSubtitles/Core/Encodings.cs:55
 #: ../src/GnomeSubtitles/Core/Encodings.cs:56
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+#: ../src/GnomeSubtitles/Core/Encodings.cs:58
+#: ../src/GnomeSubtitles/Core/Encodings.cs:59
+#: ../src/GnomeSubtitles/Core/Encodings.cs:60
 msgid "Unicode"
 msgstr "Unicode"
 
 #. Added
 #. UCS-2 and UCS-4 not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:59
-#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
 msgid "Chinese Traditional"
 msgstr "Chino tradicional"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:65
 msgid "Cyrillic/Russian"
 msgstr "Cirílico/ruso"
 
@@ -955,54 +960,54 @@ msgstr "Cirílico/ruso"
 #. Added
 #. Added
 #. ISO-IR-111, KOI8R, KOI8U not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:64
-#: ../src/GnomeSubtitles/Core/Encodings.cs:65
-#: ../src/GnomeSubtitles/Core/Encodings.cs:89
-#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
 msgid "Japanese"
 msgstr "Japonés"
 
 #. EUC-JP-MS not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:68
-#: ../src/GnomeSubtitles/Core/Encodings.cs:90
-#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
 msgid "Korean"
 msgstr "Coreano"
 
 #. EUC-TW not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:71
-#: ../src/GnomeSubtitles/Core/Encodings.cs:72
-#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:75
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:77
 msgid "Chinese Simplified"
 msgstr "Chino simplificado"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
 msgid "Portuguese"
 msgstr "Portugués"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Icelandic"
 msgstr "Islandés"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
 msgid "French Canadian"
 msgstr "Francés canadiense"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
 msgid "Cyrillic/Ukrainian"
 msgstr "Cirílico/ucraniano"
 
 #. TCVN, TIS-620, UHC, VISCII not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:99
+#: ../src/GnomeSubtitles/Core/Encodings.cs:103
 msgid "Central"
 msgstr "Centroeuropeo"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:118
+#: ../src/GnomeSubtitles/Core/Encodings.cs:122
 msgid "Current Locale"
 msgstr "Configuración actual"
 
@@ -1545,7 +1550,7 @@ msgid "Subtitle No."
 msgstr "Subtítulo no."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
 msgid "Start"
 msgstr "Inicio"
 
@@ -1782,7 +1787,7 @@ msgstr "INSER"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
 msgid "Text"
 msgstr "Texto"
 
@@ -1805,19 +1810,19 @@ msgid "Frame"
 msgstr "Fotograma"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
 msgid "No."
 msgstr "Número"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
 msgstr "Fin"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "Duration"
 msgstr "Duración"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Traducción"
 
