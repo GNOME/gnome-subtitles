@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@ using Gdk;
 using GnomeSubtitles.Core;
 using Gtk;
 using SubLib.Core.Domain;
-using SubLib.Core.Search;
 using System;
 using System.Runtime.InteropServices;
 
@@ -127,7 +126,8 @@ public class SubtitleOverlay {
 		if (subtitle.Style.Underline)
 			markup += " underline=\"single\"";
 
-		markup += ">" + text + "</span>";
+		markup += ">" + GLib.Markup.EscapeText(text) + "</span>";
+		
 		label.Markup = markup;
 		label.Visible = true;
 	}
