@@ -107,6 +107,8 @@ public class Video {
 	/// <exception cref="PlayerCouldNotOpenVideoException">Thrown if the player could not open the video.</exception>
 	public void Open (Uri videoUri) {
 		Close();
+		
+		frame.Show();
 
 		player.Open(videoUri);
 	}
@@ -122,20 +124,17 @@ public class Video {
 		tracker.Close();
 		overlay.Close();
 
-
 		/* Update the frame */
-//		frame.Child.Hide();
-//		frame.Child.Show();
-		frame.QueueDraw(); //To make sure the frame stops showing the last image from the closed video
 		frame.Ratio = Player.DefaultAspectRatio;
-
+		frame.Hide(); //To keep the frame from showing the last video image that was being played
+		
 		SilentDisablePlayPauseButton();
 		UpdateSpeedControls(1);
 		SetControlsSensitivity(false);
 	}
 
 	public void Quit () {
-		player.Close();
+		player.Dispose();
 	}
 
 	public void SetLoopSelectionPlayback (bool enabled){
@@ -283,8 +282,8 @@ public class Video {
 		}
 	}
 
-	private void handlePlayerLoading () {
-		if (isLoaded || (!isPlayerLoadComplete()))
+	private void HandlePlayerLoading () {
+		if (isLoaded || (!IsPlayerLoadComplete()))
 			return;
 
 		isLoaded = true;
@@ -292,7 +291,7 @@ public class Video {
 		Base.UpdateFromVideoLoaded(player.VideoUri);
 	}
 
-	private bool isPlayerLoadComplete () {
+	private bool IsPlayerLoadComplete () {
 		return (player != null) && (player.State != MediaStatus.Unloaded) && (player.HasVideoInfo) && (player.HasDuration);
 	}
 
@@ -318,17 +317,17 @@ public class Video {
 	}
 
 	private void OnPlayerFoundVideoInfo (VideoInfoEventArgs args) {
-		handlePlayerLoading();
+		HandlePlayerLoading();
 	}
 
 	private void OnPlayerStateChanged (StateEventArgs args) {
 		if (args.State == MediaStatus.Loaded) {
-			handlePlayerLoading();
+			HandlePlayerLoading();
 		}
 	}
 
 	private void OnPlayerFoundDuration (TimeSpan duration) {
-		handlePlayerLoading();
+		HandlePlayerLoading();
 	}
 
 	private void OnPlayerEndOfStream () {
@@ -356,11 +355,11 @@ public class Video {
 		if (!(Base.IsDocumentLoaded))
 			return;
 
-		Subtitle firstSubtitle = Core.Base.Ui.View.Selection.FirstSubtitle;
+		Subtitle firstSubtitle = Base.Ui.View.Selection.FirstSubtitle;
 		if (firstSubtitle == null)
 			return;
 
-		Subtitle lastSubtitle = Core.Base.Ui.View.Selection.LastSubtitle;
+		Subtitle lastSubtitle = Base.Ui.View.Selection.LastSubtitle;
 		if ((position < firstSubtitle.Times.Start) || (position > lastSubtitle.Times.End))
 			SeekToSelection();
 	}
