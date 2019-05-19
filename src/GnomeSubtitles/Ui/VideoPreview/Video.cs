@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2018 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,11 +22,9 @@ using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog.Unmanaged;
 using Gtk;
 using GStreamer;
-using SubLib.Core;
 using SubLib.Core.Domain;
 using SubLib.Core.Timing;
 using System;
-using System.Text.RegularExpressions;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
@@ -42,10 +40,6 @@ public class Video {
 	private bool isLoaded = false;
 	private bool playPauseToggleIsSilent = false; //Used to indicate whether toggling the button should not issue the toggled signal
 
-	/* Constants */
-	//private const string videoSetSubtitleStartIconFilename = "video-set-subtitle-start-16x.png";
-	//private const string videoSetSubtitleEndIconFilename = "video-set-subtitle-end-16x.png";
-	//private const string videoSetSubtitleStartEndIconFilename = "video-set-subtitle-start-end-30x.png";
 
 	public Video () {
 		videoArea = Base.GetWidget(WidgetNames.VideoAreaHBox) as Box;
@@ -53,9 +47,9 @@ public class Video {
 		InitializeVideoFrame();
 		InitializePlayer();
 
-		overlay = new SubtitleOverlay();
 		position = new VideoPosition(player);
 		tracker = new SubtitleTracker();
+		overlay = new SubtitleOverlay();
 
 		Base.InitFinished += OnBaseInitFinished;
 	}
@@ -98,6 +92,7 @@ public class Video {
 		get { return (player != null) && (player.HasVideo); }
 	}
 
+
 	/* Public methods */
 
 	public void Show () {
@@ -123,9 +118,9 @@ public class Video {
 		isLoaded = false;
 
 		player.Close();
-		overlay.Close();
-		tracker.Close();
 		position.Disable();
+		tracker.Close();
+		overlay.Close();
 
 
 		/* Update the frame */

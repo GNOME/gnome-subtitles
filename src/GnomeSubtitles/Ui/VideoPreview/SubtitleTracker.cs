@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 using GnomeSubtitles.Core;
-using Gtk;
 using SubLib.Core.Domain;
 using SubLib.Core.Search;
 using System;
@@ -52,10 +51,9 @@ public class SubtitleTracker {
 		return searchOp.FindNearTime(position);
  	}
 
+	//Called when closing the video. Unload video-related stuff (not subtitle-related stuff though, as we may open another video file later).
 	public void Close(){
-		if (IsSubtitleLoaded()) {
-			UnSetCurrentSubtitle();
-		}
+		ClearCurrentSubtitle();
 	}
 
 
@@ -72,11 +70,15 @@ public class SubtitleTracker {
 	private void SetCurrentSubtitle (int index) {
 		this.subtitle = Base.Document.Subtitles[index];
 		this.currentSubtitleIndex = index;
+		
+		EmitSubtitlePulse(this.currentSubtitleIndex);
 	}
 
-	private void UnSetCurrentSubtitle () {
+	private void ClearCurrentSubtitle () {
 		this.currentSubtitleIndex = -1;
 		this.subtitle = null;
+		
+		EmitSubtitlePulse(this.currentSubtitleIndex);
 	}
 
 	private void EmitSubtitlePulse(int newIndex) {
@@ -90,28 +92,34 @@ public class SubtitleTracker {
 	private void OnBaseInitFinished () {
 		Base.Ui.Video.Position.PositionPulse += OnVideoPositionPulse;
 		Base.DocumentLoaded += OnBaseDocumentLoaded;
+		Base.DocumentUnloaded += OnBaseDocumentUnloaded;
 	}
 
 	private void OnBaseDocumentLoaded (Document document) {
 		this.searchOp = new SearchOperator(document.Subtitles);
 	}
+	
+	private void OnBaseDocumentUnloaded (Document document) {
+		this.searchOp = null;
+		
+		ClearCurrentSubtitle();
+	}
 
 	private void OnVideoPositionPulse (TimeSpan newPosition) {
-		if (!(Base.IsDocumentLoaded))
+		if (!Base.IsDocumentLoaded) {
 			return;
+		}
 
 		if (!IsTimeInCurrentSubtitle(newPosition)) {
 			int foundSubtitle = searchOp.FindWithTime(newPosition);
 			if (foundSubtitle == -1) {
-				UnSetCurrentSubtitle();
+				ClearCurrentSubtitle();
 			} else {
 				SetCurrentSubtitle(foundSubtitle);
 			}
 		}
-
-		EmitSubtitlePulse(this.currentSubtitleIndex);
 	}
 
-	}
+}
 
 }
