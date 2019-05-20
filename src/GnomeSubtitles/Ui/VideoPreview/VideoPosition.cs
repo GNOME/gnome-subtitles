@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,8 @@
  */
 
 using GnomeSubtitles.Core;
-using GStreamer;
 using Gtk;
 using Mono.Unix;
-using SubLib.Core;
 using SubLib.Core.Domain;
 using SubLib.Core.Timing;
 using System;

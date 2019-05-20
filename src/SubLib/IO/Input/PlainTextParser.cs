@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2007-2008 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,7 @@
 
 using SubLib.Core.Domain;
 using System;
-using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace SubLib.IO.Input {
 
