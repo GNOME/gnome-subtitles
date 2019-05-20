@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,8 +27,6 @@ using SubLib.Core.Domain;
 using System;
 using System.Collections;
 using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using SubLib.Util;
 
 namespace GnomeSubtitles.Dialog {
@@ -53,8 +51,8 @@ public class FileOpenDialog : BaseDialog {
 	public FileOpenDialog () : this(true, Catalog.GetString("Open File")) {
 	}
 
-	protected FileOpenDialog (bool toEnableVideo, string title) : base() {
-		base.Init(BuildDialog(toEnableVideo, title));
+	protected FileOpenDialog (bool showVideo, string title) : base() {
+		base.Init(BuildDialog(showVideo, title));
 	}
 
 
@@ -97,7 +95,7 @@ public class FileOpenDialog : BaseDialog {
 
 	/* Private members */
 
-	private FileChooserDialog BuildDialog(bool toEnableVideo, string title) {
+	private FileChooserDialog BuildDialog(bool showVideo, string title) {
 		FileChooserDialog dialog = new FileChooserDialog(title, Base.Ui.Window, FileChooserAction.Open,
 			Util.GetStockLabel("gtk-cancel"), ResponseType.Cancel, Util.GetStockLabel("gtk-open"), ResponseType.Ok);
 
@@ -107,19 +105,27 @@ public class FileOpenDialog : BaseDialog {
 
 		Box box = new Box(Orientation.Horizontal, WidgetStyles.BoxSpacingMedium);
 		box.BorderWidth = WidgetStyles.BorderWidthMedium;
+		
+		if (showVideo) {
+			videoLabel = new Label(Catalog.GetString("Video To Open:"));
+			box.Add(videoLabel);
+		
+			videoComboBox = new ComboBoxText();
+			videoComboBox.Hexpand = true;
 
-		videoLabel = new Label(Catalog.GetString("Video To Open:"));
-		box.Add(videoLabel);
-		videoComboBox = new ComboBoxText();
-		videoComboBox.Hexpand = true;
-		CellRendererText videoComboBoxRenderer = (videoComboBox.Cells[0] as CellRendererText);
-		videoComboBoxRenderer.WidthChars = 20;
-		videoComboBoxRenderer.Ellipsize = Pango.EllipsizeMode.End;
-		box.Add(videoComboBox);
+			CellRendererText videoComboBoxRenderer = (videoComboBox.Cells[0] as CellRendererText);
+			videoComboBoxRenderer.WidthChars = 20;
+			videoComboBoxRenderer.Ellipsize = Pango.EllipsizeMode.End;
+			videoComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
+			box.Add(videoComboBox);
+			
+			autoChooseVideoFile = Base.Config.VideoAutoChooseFile;
+		}
 
 		box.Add(new Label(Catalog.GetString("Character Encoding:")));
 
 		encodingComboBox = BuildEncodingComboBox();
+		encodingComboBox.Widget.Hexpand = !showVideo;
 		box.Add(encodingComboBox.Widget);
 
 		dialog.ContentArea.Add(box);
@@ -130,8 +136,9 @@ public class FileOpenDialog : BaseDialog {
 		SetFilters(dialog);
 		dialog.SetCurrentFolder(GetStartFolder());
 
-		if (toEnableVideo) {
-			EnableVideo(dialog);
+		if (showVideo) {
+			dialog.CurrentFolderChanged += OnCurrentFolderChanged;
+			dialog.SelectionChanged += OnSelectionChanged;
 		}
 
 		return dialog;
@@ -253,17 +260,6 @@ public class FileOpenDialog : BaseDialog {
 			return filename.Substring(0, index);
 		else
 			return filename;
-	}
-
-	private void EnableVideo (FileChooserDialog dialog) {
-		videoLabel.Visible = true;
-		videoComboBox.Visible = true;
-
-		autoChooseVideoFile = Base.Config.VideoAutoChooseFile;
-		videoComboBox.RowSeparatorFunc = ComboBoxUtil.SeparatorFunc;
-
-		dialog.CurrentFolderChanged += OnCurrentFolderChanged;
-		dialog.SelectionChanged += OnSelectionChanged;
 	}
 
 	/* Note: It would be nice show a separator after "All Subtitle Files" but filters
