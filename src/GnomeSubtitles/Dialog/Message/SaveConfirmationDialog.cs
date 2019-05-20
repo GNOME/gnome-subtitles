@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2010 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ using Mono.Unix;
 using SubLib.Core.Domain;
 using System;
 
-namespace GnomeSubtitles.Dialog.Unmanaged {
+namespace GnomeSubtitles.Dialog.Message {
 
 public abstract class SaveConfirmationDialog : WarningDialog {
 	private SubtitleTextType textType;
@@ -58,6 +58,8 @@ public abstract class SaveConfirmationDialog : WarningDialog {
 		dialog.AddButton(rejectLabel, ResponseType.Reject);
 		dialog.AddButton(Stock.Cancel, ResponseType.Cancel);
 		dialog.AddButton(Stock.Save, ResponseType.Accept);
+		
+		dialog.DefaultResponse = ResponseType.Accept;
 	}
 
 

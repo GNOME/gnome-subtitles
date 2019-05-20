@@ -18,7 +18,7 @@
 // */
 
 //using GnomeSubtitles.Dialog;
-//using GnomeSubtitles.Dialog.Unmanaged;
+//using GnomeSubtitles.Dialog.Message;
 //using GnomeSubtitles.Ui.Edit;
 //using Gtk;
 //using Mono.Unix;

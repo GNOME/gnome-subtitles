@@ -147,21 +147,20 @@
     <Compile Include="src\GnomeSubtitles\Dialog\EncodingsDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FilePropertiesDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\FileTranslationOpenDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\MessageDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\PreferencesDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\SearchDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsAdjustDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsShiftDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\TimingsSynchronizeDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\VideoSeekToDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\BasicErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\ErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\FileOpenErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\FileSaveErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\SaveConfirmationDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\SubtitleFileOpenErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\VideoErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Unmanaged\WarningDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\BasicErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\ErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\FileOpenErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\FileSaveErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\SaveConfirmationDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\SubtitleFileOpenErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\VideoErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\WarningDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\AssemblyInfo.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\BugReporter.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\Executable.cs" />
@@ -280,6 +279,7 @@
     <Compile Include="src\GnomeSubtitles\Core\ConfigBackendUnavailableException.cs" />
     <Compile Include="src\GnomeSubtitles\Core\ConfigBackendInMemory.cs" />
     <Compile Include="src\External\GtkSpell\SpellChecker.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\MessageDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

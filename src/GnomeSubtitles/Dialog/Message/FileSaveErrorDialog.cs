@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2017 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,13 +19,12 @@
 
 using Gtk;
 using Mono.Unix;
-using SubLib;
 using System;
 using System.IO;
 using System.Security;
 using SubLib.Util;
 
-namespace GnomeSubtitles.Dialog.Unmanaged {
+namespace GnomeSubtitles.Dialog.Message {
 
 public class FileSaveErrorDialog : ErrorDialog {
 
@@ -47,6 +46,8 @@ public class FileSaveErrorDialog : ErrorDialog {
 		Button actionButton = dialog.AddButton(actionLabel, ResponseType.Accept) as Button;
 		actionButton.Image = new Image(Stock.Save, IconSize.Button);
 		dialog.AddButton(Stock.Ok, ResponseType.Ok);
+		
+		dialog.DefaultResponse = ResponseType.Accept;
 	}
 
 	/* Private methods */

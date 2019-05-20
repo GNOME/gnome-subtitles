@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2010 Pedro Castro
+ * Copyright (C) 2008-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,8 @@
 
 using GnomeSubtitles.Core;
 using Gtk;
-using System;
 
-namespace GnomeSubtitles.Dialog {
+namespace GnomeSubtitles.Dialog.Message {
 
 public abstract class MessageDialog : BaseDialog {
 		protected Gtk.MessageDialog dialog = null;

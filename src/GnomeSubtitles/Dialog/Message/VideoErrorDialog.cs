@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2009 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,30 +17,34 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gtk;
+using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using Mono.Unix;
 using System;
+using SubLib.Util;
 
-namespace GnomeSubtitles.Dialog.Unmanaged {
+namespace GnomeSubtitles.Dialog.Message {
 
-public abstract class ErrorDialog : MessageDialog {
+public class VideoErrorDialog : FileOpenErrorDialog {
 
-	/// <summary>Creates a new instance of the <see cref="ErrorDialog" /> class.</summary>
-	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overriden to add buttons.</remarks>
-	public ErrorDialog () : base(MessageType.Error) {
+	/* Strings */
+	private string primaryTextStart = Catalog.GetString("Could not play the file");
+
+	public VideoErrorDialog (Uri uri, Exception exception) : base(uri, exception) {
+		Logger.Error(exception, "Video error");
 	}
 
-	public ErrorDialog (string primary, string secondary) : base(MessageType.Error, primary, secondary) {
+	/* Overriden members */
+
+	protected override string GetPrimaryText (string filename) {
+		return primaryTextStart + " " + filename + ".";
 	}
 
-
-	#region Protected methods
-
-	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
+	protected override string SecondaryTextFromException (Exception exception) {
+		if (exception is PlayerEngineException)
+			return (exception as PlayerEngineException).Error;
+		else
+			return String.Empty;
 	}
-
-	#endregion
 
 }
 

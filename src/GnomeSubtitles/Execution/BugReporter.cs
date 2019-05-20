@@ -18,7 +18,7 @@
  */
 
 using GnomeSubtitles.Core;
-//using GnomeSubtitles.Dialog.Unmanaged;
+//using GnomeSubtitles.Dialog.Message;
 //using Mono.Unix;
 using SubLib.Util;
 using System;

@@ -19,7 +19,7 @@
 
 using Gdk;
 using GnomeSubtitles.Core;
-using GnomeSubtitles.Dialog.Unmanaged;
+using GnomeSubtitles.Dialog.Message;
 using Gtk;
 using GStreamer;
 using SubLib.Core.Domain;
