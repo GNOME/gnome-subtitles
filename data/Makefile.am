@@ -8,7 +8,7 @@ appdata_in_files = org.gnome.GnomeSubtitles.appdata.xml.in
 appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
-gnomesubtitlesicondir = $(datadir)/pixmaps
+gnomesubtitlesicondir = $(datadir)/icons/hicolor/scalable/apps
 gnomesubtitlesicon_DATA = gnome-subtitles.svg
 
 gsettings_SCHEMAS=org.gnome.GnomeSubtitles.gschema.xml
