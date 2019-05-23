@@ -50,11 +50,10 @@ public abstract class BuilderDialog : BaseDialog {
 	protected void Init (string filename, bool autoconnect) {
 		builder = new Builder(filename, Base.ExecutionContext.TranslationDomain);
 
-		if (autoconnect)
+		if (autoconnect) {
 			Autoconnect();
-		/*else
-			glade.BindFields(this); //FIXME WHAT?
-		*/
+		}
+
 		base.Init(builder.GetObject("dialog") as Gtk.Dialog);
 	}
 
