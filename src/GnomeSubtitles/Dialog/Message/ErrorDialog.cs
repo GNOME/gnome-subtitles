@@ -37,7 +37,7 @@ public abstract class ErrorDialog : MessageDialog {
 	#region Protected methods
 
 	protected string GetGeneralExceptionErrorMessage (Exception exception) {
-		return Catalog.GetString("An unknown error has occured. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
+		return Catalog.GetString("An unknown error has occurred. Please report a bug and include this error name:") + " \"" + exception.GetType() + "\".";
 	}
 
 	#endregion

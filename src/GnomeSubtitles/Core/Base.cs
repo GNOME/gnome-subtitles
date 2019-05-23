@@ -266,8 +266,8 @@ public class Base {
 	/* Private members */
 
 	/// <summary>Initializes the base program structure.</summary>
-	/// <remarks>Nothing is done if initialization has already occured. The core value is checked for this,
-	/// if it's null then initialization hasn't occured yet.</remarks>
+	/// <remarks>Nothing is done if initialization has already occurred. The core value is checked for this,
+	/// if it's null then initialization hasn't occurred yet.</remarks>
 	private static void Init (ExecutionContext newExecutionContext) {
 		if ((executionContext != null) && (executionContext.Initialized))
 			throw new Exception("The Base environment was already initialized.");

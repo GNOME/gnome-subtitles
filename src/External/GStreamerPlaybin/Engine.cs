@@ -1,7 +1,7 @@
 /*
 
 	Copyright (C) 2007 Goran Sterjov, Pedro Castro
-	Copyright (C) 2011-2018 Pedro Castro
+	Copyright (C) 2011-2019 Pedro Castro
 
     This file is part of the GStreamer Playbin Wrapper.
     Derived from Fuse.
@@ -406,7 +406,7 @@ namespace GStreamer
 		}
 
 
-		// an error in the gstreamer pipeline has occured
+		// an error in the gstreamer pipeline has occurred
 		void onError (string error, string debug)
 		{
 			throwError (error, debug);

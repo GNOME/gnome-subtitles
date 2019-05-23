@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -354,9 +354,9 @@ public class SearchOperator {
 	}
 
 	private string ReplaceText (string text, Regex regex, string replacement, MatchEvaluationCounter counter) {
-		counter.EvaluationOccured = false;
+		counter.EvaluationOccurred = false;
 		string newText = regex.Replace(text, counter.Evaluator);
-		return (counter.EvaluationOccured ? newText : null);
+		return (counter.EvaluationOccurred ? newText : null);
 	}
 
 

@@ -1,6 +1,6 @@
 /*
  * This file is part of SubLib.
- * Copyright (C) 2006-2008 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * SubLib is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ namespace SubLib.Core {
 
 internal class MatchEvaluationCounter {
 	int count = 0; //The number of matches or times the evaluator was called
-	bool evaluationOccured = false; //Whether an evaluation occured
+	bool evaluationOccurred = false; //Whether an evaluation occurred
 	string replacement = String.Empty;
 
 	internal MatchEvaluationCounter (string replacement) {
@@ -35,14 +35,14 @@ internal class MatchEvaluationCounter {
 		get { return count; }
 	}
 
-	internal bool EvaluationOccured {
-		get { return evaluationOccured; }
-		set { evaluationOccured = value; }
+	internal bool EvaluationOccurred {
+		get { return evaluationOccurred; }
+		set { evaluationOccurred = value; }
 	}
 
 	internal string Evaluator (Match match) {
 		count++;
-		evaluationOccured = true;
+		evaluationOccurred = true;
 		return replacement;
 	}
 
