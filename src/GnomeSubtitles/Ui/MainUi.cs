@@ -29,6 +29,7 @@ using SubLib.Exceptions;
 using SubLib.Util;
 using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace GnomeSubtitles.Ui {
@@ -44,14 +45,14 @@ public class MainUi {
 	private Status status = null;
 
 	/* Constant strings */
-	private const string uiFilename = "MainWindow.ui";
-	private const string iconFilename = "gnome-subtitles.svg";
+	private const string uiResourceName = "MainWindow.ui";
+	private const string iconResourceName = "gnome-subtitles.svg";
 
 	public MainUi (EventHandlers handlers) {
-		builder = new Builder(uiFilename, Base.ExecutionContext.TranslationDomain);
-
+		builder = ReadUIContent(uiResourceName, Base.ExecutionContext.TranslationDomain);
+		
 		window = builder.GetObject("window") as Window;
-		window.Icon = new Gdk.Pixbuf(null, iconFilename);
+		window.Icon = new Gdk.Pixbuf(null, iconResourceName);
 		window.SetDefaultSize(Base.Config.ViewWindowWidth, Base.Config.ViewWindowHeight);
 
 		video = new Video();
@@ -97,7 +98,7 @@ public class MainUi {
     /* Public Methods */
 
 	public static Widget GetWidget (string name) {
-			return builder.GetObject(name) as Widget;
+		return builder.GetObject(name) as Widget;
 	}
 
     /// <summary>Starts the GUI</summary>
@@ -448,7 +449,7 @@ public class MainUi {
 		return true;
 	}
 
-	//FIXME use a header bar to show the title and subtitle
+	//TODO use a header bar to show the title and subtitle
 	private void UpdateTitleModificationStatus (bool showFilename, bool modified) {
 		if (showFilename) {
 			window.Title = (modified ? "*" : "") + Base.Document.TextFile.Filename;
@@ -490,6 +491,30 @@ public class MainUi {
 		}
 
 		return file;
+	}
+	
+	private Builder ReadUIContent (string uiResourceName, string translationDomain) {
+		string content;
+	
+		using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(uiResourceName)) {
+			using (StreamReader reader = new StreamReader(stream, Encoding.UTF8)) {
+				content = reader.ReadToEnd();
+			}
+		}
+		
+		if (String.IsNullOrEmpty(content)) {
+			throw new Exception("Unable to read UI content from resource " + uiResourceName);
+		}
+
+		Builder builder = new Builder();
+		builder.TranslationDomain = translationDomain;
+		builder.AddFromString(content);
+
+		//Note: this doesn't work anymore. The translation domain needs to be set *before* loading the UI, but
+		//this gtk-sharp method is doing it *afterwards*.
+		//builder = new Builder(uiResourceName, Base.ExecutionContext.TranslationDomain);
+
+		return builder;
 	}
 
 
