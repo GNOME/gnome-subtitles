@@ -45,7 +45,7 @@ public class AboutDialog : BaseDialog {
 		dialog.Website = "https://gnomesubtitles.org";
 		dialog.WebsiteLabel = dialog.Website;
 		dialog.Comments = Catalog.GetString("Video subtitling for the GNOME desktop");
-		dialog.Copyright = "Copyright © 2006-2018 Pedro Castro";
+		dialog.Copyright = "Copyright © 2006-2019 Pedro Castro";
 		dialog.LicenseType = License.Gpl20;
 
 		dialog.Authors = new string[]{
