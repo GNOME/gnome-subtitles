@@ -46,6 +46,7 @@ public class ExecutionContext {
 
 	private void SetDynamicVariables () {
 		this.localeDir = System.AppDomain.CurrentDomain.BaseDirectory + "../../share/locale";
+		//this.localeDir = "/usr/share/locale"; //for testing
 
 		/* Handle platform */
 		switch (Environment.OSVersion.Platform) {

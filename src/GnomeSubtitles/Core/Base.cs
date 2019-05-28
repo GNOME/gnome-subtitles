@@ -274,6 +274,9 @@ public class Base {
 
 		executionContext = newExecutionContext;
 		executionContext.InitApplication();
+		
+		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.LocaleDir);
+		
 
 		/* Initialize Command manager */
 		commandManager = new CommandManager();
@@ -293,7 +296,6 @@ public class Base {
 		/* Initialize the GUI */
 		ui = new MainUi(handlers);
 		clipboards.WatchPrimaryChanges = true;
-		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.LocaleDir);
 
 		EmitInitFinishedEvent();
 	}
