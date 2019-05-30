@@ -107,7 +107,7 @@ public class FileOpenDialog : BaseDialog {
 		box.BorderWidth = WidgetStyles.BorderWidthMedium;
 		
 		if (showVideo) {
-			videoLabel = new Label(Catalog.GetString("Video To Open:"));
+			videoLabel = new Label(Catalog.GetString("Video to Open:"));
 			box.Add(videoLabel);
 		
 			videoComboBox = new ComboBoxText();
