@@ -100,7 +100,7 @@ public class EventHandlers {
 	}
 
     public void OnFileQuit (object o, EventArgs args) {
-		Base.Ui.Quit();
+		Base.Quit();
 	}
 
 
@@ -456,8 +456,8 @@ public class EventHandlers {
 	/*	Window	*/
 
 	public void OnWindowDelete (object o, DeleteEventArgs args) {
-    	Base.Ui.Quit();
-    	args.RetVal = true;
+    	bool quit = Base.Quit();
+    	args.RetVal = !quit; //True to keep the window open
     }
 
     public void OnSizeAllocated (object o, SizeAllocatedArgs args) {

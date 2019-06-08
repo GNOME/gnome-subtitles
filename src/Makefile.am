@@ -46,7 +46,6 @@ GSSOURCES = \
 
 GS_RESOURCES = \
 	$(srcdir)/Glade/MainWindow.ui \
-	$(GS_DATADIR)/gnome-subtitles.svg \
 	$(GS_DATADIR)/gnome-subtitles-logo.png
 
 GS_SYSTEM_REFERENCES = \

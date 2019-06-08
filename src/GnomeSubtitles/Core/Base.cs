@@ -35,7 +35,7 @@ public delegate void VideoLoadedHandler (Uri videoUri);
 public delegate void TimingModeChangedHandler (TimingMode timingMode);
 public delegate void BasicEventHandler ();
 
-public class Base {
+public static class Base {
 	private static MainUi ui = null;
 	private static ExecutionContext executionContext = null;
 	private static EventHandlers handlers = null;
@@ -147,24 +147,19 @@ public class Base {
 	/* Public methods */
 
 	/// <summary>Runs the main GUI, after initialization.</summary>
-	public static void Run (ExecutionContext executionContext) {
-		Init(executionContext);
-
-		ui.Start();
-		executionContext.RunApplication();
+	public static void Execute (ExecutionContext context) {
+		executionContext = context;
+	
+		executionContext.Execute(() => {
+			Init();
+			ui.Start();
+		});
 	}
 
 	/// <summary>Quits the program.</summary>
-	public static void Quit () {
-		ui.Video.Quit();
-		executionContext.QuitApplication();
+	public static bool Quit () {
+		return ui.Quit();
 	}
-
-	//public static void Kill () {
-	//	clipboards.WatchPrimaryChanges = false;
-	//	ui.Kill();
-	//	executionContext.QuitApplication();
-	//}
 
 	public static void NewDocument () {
 		if (IsDocumentLoaded)
@@ -266,17 +261,8 @@ public class Base {
 	/* Private members */
 
 	/// <summary>Initializes the base program structure.</summary>
-	/// <remarks>Nothing is done if initialization has already occurred. The core value is checked for this,
-	/// if it's null then initialization hasn't occurred yet.</remarks>
-	private static void Init (ExecutionContext newExecutionContext) {
-		if ((executionContext != null) && (executionContext.Initialized))
-			throw new Exception("The Base environment was already initialized.");
-
-		executionContext = newExecutionContext;
-		executionContext.InitApplication();
-		
+	private static void Init () {
 		Catalog.Init(ExecutionContext.TranslationDomain, ExecutionContext.LocaleDir);
-		
 
 		/* Initialize Command manager */
 		commandManager = new CommandManager();

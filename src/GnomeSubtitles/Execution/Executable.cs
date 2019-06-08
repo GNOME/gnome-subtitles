@@ -70,7 +70,7 @@ public class Executable {
 		ExecutionContext executionContext = new ExecutionContext(args);
 
 		/* If on unix, set process name to gnome-subtitles instead of mono default */
-		if (executionContext.PlatformIsUnix) {
+		if (Environment.OSVersion.Platform == PlatformID.Unix) {
 			SetProcessName(executionContext.ExecutableName);
 		}
 
@@ -97,8 +97,9 @@ public class Executable {
 			Console.Error.WriteLine(domain + " | " + level + " | " + message);
 		});
 		
-		Base.Run(executionContext);
+		Base.Execute(executionContext);
 	}
+
 
 	/* Private members */
 

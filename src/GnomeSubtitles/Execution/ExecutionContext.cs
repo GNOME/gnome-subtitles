@@ -17,56 +17,30 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using Gtk;
 using System;
 using System.Reflection;
 
 namespace GnomeSubtitles.Execution {
 
 public class ExecutionContext {
-	private bool initialized = false;
-	private bool running = false;
+	private Gtk.Application app = null;
 
 	/* Constant strings */
 	private const string applicationName = "Gnome Subtitles";
-	private const string applicationID = "gnome-subtitles";
+	private const string applicationID = "org.gnome.GnomeSubtitles";
+	private const string iconName = "gnome-subtitles";
+	private const string executableName = "gnome-subtitles";
 
 	/* Dynamic variables */
 	private string localeDir = String.Empty;
-	private bool platformIsWindows = false;
-	private bool platformIsUnix = false;
-
 	private string[] args = null;
 
 	public ExecutionContext (string[] args) {
 		this.args = args;
-
-		SetDynamicVariables();
 	}
-
-	private void SetDynamicVariables () {
-		this.localeDir = System.AppDomain.CurrentDomain.BaseDirectory + "../../share/locale";
-		//this.localeDir = "/usr/share/locale"; //for testing
-
-		/* Handle platform */
-		switch (Environment.OSVersion.Platform) {
-			case PlatformID.Win32NT:
-			case PlatformID.Win32S:
-			case PlatformID.Win32Windows:
-			case PlatformID.WinCE:
-				platformIsWindows = true;
-				break;
-			case PlatformID.Unix:
-				platformIsUnix = true;
-				break;
-		}
-	}
+	
 
 	/* Public properties */
-
-	public bool Initialized {
-		get { return initialized; }
-	}
 
 	public string ApplicationName {
 		get { return applicationName; }
@@ -75,14 +49,18 @@ public class ExecutionContext {
 	public string ApplicationID {
 		get { return applicationID; }
 	}
+	
+	public string IconName {
+		get { return iconName; }
+	}
 
 	public string ExecutableName {
-		get { return applicationID; }
+		get { return executableName; }
 	}
 
 	//Unix only
 	public string LocaleDir {
-		get { return localeDir; }
+		get { return AppDomain.CurrentDomain.BaseDirectory + "../../share/locale"; }
 	}
 
 	public string Version {
@@ -101,38 +79,26 @@ public class ExecutionContext {
 	public string TranslationDomain {
 		get { return applicationID; }
 	}
-
-	public bool PlatformIsWindows {
-		get { return platformIsWindows; }
-	}
-
-	public bool PlatformIsUnix {
-		get { return platformIsUnix; }
+	
+	public Gtk.Application Application {
+		get { return app; }
 	}
 
 
 	/* Public methods */
 
-	public void InitApplication () {
-		if (!initialized) {
-			initialized = true;
-			Application.Init();
-		}
-	}
+	public void Execute (Action methodToExecute) {
+		GLib.Global.ApplicationName = applicationName;
+	
+		app = new Gtk.Application(applicationID, GLib.ApplicationFlags.None);
 
-	public void RunApplication () {
-		if (initialized && (!running)) {
-			running = true;
-			Application.Run();
-		}
+		app.Activated += (sender, e) => {
+			methodToExecute();
+		};
+		
+		app.Run(0, "");
 	}
-
-	public void QuitApplication () {
-		initialized = false;
-		running = false;
-		Application.Quit();
-	}
-
+	
 
 	/* Private methods */
 

@@ -56,10 +56,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="data\gnome-subtitles.svg">
-      <DeployService-Deploy>True</DeployService-Deploy>
-      <LogicalName>gnome-subtitles.svg</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Glade\MainWindow.ui">
       <LogicalName>MainWindow.ui</LogicalName>
     </EmbeddedResource>
@@ -286,5 +282,11 @@
     <Folder Include="Properties\" />
     <Folder Include="src\SubLib\Util\" />
     <Folder Include="src\External\GtkSpell\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\gnome-subtitles.svg">
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <LogicalName>gnome-subtitles.svg</LogicalName>
+    </None>
   </ItemGroup>
 </Project>

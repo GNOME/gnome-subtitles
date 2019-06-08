@@ -20,6 +20,7 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
 using GnomeSubtitles.Dialog.Message;
+using GnomeSubtitles.Execution;
 using GnomeSubtitles.Ui.Edit;
 using GnomeSubtitles.Ui.VideoPreview;
 using GnomeSubtitles.Ui.View;
@@ -46,14 +47,22 @@ public class MainUi {
 
 	/* Constant strings */
 	private const string uiResourceName = "MainWindow.ui";
-	private const string iconResourceName = "gnome-subtitles.svg";
 
 	public MainUi (EventHandlers handlers) {
 		builder = ReadUIContent(uiResourceName, Base.ExecutionContext.TranslationDomain);
 		
 		window = builder.GetObject("window") as Window;
-		window.Icon = new Gdk.Pixbuf(null, iconResourceName);
+		
+		/* Setting the iconName and wmClass (app name) name is not necessary if a standard desktop environment is
+		 * executing the application, in which case this information is obtained from the .desktop file. This is
+		 * here just in case a non-standard environment is in place.
+		 */
+		window.IconName = Base.ExecutionContext.IconName;
+		window.SetWmclass(Base.ExecutionContext.ApplicationName, Base.ExecutionContext.ApplicationName);
+		
 		window.SetDefaultSize(Base.Config.ViewWindowWidth, Base.Config.ViewWindowHeight);
+		
+		Base.ExecutionContext.Application.AddWindow(window);
 
 		video = new Video();
 		view = new SubtitleView();
@@ -119,24 +128,22 @@ public class MainUi {
     }
 
     /// <summary>Quits the application.</summary>
-    public void Quit () {
-		if (ToCloseAfterWarning())
-			Base.Quit();
+    public bool Quit () {
+		if (ToCloseAfterWarning()) {
+			Video.Quit();
+			window.Destroy();
+		}
+		
+		return false;
     }
 
-	///// <summary>Kills the window in the most quick and unfriendly way.</summary>
-  //  public void Kill () {
-		//window.Destroy();
-    //}
-
-	/// <summary>Creates a new subtitles document for the specified path.</summary>
-	/// <param name="path">The subtitles' filename. If it's an empty string, 'Unsaved Subtitles' will be used instead.</param>
-	/// <remarks>If there's a document open with unsaved changes, a warning dialog is shown.</remarks>
+    /// <summary>Creates a new subtitles document for the specified path.</summary>
+    /// <param name="path">The subtitles' filename. If it's an empty string, 'Unsaved Subtitles' will be used instead.</param>
+    /// <remarks>If there's a document open with unsaved changes, a warning dialog is shown.</remarks>
     public void New () {
-    	if (!ToCreateNewAfterWarning())
-    		return;
-		else
+    		if (ToCreateNewAfterWarning()) {
 			Base.NewDocument();
+		}
     }
 
     /// <summary>Shows the open dialog and possibly opens a subtitle.</summary>
