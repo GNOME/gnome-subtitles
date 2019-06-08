@@ -10,20 +10,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2018-07-31 22:00+0000\n"
-"PO-Revision-Date: 2019-03-16 19:25+0100\n"
+"POT-Creation-Date: 2019-05-30 21:06+0000\n"
+"PO-Revision-Date: 2019-06-03 21:14+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 18.12.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Videók feliratozása GNOME környezetben"
 
@@ -85,8 +85,8 @@ msgstr ""
 "A fájlok megnyitásakor használt karakterkódolási beállítások. A lehetséges "
 "értékek: „AutoDetect” az automatikus észlelés használatához, "
 "„RememberLastUsed” a legutóbb használt karakterkódolás megjegyzéséhez, "
-"„CurrentLocale” a jelenlegi területi beállítás használatához és „Specific” "
-"a megadott karakterkódolás használatához. A „RememberLastUsed” és „Specific” "
+"„CurrentLocale” a jelenlegi területi beállítás használatához és „Specific” a "
+"megadott karakterkódolás használatához. A „RememberLastUsed” és „Specific” "
 "beállítások karakterkódolását a file_open_encoding kulcs tárolja."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
@@ -103,8 +103,9 @@ msgstr ""
 "A fájlok megnyitásakor használandó karakterkódolás. A tényleges kódolás "
 "mellett akkor van használva, ha a „RememberLastUsed” (legutóbb használt "
 "megjegyzése) vagy a „Specific” (megadott) érték szerepel a "
-"file_open_encoding_option kulcsnál. Az egyéb lehetséges értékek: „AutoDetect” "
-"(automatikus észlelés) vagy „CurrentLocale” (jelenlegi területi beállítás)."
+"file_open_encoding_option kulcsnál. Az egyéb lehetséges értékek: "
+"„AutoDetect” (automatikus észlelés) vagy „CurrentLocale” (jelenlegi területi "
+"beállítás)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
 msgid "Auto detection fallback encoding"
@@ -148,10 +149,9 @@ msgid ""
 msgstr ""
 "A fájlok mentésekor használandó karakterkódolás. A tényleges kódolás mellett "
 "akkor van használva, ha a „RememberLastUsed” (legutóbb használt megjegyzése) "
-"vagy a „Specific” (megadott) érték szerepel a "
-"file_save_encoding_option kulcsnál. Az egyéb lehetséges értékek: "
-"„KeepExisting” (meglévő megtartása) vagy „CurrentLocale” (jelenlegi területi "
-"beállítás)."
+"vagy a „Specific” (megadott) érték szerepel a file_save_encoding_option "
+"kulcsnál. Az egyéb lehetséges értékek: „KeepExisting” (meglévő megtartása) "
+"vagy „CurrentLocale” (jelenlegi területi beállítás)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
 msgid "File Save format option"
@@ -167,9 +167,9 @@ msgid ""
 msgstr ""
 "A fájlok mentésekor alapértelmezetten használandó feliratformátum-beállítás. "
 "A lehetséges értékek: „KeepExisting” a meglévő fájlformátum használatához, "
-"„RemeberLastUsed” a legutóbb használt formátum megjegyzéséhez és „Specific” a "
-"megadott formátum használatához. A „RememberLastUsed” és „Specific” lehetőség "
-"esetén a feliratformátumot a file_save_format kulcs tárolja."
+"„RemeberLastUsed” a legutóbb használt formátum megjegyzéséhez és „Specific” "
+"a megadott formátum használatához. A „RememberLastUsed” és „Specific” "
+"lehetőség esetén a feliratformátumot a file_save_format kulcs tárolja."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
 msgid "File Save format"
@@ -182,11 +182,12 @@ msgid ""
 "file_save_format_option key, other possible values are \"KeepExisting\" and "
 "\"CurrentLocale\"."
 msgstr ""
-"A fájlok mentésekor használandó feliratformátum. A tényleges formátum mellett "
-"akkor van használva, ha a „RememberLastUsed” (legutóbb használt megjegyzése) "
-"vagy a „Specific” (megadott) érték szerepel a file_save_format_option "
-"kulcsnál. Az egyéb lehetséges értékek: „KeepExisting” (meglévő megtartása) "
-"vagy „CurrentLocale” (jelenlegi területi beállítás)."
+"A fájlok mentésekor használandó feliratformátum. A tényleges formátum "
+"mellett akkor van használva, ha a „RememberLastUsed” (legutóbb használt "
+"megjegyzése) vagy a „Specific” (megadott) érték szerepel a "
+"file_save_format_option kulcsnál. Az egyéb lehetséges értékek: "
+"„KeepExisting” (meglévő megtartása) vagy „CurrentLocale” (jelenlegi területi "
+"beállítás)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
 msgid "File Save newline option"
@@ -474,12 +475,14 @@ msgid "_Underline"
 msgstr "_Aláhúzott"
 
 #: ../src/Glade/MainWindow.ui.h:22
-msgid "_Split"
-msgstr "S_zétvágás"
+#| msgid "_Split"
+msgid "_Split Lines"
+msgstr "Sorok s_zétvágása"
 
 #: ../src/Glade/MainWindow.ui.h:23
-msgid "_Merge"
-msgstr "Össz_efésülés"
+#| msgid "_Merge"
+msgid "_Merge Lines"
+msgstr "Sorok _egyesítése"
 
 #: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
@@ -671,7 +674,7 @@ msgid "New File"
 msgstr "Új fájl"
 
 #: ../src/Glade/MainWindow.ui.h:71
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:51
 msgid "Open File"
 msgstr "Fájl megnyitása"
 
@@ -688,7 +691,7 @@ msgid "Delete"
 msgstr "Törlés"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Time"
 msgstr "Idő"
 
@@ -793,13 +796,13 @@ msgstr "Vissza"
 msgid "Deleting Subtitles"
 msgstr "Felirat törlése"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
 msgid "Editing Text"
 msgstr "Szöveg szerkesztése"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:26
 msgid "Editing Translation"
 msgstr "Fordítás szerkesztése"
 
@@ -819,11 +822,11 @@ msgstr "Összes cseréje"
 msgid "Shifting timings"
 msgstr "Időzítések eltolása"
 
-#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
 msgid "Splitting subtitles"
 msgstr "Feliratok szétvágása"
 
-#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
 msgid "Synchronizing timings"
 msgstr "Időzítések szinkronizálása"
 
@@ -852,98 +855,100 @@ msgid "{0} (translation)"
 msgstr "{0} (fordítás)"
 
 #. GEOSTD8, HZ not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:33
-#: ../src/GnomeSubtitles/Core/Encodings.cs:45
-#: ../src/GnomeSubtitles/Core/Encodings.cs:76
-#: ../src/GnomeSubtitles/Core/Encodings.cs:101
+#: ../src/GnomeSubtitles/Core/Encodings.cs:37
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:105
 msgid "Western"
 msgstr "Nyugati"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:34
-#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+#: ../src/GnomeSubtitles/Core/Encodings.cs:38
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Central European"
 msgstr "Közép-európai"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:35
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
 msgid "South European"
 msgstr "Dél-európai"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:36
-#: ../src/GnomeSubtitles/Core/Encodings.cs:43
-#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
 msgid "Baltic"
 msgstr "Balti"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:37
-#: ../src/GnomeSubtitles/Core/Encodings.cs:78
-#: ../src/GnomeSubtitles/Core/Encodings.cs:86
-#: ../src/GnomeSubtitles/Core/Encodings.cs:92
-#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
+#: ../src/GnomeSubtitles/Core/Encodings.cs:82
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
 msgid "Cyrillic"
 msgstr "Cirill"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:38
-#: ../src/GnomeSubtitles/Core/Encodings.cs:84
-#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
 msgid "Arabic"
 msgstr "Arab"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:39
-#: ../src/GnomeSubtitles/Core/Encodings.cs:87
-#: ../src/GnomeSubtitles/Core/Encodings.cs:102
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:106
 msgid "Greek"
 msgstr "Görög"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:40
-#: ../src/GnomeSubtitles/Core/Encodings.cs:82
-#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
 msgid "Hebrew"
 msgstr "Héber"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:41
-#: ../src/GnomeSubtitles/Core/Encodings.cs:79
-#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
 msgid "Turkish"
 msgstr "Török"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:42
-#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
 msgid "Nordic"
 msgstr "Északi"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
 msgid "Celtic"
 msgstr "Kelta"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
 msgid "Romanian"
 msgstr "Román"
 
 #. ISO-8859-8-I not used
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:49
-#: ../src/GnomeSubtitles/Core/Encodings.cs:50
-#: ../src/GnomeSubtitles/Core/Encodings.cs:51
-#: ../src/GnomeSubtitles/Core/Encodings.cs:52
+#. Little endian
+#. Added
 #: ../src/GnomeSubtitles/Core/Encodings.cs:53
 #: ../src/GnomeSubtitles/Core/Encodings.cs:54
 #: ../src/GnomeSubtitles/Core/Encodings.cs:55
 #: ../src/GnomeSubtitles/Core/Encodings.cs:56
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+#: ../src/GnomeSubtitles/Core/Encodings.cs:58
+#: ../src/GnomeSubtitles/Core/Encodings.cs:59
+#: ../src/GnomeSubtitles/Core/Encodings.cs:60
 msgid "Unicode"
 msgstr "Unicode"
 
 #. Added
 #. UCS-2 and UCS-4 not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:59
-#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
 msgid "Chinese Traditional"
 msgstr "Kínai (hagyományos)"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:65
 msgid "Cyrillic/Russian"
 msgstr "Cirill (orosz)"
 
@@ -951,54 +956,54 @@ msgstr "Cirill (orosz)"
 #. Added
 #. Added
 #. ISO-IR-111, KOI8R, KOI8U not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:64
-#: ../src/GnomeSubtitles/Core/Encodings.cs:65
-#: ../src/GnomeSubtitles/Core/Encodings.cs:89
-#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
 msgid "Japanese"
 msgstr "Japán"
 
 #. EUC-JP-MS not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:68
-#: ../src/GnomeSubtitles/Core/Encodings.cs:90
-#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
 msgid "Korean"
 msgstr "Koreai"
 
 #. EUC-TW not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:71
-#: ../src/GnomeSubtitles/Core/Encodings.cs:72
-#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:75
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:77
 msgid "Chinese Simplified"
 msgstr "Kínai (egyszerűsített)"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
 msgid "Portuguese"
 msgstr "Portugál"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Icelandic"
 msgstr "Izlandi"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
 msgid "French Canadian"
 msgstr "Kanadai francia"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
 msgid "Cyrillic/Ukrainian"
 msgstr "Cirill (ukrán)"
 
 #. TCVN, TIS-620, UHC, VISCII not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:99
+#: ../src/GnomeSubtitles/Core/Encodings.cs:103
 msgid "Central"
 msgstr "Központi"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
 msgid "Vietnamese"
 msgstr "Vietnami"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:118
+#: ../src/GnomeSubtitles/Core/Encodings.cs:122
 msgid "Current Locale"
 msgstr "Jelenlegi locale"
 
@@ -1006,7 +1011,7 @@ msgstr "Jelenlegi locale"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:41
 msgid "About Gnome Subtitles"
 msgstr "A Gnome Feliratok névjegye"
 
@@ -1026,25 +1031,25 @@ msgstr "Feliratok a kiválasztottak és az _első között"
 msgid "Subtitles between those selected and the _last"
 msgstr "Feliratok a kiválasztottak és az _utolsó között"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:55
 msgid "Character Encodings"
 msgstr "Karakterkódolások"
 
 #. Left part: Available VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:70
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:68
 msgid "Available Encodings"
 msgstr "Elérhető karakterkódolások"
 
 #. Right part: Shown VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:87
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:85
 msgid "Chosen Encodings"
 msgstr "Kiválasztott karakterkódolások"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:138
 msgid "Description"
 msgstr "Leírás"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:142
 msgid "Encoding"
 msgstr "Kódolás"
 
@@ -1200,25 +1205,26 @@ msgstr "Betűkészlet stílusa:"
 msgid "Font Size:"
 msgstr "Betűkészlet mérete:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
-msgid "Video To Open:"
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:110
+#| msgid "Video To Open:"
+msgid "Video to Open:"
 msgstr "Megnyitandó videó:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:125
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
 msgid "Character Encoding:"
 msgstr "Karakterkódolás:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:200
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:207
 msgid "None"
 msgstr "Egyik sem"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:279
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:275
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:282
 msgid "All Subtitle Files"
 msgstr "Minden feliratfájl"
 
@@ -1262,9 +1268,150 @@ msgstr "Sorvég:"
 msgid "Open Translation File"
 msgstr "Fordítási fájl megnyitása"
 
-#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:28
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:27
 msgid "Save Translation As"
 msgstr "Fordítás mentése másként"
+
+#: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
+#| msgid ""
+#| "An unknown error has occured. Please report a bug and include this error "
+#| "name:"
+msgid ""
+"An unknown error has occurred. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Ismeretlen hiba történt. Jelentse a hibát, és tegye bele a következő "
+"hibaüzenetet:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
+msgid "Could not open the file"
+msgstr "A fájl megnyitása meghiúsult"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
+msgid "Open another file"
+msgstr "Másik fájl megnyitása"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
+msgid "The file path appears to be invalid."
+msgstr "A fájl útvonala érvénytelen."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "A fájl mentése meghiúsult"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "Mentés másik fájlba"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr "Elfogyott a memória. Néhány program bezárása után próbálja újra."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occurred."
+msgstr "I/O hiba történt."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Nincs megfelelő jogosultsága a fájl mentésére."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "A megadott fájl érvénytelen."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Ha nem ment, akkor minden változtatás véglegesen elvész."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr ""
+"Menti a felirat változtatásait a(z) „{0}” fájlba az új felirat létrehozása "
+"előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
+msgid "Create without Saving"
+msgstr "Létrehozás mentés nélkül"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:110
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr ""
+"Menti a(z) „{0}” fordítás változtatásait az új felirat létrehozása előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Menti a(z) „{0}” fordítás változtatásait az új fordítás létrehozása előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:127
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba a megnyitás előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
+msgid "Open without Saving"
+msgstr "Megnyitás mentés nélkül"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Menti a fordítás változtatásait a(z) „{0}” fájlba a megnyitás előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:156
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba bezárás előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
+msgid "Close without Saving"
+msgstr "Bezárás mentés nélkül"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:175
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Menti a(z) „{0}” fordítás változtatásait a bezárás előtt?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"A feliratformátum nem ismerhető fel. Ellenőrizze, hogy a fájltípus "
+"támogatott-e."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr "Ezt a kódolást nem támogatja a rendszer. Válasszon másik kódolást."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Nincs jogosultsága a fájl megnyitásához."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+msgid "The file could not be found."
+msgstr "A fájl nem található."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr "A fájl túl nagynak tűnik szövegalapú feliratfájlnak."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
+msgid "Could not play the file"
+msgstr "Nem lehet lejátszani a fájlt"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1542,7 +1689,7 @@ msgid "Subtitle No."
 msgstr "Feliratszám"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
 msgid "Start"
 msgstr "Kezdés"
 
@@ -1587,144 +1734,6 @@ msgid ""
 msgstr ""
 "A szinkronizálás megkezdhető. A következő feliratok nem lesznek "
 "szinkronizálva: {0} és {1}."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Ismeretlen hiba történt. Jelentse a hibát, és vegye fel a következő "
-"hibaüzenetet:"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "A fájl megnyitása meghiúsult"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Másik fájl megnyitása"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:61
-msgid "The file path appears to be invalid."
-msgstr "A fájl útvonala érvénytelen."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
-msgid "Could not save the file"
-msgstr "A fájl mentése meghiúsult"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:34
-msgid "Save to another file"
-msgstr "Mentés másik fájlba"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:60
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr "Elfogyott a memória. Néhány program bezárása után próbálja újra."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occurred."
-msgstr "I/O hiba történt."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:64
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Nincs megfelelő jogosultsága a fájl mentésére."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:66
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr "A megadott fájl érvénytelen."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Ha nem ment, akkor minden változtatás véglegesen elvész."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr ""
-"Menti a felirat változtatásait a(z) „{0}” fájlba az új felirat létrehozása "
-"előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
-msgid "Create without Saving"
-msgstr "Létrehozás mentés nélkül"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr ""
-"Menti a(z) „{0}” fordítás változtatásait az új felirat létrehozása előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
-#, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Menti a(z) „{0}” fordítás változtatásait az új fordítás létrehozása előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba a megnyitás előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
-msgid "Open without Saving"
-msgstr "Megnyitás mentés nélkül"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr "Menti a fordítás változtatásait a(z) „{0}” fájlba a megnyitás előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Menti a felirat változtatásait a(z) „{0}” fájlba bezárás előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
-msgid "Close without Saving"
-msgstr "Bezárás mentés nélkül"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr "Menti a(z) „{0}” fordítás változtatásait a bezárás előtt?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"A feliratformátum nem ismerhető fel. Ellenőrizze, hogy a fájltípus "
-"támogatott-e."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr "Ezt a kódolást nem támogatja a rendszer. Válasszon másik kódolást."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
-msgid "You do not have the permissions necessary to open the file."
-msgstr "Nincs jogosultsága a fájl megnyitásához."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
-msgid "The file could not be found."
-msgstr "A fájl nem található."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
-msgid "The file appears to be too large for a text-based subtitle file."
-msgstr "A fájl túl nagynak tűnik szövegalapú feliratfájlnak."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Nem lehet lejátszani a fájlt"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
 msgid "Open Video"
@@ -1773,7 +1782,7 @@ msgstr "BESZ"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
 msgid "Text"
 msgstr "Szöveg"
 
@@ -1791,23 +1800,23 @@ msgstr "Sor"
 msgid "Col"
 msgstr "Oszlop"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Frame"
 msgstr "Képkocka"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
 msgid "No."
 msgstr "Szám"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
 msgstr "Befejezés"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "Duration"
 msgstr "Hossz"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Fordítás"
