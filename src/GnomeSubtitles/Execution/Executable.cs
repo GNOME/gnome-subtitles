@@ -101,19 +101,6 @@ public class Executable {
 	}
 
 
-	/* Private members */
-
-	///// <summary>Kills the window in the most quick and unfriendly way.</summary>
-	//private static void Kill () {
-	//	try {
-	//   		Base.Kill();
-	//	}
-	//	catch (Exception) {
-	//		; //Nothing to do if there were errors while killing the window
-	//	}
-	//}
-
-
 	/* Event members */
 
 	//Commenting because this isn't getting the Exception with its full stack trace
