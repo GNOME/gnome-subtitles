@@ -1,6 +1,52 @@
 Gnome Subtitles
 ===============
 
+1.5 (13/06/19)
+==============
+
+- Fixed a crash that occurred when using Video > Loop Selection
+- Subtitle Split was improved to split every line (previously, it was divided into 2 halves) and only split
+  subtitles containing multiple lines
+- Fixed a bug where subtitle lines with ampersand (&) and other characters were not being displayed on video playback
+- Stopped "source ID not found" messages from being written in the console/logs
+- Subtitles displayed on video playback are now properly cleared after closing a subtitle file
+- The video image is also now properly cleared after closing the video
+- Fixed a couple of bugs that prevented the application from appearing fully translated
+- Fixed a bug in the Preferences Dialog where values like Gap Between Subtitles were not being saved when changed via the keyboard
+- The application now better integrates with some desktop environments by setting its ApplicationID
+
+Issues:
+- Crash in Video > Loop Selection (#124)
+- Split improvements: split all lines (previously were split into 2 halves) and only split subtitles with
+  multiple lines (#2)
+- Undo/Redo in commands with text and translations must consider if the translation was reloaded (#126)
+- Preferences Dialog: values like Gap Between Subtitles are not saved when set with the keyboard (#127)
+- Syslog full of "source ID not found" (#4)
+- Video not showing text with ampersand (#128)
+- Clear video subtitle on File Close (#129)
+- Video area not cleared after closing it (#130)
+- Don't show the video file chooser in the File > Translation Open dialog (#131)
+- File Open/Save error dialogs have wrong action set as default (#132)
+- Typo (occured) in translatable strings (#94)
+- UI in English, expected translated (#125)
+- Some strings are displayed untranslated (#91)
+- pt_PT translation: multiple letters in upper case when preceded by an underscore (#133)
+- Set ApplicationID to use .desktop file (#134)
+- App icon is incorrect in alt+tab menu (#118)
+
+Contributors:
+- Balló György, Piotr Drąg
+
+Translations:
+- Jordi Mas (ca)
+- Rodrigo Lledó (es)
+- Asier Sarasua Garmendia (eu)
+- Balázs Meskó, Balázs Úr (hu)
+- Piotr Drąg (pl)
+- Daniel Șerbănescu (ro)
+- Anders Jonsson (sv)
+
+
 1.4.2 (18/12/18)
 ================
 
@@ -13,7 +59,7 @@ Gnome Subtitles
 Note to packagers:
 - Dependency change: gnome-doc-utils has been replaced by yelp-tools
 
-Bug fixes:
+Issues:
 - Negative time shift not work (#112)
 - Don't insert the BOM (byte order mark) when saving files with UTF-8 encoding (#113)
 
@@ -32,7 +78,7 @@ Translations:
 
 - Fixed a bug which resulted in a system freeze after the application consumed available memory.
 
-Bug fixes:
+Issues:
 - System freezes when using v 1.4 (#3)
 
 Translations:
@@ -48,7 +94,7 @@ Translations:
 ==============
 
 - Upgraded to GTK3
-- Added support for webm and ogv video files, as well as video file extensions in all caps letters.
+- Added support for webm and ogv video files, as well as video file extensions in all caps letters
 - Show a confirmation when reloading a translation file with unsaved changes
 - Improvements to Timings Shift/Adjust dialogs, which now remain open when applying changes
 - Added support for non-standard video framerates, which should now appear correctly in the Timings menu
@@ -60,7 +106,7 @@ Translations:
 Note to packagers:
 - Most dependencies have changed. Please check the README file.
 
-Bug fixes:
+Issues:
 - Replace three dots in strings by … (#697193)
 - Build system is not parallelisable - "make -j$N" fails (#702271)
 - Add .webm and .ogv to the videos file extensions (#702273)
@@ -120,7 +166,7 @@ Note to packagers (updated dependencies):
 - gstreamer-plugins-base >= 1.0
 - gstreamer-x >= 1.0 (gstreamer plugins for x11 video output)
 
-Bug fixes:
+Issues:
 - Error opening some types of previously saved files (#643389)
 - Fix opening help (#671567)
 - Incorrect character count in subtitle edit (#659524)
@@ -174,7 +220,7 @@ Additional thanks:
   * Updated preferences dialog with different structure and more options
   * Fixed special characters (<,>,&,etc) not being shown in the subtitle list
 
-Bug fixes:
+Issues:
 - Slow and Fast Motion Option (#453469)
 - Filenames for new translations (#607227)
 - Video file extensions (#607228)
@@ -235,7 +281,7 @@ Additional thanks:
 - Fixed a bug drag-and-dropping files with spaces in their path
 - Use ISO-8859-1 as the fallback and default encoding in the File Open list
 
-Bug fixes:
+Issues:
 - Automatically select subtitles on video playback (#453220)
 - Quick subtitle timing during playback (#547984)
 - Periodically backup subtitle files (#565360)
@@ -293,7 +339,7 @@ Additional thanks:
 - Fixed use of LDADD when building
 - Use libtool to produce shared libraries
 
-Bug fixes:
+Issues:
 - Set defaultsubtitle format, character coding and newline type in
   preferences (#504656)
 - Option to save Translation when saving Subtitles (#511167)
@@ -336,7 +382,7 @@ Additional thanks:
   * Opening a video with Frames mode selected
   * Opening the Preferences dialog
 
-Bug fixes:
+Issues:
 - Subtitling of audio files (#584795)
 - GS crashes when opening subtitles together with a movie (#587097)
 - GS crashes on Edit->Preferences (#587100)
@@ -388,7 +434,7 @@ Additional thanks:
   * Requires gtk, gtk-sharp, glade-sharp and gconf-sharp 2.12 or higher
   * No longer requires gnome-sharp nor sublib
 
-Bug fixes:
+Issues:
 - The file with a movie is not always automatically selected (#417975)
 - Improvements to selection types in timings dialogs (#430737)
 - Add support for viewing and correcting line length (#430961)
@@ -447,7 +493,7 @@ Additional thanks:
 - Improved the auto-detection of subtitle formats
 - Do not package SubLib anymore, it should be installed as a package of its own
 
-Bug fixes:
+Issues:
 - Spellchecker support (#462317)
 - Selecting translation to show on top of movie (#495551)
 - Some strings are hard to translate (#510808)
@@ -492,7 +538,7 @@ Additional thanks:
 - Changed the build libdir to work on 64 bit machines
 - Updated translation credits in the About dialog
 
-Bug fixes:
+Issues:
 - Doesn't work on F7 64b (#487842)
 - Crash on video loading (#500264)
 - DllNotFoundException when opening a video file (#503049)
@@ -529,7 +575,7 @@ Additional thanks:
 - Display OGG video files in the File and Video Open dialogs
 - Different subtitle formats share similar headers, when edited
 
-Bug Fixes:
+Issues:
 - Integration with GStreamer For Video Previewing (#363412)
 - More keyboard shortcuts (#436746)
 - Crash when opening a video after an unsuccessful file open (#455923)
@@ -568,7 +614,7 @@ Additional thanks:
 - Fixed a bug related to searching backwards
 - Fixed some errors with the documentation
 
-Bug Fixes:
+Issues:
 - Translator mode (#387867)
 - Write fault on path when using Video (#438947)
 - Add an abstract with the role attribute set to "description" (#439274)
@@ -592,7 +638,7 @@ Additional thanks:
 - Fixed a bug in the documentation that prevented the compilation from finishing
   when using the latest gnome-doc-utils version
 
-Bug Fixes:
+Issues:
 - Add an abstract with the role attribute set to "description" (#439274)
 
 Additional thanks:
@@ -617,7 +663,7 @@ Additional thanks:
 - Use stock items for File Properties, and Video Open and Close
 - Fixed underline in Video SetSubtitleEnd, which was conflicting with Rewind
 
-Bug Fixes:
+Issues:
 - Crash when passing an invalid subtitle as argument (#432233)
 - Crash when opening a video with no subtitles loaded (#432635)
 - Option to select end line style (unix, windows/dos, mac) (#435606)
@@ -658,7 +704,7 @@ Additional thanks:
   * Ensure dialogs are properly shown, by setting them visible as the last step
     in their creation
 
-Bug fixes:
+Issues:
 - Error shown when opening a blank file (#417310)
 - Can't load srt subtitles - detected encoding is not supported (#417303)
 - MPlayer fails for each second file (#417869)
@@ -686,7 +732,7 @@ Additional thanks:
   works in FreeBSD
 - Improved the verbosity level in some error situations
 
-Bug fixes:
+Issues:
 - Video loaded with wrong length (#418099)
 - "System.FormatException" error during opening video (#421457)
 - Quote symbol in path prevents file from opening (#417868)
@@ -707,7 +753,7 @@ Additional thanks:
 - Print the stack trace to the console when an unknown exception is found while
   opening a file
 
-Bug fixes:
+Issues:
 - Application crashes at exit when MPlayer has already finished (#416895)
 
 Additional thanks:
@@ -738,7 +784,7 @@ Additional thanks:
   * Derived Command classes are now in separate files
   * Changed uses of "movie" to "video"
 
-Bug fixes:
+Issues:
 - App crashes when selection float value with , as a decimal separator (#402201)
 
 Additional thanks:
@@ -767,7 +813,7 @@ Additional thanks:
 - When using "Save As", the current timing mode is updated to that of the new
   subtitle format
 
-Bug fixes:
+Issues:
 - Find and Replace option (#363410)
 - "Save as" not working (#382278)
 - Close button in "About" window does not work (#383797)
@@ -796,7 +842,7 @@ Bug fixes:
 - Updated bug/feature request links to point to the now used GNOME bugzilla
 - Changed compiler to use gmcs (C# 2.0) instead of mcs
 
-Bug fixes:
+Issues:
 - Frame rate menus not being correctly set when using undo/redo
 - Crash at open subtitle (old tracker #1577626)
 
