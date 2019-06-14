@@ -1,5 +1,5 @@
 # Brazilian Portuguse translation of gnome-subtitles.
-# Copyright (C) 2018 Free Software Foundation, Inc.
+# Copyright (C) 2019 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-subtitles package.
 # Raphael Higino <In Memoriam>, 2007.
 # Henrique P Machado <zehrique@gmail.com>, 2008.
@@ -8,34 +8,32 @@
 # Leonardo Ferreira Fontenelle <leonardof@gnome.org>, 2008
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009
 # Djavan Fagundes <djavan@comum.org>, 2011.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2018.
 # Bruno Lopes da Silva <brunolopesbldsb@gmail.com>, 2018.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2018-07-31 22:00+0000\n"
-"PO-Revision-Date: 2018-08-06 16:15-0200\n"
+"POT-Creation-Date: 2019-05-30 21:06+0000\n"
+"PO-Revision-Date: 2019-06-13 21:06-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 3.32.0\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Legendagem de vídeos no ambiente GNOME"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
-#| msgid ""
-#| "It allows to create, synchronize, convert and translate subtitles by "
-#| "using a friendly user interface with video preview."
 msgid ""
 "Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
 "allows to create, synchronize, convert and translate subtitles by using a "
@@ -478,12 +476,14 @@ msgid "_Underline"
 msgstr "_Sublinhado"
 
 #: ../src/Glade/MainWindow.ui.h:22
-msgid "_Split"
-msgstr "_Dividir"
+#| msgid "_Split"
+msgid "_Split Lines"
+msgstr "_Dividir linhas"
 
 #: ../src/Glade/MainWindow.ui.h:23
-msgid "_Merge"
-msgstr "_Mesclar"
+#| msgid "_Merge"
+msgid "_Merge Lines"
+msgstr "_Mesclar linhas"
 
 #: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
@@ -675,7 +675,7 @@ msgid "New File"
 msgstr "Novo arquivo"
 
 #: ../src/Glade/MainWindow.ui.h:71
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:51
 msgid "Open File"
 msgstr "Abrir arquivo"
 
@@ -692,7 +692,7 @@ msgid "Delete"
 msgstr "Excluir"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Time"
 msgstr "Tempo"
 
@@ -796,13 +796,13 @@ msgstr "Refazer"
 msgid "Deleting Subtitles"
 msgstr "Excluindo legendas"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
 msgid "Editing Text"
 msgstr "Editando texto"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:26
 msgid "Editing Translation"
 msgstr "Editando tradução"
 
@@ -822,11 +822,11 @@ msgstr "Substituindo todas"
 msgid "Shifting timings"
 msgstr "Deslocando cronometragem"
 
-#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
 msgid "Splitting subtitles"
 msgstr "Dividindo legendas"
 
-#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
 msgid "Synchronizing timings"
 msgstr "Sincronizando cronometragem"
 
@@ -855,98 +855,100 @@ msgid "{0} (translation)"
 msgstr "{0} (tradução)"
 
 #. GEOSTD8, HZ not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:33
-#: ../src/GnomeSubtitles/Core/Encodings.cs:45
-#: ../src/GnomeSubtitles/Core/Encodings.cs:76
-#: ../src/GnomeSubtitles/Core/Encodings.cs:101
+#: ../src/GnomeSubtitles/Core/Encodings.cs:37
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:105
 msgid "Western"
 msgstr "Ocidental"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:34
-#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+#: ../src/GnomeSubtitles/Core/Encodings.cs:38
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Central European"
 msgstr "Europeu Central"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:35
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
 msgid "South European"
 msgstr "Europeu do Sul"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:36
-#: ../src/GnomeSubtitles/Core/Encodings.cs:43
-#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
 msgid "Baltic"
 msgstr "Báltico"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:37
-#: ../src/GnomeSubtitles/Core/Encodings.cs:78
-#: ../src/GnomeSubtitles/Core/Encodings.cs:86
-#: ../src/GnomeSubtitles/Core/Encodings.cs:92
-#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
+#: ../src/GnomeSubtitles/Core/Encodings.cs:82
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
 msgid "Cyrillic"
 msgstr "Cirílico"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:38
-#: ../src/GnomeSubtitles/Core/Encodings.cs:84
-#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
 msgid "Arabic"
 msgstr "Arábico"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:39
-#: ../src/GnomeSubtitles/Core/Encodings.cs:87
-#: ../src/GnomeSubtitles/Core/Encodings.cs:102
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:106
 msgid "Greek"
 msgstr "Grego"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:40
-#: ../src/GnomeSubtitles/Core/Encodings.cs:82
-#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
 msgid "Hebrew"
 msgstr "Hebreu"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:41
-#: ../src/GnomeSubtitles/Core/Encodings.cs:79
-#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
 msgid "Turkish"
 msgstr "Turco"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:42
-#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
 msgid "Nordic"
 msgstr "Nórdico"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
 msgid "Celtic"
 msgstr "Celta"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
 msgid "Romanian"
 msgstr "Romeno"
 
 #. ISO-8859-8-I not used
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:49
-#: ../src/GnomeSubtitles/Core/Encodings.cs:50
-#: ../src/GnomeSubtitles/Core/Encodings.cs:51
-#: ../src/GnomeSubtitles/Core/Encodings.cs:52
+#. Little endian
+#. Added
 #: ../src/GnomeSubtitles/Core/Encodings.cs:53
 #: ../src/GnomeSubtitles/Core/Encodings.cs:54
 #: ../src/GnomeSubtitles/Core/Encodings.cs:55
 #: ../src/GnomeSubtitles/Core/Encodings.cs:56
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+#: ../src/GnomeSubtitles/Core/Encodings.cs:58
+#: ../src/GnomeSubtitles/Core/Encodings.cs:59
+#: ../src/GnomeSubtitles/Core/Encodings.cs:60
 msgid "Unicode"
 msgstr "Unicode"
 
 #. Added
 #. UCS-2 and UCS-4 not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:59
-#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
 msgid "Chinese Traditional"
 msgstr "Chinês Tradicional"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:65
 msgid "Cyrillic/Russian"
 msgstr "Cirílico/Russo"
 
@@ -954,54 +956,54 @@ msgstr "Cirílico/Russo"
 #. Added
 #. Added
 #. ISO-IR-111, KOI8R, KOI8U not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:64
-#: ../src/GnomeSubtitles/Core/Encodings.cs:65
-#: ../src/GnomeSubtitles/Core/Encodings.cs:89
-#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
 msgid "Japanese"
 msgstr "Japonês"
 
 #. EUC-JP-MS not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:68
-#: ../src/GnomeSubtitles/Core/Encodings.cs:90
-#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
 msgid "Korean"
 msgstr "Coreano"
 
 #. EUC-TW not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:71
-#: ../src/GnomeSubtitles/Core/Encodings.cs:72
-#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:75
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:77
 msgid "Chinese Simplified"
 msgstr "Chinês Simplificado"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
 msgid "Portuguese"
 msgstr "Português"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Icelandic"
 msgstr "Islandês"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
 msgid "French Canadian"
 msgstr "Francês Canadense"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
 msgid "Cyrillic/Ukrainian"
 msgstr "Cirílico/Ucraniano"
 
 #. TCVN, TIS-620, UHC, VISCII not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:99
+#: ../src/GnomeSubtitles/Core/Encodings.cs:103
 msgid "Central"
 msgstr "Central"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:118
+#: ../src/GnomeSubtitles/Core/Encodings.cs:122
 msgid "Current Locale"
 msgstr "Idioma atual"
 
@@ -1009,7 +1011,7 @@ msgstr "Idioma atual"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:41
 msgid "About Gnome Subtitles"
 msgstr "Sobre o GNOME Subtitles"
 
@@ -1029,25 +1031,25 @@ msgstr "Legendas entre aqueles selecionados e a p_rimeira"
 msgid "Subtitles between those selected and the _last"
 msgstr "Legendas entre aqueles selecionados e a últi_ma"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:55
 msgid "Character Encodings"
 msgstr "Codificação de caracteres"
 
 #. Left part: Available VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:70
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:68
 msgid "Available Encodings"
 msgstr "Codificações disponíveis"
 
 #. Right part: Shown VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:87
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:85
 msgid "Chosen Encodings"
 msgstr "Codificações escolhidas"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:138
 msgid "Description"
 msgstr "Descrição"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:142
 msgid "Encoding"
 msgstr "Codificação"
 
@@ -1203,25 +1205,26 @@ msgstr "Estilo da fonte:"
 msgid "Font Size:"
 msgstr "Tamanho da fonte:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
-msgid "Video To Open:"
-msgstr "Abrir vídeo:"
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:110
+#| msgid "Video To Open:"
+msgid "Video to Open:"
+msgstr "Vídeo para abrir:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:125
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
 msgid "Character Encoding:"
 msgstr "Codificação de caracteres:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:200
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:207
 msgid "None"
 msgstr "Nenhum"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:279
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:275
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:282
 msgid "All Subtitle Files"
 msgstr "Todos os arquivos de legenda"
 
@@ -1265,9 +1268,152 @@ msgstr "Edição de linha:"
 msgid "Open Translation File"
 msgstr "Abrir arquivo de tradução"
 
-#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:28
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:27
 msgid "Save Translation As"
 msgstr "Salvar tradução como"
+
+#: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
+#| msgid ""
+#| "An unknown error has occured. Please report a bug and include this error "
+#| "name:"
+msgid ""
+"An unknown error has occurred. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Ocorreu um erro desconhecido. Por favor, relate este erro e inclua o "
+"seguinte nome de erro:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
+msgid "Could not open the file"
+msgstr "Não foi possível abrir o arquivo"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
+msgid "Open another file"
+msgstr "Abrir um outro arquivo"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
+msgid "The file path appears to be invalid."
+msgstr "O caminho do arquivo parece ser inválido."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "Não foi possível salvar o arquivo"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "Salvar para um outro arquivo"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr ""
+"O sistema está sem memória. Por favor, feche alguns programas e tente "
+"novamente."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occurred."
+msgstr "Ocorreu um erro de E/S."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Você não tem as permissões necessárias para salvar o arquivo."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "O arquivo especificado é inválido."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr ""
+"Se você não salvar, todas as suas alterações serão perdidas para sempre."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr ""
+"Deseja salvar as alterações nas legendas “{0}” antes de criar novas legendas?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
+msgid "Create without Saving"
+msgstr "Criar sem salvar"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:110
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr "Salvar alterações à tradução “{0}” antes de criar novas legendas?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr "Salvar alterações à tradução “{0}” antes de criar uma nova tradução?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:127
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "Salvar as alterações às legendas “{0}” antes de abrir?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
+msgid "Open without Saving"
+msgstr "Abrir sem salvar"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Salvar as alterações à tradução “{0}” antes de abrir?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:156
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Salvar as alterações às legendas “{0}” antes de fechar?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
+msgid "Close without Saving"
+msgstr "Fechar sem salvar"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:175
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Salvar as alterações à tradução “{0}” antes de fechar?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"Impossível detectar o formato das legendas. Por favor, verifique se o tipo "
+"do arquivo é suportado."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"A codificação de caracteres não é suportada pelo seu sistema. Por favor, "
+"escolha outra codificação."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Você não tem as permissões necessárias para abrir o arquivo."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+msgid "The file could not be found."
+msgstr "O arquivo não foi encontrado."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr "O arquivo parece ser muito grande para um arquivo texto de legenda."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
+msgid "Could not play the file"
+msgstr "Não foi possível reproduzir o arquivo"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1543,7 +1689,7 @@ msgid "Subtitle No."
 msgstr "Legenda nº"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
 msgid "Start"
 msgstr "Início"
 
@@ -1588,146 +1734,6 @@ msgid ""
 msgstr ""
 "Sincronização está pronta. As seguintes legendas não serão sincronizadas: "
 "{0} e {1}."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Ocorreu um erro desconhecido. Por favor relate este defeito e inclua o "
-"seguinte nome de erro:"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Não foi possível abrir o arquivo"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Abrir um outro arquivo"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:61
-msgid "The file path appears to be invalid."
-msgstr "O caminho do arquivo parece ser inválido."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
-msgid "Could not save the file"
-msgstr "Não foi possível salvar o arquivo"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:34
-msgid "Save to another file"
-msgstr "Salvar para um outro arquivo"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:60
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr ""
-"O sistema está sem memória. Por favor, feche alguns programas e tente "
-"novamente."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occurred."
-msgstr "Ocorreu um erro de E/S."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:64
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Você não tem as permissões necessárias para salvar o arquivo."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:66
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr "O arquivo especificado é inválido."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
-"Se você não salvar, todas as suas alterações serão perdidas para sempre."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr ""
-"Deseja salvar as alterações nas legendas “{0}” antes de criar novas legendas?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
-msgid "Create without Saving"
-msgstr "Criar sem salvar"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr "Salvar alterações à tradução “{0}” antes de criar novas legendas?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
-#, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr "Salvar alterações à tradução “{0}” antes de criar uma nova tradução?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr "Salvar as alterações às legendas “{0}” antes de abrir?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
-msgid "Open without Saving"
-msgstr "Abrir sem salvar"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr "Salvar as alterações à tradução “{0}” antes de abrir?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Salvar as alterações às legendas “{0}” antes de fechar?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
-msgid "Close without Saving"
-msgstr "Fechar sem salvar"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr "Salvar as alterações à tradução “{0}” antes de fechar?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"Impossível detectar o formato das legendas. Por favor, verifique se o tipo "
-"do arquivo é suportado."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr ""
-"A codificação de caracteres não é suportada pelo seu sistema. Por favor, "
-"escolha outra codificação."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
-msgid "You do not have the permissions necessary to open the file."
-msgstr "Você não tem as permissões necessárias para abrir o arquivo."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
-msgid "The file could not be found."
-msgstr "O arquivo não foi encontrado."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
-msgid "The file appears to be too large for a text-based subtitle file."
-msgstr "O arquivo parece ser muito grande para um arquivo texto de legenda."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Não foi possível reproduzir o arquivo"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
 msgid "Open Video"
@@ -1777,7 +1783,7 @@ msgstr "INS"
 # "Orig" como texto original
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
 msgid "Text"
 msgstr "Orig"
 
@@ -1796,24 +1802,24 @@ msgstr "Li"
 msgid "Col"
 msgstr "Col"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Frame"
 msgstr "Quadro"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
 msgid "No."
 msgstr "Nº"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
 msgstr "Fim"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "Duration"
 msgstr "Duração"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Tradução"
 
