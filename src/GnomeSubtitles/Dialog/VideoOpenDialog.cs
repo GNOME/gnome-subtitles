@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,17 @@ namespace GnomeSubtitles.Dialog {
 
 public class VideoOpenDialog : BaseDialog {
 	private Uri chosenUri;
+	
+	private static readonly string[] VideoMimeTypes = {
+		"video/*",
+		"application/vnd.rn-realmedia", //support for real media files (currently includes rmvb)
+		"application/vnd.rn-realmedia-vbr" //this should be the real mime type for rmvb files
+	};
+	
+	private static readonly string[] AudioMimeTypes = {
+		"audio/*",
+		"application/ogg"
+	};
 
 	public VideoOpenDialog () : base() {
 		base.Init(BuildDialog());
@@ -57,20 +68,32 @@ public class VideoOpenDialog : BaseDialog {
 	}
 
 	private void SetFilters (FileChooserDialog dialog) {
+	
+		/* Media files (video+audio) */
+		FileFilter mediaFilesFilter = new FileFilter();
+		mediaFilesFilter.Name = Catalog.GetString("All Media Files");
+		foreach (string mimeType in VideoMimeTypes) {
+			mediaFilesFilter.AddMimeType(mimeType);
+		}
+		foreach (string mimeType in AudioMimeTypes) {
+			mediaFilesFilter.AddMimeType(mimeType);
+		}
+		dialog.AddFilter(mediaFilesFilter);
 
 		/* Video files */
 		FileFilter videoFilesFilter = new FileFilter();
-		videoFilesFilter.Name = Catalog.GetString("All Video Files");
-		videoFilesFilter.AddMimeType("video/*");
-		videoFilesFilter.AddMimeType("application/vnd.rn-realmedia"); //support for real media files (currently includes rmvb)
-		videoFilesFilter.AddMimeType("application/vnd.rn-realmedia-vbr"); //this should be the real mime type for rmvb files
+		videoFilesFilter.Name = Catalog.GetString("Video Files");
+		foreach (string mimeType in VideoMimeTypes) {
+			videoFilesFilter.AddMimeType(mimeType);
+		}
 		dialog.AddFilter(videoFilesFilter);
 
 		/* Audio files */
 		FileFilter audioFilesFilter = new FileFilter();
-		audioFilesFilter.Name = Catalog.GetString("All Audio Files");
-		audioFilesFilter.AddMimeType("audio/*");
-		audioFilesFilter.AddMimeType("application/ogg");
+		audioFilesFilter.Name = Catalog.GetString("Audio Files");
+		foreach (string mimeType in AudioMimeTypes) {
+			audioFilesFilter.AddMimeType(mimeType);
+		}
 		dialog.AddFilter(audioFilesFilter);
 
 
@@ -81,7 +104,7 @@ public class VideoOpenDialog : BaseDialog {
 		dialog.AddFilter(allFilesFilter);
 
 		/* Set active filter */
-		dialog.Filter = videoFilesFilter;
+		dialog.Filter = mediaFilesFilter;
 	}
 
 	/* Event members */
