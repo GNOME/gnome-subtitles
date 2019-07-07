@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-05-30 21:06+0000\n"
-"PO-Revision-Date: 2019-06-13 21:06-0300\n"
+"POT-Creation-Date: 2019-07-04 22:59+0000\n"
+"PO-Revision-Date: 2019-07-07 18:29-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -476,12 +476,10 @@ msgid "_Underline"
 msgstr "_Sublinhado"
 
 #: ../src/Glade/MainWindow.ui.h:22
-#| msgid "_Split"
 msgid "_Split Lines"
 msgstr "_Dividir linhas"
 
 #: ../src/Glade/MainWindow.ui.h:23
-#| msgid "_Merge"
 msgid "_Merge Lines"
 msgstr "_Mesclar linhas"
 
@@ -1206,7 +1204,6 @@ msgid "Font Size:"
 msgstr "Tamanho da fonte:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:110
-#| msgid "Video To Open:"
 msgid "Video to Open:"
 msgstr "Vídeo para abrir:"
 
@@ -1220,7 +1217,7 @@ msgid "None"
 msgstr "Nenhum"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:275
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
 msgid "All Files"
 msgstr "Todos os arquivos"
 
@@ -1273,9 +1270,6 @@ msgid "Save Translation As"
 msgstr "Salvar tradução como"
 
 #: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
-#| msgid ""
-#| "An unknown error has occured. Please report a bug and include this error "
-#| "name:"
 msgid ""
 "An unknown error has occurred. Please report a bug and include this error "
 "name:"
@@ -1735,17 +1729,24 @@ msgstr ""
 "Sincronização está pronta. As seguintes legendas não serão sincronizadas: "
 "{0} e {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
 msgid "Open Video"
 msgstr "Abrir vídeo"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
-msgid "All Video Files"
-msgstr "Todos os arquivos de vídeo"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#| msgid "All Audio Files"
+msgid "All Media Files"
+msgstr "Todos arquivos de mídia"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:71
-msgid "All Audio Files"
-msgstr "Todos os arquivos de áudio"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
+#| msgid "All Video Files"
+msgid "Video Files"
+msgstr "Arquivos de vídeo"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
+#| msgid "All Audio Files"
+msgid "Audio Files"
+msgstr "Arquivos de áudio"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
 msgid "Seek Video To"
