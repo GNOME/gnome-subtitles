@@ -35,6 +35,7 @@ public class FileOpenDialog : BaseDialog {
 	
 	private string chosenFilename = String.Empty;
 	private EncodingDescription chosenEncoding = EncodingDescription.Empty;
+	
 	private ArrayList videoFiles = null; //The full paths of the video files in the current dir
 	private ArrayList videoFilenames = null; //The filenames of videoFiles, without extensions
 	private Uri chosenVideoUri = null;
@@ -319,7 +320,7 @@ public class FileOpenDialog : BaseDialog {
 					Base.Config.FileOpenEncoding = activeOption;
 			}
 
-			if (videoComboBox.Active > 0) {
+			if ((videoComboBox != null) && (videoComboBox.Active > 0)) {
 				int videoFileIndex = videoComboBox.Active - 2;
 				chosenVideoUri = new Uri("file://" + videoFiles[videoFileIndex] as string);
 			}
