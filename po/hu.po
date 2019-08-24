@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-05-30 21:06+0000\n"
-"PO-Revision-Date: 2019-06-03 21:14+0200\n"
+"POT-Creation-Date: 2019-07-04 22:59+0000\n"
+"PO-Revision-Date: 2019-08-24 21:57+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -475,12 +475,10 @@ msgid "_Underline"
 msgstr "_Aláhúzott"
 
 #: ../src/Glade/MainWindow.ui.h:22
-#| msgid "_Split"
 msgid "_Split Lines"
 msgstr "Sorok s_zétvágása"
 
 #: ../src/Glade/MainWindow.ui.h:23
-#| msgid "_Merge"
 msgid "_Merge Lines"
 msgstr "Sorok _egyesítése"
 
@@ -1206,7 +1204,6 @@ msgid "Font Size:"
 msgstr "Betűkészlet mérete:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:110
-#| msgid "Video To Open:"
 msgid "Video to Open:"
 msgstr "Megnyitandó videó:"
 
@@ -1220,7 +1217,7 @@ msgid "None"
 msgstr "Egyik sem"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:275
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
 msgid "All Files"
 msgstr "Minden fájl"
 
@@ -1273,9 +1270,6 @@ msgid "Save Translation As"
 msgstr "Fordítás mentése másként"
 
 #: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
-#| msgid ""
-#| "An unknown error has occured. Please report a bug and include this error "
-#| "name:"
 msgid ""
 "An unknown error has occurred. Please report a bug and include this error "
 "name:"
@@ -1735,17 +1729,24 @@ msgstr ""
 "A szinkronizálás megkezdhető. A következő feliratok nem lesznek "
 "szinkronizálva: {0} és {1}."
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
 msgid "Open Video"
 msgstr "Videó megnyitása"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
-msgid "All Video Files"
-msgstr "Minden videofájl"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#| msgid "All Audio Files"
+msgid "All Media Files"
+msgstr "Minden médiafájl"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:71
-msgid "All Audio Files"
-msgstr "Minden hangfájl"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
+#| msgid "All Video Files"
+msgid "Video Files"
+msgstr "Videofájlok"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
+#| msgid "All Audio Files"
+msgid "Audio Files"
+msgstr "Hangfájlok"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
 msgid "Seek Video To"
