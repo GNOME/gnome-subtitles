@@ -149,9 +149,9 @@ public class FileOpenDialog : BaseDialog {
 		int fixedEncoding = -1;
 		ConfigFileOpenEncoding encodingConfig = Base.Config.FileOpenEncoding;
 		if (encodingConfig == ConfigFileOpenEncoding.Fixed) {
-			string encodingName = Base.Config.FileOpenEncodingFixed;
+			string encodingCode = Base.Config.FileOpenEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
+			Encodings.Find(encodingCode, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
@@ -315,7 +315,7 @@ public class FileOpenDialog : BaseDialog {
 				int activeAction = encodingComboBox.ActiveSelection;
 				ConfigFileOpenEncoding activeOption = (ConfigFileOpenEncoding)Enum.ToObject(typeof(ConfigFileOpenEncoding), activeAction);
 				if (((int)activeOption) >= ((int)ConfigFileOpenEncoding.Fixed))
-					Base.Config.FileOpenEncodingFixed = chosenEncoding.Name;
+					Base.Config.FileOpenEncodingFixed = chosenEncoding.Code;
 				else
 					Base.Config.FileOpenEncoding = activeOption;
 			}

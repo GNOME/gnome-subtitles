@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2018 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -148,9 +148,9 @@ public class FileSaveDialog : BaseDialog {
 		int fixedEncoding = GetFixedEncoding();
 		ConfigFileSaveEncoding encodingConfig = Base.Config.FileSaveEncoding;
 		if (encodingConfig == ConfigFileSaveEncoding.Fixed) {
-			string encodingName = Base.Config.FileSaveEncodingFixed;
+			string encodingCode = Base.Config.FileSaveEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
+			Encodings.Find(encodingCode, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
@@ -243,7 +243,7 @@ public class FileSaveDialog : BaseDialog {
 				int activeAction = encodingComboBox.ActiveSelection;
 				ConfigFileSaveEncoding activeOption = (ConfigFileSaveEncoding)Enum.ToObject(typeof(ConfigFileSaveEncoding), activeAction);
 				if (((int)activeOption) >= ((int)ConfigFileSaveEncoding.Fixed)) {
-					Base.Config.FileSaveEncodingFixed = chosenEncoding.Name;
+					Base.Config.FileSaveEncodingFixed = chosenEncoding.Code;
 				}
 				else {
 					Base.Config.FileSaveEncoding = activeOption;

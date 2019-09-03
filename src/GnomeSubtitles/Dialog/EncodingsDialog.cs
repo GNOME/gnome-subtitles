@@ -26,11 +26,12 @@ using System;
 namespace GnomeSubtitles.Dialog {
 
 public class EncodingsDialog : BaseDialog {
-	private string[] chosenNames = new string[0];
+	private string[] chosenCodes = new string[0];
 
 	/* Constant integers */
-	const int descColumnNum = 0; //The number of the Description column
-	const int nameColumnNum = 1; //The number of the Name column
+	const int RegionColumnNum = 0; //The number of the Region column
+	const int NameColumnNum = 1; //The number of the Name column
+	const int CodeColumnNum = 2; //The number of the hidden Code column
 
 	/* Widgets */
 
@@ -45,8 +46,8 @@ public class EncodingsDialog : BaseDialog {
 
 	/* Public properties */
 
-	public string[] ChosenNames {
-		get { return chosenNames; }
+	public string[] ChosenCodes {
+		get { return chosenCodes; }
 	}
 
 	/* Private members */
@@ -111,9 +112,9 @@ public class EncodingsDialog : BaseDialog {
 	private void FillAvailableEncodings () {
 		SetColumns(availableTreeView);
 
-		ListStore store = new ListStore(typeof(string), typeof(string));
+		ListStore store = new ListStore(typeof(string), typeof(string), typeof(string));
 		foreach (EncodingDescription desc in Encodings.All) {
-			store.AppendValues(desc.Description, desc.Name);
+			store.AppendValues(desc.Region, desc.Name, desc.Code);
 		}
 
 		SetModel(availableTreeView, store);
@@ -122,31 +123,36 @@ public class EncodingsDialog : BaseDialog {
 	private void FillShownEncodings () {
 		SetColumns(shownTreeView);
 
-		chosenNames = Base.Config.FileEncodingsShownInMenu;
+		chosenCodes = Base.Config.FileEncodingsShownInMenu;
 
-		ListStore store = new ListStore(typeof(string), typeof(string));
-		foreach (string shownEncoding in chosenNames) {
+		ListStore store = new ListStore(typeof(string), typeof(string), typeof(string));
+		foreach (string shownEncodingCode in chosenCodes) {
 			EncodingDescription desc = EncodingDescription.Empty;
-			if (Encodings.Find(shownEncoding, ref desc))
-				store.AppendValues(desc.Description, desc.Name);
+			if (Encodings.Find(shownEncodingCode, ref desc)) {
+				store.AppendValues(desc.Region, desc.Name, desc.Code);
+			}
 		}
 
 		SetModel(shownTreeView, store);
 	}
 
 	private void SetColumns (TreeView tree) {
-		TreeViewColumn descriptionColumn = new TreeViewColumn(Catalog.GetString("Description"), new CellRendererText(), "text", descColumnNum);
-		descriptionColumn.SortColumnId = descColumnNum;
+		TreeViewColumn descriptionColumn = new TreeViewColumn(Catalog.GetString("Description"), new CellRendererText(), "text", RegionColumnNum);
+		descriptionColumn.SortColumnId = RegionColumnNum;
 		tree.AppendColumn(descriptionColumn);
 
-		TreeViewColumn nameColumn = new TreeViewColumn(Catalog.GetString("Encoding"), new CellRendererText(), "text", nameColumnNum);
-		nameColumn.SortColumnId = nameColumnNum;
+		TreeViewColumn nameColumn = new TreeViewColumn(Catalog.GetString("Encoding"), new CellRendererText(), "text", NameColumnNum);
+		nameColumn.SortColumnId = NameColumnNum;
 		tree.AppendColumn(nameColumn);
+		
+		TreeViewColumn codeColumn = new TreeViewColumn("-", new CellRendererText(), "text", CodeColumnNum);
+		codeColumn.Visible = false;
+		tree.AppendColumn(codeColumn);
 	}
 
 	private void SetModel (TreeView tree, ListStore store) {
 		TreeModelSort storeSort = new TreeModelSort(store);
-		storeSort.SetSortColumnId(descColumnNum, SortType.Ascending);
+		storeSort.SetSortColumnId(RegionColumnNum, SortType.Ascending);
 		tree.Model = storeSort;
 	}
 
@@ -170,34 +176,36 @@ public class EncodingsDialog : BaseDialog {
 	}
 
 	private void AddToShownEncodings (EncodingDescription desc) {
-		if (!IsAlreadyShown(desc.Name)) {
-			GetListStore(shownTreeView).AppendValues(desc.Description, desc.Name);
+		if (!IsAlreadyShown(desc.Code)) {
+			GetListStore(shownTreeView).AppendValues(desc.Region, desc.Name, desc.Code);
 			UpdateShownEncodingsPrefs();
 		}
 	}
 
-	private string[] GetShownNames () {
+	private string[] GetShownCodes () {
 		ListStore store = GetListStore(shownTreeView);
 		int count = store.IterNChildren();
 
-		string[] names = new string[count];
+		string[] codes = new string[count];
 		int rowNumber = 0;
 		foreach (object[] row in store) {
-			names[rowNumber] = row[nameColumnNum] as string;
+			codes[rowNumber] = row[CodeColumnNum] as string;
 			rowNumber++;
 		}
-		return names;
+		return codes;
 	}
 
-	private bool IsAlreadyShown (string name) {
+	private bool IsAlreadyShown (string code) {
 		ListStore store = GetListStore(shownTreeView);
 		foreach (object[] row in store) {
-			if ((row == null) || (row.Length != 2))
+			if ((row == null) || (row.Length < CodeColumnNum + 1)) {
 				continue;
+			}
 
-			string rowName = row[nameColumnNum] as string;
-			if (rowName == name)
+			string rowCode = row[CodeColumnNum] as string;
+			if (rowCode == code) {
 				return true;
+			}
 		}
 		return false;
 	}
@@ -224,8 +232,8 @@ public class EncodingsDialog : BaseDialog {
 	}
 
 	private void UpdateShownEncodingsPrefs () {
-		chosenNames = GetShownNames();
-		Base.Config.FileEncodingsShownInMenu = chosenNames;
+		chosenCodes = GetShownCodes();
+		Base.Config.FileEncodingsShownInMenu = chosenCodes;
 	}
 
 

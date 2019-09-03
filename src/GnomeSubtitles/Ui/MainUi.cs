@@ -469,9 +469,9 @@ public class MainUi {
 		switch (Base.Config.FileOpenEncoding) {
 			case ConfigFileOpenEncoding.CurrentLocale: return Encodings.SystemDefault.CodePage;
 			case ConfigFileOpenEncoding.Fixed:
-				string encodingName = Base.Config.FileOpenEncodingFixed;
+				string encodingCode = Base.Config.FileOpenEncodingFixed;
 				EncodingDescription encodingDescription = EncodingDescription.Empty;
-				Encodings.Find(encodingName, ref encodingDescription);
+				Encodings.Find(encodingCode, ref encodingDescription);
 				return encodingDescription.CodePage;
 			default: return -1; //Also accounts for Auto Detect
 		}

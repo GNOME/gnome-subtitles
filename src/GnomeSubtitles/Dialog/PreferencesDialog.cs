@@ -213,9 +213,9 @@ public class PreferencesDialog : BaseDialog {
 		int fixedEncoding = -1;
 		ConfigFileOpenEncodingOption fileOpenEncodingOption = Base.Config.FileOpenEncodingOption;
 		if (fileOpenEncodingOption == ConfigFileOpenEncodingOption.Specific) {
-			string encodingName = Base.Config.FileOpenEncodingFixed;
+			string encodingCode = Base.Config.FileOpenEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
+			Encodings.Find(encodingCode, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
@@ -232,9 +232,9 @@ public class PreferencesDialog : BaseDialog {
 		int fixedEncoding = -1;
 		ConfigFileOpenFallbackEncoding fileOpenFallbackEncodingConfig = Base.Config.FileOpenFallbackEncoding;
 		if (fileOpenFallbackEncodingConfig == ConfigFileOpenFallbackEncoding.Fixed) {
-			string encodingName = Base.Config.FileOpenFallbackEncodingFixed;
+			string encodingCode = Base.Config.FileOpenFallbackEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
+			Encodings.Find(encodingCode, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
@@ -248,9 +248,9 @@ public class PreferencesDialog : BaseDialog {
 		int fixedEncoding = -1;
 		ConfigFileSaveEncodingOption fileSaveEncodingOption = Base.Config.FileSaveEncodingOption;
 		if (fileSaveEncodingOption == ConfigFileSaveEncodingOption.Specific) {
-			string encodingName = Base.Config.FileSaveEncodingFixed;
+			string encodingCode = Base.Config.FileSaveEncodingFixed;
 			EncodingDescription encodingDescription = EncodingDescription.Empty;
-			Encodings.Find(encodingName, ref encodingDescription);
+			Encodings.Find(encodingCode, ref encodingDescription);
 			fixedEncoding = encodingDescription.CodePage;
 		}
 
@@ -308,7 +308,7 @@ public class PreferencesDialog : BaseDialog {
 		if (activeOption == ConfigFileOpenEncodingOption.Specific) {
 			EncodingDescription chosenEncoding = fileOpenEncoding.ChosenEncoding;
 			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
-				Base.Config.FileOpenEncodingFixed = chosenEncoding.Name;
+				Base.Config.FileOpenEncodingFixed = chosenEncoding.Code;
 			}
 		}
 		else {
@@ -327,7 +327,7 @@ public class PreferencesDialog : BaseDialog {
 		else {
 			EncodingDescription chosenEncoding = fileOpenFallbackEncoding.ChosenEncoding;
 			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
-				Base.Config.FileOpenFallbackEncodingFixed = chosenEncoding.Name;
+				Base.Config.FileOpenFallbackEncodingFixed = chosenEncoding.Code;
 			}
 		}
 	}
@@ -343,7 +343,7 @@ public class PreferencesDialog : BaseDialog {
 		if (activeOption == ConfigFileSaveEncodingOption.Specific) {
 			EncodingDescription chosenEncoding = fileSaveEncoding.ChosenEncoding;
 			if (!chosenEncoding.Equals(EncodingDescription.Empty)) {
-				Base.Config.FileSaveEncodingFixed = chosenEncoding.Name;
+				Base.Config.FileSaveEncodingFixed = chosenEncoding.Code;
 			}
 		}
 		else {

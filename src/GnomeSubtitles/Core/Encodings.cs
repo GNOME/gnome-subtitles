@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2018 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,9 @@ public class Encodings {
 
 	/* UTF8 encoding is constructed in a different manner in order to disable the BOM. */
 	private static int CODEPAGE_UTF8 = 65001;
+	private static int CODEPAGE_UTF8_WITHOUT_BOM = 650010; //Unofficial codepage, for internal use only
 	private static Encoding encodingUTF8 = null;
+	private static Encoding encodingUTF8WithoutBOM = null;
 
 	/* The original versions of the following tables were taken from gedit
 	 * which on the other hand took them from profterm
@@ -51,6 +53,8 @@ public class Encodings {
 		/* ISO-8859-8-I not used */
 
 		new EncodingDescription(CODEPAGE_UTF8, "UTF-8", Catalog.GetString("Unicode")), /* Added */
+		
+		new EncodingDescription(CODEPAGE_UTF8_WITHOUT_BOM, "UTF-8-NO-BOM", Catalog.GetString("Unicode"), Catalog.GetString("UTF-8 without BOM")), /* Added */
 		new EncodingDescription(65000, "UTF-7", Catalog.GetString("Unicode")),
 		new EncodingDescription(1200, "UTF-16", Catalog.GetString("Unicode")), //Little endian
 		new EncodingDescription(1201, "UTF-16BE", Catalog.GetString("Unicode")),
@@ -119,35 +123,40 @@ public class Encodings {
 
 	public static EncodingDescription SystemDefault {
 		get {
-			string description = Catalog.GetString("Current Locale");
+			string region = Catalog.GetString("Current Locale");
 
 			Encoding defaultEncoding = Encoding.Default;
 			int codePage = defaultEncoding.CodePage;
 
+			string code = String.Empty;
 			string name = String.Empty;
 			EncodingDescription tempDesc = EncodingDescription.Empty;
-			if (Find(codePage, ref tempDesc))
+			if (Find(codePage, ref tempDesc)) {
+				code = tempDesc.Code;
 				name = tempDesc.Name;
-			else
+			} else {
 				name = defaultEncoding.WebName.ToUpper();
+				code = name;
+			}
 
-			return new EncodingDescription(codePage, name, description);
+			return new EncodingDescription(codePage, code, region, name);
 		}
 	}
 
 	/* Public methods */
 
 	/// <summary>Finds the description for the encoding with the specified name.</summary>
-	/// <param name="name">The encoding's name.</param>
+	/// <param name="code">The encoding's code.</param>
 	/// <param name="description">The encoding's description that was found.</param>
 	/// <returns>Whether the description was found.</returns>
-	public static bool Find (string name, ref EncodingDescription description) {
+	public static bool Find (string code, ref EncodingDescription description) {
 		foreach (EncodingDescription desc in descriptions) {
-			if (desc.Name == name) {
+			if (desc.Code == code) {
 				description = desc;
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -178,11 +187,21 @@ public class Encodings {
 	}
 	
 	public static Encoding GetEncoding (int codePage) {
+
+		//We output UTF-8 with BOM by default		
 		if (codePage == CODEPAGE_UTF8) {
 			if (encodingUTF8 == null) {
-				encodingUTF8 = new UTF8Encoding(false);
+				encodingUTF8 = new UTF8Encoding(true);
 			}
 			return encodingUTF8;
+		}
+		
+		//UTF-8 without BOM
+		if (codePage == CODEPAGE_UTF8_WITHOUT_BOM) {
+			if (encodingUTF8WithoutBOM == null) {
+				encodingUTF8WithoutBOM = new UTF8Encoding(false);
+			}
+			return encodingUTF8WithoutBOM;
 		}
 
 		return Encoding.GetEncoding(codePage);

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2017 Pedro Castro
+ * Copyright (C) 2006-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -103,8 +103,8 @@ public class EncodingComboBox {
 		this.actionCount = (hasAutoDetect ? 1 : 0) + (additionalActions != null ? additionalActions.Length : 0);
 	}
 
-	private void SetComboBox (string[] names) {
-		configShownEncodings = new ArrayList(names);
+	private void SetComboBox (string[] codes) {
+		configShownEncodings = new ArrayList(codes);
 		LoadEncodings();
 		FillComboBox();
 	}
@@ -113,9 +113,9 @@ public class EncodingComboBox {
 		bool toAddFixedEncoding = (fixedEncoding != -1);
 		ArrayList encodings = new ArrayList();
 
-		foreach (string name in configShownEncodings) {
+		foreach (string code in configShownEncodings) {
 			EncodingDescription description = EncodingDescription.Empty;
-			if (Encodings.Find(name, ref description)) {
+			if (Encodings.Find(code, ref description)) {
 				encodings.Add(description);
 				if (toAddFixedEncoding && (description.CodePage == fixedEncoding))
 					toAddFixedEncoding = false;
@@ -163,7 +163,7 @@ public class EncodingComboBox {
 
 		/* Add encodings */
 		foreach (EncodingDescription encoding in encodings) {
-			comboBox.AppendText(encoding.Description + " (" + encoding.Name + ")");
+			comboBox.AppendText(encoding.Region + " (" + encoding.Name + ")");
 			if (encoding.CodePage == fixedEncoding) {
 				activeItem = currentItem;
 			}
@@ -221,8 +221,7 @@ public class EncodingComboBox {
 			EncodingsDialog dialog = Base.Dialogs.Get(typeof(EncodingsDialog), comboBox.Toplevel) as EncodingsDialog;
 			dialog.Show();
 			dialog.WaitForResponse();
-			SetComboBox(dialog.ChosenNames);
-			//SetActiveItem(comboBoxActiveItem, true);
+			SetComboBox(dialog.ChosenCodes);
 		}
 		else {
 			comboBoxActiveItem = selectedItem;

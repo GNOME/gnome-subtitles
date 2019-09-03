@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2010 Pedro Castro
+ * Copyright (C) 2007-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,39 +23,51 @@ namespace GnomeSubtitles.Core {
 
 public struct EncodingDescription : IComparable {
 	private int codePage;
+	private string code;
 	private string name;
-	private string description;
+	private string region;
 	private static EncodingDescription emptyEncodingDescription = new EncodingDescription(-1, "-1", "-1");
 
-	public EncodingDescription (int codePage, string name, string description) {
+	public EncodingDescription (int codePage, string code, string region, string name) {
 		this.codePage = codePage;
+		this.code = code;
+		this.region = region;
 		this.name = name;
-		this.description = description;
+	}
+	
+	//Use the code as name too
+	public EncodingDescription (int codePage, string code, string region)
+		: this(codePage, code, region, code) {
 	}
 
 	public int CodePage {
 		get { return codePage; }
 	}
+	
+	public string Code {
+		get { return code; }
+	}
 
+	public string Region {
+		get { return region; }
+	}
+	
 	public string Name {
 		get { return name; }
 	}
 
-	public string Description {
-		get { return description; }
-	}
-
 	public int CompareTo (object obj) {
-		if (obj is EncodingDescription) {
-			EncodingDescription obj2 = (EncodingDescription)obj;
-			int descComparison = this.description.CompareTo(obj2.description);
-			if (descComparison != 0)
-				return descComparison;
-			else
-				return this.name.CompareTo(obj2.name);
-		}
-		else
+		if (!(obj is EncodingDescription)) {
 			throw new ArgumentException("Object is not EncodingDescription");
+		}
+
+		EncodingDescription obj2 = (EncodingDescription)obj;
+		int result = this.region.CompareTo(obj2.region);
+		if (result != 0) {
+			return result;
+		}
+		
+		return this.name.CompareTo(obj2.name);
 	}
 
 	/* Static members */
