@@ -1,6 +1,28 @@
 Gnome Subtitles
 ===============
 
+1.6 (04/09/19)
+==============
+
+- Fixed a crash when opening translation files.
+- Show all media files (video and audio) by default in the Video File Open dialog.
+- UTF-8 files are now saved with a BOM (byte order mark) by default (as happened until version 1.4.2).
+  An option has been added to allow saving files in this encoding without a BOM.
+
+Issues:
+- Video File Open: show all media files by default (#136)
+- Crash when opening translation file (#138)
+- Allow to save UTF-8 files with or without a BOM (#140)
+
+Translations:
+- Daniel Mustieles (es)
+- Asier Sarasua Garmendia (eu)
+- Balázs Úr (hu)
+- Piotr Drąg (pl)
+- Rafael Fontenelle (pt_BR)
+- Sabri Ünal (tr)
+
+
 1.5 (13/06/19)
 ==============
 

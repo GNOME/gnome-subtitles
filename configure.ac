@@ -2,7 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.63)
 AC_INIT([gnome-subtitles],
-	[1.5],
+	[1.6],
 	[https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/new],
 	[gnome-subtitles],
 	[https://www.gnomesubtitles.org])
