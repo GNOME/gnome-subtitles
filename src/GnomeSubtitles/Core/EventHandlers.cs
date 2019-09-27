@@ -461,8 +461,12 @@ public class EventHandlers {
     }
 
     public void OnSizeAllocated (object o, SizeAllocatedArgs args) {
-    	Base.Config.ViewWindowWidth = args.Allocation.Width;
-    	Base.Config.ViewWindowHeight = args.Allocation.Height;
+	if (Base.Config.ViewWindowWidth != args.Allocation.Width) {
+		Base.Config.ViewWindowWidth = args.Allocation.Width;
+	}
+	if ( Base.Config.ViewWindowHeight != args.Allocation.Height) {
+		Base.Config.ViewWindowHeight = args.Allocation.Height;
+	}
     }
 
 
