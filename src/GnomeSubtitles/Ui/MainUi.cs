@@ -39,6 +39,7 @@ public class MainUi {
 	private static Builder builder = null;
 
 	private Window window = null;
+	private WindowState windowState = null;
 	private Menus menus = null;
 	private Video video = null;
 	private SubtitleView view = null;
@@ -60,7 +61,8 @@ public class MainUi {
 		window.IconName = Base.ExecutionContext.IconName;
 		window.SetWmclass(Base.ExecutionContext.ApplicationName, Base.ExecutionContext.ApplicationName);
 		
-		window.SetDefaultSize(Base.Config.ViewWindowWidth, Base.Config.ViewWindowHeight);
+		windowState = new WindowState(Base.Config.ViewWindowWidth, Base.Config.ViewWindowHeight);
+		window.SetDefaultSize(windowState.Width, windowState.Height);
 		
 		Base.ExecutionContext.Application.AddWindow(window);
 
@@ -72,8 +74,6 @@ public class MainUi {
 
 		builder.Autoconnect(handlers);
 		Base.InitFinished += OnBaseInitFinished;
-
-		window.Visible = true;
     }
 
 
@@ -81,6 +81,10 @@ public class MainUi {
 
 	public Window Window {
 		get { return window; }
+	}
+	
+	public WindowState WindowState {
+		get { return windowState; }
 	}
 
 	public Menus Menus {
@@ -110,9 +114,13 @@ public class MainUi {
 		return builder.GetObject(name) as Widget;
 	}
 
-    /// <summary>Starts the GUI</summary>
-    /// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
-    public void Start () {
+	public void Show () {
+		window.Visible = true;
+	}
+
+	/// <summary>Starts the GUI</summary>
+	/// <remarks>A file is opened if it was specified as argument. If it wasn't, a blank start is performed.</summary>
+	public void Start () {
 		string subtitleFilePath = GetSubtitleFileArg(Base.ExecutionContext.Args);
 		if (subtitleFilePath != null) {
 			Uri videoUri = Base.Config.VideoAutoChooseFile ? VideoFiles.FindMatchingVideo(subtitleFilePath) : null;

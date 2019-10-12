@@ -459,10 +459,20 @@ public class EventHandlers {
     	bool quit = Base.Quit();
     	args.RetVal = !quit; //True to keep the window open
     }
+    
+    public void OnWindowDestroy (object o, EventArgs args) {
+		Base.Config.ViewWindowWidth = Base.Ui.WindowState.Width;
+		Base.Config.ViewWindowHeight = Base.Ui.WindowState.Height;
+	}
 
-    public void OnSizeAllocated (object o, SizeAllocatedArgs args) {
-    	Base.Config.ViewWindowWidth = args.Allocation.Width;
-    	Base.Config.ViewWindowHeight = args.Allocation.Height;
+	public void OnSizeAllocated (object o, SizeAllocatedArgs args) {
+		Window window = o as Window;
+
+    	int width, height;
+    	window.GetSize(out width, out height);
+
+    	Base.Ui.WindowState.Width = width;
+    	Base.Ui.WindowState.Height = height;
     }
 
 

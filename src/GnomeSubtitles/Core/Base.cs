@@ -281,6 +281,11 @@ public static class Base {
 
 		/* Initialize the GUI */
 		ui = new MainUi(handlers);
+		
+		//The window must be made visible here because classes such as EventHandlers.OnSizeAllocated) may depend on
+		//'ui' being set when the window is made visible (so it can't be made visible inside MainUi's constructor).
+		ui.Show();
+
 		clipboards.WatchPrimaryChanges = true;
 
 		EmitInitFinishedEvent();
