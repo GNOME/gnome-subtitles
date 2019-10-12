@@ -1,8 +1,8 @@
 # Turkish translation for gnome-subtitles.
-# Copyright (C) 2009 gnome-subtitles's COPYRIGHT HOLDER
+# Copyright (C) 2009-2019 gnome-subtitles's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-subtitles package.
-# Serkan Yılmaz <syilmaz13@gmail.com>, 2009.
-# Serkan YILMAZ <syilmaz13@gmail.com>, 2010.
+#
+# Serkan Yılmaz <syilmaz13@gmail.com>, 2009, 2010.
 # Muhammet Kara <muhammetk@gmail.com>, 2014.
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2015.
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-01-27 21:23+0000\n"
-"PO-Revision-Date: 2019-02-10 17:10+0200\n"
+"POT-Creation-Date: 2019-09-04 08:08+0000\n"
+"PO-Revision-Date: 2019-09-05 12:33+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:48
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "GNOME Masaüstü için altyazı düzenleyicisi"
 
@@ -474,12 +474,12 @@ msgid "_Underline"
 msgstr "_Altı Çizgi"
 
 #: ../src/Glade/MainWindow.ui.h:22
-msgid "_Split"
-msgstr "_Böl"
+msgid "_Split Lines"
+msgstr "Satırları _Böl"
 
 #: ../src/Glade/MainWindow.ui.h:23
-msgid "_Merge"
-msgstr "_Birleştir"
+msgid "_Merge Lines"
+msgstr "Satırları _Birleştir"
 
 #: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
@@ -671,7 +671,7 @@ msgid "New File"
 msgstr "Yeni Dosya"
 
 #: ../src/Glade/MainWindow.ui.h:71
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:53
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:52
 msgid "Open File"
 msgstr "Dosya Aç"
 
@@ -688,7 +688,7 @@ msgid "Delete"
 msgstr "Sil"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Time"
 msgstr "Zaman"
 
@@ -792,13 +792,13 @@ msgstr "Yeniden Yap"
 msgid "Deleting Subtitles"
 msgstr "Altyazılar Siliniyor"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
 msgid "Editing Text"
 msgstr "Metin Düzenleme"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:26
 msgid "Editing Translation"
 msgstr "Çeviri Düzenleme"
 
@@ -818,11 +818,11 @@ msgstr "Tümünü Değiştirme"
 msgid "Shifting timings"
 msgstr "Zamanlamayı Kaydırma"
 
-#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
 msgid "Splitting subtitles"
 msgstr "Altyazıları Ayırma"
 
-#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
 msgid "Synchronizing timings"
 msgstr "Zamanlamayı Eşzamanlama"
 
@@ -851,74 +851,74 @@ msgid "{0} (translation)"
 msgstr "{0} (çeviri)"
 
 #. GEOSTD8, HZ not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:37
-#: ../src/GnomeSubtitles/Core/Encodings.cs:49
-#: ../src/GnomeSubtitles/Core/Encodings.cs:80
-#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:51
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
 msgid "Western"
 msgstr "Batı"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:38
-#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Central European"
 msgstr "Orta Avrupa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
 msgid "South European"
 msgstr "Güney Avrupa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:40
-#: ../src/GnomeSubtitles/Core/Encodings.cs:47
-#: ../src/GnomeSubtitles/Core/Encodings.cs:110
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:114
 msgid "Baltic"
 msgstr "Baltık"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:41
-#: ../src/GnomeSubtitles/Core/Encodings.cs:82
-#: ../src/GnomeSubtitles/Core/Encodings.cs:90
-#: ../src/GnomeSubtitles/Core/Encodings.cs:96
-#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
 msgid "Cyrillic"
 msgstr "Kiril"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:42
-#: ../src/GnomeSubtitles/Core/Encodings.cs:88
-#: ../src/GnomeSubtitles/Core/Encodings.cs:109
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:92
+#: ../src/GnomeSubtitles/Core/Encodings.cs:113
 msgid "Arabic"
 msgstr "Arapça"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:43
-#: ../src/GnomeSubtitles/Core/Encodings.cs:91
-#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
 msgid "Greek"
 msgstr "Yunanca"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:44
-#: ../src/GnomeSubtitles/Core/Encodings.cs:86
-#: ../src/GnomeSubtitles/Core/Encodings.cs:108
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:112
 msgid "Hebrew"
 msgstr "İbranice"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:45
-#: ../src/GnomeSubtitles/Core/Encodings.cs:83
-#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:46
-#: ../src/GnomeSubtitles/Core/Encodings.cs:89
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
 msgid "Nordic"
 msgstr "İskandinav"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:48
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
 msgid "Celtic"
 msgstr "Kelt"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:50
+#: ../src/GnomeSubtitles/Core/Encodings.cs:52
 msgid "Romanian"
 msgstr "Romence"
 
@@ -926,25 +926,30 @@ msgstr "Romence"
 #. Added
 #. Little endian
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:53
-#: ../src/GnomeSubtitles/Core/Encodings.cs:54
 #: ../src/GnomeSubtitles/Core/Encodings.cs:55
-#: ../src/GnomeSubtitles/Core/Encodings.cs:56
 #: ../src/GnomeSubtitles/Core/Encodings.cs:57
 #: ../src/GnomeSubtitles/Core/Encodings.cs:58
 #: ../src/GnomeSubtitles/Core/Encodings.cs:59
 #: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:62
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
 msgid "Unicode"
 msgstr "Unikod"
 
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+msgid "UTF-8 without BOM"
+msgstr "UTF-8 BOM olmadan"
+
 #. Added
 #. UCS-2 and UCS-4 not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:63
-#: ../src/GnomeSubtitles/Core/Encodings.cs:64
+#: ../src/GnomeSubtitles/Core/Encodings.cs:67
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
 msgid "Chinese Traditional"
 msgstr "Geleneksel Çince"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:65
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
 msgid "Cyrillic/Russian"
 msgstr "Kiril/Rusça"
 
@@ -952,54 +957,54 @@ msgstr "Kiril/Rusça"
 #. Added
 #. Added
 #. ISO-IR-111, KOI8R, KOI8U not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:68
-#: ../src/GnomeSubtitles/Core/Encodings.cs:69
-#: ../src/GnomeSubtitles/Core/Encodings.cs:93
-#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
 msgid "Japanese"
 msgstr "Japonca"
 
 #. EUC-JP-MS not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:72
-#: ../src/GnomeSubtitles/Core/Encodings.cs:94
-#: ../src/GnomeSubtitles/Core/Encodings.cs:95
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:98
+#: ../src/GnomeSubtitles/Core/Encodings.cs:99
 msgid "Korean"
 msgstr "Korece"
 
 #. EUC-TW not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:75
-#: ../src/GnomeSubtitles/Core/Encodings.cs:76
-#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+#: ../src/GnomeSubtitles/Core/Encodings.cs:79
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Chinese Simplified"
 msgstr "Basitleştirilmiş Çince"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
 msgid "Portuguese"
 msgstr "Portekizce"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
 msgid "Icelandic"
 msgstr "İzlandaca"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
 msgid "French Canadian"
 msgstr "Fransızca (Kanada)"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:97
+#: ../src/GnomeSubtitles/Core/Encodings.cs:101
 msgid "Cyrillic/Ukrainian"
 msgstr "Kiril/Ukrayna Dili"
 
 #. TCVN, TIS-620, UHC, VISCII not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
 msgid "Central"
 msgstr "Orta"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:111
+#: ../src/GnomeSubtitles/Core/Encodings.cs:115
 msgid "Vietnamese"
 msgstr "Vietnamca"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:122
+#: ../src/GnomeSubtitles/Core/Encodings.cs:126
 msgid "Current Locale"
 msgstr "Geçerli Yerel"
 
@@ -1007,7 +1012,7 @@ msgstr "Geçerli Yerel"
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:42
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:41
 msgid "About Gnome Subtitles"
 msgstr "Gnome Altyazılar Hakkında"
 
@@ -1027,17 +1032,17 @@ msgstr "Bu seçilenler ve _başlangıç noktası arasındaki altyazılar"
 msgid "Subtitles between those selected and the _last"
 msgstr "Bu seçilenler ve bitiş _noktası arasındaki altyazılar"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:57
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:56
 msgid "Character Encodings"
 msgstr "Karakter Kodlamaları"
 
 #. Left part: Available VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:70
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:69
 msgid "Available Encodings"
 msgstr "Kullanılabilir Kodlamalar"
 
 #. Right part: Shown VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:87
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:86
 msgid "Chosen Encodings"
 msgstr "Seçilen Kodlamalar"
 
@@ -1203,24 +1208,24 @@ msgid "Font Size:"
 msgstr "Yazı Tipi Boyutu:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
-msgid "Video To Open:"
+msgid "Video to Open:"
 msgstr "Açılacak Video:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:120
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:126
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
 msgid "Character Encoding:"
 msgstr "Karakter Kodlaması:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:200
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:208
 msgid "None"
 msgstr "Hiçbiri"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:279
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:79
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:276
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:286
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:283
 msgid "All Subtitle Files"
 msgstr "Tüm Altyazı Dosyaları"
 
@@ -1264,9 +1269,161 @@ msgstr "Satır Sonu:"
 msgid "Open Translation File"
 msgstr "Çeviri Dosyası Aç"
 
-#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:28
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:27
 msgid "Save Translation As"
 msgstr "Çeviriyi Farklı Kaydet"
+
+#: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
+msgid ""
+"An unknown error has occurred. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Bilinmeyen bir hata oluştu. Lütfen adıyla birlikte bu hatayı bildiriniz:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
+msgid "Could not open the file"
+msgstr "Dosya açılamadı"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
+msgid "Open another file"
+msgstr "Başka dosya aç"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
+msgid "The file path appears to be invalid."
+msgstr "Dosya yolu geçersiz görünüyor."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "Dosya kaydedilemedi"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "Başka bir dosyaya yaz"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr ""
+"Bellek yetersiz. Lütfen bazı programlarınızı kapatın ve yeniden deneyin."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+msgid "An I/O error has occurred."
+msgstr "Bir G/Ç hatası oluştu."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Bu dosyayı kaydetmek için gerekli izinlere sahip değilsiniz."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "Belirtilen dosya geçersiz."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr ""
+"Kaydetmediğiniz takdirde, yaptığınız tüm değişiklikler kalıcı olarak "
+"kaybolacak."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr ""
+"Yeni altyazı oluşturmadan önce \"{0}\" altyazısında yaptığınız "
+"değişiklikleri kaydetmek ister misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
+msgid "Create without Saving"
+msgstr "Kaydetmeden Oluştur"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:110
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr ""
+"Yeni altyazı oluşturmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri "
+"kaydetmek ister misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Yeni çeviri oluşturmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri "
+"kaydetmek ister misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:127
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr ""
+"Açmadan önce \"{0}\" altyazısında yaptığınız değişiklikleri kaydetmek ister "
+"misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
+msgid "Open without Saving"
+msgstr "Kaydetmeden Aç"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr ""
+"Açmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri kaydetmek ister "
+"misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:156
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr ""
+"Kapatmadan önce \"{0}\" altyazısında yaptığınız değişiklikleri kaydetmek "
+"ister misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
+msgid "Close without Saving"
+msgstr "Kaydetmeden Kapat"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:175
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr ""
+"Kapatmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri kaydetmek "
+"ister misiniz?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"Altyazı biçimi algılanamadı. Lütfen bu dosya türünün desteklendiğinden emin "
+"olun."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"Bu kodlama, sisteminiz tarafından desteklenmiyor. Lütfen farklı bir kodlama "
+"seçiniz."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Dosyayı açmak için gerekli izinlere sahip değilsiniz."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+msgid "The file could not be found."
+msgstr "Dosya bulunamadı."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr "Bu dosya metin tabanlı bir altyazı dosyası için çok büyük görünüyor."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
+msgid "Could not play the file"
+msgstr "Dosya oynatılamadı"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1546,7 +1703,7 @@ msgid "Subtitle No."
 msgstr "Altyazı No."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
 msgid "Start"
 msgstr "Başlangıç"
 
@@ -1592,169 +1749,21 @@ msgstr ""
 "Eşzamanlama işlemi uygulanmaya hazır. Bu işlem şu altyazılar için "
 "uygulanmayacak: {0} ve {1}."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Bilinmeyen bir hata oluştu. Lütfen adıyla birlikte bu hatayı bildiriniz:"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Dosya açılamadı"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Başka dosya aç"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:61
-msgid "The file path appears to be invalid."
-msgstr "Dosya yolu geçersiz görünüyor."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
-msgid "Could not save the file"
-msgstr "Dosya kaydedilemedi"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:34
-msgid "Save to another file"
-msgstr "Başka bir dosyaya yaz"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:60
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr ""
-"Bellek yetersiz. Lütfen bazı programlarınızı kapatın ve yeniden deneyin."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:62
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occurred."
-msgstr "Bir G/Ç hatası oluştu."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:64
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Bu dosyayı kaydetmek için gerekli izinlere sahip değilsiniz."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:66
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr "Belirtilen dosya geçersiz."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
-"Kaydetmediğiniz takdirde, yaptığınız tüm değişiklikler kalıcı olarak "
-"kaybolacak."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr ""
-"Yeni altyazı oluşturmadan önce \"{0}\" altyazısında yaptığınız "
-"değişiklikleri kaydetmek ister misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
-msgid "Create without Saving"
-msgstr "Kaydetmeden Oluştur"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr ""
-"Yeni altyazı oluşturmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri "
-"kaydetmek ister misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
-#, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Yeni çeviri oluşturmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri "
-"kaydetmek ister misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr ""
-"Açmadan önce \"{0}\" altyazısında yaptığınız değişiklikleri kaydetmek ister "
-"misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
-msgid "Open without Saving"
-msgstr "Kaydetmeden Aç"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr ""
-"Açmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri kaydetmek ister "
-"misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr ""
-"Kapatmadan önce \"{0}\" altyazısında yaptığınız değişiklikleri kaydetmek "
-"ister misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
-msgid "Close without Saving"
-msgstr "Kaydetmeden Kapat"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr ""
-"Kapatmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri kaydetmek "
-"ister misiniz?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"Altyazı biçimi algılanamadı. Lütfen bu dosya türünün desteklendiğinden emin "
-"olun."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr ""
-"Bu kodlama, sisteminiz tarafından desteklenmiyor. Lütfen farklı bir kodlama "
-"seçiniz."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
-msgid "You do not have the permissions necessary to open the file."
-msgstr "Dosyayı açmak için gerekli izinlere sahip değilsiniz."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
-msgid "The file could not be found."
-msgstr "Dosya bulunamadı."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
-msgid "The file appears to be too large for a text-based subtitle file."
-msgstr "Bu dosya metin tabanlı bir altyazı dosyası için çok büyük görünüyor."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Dosya oynatılamadı"
-
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
 msgid "Open Video"
 msgstr "Video Aç"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:63
-msgid "All Video Files"
-msgstr "Tüm Video Dosyaları"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+msgid "All Media Files"
+msgstr "Tüm Ortam Dosyaları"
 
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:71
-msgid "All Audio Files"
-msgstr "Tüm Ses Dosyaları"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
+msgid "Video Files"
+msgstr "Video Dosyaları"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
+msgid "Audio Files"
+msgstr "Ses Dosyaları"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
 msgid "Seek Video To"
@@ -1791,7 +1800,7 @@ msgstr "ARY"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
 msgid "Text"
 msgstr "Metin"
 
@@ -1809,24 +1818,24 @@ msgstr "Satır"
 msgid "Col"
 msgstr "Sütun"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:196
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Frame"
 msgstr "Kare"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
 msgid "No."
 msgstr "No."
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
 msgstr "Bitiş"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "Duration"
 msgstr "Süre"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Çeviri"
 
