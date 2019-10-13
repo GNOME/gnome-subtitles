@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2009-2017 Pedro Castro
+ * Copyright (C) 2009-2019 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ public abstract class BaseDialog {
 
 	private bool returnValue = false;
 
-	//Hack because gtk# doesn't support this flag yet (as of 2017). Ref: https://git.gnome.org/browse/gtk+/tree/gtk/gtkdialog.h (GTK_DIALOG_USE_HEADER_BAR)
+	//Hack because gtk# doesn't support this flag yet (as of 2019). Ref: gtk/gtkdialog.h (GtkDialogFlags.GTK_DIALOG_USE_HEADER_BAR)
 	protected const DialogFlags DialogFlagsUseHeaderBar = (DialogFlags)4;
 
 	public BaseDialog () {

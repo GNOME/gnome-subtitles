@@ -24,6 +24,9 @@ namespace GnomeSubtitles.Execution {
 
 public class ExecutionContext {
 	private Gtk.Application app = null;
+	
+	//Hack because gtk# doesn't support this flag yet (as of 2019). Ref: glib/gio/gioenums.h (GApplicationFlags.G_APPLICATION_NON_UNIQUE)
+	private const GLib.ApplicationFlags GLibApplicationFlagsNonUnique = (GLib.ApplicationFlags)(1 << 5);
 
 	/* Constant strings */
 	private const string applicationName = "Gnome Subtitles";
@@ -89,13 +92,12 @@ public class ExecutionContext {
 
 	public void Execute (Action methodToExecute) {
 		GLib.Global.ApplicationName = applicationName;
-	
-		app = new Gtk.Application(applicationID, GLib.ApplicationFlags.None);
-
+		
+		app = new Gtk.Application(applicationID, GLibApplicationFlagsNonUnique);
 		app.Activated += (sender, e) => {
 			methodToExecute();
 		};
-		
+
 		app.Run(0, "");
 	}
 	
