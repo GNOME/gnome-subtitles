@@ -35,7 +35,6 @@ public class ExecutionContext {
 	private const string executableName = "gnome-subtitles";
 
 	/* Dynamic variables */
-	private string localeDir = String.Empty;
 	private string[] args = null;
 
 	public ExecutionContext (string[] args) {
