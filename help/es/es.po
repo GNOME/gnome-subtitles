@@ -1,44 +1,54 @@
 # translation of gnome-subtitles.help.HEAD.po to Español
 # Gabriel Leonardo Ruiz Manzano <debianmaster@gmail.com>, 2008.
 # Jorge González <jorgegonz@svn.gnome.org>, 2008, 2010.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2015.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.help.HEAD\n"
-"POT-Creation-Date: 2015-12-09 22:30+0000\n"
-"PO-Revision-Date: 2015-12-15 13:16+0100\n"
+"POT-Creation-Date: 2019-10-02 11:45+0000\n"
+"PO-Revision-Date: 2019-10-28 16:39+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
-"Language: \n"
+"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 3.34.0\n"
 
-#: C/gnome-subtitles.xml:22(title)
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+#| msgid "translator-credits"
+msgctxt "_"
+msgid "translator-credits"
+msgstr ""
+"Daniel Mustieles <daniel.mustieles@gmail.com>, 2019\n"
+"Francisco Javier <fserrador@gmail.com>, 2011\n"
+"Jorge González <jorgegonz@svn.gnome.org>, 2008-2010"
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:22
 msgid "<application>Gnome Subtitles</application> Manual V1.0"
 msgstr "Manual de <application>Subtítulos de GNOME</application> V1.0"
 
-#: C/gnome-subtitles.xml:25(year)
-msgid "2007"
-msgstr "2007"
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:24
+msgid "<year>2007</year> <holder>Erin Bloom</holder>"
+msgstr "<year>2007</year> <holder>Erin Bloom</holder>"
 
-#: C/gnome-subtitles.xml:26(holder)
-msgid "Erin Bloom"
-msgstr "Erin Bloom"
-
-#: C/gnome-subtitles.xml:28(para)
+#. (itstool) path: abstract/para
+#: C/index.docbook:28
 msgid "The workings of <application>Gnome Subtitles</application>"
 msgstr "El funcionamiento de <application>Subtítulos de GNOME</application>"
 
-#: C/gnome-subtitles.xml:34(publishername) C/gnome-subtitles.xml:44(orgname)
-#: C/gnome-subtitles.xml:85(para)
+#. (itstool) path: publisher/publishername
+#. (itstool) path: revdescription/para
+#: C/index.docbook:34 C/index.docbook:85
 msgid "GNOME Documentation Project"
 msgstr "Proyecto de documentación de GNOME"
 
-#: C/gnome-subtitles.xml:2(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:2
 msgid ""
 "Permission is granted to copy, distribute and/or modify this document under "
 "the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
@@ -55,7 +65,8 @@ msgstr ""
 "<ulink type=\"help\" url=\"ghelp:fdl\">enlace</ulink> o en el archivo "
 "COPYING-DOCS distribuido con este manual."
 
-#: C/gnome-subtitles.xml:12(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:12 C/legal.xml:12
 msgid ""
 "This manual is part of a collection of GNOME manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
@@ -67,7 +78,8 @@ msgstr ""
 "puede hacerlo añadiendo una copia de la licencia al manual, tal como se "
 "describe en la sección 6 de la licencia."
 
-#: C/gnome-subtitles.xml:19(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:19 C/legal.xml:19
 msgid ""
 "Many of the names used by companies to distinguish their products and "
 "services are claimed as trademarks. Where those names appear in any GNOME "
@@ -82,7 +94,8 @@ msgstr ""
 "comerciales, los nombres aparecerán en mayúsculas o con las iniciales en "
 "mayúsculas."
 
-#: C/gnome-subtitles.xml:35(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:35 C/legal.xml:35
 msgid ""
 "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, "
 "EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT "
@@ -109,7 +122,8 @@ msgstr ""
 "NI VERSIÓN MODIFICADA DE ÉSTE POR EL PRESENTE, SALVO DENTRO DEL CUMPLIMIENTO "
 "DE LA RENUNCIA;Y"
 
-#: C/gnome-subtitles.xml:55(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:55 C/legal.xml:55
 msgid ""
 "UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
 "NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
@@ -135,73 +149,92 @@ msgstr ""
 "ELLO, INCLUSO SI SE HABÍA COMUNICADO A AQUELLA PARTE LA POSIBILIDAD DE TALES "
 "DAÑOS."
 
-#: C/gnome-subtitles.xml:28(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:28 C/legal.xml:28
+#| msgid ""
+#| "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE "
+#| "TERMS OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER "
+#| "UNDERSTANDING THAT: <placeholder-1/>"
 msgid ""
 "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS "
 "OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: "
-"<placeholder-1/>"
+"<_:orderedlist-1/>"
 msgstr ""
-"ESTE DOCUMENTO Y LAS VERSIONES MODIFICADAS DEL MISMO SE PROPORCIONAN SEGÚN "
-"LAS CONDICIONES ESTABLECIDAS EN LA LICENCIA DE DOCUMENTACIÓN LIBRE DE GNU "
-"(GFDL) Y TENIENDO EN CUENTA QUE: <placeholder-1/>"
+"EL DOCUMENTO Y LAS VERSIONES MODIFICADAS DEL MISMO SE PROPORCIONAN CON "
+"SUJECIÓN A LOS TÉRMINOS DE LA GFDL, QUEDANDO BIEN ENTENDIDO, ADEMÁS, QUE: <_:"
+"orderedlist-1/>"
 
-#: C/gnome-subtitles.xml:41(firstname)
-msgid "Erin"
-msgstr "Erin"
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:40
+msgid ""
+"<firstname>Erin</firstname> <surname>Bloom</surname> <affiliation> "
+"<orgname>GNOME Documentation Project</orgname> <address> <email>doc-"
+"writer2@gnome.org</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Erin</firstname> <surname>Bloom</surname> <affiliation> "
+"<orgname>Proyecto de documentación de GNOME</orgname> <address> <email>doc-"
+"writer2@gnome.org</email> </address> </affiliation>"
 
-#: C/gnome-subtitles.xml:42(surname)
-msgid "Bloom"
-msgstr "Bloom"
-
-#: C/gnome-subtitles.xml:45(email)
-msgid "doc-writer2@gnome.org"
-msgstr "doc-writer2@gnome.org"
-
-#: C/gnome-subtitles.xml:79(revnumber)
-msgid "gnome-subtitles Manual V1.0"
-msgstr "Manual de gnome-subtitles V1.0"
-
-#: C/gnome-subtitles.xml:80(date)
-msgid "May 2007"
-msgstr "Mayo de 2007"
-
-#: C/gnome-subtitles.xml:82(para)
+#. (itstool) path: revdescription/para
+#: C/index.docbook:82
 msgid "Erin Bloom <email>docwriter2@gnome.org</email>"
 msgstr "Erin Bloom <email>docwriter2@gnome.org</email>"
 
-#: C/gnome-subtitles.xml:90(releaseinfo)
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:78
+msgid ""
+"<revnumber>gnome-subtitles Manual V1.0</revnumber> <date>May 2007</date> <_:"
+"revdescription-1/>"
+msgstr ""
+"<revnumber>Versión 1.0 del manual de gnome-subtitles</revnumber> <date>Mayo "
+"de 2007</date> <_:revdescription-1/>"
+
+#. (itstool) path: articleinfo/releaseinfo
+#: C/index.docbook:90
 msgid "This manual describes version 0.4 of gnome-subtitles"
 msgstr "Este manual describe la versión 0.4 de gnome-subtitles"
 
-#: C/gnome-subtitles.xml:92(title)
+#. (itstool) path: legalnotice/title
+#: C/index.docbook:92
 msgid "Feedback"
 msgstr "Comentarios"
 
-#: C/gnome-subtitles.xml:93(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:93
+#| msgid ""
+#| "To report a bug or make a suggestion regarding the <application>Gnome "
+#| "Subtitles</application> application or this manual, follow the directions "
+#| "in the <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME Feedback "
+#| "Page</ulink>."
 msgid ""
 "To report a bug or make a suggestion regarding the <application>Gnome "
 "Subtitles</application> application or this manual, follow the directions in "
-"the <ulink url=\"ghelp:gnome-feedback\" type=\"help\">GNOME Feedback Page</"
+"the <ulink url=\"help:gnome-feedback\" type=\"help\">GNOME Feedback Page</"
 "ulink>."
 msgstr ""
-"Para informar de un error o realizar alguna sugerencia respecto a la "
-"aplicación <application>Subtítulos de GNOME</application> o este manual, "
-"siga las indicaciones en la <ulink url=\"ghelp:gnome-feedback\" type=\"help"
-"\">página de comentarios de GNOME</ulink>."
+"Para informar de un error o hacer una sugerencia sobre la aplicación "
+"<application>Subtítulos de GNOME</application> o sobre este manual, siga las "
+"instrucciones en la <ulink url=\"ghelp:gnome-feedback\" type=\"help\">Página "
+"de sugerencias de GNOME</ulink>."
 
-#: C/gnome-subtitles.xml:101(primary)
-msgid "Gnome Subtitles"
-msgstr "Subtítulos de GNOME"
+#. (itstool) path: article/indexterm
+#: C/index.docbook:100
+#| msgid "Gnome Subtitles"
+msgid "<primary>Gnome Subtitles</primary>"
+msgstr "<primary>Subtítulos de GNOME</primary>"
 
-#: C/gnome-subtitles.xml:104(primary)
-msgid "gnomesubtitles"
-msgstr "gnomesubtitles"
+#. (itstool) path: article/indexterm
+#: C/index.docbook:103
+msgid "<primary>gnomesubtitles</primary>"
+msgstr "<primary>gnomesubtitles</primary>"
 
-#: C/gnome-subtitles.xml:112(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:112
 msgid "Introduction"
 msgstr "Introducción"
 
-#: C/gnome-subtitles.xml:113(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:113
 msgid ""
 "<application>Gnome Subtitles</application> is a subtitle editor for the "
 "GNOME desktop. <application>Gnome Subtitles</application> supports the most "
@@ -214,137 +247,169 @@ msgstr ""
 "edición, conversión y sincronización de subtítulos. A continuación sus "
 "características."
 
-#: C/gnome-subtitles.xml:119(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:119
 msgid "Subtitle Formats:"
 msgstr "Formatos de subtítulos:"
 
-#: C/gnome-subtitles.xml:121(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:121
 msgid "Advanced Sub Station Alpha"
 msgstr "Sub Station Alpha avanzado"
 
-#: C/gnome-subtitles.xml:122(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:122
 msgid "MicroDVD"
 msgstr "MicroDVD"
 
-#: C/gnome-subtitles.xml:123(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:123
 msgid "MPlayer"
 msgstr "MPlayer"
 
-#: C/gnome-subtitles.xml:124(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:124
 msgid "Mplayer 2"
 msgstr "Mplayer 2"
 
-#: C/gnome-subtitles.xml:125(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:125
 msgid "MPSub"
 msgstr "MPSub"
 
-#: C/gnome-subtitles.xml:126(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:126
 msgid "SubRip"
 msgstr "SubRip"
 
-#: C/gnome-subtitles.xml:127(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:127
 msgid "Sub Station Alpha"
 msgstr "Sub Station Alpha"
 
-#: C/gnome-subtitles.xml:128(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:128
 msgid "SubViewer 1.0"
 msgstr "SubViewer 1.0"
 
-#: C/gnome-subtitles.xml:129(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:129
 msgid "SubViewer 2.0"
 msgstr "SubViewer 2.0"
 
-#: C/gnome-subtitles.xml:132(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:132
 msgid "Built-in Video Preview"
 msgstr "Previsualización del video integrada"
 
-#: C/gnome-subtitles.xml:134(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:134
 msgid "Uses mplayer as the backend"
 msgstr "Usa mplayer como motor"
 
-#: C/gnome-subtitles.xml:135(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:135
 msgid "Video length and current position display"
 msgstr "Duración del vídeo y posición actual"
 
-#: C/gnome-subtitles.xml:136(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:136
 msgid "Set subtitle timings based on video position"
 msgstr "Establecer temporización del subtítulo basado en la posición del video"
 
-#: C/gnome-subtitles.xml:137(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:137
 msgid "Automatically select video when opening subtitles"
 msgstr "Seleccionar automáticamente un video al abrir los subtítulos"
 
-#: C/gnome-subtitles.xml:141(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:141
 msgid "User Interface"
 msgstr "Interfaz de usuario"
 
-#: C/gnome-subtitles.xml:143(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:143
 msgid "WYSIWYG-What you see is what you get"
 msgstr "WYSIWYG-Lo que ve es lo que obtiene"
 
-#: C/gnome-subtitles.xml:144(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:144
 msgid "Edit subtitle headers"
 msgstr "Editar las cabeceras del subtítulo"
 
-#: C/gnome-subtitles.xml:145(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:145
 msgid "Find and Replace, including regular expression support"
 msgstr "Buscar y reemplazar, incluyendo soporte de expresiones regulares"
 
-#: C/gnome-subtitles.xml:146(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:146
 msgid "Undo/Redo"
 msgstr "Deshacer/Rehacer"
 
-#: C/gnome-subtitles.xml:150(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:150
 msgid "Timing Operations"
 msgstr "Operaciones de temporización"
 
-#: C/gnome-subtitles.xml:152(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:152
 msgid "Auto-adjust timings based on 2 correct time/synchronization points"
 msgstr ""
 "Auto-ajustar temporización basándose en 2 tiempos correctos/puntos de "
 "sincronización"
 
-#: C/gnome-subtitles.xml:153(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:153
 msgid "Shift subtitles by a specified delay (which can be based on the video)"
 msgstr ""
 "Desplazar subtítulos con un retraso específico (el cual puede basarse en el "
 "vídeo)"
 
-#: C/gnome-subtitles.xml:154(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:154
 msgid "Convert between framerates"
 msgstr "Convertir entre frecuencias de fotogramas por segundos"
 
-#: C/gnome-subtitles.xml:155(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:155
 msgid "Edit times and frames"
 msgstr "Editar tiempos y fotogramas por segundos"
 
-#: C/gnome-subtitles.xml:158(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:158
 msgid "Other Features"
 msgstr "Otras características"
 
-#: C/gnome-subtitles.xml:160(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:160
 msgid "Character coding a subtitle format auto-detection (on opening)"
 msgstr ""
 "Autodetección de codificación de caracteres en el subtítulo (al abrirlo)"
 
-#: C/gnome-subtitles.xml:161(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:161
 msgid "Multiple character encoding choice"
 msgstr "Elección de codificación de caracteres múltiple"
 
-#: C/gnome-subtitles.xml:162(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:162
 msgid "Relaxes subtitle reading, to read subtitles that contain errors"
 msgstr ""
 "Aligerar la lectura del subtítulo, para leer subtítulos que contienen errores"
 
-#: C/gnome-subtitles.xml:178(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:178
 msgid "Getting Started"
 msgstr "Inicio"
 
-#: C/gnome-subtitles.xml:181(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:181
 msgid "To Start <application>Gnome Subtitles</application>"
 msgstr "Para iniciar <application>Subtítulos de GNOME</application>"
 
-#: C/gnome-subtitles.xml:182(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:182
 msgid ""
 "You can start <application><application>Gnome Subtitles</application></"
 "application> in the following ways:"
@@ -352,34 +417,42 @@ msgstr ""
 "Puede iniciar <application><application>Subtítulos de GNOME</application></"
 "application> de las siguientes formas:"
 
-#: C/gnome-subtitles.xml:186(term)
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:186
 msgid "<guimenu>Applications</guimenu> menu"
 msgstr "Menú <guimenu>Aplicaciones</guimenu>"
 
-#: C/gnome-subtitles.xml:188(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:188
+#| msgid ""
+#| "Choose <menuchoice><guisubmenu>Sound &amp; Video</"
+#| "guisubmenu><guimenuitem>Gnome Subtitles</guimenuitem></menuchoice>."
 msgid ""
-"Choose <menuchoice><guisubmenu>Sound &amp; Video</"
-"guisubmenu><guimenuitem>Gnome Subtitles</guimenuitem></menuchoice>."
+"Choose <menuchoice> <guisubmenu>Sound &amp; Video</guisubmenu> "
+"<guimenuitem>Gnome Subtitles</guimenuitem> </menuchoice>."
 msgstr ""
-"Elija <menuchoice><guisubmenu>Sonido y vídeo</"
-"guisubmenu><guimenuitem>Subtítulos de GNOME</guimenuitem></menuchoice>."
+"Elija <menuchoice> <guisubmenu>Sonido y vídeo</guisubmenu> "
+"<guimenuitem>Subtítulos de GNOME</guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:196(term)
+#. (itstool) path: varlistentry/term
+#: C/index.docbook:196
 msgid "Command line"
 msgstr "Línea de comandos"
 
-#: C/gnome-subtitles.xml:198(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:198
 #| msgid ""
 #| "Type <command>gnome-subtitles</command><replaceable>filename</"
-#| "replaceable> and press <keycap>Return</keycap>."
+#| "replaceable> and press <keycap>Enter</keycap>."
 msgid ""
-"Type <command>gnome-subtitles</command><replaceable>filename</replaceable> "
+"Type <command>gnome-subtitles</command> <replaceable>filename</replaceable> "
 "and press <keycap>Enter</keycap>."
 msgstr ""
-"Escriba <command>gnome-subtitles</command><replaceable>nombredearchivo</"
+"Escriba <command>gnome-subtitles</command><replaceable>nombre_de_archivo</"
 "replaceable> y pulse <keycap>Intro</keycap>."
 
-#: C/gnome-subtitles.xml:199(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:199
 msgid ""
 "The <replaceable>filename</replaceable> argument is optional. If specified, "
 "the application will open that file when starting."
@@ -387,50 +460,64 @@ msgstr ""
 "El argumento <replaceable>nombre del archivo</replaceable> es opcional. Si "
 "se especifica, la aplicación abrirá ese archivo al iniciarse."
 
-#: C/gnome-subtitles.xml:206(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:206
 msgid "Working with Files"
 msgstr "Trabajar con archivos"
 
-#: C/gnome-subtitles.xml:208(title) C/gnome-subtitles.xml:210(title)
+#. (itstool) path: sect2/title
+#. (itstool) path: procedure/title
+#: C/index.docbook:208 C/index.docbook:210
 msgid "Creating a new subtitle document"
 msgstr "Crear un documento de subtítulo nuevo"
 
-#: C/gnome-subtitles.xml:212(para)
+#. (itstool) path: step/para
+#: C/index.docbook:212
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>New</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>New</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>File</guisubmenu> <guimenuitem>New</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Archivo</guisubmenu><guimenuitem>Nuevo</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Archivo</guisubmenu> <guimenuitem>Nuevo</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:217(para)
+#. (itstool) path: step/para
+#: C/index.docbook:217
 msgid "A new file should open in the editor"
 msgstr "Debería abrirse un archivo nuevo en el editor"
 
-#: C/gnome-subtitles.xml:222(title) C/gnome-subtitles.xml:224(title)
+#. (itstool) path: sect2/title
+#. (itstool) path: procedure/title
+#: C/index.docbook:222 C/index.docbook:224
 msgid "Opening a file"
 msgstr "Abrir un archivo"
 
-#: C/gnome-subtitles.xml:226(para)
+#. (itstool) path: step/para
+#: C/index.docbook:226
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Open</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Open</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>File</guisubmenu> <guimenuitem>Open</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Archivo</guisubmenu><guimenuitem>Abrir</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Archivo</guisubmenu> <guimenuitem>Abrir</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:231(para) C/gnome-subtitles.xml:262(para)
+#. (itstool) path: step/para
+#: C/index.docbook:231 C/index.docbook:262
 msgid "The Open File window should open"
 msgstr "Debería abrirse la ventana Abrir archivo"
 
-#: C/gnome-subtitles.xml:234(para)
+#. (itstool) path: step/para
+#: C/index.docbook:234
 msgid "Select the subtitle file you wish to open."
 msgstr "Seleccione el archivo de subtítulo que quiere abrir."
 
-#: C/gnome-subtitles.xml:238(para)
-#| msgid ""
-#| "If you want to specify the encoding, choose the appropriate character "
-#| "encoding from the Encoding"
+#. (itstool) path: step/para
+#: C/index.docbook:238
 msgid ""
 "If you want to specify the file's character coding, choose one from the "
 "Character Coding list. If not specified, the caracter coding will be auto "
@@ -440,7 +527,8 @@ msgstr ""
 "apropiada desde Codificación. Si no se especifica, la codificación de "
 "caracteres se detectará automáticamente."
 
-#: C/gnome-subtitles.xml:241(para)
+#. (itstool) path: step/para
+#: C/index.docbook:241
 msgid ""
 "If you want to choose a video to open immediately, choose a video from the "
 "Video list."
@@ -448,7 +536,8 @@ msgstr ""
 "Si quiere elegir un video para abrirlo inmediatamente, elija un video desde "
 "la lista de video."
 
-#: C/gnome-subtitles.xml:246(para)
+#. (itstool) path: note/para
+#: C/index.docbook:246
 msgid ""
 "When selecting a video, you can only choose from the videos in the current "
 "directory. If the video you want to open is not in the same directory as the "
@@ -459,50 +548,66 @@ msgstr ""
 "archivo de subtítulo, puede abrir el vídeo después de abrir el archivo de "
 "subtítulo."
 
-#: C/gnome-subtitles.xml:252(title) C/gnome-subtitles.xml:254(title)
+#. (itstool) path: sect2/title
+#. (itstool) path: procedure/title
+#: C/index.docbook:252 C/index.docbook:254
 msgid "Saving a file"
 msgstr "Guardar un archivo"
 
-#: C/gnome-subtitles.xml:255(para)
+#. (itstool) path: procedure/para
+#: C/index.docbook:255
 msgid ""
 "You can either save a file normally, or use Save As to set different options."
 msgstr ""
 "Puede guardar el archivo normalmente o usar Guardar como para definir "
 "diferentes opciones."
 
-#: C/gnome-subtitles.xml:257(para)
+#. (itstool) path: step/para
+#: C/index.docbook:257
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>File</guisubmenu> <guimenuitem>Save</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Archivo</guisubmenu><guimenuitem>Guardar</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Archivo</guisubmenu> <guimenuitem>Guardar</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:265(para)
+#. (itstool) path: note/para
+#: C/index.docbook:265
 msgid "If you are saving a new file, the Save As window will appear"
 msgstr "Si está guardando un archivo nuevo, aparecerá la ventana Guardar como"
 
-#: C/gnome-subtitles.xml:267(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:267
 msgid "Saving as a new file"
 msgstr "Guardar como un archivo nuevo"
 
-#: C/gnome-subtitles.xml:269(para)
+#. (itstool) path: step/para
+#: C/index.docbook:269
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save As</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Save As</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>File</guisubmenu> <guimenuitem>Save As</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Archivo</guisubmenu><guimenuitem>Guardar como</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Archivo</guisubmenu> <guimenuitem>Guardar "
+"como</guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:274(para)
+#. (itstool) path: step/para
+#: C/index.docbook:274
 msgid "The Save As window should open"
 msgstr "Debería abrirse la ventana Guardar como"
 
-#: C/gnome-subtitles.xml:276(para)
+#. (itstool) path: step/para
+#: C/index.docbook:276
 msgid "Enter a new name for your subtitle file"
 msgstr "Introduzca un nombre nuevo para su archivo de subtítulo"
 
-#: C/gnome-subtitles.xml:277(para)
+#. (itstool) path: step/para
+#: C/index.docbook:277
 msgid ""
 "If you would like to save the file in a different location, browse to the "
 "new location in the file browser"
@@ -510,7 +615,8 @@ msgstr ""
 "Si quisiera guardar el archivo en una ubicación diferente, navegue a la "
 "nueva ubicación en su navegador de archivos."
 
-#: C/gnome-subtitles.xml:279(para)
+#. (itstool) path: step/para
+#: C/index.docbook:279
 msgid ""
 "If you would like to save the file in a format other than the format listed "
 "in the Subtitle Format list, choose a different format."
@@ -519,7 +625,8 @@ msgstr ""
 "la «Lista de formatos de subtítulo», elija un formato diferente."
 
 # Cambio "un archivo" a "el archivo"
-#: C/gnome-subtitles.xml:281(para)
+#. (itstool) path: step/para
+#: C/index.docbook:281
 msgid ""
 "If you would like to save the file in a character encoding other than your "
 "default encoding which is listed, change the encoding in the character "
@@ -529,15 +636,18 @@ msgstr ""
 "las codificaciones predeterminadas listadas, cambie la codificación en la "
 "lista de codificación de caracteres."
 
-#: C/gnome-subtitles.xml:283(para)
+#. (itstool) path: step/para
+#: C/index.docbook:283
 msgid "Click Save"
 msgstr "Pulse Guardar"
 
-#: C/gnome-subtitles.xml:288(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:288
 msgid "Selecting a character encoding"
 msgstr "Seleccionar una codificación de carácter"
 
-#: C/gnome-subtitles.xml:289(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:289
 msgid ""
 "If you use special characters in your subtitle file, you will want to make "
 "sure that your file is saved in an encoding that supports those characters."
@@ -545,7 +655,8 @@ msgstr ""
 "Si usa caracteres especiales en su archivo de subtítulo, querrá asegurarse "
 "de que su archivo se guarda en una codificación que soporta esos caracteres."
 
-#: C/gnome-subtitles.xml:291(para)
+#. (itstool) path: caution/para
+#: C/index.docbook:291
 msgid ""
 "Saving a file in a character encoding that does not support the special "
 "characters will cause loss of character data. This occurs when you try to "
@@ -556,11 +667,13 @@ msgstr ""
 "carácter. Esto sucede cuando intenta guardar caracteres de múltiples bytes "
 "en una codificación de un único byte."
 
-#: C/gnome-subtitles.xml:296(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:296
 msgid "Editing subtitle headers"
 msgstr "Editar las cabeceras del subtítulo"
 
-#: C/gnome-subtitles.xml:299(para)
+#. (itstool) path: procedure/para
+#: C/index.docbook:299
 msgid ""
 "Some subtitle formats have file headers that contain information about the "
 "file. You can edit these fields in <application>Gnome Subtitles</"
@@ -570,37 +683,47 @@ msgstr ""
 "acerca del archivo. Puede editar esos campos en <application>Subtítulos de "
 "GNOME</application>"
 
-#: C/gnome-subtitles.xml:302(para)
+#. (itstool) path: step/para
+#: C/index.docbook:302
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Headers</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>File</guisubmenu><guimenuitem>Headers</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>File</guisubmenu> <guimenuitem>Headers</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Archivo</guisubmenu><guimenuitem>Cabeceras</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Archivo</guisubmenu> <guimenuitem>Cabeceras</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:307(para)
+#. (itstool) path: step/para
+#: C/index.docbook:307
 msgid "The Headers window will open. It has 4 tabs on it."
 msgstr "Se abrirá la ventana de las cabeceras. Tiene 4 pestañas."
 
-#: C/gnome-subtitles.xml:309(para)
+#. (itstool) path: step/para
+#: C/index.docbook:309
 msgid "Select the tab that corresponds to the format of your subtitle file"
 msgstr ""
 "Seleccione la pestaña que corresponda al formato de su archivo de subtítulo"
 
-#: C/gnome-subtitles.xml:310(para)
+#. (itstool) path: step/para
+#: C/index.docbook:310
 msgid "Fill in appropriate fields."
 msgstr "Rellenar los campos apropiados."
 
-#: C/gnome-subtitles.xml:311(para)
+#. (itstool) path: step/para
+#: C/index.docbook:311
 msgid "When you are done entering header data in, click OK"
 msgstr ""
 "Cuando haya terminado de introducir información en la cabecera, pulse Aceptar"
 
-#: C/gnome-subtitles.xml:317(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:317
 msgid "Working with Subtitles"
 msgstr "Trabajar con subtítulos"
 
-#: C/gnome-subtitles.xml:318(para)
+#. (itstool) path: note/para
+#: C/index.docbook:318
 msgid ""
 "This help lists the keyboard shortcuts to accomplish tasks. All of the tasks "
 "can also be accomplished by using the Edit menu instead of keyboard "
@@ -610,45 +733,47 @@ msgstr ""
 "tareas también se pueden completar usando el menú Editar en lugar de las "
 "combinaciones de teclas."
 
-#: C/gnome-subtitles.xml:321(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:321
 msgid "Adding a Subtitle"
 msgstr "Añadir un subtítulo"
 
-#: C/gnome-subtitles.xml:322(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:322
 msgid "New subtitles are added either before or after the current subtitle."
 msgstr "Los subtítulos nuevos se añaden antes o después del subtítulo actual."
 
-#: C/gnome-subtitles.xml:324(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:324
 msgid "To add a new subtitle after the current subtitle"
 msgstr "Añadir un subtítulo nuevo después del subtítulo actual"
 
-#: C/gnome-subtitles.xml:326(para)
-#| msgid ""
-#| "Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</"
-#| "keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:326
 msgid ""
 "Type <keycap>Insert</keycap> or <keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 msgstr ""
 "Pulse <keycap>Ins</keycap> o <keycap>Ctrl</keycap>+<keycap>Intro</keycap>"
 
-#: C/gnome-subtitles.xml:330(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:330
 msgid "To add a new subtitle before the current subtitle"
 msgstr "Añadir un subtítulo nuevo antes del subtítulo actual"
 
-#: C/gnome-subtitles.xml:332(para)
-#| msgid ""
-#| "Type <keycap>Shift</keycap>-<keycap>Control</keycap>-<keycap>Return</"
-#| "keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:332
 msgid ""
 "Type <keycap>Shift</keycap>+<keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 msgstr ""
 "Pulse <keycap>Mayús</keycap>+<keycap>Ctrl</keycap>+<keycap>Intro</keycap>"
 
-#: C/gnome-subtitles.xml:337(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:337
 msgid "Moving between subtitles"
 msgstr "Desplazarse entre subtítulos"
 
-#: C/gnome-subtitles.xml:338(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:338
 msgid ""
 "To select subtitles you can either use your mouse to click the subtitle , "
 "or, when your cursor is in the edit window, you can use keyboard shortcuts "
@@ -658,41 +783,43 @@ msgstr ""
 "cuando el cursor está en la ventana de edición, puede usar los atajos del "
 "teclado para desplazarse entre las subtítulos"
 
-#: C/gnome-subtitles.xml:342(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:342
 msgid "To go to the next subtitle"
 msgstr "Ir al siguiente subtítulo"
 
-#: C/gnome-subtitles.xml:344(para)
-#| msgid "Type <keycap>Control</keycap>-<keycap>Page Down</keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:344
 msgid "Type <keycap>Ctrl</keycap>+<keycap>Page Down</keycap>"
 msgstr "Pulse <keycap>Control</keycap>+<keycap>Av Pág</keycap>"
 
-#: C/gnome-subtitles.xml:348(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:348
 msgid "To move to the previous subtitle"
 msgstr "Ir al subtítulo anterior"
 
-#: C/gnome-subtitles.xml:350(para)
-#| msgid "Type <keycap>Control</keycap>-<keycap>Page Up</keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:350
 msgid "Type <keycap>Ctrl</keycap>+<keycap>Page Up</keycap>"
 msgstr "Pulse <keycap>Control</keycap>+<keycap>Re Pág</keycap>"
 
-#: C/gnome-subtitles.xml:355(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:355
 msgid "Removing Subtitle(s)"
 msgstr "Eliminando subtítulo(s)"
 
-#: C/gnome-subtitles.xml:356(para)
+#. (itstool) path: step/para
+#: C/index.docbook:356
 msgid "Type <keycap>Delete</keycap>"
 msgstr "Pulse <keycap>Suprimir</keycap>"
 
-#: C/gnome-subtitles.xml:359(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:359
 msgid "Working with Multiple Subtitles"
 msgstr "Trabajar con múltiples subtítulos"
 
-#: C/gnome-subtitles.xml:360(para)
-#| msgid ""
-#| "Sometimes you will want to select multiple subtitles. Use <keycap>Shift</"
-#| "keycap> to select sequenctial subtitles, and <keycap>Control</keycap> to "
-#| "select non-sequention subtitles"
+#. (itstool) path: sect2/para
+#: C/index.docbook:360
 msgid ""
 "Sometimes you will want to select multiple subtitles. Use <keycap>Shift</"
 "keycap> to select sequential subtitles, and <keycap>Ctrl</keycap> to select "
@@ -702,36 +829,41 @@ msgstr ""
 "para seleccionar subtítulos secuenciales, y <keycap>Control</keycap> para "
 "seleccionar subtítulos no secuenciales"
 
-#: C/gnome-subtitles.xml:362(para)
-#| msgid ""
-#| "To select all subtitles type <keycap>Control</keycap>-<keycap>A</keycap>"
+#. (itstool) path: sect2/para
+#: C/index.docbook:362
 msgid "To select all subtitles type <keycap>Ctrl</keycap>+<keycap>A</keycap>"
 msgstr ""
 "Para seleccionar todos los tipos de subtítulo pulse <keycap>Control</keycap>"
 "+<keycap>A</keycap>"
 
-#: C/gnome-subtitles.xml:365(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:365
 msgid "Editing Text"
 msgstr "Editar texto"
 
-#: C/gnome-subtitles.xml:366(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:366
 msgid "To edit text in a subtitle"
 msgstr "Editar texto en un subtítulo"
 
-#: C/gnome-subtitles.xml:368(para)
+#. (itstool) path: step/para
+#: C/index.docbook:368
 msgid "Select the subtitle"
 msgstr "Seleccionar el subtítulo"
 
-#: C/gnome-subtitles.xml:369(para)
+#. (itstool) path: step/para
+#: C/index.docbook:369
 msgid "Click the edit window to move the cursor into the edit window"
 msgstr ""
 "Pulse en la ventana de edición para mover el curso en ventana de edición"
 
-#: C/gnome-subtitles.xml:373(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:373
 msgid "Text format"
 msgstr "Formato de texto"
 
-#: C/gnome-subtitles.xml:374(para)
+#. (itstool) path: note/para
+#: C/index.docbook:374
 msgid ""
 "A type format (bold, italics, underline) can be applied to the whole line "
 "only. Currently, if you want to have only certain characters formatted "
@@ -742,27 +874,28 @@ msgstr ""
 "formateados de forma especial, deberá editar el archivo de subtítulo en un "
 "editor de texto."
 
-#: C/gnome-subtitles.xml:379(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:379
 msgid "Undoing and Redoing"
 msgstr "Deshacer y rehacer"
 
-#: C/gnome-subtitles.xml:380(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:380
 msgid "To undo an action"
 msgstr "Deshacer una acción"
 
-#: C/gnome-subtitles.xml:380(para)
-#| msgid "Type <keycap>Control</keycap>- <keycap>Z</keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:380
 msgid "Type <keycap>Ctrl</keycap>+ <keycap>Z</keycap>"
 msgstr "Pulse <keycap>Control</keycap>+ <keycap>Z</keycap>"
 
-#: C/gnome-subtitles.xml:382(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:382
 msgid "To redo an action"
 msgstr "Rehacer una acción"
 
-#: C/gnome-subtitles.xml:382(para)
-#| msgid ""
-#| "Type <keycap>Control</keycap>- <keycap>Y</keycap> or <keycap>Control</"
-#| "keycap>-<keycap>Shift</keycap>-<keycap>Z </keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:382
 msgid ""
 "Type <keycap>Ctrl</keycap>+ <keycap>Y</keycap> or <keycap>Ctrl</keycap>"
 "+<keycap>Shift</keycap>+<keycap>Z </keycap>"
@@ -770,50 +903,58 @@ msgstr ""
 "Pulse <keycap>Control</keycap>+ <keycap>Y</keycap> o <keycap>Control</keycap>"
 "+<keycap>Mayús</keycap>+<keycap>Z</keycap>"
 
-#: C/gnome-subtitles.xml:387(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:387
 msgid "Cutting, Copying, and Pasting"
 msgstr "Cortar, copiar y pegar"
 
-#: C/gnome-subtitles.xml:388(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:388
 msgid "You can cut, copy, and paste the text in a subtitle."
 msgstr "Puede cortar, copiar y pegar texto en un subtítulo."
 
-#: C/gnome-subtitles.xml:389(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:389
 msgid "To copy text"
 msgstr "Para copiar texto"
 
-#: C/gnome-subtitles.xml:389(para)
-#| msgid "<keycap>Control</keycap>- <keycap>C</keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:389
 msgid "<keycap>Ctrl</keycap>+ <keycap>C</keycap>"
 msgstr "<keycap>Control</keycap>+ <keycap>C</keycap>"
 
-#: C/gnome-subtitles.xml:391(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:391
 msgid "To cut text"
 msgstr "Para cortar texto"
 
-#: C/gnome-subtitles.xml:391(para)
-#| msgid "<keycap>Control</keycap>- <keycap>X</keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:391
 msgid "<keycap>Ctrl</keycap>+ <keycap>X</keycap>"
 msgstr "<keycap>Control</keycap>+ <keycap>X</keycap>"
 
-#: C/gnome-subtitles.xml:393(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:393
 msgid "To paste text"
 msgstr "Para pegar texto"
 
-#: C/gnome-subtitles.xml:393(para)
-#| msgid "<keycap>Control</keycap>- <keycap>V</keycap>"
+#. (itstool) path: step/para
+#: C/index.docbook:393
 msgid "<keycap>Ctrl</keycap>+ <keycap>V</keycap>"
 msgstr "<keycap>Control</keycap>+ <keycap>V</keycap>"
 
-#: C/gnome-subtitles.xml:420(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:420
 msgid "Manipulating Subtitles"
 msgstr "Manipulando los subtítulos"
 
-#: C/gnome-subtitles.xml:422(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:422
 msgid "Setting subtitle units"
 msgstr "Definir las unidades del subtítulo"
 
-#: C/gnome-subtitles.xml:423(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:423
 msgid ""
 "In <application>Gnome Subtitles</application> you can set and adjust "
 "subtitles in time units (minutes and seconds) or in frame units. The default "
@@ -823,35 +964,47 @@ msgstr ""
 "subtítulos en unidades de tiempo (minutos y segundos) o unidades de "
 "fotogramas. La unidad predeterminada es el tiempo."
 
-#: C/gnome-subtitles.xml:425(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:425
 msgid "To use Frame units"
 msgstr "Usar unidades de fotogramas por segundo"
 
-#: C/gnome-subtitles.xml:426(para)
+#. (itstool) path: step/para
+#: C/index.docbook:426
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Frames</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Frames</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>View</guisubmenu> <guimenuitem>Frames</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Ver</guisubmenu><guimenuitem>Fotogramas</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Ver</guisubmenu> <guimenuitem>Fotogramas</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:430(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:430
 msgid "To use Time units"
 msgstr "Usar unidades de tiempo"
 
-#: C/gnome-subtitles.xml:431(para)
+#. (itstool) path: step/para
+#: C/index.docbook:431
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Times</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>View</guisubmenu><guimenuitem>Times</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>View</guisubmenu> <guimenuitem>Times</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Ver</guisubmenu><guimenuitem>Tiempos</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Ver</guisubmenu> <guimenuitem>Tiempos</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:437(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:437
 msgid "Adjusting Timings"
 msgstr "Ajustar los tiempos"
 
-#: C/gnome-subtitles.xml:439(para)
+#. (itstool) path: step/para
+#: C/index.docbook:439
 msgid ""
 "If you want to adjust the timings of only some subtitles, select the "
 "subtitles that you want to adjust the timing of"
@@ -859,15 +1012,20 @@ msgstr ""
 "Si quiere ajustar la temporización de sólo algunos subtítulos, seleccione "
 "los subtítulos en los que desee ajustar los tiempos"
 
-#: C/gnome-subtitles.xml:441(para)
+#. (itstool) path: step/para
+#: C/index.docbook:441
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Adjust</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Adjust</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>Timings</guisubmenu> <guimenuitem>Adjust</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Tiempos</guisubmenu><guimenuitem>Ajustar</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Tiempos</guisubmenu> <guimenuitem>Ajustar</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:445(para)
+#. (itstool) path: step/para
+#: C/index.docbook:445
 msgid ""
 "Choose the new starting time of the first subtitle and the new starting time "
 "of the last subtitle"
@@ -875,11 +1033,13 @@ msgstr ""
 "Elija un nuevo tiempo de inicio para el primer subtitulo y un nuevo inicio "
 "para el último subtítulo"
 
-#: C/gnome-subtitles.xml:450(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:450
 msgid "Shifting Timings"
 msgstr "Desplazar los tiempos"
 
-#: C/gnome-subtitles.xml:451(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:451
 msgid ""
 "Shifting timings allows you to moves one or more subtitles ahead or behind "
 "by a specific amount. Unlike the Adjust subtitles feature, Shifting "
@@ -889,11 +1049,13 @@ msgstr ""
 "una cantidad específica. A diferencia de la característica Ajustar "
 "subtítulos, Desplazar subtítulos no afecta la duración de los mismos."
 
-#: C/gnome-subtitles.xml:454(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:454
 msgid "To use shift subtitles"
 msgstr "Desplazar subtítulos"
 
-#: C/gnome-subtitles.xml:455(para)
+#. (itstool) path: step/para
+#: C/index.docbook:455
 msgid ""
 "Select which subtitle(s) you want to shift. If you want to shift the time/"
 "frame of one subtitle and/or all subtitles before or after a specific "
@@ -905,15 +1067,20 @@ msgstr ""
 "subtítulo específico, seleccione ese subtítulo. Si quiere desplazar más de "
 "un subtítulo específico, seleccione todos los subtítulos que desee desplazar."
 
-#: C/gnome-subtitles.xml:458(para)
+#. (itstool) path: step/para
+#: C/index.docbook:458
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Shift</"
+#| "guimenuitem></menuchoice>."
 msgid ""
-"Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Shift</"
-"guimenuitem></menuchoice>."
+"Go to <menuchoice> <guisubmenu>Timings</guisubmenu> <guimenuitem>Shift</"
+"guimenuitem> </menuchoice>."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Tiempos</guisubmenu><guimenuitem>Desplazar</"
-"guimenuitem></menuchoice>."
+"Vaya a <menuchoice> <guisubmenu>Tiempos</guisubmenu> <guimenuitem>Desplazar</"
+"guimenuitem> </menuchoice>."
 
-#: C/gnome-subtitles.xml:462(para)
+#. (itstool) path: step/para
+#: C/index.docbook:462
 msgid ""
 "Enter in the amount of time (or frames, if you are using the frame unit) to "
 "adjust your subtitles by. If you want to move the subtitles back, enter a "
@@ -923,19 +1090,23 @@ msgstr ""
 "fotogramas) para ajustar sus subtítulos. Si quiere atrasar los subtítulos, "
 "introduzca un valor negativo, de lo contrario, introduzca un valor positivo."
 
-#: C/gnome-subtitles.xml:465(para)
+#. (itstool) path: step/para
+#: C/index.docbook:465
 msgid "Select how you want to shift your subtitles."
 msgstr "Seleccione cuánto quiere desplazar sus subtítulos."
 
-#: C/gnome-subtitles.xml:466(para)
+#. (itstool) path: step/para
+#: C/index.docbook:466
 msgid "Click Shift to shift the subtitles."
 msgstr "Pulse Mayús para desplazar los subtítulos."
 
-#: C/gnome-subtitles.xml:470(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:470
 msgid "Setting the Input and Video Framerates"
 msgstr "Establecer las frecuencias de fotogramas de entrada y del vídeo"
 
-#: C/gnome-subtitles.xml:471(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:471
 msgid ""
 "When you open a video, <application>Gnome Subtitles</application> does not "
 "automatically set the framerate of the video."
@@ -943,7 +1114,8 @@ msgstr ""
 "Al abrir un vídeo, <application>Subtítulos de GNOME</application> no "
 "establece automáticamente la frecuencia de fotogramas del vídeo."
 
-#: C/gnome-subtitles.xml:472(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:472
 msgid ""
 "<application>Gnome Subtitles</application> manipulates subtitles based on "
 "time, regardless of view mode. Therefore, when you change the video frame "
@@ -956,7 +1128,8 @@ msgstr ""
 "application> ajusta los fotogramas para compensar el cambio. La duración del "
 "subtítulo permanece igual que antes."
 
-#: C/gnome-subtitles.xml:475(para)
+#. (itstool) path: caution/para
+#: C/index.docbook:475
 msgid ""
 "If your subtitle format uses frames to determine when a subtitle is dispayed "
 "(MicroDVD), changing the video framerate may cause your subtitles to lose "
@@ -966,69 +1139,95 @@ msgstr ""
 "un subtítulo (MicroDVD), cambiar los fotogramas por segundo del vídeo puede "
 "hacer que sus subtítulos pierdan la sincronización."
 
-#: C/gnome-subtitles.xml:477(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:477
 msgid "To set the video framerate"
 msgstr "Establecer la frecuencia de fotogramas del vídeo"
 
-#: C/gnome-subtitles.xml:478(para)
+#. (itstool) path: step/para
+#: C/index.docbook:478
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Video "
+#| "Frame Rate</guimenuitem></menuchoice> and select the appropriate "
+#| "framerate."
 msgid ""
-"Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Video Frame "
-"Rate</guimenuitem></menuchoice> and select the appropriate framerate."
+"Go to <menuchoice> <guisubmenu>Timings</guisubmenu> <guimenuitem>Video Frame "
+"Rate</guimenuitem> </menuchoice> and select the appropriate framerate."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Tiempos</guisubmenu><guimenuitem>Frecuencia de "
-"los fotogramas del vídeo</guimenuitem></menuchoice> y seleccione los "
+"Vaya a <menuchoice> <guisubmenu>Tiempos</guisubmenu> <guimenuitem>Frecuencia "
+"de los fotogramas del vídeo</guimenuitem> </menuchoice> y seleccione los "
 "frecuencia de fotogramas apropiada."
 
-#: C/gnome-subtitles.xml:483(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:483
 msgid "To set the input framerate"
 msgstr "Establecer los fotogramas de entrada"
 
-#: C/gnome-subtitles.xml:484(para)
+#. (itstool) path: step/para
+#: C/index.docbook:484
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Input "
+#| "Frame Rate</guimenuitem></menuchoice> and select the appropriate "
+#| "framerate."
 msgid ""
-"Go to <menuchoice><guisubmenu>Timings</guisubmenu><guimenuitem>Input Frame "
-"Rate</guimenuitem></menuchoice> and select the appropriate framerate."
+"Go to <menuchoice> <guisubmenu>Timings</guisubmenu> <guimenuitem>Input Frame "
+"Rate</guimenuitem> </menuchoice> and select the appropriate framerate."
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Tiempos</guisubmenu><guimenuitem>Frecuencia del "
-"fotograma de entrada</guimenuitem></menuchoice> y seleccione la frecuencia "
-"de fotogramas adecuada."
+"Vaya a <menuchoice> <guisubmenu>Tiempos</guisubmenu> <guimenuitem>Frecuencia "
+"del fotograma de entrada</guimenuitem> </menuchoice> y seleccione la "
+"frecuencia de fotogramas adecuada."
 
-#: C/gnome-subtitles.xml:493(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:493
 msgid "Working with Videos"
 msgstr "Trabajar con vídeos"
 
-#: C/gnome-subtitles.xml:495(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:495
 msgid "Opening and Closing a Video"
 msgstr "Abrir y cerrar un vídeo"
 
-#: C/gnome-subtitles.xml:497(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:497
 msgid "To open a video"
 msgstr "Abrir un vídeo"
 
-#: C/gnome-subtitles.xml:498(para)
+#. (itstool) path: step/para
+#: C/index.docbook:498
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Open</"
+#| "guimenuitem></menuchoice>"
 msgid ""
-"Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Open</"
-"guimenuitem></menuchoice>"
+"Go to <menuchoice> <guisubmenu>Video</guisubmenu> <guimenuitem>Open</"
+"guimenuitem> </menuchoice>"
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Abrir</"
-"guimenuitem></menuchoice>"
+"Vaya a <menuchoice> <guisubmenu>Vídeo</guisubmenu> <guimenuitem>Abrir</"
+"guimenuitem> </menuchoice>"
 
-#: C/gnome-subtitles.xml:505(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:505
 msgid "To close a video"
 msgstr "Cerrar un vídeo"
 
-#: C/gnome-subtitles.xml:506(para)
+#. (itstool) path: step/para
+#: C/index.docbook:506
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Close</"
+#| "guimenuitem></menuchoice>"
 msgid ""
-"Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Close</"
-"guimenuitem></menuchoice>"
+"Go to <menuchoice> <guisubmenu>Video</guisubmenu> <guimenuitem>Close</"
+"guimenuitem> </menuchoice>"
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Cerrar</"
-"guimenuitem></menuchoice>"
+"Vaya a <menuchoice> <guisubmenu>Vídeo</guisubmenu> <guimenuitem>Cerrar</"
+"guimenuitem> </menuchoice>"
 
-#: C/gnome-subtitles.xml:514(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:514
 msgid "Playing back"
 msgstr "Reproducir"
 
-#: C/gnome-subtitles.xml:515(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:515
 msgid ""
 "<application>Gnome Subtitles</application> will play the video in the view "
 "window with your subtitles."
@@ -1036,31 +1235,40 @@ msgstr ""
 "<application>Subtítulos de GNOME</application> ejecutará el vídeo con sus "
 "subtítulos en la ventana de visualización."
 
-#: C/gnome-subtitles.xml:518(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:518
 msgid "Seeking to the Selection"
 msgstr "Buscar en la selección"
 
-#: C/gnome-subtitles.xml:519(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:519
 msgid "You can go to the point in the loaded video where a subtitle starts"
 msgstr "Puede ir al punto en el vídeo cargado donde se inicia el subtítulo"
 
-#: C/gnome-subtitles.xml:521(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:521
 msgid "To seek to a subtitle"
 msgstr "Ir a una cadena en el subtítulo"
 
-#: C/gnome-subtitles.xml:522(para)
+#. (itstool) path: step/para
+#: C/index.docbook:522
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Seek to "
+#| "Selection</guimenuitem></menuchoice>"
 msgid ""
-"Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Seek to "
-"Selection</guimenuitem></menuchoice>"
+"Go to <menuchoice> <guisubmenu>Video</guisubmenu> <guimenuitem>Seek to "
+"Selection</guimenuitem> </menuchoice>"
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Ir a la "
-"selección</guimenuitem></menuchoice>"
+"Vaya a <menuchoice> <guisubmenu>Vídeo</guisubmenu> <guimenuitem>Ir a la "
+"selección</guimenuitem> </menuchoice>"
 
-#: C/gnome-subtitles.xml:530(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:530
 msgid "Setting the Subtitle Start or End Positions"
 msgstr "Definir las posiciones de inicio y final de los subtítulos"
 
-#: C/gnome-subtitles.xml:531(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:531
 msgid ""
 "You can set the subtitles start or end time based on the point at which the "
 "loaded video is paused"
@@ -1068,39 +1276,52 @@ msgstr ""
 "Puede definir el inicio o final de los subtítulos basándose en el punto "
 "donde el vídeo cargado está pausado"
 
-#: C/gnome-subtitles.xml:533(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:533
 msgid "To set subtitle starting time"
 msgstr "Establecer el tiempo de inicio del subtítulo"
 
-#: C/gnome-subtitles.xml:534(para)
+#. (itstool) path: step/para
+#: C/index.docbook:534
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
+#| "Start</guimenuitem></menuchoice>"
 msgid ""
-"Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
-"Start</guimenuitem></menuchoice>"
+"Go to <menuchoice> <guisubmenu>Video</guisubmenu> <guimenuitem>Set Subtitle "
+"Start</guimenuitem> </menuchoice>"
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Vídeo</guisubmenu><guimenuitem>Establecer el "
-"inicio del subtítulo</guimenuitem></menuchoice>"
+"Vaya a <menuchoice> <guisubmenu>Vídeo</guisubmenu> <guimenuitem>Establecer "
+"el inicio del subtítulo</guimenuitem> </menuchoice>"
 
-#: C/gnome-subtitles.xml:541(title)
+#. (itstool) path: procedure/title
+#: C/index.docbook:541
 msgid "To set subtitle ending time"
 msgstr "Establecer el tiempo de final del subtítulo"
 
-#: C/gnome-subtitles.xml:542(para)
+#. (itstool) path: step/para
+#: C/index.docbook:542
+#| msgid ""
+#| "Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
+#| "End</guimenuitem></menuchoice>"
 msgid ""
-"Go to <menuchoice><guisubmenu>Video</guisubmenu><guimenuitem>Set Subtitle "
-"End</guimenuitem></menuchoice>"
+"Go to <menuchoice> <guisubmenu>Video</guisubmenu> <guimenuitem>Set Subtitle "
+"End</guimenuitem> </menuchoice>"
 msgstr ""
-"Ir a <menuchoice><guisubmenu>Vídeo</guisubmenu><guimenuitem>Establecer el "
-"final del subtítulo</guimenuitem></menuchoice>"
+"Vaya a <menuchoice> <guisubmenu>Vídeo</guisubmenu> <guimenuitem>Establecer "
+"el final del subtítulo</guimenuitem> </menuchoice>"
 
-#: C/gnome-subtitles.xml:552(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:552
 msgid "Where to Get Additional Support"
 msgstr "Dónde obtener ayuda adicional"
 
-#: C/gnome-subtitles.xml:554(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:554
 msgid "Forums"
 msgstr "Foros"
 
-#: C/gnome-subtitles.xml:555(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:555
 msgid ""
 "Questions and general discussions should be posted on the <ulink url="
 "\"http://sourceforge.net/forum/?group_id=129996\" type=\"http\">Forum</"
@@ -1110,11 +1331,13 @@ msgstr ""
 "\"http://sourceforge.net/forum/?group_id=129996\" type=\"http\">Foro</ulink> "
 "(no es necesario registrarse)."
 
-#: C/gnome-subtitles.xml:558(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:558
 msgid "Mailing List"
 msgstr "Lista de correo"
 
-#: C/gnome-subtitles.xml:559(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:559
 msgid ""
 "You might get a quick response by asking the <ulink url=\"http://lists."
 "sourceforge.net/lists/listinfo/gnome-subtitles-general\" type=\"http"
@@ -1128,26 +1351,78 @@ msgstr ""
 "mailarchive/forum.php?forum_name=gnome-subtitles-general\" type=\"http"
 "\">archivos</ulink> están disponibles)."
 
-#: C/gnome-subtitles.xml:562(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:562
 msgid "Bugs and Features"
 msgstr "Errores y características"
 
-#: C/gnome-subtitles.xml:563(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:563
+#| msgid ""
+#| "Bugs and Feature Requests can be reported at the official <ulink url="
+#| "\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles\" type="
+#| "\"http\">Gnome Bugzilla</ulink>."
 msgid ""
-"Bugs and Feature Requests can be reported at the official <ulink url="
-"\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles\" type=\"http"
-"\">Gnome Bugzilla</ulink>."
+"Bugs and Feature Requests can be reported in the <ulink url=\"https://gitlab."
+"gnome.org/GNOME/gnome-subtitles/issues/\" type=\"http\">GNOME issue tracker</"
+"ulink>."
 msgstr ""
 "Se debe informar de los errores y de las solicitudes de características en "
-"la <ulink url=\"http://bugzilla.gnome.org/browse.cgi?product=gnome-subtitles"
-"\" type=\"http\">página de seguimiento de errores de GNOME</ulink>."
+"el <ulink url=\"https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/\" "
+"type=\"http\">Gestor de incidencias de GNOME</ulink>."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: C/gnome-subtitles.xml:0(None)
-msgid "translator-credits"
+#. (itstool) path: para/ulink
+#: C/legal.xml:9
+msgid "link"
+msgstr "enlace"
+
+#. (itstool) path: legalnotice/para
+#: C/legal.xml:2
+#| msgid ""
+#| "Permission is granted to copy, distribute and/or modify this document "
+#| "under the terms of the GNU Free Documentation License (GFDL), Version 1.1 "
+#| "or any later version published by the Free Software Foundation with no "
+#| "Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You "
+#| "can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:fdl"
+#| "\">link</ulink> or in the file COPYING-DOCS distributed with this manual."
+msgid ""
+"Permission is granted to copy, distribute and/or modify this document under "
+"the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
+"later version published by the Free Software Foundation with no Invariant "
+"Sections, no Front-Cover Texts, and no Back-Cover Texts. You can find a copy "
+"of the GFDL at this <_:ulink-1/> or in the file COPYING-DOCS distributed "
+"with this manual."
 msgstr ""
-"Francisco Javier <fserrador@gmail.com>, 2011\n"
-"Jorge González <jorgegonz@svn.gnome.org>, 2008-2010"
+"Se concede autorización para copiar, distribuir o modificar este documento "
+"según los términos de la GFDL (GNU Free Documentation Licence), Versión 1.1, "
+"o cualquier otra versión posterior publicada por Free Software Foundation "
+"sin secciones invariables, textos de portada ni textos de contraportada. "
+"Podrá encontrar una copia de la GFDL en este <_:ulink-1/> o en el archivo "
+"COPYING-DOCS distribuido con este manual."
+
+#~ msgid "2007"
+#~ msgstr "2007"
+
+#~ msgid "Erin Bloom"
+#~ msgstr "Erin Bloom"
+
+#~ msgid "Erin"
+#~ msgstr "Erin"
+
+#~ msgid "Bloom"
+#~ msgstr "Bloom"
+
+#~ msgid "doc-writer2@gnome.org"
+#~ msgstr "doc-writer2@gnome.org"
+
+#~ msgid "gnome-subtitles Manual V1.0"
+#~ msgstr "Manual de gnome-subtitles V1.0"
+
+#~ msgid "May 2007"
+#~ msgstr "Mayo de 2007"
+
+#~ msgid "gnomesubtitles"
+#~ msgstr "gnomesubtitles"
 
 #~ msgid "Type <keycap>Insert</keycap> or <keycap>Control-Return</keycap>"
 #~ msgstr "Pulse <keycap>Insertar</keycap> o <keycap>Control-Intro</keycap>"
