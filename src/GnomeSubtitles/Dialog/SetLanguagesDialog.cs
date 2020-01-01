@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2018 Pedro Castro
+ * Copyright (C) 2008-2020 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -80,9 +80,10 @@ public class SetLanguagesDialog : BaseDialog {
 		
 		
 		/* Bottom: info message */
-		
-		Label bottomLabel = Util.CreateLabel("<i>" + Catalog.GetString("For additional languages please install the corresponding package.") + "</i>", 0, 0);
+		string providers = string.Join(", ", Base.SpellLanguages.Providers.ToArray());
+		Label bottomLabel = Util.CreateLabel("<i>" + string.Format(Catalog.GetString("Use your distro's package manager to install additional languages (tip: search for 'spell'). Supported language packs: {0}."), providers) + "</i>", 0, 0);
 		bottomLabel.UseMarkup = true;
+		bottomLabel.Wrap = true;
 		grid.Attach(bottomLabel, 0, 2, 2, 1);
 
 		dialog.ContentArea.Add(grid);

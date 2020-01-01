@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2019 Pedro Castro
+ * Copyright (C) 2008-2020 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,17 +29,23 @@ namespace GnomeSubtitles.Core {
 /* Delegates */
 public delegate void LanguageListHandler (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata);
 
+public delegate void ProviderListHandler (string providerName, string providerDesc, string providerFile, IntPtr userdata);
+
 public class SpellLanguages {
 	private bool enabled = false;
+	private ArrayList providers = null;
 	private ArrayList languages = null;
 	private int activeTextLanguageIndex = -1;
 	private int activeTranslationLanguageIndex = -1;
 
 	private LanguageListHandler languageListHandler = null;
+	private ProviderListHandler providerListHandler = null;
 
 	public SpellLanguages () {
 		languageListHandler = OnLanguageList;
-		GetAvailableLanguages();
+		providerListHandler = OnProviderList;
+		
+		Init();
 		GetEnabledFromConfig();
 	}
 
@@ -51,13 +57,12 @@ public class SpellLanguages {
 
 	/* Public members */
 
-	public ArrayList Languages {
-		get {
-			if (languages == null)
-				GetAvailableLanguages();
+	public ArrayList Providers {
+		get { return providers;	}
+	}
 
-			return languages;
-		}
+	public ArrayList Languages {
+		get { return languages;	}
 	}
 
 	public int ActiveTextLanguageIndex {
@@ -153,27 +158,38 @@ public class SpellLanguages {
 	[DllImport ("libenchant")]
 	static extern void enchant_broker_list_dicts (IntPtr broker, LanguageListHandler cb, IntPtr userdata);
 
+	[DllImport ("libenchant")]
+	static extern void enchant_broker_describe (IntPtr broker, ProviderListHandler cb, IntPtr userdata);
+
 
 	/* Private members */
 
-	private void GetAvailableLanguages () {
-		if (languages == null)
-			Init();
+	private void Init () {
+		/* Providers */
+		providers = new ArrayList();
+		
+		/* Languages */
+		languages = new ArrayList();
+		activeTextLanguageIndex = -1;
+		activeTranslationLanguageIndex = -1;
 
-		FillLanguages();
+		GetProvidersAndLanguages();
 		GetActiveLanguagesFromConfig();
 	}
 
-	private void FillLanguages () {
+	private void GetProvidersAndLanguages () {
 		IntPtr broker = enchant_broker_init ();
 		if (broker == IntPtr.Zero)
 			return;
+
+		enchant_broker_describe (broker, providerListHandler, IntPtr.Zero);
 
 		enchant_broker_list_dicts (broker, languageListHandler, IntPtr.Zero);
 
 		enchant_broker_free(broker);
 		 
 		languages.Sort();
+		Logger.Info("[Spellcheck] Found {0} providers: {1}", providers.Count, string.Join(",", providers.ToArray()));
 		Logger.Info("[Spellcheck] Found {0} languages: {1}", languages.Count, GetLanguageIDsAsString(languages));
 	}
 
@@ -214,11 +230,6 @@ public class SpellLanguages {
 		return -1;
 	}
 
-	private void Init () {
-		languages = new ArrayList();
-		activeTextLanguageIndex = -1;
-		activeTranslationLanguageIndex = -1;
-	}
 
 	/* Event members */
 
@@ -226,6 +237,10 @@ public class SpellLanguages {
 		SpellLanguage language = new SpellLanguage(langTag);
 		if (!languages.Contains(language))
 			languages.Add(language);
+	}
+	
+	private void OnProviderList (string providerName, string providerDesc, string providerFile, IntPtr userdata) {
+		providers.Add(providerName);
 	}
 
 	private void EmitToggleEnabled () {
