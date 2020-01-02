@@ -8,14 +8,14 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
 # Rodrigo <rodhos92@gmail.com>, 2018.
 # Rodrigo Lledó <rodhos92@gmail.com>, 2019.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010-2019.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2010-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-09-03 20:58+0000\n"
-"PO-Revision-Date: 2019-09-09 09:30+0200\n"
+"POT-Creation-Date: 2020-01-01 20:23+0000\n"
+"PO-Revision-Date: 2020-01-02 16:24+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.32.1\n"
+"X-Generator: Gtranslator 3.34.0\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
@@ -57,10 +57,6 @@ msgstr "Subtítulos de GNOME"
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Editor de subtítulos"
-
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
-msgid "Subtitles;Video;"
-msgstr "Subtítulos;Vídeo;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
@@ -1599,10 +1595,15 @@ msgstr "Idioma del texto"
 msgid "Translation Language"
 msgstr "Idioma de traducción"
 
-#. Bottom: info message
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
-msgid "For additional languages please install the corresponding package."
-msgstr "Para idiomas adicionales instale el paquete correspondiente."
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr ""
+"Use el gestor de paquetes de su distribución para instalar idiomas "
+"adicionales (consejo: busque «spell»). Los paquetes de idiomas soportados "
+"son: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1832,6 +1833,12 @@ msgstr "Duración"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Traducción"
+
+#~ msgid "Subtitles;Video;"
+#~ msgstr "Subtítulos;Vídeo;"
+
+#~ msgid "For additional languages please install the corresponding package."
+#~ msgstr "Para idiomas adicionales instale el paquete correspondiente."
 
 #~ msgid ""
 #~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
