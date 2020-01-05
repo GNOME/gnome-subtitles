@@ -1,16 +1,16 @@
 # Polish translation for gnome-subtitles.
-# Copyright © 2007-2019 the gnome-subtitles authors.
+# Copyright © 2007-2020 the gnome-subtitles authors.
 # This file is distributed under the same license as the gnome-subtitles package.
 # Tomasz Sałaciński <tsalacinski@gmail.com>, 2007.
-# Piotr Drąg <piotrdrag@gmail.com>, 2008-2019.
-# Aviary.pl <community-poland@mozilla.org>, 2008-2019.
+# Piotr Drąg <piotrdrag@gmail.com>, 2008-2020.
+# Aviary.pl <community-poland@mozilla.org>, 2008-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-08 11:03+0200\n"
-"PO-Revision-Date: 2019-09-08 11:05+0200\n"
+"POT-Creation-Date: 2020-01-05 17:45+0100\n"
+"PO-Revision-Date: 2020-01-05 17:48+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -21,12 +21,17 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+msgid "Gnome Subtitles"
+msgstr "GNOME Subtitles"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
 #: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Napisy do filmów dla środowiska GNOME"
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
 "allows to create, synchronize, convert and translate subtitles by using a "
@@ -36,7 +41,7 @@ msgstr ""
 "tworzenie, synchronizowanie, konwertowanie i tłumaczenie napisów za pomocą "
 "przyjaznego interfejsu zawierającego podgląd filmu."
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
@@ -45,17 +50,18 @@ msgstr ""
 "Obsługiwane są 22 formaty napisów, w tym SubRip, MicroDVD, FAB Subtitler, "
 "MPlayer, Sub Station Alpha, MPSub i SubViewer."
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
-msgid "Gnome Subtitles"
-msgstr "GNOME Subtitles"
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
+msgid "Main window"
+msgstr "Główne okno"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Edytor napisów"
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
-msgid "Subtitles;Video;"
-msgstr "Napisy;Podpisy;Subtitles;Wideo;Video;Film;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
+msgid "subtitles;video;captions;"
+msgstr "napisy;podpisy;subtitles;wideo;video;film;serial;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
@@ -1575,11 +1581,15 @@ msgstr "Język tekstu"
 msgid "Translation Language"
 msgstr "Język tłumaczenia"
 
-#. Bottom: info message
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
-msgid "For additional languages please install the corresponding package."
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
 msgstr ""
-"Aby móc używać dodatkowych języków, należy zainstalować odpowiednie pakiety."
+"Dodatkowe języki można zainstalować za pomocą menedżera pakietów używanej "
+"dystrybucji (należy szukać pakietów ze „spell” w nazwie). Obsługiwane "
+"pakiety językowe: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
