@@ -9,14 +9,14 @@
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009
 # Djavan Fagundes <djavan@comum.org>, 2011.
 # Bruno Lopes da Silva <brunolopesbldsb@gmail.com>, 2018.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2019.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-09-03 20:58+0000\n"
-"PO-Revision-Date: 2019-09-08 08:59-0300\n"
+"POT-Creation-Date: 2020-01-02 17:05+0000\n"
+"PO-Revision-Date: 2020-01-11 21:17-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -28,12 +28,17 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+msgid "Gnome Subtitles"
+msgstr "GNOME Subtitles"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
 #: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Legendagem de vídeos no ambiente GNOME"
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
 "allows to create, synchronize, convert and translate subtitles by using a "
@@ -43,7 +48,7 @@ msgstr ""
 "criar, sincronizar, converter e traduzir legendas usando uma interface de "
 "usuário amigável com pré-visualização de vídeo."
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
@@ -53,17 +58,19 @@ msgstr ""
 "limitar a: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, "
 "MPSub e SubViewer."
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
-msgid "Gnome Subtitles"
-msgstr "GNOME Subtitles"
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
+msgid "Main window"
+msgstr "Janela principal"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Editor de legendas"
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
-msgid "Subtitles;Video;"
-msgstr "Legendas;Subtitles;Vídeo;Video;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
+#| msgid "Subtitles;Video;"
+msgid "subtitles;video;captions;"
+msgstr "legendas;subtitles;vídeo;captions;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
@@ -1591,10 +1598,14 @@ msgstr "Idioma do texto"
 msgid "Translation Language"
 msgstr "Idioma da tradução"
 
-#. Bottom: info message
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
-msgid "For additional languages please install the corresponding package."
-msgstr "Para idiomas adicionais, por favor instale o pacote correspondente."
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr ""
+"Use o gerenciador de pacotes da sua distribuição para instalar idiomas "
+"adicionais (dica: pesquise por “spell”). Pacotes de idiomas suportados: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1825,6 +1836,9 @@ msgstr "Duração"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "For additional languages please install the corresponding package."
+#~ msgstr "Para idiomas adicionais, por favor instale o pacote correspondente."
 
 #~ msgid ""
 #~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
