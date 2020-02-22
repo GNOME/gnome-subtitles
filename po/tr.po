@@ -1,5 +1,5 @@
 # Turkish translation for gnome-subtitles.
-# Copyright (C) 2009-2019 gnome-subtitles's COPYRIGHT HOLDER
+# Copyright (C) 2009-2020 gnome-subtitles's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-subtitles package.
 #
 # Serkan Yılmaz <syilmaz13@gmail.com>, 2009, 2010.
@@ -7,14 +7,14 @@
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2015.
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2016.
-# Sabri Ünal <libreajans@gmail.com>, 2019.
+# Sabri Ünal <libreajans@gmail.com>, 2019-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-09-04 08:08+0000\n"
-"PO-Revision-Date: 2019-09-05 12:33+0300\n"
+"POT-Creation-Date: 2020-02-17 22:43+0000\n"
+"PO-Revision-Date: 2020-02-19 16:44+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -22,16 +22,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-POOTLE-MTIME: 1429307949.000000\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+msgid "Gnome Subtitles"
+msgstr "Gnome Altyazılar"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
 #: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "GNOME Masaüstü için altyazı düzenleyicisi"
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
 "allows to create, synchronize, convert and translate subtitles by using a "
@@ -42,7 +47,7 @@ msgstr ""
 "kullanarak altyazıları oluşturmanızı, eşzamanlamanızı, dönüştürmenizi ve "
 "çevirmenizi sağlar."
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
@@ -52,17 +57,18 @@ msgstr ""
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub ve "
 "SubViewer."
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
-msgid "Gnome Subtitles"
-msgstr "Gnome Altyazılar"
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
+msgid "Main window"
+msgstr "Ana pencere"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Altyazı Düzenleyici"
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
-msgid "Subtitles;Video;"
-msgstr "Altyazılar;Video;Altyazı;Alt yazı;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
+msgid "subtitles;video;captions;"
+msgstr "altyazılar;video;altyazı;alt yazı;başlıklar;manşetler;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
@@ -1606,10 +1612,14 @@ msgstr "Metin Dilleri"
 msgid "Translation Language"
 msgstr "Çeviri Dili"
 
-#. Bottom: info message
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
-msgid "For additional languages please install the corresponding package."
-msgstr "İlave diller için lütfen karşılık gelen dil dosyalarını yükleyin."
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr ""
+"Ek dilleri yüklemek için dağıtımınızın paket yöneticisini kullanın "
+"(ipucu: 'spell' için arama yapın). Desteklenen dil paketleri: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1838,6 +1848,9 @@ msgstr "Süre"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Çeviri"
+
+#~ msgid "For additional languages please install the corresponding package."
+#~ msgstr "İlave diller için lütfen karşılık gelen dil dosyalarını yükleyin."
 
 #~ msgid ""
 #~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
