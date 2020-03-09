@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2019 Pedro Castro
+ * Copyright (C) 2007-2020 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,12 +82,16 @@ public class PreferencesDialog : BaseDialog {
 		fileOpenDialogGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
 		fileOpenDialogGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
 		
-		fileOpenDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("Character c_oding to use:"), 0, 0.5f), 0, 0, 1, 1);
+		Label fileOpenEncodingLabel = Util.CreateLabel(Catalog.GetString("Character _encoding to use:"), 0, 0.5f);
 		fileOpenEncoding = BuildFileOpenEncodingComboBox();
+		fileOpenEncodingLabel.MnemonicWidget = fileOpenEncoding.Widget;
+		fileOpenDialogGrid.Attach(fileOpenEncodingLabel, 0, 0, 1, 1);
 		fileOpenDialogGrid.Attach(fileOpenEncoding.Widget, 1, 0, 1, 1);
 		
-		fileOpenDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("If auto detection _fails, use:"), 0, 0.5f), 0, 1, 1, 1);
+		Label fileOpenFallbackEncodingLabel = Util.CreateLabel(Catalog.GetString("If auto detection _fails, use:"), 0, 0.5f);
 		fileOpenFallbackEncoding = BuildFileOpenFallbackEncodingComboBox();
+		fileOpenFallbackEncodingLabel.MnemonicWidget = fileOpenFallbackEncoding.Widget;
+		fileOpenDialogGrid.Attach(fileOpenFallbackEncodingLabel, 0, 1, 1, 1);
 		fileOpenDialogGrid.Attach(fileOpenFallbackEncoding.Widget, 1, 1, 1, 1);
 		
 		CheckButton videoAutoChoose = new CheckButton(Catalog.GetString("Automatically choose the _video file to open"));
@@ -104,16 +108,22 @@ public class PreferencesDialog : BaseDialog {
 		fileSaveAsDialogGrid.RowSpacing = WidgetStyles.RowSpacingMedium;
 		fileSaveAsDialogGrid.ColumnSpacing = WidgetStyles.ColumnSpacingMedium;
 		
-		fileSaveAsDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("_Subtitle format to use:"), 0, 0.5f), 0, 0, 1, 1);
+		Label fileSaveFormatLabel = Util.CreateLabel(Catalog.GetString("_Subtitle format to use:"), 0, 0.5f);
 		fileSaveFormat = BuildFileSaveFormatComboBox();
+		fileSaveFormatLabel.MnemonicWidget = fileSaveFormat.Widget;
+		fileSaveAsDialogGrid.Attach(fileSaveFormatLabel, 0, 0, 1, 1);
 		fileSaveAsDialogGrid.Attach(fileSaveFormat.Widget, 1, 0, 1, 1);
 		
-		fileSaveAsDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("Ch_aracter coding to use:"), 0, 0.5f), 0, 1, 1, 1);
+		Label fileSaveEncodingLabel = Util.CreateLabel(Catalog.GetString("Ch_aracter encoding to use:"), 0, 0.5f);
 		fileSaveEncoding = BuildFileSaveEncodingComboBox();
+		fileSaveEncodingLabel.MnemonicWidget = fileSaveEncoding.Widget;
+		fileSaveAsDialogGrid.Attach(fileSaveEncodingLabel, 0, 1, 1, 1);
 		fileSaveAsDialogGrid.Attach(fileSaveEncoding.Widget, 1, 1, 1, 1);
 		
-		fileSaveAsDialogGrid.Attach(Util.CreateLabel(Catalog.GetString("_Newline type to use:"), 0, 0.5f), 0, 2, 1, 1);
+		Label fileSaveNewlineLabel = Util.CreateLabel(Catalog.GetString("_Newline type to use:"), 0, 0.5f);
 		fileSaveNewline = BuildFileSaveNewlineComboBox();
+		fileSaveNewlineLabel.MnemonicWidget = fileSaveNewline.Widget;
+		fileSaveAsDialogGrid.Attach(fileSaveNewlineLabel, 0, 2, 1, 1);
 		fileSaveAsDialogGrid.Attach(fileSaveNewline.Widget, 1, 2, 1, 1);
 		
 		box.Add(Util.CreateFrameWithContent(Catalog.GetString("File Save As Dialog"), fileSaveAsDialogGrid));
@@ -152,7 +162,7 @@ public class PreferencesDialog : BaseDialog {
 		
 		Box videoSeekVBox = new Box(Orientation.Vertical, WidgetStyles.BoxSpacingMedium);
 		
-		CheckButton videoSeekCheckButton = new CheckButton(Catalog.GetString("Seek the video to the selected subtitle when changing timings"));
+		CheckButton videoSeekCheckButton = new CheckButton(Catalog.GetString("_Seek the video to the selected subtitle when changing timings"));
 		videoSeekCheckButton.Active = Base.Config.VideoSeekOnChange;
 		videoSeekCheckButton.Toggled += OnVideoSeekToggled;
 		videoSeekVBox.Add(videoSeekCheckButton);
@@ -190,7 +200,7 @@ public class PreferencesDialog : BaseDialog {
 		Box reactionDelayHBox = new Box(Orientation.Horizontal, 3);
 		bool reactionDelayEnabled = Base.Config.VideoApplyReactionDelay;
 		
-		CheckButton reactionDelayCheckButton = new CheckButton(Catalog.GetString("Subtract"));
+		CheckButton reactionDelayCheckButton = new CheckButton(Catalog.GetString("Subtr_act"));
 		reactionDelayCheckButton.Active = reactionDelayEnabled;
 		reactionDelayCheckButton.Toggled += OnReactionDelayToggled;
 		reactionDelayHBox.Add(reactionDelayCheckButton);
