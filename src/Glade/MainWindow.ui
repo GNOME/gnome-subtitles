@@ -1267,7 +1267,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="label" translatable="yes">Length	</property>
+                            <property name="label" translatable="yes">Duration</property>
                             <attributes>
                               <attribute name="weight" value="bold"/>
                             </attributes>
@@ -1366,7 +1366,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="events">GDK_BUTTON_RELEASE_MASK | GDK_KEY_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
-                            <property name="tooltip_text" translatable="yes">Sets the subtitle Start and End while the video is playing. Keep the button pressed for the duration of each subtitle.	</property>
+                            <property name="tooltip_text" translatable="yes">Sets the subtitle Start and End while the video is playing. Keep the button pressed for the duration of each subtitle.</property>
                             <property name="relief">none</property>
                             <signal name="button-release-event" handler="OnVideoSetSubtitleStartEndButtonRelease" swapped="no"/>
                             <signal name="event" handler="OnVideoSetSubtitleStartEndButtonPress" swapped="no"/>
