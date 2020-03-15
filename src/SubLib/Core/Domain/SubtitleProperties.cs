@@ -24,7 +24,7 @@ namespace SubLib.Core.Domain {
 
 /// <summary>Represents the properties of subtitles.</summary>
 /// <remarks>This class acts as a container which allows you to get and set a
-/// variety of properties. Some of these properties are used in syncronization
+/// variety of properties. Some of these properties are used in synchronization
 /// and timing calculations.</remarks>
 public class SubtitleProperties : ICloneable {
 	private Headers headers = new Headers();
@@ -59,14 +59,14 @@ public class SubtitleProperties : ICloneable {
 
 	/// <summary>The frame rate originally applied to the subtitles.</summary>
 	/// <remarks>When converting between frame rates, this is the frame rate of the subtitles
-	/// when they are opened. This is sometimes refered to as the input frame rate.</remarks>
+	/// when they are opened. This is sometimes referred to as the input frame rate.</remarks>
 	public float OriginalFrameRate {
 		get { return originalFrameRate; }
 	}
 
 	/// <summary>The frame rate currently being used in the subtitles.</summary>
 	/// <remarks>When converting between frame rates, this is the target frame rate of the
-	/// subtitles. This is sometimes refered to as the output frame rate.</remarks>
+	/// subtitles. This is sometimes referred to as the output frame rate.</remarks>
 	public float CurrentFrameRate {
 		get { return currentFrameRate; }
 	}

@@ -97,7 +97,7 @@ internal class SubtitleInput {
 
 		/* The first code page represents the most probable encoding. If any problem occurs when trying to use
 		 * that code page, this problem is registered. The remaining code pages are then tried, and if none works,
-		 * the first occuring error is the one to be reported. */
+		 * the first occurring error is the one to be reported. */
 		Exception firstEncodingException = null;
 		Exception firstSubtitleFormatException = null;
 		int firstCodePage = codePages[0];

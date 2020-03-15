@@ -33,7 +33,7 @@ public class VideoErrorDialog : FileOpenErrorDialog {
 		Logger.Error(exception, "Video error");
 	}
 
-	/* Overriden members */
+	/* Overridden members */
 
 	protected override string GetPrimaryText (string filename) {
 		return primaryTextStart + " " + filename + ".";

@@ -35,7 +35,7 @@ public class FrameRateOperator {
 	/// <summary>Changes the current frame rate of the subtitles.</summary>
 	/// <param name="frameRate">The new frame rate to be used.</param>
 	/// <remarks>This changes the frame rate currently being used with the subtitles, which is sometimes
-	/// refered to as the output frame rate.</remarks>
+	/// referred to as the output frame rate.</remarks>
 	public void ChangeCurrent (float frameRate) {
 		float currentFrameRate = subtitles.Properties.CurrentFrameRate;
 		if (currentFrameRate != frameRate) {
@@ -47,7 +47,7 @@ public class FrameRateOperator {
 	/// <summary>Updates the subtitles' frames using the specified frame rate as the one they had when they were opened.</summary>
 	/// <param name="frameRate">The original subtitles' frame rate.</param>
 	/// <remarks>This results on having the subtitles with the frames they would have if they had been opened with this frame rate.
-	/// The original frame rate is sometimes refered to as the input frame rate.</remarks>
+	/// The original frame rate is sometimes referred to as the input frame rate.</remarks>
 	public void ChangeOriginal (float frameRate) {
 		SubtitleProperties properties = subtitles.Properties;
 		float originalFrameRate = properties.OriginalFrameRate;

@@ -57,7 +57,7 @@ public class FileOpenDialog : BaseDialog {
 	}
 
 
-	/* Overriden members */
+	/* Overridden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Singleton; }

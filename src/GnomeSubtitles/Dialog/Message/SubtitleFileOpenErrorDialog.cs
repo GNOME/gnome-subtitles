@@ -30,7 +30,7 @@ public class SubtitleFileOpenErrorDialog : FileOpenErrorDialog {
 	public SubtitleFileOpenErrorDialog (string filename, Exception exception) : base(filename, exception) {
 	}
 
-	/* Overriden members */
+	/* Overridden members */
 
 	protected override string SecondaryTextFromException (Exception exception) {
 		if (exception is UnknownSubtitleFormatException)
