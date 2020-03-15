@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2020 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ public class AboutDialog : BaseDialog {
 		dialog.Website = "https://gnomesubtitles.org";
 		dialog.WebsiteLabel = dialog.Website;
 		dialog.Comments = Catalog.GetString("Video subtitling for the GNOME desktop");
-		dialog.Copyright = "Copyright © 2006-2019 Pedro Castro";
+		dialog.Copyright = "Copyright © 2006-2020 Pedro Castro";
 		dialog.LicenseType = License.Gpl20;
 
 		dialog.Authors = new string[]{
