@@ -44,7 +44,7 @@ public class TimingsShiftDialog : BaseDialog {
 		Init(BuildDialog());
 	}
 	
-	/* Overriden members */
+	/* Overridden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Document; }

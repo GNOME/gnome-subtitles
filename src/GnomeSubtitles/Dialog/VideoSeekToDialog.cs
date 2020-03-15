@@ -36,7 +36,7 @@ public class VideoSeekToDialog : BaseDialog {
 		Init(BuildDialog());
 	}
 
-	/* Overriden members */
+	/* Overridden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Video; }

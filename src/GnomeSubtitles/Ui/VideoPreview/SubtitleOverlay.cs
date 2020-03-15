@@ -41,7 +41,7 @@ public class SubtitleOverlay {
 		label.Valign = Align.End;
 		label.Justify = Justification.Center;
 		//label.LineWrap = true;
-		//label.LineWrapMode = Pango.WrapMode.WordChar; //We cannot do this anymore. Doing this, a gray rectangle is painted above the subtitle after entering some characteres, on top of the video.
+		//label.LineWrapMode = Pango.WrapMode.WordChar; //We cannot do this anymore. Doing this, a gray rectangle is painted above the subtitle after entering some characters, on top of the video.
 
 		//Yellow text color
 		RGBA labelColor = new RGBA();

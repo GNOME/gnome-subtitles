@@ -45,7 +45,7 @@ public class SearchOperator {
 			return FindForward(options);
 	}
 
-	/// <summary>Replaces all occurences of some text with the specified replacement.</summary>
+	/// <summary>Replaces all occurrences of some text with the specified replacement.</summary>
 	/// <param name="regex">A regular expression used to find the text to be replaced.</param>
 	/// <param name="replacement">The text that will be used as a replacement.</param>
 	/// <param name="lineBreak">The line break to use between multiple lines of text in each subtitle.</param>
@@ -55,7 +55,7 @@ public class SearchOperator {
 		return ReplaceAll(regex, replacement, "\n");
 	}
 
-	/// <summary>Replaces all occurences of some text with the specified replacement.</summary>
+	/// <summary>Replaces all occurrences of some text with the specified replacement.</summary>
 	/// <param name="regex">A regular expression used to find the text to be replaced.</param>
 	/// <param name="replacement">The text that will be used as a replacement.</param>
 	/// <param name="lineBreak">The line break to use between multiple lines of text in each subtitle.</param>

@@ -346,7 +346,7 @@ public class EventHandlers {
 	 *    - Previously we used the GtkButton "pressed" event, however it's now deprecated. It was supposed to be
 	 *      replaced by the GtkWidget "button-press-event" however it doesn't behave the same way. The former
 	 *      is triggered by a left mouse click on a button, however the new one is not. Apparently, buttons
-	 *      are supposed to only trigger the clicked/activated signal when the mouse click is relased and not
+	 *      are supposed to only trigger the clicked/activated signal when the mouse click is released and not
 	 *      when pressed. Therefore, we now use GtkWidget "event" event to capture a mouse button press and
 	 *      "button-release-event" for the button release.
 	 *    - According to the GtkWidget docs, the GDK_BUTTON_RELEASE_MASK mask is required but all seems to work without it.

@@ -26,7 +26,7 @@ namespace GnomeSubtitles.Dialog.Message {
 public abstract class ErrorDialog : MessageDialog {
 
 	/// <summary>Creates a new instance of the <see cref="ErrorDialog" /> class.</summary>
-	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overriden to add buttons.</remarks>
+	/// <remarks><see cref="SetText" /> can be used to set the dialog text, and <see cref="AddButtons" /> overridden to add buttons.</remarks>
 	public ErrorDialog () : base(MessageType.Error) {
 	}
 

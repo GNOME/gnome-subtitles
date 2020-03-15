@@ -53,7 +53,7 @@ public class TimingsSynchronizeDialog : BaseDialog {
 		ConnectEventHandlers();
 	}
 
-	/* Overriden members */
+	/* Overridden members */
 
 	public override DialogScope Scope {
 		get { return DialogScope.Document; }
