@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-05 17:45+0100\n"
-"PO-Revision-Date: 2020-01-05 17:48+0100\n"
+"POT-Creation-Date: 2020-03-15 14:25+0100\n"
+"PO-Revision-Date: 2020-03-15 14:27+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -688,8 +688,9 @@ msgid "Time"
 msgstr "Czas"
 
 #: ../src/Glade/MainWindow.ui.h:76
-msgid "Length\t"
-msgstr "Długość\t"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
+msgstr "Czas trwania"
 
 #: ../src/Glade/MainWindow.ui.h:77
 msgid "Sets the subtitle Start to the current video position"
@@ -702,10 +703,10 @@ msgstr "Ustawia koniec napisu na obecną pozycję wideo"
 #: ../src/Glade/MainWindow.ui.h:79
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
-"pressed for the duration of each subtitle.\t"
+"pressed for the duration of each subtitle."
 msgstr ""
 "Ustawia początek i koniec napisu, kiedy wideo jest odtwarzane. Należy "
-"przytrzymać klawisz przez czas trwania każdego napisu.\t"
+"przytrzymać klawisz przez czas trwania każdego napisu."
 
 #: ../src/Glade/MainWindow.ui.h:80
 msgid "1.0x"
@@ -1425,108 +1426,109 @@ msgid "Translation File Saving"
 msgstr "Zapisywanie pliku tłumaczenia"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-msgid "Character c_oding to use:"
+msgid "Character _encoding to use:"
 msgstr "K_odowanie znaków:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
 msgid "If auto detection _fails, use:"
 msgstr "_Jeśli automatyczne wykrycie się nie powiedzie, należy użyć:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
 msgid "Automatically choose the _video file to open"
 msgstr "Automatyczny wybór pliku _wideo do otwarcia"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
 msgid "File Open Dialog"
 msgstr "Otwarcie pliku"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
 msgid "_Subtitle format to use:"
 msgstr "Format napi_sów:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
-msgid "Ch_aracter coding to use:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+msgid "Ch_aracter encoding to use:"
 msgstr "Kodow_anie znaków:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
 msgid "_Newline type to use:"
 msgstr "Typ _nowego wiersza:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
 msgid "File Save As Dialog"
 msgstr "Zapis pliku jako"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
 msgid "Create a _backup copy of files every"
 msgstr "Tworzenie _kopii zapasowej plików co"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "minutes"
 msgstr "min"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
 msgid "Backup"
 msgstr "Kopia zapasowa"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
-msgid "Seek the video to the selected subtitle when changing timings"
-msgstr "Automatyczne przewijanie wideo do zaznaczonego napisu po zmianie czasu"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr ""
+"Automatyczne prze_wijanie wideo do zaznaczonego napisu po zmianie czasu"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Play"
 msgstr "Odtwarzanie"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
 msgid "ms before the actual start to help review new timings"
 msgstr "ms przed właściwym rozpoczęciem, aby wspomóc sprawdzanie nowych czasów"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
 msgid "Video Seeking"
 msgstr "Przewijanie wideo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
 msgid "Leave"
 msgstr "Opuść"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
 msgstr "ms między napisami podczas wstawiania lub dzielenia"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
 msgstr "Przerwa między napisami"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
-msgid "Subtract"
-msgstr "Wydziel"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+msgid "Subtr_act"
+msgstr "Wy_dziel"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
 msgstr ""
 "ms podczas ustawiania początku/końca napisu w trakcie odtwarzania wideo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
 msgstr "Opóźnienie reakcji"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
 msgstr "Pamiętanie ostatnio użytego kodowania"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
 msgstr "Zachowanie kodowania użytego podczas otwierania pliku"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Keep the format used on file open"
 msgstr "Zachowanie formatu użytego podczas otwierania pliku"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
 msgstr "Pamiętanie ostatnio użytego formatu"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
 msgstr "Pamiętanie ostatnio użytego typu"
 
@@ -1809,10 +1811,6 @@ msgstr "Nr"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
 msgstr "Koniec"
-
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
-msgid "Duration"
-msgstr "Czas trwania"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"

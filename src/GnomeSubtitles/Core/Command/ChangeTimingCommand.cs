@@ -79,7 +79,7 @@ public class ChangeStartCommand : ChangeTimingCommand {
 	public ChangeStartCommand (TimeSpan time, bool seekAfterChange): base(time, description, seekAfterChange) {
 	}
 
-	/* Overriden methods */
+	/* Overridden methods */
 
 	protected override TimeSpan GetPreviousTime () {
 		return subtitle.Times.Start;

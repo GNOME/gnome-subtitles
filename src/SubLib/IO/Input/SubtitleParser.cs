@@ -555,7 +555,7 @@ internal class SubtitleParser {
 		return new Regex(subtitleInExpression, RegexOptions.IgnoreCase);
 	}
 
-	// Used when a subtitle format suppports both times and frames
+	// Used when a subtitle format supports both times and frames
 	private Regex CreateSubtitleRegex(SubtitleFormat format, TimingMode timingMode) {
 		string subtitleInExpression;
 		if (timingMode == TimingMode.Times)

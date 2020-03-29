@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-01-02 17:05+0000\n"
-"PO-Revision-Date: 2020-01-03 12:42+0100\n"
+"POT-Creation-Date: 2020-03-09 22:36+0000\n"
+"PO-Revision-Date: 2020-03-26 15:43+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.34.0\n"
+"X-Generator: Gtranslator 3.36.0\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
@@ -65,7 +65,6 @@ msgstr "Editor de subtítulos"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
-#| msgid "Subtitles;Video;"
 msgid "subtitles;video;captions;"
 msgstr "subtítulos;vídeo;"
 
@@ -706,7 +705,8 @@ msgid "Time"
 msgstr "Tiempo"
 
 #: ../src/Glade/MainWindow.ui.h:76
-msgid "Length\t"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
 msgstr "Duración"
 
 #: ../src/Glade/MainWindow.ui.h:77
@@ -718,12 +718,15 @@ msgid "Sets the subtitle End to the current video position"
 msgstr "Establece el fin del subtítulo en la posición actual del vídeo"
 
 #: ../src/Glade/MainWindow.ui.h:79
+#| msgid ""
+#| "Sets the subtitle Start and End while the video is playing. Keep the "
+#| "button pressed for the duration of each subtitle.\t"
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
-"pressed for the duration of each subtitle.\t"
+"pressed for the duration of each subtitle."
 msgstr ""
 "Establece el inicio y el fin del subtítulo mientras se reproduce el vídeo. "
-"Mantenga pulsado el botón para la duración de cada subtítulo.\t"
+"Mantenga pulsado el botón para la duración de cada subtítulo."
 
 #: ../src/Glade/MainWindow.ui.h:80
 msgid "1.0x"
@@ -1450,108 +1453,112 @@ msgid "Translation File Saving"
 msgstr "Guardado de archivo de traducción"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-msgid "Character c_oding to use:"
+#| msgid "Character c_oding to use:"
+msgid "Character _encoding to use:"
 msgstr "C_odificación de caracteres que usar:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
 msgid "If auto detection _fails, use:"
 msgstr "Si la autodetección de la codificación de caracteres _falla, usar:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
 msgid "Automatically choose the _video file to open"
 msgstr "Seleccionar un _vídeo para abrir automáticamente"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
 msgid "File Open Dialog"
 msgstr "Diálogo de abrir archivo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
 msgid "_Subtitle format to use:"
 msgstr "Formato del _subtítulo que usar:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
-msgid "Ch_aracter coding to use:"
-msgstr "C_odificación de caracteres que usar:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#| msgid "Ch_aracter coding to use:"
+msgid "Ch_aracter encoding to use:"
+msgstr "Codificación de c_aracteres que usar:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
 msgid "_Newline type to use:"
 msgstr "Tipo de _salto de linea que usar:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
 msgid "File Save As Dialog"
 msgstr "Diálogo de guardar cómo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
 msgid "Create a _backup copy of files every"
 msgstr "Crear una copia de _respaldo de los archivos cada"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "minutes"
 msgstr "minutos"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
 msgid "Backup"
 msgstr "Respaldo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
-msgid "Seek the video to the selected subtitle when changing timings"
-msgstr "Buscar en el vídeo el subtítulo seleccionado al cambiar los tiempos"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+#| msgid "Seek the video to the selected subtitle when changing timings"
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr "_Buscar en el vídeo el subtítulo seleccionado al cambiar los tiempos"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Play"
 msgstr "Reproducir"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
 msgid "ms before the actual start to help review new timings"
 msgstr "ms antes del inicio actual para ayudar a revisar los nuevos tiempos"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
 msgid "Video Seeking"
 msgstr "Búsqueda en el vídeo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
 msgid "Leave"
 msgstr "Salir"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
 msgstr "ms entre subtítulos al insertar o dividir"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
 msgstr "Espacio entre subtítulos"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
-msgid "Subtract"
-msgstr "Sustraer"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+#| msgid "Subtract"
+msgid "Subtr_act"
+msgstr "Sustr_aer"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
 msgstr ""
 "milisegundos al establecer el inicio/final de los subtítulos al reproducir"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
 msgstr "Retardo de reacción"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
 msgstr "Recordar la última codificación usada"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
 msgstr "Mantener la codificación usada al abrir el archivo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Keep the format used on file open"
 msgstr "Mantener el formato usado al abrir el archivo"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
 msgstr "Recordar el último formato usado"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
 msgstr "Recordar el último tipo usado"
 
@@ -1837,13 +1844,12 @@ msgstr "Número"
 msgid "End"
 msgstr "Fin"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
-msgid "Duration"
-msgstr "Duración"
-
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Traducción"
+
+#~ msgid "Length\t"
+#~ msgstr "Duración"
 
 #~ msgid "For additional languages please install the corresponding package."
 #~ msgstr "Para idiomas adicionales instale el paquete correspondiente."
