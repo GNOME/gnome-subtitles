@@ -277,12 +277,16 @@
     <Compile Include="src\External\GtkSpell\SpellChecker.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\MessageDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\WindowState.cs" />
+    <Compile Include="src\External\Enchant\Enchant.cs" />
+    <Compile Include="src\External\Interop\Interop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="src\SubLib\Util\" />
     <Folder Include="src\External\GtkSpell\" />
+    <Folder Include="src\External\Enchant\" />
+    <Folder Include="src\External\Interop\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\gnome-subtitles.svg">

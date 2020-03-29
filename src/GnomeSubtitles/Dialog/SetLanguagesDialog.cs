@@ -80,7 +80,7 @@ public class SetLanguagesDialog : BaseDialog {
 		
 		
 		/* Bottom: info message */
-		string providers = string.Join(", ", Base.SpellLanguages.Providers.ToArray());
+		string providers = string.Join(", ", Base.SpellLanguages.Providers);
 		Label bottomLabel = Util.CreateLabel("<i>" + string.Format(Catalog.GetString("Use your distro's package manager to install additional languages (tip: search for 'spell'). Supported language packs: {0}."), providers) + "</i>", 0, 0);
 		bottomLabel.UseMarkup = true;
 		bottomLabel.Wrap = true;

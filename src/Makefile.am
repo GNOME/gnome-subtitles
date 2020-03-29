@@ -19,8 +19,10 @@ libgstreamer_playbin_la_LDFLAGS = -module -avoid-version
 libgstreamer_playbin_la_LIBTOOLFLAGS = --tag=disable-static 
 
 GSSOURCES = \
+	$(srcdir)/External/Enchant/*.cs \
 	$(srcdir)/External/GtkSpell/*.cs \
 	$(srcdir)/External/GStreamerPlaybin/*.cs \
+	$(srcdir)/External/Interop/*.cs \
 	$(srcdir)/External/NCharDet/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/Command/*.cs \

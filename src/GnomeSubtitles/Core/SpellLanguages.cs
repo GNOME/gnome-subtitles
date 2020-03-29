@@ -20,31 +20,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using External.Enchant;
 using SubLib.Core.Domain;
 using SubLib.Util;
 
 namespace GnomeSubtitles.Core {
 
-/* Delegates */
-public delegate void LanguageListHandler (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata);
-
-public delegate void ProviderListHandler (string providerName, string providerDesc, string providerFile, IntPtr userdata);
-
 public class SpellLanguages {
 	private bool enabled = false;
-	private ArrayList providers = null;
-	private ArrayList languages = null;
+	private string[] providers = null;
+	private SpellLanguage[] languages = null;
 	private int activeTextLanguageIndex = -1;
 	private int activeTranslationLanguageIndex = -1;
 
-	private LanguageListHandler languageListHandler = null;
-	private ProviderListHandler providerListHandler = null;
 
 	public SpellLanguages () {
-		languageListHandler = OnLanguageList;
-		providerListHandler = OnProviderList;
-		
 		Init();
 		GetEnabledFromConfig();
 	}
@@ -57,11 +47,11 @@ public class SpellLanguages {
 
 	/* Public members */
 
-	public ArrayList Providers {
+	public string[] Providers {
 		get { return providers;	}
 	}
 
-	public ArrayList Languages {
+	public SpellLanguage[] Languages {
 		get { return languages;	}
 	}
 
@@ -113,7 +103,7 @@ public class SpellLanguages {
 	}
 
 	public SpellLanguage GetLanguage (int index) {
-		if ((index < 0) || (index >= languages.Count))
+		if ((index < 0) || (index >= languages.Length))
 			return null;
 		else
 			return languages[index] as SpellLanguage;
@@ -125,7 +115,7 @@ public class SpellLanguages {
 	}
 
 	public void SetActiveLanguageIndex (SubtitleTextType textType, int index) {
-		bool isEmpty = ((index < 0) || (index >= languages.Count));
+		bool isEmpty = ((index < 0) || (index >= languages.Length));
 
 		SpellLanguage activeLanguage = null;
 		if (isEmpty)
@@ -147,53 +137,43 @@ public class SpellLanguages {
 		EmitLanguageChanged(textType);
 	}
 
-	/* LibEnchant imports */
-
-	[DllImport ("libenchant")]
-	static extern IntPtr enchant_broker_init ();
-
-	[DllImport ("libenchant")]
-	static extern void enchant_broker_free (IntPtr broker);
-
-	[DllImport ("libenchant")]
-	static extern void enchant_broker_list_dicts (IntPtr broker, LanguageListHandler cb, IntPtr userdata);
-
-	[DllImport ("libenchant")]
-	static extern void enchant_broker_describe (IntPtr broker, ProviderListHandler cb, IntPtr userdata);
-
 
 	/* Private members */
 
 	private void Init () {
-		/* Providers */
-		providers = new ArrayList();
-		
-		/* Languages */
-		languages = new ArrayList();
+		GetProvidersAndLanguages();
+	
 		activeTextLanguageIndex = -1;
 		activeTranslationLanguageIndex = -1;
-
-		GetProvidersAndLanguages();
+		
 		GetActiveLanguagesFromConfig();
 	}
 
 	private void GetProvidersAndLanguages () {
-		IntPtr broker = enchant_broker_init ();
-		if (broker == IntPtr.Zero)
-			return;
+		Enchant enchant = new Enchant();
 
-		enchant_broker_describe (broker, providerListHandler, IntPtr.Zero);
-
-		enchant_broker_list_dicts (broker, languageListHandler, IntPtr.Zero);
-
-		enchant_broker_free(broker);
-		 
-		languages.Sort();
-		Logger.Info("[Spellcheck] Found {0} providers: {1}", providers.Count, string.Join(",", providers.ToArray()));
-		Logger.Info("[Spellcheck] Found {0} languages: {1}", languages.Count, GetLanguageIDsAsString(languages));
+		enchant.Open();
+		Logger.Info("[Spellcheck] Found Enchant version: {0}", enchant.Version);
+		
+		providers = enchant.GetProviders();
+		Logger.Info("[Spellcheck] Found {0} providers: {1}", providers.Length, string.Join(",", providers));
+		
+		string[] langTags = enchant.GetLanguages();
+		ArrayList langs = new ArrayList();
+		foreach (string langTag in langTags) {
+			SpellLanguage language = new SpellLanguage(langTag);
+			if (!langs.Contains(language)) {
+				langs.Add(language);
+			}
+		}
+		langs.Sort();
+		languages = (SpellLanguage[])langs.ToArray(typeof(SpellLanguage));
+		Logger.Info("[Spellcheck] Found {0} languages: {1}", languages.Length, GetLanguageIDsAsString(languages));
+		
+		enchant.Close();		
 	}
 
-	private string GetLanguageIDsAsString (ArrayList languages) {
+	private string GetLanguageIDsAsString (SpellLanguage[] languages) {
 		List<string> ids = new List<string>();
 		foreach (SpellLanguage language in languages) {
 			ids.Add(language.ID);
@@ -222,7 +202,7 @@ public class SpellLanguages {
 	}
 
 	private int GetLanguageIndex (string languageID) {
-		for (int index = 0 ; index < languages.Count ; index++) {
+		for (int index = 0 ; index < languages.Length ; index++) {
 			SpellLanguage language = languages[index] as SpellLanguage;
 			if (language.ID == languageID)
 				return index;
@@ -232,16 +212,6 @@ public class SpellLanguages {
 
 
 	/* Event members */
-
-	private void OnLanguageList (string langTag, string providerName, string providerDesc, string providerFile, IntPtr userdata) {
-		SpellLanguage language = new SpellLanguage(langTag);
-		if (!languages.Contains(language))
-			languages.Add(language);
-	}
-	
-	private void OnProviderList (string providerName, string providerDesc, string providerFile, IntPtr userdata) {
-		providers.Add(providerName);
-	}
 
 	private void EmitToggleEnabled () {
     	if (this.ToggleEnabled != null)
