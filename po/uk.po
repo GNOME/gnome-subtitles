@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
 "POT-Creation-Date: 2020-03-29 12:01+0000\n"
-"PO-Revision-Date: 2020-04-05 13:53+0300\n"
+"PO-Revision-Date: 2020-04-05 16:25+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -36,6 +36,9 @@ msgid ""
 "allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
+"«Субтитри Gnome» — редактор субтитрів для стільничного середовища GNOME."
+" Програма уможливлює створення, синхронізацію, перетворення і переклад"
+" субтитрів за допомогою зручного інтерфейсу із попереднім переглядом відео."
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
@@ -43,6 +46,8 @@ msgid ""
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
 "SubViewer."
 msgstr ""
+"Передбачено підтримку загалом 22 форматів субтитрів, зокрема: SubRip,"
+" MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub і SubViewer."
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
 msgid "Main window"
@@ -50,24 +55,25 @@ msgstr "Основне вікно"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
-msgstr ""
+msgstr "Редактор субтитрів"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
 msgid "subtitles;video;captions;"
-msgstr ""
+msgstr "subtitles;video;captions;субтитри;відео;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
-msgstr ""
+msgstr "Кодування, які показано у меню"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
 msgid "List of encodings shown in the File Open/Save dialogs."
 msgstr ""
+"Список кодувань, які буде показано у вікнах відкриття-збереження субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
 msgid "File Open encoding option"
-msgstr ""
+msgstr "Варіант кодування для відкриття файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
 msgid ""
@@ -77,10 +83,16 @@ msgid ""
 "\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
 "\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
+"Параметр кодування, яке має бути типово використано при відкритті файлів."
+" Можливі значення: «AutoDetect» — визначити кодування автоматично,"
+" «RememberLastUsed» — запам'ятати останнє використане кодування,"
+" «CurrentLocale» — використати поточну локаль, і «Specific» — використати"
+" вказане кодування. Дані для варіантів «RememberLastUsed» і «Specific»"
+" зберігаються у ключі file_open_encoding."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
 msgid "File Open encoding"
-msgstr ""
+msgstr "Кодування для відкриття файла"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:6
 msgid ""
@@ -89,18 +101,25 @@ msgid ""
 "file_open_encoding_option key, other possible values are \"AutoDetect\" and "
 "\"CurrentLocale\"."
 msgstr ""
+"Кодування, яким слід скористатися для відкриття файлів. Окрім рядка із назвою"
+" кодування, який буде використано, якщо встановлено значення"
+" «RememberLastUsed» або «Specific» для ключа "
+"file_open_encoding_option, іншими можливими значеннями є «AutoDetect» і"
+" «CurrentLocale»."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
 msgid "Auto detection fallback encoding"
-msgstr ""
+msgstr "Резервне кодування при автовизначенні"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
 msgid "Encoding to use when auto detection fails."
 msgstr ""
+"Кодування, яким слід скористатися, якщо не вдасться визначити кодування"
+" автоматично."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
 msgid "File Save encoding option"
-msgstr ""
+msgstr "Варіант кодування для збереження файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
 msgid ""
@@ -111,10 +130,16 @@ msgid ""
 "\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
 "key."
 msgstr ""
+"Варіант кодування, яким слід типово користуватися для збереження файлів."
+" Можливі значення: «KeepExisting» — скористатися кодуванням наявного файла,"
+" «RememberLastUsed» — запам'ятати останнє використане кодування,"
+" «CurrentLocale» — скористатися поточною локаллю, і «Specific» — скористатися"
+" вказаним кодуванням. Назва кодування для варіантів «RememberLastUsed» і"
+" «Specific» зберігається у ключі file_save_encoding."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
 msgid "File Save encoding"
-msgstr ""
+msgstr "Кодування збереження файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:12
 msgid ""
@@ -123,10 +148,15 @@ msgid ""
 "file_save_encoding_option key, other possible values are \"KeepExisting\" "
 "and \"CurrentLocale\"."
 msgstr ""
+"Кодування, яким слід скористатися для зберігання файлів. Окрім рядка із"
+" назвою кодування, який буде використано, якщо встановлено значення"
+" «RememberLastUsed» або «Specific» для ключа "
+"file_save_encoding_option, іншими можливими значеннями є «KeepExisting» і"
+" «CurrentLocale»."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
 msgid "File Save format option"
-msgstr ""
+msgstr "Варіант форматування для збереження файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
 msgid ""
@@ -136,10 +166,15 @@ msgid ""
 "format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
 "stored in the file_save_format key."
 msgstr ""
+"Формат субтитрів, яким слід типово скористатися при зберіганні файлів."
+" Можливі значення: «KeepExisting» — використати формат наявного файла,"
+" «RememberLastUsed» — запам'ятати останній використаний формат, і «Specific»"
+" — скористатися вказаним форматом. Значення формату субтитрів для варіантів"
+" «RememberLastUsed» і «Specific» зберігається у ключі file_save_format."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
 msgid "File Save format"
-msgstr ""
+msgstr "Формат збереження файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:16
 msgid ""
@@ -148,10 +183,15 @@ msgid ""
 "file_save_format_option key, other possible values are \"KeepExisting\" and "
 "\"CurrentLocale\"."
 msgstr ""
+"Формат субтитрів, яким слід скористатися для зберігання файлів. Окрім рядка"
+" із назвою формату, який буде використано, якщо встановлено значення"
+" «RememberLastUsed» або «Specific» для ключа "
+"file_save_format_option, іншими можливими значеннями є «KeepExisting» і"
+" «CurrentLocale»."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
 msgid "File Save newline option"
-msgstr ""
+msgstr "Варіант розриву рядків для збереження файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
 msgid ""
@@ -160,79 +200,95 @@ msgid ""
 "\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
 "and \"Specific\" is stored in the file_save_newline key."
 msgstr ""
+"Варіант символів розриву рядків, яким слід типово користуватися при"
+" зберіганні файлів. Можливі значення: «RememberLastUsed» — запам'ятати"
+" останній використаний тип розривів рядків, і «Specific» — використати"
+" вказаний тип розриву рядків. Значення типу розривів рядків для варіантів"
+" «RememberLastUsed» і «Specific» зберігається у ключі file_save_newline."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
 msgid "File Save newline"
-msgstr ""
+msgstr "Розрив рядків для збереження файлів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
 msgid "Newline type to use when saving files."
-msgstr ""
+msgstr "Тип розриву рядків, яким слід скористатися при збереженні файлів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
 msgid "Save translation when saving subtitles"
-msgstr ""
+msgstr "Зберігати переклад при збереженні субтитрів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
 msgid "Whether to save existing translations when saving subtitles."
-msgstr ""
+msgstr "Визначає, чи слід зберігати наявні переклади при збереженні субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
 msgid "Automatically choose the video file"
-msgstr ""
+msgstr "Автоматично вибирати відеофайл"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:24
 msgid ""
 "Whether to automatically choose the video file to open, when opening a "
 "subtitle file. A video file is chosen based on the name of the subtitle file."
 msgstr ""
+"Визначає, чи слід автоматично вибирати файл відео для відкриття при відкритті"
+" файла субтитрів. Файл відео буде вибрано на основі назви файла субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
 msgid "Apply reaction delay"
-msgstr ""
+msgstr "Застосовувати затримку реакції"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
 msgid ""
 "Whether to apply a reaction delay when setting the start or end times of a "
 "subtitle with the video playing."
 msgstr ""
+"Визначає, чи слід застосовувати затримку реакції при встановленні моментів"
+" початку або завершення показу субтитрів при відтворенні відео."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
 msgid "Reaction delay"
-msgstr ""
+msgstr "Затримка реакції"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:28
 msgid ""
 "Time, in milliseconds, to subtract from the start or end times when setting "
 "them with the video playing."
 msgstr ""
+"Час у мілісекундах, який слід відняти від часу початку або кінця при"
+" встановленні під час відтворення відео."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
 msgid "Seek the video on subtitles change"
-msgstr ""
+msgstr "Позиціювати відео при зміні субтитрів"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
 msgid ""
 "Whether to seek the video to the start of the first subtitle when one or "
 "more subtitles are changed."
 msgstr ""
+"Визначає, чи слід позиціювати відео на початок перших субтитрів, коли"
+" вносяться зміни до одного або декількох рядків субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
 msgid "Seek on change rewind"
-msgstr ""
+msgstr "Позиціювати при зміні прокручування"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
 msgid ""
 "Time, in milliseconds, to rewind the video when seeking on subtitles change."
 msgstr ""
+"Час у мілісекундах для прокручування відео при позиціюванні при зміні"
+" субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
 msgid "View line lengths"
-msgstr ""
+msgstr "Перегляд довжини рядків"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
 msgid "Whether to view line lengths as characters counts in the subtitle list."
 msgstr ""
+"Визначає, чи слід показувати довжини рядків у символах у списку субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
 msgid "Window width"
@@ -252,27 +308,29 @@ msgstr "Висота головного вікна."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:39
 msgid "Active spellcheck language for text"
-msgstr ""
+msgstr "Активна мова для перевірки правопису у тексті"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
 msgid "The language used to check the spelling of subtitle text."
 msgstr ""
+"Мова, яку слід використовувати для перевірки правопису у тексті субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
 msgid "Active spellcheck language for translation"
-msgstr ""
+msgstr "Активна мова перевірки правопису для перекладу"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
 msgid "The language used to check the spelling of subtitle translation."
 msgstr ""
+"Мова, яку слід використовувати для перевірки правопису у перекладі субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
 msgid "Autocheck spelling"
-msgstr ""
+msgstr "Автоматична перевірка правопису"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
 msgid "Whether to automatically check the spelling of subtitle text."
-msgstr ""
+msgstr "Визначає, чи слід автоматично перевіряти правопис у тексті субтитрів."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
 msgid "Auto backup"
@@ -283,6 +341,8 @@ msgid ""
 "Whether to automatically backup files. A copy of the file will be "
 "periodically saved with a ~ suffix."
 msgstr ""
+"Визначає, чи слід автоматично створювати резервні копії файлів. Копію файла"
+" буде періодично збережено із суфіксом ~."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
 msgid "Backup time"
@@ -293,6 +353,8 @@ msgid ""
 "Time interval, in seconds, to automatically backup files. A minimum of 30 "
 "seconds is recommended."
 msgstr ""
+"Інтервал часу у секундах для автоматичного зберігання файлів резервних копій."
+" Рекомендуємо встановити значення, яке є не меншим за 30 секунд."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
 msgid "Time step increment"
@@ -303,6 +365,8 @@ msgid ""
 "Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
 "controls (e.g., start, end and duration)."
 msgstr ""
+"Час у мілісекундах для додавання або віднімання при коригуванні моментів часу"
+" за допомогою обертової кнопки (наприклад, початку, кінця і тривалості)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
 msgid "Frames step increment"
@@ -313,6 +377,8 @@ msgid ""
 "Frames to add or subtract when adjusting frames in spinbutton controls (e."
 "g., start, end and duration)."
 msgstr ""
+"Кадри, які слід додати або відняти при коригування кадрів за допомогою"
+" обертової кнопки (наприклад, початку, кінця і тривалості)."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
 msgid "Time between subtitles"
@@ -323,6 +389,8 @@ msgid ""
 "Recommended time between subtitles, in milliseconds, used for example when "
 "splitting a subtitle in two."
 msgstr ""
+"Рекомендований проміжок часу між субтитрами у мілісекундах. Використовується,"
+" наприклад, при поділу одного рядка субтитрів на два."
 
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
@@ -454,7 +522,7 @@ msgstr "_Часові позначки"
 
 #: ../src/Glade/MainWindow.ui.h:33
 msgid "_Line Lengths"
-msgstr "Дов_жина рядків"
+msgstr "Дов_жини рядків"
 
 #: ../src/Glade/MainWindow.ui.h:34
 msgid "_Video"
@@ -634,17 +702,19 @@ msgstr "Тривалість"
 
 #: ../src/Glade/MainWindow.ui.h:77
 msgid "Sets the subtitle Start to the current video position"
-msgstr ""
+msgstr "Встановлює початок субтитрів на поточну позицію у відео"
 
 #: ../src/Glade/MainWindow.ui.h:78
 msgid "Sets the subtitle End to the current video position"
-msgstr ""
+msgstr "Встановлює кінець субтитрів на поточну позицію у відео"
 
 #: ../src/Glade/MainWindow.ui.h:79
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
 "pressed for the duration of each subtitle."
 msgstr ""
+"Встановлює початок і кінець субтитрів під час відтворення відео. Утримуйте"
+" кнопку натиснутою, щоб побачити тривалість кожного з рядків субтитрів."
 
 #: ../src/Glade/MainWindow.ui.h:80
 msgid "1.0x"
@@ -656,6 +726,9 @@ msgid ""
 "and end timings.\n"
 "Shift+Plus/Minus (on the numpad) shifts timings."
 msgstr ""
+"Підказка: скористайтеся комбінаціями Ctrl+Плюс/Мінус або Alt+Плюс/Мінус (на"
+" цифровій панелі клавіатури), щоб скоригувати таймінги початку та кінця.\n"
+"Shift+Плюс/Мінус (на цифровій панелі клавіатури) зсуває таймінги."
 
 #. This is the start time/frame of a subtitle.
 #: ../src/Glade/MainWindow.ui.h:84
@@ -1313,12 +1386,16 @@ msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
+"Не вдалося визначити формат субтитрів. Будь ласка, перевірте, чи є цей тип"
+" файлів серед підтримуваних."
 
 #: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr ""
+"У вашій системі не передбачено підтримки використаного кодування. Будь ласка,"
+" виберіть інше кодування."
 
 #: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
 msgid "You do not have the permissions necessary to open the file."
@@ -1330,7 +1407,7 @@ msgstr "Не вдалося знайти файл."
 
 #: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
 msgid "The file appears to be too large for a text-based subtitle file."
-msgstr ""
+msgstr "Здається, файл є надто великим для текстового файла субтитрів."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
@@ -1352,7 +1429,7 @@ msgstr "Редагування"
 #. Translation File Saving
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
 msgid "When saving subtitle files, automatically save their _translation"
-msgstr ""
+msgstr "При зберігання файлів субтитрів автоматично зберігати п_ереклад"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
 msgid "Translation File Saving"
@@ -1424,7 +1501,7 @@ msgstr "Вийти"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
-msgstr ""
+msgstr "мс між субтитрами при вставлянні або поділі"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
@@ -1437,6 +1514,7 @@ msgstr "Від_няти"
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
 msgstr ""
+"мс при встановленні початку або кінця рядка субтитрів при відтворенні відео"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
@@ -1445,23 +1523,23 @@ msgstr "Затримка реакції"
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
-msgstr ""
+msgstr "Запам'ятати останнє використане кодування"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
-msgstr ""
+msgstr "Зберігати кодування, яке використано при відкритті файла"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Keep the format used on file open"
-msgstr ""
+msgstr "Зберігати формат, який використано при відкритті файла"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
-msgstr ""
+msgstr "Запам'ятати останній використаний формат"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
-msgstr ""
+msgstr "Запам'ятати останній використаний тип"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
 msgid "Replace"
@@ -1489,7 +1567,7 @@ msgstr "_Шукати назад"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
 msgid "Regular _expression"
-msgstr ""
+msgstr "_Формальний вираз"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
 msgid "Wra_p around"
@@ -1502,17 +1580,17 @@ msgstr "Замінити _все"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
 msgid "Set Languages"
-msgstr ""
+msgstr "Встановлення мов"
 
 #. Left part: Text Language
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
 msgid "Text Language"
-msgstr ""
+msgstr "Мова тексту"
 
 #. Right part: Translation Language
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
 msgid "Translation Language"
-msgstr ""
+msgstr "Мова перекладу"
 
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
 #, csharp-format
@@ -1520,10 +1598,13 @@ msgid ""
 "Use your distro's package manager to install additional languages (tip: "
 "search for 'spell'). Supported language packs: {0}."
 msgstr ""
+"Скористайтеся програмою для керування пакунками дистрибутива, щоб встановити"
+" додаткові мови (підказка: шукайте пакунки зі «spell» у назві). Підтримувані"
+" мовні пакунки: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
-msgstr ""
+msgstr "Коригування таймінгів між 2 точками"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
@@ -1533,7 +1614,7 @@ msgstr "_Застосувати"
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
 msgid "Subtitle No.:"
-msgstr ""
+msgstr "№ рядка субтитрів:"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
@@ -1575,6 +1656,8 @@ msgid ""
 "Sets the shift amount in order for the selected subtitles to start at the "
 "current video position."
 msgstr ""
+"Встановлює величину зсуву для того, щоб вибрані субтитри починалися у"
+" поточній позиції відео."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
 msgid "Amount"
@@ -1586,6 +1669,9 @@ msgid ""
 "Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
 "from the main window."
 msgstr ""
+"Підказка: ви також можете скористатися комбінаціями Shift + Плюс/Мінус (на"
+" цифровому блоці клавіатури) для зсування таймінгів безпосередньо у головному"
+" вікні програми."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
 msgid "Synchronize Timings"
@@ -1597,7 +1683,7 @@ msgstr "Точки синхронізації"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
 msgid "Subtitles between sync points"
-msgstr ""
+msgstr "Субтитри між точками синхронізації"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
 msgid "Info"
@@ -1606,7 +1692,7 @@ msgstr "Інформація"
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
 msgid "Subtitle No."
-msgstr ""
+msgstr "№ рядка субтитрів"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
@@ -1622,23 +1708,27 @@ msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
 msgstr ""
+"Додайте точки синхронізації, позначивши рядок субтитрів і скоригувавши"
+" позицію у відео до належної. Слід вказати принаймні 2 точки."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
 msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
 msgstr ""
+"Додайте ще одну точку синхронізації, щоб розпочати синхронізацію. Додавання"
+" точок синхронізації поліпшить точність показу субтитрів."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
 msgid "Synchronization is ready. All subtitles will be synchronized."
-msgstr ""
+msgstr "Синхронізація готова. Усі субтитри буде синхронізовано."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
-msgstr ""
+msgstr "Синхронізація готова: Не буде синхронізовано ці рядки субтитрів: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
 #, csharp-format
@@ -1646,6 +1736,7 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
+"Синхронізація готова: Не буде синхронізовано ці рядки субтитрів: {0} і {1}."
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
 msgid "Open Video"
