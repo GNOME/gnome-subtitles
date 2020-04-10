@@ -1,0 +1,2081 @@
+# Indonesian translation for gnome-subtitles.
+# Copyright (C) 2020 gnome-subtitles's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-subtitles package.
+# Andika Triwidada <atriwidada@gnome.org>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-subtitles master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
+"POT-Creation-Date: 2020-04-05 13:27+0000\n"
+"PO-Revision-Date: 2020-04-10 10:26+0700\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"X-Generator: Poedit 2.3\n"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+#, fuzzy
+msgid "Gnome Subtitles"
+msgstr "Sub judul GNOME"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
+#, fuzzy
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Subtitling video untuk desktop GNOME"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+#, fuzzy
+msgid ""
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
+"friendly user interface with video preview."
+msgstr ""
+"Sub judul GNOME adalah editor Subtitle untuk lingkungan desktop GNOME. Hal "
+"ini memungkinkan untuk membuat, sinkronisasi, mengkonversi dan menerjemahkan "
+"Sub judul dengan menggunakan user interface yang ramah dengan video preview."
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
+#, fuzzy
+msgid ""
+"A total of 22 subtitle formats are supported, including but not limited to: "
+"SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
+"SubViewer."
+msgstr ""
+"Sebanyak 22 format subtitle yang didukung, termasuk namun tidak terbatas "
+"pada: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub, "
+"dan SubViewer."
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
+msgid "Main window"
+msgstr "Jendela utama"
+
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
+#, fuzzy
+msgid "Subtitle Editor"
+msgstr "Penyunting Subtitle"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
+#, fuzzy
+msgid "subtitles;video;captions;"
+msgstr "sub judul; video; Keterangan;"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
+msgid "Encodings shown in menu"
+msgstr "Pengkodean yang ditampilkan dalam menu"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
+msgid "List of encodings shown in the File Open/Save dialogs."
+msgstr "Daftar pengkodean yang ditampilkan di dialog Buka/Simpan berkas."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
+msgid "File Open encoding option"
+msgstr "Opsi pengkodean Buka Berkas"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
+#, fuzzy
+msgid ""
+"Encoding option to use by default when opening files. Possible values are: "
+"\"AutoDetect\" to use auto detection, \"RememberLastUsed\" to remember the "
+"last used encoding, \"CurrentLocale\" to use the current locale, and "
+"\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
+"\" and \"Specific\" is stored in the file_open_encoding key."
+msgstr ""
+"Pilihan encoding untuk digunakan secara baku saat membuka berkas. Nilai yang "
+"mungkin adalah: \"AutoDetect\" untuk menggunakan deteksi otomatis, \"ingat "
+"Lastused\" untuk mengingat pengkodean yang terakhir digunakan, "
+"\"CurrentLocale\" untuk menggunakan lokal saat ini, dan \"Specific\" untuk "
+"menggunakan encoding tertentu. Pengkodean untuk \"mengenang\" dan \"spesifik"
+"\" disimpan dalam kunci berkas_open_encoding."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
+msgid "File Open encoding"
+msgstr "Pengkodean Buka Berkas"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:6
+#, fuzzy
+msgid ""
+"Encoding to use when opening files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_open_encoding_option key, other possible values are \"AutoDetect\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"Encoding untuk digunakan saat membuka berkas. Selain pengkodean aktual, yang "
+"digunakan ketika \"mengenang\" atau \"spesifik\" diatur dalam kunci "
+"berkas_open_encoding_option, nilai lain yang mungkin adalah \"AutoDetect\" "
+"dan \"CurrentLocale\"."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
+#, fuzzy
+msgid "Auto detection fallback encoding"
+msgstr "Pengkodean fallback deteksi otomatis"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
+#, fuzzy
+msgid "Encoding to use when auto detection fails."
+msgstr "Encoding untuk digunakan saat deteksi otomatis gagal."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
+msgid "File Save encoding option"
+msgstr "Opsi pengkodean Simpan Berkas"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
+#, fuzzy
+msgid ""
+"Encoding option to use by default when saving files. Possible values are: "
+"\"KeepExisting\" to use the existing file's encoding, \"RememberLastUsed\" "
+"to remember the last used encoding, \"CurrentLocale\" to use the current "
+"locale, and \"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
+"key."
+msgstr ""
+"Opsi pengkodean untuk digunakan secara baku saat menyimpan berkas. Nilai "
+"yang mungkin adalah: \"KeepExisting\" untuk menggunakan pengkodean berkas "
+"yang ada, \"Remember Lastused\" untuk mengingat pengkodean terakhir "
+"digunakan, \"CurrentLocale\" untuk menggunakan lokal saat ini, dan \"spesifik"
+"\" untuk menggunakan pengkodean tertentu. Pengkodean untuk \"mengenang\" dan "
+"\"spesifik\" disimpan dalam kunci berkas_save_encoding."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
+msgid "File Save encoding"
+msgstr "Pengkodean Simpan Berkas"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:12
+#, fuzzy
+msgid ""
+"Encoding to use when saving files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_encoding_option key, other possible values are \"KeepExisting\" "
+"and \"CurrentLocale\"."
+msgstr ""
+"Encoding untuk digunakan saat menyimpan berkas. Selain encoding aktual, yang "
+"digunakan ketika \"mengingat\" atau \"spesifik\" diatur dalam kunci "
+"berkas_save_encoding_option, nilai lain yang mungkin adalah \"KeepExisting\" "
+"dan \"CurrentLocale\"."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
+msgid "File Save format option"
+msgstr "Opsi format Simpan Berkas"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
+#, fuzzy
+msgid ""
+"Subtitle format option to use by default when saving files. Possible values "
+"are: \"KeepExisting\" to use the existing file's format, \"RememberLastUsed"
+"\" to remember the last used format, and \"Specific\" to use a specific "
+"format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
+"stored in the file_save_format key."
+msgstr ""
+"Format Subtitle pilihan untuk digunakan secara baku saat menyimpan berkas. "
+"Nilai yang mungkin adalah: \"KeepExisting\" untuk menggunakan format berkas "
+"yang ada, \"mengingat\" untuk mengingat format yang terakhir digunakan, dan "
+"\"spesifik\" untuk menggunakan format tertentu. Format Subtitle untuk "
+"\"mengingat\" dan \"spesifik\" disimpan dalam kunci berkas_save_format."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
+msgid "File Save format"
+msgstr "Format Simpan Berkas"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:16
+#, fuzzy
+msgid ""
+"Subtitle format to use when saving files. Besides the actual format, used "
+"when \"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_format_option key, other possible values are \"KeepExisting\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"Format Subtitle untuk digunakan saat menyimpan berkas. Selain format aktual, "
+"yang digunakan ketika \"mengingat\" atau \"spesifik\" diatur dalam kunci "
+"berkas_save_format_option, nilai lain yang mungkin adalah \"KeepExisting\" "
+"dan \"CurrentLocale\"."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
+#, fuzzy
+msgid "File Save newline option"
+msgstr "Opsi berkas Save newline"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
+#, fuzzy
+msgid ""
+"Newline option to use by default when saving files. Possible values are: "
+"\"RememberLastUsed\" to remember the last used newline type, and \"Specific"
+"\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
+"and \"Specific\" is stored in the file_save_newline key."
+msgstr ""
+"Newline pilihan untuk digunakan secara baku saat menyimpan berkas. Nilai "
+"yang mungkin adalah: \"ingat Lastused\" untuk mengingat tipe newline yang "
+"terakhir digunakan, dan \"Specific\" untuk menggunakan jenis newline "
+"tertentu. Jenis newline untuk \"mengingat\" dan \"spesifik\" disimpan dalam "
+"kunci berkas_save_newline."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
+#, fuzzy
+msgid "File Save newline"
+msgstr "File Save newline"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
+#, fuzzy
+msgid "Newline type to use when saving files."
+msgstr "Jenis newline untuk digunakan saat menyimpan berkas."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
+#, fuzzy
+msgid "Save translation when saving subtitles"
+msgstr "Simpan terjemahan saat menyimpan Subtitle"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
+#, fuzzy
+msgid "Whether to save existing translations when saving subtitles."
+msgstr "Apakah akan menyimpan terjemahan yang ada saat menyimpan sub judul."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
+#, fuzzy
+msgid "Automatically choose the video file"
+msgstr "Memilih berkas video secara otomatis"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:24
+#, fuzzy
+msgid ""
+"Whether to automatically choose the video file to open, when opening a "
+"subtitle file. A video file is chosen based on the name of the subtitle file."
+msgstr ""
+"Apakah akan secara otomatis memilih berkas video untuk membuka, ketika "
+"membuka berkas Subtitle. File video dipilih berdasarkan nama berkas Subtitle."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
+#, fuzzy
+msgid "Apply reaction delay"
+msgstr "Menerapkan penundaan reaksi"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
+#, fuzzy
+msgid ""
+"Whether to apply a reaction delay when setting the start or end times of a "
+"subtitle with the video playing."
+msgstr ""
+"Apakah akan menerapkan penundaan reaksi saat menetapkan waktu mulai atau "
+"akhir subjudul dengan pemutaran video."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
+#, fuzzy
+msgid "Reaction delay"
+msgstr "Penundaan reaksi"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:28
+#, fuzzy
+msgid ""
+"Time, in milliseconds, to subtract from the start or end times when setting "
+"them with the video playing."
+msgstr ""
+"Waktu, dalam milidetik, untuk mengurangi dari awal atau akhir waktu ketika "
+"mengatur mereka dengan video diputar."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
+#, fuzzy
+msgid "Seek the video on subtitles change"
+msgstr "Mencari video pada sub judul berubah"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
+#, fuzzy
+msgid ""
+"Whether to seek the video to the start of the first subtitle when one or "
+"more subtitles are changed."
+msgstr ""
+"Apakah akan mencari video untuk memulai Subtitle pertama ketika satu atau "
+"lebih sub judul diubah."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
+#, fuzzy
+msgid "Seek on change rewind"
+msgstr "Mengupayakan perubahan bergulir"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
+#, fuzzy
+msgid ""
+"Time, in milliseconds, to rewind the video when seeking on subtitles change."
+msgstr ""
+"Waktu, dalam milidetik, untuk memundurkan video ketika mencari pada sub "
+"judul berubah."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
+#, fuzzy
+msgid "View line lengths"
+msgstr "Lihat panjang garis"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
+#, fuzzy
+msgid "Whether to view line lengths as characters counts in the subtitle list."
+msgstr ""
+"Apakah akan melihat panjang garis sebagai karakter penting dalam daftar "
+"Subtitle."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
+msgid "Window width"
+msgstr "Lebar jendela"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:36
+#, fuzzy
+msgid "The width of the Main Window."
+msgstr "Lebar jendela utama."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:37
+msgid "Window height"
+msgstr "Tinggi jendela"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:38
+#, fuzzy
+msgid "The height of the Main Window."
+msgstr "Tinggi jendela utama."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:39
+#, fuzzy
+msgid "Active spellcheck language for text"
+msgstr "Bahasa Periksa ejaan aktif untuk teks"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
+#, fuzzy
+msgid "The language used to check the spelling of subtitle text."
+msgstr "Bahasa yang digunakan untuk memeriksa ejaan teks Subtitle."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
+#, fuzzy
+msgid "Active spellcheck language for translation"
+msgstr "Bahasa Periksa ejaan aktif untuk terjemahan"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
+#, fuzzy
+msgid "The language used to check the spelling of subtitle translation."
+msgstr "Bahasa yang digunakan untuk memeriksa ejaan terjemahan Subtitle."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
+#, fuzzy
+msgid "Autocheck spelling"
+msgstr "Ejaan Autocheck"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
+#, fuzzy
+msgid "Whether to automatically check the spelling of subtitle text."
+msgstr "Apakah akan secara otomatis memeriksa ejaan teks Subtitle."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
+#, fuzzy
+msgid "Auto backup"
+msgstr "Pencadangan otomatis"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:46
+#, fuzzy
+msgid ""
+"Whether to automatically backup files. A copy of the file will be "
+"periodically saved with a ~ suffix."
+msgstr ""
+"Apakah akan secara otomatis cadangan berkas. Salinan berkas akan disimpan "
+"secara berkala dengan akhiran ~."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
+#, fuzzy
+msgid "Backup time"
+msgstr "Waktu pencadangan"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:48
+#, fuzzy
+msgid ""
+"Time interval, in seconds, to automatically backup files. A minimum of 30 "
+"seconds is recommended."
+msgstr ""
+"Interval waktu, dalam detik, untuk secara otomatis cadangan berkas. "
+"Dianjurkan untuk minimal 30 detik."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
+#, fuzzy
+msgid "Time step increment"
+msgstr "Kenaikan langkah waktu"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
+#, fuzzy
+msgid ""
+"Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
+"controls (e.g., start, end and duration)."
+msgstr ""
+"Waktu, dalam milidetik, untuk menambah atau mengurangi ketika menyesuaikan "
+"kali dalam kontrol spinbutton (misalnya, mulai, akhir dan durasi)."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
+#, fuzzy
+msgid "Frames step increment"
+msgstr "Bingkai kenaikan langkah"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
+#, fuzzy
+msgid ""
+"Frames to add or subtract when adjusting frames in spinbutton controls (e."
+"g., start, end and duration)."
+msgstr ""
+"Frame untuk menambah atau mengurangi ketika menyesuaikan frame dalam kontrol "
+"spinbutton (misalnya, mulai, akhir dan durasi)."
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
+#, fuzzy
+msgid "Time between subtitles"
+msgstr "Waktu antara Subtitle"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:54
+#, fuzzy
+msgid ""
+"Recommended time between subtitles, in milliseconds, used for example when "
+"splitting a subtitle in two."
+msgstr ""
+"Waktu yang direkomendasikan antara Subtitle, dalam milidetik, digunakan "
+"misalnya ketika membelah subjudul dalam dua."
+
+#: ../src/Glade/MainWindow.ui.h:1
+msgid "_File"
+msgstr "_Berkas"
+
+#: ../src/Glade/MainWindow.ui.h:2
+msgid "_New"
+msgstr "_Baru"
+
+#: ../src/Glade/MainWindow.ui.h:3
+msgid "_Open"
+msgstr "_Buka"
+
+#: ../src/Glade/MainWindow.ui.h:4
+msgid "_Save"
+msgstr "_Simpan"
+
+#: ../src/Glade/MainWindow.ui.h:5
+msgid "Save _As"
+msgstr "Simp_an Sebagai"
+
+#: ../src/Glade/MainWindow.ui.h:6
+#, fuzzy
+msgid "_Translation"
+msgstr "Terjemahan"
+
+#: ../src/Glade/MainWindow.ui.h:7
+msgid "_Reload"
+msgstr "_Muat Ulang"
+
+#: ../src/Glade/MainWindow.ui.h:8
+msgid "_Close"
+msgstr "_Tutup"
+
+#: ../src/Glade/MainWindow.ui.h:9
+#, fuzzy
+msgid "_Headers"
+msgstr "Header HTTP"
+
+#: ../src/Glade/MainWindow.ui.h:10
+msgid "_Properties"
+msgstr "_Properti"
+
+#: ../src/Glade/MainWindow.ui.h:11
+msgid "_Quit"
+msgstr "_Keluar"
+
+#: ../src/Glade/MainWindow.ui.h:12
+msgid "_Edit"
+msgstr "_Sunting"
+
+#: ../src/Glade/MainWindow.ui.h:13
+msgid "_Undo"
+msgstr "_Tak Jadi"
+
+#: ../src/Glade/MainWindow.ui.h:14
+msgid "_Redo"
+msgstr "_Jadi Lagi"
+
+#: ../src/Glade/MainWindow.ui.h:15
+msgid "Cu_t"
+msgstr "Po_tong"
+
+#: ../src/Glade/MainWindow.ui.h:16
+msgid "_Copy"
+msgstr "Sa_lin"
+
+#: ../src/Glade/MainWindow.ui.h:17
+msgid "_Paste"
+msgstr "Tem_pel"
+
+#: ../src/Glade/MainWindow.ui.h:18
+msgid "_Format"
+msgstr "_Format"
+
+#: ../src/Glade/MainWindow.ui.h:19
+msgid "_Bold"
+msgstr "Te_bal"
+
+#: ../src/Glade/MainWindow.ui.h:20
+msgid "_Italic"
+msgstr "M_iring"
+
+#: ../src/Glade/MainWindow.ui.h:21
+msgid "_Underline"
+msgstr "_Garis bawah"
+
+#: ../src/Glade/MainWindow.ui.h:22
+#, fuzzy
+msgid "_Split Lines"
+msgstr "Jalur _Split"
+
+#: ../src/Glade/MainWindow.ui.h:23
+#, fuzzy
+msgid "_Merge Lines"
+msgstr "Jalur _Merge"
+
+#: ../src/Glade/MainWindow.ui.h:24
+#, fuzzy
+msgid "_Insert Subtitle"
+msgstr "_Insert Subtitle"
+
+#: ../src/Glade/MainWindow.ui.h:25
+#, fuzzy
+msgid "_Before"
+msgstr "Sebelum"
+
+#: ../src/Glade/MainWindow.ui.h:26
+#, fuzzy
+msgid "_After"
+msgstr "Sesud_ah"
+
+#: ../src/Glade/MainWindow.ui.h:27
+#, fuzzy
+msgid "At _Video Position"
+msgstr "Pada posisi _Video"
+
+#: ../src/Glade/MainWindow.ui.h:28
+#, fuzzy
+msgid "_Delete Subtitles"
+msgstr "_Delete Subtitle"
+
+#: ../src/Glade/MainWindow.ui.h:29
+#, fuzzy
+msgid "Pr_eferences"
+msgstr "Pr_eferences"
+
+#: ../src/Glade/MainWindow.ui.h:30
+msgid "_View"
+msgstr "_Tampilan"
+
+#: ../src/Glade/MainWindow.ui.h:31
+#, fuzzy
+msgid "_Frames"
+msgstr "Bingkai"
+
+#: ../src/Glade/MainWindow.ui.h:32
+#, fuzzy
+msgid "_Times"
+msgstr "Dimulai %'d kali"
+
+#: ../src/Glade/MainWindow.ui.h:33
+#, fuzzy
+msgid "_Line Lengths"
+msgstr "_Line panjang"
+
+#: ../src/Glade/MainWindow.ui.h:34
+#, fuzzy
+msgid "_Video"
+msgstr "_Video"
+
+#: ../src/Glade/MainWindow.ui.h:35
+#, fuzzy
+msgid "Video _Subtitles"
+msgstr "_Subtitles video"
+
+#: ../src/Glade/MainWindow.ui.h:36
+msgid "_Text"
+msgstr "_Teks"
+
+#: ../src/Glade/MainWindow.ui.h:37
+#, fuzzy
+msgid "Translatio_n"
+msgstr "Translatio_n"
+
+#: ../src/Glade/MainWindow.ui.h:38
+msgid "_Search"
+msgstr "_Cari"
+
+#: ../src/Glade/MainWindow.ui.h:39
+msgid "_Find"
+msgstr "_Temukan"
+
+#: ../src/Glade/MainWindow.ui.h:40
+#, fuzzy
+msgid "Find Ne_xt"
+msgstr "Cari Ne_xt"
+
+#: ../src/Glade/MainWindow.ui.h:41
+#, fuzzy
+msgid "Find Pre_vious"
+msgstr "Cari Pre_vious"
+
+#: ../src/Glade/MainWindow.ui.h:42
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:172
+msgid "_Replace"
+msgstr "_Ganti"
+
+#: ../src/Glade/MainWindow.ui.h:43
+#, fuzzy
+msgid "T_imings"
+msgstr "T_imings"
+
+#: ../src/Glade/MainWindow.ui.h:44
+#, fuzzy
+msgid "_Input Frame Rate"
+msgstr "_Input frame rate"
+
+#: ../src/Glade/MainWindow.ui.h:45
+#, fuzzy
+msgid "_Current Frame Rate"
+msgstr "_Current frame rate"
+
+#: ../src/Glade/MainWindow.ui.h:46
+#, fuzzy
+msgid "_Synchronize"
+msgstr "_Selaraskan"
+
+#: ../src/Glade/MainWindow.ui.h:47
+#, fuzzy
+msgid "_Adjust"
+msgstr "Setel kecepatan klik ganda"
+
+#: ../src/Glade/MainWindow.ui.h:48
+#, fuzzy
+msgid "Sh_ift"
+msgstr "Sh_ift"
+
+#: ../src/Glade/MainWindow.ui.h:49
+#, fuzzy
+msgid "Vide_o"
+msgstr "Vide_o"
+
+#: ../src/Glade/MainWindow.ui.h:50
+#, fuzzy
+msgid "_Play / Pause"
+msgstr "Putar (atau putar/istirahat)"
+
+#: ../src/Glade/MainWindow.ui.h:51
+#, fuzzy
+msgid "_Loop Selection"
+msgstr "Pilihan _Loop"
+
+#: ../src/Glade/MainWindow.ui.h:52
+#, fuzzy
+msgid "R_ewind"
+msgstr "R_ewind"
+
+#: ../src/Glade/MainWindow.ui.h:53
+msgid "_Forward"
+msgstr "Ma_ju"
+
+#: ../src/Glade/MainWindow.ui.h:54
+#, fuzzy
+msgid "_Seek to…"
+msgstr "seem film mundur 30 detik"
+
+#: ../src/Glade/MainWindow.ui.h:55
+#, fuzzy
+msgid "Seek _to Selection"
+msgstr "Carilah seleksi _to"
+
+#: ../src/Glade/MainWindow.ui.h:56
+#, fuzzy
+msgid "Select _Nearest Subtitle"
+msgstr "Pilih _Nearest Subtitle"
+
+#: ../src/Glade/MainWindow.ui.h:57
+#, fuzzy
+msgid "A_uto Select Subtitle"
+msgstr "A_uto pilih Subtitle"
+
+#: ../src/Glade/MainWindow.ui.h:58
+#, fuzzy
+msgid "Set Subtitle St_art"
+msgstr "Atur St_art Subtitle"
+
+#: ../src/Glade/MainWindow.ui.h:59
+#, fuzzy
+msgid "Set Subtitle En_d"
+msgstr "Atur En_d Subtitle"
+
+#: ../src/Glade/MainWindow.ui.h:60
+msgid "_Tools"
+msgstr "Perala_tan"
+
+#: ../src/Glade/MainWindow.ui.h:61
+#, fuzzy
+msgid "_Autocheck Spelling"
+msgstr "Ejaan _Autocheck"
+
+#: ../src/Glade/MainWindow.ui.h:62
+#, fuzzy
+msgid "Set _Languages"
+msgstr "Atur _Languages"
+
+#: ../src/Glade/MainWindow.ui.h:63
+msgid "_Help"
+msgstr "Ba_ntuan"
+
+#: ../src/Glade/MainWindow.ui.h:64
+msgid "_Contents"
+msgstr "_Isi"
+
+#: ../src/Glade/MainWindow.ui.h:65
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
+
+#: ../src/Glade/MainWindow.ui.h:66
+msgid "_Donate"
+msgstr "_Donasi"
+
+#: ../src/Glade/MainWindow.ui.h:67
+#, fuzzy
+msgid "Request a New _Feature"
+msgstr "Meminta _Feature baru"
+
+#: ../src/Glade/MainWindow.ui.h:68
+#, fuzzy
+msgid "Report a _Bug"
+msgstr "Laporkan suatu bug"
+
+#: ../src/Glade/MainWindow.ui.h:69
+msgid "_About"
+msgstr "Tent_ang"
+
+#: ../src/Glade/MainWindow.ui.h:70
+#, fuzzy
+msgid "New File"
+msgstr "File Baru"
+
+#: ../src/Glade/MainWindow.ui.h:71
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:52
+msgid "Open File"
+msgstr "Buka Berkas"
+
+#: ../src/Glade/MainWindow.ui.h:72
+msgid "Save File"
+msgstr "Simpan Berkas"
+
+#: ../src/Glade/MainWindow.ui.h:73
+msgid "Insert"
+msgstr "Sisip"
+
+#: ../src/Glade/MainWindow.ui.h:74
+msgid "Delete"
+msgstr "Delete"
+
+#: ../src/Glade/MainWindow.ui.h:75
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+msgid "Time"
+msgstr "Waktu"
+
+#: ../src/Glade/MainWindow.ui.h:76
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+#, fuzzy
+msgid "Duration"
+msgstr "Durasi"
+
+#: ../src/Glade/MainWindow.ui.h:77
+#, fuzzy
+msgid "Sets the subtitle Start to the current video position"
+msgstr "Mengatur Subtitle mulai ke posisi video saat ini"
+
+#: ../src/Glade/MainWindow.ui.h:78
+#, fuzzy
+msgid "Sets the subtitle End to the current video position"
+msgstr "Menyetel subjudul Akhiri ke posisi video saat ini"
+
+#: ../src/Glade/MainWindow.ui.h:79
+#, fuzzy
+msgid ""
+"Sets the subtitle Start and End while the video is playing. Keep the button "
+"pressed for the duration of each subtitle."
+msgstr ""
+"Set Subtitle mulai dan berakhir saat Video diputar. Terus tekan tombol untuk "
+"durasi setiap subjudul."
+
+#: ../src/Glade/MainWindow.ui.h:80
+msgid "1.0x"
+msgstr "1.0x"
+
+#: ../src/Glade/MainWindow.ui.h:81
+#, fuzzy
+msgid ""
+"Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
+"and end timings.\n"
+"Shift+Plus/Minus (on the numpad) shifts timings."
+msgstr ""
+"Tip: gunakan Ctrl + Plus/minus dan Alt + Plus/minus (pada Numpad) untuk "
+"menyesuaikan Timing awal dan akhir.\n"
+"Shift + Plus/minus (pada Numpad) pergeseran timing."
+
+#. This is the start time/frame of a subtitle.
+#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
+#, fuzzy
+msgid "Start:"
+msgstr "Mulai:"
+
+#: ../src/Glade/MainWindow.ui.h:85
+#, fuzzy
+msgid "End:"
+msgstr "Berakhir:"
+
+#. This is the duration of a subtitle.
+#: ../src/Glade/MainWindow.ui.h:87
+msgid "Duration:"
+msgstr "Durasi:"
+
+#: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
+#, fuzzy
+msgid "Adjusting timings"
+msgstr "Menyesuaikan Timing"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
+#, fuzzy
+msgid "Changing Input Frame Rate"
+msgstr "Mengubah laju bingkai input"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
+#, fuzzy
+msgid "Changing Video Frame Rate"
+msgstr "Mengubah laju bingkai video"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
+#, fuzzy
+msgid "Toggling Bold"
+msgstr "Toggling Bold"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
+#, fuzzy
+msgid "Toggling Italic"
+msgstr "Toggling Italic"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
+#, fuzzy
+msgid "Toggling Underline"
+msgstr "Toggling garis bawah"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
+#, fuzzy
+msgid "Editing Start"
+msgstr "Mengedit mulai"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
+#, fuzzy
+msgid "Editing End"
+msgstr "Pengeditan akhir"
+
+#: ../src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
+msgid "Editing Duration"
+msgstr "Durasi Penyuntingan"
+
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: ../src/GnomeSubtitles/Ui/Menus.cs:708
+#, fuzzy
+msgid "Undo"
+msgstr "Undo"
+
+#: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: ../src/GnomeSubtitles/Ui/Menus.cs:718
+msgid "Redo"
+msgstr "Jadi Lagi"
+
+#: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
+#, fuzzy
+msgid "Deleting Subtitles"
+msgstr "Menghapus Subtitle"
+
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
+#, fuzzy
+msgid "Editing Text"
+msgstr "Mengedit teks"
+
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:26
+#, fuzzy
+msgid "Editing Translation"
+msgstr "Mengedit terjemahan"
+
+#: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:28
+#, fuzzy
+msgid "Inserting Subtitle"
+msgstr "Memasukkan Subtitle"
+
+#: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
+#, fuzzy
+msgid "Merging subtitles"
+msgstr "Penggabungan Subtitle"
+
+#: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
+#, fuzzy
+msgid "Replacing All"
+msgstr "Mengganti semua"
+
+#: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
+#, fuzzy
+msgid "Shifting timings"
+msgstr "Menggeser Timing"
+
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
+#, fuzzy
+msgid "Splitting subtitles"
+msgstr "Membelah sub judul"
+
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
+#, fuzzy
+msgid "Synchronizing timings"
+msgstr "Menyelaraskan Timing"
+
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
+#, fuzzy
+msgid "Setting Subtitle Start"
+msgstr "Pengaturan mulai Subtitle"
+
+#: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
+#, fuzzy
+msgid "Setting Subtitle End"
+msgstr "Pengaturan Subtitle akhir"
+
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: ../src/GnomeSubtitles/Core/Document.cs:113
+#, fuzzy
+msgid "Unsaved Subtitles"
+msgstr "Subtitle yang belum disimpan"
+
+#. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} ({1} translation)"
+msgstr "{0} ({1} terjemahan)"
+
+#: ../src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} (translation)"
+msgstr "{0} (terjemahan)"
+
+#. GEOSTD8, HZ not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:51
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
+#, fuzzy
+msgid "Western"
+msgstr "Western"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#, fuzzy
+msgid "Central European"
+msgstr "Eropa Tengah"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
+#, fuzzy
+msgid "South European"
+msgstr "Eropa Selatan"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:114
+msgid "Baltic"
+msgstr "Baltik"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
+msgid "Cyrillic"
+msgstr "Sirilik"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:92
+#: ../src/GnomeSubtitles/Core/Encodings.cs:113
+msgid "Arabic"
+msgstr "Arab"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
+msgid "Greek"
+msgstr "Yunani"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:112
+msgid "Hebrew"
+msgstr "Ibrani"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
+msgid "Turkish"
+msgstr "Turki"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#, fuzzy
+msgid "Nordic"
+msgstr "Nordic"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
+#, fuzzy
+msgid "Celtic"
+msgstr "Celtic"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:52
+msgid "Romanian"
+msgstr "Rumania"
+
+#. ISO-8859-8-I not used
+#. Added
+#. Little endian
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:55
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+#: ../src/GnomeSubtitles/Core/Encodings.cs:58
+#: ../src/GnomeSubtitles/Core/Encodings.cs:59
+#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:62
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
+#, fuzzy
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+#, fuzzy
+msgid "UTF-8 without BOM"
+msgstr "UTF-8 tanpa BOM"
+
+#. Added
+#. UCS-2 and UCS-4 not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:67
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
+msgid "Chinese Traditional"
+msgstr "Cina Tradisional"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
+#, fuzzy
+msgid "Cyrillic/Russian"
+msgstr "Cyrillic/Rusia"
+
+#. ARMSCII-8 not used
+#. Added
+#. Added
+#. ISO-IR-111, KOI8R, KOI8U not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+msgid "Japanese"
+msgstr "Jepang"
+
+#. EUC-JP-MS not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:98
+#: ../src/GnomeSubtitles/Core/Encodings.cs:99
+msgid "Korean"
+msgstr "Korea"
+
+#. EUC-TW not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:79
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#, fuzzy
+msgid "Chinese Simplified"
+msgstr "Cina - sederhana"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
+msgid "Portuguese"
+msgstr "Portugis"
+
+#. Added
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
+msgid "Icelandic"
+msgstr "Islandia"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#, fuzzy
+msgid "French Canadian"
+msgstr "Prancis Kanada"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:101
+#, fuzzy
+msgid "Cyrillic/Ukrainian"
+msgstr "Cyrillic/Ukraina"
+
+#. TCVN, TIS-620, UHC, VISCII not used
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#, fuzzy
+msgid "Central"
+msgstr "Pusat"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:115
+msgid "Vietnamese"
+msgstr "Vietnam"
+
+#: ../src/GnomeSubtitles/Core/Encodings.cs:126
+#, fuzzy
+msgid "Current Locale"
+msgstr "Lokal saat ini"
+
+#: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
+msgid "Unknown"
+msgstr "Tak Diketahui"
+
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:41
+#, fuzzy
+msgid "About Gnome Subtitles"
+msgstr "Tentang sub judul GNOME"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+#, fuzzy
+msgid "_All subtitles"
+msgstr "_All Subtitle"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+#, fuzzy
+msgid "_Selected subtitles"
+msgstr "_Selected Subtitle"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
+#, fuzzy
+msgid "Subtitles between those selected and the _first"
+msgstr "Subtitle antara yang dipilih dan _first"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
+#, fuzzy
+msgid "Subtitles between those selected and the _last"
+msgstr "Subtitle antara yang dipilih dan _last"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:56
+#, fuzzy
+msgid "Character Encodings"
+msgstr "Pengkodean karakter"
+
+#. Left part: Available VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:69
+#, fuzzy
+msgid "Available Encodings"
+msgstr "Pengkodean yang tersedia"
+
+#. Right part: Shown VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:86
+#, fuzzy
+msgid "Chosen Encodings"
+msgstr "Pengkodean yang dipilih"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
+msgid "Description"
+msgstr "Deskripsi"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
+#, fuzzy
+msgid "Encoding"
+msgstr "Pengodean"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+#, fuzzy
+msgid "Headers"
+msgstr "Header"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+#, fuzzy
+msgid "Title:"
+msgstr "Judul:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "Pembuat:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+#, fuzzy
+msgid "Artist:"
+msgstr "Artis:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "Album:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+#, fuzzy
+msgid "By:"
+msgstr "Oleh:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "Versi:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+#, fuzzy
+msgid "Program:"
+msgstr "Program:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+#, fuzzy
+msgid "Source:"
+msgstr "Sumber:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "Tanggal:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
+#, fuzzy
+msgid "Frame Rate:"
+msgstr "Laju Bingkai:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+#, fuzzy
+msgid "File:"
+msgstr "File:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+#, fuzzy
+msgid "Note:"
+msgstr "Catatan:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
+#, fuzzy
+msgid "Media Type:"
+msgstr "Tipe media."
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "Audio"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: ../src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "Video"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+#, fuzzy
+msgid "Original Script:"
+msgstr "Naskah asli:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+#, fuzzy
+msgid "Original Translation:"
+msgstr "Terjemahan asli:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+#, fuzzy
+msgid "Original Editing:"
+msgstr "Pengeditan asli:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+#, fuzzy
+msgid "Original Timing:"
+msgstr "Waktu asli:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+#, fuzzy
+msgid "Original Script Checking:"
+msgstr "Asli script memeriksa:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+#, fuzzy
+msgid "Script Updated By:"
+msgstr "Skrip diperbarui oleh:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+#, fuzzy
+msgid "Collisions:"
+msgstr "Tabrakan:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+#, fuzzy
+msgid "Timer:"
+msgstr "timer"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
+#, fuzzy
+msgid "Play Res X:"
+msgstr "Bermain res X:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:129
+#, fuzzy
+msgid "Play Res Y:"
+msgstr "Bermain res Y:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
+#, fuzzy
+msgid "Play Depth:"
+msgstr "Bermain kedalaman:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+#, fuzzy
+msgid "File Path:"
+msgstr "Path berkas terenkode UTF-8 yang memuat PAC untuk EAP-FAST."
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+#, fuzzy
+msgid "Delay:"
+msgstr "Tunda"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+#, fuzzy
+msgid "CD Track:"
+msgstr "CD lagu:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+#, fuzzy
+msgid "Font Name:"
+msgstr "font-name"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+#, fuzzy
+msgid "Font Color:"
+msgstr "Warna Huruf"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+#, fuzzy
+msgid "Font Style:"
+msgstr "Gaya font:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+#, fuzzy
+msgid "Font Size:"
+msgstr "Ukuran font"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+#, fuzzy
+msgid "Video to Open:"
+msgstr "Video ke buka:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:126
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
+#, fuzzy
+msgid "Character Encoding:"
+msgstr "Opsi ini menentukan pengkodean karakter baku."
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:208
+msgid "None"
+msgstr "Nihil"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:276
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
+msgid "All Files"
+msgstr "Semua Berkas"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:283
+#, fuzzy
+msgid "All Subtitle Files"
+msgstr "Semua berkas Subtitle"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "Properti Berkas"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
+#, fuzzy
+msgid "File Name"
+msgstr "Nama File"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:52
+msgid "Path"
+msgstr "Path"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:55
+#, fuzzy
+msgid "Character Encoding"
+msgstr "Opsi ini menentukan pengkodean karakter baku."
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Format Subtitle"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+#, fuzzy
+msgid "Timing Mode"
+msgstr "Mode waktu"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "Simpan Sebagai"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+#, fuzzy
+msgid "Subtitle Format:"
+msgstr "Format Subtitle:"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
+#, fuzzy
+msgid "Line Ending:"
+msgstr "Akhir baris:"
+
+#: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
+#, fuzzy
+msgid "Open Translation File"
+msgstr "Buka berkas terjemahan"
+
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:27
+#, fuzzy
+msgid "Save Translation As"
+msgstr "Simpan terjemahan sebagai"
+
+#: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
+#, fuzzy
+msgid ""
+"An unknown error has occurred. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Kesalahan yang tidak diketahui telah terjadi. Harap Laporkan bug dan "
+"Sertakan nama kesalahan ini:"
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
+#, fuzzy
+msgid "Could not open the file"
+msgstr "Tidak dapat membuka berkas kunci %s"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
+#, fuzzy
+msgid "Open another file"
+msgstr "Membuka berkas lain"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
+#, fuzzy
+msgid "The file path appears to be invalid."
+msgstr "Jalur berkas tampaknya tidak valid."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
+#, fuzzy
+msgid "Could not save the file"
+msgstr "Tak bisa menyimpan berkas \"%1\""
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
+#, fuzzy
+msgid "Save to another file"
+msgstr "Simpan ke berkas lain"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#, fuzzy
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr ""
+"Anda telah kehabisan memori. Silakan tutup beberapa program dan coba lagi."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#, fuzzy
+msgid "An I/O error has occurred."
+msgstr "Galat I/O telah terjadi."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
+#, fuzzy
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Anda tidak memiliki izin yang diperlukan untuk menyimpan berkas."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#, fuzzy
+msgid "The specified file is invalid."
+msgstr "File yang ditentukan tidak valid."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
+#, fuzzy
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr ""
+"Jika Anda tidak menyimpan, semua perubahan Anda akan hilang secara permanen."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
+#, fuzzy, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr "Simpan perubahan ke sub judul \"{0}\" sebelum membuat sub judul baru?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
+#, fuzzy
+msgid "Create without Saving"
+msgstr "Buat tanpa menyimpan"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:110
+#, fuzzy, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr "Simpan perubahan ke terjemahan \"{0}\" sebelum membuat subjudul baru?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
+#, fuzzy, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Simpan perubahan ke terjemahan \"{0}\" sebelum membuat terjemahan baru?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:127
+#, fuzzy, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "Simpan perubahan ke sub judul \"{0}\" sebelum membuka?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
+#, fuzzy
+msgid "Open without Saving"
+msgstr "Buka tanpa menyimpan"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:147
+#, fuzzy, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Simpan perubahan ke terjemahan \"{0}\" sebelum membuka?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:156
+#, fuzzy, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Simpan perubahan ke sub judul \"{0}\" sebelum menutup?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
+#, fuzzy
+msgid "Close without Saving"
+msgstr "Tutup tanpa Menyimpan"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:175
+#, fuzzy, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Simpan perubahan ke terjemahan \"{0}\" sebelum menutup?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#, fuzzy
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"Tidak dapat mendeteksi format Subtitle. Harap periksa bahwa jenis berkas "
+"yang didukung."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#, fuzzy
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"Pengkodean yang digunakan tidak didukung oleh sistem Anda. Silakan pilih "
+"encoding lain."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#, fuzzy
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Anda tidak memiliki izin yang diperlukan untuk membuka berkas."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#, fuzzy
+msgid "The file could not be found."
+msgstr "Berkas tidak dapat ditemukan."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#, fuzzy
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr "File tampak terlalu besar untuk berkas Subtitle berbasis teks."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
+#, fuzzy
+msgid "Could not play the file"
+msgstr "Tidak dapat memutar berkas"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "Preferensi"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "Berkas"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "Penyuntingan"
+
+#. Translation File Saving
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
+#, fuzzy
+msgid "When saving subtitle files, automatically save their _translation"
+msgstr "Saat menyimpan berkas Subtitle, secara otomatis menyimpan _translation"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
+#, fuzzy
+msgid "Translation File Saving"
+msgstr "Menyimpan berkas terjemahan"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+#, fuzzy
+msgid "Character _encoding to use:"
+msgstr "Karakter _encoding untuk menggunakan:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
+#, fuzzy
+msgid "If auto detection _fails, use:"
+msgstr "Jika deteksi otomatis _fails, gunakan:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
+#, fuzzy
+msgid "Automatically choose the _video file to open"
+msgstr "Secara otomatis memilih berkas _video untuk membuka"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+#, fuzzy
+msgid "File Open Dialog"
+msgstr "Dialog buka berkas"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+#, fuzzy
+msgid "_Subtitle format to use:"
+msgstr "Format _Subtitle untuk digunakan:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#, fuzzy
+msgid "Ch_aracter encoding to use:"
+msgstr "Ch_aracter encoding untuk menggunakan:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
+#, fuzzy
+msgid "_Newline type to use:"
+msgstr "Jenis _Newline untuk digunakan:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
+#, fuzzy
+msgid "File Save As Dialog"
+msgstr "Dialog Save AS berkas"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
+#, fuzzy
+msgid "Create a _backup copy of files every"
+msgstr "Buat salinan _backup berkas setiap"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
+msgid "minutes"
+msgstr "menit"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+msgid "Backup"
+msgstr "Cadangan"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+#, fuzzy
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr "_Seek video ke Subtitle yang dipilih saat mengubah Timing"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+msgid "Play"
+msgstr "Mainkan"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
+#, fuzzy
+msgid "ms before the actual start to help review new timings"
+msgstr "MS sebelum awal yang sebenarnya untuk membantu meninjau Timing baru"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
+#, fuzzy
+msgid "Video Seeking"
+msgstr "Video mencari"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
+msgid "Leave"
+msgstr "Tinggalkan"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+#, fuzzy
+msgid "ms between subtitles when inserting or splitting"
+msgstr "MS antara sub judul saat memasukkan atau membelah"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
+#, fuzzy
+msgid "Gap Between Subtitles"
+msgstr "Kesenjangan antara Subtitle"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+#, fuzzy
+msgid "Subtr_act"
+msgstr "Subtr_act"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
+#, fuzzy
+msgid "ms when setting subtitle start/end while playing the video"
+msgstr "MS ketika pengaturan Subtitle mulai/akhir saat memutar video"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
+#, fuzzy
+msgid "Reaction Delay"
+msgstr "Reaksi delay"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
+#, fuzzy
+msgid "Remember the last used encoding"
+msgstr "Ingat pengkodean yang terakhir digunakan"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
+#, fuzzy
+msgid "Keep the encoding used on file open"
+msgstr "Menyimpan pengkodean yang digunakan pada berkas terbuka"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
+#, fuzzy
+msgid "Keep the format used on file open"
+msgstr "Menjaga format yang digunakan pada berkas terbuka"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
+#, fuzzy
+msgid "Remember the last used format"
+msgstr "Ingat format yang terakhir digunakan"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
+#, fuzzy
+msgid "Remember the last used type"
+msgstr "Ingat jenis terakhir yang digunakan"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+#, fuzzy
+msgid "Replace"
+msgstr "Timpa"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Find"
+msgstr "Cari"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:130
+#, fuzzy
+msgid "F_ind"
+msgstr "F_ind"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:139
+#, fuzzy
+msgid "Replace _with"
+msgstr "Ganti _dengan"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "Cocok _huruf besar kecil"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "Cari mundur"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
+#, fuzzy
+msgid "Regular _expression"
+msgstr "<gui style=\"checkbox\">Sesuai ekspresi reguler</gui>"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
+#, fuzzy
+msgid "Wra_p around"
+msgstr "Wra_p di sekitar"
+
+#. Action area
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "Ganti Semu_a"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
+#, fuzzy
+msgid "Set Languages"
+msgstr "Atur bahasa"
+
+#. Left part: Text Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
+msgid "Text Language"
+msgstr "Bahasa Teks"
+
+#. Right part: Translation Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
+#, fuzzy
+msgid "Translation Language"
+msgstr "Bahasa terjemahan"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
+#, fuzzy, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr ""
+"Gunakan manajer paket distro Anda untuk menginstal bahasa tambahan (Tip: "
+"mencari ' mantra '). Paket bahasa yang didukung: {0}."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
+#, fuzzy
+msgid "Adjust Timings Between 2 Points"
+msgstr "Sesuaikan Timing antara 2 poin"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
+msgid "_Apply"
+msgstr "Ter_apkan"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
+#, fuzzy
+msgid "Subtitle No.:"
+msgstr "Subjudul."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+#, fuzzy
+msgid "New Start:"
+msgstr "Mulai baru:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
+#, fuzzy
+msgid "First Point"
+msgstr "Titik pertama"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:139
+#, fuzzy
+msgid "Second Point"
+msgstr "Titik kedua"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:162
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
+#, fuzzy
+msgid "Apply To"
+msgstr "Ter_apkan"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+#, fuzzy
+msgid "Shift Timings"
+msgstr "Pergeseran Timing"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
+msgid "Apply"
+msgstr "Terapkan"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:82
+msgid "Reset"
+msgstr "Atur Ulang"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
+#, fuzzy
+msgid "Set From Video"
+msgstr "Set dari video"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+#, fuzzy
+msgid ""
+"Sets the shift amount in order for the selected subtitles to start at the "
+"current video position."
+msgstr ""
+"Menetapkan jumlah pergeseran agar sub judul yang dipilih untuk memulai pada "
+"posisi video saat ini."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
+#, fuzzy
+msgid "Amount"
+msgstr "Jumlah"
+
+#. Tips label
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
+#, fuzzy
+msgid ""
+"Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
+"from the main window."
+msgstr ""
+"Tip: alternatifnya gunakan Shift + Numpad Plus/minus untuk menggeser Timing "
+"langsung dari jendela utama."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+#, fuzzy
+msgid "Synchronize Timings"
+msgstr "Sinkronisasi Timing"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
+#, fuzzy
+msgid "Sync Points"
+msgstr "Sync poin"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
+#, fuzzy
+msgid "Subtitles between sync points"
+msgstr "Teks antara titik sinkron"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
+msgid "Info"
+msgstr "Info"
+
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
+#, fuzzy
+msgid "Subtitle No."
+msgstr "Subjudul."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
+msgid "Start"
+msgstr "Mulai"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:152
+#, fuzzy
+msgid "New Start"
+msgstr "Awal baru"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:170
+#, fuzzy
+msgid ""
+"Add sync points by selecting subtitles and adjusting the video to their "
+"correct position. At least 2 points are needed."
+msgstr ""
+"Tambahkan titik sinkron dengan memilih subjudul dan menyesuaikan video ke "
+"posisi yang benar. Setidaknya 2 poin diperlukan."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
+#, fuzzy
+msgid ""
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
+msgstr ""
+"Tambahkan 1 titik sinkronisasi lagi untuk memulai sinkronisasi. Menambahkan "
+"lebih banyak poin akan meningkatkan akurasi."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
+#, fuzzy
+msgid "Synchronization is ready. All subtitles will be synchronized."
+msgstr "Sinkronisasi siap. Semua Subtitle akan disinkronkan."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
+#, fuzzy, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0}."
+msgstr "Sinkronisasi siap. Sub judul berikut tidak akan disinkronkan: {0}."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
+#, fuzzy, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0} and {1}."
+msgstr ""
+"Sinkronisasi siap. Sub judul berikut tidak akan disinkronkan: {0} dan {1}."
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
+#, fuzzy
+msgid "Open Video"
+msgstr "Buka video"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#, fuzzy
+msgid "All Media Files"
+msgstr "Semua berkas media"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
+#, fuzzy
+msgid "Video Files"
+msgstr "Berkas Video"
+
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
+#, fuzzy
+msgid "Audio Files"
+msgstr "Berkas Audio"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
+#, fuzzy
+msgid "Seek Video To"
+msgstr "Mencari video untuk"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+#, fuzzy
+msgid "_Seek"
+msgstr "seem film mundur 30 detik"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+#, fuzzy
+msgid "Seek _video to:"
+msgstr "Carilah _video untuk:"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
+#, fuzzy
+msgid "Add or Remove…"
+msgstr "Tambah atau Buang…"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+#, fuzzy
+msgid "Automatically Detected"
+msgstr "Terdeteksi secara otomatis"
+
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
+#, fuzzy
+msgid "System Default"
+msgstr "Baku sistem"
+
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "OVR"
+msgstr "OVR"
+
+#: ../src/GnomeSubtitles/Ui/Status.cs:43
+msgid "INS"
+msgstr "INS"
+
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
+msgid "Text"
+msgstr "Teks"
+
+#: ../src/GnomeSubtitles/Ui/Status.cs:58
+#, fuzzy
+msgid "Trans"
+msgstr ""
+"<ahelp hid=\"cui/ui/transparencytabpage/RBT_TRANS_GRADIENT\">Trerapkan "
+"sebuah gradien transparansi ke warna isi saat ini. Pilih opsi ini, dan atur "
+"properti gradien.</ahelp>"
+
+#. To translators: Ln corresponds to Line
+#: ../src/GnomeSubtitles/Ui/Status.cs:60
+#, fuzzy
+msgid "Ln"
+msgstr "\"<literal>ln foo bar</literal>\""
+
+#. To translators: Col corresponds to Column
+#: ../src/GnomeSubtitles/Ui/Status.cs:62
+#, fuzzy
+msgid "Col"
+msgstr "Kolose"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+msgid "Frame"
+msgstr "Bingkai"
+
+#. Number column
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
+#, fuzzy
+msgid "No."
+msgstr "No."
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+#, fuzzy
+msgid "End"
+msgstr "Selesai"
+
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
+msgid "Translation"
+msgstr "Terjemahan"
