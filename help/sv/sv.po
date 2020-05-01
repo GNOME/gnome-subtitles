@@ -1,20 +1,20 @@
 # Swedish translation for gnome-subtitles-help.
-# Copyright © 2007-2019 Free Software Foundation, Inc.
+# Copyright © 2007-2020 Free Software Foundation, Inc.
 # Josef Andersson <josef.andersson@fripost.org>, 2015.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2019.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles doc\n"
-"POT-Creation-Date: 2019-01-09 12:21+0000\n"
-"PO-Revision-Date: 2019-01-27 22:21+0100\n"
+"POT-Creation-Date: 2020-03-26 14:49+0000\n"
+"PO-Revision-Date: 2020-05-01 21:54+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -368,9 +368,9 @@ msgstr "Övriga funktioner"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:160
-msgid "Character coding a subtitle format auto-detection (on opening)"
+msgid "Character encoding and subtitle format auto-detection (on opening)"
 msgstr ""
-"Automatisk identifiering av ett undertextformats teckenkodning (vid öppnande)"
+"Automatisk identifiering av teckenkodning och undertextformat (vid öppnande)"
 
 #. (itstool) path: listitem/para
 #: C/index.docbook:161
@@ -489,17 +489,16 @@ msgstr "Fönstret Öppna fil ska öppnas"
 msgid "Select the subtitle file you wish to open."
 msgstr "Välj den undertextfil som du vill öppna."
 
-# https://bugzilla.gnome.org/show_bug.cgi?id=757614
 #. (itstool) path: step/para
 #: C/index.docbook:238
 msgid ""
-"If you want to specify the file's character coding, choose one from the "
-"Character Coding list. If not specified, the caracter coding will be auto "
-"detected."
+"If you want to specify the file's character encoding, choose one from the "
+"Character Encoding list. If not specified, the character encoding will be "
+"auto detected."
 msgstr ""
 "Om du vill specificera filens teckenkodning, välj en från "
 "teckenkodningslistan. Om inte angivet kommer teckenkodningen att "
-"autoupptäckas."
+"identifieras automatiskt."
 
 #. (itstool) path: step/para
 #: C/index.docbook:241
@@ -710,7 +709,7 @@ msgstr "För att lägga till en ny undertext efter aktuell undertext"
 #. (itstool) path: step/para
 #: C/index.docbook:326
 msgid ""
-"Type <keycap>Insert</keycap> or <keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
+"Press <keycap>Insert</keycap> or <keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 msgstr ""
 "Tryck <keycap>Insert</keycap> eller <keycap>Ctrl</keycap>+<keycap>Retur</"
 "keycap>"
@@ -723,7 +722,7 @@ msgstr "För att lägga till en ny undertext före aktuell undertext"
 #. (itstool) path: step/para
 #: C/index.docbook:332
 msgid ""
-"Type <keycap>Shift</keycap>+<keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
+"Press <keycap>Shift</keycap>+<keycap>Ctrl</keycap>+<keycap>Enter</keycap>"
 msgstr ""
 "Tryck <keycap>Skift</keycap>+<keycap>Ctrl</keycap>+<keycap>Retur</keycap>"
 
@@ -750,7 +749,7 @@ msgstr "Att flytta till nästa undertext"
 
 #. (itstool) path: step/para
 #: C/index.docbook:344
-msgid "Type <keycap>Ctrl</keycap>+<keycap>Page Down</keycap>"
+msgid "Press <keycap>Ctrl</keycap>+<keycap>Page Down</keycap>"
 msgstr "Tryck <keycap>Ctrl</keycap>+<keycap>Page Down</keycap>"
 
 #. (itstool) path: procedure/title
@@ -760,7 +759,7 @@ msgstr "Att flytta till föregående undertext"
 
 #. (itstool) path: step/para
 #: C/index.docbook:350
-msgid "Type <keycap>Ctrl</keycap>+<keycap>Page Up</keycap>"
+msgid "Press <keycap>Ctrl</keycap>+<keycap>Page Up</keycap>"
 msgstr "Tryck <keycap>Ctrl</keycap>+<keycap>Page Up</keycap>"
 
 #. (itstool) path: sect2/title
@@ -770,7 +769,7 @@ msgstr "Ta bort undertext(er)"
 
 #. (itstool) path: step/para
 #: C/index.docbook:356
-msgid "Type <keycap>Delete</keycap>"
+msgid "Press <keycap>Delete</keycap>"
 msgstr "Tryck <keycap>Delete</keycap>"
 
 #. (itstool) path: sect2/title
@@ -791,7 +790,7 @@ msgstr ""
 
 #. (itstool) path: sect2/para
 #: C/index.docbook:362
-msgid "To select all subtitles type <keycap>Ctrl</keycap>+<keycap>A</keycap>"
+msgid "To select all subtitles press <keycap>Ctrl</keycap>+<keycap>A</keycap>"
 msgstr ""
 "För att välja alla undertexter tryck <keycap>Ctrl</keycap>+<keycap>A</keycap>"
 
@@ -824,11 +823,11 @@ msgstr "Textformat"
 #. (itstool) path: note/para
 #: C/index.docbook:374
 msgid ""
-"A type format (bold, italics, underline) can be applied to the whole line "
+"A style format (bold, italics, underline) can be applied to the whole line "
 "only. Currently, if you want to have only certain characters formatted "
 "specially, you will need to edit the subtitle file in a text editor."
 msgstr ""
-"Ett typformat (fet, kursiv, understruken) kan tillämpas endast på hela "
+"Ett stilformat (fet, kursiv, understruken) kan tillämpas endast på hela "
 "raden. För närvarande, om du vill ha vissa tecken speciellt formaterade "
 "behöver du redigera undertextfilen i en textredigerare."
 
@@ -844,7 +843,7 @@ msgstr "Ångra en åtgärd"
 
 #. (itstool) path: step/para
 #: C/index.docbook:380
-msgid "Type <keycap>Ctrl</keycap>+ <keycap>Z</keycap>"
+msgid "Press <keycap>Ctrl</keycap>+ <keycap>Z</keycap>"
 msgstr "Tryck <keycap>Ctrl</keycap>+ <keycap>Z</keycap>"
 
 #. (itstool) path: procedure/title
@@ -855,7 +854,7 @@ msgstr "Göra om en åtgärd"
 #. (itstool) path: step/para
 #: C/index.docbook:382
 msgid ""
-"Type <keycap>Ctrl</keycap>+ <keycap>Y</keycap> or <keycap>Ctrl</keycap>"
+"Press <keycap>Ctrl</keycap>+ <keycap>Y</keycap> or <keycap>Ctrl</keycap>"
 "+<keycap>Shift</keycap>+<keycap>Z </keycap>"
 msgstr ""
 "Tryck <keycap>Ctrl</keycap>+<keycap>Y</keycap> eller <keycap>Ctrl</keycap>"
