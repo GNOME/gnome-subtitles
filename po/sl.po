@@ -8,9 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"subtitles&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-24 08:52+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
+"POT-Creation-Date: 2020-05-31 05:41+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
@@ -21,25 +20,34 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.3\n"
 
-#: ../data/gnome-subtitles.appdata.xml.h:1
-#: ../data/gnome-subtitles.appdata.xml.in.h:1
-msgid "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
-msgstr "Program za podnapise je urejevalnik za okolje GNOME."
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+msgid "Gnome Subtitles"
+msgstr "Gnome podnapisi"
 
-#: ../data/gnome-subtitles.appdata.xml.h:2
-#: ../data/gnome-subtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
+msgid "Video subtitling for the GNOME desktop"
+msgstr "Video podnapisi za namizje GNOME"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+#, fuzzy
+#| msgid ""
+#| "It allows to create, synchronize, convert and translate subtitles by "
+#| "using a friendly user interface with video preview."
 msgid ""
-"It allows to create, synchronize, convert and translate subtitles by using a "
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
 "Program omogoča  ustvarjanje, usklajevanje, pretvarjanje in prevajanje "
 "podnapisov z uporabo enostavnega vmesnika s podporo predvajanju predogleda "
 "posnetka."
 
-#: ../data/gnome-subtitles.appdata.xml.h:3
-#: ../data/gnome-subtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
@@ -48,547 +56,642 @@ msgstr ""
 "Podprtih je 22 zapisov podnapisov, vključno z: SubRip, MicroDVD, FAB "
 "Subtitler, MPlayer, Sub Station Alpha, MPSub and SubViewer."
 
-#: ../data/gnome-subtitles.desktop.in.h:1
-msgid "Gnome Subtitles"
-msgstr "Gnome podnapisi"
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
+msgid "Main window"
+msgstr "Glavno okno"
 
-#: ../data/gnome-subtitles.desktop.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Urejevalnik podnapisov"
 
-#: ../data/gnome-subtitles.desktop.in.h:3 ../src/Glade/AboutDialog.glade.h:2
-msgid "Video subtitling for the GNOME desktop"
-msgstr "Video podnapisi za namizje GNOME"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
+msgid "subtitles;video;captions;"
+msgstr "podnapisi;video;podpisi;titli;subtitles;besedilo;serije;"
 
-#: ../data/gnome-subtitles.desktop.in.h:4
-msgid "Subtitles;Video;"
-msgstr "Podnapisi;Video;"
-
-#: ../src/Glade/AboutDialog.glade.h:1
-msgid "About Gnome Subtitles"
-msgstr "O programu"
-
-#: ../src/Glade/AboutDialog.glade.h:3
-msgid ""
-"Gnome Subtitles is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gnome Subtitles is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
-msgstr ""
-"Program Gnome podnapisi je prosto programje; lahko ga redistribuirate\n"
-"in/ali spreminjate pod pogoji GNU General Public Licence kot je\n"
-" objavljena s Free Software Foundation; ali različico 2 Licence\n"
-" ali (na vašo željo) katerakoli kasnejša različica.\n"
-"\n"
-"Program Gnome podnapisi je distribuiran v upanju da bo uporaben, toda BREZ\n"
-"KAKRŠNIHKOLI ZAGOTOVIL; tudi brez impliciranih zagotovila za PRODAJO\n"
-" ali PRIMERNOST ZA DOLOČEN NAMEN. Oglejte si\n"
-" GNU General Public Licence za več podrobnosti.\n"
-"\n"
-"Skupaj s programom bi morali prejeti tudi kopijo splošnega javnega "
-"potrdila;\n"
-" v primeru, da kopije niste prejeli, pišite na Free Software Foundation, "
-"Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#: ../src/Glade/EncodingsDialog.glade.h:1
-msgid "Character codings"
-msgstr "Znakovna kodiranja"
-
-#: ../src/Glade/EncodingsDialog.glade.h:2
-msgid "A_vailable:"
-msgstr "Na _voljo:"
-
-#: ../src/Glade/EncodingsDialog.glade.h:3
-msgid "Shown in menu:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
+#, fuzzy
+#| msgid "Shown in menu:"
+msgid "Encodings shown in menu"
 msgstr "Prikazano v meniju:"
 
-#: ../src/Glade/FileOpenDialog.glade.h:1 ../src/Glade/MainWindow.glade.h:64
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:57
-msgid "Open File"
-msgstr "Odpri datoteko"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
+msgid "List of encodings shown in the File Open/Save dialogs."
+msgstr ""
 
-#: ../src/Glade/FileOpenDialog.glade.h:2
-msgid "Video To Open:"
-msgstr "Video za odprtje:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
+msgid "File Open encoding option"
+msgstr ""
 
-#: ../src/Glade/FileOpenDialog.glade.h:3
-#: ../src/Glade/FileSaveAsDialog.glade.h:3
-msgid "Character Coding:"
-msgstr "Znakovno kodiranje:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
+msgid ""
+"Encoding option to use by default when opening files. Possible values are: "
+"\"AutoDetect\" to use auto detection, \"RememberLastUsed\" to remember the "
+"last used encoding, \"CurrentLocale\" to use the current locale, and "
+"\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
+"\" and \"Specific\" is stored in the file_open_encoding key."
+msgstr ""
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:1
-msgid "File Properties"
-msgstr "Lastnosti datoteke"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:5
+msgid "File Open encoding"
+msgstr ""
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:2
-msgid "<b>Name:</b>"
-msgstr "<b>Ime:</b>"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:6
+msgid ""
+"Encoding to use when opening files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_open_encoding_option key, other possible values are \"AutoDetect\" and "
+"\"CurrentLocale\"."
+msgstr ""
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:3
-msgid "<b>Path:</b>"
-msgstr "<b>Pot:</b>"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:7
+#, fuzzy
+#| msgid "If auto detection _fails, use:"
+msgid "Auto detection fallback encoding"
+msgstr "V primeru da samodejno zaznavanje _spodleti, uporabi:"
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:4
-msgid "<b>Character Coding:</b>"
-msgstr "<b>Znakovno kodiranje:</b>"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
+msgid "Encoding to use when auto detection fails."
+msgstr ""
 
-#: ../src/Glade/FilePropertiesDialog.glade.h:5
-msgid "<b>Subtitle Format:</b>"
-msgstr "<b>Vrsta podnapisov:</b>"
-
-#: ../src/Glade/FilePropertiesDialog.glade.h:6
-msgid "<b>Timing Mode:</b>"
-msgstr "<b>Način časovnih uskladitev:</b>"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:133
-msgid "Save As"
-msgstr "Shrani kot"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:2
-msgid "Subtitle Format:"
-msgstr "Vrsta podnapisov:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:4
-msgid "Newline Type:"
-msgstr "Vrsta nove vrstice:"
-
-#: ../src/Glade/FileSaveAsDialog.glade.h:5
-msgid "Select advanced options"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
+#, fuzzy
+#| msgid "Select advanced options"
+msgid "File Save encoding option"
 msgstr "Izberi napredne možnosti"
 
-#: ../src/Glade/HeadersDialog.glade.h:1
-msgid "Headers"
-msgstr "Glave"
-
-#: ../src/Glade/HeadersDialog.glade.h:2
-msgid "Title:"
-msgstr "Naslov:"
-
-#: ../src/Glade/HeadersDialog.glade.h:3
-msgid "Author:"
-msgstr "Avtor:"
-
-#: ../src/Glade/HeadersDialog.glade.h:4
-msgid "Artist:"
-msgstr "Izvajalec:"
-
-#: ../src/Glade/HeadersDialog.glade.h:5
-msgid "Album:"
-msgstr "Album:"
-
-#: ../src/Glade/HeadersDialog.glade.h:6
-msgid "By:"
-msgstr "Od:"
-
-#: ../src/Glade/HeadersDialog.glade.h:7
-msgid "Version:"
-msgstr "Različica:"
-
-#: ../src/Glade/HeadersDialog.glade.h:8
-msgid "Program:"
-msgstr "Program:"
-
-#: ../src/Glade/HeadersDialog.glade.h:9
-msgid "Karaoke Lyrics LRC"
-msgstr "Besedila karaok LRC"
-
-#: ../src/Glade/HeadersDialog.glade.h:10
-msgid "Source:"
-msgstr "Vir:"
-
-#: ../src/Glade/HeadersDialog.glade.h:11
-msgid "Date:"
-msgstr "Datum:"
-
-#: ../src/Glade/HeadersDialog.glade.h:12
-msgid "Frame rate:"
-msgstr "Hitrost sličic:"
-
-#: ../src/Glade/HeadersDialog.glade.h:13
-msgid "Karaoke Lyrics VKT"
-msgstr "Besedila karaok VKT"
-
-#: ../src/Glade/HeadersDialog.glade.h:14
-msgid "File:"
-msgstr "Datoteka:"
-
-#: ../src/Glade/HeadersDialog.glade.h:15
-msgid "Note:"
-msgstr "Opomba:"
-
-#: ../src/Glade/HeadersDialog.glade.h:16
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: ../src/Glade/HeadersDialog.glade.h:17
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:10
 msgid ""
-"Audio\n"
-"Video\n"
+"Encoding option to use by default when saving files. Possible values are: "
+"\"KeepExisting\" to use the existing file's encoding, \"RememberLastUsed\" "
+"to remember the last used encoding, \"CurrentLocale\" to use the current "
+"locale, and \"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
+"key."
 msgstr ""
-"Zvok\n"
-"Video\n"
 
-#: ../src/Glade/HeadersDialog.glade.h:20
-msgid "Original Script:"
-msgstr "Izviren scenarij:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
+msgid "File Save encoding"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:21
-msgid "Original Translation:"
-msgstr "Izviren prevod:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:12
+msgid ""
+"Encoding to use when saving files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_encoding_option key, other possible values are \"KeepExisting\" "
+"and \"CurrentLocale\"."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:22
-msgid "Original Editing:"
-msgstr "Izvirno urejanje:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:13
+msgid "File Save format option"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:23
-msgid "Original Timing:"
-msgstr "Izviren čas:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:14
+msgid ""
+"Subtitle format option to use by default when saving files. Possible values "
+"are: \"KeepExisting\" to use the existing file's format, \"RememberLastUsed"
+"\" to remember the last used format, and \"Specific\" to use a specific "
+"format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
+"stored in the file_save_format key."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:24
-msgid "Original Script Checking:"
-msgstr "Izvirno preverjanje scenarija:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
+msgid "File Save format"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:25
-msgid "Script Updated By:"
-msgstr "Skript posodobljen od:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:16
+msgid ""
+"Subtitle format to use when saving files. Besides the actual format, used "
+"when \"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_format_option key, other possible values are \"KeepExisting\" and "
+"\"CurrentLocale\"."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:26
-msgid "Collisions:"
-msgstr "Trki:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
+msgid "File Save newline option"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:27
-msgid "PlayResX:"
-msgstr "Ločljivost predvajanja X:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:18
+msgid ""
+"Newline option to use by default when saving files. Possible values are: "
+"\"RememberLastUsed\" to remember the last used newline type, and \"Specific"
+"\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
+"and \"Specific\" is stored in the file_save_newline key."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:28
-msgid "PlayResY:"
-msgstr "Ločljivost predvajanja Y:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
+msgid "File Save newline"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:29
-msgid "PlayDepth:"
-msgstr "Globina predvajanja:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:20
+#, fuzzy
+#| msgid "_Newline type to use:"
+msgid "Newline type to use when saving files."
+msgstr "Vrsta _nove vrstice za uporabo:"
 
-#: ../src/Glade/HeadersDialog.glade.h:30
-msgid "Timer:"
-msgstr "Časovnik:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
+#, fuzzy
+#| msgid ""
+#| "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgid "Save translation when saving subtitles"
+msgstr ""
+"Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov "
+"shranjene?"
 
-#: ../src/Glade/HeadersDialog.glade.h:31
-msgid "File Path:"
-msgstr "Pot datoteke:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
+msgid "Whether to save existing translations when saving subtitles."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:32
-msgid "Delay:"
-msgstr "Zamik:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
+#, fuzzy
+#| msgid "Automatically choose the _video file to open"
+msgid "Automatically choose the video file"
+msgstr "Samodejno izberi _video datoteko za odpiranje"
 
-#: ../src/Glade/HeadersDialog.glade.h:33
-msgid "CD Track:"
-msgstr "CD skladba:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:24
+msgid ""
+"Whether to automatically choose the video file to open, when opening a "
+"subtitle file. A video file is chosen based on the name of the subtitle file."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:34
-msgid "Comment:"
-msgstr "Opomba:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
+msgid "Apply reaction delay"
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:35
-msgid "Font Name:"
-msgstr "Ime pisave:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:26
+msgid ""
+"Whether to apply a reaction delay when setting the start or end times of a "
+"subtitle with the video playing."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:36
-msgid "Font Color:"
-msgstr "Barva pisave:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
+#, fuzzy
+#| msgid "<b>Reaction Delay</b>"
+msgid "Reaction delay"
+msgstr "<b>Zamik odziva</b>"
 
-#: ../src/Glade/HeadersDialog.glade.h:37
-msgid "Font Style:"
-msgstr "Slog pisave:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:28
+msgid ""
+"Time, in milliseconds, to subtract from the start or end times when setting "
+"them with the video playing."
+msgstr ""
 
-#: ../src/Glade/HeadersDialog.glade.h:38
-msgid "Font Size:"
-msgstr "Velikost pisave:"
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
+#, fuzzy
+#| msgid "_Selected subtitles"
+msgid "Seek the video on subtitles change"
+msgstr "_Izbrane podnapise"
 
-#: ../src/Glade/MainWindow.glade.h:1
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
+msgid ""
+"Whether to seek the video to the start of the first subtitle when one or "
+"more subtitles are changed."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
+msgid "Seek on change rewind"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
+msgid ""
+"Time, in milliseconds, to rewind the video when seeking on subtitles change."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
+#, fuzzy
+#| msgid "_Line Lengths"
+msgid "View line lengths"
+msgstr "_Dolžine vrstic"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
+msgid "Whether to view line lengths as characters counts in the subtitle list."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
+msgid "Window width"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:36
+msgid "The width of the Main Window."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:37
+msgid "Window height"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:38
+msgid "The height of the Main Window."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:39
+msgid "Active spellcheck language for text"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
+msgid "The language used to check the spelling of subtitle text."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
+msgid "Active spellcheck language for translation"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
+msgid "The language used to check the spelling of subtitle translation."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
+msgid "Autocheck spelling"
+msgstr "Samodejno preveri črkovanje"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
+msgid "Whether to automatically check the spelling of subtitle text."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
+msgid "Auto backup"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:46
+msgid ""
+"Whether to automatically backup files. A copy of the file will be "
+"periodically saved with a ~ suffix."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
+msgid "Backup time"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:48
+msgid ""
+"Time interval, in seconds, to automatically backup files. A minimum of 30 "
+"seconds is recommended."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
+msgid "Time step increment"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
+msgid ""
+"Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
+"controls (e.g., start, end and duration)."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
+msgid "Frames step increment"
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
+msgid ""
+"Frames to add or subtract when adjusting frames in spinbutton controls (e."
+"g., start, end and duration)."
+msgstr ""
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
+#, fuzzy
+#| msgid "_Selected subtitles"
+msgid "Time between subtitles"
+msgstr "_Izbrane podnapise"
+
+#: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:54
+msgid ""
+"Recommended time between subtitles, in milliseconds, used for example when "
+"splitting a subtitle in two."
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Datoteka"
 
-#: ../src/Glade/MainWindow.glade.h:2
-msgid "_Translation"
-msgstr "_Prevod"
-
-#: ../src/Glade/MainWindow.glade.h:3
+#: ../src/Glade/MainWindow.ui.h:2
 msgid "_New"
 msgstr "_Nov"
 
-#: ../src/Glade/MainWindow.glade.h:4
+#: ../src/Glade/MainWindow.ui.h:3
 msgid "_Open"
 msgstr "_Odpri"
 
-#: ../src/Glade/MainWindow.glade.h:5
-msgid "_Reload"
-msgstr "_Ponovno naloži"
-
-#: ../src/Glade/MainWindow.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:4
 msgid "_Save"
 msgstr "_Shrani"
 
-#: ../src/Glade/MainWindow.glade.h:7
+#: ../src/Glade/MainWindow.ui.h:5
 msgid "Save _As"
 msgstr "Shrani _kot"
 
-#: ../src/Glade/MainWindow.glade.h:8
+#: ../src/Glade/MainWindow.ui.h:6
+msgid "_Translation"
+msgstr "_Prevod"
+
+#: ../src/Glade/MainWindow.ui.h:7
+msgid "_Reload"
+msgstr "_Ponovno naloži"
+
+#: ../src/Glade/MainWindow.ui.h:8
 msgid "_Close"
 msgstr "_Zapri"
 
-#: ../src/Glade/MainWindow.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:9
 msgid "_Headers"
 msgstr "_Glave"
 
-#: ../src/Glade/MainWindow.glade.h:10
+#: ../src/Glade/MainWindow.ui.h:10
+msgid "_Properties"
+msgstr "_Lastnosti"
+
+#: ../src/Glade/MainWindow.ui.h:11
+msgid "_Quit"
+msgstr "_Končaj"
+
+#: ../src/Glade/MainWindow.ui.h:12
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: ../src/Glade/MainWindow.glade.h:11
+#: ../src/Glade/MainWindow.ui.h:13
+msgid "_Undo"
+msgstr "_Razveljavi"
+
+#: ../src/Glade/MainWindow.ui.h:14
+msgid "_Redo"
+msgstr "_Ponovno uveljavi"
+
+#: ../src/Glade/MainWindow.ui.h:15
+msgid "Cu_t"
+msgstr "Iz_reži"
+
+#: ../src/Glade/MainWindow.ui.h:16
+msgid "_Copy"
+msgstr "_Kopiraj"
+
+#: ../src/Glade/MainWindow.ui.h:17
+msgid "_Paste"
+msgstr "Pr_ilepi"
+
+#: ../src/Glade/MainWindow.ui.h:18
 msgid "_Format"
 msgstr "_Oblika"
 
-#: ../src/Glade/MainWindow.glade.h:12
+#: ../src/Glade/MainWindow.ui.h:19
 msgid "_Bold"
 msgstr "_Krepko"
 
-#: ../src/Glade/MainWindow.glade.h:13
+#: ../src/Glade/MainWindow.ui.h:20
 msgid "_Italic"
 msgstr "_Ležeče"
 
-#: ../src/Glade/MainWindow.glade.h:14
+#: ../src/Glade/MainWindow.ui.h:21
 msgid "_Underline"
 msgstr "Po_dčrtano"
 
-#: ../src/Glade/MainWindow.glade.h:15
-msgid "_Split"
-msgstr "_Razdeli"
+#: ../src/Glade/MainWindow.ui.h:22
+msgid "_Split Lines"
+msgstr "_Razdeli črte"
 
-#: ../src/Glade/MainWindow.glade.h:16
-msgid "_Merge"
-msgstr "_Združi"
+#: ../src/Glade/MainWindow.ui.h:23
+msgid "_Merge Lines"
+msgstr "_Združi črte"
 
-#: ../src/Glade/MainWindow.glade.h:17
+#: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
 msgstr "_Vstavi podnapis"
 
-#: ../src/Glade/MainWindow.glade.h:18
+#: ../src/Glade/MainWindow.ui.h:25
 msgid "_Before"
 msgstr "_Pred"
 
-#: ../src/Glade/MainWindow.glade.h:19
+#: ../src/Glade/MainWindow.ui.h:26
 msgid "_After"
 msgstr "_Za"
 
-#: ../src/Glade/MainWindow.glade.h:20
+#: ../src/Glade/MainWindow.ui.h:27
 msgid "At _Video Position"
 msgstr "Na položaju _videa"
 
-#: ../src/Glade/MainWindow.glade.h:21
+#: ../src/Glade/MainWindow.ui.h:28
 msgid "_Delete Subtitles"
 msgstr "_Izbriši podnapise"
 
-#: ../src/Glade/MainWindow.glade.h:22
+#: ../src/Glade/MainWindow.ui.h:29
 msgid "Pr_eferences"
 msgstr "_Možnosti"
 
-#: ../src/Glade/MainWindow.glade.h:23
+#: ../src/Glade/MainWindow.ui.h:30
 msgid "_View"
 msgstr "_Pogled"
 
-#: ../src/Glade/MainWindow.glade.h:24
+#: ../src/Glade/MainWindow.ui.h:31
 msgid "_Frames"
 msgstr "_Sličice"
 
-#: ../src/Glade/MainWindow.glade.h:25
+#: ../src/Glade/MainWindow.ui.h:32
 msgid "_Times"
 msgstr "_Čas"
 
-#: ../src/Glade/MainWindow.glade.h:26
+#: ../src/Glade/MainWindow.ui.h:33
 msgid "_Line Lengths"
 msgstr "_Dolžine vrstic"
 
-#: ../src/Glade/MainWindow.glade.h:27
+#: ../src/Glade/MainWindow.ui.h:34
 msgid "_Video"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:28
+#: ../src/Glade/MainWindow.ui.h:35
 msgid "Video _Subtitles"
 msgstr "Video _podnapisi"
 
-#: ../src/Glade/MainWindow.glade.h:29
+#: ../src/Glade/MainWindow.ui.h:36
 msgid "_Text"
 msgstr "_Besedilo"
 
-#: ../src/Glade/MainWindow.glade.h:30
+#: ../src/Glade/MainWindow.ui.h:37
 msgid "Translatio_n"
 msgstr "Prev_od"
 
-#: ../src/Glade/MainWindow.glade.h:31
+#: ../src/Glade/MainWindow.ui.h:38
 msgid "_Search"
 msgstr "_Išči"
 
-#: ../src/Glade/MainWindow.glade.h:32
+#: ../src/Glade/MainWindow.ui.h:39
+msgid "_Find"
+msgstr "_Najdi"
+
+#: ../src/Glade/MainWindow.ui.h:40
 msgid "Find Ne_xt"
 msgstr "Najdi na_slednje"
 
-#: ../src/Glade/MainWindow.glade.h:33
+#: ../src/Glade/MainWindow.ui.h:41
 msgid "Find Pre_vious"
 msgstr "Najdi _predhodne"
 
-#: ../src/Glade/MainWindow.glade.h:34 ../src/Glade/SearchDialog.glade.h:9
+#: ../src/Glade/MainWindow.ui.h:42
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:172
 msgid "_Replace"
 msgstr "_Zamenjaj"
 
-#: ../src/Glade/MainWindow.glade.h:35
+#: ../src/Glade/MainWindow.ui.h:43
 msgid "T_imings"
 msgstr "_Časovne uskladitve"
 
-#: ../src/Glade/MainWindow.glade.h:36
+#: ../src/Glade/MainWindow.ui.h:44
 msgid "_Input Frame Rate"
 msgstr "_Hitrost sličic vhoda"
 
-#: ../src/Glade/MainWindow.glade.h:37
-msgid "_Video Frame Rate"
-msgstr "Hitrost sličic _videa"
+#: ../src/Glade/MainWindow.ui.h:45
+msgid "_Current Frame Rate"
+msgstr "Trenutna hitrost sličic"
 
-#: ../src/Glade/MainWindow.glade.h:38
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:6
+#: ../src/Glade/MainWindow.ui.h:46
 msgid "_Synchronize"
 msgstr "_Uskladi"
 
-#: ../src/Glade/MainWindow.glade.h:39
+#: ../src/Glade/MainWindow.ui.h:47
 msgid "_Adjust"
 msgstr "_Prilagodi"
 
-#: ../src/Glade/MainWindow.glade.h:40
+#: ../src/Glade/MainWindow.ui.h:48
 msgid "Sh_ift"
 msgstr "_Premakni"
 
-#: ../src/Glade/MainWindow.glade.h:41
+#: ../src/Glade/MainWindow.ui.h:49
 msgid "Vide_o"
 msgstr "_Video"
 
-#: ../src/Glade/MainWindow.glade.h:42
+#: ../src/Glade/MainWindow.ui.h:50
 msgid "_Play / Pause"
 msgstr "_Predvajaj / Premor"
 
-#: ../src/Glade/MainWindow.glade.h:43
+#: ../src/Glade/MainWindow.ui.h:51
 msgid "_Loop Selection"
 msgstr "_Predvajaj izbor v zanki"
 
-#: ../src/Glade/MainWindow.glade.h:44
+#: ../src/Glade/MainWindow.ui.h:52
 msgid "R_ewind"
 msgstr "Pre_vij nazaj"
 
-#: ../src/Glade/MainWindow.glade.h:45
+#: ../src/Glade/MainWindow.ui.h:53
 msgid "_Forward"
 msgstr "_Previj naprej"
 
-#: ../src/Glade/MainWindow.glade.h:46
+#: ../src/Glade/MainWindow.ui.h:54
 msgid "_Seek to…"
-msgstr "_Poišči na ..."
+msgstr "_Poišči na …"
 
-#: ../src/Glade/MainWindow.glade.h:47
+#: ../src/Glade/MainWindow.ui.h:55
 msgid "Seek _to Selection"
 msgstr "Išči _do izbora"
 
-#: ../src/Glade/MainWindow.glade.h:48
-msgid "Select Nearest Subtitle"
+#: ../src/Glade/MainWindow.ui.h:56
+#, fuzzy
+#| msgid "Select Nearest Subtitle"
+msgid "Select _Nearest Subtitle"
 msgstr "Izberi najbližji podnapis"
 
-#: ../src/Glade/MainWindow.glade.h:49
-msgid "Auto Select Subtitle"
+#: ../src/Glade/MainWindow.ui.h:57
+#, fuzzy
+#| msgid "Auto Select Subtitle"
+msgid "A_uto Select Subtitle"
 msgstr "Samodejno izberi podnapis"
 
-#: ../src/Glade/MainWindow.glade.h:50
+#: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
 msgstr "Nastavi _začetek podnapisa"
 
-#: ../src/Glade/MainWindow.glade.h:51
+#: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
 msgstr "Nastavi _konec podnapisa"
 
-#: ../src/Glade/MainWindow.glade.h:52
+#: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
 msgstr "_Orodja"
 
-#: ../src/Glade/MainWindow.glade.h:53
+#: ../src/Glade/MainWindow.ui.h:61
 msgid "_Autocheck Spelling"
 msgstr "_Samodejno preveri črkovanje"
 
-#: ../src/Glade/MainWindow.glade.h:54
-msgid "Set T_ext Language"
-msgstr "Nastavi jezik _besedila"
+#: ../src/Glade/MainWindow.ui.h:62
+msgid "Set _Languages"
+msgstr "Nastavi _jezike"
 
-#: ../src/Glade/MainWindow.glade.h:55
-msgid "Set Translati_on Language"
-msgstr "Nastavi jezik _prevoda"
-
-#: ../src/Glade/MainWindow.glade.h:56
-msgid "Translate _Text → Translation"
-msgstr "_Besedilo prevoda → prevod"
-
-#: ../src/Glade/MainWindow.glade.h:57
-msgid "Translate Translatio_n → Text"
-msgstr "Preveden _prevod → besedilo"
-
-#: ../src/Glade/MainWindow.glade.h:58
+#: ../src/Glade/MainWindow.ui.h:63
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: ../src/Glade/MainWindow.glade.h:59
+#: ../src/Glade/MainWindow.ui.h:64
 msgid "_Contents"
 msgstr "_Vsebina"
 
-#: ../src/Glade/MainWindow.glade.h:60
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: ../src/Glade/MainWindow.glade.h:61
-msgid "Request a _Feature"
+#: ../src/Glade/MainWindow.ui.h:66
+msgid "_Donate"
+msgstr "_Doniraj"
+
+#: ../src/Glade/MainWindow.ui.h:67
+#, fuzzy
+#| msgid "Request a _Feature"
+msgid "Request a New _Feature"
 msgstr "Zahtevaj _zmožnost"
 
-#: ../src/Glade/MainWindow.glade.h:62
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "Report a _Bug"
 msgstr "Poročilo o _hrošču"
 
-#: ../src/Glade/MainWindow.glade.h:63
+#: ../src/Glade/MainWindow.ui.h:69
+msgid "_About"
+msgstr "_O programu"
+
+#: ../src/Glade/MainWindow.ui.h:70
 msgid "New File"
 msgstr "Nova datoteka"
 
-#: ../src/Glade/MainWindow.glade.h:65
+#: ../src/Glade/MainWindow.ui.h:71
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:52
+msgid "Open File"
+msgstr "Odpri datoteko"
+
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Save File"
 msgstr "Shrani datoteko"
 
-#: ../src/Glade/MainWindow.glade.h:66
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Insert"
 msgstr "Vstavi"
 
-#: ../src/Glade/MainWindow.glade.h:67
+#: ../src/Glade/MainWindow.ui.h:74
 msgid "Delete"
 msgstr "Izbriši"
 
-#: ../src/Glade/MainWindow.glade.h:68
-msgid "<b>Time</b>"
-msgstr "<b>Čas</b>"
+#: ../src/Glade/MainWindow.ui.h:75
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+msgid "Time"
+msgstr "Čas"
 
-#: ../src/Glade/MainWindow.glade.h:69
-msgid "<b>Length</b>"
-msgstr "<b>Dolžina</b>"
+#: ../src/Glade/MainWindow.ui.h:76
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
+msgstr "Trajanje"
 
-#: ../src/Glade/MainWindow.glade.h:70
+#: ../src/Glade/MainWindow.ui.h:77
+msgid "Sets the subtitle Start to the current video position"
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:78
+msgid "Sets the subtitle End to the current video position"
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:79
+msgid ""
+"Sets the subtitle Start and End while the video is playing. Keep the button "
+"pressed for the duration of each subtitle."
+msgstr ""
+
+#: ../src/Glade/MainWindow.ui.h:80
+msgid "1.0x"
+msgstr "1.0x"
+
+#: ../src/Glade/MainWindow.ui.h:81
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -598,281 +701,21 @@ msgstr ""
 "za prilagoditev časov začetka in konca.\n"
 "Shift+plus/minus (na številčni tipovnici) zamakne čase."
 
-#. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:73
-msgid "Duration:"
-msgstr "Trajanje:"
-
-#. This is the end time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:75
-msgid "End:"
-msgstr "Konec:"
-
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.glade.h:77
+#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Začetek:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:1
-msgid "Preferences"
-msgstr "Možnosti"
+#: ../src/Glade/MainWindow.ui.h:85
+msgid "End:"
+msgstr "Konec:"
 
-#: ../src/Glade/PreferencesDialog.glade.h:2
-msgid "_Reset to defaults"
-msgstr "_Ponastavi na privzeto"
-
-#: ../src/Glade/PreferencesDialog.glade.h:3
-msgid "When saving subtitles, also save their _translation"
-msgstr "Pri shranjevanju podnapisov shrani tudi _prevod"
-
-#: ../src/Glade/PreferencesDialog.glade.h:4
-msgid "<b>Translation File Saving</b>"
-msgstr "<b>Shranjevanje datoteke prevodov</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:5
-msgid "Character c_oding to use:"
-msgstr "_Znakovno kodiranje za uporabo:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:6
-msgid "If auto detection _fails, use:"
-msgstr "V primeru da samodejno zaznavanje _spodleti, uporabi:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:7
-msgid "Automatically choose the _video file to open"
-msgstr "Samodejno izberi _video datoteko za odpiranje"
-
-#: ../src/Glade/PreferencesDialog.glade.h:8
-msgid "<b>File Open Dialog</b>"
-msgstr "<b>Pogovorno okno odpiranja datoteke</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:9
-msgid "Ch_aracter coding to use:"
-msgstr "Zn_akovno kodiranje za uporabo:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:10
-msgid "_Subtitle format to use:"
-msgstr "Vrsta p_odnapisov za uporabo:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:11
-msgid "_Newline type to use:"
-msgstr "Vrsta _nove vrstice za uporabo:"
-
-#: ../src/Glade/PreferencesDialog.glade.h:12
-msgid "<b>File Save As Dialog</b>"
-msgstr "<b>Pogovorno okno Shrani datoteko kot</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:13
-msgid "Create a _backup copy of files every"
-msgstr "Ustvari _varnostno kopijo datotek vsakih"
-
-#: ../src/Glade/PreferencesDialog.glade.h:14
-msgid "minutes"
-msgstr "minut"
-
-#: ../src/Glade/PreferencesDialog.glade.h:15
-msgid "<b>Backup</b>"
-msgstr "<b>Varnostna kopija</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:16
-msgid "Files"
-msgstr "Datoteke"
-
-#: ../src/Glade/PreferencesDialog.glade.h:17
-msgid ""
-"Automatically seek the video to the first subtitle when changing timings"
-msgstr "Ob zamenjavi časov samodejno išči po videu do prvega podnapisa."
-
-#: ../src/Glade/PreferencesDialog.glade.h:18
-msgid "Seek"
-msgstr "Išči"
-
-#: ../src/Glade/PreferencesDialog.glade.h:19
-msgid "ms before the actual start to help review new timings"
-msgstr "ms pred dejanskim začetkom pomaganja pri pregledu novih časov"
-
-#: ../src/Glade/PreferencesDialog.glade.h:20
-msgid "<b>Video Seeking</b>"
-msgstr "<b>Iskanje videa</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:21
-msgid "Leave"
-msgstr "Zapusti"
-
-#: ../src/Glade/PreferencesDialog.glade.h:22
-msgid "ms between subtitles when inserting or splitting"
-msgstr "ms med podnapisi med vstavljanjem ali razdeljevanjem"
-
-#: ../src/Glade/PreferencesDialog.glade.h:23
-msgid "<b>Gap Between Subtitles</b>"
-msgstr "<b>Razmik med podnapisi</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:24
-msgid "Subtract"
-msgstr "Odštej"
-
-#: ../src/Glade/PreferencesDialog.glade.h:25
-msgid "ms when setting subtitle start/end on playback"
-msgstr "milisekunde ob nastavljanju začetka/konca podnapisov ob predvajanju"
-
-#: ../src/Glade/PreferencesDialog.glade.h:26
-msgid "<b>Reaction Delay</b>"
-msgstr "<b>Zamik odziva</b>"
-
-#: ../src/Glade/PreferencesDialog.glade.h:27
-msgid "Editing"
-msgstr "Urejanje"
-
-#: ../src/Glade/SearchDialog.glade.h:1
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:107
-msgid "Replace"
-msgstr "Zamenjaj"
-
-#: ../src/Glade/SearchDialog.glade.h:2
-msgid "Replace _with:"
-msgstr "Zamenjaj _z:"
-
-#: ../src/Glade/SearchDialog.glade.h:3
-msgid "_Search for:"
-msgstr "_Poišči:"
-
-#: ../src/Glade/SearchDialog.glade.h:4
-msgid "_Match case"
-msgstr "_Upoštevaj velikost črk"
-
-#: ../src/Glade/SearchDialog.glade.h:5
-msgid "Search _backwards"
-msgstr "Išči _nazaj"
-
-#: ../src/Glade/SearchDialog.glade.h:6
-msgid "Search using a Regular _Expression"
-msgstr "Išči z uporabo logičnega _izraza"
-
-#: ../src/Glade/SearchDialog.glade.h:7
-msgid "_Wrap around"
-msgstr "_Prelomi besedilo"
-
-#: ../src/Glade/SearchDialog.glade.h:8
-msgid "Replace _All"
-msgstr "Zamenjaj _vse"
-
-#: ../src/Glade/SetLanguageDialog.glade.h:1
-msgid "Set language"
-msgstr "Nastavi jezik"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:1
-msgid "Adjust Timings"
-msgstr "Prilagodi čase"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:2
-msgid "New Start:"
-msgstr "Nov začetek:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:3
-msgid "Start Frame:"
-msgstr "Začetna sličica:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:4
-msgid "No.:"
-msgstr "Št.:"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:5
-msgid "<b>First Subtitle</b>"
-msgstr "<b >Prvi podnapis</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:6
-msgid "<b>Last Subtitle</b>"
-msgstr "<b>Zadnji podnapis</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:7
-msgid "All Subtitles"
-msgstr "Vsi podnapisi"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:8
-msgid "Selected Range"
-msgstr "Izbrani obseg"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:9
-#: ../src/Glade/TimingsShiftDialog.glade.h:9
-msgid "<b>Apply to</b>"
-msgstr "<b>Uveljavi za</b>"
-
-#: ../src/Glade/TimingsAdjustDialog.glade.h:10
-msgid "Adjust"
-msgstr "Prilagodi"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:1
-msgid "Shift Timings"
-msgstr "Premakni uskladitve časa"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:2
-msgid "<b>Frames</b>"
-msgstr "<b>Sličice</b>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:3
-msgid "_All subtitles"
-msgstr "_Vse podnapisi"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:4
-msgid "_Selected subtitles"
-msgstr "_Izbrane podnapise"
-
-#. This means to apply the shift command from the selected subtitle to the first subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:6
-msgid "From _first subtitle to selection"
-msgstr "Od _prvega podnapisa do izbora"
-
-#. This means to apply the shift command from the selected subtitle to the last subtitle.
-#: ../src/Glade/TimingsShiftDialog.glade.h:8
-msgid "From selection to _last subtitle"
-msgstr "Od izbora do _zadnjega podnapisa"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:10
-msgid ""
-"<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
-"to shift timings from the main window.</i></small>"
-msgstr ""
-"<small><i>Namig: uporabite Shift+plus/minus (na številčni tipkovnici)\n"
-"za zamik časov iz glavnega okna.</i></small>"
-
-#: ../src/Glade/TimingsShiftDialog.glade.h:12
-msgid "_Shift"
-msgstr "P_remakni"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:1
-msgid "Synchronize Timings"
-msgstr "Uskladi čase"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:2
-msgid "<b>Sync Points</b>"
-msgstr "<b>Točke usklajevanja</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:3
-msgid "Synchroni_ze all subtitles"
-msgstr "_Uskladi vse podnapise"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:4
-msgid "<b>Options</b>"
-msgstr "<b>Možnosti</b>"
-
-#: ../src/Glade/TimingsSynchronizeDialog.glade.h:5
-msgid "<b>Status</b>"
-msgstr "<b>Stanje</b>"
-
-#: ../src/Glade/VideoOpenDialog.glade.h:1
-msgid "Open Video"
-msgstr "Odpri video"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:1
-msgid "Seek To"
-msgstr "Išči do"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:2
-msgid "Seek _video to:"
-msgstr "Išči _video na:"
-
-#: ../src/Glade/VideoSeekToDialog.glade.h:3
-msgid "_Seek"
-msgstr "_Poišči"
+#. This is the duration of a subtitle.
+#: ../src/Glade/MainWindow.ui.h:87
+msgid "Duration:"
+msgstr "Trajanje:"
 
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
@@ -911,12 +754,12 @@ msgid "Editing Duration"
 msgstr "Trajanje urejanja"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:71
-#: ../src/GnomeSubtitles/Ui/Menus.cs:602
+#: ../src/GnomeSubtitles/Ui/Menus.cs:708
 msgid "Undo"
 msgstr "Razveljavi"
 
 #: ../src/GnomeSubtitles/Core/Command/CommandManager.cs:80
-#: ../src/GnomeSubtitles/Ui/Menus.cs:612
+#: ../src/GnomeSubtitles/Ui/Menus.cs:718
 msgid "Redo"
 msgstr "Uveljavi"
 
@@ -924,13 +767,13 @@ msgstr "Uveljavi"
 msgid "Deleting Subtitles"
 msgstr "Brisanje podnapisov"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
 msgid "Editing Text"
 msgstr "Urejanje besedila"
 
-#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:27
-#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:27
+#: ../src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:26
+#: ../src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:26
 msgid "Editing Translation"
 msgstr "Urejanje prevoda"
 
@@ -948,25 +791,15 @@ msgstr "Zamenjava vseh"
 
 #: ../src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
 msgid "Shifting timings"
-msgstr "Premikanje časovnih uskladitev "
+msgstr "Premikanje časovnih uskladitev"
 
-#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
 msgid "Splitting subtitles"
 msgstr "Delitev podnapisov"
 
-#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:30
+#: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
 msgid "Synchronizing timings"
 msgstr "Usklajevanje časov"
-
-#. initially, it's the former text replaced by translation
-#. direction of translation
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:36
-msgid "Translating"
-msgstr "Prevajanje"
-
-#: ../src/GnomeSubtitles/Core/Command/TranslatorCommand.cs:100
-msgid "Could not translate the chosen subtitle."
-msgstr "Izbranega podnapisa ni mogoče prevesti."
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
@@ -993,98 +826,105 @@ msgid "{0} (translation)"
 msgstr "{0} (prevod)"
 
 #. GEOSTD8, HZ not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:33
-#: ../src/GnomeSubtitles/Core/Encodings.cs:45
-#: ../src/GnomeSubtitles/Core/Encodings.cs:76
-#: ../src/GnomeSubtitles/Core/Encodings.cs:101
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:51
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
 msgid "Western"
 msgstr "Zahodno"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:34
-#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Central European"
 msgstr "Srednje evropsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:35
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
 msgid "South European"
 msgstr "Južno evropsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:36
-#: ../src/GnomeSubtitles/Core/Encodings.cs:43
-#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:114
 msgid "Baltic"
 msgstr "Baltsko"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:37
-#: ../src/GnomeSubtitles/Core/Encodings.cs:78
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
 #: ../src/GnomeSubtitles/Core/Encodings.cs:86
-#: ../src/GnomeSubtitles/Core/Encodings.cs:92
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
 #: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
 msgid "Cyrillic"
 msgstr "Cirilica"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:38
-#: ../src/GnomeSubtitles/Core/Encodings.cs:84
-#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:92
+#: ../src/GnomeSubtitles/Core/Encodings.cs:113
 msgid "Arabic"
 msgstr "Arabsko"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:39
-#: ../src/GnomeSubtitles/Core/Encodings.cs:87
-#: ../src/GnomeSubtitles/Core/Encodings.cs:102
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
 msgid "Greek"
 msgstr "Grško"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:40
-#: ../src/GnomeSubtitles/Core/Encodings.cs:82
-#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:112
 msgid "Hebrew"
 msgstr "Hebrejsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:41
-#: ../src/GnomeSubtitles/Core/Encodings.cs:79
-#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
 msgid "Turkish"
 msgstr "Turško"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:42
-#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
 msgid "Nordic"
 msgstr "Nordijsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
 msgid "Celtic"
 msgstr "Keltsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:52
 msgid "Romanian"
 msgstr "Romunsko"
 
 #. ISO-8859-8-I not used
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:49
-#: ../src/GnomeSubtitles/Core/Encodings.cs:50
-#: ../src/GnomeSubtitles/Core/Encodings.cs:51
-#: ../src/GnomeSubtitles/Core/Encodings.cs:52
-#: ../src/GnomeSubtitles/Core/Encodings.cs:53
-#: ../src/GnomeSubtitles/Core/Encodings.cs:54
+#. Little endian
+#. Added
 #: ../src/GnomeSubtitles/Core/Encodings.cs:55
-#: ../src/GnomeSubtitles/Core/Encodings.cs:56
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+#: ../src/GnomeSubtitles/Core/Encodings.cs:58
+#: ../src/GnomeSubtitles/Core/Encodings.cs:59
+#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:62
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
 msgid "Unicode"
 msgstr "Unicode"
 
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+msgid "UTF-8 without BOM"
+msgstr ""
+
 #. Added
 #. UCS-2 and UCS-4 not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:59
-#: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:67
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
 msgid "Chinese Traditional"
 msgstr "Tradicionalno Kitajsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
 msgid "Cyrillic/Russian"
 msgstr "Cirilica/Rusko"
 
@@ -1092,165 +932,804 @@ msgstr "Cirilica/Rusko"
 #. Added
 #. Added
 #. ISO-IR-111, KOI8R, KOI8U not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:64
-#: ../src/GnomeSubtitles/Core/Encodings.cs:65
-#: ../src/GnomeSubtitles/Core/Encodings.cs:89
-#: ../src/GnomeSubtitles/Core/Encodings.cs:96
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
 msgid "Japanese"
 msgstr "Japonsko"
 
 #. EUC-JP-MS not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:68
-#: ../src/GnomeSubtitles/Core/Encodings.cs:90
-#: ../src/GnomeSubtitles/Core/Encodings.cs:91
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:98
+#: ../src/GnomeSubtitles/Core/Encodings.cs:99
 msgid "Korean"
 msgstr "Korejsko"
 
 #. EUC-TW not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:71
-#: ../src/GnomeSubtitles/Core/Encodings.cs:72
-#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:79
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Chinese Simplified"
 msgstr "Kitajsko poenostavljeno"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
 msgid "Portuguese"
 msgstr "Portugalsko"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
 msgid "Icelandic"
 msgstr "Islandsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:83
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
 msgid "French Canadian"
 msgstr "Francosko Kanadsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:93
+#: ../src/GnomeSubtitles/Core/Encodings.cs:101
 msgid "Cyrillic/Ukrainian"
 msgstr "Cirilica/Ukrajinsko"
 
 #. TCVN, TIS-620, UHC, VISCII not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:99
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
 msgid "Central"
 msgstr "Centralno"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#: ../src/GnomeSubtitles/Core/Encodings.cs:115
 msgid "Vietnamese"
 msgstr "Vietnamsko"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:118
+#: ../src/GnomeSubtitles/Core/Encodings.cs:126
 msgid "Current Locale"
 msgstr "Trenutna jezikovna oznaka"
 
 #: ../src/GnomeSubtitles/Core/SpellLanguage.cs:30
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:68
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:76
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:80
-#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:89
 msgid "Unknown"
 msgstr "Neznano"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:88
+#: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:41
+msgid "About Gnome Subtitles"
+msgstr "O programu"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+msgid "_All subtitles"
+msgstr "_Vse podnapisi"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+msgid "_Selected subtitles"
+msgstr "_Izbrane podnapise"
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
+msgid "Subtitles between those selected and the _first"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
+msgid "Subtitles between those selected and the _last"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:56
+#, fuzzy
+#| msgid "Character codings"
+msgid "Character Encodings"
+msgstr "Znakovna kodiranja"
+
+#. Left part: Available VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:69
+#, fuzzy
+#| msgid "Character codings"
+msgid "Available Encodings"
+msgstr "Znakovna kodiranja"
+
+#. Right part: Shown VBox
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:86
+#, fuzzy
+#| msgid "Encoding"
+msgid "Chosen Encodings"
+msgstr "Kodiranje"
+
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
 msgid "Description"
 msgstr "Opis"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:92
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
 msgid "Encoding"
 msgstr "Kodiranje"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:170
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+msgid "Headers"
+msgstr "Glave"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+msgid "Title:"
+msgstr "Naslov:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "Avtor:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+msgid "Artist:"
+msgstr "Izvajalec:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "Album:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+msgid "By:"
+msgstr "Od:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "Različica:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+msgid "Program:"
+msgstr "Program:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+msgid "Source:"
+msgstr "Vir:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "Datum:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
+msgid "Frame Rate:"
+msgstr "Hitrost sličic:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+msgid "File:"
+msgstr "Datoteka:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+msgid "Note:"
+msgstr "Opomba:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
+#, fuzzy
+#| msgid "Newline Type:"
+msgid "Media Type:"
+msgstr "Vrsta nove vrstice:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "Zvok"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: ../src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "Video"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+msgid "Original Script:"
+msgstr "Izviren scenarij:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+msgid "Original Translation:"
+msgstr "Izviren prevod:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+msgid "Original Editing:"
+msgstr "Izvirno urejanje:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+msgid "Original Timing:"
+msgstr "Izviren čas:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+msgid "Original Script Checking:"
+msgstr "Izvirno preverjanje scenarija:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+msgid "Script Updated By:"
+msgstr "Skript posodobljen od:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+msgid "Collisions:"
+msgstr "Trki:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+msgid "Timer:"
+msgstr "Časovnik:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
+#, fuzzy
+#| msgid "PlayResX:"
+msgid "Play Res X:"
+msgstr "Ločljivost predvajanja X:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:129
+#, fuzzy
+#| msgid "PlayResY:"
+msgid "Play Res Y:"
+msgstr "Ločljivost predvajanja Y:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
+#, fuzzy
+#| msgid "PlayDepth:"
+msgid "Play Depth:"
+msgstr "Globina predvajanja:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+msgid "File Path:"
+msgstr "Pot datoteke:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+msgid "Delay:"
+msgstr "Zamik:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+msgid "CD Track:"
+msgstr "CD skladba:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+msgid "Font Name:"
+msgstr "Ime pisave:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+msgid "Font Color:"
+msgstr "Barva pisave:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+msgid "Font Style:"
+msgstr "Slog pisave:"
+
+#: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+msgid "Font Size:"
+msgstr "Velikost pisave:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+#, fuzzy
+#| msgid "Video To Open:"
+msgid "Video to Open:"
+msgstr "Video za odprtje:"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:126
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
+#, fuzzy
+#| msgid "Character codings"
+msgid "Character Encoding:"
+msgstr "Znakovna kodiranja"
+
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:208
 msgid "None"
 msgstr "Brez"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:247
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:276
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
 msgid "All Files"
 msgstr "Vse datoteke"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:254
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:283
 msgid "All Subtitle Files"
 msgstr "Vse datoteke s podnapisi"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "Lastnosti datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
+msgid "File Name"
+msgstr "Ime datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:52
+msgid "Path"
+msgstr "Pot"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:55
+msgid "Character Encoding"
+msgstr "Znakovno kodiranje"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
+msgid "Subtitle Format"
+msgstr "Zapis podnapisov"
+
+#: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+#, fuzzy
+#| msgid "<b>Timing Mode:</b>"
+msgid "Timing Mode"
+msgstr "<b>Način časovnih uskladitev:</b>"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "Shrani kot"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+msgid "Subtitle Format:"
+msgstr "Vrsta podnapisov:"
+
+#: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
+msgid "Line Ending:"
+msgstr "Konec vrstice:"
 
 #: ../src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
 msgid "Open Translation File"
 msgstr "Odpri prevajalno datoteko"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Remember the last used encoding"
-msgstr "Zapomni si zadnje uporabljeno kodiranje"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:134
-msgid "Keep the encoding used on file open"
-msgstr "Obdrži kodiranje, uporabljeno za odprtje datoteke"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Keep the format used on file open"
-msgstr "Obdrži vrsto, uporabljeno za odprtje datoteke"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
-msgid "Remember the last used format"
-msgstr "Zapomni si zadnjo uporabljeno obliko"
-
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:167
-msgid "Remember the last used type"
-msgstr "Zapomni si zadnjo uporabljeno vrsto"
-
-#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:111
-msgid "Find"
-msgstr "Najdi"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:38
-msgid "Set Text Language"
-msgstr "Nastavi jezik besedila"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:39
-msgid "Set Translation Language"
-msgstr "Nastavi jezik prevoda"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:40
-msgid "Select the text _language of the current subtitles."
-msgstr "Izberi jezik _besedila trenutnih podnapisov"
-
-#: ../src/GnomeSubtitles/Dialog/SetLanguageDialog.cs:41
-msgid "Select the translation _language of the current subtitles."
-msgstr "Izberi _jezik prevajanja trenutnih podnapisov."
-
-#: ../src/GnomeSubtitles/Dialog/SubtitleFileSaveAsDialog.cs:135
+#: ../src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:27
 msgid "Save Translation As"
 msgstr "Shrani prevod kot"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:67
-msgid "Start Time:"
-msgstr "Začetni čas:"
+#: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
+#, fuzzy
+#| msgid ""
+#| "An unknown error has occured. Please report a bug and include this error "
+#| "name:"
+msgid ""
+"An unknown error has occurred. Please report a bug and include this error "
+"name:"
+msgstr ""
+"Prišlo je do neznane napake. Pošljite poročilo o napaki in vključite to ime "
+"napake:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
-msgid "Time"
-msgstr "Čas"
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
+msgid "Could not open the file"
+msgstr "Ni mogoče odpreti datoteke"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:81
-msgid "Frames"
-msgstr "Sličice"
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
+msgid "Open another file"
+msgstr "Odpri drugo datoteko"
 
-#. Number column
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:79
-msgid "Subtitle No."
+#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
+msgid "The file path appears to be invalid."
+msgstr "Pot datoteke je videti neveljavna."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "Ni mogoče shraniti datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "Shrani v drugo datoteko"
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr "Zmanjkalo je pomnilnika. Zaprite nekaj programov in poskusite ponovno."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#, fuzzy
+#| msgid "An I/O error has occured."
+msgid "An I/O error has occurred."
+msgstr "Prišlo je do napake V/I."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
+msgid "You do not have the permissions necessary to save the file."
+msgstr "Nimate ustreznih dovoljenj za shranjevanje datoteke."
+
+#: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+msgid "The specified file is invalid."
+msgstr "Navedena datoteka je neveljavna."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "V kolikor sprememb ne shranite, bodo trajno izgubljene."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr ""
+"Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov "
+"shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
+msgid "Create without Saving"
+msgstr "Ustvari brez shranjevanja"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:110
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr ""
+"Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov "
+"shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr ""
+"Ali naj bodo spremembe prevoda \"{0}\" pred ustvarjanjem novega prevoda "
+"shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:127
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "Ali naj bodo spremembe podnapisa \"{0}\" pred odpiranjem shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
+msgid "Open without Saving"
+msgstr "Odpri brez shranjevanja"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred odpiranjem shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:156
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "Ali naj bodo spremembe podnapisov \"{0}\" pred zapiranjem shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
+msgid "Close without Saving"
+msgstr "Zapri brez shranjevanja"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:175
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred zapiranjem shranjene?"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"Ni mogoče določiti vrste zapisa podnapisa. Preveriti je treba, če je ta "
+"vrsta datotek podprta."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"Uporabljeno kodiranje na vašem sistemu ni podprto. Izberite drugo kodiranje."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Nimate ustreznih dovoljenj za odpiranje datoteke."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+msgid "The file could not be found."
+msgstr "Datoteke ni mogoče najti."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr "Videti je, da je datoteka prevelika za besedilno datoteko podnapisov."
+
+#. Strings
+#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
+msgid "Could not play the file"
+msgstr "Ni mogoče predvajati datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "Možnosti"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "Datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "Urejanje"
+
+#. Translation File Saving
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
+#, fuzzy
+#| msgid "When saving subtitles, also save their _translation"
+msgid "When saving subtitle files, automatically save their _translation"
+msgstr "Pri shranjevanju podnapisov shrani tudi _prevod"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
+#, fuzzy
+#| msgid "<b>Translation File Saving</b>"
+msgid "Translation File Saving"
+msgstr "<b>Shranjevanje datoteke prevodov</b>"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+#, fuzzy
+#| msgid "Character c_oding to use:"
+msgid "Character _encoding to use:"
+msgstr "_Znakovno kodiranje za uporabo:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
+msgid "If auto detection _fails, use:"
+msgstr "V primeru da samodejno zaznavanje _spodleti, uporabi:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
+msgid "Automatically choose the _video file to open"
+msgstr "Samodejno izberi _video datoteko za odpiranje"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+#, fuzzy
+#| msgid "<b>File Open Dialog</b>"
+msgid "File Open Dialog"
+msgstr "<b>Pogovorno okno odpiranja datoteke</b>"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+msgid "_Subtitle format to use:"
+msgstr "Vrsta p_odnapisov za uporabo:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#, fuzzy
+#| msgid "Ch_aracter coding to use:"
+msgid "Ch_aracter encoding to use:"
+msgstr "Zn_akovno kodiranje za uporabo:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
+msgid "_Newline type to use:"
+msgstr "Vrsta _nove vrstice za uporabo:"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
+#, fuzzy
+#| msgid "<b>File Save As Dialog</b>"
+msgid "File Save As Dialog"
+msgstr "<b>Pogovorno okno Shrani datoteko kot</b>"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
+msgid "Create a _backup copy of files every"
+msgstr "Ustvari _varnostno kopijo datotek vsakih"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
+msgid "minutes"
+msgstr "minut"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+msgid "Backup"
+msgstr "Varnostna kopija"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+#, fuzzy
+#| msgid ""
+#| "Automatically seek the video to the first subtitle when changing timings"
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr "Ob zamenjavi časov samodejno išči po videu do prvega podnapisa."
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+msgid "Play"
+msgstr "Predvajaj"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
+msgid "ms before the actual start to help review new timings"
+msgstr "ms pred dejanskim začetkom pomaganja pri pregledu novih časov"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
+msgid "Video Seeking"
+msgstr "Iskanje po videu"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
+msgid "Leave"
+msgstr "Zapusti"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+msgid "ms between subtitles when inserting or splitting"
+msgstr "ms med podnapisi med vstavljanjem ali razdeljevanjem"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
+msgid "Gap Between Subtitles"
+msgstr "Razmik med podnapisi"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+msgid "Subtr_act"
+msgstr "_Odštej"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
+#, fuzzy
+#| msgid "ms when setting subtitle start/end on playback"
+msgid "ms when setting subtitle start/end while playing the video"
+msgstr "milisekunde ob nastavljanju začetka/konca podnapisov ob predvajanju"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
+#, fuzzy
+#| msgid "<b>Reaction Delay</b>"
+msgid "Reaction Delay"
+msgstr "<b>Zamik odziva</b>"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
+msgid "Remember the last used encoding"
+msgstr "Zapomni si zadnje uporabljeno kodiranje"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
+msgid "Keep the encoding used on file open"
+msgstr "Obdrži kodiranje, uporabljeno za odprtje datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
+msgid "Keep the format used on file open"
+msgstr "Obdrži vrsto, uporabljeno za odprtje datoteke"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
+msgid "Remember the last used format"
+msgstr "Zapomni si zadnjo uporabljeno obliko"
+
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
+msgid "Remember the last used type"
+msgstr "Zapomni si zadnjo uporabljeno vrsto"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Replace"
+msgstr "Zamenjaj"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Find"
+msgstr "Najdi"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:130
+msgid "F_ind"
+msgstr "_Najdi"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:139
+msgid "Replace _with"
+msgstr "Zamenjaj _z nizom"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "_Upoštevaj velikost črk"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "Išči _nazaj"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:156
+msgid "Regular _expression"
+msgstr "Logični _izraz"
+
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:160
+msgid "Wra_p around"
+msgstr "_Prelomi"
+
+#. Action area
+#: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "Zamenjaj _vse"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
+msgid "Set Languages"
+msgstr "Nastavi jezike"
+
+#. Left part: Text Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
+msgid "Text Language"
+msgstr "Jezik besedila"
+
+#. Right part: Translation Language
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
+msgid "Translation Language"
+msgstr "Jezik prevoda"
+
+#: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
+#, fuzzy
+#| msgid "Adjust Timings"
+msgid "Adjust Timings Between 2 Points"
+msgstr "Prilagodi čase"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
+msgid "_Apply"
+msgstr "_Uveljavi"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
+#, fuzzy
+#| msgid "Subtitle No."
+msgid "Subtitle No.:"
 msgstr "Podnapis št. "
 
-#. Start (current and correct) columns
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:82
-msgid "Current Start"
-msgstr "Trenutni začetek"
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+msgid "New Start:"
+msgstr "Nov začetek:"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:83
-msgid "Correct Start"
-msgstr "Pravilni začetek"
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
+msgid "First Point"
+msgstr "Prva točka"
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:105
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:139
+msgid "Second Point"
+msgstr "Druga točka"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:162
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:112
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
+#, fuzzy
+#| msgid "<b>Apply to</b>"
+msgid "Apply To"
+msgstr "<b>Uveljavi za</b>"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+msgid "Shift Timings"
+msgstr "Premakni uskladitve časa"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
+msgid "Apply"
+msgstr "Uveljavi"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:82
+msgid "Reset"
+msgstr "Ponastavi"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
+msgid "Set From Video"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid ""
+"Sets the shift amount in order for the selected subtitles to start at the "
+"current video position."
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
+msgid "Amount"
+msgstr ""
+
+#. Tips label
+#: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
+#, fuzzy
+#| msgid ""
+#| "<small><i>Tip: use Shift+Plus/Minus (on the numpad)\n"
+#| "to shift timings from the main window.</i></small>"
+msgid ""
+"Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
+"from the main window."
+msgstr ""
+"<small><i>Namig: uporabite Shift+plus/minus (na številčni tipkovnici)\n"
+"za zamik časov iz glavnega okna.</i></small>"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+msgid "Synchronize Timings"
+msgstr "Uskladi čase"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
+#, fuzzy
+#| msgid "<b>Sync Points</b>"
+msgid "Sync Points"
+msgstr "<b>Točke usklajevanja</b>"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
+msgid "Subtitles between sync points"
+msgstr ""
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
+msgid "Info"
+msgstr "Podrobnosti"
+
+#. Number column
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
+msgid "Subtitle No."
+msgstr "Podnapis št."
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
+msgid "Start"
+msgstr "Začetek"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:152
+#, fuzzy
+#| msgid "New Start:"
+msgid "New Start"
+msgstr "Nov začetek:"
+
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:170
 msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
@@ -1258,7 +1737,7 @@ msgstr ""
 "Dodajte točke usklajevanja z izbiro podnapisov in prilagajanjem videa "
 "njihovim pravilnim položajem. Treba je dodati vsaj 2 točki."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:108
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
 msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
@@ -1266,11 +1745,11 @@ msgstr ""
 "Dodajte še 1 točko usklajevanja za začetek usklajevanja. Dodajanje več točk "
 "bo izboljšalo natančnost."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:111
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
 msgid "Synchronization is ready. All subtitles will be synchronized."
 msgstr "Usklajevanje je pripravljeno. Naslednji podnapisi bodo usklajeni."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:121
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
@@ -1278,7 +1757,7 @@ msgid ""
 msgstr ""
 "Usklajevanje je pripravljeno. Naslednji podnapisi ne bodo usklajeni: {0}."
 
-#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:124
+#: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
 #, csharp-format
 msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
@@ -1287,179 +1766,55 @@ msgstr ""
 "Usklajevanje je pripravljeno. Naslednji podnapisi ne bodo usklajeni: {0} in "
 "{1}."
 
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/ErrorDialog.cs:40
-msgid ""
-"An unknown error has occured. Please report a bug and include this error "
-"name:"
-msgstr ""
-"Prišlo je do neznane napake. Pošljite poročilo o napaki in vključite to ime "
-"napake:"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
+msgid "Open Video"
+msgstr "Odpri video"
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:29
-msgid "Could not open the file"
-msgstr "Ni mogoče odpreti datoteke"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:30
-msgid "Open another file"
-msgstr "Odpri drugo datoteko"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileOpenErrorDialog.cs:60
-msgid "The file path appears to be invalid."
-msgstr "Pot datoteke je videti neveljavna."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:32
-msgid "Could not save the file"
-msgstr "Ni mogoče shraniti datoteke"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:33
-msgid "Save to another file"
-msgstr "Shrani v drugo datoteko"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:59
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:41
-msgid "You have run out of memory. Please close some programs and try again."
-msgstr "Zmanjkalo je pomnilnika. Zaprite nekaj programov in poskusite ponovno."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:43
-msgid "An I/O error has occured."
-msgstr "Prišlo je do napake V/I."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:63
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Nimate ustreznih dovoljenj za shranjevanje datoteke."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/FileSaveErrorDialog.cs:65
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:47
-msgid "The specified file is invalid."
-msgstr "Navedena datoteka je neveljavna."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:32
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "V kolikor sprememb ne shranite, bodo trajno izgubljene."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:88
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
-msgstr ""
-"Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov "
-"shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:89
-msgid "Create without Saving"
-msgstr "Ustvari brez shranjevanja"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:108
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
-msgstr ""
-"Ali naj bodo spremembe podnapisa \"{0}\" pred ustvarjanjem novih podnapisov "
-"shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:115
-#, csharp-format
-msgid ""
-"Save the changes to translation \"{0}\" before creating a new translation?"
-msgstr ""
-"Ali naj bodo spremembe prevoda \"{0}\" pred ustvarjanjem novega prevoda "
-"shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:125
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before opening?"
-msgstr "Ali naj bodo spremembe podnapisa \"{0}\" pred odpiranjem shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:126
-msgid "Open without Saving"
-msgstr "Odpri brez shranjevanja"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:145
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before opening?"
-msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred odpiranjem shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:154
-#, csharp-format
-msgid "Save the changes to subtitles \"{0}\" before closing?"
-msgstr "Ali naj bodo spremembe podnapisov \"{0}\" pred zapiranjem shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:155
-msgid "Close without Saving"
-msgstr "Zapri brez shranjevanja"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SaveConfirmationDialog.cs:173
-#, csharp-format
-msgid "Save the changes to translation \"{0}\" before closing?"
-msgstr "Ali naj bodo spremembe prevoda \"{0}\" pred zapiranjem shranjene?"
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:37
-msgid ""
-"Unable to detect the subtitle format. Please check that the file type is "
-"supported."
-msgstr ""
-"Ni mogoče določiti vrste zapisa podnapisa. Preveriti je treba, če je ta "
-"vrsta datotek podprta."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:39
-msgid ""
-"The encoding used is not supported by your system. Please choose another "
-"encoding."
-msgstr ""
-"Uporabljeno kodiranje na vašem sistemu ni podprto. Izberite drugo kodiranje."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:45
-msgid "You do not have the permissions necessary to open the file."
-msgstr "Nimate ustreznih dovoljenj za odpiranje datoteke."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:49
-msgid "The file could not be found."
-msgstr "Datoteke ni mogoče najti."
-
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/SubtitleFileOpenErrorDialog.cs:51
-msgid "The file appears to be too large for a text-based subtitle file."
-msgstr "Videti je, da je datoteka prevelika za besedilno datoteko podnapisov."
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Unmanaged/VideoErrorDialog.cs:29
-msgid "Could not play the file"
-msgstr "Ni mogoče predvajati datoteke"
-
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:58
-msgid "All Video Files"
-msgstr "Vse video datoteke"
-
-#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:66
-msgid "All Audio Files"
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+#, fuzzy
+#| msgid "All Audio Files"
+msgid "All Media Files"
 msgstr "Vse zvočne datoteke"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:31
-msgid "Could not open Bug Buddy, the bug reporting tool."
-msgstr "Ni mogoče odpreti Bug Buddya, orodja za poročanje o hroščih."
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
+#, fuzzy
+#| msgid "All Video Files"
+msgid "Video Files"
+msgstr "Vse video datoteke"
 
-#: ../src/GnomeSubtitles/Execution/BugReporter.cs:32
-msgid "Bug information has been printed to the console."
-msgstr "Podrobnosti o hrošču so bile natisnjene v konzolo."
+#: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
+#, fuzzy
+#| msgid "All Audio Files"
+msgid "Audio Files"
+msgstr "Vse zvočne datoteke"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:176
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
+#, fuzzy
+#| msgid "Seek _video to:"
+msgid "Seek Video To"
+msgstr "Išči _video na:"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+msgid "_Seek"
+msgstr "_Poišči"
+
+#: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+msgid "Seek _video to:"
+msgstr "Išči _video na:"
+
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
-msgstr "Dodaj ali odstrani ..."
+msgstr "Dodaj ali odstrani …"
 
-#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:184
-msgid "Auto Detected"
+#: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+#, fuzzy
+#| msgid "Auto Detected"
+msgid "Automatically Detected"
 msgstr "Samodejno zaznano"
 
-#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:107
+#: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
 msgid "System Default"
 msgstr "Sistemsko privzeto"
-
-#. Constant strings
-#: ../src/GnomeSubtitles/Ui/Menus.cs:33
-msgid "Video"
-msgstr "Video"
 
 #. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
 #: ../src/GnomeSubtitles/Ui/Status.cs:43
@@ -1472,7 +1827,7 @@ msgstr "Vstavi"
 
 #. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:266
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
 msgid "Text"
 msgstr "Besedilo"
 
@@ -1490,30 +1845,200 @@ msgstr "Vrstica"
 msgid "Col"
 msgstr "Stolpec"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:195
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
 msgid "Frame"
 msgstr "Sličica"
 
 #. Number column
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:254
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
 msgid "No."
 msgstr "Št."
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
-msgid "Start"
-msgstr "Začetek"
-
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "End"
 msgstr "Konec"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:260
-msgid "Duration"
-msgstr "Trajanje"
-
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:271
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Prevod"
+
+#~ msgid ""
+#~ "Gnome Subtitles is a subtitle editor for the GNOME desktop environment."
+#~ msgstr "Program za podnapise je urejevalnik za okolje GNOME."
+
+#~ msgid ""
+#~ "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gnome Subtitles is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ msgstr ""
+#~ "Program Gnome podnapisi je prosto programje; lahko ga redistribuirate\n"
+#~ "in/ali spreminjate pod pogoji GNU General Public Licence kot je\n"
+#~ " objavljena s Free Software Foundation; ali različico 2 Licence\n"
+#~ " ali (na vašo željo) katerakoli kasnejša različica.\n"
+#~ "\n"
+#~ "Program Gnome podnapisi je distribuiran v upanju da bo uporaben, toda "
+#~ "BREZ\n"
+#~ "KAKRŠNIHKOLI ZAGOTOVIL; tudi brez impliciranih zagotovila za PRODAJO\n"
+#~ " ali PRIMERNOST ZA DOLOČEN NAMEN. Oglejte si\n"
+#~ " GNU General Public Licence za več podrobnosti.\n"
+#~ "\n"
+#~ "Skupaj s programom bi morali prejeti tudi kopijo splošnega javnega "
+#~ "potrdila;\n"
+#~ " v primeru, da kopije niste prejeli, pišite na Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#~ msgid "A_vailable:"
+#~ msgstr "Na _voljo:"
+
+#~ msgid "Character Coding:"
+#~ msgstr "Znakovno kodiranje:"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>Ime:</b>"
+
+#~ msgid "<b>Path:</b>"
+#~ msgstr "<b>Pot:</b>"
+
+#~ msgid "<b>Character Coding:</b>"
+#~ msgstr "<b>Znakovno kodiranje:</b>"
+
+#~ msgid "<b>Subtitle Format:</b>"
+#~ msgstr "<b>Vrsta podnapisov:</b>"
+
+#~ msgid "Karaoke Lyrics LRC"
+#~ msgstr "Besedila karaok LRC"
+
+#~ msgid "Karaoke Lyrics VKT"
+#~ msgstr "Besedila karaok VKT"
+
+#~ msgid "Type:"
+#~ msgstr "Vrsta:"
+
+#~ msgid ""
+#~ "Audio\n"
+#~ "Video\n"
+#~ msgstr ""
+#~ "Zvok\n"
+#~ "Video\n"
+
+#~ msgid "Comment:"
+#~ msgstr "Opomba:"
+
+#~ msgid "_Video Frame Rate"
+#~ msgstr "Hitrost sličic _videa"
+
+#~ msgid "Set T_ext Language"
+#~ msgstr "Nastavi jezik _besedila"
+
+#~ msgid "Set Translati_on Language"
+#~ msgstr "Nastavi jezik _prevoda"
+
+#~ msgid "Translate _Text → Translation"
+#~ msgstr "_Besedilo prevoda → prevod"
+
+#~ msgid "Translate Translatio_n → Text"
+#~ msgstr "Preveden _prevod → besedilo"
+
+#~ msgid "<b>Time</b>"
+#~ msgstr "<b>Čas</b>"
+
+#~ msgid "<b>Length</b>"
+#~ msgstr "<b>Dolžina</b>"
+
+#~ msgid "_Reset to defaults"
+#~ msgstr "_Ponastavi na privzeto"
+
+#~ msgid "Seek"
+#~ msgstr "Išči"
+
+#~ msgid "_Search for:"
+#~ msgstr "_Poišči:"
+
+#~ msgid "Start Frame:"
+#~ msgstr "Začetna sličica:"
+
+#~ msgid "No.:"
+#~ msgstr "Št.:"
+
+#~ msgid "<b>First Subtitle</b>"
+#~ msgstr "<b >Prvi podnapis</b>"
+
+#~ msgid "<b>Last Subtitle</b>"
+#~ msgstr "<b>Zadnji podnapis</b>"
+
+#~ msgid "All Subtitles"
+#~ msgstr "Vsi podnapisi"
+
+#~ msgid "Selected Range"
+#~ msgstr "Izbrani obseg"
+
+#~ msgid "Adjust"
+#~ msgstr "Prilagodi"
+
+#~ msgid "<b>Frames</b>"
+#~ msgstr "<b>Sličice</b>"
+
+#~ msgid "From _first subtitle to selection"
+#~ msgstr "Od _prvega podnapisa do izbora"
+
+#~ msgid "From selection to _last subtitle"
+#~ msgstr "Od izbora do _zadnjega podnapisa"
+
+#~ msgid "_Shift"
+#~ msgstr "P_remakni"
+
+#~ msgid "Synchroni_ze all subtitles"
+#~ msgstr "_Uskladi vse podnapise"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>Možnosti</b>"
+
+#~ msgid "<b>Status</b>"
+#~ msgstr "<b>Stanje</b>"
+
+#~ msgid "Seek To"
+#~ msgstr "Išči do"
+
+#~ msgid "Translating"
+#~ msgstr "Prevajanje"
+
+#~ msgid "Could not translate the chosen subtitle."
+#~ msgstr "Izbranega podnapisa ni mogoče prevesti."
+
+#~ msgid "Select the text _language of the current subtitles."
+#~ msgstr "Izberi jezik _besedila trenutnih podnapisov"
+
+#~ msgid "Select the translation _language of the current subtitles."
+#~ msgstr "Izberi _jezik prevajanja trenutnih podnapisov."
+
+#~ msgid "Start Time:"
+#~ msgstr "Začetni čas:"
+
+#~ msgid "Frames"
+#~ msgstr "Sličice"
+
+#~ msgid "Current Start"
+#~ msgstr "Trenutni začetek"
+
+#~ msgid "Correct Start"
+#~ msgstr "Pravilni začetek"
+
+#~ msgid "Could not open Bug Buddy, the bug reporting tool."
+#~ msgstr "Ni mogoče odpreti Bug Buddya, orodja za poročanje o hroščih."
+
+#~ msgid "Bug information has been printed to the console."
+#~ msgstr "Podrobnosti o hrošču so bile natisnjene v konzolo."
 
 #~ msgid "<b>Subtitle Splitting</b>"
 #~ msgstr "<b>Razdeljevanje podnapisa</b>"
