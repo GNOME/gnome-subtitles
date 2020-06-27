@@ -27,7 +27,7 @@ IT_PROG_INTLTOOL([0.50])
 
 dnl Gettext stuff.
 
-GETTEXT_PACKAGE=gnome-subtitles
+GETTEXT_PACKAGE=org.gnome.GnomeSubtitles
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
 
