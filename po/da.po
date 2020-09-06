@@ -33,14 +33,14 @@
 # dette var at de er meget korte og det passer med de steder de indgår i
 # programmet.
 #
-# scootergrisen: version 1.6 ser ikke ud til at vil vise brugerfladen på andet end engelsk så har har ikke haft mulighed for at test programmet på dansk for at se om ordene er oversat godt. Det bliver forhåbentligt rettet i en senere version.
-# scootergrisen: i gnome-subtitles-help har jeg mest oversat "frame" til "billedenhed" og "timing" til "timing"
+# scootergrisen: det var ikke muligt at teste version 1.6 på dansk
+# scootergrisen: så test oversættelsen i en kommende version
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-01-02 17:05+0000\n"
+"POT-Creation-Date: 2020-05-31 05:41+0000\n"
 "PO-Revision-Date: 2020-03-09 00:00+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -91,7 +91,6 @@ msgstr "Undertekstredigering"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
-#| msgid "Subtitles;Video;"
 msgid "subtitles;video;captions;"
 msgstr "undertekster;video;"
 
@@ -267,8 +266,8 @@ msgid ""
 "Whether to apply a reaction delay when setting the start or end times of a "
 "subtitle with the video playing."
 msgstr ""
-"Om der skal tilføjes en reaktionsforsinkelse, når start- og "
-"sluttiderne indstilles på underteksterne, mens videoen afspilles."
+"Om der skal tilføjes en reaktionsforsinkelse, når start- og sluttiderne "
+"indstilles på underteksterne, mens videoen afspilles."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
 msgid "Reaction delay"
@@ -279,8 +278,8 @@ msgid ""
 "Time, in milliseconds, to subtract from the start or end times when setting "
 "them with the video playing."
 msgstr ""
-"Tid (i millisekunder) som skal trækkes fra start- eller sluttiderne, når "
-"de indstilles, mens videoen afspilles."
+"Tid (i millisekunder) som skal trækkes fra start- eller sluttiderne, når de "
+"indstilles, mens videoen afspilles."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
 msgid "Seek the video on subtitles change"
@@ -498,12 +497,10 @@ msgid "_Underline"
 msgstr "_Understregning"
 
 #: ../src/Glade/MainWindow.ui.h:22
-#| msgid "_Split"
 msgid "_Split Lines"
 msgstr "_Opdel linjer"
 
 #: ../src/Glade/MainWindow.ui.h:23
-#| msgid "_Merge"
 msgid "_Merge Lines"
 msgstr "_Sammenføj linjer"
 
@@ -719,8 +716,9 @@ msgid "Time"
 msgstr "Tid"
 
 #: ../src/Glade/MainWindow.ui.h:76
-msgid "Length\t"
-msgstr "Varighed\t"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
+msgstr "Varighed"
 
 #: ../src/Glade/MainWindow.ui.h:77
 msgid "Sets the subtitle Start to the current video position"
@@ -731,12 +729,15 @@ msgid "Sets the subtitle End to the current video position"
 msgstr "Indstiller slut på en undertekst til den nuværende videoposition"
 
 #: ../src/Glade/MainWindow.ui.h:79
+#| msgid ""
+#| "Sets the subtitle Start and End while the video is playing. Keep the "
+#| "button pressed for the duration of each subtitle.\t"
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
-"pressed for the duration of each subtitle.\t"
+"pressed for the duration of each subtitle."
 msgstr ""
 "Indstiller start og slut på underteksten, mens videoen afspilles. Hold "
-"knappen nede for at se hver underteksts varighed.\t"
+"knappen nede for at se hver underteksts varighed."
 
 #: ../src/Glade/MainWindow.ui.h:80
 msgid "1.0x"
@@ -768,7 +769,6 @@ msgstr "Slut:"
 msgid "Duration:"
 msgstr "Varighed:"
 
-# Lidt i tvivl om -ing-formen i denne og de efterfølgende skal forstås som nutid (programmet er i gang med opgaven) eller som "Redigering af tidspunkter" (et menupunkt eller lignende til at redigere tidspunkter)
 #: ../src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
 msgid "Adjusting timings"
 msgstr "Justerer tidspunkter"
@@ -974,7 +974,7 @@ msgstr "UTF-8 uden BOM"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:67
 #: ../src/GnomeSubtitles/Core/Encodings.cs:68
 msgid "Chinese Traditional"
-msgstr "Traditionel kinesisk"
+msgstr "Kinesisk (traditionel)"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:69
 msgid "Cyrillic/Russian"
@@ -1003,7 +1003,7 @@ msgstr "Koreansk"
 #: ../src/GnomeSubtitles/Core/Encodings.cs:80
 #: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Chinese Simplified"
-msgstr "Forenklet kinesisk"
+msgstr "Kinesisk (forenklet)"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:88
 msgid "Portuguese"
@@ -1081,13 +1081,6 @@ msgstr "Beskrivelse"
 msgid "Encoding"
 msgstr "Kodning"
 
-# overskrifter eller filhoveder, du bliver nok nødt til at undersøge i hvilken
-# betydning det bruges her, for man kunne godt forestille sig begge
-# udtryk brugt i forbindelse med understekster. Rent faktisk anser jeg
-# det for væsentligt mere sandsynligt at det er filhoveder, idet det
-# virker som om at dette er et program til ændre i undertekstfiler med.
-# Jeg ved at sådan nogle har filhoveder, omvendt har jeg svært ved at
-# forestille mig hvor overskifter skulle komme ind i billedet
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
 msgid "Headers"
 msgstr "Filhoveder"
@@ -1241,7 +1234,6 @@ msgid "Font Size:"
 msgstr "Størrelse på skrifttype:"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
-#| msgid "Video To Open:"
 msgid "Video to Open:"
 msgstr "Video der skal åbnes:"
 
@@ -1308,9 +1300,6 @@ msgid "Save Translation As"
 msgstr "Gem oversættelse som"
 
 #: ../src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
-#| msgid ""
-#| "An unknown error has occured. Please report a bug and include this error "
-#| "name:"
 msgid ""
 "An unknown error has occurred. Please report a bug and include this error "
 "name:"
@@ -1472,108 +1461,112 @@ msgid "Translation File Saving"
 msgstr "Gemmetilstand for oversættelsesfil"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-msgid "Character c_oding to use:"
+#| msgid "Character c_oding to use:"
+msgid "Character _encoding to use:"
 msgstr "Tegnkodning der skal _bruges:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
 msgid "If auto detection _fails, use:"
 msgstr "Hvis automatisk registrering _mislykkes så brug:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
 msgid "Automatically choose the _video file to open"
 msgstr "Vælg automatisk _videofil der skal åbnes"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
 msgid "File Open Dialog"
 msgstr "Dialogen åbn fil"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
 msgid "_Subtitle format to use:"
 msgstr "_Undertekstformat der skal bruges:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
-msgid "Ch_aracter coding to use:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#| msgid "Ch_aracter coding to use:"
+msgid "Ch_aracter encoding to use:"
 msgstr "_Tegnkodning der skal bruges:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
 msgid "_Newline type to use:"
 msgstr "_Linjeskiftstype der skal bruges:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
 msgid "File Save As Dialog"
 msgstr "Dialogen gem fil som"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
 msgid "Create a _backup copy of files every"
 msgstr "Interval for _sikkerhedskopiering af filerne:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "minutes"
 msgstr "minutter"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
 msgid "Backup"
 msgstr "Sikkerhedskopi"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
-msgid "Seek the video to the selected subtitle when changing timings"
-msgstr "Søg i videoen til den valgte undertekst, når der ændres tidspunkter"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+#| msgid "Seek the video to the selected subtitle when changing timings"
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr "_Søg i videoen til den valgte undertekst, når der ændres tidspunkter"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Play"
 msgstr "Afspil"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
 msgid "ms before the actual start to help review new timings"
 msgstr ""
 "ms før den aktuelle start for at hjælpe med at gennemse nye tidspunkter"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
 msgid "Video Seeking"
 msgstr "Videosøgning"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
 msgid "Leave"
 msgstr "Forlad"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
 msgstr "ms mellem undertekster under indsættelse eller opdeling"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
 msgstr "Mellemrum mellem undertekster"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
-msgid "Subtract"
-msgstr "Træk fra"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+#| msgid "Subtract"
+msgid "Subtr_act"
+msgstr "Træk _fra"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
 msgstr "ms når der under afspilning angives start/slut på underteksterne"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
 msgstr "Reaktionsforsinkelse"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
 msgstr "Husk den sidst brugte kodning"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
 msgstr "Bevar kodningen brugt ved åbn fil"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Keep the format used on file open"
 msgstr "Bevar formatet brugt ved åbn fil"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
 msgstr "Husk det sidst brugte format"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
 msgstr "Husk den sidst brugte type"
 
@@ -1694,10 +1687,9 @@ msgstr ""
 "Indstil forskydningen, så de valgte undertekster begynder ved den nuværende "
 "videoposition."
 
-# Der er tale om forskydningen jvf. foregående. Mængde eller grad vil lyde lidt malplaceret her
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
 msgid "Amount"
-msgstr "Forskydning"
+msgstr "Hvor meget der forskydes med"
 
 #. Tips label
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
@@ -1781,17 +1773,14 @@ msgid "Open Video"
 msgstr "Åbn video"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
-#| msgid "All Audio Files"
 msgid "All Media Files"
 msgstr "Alle mediefiler"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
-#| msgid "All Video Files"
 msgid "Video Files"
 msgstr "Videofiler"
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
-#| msgid "All Audio Files"
 msgid "Audio Files"
 msgstr "Lydfiler"
 
@@ -1860,10 +1849,6 @@ msgstr "Nr."
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
 msgstr "Slut"
-
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
-msgid "Duration"
-msgstr "Varighed"
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
