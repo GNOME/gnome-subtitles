@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-01-12 00:59+0000\n"
-"PO-Revision-Date: 2020-02-17 23:41+0100\n"
+"POT-Creation-Date: 2020-05-31 05:41+0000\n"
+"PO-Revision-Date: 2020-09-13 00:13+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 19.12.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
@@ -63,7 +63,6 @@ msgstr "Feliratszerkesztő"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
-#| msgid "Subtitles;Video;"
 msgid "subtitles;video;captions;"
 msgstr "feliratok;videó;"
 
@@ -701,8 +700,9 @@ msgid "Time"
 msgstr "Idő"
 
 #: ../src/Glade/MainWindow.ui.h:76
-msgid "Length\t"
-msgstr "Hossz\t"
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
+msgstr "Hossz"
 
 #: ../src/Glade/MainWindow.ui.h:77
 msgid "Sets the subtitle Start to the current video position"
@@ -713,12 +713,15 @@ msgid "Sets the subtitle End to the current video position"
 msgstr "Beállítja a felirat végét a jelenlegi videopozícióra"
 
 #: ../src/Glade/MainWindow.ui.h:79
+#| msgid ""
+#| "Sets the subtitle Start and End while the video is playing. Keep the "
+#| "button pressed for the duration of each subtitle.\t"
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
-"pressed for the duration of each subtitle.\t"
+"pressed for the duration of each subtitle."
 msgstr ""
 "Beállítja a felirat kezdetét és végét a video lejátszása közben. Tartsa "
-"lenyomva a gombot az egyes feliratok ideje alatt.\t"
+"lenyomva a gombot az egyes feliratok ideje alatt."
 
 #: ../src/Glade/MainWindow.ui.h:80
 msgid "1.0x"
@@ -1441,109 +1444,114 @@ msgid "Translation File Saving"
 msgstr "Fordítási fájl mentése"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-msgid "Character c_oding to use:"
-msgstr "H_asználandó karakterkódolás:"
+#| msgid "Character c_oding to use:"
+msgid "Character _encoding to use:"
+msgstr "Használandó _karakterkódolás:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
 msgid "If auto detection _fails, use:"
 msgstr "Ha az automatikus felismerés sikertelen, akkor:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
 msgid "Automatically choose the _video file to open"
 msgstr "Megnyitandó vid_eofájl automatikus kiválasztása"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
 msgid "File Open Dialog"
 msgstr "Fájl megnyitása párbeszédablak"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
 msgid "_Subtitle format to use:"
 msgstr "Használandó feliratf_ormátum:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
-msgid "Ch_aracter coding to use:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+#| msgid "Ch_aracter coding to use:"
+msgid "Ch_aracter encoding to use:"
 msgstr "_Használandó karakterkódolás:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
 msgid "_Newline type to use:"
 msgstr "Használandó _soremeléstípus:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
 msgid "File Save As Dialog"
 msgstr "Fájl mentése másként párbeszédablak"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
 msgid "Create a _backup copy of files every"
 msgstr "Bi_ztonsági másolat készítése a fájlokról"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "minutes"
 msgstr "percenként"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
 msgid "Backup"
 msgstr "Biztonsági mentés"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
-msgid "Seek the video to the selected subtitle when changing timings"
-msgstr "A videó kiválasztott feliratra pozicionálása az időzítés módosításakor"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+#| msgid "Seek the video to the selected subtitle when changing timings"
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr ""
+"A _videó kiválasztott feliratra pozicionálása az időzítés módosításakor"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Play"
 msgstr "Lejátszás"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
 msgid "ms before the actual start to help review new timings"
 msgstr "ezredmásodperccel a tényleges kezdés elé az új időzítés áttekintéséhez"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
 msgid "Video Seeking"
 msgstr "Videó pozicionálása"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
 msgid "Leave"
 msgstr "Hagyjon"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
 msgstr "ezredmásodpercet feliratok közt beszúráskor vagy szétvágáskor"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
 msgstr "Időköz a feliratok között"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
-msgid "Subtract"
-msgstr "Vonjon ki"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+#| msgid "Subtract"
+msgid "Subtr_act"
+msgstr "_Vonjon ki"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
 msgstr ""
 "ezredmásodpercet a felirat kezdésének/befejezésének beállításakor lejátszás "
 "közben"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
 msgstr "Reakcióidő"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
 msgstr "Utoljára használt kódolás megjegyzése"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
 msgstr "A használt kódolás megtartása fájl megnyitásakor"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Keep the format used on file open"
 msgstr "A használt formátum megtartása fájl megnyitásakor"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
 msgstr "Utoljára használt formátum megjegyzése"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
 msgstr "Utoljára használt típus megjegyzése"
 
@@ -1604,8 +1612,8 @@ msgid ""
 "Use your distro's package manager to install additional languages (tip: "
 "search for 'spell'). Supported language packs: {0}."
 msgstr ""
-"Használja a disztribúciója csomagkezelőjét további nyelvek telepítéséhez"
-" (tipp: keressen rá a „spell” kifejezésre). A támogatott nyelvi csomagok: {0}."
+"Használja a disztribúciója csomagkezelőjét további nyelvek telepítéséhez "
+"(tipp: keressen rá a „spell” kifejezésre). A támogatott nyelvi csomagok: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1827,10 +1835,9 @@ msgstr "Szám"
 msgid "End"
 msgstr "Befejezés"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
-msgid "Duration"
-msgstr "Hossz"
-
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Fordítás"
+
+#~ msgid "Length\t"
+#~ msgstr "Hossz\t"
