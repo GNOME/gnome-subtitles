@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2018 Pedro Castro
+ * Copyright (C) 2006-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -176,16 +176,7 @@ public abstract class SubtitleEditTextView {
 		}
 	}
 
-	private void SetSpellLanguage (SpellLanguage language) {
-		if (language == null) {
-			spellChecker.Disable();
-			return;
-		}
-
-		spellChecker.Enable(language.ID);
-	}
-
-
+		
 	/* Private methods */
 
     private void SetText (string text) {
@@ -382,20 +373,25 @@ public abstract class SubtitleEditTextView {
     }
 
     /* Protected members */
-
-    protected void OnSpellLanguageChanged () {
+    
+    protected void SetSpellLanguage () {
 		if (Base.SpellLanguages.Enabled) {
 			SpellLanguage language = GetSpellActiveLanguage();
-			SetSpellLanguage(language);
+			if (language != null) {
+				spellChecker.Enable(language.ID);
+				return;
+			}
 		}
+		
+		spellChecker.Disable();
 	}
 
-	protected void OnSpellToggleEnabled () {
-		if (Base.SpellLanguages.Enabled) {
-			SetSpellLanguage(GetSpellActiveLanguage());
-		} else {
-			SetSpellLanguage(null);
-		}
+    protected void OnSpellLanguageChanged () {
+    	SetSpellLanguage();
+	}
+
+	protected void OnSpellEnabledToggled () {
+		SetSpellLanguage();
 	}
 
 	protected void OnSubtitleSelectionChanged (TreePath[] paths, Subtitle subtitle) {

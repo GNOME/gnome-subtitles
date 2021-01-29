@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2020 Pedro Castro
+ * Copyright (C) 2008-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ public class SpellLanguages {
 	}
 
 	/* Events */
-	public event BasicEventHandler ToggleEnabled = null;
+	public event BasicEventHandler EnabledToggled = null;
 	public event BasicEventHandler TextLanguageChanged = null;
 	public event BasicEventHandler TranslationLanguageChanged = null;
 
@@ -84,7 +84,7 @@ public class SpellLanguages {
 			if (value != enabled) {
 				enabled = value;
 				Base.Config.SpellCheckAuto = value;
-				EmitToggleEnabled();
+				EmitEnabledToggled();
 			}
 		}
 		get { return enabled; }
@@ -213,9 +213,9 @@ public class SpellLanguages {
 
 	/* Event members */
 
-	private void EmitToggleEnabled () {
-    	if (this.ToggleEnabled != null)
-    		this.ToggleEnabled();
+	private void EmitEnabledToggled () {
+    	if (this.EnabledToggled != null)
+    		this.EnabledToggled();
     }
 
     private void EmitLanguageChanged (SubtitleTextType textType) {
