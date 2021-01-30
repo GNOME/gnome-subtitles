@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 using GnomeSubtitles.Core;
 using GnomeSubtitles.Dialog;
 using GnomeSubtitles.Dialog.Message;
-using GnomeSubtitles.Execution;
 using GnomeSubtitles.Ui.Edit;
 using GnomeSubtitles.Ui.VideoPreview;
 using GnomeSubtitles.Ui.View;
