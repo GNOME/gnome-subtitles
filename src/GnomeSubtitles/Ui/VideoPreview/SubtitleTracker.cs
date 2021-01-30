@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2019 Pedro Castro
+ * Copyright (C) 2007-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -80,6 +80,11 @@ public class SubtitleTracker {
 		
 		EmitSubtitlePulse(this.currentSubtitleIndex);
 	}
+	
+	//Used because its text may have changed
+	private void RefreshCurrentSubtitle () {
+		EmitSubtitlePulse(this.currentSubtitleIndex);
+	}
 
 	private void EmitSubtitlePulse(int newIndex) {
 		if (SubtitlePulse != null)
@@ -109,8 +114,10 @@ public class SubtitleTracker {
 		if (!Base.IsDocumentLoaded) {
 			return;
 		}
-
-		if (!IsTimeInCurrentSubtitle(newPosition)) {
+		
+		if (IsTimeInCurrentSubtitle(newPosition)) {
+			RefreshCurrentSubtitle(); //Force a refresh because its text may have changed
+		} else {
 			int foundSubtitle = searchOp.FindWithTime(newPosition);
 			if (foundSubtitle == -1) {
 				ClearCurrentSubtitle();
