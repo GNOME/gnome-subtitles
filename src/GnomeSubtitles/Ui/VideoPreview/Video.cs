@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -73,7 +73,7 @@ public class Video {
 	}
 
 	public bool IsStatePlaying {
-		get { return player.State == MediaStatus.Playing; }
+		get { return isLoaded && player.State == MediaStatus.Playing; }
 	}
 
 	public float FrameRate {
@@ -134,7 +134,9 @@ public class Video {
 	}
 
 	public void Quit () {
-		player.Dispose();
+		if (isLoaded) {
+			player.Close();
+		}
 	}
 
 	public void SetLoopSelectionPlayback (bool enabled){
@@ -292,8 +294,9 @@ public class Video {
 	}
 
 	private bool IsPlayerLoadComplete () {
-		return (player != null) && (player.State != MediaStatus.Unloaded) && (player.HasVideoInfo) && (player.HasDuration);
+		return (player != null) && player.IsLoadComplete;
 	}
+
 
 	/* Event members */
 

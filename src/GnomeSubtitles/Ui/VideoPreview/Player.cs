@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2019 Pedro Castro
+ * Copyright (C) 2007-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@ using GnomeSubtitles.Ui.VideoPreview.Exceptions;
 using GStreamer;
 using Gtk;
 using SubLib.Core.Domain;
-using System;
 using SubLib.Util;
+using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
@@ -33,7 +33,6 @@ public delegate void VideoDurationEventHandler (TimeSpan duration);
 public class Player {
 
 	private AspectFrame frame = null;
-	//private Socket socket = null;
 	private Playbin playbin = null;
 	private PlayerPositionWatcher position = null;
 	private bool hasFoundDuration = false;
@@ -50,9 +49,7 @@ public class Player {
 	public Player (AspectFrame aspectFrame) {
 		this.frame = aspectFrame;
 
-		//InitializeSocket();
 		InitializePositionWatcher();
-		InitializePlaybin();
 	}
 	
 
@@ -70,16 +67,8 @@ public class Player {
 		get { return playbin.CurrentStatus; }
 	}
 
-	public bool HasDuration {
-		get { return playbin.Duration != TimeSpan.Zero; }
-	}
-
 	public TimeSpan Duration {
 		get { return playbin.Duration; }
-	}
-
-	public bool HasVideoInfo {
-		get { return videoInfo != null; }
 	}
 
 	public float AspectRatio {
@@ -105,20 +94,26 @@ public class Player {
 	public float Speed {
 		get { return speed; }
 	}
-
+	
+	public bool IsLoadComplete {
+		get { return (playbin.CurrentStatus != MediaStatus.Unloaded) && HasVideoInfo() && HasDuration(); }
+	}
+	
 
 	/* Public methods */
 
 	public void Open (Uri videoUri) {
 		this.videoUri = videoUri;
 
-		/* Load the playbin */
+		InitializePlaybin();
 		playbin.Load(videoUri.AbsoluteUri);
 	}
 
 	public void Close () {
 		position.Stop();
+		
 		playbin.Unload();
+		DisposePlaybin();
 
 		videoUri = null;
 		hasFoundDuration = false;
@@ -171,35 +166,16 @@ public class Player {
 		playbin.Seek(newPosition, speed); // newPosition in milliseconds
 	}
 
-	public void Dispose () {
-		Close();
-		playbin.Dispose();
-	}
-
 
 	/* Private members */
 
-
-	//private void InitializeSocket () {
-	//	socket = new Socket();
-
-	//	/* Set the socket background color. If we don't do this, the socket/video
-	//	 * area will show a copy of the UI elements (menu, labels, other
-	//	 * components) when the video isn't loaded.
-	//	 */
-	//	RGBA black = new RGBA();
-	//	black.Red = 0;
-	//	black.Green = 0;
-	//	black.Blue = 0;
-	//	black.Alpha = 1;
-	//	socket.OverrideBackgroundColor(StateFlags.Normal, black);
-	//	socket.DoubleBuffered = false;
-
-	//	frame.Child = socket;
-
-	//	socket.Realize();
-	//	socket.Show();
-	//}
+	private bool HasDuration() {
+		return playbin.Duration != TimeSpan.Zero;
+	}
+	
+	public bool HasVideoInfo() {
+		return videoInfo != null;
+	}
 
 	private void InitializePlaybin () {
 		playbin = new Playbin();
@@ -223,7 +199,21 @@ public class Player {
 		playbin.FoundVideoInfo += OnPlaybinFoundVideoInfo;
 		playbin.FoundTag += OnPlaybinFoundTag;
 	}
+	
+	private void DisposePlaybin () {
+		playbin.Error -= OnPlaybinError;
+		playbin.EndOfStream -= OnPlaybinEndOfStream;
+		playbin.StateChanged -= OnPlaybinStateChanged;
+		playbin.FoundVideoInfo -= OnPlaybinFoundVideoInfo;
+		playbin.FoundTag -= OnPlaybinFoundTag;
+		
+		Widget videoWidget = playbin.GetVideoWidget();
+		frame.Remove(videoWidget);
 
+		playbin.Dispose();
+		playbin = null;
+	}
+	
 	private void InitializePositionWatcher () {
 		position = new PlayerPositionWatcher(GetPosition);
 		position.PositionPulse += OnPositionWatcherPulse;
