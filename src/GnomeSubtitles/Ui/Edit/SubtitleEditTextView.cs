@@ -325,9 +325,9 @@ public abstract class SubtitleEditTextView {
 			EmitToggleOverwrite();
 	}
 
-	private void OnDestroyed (object o, EventArgs args) {
-		spellChecker.Disable();
-	}
+	//private void OnDestroy (object o, EventArgs args) {
+	//	spellChecker.Disable();
+	//}
 
 	[GLib.ConnectBefore]
     private void OnKeyPressed (object o, KeyPressEventArgs args) {
@@ -364,7 +364,7 @@ public abstract class SubtitleEditTextView {
 		this.textView.FocusOutEvent += OnFocusOut;
 		this.textView.KeyPressEvent += OnKeyPressed;
 		this.textView.ToggleOverwrite += OnToggleOverwrite;
-		this.textView.Destroyed += OnDestroyed;
+		//this.textView.Destroyed += OnDestroy;
     }
 
     private void EmitToggleOverwrite () {
