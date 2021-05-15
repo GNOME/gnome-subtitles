@@ -12,16 +12,16 @@ ASSEMBLY_CONFIG = $(ASSEMBLY).config
 ASSEMBLY_CONFIG_SRC = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.config
 
 AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
-gnomesubtitles_LTLIBRARIES = libgstreamer_playbin.la
-libgstreamer_playbin_la_SOURCES = External/GStreamerPlaybin/main.c
-libgstreamer_playbin_la_LIBADD = $(gstreamer_LIBS)
-libgstreamer_playbin_la_LDFLAGS = -module -avoid-version
-libgstreamer_playbin_la_LIBTOOLFLAGS = --tag=disable-static 
+gnomesubtitles_LTLIBRARIES = libgst_backend.la
+libgst_backend_la_SOURCES = External/GstBackend/gst-backend.c
+libgst_backend_la_LIBADD = $(gstreamer_LIBS)
+libgst_backend_la_LDFLAGS = -module -avoid-version
+libgst_backend_la_LIBTOOLFLAGS = --tag=disable-static 
 
 GSSOURCES = \
 	$(srcdir)/External/Enchant/*.cs \
 	$(srcdir)/External/GtkSpell/*.cs \
-	$(srcdir)/External/GStreamerPlaybin/*.cs \
+	$(srcdir)/External/GstBackend/*.cs \
 	$(srcdir)/External/Interop/*.cs \
 	$(srcdir)/External/NCharDet/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
@@ -59,7 +59,7 @@ $(ASSEMBLY): $(GSSOURCES) $(GS_RESOURCES)
 
 $(ASSEMBLY_CONFIG): $(gnomesubtitles_LTLIBRARIES)
 	cp -f $(ASSEMBLY_CONFIG_SRC) $(GS_BUILDDIR)
-	cp -f $(srcdir)/.libs/libgstreamer_playbin.so $(GS_BUILDDIR)
+	cp -f $(srcdir)/.libs/libgst_backend.so $(GS_BUILDDIR)
 
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 

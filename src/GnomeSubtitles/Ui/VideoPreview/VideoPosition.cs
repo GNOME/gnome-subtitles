@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,8 +39,8 @@ public class VideoPosition {
 	private bool isPlayerUpdate = false;
 
 	/* Constants */
-	private const int userUpdateTimeout = 100; //Milliseconds
-	private TimeSpan seekIncrement = TimeSpan.FromMilliseconds(500);
+	private const int userUpdateTimeout = 100; //ms
+	private long seekIncrement = 500; //ms
 
 	/* Delegates */
 	public delegate void VideoPositionPulseHandler (TimeSpan position);
@@ -62,11 +62,10 @@ public class VideoPosition {
 
 	/* Public properties */
 
-	public TimeSpan SeekIncrement {
+	public long SeekIncrement {
 		get { return seekIncrement; }
 	}
 
-	/// <summary>The current position, in seconds.</summary>
 	public TimeSpan CurrentTime {
 		get { return position; }
 	}
@@ -76,7 +75,7 @@ public class VideoPosition {
 	}
 
 	public TimeSpan Duration {
-		get { return player.Duration; }
+		get { return TimeSpan.FromMilliseconds(player.Duration); }
 	}
 
 	public int DurationInFrames {
@@ -109,14 +108,14 @@ public class VideoPosition {
 	}
 
 	/// <summary>Handles changes in the player position.</summary>
-	private void OnPlayerPositionPulse (TimeSpan newPosition) {
-		position = newPosition;
+	private void OnPlayerPositionPulse (long newPosition) {
+		position = TimeSpan.FromMilliseconds(newPosition);
 
 		if (userUpdateTimeoutId == 0)  //There is not a manual positioning going on
-			UpdateSlider(newPosition);
+			UpdateSlider(position);
 
-		UpdatePositionValueLabel(newPosition);
-		EmitVideoPositionPulse(newPosition);
+		UpdatePositionValueLabel(position);
+		EmitVideoPositionPulse(position);
 	}
 
 	private void OnBaseVideoLoaded (Uri videoUri) {
@@ -127,7 +126,7 @@ public class VideoPosition {
 
 	private bool UpdatePlayerPosition () {
 		userUpdateTimeoutId = 0;
-		player.Seek(slider.Value);
+		player.Seek((long)slider.Value);
 		return false;
 	}
 
@@ -165,7 +164,7 @@ public class VideoPosition {
 	private void OnBaseTimingModeChanged (TimingMode timingMode) {
 		UpdatePositionLabel(timingMode);
 		UpdatePositionValueLabel(position);
-		TimeSpan length = player.Duration;
+		TimeSpan length = TimeSpan.FromMilliseconds(player.Duration);
 		UpdateLengthLabel(timingMode, length);
 	}
 

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,18 +17,16 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System;
-
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 /* Delegates */
 
-//Represents a function that gets a time from the player
-public delegate TimeSpan PlayerGetTimeFunc ();
+//Represents a function that gets the time from the player
+public delegate long PlayerGetTimeFunc ();
 
 //Represents a function that handles a frequent pulse in the player position. This means the pulse is
 //emitted every 'x' ms and not only when the position changes.
-public delegate void PositionPulseEventHandler (TimeSpan position);
+public delegate void PositionPulseEventHandler (long position);
 
 public class PlayerPositionWatcher {
 	private uint timeoutId = 0;
@@ -74,12 +72,17 @@ public class PlayerPositionWatcher {
 	}
 
 	private bool CheckPosition () {
-		TimeSpan position = PlayerGetPosition();
-		EmitPositionPulse(position);
+		long position = PlayerGetPosition();
+		
+		//-1 means we couln't get the position value atm, so ignore it
+		if (position != -1) {
+			EmitPositionPulse(position);
+		}
+
 		return true;
 	}
 
-	private void EmitPositionPulse (TimeSpan position) {
+	private void EmitPositionPulse (long position) {
 		if (PositionPulse != null) {
 			PositionPulse(position);
 		}

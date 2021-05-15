@@ -17,269 +17,245 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using GnomeSubtitles.Ui.VideoPreview.Exceptions;
-using GStreamer;
+using External.GStreamer;
+using GnomeSubtitles.Core;
 using Gtk;
-using SubLib.Core.Domain;
 using SubLib.Util;
 using System;
 
 namespace GnomeSubtitles.Ui.VideoPreview {
 
 /* Delegates */
-public delegate void PlayerErrorEventHandler (Uri videoUri, Exception e);
-public delegate void VideoDurationEventHandler (TimeSpan duration);
+public delegate void PlayerErrorHandler(string error);
 
 public class Player {
 
-	private AspectFrame frame = null;
-	private Playbin playbin = null;
+	private AspectFrame frame = null; //the backend video widget is added as a child of this frame
+	private MediaBackend backend = null;
 	private PlayerPositionWatcher position = null;
-	private bool hasFoundDuration = false;
-	private Uri videoUri = null;
-	private VideoInfo videoInfo = null;
-	private float speed = 1;
-
+	private MediaStatus status = MediaStatus.Unloaded; //We don't always have a backend, but we always should have a status, so that's why it's here
+	private int speed = DefaultSpeed; //Speed is divided by 10 to get the actual speed (example: 10->1). Storing as int to avoid floating rounding errors.
+	
 	/* Constants */
-	public const float DefaultAspectRatio = 1.67f;
-	public const float DefaultMinSpeed = 0.1f;
-	public const float DefaultSpeedStep = 0.1f;
-	public const float DefaultMaxSpeed = 2;
+	private const int DefaultSpeed = 100;
+	
 
-	public Player (AspectFrame aspectFrame) {
-		this.frame = aspectFrame;
-
+	public Player (AspectFrame frame) {
+		this.frame = frame;
 		InitializePositionWatcher();
 	}
 	
 
 	/* Events */
-	public event PlayerErrorEventHandler Error;
-	public event EndOfStreamEventHandler EndOfStream;
-	public event StateEventHandler StateChanged;
+	public event PlayerErrorHandler ErrorFound; //Note: all errors are considered fatal, meaning the backend must be disposed immediately
+	public event BasicEventHandler EndOfStreamReached;
+	public event StatusChangedHandler StatusChanged;
 	public event PositionPulseEventHandler PositionPulse;
-	public event VideoInfoEventHandler FoundVideoInfo;
-	public event VideoDurationEventHandler FoundDuration;
+
 
 	/* Properties */
 
-	public MediaStatus State {
-		get { return playbin.CurrentStatus; }
+	public MediaStatus Status {
+		get { return status; }
 	}
-
-	public TimeSpan Duration {
-		get { return playbin.Duration; }
-	}
-
-	public float AspectRatio {
-		get { return videoInfo.AspectRatio; }
-	}
-
-	public float FrameRate {
-		get { return videoInfo.FrameRate; }
-	}
-
-	public bool HasAudio {
-		get { return videoInfo.HasAudio; }
+	
+	public long Duration {
+		get { return backend.Duration; }
 	}
 
 	public bool HasVideo {
-		get { return videoInfo.HasVideo; }
+		get { return backend.HasVideo; }
 	}
 
-	public Uri VideoUri {
-		get { return videoUri; }
+	public float AspectRatio {
+		get { return backend.AspectRatio; }
 	}
 
-	public float Speed {
+	public float FrameRate {
+		get { return backend.FrameRate; }
+	}
+
+	public bool HasAudio {
+		get { return backend.HasAudio; }
+	}
+
+	public int Speed {
 		get { return speed; }
-	}
-	
-	public bool IsLoadComplete {
-		get { return (playbin.CurrentStatus != MediaStatus.Unloaded) && HasVideoInfo() && HasDuration(); }
 	}
 	
 
 	/* Public methods */
 
-	public void Open (Uri videoUri) {
-		this.videoUri = videoUri;
-
-		InitializePlaybin();
-		playbin.Load(videoUri.AbsoluteUri);
+	public void Open(Uri mediaUri) {
+		if (status != MediaStatus.Unloaded) {
+			throw new Exception("Trying to load a player which is not unloaded.");
+		}
+		
+		backend = InitializeBackend();
+	
+		if (!backend.Load(mediaUri.AbsoluteUri)) {
+			throw new Exception("Unable to load the media file.");
+		}
 	}
 
-	public void Close () {
+	public void Close() {
 		position.Stop();
 		
-		playbin.Unload();
-		DisposePlaybin();
-
-		videoUri = null;
-		hasFoundDuration = false;
-		videoInfo = null;
-		speed = 1;
+		//Unload
+		if ((status != MediaStatus.Unloaded) && (status != MediaStatus.Loading)) {
+			backend.Unload();
+		}
+		status = MediaStatus.Unloaded;
+		
+		//Dispose
+		DisposeBackend();
+		
+		speed = DefaultSpeed;
 	}
 
-	public void Play () {
-		playbin.Play();
+	public void Play() {
+		if (status == MediaStatus.Playing) {
+			return;
+		}
+		
+		if ((status != MediaStatus.Loaded) && (status != MediaStatus.Paused)) {
+			throw new Exception(string.Format("Trying to play but the player status is {0}", status));
+		}
+	
+		backend.Play();
 	}
 
 	public void Pause () {
-		playbin.Pause();
+		if (status == MediaStatus.Paused) {
+			return;
+		}
+		
+		if (status != MediaStatus.Playing) {
+			throw new Exception(string.Format("Trying to pause but the player status is {0}", status));
+		}
+
+		backend.Pause();
 	}
 
-    public void SpeedUp () {
-        if (this.speed >= DefaultMaxSpeed)
-	        return;
-
-		this.speed += DefaultSpeedStep;
-		ChangeSpeed(this.speed);
+	public void SetSpeed(int speed) {
+		this.speed = speed;
+		backend.SetSpeed(((float)speed)/100);
+	}
+	
+	public void ResetSpeed() {
+		SetSpeed(DefaultSpeed);
+	}
+	
+	/// <summary>
+	/// Rewind the specified time.
+	/// </summary>
+	/// <param name="time">Time in ms.</param>
+	public void Rewind(long time) {
+		backend.Seek(-time, false);
 	}
 
-	public void SpeedDown () {
-	    if (this.speed <= DefaultMinSpeed)
-	        return;
-
-	    this.speed -= DefaultSpeedStep;
-		ChangeSpeed(this.speed);
+	/// <summary>
+	/// Forward the specified time.
+	/// </summary>
+	/// <param name="time">Time in ms.</param>
+	public void Forward(long time) {
+		backend.Seek(time, false);
 	}
 
-	public void SpeedReset () {
-		this.speed = 1;
-		ChangeSpeed(this.speed);
-	}
-
-	public void Rewind (TimeSpan dec) {
-		Seek(playbin.CurrentPosition - dec);
-	}
-
-	public void Forward (TimeSpan inc) {
-		Seek(playbin.CurrentPosition + inc);
-	}
-
-	public void Seek (TimeSpan newPosition) {
-		playbin.Seek(newPosition, speed);
-	}
-
-	public void Seek (double newPosition) {
-		playbin.Seek(newPosition, speed); // newPosition in milliseconds
+	/// <summary>
+	/// Seek to the specified position.
+	/// </summary>
+	/// <param name="position">Position in ms.</param>
+	public void Seek(long position) {
+		backend.Seek(position, true);
 	}
 
 
 	/* Private members */
 
-	private bool HasDuration() {
-		return playbin.Duration != TimeSpan.Zero;
-	}
-	
-	public bool HasVideoInfo() {
-		return videoInfo != null;
-	}
-
-	private void InitializePlaybin () {
-		playbin = new Playbin();
-
-		if (!playbin.Initiate()) {
-			throw new PlayerCouldNotInitiateEngineException("Unable to initiate the playbin engine");
-		}
+	private MediaBackend InitializeBackend() {
+		MediaBackend backend = new GstBackend();
+		backend.Initialize();
 		
-		Widget videoWidget = playbin.GetVideoWidget();
+		Widget videoWidget = backend.CreateVideoWidget();
 		if (videoWidget == null) {
-			throw new PlayerCouldNotInitiateEngineException("Unable to get the video widget from the playbin engine");
+			throw new Exception("Unable to create the video widget");
 		}
 
 		frame.Child = videoWidget;
 		videoWidget.Realize();
 		videoWidget.Show();
 
-		playbin.Error += OnPlaybinError;
-		playbin.EndOfStream += OnPlaybinEndOfStream;
-		playbin.StateChanged += OnPlaybinStateChanged;
-		playbin.FoundVideoInfo += OnPlaybinFoundVideoInfo;
-		playbin.FoundTag += OnPlaybinFoundTag;
-	}
-	
-	private void DisposePlaybin () {
-		playbin.Error -= OnPlaybinError;
-		playbin.EndOfStream -= OnPlaybinEndOfStream;
-		playbin.StateChanged -= OnPlaybinStateChanged;
-		playbin.FoundVideoInfo -= OnPlaybinFoundVideoInfo;
-		playbin.FoundTag -= OnPlaybinFoundTag;
+		backend.ErrorFound += OnBackendErrorFound;
+		backend.StatusChanged += OnBackendStatusChanged;
+		backend.EndOfStreamReached += OnBackendEndOfStreamReached;
 		
-		Widget videoWidget = playbin.GetVideoWidget();
-		frame.Remove(videoWidget);
-
-		playbin.Dispose();
-		playbin = null;
+		return backend;
 	}
 	
-	private void InitializePositionWatcher () {
+	private void DisposeBackend() {
+		backend.ErrorFound -= OnBackendErrorFound;
+		backend.StatusChanged -= OnBackendStatusChanged;
+		backend.EndOfStreamReached -= OnBackendEndOfStreamReached;
+		
+		frame.Remove(frame.Child);
+
+		backend.Dispose();
+		backend = null;
+	}
+	
+	private void InitializePositionWatcher() {
 		position = new PlayerPositionWatcher(GetPosition);
 		position.PositionPulse += OnPositionWatcherPulse;
 	}
 
-	/// <summary>Gets the current player position.</summary>
-	private TimeSpan GetPosition () {
-		return playbin.CurrentPosition;
-	}
-
-	private void ChangeSpeed (float newSpeed) {
-	    playbin.Seek(playbin.CurrentPosition, newSpeed);
+	private long GetPosition() {
+		return backend.CurrentPosition;
 	}
 
 
 	/* Event members */
 
-	private void OnPlaybinError (ErrorEventArgs args) {
-		if (Error != null)
-			Error(videoUri, new PlayerEngineException(args.Error, args.Debug));
-	}
-
-	private void OnPlaybinEndOfStream () {
-		position.Stop();
-		if (EndOfStream != null)
-			EndOfStream();
-	}
-
-	private void OnPlaybinStateChanged (StateEventArgs args) {
-		if (args.State == MediaStatus.Unloaded)
-			position.Stop();
-		else
-			position.Start();
-
-		if (StateChanged != null)
-			StateChanged(args);
-	}
-
-	private void OnPositionWatcherPulse (TimeSpan time) {
+	private void OnPositionWatcherPulse (long time) {
 		if (PositionPulse != null)
 			PositionPulse(time);
 	}
 
-	private void OnPlaybinFoundVideoInfo (VideoInfoEventArgs args) {
-		Logger.Info("[Player] Media info: {0}", args.VideoInfo.ToString());
-		this.videoInfo = args.VideoInfo;
-
-		/* Set defaults if there is no video */
-		if (!videoInfo.HasVideo) {
-			videoInfo.FrameRate = SubtitleConstants.DefaultFrameRate;
-			videoInfo.AspectRatio = DefaultAspectRatio;
+	private void OnBackendErrorFound(string error) {
+		if (ErrorFound != null) {
+			ErrorFound(error);
+		}
+	}
+	
+	private void OnBackendStatusChanged(MediaStatus newStatus) {
+		this.status = newStatus;
+		
+		//Handle position watcher
+		if (newStatus == MediaStatus.Unloaded) {
+			position.Stop();
+		} else if (newStatus != MediaStatus.Loading) {
+			position.Start();
+		}
+		
+		//Print info when loaded
+		if (newStatus == MediaStatus.Loaded) {
+			Logger.Info("[Player] Media Loaded: Backend={0}, Duration={1}ms, HasVideo={2}, "
+				+ "AspectRatio={3}, FrameRate={4}, HasAudio={5}",
+				backend.Name, backend.Duration, backend.HasVideo, backend.AspectRatio,
+				backend.FrameRate, backend.HasAudio);
 		}
 
-		frame.Ratio = videoInfo.AspectRatio;
+		if (StatusChanged != null) {
+			StatusChanged(newStatus);
+		}
 
-		if (FoundVideoInfo != null)
-			FoundVideoInfo(args);
 	}
-
-	private void OnPlaybinFoundTag (TagEventArgs args) {
-		if ((!hasFoundDuration) && (FoundDuration != null) && (playbin.Duration != TimeSpan.Zero)) {
-			TimeSpan duration = playbin.Duration;
-			Logger.Info("[Player] Media duration: {0}", duration);
-
-			hasFoundDuration = true;
-			FoundDuration(duration);
+	
+	private void OnBackendEndOfStreamReached() {
+		position.Stop();
+		
+		if (EndOfStreamReached != null) {
+			EndOfStreamReached();
 		}
 	}
 

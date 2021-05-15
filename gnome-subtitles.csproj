@@ -64,8 +64,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\External\GStreamerPlaybin\Engine.cs" />
-    <Compile Include="src\External\GStreamerPlaybin\Events.cs" />
     <Compile Include="src\External\NCharDet\Big5Statistics.cs" />
     <Compile Include="src\External\NCharDet\EUCJPStatistics.cs" />
     <Compile Include="src\External\NCharDet\EUCKRStatistics.cs" />
@@ -151,11 +149,10 @@
     <Compile Include="src\GnomeSubtitles\Dialog\VideoSeekToDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\BasicErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\ErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Message\FileOpenErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\FileSaveErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\SaveConfirmationDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\SubtitleFileOpenErrorDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Dialog\Message\VideoErrorDialog.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\VideoFileOpenErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\WarningDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\AssemblyInfo.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\BugReporter.cs" />
@@ -182,8 +179,7 @@
     <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Video.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\VideoFiles.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\VideoPosition.cs" />
-    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Exceptions\PlayerCouldNotInitiateEngineException.cs" />
-    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Exceptions\PlayerEngineException.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\Exceptions\PlayerException.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\View\CellRendererCenteredText.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\View\SelectionIntended.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\View\SelectionType.cs" />
@@ -279,6 +275,10 @@
     <Compile Include="src\GnomeSubtitles\Ui\WindowState.cs" />
     <Compile Include="src\External\Enchant\Enchant.cs" />
     <Compile Include="src\External\Interop\Interop.cs" />
+    <Compile Include="src\External\GstBackend\GstBackend.cs" />
+    <Compile Include="src\External\GstBackend\GstMediaInfo.cs" />
+    <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\MediaBackend.cs" />
+    <Compile Include="src\GnomeSubtitles\Dialog\Message\DialogUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2008-2018 Pedro Castro
+ * Copyright (C) 2008-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,14 +98,10 @@ public class VideoSeekToDialog : BaseDialog {
 		spinButton.Value = newValue;
 	}
 
-	//private void OnClear (object o, EventArgs args) {
-	//	SetSpinButtonValue(0);
-	//}
-
 	protected override bool ProcessResponse (ResponseType response) {
 		if (response == ResponseType.Ok) {
 			if (timingMode == TimingMode.Times) {
-				TimeSpan position = TimeSpan.FromMilliseconds(spinButton.Value); //TODO move to Util
+				TimeSpan position = TimeSpan.FromMilliseconds(spinButton.Value);
 				Base.Ui.Video.Seek(position);
 			}
 			else {
