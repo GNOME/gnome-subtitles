@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-05-31 05:41+0000\n"
-"PO-Revision-Date: 2021-03-27 21:56+0100\n"
+"POT-Creation-Date: 2021-05-16 09:43+0000\n"
+"PO-Revision-Date: 2021-05-16 15:39+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -387,6 +387,15 @@ msgstr ""
 "Rekommenderad tid mellan undertexter, i millisekunder, används till exempel "
 "då en undertext delas i två."
 
+#. Error messages
+#: ../src/External/GstBackend/GstBackend.cs:62
+msgid "Unable to obtain the complete media information."
+msgstr "Kunde inte erhålla fullständig mediainformation."
+
+#: ../src/External/GstBackend/GstBackend.cs:63
+msgid "The file contains no video or audio."
+msgstr "Filen innehåller inte video eller ljud."
+
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Arkiv"
@@ -686,7 +695,7 @@ msgid "Delete"
 msgstr "Ta bort"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Tid"
 
@@ -1282,19 +1291,6 @@ msgstr ""
 "Ett okänt fel har inträffat. Rapportera felet och inkludera detta felnamn:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Kunde inte öppna filen"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Öppna en annan fil"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "Filsökvägen verkar vara ogiltig."
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "Kunde inte spara filen"
@@ -1304,12 +1300,12 @@ msgid "Save to another file"
 msgstr "Spara till en annan fil"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Du har fått slut på minne. Stäng några program och försök igen."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "Ett in/ut-fel har inträffat."
 
@@ -1318,7 +1314,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "Du har inte tillräcklig behörighet att spara filen."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "Angiven fil är ogiltig."
 
@@ -1376,36 +1372,50 @@ msgstr "Stäng utan att spara"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Spara ändringarna i översättningen ”{0}” innan stängning?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "Kunde inte öppna filen {0}."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Öppna en annan fil"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
 "Kunde inte identifiera undertextformatet. Försäkra dig om att filtypen stöds."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr ""
 "Teckenkodningen som används stöds inte av ditt system. Välj en annan kodning."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Du har inte tillräcklig behörighet att öppna filen."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "Filen kunde inte hittas."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "Filen verkar vara för stor för att vara en textbaserad undertextfil."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Kunde inte spela upp filen"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "Filsökvägen verkar vara ogiltig."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "Kunde inte spela upp filen ”{0}”."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1802,7 +1812,19 @@ msgstr "Rad"
 msgid "Col"
 msgstr "Kol"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Mediaspelarfel"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr ""
+"Ett oväntat fel inträffade: ”{0}”. Se loggen för ytterligare information."
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Bildruta"
 
