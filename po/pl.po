@@ -1,16 +1,16 @@
 # Polish translation for gnome-subtitles.
-# Copyright © 2007-2020 the gnome-subtitles authors.
+# Copyright © 2007-2021 the gnome-subtitles authors.
 # This file is distributed under the same license as the gnome-subtitles package.
 # Tomasz Sałaciński <tsalacinski@gmail.com>, 2007.
-# Piotr Drąg <piotrdrag@gmail.com>, 2008-2020.
-# Aviary.pl <community-poland@mozilla.org>, 2008-2020.
+# Piotr Drąg <piotrdrag@gmail.com>, 2008-2021.
+# Aviary.pl <community-poland@mozilla.org>, 2008-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-15 14:25+0100\n"
-"PO-Revision-Date: 2020-03-15 14:27+0100\n"
+"POT-Creation-Date: 2021-05-16 12:12+0200\n"
+"PO-Revision-Date: 2021-05-16 12:15+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -384,6 +384,15 @@ msgstr ""
 "Zalecany czas między napisami w milisekundach używany na przykład podczas "
 "dzielenia napisu na dwa."
 
+#. Error messages
+#: ../src/External/GstBackend/GstBackend.cs:62
+msgid "Unable to obtain the complete media information."
+msgstr "Nie można uzyskać pełnych informacji o multimediach."
+
+#: ../src/External/GstBackend/GstBackend.cs:63
+msgid "The file contains no video or audio."
+msgstr "Plik nie zawiera wideo ani dźwięku."
+
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Plik"
@@ -683,7 +692,7 @@ msgid "Delete"
 msgstr "Usuń"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Czas"
 
@@ -1275,19 +1284,6 @@ msgid ""
 msgstr "Wystąpił nieznany błąd. Proszę go zgłosić wraz z tą nazwą:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Nie można otworzyć pliku"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Otwórz inny plik"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "Ścieżka do pliku jest nieprawidłowa."
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "Nie można zapisać pliku"
@@ -1297,12 +1293,12 @@ msgid "Save to another file"
 msgstr "Zapisz do innego pliku"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Brak pamięci. Proszę zamknąć część programów i spróbować jeszcze raz."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "Wystąpił błąd wejścia/wyjścia."
 
@@ -1311,7 +1307,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "Brak uprawnień wymaganych do zapisania tego pliku."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "Podany plik jest nieprawidłowy."
 
@@ -1371,7 +1367,17 @@ msgstr "Zamknij bez zapisywania"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Zapisać zmiany do tłumaczenia „{0}” przed zamknięciem?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "Nie można otworzyć pliku {0}."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Otwórz inny plik"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
@@ -1379,7 +1385,7 @@ msgstr ""
 "Nie można wykryć formatu napisów. Proszę sprawdzić, czy ten typ pliku jest "
 "obsługiwany."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
@@ -1387,22 +1393,26 @@ msgstr ""
 "Użyte kodowanie znaków nie jest obsługiwane przez komputer. Proszę wybrać "
 "inne."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Brak uprawnień wymaganych do otwarcia tego pliku."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "Nie można odnaleźć pliku."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "Plik jest za duży jak na tekstowy plik napisów."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Nie można odtworzyć pliku"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "Ścieżka do pliku jest nieprawidłowa."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "Nie można odtworzyć pliku „{0}”."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1799,7 +1809,19 @@ msgstr "Wrsz"
 msgid "Col"
 msgstr "Kol"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Błąd odtwarzacza multimediów"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr ""
+"Wystąpił nieoczekiwany błąd: „{0}”. Dziennik zawiera więcej informacji."
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Klatka"
 
