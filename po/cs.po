@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-05-31 05:41+0000\n"
-"PO-Revision-Date: 2021-03-16 23:43+0100\n"
+"POT-Creation-Date: 2021-05-16 09:43+0000\n"
+"PO-Revision-Date: 2021-09-05 08:23+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -388,6 +388,15 @@ msgstr ""
 "Doporučený čas v milisekundách mezi titulky, který se použije například při "
 "rozdělení titulku na dva."
 
+#. Error messages
+#: ../src/External/GstBackend/GstBackend.cs:62
+msgid "Unable to obtain the complete media information."
+msgstr "O multimédiu se nezdařilo se získat úplné informace."
+
+#: ../src/External/GstBackend/GstBackend.cs:63
+msgid "The file contains no video or audio."
+msgstr "Soubor neobsahuje žádné video ani zvuk."
+
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Soubor"
@@ -687,7 +696,7 @@ msgid "Delete"
 msgstr "Smazat"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Čas"
 
@@ -1280,19 +1289,6 @@ msgstr ""
 "Vyskytla se neznámá chyba. Nahlaste ji prosím a připojte název této chyby:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Nelze otevřít soubor"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Otevřít jiný soubor"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "Cesta k požadovanému souboru se zdá být neplatná."
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "Nelze uložit soubor"
@@ -1302,12 +1298,12 @@ msgid "Save to another file"
 msgstr "Ulož do jiného souboru"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Došlo k přetečení paměti. Zavřete prosím program a zkuste to znovu."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "Vyskytla se chyba V/V."
 
@@ -1316,7 +1312,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "Nemáte potřebné oprávnění k uložení tohoto souboru."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "Vybraný soubor je neplatný."
 
@@ -1375,14 +1371,24 @@ msgstr "Zavřít bez uložení"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Chcete před uzavřením změny uložit do překladu „{0}“?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "Nezdařilo se otevřít soubor {0}."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Otevřít jiný soubor"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
 "Nebylo možné určit formát titulků. Prosím, vyberte podporovaný typ souboru."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
@@ -1390,23 +1396,27 @@ msgstr ""
 "Použité kódování není podporováno Vaším systémem. Prosím, vyberte jiný typ "
 "kódování."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "K otevření souboru nemáte potřebné oprávnění."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "Soubor nelze najít."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr ""
 "Soubor se jeví příliš velký na to, aby to byl textový soubor s titulky."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Nelze přehrát soubor"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "Cesta k požadovanému souboru se zdá být neplatná."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "Nezdařilo se přehrát soubor „{0}“."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1801,7 +1811,19 @@ msgstr "Řád"
 msgid "Col"
 msgstr "Sl"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Chyba multimediálního přehrávače"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr ""
+"Vyskytla se neočekávaná chyba: „{0}“. Další informace najdete v záznamu."
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Snímek"
 
@@ -1817,4 +1839,3 @@ msgstr "Konec"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Překlad"
-
