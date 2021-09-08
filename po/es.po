@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-03-09 22:36+0000\n"
-"PO-Revision-Date: 2020-03-26 15:43+0100\n"
+"POT-Creation-Date: 2021-05-16 09:43+0000\n"
+"PO-Revision-Date: 2021-08-26 18:23+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"X-Generator: Poedit 3.0\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
@@ -75,11 +75,11 @@ msgstr "Codificaciones mostradas en el menú"
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:2
 msgid "List of encodings shown in the File Open/Save dialogs."
 msgstr ""
-"Lista de codificaciones mostradas en los diálogos de Abrir/guardar archivo"
+"Lista de codificaciones mostradas en los diálogos de Abrir/guardar archivo."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:3
 msgid "File Open encoding option"
-msgstr "opción de codificación para abrir archivos"
+msgstr "Opción de codificación para abrir archivos"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:4
 msgid ""
@@ -401,6 +401,15 @@ msgstr ""
 "Tiempo recomendado entre subtítulos, en milisegundos, utilizado por ejemplo "
 "al dividir un subtítulo en dos."
 
+#. Error messages
+#: ../src/External/GstBackend/GstBackend.cs:62
+msgid "Unable to obtain the complete media information."
+msgstr "No se pudo obtener la información completa de los medios."
+
+#: ../src/External/GstBackend/GstBackend.cs:63
+msgid "The file contains no video or audio."
+msgstr "El archivo no contiene vídeo o audio."
+
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Archivo"
@@ -700,7 +709,7 @@ msgid "Delete"
 msgstr "Eliminar"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Tiempo"
 
@@ -718,9 +727,6 @@ msgid "Sets the subtitle End to the current video position"
 msgstr "Establece el fin del subtítulo en la posición actual del vídeo"
 
 #: ../src/Glade/MainWindow.ui.h:79
-#| msgid ""
-#| "Sets the subtitle Start and End while the video is playing. Keep the "
-#| "button pressed for the duration of each subtitle.\t"
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
 "pressed for the duration of each subtitle."
@@ -1266,7 +1272,7 @@ msgstr "Formato del subtítulo"
 
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
 msgid "Timing Mode"
-msgstr "Modo de temporización:"
+msgstr "Modo de temporización"
 
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
 msgid "Save As"
@@ -1297,19 +1303,6 @@ msgstr ""
 "error:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "No se pudo abrir el archivo"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Abrir otro archivo"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "La ruta del archivo parece no ser válida."
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "No se pudo guardar el archivo"
@@ -1319,14 +1312,14 @@ msgid "Save to another file"
 msgstr "Guardar en otro archivo"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr ""
 "El sistema se ha quedado sin memoria. Cierre algunos programas e inténtelo "
 "de nuevo."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "Ha ocurrido un error de Entrada/Salida."
 
@@ -1335,7 +1328,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "No tiene los permisos necesarios para guardar el archivo."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "El archivo especificado no es valido."
 
@@ -1399,7 +1392,17 @@ msgstr "Cerrar sin guardar"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "¿Guardar los cambios en la traducción «{0}» antes de cerrar?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "No se pudo abrir el archivo {0}."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Abrir otro archivo"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
@@ -1407,29 +1410,33 @@ msgstr ""
 "No se ha podido detectar el formato del subtítulo. Compruebe que el tipo de "
 "archivo está soportado."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr "Su sistema no soporta la codificación usada. Elija otra codificación."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "No tiene los permisos necesarios para abrir el archivo."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "No se pudo encontrar el archivo."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr ""
 "El archivo parece ser demasiado largo para un archivo de texto de subtítulos."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "No se pudo reproducir el archivo"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "La ruta del archivo parece no ser válida."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "No se pudo reproducir el archivo «{0}»."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1453,7 +1460,6 @@ msgid "Translation File Saving"
 msgstr "Guardado de archivo de traducción"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-#| msgid "Character c_oding to use:"
 msgid "Character _encoding to use:"
 msgstr "C_odificación de caracteres que usar:"
 
@@ -1474,7 +1480,6 @@ msgid "_Subtitle format to use:"
 msgstr "Formato del _subtítulo que usar:"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
-#| msgid "Ch_aracter coding to use:"
 msgid "Ch_aracter encoding to use:"
 msgstr "Codificación de c_aracteres que usar:"
 
@@ -1499,7 +1504,6 @@ msgid "Backup"
 msgstr "Respaldo"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
-#| msgid "Seek the video to the selected subtitle when changing timings"
 msgid "_Seek the video to the selected subtitle when changing timings"
 msgstr "_Buscar en el vídeo el subtítulo seleccionado al cambiar los tiempos"
 
@@ -1528,7 +1532,6 @@ msgid "Gap Between Subtitles"
 msgstr "Espacio entre subtítulos"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
-#| msgid "Subtract"
 msgid "Subtr_act"
 msgstr "Sustr_aer"
 
@@ -1831,14 +1834,27 @@ msgstr "Ln"
 msgid "Col"
 msgstr "Col"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Error del reproductor de medios"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr ""
+"Ha ocurrido un error inesperado: «{0}». Consulte el registro para obtener "
+"información adicional."
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Fotograma"
 
 #. Number column
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
 msgid "No."
-msgstr "Número"
+msgstr "Núm."
 
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
 msgid "End"
