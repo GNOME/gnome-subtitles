@@ -96,6 +96,13 @@ namespace External.GStreamer {
 		/* Public methods */
 
 		public override void Initialize() {
+		
+			//Disable LIBVA by default as it's causing lots of problems. This is done by setting an invalid driver name.
+			if (!"FALSE".Equals(Environment.GetEnvironmentVariable("GS_DISABLE_LIBVA"))) {
+				Logger.Info("[GstBackend] Disabling libva");
+				Environment.SetEnvironmentVariable("LIBVA_DRIVER_NAME", "GNOME_SUBTITLES");
+			}
+			
 			IntPtr ptr = gst_backend_init(OnErrorFound, OnLoadComplete, OnEndOfStreamReached);
 			if (ptr == IntPtr.Zero) {
 				throw new Exception("Unable to initialize gstreamer: gst_backend_init returned no pointer.");
