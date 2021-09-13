@@ -1,17 +1,17 @@
 # Hungarian translation for gnome-subtitles.
-# Copyright (C) 2010, 2012, 2013, 2014, 2019, 2020 Free Software Foundation, Inc.
+# Copyright (C) 2010, 2012, 2013, 2014, 2019, 2020, 2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-subtitles package.
 #
 # Gábor Kelemen <kelemeng at gnome dot hu>, 2010, 2012.
 # László Csordás <csola48 at gmail dot com>, 2010.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2019, 2020.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2019, 2020, 2021.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-05-31 05:41+0000\n"
-"PO-Revision-Date: 2020-09-13 00:13+0200\n"
+"POT-Creation-Date: 2021-05-16 09:43+0000\n"
+"PO-Revision-Date: 2021-09-14 01:52+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -396,6 +396,16 @@ msgstr ""
 "A feliratok közti javasolt időköz ezredmásodpercben, ez például egy felirat "
 "kettévágásakor használatos."
 
+#. Error messages
+#: ../src/External/GstBackend/GstBackend.cs:62
+msgid "Unable to obtain the complete media information."
+msgstr "Nem lehet beszerezni a teljes médiainformációkat."
+
+#: ../src/External/GstBackend/GstBackend.cs:63
+#| msgid "The file could not be found."
+msgid "The file contains no video or audio."
+msgstr "A fájl nem tartalmaz videót vagy hangot."
+
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "_Fájl"
@@ -695,7 +705,7 @@ msgid "Delete"
 msgstr "Törlés"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Idő"
 
@@ -713,9 +723,6 @@ msgid "Sets the subtitle End to the current video position"
 msgstr "Beállítja a felirat végét a jelenlegi videopozícióra"
 
 #: ../src/Glade/MainWindow.ui.h:79
-#| msgid ""
-#| "Sets the subtitle Start and End while the video is playing. Keep the "
-#| "button pressed for the duration of each subtitle.\t"
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
 "pressed for the duration of each subtitle."
@@ -1293,34 +1300,21 @@ msgstr ""
 "hibaüzenetet:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "A fájl megnyitása meghiúsult"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Másik fájl megnyitása"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "A fájl útvonala érvénytelen."
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
-msgstr "A fájl mentése meghiúsult"
+msgstr "Nem sikerült menteni a fájlt"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
 msgid "Save to another file"
 msgstr "Mentés másik fájlba"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Elfogyott a memória. Néhány program bezárása után próbálja újra."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "I/O hiba történt."
 
@@ -1329,7 +1323,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "Nincs megfelelő jogosultsága a fájl mentésére."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "A megadott fájl érvénytelen."
 
@@ -1391,7 +1385,18 @@ msgstr "Bezárás mentés nélkül"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "Menti a(z) „{0}” fordítás változtatásait a bezárás előtt?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+#| msgid "Could not open the file"
+msgid "Could not open the file {0}."
+msgstr "Nem sikerült megnyitni a(z) {0} fájlt."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Másik fájl megnyitása"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
@@ -1399,28 +1404,33 @@ msgstr ""
 "A feliratformátum nem ismerhető fel. Ellenőrizze, hogy a fájltípus "
 "támogatott-e."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr "Ezt a kódolást nem támogatja a rendszer. Válasszon másik kódolást."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Nincs jogosultsága a fájl megnyitásához."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "A fájl nem található."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "A fájl túl nagynak tűnik szövegalapú feliratfájlnak."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Nem lehet lejátszani a fájlt"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "A fájl útvonala érvénytelen."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+#| msgid "Could not play the file"
+msgid "Could not play the file '{0}'."
+msgstr "Nem sikerült lejátszani a(z) „{0}” fájlt."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1444,7 +1454,6 @@ msgid "Translation File Saving"
 msgstr "Fordítási fájl mentése"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-#| msgid "Character c_oding to use:"
 msgid "Character _encoding to use:"
 msgstr "Használandó _karakterkódolás:"
 
@@ -1465,7 +1474,6 @@ msgid "_Subtitle format to use:"
 msgstr "Használandó feliratf_ormátum:"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
-#| msgid "Ch_aracter coding to use:"
 msgid "Ch_aracter encoding to use:"
 msgstr "_Használandó karakterkódolás:"
 
@@ -1490,7 +1498,6 @@ msgid "Backup"
 msgstr "Biztonsági mentés"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
-#| msgid "Seek the video to the selected subtitle when changing timings"
 msgid "_Seek the video to the selected subtitle when changing timings"
 msgstr ""
 "A _videó kiválasztott feliratra pozicionálása az időzítés módosításakor"
@@ -1520,7 +1527,6 @@ msgid "Gap Between Subtitles"
 msgstr "Időköz a feliratok között"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
-#| msgid "Subtract"
 msgid "Subtr_act"
 msgstr "_Vonjon ki"
 
@@ -1822,7 +1828,19 @@ msgstr "Sor"
 msgid "Col"
 msgstr "Oszlop"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Médialejátszó hiba"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr ""
+"Váratlan hiba történt: „{0}”. További információkért nézze meg a naplót."
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Képkocka"
 
@@ -1838,6 +1856,3 @@ msgstr "Befejezés"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Fordítás"
-
-#~ msgid "Length\t"
-#~ msgstr "Hossz\t"
