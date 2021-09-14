@@ -1,6 +1,74 @@
 Gnome Subtitles
 ===============
 
+1.7 (14/09/21)
+==============
+
+- Fixed multiple issues related to audio and video playback
+- GStreamer media playback engine rewrite
+- Subtitle lines displayed on the video are now immediately refreshed if changed
+- Fixed an issue which didn't allow for multiple Gnome Subtitles instances to be running simultaneously
+- Fixed an issue which prevented the application from appearing translated/localized
+- Fixed an issue with Autocheck Spelling not working immediately when the app is opened
+- Help menu items now open correctly
+- Improved the Set Languages dialog window with information on how to install additional language packs
+- Fixed an issue with the side bar constantly resizing during playback
+- Fixed an issue where opening an audio file after a video would show the last frame played from the video
+- Added support for Enchant 2 (in addition to Enchant 1 which is still supported)
+- Optimization to only save the window state when closing the application
+- AppData and Desktop files have been updated
+
+Note to packagers:
+- Packages should now depend on Enchant 2 instead of 1 (although 1 is still supported)
+
+Issues:
+- Built-in video player stutters (#5)
+- Impossible to open a subtitles file via the file manager while Gnome Subtitles is already running (#139)
+- Only save the window state when closing the application (#143)
+- AppStream warns on insecure URLs (#144)
+- Improved message in the Set Languages dialog (#147)
+- Translations not being used in 1.6 on Fedora 31 (#149)
+- Change Type to Press in help (#150)
+- Change "coding" to "encoding" (#151)
+- Rename video Length to Duration (#152)
+- Add support for Enchant 2 (#153)
+- Remove "<application>" from app (#154)
+- Side bar resizes itself during video playback (#157)
+- Help menu items (links and user guide) are not opening (#159)
+- Autocheck Spelling not working when the app is opened (#164)
+- Opening an audio file after a video file shows the last frame played from that video (#166)
+- Subtitle shown on the video not immediately updated while being edited (#167)
+- GStreamer Decoding Error while seeking with some files due to vaapi (#171)
+- Unable to open some kinds of audio files (#172)
+- Disable VAAPI by default to prevent playback issues (#173)
+- GStreamer media playback rewrite (#177)
+
+Translations:
+- Jordi Mas (ca)
+- Marek Černocký (cs)
+- Ask Hjorth Larsen (da)
+- Daniel Mustieles, Rodrigo Lledó (es)
+- Jiri Grönroos (fi)
+- Charles Monzat (fr)
+- Balázs Úr (hu)
+- Andika Triwidada (id)
+- Nathan Follens (nl)
+- Piotr Drąg (pl)
+- Hugo Carvalho (pt)
+- Rafael Fontenelle (pt_BR)
+- Daniel Șerbănescu (ro)
+- Dušan Kazik (sk)
+- Matej Urbančič (sl)
+- Miroslav Nikolić (sr)
+- Anders Jonsson (sv)
+- Emin Tufan Çetin, Sabri Ünal (tr)
+- Yuri Chornoivan (uk)
+- Dz Chen (zh_CN)
+
+Additional thanks:
+- Andre Klapper, Fernando Fernandez, Luz Paz
+
+
 1.6 (04/09/19)
 ==============
 
