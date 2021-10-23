@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2020 Pedro Castro
+ * Copyright (C) 2020-2021 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,13 +28,13 @@ public class Interop {
 
 	/* Function imports */
 	
-	[DllImport("libdl")]
+	[DllImport("libc")]
 	private static extern IntPtr dlopen (string filename, int flags);
 	
-	[DllImport("libdl")]
+	[DllImport("libc")]
 	private static extern IntPtr dlsym (IntPtr handle, string symbol);
 	
-	[DllImport("libdl")]
+	[DllImport("libc")]
 	private static extern int dlclose (IntPtr handl);
 	
 	
