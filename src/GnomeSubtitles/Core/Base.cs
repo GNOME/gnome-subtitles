@@ -224,7 +224,17 @@ public static class Base {
 
 	public static void Open (string path, Encoding encoding, Uri videoUri) {
 		OpenDocument(path, encoding);
-		OpenVideo(videoUri);
+		
+		//OpenVideo(videoUri); //FIXME
+		videoUriToOpenWithTimeout = videoUri; //FIXME
+		GLib.Timeout.Add(1000, OpenVideoWithTimeout); //FIXME
+	}
+	
+	/* Nasty hack while there isn't a proper fix for #184 */
+	private static Uri videoUriToOpenWithTimeout = null;
+	private static bool OpenVideoWithTimeout() {
+		OpenVideo(videoUriToOpenWithTimeout);
+		return false;
 	}
 
 	public static void OpenTranslation (string path, Encoding encoding) {
