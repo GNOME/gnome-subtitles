@@ -28,13 +28,13 @@ public class Interop {
 
 	/* Function imports */
 	
-	[DllImport("libc")]
+	[DllImport("libdl")]
 	private static extern IntPtr dlopen (string filename, int flags);
 	
-	[DllImport("libc")]
+	[DllImport("libdl")]
 	private static extern IntPtr dlsym (IntPtr handle, string symbol);
 	
-	[DllImport("libc")]
+	[DllImport("libdl")]
 	private static extern int dlclose (IntPtr handl);
 	
 	
