@@ -20,10 +20,10 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace External.GStreamer {
+namespace External.GstBackendOld {
 
 [StructLayout(LayoutKind.Sequential)]
-public class GstMediaInfo {
+public class GstMediaInfoOld {
 	long duration;
 	
 	bool has_video;
@@ -34,7 +34,7 @@ public class GstMediaInfo {
 	
 	bool has_audio;
 
-	public GstMediaInfo(IntPtr ptr) {
+	public GstMediaInfoOld(IntPtr ptr) {
 		if (ptr != IntPtr.Zero) {
 			Marshal.PtrToStructure(ptr, this);
 		}

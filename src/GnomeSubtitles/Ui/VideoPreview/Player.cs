@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using External.GStreamer;
+using External.GstBackendOld;
 using GnomeSubtitles.Core;
 using Gtk;
 using SubLib.Util;
@@ -174,7 +174,7 @@ public class Player {
 	/* Private members */
 
 	private MediaBackend InitializeBackend() {
-		MediaBackend backend = new GstBackend();
+		MediaBackend backend = new GstBackendOld();
 		backend.Initialize();
 		
 		Widget videoWidget = backend.CreateVideoWidget();

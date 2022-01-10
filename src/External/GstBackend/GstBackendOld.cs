@@ -42,18 +42,18 @@ using System.Runtime.InteropServices;
  *   - https://developer.gnome.org/totem/stable/BaconVideoWidget.html (Totem bacon video widget)
  */
 
-namespace External.GStreamer {
+namespace External.GstBackendOld {
 
 	/* Enums */
 	
-	public class GstBackend : MediaBackend {
+	public class GstBackendOld : MediaBackend {
 		private HandleRef backend;
-		private GstMediaInfo mediaInfo = null;
+		private GstMediaInfoOld mediaInfo = null;
 		private float speed = 1f; //Keeping it here as we need to pass it to every 'seek' call
 
 		/* Delegates */
 		private delegate void ErrorFoundHandler(ErrorType type, string errorMessage, string debugMessage);
-		private delegate void LoadCompleteHandler(GstMediaInfo mediaInfo);
+		private delegate void LoadCompleteHandler(GstMediaInfoOld mediaInfo);
 
 		/* Enums */
 		private enum ErrorType { GStreamer, NoMediaInfo, NoVideoOrAudio};
@@ -161,7 +161,7 @@ namespace External.GStreamer {
 	
 		/* Event handlers */
 	
-		private void OnLoadComplete(GstMediaInfo mediaInfo) {
+		private void OnLoadComplete(GstMediaInfoOld mediaInfo) {
 			this.mediaInfo = mediaInfo;
 			SetStatus(MediaStatus.Loaded);
 		}

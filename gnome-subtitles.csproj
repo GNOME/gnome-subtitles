@@ -54,6 +54,9 @@
     <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Package>glib-sharp-3.0</Package>
     </Reference>
+    <Reference Include="gstreamer-sharp">
+      <HintPath>..\gstreamer-sharp\build\sources\gstreamer-sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="src\Glade\MainWindow.ui">
@@ -275,10 +278,12 @@
     <Compile Include="src\GnomeSubtitles\Ui\WindowState.cs" />
     <Compile Include="src\External\Enchant\Enchant.cs" />
     <Compile Include="src\External\Interop\Interop.cs" />
-    <Compile Include="src\External\GstBackend\GstBackend.cs" />
-    <Compile Include="src\External\GstBackend\GstMediaInfo.cs" />
+    <Compile Include="src\External\GstBackend\GstBackendOld.cs" />
+    <Compile Include="src\External\GstBackend\GstMediaInfoOld.cs" />
     <Compile Include="src\GnomeSubtitles\Ui\VideoPreview\MediaBackend.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\DialogUtil.cs" />
+    <Compile Include="src\External\GStreamer\GstBackend.cs" />
+    <Compile Include="src\External\GStreamer\GstMediaInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -287,6 +292,7 @@
     <Folder Include="src\External\GtkSpell\" />
     <Folder Include="src\External\Enchant\" />
     <Folder Include="src\External\Interop\" />
+    <Folder Include="src\External\GStreamer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\gnome-subtitles.svg">
