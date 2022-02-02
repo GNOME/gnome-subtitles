@@ -4,20 +4,21 @@
 # yjwork <yjwork@189.cn>, 2010.
 # Damned <damnedlies@163.com>, 2020.
 # Dingzhong Chen <wsxy162@gmail.com>, 2021.
+# lumingzh <lumingzh@qq.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-10-24 20:57+0000\n"
-"PO-Revision-Date: 2021-04-14 00:34+0800\n"
-"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"POT-Creation-Date: 2021-05-16 09:43+0000\n"
+"PO-Revision-Date: 2022-02-02 10:10+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"X-Generator: Gtranslator 41.0\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
@@ -357,6 +358,16 @@ msgid ""
 "splitting a subtitle in two."
 msgstr "字幕之间的推荐时间（毫秒），用于例如将一个字幕分割为两个时。"
 
+#. Error messages
+#: ../src/External/GstBackend/GstBackend.cs:62
+msgid "Unable to obtain the complete media information."
+msgstr "无法获取完整的媒体信息。"
+
+#: ../src/External/GstBackend/GstBackend.cs:63
+#| msgid "The file could not be found."
+msgid "The file contains no video or audio."
+msgstr "该文件未包含视频或音频。"
+
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
 msgstr "文件(_F)"
@@ -656,7 +667,7 @@ msgid "Delete"
 msgstr "删除"
 
 #: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "时间"
 
@@ -1248,19 +1259,6 @@ msgid ""
 msgstr "发生了未知错误。请报告错误，并在其中包含此错误名称："
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "无法打开文件"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "打开另一个文件"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "文件路径似乎无效。"
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "无法保存文件"
@@ -1270,12 +1268,12 @@ msgid "Save to another file"
 msgstr "保存到另一个文件"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "您已经用完内存。请关闭一些程序并重试。"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "发生了 I/O 错误。"
 
@@ -1284,7 +1282,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "您没有保存该文件所需的权限。"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "指定的文件无效。"
 
@@ -1342,34 +1340,50 @@ msgstr "不保存而关闭"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "在关闭之前保存对翻译“{0}”的更改？"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+#| msgid "Could not open the file"
+msgid "Could not open the file {0}."
+msgstr "无法打开文件 {0}。"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "打开另一个文件"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr "无法检测字幕格式。请检查该文件类型是否受支持。"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr "您的系统不支持所使用的编码。请选择另一个编码。"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "您没有打开该文件所需的权限。"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "找不到文件。"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "该文件对于基于文本的字幕文件似乎过大。"
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "无法播放文件"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "文件路径似乎无效。"
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+#| msgid "Could not play the file"
+msgid "Could not play the file '{0}'."
+msgstr "无法播放文件“{0}”。"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1752,7 +1766,18 @@ msgstr "行"
 msgid "Col"
 msgstr "列"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "媒体播放器错误"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr "发生了未预期的错误：“{0}”。查阅日志获取更多信息。"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "帧"
 
