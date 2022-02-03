@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2022 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -96,8 +96,8 @@ public class ExecutionContext {
 		app.Activated += (sender, e) => {
 			methodToExecute();
 		};
-
-		app.Run(0, "");
+		
+		app.Run(applicationID, new string[]{ });
 	}
 	
 

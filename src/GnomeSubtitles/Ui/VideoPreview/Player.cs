@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2007-2021 Pedro Castro
+ * Copyright (C) 2007-2022 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using External.GstBackendOld;
+using External.GStreamer;
 using GnomeSubtitles.Core;
 using Gtk;
 using SubLib.Util;
@@ -174,7 +174,7 @@ public class Player {
 	/* Private members */
 
 	private MediaBackend InitializeBackend() {
-		MediaBackend backend = new GstBackendOld();
+		MediaBackend backend = new GstBackend();
 		backend.Initialize();
 		
 		Widget videoWidget = backend.CreateVideoWidget();
