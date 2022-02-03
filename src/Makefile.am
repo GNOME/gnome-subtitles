@@ -11,17 +11,10 @@ ASSEMBLY = $(GS_BUILDDIR)/gnome-subtitles.exe
 ASSEMBLY_CONFIG = $(ASSEMBLY).config
 ASSEMBLY_CONFIG_SRC = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles.exe.config
 
-AM_CFLAGS = $(gstreamer_CFLAGS) -Wall -g -fPIC
-gnomesubtitles_LTLIBRARIES = libgst_backend.la
-libgst_backend_la_SOURCES = External/GstBackend/gst-backend.c
-libgst_backend_la_LIBADD = $(gstreamer_LIBS)
-libgst_backend_la_LDFLAGS = -module -avoid-version
-libgst_backend_la_LIBTOOLFLAGS = --tag=disable-static 
-
 GSSOURCES = \
 	$(srcdir)/External/Enchant/*.cs \
 	$(srcdir)/External/GtkSpell/*.cs \
-	$(srcdir)/External/GstBackend/*.cs \
+	$(srcdir)/External/GStreamer/*.cs \
 	$(srcdir)/External/Interop/*.cs \
 	$(srcdir)/External/NCharDet/*.cs \
 	$(srcdir)/GnomeSubtitles/Core/*.cs \
@@ -54,12 +47,21 @@ GS_SYSTEM_REFERENCES = \
 	Mono.Posix.dll \
 	System.Web.dll
 
+GS_LOCAL_REFERENCES = \
+	$(GS_BUILDDIR)/atk-sharp.dll \
+	$(GS_BUILDDIR)/cairo-sharp.dll \
+	$(GS_BUILDDIR)/gdk-sharp.dll \
+	$(GS_BUILDDIR)/gio-sharp.dll \
+	$(GS_BUILDDIR)/glib-sharp.dll \
+	$(GS_BUILDDIR)/gtk-sharp.dll \
+	$(GS_BUILDDIR)/pango-sharp.dll \
+	$(GS_BUILDDIR)/gstreamer-sharp.dll
+
 $(ASSEMBLY): $(GSSOURCES) $(GS_RESOURCES)
-	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GTKSHARP_LIBS) $(SUBLIB_LIBS) $(GS_RESOURCES:%=-resource:%) $(GSSOURCES)
+	$(MCS) $(MCS_FLAGS) -target:winexe -out:$(ASSEMBLY) $(GS_SYSTEM_REFERENCES:%=-r:%) $(GS_LOCAL_REFERENCES:%=-r:%) $(GS_RESOURCES:%=-resource:%) $(GSSOURCES)
 
 $(ASSEMBLY_CONFIG): $(gnomesubtitles_LTLIBRARIES)
 	cp -f $(ASSEMBLY_CONFIG_SRC) $(GS_BUILDDIR)
-	cp -f $(srcdir)/.libs/libgst_backend.so $(GS_BUILDDIR)
 
 bin_SCRIPTS = $(srcdir)/GnomeSubtitles/Execution/gnome-subtitles
 
