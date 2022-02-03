@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2021 Pedro Castro
+ * Copyright (C) 2022 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,54 +22,17 @@ using System.Runtime.InteropServices;
 
 namespace External.GStreamer {
 
-[StructLayout(LayoutKind.Sequential)]
 public class GstMediaInfo {
-	long duration;
 	
-	bool has_video;
-	int width;
-	int height;
-	float aspect_ratio;
-	float frame_rate;
+	public long Duration { get; set; }
 	
-	bool has_audio;
+	public bool HasVideo { get; set; }
+	public int Width { get; set; }
+	public int Height { get; set; }
+	public float AspectRatio { get; set; }
+	public float FrameRate { get; set; }
 
-	public GstMediaInfo(IntPtr ptr) {
-		if (ptr != IntPtr.Zero) {
-			Marshal.PtrToStructure(ptr, this);
-		}
-	}
-	
-	
-	/* Public properties */
-	
-	public long Duration {
-		get { return duration; }
-	}
-	
-	public bool HasVideo {
-		get { return has_video; }
-	}
-	
-	public int Width {
-		get { return width; }
-	}
-	
-	public int Height
-		{ get { return height; }
-	}
-	
-	public float AspectRatio {
-		get { return aspect_ratio; }
-	}
-	
-	public float FrameRate {
-		get { return frame_rate; }
-	}
-	
-	public bool HasAudio {
-		get { return has_audio; }
-	}
+	public bool HasAudio { get; set; }
 
 }
 

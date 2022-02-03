@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2019 Pedro Castro
+ * Copyright (C) 2006-2022 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -224,19 +224,9 @@ public static class Base {
 
 	public static void Open (string path, Encoding encoding, Uri videoUri) {
 		OpenDocument(path, encoding);
-		
-		//OpenVideo(videoUri); //FIXME
-		videoUriToOpenWithTimeout = videoUri; //FIXME
-		GLib.Timeout.Add(1000, OpenVideoWithTimeout); //FIXME
+		OpenVideo(videoUri);
 	}
 	
-	/* Nasty hack while there isn't a proper fix for #184 */
-	private static Uri videoUriToOpenWithTimeout = null;
-	private static bool OpenVideoWithTimeout() {
-		OpenVideo(videoUriToOpenWithTimeout);
-		return false;
-	}
-
 	public static void OpenTranslation (string path, Encoding encoding) {
 		if (document.IsTranslationLoaded)
 			CloseTranslation();
