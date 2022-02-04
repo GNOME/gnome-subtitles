@@ -1,6 +1,6 @@
 /*
  * This file is part of Gnome Subtitles.
- * Copyright (C) 2006-2021 Pedro Castro
+ * Copyright (C) 2006-2022 Pedro Castro
  *
  * Gnome Subtitles is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -428,10 +428,6 @@ public class EventHandlers {
 
 	/*	Help Menu */
 
-	public void OnHelpContents (object o, EventArgs args) {
-		Util.OpenUrl("help:gnome-subtitles");
-	}
-
 	public void OnHelpKeyboardShortcuts (object o, EventArgs args) {
 		Util.OpenUrl("https://gnomesubtitles.org/shortcuts");
 	}
@@ -456,8 +452,8 @@ public class EventHandlers {
 	/*	Window	*/
 
 	public void OnWindowDelete (object o, DeleteEventArgs args) {
-    	bool quit = Base.Quit();
-    	args.RetVal = !quit; //True to keep the window open
+		bool quit = Base.Quit();
+		args.RetVal = !quit; //True to keep the window open
     }
     
     public void OnWindowDestroy (object o, EventArgs args) {

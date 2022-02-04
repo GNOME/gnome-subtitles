@@ -896,16 +896,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkMenuItem" id="helpContents">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">_Contents</property>
-                        <property name="use_underline">True</property>
-                        <signal name="activate" handler="OnHelpContents" swapped="no"/>
-                        <accelerator key="F1" signal="activate"/>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuItem" id="helpKeyboardShortcuts">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>

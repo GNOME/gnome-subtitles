@@ -7,9 +7,6 @@ AC_INIT([gnome-subtitles],
 	[gnome-subtitles],
 	[https://www.gnomesubtitles.org])
 
-YELP_HELP_INIT
-GTK_DOC_CHECK([1.0])
-
 AC_CONFIG_MACRO_DIR([m4])
 AC_SUBST([ACLOCAL_AMFLAGS], ["-I $ac_macro_dir \${ACLOCAL_FLAGS}"])
 AC_CONFIG_SRCDIR([configure.ac])
@@ -105,7 +102,6 @@ data/org.gnome.GnomeSubtitles.desktop.in
 src/Makefile
 src/GnomeSubtitles/Execution/AssemblyInfo.cs
 src/GnomeSubtitles/Execution/gnome-subtitles
-help/Makefile
 po/Makefile.in
 ])
 
