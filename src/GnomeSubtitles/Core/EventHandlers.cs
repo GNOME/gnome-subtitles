@@ -30,7 +30,33 @@ using System.Text;
 namespace GnomeSubtitles.Core {
 
 public class EventHandlers {
-	private bool buttonStartEndKeyPressed = false; //Used to match grab focus and key release events
+	private bool videoStartEndKeyPressed = false; //Used to match key press and release events
+
+
+	/* Window */
+	
+	public void OnWindowKeyPress (object o, KeyPressEventArgs args) {
+		if (!videoStartEndKeyPressed
+				&& (args.Event.Key == Gdk.Key.j)
+				&& args.Event.State.HasFlag(Gdk.ModifierType.ControlMask)
+				&& Base.Ui.Video.IsLoaded
+				&& Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButton).Sensitive) {
+				
+			videoStartEndKeyPressed = true;
+			VideoSetSubtitleStartEndBegin();
+		}
+	}
+	
+	public void OnWindowKeyRelease (object o, KeyReleaseEventArgs args) {
+		if (videoStartEndKeyPressed
+				&& (args.Event.Key == Gdk.Key.j)
+				&& Base.Ui.Video.IsLoaded
+				&& Base.GetWidget(WidgetNames.VideoSetSubtitleStartEndButton).Sensitive) {
+				
+			videoStartEndKeyPressed = false;
+			VideoSetSubtitleStartEndFinish();
+		}
+	}
 
 
 	/* File Menu */
@@ -305,106 +331,48 @@ public class EventHandlers {
  	}
 
 	public void OnVideoSetSubtitleStart (object o, EventArgs args) {
-		if (Base.TimingMode == TimingMode.Times) {
-			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
-				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
-			}
-			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(time));
-		}
-		else {
-			int frames = Base.Ui.Video.Position.CurrentFrames;
-			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
-				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
-			}
-			Base.CommandManager.Execute(new VideoSetSubtitleStartCommand(frames));
-		}
+		SetSubtitleStartFromVideo();
 	}
 
 	public void OnVideoSetSubtitleEnd (object o, EventArgs args) {
-		if (Base.TimingMode == TimingMode.Times) {
-			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
-				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
-			}
-			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
-		}
-		else {
-			int frames = Base.Ui.Video.Position.CurrentFrames;
-			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
-				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
-			}
-			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
-		}
+		SetSubtitleEndFromVideo();
 	}
+	
 	
 
 	/* The following 4 event handlers work with the Set Subtitle Start+End button as follows:
-	 * 
-	 * 1) OnVideoSetSubtitleStartEndButtonPress + OnVideoSetSubtitleStartEndButtonRelease:
-	 *    - Capture mouse click on the button. The mouse click is kept pressed for the duration of the subtitle.
-	 *    - Previously we used the GtkButton "pressed" event, however it's now deprecated. It was supposed to be
-	 *      replaced by the GtkWidget "button-press-event" however it doesn't behave the same way. The former
-	 *      is triggered by a left mouse click on a button, however the new one is not. Apparently, buttons
-	 *      are supposed to only trigger the clicked/activated signal when the mouse click is released and not
-	 *      when pressed. Therefore, we now use GtkWidget "event" event to capture a mouse button press and
-	 *      "button-release-event" for the button release.
-	 *    - According to the GtkWidget docs, the GDK_BUTTON_RELEASE_MASK mask is required but all seems to work without it.
-	 * 
-	 * 2) OnVideoSetSubtitleStartEndGrabFocus + OnVideoSetSubtitleStartEndKeyRelease:
-	 *    - Capture the keyboard shortcut on the button. This is the only way to use the keyboard with this button,
-	 *      as using space or return when this button is focused always triggers a key down and release.
-	 *    - The "grab-focus" event is used to detect when the accelerator/shortcut key is pressed, while
-	 *      "key-release-event" is used to detect when the key was released.
-     *    - According to the GtkWidget docs, the GDK_KEY_RELEASE_MASK mask is required but all seems to work without it.
-     */
+		 * 
+		 * 1) OnVideoSetSubtitleStartEndEvent + OnVideoSetSubtitleStartEndButtonRelease:
+		 *    - Capture mouse click on the button. The mouse click is kept pressed for the duration of the subtitle.
+		 *    - Previously we used the GtkButton "pressed" event, however it's now deprecated. It was supposed to be
+		 *      replaced by the GtkWidget "button-press-event" however it doesn't behave the same way. The former
+		 *      is triggered by a left mouse click on a button, however the new one is not. Apparently, buttons
+		 *      are supposed to only trigger the clicked/activated signal when the mouse click is released and not
+		 *      when pressed. Therefore, we now use GtkWidget "event" event to capture a mouse button press and
+		 *      "button-release-event" for the button release.
+		 *    - According to the GtkWidget docs, the GDK_BUTTON_RELEASE_MASK mask is required but all seems to work without it.
+		 * 
+		 * 2) OnWindowKeyPress + OnWindowKeyRelease:
+		 *    - Capture the keyboard shortcut key to perform the button actions (without actually pressing it).
+		 */
 
-	public void OnVideoSetSubtitleStartEndButtonPress (object o, WidgetEventArgs args) {
+	public void OnVideoSetSubtitleStartEndEvent (object o, WidgetEventArgs args) {
 		if (args.Event is Gdk.EventButton) {
 			Gdk.EventButton eventButton = args.Event as Gdk.EventButton;
 			if ((eventButton.Type == Gdk.EventType.ButtonPress) && (eventButton.Button == 1)) {
-				OnVideoSetSubtitleStart(o, args);
+				VideoSetSubtitleStartEndBegin();
 			}
 		}
 	}
-
+	
 	public void OnVideoSetSubtitleStartEndButtonRelease (object o, ButtonReleaseEventArgs args) {
 		if (args.Event.Button != 1) {
 			return;
 		}
 	
-		if (Base.TimingMode == TimingMode.Times) {
-			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
-			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
-				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
-			}
-			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(time));
-			Base.Ui.View.SelectNextSubtitle();
-		}
-		else {
-			int frames = Base.Ui.Video.Position.CurrentFrames;
-			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
-				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
-			}
-			Base.CommandManager.Execute(new VideoSetSubtitleEndCommand(frames));
-			Base.Ui.View.SelectNextSubtitle();
-		}
+		VideoSetSubtitleStartEndFinish();
 	}
-
 	
-	public void OnVideoSetSubtitleStartEndGrabFocus (object o, EventArgs args) {
-		if (!buttonStartEndKeyPressed) {
-			OnVideoSetSubtitleStart(o, args);
-			buttonStartEndKeyPressed = true;
-		}
-	}
-
-	public void OnVideoSetSubtitleStartEndKeyRelease (object o, KeyReleaseEventArgs args) {
-		if (buttonStartEndKeyPressed){
-			OnVideoSetSubtitleStartEndButtonRelease(o, null);
-			buttonStartEndKeyPressed = false;
-		}
-	}
 
 	/* Tools Menu */
 
@@ -592,6 +560,47 @@ public class EventHandlers {
 			}
 		}
 	}
+	
+	
+	/* Private methods */
+
+	private void SetSubtitleStartFromVideo () {
+		ExecuteVideoSetSubtitleTimingCommand(typeof(VideoSetSubtitleStartCommand));
+	}
+	
+	private void SetSubtitleEndFromVideo () {
+		ExecuteVideoSetSubtitleTimingCommand(typeof(VideoSetSubtitleEndCommand));
+	}
+	
+	private void ExecuteVideoSetSubtitleTimingCommand (Type commandClass) {
+		object position = null;
+		if (Base.TimingMode == TimingMode.Times) {
+			TimeSpan time = Base.Ui.Video.Position.CurrentTime;
+			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
+				time -= TimeSpan.FromMilliseconds(Base.Config.VideoReactionDelay);
+			}
+			position = time;
+		}
+		else {
+			int frames = Base.Ui.Video.Position.CurrentFrames;
+			if (Base.Ui.Video.IsStatusPlaying && Base.Config.VideoApplyReactionDelay) {
+				frames -= (int)TimingUtil.TimeMillisecondsToFrames(Base.Config.VideoReactionDelay, Base.Ui.Video.FrameRate);
+			}
+			position = frames;
+		}
+		
+		Base.CommandManager.Execute((ChangeTimingCommand)Activator.CreateInstance(commandClass, position));
+	}
+	
+	private void VideoSetSubtitleStartEndBegin () {
+		SetSubtitleStartFromVideo();
+	}
+	
+	private void VideoSetSubtitleStartEndFinish () {
+		SetSubtitleEndFromVideo();
+		Base.Ui.View.SelectNextSubtitle();
+	}
+
 
 }
 
