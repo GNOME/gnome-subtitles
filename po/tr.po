@@ -1,5 +1,5 @@
 # Turkish translation for gnome-subtitles.
-# Copyright (C) 2009-2020 gnome-subtitles's COPYRIGHT HOLDER
+# Copyright (C) 2009-2022 gnome-subtitles's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-subtitles package.
 #
 # Serkan Yılmaz <syilmaz13@gmail.com>, 2009, 2010.
@@ -7,15 +7,15 @@
 # Kaan Özdinçer <kaanozdincer@gmail.com>, 2015.
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2016.
-# Sabri Ünal <libreajans@gmail.com>, 2019-2020.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2020.
+# Sabri Ünal <libreajans@gmail.com>, 2019, 2020, 2022.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2020-03-09 22:36+0000\n"
-"PO-Revision-Date: 2020-03-10 16:30+0300\n"
+"POT-Creation-Date: 2022-04-21 17:27+0000\n"
+"PO-Revision-Date: 2022-05-14 15:10+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -23,19 +23,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-POOTLE-MTIME: 1429307949.000000\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
 msgid "Gnome Subtitles"
-msgstr "Gnome Altyazılar"
+msgstr "Gnome Alt Yazılar"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
 #: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
-msgstr "GNOME Masaüstü için altyazı düzenleyicisi"
+msgstr "GNOME Masaüstü için alt yazı düzenleyicisi"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
@@ -43,10 +43,9 @@ msgid ""
 "allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr ""
-"Gnome Altyazılar GNOME masaüstü ortamı için bir altyazı düzenleme "
-"uygulamasıdır. Video önizlemesine sahip kullanıcı dostu bir arayüz "
-"kullanarak altyazıları oluşturmanızı, eşzamanlamanızı, dönüştürmenizi ve "
-"çevirmenizi sağlar."
+"Gnome Alt Yazılar GNOME masaüstü ortamı için alt yazı düzenleme "
+"uygulamasıdır. Video ön izlemeli kullanıcı dostu arayüzü kullanarak alt yazı "
+"oluşturmanızı, eşzamanlamanızı, dönüştürmenizi ve çevirmenizi sağlar."
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
@@ -54,7 +53,7 @@ msgid ""
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
 "SubViewer."
 msgstr ""
-"Toplamda 22 altyazı biçimi destekleniyor, bunlardan başlıcaları şunlardır: "
+"Toplamda 22 alt yazı biçimi destekleniyor, bunlardan başlıcaları şunlardır: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub ve "
 "SubViewer."
 
@@ -64,12 +63,14 @@ msgstr "Ana pencere"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
-msgstr "Altyazı Düzenleyici"
+msgstr "Alt Yazı Düzenleyici"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
 msgid "subtitles;video;captions;"
-msgstr "altyazılar;video;altyazı;alt yazı;başlıklar;manşetler;"
+msgstr ""
+"altyazılar;video;altyazı;alt yazı;alt yazılar;başlıklar;açıklamalar;"
+"manşetler;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
@@ -92,10 +93,10 @@ msgid ""
 "\"Specific\" to use a specific encoding. The encoding for \"RememberLastUsed"
 "\" and \"Specific\" is stored in the file_open_encoding key."
 msgstr ""
-"Dosyaları açarken varsayılan olarak kullanılacak kodlama biçimi seçeneği. "
+"Dosyaları açarken öntanımlı olarak kullanılacak kodlama biçimi seçeneği. "
 "Olası değerler şunlardır: kendiliğinden algılamayı kullanmak için "
-"\"AutoDetect\", son kullanılan kodlamayı hatırlamak için \"RememberLastUsed"
-"\", geçerli yerel ayarı kullanmak için \"CurrentLocale\" ve belirli bir "
+"\"AutoDetect\", son kullanılan kodlamayı anımsamak için \"RememberLastUsed"
+"\", geçerli yerel ayarı kullanmak için \"CurrentLocale\" ve belirli "
 "kodlamayı kullanmak için \"Specific\". \"RememberLastUsed\" ve \"Specific\" "
 "kodlamaları file_open_encoding anahtarında saklanır."
 
@@ -121,7 +122,7 @@ msgstr "Kendiliğinden algılama yedek kodlaması"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:8
 msgid "Encoding to use when auto detection fails."
-msgstr "Kendiliğinden saptama başarısız olduğunda kullanılacak kodlama."
+msgstr "Kendiliğinden saptanamadığında kullanılacak kodlama."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:9
 msgid "File Save encoding option"
@@ -136,12 +137,12 @@ msgid ""
 "\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
 "key."
 msgstr ""
-"Dosyaları kaydederken varsayılan olarak kullanılacak kodlama biçimi "
-"seçeneği. Olası değerler şunlardır: mevcut dosyanın kodlamasını kullanmak "
-"için \"KeepExisting\", son kullanılan kodlamayı hatırlamak için "
-"\"RememberLastUsed\", geçerli yerel ayarı kullanmak için \"CurrentLocale\" "
-"ve belirli bir kodlamayı kullanmak için \"Specific\". \"RememberLastUsed\" "
-"ve \"Specific\" kodlamaları file_save_encoding anahtarında saklanır."
+"Dosyaları kaydederken öntanımlı olarak kullanılacak kodlama biçimi seçeneği. "
+"Olası değerler şunlardır: var olan dosyanın kodlamasını kullanmak için "
+"\"KeepExisting\", son kullanılan kodlamayı anımsamak için \"RememberLastUsed"
+"\", geçerli yerel ayarı kullanmak için \"CurrentLocale\" ve belirli "
+"kodlamayı kullanmak için \"Specific\". \"RememberLastUsed\" ve \"Specific\" "
+"kodlamaları file_save_encoding anahtarında saklanır."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:11
 msgid "File Save encoding"
@@ -171,11 +172,12 @@ msgid ""
 "format. The subtitle format for \"RememberLastUsed\" and \"Specific\" is "
 "stored in the file_save_format key."
 msgstr ""
-"Dosyaları kaydederken varsayılan olarak kullanılacak altyazı biçimi "
-"seçeneği. Olası değerler şunlardır: Mevcut dosyanın formatını kullanmak için "
-"\"KeepExisting\", son kullanılan formatı hatırlamak için \"RememberLastUsed"
-"\" ve belirli bir format kullanmak için \"Specific\". \"RememberLastUsed\" "
-"ve \"Specific\" için altyazı formatı file_save_format anahtarında saklanır."
+"Dosyaları kaydederken öntanımlı olarak kullanılacak alt yazı biçimi "
+"seçeneği. Olası değerler şunlardır: Var olan dosyanın biçimini kullanmak "
+"için \"KeepExisting\", son kullanılan biçimi anımsamak için "
+"\"RememberLastUsed\" ve belirli biçimi kullanmak için \"Specific\". "
+"\"RememberLastUsed\" ve \"Specific\" için alt yazı biçimi file_save_format "
+"anahtarında saklanır."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:15
 msgid "File Save format"
@@ -188,10 +190,10 @@ msgid ""
 "file_save_format_option key, other possible values are \"KeepExisting\" and "
 "\"CurrentLocale\"."
 msgstr ""
-"Dosyaları kaydederken kullanılacak altyazı biçimi. File_save_format_option "
+"Dosyaları kaydederken kullanılacak alt yazı biçimi. File_save_format_option "
 "anahtarında \"RememberLastUsed\" veya \"Specific\" ayarlandığında kullanılan "
 "gerçek biçimin yanı sıra, diğer olası değerler \"KeepExisting\" ve "
-"\"CurrentLocale\" dir."
+"\"CurrentLocale\"dir."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:17
 msgid "File Save newline option"
@@ -204,10 +206,10 @@ msgid ""
 "\" to use a specific newline type. The newline type for \"RememberLastUsed\" "
 "and \"Specific\" is stored in the file_save_newline key."
 msgstr ""
-"Dosyaları kaydederken varsayılan olarak kullanmak için yeni satır seçeneği. "
-"Olası değerler şunlardır: Son kullanılan yeni satır tipini hatırlamak için "
-"\"RememberLastUsed\" ve belirli bir yeni satır tipini kullanmak için "
-"\"Specific\". \"RememberLastUsed\" ve \"Specific\" için yeni satır türü "
+"Dosyaları kaydederken öntanımlı olarak kullanmak için yeni satır seçeneği. "
+"Olası değerler şunlardır: Son kullanılan yeni satır türünü anımsamak için "
+"\"RememberLastUsed\" ve belirli yeni satır türünü kullanmak için \"Specific"
+"\". \"RememberLastUsed\" ve \"Specific\" için yeni satır türü "
 "file_save_newline anahtarında saklanır."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:19
@@ -220,11 +222,11 @@ msgstr "Dosyalar kaydedilirken kullanılacak yeni satır türü."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:21
 msgid "Save translation when saving subtitles"
-msgstr "Altyazıları kaydederken çevirileri de kaydet"
+msgstr "Alt yazıları kaydederken çevirileri de kaydet"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:22
 msgid "Whether to save existing translations when saving subtitles."
-msgstr "Altyazılar kaydedilirken çevirilerin de kaydedilip edilmeyeceği."
+msgstr "Alt yazılar kaydedilirken çevirilerin de kaydedilip edilmeyeceği."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:23
 msgid "Automatically choose the video file"
@@ -235,9 +237,8 @@ msgid ""
 "Whether to automatically choose the video file to open, when opening a "
 "subtitle file. A video file is chosen based on the name of the subtitle file."
 msgstr ""
-"Bir altyazı dosyasını açarken açılacak video dosyasının kendiliğinden "
-"seçilip seçilmeyeceği. Altyazı dosyasının adına göre bir video dosyası "
-"seçilir."
+"Alt yazı dosyası açarken açılacak video dosyasının kendiliğinden seçilip "
+"seçilmeyeceği. Alt yazı dosyasının adına göre video dosyası seçilir."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
 msgid "Apply reaction delay"
@@ -248,8 +249,8 @@ msgid ""
 "Whether to apply a reaction delay when setting the start or end times of a "
 "subtitle with the video playing."
 msgstr ""
-"Altyazının başlangıç veya bitiş zamanlarını ayarlarken kullanılacak video "
-"oynatımı için, bir reaksiyon gecikmesi uygulanıp uygulanmayacağı."
+"Alt yazının başlangıç veya bitiş zamanlarını ayarlarken kullanılacak video "
+"oynatımı için tepki gecikmesi uygulanıp uygulanmayacağı."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
 msgid "Reaction delay"
@@ -261,29 +262,29 @@ msgid ""
 "them with the video playing."
 msgstr ""
 "Video oynatılırken başlangıç veya bitiş zamanlarından çıkartılacak, "
-"milisaniye cinsinden zaman."
+"milisaniye türünden zaman."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
 msgid "Seek the video on subtitles change"
-msgstr "Altyazı değiştiğinde videoyu takip et"
+msgstr "Alt yazı değiştiğinde videoyu takip et"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:30
 msgid ""
 "Whether to seek the video to the start of the first subtitle when one or "
 "more subtitles are changed."
 msgstr ""
-"Bir veya daha fazla alt yazı değiştirildiğinde videonun ilk altyazının "
-"başlangıcına kadar takip edilip edilmeyeceği."
+"Bir veya daha çok alt yazı değiştirildiğinde videonun ilk alt yazının "
+"başlangıcına dek takip edilip edilmeyeceği."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
 msgid "Seek on change rewind"
-msgstr "Geriye doğru değiştiğinde takibe devam et"
+msgstr "Geriye doğru değiştiğinde takibi sürdür"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
 msgid ""
 "Time, in milliseconds, to rewind the video when seeking on subtitles change."
 msgstr ""
-"Milisaniye cinsinden, altyazıları değiştirirken videoyu geri takip etme "
+"Milisaniye türünden, alt yazıları değiştirirken videoyu geri takip etme "
 "zamanı."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
@@ -293,7 +294,7 @@ msgstr "Satır uzunluklarını göster"
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
 msgid "Whether to view line lengths as characters counts in the subtitle list."
 msgstr ""
-"Altyazı listesinde, satır uzunluklarının karakter sayısı olarak gösterilip "
+"Alt yazı listesinde, satır uzunluklarının karakter sayısı olarak gösterilip "
 "gösterilmeyeceği."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
@@ -318,7 +319,7 @@ msgstr "Metin için etkin imla denetimi dili"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:40
 msgid "The language used to check the spelling of subtitle text."
-msgstr "Altyazı metninin imla denetimi için kullanılacak dil."
+msgstr "Alt yazı metninin imla denetimi için kullanılacak dil."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:41
 msgid "Active spellcheck language for translation"
@@ -326,7 +327,7 @@ msgstr "Çeviri için etkin imla denetimi dili"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:42
 msgid "The language used to check the spelling of subtitle translation."
-msgstr "Altyazı çevirisinin imla denetimi için kullanılacak dil."
+msgstr "Alt yazı çevirisinin imla denetimi için kullanılacak dil."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:43
 msgid "Autocheck spelling"
@@ -334,7 +335,7 @@ msgstr "Kendiliğinden imla denetimi"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:44
 msgid "Whether to automatically check the spelling of subtitle text."
-msgstr "Altyazı metninin kendiliğinden imla denetimi yapılıp yapılmayacağı."
+msgstr "Alt yazı metninin kendiliğinden imla denetimi yapılıp yapılmayacağı."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:45
 msgid "Auto backup"
@@ -345,8 +346,8 @@ msgid ""
 "Whether to automatically backup files. A copy of the file will be "
 "periodically saved with a ~ suffix."
 msgstr ""
-"Dosyaların kendiliğinden yedekleyip yedeklemeyeceği. Dosyanın bir kopyası "
-"düzenli olarak bir ~ sonek ile kaydedilir."
+"Dosyaların kendiliğinden yedekleyip yedeklemeyeceği. Dosyanın kopyası "
+"düzenli olarak ~ son ekiyle kaydedilir."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:47
 msgid "Backup time"
@@ -357,8 +358,8 @@ msgid ""
 "Time interval, in seconds, to automatically backup files. A minimum of 30 "
 "seconds is recommended."
 msgstr ""
-"Dosyaları kendiliğinden yedeklemek için saniye cinsinden zaman aralığı. En "
-"az 30 saniye tavsiye edilir."
+"Dosyaları kendiliğinden yedeklemek için saniye türünden zaman aralığı. En az "
+"30 saniye önerilir."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
 msgid "Time step increment"
@@ -370,7 +371,7 @@ msgid ""
 "controls (e.g., start, end and duration)."
 msgstr ""
 "Döndürme düğmesindeki denetimleri (ör. Başlama, bitiş ve süre) ayarlarken "
-"milisaniye cinsinden süre ekleme veya çıkarma."
+"milisaniye türünden süre ekleme veya çıkarma."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
 msgid "Frames step increment"
@@ -386,15 +387,23 @@ msgstr ""
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
 msgid "Time between subtitles"
-msgstr "Altyazılar arasındaki zaman"
+msgstr "Alt yazılar arasındaki zaman"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:54
 msgid ""
 "Recommended time between subtitles, in milliseconds, used for example when "
 "splitting a subtitle in two."
 msgstr ""
-"Altyazılar arasında önerilen milisaniye cinsinden süre. Bu değer, bir "
-"altyazı ikiye böldüğünde kullanılır."
+"Alt yazılar arasında önerilen milisaniye türünden süre. Bu değer, bir alt "
+"yazı ikiye böldüğünde kullanılır."
+
+#: ../src/External/GStreamer/GstBackend.cs:193
+msgid "The file contains no video or audio."
+msgstr "Dosya video ya da ses içermiyor."
+
+#: ../src/External/GStreamer/GstBackend.cs:355
+msgid "Unable to obtain the complete media information."
+msgstr "Tam ortam bilgisi alınamadı."
 
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
@@ -490,7 +499,7 @@ msgstr "Satırları _Birleştir"
 
 #: ../src/Glade/MainWindow.ui.h:24
 msgid "_Insert Subtitle"
-msgstr "_Altyazı Ekle"
+msgstr "_Alt Yazı Ekle"
 
 #: ../src/Glade/MainWindow.ui.h:25
 msgid "_Before"
@@ -506,7 +515,7 @@ msgstr "_Video Konumunda"
 
 #: ../src/Glade/MainWindow.ui.h:28
 msgid "_Delete Subtitles"
-msgstr "Altyazıları _Sil"
+msgstr "Alt Yazıları _Sil"
 
 #: ../src/Glade/MainWindow.ui.h:29
 msgid "Pr_eferences"
@@ -534,7 +543,7 @@ msgstr "_Video"
 
 #: ../src/Glade/MainWindow.ui.h:35
 msgid "Video _Subtitles"
-msgstr "Video _Altyazıları"
+msgstr "Video _Alt Yazıları"
 
 #: ../src/Glade/MainWindow.ui.h:36
 msgid "_Text"
@@ -619,19 +628,19 @@ msgstr "Seçim_e Takip Et"
 
 #: ../src/Glade/MainWindow.ui.h:56
 msgid "Select _Nearest Subtitle"
-msgstr "E_n Yakın Altyazıyı Seç"
+msgstr "E_n Yakın Alt Yazıyı Seç"
 
 #: ../src/Glade/MainWindow.ui.h:57
 msgid "A_uto Select Subtitle"
-msgstr "Altyazıyı _Kendiliğinden Seç"
+msgstr "Alt Yazıyı _Kendiliğinden Seç"
 
 #: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
-msgstr "Altyazı Baş_langıcını Ayarla"
+msgstr "Alt Yazı Baş_langıcını Ayarla"
 
 #: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
-msgstr "Altyazı Bi_tişini Ayarla"
+msgstr "Alt Yazı Bi_tişini Ayarla"
 
 #: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
@@ -650,81 +659,77 @@ msgid "_Help"
 msgstr "_Yardım"
 
 #: ../src/Glade/MainWindow.ui.h:64
-msgid "_Contents"
-msgstr "İçi_ndekiler"
-
-#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: ../src/Glade/MainWindow.ui.h:66
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Donate"
 msgstr "_Bağış Yap"
 
-#: ../src/Glade/MainWindow.ui.h:67
+#: ../src/Glade/MainWindow.ui.h:66
 msgid "Request a New _Feature"
-msgstr "Yeni _Bir Özellik İste"
+msgstr "Yeni _Özellik İste"
 
-#: ../src/Glade/MainWindow.ui.h:68
+#: ../src/Glade/MainWindow.ui.h:67
 msgid "Report a _Bug"
 msgstr "Hata _Bildir"
 
-#: ../src/Glade/MainWindow.ui.h:69
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "_About"
 msgstr "_Hakkında"
 
-#: ../src/Glade/MainWindow.ui.h:70
+#: ../src/Glade/MainWindow.ui.h:69
 msgid "New File"
 msgstr "Yeni Dosya"
 
-#: ../src/Glade/MainWindow.ui.h:71
+#: ../src/Glade/MainWindow.ui.h:70
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:52
 msgid "Open File"
 msgstr "Dosya Aç"
 
-#: ../src/Glade/MainWindow.ui.h:72
+#: ../src/Glade/MainWindow.ui.h:71
 msgid "Save File"
 msgstr "Dosyayı Kaydet"
 
-#: ../src/Glade/MainWindow.ui.h:73
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Insert"
 msgstr "Ekle"
 
-#: ../src/Glade/MainWindow.ui.h:74
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Delete"
 msgstr "Sil"
 
-#: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/Glade/MainWindow.ui.h:74
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Zaman"
 
-#: ../src/Glade/MainWindow.ui.h:76
+#: ../src/Glade/MainWindow.ui.h:75
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
 msgid "Duration"
 msgstr "Süre"
 
-#: ../src/Glade/MainWindow.ui.h:77
+#: ../src/Glade/MainWindow.ui.h:76
 msgid "Sets the subtitle Start to the current video position"
-msgstr "Altyazı geçerli video başlangıç konumuna ayarlar"
+msgstr "Alt yazı geçerli video başlangıç konumuna ayarlar"
+
+#: ../src/Glade/MainWindow.ui.h:77
+msgid "Sets the subtitle End to the current video position"
+msgstr "Alt yazı geçerli video bitiş konumuna ayarlar"
 
 #: ../src/Glade/MainWindow.ui.h:78
-msgid "Sets the subtitle End to the current video position"
-msgstr "Altyazı geçerli video bitiş konumuna ayarlar"
-
-#: ../src/Glade/MainWindow.ui.h:79
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
 "pressed for the duration of each subtitle."
 msgstr ""
-"Video oynatılırken altyazı Başlangıç ve Bitiş ayarını yapar. Her bir altyazı "
-"süresince düğmeyi basılı tutun."
+"Video oynatılırken alt yazı Başlangıç ve Bitiş ayarını yapar. Her bir alt "
+"yazı süresince düğmeyi basılı tutun."
 
-#: ../src/Glade/MainWindow.ui.h:80
+#: ../src/Glade/MainWindow.ui.h:79
 msgid "1.0x"
 msgstr "1.0x"
 
-#: ../src/Glade/MainWindow.ui.h:81
+#: ../src/Glade/MainWindow.ui.h:80
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
@@ -735,18 +740,18 @@ msgstr ""
 "Shift+Artı/Eksi (sayı tuş takımından) zamanlamalarını kaydırır."
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/Glade/MainWindow.ui.h:83
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Başlangıç:"
 
-#: ../src/Glade/MainWindow.ui.h:85
+#: ../src/Glade/MainWindow.ui.h:84
 msgid "End:"
 msgstr "Bitiş:"
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:87
+#: ../src/Glade/MainWindow.ui.h:86
 msgid "Duration:"
 msgstr "Süre:"
 
@@ -798,7 +803,7 @@ msgstr "Yeniden Yap"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
 msgid "Deleting Subtitles"
-msgstr "Altyazılar Siliniyor"
+msgstr "Alt Yazılar Siliniyor"
 
 #: ../src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
 #: ../src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
@@ -812,11 +817,11 @@ msgstr "Çeviri Düzenleme"
 
 #: ../src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:28
 msgid "Inserting Subtitle"
-msgstr "Altyazı Ekleme"
+msgstr "Alt Yazı Ekleme"
 
 #: ../src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
 msgid "Merging subtitles"
-msgstr "Altyazıları Birleştirme"
+msgstr "Alt Yazıları Birleştirme"
 
 #: ../src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
 msgid "Replacing All"
@@ -828,7 +833,7 @@ msgstr "Zamanlamayı Kaydırma"
 
 #: ../src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
 msgid "Splitting subtitles"
-msgstr "Altyazıları Ayırma"
+msgstr "Alt Yazıları Ayırma"
 
 #: ../src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
 msgid "Synchronizing timings"
@@ -836,16 +841,16 @@ msgstr "Zamanlamayı Eşzamanlama"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
 msgid "Setting Subtitle Start"
-msgstr "Altyazı Başlangıcı Atama"
+msgstr "Alt Yazı Başlangıcı Atama"
 
 #: ../src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
 msgid "Setting Subtitle End"
-msgstr "Altyazı Bitişi Atama"
+msgstr "Alt Yazı Bitişi Atama"
 
 #. To translators: this is the filename for new files (before being saved for the first time)
 #: ../src/GnomeSubtitles/Core/Document.cs:113
 msgid "Unsaved Subtitles"
-msgstr "Kaydedilmemiş Altyazılar"
+msgstr "Kaydedilmemiş Alt Yazılar"
 
 #. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
 #: ../src/GnomeSubtitles/Core/Document.cs:122
@@ -1001,7 +1006,7 @@ msgstr "Fransızca (Kanada)"
 
 #: ../src/GnomeSubtitles/Core/Encodings.cs:101
 msgid "Cyrillic/Ukrainian"
-msgstr "Kiril/Ukrayna Dili"
+msgstr "Kiril/Ukraynaca"
 
 #. TCVN, TIS-620, UHC, VISCII not used
 #: ../src/GnomeSubtitles/Core/Encodings.cs:107
@@ -1022,23 +1027,23 @@ msgstr "Bilinmeyen"
 
 #: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:41
 msgid "About Gnome Subtitles"
-msgstr "Gnome Altyazılar Hakkında"
+msgstr "Gnome Alt Yazılar Hakkında"
 
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:26
 msgid "_All subtitles"
-msgstr "_Tüm altyazılar"
+msgstr "_Tüm alt yazılar"
 
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:27
 msgid "_Selected subtitles"
-msgstr "_Seçili altyazılar"
+msgstr "_Seçili alt yazılar"
 
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:28
 msgid "Subtitles between those selected and the _first"
-msgstr "Bu seçilenler ve _başlangıç noktası arasındaki altyazılar"
+msgstr "Bu seçilenler ve _başlangıç noktası arasındaki alt yazılar"
 
 #: ../src/GnomeSubtitles/Dialog/DialogStrings.cs:29
 msgid "Subtitles between those selected and the _last"
-msgstr "Bu seçilenler ve bitiş _noktası arasındaki altyazılar"
+msgstr "Bu seçilenler ve bitiş _noktası arasındaki alt yazılar"
 
 #: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:56
 msgid "Character Encodings"
@@ -1201,7 +1206,7 @@ msgstr "CD Parçası:"
 
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
 msgid "Font Name:"
-msgstr "Yazı Tipi İsmi:"
+msgstr "Yazı Tipi Adı:"
 
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
 msgid "Font Color:"
@@ -1235,7 +1240,7 @@ msgstr "Tüm Dosyalar"
 
 #: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:283
 msgid "All Subtitle Files"
-msgstr "Tüm Altyazı Dosyaları"
+msgstr "Tüm Alt Yazı Dosyaları"
 
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
 msgid "File Properties"
@@ -1255,7 +1260,7 @@ msgstr "Karakter Kodlaması"
 
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
 msgid "Subtitle Format"
-msgstr "Altyazı Biçimi"
+msgstr "Alt Yazı Biçimi"
 
 #: ../src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
 msgid "Timing Mode"
@@ -1267,7 +1272,7 @@ msgstr "Farklı Kaydet"
 
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
 msgid "Subtitle Format:"
-msgstr "Altyazı Biçimi:"
+msgstr "Alt Yazı Biçimi:"
 
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
 msgid "Line Ending:"
@@ -1285,21 +1290,7 @@ msgstr "Çeviriyi Farklı Kaydet"
 msgid ""
 "An unknown error has occurred. Please report a bug and include this error "
 "name:"
-msgstr ""
-"Bilinmeyen bir hata oluştu. Lütfen adıyla birlikte bu hatayı bildiriniz:"
-
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Dosya açılamadı"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Başka dosya aç"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "Dosya yolu geçersiz görünüyor."
+msgstr "Bilinmeyen hata oluştu. Lütfen adıyla birlikte bu hatayı bildiriniz:"
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
@@ -1308,41 +1299,39 @@ msgstr "Dosya kaydedilemedi"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
 msgid "Save to another file"
-msgstr "Başka bir dosyaya yaz"
+msgstr "Başka dosyaya yaz"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr ""
 "Bellek yetersiz. Lütfen bazı programlarınızı kapatın ve yeniden deneyin."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
-msgstr "Bir G/Ç hatası oluştu."
+msgstr "G/Ç hatası oluştu."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
 msgid "You do not have the permissions necessary to save the file."
-msgstr "Bu dosyayı kaydetmek için gerekli izinlere sahip değilsiniz."
+msgstr "Bu dosyayı kaydetmek için gerekli izinleriniz yok."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "Belirtilen dosya geçersiz."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
-"Kaydetmezseniz yaptığınız tüm değişiklikler kalıcı olarak "
-"kaybolacak."
+msgstr "Kaydetmezseniz yaptığınız tüm değişiklikler kalıcı olarak yitecek."
 
 #. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
 msgstr ""
-"Yeni altyazı oluşturmadan önce \"{0}\" altyazısında yaptığınız "
+"Yeni alt yazı oluşturmadan önce \"{0}\" alt yazısında yaptığınız "
 "değişiklikleri kaydetmek ister misiniz?"
 
 #: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
@@ -1353,8 +1342,8 @@ msgstr "Kaydetmeden Oluştur"
 #, csharp-format
 msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
 msgstr ""
-"Yeni altyazı oluşturmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri "
-"kaydetmek ister misiniz?"
+"Yeni alt yazı oluşturmadan önce \"{0}\" çevirisinde yaptığınız "
+"değişiklikleri kaydetmek ister misiniz?"
 
 #: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
 #, csharp-format
@@ -1368,7 +1357,7 @@ msgstr ""
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before opening?"
 msgstr ""
-"Açmadan önce \"{0}\" altyazısında yaptığınız değişiklikleri kaydetmek ister "
+"Açmadan önce \"{0}\" alt yazısında yaptığınız değişiklikleri kaydetmek ister "
 "misiniz?"
 
 #: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
@@ -1386,7 +1375,7 @@ msgstr ""
 #, csharp-format
 msgid "Save the changes to subtitles \"{0}\" before closing?"
 msgstr ""
-"Kapatmadan önce \"{0}\" altyazısında yaptığınız değişiklikleri kaydetmek "
+"Kapatmadan önce \"{0}\" alt yazısında yaptığınız değişiklikleri kaydetmek "
 "ister misiniz?"
 
 #: ../src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
@@ -1400,38 +1389,50 @@ msgstr ""
 "Kapatmadan önce \"{0}\" çevirisinde yaptığınız değişiklikleri kaydetmek "
 "ister misiniz?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "{0} dosyası açılamadı."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Başka dosya aç"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr ""
-"Altyazı biçimi algılanamadı. Lütfen bu dosya türünün desteklendiğinden emin "
+"Alt yazı biçimi algılanamadı. Lütfen bu dosya türünün desteklendiğinden emin "
 "olun."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
-msgstr ""
-"Bu kodlama, sisteminiz tarafından desteklenmiyor. Lütfen farklı bir kodlama "
-"seçiniz."
+msgstr "Bu kodlama, sisteminizce desteklenmiyor. Lütfen başka kodlama seçiniz."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
-msgstr "Dosyayı açmak için gerekli izinlere sahip değilsiniz."
+msgstr "Dosyayı açmak için gerekli izinleriniz yok."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "Dosya bulunamadı."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
-msgstr "Bu dosya metin tabanlı bir altyazı dosyası için çok büyük görünüyor."
+msgstr "Bu dosya, metin tabanlı alt yazı dosyası için çok büyük görünüyor."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Dosya oynatılamadı"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "Dosya yolu geçersiz görünüyor."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "'{0}' dosyası oynatılamadı."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1448,7 +1449,7 @@ msgstr "Düzenleme"
 #. Translation File Saving
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
 msgid "When saving subtitle files, automatically save their _translation"
-msgstr "Altyazılar kaydedildiğinde, aynı zamanda ç_evirileri de kaydet"
+msgstr "Alt yazılar kaydedildiğinde, aynı zamanda ç_evirileri de kaydet"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
 msgid "Translation File Saving"
@@ -1460,7 +1461,7 @@ msgstr "Kullanılacak karakter _kodlaması:"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
 msgid "If auto detection _fails, use:"
-msgstr "Kendiliğinden saptama _başarısızsa, şunu kullan:"
+msgstr "Kendiliğinden _saptanamazsa, şunu kullan:"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
 msgid "Automatically choose the _video file to open"
@@ -1472,7 +1473,7 @@ msgstr "Dosya Aç Penceresi"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
 msgid "_Subtitle format to use:"
-msgstr "Kullanılacak _altyazı biçimi:"
+msgstr "Kullanılacak _alt yazı biçimi:"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
 msgid "Ch_aracter encoding to use:"
@@ -1488,7 +1489,7 @@ msgstr "Dosya Farklı Kaydet Penceresi"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
 msgid "Create a _backup copy of files every"
-msgstr "Dosyaların bir _yedek kopyasını, şu sıklıkta oluştur"
+msgstr "Dosyaların _yedek kopyasını, şu sıklıkta oluştur"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "minutes"
@@ -1501,7 +1502,7 @@ msgstr "Yedekle"
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
 msgid "_Seek the video to the selected subtitle when changing timings"
 msgstr ""
-"Zamanlaması değişirken seçilen altyazı için videoyu kendiliğinden _takip et"
+"Zamanlaması değişirken seçilen alt yazı için videoyu kendiliğinden _takip et"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Play"
@@ -1523,11 +1524,11 @@ msgstr "Çık"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
-msgstr "Eklenirken ya da bölünürken altyazılar arasındaki süre"
+msgstr "Eklenirken ya da bölünürken alt yazılar arasındaki süre"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
-msgstr "Altyazılar Arasındaki Boşluk"
+msgstr "Alt Yazılar Arasındaki Boşluk"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
 msgid "Subtr_act"
@@ -1535,8 +1536,7 @@ msgstr "Çık_ar"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
-msgstr ""
-"Kayıttan çalma sırasında, başlangıç/bitiş altyazısı ayarlanırkenki süre"
+msgstr "Kayıttan çalarken başlangıç/bitiş alt yazısı ayarlanırkenki süre (ms)"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
@@ -1545,7 +1545,7 @@ msgstr "Tepki Gecikmesi"
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
-msgstr "Son kullanılan kodlamayı hatırla"
+msgstr "Son kullanılan kodlamayı anımsa"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
@@ -1557,11 +1557,11 @@ msgstr "Açık olan dosyada kullanılan biçimi koru"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
-msgstr "Son kullanılan biçimi hatırla"
+msgstr "Son kullanılan biçimi anımsa"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
-msgstr "Son kullanılan türü hatırla"
+msgstr "Son kullanılan türü anımsa"
 
 #: ../src/GnomeSubtitles/Dialog/SearchDialog.cs:104
 msgid "Replace"
@@ -1635,7 +1635,7 @@ msgstr "_Uygula"
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
 msgid "Subtitle No.:"
-msgstr "Altyazı No.:"
+msgstr "Alt Yazı No.:"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
@@ -1677,7 +1677,7 @@ msgid ""
 "Sets the shift amount in order for the selected subtitles to start at the "
 "current video position."
 msgstr ""
-"Seçilen altyazıların geçerli video konumunda başlaması için kaydırma "
+"Seçilen alt yazıların geçerli video konumunda başlaması için kaydırma "
 "miktarını ayarlar."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
@@ -1703,7 +1703,7 @@ msgstr "Eşleme Noktaları"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
 msgid "Subtitles between sync points"
-msgstr "Eşleme noktaları arasındaki altyazılar"
+msgstr "Eşleme noktaları arasındaki alt yazılar"
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
 msgid "Info"
@@ -1712,7 +1712,7 @@ msgstr "Bilgi"
 #. Number column
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
 msgid "Subtitle No."
-msgstr "Altyazı No."
+msgstr "Alt Yazı No."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
@@ -1728,7 +1728,7 @@ msgid ""
 "Add sync points by selecting subtitles and adjusting the video to their "
 "correct position. At least 2 points are needed."
 msgstr ""
-"Altyazıları seçerek eşleme noktaları ekleyin ve videoyu doğru pozisyona "
+"Alt yazıları seçerek eşleme noktaları ekleyin ve videoyu doğru konuma "
 "ayarlayın. En az 2 nokta gereklidir."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
@@ -1736,12 +1736,12 @@ msgid ""
 "Add 1 more sync point to start synchronizing. Adding more points will "
 "improve accuracy."
 msgstr ""
-"Eşlemeyi başlamak için 1 tane daha eşleme noktası ekleyin. Daha fazla nokta "
+"Eşlemeyi başlamak için 1 tane daha eşleme noktası ekleyin. Daha çok nokta "
 "doğruluğu arttırır."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
 msgid "Synchronization is ready. All subtitles will be synchronized."
-msgstr "Eşzamanlama işlemi hazır. Tüm altyazılar eşzamanlanacak."
+msgstr "Eşzamanlama işlemi hazır. Tüm alt yazılar eşzamanlanacak."
 
 # İkinci kısım uyumlu anlamda çevrilmiştir
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
@@ -1750,7 +1750,7 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0}."
 msgstr ""
-"Eşzamanlama işlemi hazır. Bu işlem şu altyazılar için uygulanmayacak: {0}."
+"Eşzamanlama işlemi hazır. Bu işlem, şu alt yazılar için uygulanmayacak: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
 #, csharp-format
@@ -1758,7 +1758,7 @@ msgid ""
 "Synchronization is ready. The following subtitles will not be synchronized: "
 "{0} and {1}."
 msgstr ""
-"Eşzamanlama işlemi uygulanmaya hazır. Bu işlem şu altyazılar için "
+"Eşzamanlama işlemi uygulanmaya hazır. Bu işlem, şu alt yazılar için "
 "uygulanmayacak: {0} ve {1}."
 
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
@@ -1799,7 +1799,7 @@ msgstr "Kendiliğinden Algıla"
 
 #: ../src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
 msgid "System Default"
-msgstr "Sistem Varsayılanı"
+msgstr "Sistem Öntanımlısı"
 
 #. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
 #: ../src/GnomeSubtitles/Ui/Status.cs:43
@@ -1830,7 +1830,18 @@ msgstr "Satır"
 msgid "Col"
 msgstr "Sütun"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Ortam Oynatıcı Hatası"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr "Beklenmeyen hata oluştu: '{0}'. Ek bilgi için günlüğe bakın."
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Kare"
 
@@ -1846,6 +1857,9 @@ msgstr "Bitiş"
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Çeviri"
+
+#~ msgid "_Contents"
+#~ msgstr "İçi_ndekiler"
 
 #~ msgid "Length\t"
 #~ msgstr "Uzunluk\t"
