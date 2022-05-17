@@ -19,8 +19,10 @@
 
 using System.Reflection;
 
-[assembly: AssemblyVersion("@version@")]
+/* Dummy class for building without Meson (ex: in Monodevelop), as Meson doesn't allow
+ * creating source files. AssemblyInfo.cs.in used instead when building with Meson.
+ */
+[assembly: AssemblyVersion("0.0.0")]
 [assembly: AssemblyTitle ("Gnome Subtitles")]
 [assembly: AssemblyDescription ("Video subtitling for the GNOME desktop")]
-[assembly: AssemblyCopyright ("Copyright 2006-@copyright@ Pedro Castro")]
-
+[assembly: AssemblyCopyright ("Copyright 0000-0000 Pedro Castro")]
