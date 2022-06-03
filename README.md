@@ -1,5 +1,5 @@
-Gnome Subtitles
-=========================
+# Gnome Subtitles
+
 http://gnomesubtitles.org
 
 Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports the most
@@ -7,8 +7,8 @@ common text-based subtitle formats and allows for subtitle editing, translation
 and synchronization.
 
 
-Dependencies
-============
+## Dependencies
+
 
 Run time dependencies:
 - mono-runtime		>= 4.0
@@ -33,14 +33,12 @@ Build time dependencies:
 - libgstreamer-plugins-base1.0-dev >= 1.0
 
 
-Packaging Notes
-===============
+## Packaging Notes
 
 Check the NEWS file for dependency changes and other packaging notes.
 
 
-Hacking Gnome Subtitles
-=======================
+## Hacking Gnome Subtitles
 
 Get the latest code from the GNOME Git repository:
 
@@ -59,8 +57,7 @@ Run the build tools to make sure necessary libraries are compiled and placed on 
 Fire up Monodevelop and open solution file 'gnome-subtitles.sln'.
 
 
-Need help?
-==========
+## Need help?
 
 Create an issue on gitlab:
 

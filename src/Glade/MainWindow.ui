@@ -27,6 +27,8 @@
     <property name="can_focus">False</property>
     <signal name="delete-event" handler="OnWindowDelete" swapped="no"/>
     <signal name="destroy" handler="OnWindowDestroy" swapped="no"/>
+    <signal name="key-press-event" handler="OnWindowKeyPress" swapped="no"/>
+    <signal name="key-release-event" handler="OnWindowKeyRelease" swapped="no"/>
     <signal name="size-allocate" handler="OnSizeAllocated" swapped="no"/>
     <child>
       <placeholder/>
@@ -1353,15 +1355,13 @@
                         <child>
                           <object class="GtkButton" id="videoSetSubtitleStartEndButton">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can_focus">False</property>
                             <property name="receives_default">False</property>
-                            <property name="events">GDK_BUTTON_RELEASE_MASK | GDK_KEY_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
+                            <property name="events">GDK_BUTTON_RELEASE_MASK | GDK_STRUCTURE_MASK</property>
                             <property name="tooltip_text" translatable="yes">Sets the subtitle Start and End while the video is playing. Keep the button pressed for the duration of each subtitle.</property>
                             <property name="relief">none</property>
                             <signal name="button-release-event" handler="OnVideoSetSubtitleStartEndButtonRelease" swapped="no"/>
-                            <signal name="event" handler="OnVideoSetSubtitleStartEndButtonPress" swapped="no"/>
-                            <signal name="grab-focus" handler="OnVideoSetSubtitleStartEndGrabFocus" swapped="no"/>
-                            <signal name="key-release-event" handler="OnVideoSetSubtitleStartEndKeyRelease" swapped="no"/>
+                            <signal name="event" handler="OnVideoSetSubtitleStartEndEvent" swapped="no"/>
                             <child>
                               <object class="GtkLabel" id="videoSetSubtitleStartEndButtonLabel">
                                 <property name="visible">True</property>
@@ -1371,7 +1371,6 @@
                                 <property name="justify">center</property>
                               </object>
                             </child>
-                            <accelerator key="j" signal="grab-focus" modifiers="GDK_CONTROL_MASK"/>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>

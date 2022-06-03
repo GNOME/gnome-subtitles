@@ -1,14 +1,14 @@
 # Basque translation for gnome-subtitles.
 # Copyright (C) 2019 gnome-subtitles's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-subtitles package.
-# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2022.
 #
 msgid ""
 msgstr "Project-Id-Version: gnome-subtitles master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
-"POT-Creation-Date: 2019-07-04 22:59+0000\n"
-"PO-Revision-Date: 2019-09-03 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"POT-Creation-Date: 2022-02-05 11:40+0000\n"
+"PO-Revision-Date: 2022-04-08 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -16,36 +16,42 @@ msgstr "Project-Id-Version: gnome-subtitles master\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:1
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
+msgid "Gnome Subtitles"
+msgstr "GNOME Azpitituluak"
+
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:3
 #: ../src/GnomeSubtitles/Dialog/AboutDialog.cs:47
 msgid "Video subtitling for the GNOME desktop"
 msgstr "Bideoen azpitituluak GNOME mahaigainerako"
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:2
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
 msgid ""
 "Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
 "allows to create, synchronize, convert and translate subtitles by using a "
 "friendly user interface with video preview."
 msgstr "GNOME Azpitituluak azpitituluen editore bat da, GNOME mahaigaineko ingurunerako sortu dena. Azpitituluak sortzeko, sinkronizatzeko, bihurtzeko eta itzultzeko erabil daiteke, interfaze erraz batekin eta bideoen aurrebista baliatuta."
 
-#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:3
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:4
 msgid ""
 "A total of 22 subtitle formats are supported, including but not limited to: "
 "SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
 "SubViewer."
 msgstr "Apitituluen 22 formatu onartzen dira, besteak beste: SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub eta SubViewer."
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:1
-msgid "Gnome Subtitles"
-msgstr "GNOME Azpitituluak"
+#: ../data/org.gnome.GnomeSubtitles.appdata.xml.in.h:5
+msgid "Main window"
+msgstr "Leiho nagusia"
 
 #: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:2
 msgid "Subtitle Editor"
 msgstr "Azpitituluen editorea"
 
-#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:4
-msgid "Subtitles;Video;"
-msgstr "Azpitituluak;Bideoa;"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: ../data/org.gnome.GnomeSubtitles.desktop.in.in.h:5
+msgid "subtitles;video;captions;"
+msgstr "azpitituluak;bideoa;epigrafeak;"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:1
 msgid "Encodings shown in menu"
@@ -175,7 +181,7 @@ msgstr "Aukeratu automatikoki bideo-fitxategia"
 msgid ""
 "Whether to automatically choose the video file to open, when opening a "
 "subtitle file. A video file is chosen based on the name of the subtitle file."
-msgstr ""
+msgstr "Azpitituluen fitxategia irekitzean, automatikoki bideo bat aukeratuko den ala ez. Azpitituluen fitxategiaren izenaren arabera aukeratuko da bideoa."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:25
 msgid "Apply reaction delay"
@@ -185,7 +191,7 @@ msgstr "Aplikatu erreakzio-atzerapena"
 msgid ""
 "Whether to apply a reaction delay when setting the start or end times of a "
 "subtitle with the video playing."
-msgstr ""
+msgstr "Erreakzio-atzerapena aplikatuko den ala ez hasierako edo amaierako denborak bideoa erreproduzitzen ari den bitartean ezartzen direnean."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:27
 msgid "Reaction delay"
@@ -195,7 +201,7 @@ msgstr "Erreakzio-atzerapena"
 msgid ""
 "Time, in milliseconds, to subtract from the start or end times when setting "
 "them with the video playing."
-msgstr ""
+msgstr "Hasierako edo amaierako denboretatik kenduko den denbora, milisegundotan, bideoa erreproduzitzen ari den bitartean haiek ezartzen direnean."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:29
 msgid "Seek the video on subtitles change"
@@ -205,24 +211,24 @@ msgstr "Bilatu bideoa azpitituluak aldatzean"
 msgid ""
 "Whether to seek the video to the start of the first subtitle when one or "
 "more subtitles are changed."
-msgstr ""
+msgstr "Bideoa bilatukoko den ala ez lehen azpitituluaren hasieran, azpititulu bat ego gehiago aldatzen denean."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:31
 msgid "Seek on change rewind"
-msgstr ""
+msgstr "Atzera egitea aldaketa bilatzean"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:32
 msgid ""
 "Time, in milliseconds, to rewind the video when seeking on subtitles change."
-msgstr ""
+msgstr "Bideoan atzera egingo den denbora, milisegundotan, azpitituluen aldaketa bilatzen denean."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:33
 msgid "View line lengths"
-msgstr ""
+msgstr "Bistaratu lerro-luzerak"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:34
 msgid "Whether to view line lengths as characters counts in the subtitle list."
-msgstr ""
+msgstr "Lerro-luzerak karaktere-zenbaketa gisa ikusiko diren ala ez azpitituluen zerrendan."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:35
 msgid "Window width"
@@ -286,23 +292,23 @@ msgstr "Denbora-tartea, segundoetan, fitxategien babeskopia automatikoa egiteko.
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:49
 msgid "Time step increment"
-msgstr ""
+msgstr "Denborazko urrats-gehikuntza"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:50
 msgid ""
 "Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
 "controls (e.g., start, end and duration)."
-msgstr ""
+msgstr "Biratze-botoietan (adibidez hasiera, amaiera eta iraupena) denbora doitzeko gehitu edo kenduko den denbora, milisegundotan."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:51
 msgid "Frames step increment"
-msgstr ""
+msgstr "Fotogramen urrats-gehikuntza"
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:52
 msgid ""
 "Frames to add or subtract when adjusting frames in spinbutton controls (e."
 "g., start, end and duration)."
-msgstr ""
+msgstr "Biratze-botoietan (adibidez hasiera, amaiera eta iraupena) fotogramak doitzeko gehitu edo kenduko diren fotogramak."
 
 #: ../data/org.gnome.GnomeSubtitles.gschema.xml.h:53
 msgid "Time between subtitles"
@@ -313,6 +319,14 @@ msgid ""
 "Recommended time between subtitles, in milliseconds, used for example when "
 "splitting a subtitle in two."
 msgstr "Azpitituluen arteko denbora gomendatua, milisegundoetan, adibidez azpititulu bat bitan zatitzen denean erabiltzeko."
+
+#: ../src/External/GStreamer/GstBackend.cs:193
+msgid "The file contains no video or audio."
+msgstr "Fitxategiak ez du ez audiorik ez bideorik."
+
+#: ../src/External/GStreamer/GstBackend.cs:355
+msgid "Unable to obtain the complete media information."
+msgstr "Ezin da multimediaren informazio osoa eskuratu."
 
 #: ../src/Glade/MainWindow.ui.h:1
 msgid "_File"
@@ -517,7 +531,7 @@ msgstr "Erreproduzitu / _pausatu"
 
 #: ../src/Glade/MainWindow.ui.h:51
 msgid "_Loop Selection"
-msgstr ""
+msgstr "_Hautapenaren begizta"
 
 #: ../src/Glade/MainWindow.ui.h:52
 msgid "R_ewind"
@@ -529,27 +543,27 @@ msgstr "A_urrera"
 
 #: ../src/Glade/MainWindow.ui.h:54
 msgid "_Seek to…"
-msgstr ""
+msgstr "B_ilatu…"
 
 #: ../src/Glade/MainWindow.ui.h:55
 msgid "Seek _to Selection"
-msgstr ""
+msgstr "Bilatu hau_tapena"
 
 #: ../src/Glade/MainWindow.ui.h:56
 msgid "Select _Nearest Subtitle"
-msgstr ""
+msgstr "Hautatu azpititulurik hu_rbilena"
 
 #: ../src/Glade/MainWindow.ui.h:57
 msgid "A_uto Select Subtitle"
-msgstr ""
+msgstr "Hautatu aut_omatikoki azpititulua"
 
 #: ../src/Glade/MainWindow.ui.h:58
 msgid "Set Subtitle St_art"
-msgstr ""
+msgstr "Ezarri azpitituluaren ha_siera"
 
 #: ../src/Glade/MainWindow.ui.h:59
 msgid "Set Subtitle En_d"
-msgstr ""
+msgstr "Ezarri azpitituluaren a_maiera"
 
 #: ../src/Glade/MainWindow.ui.h:60
 msgid "_Tools"
@@ -557,7 +571,7 @@ msgstr "_Tresnak"
 
 #: ../src/Glade/MainWindow.ui.h:61
 msgid "_Autocheck Spelling"
-msgstr ""
+msgstr "Orto_grafiaren egiaztatze automatikoa"
 
 #: ../src/Glade/MainWindow.ui.h:62
 msgid "Set _Languages"
@@ -568,97 +582,95 @@ msgid "_Help"
 msgstr "_Laguntza"
 
 #: ../src/Glade/MainWindow.ui.h:64
-msgid "_Contents"
-msgstr "_Edukia"
-
-#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Keyboard Shortcuts"
 msgstr "Las_ter-teklak"
 
-#: ../src/Glade/MainWindow.ui.h:66
+#: ../src/Glade/MainWindow.ui.h:65
 msgid "_Donate"
 msgstr "_Eman dirua"
 
-#: ../src/Glade/MainWindow.ui.h:67
+#: ../src/Glade/MainWindow.ui.h:66
 msgid "Request a New _Feature"
 msgstr "Eskatu _funtzionalitate berria"
 
-#: ../src/Glade/MainWindow.ui.h:68
+#: ../src/Glade/MainWindow.ui.h:67
 msgid "Report a _Bug"
 msgstr "Jakinaratzi akat_sa"
 
-#: ../src/Glade/MainWindow.ui.h:69
+#: ../src/Glade/MainWindow.ui.h:68
 msgid "_About"
 msgstr "Honi _buruz"
 
-#: ../src/Glade/MainWindow.ui.h:70
+#: ../src/Glade/MainWindow.ui.h:69
 msgid "New File"
 msgstr "Fitxategi berria"
 
-#: ../src/Glade/MainWindow.ui.h:71
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:51
+#: ../src/Glade/MainWindow.ui.h:70
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:52
 msgid "Open File"
 msgstr "Ireki fitxategia"
 
-#: ../src/Glade/MainWindow.ui.h:72
+#: ../src/Glade/MainWindow.ui.h:71
 msgid "Save File"
 msgstr "Gorde fitxategia"
 
-#: ../src/Glade/MainWindow.ui.h:73
+#: ../src/Glade/MainWindow.ui.h:72
 msgid "Insert"
 msgstr "Txertatu"
 
-#: ../src/Glade/MainWindow.ui.h:74
+#: ../src/Glade/MainWindow.ui.h:73
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: ../src/Glade/MainWindow.ui.h:75
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/Glade/MainWindow.ui.h:74
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Time"
 msgstr "Ordua"
 
-#: ../src/Glade/MainWindow.ui.h:76
-msgid "Length\t"
-msgstr "Luzera\t"
+#: ../src/Glade/MainWindow.ui.h:75
+#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
+msgstr "Iraupena"
 
-#: ../src/Glade/MainWindow.ui.h:77
+#: ../src/Glade/MainWindow.ui.h:76
 msgid "Sets the subtitle Start to the current video position"
 msgstr "Azpitituluaren hasiera bideoaren uneko posizioan ezartzen du"
 
-#: ../src/Glade/MainWindow.ui.h:78
+#: ../src/Glade/MainWindow.ui.h:77
 msgid "Sets the subtitle End to the current video position"
 msgstr "Azpitituluaren amaiera bideoaren uneko posizioan ezartzen du"
 
-#: ../src/Glade/MainWindow.ui.h:79
+#: ../src/Glade/MainWindow.ui.h:78
 msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
-"pressed for the duration of each subtitle.\t"
-msgstr ""
+"pressed for the duration of each subtitle."
+msgstr "Azpitituluaren hasiera eta amaiera ezartzen ditu bideoa erreproduzitzen ari den bitartean. Eutsi botoiari sakatuta azpititulu bakoitzak irauten duen bitartean."
 
-#: ../src/Glade/MainWindow.ui.h:80
+#: ../src/Glade/MainWindow.ui.h:79
 msgid "1.0x"
 msgstr "1.0x"
 
-#: ../src/Glade/MainWindow.ui.h:81
+#: ../src/Glade/MainWindow.ui.h:80
 msgid ""
 "Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
 "and end timings.\n"
 "Shift+Plus/Minus (on the numpad) shifts timings."
-msgstr ""
+msgstr "Iradokizuna: erabili Ctrl+Plus/Minus eta Alt+Plus/Minus (zenbaki-teklatuan) hasierako eta amaierako denborak doitzeko.\n"
+"Shift+Plus/Minus (zenbaki-teklatuan) desplazamendu-denborak."
 
 #. This is the start time/frame of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:84
+#: ../src/Glade/MainWindow.ui.h:83
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
 msgid "Start:"
 msgstr "Hasiera:"
 
-#: ../src/Glade/MainWindow.ui.h:85
+#: ../src/Glade/MainWindow.ui.h:84
 msgid "End:"
 msgstr "Amaiera:"
 
 #. This is the duration of a subtitle.
-#: ../src/Glade/MainWindow.ui.h:87
+#: ../src/Glade/MainWindow.ui.h:86
 msgid "Duration:"
 msgstr "Iraupena:"
 
@@ -771,74 +783,74 @@ msgid "{0} (translation)"
 msgstr "{0} (itzulpena)"
 
 #. GEOSTD8, HZ not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:37
-#: ../src/GnomeSubtitles/Core/Encodings.cs:49
-#: ../src/GnomeSubtitles/Core/Encodings.cs:80
-#: ../src/GnomeSubtitles/Core/Encodings.cs:105
+#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:51
+#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:109
 msgid "Western"
 msgstr "Mendebalekoa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:38
-#: ../src/GnomeSubtitles/Core/Encodings.cs:81
+#: ../src/GnomeSubtitles/Core/Encodings.cs:40
+#: ../src/GnomeSubtitles/Core/Encodings.cs:85
 msgid "Central European"
 msgstr "Europako Erdialdekoa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:39
+#: ../src/GnomeSubtitles/Core/Encodings.cs:41
 msgid "South European"
 msgstr "Europako Hegoaldekoa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:40
-#: ../src/GnomeSubtitles/Core/Encodings.cs:47
-#: ../src/GnomeSubtitles/Core/Encodings.cs:110
+#: ../src/GnomeSubtitles/Core/Encodings.cs:42
+#: ../src/GnomeSubtitles/Core/Encodings.cs:49
+#: ../src/GnomeSubtitles/Core/Encodings.cs:114
 msgid "Baltic"
 msgstr "Baltikoa"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:41
-#: ../src/GnomeSubtitles/Core/Encodings.cs:82
-#: ../src/GnomeSubtitles/Core/Encodings.cs:90
-#: ../src/GnomeSubtitles/Core/Encodings.cs:96
-#: ../src/GnomeSubtitles/Core/Encodings.cs:104
+#: ../src/GnomeSubtitles/Core/Encodings.cs:43
+#: ../src/GnomeSubtitles/Core/Encodings.cs:86
+#: ../src/GnomeSubtitles/Core/Encodings.cs:94
+#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:108
 msgid "Cyrillic"
 msgstr "Zirilikoa"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:42
-#: ../src/GnomeSubtitles/Core/Encodings.cs:88
-#: ../src/GnomeSubtitles/Core/Encodings.cs:109
+#: ../src/GnomeSubtitles/Core/Encodings.cs:44
+#: ../src/GnomeSubtitles/Core/Encodings.cs:92
+#: ../src/GnomeSubtitles/Core/Encodings.cs:113
 msgid "Arabic"
 msgstr "Arabiera"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:43
-#: ../src/GnomeSubtitles/Core/Encodings.cs:91
-#: ../src/GnomeSubtitles/Core/Encodings.cs:106
+#: ../src/GnomeSubtitles/Core/Encodings.cs:45
+#: ../src/GnomeSubtitles/Core/Encodings.cs:95
+#: ../src/GnomeSubtitles/Core/Encodings.cs:110
 msgid "Greek"
 msgstr "Greziera"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:44
-#: ../src/GnomeSubtitles/Core/Encodings.cs:86
-#: ../src/GnomeSubtitles/Core/Encodings.cs:108
+#: ../src/GnomeSubtitles/Core/Encodings.cs:46
+#: ../src/GnomeSubtitles/Core/Encodings.cs:90
+#: ../src/GnomeSubtitles/Core/Encodings.cs:112
 msgid "Hebrew"
 msgstr "Hebreera"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:45
-#: ../src/GnomeSubtitles/Core/Encodings.cs:83
-#: ../src/GnomeSubtitles/Core/Encodings.cs:107
+#: ../src/GnomeSubtitles/Core/Encodings.cs:47
+#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:111
 msgid "Turkish"
 msgstr "Turkiera"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:46
-#: ../src/GnomeSubtitles/Core/Encodings.cs:89
+#: ../src/GnomeSubtitles/Core/Encodings.cs:48
+#: ../src/GnomeSubtitles/Core/Encodings.cs:93
 msgid "Nordic"
 msgstr "Nordikoa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:48
+#: ../src/GnomeSubtitles/Core/Encodings.cs:50
 msgid "Celtic"
 msgstr "Zeltiarra"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:50
+#: ../src/GnomeSubtitles/Core/Encodings.cs:52
 msgid "Romanian"
 msgstr "Errumaniera"
 
@@ -846,25 +858,30 @@ msgstr "Errumaniera"
 #. Added
 #. Little endian
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:53
-#: ../src/GnomeSubtitles/Core/Encodings.cs:54
 #: ../src/GnomeSubtitles/Core/Encodings.cs:55
-#: ../src/GnomeSubtitles/Core/Encodings.cs:56
 #: ../src/GnomeSubtitles/Core/Encodings.cs:57
 #: ../src/GnomeSubtitles/Core/Encodings.cs:58
 #: ../src/GnomeSubtitles/Core/Encodings.cs:59
 #: ../src/GnomeSubtitles/Core/Encodings.cs:60
+#: ../src/GnomeSubtitles/Core/Encodings.cs:61
+#: ../src/GnomeSubtitles/Core/Encodings.cs:62
+#: ../src/GnomeSubtitles/Core/Encodings.cs:63
+#: ../src/GnomeSubtitles/Core/Encodings.cs:64
 msgid "Unicode"
 msgstr "Unicode"
 
+#: ../src/GnomeSubtitles/Core/Encodings.cs:57
+msgid "UTF-8 without BOM"
+msgstr "UTF-8 BOM gabe"
+
 #. Added
 #. UCS-2 and UCS-4 not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:63
-#: ../src/GnomeSubtitles/Core/Encodings.cs:64
+#: ../src/GnomeSubtitles/Core/Encodings.cs:67
+#: ../src/GnomeSubtitles/Core/Encodings.cs:68
 msgid "Chinese Traditional"
 msgstr "Txinera tradizionala"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:65
+#: ../src/GnomeSubtitles/Core/Encodings.cs:69
 msgid "Cyrillic/Russian"
 msgstr "Zirilikoa/Errusiarra"
 
@@ -872,54 +889,54 @@ msgstr "Zirilikoa/Errusiarra"
 #. Added
 #. Added
 #. ISO-IR-111, KOI8R, KOI8U not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:68
-#: ../src/GnomeSubtitles/Core/Encodings.cs:69
-#: ../src/GnomeSubtitles/Core/Encodings.cs:93
-#: ../src/GnomeSubtitles/Core/Encodings.cs:100
+#: ../src/GnomeSubtitles/Core/Encodings.cs:72
+#: ../src/GnomeSubtitles/Core/Encodings.cs:73
+#: ../src/GnomeSubtitles/Core/Encodings.cs:97
+#: ../src/GnomeSubtitles/Core/Encodings.cs:104
 msgid "Japanese"
 msgstr "Japoniera"
 
 #. EUC-JP-MS not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:72
-#: ../src/GnomeSubtitles/Core/Encodings.cs:94
-#: ../src/GnomeSubtitles/Core/Encodings.cs:95
+#: ../src/GnomeSubtitles/Core/Encodings.cs:76
+#: ../src/GnomeSubtitles/Core/Encodings.cs:98
+#: ../src/GnomeSubtitles/Core/Encodings.cs:99
 msgid "Korean"
 msgstr "Koreera"
 
 #. EUC-TW not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:75
-#: ../src/GnomeSubtitles/Core/Encodings.cs:76
-#: ../src/GnomeSubtitles/Core/Encodings.cs:77
+#: ../src/GnomeSubtitles/Core/Encodings.cs:79
+#: ../src/GnomeSubtitles/Core/Encodings.cs:80
+#: ../src/GnomeSubtitles/Core/Encodings.cs:81
 msgid "Chinese Simplified"
 msgstr "Txinatar soildua"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:84
+#: ../src/GnomeSubtitles/Core/Encodings.cs:88
 msgid "Portuguese"
 msgstr "Portugesa"
 
 #. Added
-#: ../src/GnomeSubtitles/Core/Encodings.cs:85
+#: ../src/GnomeSubtitles/Core/Encodings.cs:89
 msgid "Icelandic"
 msgstr "Islandiera"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:87
+#: ../src/GnomeSubtitles/Core/Encodings.cs:91
 msgid "French Canadian"
 msgstr "Kanadako frantsesa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:97
+#: ../src/GnomeSubtitles/Core/Encodings.cs:101
 msgid "Cyrillic/Ukrainian"
 msgstr "Zirilikoa/Ukrainarra"
 
 #. TCVN, TIS-620, UHC, VISCII not used
-#: ../src/GnomeSubtitles/Core/Encodings.cs:103
+#: ../src/GnomeSubtitles/Core/Encodings.cs:107
 msgid "Central"
 msgstr "Erdialdekoa"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:111
+#: ../src/GnomeSubtitles/Core/Encodings.cs:115
 msgid "Vietnamese"
 msgstr "Vietnamera"
 
-#: ../src/GnomeSubtitles/Core/Encodings.cs:122
+#: ../src/GnomeSubtitles/Core/Encodings.cs:126
 msgid "Current Locale"
 msgstr "Uneko hizkuntza-ezarpena"
 
@@ -947,25 +964,25 @@ msgstr "Hautatutako azpitituluaren eta _lehenaren arteko azpitituluak"
 msgid "Subtitles between those selected and the _last"
 msgstr "Hautatutako azpitituluaren eta a_zkenaren arteko azpitituluak"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:55
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:56
 msgid "Character Encodings"
 msgstr "Karaktere-kodeketak"
 
 #. Left part: Available VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:68
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:69
 msgid "Available Encodings"
 msgstr "Kodeketa erabilgarriak"
 
 #. Right part: Shown VBox
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:85
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:86
 msgid "Chosen Encodings"
 msgstr "Hautatutako kodeketak"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:138
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
 msgid "Description"
 msgstr "Azalpena"
 
-#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
 msgid "Encoding"
 msgstr "Kodeketa"
 
@@ -1064,11 +1081,11 @@ msgstr "Jatorrizko tenporizazioa:"
 
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
 msgid "Original Script Checking:"
-msgstr ""
+msgstr "Jatorrizko scriptaren egiaztatzea:"
 
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
 msgid "Script Updated By:"
-msgstr "Script-aren eguneratzailea:"
+msgstr "Scriptaren eguneratzailea:"
 
 #: ../src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
 msgid "Collisions:"
@@ -1121,25 +1138,25 @@ msgstr "Letra-estiloa:"
 msgid "Font Size:"
 msgstr "Letra-tamaina:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:110
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
 msgid "Video to Open:"
 msgstr "Irekiko den bideoa:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:125
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:126
 #: ../src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
 msgid "Character Encoding:"
 msgstr "Karaktere-kodeketa:"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:207
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:208
 msgid "None"
 msgstr "Bat ere ez"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:275
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:276
 #: ../src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
 msgid "All Files"
 msgstr "Fitxategi guztiak"
 
-#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:282
+#: ../src/GnomeSubtitles/Dialog/FileOpenDialog.cs:283
 msgid "All Subtitle Files"
 msgstr "Azpitituluen fitxategi guztiak"
 
@@ -1194,19 +1211,6 @@ msgid ""
 msgstr "Errore ezezaguna gertatu da. Bidali akatsaren txostena eta sartu errore-izen hau:"
 
 #. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:30
-msgid "Could not open the file"
-msgstr "Ezin izan da fitxategia ireki"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:31
-msgid "Open another file"
-msgstr "Ireki beste fitxategia"
-
-#: ../src/GnomeSubtitles/Dialog/Message/FileOpenErrorDialog.cs:63
-msgid "The file path appears to be invalid."
-msgstr "Fitxategiaren bide-izenak baliogabea dirudi."
-
-#. Strings
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
 msgid "Could not save the file"
 msgstr "Ezin izan da fitxategia gorde"
@@ -1216,12 +1220,12 @@ msgid "Save to another file"
 msgstr "Gorde beste fitxategi batean"
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:41
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
 msgid "You have run out of memory. Please close some programs and try again."
 msgstr "Memoriarik gabe geratu zara. Itxi zenbait programa eta saiatu berriro."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:43
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
 msgid "An I/O error has occurred."
 msgstr "S/I errore bat gertatu da."
 
@@ -1230,7 +1234,7 @@ msgid "You do not have the permissions necessary to save the file."
 msgstr "Ez duzu behar adina baimenik fitxategia gordetzeko."
 
 #: ../src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:47
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
 msgid "The specified file is invalid."
 msgstr "Adierazitako fitxategia baliogabea da."
 
@@ -1288,34 +1292,48 @@ msgstr "Itxi gorde gabe"
 msgid "Save the changes to translation \"{0}\" before closing?"
 msgstr "\"{0}\" itzulpenaren aldaketak gorde nahi dituzu itxi baino lehen?"
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:37
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "Ezin da {0} fitxategia ireki."
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "Ireki beste fitxategia"
+
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
 msgid ""
 "Unable to detect the subtitle format. Please check that the file type is "
 "supported."
 msgstr "Ezin izan da azpitituluen formatu atzeman. Egiaztatu fitxategi mota hori onartzen dela."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:39
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
 msgid ""
 "The encoding used is not supported by your system. Please choose another "
 "encoding."
 msgstr "Erabilitako kodeketa ez dago onartuta zure sisteman. Aukeratu beste kodeketa bat."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:45
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Ez dituzu nahikoa baimen fitxategia irekitzeko."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:49
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
 msgid "The file could not be found."
 msgstr "Fitxategia ezin izan da aurkitu."
 
-#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:51
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
 msgid "The file appears to be too large for a text-based subtitle file."
 msgstr "Fitxategiak handiegia dirudi testuan oinarritutako azpitituluen fitxategi bat izateko."
 
-#. Strings
-#: ../src/GnomeSubtitles/Dialog/Message/VideoErrorDialog.cs:30
-msgid "Could not play the file"
-msgstr "Ezin da fitxategia erreproduzitu"
+#: ../src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "Fitxategiaren bide-izenak baliogabea dirudi."
+
+#: ../src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "Ezin da '{0}' fitxategia erreproduzitu."
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
 msgid "Preferences"
@@ -1339,107 +1357,107 @@ msgid "Translation File Saving"
 msgstr "Itzulpen-fitxategia gordetzea"
 
 #: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
-msgid "Character c_oding to use:"
+msgid "Character _encoding to use:"
 msgstr "Erabiliko den karaktere-k_odeketa:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:89
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
 msgid "If auto detection _fails, use:"
 msgstr "Autodetekzioak _huts egiten badu, erabili:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:93
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
 msgid "Automatically choose the _video file to open"
 msgstr "Aukeratu automatikoki irekiko den _bideoa"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:98
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
 msgid "File Open Dialog"
 msgstr "Fitxategia irekitzeko elkarrizketa-koadroa"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:107
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
 msgid "_Subtitle format to use:"
 msgstr "Erabiliko den azpititulu-_formatua:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
-msgid "Ch_aracter coding to use:"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+msgid "Ch_aracter encoding to use:"
 msgstr "Erabiliko den k_araktere-kodeketa:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:115
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
 msgid "_Newline type to use:"
 msgstr "Erabiliko den _lerro berriaren mota:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:119
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
 msgid "File Save As Dialog"
 msgstr "Fitxategia honela gordetzeko elkarrizketa-koadroa"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:127
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
 msgid "Create a _backup copy of files every"
 msgstr "Sortu fitxategien _babeskopia bat honako tarteetan:"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:140
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
 msgid "minutes"
 msgstr "minutu"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:142
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
 msgid "Backup"
 msgstr "Babeskopia"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:155
-msgid "Seek the video to the selected subtitle when changing timings"
-msgstr ""
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr "_Bilatu hautatutako azpititulua bideoan denborak aldatzen direnean"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:161
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
 msgid "Play"
 msgstr "Erreproduzitu"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:168
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
 msgid "ms before the actual start to help review new timings"
-msgstr ""
+msgstr "ms benetako hasieraren aurretik, denbora berriak berrikusten laguntzeko"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
 msgid "Video Seeking"
-msgstr ""
+msgstr "Bilaketak bideoan"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:177
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
 msgid "Leave"
 msgstr "Utzi"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:183
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
 msgid "ms between subtitles when inserting or splitting"
-msgstr ""
+msgstr "ms azpitituluen artean haiek txertatzean edo zatitzean"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:185
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
 msgid "Gap Between Subtitles"
 msgstr "Azpitituluen arteko tartea"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
-msgid "Subtract"
-msgstr "Kendu"
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+msgid "Subtr_act"
+msgstr "_Kendu"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:205
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
 msgid "ms when setting subtitle start/end while playing the video"
-msgstr ""
+msgstr "ms bideoa erreproduzitzen ari den bitartean azpitituluen hasiera/amaiera ezartzean"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:206
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
 msgid "Reaction Delay"
 msgstr "Erreakzioaren atzerapena"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:212
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Remember the last used encoding"
 msgstr "Gogoratu erabilitako azken kodeketa"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:247
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
 msgid "Keep the encoding used on file open"
 msgstr "Mantendu fitxategia irekitzean erabilitako kodeketa"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Keep the format used on file open"
 msgstr "Mantendu fitxategia irekitzean erabilitako formatua"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:266
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
 msgid "Remember the last used format"
 msgstr "Gogoratu erabilitako azken formatua"
 
-#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:282
+#: ../src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
 msgid "Remember the last used type"
 msgstr "Gogoratu erabilitako azken mota"
 
@@ -1494,10 +1512,12 @@ msgstr "Testuaren hizkuntza"
 msgid "Translation Language"
 msgstr "Itzulpenaren hizkuntza"
 
-#. Bottom: info message
 #: ../src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
-msgid "For additional languages please install the corresponding package."
-msgstr "Hizkuntza gehiagorako, instalatu hizkuntzari dagokion paketea."
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr "Erabili zure banaketaren pakete-kudeatzailea hizkuntza gehiago instalatzeko (iradokizuna: bilatu 'spell'). Onartutako hizkuntza-paketeak: {0}."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1552,7 +1572,7 @@ msgstr "Ezarri bideotik"
 msgid ""
 "Sets the shift amount in order for the selected subtitles to start at the "
 "current video position."
-msgstr ""
+msgstr "Hautatutako azpitituluak bideoaren uneko posizioan hasi daitezen behar den desplazamendua ezartzen du."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
 msgid "Amount"
@@ -1563,7 +1583,7 @@ msgstr "Kantitatea"
 msgid ""
 "Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
 "from the main window."
-msgstr ""
+msgstr "Iradokizuna: horren ordez, erabili Shift + zenbaki-teklatuaren Plus/Minus denborak zuzenean leiho nagusian desplazatzeko."
 
 #: ../src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
 msgid "Synchronize Timings"
@@ -1643,7 +1663,7 @@ msgstr "Audio-fitxategiak"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
 msgid "Seek Video To"
-msgstr ""
+msgstr "Bilatu bideoan"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
 msgid "_Seek"
@@ -1651,7 +1671,7 @@ msgstr "_Bilatu"
 
 #: ../src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
 msgid "Seek _video to:"
-msgstr ""
+msgstr "Bilatu _bideoan:"
 
 #: ../src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
 msgid "Add or Remove…"
@@ -1682,19 +1702,30 @@ msgstr "Testua"
 
 #: ../src/GnomeSubtitles/Ui/Status.cs:58
 msgid "Trans"
-msgstr ""
+msgstr "Trans"
 
 #. To translators: Ln corresponds to Line
 #: ../src/GnomeSubtitles/Ui/Status.cs:60
 msgid "Ln"
-msgstr ""
+msgstr "Ln"
 
 #. To translators: Col corresponds to Column
 #: ../src/GnomeSubtitles/Ui/Status.cs:62
 msgid "Col"
 msgstr "Zutabea"
 
-#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:194
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "Multimedia-erreproduzitzailearen errorea"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr "Ustekabeko errorea gertatu da: '{0}'. Ikusi erregistroa informazio gehiagorako:"
+
+#: ../src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
 msgid "Frame"
 msgstr "Markoa"
 
@@ -1707,10 +1738,15 @@ msgstr "Zbkia."
 msgid "End"
 msgstr "Amaiera"
 
-#: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
-msgid "Duration"
-msgstr "Iraupena"
-
 #: ../src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
 msgid "Translation"
 msgstr "Itzulpena"
+
+#~ msgid "_Contents"
+#~ msgstr "_Edukia"
+
+#~ msgid "Length\t"
+#~ msgstr "Luzera\t"
+
+#~ msgid "For additional languages please install the corresponding package."
+#~ msgstr "Hizkuntza gehiagorako, instalatu hizkuntzari dagokion paketea."
