@@ -14,7 +14,7 @@ dependency('gstreamer-video-1.0', version : '>= 1.0')
 dependency('gstreamer-plugins-base-1.0', version : '>= 1.0')
 dependency('gstreamer-pbutils-1.0', version : '>= 1.0')
 
-gst_sharp = subproject('gstreamer-sharp', default_options: ['install=true'])
+gst_sharp = subproject('gstreamer-sharp')
 gst_sharp_dep = gst_sharp.get_variable('gst_sharp_dep')
 gtk_sharp_dep = gst_sharp.get_variable('gtk_sharp_dep')
 
