@@ -30,31 +30,28 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="Mono.Posix" />
-    <Reference Include="atk-sharp">
-      <HintPath>build\atk-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="gdk-sharp">
-      <HintPath>build\gdk-sharp.dll</HintPath>
+    <Reference Include="cairo-sharp">
+      <HintPath>build\subprojects\gtk-sharp\Source\cairo\cairo-sharp.dll</HintPath>
     </Reference>
     <Reference Include="gio-sharp">
-      <HintPath>build\gio-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\gio\gio-sharp.dll</HintPath>
     </Reference>
     <Reference Include="glib-sharp">
-      <HintPath>build\glib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="gstreamer-sharp">
-      <HintPath>build\gstreamer-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\glib\glib-sharp.dll</HintPath>
     </Reference>
     <Reference Include="gtk-sharp">
-      <HintPath>build\gtk-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\gtk\gtk-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="gstreamer-sharp">
+      <HintPath>build\subprojects\gstreamer-sharp\sources\gstreamer-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="gdk-sharp">
+      <HintPath>build\subprojects\gtk-sharp\Source\gdk\gdk-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="pango-sharp">
-      <HintPath>build\pango-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="cairo-sharp">
-      <HintPath>build\cairo-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\pango\pango-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

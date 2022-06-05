@@ -23,5 +23,7 @@ subdir('po')
 subdir('src')
 subdir('build-aux')
 
+summary('Install gtk-sharp', get_option('install_gtk_sharp'))
+summary('Install gstreamer-sharp', get_option('install_gst_sharp'))
 summary('Require all tests', get_option('require_all_tests'))
 

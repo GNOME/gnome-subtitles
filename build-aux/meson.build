@@ -1,4 +1,4 @@
-meson.add_install_script('meson_post_install.py', get_option('libdir'))
+meson.add_install_script('meson_post_install.py', get_option('libdir'), get_option('install_gtk_sharp').to_string(), get_option('install_gst_sharp').to_string())
 
 configure_file(
 	input: 'gnome-subtitles.in',
