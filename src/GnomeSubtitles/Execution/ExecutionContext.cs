@@ -68,6 +68,10 @@ public class ExecutionContext {
 	public string Version {
 		get { return RemoveTrailingZeros(Assembly.GetExecutingAssembly().GetName().Version.ToString()); }
 	}
+	
+	public string Copyright {
+		get { return ((AssemblyCopyrightAttribute)Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(AssemblyCopyrightAttribute))).Copyright; }
+	}
 
 	public string GtkSharpVersion {
 		get { return RemoveTrailingZeros(Assembly.Load("gtk-sharp").GetName().Version.ToString()); }

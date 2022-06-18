@@ -1,6 +1,6 @@
 # Gnome Subtitles
 
-http://gnomesubtitles.org
+https://gnomesubtitles.org
 
 Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports the most
 common text-based subtitle formats and allows for subtitle editing, translation
@@ -9,52 +9,53 @@ and synchronization.
 
 ## Dependencies
 
-
-Run time dependencies:
-- mono-runtime		>= 4.0
-- libmono-i18n4.0-all	>= 4.0
-- libmono-posix4.0-cil	>= 4.0
-- libgtk3.0		>= 3.12
-- libgtk3.0-cil		>= 2.99.2
-- gstreamer1.0		>= 1.0
-- gstreamer1.0-x	>= 1.0
-- gstreamer1.0-gtk3	>= 1.0
-- gstreamer1.0-plugins-good	>= 1.0
-- gstreamer1.0-libav	>= 1.0
-- enchant		>= 1.6
-- gtkspell3		>= 3.0
+Runtime dependencies:
+- mono-runtime			>= 4.0
+- libmono-i18n4.0-all		>= 4.0
+- libmono-posix4.0-cil		>= 4.0
+- libgtk3.0			>= 3.12
+- libenchant			>= 1.6
+- libgtkspell3			>= 3.0
+- libgstreamer1.0		>= 1.18
+- gstreamer1.0-gtk3		>= 1.18
+- gstreamer1.0-plugins-good	>= 1.18
+- gstreamer1.0-libav		>= 1.18 (optional, for media codecs)
 
 Build time dependencies:
-- pkg-config, intltool, autoconf, automake, libtool and yelp-tools
-- libgtk-3-dev		>= 3.12
+- git
+- xsltproc
+- gettext
+- gcc
+- meson			>= 0.53
 - mono-devel		>= 4.0
-- gtk-sharp3		>= 2.99.2
-- libgstreamer1.0-dev	>= 1.0
-- libgstreamer-plugins-base1.0-dev >= 1.0
+- libgtk-3-dev		>= 3.12
+- libgstreamer1.0-dev	>= 1.18
+- libges-1.0-dev	>= 1.18
+- libgstreamer-plugins-base1.0-dev	>= 1.18
+- libgstreamer-plugins-bad1.0-dev	>= 1.18
 
 
-## Packaging Notes
+## Building
 
-Check the NEWS file for dependency changes and other packaging notes.
+	meson build && meson compile -C build
 
 
-## Hacking Gnome Subtitles
+## Installing
 
-Get the latest code from the GNOME Git repository:
+	meson install -C build
 
-	git@gitlab.gnome.org:GNOME/gnome-subtitles.git
 
-Install all required run time and build time dependencies (see above) plus the following which
-are required to run autogen.sh:
+## Hacking
 
-	gnome-common
-	gtk-doc-tools
+Build the solution with Meson (see Building above) to compile all dependencies
+and make them available in Monodevelop. This only needs to be done once.
+Fire up Monodevelop and open the solution file 'gnome-subtitles.sln'.
 
-Run the build tools to make sure necessary libraries are compiled and placed on the 'build' dir:
 
-	./autogen.sh && make
+## License
 
-Fire up Monodevelop and open solution file 'gnome-subtitles.sln'.
+Gnome Subtitles is released under the GNU General Public License (GPL) version 2 or
+later, see the file [COPYING](COPYING) for more information.
 
 
 ## Need help?

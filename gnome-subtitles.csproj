@@ -30,31 +30,28 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="Mono.Posix" />
-    <Reference Include="atk-sharp">
-      <HintPath>build\atk-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="gdk-sharp">
-      <HintPath>build\gdk-sharp.dll</HintPath>
+    <Reference Include="cairo-sharp">
+      <HintPath>build\subprojects\gtk-sharp\Source\cairo\cairo-sharp.dll</HintPath>
     </Reference>
     <Reference Include="gio-sharp">
-      <HintPath>build\gio-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\gio\gio-sharp.dll</HintPath>
     </Reference>
     <Reference Include="glib-sharp">
-      <HintPath>build\glib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="gstreamer-sharp">
-      <HintPath>build\gstreamer-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\glib\glib-sharp.dll</HintPath>
     </Reference>
     <Reference Include="gtk-sharp">
-      <HintPath>build\gtk-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\gtk\gtk-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="gstreamer-sharp">
+      <HintPath>build\subprojects\gstreamer-sharp\sources\gstreamer-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="gdk-sharp">
+      <HintPath>build\subprojects\gtk-sharp\Source\gdk\gdk-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="pango-sharp">
-      <HintPath>build\pango-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="cairo-sharp">
-      <HintPath>build\cairo-sharp.dll</HintPath>
+      <HintPath>build\subprojects\gtk-sharp\Source\pango\pango-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +153,6 @@
     <Compile Include="src\GnomeSubtitles\Dialog\Message\SubtitleFileOpenErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\VideoFileOpenErrorDialog.cs" />
     <Compile Include="src\GnomeSubtitles\Dialog\Message\WarningDialog.cs" />
-    <Compile Include="src\GnomeSubtitles\Execution\AssemblyInfo.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\BugReporter.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\Executable.cs" />
     <Compile Include="src\GnomeSubtitles\Execution\ExecutionContext.cs" />
@@ -281,6 +277,7 @@
     <Compile Include="src\GnomeSubtitles\Dialog\Message\DialogUtil.cs" />
     <Compile Include="src\External\GStreamer\GstBackend.cs" />
     <Compile Include="src\External\GStreamer\GstMediaInfo.cs" />
+    <Compile Include="src\GnomeSubtitles\Execution\DummyAssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
