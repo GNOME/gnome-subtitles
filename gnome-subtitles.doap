@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+  <name xml:lang="en">Gnome Subtitles</name>
+  <shortdesc xml:lang="en">Video subtitling for the GNOME desktop</shortdesc>
+  <description>
+Gnome Subtitles is a subtitle editor for the GNOME desktop. It supports the most
+common text-based subtitle formats and allows for subtitle editing, translation
+and synchronization.
+  </description>
+
+  <homepage rdf:resource="https://gnomesubtitles.org" />
+  <download-page rdf:resource="https://gnomesubtitles.org/download/" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/" />
+  <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
+  <programming-language>CS</programming-language>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Pedro Castro</foaf:name>
+      <foaf:mbox rdf:resource="mailto:pedro@gnomesubtitles.org" />
+      <gnome:userid>pcastro</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+
+</Project>
