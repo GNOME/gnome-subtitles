@@ -21,7 +21,7 @@ Runtime dependencies:
 - gstreamer1.0-plugins-good	>= 1.18
 - gstreamer1.0-libav		>= 1.18 (optional, for media codecs)
 
-Build time dependencies:
+Build dependencies:
 - git
 - xsltproc
 - gettext
