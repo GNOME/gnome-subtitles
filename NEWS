@@ -1,6 +1,43 @@
 Gnome Subtitles
 ===============
 
+
+1.8 (24/06/22)
+==============
+
+- Fixed issues with audio and video playback
+- Fixed a crash that occurred when pressing up/down after setting the subtitle start/end
+  from the video position
+- Replaced the custom gstreamer wrapper with gstreamer-sharp
+- Switched to GLibSharp/GtkSharp (https://github.com/GLibSharp/GtkSharp)
+- Replaced Autotools with the Meson build system
+- Removed the user guide which was outdated
+
+Note to packagers:
+- Autotools have been replaced with Meson
+- Gtk-sharp libs (from https://github.com/GLibSharp/GtkSharp) are now built and bundled with
+  Gnome Subtitles, as gtk-sharp typically available in distros (2.99.x) is not being
+  maintained. Packages should no longer depend on the old gtk-sharp.
+- Gstreamer-sharp (from https://gitlab.freedesktop.org/gstreamer/gstreamer) is now built and
+  bundled with Gnome Subtitles, instead of the previous custom C wrapper.
+- See the README.md file for a complete and updated dependency list.
+
+Issues:
+- Meson port (#106)
+- Error when opening some videos at the same time as the subtitle file (#184)
+- Crash at the end of video playback (#189)
+- GNOME subtitle crashes when I press a key after changing time (#194)
+
+Translations:
+- Alan Mortensen (da)
+- Jürgen Benvenuti (de)
+- Daniel Mustieles (es)
+- Asier Sarasua Garmendia (eu)
+- Hugo Carvalho (pt)
+- Emin Tufan Çetin (tr)
+- Luming Zh (zh_CN)
+
+
 1.7.2 (01/11/21)
 ================
 
