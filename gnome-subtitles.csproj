@@ -297,4 +297,16 @@
       <LogicalName>gnome-subtitles.svg</LogicalName>
     </None>
   </ItemGroup>
+  <ItemGroup>
+	<ContentWithTargetPath Include="build-aux\gnome-subtitles.exe.config">
+	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	<TargetPath>gnome-subtitles.exe.config</TargetPath>
+	</ContentWithTargetPath>
+  </ItemGroup>
+  <ItemGroup>
+	<ContentWithTargetPath Include="build-aux\cairo-sharp.dll.config">
+	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	<TargetPath>cairo-sharp.dll.config</TargetPath>
+	</ContentWithTargetPath>
+  </ItemGroup>
 </Project>
