@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/issues\n"
 "POT-Creation-Date: 2022-09-20 20:42+0000\n"
-"PO-Revision-Date: 2023-03-11 09:52+0000\n"
+"PO-Revision-Date: 2023-03-11 14:01+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -228,6 +228,9 @@ msgid ""
 "Whether to automatically choose the video file to open, when opening a "
 "subtitle file. A video file is chosen based on the name of the subtitle file."
 msgstr ""
+"Hvort velja eigi sjálfvirkt myndskeiðsskrána sem á að opna þegar"
+" skjátextaskrá er opnuð. Myndskeiðsskráin er valin út frá heiti"
+" skjátextaskrárinnar."
 
 #: data/org.gnome.GnomeSubtitles.gschema.xml:68
 msgid "Apply reaction delay"
@@ -267,12 +270,14 @@ msgstr ""
 
 #: data/org.gnome.GnomeSubtitles.gschema.xml:83
 msgid "Seek on change rewind"
-msgstr ""
+msgstr "Hopp við skiptingu"
 
 #: data/org.gnome.GnomeSubtitles.gschema.xml:84
 msgid ""
 "Time, in milliseconds, to rewind the video when seeking on subtitles change."
 msgstr ""
+"Tími, í millisekúndum, sem spóla á til baka í myndskeiðsskrá þegar leitað er"
+" að skiptingum á milli skjátexta."
 
 #: data/org.gnome.GnomeSubtitles.gschema.xml:89
 msgid "View line lengths"
@@ -344,6 +349,8 @@ msgid ""
 "Time interval, in seconds, to automatically backup files. A minimum of 30 "
 "seconds is recommended."
 msgstr ""
+"Millibil í sekúndum á milli þess sem skrár eru sjálfvirkt öryggisafritaðar."
+" Mælt er með að minnsta kosti 30 sekúndum."
 
 #: data/org.gnome.GnomeSubtitles.gschema.xml:132
 msgid "Time step increment"
@@ -378,6 +385,8 @@ msgid ""
 "Recommended time between subtitles, in milliseconds, used for example when "
 "splitting a subtitle in two."
 msgstr ""
+"Tími sem mælt er með á milli skjátexta, í millísekúndum, notað til dæmis"
+" þegar skjátexta er skipt í tvennt."
 
 #: src/External/GStreamer/GstBackend.cs:193
 #| msgid "The file could not be found."
@@ -386,7 +395,7 @@ msgstr "Skráin inniheldur hvorki myndskeið né hljóð."
 
 #: src/External/GStreamer/GstBackend.cs:355
 msgid "Unable to obtain the complete media information."
-msgstr ""
+msgstr "Gat ekki sótt heildarupplýsingar um gagnamiðil."
 
 #: src/Glade/MainWindow.ui:49
 msgid "_File"
@@ -706,6 +715,8 @@ msgid ""
 "Sets the subtitle Start and End while the video is playing. Keep the button "
 "pressed for the duration of each subtitle."
 msgstr ""
+"Setur inn upphaf og enda skjátexta á meðan myndskeið er í afspilun. Haltu"
+" hnappnum niðri fyrir tímalengd hvers skjátexta."
 
 #: src/Glade/MainWindow.ui:1588
 msgid "1.0x"
@@ -1603,6 +1614,9 @@ msgid ""
 "Use your distro's package manager to install additional languages (tip: "
 "search for 'spell'). Supported language packs: {0}."
 msgstr ""
+"Notaðu pakkastýringu dreifingarinnar þinnar til að setja inn viðbótartungumál"
+" (ábending: "
+"leitaðu að 'spell'). Studdir tungumálapakkar: {0}."
 
 #: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
 msgid "Adjust Timings Between 2 Points"
@@ -1658,6 +1672,8 @@ msgid ""
 "Sets the shift amount in order for the selected subtitles to start at the "
 "current video position."
 msgstr ""
+"Stillir magn hliðrunar til að valdir skjátextar byrji á núverandi"
+" staðsetningu í myndskeiðinu."
 
 #: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
 msgid "Amount"
