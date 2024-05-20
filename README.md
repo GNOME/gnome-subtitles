@@ -62,7 +62,7 @@ later, see the file [COPYING](COPYING) for more information.
 
 Create an issue on gitlab:
 
-	https://gitlab.gnome.org/GNOME/gnome-subtitles/issues/new
+	https://gitlab.gnome.org/GNOME/gnome-subtitles/-/issues/
 
 or contact the maintainer:
 
