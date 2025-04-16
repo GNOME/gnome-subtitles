@@ -1,0 +1,2000 @@
+# gnome-subtitles ja.po
+# Copyright (C) 2014, 2025 gnome-subtitles's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-subtitles package.
+# Naoki Takayama <naoki8@gmail.com>, 2014.
+# Takayuki Kusano <https://bsky.app/profile/tkusano.jp>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-subtitles\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-subtitles/"
+"issues/\n"
+"POT-Creation-Date: 2025-04-11 02:05+0000\n"
+"PO-Revision-Date: 2025-04-16 17:21+0900\n"
+"Last-Translator: Takayuki Kusano <https://bsky.app/profile/tkusano.jp>\n"
+"Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
+"Language: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/org.gnome.GnomeSubtitles.appdata.xml.in:7
+#: data/org.gnome.GnomeSubtitles.desktop.in:4
+msgid "Gnome Subtitles"
+msgstr "Gnome Subtitles"
+
+#: data/org.gnome.GnomeSubtitles.appdata.xml.in:8
+#: data/org.gnome.GnomeSubtitles.desktop.in:6
+#: src/GnomeSubtitles/Dialog/AboutDialog.cs:47
+msgid "Video subtitling for the GNOME desktop"
+msgstr "GNOMEデスクトップ用の字幕ツール"
+
+#: data/org.gnome.GnomeSubtitles.appdata.xml.in:10
+msgid ""
+"Gnome Subtitles is a subtitle editor for the GNOME desktop environment. It "
+"allows to create, synchronize, convert and translate subtitles by using a "
+"friendly user interface with video preview."
+msgstr ""
+"Gnome SubtitlesはGNOMEデスクトップ環境用の字幕エディタです。ビデオをプレ"
+"ビューしながらフレンドリーなユーザーインターフェイスを使用して、字幕を作成、"
+"同期、変換、翻訳することができます。"
+
+#: data/org.gnome.GnomeSubtitles.appdata.xml.in:14
+msgid ""
+"A total of 22 subtitle formats are supported, including but not limited to: "
+"SubRip, MicroDVD, FAB Subtitler, MPlayer, Sub Station Alpha, MPSub and "
+"SubViewer."
+msgstr ""
+"SubRip、MicroDVD、FAB Subtitler、MPlayer、Sub Station Alpha、MPSub、SubViewer"
+"など、全部で22種類の字幕フォーマットに対応しています。"
+
+#: data/org.gnome.GnomeSubtitles.appdata.xml.in:31
+msgid "Main window"
+msgstr "メインウインドウ"
+
+#: data/org.gnome.GnomeSubtitles.desktop.in:5
+msgid "Subtitle Editor"
+msgstr "字幕エディタ"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.GnomeSubtitles.desktop.in:15
+msgid "subtitles;video;captions;"
+msgstr "字幕;ビデオ;キャプション;subtitles;video;captions;"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:7
+msgid "Encodings shown in menu"
+msgstr "メニューに表示する文字コード"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:8
+msgid "List of encodings shown in the File Open/Save dialogs."
+msgstr "ファイルの開く/保存ダイアログに表示する文字コードのリスト。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:12
+msgid "File Open encoding option"
+msgstr "ファイルを開くときの文字コードオプション"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:13
+msgid ""
+"Encoding option to use by default when opening files. Possible values are: "
+"\"AutoDetect\" to use auto detection, \"RememberLastUsed\" to remember the "
+"last used encoding, \"CurrentLocale\" to use the current locale, and "
+"\"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_open_encoding "
+"key."
+msgstr ""
+"ファイルを開くときに使用する文字コードオプション。可能な値"
+"は、\"AutoDetect\" (自動検出)、\"RememberLastUsed\" (最後に使用した文字コード"
+"を記憶)、\"CurrentLocale\" (現在のロケールを使用)、\"Specific\" (特定の文字"
+"コードを使用)です。\"RememberLastUsed\" と \"Specific\" の文字コードは、"
+"file_open_encoding キーに保存されます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:17
+msgid "File Open encoding"
+msgstr "ファイルを開くときの文字コード"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:18
+msgid ""
+"Encoding to use when opening files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_open_encoding_option key, other possible values are \"AutoDetect\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"ファイルを開くときに使用する文字コード。\"RememberLastUsed\" または "
+"\"Specific\" が file_open_encoding_option キーに設定されている場合に使用され"
+"る実際の文字コードの他、\"AutoDetect\" (自動検出) と \"CurrentLocale\" (現在"
+"のロケールを使用) が使えます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:22
+msgid "Auto detection fallback encoding"
+msgstr "自動検出失敗時の文字コード"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:23
+msgid "Encoding to use when auto detection fails."
+msgstr "自動検出に失敗した場合に使用する文字コード。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:27
+msgid "File Save encoding option"
+msgstr "ファイルに保存時の文字コードオプション"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:28
+msgid ""
+"Encoding option to use by default when saving files. Possible values are: "
+"\"KeepExisting\" to use the existing file's encoding, \"RememberLastUsed\" "
+"to remember the last used encoding, \"CurrentLocale\" to use the current "
+"locale, and \"Specific\" to use a specific encoding. The encoding for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_encoding "
+"key."
+msgstr ""
+"ファイルを保存するときに使用する文字コードオプション。可能な値"
+"は、\"KeepExisting\" (既存のファイルの文字コードを使"
+"用)、\"RememberLastUsed\" (最後に使用した文字コードを記"
+"憶)、\"CurrentLocale\" (現在のロケールを使用)、\"Specific\" (特定の文字コード"
+"を使用)です。\"RememberLastUsed\" と \"Specific\" の文字コードは、"
+"file_save_encoding キーに保存されます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:32
+msgid "File Save encoding"
+msgstr "ファイル保存時の文字コード"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:33
+msgid ""
+"Encoding to use when saving files. Besides the actual encoding, used when "
+"\"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_encoding_option key, other possible values are \"KeepExisting\" "
+"and \"CurrentLocale\"."
+msgstr ""
+"ファイル保存時に使用する文字コード。\"RememberLastUsed\" または \"Specific\" "
+"が file_save_encoding_option キーに設定されている場合に使用される実際の文字"
+"コードの他、\"KeepExisting\" と \"CurrentLocale\" が使えます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:37
+msgid "File Save format option"
+msgstr "ファイル保存フォーマットオプション"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:38
+msgid ""
+"Subtitle format option to use by default when saving files. Possible values "
+"are: \"KeepExisting\" to use the existing file's format, "
+"\"RememberLastUsed\" to remember the last used format, and \"Specific\" to "
+"use a specific format. The subtitle format for \"RememberLastUsed\" and "
+"\"Specific\" is stored in the file_save_format key."
+msgstr ""
+"ファイル保存時に使用する字幕フォーマットオプション。可能な値"
+"は、\"KeepExisting\" (既存のファイルのフォーマットを使"
+"用)、\"RememberLastUsed\" (最後に使用したフォーマットを記"
+"憶)、\"Specific\" (特定のフォーマットを使用)です。\"RememberLastUsed\" と "
+"\"Specific\" の字幕フォーマットは、file_save_format キーに保存されます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:42
+msgid "File Save format"
+msgstr "ファイル保存時のフォーマット"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:43
+msgid ""
+"Subtitle format to use when saving files. Besides the actual format, used "
+"when \"RememberLastUsed\" or \"Specific\" are set in the "
+"file_save_format_option key, other possible values are \"KeepExisting\" and "
+"\"CurrentLocale\"."
+msgstr ""
+"ファイル保存時に使用する字幕フォーマット。\"RememberLastUsed\" または "
+"\"Specific\" が file_save_format_option キーに設定されている場合に使用される"
+"実際のフォーマットの他、\"KeepExisting\"、と \"CurrentLocale\" が使えます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:47
+msgid "File Save newline option"
+msgstr "ファイル保存時の改行コードオプション"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:48
+msgid ""
+"Newline option to use by default when saving files. Possible values are: "
+"\"RememberLastUsed\" to remember the last used newline type, and "
+"\"Specific\" to use a specific newline type. The newline type for "
+"\"RememberLastUsed\" and \"Specific\" is stored in the file_save_newline key."
+msgstr ""
+"ファイル保存時に使用する改行コードオプション。可能な値"
+"は、\"RememberLastUsed\" (最後に使用した改行コードを記憶)、\"Specific\" (特定"
+"の改行コードを使用)です。\"RememberLastUsed\" と \"Specific\" の改行コード"
+"は、file_save_newline キーに保存されます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:52
+msgid "File Save newline"
+msgstr "ファイル保存時の改行コード"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:53
+msgid "Newline type to use when saving files."
+msgstr "ファイル保存時の改行コード。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:57
+msgid "Save translation when saving subtitles"
+msgstr "字幕を保存する際に翻訳を保存"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:58
+msgid "Whether to save existing translations when saving subtitles."
+msgstr "字幕を保存する際に、既存の翻訳を保存するかどうか。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:63
+msgid "Automatically choose the video file"
+msgstr "ビデオファイルを自動で選択"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:64
+msgid ""
+"Whether to automatically choose the video file to open, when opening a "
+"subtitle file. A video file is chosen based on the name of the subtitle file."
+msgstr ""
+"字幕ファイルを開くときに、ビデオファイルを自動で選択するかどうか。ビデオファ"
+"イルは字幕ファイルの名前に基づいて選択されます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:68
+msgid "Apply reaction delay"
+msgstr "反応ディレイ補正を適用"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:69
+msgid ""
+"Whether to apply a reaction delay when setting the start or end times of a "
+"subtitle with the video playing."
+msgstr ""
+"ビデオを再生中に字幕の開始点または終了点を設定する際に、反応ディレイ補正を適"
+"用するかどうか。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:73
+msgid "Reaction delay"
+msgstr "反応ディレイ補正"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:74
+msgid ""
+"Time, in milliseconds, to subtract from the start or end times when setting "
+"them with the video playing."
+msgstr ""
+"ビデオを再生中に字幕の開始点または終了点を設定する際に、差し引く時間(ミリ"
+"秒)。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:78
+msgid "Seek the video on subtitles change"
+msgstr "字幕変更時にビデオを移動"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:79
+msgid ""
+"Whether to seek the video to the start of the first subtitle when one or "
+"more subtitles are changed."
+msgstr ""
+"1つ以上の字幕が変更されたときに、ビデオを最初の字幕の開始点に移動するかどう"
+"か。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:83
+msgid "Seek on change rewind"
+msgstr "変更時に巻き戻し"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:84
+msgid ""
+"Time, in milliseconds, to rewind the video when seeking on subtitles change."
+msgstr "字幕変更時にビデオを巻き戻す時間(ミリ秒)。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:89
+msgid "View line lengths"
+msgstr "行の長さを表示"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:90
+msgid "Whether to view line lengths as characters counts in the subtitle list."
+msgstr "字幕リストに行の長さを文字数として表示するかどうか。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:94
+msgid "Window width"
+msgstr "ウインドウ幅"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:95
+msgid "The width of the Main Window."
+msgstr "メインウインドウの幅。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:99
+msgid "Window height"
+msgstr "ウインドウ高さ"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:100
+msgid "The height of the Main Window."
+msgstr "メインウインドウの高さ。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:105
+msgid "Active spellcheck language for text"
+msgstr "テキストのスペルチェックに使用する言語"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:106
+msgid "The language used to check the spelling of subtitle text."
+msgstr "字幕のテキストのスペルチェックに使用する言語。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:110
+msgid "Active spellcheck language for translation"
+msgstr "翻訳のスペルチェックに使用する言語"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:111
+msgid "The language used to check the spelling of subtitle translation."
+msgstr "字幕の翻訳のスペルチェックに使用する言語。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:115
+msgid "Autocheck spelling"
+msgstr "自動スペルチェック"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:116
+msgid "Whether to automatically check the spelling of subtitle text."
+msgstr "字幕のテキストのスペルを自動でチェックするかどうか。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:121
+msgid "Auto backup"
+msgstr "自動バックアップ"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:122
+msgid ""
+"Whether to automatically backup files. A copy of the file will be "
+"periodically saved with a ~ suffix."
+msgstr ""
+"ファイルを自動でバックアップするかどうか。~ サフィックス付きのファイルのコ"
+"ピーが定期的に保存されます。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:126
+msgid "Backup time"
+msgstr "バックアップ間隔"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:127
+msgid ""
+"Time interval, in seconds, to automatically backup files. A minimum of 30 "
+"seconds is recommended."
+msgstr "自動的にバックアップする時間間隔(秒)。30秒以上を推奨。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:132
+msgid "Time step increment"
+msgstr "時間ステップ増分"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:133
+msgid ""
+"Time, in milliseconds, to add or subtract when adjusting times in spinbutton "
+"controls (e.g., start, end and duration)."
+msgstr ""
+"スピンボタンコントロール(開始点、終了点、表示時間など)で時間を調整する際に加"
+"算または減算する時間(ミリ秒)。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:137
+msgid "Frames step increment"
+msgstr "フレームステップ増分"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:138
+msgid ""
+"Frames to add or subtract when adjusting frames in spinbutton controls (e."
+"g., start, end and duration)."
+msgstr ""
+"スピンボタンコントロール(開始点、終了点、表示時間など)でフレームを調整する際"
+"に加算または減算するフレーム数。"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:142
+msgid "Time between subtitles"
+msgstr "字幕間隔"
+
+#: data/org.gnome.GnomeSubtitles.gschema.xml:143
+msgid ""
+"Recommended time between subtitles, in milliseconds, used for example when "
+"splitting a subtitle in two."
+msgstr "2つの字幕に分割する際などに使用される、字幕間の推奨間隔(ミリ秒)。"
+
+#: src/External/GStreamer/GstBackend.cs:193
+msgid "The file contains no video or audio."
+msgstr "ファイルにはビデオもオーディオも含まれていません。"
+
+#: src/External/GStreamer/GstBackend.cs:355
+msgid "Unable to obtain the complete media information."
+msgstr "メディアの完全な情報を取得できません。"
+
+#: src/Glade/MainWindow.ui:49
+msgid "_File"
+msgstr "ファイル(_F)"
+
+#: src/Glade/MainWindow.ui:59 src/Glade/MainWindow.ui:115
+msgid "_New"
+msgstr "新規(_N)"
+
+#: src/Glade/MainWindow.ui:69 src/Glade/MainWindow.ui:124
+#: src/Glade/MainWindow.ui:703
+msgid "_Open"
+msgstr "開く(_O)"
+
+#: src/Glade/MainWindow.ui:79 src/Glade/MainWindow.ui:146
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: src/Glade/MainWindow.ui:89 src/Glade/MainWindow.ui:156
+msgid "Save _As"
+msgstr "名前を付けて保存(A_)"
+
+#: src/Glade/MainWindow.ui:105
+msgid "_Translation"
+msgstr "翻訳(_T)"
+
+#: src/Glade/MainWindow.ui:135
+msgid "_Reload"
+msgstr "再読込(_R)"
+
+#: src/Glade/MainWindow.ui:166 src/Glade/MainWindow.ui:209
+#: src/Glade/MainWindow.ui:713
+msgid "_Close"
+msgstr "閉じる(_C)"
+
+#: src/Glade/MainWindow.ui:185
+msgid "_Headers"
+msgstr "ヘッダ(_H)"
+
+#: src/Glade/MainWindow.ui:194
+msgid "_Properties"
+msgstr "プロパティ(_P)"
+
+#: src/Glade/MainWindow.ui:219
+msgid "_Quit"
+msgstr "終了(_Q)"
+
+#: src/Glade/MainWindow.ui:233
+msgid "_Edit"
+msgstr "編集(_E)"
+
+#: src/Glade/MainWindow.ui:243
+msgid "_Undo"
+msgstr "元に戻す(_U)"
+
+#: src/Glade/MainWindow.ui:253
+msgid "_Redo"
+msgstr "やり直す(_R)"
+
+#: src/Glade/MainWindow.ui:270
+msgid "Cu_t"
+msgstr "切り取り(_T)"
+
+#: src/Glade/MainWindow.ui:280
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: src/Glade/MainWindow.ui:290
+msgid "_Paste"
+msgstr "貼り付け(_P)"
+
+#: src/Glade/MainWindow.ui:306
+msgid "_Format"
+msgstr "フォーマット(_F)"
+
+#: src/Glade/MainWindow.ui:316
+msgid "_Bold"
+msgstr "太字(_B)"
+
+#: src/Glade/MainWindow.ui:326
+msgid "_Italic"
+msgstr "斜体(_I)"
+
+#: src/Glade/MainWindow.ui:336
+msgid "_Underline"
+msgstr "下線(_U)"
+
+#: src/Glade/MainWindow.ui:356
+msgid "_Split Lines"
+msgstr "複数行に分割(_S)"
+
+#: src/Glade/MainWindow.ui:366
+msgid "_Merge Lines"
+msgstr "複数行を結合(_M)"
+
+#: src/Glade/MainWindow.ui:382
+msgid "_Insert Subtitle"
+msgstr "字幕を挿入(_I)"
+
+#: src/Glade/MainWindow.ui:392
+msgid "_Before"
+msgstr "前に(_B)"
+
+#: src/Glade/MainWindow.ui:402
+msgid "_After"
+msgstr "後に(_A)"
+
+#: src/Glade/MainWindow.ui:412
+msgid "At _Video Position"
+msgstr "再生位置に(_V)"
+
+#: src/Glade/MainWindow.ui:426
+msgid "_Delete Subtitles"
+msgstr "字幕を削除(_D)"
+
+#: src/Glade/MainWindow.ui:441
+msgid "Pr_eferences"
+msgstr "設定(_E)"
+
+#: src/Glade/MainWindow.ui:454
+msgid "_View"
+msgstr "ビュー(_V)"
+
+#: src/Glade/MainWindow.ui:464
+msgid "_Frames"
+msgstr "フレーム表示(_F)"
+
+#: src/Glade/MainWindow.ui:475
+msgid "_Times"
+msgstr "時間表示(_T)"
+
+#: src/Glade/MainWindow.ui:492
+msgid "_Line Lengths"
+msgstr "文字数(_L)"
+
+#: src/Glade/MainWindow.ui:507
+msgid "_Video"
+msgstr "ビデオ(_V)"
+
+#: src/Glade/MainWindow.ui:516
+msgid "Video _Subtitles"
+msgstr "字幕表示(_S)"
+
+#: src/Glade/MainWindow.ui:526
+msgid "_Text"
+msgstr "テキスト(_T)"
+
+#: src/Glade/MainWindow.ui:537
+msgid "Translatio_n"
+msgstr "翻訳(_N)"
+
+#: src/Glade/MainWindow.ui:556
+msgid "_Search"
+msgstr "検索(_S)"
+
+#: src/Glade/MainWindow.ui:566
+msgid "_Find"
+msgstr "検索(_F)"
+
+#: src/Glade/MainWindow.ui:576
+msgid "Find Ne_xt"
+msgstr "次を検索(_X)"
+
+#: src/Glade/MainWindow.ui:587
+msgid "Find Pre_vious"
+msgstr "前を検索(_V)"
+
+#: src/Glade/MainWindow.ui:604 src/GnomeSubtitles/Dialog/SearchDialog.cs:172
+msgid "_Replace"
+msgstr "置換(_R)"
+
+#: src/Glade/MainWindow.ui:618
+msgid "T_imings"
+msgstr "タイミング(_I)"
+
+#: src/Glade/MainWindow.ui:628
+msgid "_Input Frame Rate"
+msgstr "入力フレームレート(_I)"
+
+#: src/Glade/MainWindow.ui:642
+msgid "_Current Frame Rate"
+msgstr "現在のフレームレート(_C)"
+
+#: src/Glade/MainWindow.ui:662
+msgid "_Synchronize"
+msgstr "同期(_S)"
+
+#: src/Glade/MainWindow.ui:671
+msgid "_Adjust"
+msgstr "調整(_A)"
+
+#: src/Glade/MainWindow.ui:680
+msgid "Sh_ift"
+msgstr "シフト(_I)"
+
+#: src/Glade/MainWindow.ui:693
+msgid "Vide_o"
+msgstr "ビデオ(_O)"
+
+#: src/Glade/MainWindow.ui:729
+msgid "_Play / Pause"
+msgstr "再生/停止(_P)"
+
+#: src/Glade/MainWindow.ui:741
+msgid "_Loop Selection"
+msgstr "ループ選択範囲(_L)"
+
+#: src/Glade/MainWindow.ui:752
+msgid "R_ewind"
+msgstr "巻き戻し(_E)"
+
+#: src/Glade/MainWindow.ui:764
+msgid "_Forward"
+msgstr "早送り(_F)"
+
+#: src/Glade/MainWindow.ui:782
+msgid "_Seek to…"
+msgstr "移動…(_S)"
+
+#: src/Glade/MainWindow.ui:793
+msgid "Seek _to Selection"
+msgstr "選択へ移動(_T)"
+
+#: src/Glade/MainWindow.ui:805
+msgid "Select _Nearest Subtitle"
+msgstr "直近の字幕を選択(_N)"
+
+#: src/Glade/MainWindow.ui:817
+msgid "A_uto Select Subtitle"
+msgstr "字幕の自動選択(_U)"
+
+#: src/Glade/MainWindow.ui:834
+msgid "Set Subtitle St_art"
+msgstr "開始点を打つ(_A)"
+
+#: src/Glade/MainWindow.ui:845
+msgid "Set Subtitle En_d"
+msgstr "終了点を打つ(_E)"
+
+#: src/Glade/MainWindow.ui:859
+msgid "_Tools"
+msgstr "ツール(_T)"
+
+#: src/Glade/MainWindow.ui:870
+msgid "_Autocheck Spelling"
+msgstr "スペルチェック(_A)"
+
+#: src/Glade/MainWindow.ui:881
+msgid "Set _Languages"
+msgstr "言語を設定(_L)"
+
+#: src/Glade/MainWindow.ui:894
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: src/Glade/MainWindow.ui:904
+msgid "_Keyboard Shortcuts"
+msgstr "キーボードショートカット(_K)"
+
+#: src/Glade/MainWindow.ui:919
+msgid "_Donate"
+msgstr "寄付(_D)"
+
+#: src/Glade/MainWindow.ui:934
+msgid "Request a New _Feature"
+msgstr "新機能をリクエスト(_F)"
+
+#: src/Glade/MainWindow.ui:943
+msgid "Report a _Bug"
+msgstr "バグを報告(_B)"
+
+#: src/Glade/MainWindow.ui:958
+msgid "_About"
+msgstr "このアプリについて(_A)"
+
+#: src/Glade/MainWindow.ui:982
+msgid "New File"
+msgstr "新規ファイル"
+
+#: src/Glade/MainWindow.ui:996 src/GnomeSubtitles/Dialog/FileOpenDialog.cs:52
+msgid "Open File"
+msgstr "ファイルを開く"
+
+#: src/Glade/MainWindow.ui:1010
+msgid "Save File"
+msgstr "ファイルを保存"
+
+#: src/Glade/MainWindow.ui:1119
+msgid "Insert"
+msgstr "挿入"
+
+#: src/Glade/MainWindow.ui:1133
+msgid "Delete"
+msgstr "削除"
+
+#: src/Glade/MainWindow.ui:1233
+#: src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
+msgid "Time"
+msgstr "時間"
+
+#: src/Glade/MainWindow.ui:1265 src/GnomeSubtitles/Ui/View/SubtitleView.cs:259
+msgid "Duration"
+msgstr "再生時間"
+
+#: src/Glade/MainWindow.ui:1322
+msgid "Sets the subtitle Start to the current video position"
+msgstr "字幕の開始を現在のビデオ位置にセット"
+
+#: src/Glade/MainWindow.ui:1344
+msgid "Sets the subtitle End to the current video position"
+msgstr "字幕の終了を現在のビデオ位置にセット"
+
+#: src/Glade/MainWindow.ui:1367
+msgid ""
+"Sets the subtitle Start and End while the video is playing. Keep the button "
+"pressed for the duration of each subtitle."
+msgstr ""
+"ビデオの再生中に字幕の開始と終了をセットします。各字幕の表示時間中はボタンを"
+"押し続けてください。"
+
+#: src/Glade/MainWindow.ui:1594
+msgid "1.0x"
+msgstr "1.0倍"
+
+#: src/Glade/MainWindow.ui:1723 src/Glade/MainWindow.ui:1737
+msgid ""
+"Tip: use Ctrl+Plus/Minus and Alt+Plus/Minus (on the numpad) to adjust start "
+"and end timings.\n"
+"Shift+Plus/Minus (on the numpad) shifts timings."
+msgstr ""
+"ヒント:[Ctrl] - [ + / - ] (テンキーのプラス・マイナス)で開始点を、[Alt]  - "
+"[ + / - ]で終了点のタイミングを調節できます。\n"
+"[Shift] - [ + / - ] でタイミングをシフトできます。 "
+
+#. This is the start time/frame of a subtitle.
+#: src/Glade/MainWindow.ui:1726
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:102
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:128
+msgid "Start:"
+msgstr "開始:"
+
+#: src/Glade/MainWindow.ui:1740
+msgid "End:"
+msgstr "終了:"
+
+#. This is the duration of a subtitle.
+#: src/Glade/MainWindow.ui:1752
+msgid "Duration:"
+msgstr "表示時間:"
+
+#: src/GnomeSubtitles/Core/Command/AdjustTimingsCommand.cs:28
+msgid "Adjusting timings"
+msgstr "タイミング調整"
+
+#: src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:48
+msgid "Changing Input Frame Rate"
+msgstr "入力フレームレート変更"
+
+#: src/GnomeSubtitles/Core/Command/ChangeFrameRateCommand.cs:68
+msgid "Changing Video Frame Rate"
+msgstr "再生フレームレート変更"
+
+#: src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:56
+msgid "Toggling Bold"
+msgstr "太字トグル"
+
+#: src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:67
+msgid "Toggling Italic"
+msgstr "斜体トグル"
+
+#: src/GnomeSubtitles/Core/Command/ChangeStyleCommand.cs:78
+msgid "Toggling Underline"
+msgstr "下線トグル"
+
+#: src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:74
+msgid "Editing Start"
+msgstr "編集開始"
+
+#: src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:98
+msgid "Editing End"
+msgstr "編集終了"
+
+#: src/GnomeSubtitles/Core/Command/ChangeTimingCommand.cs:120
+msgid "Editing Duration"
+msgstr "編集再生時間"
+
+#: src/GnomeSubtitles/Core/Command/CommandManager.cs:71
+#: src/GnomeSubtitles/Ui/Menus.cs:708
+msgid "Undo"
+msgstr "元に戻す:"
+
+#: src/GnomeSubtitles/Core/Command/CommandManager.cs:80
+#: src/GnomeSubtitles/Ui/Menus.cs:718
+msgid "Redo"
+msgstr "やり直す:"
+
+#: src/GnomeSubtitles/Core/Command/DeleteSubtitlesCommand.cs:28
+msgid "Deleting Subtitles"
+msgstr "字幕を削除"
+
+#: src/GnomeSubtitles/Core/Command/DeleteTextCommand.cs:26
+#: src/GnomeSubtitles/Core/Command/InsertTextCommand.cs:26
+msgid "Editing Text"
+msgstr "テキスト編集"
+
+#: src/GnomeSubtitles/Core/Command/DeleteTranslationCommand.cs:26
+#: src/GnomeSubtitles/Core/Command/InsertTranslationCommand.cs:26
+msgid "Editing Translation"
+msgstr "翻訳編集"
+
+#: src/GnomeSubtitles/Core/Command/InsertSubtitleCommand.cs:28
+msgid "Inserting Subtitle"
+msgstr "字幕の挿入"
+
+#: src/GnomeSubtitles/Core/Command/MergeSubtitlesCommand.cs:30
+msgid "Merging subtitles"
+msgstr "字幕の結合"
+
+#: src/GnomeSubtitles/Core/Command/ReplaceAllCommand.cs:32
+msgid "Replacing All"
+msgstr "すべてを置換"
+
+#: src/GnomeSubtitles/Core/Command/ShiftTimingsCommand.cs:30
+msgid "Shifting timings"
+msgstr "タイミングをシフト"
+
+#: src/GnomeSubtitles/Core/Command/SplitSubtitlesCommand.cs:32
+msgid "Splitting subtitles"
+msgstr "字幕の分割"
+
+#: src/GnomeSubtitles/Core/Command/SynchronizeTimingsCommand.cs:29
+msgid "Synchronizing timings"
+msgstr "タイミング同期"
+
+#: src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:26
+msgid "Setting Subtitle Start"
+msgstr "字幕の開始点をセット"
+
+#: src/GnomeSubtitles/Core/Command/VideoSetSubtitleTimingCommand.cs:45
+msgid "Setting Subtitle End"
+msgstr "字幕の終了点をセット"
+
+#. To translators: this is the filename for new files (before being saved for the first time)
+#: src/GnomeSubtitles/Core/Document.cs:113
+msgid "Unsaved Subtitles"
+msgstr "未保存の字幕"
+
+#. To translators: this defines the name of a translation file. {0}=filename, {1}=language. Example: MovieName (fr translation)
+#: src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} ({1} translation)"
+msgstr "{0} ({1} 翻訳)"
+
+#: src/GnomeSubtitles/Core/Document.cs:122
+#, csharp-format
+msgid "{0} (translation)"
+msgstr "{0} (翻訳)"
+
+#. GEOSTD8, HZ not used
+#: src/GnomeSubtitles/Core/Encodings.cs:39
+#: src/GnomeSubtitles/Core/Encodings.cs:51
+#: src/GnomeSubtitles/Core/Encodings.cs:84
+#: src/GnomeSubtitles/Core/Encodings.cs:109
+msgid "Western"
+msgstr "欧文"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:40
+#: src/GnomeSubtitles/Core/Encodings.cs:85
+msgid "Central European"
+msgstr "中央ヨーロッパ語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:41
+msgid "South European"
+msgstr "南ヨーロッパ語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:42
+#: src/GnomeSubtitles/Core/Encodings.cs:49
+#: src/GnomeSubtitles/Core/Encodings.cs:114
+msgid "Baltic"
+msgstr "バルト語"
+
+#. Added
+#: src/GnomeSubtitles/Core/Encodings.cs:43
+#: src/GnomeSubtitles/Core/Encodings.cs:86
+#: src/GnomeSubtitles/Core/Encodings.cs:94
+#: src/GnomeSubtitles/Core/Encodings.cs:100
+#: src/GnomeSubtitles/Core/Encodings.cs:108
+msgid "Cyrillic"
+msgstr "キリル文字"
+
+#. Added
+#: src/GnomeSubtitles/Core/Encodings.cs:44
+#: src/GnomeSubtitles/Core/Encodings.cs:92
+#: src/GnomeSubtitles/Core/Encodings.cs:113
+msgid "Arabic"
+msgstr "アラビア語"
+
+#. Added
+#: src/GnomeSubtitles/Core/Encodings.cs:45
+#: src/GnomeSubtitles/Core/Encodings.cs:95
+#: src/GnomeSubtitles/Core/Encodings.cs:110
+msgid "Greek"
+msgstr "ギリシャ語"
+
+#. Added
+#: src/GnomeSubtitles/Core/Encodings.cs:46
+#: src/GnomeSubtitles/Core/Encodings.cs:90
+#: src/GnomeSubtitles/Core/Encodings.cs:112
+msgid "Hebrew"
+msgstr "ヘブライ語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:47
+#: src/GnomeSubtitles/Core/Encodings.cs:87
+#: src/GnomeSubtitles/Core/Encodings.cs:111
+msgid "Turkish"
+msgstr "トルコ語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:48
+#: src/GnomeSubtitles/Core/Encodings.cs:93
+msgid "Nordic"
+msgstr "北欧語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:50
+msgid "Celtic"
+msgstr "ケルト語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:52
+msgid "Romanian"
+msgstr "ルーマニア語"
+
+#. ISO-8859-8-I not used
+#. Added
+#. Little endian
+#. Added
+#: src/GnomeSubtitles/Core/Encodings.cs:55
+#: src/GnomeSubtitles/Core/Encodings.cs:57
+#: src/GnomeSubtitles/Core/Encodings.cs:58
+#: src/GnomeSubtitles/Core/Encodings.cs:59
+#: src/GnomeSubtitles/Core/Encodings.cs:60
+#: src/GnomeSubtitles/Core/Encodings.cs:61
+#: src/GnomeSubtitles/Core/Encodings.cs:62
+#: src/GnomeSubtitles/Core/Encodings.cs:63
+#: src/GnomeSubtitles/Core/Encodings.cs:64
+msgid "Unicode"
+msgstr "ユニコード"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:57
+msgid "UTF-8 without BOM"
+msgstr "UTF-8 (BOMなし)"
+
+#. Added
+#. UCS-2 and UCS-4 not used
+#: src/GnomeSubtitles/Core/Encodings.cs:67
+#: src/GnomeSubtitles/Core/Encodings.cs:68
+msgid "Chinese Traditional"
+msgstr "繁体中文"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:69
+msgid "Cyrillic/Russian"
+msgstr "キリル文字・ロシア語"
+
+#. ARMSCII-8 not used
+#. Added
+#. Added
+#. ISO-IR-111, KOI8R, KOI8U not used
+#: src/GnomeSubtitles/Core/Encodings.cs:72
+#: src/GnomeSubtitles/Core/Encodings.cs:73
+#: src/GnomeSubtitles/Core/Encodings.cs:97
+#: src/GnomeSubtitles/Core/Encodings.cs:104
+msgid "Japanese"
+msgstr "日本語"
+
+#. EUC-JP-MS not used
+#: src/GnomeSubtitles/Core/Encodings.cs:76
+#: src/GnomeSubtitles/Core/Encodings.cs:98
+#: src/GnomeSubtitles/Core/Encodings.cs:99
+msgid "Korean"
+msgstr "韓国語"
+
+#. EUC-TW not used
+#: src/GnomeSubtitles/Core/Encodings.cs:79
+#: src/GnomeSubtitles/Core/Encodings.cs:80
+#: src/GnomeSubtitles/Core/Encodings.cs:81
+msgid "Chinese Simplified"
+msgstr "簡体中文"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:88
+msgid "Portuguese"
+msgstr "ポルトガル語"
+
+#. Added
+#: src/GnomeSubtitles/Core/Encodings.cs:89
+msgid "Icelandic"
+msgstr "アイスランド語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:91
+msgid "French Canadian"
+msgstr "フレンチカナディアン"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:101
+msgid "Cyrillic/Ukrainian"
+msgstr "キリル文字・ウクライナ語"
+
+#. TCVN, TIS-620, UHC, VISCII not used
+#: src/GnomeSubtitles/Core/Encodings.cs:107
+msgid "Central"
+msgstr "Central"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:115
+msgid "Vietnamese"
+msgstr "ベトナム語"
+
+#: src/GnomeSubtitles/Core/Encodings.cs:126
+msgid "Current Locale"
+msgstr "現在のロケール"
+
+#: src/GnomeSubtitles/Core/SpellLanguage.cs:30
+msgid "Unknown"
+msgstr "不明"
+
+#: src/GnomeSubtitles/Dialog/AboutDialog.cs:41
+msgid "About Gnome Subtitles"
+msgstr "Gnome Subtitlesについて"
+
+#: src/GnomeSubtitles/Dialog/DialogStrings.cs:26
+msgid "_All subtitles"
+msgstr "すべての字幕(_A)"
+
+#: src/GnomeSubtitles/Dialog/DialogStrings.cs:27
+msgid "_Selected subtitles"
+msgstr "選択された字幕(_S)"
+
+#: src/GnomeSubtitles/Dialog/DialogStrings.cs:28
+msgid "Subtitles between those selected and the _first"
+msgstr "選択したものと最初のものの間の字幕(_F)"
+
+#: src/GnomeSubtitles/Dialog/DialogStrings.cs:29
+msgid "Subtitles between those selected and the _last"
+msgstr "選択したものと最後のものの間の字幕(_L)"
+
+#: src/GnomeSubtitles/Dialog/EncodingsDialog.cs:56
+msgid "Character Encodings"
+msgstr "文字コード"
+
+#. Left part: Available VBox
+#: src/GnomeSubtitles/Dialog/EncodingsDialog.cs:69
+msgid "Available Encodings"
+msgstr "利用可能文字コード"
+
+#. Right part: Shown VBox
+#: src/GnomeSubtitles/Dialog/EncodingsDialog.cs:86
+msgid "Chosen Encodings"
+msgstr "選択した文字コード"
+
+#: src/GnomeSubtitles/Dialog/EncodingsDialog.cs:140
+msgid "Description"
+msgstr "説明"
+
+#: src/GnomeSubtitles/Dialog/EncodingsDialog.cs:144
+msgid "Encoding"
+msgstr "文字コード"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:49
+msgid "Headers"
+msgstr "ヘッダー"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:65
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:93
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:109
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:136
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:153
+msgid "Title:"
+msgstr "タイトル:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:67
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:82
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:97
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:138
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:155
+msgid "Author:"
+msgstr "作者:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:69
+msgid "Artist:"
+msgstr "アーティスト:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:71
+msgid "Album:"
+msgstr "アルバム:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:73
+msgid "By:"
+msgstr "By:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:75
+msgid "Version:"
+msgstr "バージョン:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:77
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:142
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:159
+msgid "Program:"
+msgstr "プログラム:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:84
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:140
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:157
+msgid "Source:"
+msgstr "ソース:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:86
+msgid "Date:"
+msgstr "日付:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:88
+msgid "Frame Rate:"
+msgstr "フレームレート:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:95
+msgid "File:"
+msgstr "ファイル:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:99
+msgid "Note:"
+msgstr "備考:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:101
+msgid "Media Type:"
+msgstr "メディアタイプ"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:103
+msgid "Audio"
+msgstr "オーディオ"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:104
+#: src/GnomeSubtitles/Ui/Menus.cs:38
+msgid "Video"
+msgstr "ビデオ"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:111
+msgid "Original Script:"
+msgstr "元のスクリプト:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:113
+msgid "Original Translation:"
+msgstr "元の翻訳:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:115
+msgid "Original Editing:"
+msgstr "元の編集:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:117
+msgid "Original Timing:"
+msgstr "元のタイミング:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:119
+msgid "Original Script Checking:"
+msgstr "元のスクリプトチェック:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:121
+msgid "Script Updated By:"
+msgstr "スクリプト更新者:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:123
+msgid "Collisions:"
+msgstr "干渉:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:125
+msgid "Timer:"
+msgstr "タイマー:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:127
+msgid "Play Res X:"
+msgstr "水平解像度:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:129
+msgid "Play Res Y:"
+msgstr "垂直解像度:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:131
+msgid "Play Depth:"
+msgstr "再生深度:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:144
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:161
+msgid "File Path:"
+msgstr "ファイルパス:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:146
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:171
+msgid "Delay:"
+msgstr "ディレイ:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:148
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:173
+msgid "CD Track:"
+msgstr "CDトラック番号:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:163
+msgid "Font Name:"
+msgstr "フォント名:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:165
+msgid "Font Color:"
+msgstr "文字色:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:167
+msgid "Font Style:"
+msgstr "文字スタイル:"
+
+#: src/GnomeSubtitles/Dialog/FileHeadersDialog.cs:169
+msgid "Font Size:"
+msgstr "文字サイズ:"
+
+#: src/GnomeSubtitles/Dialog/FileOpenDialog.cs:111
+msgid "Video to Open:"
+msgstr "開くビデオ:"
+
+#: src/GnomeSubtitles/Dialog/FileOpenDialog.cs:126
+#: src/GnomeSubtitles/Dialog/FileSaveDialog.cs:107
+msgid "Character Encoding:"
+msgstr "文字コード:"
+
+#: src/GnomeSubtitles/Dialog/FileOpenDialog.cs:208
+msgid "None"
+msgstr "なし"
+
+#: src/GnomeSubtitles/Dialog/FileOpenDialog.cs:276
+#: src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:102
+msgid "All Files"
+msgstr "すべてのファイル"
+
+#: src/GnomeSubtitles/Dialog/FileOpenDialog.cs:283
+msgid "All Subtitle Files"
+msgstr "すべての字幕ファイル"
+
+#: src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:42
+msgid "File Properties"
+msgstr "ファイルのプロパティ"
+
+#: src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:49
+msgid "File Name"
+msgstr "ファイル名"
+
+#: src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:52
+msgid "Path"
+msgstr "パス"
+
+#: src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:55
+msgid "Character Encoding"
+msgstr "文字コード"
+
+#: src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:58
+msgid "Subtitle Format"
+msgstr "字幕フォーマット"
+
+#: src/GnomeSubtitles/Dialog/FilePropertiesDialog.cs:61
+msgid "Timing Mode"
+msgstr "タイミングモード"
+
+#: src/GnomeSubtitles/Dialog/FileSaveDialog.cs:41
+msgid "Save As"
+msgstr "名前をつけて保存"
+
+#: src/GnomeSubtitles/Dialog/FileSaveDialog.cs:100
+msgid "Subtitle Format:"
+msgstr "字幕フォーマット"
+
+#: src/GnomeSubtitles/Dialog/FileSaveDialog.cs:114
+msgid "Line Ending:"
+msgstr "改行:"
+
+#: src/GnomeSubtitles/Dialog/FileTranslationOpenDialog.cs:27
+msgid "Open Translation File"
+msgstr "翻訳ファイルを開く"
+
+#: src/GnomeSubtitles/Dialog/FileTranslationSaveDialog.cs:27
+msgid "Save Translation As"
+msgstr "翻訳を別の名前で保存"
+
+#: src/GnomeSubtitles/Dialog/Message/ErrorDialog.cs:40
+msgid ""
+"An unknown error has occurred. Please report a bug and include this error "
+"name:"
+msgstr ""
+"予期できないエラーが発生しました。このエラー名を添えてバグレポートにご協力く"
+"ださい:"
+
+#. Strings
+#: src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:32
+msgid "Could not save the file"
+msgstr "ファイルが保存できません"
+
+#: src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:33
+msgid "Save to another file"
+msgstr "別のファイルに保存"
+
+#: src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:61
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:76
+msgid "You have run out of memory. Please close some programs and try again."
+msgstr "メモリ容量不足です。他のプログラムを終了して再度試してください。"
+
+#: src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:63
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:78
+msgid "An I/O error has occurred."
+msgstr "I/Oエラーが発生しました。"
+
+#: src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:65
+msgid "You do not have the permissions necessary to save the file."
+msgstr "このファイルを保存する権限がありません。"
+
+#: src/GnomeSubtitles/Dialog/Message/FileSaveErrorDialog.cs:67
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:82
+msgid "The specified file is invalid."
+msgstr "指定したファイルは無効です。"
+
+#. Strings
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:32
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "保存しない場合はすべての変更は完全に消失します。"
+
+#. Strings
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:90
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before creating new subtitles?"
+msgstr "新規字幕を作成する前に字幕 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:91
+msgid "Create without Saving"
+msgstr "保存せずに作成"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:110
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before creating new subtitles?"
+msgstr "新規字幕を作成する前に翻訳 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:117
+#, csharp-format
+msgid ""
+"Save the changes to translation \"{0}\" before creating a new translation?"
+msgstr "新規翻訳を作成する前に翻訳 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:127
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before opening?"
+msgstr "開く前に字幕 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:128
+msgid "Open without Saving"
+msgstr "保存せずに開く"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:147
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before opening?"
+msgstr "開く前に翻訳 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:156
+#, csharp-format
+msgid "Save the changes to subtitles \"{0}\" before closing?"
+msgstr "閉じる前に字幕 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:157
+msgid "Close without Saving"
+msgstr "保存せずに閉じる"
+
+#: src/GnomeSubtitles/Dialog/Message/SaveConfirmationDialog.cs:175
+#, csharp-format
+msgid "Save the changes to translation \"{0}\" before closing?"
+msgstr "閉じる前に翻訳 \"{0}\" への変更を保存しますか?"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:32
+#, csharp-format
+msgid "Could not open the file {0}."
+msgstr "ファイル {0} が開けません。"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:33
+#: src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:28
+msgid "Open another file"
+msgstr "別のファイルを開く"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:72
+msgid ""
+"Unable to detect the subtitle format. Please check that the file type is "
+"supported."
+msgstr ""
+"字幕形式を検出できません。対応するファイル形式であるかを確認してください"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:74
+msgid ""
+"The encoding used is not supported by your system. Please choose another "
+"encoding."
+msgstr ""
+"使用されているエンコードはお使いのシステムには対応していません。他のエンコー"
+"ディングを選択してください。"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:80
+msgid "You do not have the permissions necessary to open the file."
+msgstr "このファイルを開く権限がありません。"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:84
+msgid "The file could not be found."
+msgstr "ファイルが見つかりません。"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:86
+msgid "The file appears to be too large for a text-based subtitle file."
+msgstr "このファイルはテキストベースの字幕としてはファイルサイズが過大です。"
+
+#: src/GnomeSubtitles/Dialog/Message/SubtitleFileOpenErrorDialog.cs:88
+msgid "The file path appears to be invalid."
+msgstr "指定したパスは無効です。"
+
+#: src/GnomeSubtitles/Dialog/Message/VideoFileOpenErrorDialog.cs:27
+#, csharp-format
+msgid "Could not play the file '{0}'."
+msgstr "ファイルです '{0}' を再生できません。"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:51
+msgid "Preferences"
+msgstr "設定"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:58
+msgid "Files"
+msgstr "ファイル"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:59
+msgid "Editing"
+msgstr "字幕編集"
+
+#. Translation File Saving
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:73
+msgid "When saving subtitle files, automatically save their _translation"
+msgstr "字幕ファイルの保存時に翻訳を自動的に保存(_T)"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:76
+msgid "Translation File Saving"
+msgstr "翻訳ファイルの保存"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:85
+msgid "Character _encoding to use:"
+msgstr "使用文字コード(_E):"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:91
+msgid "If auto detection _fails, use:"
+msgstr "自動検出失敗時の文字コード(_F):"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:97
+msgid "Automatically choose the _video file to open"
+msgstr "対応するビデオファイルを自動で開く(_V)"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:102
+msgid "File Open Dialog"
+msgstr "ファイルオープン ダイアログ"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:111
+msgid "_Subtitle format to use:"
+msgstr "使用字幕フォーマット(_S):"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:117
+msgid "Ch_aracter encoding to use:"
+msgstr "使用文字コード(_A):"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:123
+msgid "_Newline type to use:"
+msgstr "使用する新規ライン形式(_N):"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:129
+msgid "File Save As Dialog"
+msgstr "名前を付けて保存 ダイアログ"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:137
+msgid "Create a _backup copy of files every"
+msgstr "ファイルのバックアップコピーを"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:150
+msgid "minutes"
+msgstr "分間隔で実行(_B)"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:152
+msgid "Backup"
+msgstr "バックアップ"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:165
+msgid "_Seek the video to the selected subtitle when changing timings"
+msgstr "タイミング変更時に選択した字幕へ自動的に移動する"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:171
+msgid "Play"
+msgstr "新しいタイミングの確認のために"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:178
+msgid "ms before the actual start to help review new timings"
+msgstr "ミリ秒実際の開始時点から早く表示する"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:181
+msgid "Video Seeking"
+msgstr "自動移動"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:187
+msgid "Leave"
+msgstr "挿入・分割時に字幕の間を"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:193
+msgid "ms between subtitles when inserting or splitting"
+msgstr "ミリ秒開ける"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:195
+msgid "Gap Between Subtitles"
+msgstr "字幕間のギャップ"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:203
+msgid "Subtr_act"
+msgstr "ビデオ再生中に字幕の開始/終了点を設定する時に(_A)"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:215
+msgid "ms when setting subtitle start/end while playing the video"
+msgstr "ミリ秒早める"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:216
+msgid "Reaction Delay"
+msgstr "反応ディレイ補正"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:222
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
+msgid "Remember the last used encoding"
+msgstr "最後のエンコーディングを保持"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:257
+msgid "Keep the encoding used on file open"
+msgstr "ファイルを開いた時のエンコーディングを保持"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
+msgid "Keep the format used on file open"
+msgstr "ファイルを開いた時のフォーマットを保持"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:276
+msgid "Remember the last used format"
+msgstr "最終使用フォーマットを保持"
+
+#: src/GnomeSubtitles/Dialog/PreferencesDialog.cs:292
+msgid "Remember the last used type"
+msgstr "最終使用タイプを保持"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Replace"
+msgstr "置換"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:104
+msgid "Find"
+msgstr "探す"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:130
+msgid "F_ind"
+msgstr "探す(_I)"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:139
+msgid "Replace _with"
+msgstr "置換後の文字列(_W)"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:148
+msgid "_Match case"
+msgstr "マッチケース(_M)"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:152
+msgid "Search _backwards"
+msgstr "逆方向に検索(_B)"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:156
+msgid "Regular _expression"
+msgstr "正規表現(_E)"
+
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:160
+msgid "Wra_p around"
+msgstr "折り返す(_P)"
+
+#. Action area
+#: src/GnomeSubtitles/Dialog/SearchDialog.cs:169
+msgid "Replace _All"
+msgstr "すべてを置換(_A)"
+
+#: src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:40
+msgid "Set Languages"
+msgstr "言語を設定"
+
+#. Left part: Text Language
+#: src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:55
+msgid "Text Language"
+msgstr "テキスト言語"
+
+#. Right part: Translation Language
+#: src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:67
+msgid "Translation Language"
+msgstr "翻訳言語"
+
+#: src/GnomeSubtitles/Dialog/SetLanguagesDialog.cs:84
+#, csharp-format
+msgid ""
+"Use your distro's package manager to install additional languages (tip: "
+"search for 'spell'). Supported language packs: {0}."
+msgstr ""
+"お使いのディストリビューションのパッケージマネージャーを使用して追加の言語を"
+"インストールしてください (ヒント: 'spell' で検索)。サポートされている言語パッ"
+"ク: {0}。"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:81
+msgid "Adjust Timings Between 2 Points"
+msgstr "2点間のタイミングの調整"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:82
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:72
+msgid "_Apply"
+msgstr "適用(_A)"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:98
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:124
+msgid "Subtitle No.:"
+msgstr "字幕番号:"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:106
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:132
+msgid "New Start:"
+msgstr "新規開始点:"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:114
+msgid "First Point"
+msgstr "最初の点"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:139
+msgid "Second Point"
+msgstr "2番目の点"
+
+#: src/GnomeSubtitles/Dialog/TimingsAdjustDialog.cs:162
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:112
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:123
+msgid "Apply To"
+msgstr "適用対象"
+
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:67
+msgid "Shift Timings"
+msgstr "シフトタイミング"
+
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:68
+msgid "Apply"
+msgstr "適用"
+
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:82
+msgid "Reset"
+msgstr "リセット"
+
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:84
+msgid "Set From Video"
+msgstr "ビデオから設定"
+
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:85
+msgid ""
+"Sets the shift amount in order for the selected subtitles to start at the "
+"current video position."
+msgstr ""
+"選択した字幕が現在のビデオの位置から開始されるようにシフト量を設定します。"
+
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:94
+msgid "Amount"
+msgstr "量"
+
+#. Tips label
+#: src/GnomeSubtitles/Dialog/TimingsShiftDialog.cs:118
+msgid ""
+"Tip: alternatively use Shift + Numpad Plus/Minus to shift timings directly "
+"from the main window."
+msgstr ""
+"ヒント : 代わりに[Shift] - [+ / - ](テンキーのプラスとマイナス)でメイン画面か"
+"らタイミングを直接シフトできます"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:71
+msgid "Synchronize Timings"
+msgstr "同期タイミング"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:109
+msgid "Sync Points"
+msgstr "同期ポイント"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:119
+msgid "Subtitles between sync points"
+msgstr "同期ポイント間の字幕"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:136
+msgid "Info"
+msgstr "情報"
+
+#. Number column
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:147
+msgid "Subtitle No."
+msgstr "字幕番号"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:151
+#: src/GnomeSubtitles/Ui/View/SubtitleView.cs:257
+msgid "Start"
+msgstr "開始"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:152
+msgid "New Start"
+msgstr "新規開始点"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:170
+msgid ""
+"Add sync points by selecting subtitles and adjusting the video to their "
+"correct position. At least 2 points are needed."
+msgstr ""
+"複数の字幕を選択して、ビデオを正しい位置に調整することで、同期ポイントを追加"
+"します。少なくとも2つの同期ポイントが必要です。"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:173
+msgid ""
+"Add 1 more sync point to start synchronizing. Adding more points will "
+"improve accuracy."
+msgstr ""
+"同期を開始するには、同期ポイントをもう1つ追加してください。同期ポイントをさら"
+"に追加することで精度が向上します。"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:176
+msgid "Synchronization is ready. All subtitles will be synchronized."
+msgstr "同期の準備ができました。すべての字幕が同期されます。"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:186
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0}."
+msgstr "同期の準備ができました。{0}番の字幕は同期されません。"
+
+#: src/GnomeSubtitles/Dialog/TimingsSynchronizeDialog.cs:189
+#, csharp-format
+msgid ""
+"Synchronization is ready. The following subtitles will not be synchronized: "
+"{0} and {1}."
+msgstr "同期が準備できました。 {0} 番から {1} 番までの字幕は同期されません。"
+
+#: src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:54
+msgid "Open Video"
+msgstr "ビデオを開く"
+
+#: src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:74
+msgid "All Media Files"
+msgstr "すべてのメディアファイル"
+
+#: src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:85
+msgid "Video Files"
+msgstr "ビデオファイル"
+
+#: src/GnomeSubtitles/Dialog/VideoOpenDialog.cs:93
+msgid "Audio Files"
+msgstr "オーディオファイル"
+
+#: src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:57
+msgid "Seek Video To"
+msgstr "移動先"
+
+#: src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:58
+msgid "_Seek"
+msgstr "移動(_S)"
+
+#: src/GnomeSubtitles/Dialog/VideoSeekToDialog.cs:66
+msgid "Seek _video to:"
+msgstr "移動先(_V):"
+
+#: src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:175
+msgid "Add or Remove…"
+msgstr "追加または削除…"
+
+#: src/GnomeSubtitles/Ui/Component/EncodingComboBox.cs:183
+msgid "Automatically Detected"
+msgstr "自動的に検出"
+
+#: src/GnomeSubtitles/Ui/Component/NewlineTypeComboBox.cs:106
+msgid "System Default"
+msgstr "システムデフォルト"
+
+#. To translators: OVR and INS correspond to the Overwrite and Insert text editing modes.
+#: src/GnomeSubtitles/Ui/Status.cs:43
+msgid "OVR"
+msgstr "上書きモード"
+
+#: src/GnomeSubtitles/Ui/Status.cs:43
+msgid "INS"
+msgstr "挿入モード"
+
+#. To translators: Trans corresponds to Translation (used here to denote whether text or translation is being edited).
+#: src/GnomeSubtitles/Ui/Status.cs:58
+#: src/GnomeSubtitles/Ui/View/SubtitleView.cs:265
+msgid "Text"
+msgstr "テキスト"
+
+#: src/GnomeSubtitles/Ui/Status.cs:58
+msgid "Trans"
+msgstr "翻訳"
+
+#. To translators: Ln corresponds to Line
+#: src/GnomeSubtitles/Ui/Status.cs:60
+msgid "Ln"
+msgstr "行"
+
+#. To translators: Col corresponds to Column
+#: src/GnomeSubtitles/Ui/Status.cs:62
+msgid "Col"
+msgstr "列"
+
+#: src/GnomeSubtitles/Ui/VideoPreview/Video.cs:53
+msgid "Media Player Error"
+msgstr "メディアプレイヤーエラー"
+
+#: src/GnomeSubtitles/Ui/VideoPreview/Video.cs:54
+#, csharp-format
+msgid ""
+"An unexpected error has occurred: '{0}'. See the log for additional "
+"information."
+msgstr "予期せぬエラーが発生しました: '{0}'。詳細はログを参照してください。"
+
+#: src/GnomeSubtitles/Ui/VideoPreview/VideoPosition.cs:193
+msgid "Frame"
+msgstr "フレーム"
+
+#. Number column
+#: src/GnomeSubtitles/Ui/View/SubtitleView.cs:253
+msgid "No."
+msgstr "No."
+
+#: src/GnomeSubtitles/Ui/View/SubtitleView.cs:258
+msgid "End"
+msgstr "終了"
+
+#: src/GnomeSubtitles/Ui/View/SubtitleView.cs:270
+msgid "Translation"
+msgstr "翻訳"
+
+#~ msgid ""
+#~ "Gnome Subtitles is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gnome Subtitles is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with this program; if not, write to the Free Software\n"
+#~ "Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+#~ msgstr ""
+#~ "Gnome Subtitlesはフリーソフトウェアです。\n"
+#~ "GNU ジェネラルパブリックライセンス条件のもとで自由に再配布、改変が\n"
+#~ "許諾されます。Free Software Foundationが定めるGNUジェネラル\n"
+#~ "パブリックライセンスの第2版および2版以降で定められる条件が適用されます。\n"
+#~ "Gnome Subtitles はユーザーの利便に供することを目的として配布されますが、\n"
+#~ "明示または黙示を問わず、いかなる保証を行いません。またいかなる責任も負いま"
+#~ "せん。\n"
+#~ "また、あらゆる商品性や特定目的への適合性の保証を行いません。\n"
+#~ "GNU ジェネラルパブリックライセンスで詳細に定める条件に則って提供されま"
+#~ "す。\n"
+#~ "このソフトウェアプログラムはGNUジェネラルパブリックライセンス条項が収録\n"
+#~ "された状態で配布されています。\n"
+#~ "万一、GNUジェネラルパブリックライセンス条項が収録されていない場合は、\n"
+#~ "下記Free Software Foundation, Inc.社宛に連絡してください。\n"
+#~ "51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA"
+
+#~ msgid "A_vailable:"
+#~ msgstr "バリアブル(_V):"
+
+#~ msgid "Character Coding:"
+#~ msgstr "文字コード:"
+
+#~ msgid "<b>Name:</b>"
+#~ msgstr "<b>名称:</b>"
+
+#~ msgid "<b>Path:</b>"
+#~ msgstr "<b>パス:</b>"
+
+#~ msgid "<b>Character Coding:</b>"
+#~ msgstr "<b>文字コード:</b>"
+
+#~ msgid "<b>Subtitle Format:</b>"
+#~ msgstr "<b>字幕フォーマット:</b>"
+
+#~ msgid "Karaoke Lyrics LRC"
+#~ msgstr "LRC歌詞ファイル"
+
+#~ msgid "Karaoke Lyrics VKT"
+#~ msgstr "VKT歌詞ファイル"
+
+#~ msgid "Type:"
+#~ msgstr "タイプ:"
+
+#~ msgid ""
+#~ "Audio\n"
+#~ "Video\n"
+#~ msgstr ""
+#~ "オーディオ\n"
+#~ "ビデオ\n"
+
+#~ msgid "Comment:"
+#~ msgstr "コメント:"
+
+#~ msgid "_Video Frame Rate"
+#~ msgstr "再生フレームレート(_V)"
+
+#~ msgid "Set T_ext Language"
+#~ msgstr "テキスト言語を設定(_E)"
+
+#~ msgid "Set Translati_on Language"
+#~ msgstr "翻訳言語を設定(_O)"
+
+#~ msgid "Translate _Text → Translation"
+#~ msgstr "テキストを翻訳する(_T)"
+
+#~ msgid "Translate Translatio_n → Text"
+#~ msgstr "翻訳からテキストへ(_N)"
+
+#~ msgid "_Contents"
+#~ msgstr "目次(_C)"
+
+#~ msgid "<b>Time</b>"
+#~ msgstr "<b>時間</b>"
+
+#~ msgid "<b>Length</b>"
+#~ msgstr "<b>長さ</b>"
+
+#~ msgid "Seek"
+#~ msgstr "タイミング修正のために実際よりも"
+
+#~ msgid "<b>Subtitle Splitting</b>"
+#~ msgstr "<b>字幕分割</b>"
+
+#~ msgid "_Reset to defaults"
+#~ msgstr "デフォルト値へリセット(_R)"
+
+#~ msgid "_Search for:"
+#~ msgstr "検索する文字列(_S):"
+
+#~ msgid "Start Frame:"
+#~ msgstr "開始フレーム:"
+
+#~ msgid "No.:"
+#~ msgstr "No.:"
+
+#~ msgid "<b>First Subtitle</b>"
+#~ msgstr "<b>最初の字幕</b>"
+
+#~ msgid "<b>Last Subtitle</b>"
+#~ msgstr "<b>最後の字幕</b>"
+
+#~ msgid "All Subtitles"
+#~ msgstr "すべての字幕"
+
+#~ msgid "Selected Range"
+#~ msgstr "選択範囲"
+
+#~ msgid "Adjust"
+#~ msgstr "調整"
+
+#~ msgid "<b>Frames</b>"
+#~ msgstr "<b>フレーム</b>"
+
+#~ msgid "From _first subtitle to selection"
+#~ msgstr "最初の字幕からの選択(_F)"
+
+#~ msgid "From selection to _last subtitle"
+#~ msgstr "選択した字幕から最後の字幕(_L)"
+
+#~ msgid "_Shift"
+#~ msgstr "シフト(_S)"
+
+#~ msgid "Synchroni_ze all subtitles"
+#~ msgstr "すべての字幕を同期(_Z)"
+
+#~ msgid "<b>Options</b>"
+#~ msgstr "<b>オプション</b>"
+
+#~ msgid "<b>Status</b>"
+#~ msgstr "<b>状態</b>"
+
+#~ msgid "Seek To"
+#~ msgstr "移動:"
+
+#~ msgid "Translating"
+#~ msgstr "翻訳"
+
+#~ msgid "Could not translate the chosen subtitle."
+#~ msgstr "選択した字幕が翻訳できません。"
+
+#~ msgid "The Gnome Subtitles Manual could not be found."
+#~ msgstr "Gnome Subtitlesのマニュアルが見つかりません。"
+
+#~ msgid ""
+#~ "Please verify that your installation has been completed successfully."
+#~ msgstr "正しくインストールが完了しているかを確認してください。"
+
+#~ msgid "Select the text _language of the current subtitles."
+#~ msgstr "現在の字幕の元のテキスト言語を選択してください。"
+
+#~ msgid "Select the translation _language of the current subtitles."
+#~ msgstr "現在の字幕の翻訳言語を選んでください。"
+
+#~ msgid "Start Time:"
+#~ msgstr "開始時間:"
+
+#~ msgid "Frames"
+#~ msgstr "フレーム"
+
+#~ msgid "Current Start"
+#~ msgstr "現在の開始点"
+
+#~ msgid "Correct Start"
+#~ msgstr "修正後の開始点"
+
+#~ msgid "Could not open Bug Buddy, the bug reporting tool."
+#~ msgstr "エラーレポートツールBug Buddyを開くことができません"
+
+#~ msgid "Bug information has been printed to the console."
+#~ msgstr "エラー情報がコンソールに記録されました"
